@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import CodexFicheHeader from "@/components/codex/CodexFicheHeader";
 import ReferenceCodexLink from "@/components/codex/ReferenceCodexLink";
 import SourcesCodex from "@/components/codex/SourcesCodex";
 import { getOeuvreBySlug, oeuvres } from "@/data/catalogues";
@@ -53,25 +54,12 @@ export default async function OeuvrePage({
 
     return (
         <main className="mx-auto min-h-screen w-full max-w-5xl px-6 py-16">
-            <header>
-                <p className="text-sm uppercase tracking-[0.24em] text-muted">
-                    Œuvre
-                </p>
-
-                <h1 className="mt-4 text-5xl text-ink">{oeuvre.nom}</h1>
-
-                {oeuvre.sousTitre && (
-                    <p className="mt-4 text-xl text-ink-soft">
-                        {oeuvre.sousTitre}
-                    </p>
-                )}
-
-                {fiche.introduction && (
-                    <p className="mt-8 max-w-2xl text-lg leading-8 text-ink-soft">
-                        {fiche.introduction}
-                    </p>
-                )}
-            </header>
+            <CodexFicheHeader
+                eyebrow="Œuvre"
+                titre={oeuvre.nom}
+                sousTitre={oeuvre.sousTitre}
+                introduction={fiche.introduction}
+            />
 
             <dl className="mt-12 grid gap-8 sm:grid-cols-2">
                 <div>

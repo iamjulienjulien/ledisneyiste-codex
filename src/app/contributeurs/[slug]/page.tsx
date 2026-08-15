@@ -7,6 +7,7 @@ import {
     getOeuvresContribueesParContributeur,
     getPersonnagesCreesParContributeur,
 } from "@/data/relations";
+import CodexFicheHeader from "@/components/codex/CodexFicheHeader";
 import SourcesCodex from "@/components/codex/SourcesCodex";
 import RelationsCodex from "@/components/codex/RelationsCodex";
 
@@ -62,25 +63,12 @@ export default async function ContributeurPage({
 
     return (
         <main className="mx-auto min-h-screen w-full max-w-5xl px-6 py-16">
-            <header>
-                <p className="text-sm uppercase tracking-[0.24em] text-muted">
-                    Contributeur
-                </p>
-
-                <h1 className="mt-4 text-5xl">{contributeur.nom}</h1>
-
-                {contributeur.sousTitre && (
-                    <p className="mt-4 text-xl text-ink-soft">
-                        {contributeur.sousTitre}
-                    </p>
-                )}
-
-                {fiche.introduction && (
-                    <p className="mt-8 max-w-2xl text-lg leading-8 text-ink-soft">
-                        {fiche.introduction}
-                    </p>
-                )}
-            </header>
+            <CodexFicheHeader
+                eyebrow="Contributeur"
+                titre={contributeur.nom}
+                sousTitre={contributeur.sousTitre}
+                introduction={fiche.introduction}
+            />
 
             <dl className="mt-12 grid gap-8 sm:grid-cols-2">
                 <div>
