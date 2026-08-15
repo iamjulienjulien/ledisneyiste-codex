@@ -53,7 +53,7 @@ export default async function OeuvrePage({
     const sources = getSourcesByIds(fiche.sources);
 
     return (
-        <main className="mx-auto min-h-screen w-full max-w-5xl px-6 py-16">
+        <main className="mx-auto w-full max-w-5xl px-6 py-16">
             <CodexFicheHeader
                 eyebrow="Œuvre"
                 titre={oeuvre.nom}

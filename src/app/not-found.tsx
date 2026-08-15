@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function NotFound() {
     return (
-        <main className="flex min-h-screen items-center justify-center px-6 py-16">
+        <main className="flex items-center justify-center px-6 py-16">
             <section className="w-full max-w-2xl">
                 <p className="text-sm font-medium uppercase tracking-[0.24em] text-muted">
                     Le Codex du Disneyiste

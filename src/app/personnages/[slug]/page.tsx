@@ -56,7 +56,7 @@ export default async function PersonnagePage({
     const oeuvres = getOeuvresAvecPersonnage(slug);
 
     return (
-        <main className="mx-auto min-h-screen w-full max-w-5xl px-6 py-16">
+        <main className="mx-auto w-full max-w-5xl px-6 py-16">
             <CodexFicheHeader
                 eyebrow="Personnage"
                 titre={personnage.nom}
