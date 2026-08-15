@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { getPersonnageBySlug, personnages } from "@/data/catalogues";
 import { getFichePersonnageBySlug } from "@/data/personnages";
 import { getSourcesByIds } from "@/data/sources";
+import ReferenceCodexLink from "@/components/codex/ReferenceCodexLink";
 import SourcesCodex from "@/components/codex/SourcesCodex";
 import { formatDateHistorique } from "@/lib/date";
 
@@ -89,55 +90,24 @@ export default async function PersonnagePage({
                 <div>
                     <dt className="text-sm text-muted">Créateurs</dt>
 
-                    <dd className="mt-1 flex flex-wrap gap-x-2 text-lg">
-                        {fiche.creation.createurs.map((createur, index) => {
-                            const separator =
-                                index < fiche.creation.createurs.length - 1
-                                    ? ","
-                                    : "";
-
-                            if (createur.type === "contributeur") {
-                                return (
-                                    <span key={createur.nom}>
-                                        <Link
-                                            href={`/contributeurs/${createur.slug}`}
-                                            className="underline underline-offset-4"
-                                        >
-                                            {createur.nom}
-                                        </Link>
-                                        {separator}
-                                    </span>
-                                );
-                            }
-
-                            if (createur.type === "personnage") {
-                                return (
-                                    <span key={createur.nom}>
-                                        <Link
-                                            href={`/personnages/${createur.slug}`}
-                                            className="underline underline-offset-4"
-                                        >
-                                            {createur.nom}
-                                        </Link>
-                                        {separator}
-                                    </span>
-                                );
-                            }
-
-                            return (
-                                <span key={createur.nom}>
-                                    {createur.nom}
-                                    {separator}
-                                </span>
-                            );
-                        })}
+                    <dd className="mt-1 flex flex-wrap gap-x-2 text-lg text-ink">
+                        {fiche.creation.createurs.map((createur, index) => (
+                            <span key={createur.nom}>
+                                <ReferenceCodexLink reference={createur} />
+                                {index < fiche.creation.createurs.length - 1 &&
+                                    ","}
+                            </span>
+                        ))}
                     </dd>
                 </div>
 
                 <div>
                     <dt className="text-sm text-muted">Première apparition</dt>
-                    <dd className="mt-1 text-lg">
-                        {fiche.premiereApparition.titre}
+
+                    <dd className="mt-1 text-lg text-ink">
+                        <ReferenceCodexLink
+                            reference={fiche.premiereApparition.oeuvre}
+                        />
                         {" · "}
                         {formatDateHistorique(fiche.premiereApparition.date)}
                     </dd>

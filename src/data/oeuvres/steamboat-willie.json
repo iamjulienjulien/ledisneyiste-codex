@@ -1,0 +1,32 @@
+{
+    "slug": "steamboat-willie",
+    "type": "oeuvre",
+    "introduction": "",
+    "sortie": {
+        "date": {
+            "valeur": "1928-11-18",
+            "precision": "jour"
+        }
+    },
+    "format": "court métrage d'animation",
+    "contributeurs": [
+        {
+            "nom": "Walt Disney",
+            "type": "contributeur",
+            "slug": "walt-disney"
+        },
+        {
+            "nom": "Ub Iwerks",
+            "type": "contributeur",
+            "slug": "ub-iwerks"
+        }
+    ],
+    "personnages": [
+        {
+            "nom": "Mickey Mouse",
+            "type": "personnage",
+            "slug": "mickey-mouse"
+        }
+    ],
+    "sources": []
+}

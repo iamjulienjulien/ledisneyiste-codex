@@ -21,7 +21,11 @@
         ]
     },
     "premiereApparition": {
-        "titre": "Steamboat Willie",
+        "oeuvre": {
+            "nom": "Steamboat Willie",
+            "type": "oeuvre",
+            "slug": "steamboat-willie"
+        },
         "date": {
             "valeur": "1928-11-18",
             "precision": "jour"

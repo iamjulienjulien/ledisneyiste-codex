@@ -16,7 +16,7 @@ export type FichePersonnageDisney = FicheCodexBase & {
     };
 
     premiereApparition: {
-        titre: string;
+        oeuvre: ReferenceCodex;
         date: DateHistorique;
     };
 
