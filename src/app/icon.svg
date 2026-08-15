@@ -1,0 +1,28 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 64 64"
+    role="img"
+    aria-labelledby="title"
+>
+    <title id="title">Le Codex du Disneyiste</title>
+
+    <rect width="64" height="64" rx="14" fill="#51446F" />
+
+    <path
+        d="M32 10
+           C33.6 20.6 37.4 26.4 48 28
+           C37.4 29.6 33.6 35.4 32 46
+           C30.4 35.4 26.6 29.6 16 28
+           C26.6 26.4 30.4 20.6 32 10Z"
+        fill="#F7F2E8"
+    />
+
+    <path
+        d="M47 39
+           C47.7 43.3 49.7 45.3 54 46
+           C49.7 46.7 47.7 48.7 47 53
+           C46.3 48.7 44.3 46.7 40 46
+           C44.3 45.3 46.3 43.3 47 39Z"
+        fill="#CDBCE8"
+    />
+</svg>
