@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import { contributeurs, getContributeurBySlug } from "@/data/catalogues";
 import { getFicheContributeurBySlug } from "@/data/contributeurs";
+import { getSourcesByIds } from "@/data/sources";
+import SourcesCodex from "@/components/codex/SourcesCodex";
 import { formatDateHistorique } from "@/lib/date";
 
 export const dynamicParams = false;
@@ -24,6 +26,8 @@ export default async function ContributeurPage({
     if (!contributeur || !fiche) {
         notFound();
     }
+
+    const sources = getSourcesByIds(fiche.sources);
 
     return (
         <main className="mx-auto min-h-screen w-full max-w-5xl px-6 py-16">
@@ -73,6 +77,8 @@ export default async function ContributeurPage({
                     <dd className="mt-1 text-lg">{fiche.roles.join(", ")}</dd>
                 </div>
             </dl>
+
+            <SourcesCodex sources={sources} />
         </main>
     );
 }

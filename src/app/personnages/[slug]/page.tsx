@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import { getPersonnageBySlug, personnages } from "@/data/catalogues";
 import { getFichePersonnageBySlug } from "@/data/personnages";
+import { getSourcesByIds } from "@/data/sources";
+import SourcesCodex from "@/components/codex/SourcesCodex";
 import { formatDateHistorique } from "@/lib/date";
 
 export const dynamicParams = false;
@@ -24,6 +26,8 @@ export default async function PersonnagePage({
     if (!personnage || !fiche) {
         notFound();
     }
+
+    const sources = getSourcesByIds(fiche.sources);
 
     return (
         <main className="mx-auto min-h-screen w-full max-w-5xl px-6 py-16">
@@ -80,6 +84,8 @@ export default async function PersonnagePage({
                     </dd>
                 </div>
             </dl>
+
+            <SourcesCodex sources={sources} />
         </main>
     );
 }
