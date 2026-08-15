@@ -5,10 +5,6 @@ export default function NotFound() {
         <main className="flex items-center justify-center px-6 py-16">
             <section className="w-full max-w-2xl">
                 <p className="text-sm font-medium uppercase tracking-[0.24em] text-muted">
-                    Le Codex du Disneyiste
-                </p>
-
-                <p className="mt-8 text-sm font-medium text-muted">
                     Erreur 404
                 </p>
 
@@ -17,17 +13,17 @@ export default function NotFound() {
                 </h1>
 
                 <p className="mt-6 max-w-xl text-lg leading-8 text-ink-soft">
-                    L’entrée que vous cherchez n’existe pas encore, a été
-                    déplacée ou s’est aventurée un peu trop loin dans les
-                    archives.
+                    L’entrée que vous cherchez n’existe pas encore ou a été
+                    déplacée. Elle s’est peut-être aventurée un peu trop loin
+                    dans les archives.
                 </p>
 
-                <div className="mt-10 flex flex-wrap gap-4">
+                <div className="mt-10 grid gap-4 sm:grid-cols-2">
                     <Link
                         href="/"
                         className="font-medium underline underline-offset-4"
                     >
-                        Retourner à l’accueil
+                        Revenir à l’accueil
                     </Link>
 
                     <Link
@@ -41,7 +37,14 @@ export default function NotFound() {
                         href="/contributeurs"
                         className="font-medium underline underline-offset-4"
                     >
-                        Explorer les contributeurs
+                        Explorer les créateurs
+                    </Link>
+
+                    <Link
+                        href="/oeuvres"
+                        className="font-medium underline underline-offset-4"
+                    >
+                        Explorer les œuvres
                     </Link>
                 </div>
             </section>

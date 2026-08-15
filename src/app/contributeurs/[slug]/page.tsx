@@ -64,7 +64,7 @@ export default async function ContributeurPage({
     return (
         <main className="mx-auto w-full max-w-5xl px-6 py-16">
             <CodexFicheHeader
-                eyebrow="Contributeur"
+                eyebrow="Créateur"
                 titre={contributeur.nom}
                 sousTitre={contributeur.sousTitre}
                 introduction={fiche.introduction}

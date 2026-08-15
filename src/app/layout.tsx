@@ -54,7 +54,7 @@ export default function RootLayout({
                                 href="/contributeurs"
                                 className="text-ink-soft transition-colors hover:text-accent"
                             >
-                                Contributeurs
+                                Créateurs
                             </Link>
 
                             <Link

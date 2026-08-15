@@ -3,9 +3,9 @@ import Link from "next/link";
 import { contributeurs } from "@/data/catalogues";
 
 export const metadata: Metadata = {
-    title: "Contributeurs",
+    title: "Créateurs",
     description:
-        "Explorer les femmes et les hommes qui ont imaginé, construit et transformé Disney.",
+        "Explorer celles et ceux qui ont imaginé, construit et transformé Disney.",
 };
 
 export default function ContributeursPage() {
@@ -16,20 +16,18 @@ export default function ContributeursPage() {
                     Explorer le Codex
                 </p>
 
-                <h1 className="mt-3 text-5xl text-ink">Contributeurs</h1>
+                <h1 className="mt-3 text-5xl text-ink">Créateurs</h1>
 
                 <p className="mt-6 text-lg leading-8 text-ink-soft">
-                    Les femmes et les hommes qui ont imaginé, construit et
-                    transformé Disney.
+                    Celles et ceux qui ont imaginé, construit et transformé
+                    Disney.
                 </p>
             </header>
 
             <section className="mt-12 border-t border-line pt-8">
                 <p className="text-sm text-muted">
                     {contributeurs.length}{" "}
-                    {contributeurs.length > 1
-                        ? "contributeurs"
-                        : "contributeur"}
+                    {contributeurs.length > 1 ? "créateurs" : "créateur"}
                 </p>
 
                 <ul className="mt-6 divide-y divide-line">

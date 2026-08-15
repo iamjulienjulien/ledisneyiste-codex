@@ -73,21 +73,19 @@ export default function Home() {
                         <p className="text-sm text-muted">
                             {contributeurs.length}{" "}
                             {contributeurs.length > 1
-                                ? "contributeurs"
-                                : "contributeur"}
+                                ? "créateurs"
+                                : "créateur"}
                         </p>
 
-                        <h3 className="mt-3 text-2xl text-ink">
-                            Contributeurs
-                        </h3>
+                        <h3 className="mt-3 text-2xl text-ink">Créateurs</h3>
 
                         <p className="mt-3 leading-7 text-ink-soft">
-                            Les femmes et les hommes qui ont imaginé, construit
-                            et transformé Disney.
+                            Celles et ceux qui ont imaginé, construit et
+                            transformé Disney.
                         </p>
 
                         <p className="mt-6 font-medium text-accent group-hover:text-accent-hover">
-                            Explorer les contributeurs →
+                            Explorer les créateurs →
                         </p>
                     </Link>
 
@@ -124,12 +122,10 @@ export default function Home() {
                 </h2>
 
                 <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
-                    Le premier réseau du Codex s’est construit autour de Walt
-                    Disney, Ub Iwerks, Mickey Mouse, Minnie Mouse et{" "}
-                    <em>Steamboat Willie</em>. Des créateurs aux personnages,
-                    puis des personnages à l’œuvre qui les rassemble, les
-                    premières connexions commencent à raconter leur propre
-                    histoire.
+                    Le premier réseau du Codex relie Walt Disney et Ub Iwerks à
+                    Mickey Mouse, Minnie Mouse et <em>Steamboat Willie</em>. Des
+                    créateurs aux personnages, puis à l’œuvre qui les réunit,
+                    ces premières connexions dessinent déjà une histoire.
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-x-8 gap-y-4">
@@ -173,9 +169,9 @@ export default function Home() {
 
                     <p className="max-w-2xl text-sm leading-6 text-muted">
                         Le Disneyiste est un projet éditorial personnel,
-                        indépendant et non officiel. Il n’est ni affilié, ni
-                        approuvé, ni sponsorisé par The Walt Disney Company ou
-                        ses filiales.
+                        indépendant et non officiel. Il n’est affilié ni à The
+                        Walt Disney Company ni à ses filiales, et n’est ni
+                        approuvé ni sponsorisé par celles-ci.
                     </p>
                 </div>
             </footer>
