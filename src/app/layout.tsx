@@ -41,20 +41,27 @@ export default function RootLayout({
 
                         <nav
                             aria-label="Navigation principale"
-                            className="flex items-center gap-6 text-sm"
+                            className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm"
                         >
                             <Link
                                 href="/personnages"
-                                className="text-ink-soft hover:text-ink"
+                                className="text-ink-soft transition-colors hover:text-accent"
                             >
                                 Personnages
                             </Link>
 
                             <Link
                                 href="/contributeurs"
-                                className="text-ink-soft hover:text-ink"
+                                className="text-ink-soft transition-colors hover:text-accent"
                             >
                                 Contributeurs
+                            </Link>
+
+                            <Link
+                                href="/oeuvres"
+                                className="text-ink-soft transition-colors hover:text-accent"
+                            >
+                                Œuvres
                             </Link>
                         </nav>
                     </div>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { contributeurs, personnages } from "@/data/catalogues";
+import { contributeurs, oeuvres, personnages } from "@/data/catalogues";
 
 export default function Home() {
     return (
@@ -19,9 +19,9 @@ export default function Home() {
                 </p>
 
                 <p className="mt-8 max-w-2xl text-lg leading-8 text-ink-soft">
-                    Œuvres, personnages, créateurs, lieux et histoires se
-                    croisent ici pour documenter Disney comme phénomène
-                    culturel, mémoire collective et fabrique d’imaginaires.
+                    Œuvres, personnages et créateurs se croisent ici pour
+                    documenter Disney comme phénomène culturel, mémoire
+                    collective et fabrique d’imaginaires.
                 </p>
             </header>
 
@@ -31,10 +31,18 @@ export default function Home() {
                         Explorer
                     </p>
 
-                    <h2 className="mt-3 text-3xl">Deux premières portes</h2>
+                    <h2 className="mt-3 text-3xl text-ink">
+                        Trois portes vers le Codex
+                    </h2>
+
+                    <p className="mt-4 max-w-2xl leading-7 text-ink-soft">
+                        Entrer par les figures de fiction, celles et ceux qui
+                        les ont façonnées, ou les œuvres où leurs histoires
+                        prennent vie.
+                    </p>
                 </div>
 
-                <div className="mt-8 grid gap-6 sm:grid-cols-2">
+                <div className="mt-8 grid gap-6 md:grid-cols-3">
                     <Link
                         href="/personnages"
                         className="group border border-line p-6 transition-colors hover:border-line-strong"
@@ -46,14 +54,14 @@ export default function Home() {
                                 : "personnage"}
                         </p>
 
-                        <h3 className="mt-3 text-2xl">Personnages</h3>
+                        <h3 className="mt-3 text-2xl text-ink">Personnages</h3>
 
                         <p className="mt-3 leading-7 text-ink-soft">
                             Les figures fictives qui peuplent les récits et les
                             imaginaires Disney.
                         </p>
 
-                        <p className="mt-6 font-medium group-hover:underline group-hover:underline-offset-4">
+                        <p className="mt-6 font-medium text-accent group-hover:text-accent-hover">
                             Explorer les personnages →
                         </p>
                     </Link>
@@ -69,15 +77,38 @@ export default function Home() {
                                 : "contributeur"}
                         </p>
 
-                        <h3 className="mt-3 text-2xl">Contributeurs</h3>
+                        <h3 className="mt-3 text-2xl text-ink">
+                            Contributeurs
+                        </h3>
 
                         <p className="mt-3 leading-7 text-ink-soft">
                             Les femmes et les hommes qui ont imaginé, construit
                             et transformé Disney.
                         </p>
 
-                        <p className="mt-6 font-medium group-hover:underline group-hover:underline-offset-4">
+                        <p className="mt-6 font-medium text-accent group-hover:text-accent-hover">
                             Explorer les contributeurs →
+                        </p>
+                    </Link>
+
+                    <Link
+                        href="/oeuvres"
+                        className="group border border-line p-6 transition-colors hover:border-line-strong"
+                    >
+                        <p className="text-sm text-muted">
+                            {oeuvres.length}{" "}
+                            {oeuvres.length > 1 ? "œuvres" : "œuvre"}
+                        </p>
+
+                        <h3 className="mt-3 text-2xl text-ink">Œuvres</h3>
+
+                        <p className="mt-3 leading-7 text-ink-soft">
+                            Les films, courts métrages et créations où les
+                            imaginaires Disney prennent forme.
+                        </p>
+
+                        <p className="mt-6 font-medium text-accent group-hover:text-accent-hover">
+                            Explorer les œuvres →
                         </p>
                     </Link>
                 </div>
@@ -88,27 +119,39 @@ export default function Home() {
                     Aux origines
                 </p>
 
-                <h2 className="mt-3 text-3xl">Un homme et une souris</h2>
+                <h2 className="mt-3 text-3xl text-ink">
+                    Un homme, deux souris et un bateau
+                </h2>
 
                 <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
-                    Le Codex s’ouvre avec deux figures qui se répondent : Walt
-                    Disney et Mickey Mouse, le créateur et la créature, l’homme
-                    historique et le personnage devenu symbole.
+                    Le premier réseau du Codex s’est construit autour de Walt
+                    Disney, Ub Iwerks, Mickey Mouse, Minnie Mouse et{" "}
+                    <em>Steamboat Willie</em>. Des créateurs aux personnages,
+                    puis des personnages à l’œuvre qui les rassemble, les
+                    premières connexions commencent à raconter leur propre
+                    histoire.
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-x-8 gap-y-4">
                     <Link
                         href="/contributeurs/walt-disney"
-                        className="font-medium underline underline-offset-4"
+                        className="font-medium text-accent underline underline-offset-4 hover:text-accent-hover"
                     >
                         Walt Disney →
                     </Link>
 
                     <Link
                         href="/personnages/mickey-mouse"
-                        className="font-medium underline underline-offset-4"
+                        className="font-medium text-accent underline underline-offset-4 hover:text-accent-hover"
                     >
                         Mickey Mouse →
+                    </Link>
+
+                    <Link
+                        href="/oeuvres/steamboat-willie"
+                        className="font-medium text-accent underline underline-offset-4 hover:text-accent-hover"
+                    >
+                        Steamboat Willie →
                     </Link>
                 </div>
             </section>
@@ -121,7 +164,7 @@ export default function Home() {
                             href="https://julienjulien.fr"
                             target="_blank"
                             rel="noreferrer"
-                            className="underline underline-offset-4"
+                            className="text-accent underline underline-offset-4 hover:text-accent-hover"
                         >
                             Julien Julien
                         </a>
