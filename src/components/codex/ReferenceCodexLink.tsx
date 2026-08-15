@@ -27,13 +27,13 @@ export default function ReferenceCodexLink({
     const href = getReferenceHref(reference);
 
     if (!href) {
-        return <span>{reference.nom}</span>;
+        return <span className="text-ink-soft">{reference.nom}</span>;
     }
 
     return (
         <Link
             href={href}
-            className="text-accent underline underline-offset-4 hover:text-accent-hover"
+            className="text-accent underline decoration-line-strong underline-offset-4 transition-colors hover:text-accent-hover hover:decoration-accent"
         >
             {reference.nom}
         </Link>
