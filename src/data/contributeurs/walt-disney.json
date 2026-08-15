@@ -1,0 +1,14 @@
+{
+    "slug": "walt-disney",
+    "type": "contributeur",
+    "introduction": "",
+    "naissance": {
+        "date": "",
+        "lieu": ""
+    },
+    "deces": {
+        "date": "",
+        "lieu": ""
+    },
+    "roles": []
+}

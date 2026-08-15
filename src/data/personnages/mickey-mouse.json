@@ -1,0 +1,14 @@
+{
+    "slug": "mickey-mouse",
+    "type": "personnage",
+    "introduction": "",
+    "creation": {
+        "date": "",
+        "createurs": []
+    },
+    "premiereApparition": {
+        "titre": "",
+        "date": ""
+    },
+    "espece": ""
+}
