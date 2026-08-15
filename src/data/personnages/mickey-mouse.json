@@ -3,12 +3,18 @@
     "type": "personnage",
     "introduction": "",
     "creation": {
-        "date": "",
-        "createurs": []
+        "date": {
+            "valeur": "1928",
+            "precision": "annee"
+        },
+        "createurs": ["Walt Disney", "Ub Iwerks"]
     },
     "premiereApparition": {
-        "titre": "",
-        "date": ""
+        "titre": "Steamboat Willie",
+        "date": {
+            "valeur": "1928-11-18",
+            "precision": "jour"
+        }
     },
-    "espece": ""
+    "espece": "souris anthropomorphe"
 }

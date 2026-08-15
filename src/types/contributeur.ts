@@ -1,4 +1,5 @@
 import type { EntreeCatalogueBase } from "@/types/codex";
+import type { DateHistorique } from "@/types/date";
 import type { FicheCodexBase } from "@/types/fiche";
 
 export type ContributeurDisney = EntreeCatalogueBase & {
@@ -9,12 +10,12 @@ export type FicheContributeurDisney = FicheCodexBase & {
     type: "contributeur";
 
     naissance: {
-        date: string;
+        date: DateHistorique;
         lieu: string;
     };
 
     deces?: {
-        date: string;
+        date: DateHistorique;
         lieu: string;
     };
 

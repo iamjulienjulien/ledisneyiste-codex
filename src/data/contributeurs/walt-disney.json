@@ -3,12 +3,18 @@
     "type": "contributeur",
     "introduction": "",
     "naissance": {
-        "date": "",
-        "lieu": ""
+        "date": {
+            "valeur": "1901-12-05",
+            "precision": "jour"
+        },
+        "lieu": "Chicago, Illinois, États-Unis"
     },
     "deces": {
-        "date": "",
+        "date": {
+            "valeur": "1966-12-15",
+            "precision": "jour"
+        },
         "lieu": ""
     },
-    "roles": []
+    "roles": ["animateur", "producteur", "réalisateur", "entrepreneur"]
 }

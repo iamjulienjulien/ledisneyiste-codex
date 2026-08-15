@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { contributeurs, getContributeurBySlug } from "@/data/catalogues";
 import { getFicheContributeurBySlug } from "@/data/contributeurs";
+import { formatDateHistorique } from "@/lib/date";
 
 export const dynamicParams = false;
 
@@ -47,6 +48,31 @@ export default async function ContributeurPage({
                     </p>
                 )}
             </header>
+
+            <dl className="mt-12 grid gap-8 sm:grid-cols-2">
+                <div>
+                    <dt className="text-sm text-neutral-500">Naissance</dt>
+                    <dd className="mt-1 text-lg">
+                        {formatDateHistorique(fiche.naissance.date)}
+                        {fiche.naissance.lieu && ` · ${fiche.naissance.lieu}`}
+                    </dd>
+                </div>
+
+                {fiche.deces && (
+                    <div>
+                        <dt className="text-sm text-neutral-500">Décès</dt>
+                        <dd className="mt-1 text-lg">
+                            {formatDateHistorique(fiche.deces.date)}
+                            {fiche.deces.lieu && ` · ${fiche.deces.lieu}`}
+                        </dd>
+                    </div>
+                )}
+
+                <div className="sm:col-span-2">
+                    <dt className="text-sm text-neutral-500">Rôles</dt>
+                    <dd className="mt-1 text-lg">{fiche.roles.join(", ")}</dd>
+                </div>
+            </dl>
         </main>
     );
 }

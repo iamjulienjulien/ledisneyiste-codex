@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { getPersonnageBySlug, personnages } from "@/data/catalogues";
 import { getFichePersonnageBySlug } from "@/data/personnages";
+import { formatDateHistorique } from "@/lib/date";
 
 export const dynamicParams = false;
 
@@ -47,6 +48,38 @@ export default async function PersonnagePage({
                     </p>
                 )}
             </header>
+
+            <dl className="mt-12 grid gap-8 sm:grid-cols-2">
+                <div>
+                    <dt className="text-sm text-neutral-500">Espèce</dt>
+                    <dd className="mt-1 text-lg">{fiche.espece}</dd>
+                </div>
+
+                <div>
+                    <dt className="text-sm text-neutral-500">Création</dt>
+                    <dd className="mt-1 text-lg">
+                        {formatDateHistorique(fiche.creation.date)}
+                    </dd>
+                </div>
+
+                <div>
+                    <dt className="text-sm text-neutral-500">Créateurs</dt>
+                    <dd className="mt-1 text-lg">
+                        {fiche.creation.createurs.join(", ")}
+                    </dd>
+                </div>
+
+                <div>
+                    <dt className="text-sm text-neutral-500">
+                        Première apparition
+                    </dt>
+                    <dd className="mt-1 text-lg">
+                        {fiche.premiereApparition.titre}
+                        {" · "}
+                        {formatDateHistorique(fiche.premiereApparition.date)}
+                    </dd>
+                </div>
+            </dl>
         </main>
     );
 }
