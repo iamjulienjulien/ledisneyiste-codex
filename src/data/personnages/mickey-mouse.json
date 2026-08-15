@@ -16,5 +16,6 @@
             "precision": "jour"
         }
     },
-    "espece": "souris anthropomorphe"
+    "espece": "souris anthropomorphe",
+    "sources": ["d23-mickey-mouse"]
 }

@@ -16,5 +16,6 @@
         },
         "lieu": ""
     },
-    "roles": ["animateur", "producteur", "réalisateur", "entrepreneur"]
+    "roles": ["animateur", "producteur", "réalisateur", "entrepreneur"],
+    "sources": ["d23-about-walt-disney", "d23-disney-walter-elias"]
 }

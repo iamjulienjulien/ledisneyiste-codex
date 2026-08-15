@@ -1,0 +1,23 @@
+[
+    {
+        "id": "d23-about-walt-disney",
+        "titre": "About Walt Disney",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/about-walt-disney/",
+        "dateConsultation": "2026-08-15"
+    },
+    {
+        "id": "d23-disney-walter-elias",
+        "titre": "Disney, Walter Elias",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/disney-walter-elias/",
+        "dateConsultation": "2026-08-15"
+    },
+    {
+        "id": "d23-mickey-mouse",
+        "titre": "Mickey Mouse",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/mickey-mouse/",
+        "dateConsultation": "2026-08-15"
+    }
+]
