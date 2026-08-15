@@ -10,38 +10,46 @@ export const metadata: Metadata = {
 
 export default function OeuvresPage() {
     return (
-        <main className="mx-auto min-h-screen w-full max-w-5xl px-6 py-16">
-            <header>
-                <p className="text-sm uppercase tracking-[0.24em] text-muted">
-                    Le Codex du Disneyiste
+        <main className="mx-auto min-h-screen w-full max-w-5xl px-6 py-16 sm:py-20">
+            <header className="max-w-2xl">
+                <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted">
+                    Explorer le Codex
                 </p>
 
-                <h1 className="mt-4 text-5xl text-ink">Œuvres</h1>
+                <h1 className="mt-3 text-5xl text-ink">Œuvres</h1>
 
-                <p className="mt-6 max-w-2xl text-lg leading-8 text-ink-soft">
-                    Les films, courts métrages et créations qui donnent forme
-                    aux récits et aux imaginaires Disney.
+                <p className="mt-6 text-lg leading-8 text-ink-soft">
+                    Les films, courts métrages et créations où les imaginaires
+                    Disney prennent forme.
                 </p>
             </header>
 
-            <ul className="mt-12 space-y-4">
-                {oeuvres.map((oeuvre) => (
-                    <li key={oeuvre.slug}>
-                        <Link
-                            href={`/oeuvres/${oeuvre.slug}`}
-                            className="text-xl font-medium text-ink hover:text-accent"
-                        >
-                            {oeuvre.nom}
-                        </Link>
+            <section className="mt-12 border-t border-line pt-8">
+                <p className="text-sm text-muted">
+                    {oeuvres.length} {oeuvres.length > 1 ? "œuvres" : "œuvre"}
+                </p>
 
-                        {oeuvre.sousTitre && (
-                            <p className="mt-1 text-ink-soft">
-                                {oeuvre.sousTitre}
-                            </p>
-                        )}
-                    </li>
-                ))}
-            </ul>
+                <ul className="mt-6 divide-y divide-line">
+                    {oeuvres.map((oeuvre) => (
+                        <li key={oeuvre.slug}>
+                            <Link
+                                href={`/oeuvres/${oeuvre.slug}`}
+                                className="group block py-6"
+                            >
+                                <h2 className="text-2xl text-ink transition-colors group-hover:text-accent">
+                                    {oeuvre.nom}
+                                </h2>
+
+                                {oeuvre.sousTitre && (
+                                    <p className="mt-2 max-w-2xl leading-7 text-ink-soft">
+                                        {oeuvre.sousTitre}
+                                    </p>
+                                )}
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            </section>
         </main>
     );
 }

@@ -10,31 +10,47 @@ export const metadata: Metadata = {
 
 export default function PersonnagesPage() {
     return (
-        <main className="mx-auto min-h-screen w-full max-w-5xl px-6 py-16">
-            <header>
-                <p className="text-sm uppercase tracking-[0.24em] text-muted">
-                    Le Codex du Disneyiste
+        <main className="mx-auto min-h-screen w-full max-w-5xl px-6 py-16 sm:py-20">
+            <header className="max-w-2xl">
+                <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted">
+                    Explorer le Codex
                 </p>
 
-                <h1 className="mt-4 text-5xl">Personnages</h1>
+                <h1 className="mt-3 text-5xl text-ink">Personnages</h1>
 
-                <p className="mt-6 max-w-2xl text-lg leading-8 text-ink-soft">
-                    Les figures fictives qui peuplent les imaginaires Disney.
+                <p className="mt-6 text-lg leading-8 text-ink-soft">
+                    Les figures fictives qui peuplent les récits et les
+                    imaginaires Disney.
                 </p>
             </header>
 
-            <ul className="mt-12 space-y-4">
-                {personnages.map((personnage) => (
-                    <li key={personnage.slug}>
-                        <Link
-                            href={`/personnages/${personnage.slug}`}
-                            className="text-xl font-medium hover:underline"
-                        >
-                            {personnage.nom}
-                        </Link>
-                    </li>
-                ))}
-            </ul>
+            <section className="mt-12 border-t border-line pt-8">
+                <p className="text-sm text-muted">
+                    {personnages.length}{" "}
+                    {personnages.length > 1 ? "personnages" : "personnage"}
+                </p>
+
+                <ul className="mt-6 divide-y divide-line">
+                    {personnages.map((personnage) => (
+                        <li key={personnage.slug}>
+                            <Link
+                                href={`/personnages/${personnage.slug}`}
+                                className="group block py-6"
+                            >
+                                <h2 className="text-2xl text-ink transition-colors group-hover:text-accent">
+                                    {personnage.nom}
+                                </h2>
+
+                                {personnage.sousTitre && (
+                                    <p className="mt-2 max-w-2xl leading-7 text-ink-soft">
+                                        {personnage.sousTitre}
+                                    </p>
+                                )}
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            </section>
         </main>
     );
 }
