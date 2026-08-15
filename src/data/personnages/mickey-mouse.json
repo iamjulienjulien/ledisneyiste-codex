@@ -7,7 +7,16 @@
             "valeur": "1928",
             "precision": "annee"
         },
-        "createurs": ["Walt Disney", "Ub Iwerks"]
+        "createurs": [
+            {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            },
+            {
+                "nom": "Ub Iwerks"
+            }
+        ]
     },
     "premiereApparition": {
         "titre": "Steamboat Willie",

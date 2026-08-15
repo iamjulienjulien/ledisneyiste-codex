@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPersonnageBySlug, personnages } from "@/data/catalogues";
 import { getFichePersonnageBySlug } from "@/data/personnages";
@@ -68,8 +69,49 @@ export default async function PersonnagePage({
 
                 <div>
                     <dt className="text-sm text-neutral-500">Créateurs</dt>
-                    <dd className="mt-1 text-lg">
-                        {fiche.creation.createurs.join(", ")}
+
+                    <dd className="mt-1 flex flex-wrap gap-x-2 text-lg">
+                        {fiche.creation.createurs.map((createur, index) => {
+                            const separator =
+                                index < fiche.creation.createurs.length - 1
+                                    ? ","
+                                    : "";
+
+                            if (createur.type === "contributeur") {
+                                return (
+                                    <span key={createur.nom}>
+                                        <Link
+                                            href={`/contributeurs/${createur.slug}`}
+                                            className="underline underline-offset-4"
+                                        >
+                                            {createur.nom}
+                                        </Link>
+                                        {separator}
+                                    </span>
+                                );
+                            }
+
+                            if (createur.type === "personnage") {
+                                return (
+                                    <span key={createur.nom}>
+                                        <Link
+                                            href={`/personnages/${createur.slug}`}
+                                            className="underline underline-offset-4"
+                                        >
+                                            {createur.nom}
+                                        </Link>
+                                        {separator}
+                                    </span>
+                                );
+                            }
+
+                            return (
+                                <span key={createur.nom}>
+                                    {createur.nom}
+                                    {separator}
+                                </span>
+                            );
+                        })}
                     </dd>
                 </div>
 
