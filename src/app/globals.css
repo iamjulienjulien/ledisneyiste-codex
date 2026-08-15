@@ -10,58 +10,19 @@
  *
  * Mise en scène native du Codex du Disneyiste.
  *
- * Les composants ne doivent jamais dépendre directement des valeurs
- * d'une Projection. Ils utilisent uniquement les tokens sémantiques
- * exposés plus bas via @theme.
+ * Une Projection définit l'identité générale de l'interface :
+ * typographies, formes, rythme et langage visuel.
  *
- * Les futures Projections pourront modifier couleurs, typographies,
- * formes, ombres et autres paramètres visuels sans modifier les
- * composants eux-mêmes.
+ * La Lumière définit sa déclinaison lumineuse :
+ * sombre ou claire.
+ *
+ * Les composants ne doivent jamais dépendre directement des
+ * valeurs d'une Projection ou d'une Lumière. Ils utilisent
+ * uniquement les tokens sémantiques exposés via @theme.
  */
 
 :root,
 [data-projection="originale"] {
-    color-scheme: light;
-
-    /* ------------------------------------------------------------
-       Surfaces
-       ------------------------------------------------------------ */
-
-    --projection-canvas: #f7f4ee;
-    --projection-surface: #fffdf8;
-    --projection-surface-muted: #f0ece5;
-
-    /* ------------------------------------------------------------
-       Encres
-       ------------------------------------------------------------ */
-
-    --projection-ink: #211e26;
-    --projection-ink-soft: #5f5966;
-    --projection-muted: #857e8b;
-
-    /* ------------------------------------------------------------
-       Lignes
-       ------------------------------------------------------------ */
-
-    --projection-line: #ded8e1;
-    --projection-line-strong: #c7bdcd;
-
-    /* ------------------------------------------------------------
-       Accent
-       ------------------------------------------------------------ */
-
-    --projection-accent: #51446f;
-    --projection-accent-hover: #403657;
-    --projection-accent-soft: #ede8f3;
-    --projection-accent-contrast: #fffaf2;
-
-    /* ------------------------------------------------------------
-       États
-       ------------------------------------------------------------ */
-
-    --projection-focus: #75658f;
-    --projection-selection: #51446f33;
-
     /* ------------------------------------------------------------
        Typographie
        ------------------------------------------------------------ */
@@ -88,11 +49,89 @@
     --projection-radius-small: 0.375rem;
     --projection-radius-medium: 0.75rem;
     --projection-radius-large: 1.25rem;
+}
 
-    /* ------------------------------------------------------------
-       Ombres
-       ------------------------------------------------------------ */
+/* ============================================================
+   PROJECTION ORIGINALE · LUMIÈRE SOMBRE
+   ============================================================ */
 
+/*
+ * Lumière native du Codex.
+ *
+ * La salle est sombre par défaut : le contenu devient la lumière.
+ */
+
+:root,
+[data-projection="originale"][data-lumiere="sombre"] {
+    color-scheme: dark;
+
+    /* Surfaces */
+    --projection-canvas: #111018;
+    --projection-surface: #181621;
+    --projection-surface-muted: #201d29;
+
+    /* Encres */
+    --projection-ink: #f6f1e8;
+    --projection-ink-soft: #c9c2ce;
+    --projection-muted: #91899b;
+
+    /* Lignes */
+    --projection-line: #302b3a;
+    --projection-line-strong: #4b4359;
+
+    /* Accent */
+    --projection-accent: #b7a2df;
+    --projection-accent-hover: #d0c0ef;
+    --projection-accent-soft: #282137;
+    --projection-accent-contrast: #16131d;
+
+    /* États */
+    --projection-focus: #b7a2df;
+    --projection-selection: #b7a2df33;
+
+    /* Ombres */
+    --projection-shadow-soft: 0 16px 50px rgb(0 0 0 / 0.28);
+}
+
+/* ============================================================
+   PROJECTION ORIGINALE · LUMIÈRE CLAIRE
+   ============================================================ */
+
+/*
+ * Déclinaison claire de la Projection Originale.
+ *
+ * Elle existe déjà dans le langage visuel mais aucun mécanisme
+ * utilisateur ne permet encore de la sélectionner.
+ */
+
+[data-projection="originale"][data-lumiere="claire"] {
+    color-scheme: light;
+
+    /* Surfaces */
+    --projection-canvas: #f7f4ee;
+    --projection-surface: #fffdf8;
+    --projection-surface-muted: #f0ece5;
+
+    /* Encres */
+    --projection-ink: #211e26;
+    --projection-ink-soft: #5f5966;
+    --projection-muted: #857e8b;
+
+    /* Lignes */
+    --projection-line: #ded8e1;
+    --projection-line-strong: #c7bdcd;
+
+    /* Accent */
+    --projection-accent: #51446f;
+    --projection-accent-hover: #403657;
+    --projection-accent-soft: #ede8f3;
+    --projection-accent-contrast: #fffaf2;
+
+    /* États */
+    --projection-focus: #75658f;
+    --projection-selection: #51446f33;
+
+    /* Ombres */
     --projection-shadow-soft: 0 12px 40px rgb(33 30 38 / 0.06);
 }
 
@@ -101,13 +140,15 @@
    ============================================================ */
 
 /*
- * Cette couche constitue le contrat entre les Projections et l'UI.
+ * Contrat entre les Projections et l'interface.
  *
- * Les composants utilisent :
+ * Les composants utilisent par exemple :
  *
  *   bg-canvas
  *   bg-surface
+ *   bg-surface-muted
  *   text-ink
+ *   text-ink-soft
  *   text-muted
  *   border-line
  *   text-accent
@@ -115,7 +156,7 @@
  *   rounded-large
  *   shadow-soft
  *
- * Ils ne doivent pas utiliser directement les variables
+ * Ils ne doivent jamais utiliser directement les variables
  * --projection-*.
  */
 
@@ -166,6 +207,7 @@
 
 html {
     min-height: 100%;
+    color: var(--projection-ink);
     background: var(--projection-canvas);
 }
 

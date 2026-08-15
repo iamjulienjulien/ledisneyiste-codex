@@ -25,7 +25,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="fr" data-projection="originale">
+        <html lang="fr" data-projection="originale" data-lumiere="sombre">
             <body>
                 <header className="border-b border-line">
                     <div className="mx-auto flex w-full max-w-5xl flex-col gap-5 px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
