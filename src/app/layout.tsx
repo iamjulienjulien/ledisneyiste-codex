@@ -25,16 +25,16 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="fr">
+        <html lang="fr" data-projection="originale">
             <body>
-                <header className="border-b border-neutral-200">
+                <header className="border-b border-line">
                     <div className="mx-auto flex w-full max-w-5xl flex-col gap-5 px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
                         <Link href="/" className="group">
-                            <p className="text-xs font-medium uppercase tracking-[0.2em] text-neutral-500">
+                            <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted">
                                 Le Disneyiste
                             </p>
 
-                            <p className="mt-1 font-semibold tracking-tight text-neutral-950 group-hover:underline group-hover:underline-offset-4">
+                            <p className="mt-1 font-display font-semibold tracking-tight text-ink group-hover:underline group-hover:underline-offset-4">
                                 Le Codex
                             </p>
                         </Link>
@@ -45,14 +45,14 @@ export default function RootLayout({
                         >
                             <Link
                                 href="/personnages"
-                                className="text-neutral-600 hover:text-neutral-950"
+                                className="text-ink-soft hover:text-ink"
                             >
                                 Personnages
                             </Link>
 
                             <Link
                                 href="/contributeurs"
-                                className="text-neutral-600 hover:text-neutral-950"
+                                className="text-ink-soft hover:text-ink"
                             >
                                 Contributeurs
                             </Link>

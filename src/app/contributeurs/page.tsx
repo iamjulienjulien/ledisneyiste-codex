@@ -12,15 +12,13 @@ export default function ContributeursPage() {
     return (
         <main className="mx-auto min-h-screen w-full max-w-5xl px-6 py-16">
             <header>
-                <p className="text-sm uppercase tracking-[0.24em] text-neutral-500">
+                <p className="text-sm uppercase tracking-[0.24em] text-muted">
                     Le Codex du Disneyiste
                 </p>
 
-                <h1 className="mt-4 text-5xl font-semibold tracking-tight">
-                    Contributeurs
-                </h1>
+                <h1 className="mt-4 text-5xl">Contributeurs</h1>
 
-                <p className="mt-6 max-w-2xl text-lg leading-8 text-neutral-600">
+                <p className="mt-6 max-w-2xl text-lg leading-8 text-ink-soft">
                     Les femmes et les hommes qui ont imaginé, construit et
                     transformé Disney.
                 </p>

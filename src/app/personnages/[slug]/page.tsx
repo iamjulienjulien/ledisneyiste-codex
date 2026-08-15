@@ -54,22 +54,20 @@ export default async function PersonnagePage({
     return (
         <main className="mx-auto min-h-screen w-full max-w-5xl px-6 py-16">
             <header>
-                <p className="text-sm uppercase tracking-[0.24em] text-neutral-500">
+                <p className="text-sm uppercase tracking-[0.24em] text-muted">
                     Personnage
                 </p>
 
-                <h1 className="mt-4 text-5xl font-semibold tracking-tight">
-                    {personnage.nom}
-                </h1>
+                <h1 className="mt-4 text-5xl">{personnage.nom}</h1>
 
                 {personnage.sousTitre && (
-                    <p className="mt-4 text-xl text-neutral-600">
+                    <p className="mt-4 text-xl text-ink-soft">
                         {personnage.sousTitre}
                     </p>
                 )}
 
                 {fiche.introduction && (
-                    <p className="mt-8 max-w-2xl text-lg leading-8 text-neutral-600">
+                    <p className="mt-8 max-w-2xl text-lg leading-8 text-ink-soft">
                         {fiche.introduction}
                     </p>
                 )}
@@ -77,19 +75,19 @@ export default async function PersonnagePage({
 
             <dl className="mt-12 grid gap-8 sm:grid-cols-2">
                 <div>
-                    <dt className="text-sm text-neutral-500">Espèce</dt>
+                    <dt className="text-sm text-muted">Espèce</dt>
                     <dd className="mt-1 text-lg">{fiche.espece}</dd>
                 </div>
 
                 <div>
-                    <dt className="text-sm text-neutral-500">Création</dt>
+                    <dt className="text-sm text-muted">Création</dt>
                     <dd className="mt-1 text-lg">
                         {formatDateHistorique(fiche.creation.date)}
                     </dd>
                 </div>
 
                 <div>
-                    <dt className="text-sm text-neutral-500">Créateurs</dt>
+                    <dt className="text-sm text-muted">Créateurs</dt>
 
                     <dd className="mt-1 flex flex-wrap gap-x-2 text-lg">
                         {fiche.creation.createurs.map((createur, index) => {
@@ -137,9 +135,7 @@ export default async function PersonnagePage({
                 </div>
 
                 <div>
-                    <dt className="text-sm text-neutral-500">
-                        Première apparition
-                    </dt>
+                    <dt className="text-sm text-muted">Première apparition</dt>
                     <dd className="mt-1 text-lg">
                         {fiche.premiereApparition.titre}
                         {" · "}

@@ -53,22 +53,20 @@ export default async function ContributeurPage({
     return (
         <main className="mx-auto min-h-screen w-full max-w-5xl px-6 py-16">
             <header>
-                <p className="text-sm uppercase tracking-[0.24em] text-neutral-500">
+                <p className="text-sm uppercase tracking-[0.24em] text-muted">
                     Contributeur
                 </p>
 
-                <h1 className="mt-4 text-5xl font-semibold tracking-tight">
-                    {contributeur.nom}
-                </h1>
+                <h1 className="mt-4 text-5xl">{contributeur.nom}</h1>
 
                 {contributeur.sousTitre && (
-                    <p className="mt-4 text-xl text-neutral-600">
+                    <p className="mt-4 text-xl text-ink-soft">
                         {contributeur.sousTitre}
                     </p>
                 )}
 
                 {fiche.introduction && (
-                    <p className="mt-8 max-w-2xl text-lg leading-8 text-neutral-600">
+                    <p className="mt-8 max-w-2xl text-lg leading-8 text-ink-soft">
                         {fiche.introduction}
                     </p>
                 )}
@@ -76,7 +74,7 @@ export default async function ContributeurPage({
 
             <dl className="mt-12 grid gap-8 sm:grid-cols-2">
                 <div>
-                    <dt className="text-sm text-neutral-500">Naissance</dt>
+                    <dt className="text-sm text-muted">Naissance</dt>
                     <dd className="mt-1 text-lg">
                         {formatDateHistorique(fiche.naissance.date)}
                         {fiche.naissance.lieu && ` · ${fiche.naissance.lieu}`}
@@ -85,7 +83,7 @@ export default async function ContributeurPage({
 
                 {fiche.deces && (
                     <div>
-                        <dt className="text-sm text-neutral-500">Décès</dt>
+                        <dt className="text-sm text-muted">Décès</dt>
                         <dd className="mt-1 text-lg">
                             {formatDateHistorique(fiche.deces.date)}
                             {fiche.deces.lieu && ` · ${fiche.deces.lieu}`}
@@ -94,7 +92,7 @@ export default async function ContributeurPage({
                 )}
 
                 <div className="sm:col-span-2">
-                    <dt className="text-sm text-neutral-500">Rôles</dt>
+                    <dt className="text-sm text-muted">Rôles</dt>
                     <dd className="mt-1 text-lg">{fiche.roles.join(", ")}</dd>
                 </div>
             </dl>

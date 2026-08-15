@@ -10,8 +10,8 @@ export default function SourcesCodex({ sources }: SourcesCodexProps) {
     }
 
     return (
-        <section className="mt-16 border-t border-neutral-200 pt-8">
-            <h2 className="text-sm font-medium uppercase tracking-[0.2em] text-neutral-500">
+        <section className="mt-16 border-t border-line pt-8">
+            <h2 className="text-sm font-medium uppercase tracking-[0.2em] text-muted">
                 Sources & références
             </h2>
 
@@ -20,7 +20,7 @@ export default function SourcesCodex({ sources }: SourcesCodexProps) {
                     <li key={source.id}>
                         <p className="font-medium">{source.titre}</p>
 
-                        <p className="mt-1 text-sm text-neutral-500">
+                        <p className="mt-1 text-sm text-muted">
                             {[
                                 source.auteur,
                                 source.editeur,
