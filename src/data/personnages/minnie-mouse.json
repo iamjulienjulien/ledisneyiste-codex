@@ -1,0 +1,42 @@
+{
+    "slug": "minnie-mouse",
+    "type": "personnage",
+    "introduction": "",
+    "creation": {
+        "date": {
+            "valeur": "1928",
+            "precision": "annee"
+        },
+        "createurs": [
+            {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            },
+            {
+                "nom": "Ub Iwerks",
+                "type": "contributeur",
+                "slug": "ub-iwerks"
+            },
+            {
+                "nom": "Les Clark"
+            }
+        ]
+    },
+    "premiereApparition": {
+        "oeuvre": {
+            "nom": "Steamboat Willie",
+            "type": "oeuvre",
+            "slug": "steamboat-willie"
+        },
+        "date": {
+            "valeur": "1928-11-18",
+            "precision": "jour"
+        }
+    },
+    "espece": "souris anthropomorphe",
+    "sources": [
+        "d23-minnie-mouse",
+        "wdfm-ub-iwerks-master-animation-technology"
+    ]
+}

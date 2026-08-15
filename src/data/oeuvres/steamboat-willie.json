@@ -32,6 +32,11 @@
             "nom": "Mickey Mouse",
             "type": "personnage",
             "slug": "mickey-mouse"
+        },
+        {
+            "nom": "Minnie Mouse",
+            "type": "personnage",
+            "slug": "minnie-mouse"
         }
     ],
     "sources": ["d23-steamboat-willie", "wdfm-birth-of-a-mouse"]

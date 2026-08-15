@@ -47,5 +47,21 @@
         "editeur": "The Walt Disney Family Museum",
         "url": "https://www.waltdisney.org/blog/birth-mouse",
         "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "d23-minnie-mouse",
+        "titre": "Minnie Mouse",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/minnie-mouse/",
+        "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "wdfm-ub-iwerks-master-animation-technology",
+        "titre": "Ub Iwerks: Master of Animation and Technology",
+        "auteur": "Chris Mullen",
+        "editeur": "The Walt Disney Family Museum",
+        "datePublication": "2017-03-24",
+        "url": "https://www.waltdisney.org/blog/ub-iwerks-master-animation-and-technology",
+        "dateConsultation": "2026-08-16"
     }
 ]

@@ -3,8 +3,10 @@ import { notFound } from "next/navigation";
 import { getPersonnageBySlug, personnages } from "@/data/catalogues";
 import { getFichePersonnageBySlug } from "@/data/personnages";
 import { getSourcesByIds } from "@/data/sources";
+import { getOeuvresAvecPersonnage } from "@/data/relations";
 import ReferenceCodexLink from "@/components/codex/ReferenceCodexLink";
 import SourcesCodex from "@/components/codex/SourcesCodex";
+import RelationsCodex from "@/components/codex/RelationsCodex";
 import { formatDateHistorique } from "@/lib/date";
 
 export const dynamicParams = false;
@@ -50,6 +52,7 @@ export default async function PersonnagePage({
     }
 
     const sources = getSourcesByIds(fiche.sources);
+    const oeuvres = getOeuvresAvecPersonnage(slug);
 
     return (
         <main className="mx-auto min-h-screen w-full max-w-5xl px-6 py-16">
@@ -112,6 +115,15 @@ export default async function PersonnagePage({
                     </dd>
                 </div>
             </dl>
+
+            <RelationsCodex
+                groupes={[
+                    {
+                        titre: "Œuvres",
+                        references: oeuvres,
+                    },
+                ]}
+            />
 
             <SourcesCodex sources={sources} />
         </main>

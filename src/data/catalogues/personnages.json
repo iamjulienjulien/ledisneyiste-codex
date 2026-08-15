@@ -4,5 +4,11 @@
         "nom": "Mickey Mouse",
         "type": "personnage",
         "sousTitre": "La souris devenue symbole"
+    },
+    {
+        "slug": "minnie-mouse",
+        "nom": "Minnie Mouse",
+        "type": "personnage",
+        "sousTitre": "L'autre souris des origines"
     }
 ]

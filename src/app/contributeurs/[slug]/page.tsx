@@ -3,7 +3,13 @@ import { notFound } from "next/navigation";
 import { contributeurs, getContributeurBySlug } from "@/data/catalogues";
 import { getFicheContributeurBySlug } from "@/data/contributeurs";
 import { getSourcesByIds } from "@/data/sources";
+import {
+    getOeuvresContribueesParContributeur,
+    getPersonnagesCreesParContributeur,
+} from "@/data/relations";
 import SourcesCodex from "@/components/codex/SourcesCodex";
+import RelationsCodex from "@/components/codex/RelationsCodex";
+
 import { formatDateHistorique } from "@/lib/date";
 
 export const dynamicParams = false;
@@ -49,6 +55,10 @@ export default async function ContributeurPage({
     }
 
     const sources = getSourcesByIds(fiche.sources);
+
+    const personnagesCrees = getPersonnagesCreesParContributeur(slug);
+
+    const oeuvresContribuees = getOeuvresContribueesParContributeur(slug);
 
     return (
         <main className="mx-auto min-h-screen w-full max-w-5xl px-6 py-16">
@@ -96,6 +106,19 @@ export default async function ContributeurPage({
                     <dd className="mt-1 text-lg">{fiche.roles.join(", ")}</dd>
                 </div>
             </dl>
+
+            <RelationsCodex
+                groupes={[
+                    {
+                        titre: "Personnages",
+                        references: personnagesCrees,
+                    },
+                    {
+                        titre: "Œuvres",
+                        references: oeuvresContribuees,
+                    },
+                ]}
+            />
 
             <SourcesCodex sources={sources} />
         </main>
