@@ -7,6 +7,11 @@ export type OeuvreDisney = EntreeCatalogueBase & {
     type: "oeuvre";
 };
 
+export type ContributionOeuvre = {
+    contributeur: ReferenceCodex;
+    roles: string[];
+};
+
 export type FicheOeuvreDisney = FicheCodexBase & {
     type: "oeuvre";
 
@@ -16,7 +21,7 @@ export type FicheOeuvreDisney = FicheCodexBase & {
 
     format: string;
 
-    contributeurs: ReferenceCodex[];
+    contributions: ContributionOeuvre[];
 
     personnages: ReferenceCodex[];
 };

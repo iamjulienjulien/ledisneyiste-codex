@@ -89,14 +89,19 @@ export default async function OeuvrePage({
                 </div>
 
                 <div>
-                    <dt className="text-sm text-muted">Contributeurs</dt>
+                    <dt className="text-sm text-muted">Contributions</dt>
 
-                    <dd className="mt-1 flex flex-wrap gap-x-2 text-lg text-ink">
-                        {fiche.contributeurs.map((contributeur, index) => (
-                            <span key={contributeur.nom}>
-                                <ReferenceCodexLink reference={contributeur} />
-                                {index < fiche.contributeurs.length - 1 && ","}
-                            </span>
+                    <dd className="mt-1 space-y-3 text-lg text-ink">
+                        {fiche.contributions.map((contribution) => (
+                            <div key={contribution.contributeur.nom}>
+                                <ReferenceCodexLink
+                                    reference={contribution.contributeur}
+                                />
+
+                                <p className="mt-1 text-sm text-muted">
+                                    {contribution.roles.join(", ")}
+                                </p>
+                            </div>
                         ))}
                     </dd>
                 </div>

@@ -9,16 +9,22 @@
         }
     },
     "format": "court métrage d'animation",
-    "contributeurs": [
+    "contributions": [
         {
-            "nom": "Walt Disney",
-            "type": "contributeur",
-            "slug": "walt-disney"
+            "contributeur": {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            },
+            "roles": ["réalisation"]
         },
         {
-            "nom": "Ub Iwerks",
-            "type": "contributeur",
-            "slug": "ub-iwerks"
+            "contributeur": {
+                "nom": "Ub Iwerks",
+                "type": "contributeur",
+                "slug": "ub-iwerks"
+            },
+            "roles": ["animation"]
         }
     ],
     "personnages": [
