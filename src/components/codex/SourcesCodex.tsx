@@ -1,4 +1,5 @@
 import type { SourceCodex } from "@/types/source";
+import { formatDateISO } from "@/lib/date";
 
 type SourcesCodexProps = {
     sources: SourceCodex[];
@@ -12,7 +13,7 @@ export default function SourcesCodex({ sources }: SourcesCodexProps) {
     return (
         <section className="mt-16 border-t border-line pt-8">
             <h2 className="text-sm font-medium uppercase tracking-[0.2em] text-muted">
-                Sources & références
+                Sources et références
             </h2>
 
             <ol className="mt-6 space-y-4">
@@ -24,7 +25,8 @@ export default function SourcesCodex({ sources }: SourcesCodexProps) {
                             {[
                                 source.auteur,
                                 source.editeur,
-                                source.datePublication,
+                                source.datePublication &&
+                                    formatDateISO(source.datePublication),
                             ]
                                 .filter(Boolean)
                                 .join(" · ")}

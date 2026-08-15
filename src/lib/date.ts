@@ -21,3 +21,12 @@ export function formatDateHistorique(date: DateHistorique): string {
             return date.valeur;
     }
 }
+
+export function formatDateISO(date: string): string {
+    return new Intl.DateTimeFormat("fr-FR", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+        timeZone: "UTC",
+    }).format(new Date(`${date}T00:00:00Z`));
+}

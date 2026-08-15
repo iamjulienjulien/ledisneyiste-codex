@@ -29,8 +29,7 @@ export default function RelationsCodex({ groupes }: RelationsCodexProps) {
                 <h2 className="mt-3 text-3xl text-ink">Dans le Codex</h2>
 
                 <p className="mt-3 leading-7 text-ink-soft">
-                    Les entrées qui se croisent avec celle-ci à travers les
-                    données du Codex.
+                    Les entrées du Codex directement liées à celle-ci.
                 </p>
             </header>
 
