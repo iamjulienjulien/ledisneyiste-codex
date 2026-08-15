@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { contributeurs, getContributeurBySlug } from "@/data/catalogues";
 import { getFicheContributeurBySlug } from "@/data/contributeurs";
@@ -6,6 +7,26 @@ import SourcesCodex from "@/components/codex/SourcesCodex";
 import { formatDateHistorique } from "@/lib/date";
 
 export const dynamicParams = false;
+
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+    const { slug } = await params;
+    const contributeur = getContributeurBySlug(slug);
+
+    if (!contributeur) {
+        return {};
+    }
+
+    return {
+        title: contributeur.nom,
+        description:
+            contributeur.sousTitre ||
+            `Découvrir ${contributeur.nom} dans Le Codex du Disneyiste.`,
+    };
+}
 
 export function generateStaticParams() {
     return contributeurs.map((contributeur) => ({

@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { contributeurs } from "@/data/catalogues";
+
+export const metadata: Metadata = {
+    title: "Contributeurs",
+    description:
+        "Explorer les femmes et les hommes qui ont imaginé, construit et transformé Disney.",
+};
 
 export default function ContributeursPage() {
     return (

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPersonnageBySlug, personnages } from "@/data/catalogues";
@@ -7,6 +8,26 @@ import SourcesCodex from "@/components/codex/SourcesCodex";
 import { formatDateHistorique } from "@/lib/date";
 
 export const dynamicParams = false;
+
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+    const { slug } = await params;
+    const personnage = getPersonnageBySlug(slug);
+
+    if (!personnage) {
+        return {};
+    }
+
+    return {
+        title: personnage.nom,
+        description:
+            personnage.sousTitre ||
+            `Découvrir ${personnage.nom} dans Le Codex du Disneyiste.`,
+    };
+}
 
 export function generateStaticParams() {
     return personnages.map((personnage) => ({

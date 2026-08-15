@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { personnages } from "@/data/catalogues";
+
+export const metadata: Metadata = {
+    title: "Personnages",
+    description:
+        "Explorer les figures fictives qui peuplent les récits et les imaginaires Disney.",
+};
 
 export default function PersonnagesPage() {
     return (
