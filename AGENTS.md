@@ -376,6 +376,29 @@ git commit --allow-empty \
   -m "🍿 Entracte > Les lumières restent allumées entre deux actes > 🐭 Julien"
 ```
 
+### Domaines pendant un Entracte
+
+Les changements réalisés pendant un Entracte utilisent leur domaine réel.
+
+Cependant, `🎬 Scène` n'est pas utilisé pendant un Entracte.
+
+Une modification suffisamment importante pour constituer une nouvelle
+fonctionnalité ou une nouvelle capacité du produit doit attendre l'ouverture de
+l'Acte suivant.
+
+Les domaines privilégiés pendant un Entracte sont notamment :
+
+- `🎨 Mise en scène` pour les finitions d'interface et d'expérience ;
+- `🩹 Raccord` pour les corrections ;
+- `✍️ Scénario` pour les textes et la documentation ;
+- `🧹 Coulisses` pour la maintenance et les refactorisations ;
+- `🗄️ Archives` pour les ajustements documentaires ;
+- `⚡ Accéléré` pour les optimisations ;
+- `🧪 Répétition` pour les tests.
+
+> **L'Entracte améliore ce qui est déjà sur scène. Les nouvelles scènes
+> attendent le prochain Acte.**
+
 ### Clôturer un Entracte
 
 Exemple :
