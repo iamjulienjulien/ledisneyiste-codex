@@ -14,7 +14,9 @@
                 "slug": "walt-disney"
             },
             {
-                "nom": "Ub Iwerks"
+                "nom": "Ub Iwerks",
+                "type": "contributeur",
+                "slug": "ub-iwerks"
             }
         ]
     },

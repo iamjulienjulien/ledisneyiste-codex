@@ -19,5 +19,19 @@
         "editeur": "D23: The Official Disney Fan Club",
         "url": "https://d23.com/a-to-z/mickey-mouse/",
         "dateConsultation": "2026-08-15"
+    },
+    {
+        "id": "d23-ub-iwerks",
+        "titre": "Ub Iwerks",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/walt-disney-legend/ub-iwerks/",
+        "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "d23-iwerks-ub",
+        "titre": "Iwerks, Ub",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/iwerks-ub/",
+        "dateConsultation": "2026-08-16"
     }
 ]

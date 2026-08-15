@@ -4,5 +4,11 @@
         "nom": "Walt Disney",
         "type": "contributeur",
         "sousTitre": "Le créateur devenu figure fondatrice"
+    },
+    {
+        "slug": "ub-iwerks",
+        "nom": "Ub Iwerks",
+        "type": "contributeur",
+        "sousTitre": "L'animateur et inventeur derrière les premiers pas de Mickey"
     }
 ]

@@ -1,0 +1,26 @@
+{
+    "slug": "ub-iwerks",
+    "type": "contributeur",
+    "introduction": "",
+    "naissance": {
+        "date": {
+            "valeur": "1901",
+            "precision": "annee"
+        },
+        "lieu": "Kansas City, Missouri, États-Unis"
+    },
+    "deces": {
+        "date": {
+            "valeur": "1971",
+            "precision": "annee"
+        },
+        "lieu": ""
+    },
+    "roles": [
+        "animateur",
+        "réalisateur",
+        "inventeur",
+        "technicien des effets spéciaux"
+    ],
+    "sources": ["d23-ub-iwerks", "d23-iwerks-ub"]
+}
