@@ -17,14 +17,17 @@ the tree clean.
 
 # Convention des commits
 
-Le dépôt du **Codex du Disneyiste** utilise une convention de commits narrative, en français, inspirée des champs lexicaux du cinéma, de la création et de la magie.
+Le dépôt du **Codex du Disneyiste** utilise une convention de commits narrative,
+en français, inspirée des champs lexicaux du cinéma, de la création et de la
+magie.
 
 L'objectif est double :
 
-1. permettre de comprendre immédiatement la nature technique d'un changement ;
+1. permettre de comprendre immédiatement la nature d'un changement ;
 2. faire du `git log` une petite chronique de la construction du Codex.
 
-La narration est encouragée, mais ne doit jamais nuire à la compréhension du commit.
+La narration est encouragée, mais ne doit jamais nuire à la compréhension du
+commit.
 
 ---
 
@@ -45,7 +48,7 @@ Exemple :
 - Tous les commits sont rédigés en **français**.
 - Aucun préfixe de projet entre crochets n'est utilisé.
 - Le domaine doit être choisi dans la liste officielle ci-dessous.
-- L'intitulé doit rester court, compréhensible et si possible narratif.
+- L'intitulé doit rester court, compréhensible et, si possible, narratif.
 - La narration est facultative lorsque le changement est purement technique.
 - La signature est toujours :
 
@@ -54,9 +57,14 @@ Exemple :
 ```
 
 - Ne pas inventer un nouveau domaine pour une nuance mineure.
-- En cas de doute, choisir le domaine décrivant le mieux **l'intention principale du commit**.
+- En cas de doute, choisir le domaine décrivant le mieux **l'intention
+  principale du commit**.
 - Un commit doit idéalement correspondre à une unité logique de changement.
 - Éviter les commits mélangeant plusieurs domaines indépendants.
+- `Acte` et `Entracte` sont des marqueurs temporels. Ils sont réservés aux
+  commits vides d'ouverture ou de clôture d'une période.
+- Les commits réels effectués pendant un Acte ou un Entracte utilisent toujours
+  leur domaine fonctionnel ou technique normal.
 
 ---
 
@@ -69,15 +77,16 @@ Exemple :
 | 🎨    | `Mise en scène` | UI, composants visuels, CSS, Tailwind, responsive, animations, design tokens, layouts                                                  |
 | 🎬    | `Scène`         | Nouvelle fonctionnalité, nouveau comportement ou capacité concrète du produit                                                          |
 | 🩹    | `Raccord`       | Correction de bug, régression, incohérence fonctionnelle ou visuelle                                                                   |
-| 🗄️    | `Archives`      | Données, modèles, schémas, taxonomies, index, fichiers JSON, transformations de données                                                |
+| 🗄️    | `Archives`      | Données, modèles, schémas, taxonomies, index, fichiers JSON, relations, registres et transformations de données                        |
 | 🔌    | `Passerelle`    | API, intégrations externes, SDK, services et échanges avec d'autres systèmes                                                           |
 | 🛡️    | `Garde-fou`     | Sécurité, permissions, authentification, validation, headers et règles de protection                                                   |
 | ✍️    | `Scénario`      | Documentation, README, AGENTS.md, conventions, JSDoc, commentaires structurants et guides                                              |
-| 🧹    | `Coulisses`     | Nettoyage, refactorisation sans changement fonctionnel, lint, formatting, maintenance et dépendances mineures                          |
+| 🧹    | `Coulisses`     | Nettoyage, refactorisation sans changement fonctionnel, lint, formatage, maintenance et dépendances mineures                           |
 | ⚡    | `Accéléré`      | Performance, bundle, chargement, cache, rendu et autres optimisations                                                                  |
 | 🧪    | `Répétition`    | Tests unitaires, intégration, e2e, fixtures et validation automatisée                                                                  |
 | 🚀    | `Première`      | Déploiement, release, CI/CD, Vercel, mise en production et livraison d'une version                                                     |
-| 🎞️    | `Acte`          | Ouverture ou clôture d'un cycle de développement, sprint, milestone ou étape cohérente du projet                                       |
+| 🎞️    | `Acte`          | Marqueur temporel utilisé uniquement pour ouvrir ou clôturer un grand cycle de développement                                           |
+| 🍿    | `Entracte`      | Marqueur temporel utilisé uniquement pour ouvrir ou clôturer une période de respiration et de peaufinage entre deux Actes              |
 
 ---
 
@@ -85,9 +94,10 @@ Exemple :
 
 `Étincelle` est un domaine exceptionnel.
 
-Il ne doit pas devenir un équivalent poétique de `feature`.
+Il ne doit pas devenir un équivalent poétique de `Scène`.
 
-Il est réservé aux moments où apparaît pour la première fois une idée, une structure ou un élément particulièrement fondateur du Codex.
+Il est réservé aux moments où apparaît pour la première fois une idée, une
+structure ou un élément particulièrement fondateur du Codex.
 
 Exemple fondateur :
 
@@ -150,7 +160,7 @@ Exemples :
 ```
 
 ```text
-🎬 Scène > Relier chaque personnage à ses œuvres > 🐭 Julien
+🎬 Scène > Tisser le premier lien entre Mickey et Walt > 🐭 Julien
 ```
 
 Règle pratique :
@@ -165,17 +175,26 @@ Règle pratique :
 
 Utiliser pour créer ou transformer volontairement l'expérience visuelle.
 
+Exemples :
+
 ```text
 🎨 Mise en scène > Donner un visage aux premières fiches du Codex > 🐭 Julien
 ```
 
 ```text
-🎨 Mise en scène > Installer le langage visuel des personnages > 🐭 Julien
+🎨 Mise en scène > Faire apparaître les sources au pied des fiches > 🐭 Julien
+```
+
+```text
+🎨 Mise en scène > Donner une porte de sortie aux pages égarées > 🐭 Julien
 ```
 
 ### 🩹 Raccord
 
-Utiliser lorsqu'un comportement ou un rendu existant est incorrect et doit être réparé.
+Utiliser lorsqu'un comportement ou un rendu existant est incorrect et doit être
+réparé.
+
+Exemples :
 
 ```text
 🩹 Raccord > Corriger le débordement des cartes sur mobile > 🐭 Julien
@@ -194,22 +213,25 @@ Utiliser lorsqu'un comportement ou un rendu existant est incorrect et doit être
 Cela inclut :
 
 - entrées du Codex ;
+- catalogues ;
+- fiches documentaires ;
 - données JSON ou TypeScript ;
 - modèles ;
 - schémas ;
 - taxonomies ;
 - relations ;
 - registres ;
+- sources documentaires ;
 - transformations et migrations de données.
 
 Exemples :
 
 ```text
-🗄️ Archives > Séparer les vivants des personnages de fiction > 🐭 Julien
+🗄️ Archives > Donner corps aux premières fiches de Walt et Mickey > 🐭 Julien
 ```
 
 ```text
-🗄️ Archives > Le registre accueille ses deux premiers noms > 🐭 Julien
+🗄️ Archives > Ouvrir les premières sources du Codex > 🐭 Julien
 ```
 
 ```text
@@ -220,7 +242,8 @@ Exemples :
 
 ## 🧹 Coulisses
 
-`Coulisses` ne doit introduire aucune nouvelle capacité significative pour l'utilisateur.
+`Coulisses` ne doit introduire aucune nouvelle capacité significative pour
+l'utilisateur.
 
 Il concerne notamment :
 
@@ -236,44 +259,146 @@ Il concerne notamment :
 Exemple :
 
 ```text
-🧹 Coulisses > Effacer les dernières traces du décor Next.js > 🐭 Julien
+🧹 Coulisses > Nettoyer le plateau avant l'entrée en scène > 🐭 Julien
 ```
 
 Règle pratique :
 
-> **Si l'utilisateur peut faire quelque chose de nouveau après le commit, ce n'est probablement pas seulement des Coulisses.**
+> **Si l'utilisateur peut faire quelque chose de nouveau après le commit, ce
+> n'est probablement pas seulement des Coulisses.**
 
 ---
 
-## 🎞️ Les Actes
+## 🎞️ Acte
 
-`Acte` permet de rythmer les grands cycles du développement.
+`Acte` est un **marqueur narratif et temporel**.
 
-Il ne remplace pas les autres domaines. Il sert à marquer un début ou une fin de séquence importante.
+Il est utilisé uniquement pour des commits vides servant à ouvrir ou à clôturer
+un grand cycle de développement.
 
-Exemples :
-
-```text
-🎞️ Acte > Acte I · Les personnages entrent en scène > 🐭 Julien
-```
-
-```text
-🎞️ Acte > Clap de fin pour l'Acte I > 🐭 Julien
-```
-
-```text
-🎞️ Acte > Acte II · Les œuvres ouvrent leurs archives > 🐭 Julien
-```
-
-Les Actes peuvent correspondre à :
+Un Acte peut correspondre à :
 
 - un sprint ;
 - une milestone ;
-- une version ;
+- une version cohérente ;
 - un territoire fonctionnel ;
 - une étape narrative importante du développement.
 
-Ils doivent rester suffisamment rares pour conserver leur valeur.
+Les modifications réalisées à l'intérieur d'un Acte utilisent toujours leur
+domaine normal : `Décor`, `Scène`, `Archives`, `Mise en scène`, etc.
+
+### Ouvrir un Acte
+
+Exemple :
+
+```text
+🎞️ Acte > Acte I · Walt rencontre Mickey > 🐭 Julien
+```
+
+Commande :
+
+```bash
+git commit --allow-empty \
+  -m "🎞️ Acte > Acte I · Walt rencontre Mickey > 🐭 Julien"
+```
+
+### Clôturer un Acte
+
+Exemple :
+
+```text
+🎞️ Acte > Fin de l'Acte I · Walt a rencontré Mickey > 🐭 Julien
+```
+
+Commande :
+
+```bash
+git commit --allow-empty \
+  -m "🎞️ Acte > Fin de l'Acte I · Walt a rencontré Mickey > 🐭 Julien"
+```
+
+### Règle
+
+`Acte` ne doit jamais être utilisé pour un commit contenant des changements de
+fichiers.
+
+> **L'Acte donne un cadre au développement. Il ne remplace jamais la nature du
+> travail réalisé à l'intérieur.**
+
+---
+
+## 🍿 Entracte
+
+`Entracte` est également un **marqueur narratif et temporel**.
+
+Il est utilisé uniquement pour des commits vides servant à ouvrir ou à clôturer
+une période de respiration entre deux Actes.
+
+L'Entracte permet notamment de prendre le temps de :
+
+- peaufiner l'accueil ;
+- améliorer la navigation ;
+- créer ou ajuster la page 404 ;
+- travailler les métadonnées ;
+- améliorer la micro-UX ;
+- corriger des textes d'interface ;
+- résoudre de petites incohérences révélées par l'Acte précédent ;
+- effectuer des finitions avant l'ouverture du cycle suivant.
+
+Ces modifications gardent toujours leur domaine réel.
+
+Par exemple, pendant un Entracte :
+
+```text
+🎨 Mise en scène > Donner une porte de sortie aux pages égarées > 🐭 Julien
+```
+
+```text
+🎬 Scène > Ouvrir le hall d'entrée du Codex > 🐭 Julien
+```
+
+```text
+🧹 Coulisses > Nettoyer quelques traces laissées par l'Acte précédent > 🐭 Julien
+```
+
+### Ouvrir un Entracte
+
+Exemple :
+
+```text
+🍿 Entracte > Les lumières restent allumées entre deux actes > 🐭 Julien
+```
+
+Commande :
+
+```bash
+git commit --allow-empty \
+  -m "🍿 Entracte > Les lumières restent allumées entre deux actes > 🐭 Julien"
+```
+
+### Clôturer un Entracte
+
+Exemple :
+
+```text
+🍿 Entracte > Les lumières baissent, la suite peut commencer > 🐭 Julien
+```
+
+Commande :
+
+```bash
+git commit --allow-empty \
+  -m "🍿 Entracte > Les lumières baissent, la suite peut commencer > 🐭 Julien"
+```
+
+### Règle
+
+`Entracte` ne doit jamais être utilisé pour un commit contenant des changements
+de fichiers.
+
+> **Pendant l'Entracte, on peaufine ce qui existe déjà. Les changements gardent
+> leur domaine propre, et le popcorn ne devient jamais une catégorie
+> technique.**
 
 ---
 
@@ -311,24 +436,38 @@ Ne jamais sacrifier la précision pour trouver une métaphore.
 
 ---
 
-## Exemples d'une chronologie de développement
+## Exemple d'une chronologie de développement
 
 ```text
 ✨ Étincelle > Il était une fois Le Codex du Disneyiste... > 🐭 Julien
 
-🧹 Coulisses > Effacer les dernières traces du décor Next.js > 🐭 Julien
-
-🏗️ Décor > Préparer la scène pour les premiers habitants du Codex > 🐭 Julien
-
-🗄️ Archives > Séparer les vivants des personnages de fiction > 🐭 Julien
-
-🎬 Scène > Walt entre dans le Codex > 🐭 Julien
-
-🎬 Scène > Tout commence avec une souris > 🐭 Julien
-
-🎨 Mise en scène > Donner un visage aux premières fiches du Codex > 🐭 Julien
+🧹 Coulisses > Nettoyer le plateau avant l'entrée en scène > 🐭 Julien
 
 🎞️ Acte > Acte I · Walt rencontre Mickey > 🐭 Julien
+
+🏗️ Décor > Ouvrir deux portes aux habitants du Codex > 🐭 Julien
+
+🎬 Scène > Ouvrir les premières fiches du Codex > 🐭 Julien
+
+🗄️ Archives > Donner corps aux premières fiches de Walt et Mickey > 🐭 Julien
+
+🗄️ Archives > Ouvrir les premières sources du Codex > 🐭 Julien
+
+🎨 Mise en scène > Faire apparaître les sources au pied des fiches > 🐭 Julien
+
+🎬 Scène > Tisser le premier lien entre Mickey et Walt > 🐭 Julien
+
+🎞️ Acte > Fin de l'Acte I · Walt a rencontré Mickey > 🐭 Julien
+
+🍿 Entracte > Les lumières restent allumées entre deux actes > 🐭 Julien
+
+🎨 Mise en scène > Donner une porte de sortie aux pages égarées > 🐭 Julien
+
+🎬 Scène > Ouvrir le hall d'entrée du Codex > 🐭 Julien
+
+🍿 Entracte > Les lumières baissent, la suite peut commencer > 🐭 Julien
+
+🎞️ Acte > Acte II · ... > 🐭 Julien
 ```
 
 Le `git log` doit ainsi rester à la fois :
@@ -336,16 +475,22 @@ Le `git log` doit ainsi rester à la fois :
 - lisible techniquement ;
 - cohérent dans le temps ;
 - agréable à parcourir ;
-- fidèle à l'identité narrative du Disneyiste.
+- fidèle à l'identité narrative du Disneyiste ;
+- capable de raconter les grands cycles sans masquer la nature réelle des
+  changements.
 
 ---
 
 ## Principe final
 
-> **Le commit raconte ce qui change. Le domaine explique pourquoi il change.**
+> **Le commit raconte ce qui change. Le domaine explique la nature du
+> changement. L'Acte et l'Entracte racontent quand il s'inscrit dans
+> l'histoire du projet.**
 
 La convention doit rester stable.
 
-Si un cas nouveau apparaît, préférer d'abord le rattacher à un domaine existant plutôt que d'étendre immédiatement la taxonomie.
+Si un cas nouveau apparaît, préférer d'abord le rattacher à un domaine existant
+plutôt que d'étendre immédiatement la taxonomie.
 
-Un nouveau domaine ne doit être ajouté que lorsqu'un type de travail réellement distinct apparaît de manière récurrente.
+Un nouveau domaine ne doit être ajouté que lorsqu'un type de travail réellement
+distinct apparaît de manière récurrente.
