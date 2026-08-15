@@ -33,5 +33,19 @@
         "editeur": "D23: The Official Disney Fan Club",
         "url": "https://d23.com/a-to-z/iwerks-ub/",
         "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "d23-steamboat-willie",
+        "titre": "Steamboat Willie (film)",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/steamboat-willie-film/",
+        "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "wdfm-birth-of-a-mouse",
+        "titre": "The Birth of a Mouse",
+        "editeur": "The Walt Disney Family Museum",
+        "url": "https://www.waltdisney.org/blog/birth-mouse",
+        "dateConsultation": "2026-08-16"
     }
 ]
