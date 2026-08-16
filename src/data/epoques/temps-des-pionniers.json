@@ -1,0 +1,17 @@
+{
+    "slug": "temps-des-pionniers",
+    "type": "epoque",
+    "introduction": "",
+    "periode": {
+        "debut": {
+            "valeur": "1923",
+            "precision": "annee"
+        },
+        "fin": {
+            "valeur": "1937",
+            "precision": "annee"
+        }
+    },
+    "description": "Les années où Disney se construit comme studio, laboratoire d’animation et fabrique de personnages, jusqu’au basculement provoqué par Blanche-Neige et les Sept Nains.",
+    "sources": []
+}

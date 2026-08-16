@@ -1,4 +1,5 @@
-export type TypeReferenceCodex = "personnage" | "contributeur" | "oeuvre";
+export type TypeReferenceCodex =
+    "personnage" | "contributeur" | "oeuvre" | "epoque";
 
 export type ReferenceCodex =
     | {
