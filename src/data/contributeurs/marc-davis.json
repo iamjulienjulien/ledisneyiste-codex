@@ -1,0 +1,37 @@
+{
+    "slug": "marc-davis",
+    "type": "contributeur",
+    "introduction": "Marc Davis traverse les formes de création Disney sans laisser le personnage derrière lui. Dans l’animation, son sens du dessin et du jeu donne naissance à des figures féminines aussi différentes que Clochette, Maléfique ou Cruella d’Enfer. Lorsqu’il rejoint WED Enterprises, cette même attention se déploie dans l’espace : silhouettes, situations et enchaînements de scènes deviennent la matière narrative des attractions. Son parcours relie ainsi deux territoires du studio que le Codex pourra progressivement faire dialoguer, de l’écran aux parcs.",
+    "naissance": {
+        "date": {
+            "valeur": "1913-03-30",
+            "precision": "jour"
+        },
+        "lieu": "Bakersfield, Californie, États-Unis"
+    },
+    "deces": {
+        "date": {
+            "valeur": "2000-01-12",
+            "precision": "jour"
+        },
+        "lieu": "Glendale, Californie, États-Unis"
+    },
+    "roles": ["animateur", "concepteur de personnages", "imagineer"],
+    "periodesActivite": [
+        {
+            "debut": {
+                "valeur": "1935-12",
+                "precision": "mois"
+            },
+            "fin": {
+                "valeur": "1978",
+                "precision": "annee"
+            }
+        }
+    ],
+    "sources": [
+        "d23-marc-davis",
+        "d23-davis-marc",
+        "wdfm-leading-ladies-marc-davis"
+    ]
+}

@@ -306,5 +306,26 @@
         "editeur": "D23: The Official Disney Fan Club",
         "url": "https://d23.com/a-to-z/johnston-ollie/",
         "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "d23-marc-davis",
+        "titre": "Marc Davis",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/walt-disney-legend/marc-davis/",
+        "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "d23-davis-marc",
+        "titre": "Davis, Marc",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/davis-marc/",
+        "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "wdfm-leading-ladies-marc-davis",
+        "titre": "Leading Ladies and Femmes Fatales: The Art of Marc Davis",
+        "editeur": "The Walt Disney Family Museum",
+        "url": "https://www.waltdisney.org/exhibitions/leading-ladies-and-femmes-fatales-art-marc-davis",
+        "dateConsultation": "2026-08-16"
     }
 ]

@@ -52,5 +52,11 @@
         "nom": "Ollie Johnston",
         "type": "contributeur",
         "sousTitre": "L’animateur qui donna chaleur et vérité aux relations"
+    },
+    {
+        "slug": "marc-davis",
+        "nom": "Marc Davis",
+        "type": "contributeur",
+        "sousTitre": "L’artiste qui fit passer les personnages de l’écran aux parcs"
     }
 ]
