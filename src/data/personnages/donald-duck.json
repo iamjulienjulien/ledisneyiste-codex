@@ -20,7 +20,9 @@
     },
     "premiereApparition": {
         "oeuvre": {
-            "nom": "The Wise Little Hen"
+            "nom": "The Wise Little Hen",
+            "type": "oeuvre",
+            "slug": "the-wise-little-hen"
         },
         "date": {
             "valeur": "1934-06-09",

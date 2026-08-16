@@ -1,0 +1,34 @@
+{
+    "slug": "the-wise-little-hen",
+    "type": "oeuvre",
+    "introduction": "The Wise Little Hen accueille Donald Duck avant même qu’il ne possède sa propre série. Dans cette fable de la Silly Symphony, le canard et Peter Pig feignent la maladie pour échapper au travail des champs, puis découvrent que leur paresse les prive du festin. Ce rôle encore secondaire contient déjà l’essentiel : une voix singulière, une mauvaise foi comique et un tempérament assez fort pour faire sortir Donald du récit qui l’a vu naître.",
+    "sortie": {
+        "date": {
+            "valeur": "1934-06-09",
+            "precision": "jour"
+        }
+    },
+    "format": "court métrage d’animation",
+    "contributions": [
+        {
+            "contributeur": {
+                "nom": "Wilfred Jackson"
+            },
+            "roles": ["réalisation"]
+        }
+    ],
+    "personnages": [
+        {
+            "nom": "Donald Duck",
+            "type": "personnage",
+            "slug": "donald-duck"
+        },
+        {
+            "nom": "The Wise Little Hen"
+        },
+        {
+            "nom": "Peter Pig"
+        }
+    ],
+    "sources": ["d23-wise-little-hen", "d23-donald-duck"]
+}
