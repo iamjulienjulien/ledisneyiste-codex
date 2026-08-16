@@ -122,10 +122,14 @@ export default function Home() {
                 </h2>
 
                 <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
-                    Le premier réseau du Codex relie Walt Disney et Ub Iwerks à
-                    Mickey Mouse, Minnie Mouse et <em>Steamboat Willie</em>. Des
-                    créateurs aux personnages, puis à l’œuvre qui les réunit,
-                    ces premières connexions dessinent déjà une histoire.
+                    Le premier réseau du Codex se noue autour de quelques
+                    figures fondatrices : Walt Disney et Ub Iwerks imaginent,
+                    Mickey et Minnie prennent forme, puis
+                    <em> Steamboat Willie</em> les rassemble dans l’une des
+                    scènes d’origine les plus célèbres de l’histoire de Disney.
+                    À partir de ces quelques liens, le Codex commence déjà à
+                    raconter comment un imaginaire se fabrique, circule et
+                    devient mémoire.
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-x-8 gap-y-4">
@@ -137,10 +141,24 @@ export default function Home() {
                     </Link>
 
                     <Link
+                        href="/contributeurs/ub-iwerks"
+                        className="font-medium text-accent underline underline-offset-4 hover:text-accent-hover"
+                    >
+                        Ub Iwerks →
+                    </Link>
+
+                    <Link
                         href="/personnages/mickey-mouse"
                         className="font-medium text-accent underline underline-offset-4 hover:text-accent-hover"
                     >
                         Mickey Mouse →
+                    </Link>
+
+                    <Link
+                        href="/personnages/minnie-mouse"
+                        className="font-medium text-accent underline underline-offset-4 hover:text-accent-hover"
+                    >
+                        Minnie Mouse →
                     </Link>
 
                     <Link
