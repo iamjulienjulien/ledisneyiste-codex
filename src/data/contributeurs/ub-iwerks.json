@@ -2,19 +2,39 @@
     "slug": "ub-iwerks",
     "type": "contributeur",
     "introduction": "Derrière les origines de Mickey se trouve aussi la main d’Ub Iwerks. Animateur d’une rapidité exceptionnelle, dessinateur et inventeur, il appartient à ces créateurs dont le travail est partout dans l’histoire de Disney alors que leur nom reste souvent dans l’ombre du fondateur. Le regarder de plus près oblige à déplacer légèrement le projecteur : Disney n’est plus seulement l’histoire d’un homme et de ses idées, mais celle d’un réseau de talents capables de transformer une intuition en dessins, en mouvements et en techniques nouvelles.",
+    "blocsEditoriaux": [
+        {
+            "eyebrow": "Aux origines",
+            "titre": "La main qui donne à Mickey son mouvement",
+            "paragraphes": [
+                "Ub Iwerks rencontre Walt Disney à Kansas City en 1919. De leur premier atelier commercial aux Laugh-O-grams, puis des Alice Comedies à Oswald, leur collaboration se construit bien avant Mickey. Lorsque Walt perd les droits sur Oswald, Ub reste auprès de lui et participe à concevoir le personnage qui doit permettre au studio de repartir.",
+                "Il ne se contente pas d’en fixer les contours. Pour Plane Crazy, premier film de Mickey mis en production, Ub assure seul l’animation en trois semaines, à une cadence que les récits du studio ont rendue légendaire. Son dessin donne au personnage l’élasticité et l’énergie nécessaires pour exister à l’écran.",
+                "La naissance de Mickey ne se résume donc ni à une idée ni à une seule signature. Elle repose sur une alliance : Walt construit une personnalité et une trajectoire publique, Ub les traduit en lignes, en poses et en mouvement. Reconnaître ce partage ne réduit pas le rôle du fondateur ; il rend l’histoire de la création plus complète."
+            ]
+        },
+        {
+            "eyebrow": "Second acte",
+            "titre": "Revenir au studio pour inventer autrement",
+            "paragraphes": [
+                "Après avoir quitté Disney en 1930 pour diriger son propre studio, Ub Iwerks revient en 1940. Il abandonne alors progressivement l’animation de personnages pour se consacrer aux caméras, aux procédés photographiques et aux effets spéciaux : la même précision change de terrain.",
+                "Son imprimante optique à plusieurs têtes facilite la combinaison de prises de vues réelles et d’animation, notamment dans Mélodie Cocktail et Mélodie du Sud. Ses recherches lui valent deux Oscars techniques et placent le studio à l’avant-garde des effets photographiques.",
+                "Dans les années 1960, son travail rejoint enfin les parcs avec des attractions comme it’s a small world, Great Moments with Mr. Lincoln et The Hall of Presidents. L’homme qui avait aidé Mickey à bouger contribue ainsi, quatre décennies plus tard, à faire bouger des figures devant un public entré physiquement dans le spectacle."
+            ]
+        }
+    ],
     "naissance": {
         "date": {
-            "valeur": "1901",
-            "precision": "annee"
+            "valeur": "1901-03-24",
+            "precision": "jour"
         },
         "lieu": "Kansas City, Missouri, États-Unis"
     },
     "deces": {
         "date": {
-            "valeur": "1971",
-            "precision": "annee"
+            "valeur": "1971-07-07",
+            "precision": "jour"
         },
-        "lieu": ""
+        "lieu": "Los Angeles, Californie, États-Unis"
     },
     "roles": [
         "animateur",
@@ -44,5 +64,9 @@
             }
         }
     ],
-    "sources": ["d23-ub-iwerks", "d23-iwerks-ub"]
+    "sources": [
+        "d23-ub-iwerks",
+        "d23-iwerks-ub",
+        "wdfm-ub-iwerks-master-animation-technology"
+    ]
 }

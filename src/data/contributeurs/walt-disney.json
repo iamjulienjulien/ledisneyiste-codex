@@ -2,6 +2,26 @@
     "slug": "walt-disney",
     "type": "contributeur",
     "introduction": "Avant de devenir un nom posé sur des studios, des parcs et des milliers d’histoires, Walt Disney fut un homme qui passa sa vie à chercher de nouvelles façons d’en raconter. Dessin animé, cinéma, télévision, Disneyland : chaque territoire semble prolonger la même obsession de faire entrer le public dans un monde plutôt que de simplement le lui montrer. Après sa mort, l’homme devient aussi une figure symbolique, invoquée, racontée et parfois reconstruite par l’entreprise comme par ceux qui continuent d’aimer, de critiquer ou d’interroger son héritage.",
+    "blocsEditoriaux": [
+        {
+            "eyebrow": "Recommencer",
+            "titre": "Perdre Oswald, repartir avec Mickey",
+            "paragraphes": [
+                "En 1928, la perte des droits sur Oswald le lapin chanceux prive Walt Disney d’un personnage qu’il a contribué à faire vivre et fragilise son jeune studio. La réponse n’est pas de reproduire simplement ce qui vient de lui échapper : avec Ub Iwerks, il imagine une nouvelle figure autour de laquelle reconstruire.",
+                "Mickey naît ainsi d’une rupture autant que d’une invention. Walt porte le personnage, sa voix et sa direction, tandis qu’Ub lui donne une forme graphique et une vitesse d’animation décisives. Cette création partagée révèle déjà la manière dont Disney avancera souvent : une vision centrale rendue possible par des artistes capables de la transformer en images.",
+                "Plane Crazy et The Gallopin’ Gaucho sont produits d’abord, mais c’est Steamboat Willie et sa synchronisation sonore qui imposent Mickey au public en novembre 1928. Le nouveau départ devient alors le premier grand récit de survie du studio."
+            ]
+        },
+        {
+            "eyebrow": "Méthode",
+            "titre": "Faire de chaque risque un nouveau territoire",
+            "paragraphes": [
+                "Walt Disney ne reste pas longtemps enfermé dans le rôle de l’animateur qui dessine chaque image. À mesure que le studio grandit, son travail se déplace vers la production, le récit et la mise en mouvement des équipes. Son apport devient moins facile à isoler dans un plan précis, mais il organise la direction dans laquelle les films peuvent aller.",
+                "Son goût du risque relie des étapes qui pourraient sembler séparées : le son synchronisé de Mickey, la couleur des Silly Symphonies, la caméra multiplane, le long métrage avec Blanche-Neige et les Sept Nains, puis la télévision et Disneyland. Chaque nouveauté technique n’est pas recherchée pour elle-même ; elle ouvre une autre manière d’immerger le public dans une histoire.",
+                "Cette méthode explique à la fois la puissance et la dimension collective de son héritage. Walt fixe un horizon, engage les moyens et accepte l’incertitude, mais les œuvres naissent du travail de centaines d’artistes, de techniciens et de partenaires dont le Codex cherche aussi à rendre les noms visibles."
+            ]
+        }
+    ],
     "naissance": {
         "date": {
             "valeur": "1901-12-05",
@@ -29,5 +49,9 @@
             }
         }
     ],
-    "sources": ["d23-about-walt-disney", "d23-disney-walter-elias"]
+    "sources": [
+        "d23-about-walt-disney",
+        "d23-disney-walter-elias",
+        "wdfm-birth-of-a-mouse"
+    ]
 }
