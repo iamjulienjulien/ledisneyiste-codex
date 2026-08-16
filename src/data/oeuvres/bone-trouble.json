@@ -1,0 +1,31 @@
+{
+    "slug": "bone-trouble",
+    "type": "oeuvre",
+    "introduction": "Bone Trouble place Pluto face aux conséquences très concrètes de sa gourmandise. Après avoir dérobé l’os de Butch, il trouve refuge dans un palais des glaces où chaque reflet déforme les corps, multiplie la peur et finit par devenir une arme. Sans dialogue, le film fait reposer tout son récit sur les réactions de Pluto et inaugure avec le bulldog une rivalité appelée à traverser durablement sa série.",
+    "sortie": {
+        "date": {
+            "valeur": "1940-06-28",
+            "precision": "jour"
+        }
+    },
+    "format": "court métrage d’animation",
+    "contributions": [
+        {
+            "contributeur": {
+                "nom": "Jack Kinney"
+            },
+            "roles": ["réalisation"]
+        }
+    ],
+    "personnages": [
+        {
+            "nom": "Pluto",
+            "type": "personnage",
+            "slug": "pluto"
+        },
+        {
+            "nom": "Butch"
+        }
+    ],
+    "sources": ["d23-bone-trouble", "d23-butch"]
+}

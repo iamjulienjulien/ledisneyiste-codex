@@ -180,5 +180,19 @@
         "datePublication": "2020-09-09",
         "url": "https://d23.com/a-dogs-tail-celebrating-90-years-with-pluto/",
         "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "d23-bone-trouble",
+        "titre": "Bone Trouble (film)",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/bone-trouble-film/",
+        "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "d23-butch",
+        "titre": "Butch",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/butch/",
+        "dateConsultation": "2026-08-16"
     }
 ]

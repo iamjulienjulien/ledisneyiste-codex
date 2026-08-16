@@ -1,3 +1,4 @@
+import boneTroubleJson from "@/data/oeuvres/bone-trouble.json";
 import clockCleanersJson from "@/data/oeuvres/clock-cleaners.json";
 import mrDuckStepsOutJson from "@/data/oeuvres/mr-duck-steps-out.json";
 import steamboatWillieJson from "@/data/oeuvres/steamboat-willie.json";
@@ -11,6 +12,7 @@ export const fichesOeuvres = [
     theBandConcertJson as FicheOeuvreDisney,
     clockCleanersJson as FicheOeuvreDisney,
     mrDuckStepsOutJson as FicheOeuvreDisney,
+    boneTroubleJson as FicheOeuvreDisney,
 ];
 
 export function getFicheOeuvreBySlug(slug: string) {

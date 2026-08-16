@@ -28,5 +28,11 @@
         "nom": "Mr. Duck Steps Out",
         "type": "oeuvre",
         "sousTitre": "Le premier rendez-vous de Donald et Daisy"
+    },
+    {
+        "slug": "bone-trouble",
+        "nom": "Bone Trouble",
+        "type": "oeuvre",
+        "sousTitre": "Le face-à-face de Pluto et Butch au palais des glaces"
     }
 ]
