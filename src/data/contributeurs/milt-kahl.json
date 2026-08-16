@@ -1,0 +1,37 @@
+{
+    "slug": "milt-kahl",
+    "type": "contributeur",
+    "introduction": "Milt Kahl impose au dessin Disney une exigence de construction, d’anatomie et de clarté qui devient une référence pour tout le studio. Capable de redéfinir Pinocchio comme d’animer des héros, des animaux ou des méchants flamboyants, il traite chaque personnage comme un problème de forme autant que de jeu. Parmi les Nine Old Men, son trait incarne une autorité artistique : celle qui transforme une personnalité encore abstraite en silhouette immédiatement juste.",
+    "naissance": {
+        "date": {
+            "valeur": "1909-03-22",
+            "precision": "jour"
+        },
+        "lieu": "San Francisco, Californie, États-Unis"
+    },
+    "deces": {
+        "date": {
+            "valeur": "1987-04-19",
+            "precision": "jour"
+        },
+        "lieu": "Mill Valley, Californie, États-Unis"
+    },
+    "roles": [
+        "animateur",
+        "animateur superviseur",
+        "concepteur de personnages"
+    ],
+    "periodesActivite": [
+        {
+            "debut": {
+                "valeur": "1934-06-25",
+                "precision": "jour"
+            },
+            "fin": {
+                "valeur": "1976",
+                "precision": "annee"
+            }
+        }
+    ],
+    "sources": ["d23-milt-kahl", "wdfm-milt-kahl-master-puppeteer"]
+}

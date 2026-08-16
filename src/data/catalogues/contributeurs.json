@@ -28,5 +28,11 @@
         "nom": "Wolfgang Reitherman",
         "type": "contributeur",
         "sousTitre": "L’animateur du mouvement devenu capitaine du studio"
+    },
+    {
+        "slug": "milt-kahl",
+        "nom": "Milt Kahl",
+        "type": "contributeur",
+        "sousTitre": "Le dessinateur qui donna sa ligne au style Disney"
     }
 ]
