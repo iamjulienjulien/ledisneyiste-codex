@@ -38,5 +38,23 @@
             "nom": "Loulou"
         }
     ],
+    "blocsEditoriaux": [
+        {
+            "eyebrow": "Comédie de situation",
+            "titre": "Un premier rendez-vous jamais à deux",
+            "paragraphes": [
+                "Donald se prépare avec une joie inhabituelle à son premier rendez-vous avec Daisy, mais Riri, Fifi et Loulou transforment immédiatement la sortie en épreuve. Même enfermés dans leur chambre, les trois neveux trouvent le moyen de s’échapper et d’arriver chez Daisy avant leur oncle.",
+                "Le film déplace ainsi le conflit amoureux vers une question d’espace. Donald cherche sans cesse à isoler le couple, tandis que les enfants réoccupent la pièce, détournent les glaces et relancent le désordre. Plus il tente d’imposer le tête-à-tête idéal, plus sa frustration offre aux intrus de nouvelles prises."
+            ]
+        },
+        {
+            "eyebrow": "Le couple",
+            "titre": "Faire de la danse un langage commun",
+            "paragraphes": [
+                "Le rendez-vous ne trouve son équilibre ni dans la conversation ni dans le calme, mais dans une danse de plus en plus vertigineuse. Donald et Daisy partagent enfin le même mouvement au moment précis où celui-ci échappe à tout contrôle.",
+                "Leur collision finale les assomme contre un mur et achève la séquence sur un gag physique. Daisy en ressort pourtant conquise. Le film pose ainsi la règle comique du couple : l’affection ne corrige pas le chaos de Donald, elle apprend à jouer avec lui."
+            ]
+        }
+    ],
     "sources": ["d23-mr-duck-steps-out", "d23-mr-duck-steps-out-premieres"]
 }

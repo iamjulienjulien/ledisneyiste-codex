@@ -25,6 +25,24 @@
         }
     },
     "espece": "canard anthropomorphe",
+    "blocsEditoriaux": [
+        {
+            "eyebrow": "Continuité",
+            "titre": "De Donna Duck à Daisy",
+            "paragraphes": [
+                "En 1937, Don Donald présente Donna Duck face à Donald dans une aventure où il cherche déjà à la séduire. Les sources Disney la considèrent rétrospectivement comme la première forme du personnage, mais son nom, son apparence et sa place dans la continuité ne sont pas encore ceux qui s’imposeront durablement.",
+                "Mr. Duck Steps Out marque donc moins une apparition sans précédent qu’une fixation. En 1940, Daisy reçoit le nom sous lequel elle rejoindra les courts métrages puis les bandes dessinées de Donald. Le Codex retient cette date comme sa création tout en conservant Donna comme l’étape antérieure d’une identité en construction."
+            ]
+        },
+        {
+            "eyebrow": "Caractère",
+            "titre": "Une partenaire, pas un simple contrechamp",
+            "paragraphes": [
+                "Daisy est souvent décrite comme plus sophistiquée que Donald. Cette différence ne la place pourtant pas hors de son univers comique : elle danse, réagit à ses excès et peut partager son énergie sans reproduire exactement sa colère. Leur relation fonctionne parce qu’elle introduit une autre manière d’occuper la scène.",
+                "Longtemps cantonnée à des rôles secondaires, Daisy dispose de moins d’occasions que Donald pour imposer seule son point de vue. Sa présence ouvre néanmoins un nouvel espace dans la famille des canards : celui d’un personnage capable de répondre au héros, de l’attirer et de lui résister dans le même mouvement."
+            ]
+        }
+    ],
     "sources": [
         "d23-daisy-duck",
         "d23-mr-duck-steps-out-premieres",
