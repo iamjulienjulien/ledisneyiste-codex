@@ -1,0 +1,38 @@
+{
+    "slug": "clock-cleaners",
+    "type": "oeuvre",
+    "introduction": "Clock Cleaners enferme Mickey, Donald et Dingo dans les rouages d’une même machine pour mieux révéler leurs différences. Mickey tente de maintenir l’équilibre, Donald s’épuise contre un ressort récalcitrant et Dingo traverse le danger avec une inconscience presque aérienne. Au sommet de la tour, le travail collectif devient ainsi une mécanique comique où chaque caractère entraîne les deux autres un peu plus près de la chute.",
+    "sortie": {
+        "date": {
+            "valeur": "1937-10-15",
+            "precision": "jour"
+        }
+    },
+    "format": "court métrage d’animation",
+    "contributions": [
+        {
+            "contributeur": {
+                "nom": "Ben Sharpsteen"
+            },
+            "roles": ["réalisation"]
+        }
+    ],
+    "personnages": [
+        {
+            "nom": "Mickey Mouse",
+            "type": "personnage",
+            "slug": "mickey-mouse"
+        },
+        {
+            "nom": "Donald Duck",
+            "type": "personnage",
+            "slug": "donald-duck"
+        },
+        {
+            "nom": "Dingo",
+            "type": "personnage",
+            "slug": "dingo"
+        }
+    ],
+    "sources": ["d23-clock-cleaners"]
+}

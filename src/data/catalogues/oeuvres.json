@@ -16,5 +16,11 @@
         "nom": "The Band Concert",
         "type": "oeuvre",
         "sousTitre": "Le concert qui fit entrer la série de Mickey en couleurs"
+    },
+    {
+        "slug": "clock-cleaners",
+        "nom": "Clock Cleaners",
+        "type": "oeuvre",
+        "sousTitre": "Le vertige mécanique du trio Mickey, Donald et Dingo"
     }
 ]

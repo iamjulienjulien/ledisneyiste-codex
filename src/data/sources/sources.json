@@ -121,5 +121,12 @@
         "datePublication": "2025-02-23",
         "url": "https://www.waltdisney.org/blog/seeing-mickeys-true-colors-band-concert-90",
         "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "d23-clock-cleaners",
+        "titre": "Clock Cleaners (film)",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/clock-cleaners-film/",
+        "dateConsultation": "2026-08-16"
     }
 ]
