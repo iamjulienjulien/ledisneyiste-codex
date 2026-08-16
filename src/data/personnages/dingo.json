@@ -1,0 +1,32 @@
+{
+    "slug": "dingo",
+    "type": "personnage",
+    "introduction": "Dingo apparaît d’abord comme un rire perdu dans le public de Mickey’s Revue. Cette voix éclatante, portée par Pinto Colvig, suffit pourtant à distinguer le personnage de la foule et à lui ouvrir une place durable auprès de Mickey et Donald. Sa maladresse ne le réduit jamais à l’échec : elle devient une manière obstinée et généreuse d’avancer, jusqu’à faire de chaque geste ordinaire une aventure comique.",
+    "creation": {
+        "date": {
+            "valeur": "1932",
+            "precision": "annee"
+        },
+        "createurs": [
+            {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            },
+            {
+                "nom": "Pinto Colvig"
+            }
+        ]
+    },
+    "premiereApparition": {
+        "oeuvre": {
+            "nom": "Mickey’s Revue"
+        },
+        "date": {
+            "valeur": "1932-05-25",
+            "precision": "jour"
+        }
+    },
+    "espece": "chien anthropomorphe",
+    "sources": ["d23-goofy", "d23-pinto-colvig", "d23-mickeys-revue"]
+}

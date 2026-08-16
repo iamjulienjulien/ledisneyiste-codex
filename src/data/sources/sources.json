@@ -84,5 +84,26 @@
         "editeur": "D23: The Official Disney Fan Club",
         "url": "https://d23.com/a-to-z/wise-little-hen-the-film/",
         "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "d23-goofy",
+        "titre": "Goofy",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/goofy/",
+        "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "d23-pinto-colvig",
+        "titre": "Pinto Colvig",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/walt-disney-legend/pinto-colvig/",
+        "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "d23-mickeys-revue",
+        "titre": "Mickey’s Revue (film)",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/mickeys-revue-film/",
+        "dateConsultation": "2026-08-16"
     }
 ]

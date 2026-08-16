@@ -16,5 +16,11 @@
         "nom": "Donald Duck",
         "type": "personnage",
         "sousTitre": "Le canard colérique devenu l’autre grande voix de Disney"
+    },
+    {
+        "slug": "dingo",
+        "nom": "Dingo",
+        "type": "personnage",
+        "sousTitre": "Le maladroit dont le rire devint une signature"
     }
 ]
