@@ -20,15 +20,17 @@ export default function CodexFicheHeader({
             <h1 className="mt-3 text-5xl text-ink sm:text-6xl">{titre}</h1>
 
             {sousTitre && (
-                <p className="mt-4 text-xl leading-8 text-ink-soft">
+                <p className="mt-3 text-xl leading-8 text-ink-soft">
                     {sousTitre}
                 </p>
             )}
 
             {introduction && (
-                <p className="mt-8 max-w-2xl text-lg leading-8 text-ink-soft">
-                    {introduction}
-                </p>
+                <div className="mt-8 max-w-3xl border-l-2 border-accent pl-6 sm:pl-8">
+                    <p className="text-lg leading-8 text-ink sm:text-xl sm:leading-9">
+                        {introduction}
+                    </p>
+                </div>
             )}
         </header>
     );
