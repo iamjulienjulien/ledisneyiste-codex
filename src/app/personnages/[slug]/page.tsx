@@ -8,6 +8,8 @@ import CodexFicheHeader from "@/components/codex/CodexFicheHeader";
 import ReferenceCodexLink from "@/components/codex/ReferenceCodexLink";
 import SourcesCodex from "@/components/codex/SourcesCodex";
 import RelationsCodex from "@/components/codex/RelationsCodex";
+import EpoqueCodex from "@/components/codex/EpoqueCodex";
+import { getEpoquePourDate } from "@/data/epoques/relations";
 import { formatDateHistorique } from "@/lib/date";
 
 export const dynamicParams = false;
@@ -54,6 +56,7 @@ export default async function PersonnagePage({
 
     const sources = getSourcesByIds(fiche.sources);
     const oeuvres = getOeuvresAvecPersonnage(slug);
+    const epoque = getEpoquePourDate(fiche.premiereApparition.date);
 
     return (
         <main className="mx-auto w-full max-w-5xl px-6 py-16">
@@ -102,6 +105,8 @@ export default async function PersonnagePage({
                         {formatDateHistorique(fiche.premiereApparition.date)}
                     </dd>
                 </div>
+
+                <EpoqueCodex epoque={epoque} />
             </dl>
 
             <RelationsCodex

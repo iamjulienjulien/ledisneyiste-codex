@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import CodexFicheHeader from "@/components/codex/CodexFicheHeader";
 import ReferenceCodexLink from "@/components/codex/ReferenceCodexLink";
 import SourcesCodex from "@/components/codex/SourcesCodex";
+import EpoqueCodex from "@/components/codex/EpoqueCodex";
+import { getEpoquePourDate } from "@/data/epoques/relations";
 import { getOeuvreBySlug, oeuvres } from "@/data/catalogues";
 import { getFicheOeuvreBySlug } from "@/data/oeuvres";
 import { getSourcesByIds } from "@/data/sources";
@@ -51,6 +53,7 @@ export default async function OeuvrePage({
     }
 
     const sources = getSourcesByIds(fiche.sources);
+    const epoque = getEpoquePourDate(fiche.sortie.date);
 
     return (
         <main className="mx-auto w-full max-w-5xl px-6 py-16">
@@ -106,6 +109,8 @@ export default async function OeuvrePage({
                         ))}
                     </dd>
                 </div>
+
+                <EpoqueCodex epoque={epoque} />
             </dl>
 
             <SourcesCodex sources={sources} />
