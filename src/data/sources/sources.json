@@ -327,5 +327,27 @@
         "editeur": "The Walt Disney Family Museum",
         "url": "https://www.waltdisney.org/exhibitions/leading-ladies-and-femmes-fatales-art-marc-davis",
         "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "d23-john-lounsbery",
+        "titre": "John Lounsbery",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/walt-disney-legend/john-lounsbery/",
+        "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "d23-lounsbery-john",
+        "titre": "Lounsbery, John",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/lounsbery-john/",
+        "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "d23-john-lounsbery-is-born",
+        "titre": "Disney Legend John Lounsbery is Born",
+        "editeur": "D23: The Official Disney Fan Club",
+        "datePublication": "2019-04-02",
+        "url": "https://d23.com/this-day/disney-legend-john-lounsbery-is-born-2/",
+        "dateConsultation": "2026-08-16"
     }
 ]

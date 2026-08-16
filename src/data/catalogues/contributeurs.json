@@ -58,5 +58,11 @@
         "nom": "Marc Davis",
         "type": "contributeur",
         "sousTitre": "L’artiste qui fit passer les personnages de l’écran aux parcs"
+    },
+    {
+        "slug": "john-lounsbery",
+        "nom": "John Lounsbery",
+        "type": "contributeur",
+        "sousTitre": "L’animateur qui donna poids, élan et humour aux personnages"
     }
 ]
