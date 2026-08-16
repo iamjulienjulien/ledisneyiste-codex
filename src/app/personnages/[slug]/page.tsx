@@ -9,6 +9,7 @@ import ReferenceCodexLink from "@/components/codex/ReferenceCodexLink";
 import SourcesCodex from "@/components/codex/SourcesCodex";
 import RelationsCodex from "@/components/codex/RelationsCodex";
 import EpoqueCodex from "@/components/codex/EpoqueCodex";
+import BlocsEditoriauxCodex from "@/components/codex/BlocsEditoriauxCodex";
 import { getEpoquePourDate } from "@/data/epoques/relations";
 import { formatDateHistorique } from "@/lib/date";
 
@@ -108,6 +109,8 @@ export default async function PersonnagePage({
 
                 <EpoqueCodex epoque={epoque} />
             </dl>
+
+            <BlocsEditoriauxCodex blocs={fiche.blocsEditoriaux} />
 
             <RelationsCodex
                 groupes={[

@@ -4,6 +4,7 @@ import CodexFicheHeader from "@/components/codex/CodexFicheHeader";
 import ReferenceCodexLink from "@/components/codex/ReferenceCodexLink";
 import SourcesCodex from "@/components/codex/SourcesCodex";
 import EpoqueCodex from "@/components/codex/EpoqueCodex";
+import BlocsEditoriauxCodex from "@/components/codex/BlocsEditoriauxCodex";
 import { getEpoquePourDate } from "@/data/epoques/relations";
 import { getOeuvreBySlug, oeuvres } from "@/data/catalogues";
 import { getFicheOeuvreBySlug } from "@/data/oeuvres";
@@ -112,6 +113,8 @@ export default async function OeuvrePage({
 
                 <EpoqueCodex epoque={epoque} />
             </dl>
+
+            <BlocsEditoriauxCodex blocs={fiche.blocsEditoriaux} />
 
             <SourcesCodex sources={sources} />
         </main>

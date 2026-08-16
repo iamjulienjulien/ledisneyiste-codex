@@ -10,6 +10,7 @@ import {
 import CodexFicheHeader from "@/components/codex/CodexFicheHeader";
 import SourcesCodex from "@/components/codex/SourcesCodex";
 import RelationsCodex from "@/components/codex/RelationsCodex";
+import BlocsEditoriauxCodex from "@/components/codex/BlocsEditoriauxCodex";
 import { getEpoquesPourContributeur } from "@/data/epoques/relations";
 
 import { formatDateHistorique } from "@/lib/date";
@@ -96,6 +97,8 @@ export default async function ContributeurPage({
                     <dd className="mt-1 text-lg">{fiche.roles.join(", ")}</dd>
                 </div>
             </dl>
+
+            <BlocsEditoriauxCodex blocs={fiche.blocsEditoriaux} />
 
             <RelationsCodex
                 groupes={[

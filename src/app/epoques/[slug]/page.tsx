@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import CodexFicheHeader from "@/components/codex/CodexFicheHeader";
 import SourcesCodex from "@/components/codex/SourcesCodex";
 import RelationsCodex from "@/components/codex/RelationsCodex";
+import BlocsEditoriauxCodex from "@/components/codex/BlocsEditoriauxCodex";
 import {
     getOeuvresDeLEpoque,
     getPersonnagesDeLEpoque,
@@ -104,6 +105,8 @@ export default async function EpoquePage({
                     </p>
                 </section>
             )}
+
+            <BlocsEditoriauxCodex blocs={fiche.blocsEditoriaux} />
 
             <RelationsCodex
                 groupes={[
