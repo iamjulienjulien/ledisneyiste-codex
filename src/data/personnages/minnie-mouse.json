@@ -1,7 +1,7 @@
 {
     "slug": "minnie-mouse",
     "type": "personnage",
-    "introduction": "",
+    "introduction": "Minnie Mouse entre dans l’histoire presque en même temps que Mickey, mais elle ne reste pas dans son ombre. Au fil des décennies, elle traverse les mêmes mutations de style, de ton et de support, jusqu’à devenir une figure immédiatement reconnaissable en dehors même des histoires où elle apparaît. Derrière les pois, les nœuds et les silhouettes familières se dessine ainsi une autre trajectoire de Disney : celle d’un personnage d’abord défini par sa place auprès d’un autre, puis progressivement devenu une icône capable d’exister par elle-même.",
     "creation": {
         "date": {
             "valeur": "1928",

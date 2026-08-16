@@ -1,7 +1,7 @@
 {
     "slug": "mickey-mouse",
     "type": "personnage",
-    "introduction": "",
+    "introduction": "Mickey Mouse commence comme un personnage de dessin animé et finit par devenir presque une idée en soi. Il traverse les décennies, change de rôle, de dessin et de ton, tout en restant l’un des signes les plus immédiatement associés à Disney. Derrière la souris familière se cache ainsi une histoire de création, de transformation et de transmission : celle d’un personnage devenu à la fois héros de fiction, mascotte, souvenir d’enfance et symbole culturel mondial.",
     "creation": {
         "date": {
             "valeur": "1928",
