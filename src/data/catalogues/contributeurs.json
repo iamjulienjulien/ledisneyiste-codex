@@ -40,5 +40,11 @@
         "nom": "Ward Kimball",
         "type": "contributeur",
         "sousTitre": "Le caricaturiste qui fit dérailler les habitudes du studio"
+    },
+    {
+        "slug": "frank-thomas",
+        "nom": "Frank Thomas",
+        "type": "contributeur",
+        "sousTitre": "L’animateur qui fit de la personnalité le cœur du mouvement"
     }
 ]

@@ -1,0 +1,37 @@
+{
+    "slug": "frank-thomas",
+    "type": "contributeur",
+    "introduction": "Frank Thomas place la personnalité au cœur de l’animation Disney. Son dessin ne cherche pas seulement à produire un mouvement juste : il construit des pensées, des hésitations et des émotions auxquelles le public peut croire. Des premiers longs métrages aux grandes figures de l’après-guerre, il anime ainsi certains des moments les plus intimes du studio. Après sa retraite, les livres qu’il écrit avec Ollie Johnston prolongent cette exigence et transforment une expérience d’atelier en héritage partagé.",
+    "naissance": {
+        "date": {
+            "valeur": "1912-09-05",
+            "precision": "jour"
+        },
+        "lieu": "Santa Monica, Californie, États-Unis"
+    },
+    "deces": {
+        "date": {
+            "valeur": "2004-09-08",
+            "precision": "jour"
+        },
+        "lieu": "La Cañada Flintridge, Californie, États-Unis"
+    },
+    "roles": ["animateur", "animateur superviseur", "auteur"],
+    "periodesActivite": [
+        {
+            "debut": {
+                "valeur": "1934",
+                "precision": "annee"
+            },
+            "fin": {
+                "valeur": "1978",
+                "precision": "annee"
+            }
+        }
+    ],
+    "sources": [
+        "d23-frank-thomas",
+        "d23-frank-thomas-is-born",
+        "wdfm-frank-thomas-key-animator"
+    ]
+}

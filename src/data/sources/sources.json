@@ -268,5 +268,29 @@
         "editeur": "D23: The Official Disney Fan Club",
         "url": "https://d23.com/a-to-z/kimball-ward/",
         "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "d23-frank-thomas",
+        "titre": "Frank Thomas",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/walt-disney-legend/frank-thomas/",
+        "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "d23-frank-thomas-is-born",
+        "titre": "Animator and Disney Legend Frank Thomas is Born",
+        "editeur": "D23: The Official Disney Fan Club",
+        "datePublication": "2019-03-25",
+        "url": "https://d23.com/this-day/animator-and-disney-legend-frank-thomas-is-born-2/",
+        "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "wdfm-frank-thomas-key-animator",
+        "titre": "Frank Thomas: The Key-Playing Key Animator",
+        "auteur": "Chris Mullen",
+        "editeur": "The Walt Disney Family Museum",
+        "datePublication": "2017-04-24",
+        "url": "https://www.waltdisney.org/blog/frank-thomas-key-playing-key-animator",
+        "dateConsultation": "2026-08-16"
     }
 ]
