@@ -292,5 +292,19 @@
         "datePublication": "2017-04-24",
         "url": "https://www.waltdisney.org/blog/frank-thomas-key-playing-key-animator",
         "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "d23-ollie-johnston",
+        "titre": "Ollie Johnston",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/walt-disney-legend/ollie-johnston/",
+        "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "d23-johnston-ollie",
+        "titre": "Johnston, Ollie",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/johnston-ollie/",
+        "dateConsultation": "2026-08-16"
     }
 ]

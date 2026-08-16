@@ -46,5 +46,11 @@
         "nom": "Frank Thomas",
         "type": "contributeur",
         "sousTitre": "L’animateur qui fit de la personnalité le cœur du mouvement"
+    },
+    {
+        "slug": "ollie-johnston",
+        "nom": "Ollie Johnston",
+        "type": "contributeur",
+        "sousTitre": "L’animateur qui donna chaleur et vérité aux relations"
     }
 ]
