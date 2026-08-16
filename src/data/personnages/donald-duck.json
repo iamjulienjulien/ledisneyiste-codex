@@ -30,5 +30,23 @@
         }
     },
     "espece": "canard anthropomorphe",
+    "blocsEditoriaux": [
+        {
+            "eyebrow": "Naissance d’un personnage",
+            "titre": "Une voix avant un dessin définitif",
+            "paragraphes": [
+                "Dans The Wise Little Hen, Donald n’a pas encore la silhouette familière qui fixera son identité. Son long bec, son cou étiré et sa démarche de canard le rapprochent d’un animal de dessin animé encore générique. Le rôle est d’abord construit autour de la voix de Clarence Nash, assez singulière pour donner une présence immédiate à cette figure secondaire.",
+                "Au fil de ses apparitions suivantes, le dessin se transforme avec le personnage. En 1936, son bec devient plus souple, ses yeux plus grands et ses expressions plus lisibles. Donald cesse progressivement d’être un canard parmi d’autres : le studio façonne une silhouette capable de porter seule ses propres histoires."
+            ]
+        },
+        {
+            "eyebrow": "Tempérament",
+            "titre": "Le contrepoint comique de Mickey",
+            "paragraphes": [
+                "Sa première aventure insiste sur la paresse et la malice, mais c’est dès Orphans’ Benefit, quelques mois plus tard, que la colère devient son moteur. Confronté à un public qui le chahute, Donald explose dans une gestuelle de défi conçue par l’animateur Dick Lundy. Cette fureur spectaculaire donne au personnage sa dynamique durable.",
+                "Tandis que Mickey devient au milieu des années 1930 une figure de plus en plus conciliante, Donald peut subir les humiliations, échouer et perdre tout contrôle. Sa mauvaise humeur ne l’éloigne pas du public : elle rend visibles ses frustrations et transforme chacune de ses défaites en comédie."
+            ]
+        }
+    ],
     "sources": ["d23-donald-duck", "wdfm-evolution-of-a-duck"]
 }

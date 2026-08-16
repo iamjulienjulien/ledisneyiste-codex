@@ -30,5 +30,23 @@
             "nom": "Peter Pig"
         }
     ],
+    "blocsEditoriaux": [
+        {
+            "eyebrow": "Contexte",
+            "titre": "Une Silly Symphony comme porte d’entrée",
+            "paragraphes": [
+                "The Wise Little Hen appartient aux Silly Symphonies : son récit ne repose pas sur une vedette récurrente, mais sur une fable complète. Donald et Peter Pig, réunis dans l’Idle Hour Club, refusent d’aider une mère poule à planter puis à récolter son maïs. Lorsqu’ils reviennent pour profiter du repas, leur paresse les laisse à l’écart du festin.",
+                "Donald sert encore les besoins de cette morale et ne domine pas le film. Pourtant, sa voix fournie par Clarence Nash lui donne une identité sonore que son dessin n’a pas encore entièrement acquise. L’entrée du personnage dans l’histoire Disney se joue ainsi moins par une présentation solennelle que par une dissonance immédiatement mémorable."
+            ]
+        },
+        {
+            "eyebrow": "Héritage",
+            "titre": "Le premier état d’un personnage en devenir",
+            "paragraphes": [
+                "Le Donald de 1934 demeure visuellement éloigné de celui qui deviendra une vedette du studio. Son apparence est encore celle d’un canard générique et sa personnalité tient surtout à deux traits utiles au récit : la paresse et le plaisir de tromper la poule pour éviter le travail.",
+                "L’importance du court métrage vient précisément de cet inachèvement. Il ne révèle pas une icône déjà formée ; il conserve le point de départ à partir duquel la voix, le dessin et le tempérament pourront évoluer séparément avant de se rejoindre."
+            ]
+        }
+    ],
     "sources": ["d23-wise-little-hen", "d23-donald-duck"]
 }
