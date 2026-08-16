@@ -47,9 +47,28 @@
             "slug": "minnie-mouse"
         }
     ],
+    "blocsEditoriaux": [
+        {
+            "eyebrow": "Chronologie",
+            "titre": "Le troisième film ouvre la série",
+            "paragraphes": [
+                "Plane Crazy et The Gallopin’ Gaucho sont produits avant Steamboat Willie, mais leurs versions silencieuses ne convainquent aucun distributeur. Le studio ne recommence donc pas simplement une troisième aventure : il repense le projet autour du son afin de donner à la nouvelle série une qualité capable de la distinguer sur le marché.",
+                "Le succès de la projection new-yorkaise inverse ensuite l’ordre de fabrication dans la mémoire collective. Le troisième film devient le premier distribué, sa date de sortie devient l’anniversaire officiel de Mickey et Minnie, et les deux essais antérieurs trouvent enfin le chemin des salles après que la souris a déjà acquis une voix publique."
+            ]
+        },
+        {
+            "eyebrow": "Son",
+            "titre": "Synchroniser plutôt qu’accompagner",
+            "paragraphes": [
+                "Steamboat Willie n’apparaît pas dans un cinéma encore entièrement silencieux : d’autres expériences sonores le précèdent, dont Dinner Time en 1928. Sa singularité tient à une synchronisation suffisamment précise et continue pour que musique, bruitages et gestes semblent produits par le même mouvement. Le film est ainsi couramment considéré comme le premier dessin animé au son entièrement synchronisé.",
+                "Cette précision demande une méthode nouvelle. Métronome, feuilles de mesure et repères visuels permettent d’accorder l’orchestre à l’image après une première séance d’enregistrement manquée. Le résultat ne pose pas une bande sonore sur l’animation : il construit les gags, les instruments improvisés et jusqu’au corps des animaux selon un rythme commun."
+            ]
+        }
+    ],
     "sources": [
         "d23-steamboat-willie",
         "wdfm-birth-of-a-mouse",
+        "ampas-early-sound-animation",
         "d23-les-clark"
     ]
 }

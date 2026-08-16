@@ -44,8 +44,17 @@
     {
         "id": "wdfm-birth-of-a-mouse",
         "titre": "The Birth of a Mouse",
+        "auteur": "Keith Gluck",
         "editeur": "The Walt Disney Family Museum",
+        "datePublication": "2012-11-18",
         "url": "https://www.waltdisney.org/blog/birth-mouse",
+        "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "ampas-early-sound-animation",
+        "titre": "The History of Silent and Early Sound New York Animation",
+        "editeur": "Academy of Motion Picture Arts and Sciences",
+        "url": "https://www.oscars.org/events/history-silent-and-early-sound-new-york-animation",
         "dateConsultation": "2026-08-16"
     },
     {

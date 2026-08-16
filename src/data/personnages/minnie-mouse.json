@@ -35,6 +35,24 @@
         }
     },
     "espece": "souris anthropomorphe",
+    "blocsEditoriaux": [
+        {
+            "eyebrow": "Origines",
+            "titre": "Partager une naissance publique avec Mickey",
+            "paragraphes": [
+                "Comme Mickey, Minnie existe déjà dans Plane Crazy avant la sortie de Steamboat Willie. Le Codex retient néanmoins le 18 novembre 1928 parce que la projection au Colony Theatre constitue leur première sortie publique distribuée, convention adoptée ensuite par les archives Disney pour leur anniversaire commun.",
+                "Dans le film, Minnie court le long de la rive après le départ du bateau et Mickey trouve le moyen de la faire monter à bord. Leur relation apparaît donc dès la scène qui lance officiellement la série : non comme une information ajoutée après coup, mais comme l’un des ressorts du mouvement, de la musique et du jeu."
+            ]
+        },
+        {
+            "eyebrow": "Trajectoire",
+            "titre": "Devenir une icône sans série à son nom",
+            "paragraphes": [
+                "Minnie ne reçoit pas de série de courts métrages comparable à celles de Mickey, Donald ou Pluto. Elle apparaît pourtant dans des dizaines de films auprès de Mickey et de son chien, assez régulièrement pour traverser les transformations graphiques et narratives de la troupe sans disparaître de son imaginaire collectif.",
+                "Sa voix témoigne aussi du travail diffus du studio. Après Walt Disney et plusieurs membres de l’équipe, Marcellite Garner, issue du département Encrage et Peinture, l’interprète au début des années 1930. Derrière une figure souvent présentée comme évidente se révèle ainsi une création entretenue par plusieurs métiers et plusieurs générations."
+            ]
+        }
+    ],
     "sources": [
         "d23-minnie-mouse",
         "wdfm-ub-iwerks-master-animation-technology"

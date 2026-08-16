@@ -32,5 +32,23 @@
         }
     },
     "espece": "souris anthropomorphe",
-    "sources": ["d23-mickey-mouse"]
+    "blocsEditoriaux": [
+        {
+            "eyebrow": "Origines",
+            "titre": "Une naissance en trois films",
+            "paragraphes": [
+                "Mickey naît dans l’urgence qui suit la perte d’Oswald le lapin chanceux. Walt Disney imagine une nouvelle souris pendant son retour de New York, puis Ub Iwerks affine et développe graphiquement le personnage. Leur réponse à une rupture industrielle devient ainsi un travail de création partagé entre une idée, un dessin et la nécessité de reconstruire une série.",
+                "Plane Crazy est le premier film achevé et connaît une projection d’essai en mai 1928, mais ne trouve pas de distributeur. The Gallopin’ Gaucho rencontre le même obstacle. Le développement du cinéma sonore pousse alors le studio à produire un troisième court métrage, Steamboat Willie, qui sera le premier diffusé publiquement et fixera le 18 novembre comme anniversaire officiel de Mickey."
+            ]
+        },
+        {
+            "eyebrow": "Métamorphoses",
+            "titre": "Du personnage au signe graphique",
+            "paragraphes": [
+                "Le premier Mickey est construit à partir de formes circulaires assez simples pour être animées rapidement et reconnues immédiatement. Cette économie de dessin lui permet de changer de pose et de fonction sans perdre sa silhouette, jusqu’à ce que la tête et les deux oreilles deviennent à elles seules un emblème lisible.",
+                "Le personnage n’est pourtant jamais resté immobile. En 1939, The Pointer lui donne un corps plus en forme de poire et ajoute des pupilles qui élargissent son jeu expressif. Costumes, proportions et rôles continueront d’évoluer, tandis que la structure graphique essentielle préservera la continuité entre ces différentes incarnations."
+            ]
+        }
+    ],
+    "sources": ["d23-mickey-mouse", "wdfm-birth-of-a-mouse"]
 }
