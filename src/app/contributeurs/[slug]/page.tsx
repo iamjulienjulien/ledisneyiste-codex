@@ -10,6 +10,7 @@ import {
 import CodexFicheHeader from "@/components/codex/CodexFicheHeader";
 import SourcesCodex from "@/components/codex/SourcesCodex";
 import RelationsCodex from "@/components/codex/RelationsCodex";
+import { getEpoquesPourContributeur } from "@/data/epoques/relations";
 
 import { formatDateHistorique } from "@/lib/date";
 
@@ -56,6 +57,7 @@ export default async function ContributeurPage({
     }
 
     const sources = getSourcesByIds(fiche.sources);
+    const epoques = getEpoquesPourContributeur(slug);
 
     const personnagesCrees = getPersonnagesCreesParContributeur(slug);
 
@@ -97,6 +99,10 @@ export default async function ContributeurPage({
 
             <RelationsCodex
                 groupes={[
+                    {
+                        titre: "Époques",
+                        references: epoques,
+                    },
                     {
                         titre: "Personnages",
                         references: personnagesCrees,

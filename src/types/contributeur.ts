@@ -6,6 +6,11 @@ export type ContributeurDisney = EntreeCatalogueBase & {
     type: "contributeur";
 };
 
+export type PeriodeActiviteDisney = {
+    debut: DateHistorique;
+    fin?: DateHistorique;
+};
+
 export type FicheContributeurDisney = FicheCodexBase & {
     type: "contributeur";
 
@@ -20,4 +25,6 @@ export type FicheContributeurDisney = FicheCodexBase & {
     };
 
     roles: string[];
+
+    periodesActivite: PeriodeActiviteDisney[];
 };

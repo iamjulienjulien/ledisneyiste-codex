@@ -22,5 +22,27 @@
         "inventeur",
         "technicien des effets spéciaux"
     ],
+    "periodesActivite": [
+        {
+            "debut": {
+                "valeur": "1922",
+                "precision": "annee"
+            },
+            "fin": {
+                "valeur": "1930",
+                "precision": "annee"
+            }
+        },
+        {
+            "debut": {
+                "valeur": "1940",
+                "precision": "annee"
+            },
+            "fin": {
+                "valeur": "1971",
+                "precision": "annee"
+            }
+        }
+    ],
     "sources": ["d23-ub-iwerks", "d23-iwerks-ub"]
 }

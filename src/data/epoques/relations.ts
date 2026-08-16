@@ -8,6 +8,8 @@ import { fichesOeuvres } from "@/data/oeuvres";
 import { fichesPersonnages } from "@/data/personnages";
 import type { DateHistorique } from "@/types/date";
 import type { ReferenceCodex } from "@/types/reference";
+import { getContributeurBySlug } from "@/data/catalogues";
+import { fichesContributeurs } from "@/data/contributeurs";
 
 function getAnnee(date: DateHistorique): number {
     return Number(date.valeur.slice(0, 4));
@@ -95,5 +97,75 @@ export function getOeuvresDeLEpoque(slug: string): ReferenceCodex[] {
             nom: oeuvre.nom,
             type: "oeuvre" as const,
             slug: oeuvre.slug,
+        }));
+}
+
+export function getEpoquesPourContributeur(slug: string): ReferenceCodex[] {
+    const ficheContributeur = fichesContributeurs.find(
+        (fiche) => fiche.slug === slug,
+    );
+
+    if (!ficheContributeur) {
+        return [];
+    }
+
+    return epoques
+        .filter((epoque) => {
+            const ficheEpoque = getFicheEpoqueBySlug(epoque.slug);
+
+            if (!ficheEpoque) {
+                return false;
+            }
+
+            const debutEpoque = getAnnee(ficheEpoque.periode.debut);
+            const finEpoque = ficheEpoque.periode.fin
+                ? getAnnee(ficheEpoque.periode.fin)
+                : Number.POSITIVE_INFINITY;
+
+            return ficheContributeur.periodesActivite.some((periode) => {
+                const debutActivite = getAnnee(periode.debut);
+                const finActivite = periode.fin
+                    ? getAnnee(periode.fin)
+                    : Number.POSITIVE_INFINITY;
+
+                return debutActivite <= finEpoque && finActivite >= debutEpoque;
+            });
+        })
+        .map((epoque) => ({
+            nom: epoque.nom,
+            type: "epoque" as const,
+            slug: epoque.slug,
+        }));
+}
+
+export function getContributeursDeLEpoque(slug: string): ReferenceCodex[] {
+    const ficheEpoque = getFicheEpoqueBySlug(slug);
+
+    if (!ficheEpoque) {
+        return [];
+    }
+
+    const debutEpoque = getAnnee(ficheEpoque.periode.debut);
+    const finEpoque = ficheEpoque.periode.fin
+        ? getAnnee(ficheEpoque.periode.fin)
+        : Number.POSITIVE_INFINITY;
+
+    return fichesContributeurs
+        .filter((fiche) =>
+            fiche.periodesActivite.some((periode) => {
+                const debutActivite = getAnnee(periode.debut);
+                const finActivite = periode.fin
+                    ? getAnnee(periode.fin)
+                    : Number.POSITIVE_INFINITY;
+
+                return debutActivite <= finEpoque && finActivite >= debutEpoque;
+            }),
+        )
+        .map((fiche) => getContributeurBySlug(fiche.slug))
+        .filter((contributeur) => contributeur !== undefined)
+        .map((contributeur) => ({
+            nom: contributeur.nom,
+            type: "contributeur" as const,
+            slug: contributeur.slug,
         }));
 }

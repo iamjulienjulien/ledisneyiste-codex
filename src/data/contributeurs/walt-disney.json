@@ -17,5 +17,17 @@
         "lieu": ""
     },
     "roles": ["animateur", "producteur", "réalisateur", "entrepreneur"],
+    "periodesActivite": [
+        {
+            "debut": {
+                "valeur": "1923",
+                "precision": "annee"
+            },
+            "fin": {
+                "valeur": "1966",
+                "precision": "annee"
+            }
+        }
+    ],
     "sources": ["d23-about-walt-disney", "d23-disney-walter-elias"]
 }

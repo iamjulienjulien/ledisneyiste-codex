@@ -11,6 +11,7 @@ import { epoques, getEpoqueBySlug } from "@/data/catalogues";
 import { getFicheEpoqueBySlug } from "@/data/epoques";
 import { getSourcesByIds } from "@/data/sources";
 import { formatDateHistorique } from "@/lib/date";
+import { getContributeursDeLEpoque } from "@/data/epoques/relations";
 
 export const dynamicParams = false;
 
@@ -55,6 +56,7 @@ export default async function EpoquePage({
     }
 
     const sources = getSourcesByIds(fiche.sources);
+    const contributeurs = getContributeursDeLEpoque(slug);
     const personnages = getPersonnagesDeLEpoque(slug);
     const oeuvres = getOeuvresDeLEpoque(slug);
 
@@ -105,6 +107,10 @@ export default async function EpoquePage({
 
             <RelationsCodex
                 groupes={[
+                    {
+                        titre: "Créateurs",
+                        references: contributeurs,
+                    },
                     {
                         titre: "Personnages",
                         references: personnages,
