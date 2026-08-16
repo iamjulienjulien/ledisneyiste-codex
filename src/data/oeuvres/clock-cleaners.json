@@ -34,5 +34,23 @@
             "slug": "dingo"
         }
     ],
+    "blocsEditoriaux": [
+        {
+            "eyebrow": "Le trio",
+            "titre": "Trois caractères dans une même machine",
+            "paragraphes": [
+                "La tour répartit d’abord Mickey, Donald et Dingo dans trois espaces et trois problèmes. Mickey veille à l’ensemble, Donald affronte un ressort qui lui résiste et Dingo cherche l’origine des coups de cloche. Le décor mécanique ne les uniformise pas : il donne à chacun un adversaire à la mesure de son tempérament.",
+                "Leurs trajectoires finissent pourtant par converger. Projetés dans le même engrenage, les trois corps poursuivent au sol un mouvement commun de pendule. Cette image finale résume la mécanique du trio : des réactions profondément différentes, entraînées par une catastrophe partagée jusqu’à ne plus former qu’un seul rythme comique."
+            ]
+        },
+        {
+            "eyebrow": "Vertige",
+            "titre": "Dingo marche au bord du vide",
+            "paragraphes": [
+                "Assommé par l’automate qui frappe la cloche, Dingo perd conscience du danger sans perdre sa capacité à avancer. Ses pas deviennent une suite d’acrobaties involontaires au sommet de la tour, tandis que Mickey tente de le ramener vers un équilibre qu’il ne sait même plus avoir quitté.",
+                "La séquence inverse ainsi la logique du sauvetage. Le personnage menacé reste étonnamment serein ; c’est son ami lucide qui porte toute l’inquiétude. La maladresse de Dingo devient moins une faiblesse qu’une suspension des règles ordinaires, capable de faire du vide un espace de jeu."
+            ]
+        }
+    ],
     "sources": ["d23-clock-cleaners"]
 }

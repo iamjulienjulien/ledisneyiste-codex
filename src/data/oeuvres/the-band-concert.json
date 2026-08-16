@@ -46,5 +46,23 @@
             "nom": "Paddy Pig"
         }
     ],
+    "blocsEditoriaux": [
+        {
+            "eyebrow": "Couleur",
+            "titre": "Mickey trouve sa palette",
+            "paragraphes": [
+                "The Band Concert est le premier court métrage de la série Mickey Mouse réalisé en couleur. Trois ans après Flowers and Trees, le passage au Technicolor ne constitue plus une expérience réservée aux Silly Symphonies : il redéfinit désormais l’apparence du personnage le plus célèbre du studio.",
+                "Le film fixe notamment le rouge comme couleur emblématique du short de Mickey, après des représentations encore variables. Cette continuité visuelle accompagne une autre transformation : la couleur ne se contente pas d’habiller le concert, elle différencie les musiciens, organise l’espace et amplifie le désordre qui gagne progressivement l’image."
+            ]
+        },
+        {
+            "eyebrow": "Mise en scène",
+            "titre": "Faire jouer ensemble la musique et le chaos",
+            "paragraphes": [
+                "Wilfred Jackson conçoit la musique et l’action comme les deux faces d’un même mouvement. Mickey cherche à préserver l’ouverture de Guillaume Tell tandis que Donald ramène obstinément l’orchestre vers Turkey in the Straw. Le conflit entre les deux airs devient immédiatement un conflit entre deux caractères.",
+                "Lorsque le cyclone emporte les musiciens, le gag prolonge une idée installée depuis le début : rien ne doit interrompre le concert. Mickey s’accroche à la direction, Donald continue de perturber l’ordre et Dingo reste pris dans l’élan collectif. La catastrophe ne suspend pas la performance ; elle en devient le dernier instrument."
+            ]
+        }
+    ],
     "sources": ["d23-band-concert", "wdfm-band-concert-90"]
 }

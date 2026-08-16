@@ -28,5 +28,23 @@
         }
     },
     "espece": "chien anthropomorphe",
+    "blocsEditoriaux": [
+        {
+            "eyebrow": "Naissance d’un personnage",
+            "titre": "Un rire avant un nom",
+            "paragraphes": [
+                "Dans Mickey’s Revue, le futur Dingo n’entre pas en scène : il est assis parmi les spectateurs. Son apparence le distingue encore peu de ses voisins, mais son rire rauque, interprété par Pinto Colvig, attire suffisamment l’attention pour que le studio fasse revenir le personnage dans d’autres courts métrages.",
+                "Son identité se précise ensuite par étapes. Les bandes dessinées le nomment d’abord Dippy Dawg, puis un livre de 1938 rapproche Dippy du mot Goof. Ce n’est qu’en 1939, avec Goofy and Wilbur, que son nom définitif accompagne enfin la vedette autonome qu’il est devenu."
+            ]
+        },
+        {
+            "eyebrow": "Langage comique",
+            "titre": "L’art de continuer malgré soi",
+            "paragraphes": [
+                "Dingo est pensé comme un personnage humain sous une forme canine : il marche debout, parle et agit dans le même monde social que Mickey et Donald, à la différence de Pluto. Cette proximité rend sa maladresse moins animale qu’universelle. Elle transforme les tâches les plus ordinaires en problèmes que son corps résout rarement comme prévu.",
+                "L’essentiel n’est pourtant pas l’échec, mais la manière dont il le traverse. Là où Donald se révolte et où Mickey tente de reprendre le contrôle, Dingo avance avec une confiance presque intacte. Sa lenteur et son optimisme donnent au trio un troisième rythme, capable d’étirer le danger jusqu’à l’absurde."
+            ]
+        }
+    ],
     "sources": ["d23-goofy", "d23-pinto-colvig", "d23-mickeys-revue"]
 }
