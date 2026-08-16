@@ -1,0 +1,33 @@
+{
+    "slug": "les-clark",
+    "type": "contributeur",
+    "introduction": "Les Clark entre chez Disney à la sortie du lycée et accompagne presque un demi-siècle de transformation du studio. Premier des Nine Old Men à rejoindre l’entreprise, il apprend auprès d’Ub Iwerks, anime Mickey dès Steamboat Willie et poursuit son travail jusque dans les longs métrages avant de passer à la réalisation. Sa trajectoire relie ainsi les gestes encore artisanaux des débuts à une animation devenue école, langage et héritage.",
+    "naissance": {
+        "date": {
+            "valeur": "1907",
+            "precision": "annee"
+        },
+        "lieu": "Ogden, Utah, États-Unis"
+    },
+    "deces": {
+        "date": {
+            "valeur": "1979-09-12",
+            "precision": "jour"
+        },
+        "lieu": ""
+    },
+    "roles": ["animateur", "réalisateur"],
+    "periodesActivite": [
+        {
+            "debut": {
+                "valeur": "1927",
+                "precision": "annee"
+            },
+            "fin": {
+                "valeur": "1976",
+                "precision": "annee"
+            }
+        }
+    ],
+    "sources": ["d23-les-clark", "wdfm-first-nine-les-clark"]
+}

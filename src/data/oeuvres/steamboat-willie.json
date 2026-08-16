@@ -25,6 +25,14 @@
                 "slug": "ub-iwerks"
             },
             "roles": ["animation"]
+        },
+        {
+            "contributeur": {
+                "nom": "Les Clark",
+                "type": "contributeur",
+                "slug": "les-clark"
+            },
+            "roles": ["animation"]
         }
     ],
     "personnages": [
@@ -39,5 +47,9 @@
             "slug": "minnie-mouse"
         }
     ],
-    "sources": ["d23-steamboat-willie", "wdfm-birth-of-a-mouse"]
+    "sources": [
+        "d23-steamboat-willie",
+        "wdfm-birth-of-a-mouse",
+        "d23-les-clark"
+    ]
 }

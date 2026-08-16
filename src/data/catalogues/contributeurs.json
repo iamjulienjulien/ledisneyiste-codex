@@ -10,5 +10,11 @@
         "nom": "Ub Iwerks",
         "type": "contributeur",
         "sousTitre": "L’animateur et inventeur derrière les premiers pas de Mickey"
+    },
+    {
+        "slug": "les-clark",
+        "nom": "Les Clark",
+        "type": "contributeur",
+        "sousTitre": "Le premier des Nine Old Men et l’un des maîtres de Mickey"
     }
 ]

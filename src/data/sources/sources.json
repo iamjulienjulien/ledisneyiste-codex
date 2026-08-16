@@ -194,5 +194,21 @@
         "editeur": "D23: The Official Disney Fan Club",
         "url": "https://d23.com/a-to-z/butch/",
         "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "d23-les-clark",
+        "titre": "Les Clark",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/walt-disney-legend/les-clark/",
+        "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "wdfm-first-nine-les-clark",
+        "titre": "The First of the Nine: Les Clark",
+        "auteur": "Tracie Timmer",
+        "editeur": "The Walt Disney Family Museum",
+        "datePublication": "2017-02-08",
+        "url": "https://www.waltdisney.org/blog/first-nine-les-clark",
+        "dateConsultation": "2026-08-16"
     }
 ]
