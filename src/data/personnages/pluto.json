@@ -25,5 +25,23 @@
         }
     },
     "espece": "chien",
+    "blocsEditoriaux": [
+        {
+            "eyebrow": "Continuité",
+            "titre": "Deux limiers avant un seul Pluto",
+            "paragraphes": [
+                "The Chain Gang ne présente pas encore Pluto comme un individu. Deux limiers identiques et sans nom y poursuivent Mickey après son évasion. Les archives Disney reconnaissent dans ces chiens la première forme du personnage, mais son identité reste encore dissoute dans une fonction de récit : flairer la piste du fugitif.",
+                "Quelques semaines plus tard, The Picnic transforme cette silhouette en Rover, le chien de Minnie. En 1931, The Moose Hunt l’installe enfin auprès de Mickey sous le nom de Pluto. Le Codex retient donc 1930 comme origine du personnage tout en rendant visible le chemin qui sépare une ébauche canine de son identité durable."
+            ]
+        },
+        {
+            "eyebrow": "Animation de caractère",
+            "titre": "Penser sans avoir besoin de parler",
+            "paragraphes": [
+                "Pluto est conçu comme un véritable chien, sans parole humaine, là où Dingo marche debout et parle comme les autres membres de la troupe. Cette contrainte fait du corps la principale surface du récit : oreilles, museau, pattes et queue doivent rendre lisible chaque changement d’attention ou d’émotion.",
+                "Ses aboiements peuvent nuancer la joie, la peur ou la loyauté, mais ils ne remplacent jamais le jeu dessiné. Pluto permet ainsi aux animateurs de montrer une pensée avant qu’elle ne devienne une action, puis une action avant qu’elle ne produise ses conséquences. Sa simplicité apparente ouvre un laboratoire particulièrement exigeant pour l’animation de personnalité."
+            ]
+        }
+    ],
     "sources": ["d23-pluto", "d23-chain-gang", "d23-pluto-90-years"]
 }

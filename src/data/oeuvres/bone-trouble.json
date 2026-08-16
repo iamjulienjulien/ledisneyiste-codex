@@ -27,5 +27,23 @@
             "nom": "Butch"
         }
     ],
+    "blocsEditoriaux": [
+        {
+            "eyebrow": "Point de vue",
+            "titre": "Faire du reflet une émotion visible",
+            "paragraphes": [
+                "Le palais des glaces ne se contente pas de compliquer la poursuite. Chaque miroir agrandit, écrase ou multiplie les corps et donne une forme visible à la peur de Pluto. Le décor adopte son incertitude : il devient impossible de distinguer immédiatement l’adversaire réel de l’image qui le déforme.",
+                "Pluto apprend pourtant à lire cet espace au cours même de la fuite. Les reflets qui l’effrayaient deviennent des leurres utilisables contre Butch. Sans dialogue, le récit fait ainsi passer le personnage de la panique à la ruse et transforme une réaction animale en véritable progression dramatique."
+            ]
+        },
+        {
+            "eyebrow": "Rivalité",
+            "titre": "Butch donne un poids au danger",
+            "paragraphes": [
+                "Pluto déclenche lui-même la poursuite en volant l’os de Butch. Le bulldog n’est donc pas seulement un obstacle extérieur : il donne une conséquence immédiate à la gourmandise du héros et oppose à son expressivité souple une présence plus massive et menaçante.",
+                "Bone Trouble inaugure une rivalité qui se prolongera dans onze courts métrages. Cette répétition offre à la série un adversaire reconnaissable sans figer toutes les histoires dans le même schéma : autour d’un os, d’un territoire ou d’une affection, Butch oblige Pluto à révéler tour à tour sa peur, sa jalousie et son ingéniosité."
+            ]
+        }
+    ],
     "sources": ["d23-bone-trouble", "d23-butch"]
 }
