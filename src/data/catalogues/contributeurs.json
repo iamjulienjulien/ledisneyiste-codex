@@ -16,5 +16,11 @@
         "nom": "Les Clark",
         "type": "contributeur",
         "sousTitre": "Le premier des Nine Old Men et l’un des maîtres de Mickey"
+    },
+    {
+        "slug": "eric-larson",
+        "nom": "Eric Larson",
+        "type": "contributeur",
+        "sousTitre": "L’animateur devenu passeur de l’héritage Disney"
     }
 ]

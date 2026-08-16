@@ -1,0 +1,33 @@
+{
+    "slug": "eric-larson",
+    "type": "contributeur",
+    "introduction": "Eric Larson traverse plus d’un demi-siècle d’animation Disney en faisant du mouvement un art de l’observation et de la transmission. Animateur d’animaux, de figures fantastiques et de personnages sensibles, il accompagne les grands longs métrages du studio avant de consacrer la fin de sa carrière à former ceux qui prendront la relève. Parmi les Nine Old Men, sa place raconte ainsi moins une autorité figée qu’un savoir confié d’une génération à l’autre.",
+    "naissance": {
+        "date": {
+            "valeur": "1905-09-03",
+            "precision": "jour"
+        },
+        "lieu": "Cleveland, Utah, États-Unis"
+    },
+    "deces": {
+        "date": {
+            "valeur": "1988-10-25",
+            "precision": "jour"
+        },
+        "lieu": "La Cañada Flintridge, Californie, États-Unis"
+    },
+    "roles": ["animateur", "animateur superviseur", "formateur"],
+    "periodesActivite": [
+        {
+            "debut": {
+                "valeur": "1933",
+                "precision": "annee"
+            },
+            "fin": {
+                "valeur": "1986",
+                "precision": "annee"
+            }
+        }
+    ],
+    "sources": ["d23-eric-larson", "d23-larson-eric"]
+}
