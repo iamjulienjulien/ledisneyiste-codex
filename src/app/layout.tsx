@@ -63,6 +63,13 @@ export default function RootLayout({
                             >
                                 Œuvres
                             </Link>
+
+                            <Link
+                                href="/epoques"
+                                className="text-ink-soft transition-colors hover:text-accent"
+                            >
+                                Époques
+                            </Link>
                         </nav>
                     </div>
                 </header>

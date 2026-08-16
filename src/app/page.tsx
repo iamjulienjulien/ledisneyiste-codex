@@ -1,5 +1,10 @@
 import Link from "next/link";
-import { contributeurs, oeuvres, personnages } from "@/data/catalogues";
+import {
+    contributeurs,
+    oeuvres,
+    personnages,
+    epoques,
+} from "@/data/catalogues";
 
 export default function Home() {
     return (
@@ -32,17 +37,18 @@ export default function Home() {
                     </p>
 
                     <h2 className="mt-3 text-3xl text-ink">
-                        Trois portes vers le Codex
+                        Quatre portes vers le Codex
                     </h2>
 
                     <p className="mt-4 max-w-2xl leading-7 text-ink-soft">
                         Entrer par les figures de fiction, celles et ceux qui
-                        les ont façonnées, ou les œuvres où leurs histoires
-                        prennent vie.
+                        les ont façonnées, les œuvres où leurs histoires
+                        prennent vie, ou les époques qui les replacent dans le
+                        temps.
                     </p>
                 </div>
 
-                <div className="mt-8 grid gap-6 md:grid-cols-3">
+                <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                     <Link
                         href="/personnages"
                         className="group border border-line p-6 transition-colors hover:border-line-strong"
@@ -107,6 +113,27 @@ export default function Home() {
 
                         <p className="mt-6 font-medium text-accent group-hover:text-accent-hover">
                             Explorer les œuvres →
+                        </p>
+                    </Link>
+
+                    <Link
+                        href="/epoques"
+                        className="group border border-line p-6 transition-colors hover:border-line-strong"
+                    >
+                        <p className="text-sm text-muted">
+                            {epoques.length}{" "}
+                            {epoques.length > 1 ? "époques" : "époque"}
+                        </p>
+
+                        <h3 className="mt-3 text-2xl text-ink">Époques</h3>
+
+                        <p className="mt-3 leading-7 text-ink-soft">
+                            Les grandes périodes qui permettent de suivre les
+                            transformations de Disney dans le temps.
+                        </p>
+
+                        <p className="mt-6 font-medium text-accent group-hover:text-accent-hover">
+                            Explorer les époques →
                         </p>
                     </Link>
                 </div>
