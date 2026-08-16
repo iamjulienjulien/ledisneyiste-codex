@@ -128,5 +128,27 @@
         "editeur": "D23: The Official Disney Fan Club",
         "url": "https://d23.com/a-to-z/clock-cleaners-film/",
         "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "d23-daisy-duck",
+        "titre": "Daisy Duck",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/daisy-duck/",
+        "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "d23-mr-duck-steps-out-premieres",
+        "titre": "Mr. Duck Steps Out Premieres",
+        "editeur": "D23: The Official Disney Fan Club",
+        "datePublication": "2019-03-18",
+        "url": "https://d23.com/this-day/mr-duck-steps-out/",
+        "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "d23-don-donald",
+        "titre": "Don Donald (film)",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/don-donald-film/",
+        "dateConsultation": "2026-08-16"
     }
 ]

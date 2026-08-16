@@ -1,0 +1,31 @@
+{
+    "slug": "daisy-duck",
+    "type": "personnage",
+    "introduction": "Daisy Duck entre dans l’entourage de Donald en donnant un nom et une identité durable à une figure apparue dès 1937 sous celui de Donna Duck. Dans Mr. Duck Steps Out, elle devient une partenaire capable d’accueillir la fougue de Donald sans jamais disparaître derrière elle. Plus posée mais tout aussi déterminée, Daisy installe ainsi au cœur de la famille des canards une voix qui sait répondre au tumulte plutôt que le subir.",
+    "creation": {
+        "date": {
+            "valeur": "1940",
+            "precision": "annee"
+        },
+        "createurs": [
+            {
+                "nom": "Walt Disney Productions"
+            }
+        ]
+    },
+    "premiereApparition": {
+        "oeuvre": {
+            "nom": "Mr. Duck Steps Out"
+        },
+        "date": {
+            "valeur": "1940-06-07",
+            "precision": "jour"
+        }
+    },
+    "espece": "canard anthropomorphe",
+    "sources": [
+        "d23-daisy-duck",
+        "d23-mr-duck-steps-out-premieres",
+        "d23-don-donald"
+    ]
+}

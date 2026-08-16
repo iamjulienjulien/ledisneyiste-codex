@@ -22,5 +22,11 @@
         "nom": "Dingo",
         "type": "personnage",
         "sousTitre": "Le maladroit dont le rire devint une signature"
+    },
+    {
+        "slug": "daisy-duck",
+        "nom": "Daisy Duck",
+        "type": "personnage",
+        "sousTitre": "La partenaire de Donald qui ne se laisse jamais éclipser"
     }
 ]

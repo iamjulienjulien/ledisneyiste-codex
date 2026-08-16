@@ -1,3 +1,4 @@
+import daisyDuckJson from "@/data/personnages/daisy-duck.json";
 import donaldDuckJson from "@/data/personnages/donald-duck.json";
 import dingoJson from "@/data/personnages/dingo.json";
 import mickeyMouseJson from "@/data/personnages/mickey-mouse.json";
@@ -9,6 +10,7 @@ export const fichesPersonnages = [
     minnieMouseJson as FichePersonnageDisney,
     donaldDuckJson as FichePersonnageDisney,
     dingoJson as FichePersonnageDisney,
+    daisyDuckJson as FichePersonnageDisney,
 ];
 
 export function getFichePersonnageBySlug(slug: string) {
