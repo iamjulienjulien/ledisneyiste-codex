@@ -34,5 +34,11 @@
         "nom": "Milt Kahl",
         "type": "contributeur",
         "sousTitre": "Le dessinateur qui donna sa ligne au style Disney"
+    },
+    {
+        "slug": "ward-kimball",
+        "nom": "Ward Kimball",
+        "type": "contributeur",
+        "sousTitre": "Le caricaturiste qui fit dérailler les habitudes du studio"
     }
 ]

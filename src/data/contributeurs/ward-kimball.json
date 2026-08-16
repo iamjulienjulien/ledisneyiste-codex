@@ -1,0 +1,38 @@
+{
+    "slug": "ward-kimball",
+    "type": "contributeur",
+    "introduction": "Ward Kimball cultive au sein de Disney une énergie volontiers imprévisible. Son animation privilégie la caricature, le rythme et la surprise, tandis que sa curiosité l’entraîne vers la télévision scientifique, la musique, les trains et même les premiers imaginaires d’Epcot. Parmi les Nine Old Men, il rappelle que la tradition du studio ne se construit pas seulement par la maîtrise : elle avance aussi grâce à ceux qui déplacent les règles et introduisent un peu de désordre dans la machine.",
+    "naissance": {
+        "date": {
+            "valeur": "1914-03-04",
+            "precision": "jour"
+        },
+        "lieu": "Minneapolis, Minnesota, États-Unis"
+    },
+    "deces": {
+        "date": {
+            "valeur": "2002-07-08",
+            "precision": "jour"
+        },
+        "lieu": "Los Angeles, Californie, États-Unis"
+    },
+    "roles": [
+        "animateur",
+        "animateur superviseur",
+        "réalisateur",
+        "producteur"
+    ],
+    "periodesActivite": [
+        {
+            "debut": {
+                "valeur": "1934",
+                "precision": "annee"
+            },
+            "fin": {
+                "valeur": "1972",
+                "precision": "annee"
+            }
+        }
+    ],
+    "sources": ["d23-ward-kimball", "d23-kimball-ward"]
+}
