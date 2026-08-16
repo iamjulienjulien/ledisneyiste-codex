@@ -1,0 +1,32 @@
+{
+    "slug": "donald-duck",
+    "type": "personnage",
+    "introduction": "Donald Duck entre dans Disney par la voix et le tempérament. Là où Mickey tend progressivement vers la figure rassembleuse, Donald construit sa popularité sur l’impatience, l’échec, la colère et une vulnérabilité immédiatement reconnaissable. Derrière ses explosions comiques apparaît ainsi un autre visage de Disney : moins idéal, plus chaotique, et peut-être précisément pour cela profondément humain.",
+    "creation": {
+        "date": {
+            "valeur": "1934",
+            "precision": "annee"
+        },
+        "createurs": [
+            {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            },
+            {
+                "nom": "Clarence Nash"
+            }
+        ]
+    },
+    "premiereApparition": {
+        "oeuvre": {
+            "nom": "The Wise Little Hen"
+        },
+        "date": {
+            "valeur": "1934-06-09",
+            "precision": "jour"
+        }
+    },
+    "espece": "canard anthropomorphe",
+    "sources": ["d23-donald-duck", "wdfm-evolution-of-a-duck"]
+}
