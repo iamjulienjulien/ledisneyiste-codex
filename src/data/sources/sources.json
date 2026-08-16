@@ -224,5 +224,19 @@
         "editeur": "D23: The Official Disney Fan Club",
         "url": "https://d23.com/a-to-z/larson-eric/",
         "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "d23-wolfgang-reitherman",
+        "titre": "Wolfgang Reitherman",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/walt-disney-legend/wolfgang-reitherman/",
+        "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "d23-reitherman-wolfgang",
+        "titre": "Reitherman, Wolfgang (“Woolie”)",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/reitherman-wolfgang-woolie/",
+        "dateConsultation": "2026-08-16"
     }
 ]

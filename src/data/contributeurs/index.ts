@@ -2,6 +2,7 @@ import ericLarsonJson from "@/data/contributeurs/eric-larson.json";
 import lesClarkJson from "@/data/contributeurs/les-clark.json";
 import ubIwerksJson from "@/data/contributeurs/ub-iwerks.json";
 import waltDisneyJson from "@/data/contributeurs/walt-disney.json";
+import wolfgangReithermanJson from "@/data/contributeurs/wolfgang-reitherman.json";
 import type { FicheContributeurDisney } from "@/types/contributeur";
 
 export const fichesContributeurs = [
@@ -9,6 +10,7 @@ export const fichesContributeurs = [
     ubIwerksJson as FicheContributeurDisney,
     lesClarkJson as FicheContributeurDisney,
     ericLarsonJson as FicheContributeurDisney,
+    wolfgangReithermanJson as FicheContributeurDisney,
 ];
 
 export function getFicheContributeurBySlug(slug: string) {

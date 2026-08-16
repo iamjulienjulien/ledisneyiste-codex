@@ -22,5 +22,11 @@
         "nom": "Eric Larson",
         "type": "contributeur",
         "sousTitre": "L’animateur devenu passeur de l’héritage Disney"
+    },
+    {
+        "slug": "wolfgang-reitherman",
+        "nom": "Wolfgang Reitherman",
+        "type": "contributeur",
+        "sousTitre": "L’animateur du mouvement devenu capitaine du studio"
     }
 ]
