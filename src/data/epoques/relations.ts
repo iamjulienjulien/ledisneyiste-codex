@@ -1,5 +1,11 @@
-import { epoques } from "@/data/catalogues";
+import {
+    epoques,
+    getOeuvreBySlug,
+    getPersonnageBySlug,
+} from "@/data/catalogues";
 import { getFicheEpoqueBySlug } from "@/data/epoques";
+import { fichesOeuvres } from "@/data/oeuvres";
+import { fichesPersonnages } from "@/data/personnages";
 import type { DateHistorique } from "@/types/date";
 import type { ReferenceCodex } from "@/types/reference";
 
@@ -36,4 +42,58 @@ export function getEpoquePourDate(
         type: "epoque",
         slug: epoque.slug,
     };
+}
+
+export function getPersonnagesDeLEpoque(slug: string): ReferenceCodex[] {
+    const ficheEpoque = getFicheEpoqueBySlug(slug);
+
+    if (!ficheEpoque) {
+        return [];
+    }
+
+    const debut = getAnnee(ficheEpoque.periode.debut);
+    const fin = ficheEpoque.periode.fin
+        ? getAnnee(ficheEpoque.periode.fin)
+        : Number.POSITIVE_INFINITY;
+
+    return fichesPersonnages
+        .filter((fiche) => {
+            const annee = getAnnee(fiche.premiereApparition.date);
+
+            return annee >= debut && annee <= fin;
+        })
+        .map((fiche) => getPersonnageBySlug(fiche.slug))
+        .filter((personnage) => personnage !== undefined)
+        .map((personnage) => ({
+            nom: personnage.nom,
+            type: "personnage" as const,
+            slug: personnage.slug,
+        }));
+}
+
+export function getOeuvresDeLEpoque(slug: string): ReferenceCodex[] {
+    const ficheEpoque = getFicheEpoqueBySlug(slug);
+
+    if (!ficheEpoque) {
+        return [];
+    }
+
+    const debut = getAnnee(ficheEpoque.periode.debut);
+    const fin = ficheEpoque.periode.fin
+        ? getAnnee(ficheEpoque.periode.fin)
+        : Number.POSITIVE_INFINITY;
+
+    return fichesOeuvres
+        .filter((fiche) => {
+            const annee = getAnnee(fiche.sortie.date);
+
+            return annee >= debut && annee <= fin;
+        })
+        .map((fiche) => getOeuvreBySlug(fiche.slug))
+        .filter((oeuvre) => oeuvre !== undefined)
+        .map((oeuvre) => ({
+            nom: oeuvre.nom,
+            type: "oeuvre" as const,
+            slug: oeuvre.slug,
+        }));
 }

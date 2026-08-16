@@ -2,6 +2,11 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CodexFicheHeader from "@/components/codex/CodexFicheHeader";
 import SourcesCodex from "@/components/codex/SourcesCodex";
+import RelationsCodex from "@/components/codex/RelationsCodex";
+import {
+    getOeuvresDeLEpoque,
+    getPersonnagesDeLEpoque,
+} from "@/data/epoques/relations";
 import { epoques, getEpoqueBySlug } from "@/data/catalogues";
 import { getFicheEpoqueBySlug } from "@/data/epoques";
 import { getSourcesByIds } from "@/data/sources";
@@ -50,6 +55,8 @@ export default async function EpoquePage({
     }
 
     const sources = getSourcesByIds(fiche.sources);
+    const personnages = getPersonnagesDeLEpoque(slug);
+    const oeuvres = getOeuvresDeLEpoque(slug);
 
     return (
         <main className="mx-auto min-h-screen w-full max-w-5xl px-6 py-16 sm:py-20">
@@ -96,6 +103,18 @@ export default async function EpoquePage({
                 </section>
             )}
 
+            <RelationsCodex
+                groupes={[
+                    {
+                        titre: "Personnages",
+                        references: personnages,
+                    },
+                    {
+                        titre: "Œuvres",
+                        references: oeuvres,
+                    },
+                ]}
+            />
             <SourcesCodex sources={sources} />
         </main>
     );
