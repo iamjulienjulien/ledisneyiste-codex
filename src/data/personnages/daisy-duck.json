@@ -15,7 +15,9 @@
     },
     "premiereApparition": {
         "oeuvre": {
-            "nom": "Mr. Duck Steps Out"
+            "nom": "Mr. Duck Steps Out",
+            "type": "oeuvre",
+            "slug": "mr-duck-steps-out"
         },
         "date": {
             "valeur": "1940-06-07",

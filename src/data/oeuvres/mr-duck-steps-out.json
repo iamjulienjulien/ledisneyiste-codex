@@ -1,0 +1,42 @@
+{
+    "slug": "mr-duck-steps-out",
+    "type": "oeuvre",
+    "introduction": "Mr. Duck Steps Out donne à Donald et Daisy leur première véritable scène de couple, aussitôt envahie par Riri, Fifi et Loulou. Donald voudrait transformer sa visite en rendez-vous parfait, mais chaque tentative pour tenir ses neveux à distance ne fait qu’accélérer le désordre. Au milieu des danses, des glaces et des interruptions, Daisy s’impose pourtant comme une partenaire de jeu capable de répondre à l’énergie de Donald sans se laisser emporter par elle.",
+    "sortie": {
+        "date": {
+            "valeur": "1940-06-07",
+            "precision": "jour"
+        }
+    },
+    "format": "court métrage d’animation",
+    "contributions": [
+        {
+            "contributeur": {
+                "nom": "Jack King"
+            },
+            "roles": ["réalisation"]
+        }
+    ],
+    "personnages": [
+        {
+            "nom": "Donald Duck",
+            "type": "personnage",
+            "slug": "donald-duck"
+        },
+        {
+            "nom": "Daisy Duck",
+            "type": "personnage",
+            "slug": "daisy-duck"
+        },
+        {
+            "nom": "Riri"
+        },
+        {
+            "nom": "Fifi"
+        },
+        {
+            "nom": "Loulou"
+        }
+    ],
+    "sources": ["d23-mr-duck-steps-out", "d23-mr-duck-steps-out-premieres"]
+}

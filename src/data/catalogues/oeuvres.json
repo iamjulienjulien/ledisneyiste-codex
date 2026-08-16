@@ -22,5 +22,11 @@
         "nom": "Clock Cleaners",
         "type": "oeuvre",
         "sousTitre": "Le vertige mécanique du trio Mickey, Donald et Dingo"
+    },
+    {
+        "slug": "mr-duck-steps-out",
+        "nom": "Mr. Duck Steps Out",
+        "type": "oeuvre",
+        "sousTitre": "Le premier rendez-vous de Donald et Daisy"
     }
 ]
