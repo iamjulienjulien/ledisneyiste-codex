@@ -1,0 +1,50 @@
+{
+    "slug": "the-band-concert",
+    "type": "oeuvre",
+    "introduction": "The Band Concert fait entrer la série régulière de Mickey dans la couleur en transformant un concert en lutte joyeuse contre le désordre. Tandis que Mickey s’efforce de conduire l’ouverture de Guillaume Tell, Donald impose sans relâche Turkey in the Straw et un cyclone emporte bientôt l’orchestre. La couleur ne sert plus seulement d’attraction technique : elle donne une nouvelle ampleur au mouvement, aux caractères et au chaos qui réunit désormais toute la troupe.",
+    "sortie": {
+        "date": {
+            "valeur": "1935-02-23",
+            "precision": "jour"
+        }
+    },
+    "format": "court métrage d’animation",
+    "contributions": [
+        {
+            "contributeur": {
+                "nom": "Wilfred Jackson"
+            },
+            "roles": ["réalisation"]
+        }
+    ],
+    "personnages": [
+        {
+            "nom": "Mickey Mouse",
+            "type": "personnage",
+            "slug": "mickey-mouse"
+        },
+        {
+            "nom": "Donald Duck",
+            "type": "personnage",
+            "slug": "donald-duck"
+        },
+        {
+            "nom": "Dingo",
+            "type": "personnage",
+            "slug": "dingo"
+        },
+        {
+            "nom": "Clarabelle Cow"
+        },
+        {
+            "nom": "Horace Horsecollar"
+        },
+        {
+            "nom": "Peter Pig"
+        },
+        {
+            "nom": "Paddy Pig"
+        }
+    ],
+    "sources": ["d23-band-concert", "wdfm-band-concert-90"]
+}

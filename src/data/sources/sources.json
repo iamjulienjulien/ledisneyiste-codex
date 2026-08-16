@@ -105,5 +105,21 @@
         "editeur": "D23: The Official Disney Fan Club",
         "url": "https://d23.com/a-to-z/mickeys-revue-film/",
         "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "d23-band-concert",
+        "titre": "Band Concert, The (film)",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/band-concert-the-film/",
+        "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "wdfm-band-concert-90",
+        "titre": "Seeing Mickey’s True Colors: The Band Concert at 90",
+        "auteur": "Chris Mullen",
+        "editeur": "The Walt Disney Family Museum",
+        "datePublication": "2025-02-23",
+        "url": "https://www.waltdisney.org/blog/seeing-mickeys-true-colors-band-concert-90",
+        "dateConsultation": "2026-08-16"
     }
 ]

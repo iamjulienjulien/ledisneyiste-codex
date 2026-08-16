@@ -10,5 +10,11 @@
         "nom": "The Wise Little Hen",
         "type": "oeuvre",
         "sousTitre": "La Silly Symphony qui fit éclore Donald"
+    },
+    {
+        "slug": "the-band-concert",
+        "nom": "The Band Concert",
+        "type": "oeuvre",
+        "sousTitre": "Le concert qui fit entrer la série de Mickey en couleurs"
     }
 ]
