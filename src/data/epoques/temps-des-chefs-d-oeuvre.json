@@ -1,0 +1,17 @@
+{
+    "slug": "temps-des-chefs-d-oeuvre",
+    "type": "epoque",
+    "introduction": "",
+    "periode": {
+        "debut": {
+            "valeur": "1937",
+            "precision": "annee"
+        },
+        "fin": {
+            "valeur": "1942",
+            "precision": "annee"
+        }
+    },
+    "description": "Après le triomphe de Blanche-Neige et les Sept Nains, Disney fait du long métrage d’animation son nouveau laboratoire. Pinocchio, Fantasia, Dumbo et Bambi poussent le dessin, le mouvement, la musique et la mise en scène vers de nouvelles ambitions, tandis que les coûts, la guerre et la fragilité des marchés internationaux commencent à refermer cette parenthèse exceptionnelle.",
+    "sources": []
+}

@@ -4,5 +4,11 @@
         "nom": "Le temps des pionniers",
         "type": "epoque",
         "sousTitre": "1923–1937 · Du studio naissant au pari du long métrage"
+    },
+    {
+        "slug": "temps-des-chefs-d-oeuvre",
+        "nom": "Le temps des chefs-d’œuvre",
+        "type": "epoque",
+        "sousTitre": "1937–1942 · Quand le long métrage devient le nouveau laboratoire Disney"
     }
 ]
