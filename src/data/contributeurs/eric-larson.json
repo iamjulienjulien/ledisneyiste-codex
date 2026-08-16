@@ -2,6 +2,26 @@
     "slug": "eric-larson",
     "type": "contributeur",
     "introduction": "Eric Larson traverse plus d’un demi-siècle d’animation Disney en faisant du mouvement un art de l’observation et de la transmission. Animateur d’animaux, de figures fantastiques et de personnages sensibles, il accompagne les grands longs métrages du studio avant de consacrer la fin de sa carrière à former ceux qui prendront la relève. Parmi les Nine Old Men, sa place raconte ainsi moins une autorité figée qu’un savoir confié d’une génération à l’autre.",
+    "blocsEditoriaux": [
+        {
+            "eyebrow": "Changer de voie",
+            "titre": "Du journalisme au mouvement des personnages",
+            "paragraphes": [
+                "Avant l’animation, Eric Larson étudie le journalisme, dirige une revue universitaire et publie des dessins humoristiques. Lorsqu’il arrive à Los Angeles en 1933, il travaille encore sur un feuilleton radiophonique. Un ami l’encourage alors à présenter ses croquis au studio Disney, qui l’engage comme assistant animateur.",
+                "Ce changement de voie ouvre une carrière de plus d’un demi-siècle. De Blanche-Neige et les Sept Nains à Fantasia, Bambi, Cendrillon, Peter Pan ou Le Livre de la jungle, Larson traverse les grandes transformations du long métrage Disney et devient animateur superviseur.",
+                "La diversité de ces films éclaire sa place dans le groupe : moins associé à une seule figure emblématique qu’à une capacité durable d’observer, de clarifier un geste et de rendre crédible la vie intérieure d’un personnage. Ce savoir patient deviendra bientôt aussi important devant les élèves que sur la table à dessin."
+            ]
+        },
+        {
+            "eyebrow": "Transmettre",
+            "titre": "Préparer la génération qui doit prendre la relève",
+            "paragraphes": [
+                "À la fin des années 1970, le studio se trouve à un passage critique : les animateurs formés pendant l’âge d’or quittent progressivement leurs tables, tandis qu’une nouvelle génération doit apprendre à poursuivre l’animation Disney sans simplement la reproduire. Eric Larson développe alors le programme chargé de repérer et de former de jeunes artistes venus des écoles du pays.",
+                "Sa patience et sa capacité à expliquer les techniques font de lui un mentor central. Plutôt que de conserver l’expérience des Nine Old Men comme un savoir fermé, il la décompose, la commente et l’adapte à des personnalités nouvelles. Plusieurs artistes appelés à façonner les films des décennies suivantes passent par cet apprentissage.",
+                "Larson travaille ainsi jusqu’en 1986, bien au-delà de la seule production des classiques auxquels son nom reste attaché. Son héritage ne tient pas seulement aux personnages qu’il a animés : il se prolonge dans les mains qu’il a aidées à devenir autonomes."
+            ]
+        }
+    ],
     "naissance": {
         "date": {
             "valeur": "1905-09-03",

@@ -2,6 +2,26 @@
     "slug": "les-clark",
     "type": "contributeur",
     "introduction": "Les Clark entre chez Disney à la sortie du lycée et accompagne presque un demi-siècle de transformation du studio. Premier des Nine Old Men à rejoindre l’entreprise, il apprend auprès d’Ub Iwerks, anime Mickey dès Steamboat Willie et poursuit son travail jusque dans les longs métrages avant de passer à la réalisation. Sa trajectoire relie ainsi les gestes encore artisanaux des débuts à une animation devenue école, langage et héritage.",
+    "blocsEditoriaux": [
+        {
+            "eyebrow": "Fidélité",
+            "titre": "Rester quand le premier studio vacille",
+            "paragraphes": [
+                "Les Clark ne possède presque aucune formation artistique lorsqu’il demande du travail à Walt Disney peu avant la fin de ses études. Embauché le lundi qui suit son diplôme en 1927, il commence au bas de l’échelle, entre caméra, encrage et peinture, puis apprend l’animation auprès d’Ub Iwerks.",
+                "Lorsque la perte d’Oswald entraîne le départ d’une grande partie de l’équipe en 1928, Clark compte parmi ceux qui restent. Devenu intervalliste, il participe à une scène de Steamboat Willie avant de recevoir sa première séquence d’animation dans The Skeleton Dance. Après le départ d’Iwerks, il s’impose progressivement comme le spécialiste de Mickey au studio.",
+                "Son parcours accompagne ainsi la survie puis la croissance de Disney sans rupture spectaculaire. De Mickey donnant vie aux balais dans Fantasia aux nombreux courts et longs métrages auxquels il contribue, Clark incarne une continuité patiente : celle d’un artiste qui se forme en même temps que le studio invente son langage."
+            ]
+        },
+        {
+            "eyebrow": "Apprendre",
+            "titre": "Ne jamais considérer le dessin comme acquis",
+            "paragraphes": [
+                "La discrétion de Les Clark masque une exigence constante. Pendant toute sa carrière, il continue de suivre des cours du soir et de reprendre son travail jusqu’à obtenir la qualité recherchée. Cette persévérance lui permet de passer d’un jeune employé sans formation académique à l’un des animateurs essentiels de Blanche-Neige et les Sept Nains.",
+                "Pour la danse des nains avec Blanche-Neige, il doit construire de mémoire leurs mouvements, leurs changements de perspective et leur rythme comique, tandis que l’héroïne bénéficie de références filmées. La scène rassemble deux de ses forces : une animation précisément accordée à la musique et une attention sensible au jeu des personnages.",
+                "Après avoir dirigé des séquences de La Belle au bois dormant, Clark change encore de métier. Walt lui confie des émissions de télévision et des films éducatifs, parmi lesquels Donald au pays des mathémagiques. Jusqu’à sa retraite en 1976, apprendre signifie pour lui accepter de déplacer son savoir vers une nouvelle forme."
+            ]
+        }
+    ],
     "naissance": {
         "date": {
             "valeur": "1907",
