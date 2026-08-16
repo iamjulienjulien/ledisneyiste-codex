@@ -2,6 +2,26 @@
     "slug": "milt-kahl",
     "type": "contributeur",
     "introduction": "Milt Kahl impose au dessin Disney une exigence de construction, d’anatomie et de clarté qui devient une référence pour tout le studio. Capable de redéfinir Pinocchio comme d’animer des héros, des animaux ou des méchants flamboyants, il traite chaque personnage comme un problème de forme autant que de jeu. Parmi les Nine Old Men, son trait incarne une autorité artistique : celle qui transforme une personnalité encore abstraite en silhouette immédiatement juste.",
+    "blocsEditoriaux": [
+        {
+            "eyebrow": "Redessiner",
+            "titre": "Trouver l’enfant à l’intérieur de la marionnette",
+            "paragraphes": [
+                "Lorsque la production de Pinocchio est profondément remaniée en 1938, le personnage principal pose un problème essentiel. Trop proche d’une marionnette de bois, avec ses articulations rigides et son caractère agressif, il demeure difficile à aimer alors que le récit cherche désormais à faire de sa naïveté le moteur de ses mésaventures.",
+                "Milt Kahl inverse le raisonnement. Au lieu de partir du bois pour tenter de l’humaniser, il dessine un véritable petit garçon puis ajoute les signes de la marionnette. Ses essais rapprochent enfin l’apparence de Pinocchio de sa nouvelle personnalité et convainquent Walt Disney.",
+                "Cette solution installe Kahl parmi les principaux animateurs du studio. Elle montre surtout sa méthode : un dessin n’est pas juste parce qu’il est séduisant ou anatomiquement maîtrisé, mais parce que chaque forme rend le caractère plus lisible. La construction graphique devient déjà une manière de jouer."
+            ]
+        },
+        {
+            "eyebrow": "Exigence",
+            "titre": "Résoudre les personnages les plus difficiles",
+            "paragraphes": [
+                "La maîtrise de Kahl lui vaut souvent les tâches que le studio juge les plus délicates. Il anime des figures humaines comme Alice, Peter Pan ou le prince Philippe, dont la vraisemblance laisse peu de place à l’approximation, mais aussi des animaux et des personnalités plus excessives.",
+                "Son dessin trouve une liberté particulière chez Madame Mim, Shere Khan ou Madame Médusa. Une silhouette, une posture et un rythme suffisent à installer l’intelligence hautaine, la théâtralité ou la menace. Même lorsqu’il ne conçoit pas seul un personnage, ses recherches en clarifient les volumes afin que d’autres animateurs puissent le maintenir cohérent.",
+                "Cette autorité s’accompagne d’un perfectionnisme parfois difficile pour ses collègues, mais elle élève le niveau de tout ce qui passe par son bureau. Kahl laisse moins une formule à imiter qu’une question transmise aux animateurs suivants : le dessin exprime-t-il réellement qui est le personnage ?"
+            ]
+        }
+    ],
     "naissance": {
         "date": {
             "valeur": "1909-03-22",

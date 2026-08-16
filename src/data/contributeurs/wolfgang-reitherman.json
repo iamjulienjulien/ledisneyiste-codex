@@ -2,6 +2,26 @@
     "slug": "wolfgang-reitherman",
     "type": "contributeur",
     "introduction": "Wolfgang Reitherman fait de l’action une force de caractère. Animateur des poursuites, des combats et des métamorphoses les plus physiques du studio, il passe progressivement du mouvement d’une scène à la conduite d’un film entier. Après la disparition de Walt, son énergie et son autorité contribuent à maintenir le cap de l’animation Disney, faisant de ce membre des Nine Old Men un lien décisif entre l’âge des grands animateurs et celui des réalisateurs de longs métrages.",
+    "blocsEditoriaux": [
+        {
+            "eyebrow": "Énergie",
+            "titre": "Faire de l’action une forme de jeu",
+            "paragraphes": [
+                "Avant de devenir artiste, Wolfgang Reitherman envisage une carrière dans l’aéronautique. Lorsqu’il rejoint Disney en 1933 après des études à Chouinard, son goût du mouvement trouve un autre terrain : non plus les machines qu’il rêvait de construire, mais les dessins auxquels il peut donner de la vitesse, du poids et du danger.",
+                "Le combat des dinosaures dans Fantasia, la poursuite de Monstro dans Pinocchio ou l’affrontement du prince Philippe avec le dragon dans La Belle au bois dormant lui confient des corps lancés jusqu’à leurs limites. Reitherman ne traite pas ces scènes comme de simples morceaux de bravoure : le rythme, les trajectoires et les chocs y révèlent la peur, la volonté ou la violence des personnages.",
+                "Cette spécialité explique en partie son passage vers la réalisation. Organiser une grande scène d’action demande déjà de tenir ensemble plusieurs forces, de guider le regard et de construire une montée dramatique. Chez Reitherman, l’énergie du dessin devient progressivement une manière de conduire un récit entier."
+            ]
+        },
+        {
+            "eyebrow": "Prendre le relais",
+            "titre": "Tenir le cap après la disparition de Walt",
+            "paragraphes": [
+                "En 1963, Merlin l’Enchanteur fait de Reitherman le premier animateur du studio auquel est confiée seul la réalisation d’un long métrage d’animation. Il poursuit avec Le Livre de la jungle, Les Aristochats et Robin des Bois, tandis que son rôle s’étend à la production des films.",
+                "La mort de Walt Disney en 1966 transforme cette responsabilité en épreuve de continuité. Le studio doit avancer sans la figure qui arbitrait jusque-là les ambitions, les désaccords et les personnalités. Reitherman, décrit par Frank Thomas comme un dirigeant solide, contribue alors à rassembler les talents et à maintenir une production régulière.",
+                "Cette stabilité possède aussi ses tensions : préserver un langage peut conduire à répéter des méthodes au moment où une nouvelle génération cherche sa place. Mais pendant cette période incertaine, Reitherman fait du long métrage le centre durable de l’animation Disney et assure le passage entre deux époques du studio."
+            ]
+        }
+    ],
     "naissance": {
         "date": {
             "valeur": "1909-06-26",
