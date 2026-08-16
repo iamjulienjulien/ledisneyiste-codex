@@ -1,25 +1,50 @@
 import {
     epoques,
+    getContributeurBySlug,
     getOeuvreBySlug,
     getPersonnageBySlug,
 } from "@/data/catalogues";
+import { fichesContributeurs } from "@/data/contributeurs";
 import { getFicheEpoqueBySlug } from "@/data/epoques";
 import { fichesOeuvres } from "@/data/oeuvres";
 import { fichesPersonnages } from "@/data/personnages";
 import type { DateHistorique } from "@/types/date";
 import type { ReferenceCodex } from "@/types/reference";
-import { getContributeurBySlug } from "@/data/catalogues";
-import { fichesContributeurs } from "@/data/contributeurs";
 
 function getAnnee(date: DateHistorique): number {
     return Number(date.valeur.slice(0, 4));
 }
 
+function dateEstDansPeriode(
+    date: DateHistorique,
+    debut: DateHistorique,
+    fin?: DateHistorique,
+): boolean {
+    const annee = getAnnee(date);
+    const anneeDebut = getAnnee(debut);
+    const anneeFin = fin ? getAnnee(fin) : Number.POSITIVE_INFINITY;
+
+    return annee >= anneeDebut && annee < anneeFin;
+}
+
+function periodesSeChevauchent(
+    debutA: DateHistorique,
+    finA: DateHistorique | undefined,
+    debutB: DateHistorique,
+    finB: DateHistorique | undefined,
+): boolean {
+    const anneeDebutA = getAnnee(debutA);
+    const anneeFinA = finA ? getAnnee(finA) : Number.POSITIVE_INFINITY;
+
+    const anneeDebutB = getAnnee(debutB);
+    const anneeFinB = finB ? getAnnee(finB) : Number.POSITIVE_INFINITY;
+
+    return anneeDebutA < anneeFinB && anneeFinA >= anneeDebutB;
+}
+
 export function getEpoquePourDate(
     date: DateHistorique,
 ): ReferenceCodex | undefined {
-    const annee = getAnnee(date);
-
     const epoque = epoques.find((entree) => {
         const fiche = getFicheEpoqueBySlug(entree.slug);
 
@@ -27,12 +52,7 @@ export function getEpoquePourDate(
             return false;
         }
 
-        const debut = getAnnee(fiche.periode.debut);
-        const fin = fiche.periode.fin
-            ? getAnnee(fiche.periode.fin)
-            : Number.POSITIVE_INFINITY;
-
-        return annee >= debut && annee <= fin;
+        return dateEstDansPeriode(date, fiche.periode.debut, fiche.periode.fin);
     });
 
     if (!epoque) {
@@ -53,17 +73,14 @@ export function getPersonnagesDeLEpoque(slug: string): ReferenceCodex[] {
         return [];
     }
 
-    const debut = getAnnee(ficheEpoque.periode.debut);
-    const fin = ficheEpoque.periode.fin
-        ? getAnnee(ficheEpoque.periode.fin)
-        : Number.POSITIVE_INFINITY;
-
     return fichesPersonnages
-        .filter((fiche) => {
-            const annee = getAnnee(fiche.premiereApparition.date);
-
-            return annee >= debut && annee <= fin;
-        })
+        .filter((fiche) =>
+            dateEstDansPeriode(
+                fiche.premiereApparition.date,
+                ficheEpoque.periode.debut,
+                ficheEpoque.periode.fin,
+            ),
+        )
         .map((fiche) => getPersonnageBySlug(fiche.slug))
         .filter((personnage) => personnage !== undefined)
         .map((personnage) => ({
@@ -80,17 +97,14 @@ export function getOeuvresDeLEpoque(slug: string): ReferenceCodex[] {
         return [];
     }
 
-    const debut = getAnnee(ficheEpoque.periode.debut);
-    const fin = ficheEpoque.periode.fin
-        ? getAnnee(ficheEpoque.periode.fin)
-        : Number.POSITIVE_INFINITY;
-
     return fichesOeuvres
-        .filter((fiche) => {
-            const annee = getAnnee(fiche.sortie.date);
-
-            return annee >= debut && annee <= fin;
-        })
+        .filter((fiche) =>
+            dateEstDansPeriode(
+                fiche.sortie.date,
+                ficheEpoque.periode.debut,
+                ficheEpoque.periode.fin,
+            ),
+        )
         .map((fiche) => getOeuvreBySlug(fiche.slug))
         .filter((oeuvre) => oeuvre !== undefined)
         .map((oeuvre) => ({
@@ -117,19 +131,14 @@ export function getEpoquesPourContributeur(slug: string): ReferenceCodex[] {
                 return false;
             }
 
-            const debutEpoque = getAnnee(ficheEpoque.periode.debut);
-            const finEpoque = ficheEpoque.periode.fin
-                ? getAnnee(ficheEpoque.periode.fin)
-                : Number.POSITIVE_INFINITY;
-
-            return ficheContributeur.periodesActivite.some((periode) => {
-                const debutActivite = getAnnee(periode.debut);
-                const finActivite = periode.fin
-                    ? getAnnee(periode.fin)
-                    : Number.POSITIVE_INFINITY;
-
-                return debutActivite <= finEpoque && finActivite >= debutEpoque;
-            });
+            return ficheContributeur.periodesActivite.some((periode) =>
+                periodesSeChevauchent(
+                    periode.debut,
+                    periode.fin,
+                    ficheEpoque.periode.debut,
+                    ficheEpoque.periode.fin,
+                ),
+            );
         })
         .map((epoque) => ({
             nom: epoque.nom,
@@ -145,21 +154,16 @@ export function getContributeursDeLEpoque(slug: string): ReferenceCodex[] {
         return [];
     }
 
-    const debutEpoque = getAnnee(ficheEpoque.periode.debut);
-    const finEpoque = ficheEpoque.periode.fin
-        ? getAnnee(ficheEpoque.periode.fin)
-        : Number.POSITIVE_INFINITY;
-
     return fichesContributeurs
         .filter((fiche) =>
-            fiche.periodesActivite.some((periode) => {
-                const debutActivite = getAnnee(periode.debut);
-                const finActivite = periode.fin
-                    ? getAnnee(periode.fin)
-                    : Number.POSITIVE_INFINITY;
-
-                return debutActivite <= finEpoque && finActivite >= debutEpoque;
-            }),
+            fiche.periodesActivite.some((periode) =>
+                periodesSeChevauchent(
+                    periode.debut,
+                    periode.fin,
+                    ficheEpoque.periode.debut,
+                    ficheEpoque.periode.fin,
+                ),
+            ),
         )
         .map((fiche) => getContributeurBySlug(fiche.slug))
         .filter((contributeur) => contributeur !== undefined)
