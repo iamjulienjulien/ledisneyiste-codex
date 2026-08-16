@@ -157,5 +157,28 @@
         "editeur": "D23: The Official Disney Fan Club",
         "url": "https://d23.com/a-to-z/mr-duck-steps-out-film/",
         "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "d23-pluto",
+        "titre": "Pluto",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/pluto/",
+        "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "d23-chain-gang",
+        "titre": "Chain Gang, The (film)",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/chain-gang-the-film/",
+        "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "d23-pluto-90-years",
+        "titre": "A Dog’s “Tail”: Celebrating 90 Years with Pluto",
+        "auteur": "Nicole Carroll",
+        "editeur": "Walt Disney Archives",
+        "datePublication": "2020-09-09",
+        "url": "https://d23.com/a-dogs-tail-celebrating-90-years-with-pluto/",
+        "dateConsultation": "2026-08-16"
     }
 ]

@@ -1,0 +1,29 @@
+{
+    "slug": "pluto",
+    "type": "personnage",
+    "introduction": "Pluto se construit à l’écran avant même de recevoir son nom. D’abord limier dans The Chain Gang, puis chien de Minnie appelé Rover, il devient en 1931 le fidèle compagnon de Mickey. Contrairement à Dingo, Pluto reste pleinement chien : sans parole, il fait passer la peur, la jalousie, l’enthousiasme et la loyauté par le mouvement seul, donnant à l’animation de caractère l’un de ses terrains de jeu les plus expressifs.",
+    "creation": {
+        "date": {
+            "valeur": "1930",
+            "precision": "annee"
+        },
+        "createurs": [
+            {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            }
+        ]
+    },
+    "premiereApparition": {
+        "oeuvre": {
+            "nom": "The Chain Gang"
+        },
+        "date": {
+            "valeur": "1930-09-05",
+            "precision": "jour"
+        }
+    },
+    "espece": "chien",
+    "sources": ["d23-pluto", "d23-chain-gang", "d23-pluto-90-years"]
+}
