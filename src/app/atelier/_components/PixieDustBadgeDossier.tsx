@@ -4,6 +4,10 @@ import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieDustBadge } from "@/components/ui/PixieDustBadge";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
+import {
+    getAtelierAnimationColor,
+    getAtelierAnimationColorSlugs,
+} from "@/registry/colors";
 import { PixieDustBadgePlayground } from "./PixieDustBadgePlayground";
 
 const variants = [
@@ -22,14 +26,46 @@ const variants = [
         value: "plain" as const,
         description: "Libellé seul lorsque le contexte fournit déjà le cadre.",
     },
+    {
+        name: "Plein",
+        value: "solid" as const,
+        description:
+            "Couleur entièrement projetée avec une encre de contraste contrôlée.",
+    },
+] as const;
+
+const sizes = [
+    { name: "Très petit", value: "xs" as const },
+    { name: "Petit", value: "sm" as const },
+    { name: "Moyen", value: "md" as const },
+    { name: "Grand", value: "lg" as const },
+    { name: "Très grand", value: "xl" as const },
 ] as const;
 
 const properties = [
     {
+        name: "registry",
+        type: "MetadataRegistryName",
+        defaultValue: "—",
+        description: "Registre utilisé par le mode métadonnée.",
+    },
+    {
+        name: "collection",
+        type: "MetadataCollectionName",
+        defaultValue: "—",
+        description: "Collection disponible dans le registre choisi.",
+    },
+    {
+        name: "slug",
+        type: "MetadataSlug",
+        defaultValue: "—",
+        description: "Identifiant qui résout le libellé et ses couleurs.",
+    },
+    {
         name: "children",
         type: "ReactNode",
         defaultValue: "—",
-        description: "Libellé bref porté par le cartouche.",
+        description: "Libellé obligatoire uniquement dans le mode libre.",
     },
     {
         name: "variant",
@@ -40,7 +76,7 @@ const properties = [
     {
         name: "tone",
         type: "PixieDustBadgeTone",
-        defaultValue: '"accent"',
+        defaultValue: '"color"',
         description: "Origine de la couleur appliquée au cartouche.",
     },
     {
@@ -62,10 +98,11 @@ const properties = [
         description: "Élément décoratif optionnel placé avant le libellé.",
     },
     {
-        name: "accent",
-        type: "string",
-        defaultValue: "accent du thème",
-        description: "Couleur CSS personnalisée utilisée avec le ton accent.",
+        name: "color",
+        type: "AtelierAnimationColorSlug",
+        defaultValue: "couleur du thème",
+        description:
+            "Nom d’une couleur de L’Atelier d’animation dans le mode libre.",
     },
     {
         name: "className",
@@ -78,23 +115,29 @@ const properties = [
 const specificTypes = [
     {
         name: "PixieDustBadgeVariant",
-        values: ['"soft"', '"outline"', '"plain"'],
-        description: "Trois niveaux d’encadrement du cartouche.",
+        values: ['"soft"', '"outline"', '"plain"', '"solid"'],
+        description: "Quatre niveaux de présence du cartouche.",
     },
     {
         name: "PixieDustBadgeTone",
-        values: ['"neutral"', '"accent"', '"inherit"'],
+        values: ['"neutral"', '"color"', '"inherit"'],
         description: "Trois origines possibles pour sa couleur.",
     },
     {
         name: "PixieDustBadgeSize",
-        values: ['"sm"', '"md"'],
-        description: "Deux densités adaptées aux métadonnées brèves.",
+        values: ['"xs"', '"sm"', '"md"', '"lg"', '"xl"'],
+        description: "Cinq densités, de la série compacte au plan héro.",
     },
     {
         name: "PixieDustBadgeShape",
         values: ['"rounded"', '"pill"'],
         description: "Deux silhouettes sans modifier la densité.",
+    },
+    {
+        name: "AtelierAnimationColorSlug",
+        values: getAtelierAnimationColorSlugs().map((slug) => `"${slug}"`),
+        description:
+            "Vingt noms de couleurs reliés à leur valeur et leur contraste.",
     },
 ] as const;
 
@@ -152,8 +195,8 @@ export function PixieDustBadgeDossier() {
                             PixieDustBadge
                         </h2>
                         <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
-                            Qualifier une information brève sans la transformer
-                            en action ni détourner l’attention du contenu.
+                            Projeter une métadonnée du registre ou qualifier une
+                            information libre sans la transformer en action.
                         </p>
                     </div>
 
@@ -163,7 +206,7 @@ export function PixieDustBadgeDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.1.0
+                                0.2.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -191,7 +234,7 @@ export function PixieDustBadgeDossier() {
                         ["Mission", "Qualifier une information courte."],
                         [
                             "Usage",
-                            "Types d’œuvres, époques, états et métadonnées éditoriales.",
+                            "Catégories, collections, caractéristiques techniques et récompenses.",
                         ],
                         [
                             "Limite",
@@ -199,13 +242,16 @@ export function PixieDustBadgeDossier() {
                         ],
                         [
                             "Tokens",
-                            "Encres, accent, lignes, petits rayons et palette d’animation.",
+                            "Encres de contraste, couleurs, lignes, rayons et palette d’animation.",
                         ],
                         [
                             "Accessibilité",
                             "Libellé autonome ; couleur et icône toujours secondaires.",
                         ],
-                        ["Dépendances", "React et Projection Originale."],
+                        [
+                            "Dépendances",
+                            "React, Projection Originale et registre des métadonnées.",
+                        ],
                     ].map(([term, definition]) => (
                         <div key={term} className="bg-surface p-5">
                             <dt className="text-xs uppercase tracking-[0.16em] text-muted">
@@ -226,17 +272,25 @@ export function PixieDustBadgeDossier() {
                 <SequenceTitle
                     id="cartouche-plan"
                     eyebrow="Plan maître"
-                    title="Le cartouche dans sa forme de référence"
-                    description="La variante douce, le ton accent, la taille moyenne et la forme arrondie constituent le point de départ."
+                    title="Une métadonnée entre en scène depuis son registre"
+                    description="Les coordonnées suffisent : le registre fournit le libellé et le nom de couleur ; PixieDustBadge résout sa valeur et son contraste sans duplication dans l’écran."
                 />
 
                 <div className="mt-7 grid border border-line lg:grid-cols-2">
                     <div className="relative z-[10000] flex min-h-64 items-center justify-center bg-surface p-8">
-                        <PixieDustBadge>Court métrage</PixieDustBadge>
+                        <PixieDustBadge
+                            registry="oeuvres"
+                            collection="types"
+                            slug="court-metrage-anime"
+                            variant="solid"
+                        />
                     </div>
-                    <CodeExample>{`<PixieDustBadge>
-    Court métrage
-</PixieDustBadge>`}</CodeExample>
+                    <CodeExample>{`<PixieDustBadge
+    registry="oeuvres"
+    collection="types"
+    slug="court-metrage-anime"
+    variant="solid"
+/>`}</CodeExample>
                 </div>
             </section>
 
@@ -244,20 +298,23 @@ export function PixieDustBadgeDossier() {
                 <SequenceTitle
                     id="cartouche-variants"
                     eyebrow="Essais caméra"
-                    title="Trois niveaux d’encadrement"
-                    description="La variante répond à la densité de son contexte, sans créer de hiérarchie fonctionnelle."
+                    title="Quatre niveaux de présence"
+                    description="La variante répond à la densité de son contexte ; le nouveau plein projette entièrement la couleur sans modifier le rôle passif."
                 />
 
-                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-3">
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 xl:grid-cols-4">
                     {variants.map((variant) => (
                         <article
                             key={variant.value}
                             className="relative z-[10000] bg-surface p-6"
                         >
                             <div className="flex min-h-28 items-center justify-center">
-                                <PixieDustBadge variant={variant.value}>
-                                    Court métrage
-                                </PixieDustBadge>
+                                <PixieDustBadge
+                                    registry="oeuvres"
+                                    collection="types"
+                                    slug="court-metrage-anime"
+                                    variant={variant.value}
+                                />
                             </div>
                             <h4 className="mt-4 text-xl text-ink">
                                 {variant.name}
@@ -274,8 +331,8 @@ export function PixieDustBadgeDossier() {
                 <SequenceTitle
                     id="cartouche-tones"
                     eyebrow="Direction artistique"
-                    title="Les couleurs du contexte et des métadonnées"
-                    description="Le ton choisit l’origine de la couleur ; accent accepte ensuite une valeur précise de L’Atelier d’animation."
+                    title="Le mode libre emprunte les couleurs du contexte"
+                    description="Lorsqu’aucun registre ne pilote le badge, tone choisit l’origine de sa couleur et color reçoit son nom dans L’Atelier d’animation."
                 />
 
                 <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
@@ -289,10 +346,10 @@ export function PixieDustBadgeDossier() {
                     </article>
                     <article className="bg-surface p-6">
                         <p className="text-xs uppercase tracking-[0.16em] text-muted">
-                            Accent
+                            Couleur
                         </p>
                         <div className="mt-5">
-                            <PixieDustBadge tone="accent">
+                            <PixieDustBadge tone="color">
                                 Court métrage
                             </PixieDustBadge>
                         </div>
@@ -312,9 +369,73 @@ export function PixieDustBadgeDossier() {
                             Personnalisé
                         </p>
                         <div className="mt-5">
-                            <PixieDustBadge accent="var(--atelier-animation-gouache)">
+                            <PixieDustBadge color="gouache">
                                 Animation
                             </PixieDustBadge>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section aria-labelledby="cartouche-registres" className="mt-16">
+                <SequenceTitle
+                    id="cartouche-registres"
+                    eyebrow="Distribution"
+                    title="Quatre registres, un même contrat"
+                    description="Chaque badge reçoit uniquement ses coordonnées ; son texte et son traitement coloré restent centralisés dans le vocabulaire métier."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+                    <article className="bg-surface p-6">
+                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                            Personnages
+                        </p>
+                        <div className="mt-5">
+                            <PixieDustBadge
+                                registry="personnages"
+                                collection="categories"
+                                slug="cercle-de-mickey"
+                                variant="solid"
+                            />
+                        </div>
+                    </article>
+                    <article className="bg-surface p-6">
+                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                            Contributeurs
+                        </p>
+                        <div className="mt-5">
+                            <PixieDustBadge
+                                registry="contributeurs"
+                                collection="categories"
+                                slug="animateur"
+                                variant="solid"
+                            />
+                        </div>
+                    </article>
+                    <article className="bg-surface p-6">
+                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                            Œuvres
+                        </p>
+                        <div className="mt-5">
+                            <PixieDustBadge
+                                registry="oeuvres"
+                                collection="collections"
+                                slug="silly-symphonies"
+                                variant="solid"
+                            />
+                        </div>
+                    </article>
+                    <article className="bg-surface p-6">
+                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                            Récompenses
+                        </p>
+                        <div className="mt-5">
+                            <PixieDustBadge
+                                registry="recompenses"
+                                collection="natures"
+                                slug="honorary"
+                                variant="solid"
+                            />
                         </div>
                     </article>
                 </div>
@@ -324,31 +445,62 @@ export function PixieDustBadgeDossier() {
                 <SequenceTitle
                     id="cartouche-formats"
                     eyebrow="Cadrage"
-                    title="Deux tailles et deux silhouettes"
-                    description="La taille règle la densité ; la forme adapte le cartouche à son environnement."
+                    title="Quatre variantes sur cinq tailles"
+                    description="La matrice vérifie que la densité évolue sans modifier la hiérarchie des variantes ni la stabilité du libellé."
                 />
 
-                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
-                    {[
-                        ["Petit arrondi", "sm", "rounded"],
-                        ["Petit capsule", "sm", "pill"],
-                        ["Moyen arrondi", "md", "rounded"],
-                        ["Moyen capsule", "md", "pill"],
-                    ].map(([label, size, shape]) => (
-                        <article key={label} className="bg-surface p-6">
-                            <p className="text-xs uppercase tracking-[0.16em] text-muted">
-                                {label}
-                            </p>
-                            <div className="mt-5">
-                                <PixieDustBadge
-                                    size={size as "sm" | "md"}
-                                    shape={shape as "rounded" | "pill"}
-                                >
-                                    Époque
-                                </PixieDustBadge>
+                <div className="mt-7 overflow-hidden border border-line bg-line">
+                    {variants.map((variant) => (
+                        <article
+                            key={variant.value}
+                            className="grid gap-px border-b border-line bg-line last:border-b-0 lg:grid-cols-[12rem_1fr]"
+                        >
+                            <div className="bg-surface-muted p-5">
+                                <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                                    {variant.name}
+                                </p>
+                            </div>
+                            <div className="flex flex-wrap items-center gap-5 bg-surface p-5">
+                                {sizes.map((size) => (
+                                    <PixieDustBadge
+                                        key={size.value}
+                                        registry="oeuvres"
+                                        collection="couleurs"
+                                        slug="couleur"
+                                        variant={variant.value}
+                                        size={size.value}
+                                    />
+                                ))}
                             </div>
                         </article>
                     ))}
+                </div>
+            </section>
+
+            <section aria-labelledby="cartouche-palette" className="mt-16">
+                <SequenceTitle
+                    id="cartouche-palette"
+                    eyebrow="Essai Technicolor"
+                    title="Le plein traverse les vingt références"
+                    description="Chaque couleur est associée à une encre claire ou sombre dans le registre afin que la variante pleine reste lisible dans les deux lumières."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+                    {getAtelierAnimationColorSlugs().map((slug) => {
+                        const color = getAtelierAnimationColor(slug);
+
+                        return (
+                            <article key={slug} className="bg-surface p-5">
+                                <PixieDustBadge
+                                    variant="solid"
+                                    size="sm"
+                                    color={slug}
+                                >
+                                    {color.label}
+                                </PixieDustBadge>
+                            </article>
+                        );
+                    })}
                 </div>
             </section>
 

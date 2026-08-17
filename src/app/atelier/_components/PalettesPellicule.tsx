@@ -1,13 +1,8 @@
 "use client";
 
 import { useState } from "react";
-
-type CouleurReference = {
-    nom: string;
-    token: `--${string}`;
-    valeur: `#${string}`;
-    encre: "claire" | "sombre";
-};
+import { colorsAtelierAnimation } from "@/registry/colors";
+import type { CouleurReference } from "@/types/colors";
 
 const projectionSombre = [
     {
@@ -165,128 +160,12 @@ const projectionClaire = [
     },
 ] as const satisfies readonly CouleurReference[];
 
-const atelierAnimation = [
-    {
-        nom: "Encre",
-        token: "--atelier-animation-encre",
-        valeur: "#15171D",
-        encre: "claire",
-    },
-    {
-        nom: "Table lumineuse",
-        token: "--atelier-animation-table-lumineuse",
-        valeur: "#252A32",
-        encre: "claire",
-    },
-    {
-        nom: "Graphite",
-        token: "--atelier-animation-graphite",
-        valeur: "#88838C",
-        encre: "sombre",
-    },
-    {
-        nom: "Papier animation",
-        token: "--atelier-animation-papier-animation",
-        valeur: "#F1E7D2",
-        encre: "sombre",
-    },
-    {
-        nom: "Rouge crayon",
-        token: "--atelier-animation-rouge-crayon",
-        valeur: "#C06464",
-        encre: "sombre",
-    },
-    {
-        nom: "Corail cel",
-        token: "--atelier-animation-corail-cel",
-        valeur: "#C5785C",
-        encre: "sombre",
-    },
-    {
-        nom: "Sépia storyboard",
-        token: "--atelier-animation-sepia-storyboard",
-        valeur: "#9A735D",
-        encre: "sombre",
-    },
-    {
-        nom: "Orange banc-titre",
-        token: "--atelier-animation-orange-banc-titre",
-        valeur: "#C88952",
-        encre: "sombre",
-    },
-    {
-        nom: "Ambre projecteur",
-        token: "--atelier-animation-ambre-projecteur",
-        valeur: "#B98745",
-        encre: "sombre",
-    },
-    {
-        nom: "Jaune lampe",
-        token: "--atelier-animation-jaune-lampe",
-        valeur: "#D3AC55",
-        encre: "sombre",
-    },
-    {
-        nom: "Olive décor",
-        token: "--atelier-animation-olive-decor",
-        valeur: "#89945F",
-        encre: "sombre",
-    },
-    {
-        nom: "Vert cellulo",
-        token: "--atelier-animation-vert-cellulo",
-        valeur: "#6E9A87",
-        encre: "sombre",
-    },
-    {
-        nom: "Turquoise acétate",
-        token: "--atelier-animation-turquoise-acetate",
-        valeur: "#57959A",
-        encre: "sombre",
-    },
-    {
-        nom: "Cyan effets optiques",
-        token: "--atelier-animation-cyan-effets-optiques",
-        valeur: "#62A4B2",
-        encre: "sombre",
-    },
-    {
-        nom: "Bleu repérage",
-        token: "--atelier-animation-bleu-reperage",
-        valeur: "#5E88AD",
-        encre: "sombre",
-    },
-    {
-        nom: "Indigo nuit studio",
-        token: "--atelier-animation-indigo-nuit-studio",
-        valeur: "#6875A4",
-        encre: "claire",
-    },
-    {
-        nom: "Violet ombre portée",
-        token: "--atelier-animation-violet-ombre-portee",
-        valeur: "#78658F",
-        encre: "claire",
-    },
-    {
-        nom: "Gouache",
-        token: "--atelier-animation-gouache",
-        valeur: "#9172A7",
-        encre: "sombre",
-    },
-    {
-        nom: "Rose aérographe",
-        token: "--atelier-animation-rose-aerographe",
-        valeur: "#B87591",
-        encre: "sombre",
-    },
-    {
-        nom: "Framboise encrage",
-        token: "--atelier-animation-framboise-encrage",
-        valeur: "#AA6077",
-        encre: "sombre",
-    },
-] as const satisfies readonly CouleurReference[];
+const atelierAnimation = Object.values(colorsAtelierAnimation).map((color) => ({
+    nom: color.label,
+    token: color.token,
+    valeur: color.value,
+    encre: color.foreground === "light" ? "claire" : "sombre",
+})) satisfies readonly CouleurReference[];
 
 const rolesSemantiques = [
     ["Canvas", "bg-canvas", "bg-canvas", "Fond général"],
