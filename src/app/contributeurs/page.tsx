@@ -48,7 +48,7 @@ export default function ContributeursPage() {
                                 href={`/contributeurs/${contributeur.slug}`}
                                 className="group block py-6"
                             >
-                                <h2 className="text-2xl text-ink transition-colors group-hover:text-famille-createurs">
+                                <h2 className="text-2xl text-ink transition-colors group-hover:text-famille-createurs group-focus-visible:text-famille-createurs">
                                     {contributeur.nom}
                                 </h2>
 

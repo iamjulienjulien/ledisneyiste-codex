@@ -48,7 +48,7 @@ export default function PersonnagesPage() {
                                 href={`/personnages/${personnage.slug}`}
                                 className="group block py-6"
                             >
-                                <h2 className="text-2xl text-ink transition-colors group-hover:text-famille-personnages">
+                                <h2 className="text-2xl text-ink transition-colors group-hover:text-famille-personnages group-focus-visible:text-famille-personnages">
                                     {personnage.nom}
                                 </h2>
 

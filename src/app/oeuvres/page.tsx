@@ -47,7 +47,7 @@ export default function OeuvresPage() {
                                 href={`/oeuvres/${oeuvre.slug}`}
                                 className="group block py-6"
                             >
-                                <h2 className="text-2xl text-ink transition-colors group-hover:text-famille-oeuvres">
+                                <h2 className="text-2xl text-ink transition-colors group-hover:text-famille-oeuvres group-focus-visible:text-famille-oeuvres">
                                     {oeuvre.nom}
                                 </h2>
 

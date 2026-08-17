@@ -47,7 +47,7 @@ export default function EpoquesPage() {
                                 href={`/epoques/${epoque.slug}`}
                                 className="group block py-6"
                             >
-                                <h2 className="text-2xl text-ink transition-colors group-hover:text-famille-epoques">
+                                <h2 className="text-2xl text-ink transition-colors group-hover:text-famille-epoques group-focus-visible:text-famille-epoques">
                                     {epoque.nom}
                                 </h2>
 
