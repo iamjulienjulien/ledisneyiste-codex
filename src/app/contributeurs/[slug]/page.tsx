@@ -11,6 +11,7 @@ import { CodexFicheHeader } from "@/components/codex/CodexFicheHeader";
 import { CodexSources } from "@/components/codex/CodexSources";
 import { CodexRelations } from "@/components/codex/CodexRelations";
 import { CodexBlocsEditoriaux } from "@/components/codex/CodexBlocsEditoriaux";
+import { PixieBadge } from "@/components/ui/PixieBadge";
 import { getEpoquesPourContributeur } from "@/data/epoques/relations";
 
 import { formatDateHistorique } from "@/lib/date";
@@ -72,6 +73,23 @@ export default async function ContributeurPage({
                 sousTitre={contributeur.sousTitre}
                 introduction={fiche.introduction}
             />
+
+            <ul
+                aria-label="Métadonnées du créateur"
+                className="mt-8 flex flex-wrap gap-2"
+            >
+                {contributeur.metadata.categories.map((category) => (
+                    <li key={category}>
+                        <PixieBadge
+                            registry="contributeurs"
+                            collection="categories"
+                            slug={category}
+                            size="sm"
+                            shape="pill"
+                        />
+                    </li>
+                ))}
+            </ul>
 
             <dl className="mt-12 grid gap-8 sm:grid-cols-2">
                 <div>

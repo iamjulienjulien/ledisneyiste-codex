@@ -5,6 +5,7 @@ import { CodexReferenceLink } from "@/components/codex/CodexReferenceLink";
 import { CodexSources } from "@/components/codex/CodexSources";
 import { CodexEpoque } from "@/components/codex/CodexEpoque";
 import { CodexBlocsEditoriaux } from "@/components/codex/CodexBlocsEditoriaux";
+import { PixieBadge } from "@/components/ui/PixieBadge";
 import { getEpoquePourDate } from "@/data/epoques/relations";
 import { getOeuvreBySlug, oeuvres } from "@/data/catalogues";
 import { getFicheOeuvreBySlug } from "@/data/oeuvres";
@@ -64,6 +65,48 @@ export default async function OeuvrePage({
                 sousTitre={oeuvre.sousTitre}
                 introduction={fiche.introduction}
             />
+
+            <ul
+                aria-label="Métadonnées de l’œuvre"
+                className="mt-8 flex flex-wrap gap-2"
+            >
+                <li>
+                    <PixieBadge
+                        registry="oeuvres"
+                        collection="collections"
+                        slug={oeuvre.metadata.collection}
+                        size="sm"
+                        shape="pill"
+                    />
+                </li>
+                <li>
+                    <PixieBadge
+                        registry="oeuvres"
+                        collection="types"
+                        slug={oeuvre.metadata.type}
+                        size="sm"
+                        shape="pill"
+                    />
+                </li>
+                <li>
+                    <PixieBadge
+                        registry="oeuvres"
+                        collection="sons"
+                        slug={oeuvre.metadata.son}
+                        size="sm"
+                        shape="pill"
+                    />
+                </li>
+                <li>
+                    <PixieBadge
+                        registry="oeuvres"
+                        collection="couleurs"
+                        slug={oeuvre.metadata.couleur}
+                        size="sm"
+                        shape="pill"
+                    />
+                </li>
+            </ul>
 
             <dl className="mt-12 grid gap-8 sm:grid-cols-2">
                 <div>

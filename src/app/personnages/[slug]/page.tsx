@@ -10,6 +10,7 @@ import { CodexSources } from "@/components/codex/CodexSources";
 import { CodexRelations } from "@/components/codex/CodexRelations";
 import { CodexEpoque } from "@/components/codex/CodexEpoque";
 import { CodexBlocsEditoriaux } from "@/components/codex/CodexBlocsEditoriaux";
+import { PixieBadge } from "@/components/ui/PixieBadge";
 import { getEpoquePourDate } from "@/data/epoques/relations";
 import { formatDateHistorique } from "@/lib/date";
 
@@ -67,6 +68,23 @@ export default async function PersonnagePage({
                 sousTitre={personnage.sousTitre}
                 introduction={fiche.introduction}
             />
+
+            <ul
+                aria-label="Métadonnées du personnage"
+                className="mt-8 flex flex-wrap gap-2"
+            >
+                {personnage.metadata.categories.map((category) => (
+                    <li key={category}>
+                        <PixieBadge
+                            registry="personnages"
+                            collection="categories"
+                            slug={category}
+                            size="sm"
+                            shape="pill"
+                        />
+                    </li>
+                ))}
+            </ul>
 
             <dl className="mt-12 grid gap-8 sm:grid-cols-2">
                 <div>
