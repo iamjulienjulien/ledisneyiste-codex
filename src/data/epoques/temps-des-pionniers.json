@@ -1,7 +1,27 @@
 {
     "slug": "temps-des-pionniers",
     "type": "epoque",
-    "introduction": "",
+    "introduction": "Entre 1923 et 1936, Disney n’est pas encore l’empire que son nom finira par désigner. C’est un studio fragile qui apprend à survivre en changeant de personnages, de techniques et d’échelle. Des Alice Comedies à Oswald, puis de la perte d’Oswald à la naissance de Mickey, chaque rupture oblige Walt, Roy et leurs collaborateurs à reconstruire. Le son, la musique, la couleur et l’animation de personnalité transforment alors le court métrage en laboratoire. À la fin de la période, les expériences accumulées rendent imaginable un pari qui semblait jusque-là déraisonnable : raconter une histoire animée pendant toute la durée d’un long métrage.",
+    "blocsEditoriaux": [
+        {
+            "eyebrow": "1923–1928",
+            "titre": "Fonder un studio, perdre un personnage, apprendre à posséder le suivant",
+            "paragraphes": [
+                "Le 16 octobre 1923, le contrat des Alice Comedies réunit Walt et Roy Disney dans une entreprise commune. La série place une jeune actrice réelle dans un monde dessiné et donne au petit atelier de Kingswell Avenue le travail régulier dont il a besoin pour devenir un studio.",
+                "En 1927, Oswald le lapin chanceux permet à Disney de passer à une série entièrement animée. Mais le personnage appartient au distributeur. Lorsque Walt demande de meilleures conditions, il découvre qu’il perd à la fois les droits sur Oswald et une grande partie de son équipe. La crise révèle brutalement la fragilité d’un studio dépendant de contrats qu’il ne maîtrise pas.",
+                "Mickey naît de cette rupture avec l’aide décisive d’Ub Iwerks. Les deux premiers films demeurent difficiles à vendre dans un marché bouleversé par le son ; le troisième, Steamboat Willie, associe le personnage à une synchronisation assez précise pour en faire un événement. En novembre 1928, Disney ne possède plus seulement une nouvelle vedette : il tient le centre autour duquel reconstruire son indépendance."
+            ]
+        },
+        {
+            "eyebrow": "1929–1936",
+            "titre": "Transformer le court métrage en terrain d’expériences",
+            "paragraphes": [
+                "Le succès de Mickey pourrait inviter le studio à répéter une formule. Les Silly Symphonies ouvrent au contraire un second espace de recherche : chaque film peut changer de personnages et laisser la musique, l’atmosphère ou une idée visuelle guider le récit.",
+                "Son synchronisé, couleur, profondeur des décors et jeu des personnages progressent à travers une production régulière. Pendant que Mickey se stabilise, Pluto, Dingo et Donald élargissent le cercle comique du studio. Les courts métrages paient les factures, forment les artistes et permettent d’éprouver des solutions avant de les engager dans une œuvre plus longue.",
+                "À partir de 1934, ces apprentissages convergent vers Blanche-Neige et les Sept Nains. Sa production appartient encore au temps des pionniers : elle mobilise un studio qui doit inventer comment soutenir l’émotion, la cohérence graphique et le rythme sur plus d’une heure. Sa première en décembre 1937 ouvrira l’Époque suivante."
+            ]
+        }
+    ],
     "periode": {
         "debut": {
             "valeur": "1923",
@@ -13,5 +33,9 @@
         }
     },
     "description": "Les années où Disney se construit comme studio, laboratoire d’animation et fabrique de personnages, jusqu’au basculement provoqué par Blanche-Neige et les Sept Nains.",
-    "sources": []
+    "sources": [
+        "d23-disney-history",
+        "wdfm-first-disney-bros-movie",
+        "wdfm-composing-silly-symphonies"
+    ]
 }

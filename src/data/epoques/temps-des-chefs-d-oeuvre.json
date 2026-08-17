@@ -1,7 +1,27 @@
 {
     "slug": "temps-des-chefs-d-oeuvre",
     "type": "epoque",
-    "introduction": "",
+    "introduction": "De 1937 à 1941, le succès de Blanche-Neige et les Sept Nains fait entrer Disney dans une activité nouvelle : le long métrage d’animation devient le lieu principal où le studio éprouve ses ambitions. Pinocchio, Fantasia et Dumbo ne répètent pourtant pas une formule victorieuse. Chacun déplace le rapport au personnage, à la musique, à la technique ou à l’économie du récit. Cette concentration exceptionnelle d’inventions repose sur un équilibre fragile. La guerre ferme des marchés essentiels, les coûts pèsent sur le studio et Bambi, sorti en 1942 à la borne de l’Époque, marque la fin de cette première poussée continue de grands longs métrages.",
+    "blocsEditoriaux": [
+        {
+            "eyebrow": "Changer d’échelle",
+            "titre": "Faire du long métrage le nouveau laboratoire du studio",
+            "paragraphes": [
+                "La première de Blanche-Neige et les Sept Nains, le 21 décembre 1937, ne valide pas seulement un film risqué. Son succès prouve qu’un récit entièrement animé peut porter pendant plus d’une heure des personnages, une émotion et un monde visuel capables de toucher un large public.",
+                "Les revenus du film permettent à Disney de construire un nouveau studio à Burbank et de renforcer ses équipes. Pinocchio pousse plus loin la cohérence des personnages, la profondeur des décors et la précision technique. Fantasia tente de réorganiser le spectacle autour de la musique et d’une expérience sonore conçue pour la salle.",
+                "Le long métrage devient ainsi moins un format à remplir qu’un ensemble de problèmes nouveaux. Chaque production oblige les artistes à coordonner davantage le récit, le dessin, la couleur, les effets et le son. Les compétences développées pendant le temps des pionniers changent désormais d’échelle."
+            ]
+        },
+        {
+            "eyebrow": "Fragilité",
+            "titre": "Découvrir que l’ambition artistique ne garantit pas l’équilibre",
+            "paragraphes": [
+                "Pinocchio et Fantasia sont reconnus pour leur ambition, mais leurs coûts rencontrent une réalité que le studio ne contrôle pas : la guerre réduit fortement l’accès aux marchés internationaux. Le succès de Blanche-Neige ne suffit pas à protéger durablement un modèle de production aussi exigeant.",
+                "Dumbo répond en 1941 par une économie plus resserrée. Son histoire simple, son dessin plus direct et sa production contrainte montrent que l’émotion ne dépend pas nécessairement de la dépense ou de la profusion technique. Le film devient le premier long métrage bénéficiaire du studio depuis Blanche-Neige.",
+                "Bambi poursuit parallèlement une recherche coûteuse sur les animaux et la nature. Sa sortie en 1942 se place à la borne exclusive de cette Époque : elle n’y est pas rattachée automatiquement, mais elle en forme le seuil narratif. Après elle, la guerre, les commandes gouvernementales et les films constitués de plusieurs segments imposent au studio une autre manière d’avancer."
+            ]
+        }
+    ],
     "periode": {
         "debut": {
             "valeur": "1937",
@@ -12,6 +32,11 @@
             "precision": "annee"
         }
     },
-    "description": "Après le triomphe de Blanche-Neige et les Sept Nains, Disney fait du long métrage d’animation son nouveau laboratoire. Pinocchio, Fantasia, Dumbo et Bambi poussent le dessin, le mouvement, la musique et la mise en scène vers de nouvelles ambitions, tandis que les coûts, la guerre et la fragilité des marchés internationaux commencent à refermer cette parenthèse exceptionnelle.",
-    "sources": []
+    "description": "Après le triomphe de Blanche-Neige et les Sept Nains, Disney fait du long métrage d’animation son nouveau laboratoire. Pinocchio, Fantasia et Dumbo poussent le dessin, le mouvement, la musique et la mise en scène vers de nouvelles ambitions, tandis que les coûts, la guerre et la fragilité des marchés internationaux referment progressivement cette parenthèse exceptionnelle. Bambi, sorti en 1942, en marque le seuil extérieur.",
+    "sources": [
+        "d23-disney-history",
+        "wdfm-snow-white-legacy",
+        "wdfm-pinocchio-importance",
+        "wdfm-dumbo-characters"
+    ]
 }

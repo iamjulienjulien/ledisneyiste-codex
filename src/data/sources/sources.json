@@ -360,5 +360,55 @@
         "datePublication": "2019-04-02",
         "url": "https://d23.com/this-day/disney-legend-john-lounsbery-is-born-2/",
         "dateConsultation": "2026-08-16"
+    },
+    {
+        "id": "d23-disney-history",
+        "titre": "Disney History",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/disney-history/",
+        "dateConsultation": "2026-08-17"
+    },
+    {
+        "id": "wdfm-first-disney-bros-movie",
+        "titre": "100 Years Ago: The First Disney Bros. Movie",
+        "editeur": "The Walt Disney Family Museum",
+        "datePublication": "2023-10-16",
+        "url": "https://www.waltdisney.org/blog/100-years-ago-first-disney-bros-movie",
+        "dateConsultation": "2026-08-17"
+    },
+    {
+        "id": "wdfm-composing-silly-symphonies",
+        "titre": "Composing Walt Disney’s Silly Symphonies with Historian Ross Care: Stalling After Mickey",
+        "auteur": "Ross Care",
+        "editeur": "The Walt Disney Family Museum",
+        "datePublication": "2019-08-19",
+        "url": "https://www.waltdisney.org/blog/composing-walt-disneys-silly-symphonies-historian-ross-care-stalling-after-mickey",
+        "dateConsultation": "2026-08-17"
+    },
+    {
+        "id": "wdfm-snow-white-legacy",
+        "titre": "80 Years Later—The Legacy of Walt Disney’s Snow White and the Seven Dwarfs",
+        "auteur": "Lucas O. Seastrom",
+        "editeur": "The Walt Disney Family Museum",
+        "datePublication": "2017-12-13",
+        "url": "https://www.waltdisney.org/blog/snow-white-and-seven-dwarfs-characters",
+        "dateConsultation": "2026-08-17"
+    },
+    {
+        "id": "wdfm-pinocchio-importance",
+        "titre": "Paving the Way for Success: The Importance of Pinocchio",
+        "auteur": "Chris Mullen",
+        "editeur": "The Walt Disney Family Museum",
+        "datePublication": "2016-06-08",
+        "url": "https://www.waltdisney.org/blog/paving-way-success-importance-pinocchio",
+        "dateConsultation": "2026-08-17"
+    },
+    {
+        "id": "wdfm-dumbo-characters",
+        "titre": "Flying to New Heights: Celebrating 75 Years of Walt Disney’s Dumbo",
+        "editeur": "The Walt Disney Family Museum",
+        "datePublication": "2016-10-19",
+        "url": "https://www.waltdisney.org/blog/dumbo-characters",
+        "dateConsultation": "2026-08-17"
     }
 ]
