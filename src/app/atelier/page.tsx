@@ -1,4 +1,5 @@
 import { BoutonDossier } from "./_components/BoutonDossier";
+import { PalettesPellicule } from "./_components/PalettesPellicule";
 
 const categories = [
     {
@@ -54,57 +55,6 @@ const categories = [
             "États, alertes et transitions qui rendent visibles les réactions de l’interface.",
         statut: "Hors champ",
         href: null,
-    },
-] as const;
-
-const couleurs = [
-    {
-        nom: "Canvas",
-        token: "bg-canvas",
-        classe: "bg-canvas",
-        usage: "Fond général",
-    },
-    {
-        nom: "Surface",
-        token: "bg-surface",
-        classe: "bg-surface",
-        usage: "Premier niveau",
-    },
-    {
-        nom: "Surface muted",
-        token: "bg-surface-muted",
-        classe: "bg-surface-muted",
-        usage: "Second niveau",
-    },
-    {
-        nom: "Ink",
-        token: "text-ink",
-        classe: "bg-ink",
-        usage: "Texte principal",
-    },
-    {
-        nom: "Ink soft",
-        token: "text-ink-soft",
-        classe: "bg-ink-soft",
-        usage: "Texte courant",
-    },
-    {
-        nom: "Muted",
-        token: "text-muted",
-        classe: "bg-muted",
-        usage: "Information discrète",
-    },
-    {
-        nom: "Accent",
-        token: "text-accent",
-        classe: "bg-accent",
-        usage: "Action et repère",
-    },
-    {
-        nom: "Line",
-        token: "border-line",
-        classe: "bg-line",
-        usage: "Séparation",
     },
 ] as const;
 
@@ -235,42 +185,19 @@ export default function AtelierPage() {
                         01 · La Pellicule
                     </p>
                     <h2 id="pellicule-title" className="mt-3 text-4xl text-ink">
-                        Les fondations de la Projection Originale
+                        Les couleurs de la salle et de ce qu’elle projette
                     </h2>
                     <p className="mt-5 leading-7 text-ink-soft">
-                        Ces tokens sémantiques forment le contrat entre la
-                        projection et l’interface. Les futurs composants les
-                        utiliseront sans dépendre directement de leurs valeurs.
+                        Deux palettes se partagent le travail. Projection
+                        Originale met en scène l’interface ; L’Atelier
+                        d’animation apporte les couleurs éditoriales qui
+                        distingueront les familles et leurs métadonnées.
                     </p>
                 </div>
 
-                <div className="mt-10">
-                    <h3 className="text-2xl text-ink">Lumières et encres</h3>
-                    <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                        {couleurs.map((couleur) => (
-                            <article
-                                key={couleur.nom}
-                                className="border border-line bg-surface p-4"
-                            >
-                                <div
-                                    aria-hidden="true"
-                                    className={`h-20 border border-line ${couleur.classe}`}
-                                />
-                                <h4 className="mt-4 text-lg text-ink">
-                                    {couleur.nom}
-                                </h4>
-                                <p className="mt-1 font-mono text-xs text-accent">
-                                    {couleur.token}
-                                </p>
-                                <p className="mt-3 text-sm text-muted">
-                                    {couleur.usage}
-                                </p>
-                            </article>
-                        ))}
-                    </div>
-                </div>
+                <PalettesPellicule />
 
-                <div className="mt-12 grid gap-6 lg:grid-cols-2">
+                <div className="mt-16 grid gap-6 border-t border-line pt-12 lg:grid-cols-2">
                     <article className="border border-line bg-surface p-6 sm:p-8">
                         <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted">
                             Typographie d’affiche

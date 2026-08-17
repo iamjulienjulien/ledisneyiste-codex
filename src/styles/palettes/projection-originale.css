@@ -1,0 +1,148 @@
+/* ============================================================
+   PALETTE · PROJECTION ORIGINALE
+   ============================================================ */
+
+/*
+ * Les couleurs de référence qui composent l'interface du Codex.
+ * Les composants ne consomment pas directement ces valeurs : les Lumières
+ * les distribuent dans les tokens sémantiques --projection-*.
+ */
+
+:root,
+[data-projection="originale"] {
+    /* Lumière sombre */
+    --projection-originale-noir-de-salle: #111018;
+    --projection-originale-ombre-projetee: #181621;
+    --projection-originale-pellicule: #201d29;
+    --projection-originale-perforation: #302b3a;
+    --projection-originale-bobine: #4b4359;
+    --projection-originale-argentique: #91899b;
+    --projection-originale-intertitre: #c9c2ce;
+    --projection-originale-ecran: #f6f1e8;
+    --projection-originale-lueur-technicolor: #b7a2df;
+    --projection-originale-halo-technicolor: #d0c0ef;
+    --projection-originale-bain-violet: #282137;
+    --projection-originale-contrechamp: #16131d;
+
+    /* Lumière claire */
+    --projection-originale-papier-projection: #f7f4ee;
+    --projection-originale-toile: #fffdf8;
+    --projection-originale-nitrate: #f0ece5;
+    --projection-originale-encre: #211e26;
+    --projection-originale-encre-douce: #5f5966;
+    --projection-originale-poussiere: #857e8b;
+    --projection-originale-filet: #ded8e1;
+    --projection-originale-bobine-claire: #c7bdcd;
+    --projection-originale-violet-generique: #51446f;
+    --projection-originale-violet-generique-profond: #403657;
+    --projection-originale-lavande-diffuse: #ede8f3;
+    --projection-originale-carton-lumiere: #fffaf2;
+    --projection-originale-violet-repere: #75658f;
+}
+
+/* Lumière native : la salle s'efface pour que le contenu devienne lumière. */
+:root,
+[data-projection="originale"][data-lumiere="sombre"] {
+    color-scheme: dark;
+
+    --projection-canvas: var(--projection-originale-noir-de-salle);
+    --projection-surface: var(--projection-originale-ombre-projetee);
+    --projection-surface-muted: var(--projection-originale-pellicule);
+
+    --projection-ink: var(--projection-originale-ecran);
+    --projection-ink-soft: var(--projection-originale-intertitre);
+    --projection-muted: var(--projection-originale-argentique);
+
+    --projection-line: var(--projection-originale-perforation);
+    --projection-line-strong: var(--projection-originale-bobine);
+
+    --projection-accent: var(--projection-originale-lueur-technicolor);
+    --projection-accent-hover: var(--projection-originale-halo-technicolor);
+    --projection-accent-soft: var(--projection-originale-bain-violet);
+    --projection-accent-contrast: var(--projection-originale-contrechamp);
+
+    --projection-focus: var(--projection-originale-lueur-technicolor);
+    --projection-selection: color-mix(
+        in srgb,
+        var(--projection-originale-lueur-technicolor) 20%,
+        transparent
+    );
+
+    --projection-shadow-soft: 0 16px 50px rgb(0 0 0 / 0.28);
+
+    --projection-light-glow: color-mix(
+        in srgb,
+        var(--projection-originale-lueur-technicolor) 8%,
+        transparent
+    );
+    --projection-grain-opacity: 0.035;
+    --projection-beam: color-mix(
+        in srgb,
+        var(--projection-originale-ecran) 8%,
+        transparent
+    );
+    --projection-beam-edge: color-mix(
+        in srgb,
+        var(--projection-originale-lueur-technicolor) 18%,
+        transparent
+    );
+    --projection-door-glow: color-mix(
+        in srgb,
+        var(--projection-originale-lueur-technicolor) 8%,
+        transparent
+    );
+}
+
+/* Déclinaison claire, déjà définie mais sans sélecteur utilisateur. */
+[data-projection="originale"][data-lumiere="claire"] {
+    color-scheme: light;
+
+    --projection-canvas: var(--projection-originale-papier-projection);
+    --projection-surface: var(--projection-originale-toile);
+    --projection-surface-muted: var(--projection-originale-nitrate);
+
+    --projection-ink: var(--projection-originale-encre);
+    --projection-ink-soft: var(--projection-originale-encre-douce);
+    --projection-muted: var(--projection-originale-poussiere);
+
+    --projection-line: var(--projection-originale-filet);
+    --projection-line-strong: var(--projection-originale-bobine-claire);
+
+    --projection-accent: var(--projection-originale-violet-generique);
+    --projection-accent-hover: var(
+        --projection-originale-violet-generique-profond
+    );
+    --projection-accent-soft: var(--projection-originale-lavande-diffuse);
+    --projection-accent-contrast: var(--projection-originale-carton-lumiere);
+
+    --projection-focus: var(--projection-originale-violet-repere);
+    --projection-selection: color-mix(
+        in srgb,
+        var(--projection-originale-violet-generique) 20%,
+        transparent
+    );
+
+    --projection-shadow-soft: 0 12px 40px rgb(33 30 38 / 0.06);
+
+    --projection-light-glow: color-mix(
+        in srgb,
+        var(--projection-originale-violet-generique) 6%,
+        transparent
+    );
+    --projection-grain-opacity: 0.022;
+    --projection-beam: color-mix(
+        in srgb,
+        var(--projection-originale-violet-generique) 6%,
+        transparent
+    );
+    --projection-beam-edge: color-mix(
+        in srgb,
+        var(--projection-originale-violet-generique) 12%,
+        transparent
+    );
+    --projection-door-glow: color-mix(
+        in srgb,
+        var(--projection-originale-violet-generique) 6%,
+        transparent
+    );
+}

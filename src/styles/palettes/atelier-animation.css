@@ -1,0 +1,28 @@
+/* ============================================================
+   PALETTE · L'ATELIER D'ANIMATION
+   ============================================================ */
+
+/*
+ * Les couleurs éditoriales du Codex.
+ * Elles qualifient les familles, les métadonnées, les symboles et les badges
+ * sans modifier les surfaces ni la hiérarchie générale de l'interface.
+ */
+
+:root {
+    --atelier-animation-encre: #15171d;
+    --atelier-animation-table-lumineuse: #252a32;
+    --atelier-animation-graphite: #88838c;
+    --atelier-animation-papier-animation: #f1e7d2;
+    --atelier-animation-bleu-reperage: #5e88ad;
+    --atelier-animation-rouge-crayon: #c06464;
+    --atelier-animation-jaune-lampe: #d3ac55;
+    --atelier-animation-vert-cellulo: #6e9a87;
+    --atelier-animation-gouache: #9172a7;
+    --atelier-animation-corail-cel: #c5785c;
+
+    /* Premiers rôles éditoriaux */
+    --atelier-famille-personnages: var(--atelier-animation-rouge-crayon);
+    --atelier-famille-createurs: var(--atelier-animation-jaune-lampe);
+    --atelier-famille-oeuvres: var(--atelier-animation-gouache);
+    --atelier-famille-epoques: var(--atelier-animation-vert-cellulo);
+}

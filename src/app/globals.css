@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "../styles/palettes/projection-originale.css";
+@import "../styles/palettes/atelier-animation.css";
 
 /* ============================================================
    PROJECTIONS
@@ -52,104 +54,6 @@
 }
 
 /* ============================================================
-   PROJECTION ORIGINALE · LUMIÈRE SOMBRE
-   ============================================================ */
-
-/*
- * Lumière native du Codex.
- *
- * La salle est sombre par défaut : le contenu devient la lumière.
- */
-
-:root,
-[data-projection="originale"][data-lumiere="sombre"] {
-    color-scheme: dark;
-
-    /* Surfaces */
-    --projection-canvas: #111018;
-    --projection-surface: #181621;
-    --projection-surface-muted: #201d29;
-
-    /* Encres */
-    --projection-ink: #f6f1e8;
-    --projection-ink-soft: #c9c2ce;
-    --projection-muted: #91899b;
-
-    /* Lignes */
-    --projection-line: #302b3a;
-    --projection-line-strong: #4b4359;
-
-    /* Accent */
-    --projection-accent: #b7a2df;
-    --projection-accent-hover: #d0c0ef;
-    --projection-accent-soft: #282137;
-    --projection-accent-contrast: #16131d;
-
-    /* États */
-    --projection-focus: #b7a2df;
-    --projection-selection: #b7a2df33;
-
-    /* Ombres */
-    --projection-shadow-soft: 0 16px 50px rgb(0 0 0 / 0.28);
-
-    /* Lumière */
-    --projection-light-glow: rgb(183 162 223 / 0.08);
-    --projection-grain-opacity: 0.035;
-    --projection-beam: rgb(246 241 232 / 0.08);
-    --projection-beam-edge: rgb(183 162 223 / 0.18);
-    --projection-door-glow: rgb(183 162 223 / 0.08);
-}
-
-/* ============================================================
-   PROJECTION ORIGINALE · LUMIÈRE CLAIRE
-   ============================================================ */
-
-/*
- * Déclinaison claire de la Projection Originale.
- *
- * Elle existe déjà dans le langage visuel mais aucun mécanisme
- * utilisateur ne permet encore de la sélectionner.
- */
-
-[data-projection="originale"][data-lumiere="claire"] {
-    color-scheme: light;
-
-    /* Surfaces */
-    --projection-canvas: #f7f4ee;
-    --projection-surface: #fffdf8;
-    --projection-surface-muted: #f0ece5;
-
-    /* Encres */
-    --projection-ink: #211e26;
-    --projection-ink-soft: #5f5966;
-    --projection-muted: #857e8b;
-
-    /* Lignes */
-    --projection-line: #ded8e1;
-    --projection-line-strong: #c7bdcd;
-
-    /* Accent */
-    --projection-accent: #51446f;
-    --projection-accent-hover: #403657;
-    --projection-accent-soft: #ede8f3;
-    --projection-accent-contrast: #fffaf2;
-
-    /* États */
-    --projection-focus: #75658f;
-    --projection-selection: #51446f33;
-
-    /* Ombres */
-    --projection-shadow-soft: 0 12px 40px rgb(33 30 38 / 0.06);
-
-    /* Lumière */
-    --projection-light-glow: rgb(81 68 111 / 0.06);
-    --projection-grain-opacity: 0.022;
-    --projection-beam: rgb(81 68 111 / 0.06);
-    --projection-beam-edge: rgb(81 68 111 / 0.12);
-    --projection-door-glow: rgb(81 68 111 / 0.06);
-}
-
-/* ============================================================
    TOKENS SÉMANTIQUES TAILWIND
    ============================================================ */
 
@@ -197,6 +101,12 @@
 
     /* États */
     --color-focus: var(--projection-focus);
+
+    /* Familles éditoriales */
+    --color-famille-personnages: var(--atelier-famille-personnages);
+    --color-famille-createurs: var(--atelier-famille-createurs);
+    --color-famille-oeuvres: var(--atelier-famille-oeuvres);
+    --color-famille-epoques: var(--atelier-famille-epoques);
 
     /* Typographie */
     --font-sans: var(--projection-font-body);
