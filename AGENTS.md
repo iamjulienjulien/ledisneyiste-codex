@@ -40,6 +40,8 @@ priorité sur les préférences de mise en œuvre ponctuelles.
    demande. Pendant un Entracte, ne jamais utiliser le domaine `Scène`.
 6. Vérifier le domaine, son emoji et l'intitulé final dans `git log` après chaque
    commit.
+7. Respecter la convention de structure et de nommage des composants définie
+   ci-dessous pour toute création ou migration sous `src/components`.
 
 > [!WARNING]
 > **L'emoji et le nom du domaine forment une paire indissociable.** L'emoji
@@ -48,6 +50,72 @@ priorité sur les préférences de mise en œuvre ponctuelles.
 > exemple, `🏗️ Décor` et `🎨 Mise en scène` sont les seules associations
 > valides pour ces deux domaines. Toujours vérifier la table officielle avant
 > de proposer ou de créer un commit.
+
+# Convention des composants
+
+Cette convention est impérative pour tous les composants placés sous
+`src/components`. Les composants existants qui ne la respectent pas encore
+constituent une dette de migration connue. Ils seront déplacés et renommés dans
+des chantiers dédiés ; ne pas mélanger leur migration à un autre chantier sans
+accord explicite.
+
+## Structure obligatoire
+
+Chaque composant doit être isolé dans son propre sous-dossier. Le nom du
+dossier et celui du composant utilisent le `PascalCase` et doivent être
+strictement identiques.
+
+```text
+src/components/<famille>/<NomComposant>/
+├── <NomComposant>.tsx
+├── <NomComposant>.module.css
+└── index.ts
+```
+
+Les trois fichiers sont obligatoires :
+
+- `<NomComposant>.tsx` contient l'implémentation et les types propres au
+  composant ;
+- `<NomComposant>.module.css` contient ses styles encapsulés et doit être
+  présent dès la création du composant ;
+- `index.ts` est le barrel public du composant et réexporte son API autorisée.
+
+Les consommateurs importent le composant depuis son dossier, jamais depuis son
+fichier d'implémentation :
+
+```ts
+import { PixieSymbol } from "@/components/ui/PixieSymbol";
+```
+
+Il est interdit d'ajouter directement un fichier de composant à la racine d'un
+dossier de famille comme `components/ui`, `components/atelier` ou
+`components/codex`.
+
+## Convention `PixieDust` et `Pixie` pour `components/ui`
+
+Les composants de `src/components/ui` suivent un cycle de maturation visible
+dans leur nom :
+
+- `PixieDust` préfixe obligatoirement une esquisse qui n'est pas encore
+  validée, par exemple `PixieDustButton` ;
+- `Pixie` préfixe obligatoirement un composant validé et prêt à être utilisé,
+  par exemple `PixieSymbol`.
+
+La promotion d'une esquisse vers un composant validé implique de renommer de
+façon cohérente le composant, son dossier, ses fichiers, ses exports, ses
+imports et sa documentation. Ne jamais conserver simultanément les deux noms
+pour une même primitive sans besoin explicite de compatibilité.
+
+## Convention des autres familles de composants
+
+Dans tout autre dossier de famille sous `src/components`, le nom du composant
+doit commencer par le nom de cette famille converti en `PascalCase` :
+
+- `src/components/atelier/AtelierCodePanel/` expose `AtelierCodePanel` ;
+- `src/components/codex/CodexFicheHeader/` expose `CodexFicheHeader`.
+
+Cette règle rend immédiatement visible l'appartenance d'un composant et évite
+les noms génériques ou ambigus.
 
 # Convention des commits
 
