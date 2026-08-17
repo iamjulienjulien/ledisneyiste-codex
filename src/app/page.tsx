@@ -51,7 +51,7 @@ export default function Home() {
                 <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                     <Link
                         href="/personnages"
-                        className="group border border-line p-6 transition-colors hover:border-line-strong"
+                        className="codex-door group border border-line p-6"
                     >
                         <p className="text-sm text-muted">
                             {personnages.length}{" "}
@@ -74,7 +74,7 @@ export default function Home() {
 
                     <Link
                         href="/contributeurs"
-                        className="group border border-line p-6 transition-colors hover:border-line-strong"
+                        className="codex-door group border border-line p-6"
                     >
                         <p className="text-sm text-muted">
                             {contributeurs.length}{" "}
@@ -97,7 +97,7 @@ export default function Home() {
 
                     <Link
                         href="/oeuvres"
-                        className="group border border-line p-6 transition-colors hover:border-line-strong"
+                        className="codex-door group border border-line p-6"
                     >
                         <p className="text-sm text-muted">
                             {oeuvres.length}{" "}
@@ -118,7 +118,7 @@ export default function Home() {
 
                     <Link
                         href="/epoques"
-                        className="group border border-line p-6 transition-colors hover:border-line-strong"
+                        className="codex-door group border border-line p-6"
                     >
                         <p className="text-sm text-muted">
                             {epoques.length}{" "}
