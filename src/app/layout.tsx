@@ -45,28 +45,28 @@ export default function RootLayout({
                         >
                             <Link
                                 href="/personnages"
-                                className="text-ink-soft transition-colors hover:text-accent"
+                                className="text-famille-personnages transition-[filter] hover:brightness-125"
                             >
                                 Personnages
                             </Link>
 
                             <Link
                                 href="/contributeurs"
-                                className="text-ink-soft transition-colors hover:text-accent"
+                                className="text-famille-createurs transition-[filter] hover:brightness-125"
                             >
                                 Créateurs
                             </Link>
 
                             <Link
                                 href="/oeuvres"
-                                className="text-ink-soft transition-colors hover:text-accent"
+                                className="text-famille-oeuvres transition-[filter] hover:brightness-125"
                             >
                                 Œuvres
                             </Link>
 
                             <Link
                                 href="/epoques"
-                                className="text-ink-soft transition-colors hover:text-accent"
+                                className="text-famille-epoques transition-[filter] hover:brightness-125"
                             >
                                 Époques
                             </Link>

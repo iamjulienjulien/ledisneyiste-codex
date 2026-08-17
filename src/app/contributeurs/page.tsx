@@ -12,11 +12,13 @@ export default function ContributeursPage() {
     return (
         <main className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20">
             <header className="max-w-2xl">
-                <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted">
+                <p className="text-sm font-medium uppercase tracking-[0.2em] text-famille-createurs">
                     Explorer le Codex
                 </p>
 
-                <h1 className="mt-3 text-5xl text-ink">Créateurs</h1>
+                <h1 className="mt-3 text-5xl text-famille-createurs">
+                    Créateurs
+                </h1>
 
                 <p className="mt-6 text-lg leading-8 text-ink-soft">
                     Celles et ceux qui ont imaginé, construit et transformé
@@ -37,7 +39,7 @@ export default function ContributeursPage() {
                                 href={`/contributeurs/${contributeur.slug}`}
                                 className="group block py-6"
                             >
-                                <h2 className="text-2xl text-ink transition-colors group-hover:text-accent">
+                                <h2 className="text-2xl text-ink transition-colors group-hover:text-famille-createurs">
                                     {contributeur.nom}
                                 </h2>
 

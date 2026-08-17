@@ -12,11 +12,11 @@ export default function EpoquesPage() {
     return (
         <main className="mx-auto min-h-screen w-full max-w-6xl px-6 py-16 sm:py-20">
             <header className="max-w-2xl">
-                <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted">
+                <p className="text-sm font-medium uppercase tracking-[0.2em] text-famille-epoques">
                     Explorer le Codex
                 </p>
 
-                <h1 className="mt-3 text-5xl text-ink">Époques</h1>
+                <h1 className="mt-3 text-5xl text-famille-epoques">Époques</h1>
 
                 <p className="mt-6 text-lg leading-8 text-ink-soft">
                     Des périodes pour suivre les transformations du studio, de
@@ -36,7 +36,7 @@ export default function EpoquesPage() {
                                 href={`/epoques/${epoque.slug}`}
                                 className="group block py-6"
                             >
-                                <h2 className="text-2xl text-ink transition-colors group-hover:text-accent">
+                                <h2 className="text-2xl text-ink transition-colors group-hover:text-famille-epoques">
                                     {epoque.nom}
                                 </h2>
 

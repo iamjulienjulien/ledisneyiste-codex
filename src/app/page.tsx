@@ -51,6 +51,7 @@ export default function Home() {
                 <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                     <Link
                         href="/personnages"
+                        data-famille="personnages"
                         className="codex-door group border border-line p-6"
                     >
                         <p className="text-sm text-muted">
@@ -60,20 +61,23 @@ export default function Home() {
                                 : "personnage"}
                         </p>
 
-                        <h3 className="mt-3 text-2xl text-ink">Personnages</h3>
+                        <h3 className="mt-3 text-2xl text-famille-personnages">
+                            Personnages
+                        </h3>
 
                         <p className="mt-3 leading-7 text-ink-soft">
                             Les figures fictives qui peuplent les récits et les
                             imaginaires Disney.
                         </p>
 
-                        <p className="mt-6 font-medium text-accent group-hover:text-accent-hover">
+                        <p className="mt-6 font-medium text-famille-personnages transition-[filter] group-hover:brightness-125">
                             Explorer les personnages →
                         </p>
                     </Link>
 
                     <Link
                         href="/contributeurs"
+                        data-famille="createurs"
                         className="codex-door group border border-line p-6"
                     >
                         <p className="text-sm text-muted">
@@ -83,20 +87,23 @@ export default function Home() {
                                 : "créateur"}
                         </p>
 
-                        <h3 className="mt-3 text-2xl text-ink">Créateurs</h3>
+                        <h3 className="mt-3 text-2xl text-famille-createurs">
+                            Créateurs
+                        </h3>
 
                         <p className="mt-3 leading-7 text-ink-soft">
                             Celles et ceux qui ont imaginé, construit et
                             transformé Disney.
                         </p>
 
-                        <p className="mt-6 font-medium text-accent group-hover:text-accent-hover">
+                        <p className="mt-6 font-medium text-famille-createurs transition-[filter] group-hover:brightness-125">
                             Explorer les créateurs →
                         </p>
                     </Link>
 
                     <Link
                         href="/oeuvres"
+                        data-famille="oeuvres"
                         className="codex-door group border border-line p-6"
                     >
                         <p className="text-sm text-muted">
@@ -104,20 +111,23 @@ export default function Home() {
                             {oeuvres.length > 1 ? "œuvres" : "œuvre"}
                         </p>
 
-                        <h3 className="mt-3 text-2xl text-ink">Œuvres</h3>
+                        <h3 className="mt-3 text-2xl text-famille-oeuvres">
+                            Œuvres
+                        </h3>
 
                         <p className="mt-3 leading-7 text-ink-soft">
                             Les films, courts métrages et créations où les
                             imaginaires Disney prennent forme.
                         </p>
 
-                        <p className="mt-6 font-medium text-accent group-hover:text-accent-hover">
+                        <p className="mt-6 font-medium text-famille-oeuvres transition-[filter] group-hover:brightness-125">
                             Explorer les œuvres →
                         </p>
                     </Link>
 
                     <Link
                         href="/epoques"
+                        data-famille="epoques"
                         className="codex-door group border border-line p-6"
                     >
                         <p className="text-sm text-muted">
@@ -125,14 +135,16 @@ export default function Home() {
                             {epoques.length > 1 ? "époques" : "époque"}
                         </p>
 
-                        <h3 className="mt-3 text-2xl text-ink">Époques</h3>
+                        <h3 className="mt-3 text-2xl text-famille-epoques">
+                            Époques
+                        </h3>
 
                         <p className="mt-3 leading-7 text-ink-soft">
                             Les grandes périodes qui permettent de suivre les
                             transformations de Disney dans le temps.
                         </p>
 
-                        <p className="mt-6 font-medium text-accent group-hover:text-accent-hover">
+                        <p className="mt-6 font-medium text-famille-epoques transition-[filter] group-hover:brightness-125">
                             Explorer les époques →
                         </p>
                     </Link>

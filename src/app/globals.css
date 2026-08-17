@@ -201,6 +201,18 @@ select {
 }
 
 .codex-door {
+    --codex-door-accent: var(--projection-accent);
+    --codex-door-beam-edge: color-mix(
+        in srgb,
+        var(--codex-door-accent) 28%,
+        transparent
+    );
+    --codex-door-glow: color-mix(
+        in srgb,
+        var(--codex-door-accent) 12%,
+        transparent
+    );
+
     position: relative;
     isolation: isolate;
     overflow: hidden;
@@ -226,7 +238,7 @@ select {
         112deg,
         transparent 30%,
         var(--projection-beam) 43%,
-        var(--projection-beam-edge) 50%,
+        var(--codex-door-beam-edge) 50%,
         var(--projection-beam) 57%,
         transparent 70%
     );
@@ -245,18 +257,34 @@ select {
     opacity: 0;
     background: radial-gradient(
         ellipse 85% 65% at 20% 0%,
-        var(--projection-door-glow),
+        var(--codex-door-glow),
         transparent 72%
     );
     transition: opacity 450ms ease;
 }
 
 .codex-door:is(:hover, :focus-visible) {
-    border-color: var(--projection-line-strong);
+    border-color: var(--codex-door-accent);
     box-shadow:
         0 18px 45px rgb(0 0 0 / 0.16),
-        inset 0 1px 0 var(--projection-beam-edge);
+        inset 0 1px 0 var(--codex-door-beam-edge);
     transform: translateY(-4px);
+}
+
+.codex-door[data-famille="personnages"] {
+    --codex-door-accent: var(--atelier-famille-personnages);
+}
+
+.codex-door[data-famille="createurs"] {
+    --codex-door-accent: var(--atelier-famille-createurs);
+}
+
+.codex-door[data-famille="oeuvres"] {
+    --codex-door-accent: var(--atelier-famille-oeuvres);
+}
+
+.codex-door[data-famille="epoques"] {
+    --codex-door-accent: var(--atelier-famille-epoques);
 }
 
 .codex-door:is(:hover, :focus-visible)::before {
