@@ -1,3 +1,5 @@
+import styles from "./AtelierOptionRadio.module.css";
+
 export function AtelierOptionRadio<Value extends string>({
     name,
     value,
@@ -12,7 +14,7 @@ export function AtelierOptionRadio<Value extends string>({
     onChange: (value: Value) => void;
 }>) {
     return (
-        <label className="flex cursor-pointer items-center gap-2 text-sm text-ink-soft">
+        <label className={styles.root}>
             <input
                 type="radio"
                 name={name}

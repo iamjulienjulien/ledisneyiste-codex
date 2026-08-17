@@ -9,7 +9,7 @@ export function AtelierPropertiesTable({
     properties,
 }: Readonly<{ properties: readonly AtelierProperty[] }>) {
     return (
-        <div className="overflow-x-auto border border-line">
+        <div className={styles.root}>
             <table className="w-full min-w-3xl border-collapse text-left">
                 <thead className="bg-surface-muted text-xs uppercase tracking-[0.16em] text-muted">
                     <tr>
@@ -52,3 +52,4 @@ export function AtelierPropertiesTable({
         </div>
     );
 }
+import styles from "./AtelierPropertiesTable.module.css";
