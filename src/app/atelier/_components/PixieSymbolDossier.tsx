@@ -8,6 +8,7 @@ import { PixieSymbolPlayground } from "./PixieSymbolPlayground";
 
 const indexSymbolSlugs = getSymbolSlugs("codex", "index");
 const contributeurBlockSymbolSlugs = getSymbolSlugs("blocs", "contributeurs");
+const oeuvreBlockSymbolSlugs = getSymbolSlugs("blocs", "oeuvres");
 const personnageBlockSymbolSlugs = getSymbolSlugs("blocs", "personnages");
 
 const dimensions = [
@@ -76,7 +77,7 @@ const typesSpecifiques = [
     },
     {
         name: 'SymbolCollectionName<"blocs">',
-        values: ['"contributeurs"', '"personnages"'],
+        values: ['"contributeurs"', '"oeuvres"', '"personnages"'],
         description: "Collections exposées par le registre des blocs.",
     },
     {
@@ -93,6 +94,11 @@ const typesSpecifiques = [
         name: 'SymbolSlug<"blocs", "contributeurs">',
         values: ['"debuts"', '"signature"', '"trajectoire"', '"transmission"'],
         description: "Symboles des blocs éditoriaux des Contributeurs.",
+    },
+    {
+        name: 'SymbolSlug<"blocs", "oeuvres">',
+        values: ['"repere"', '"langage"', '"relations"'],
+        description: "Symboles des blocs éditoriaux des Œuvres.",
     },
     {
         name: 'SymbolSlug<"blocs", "personnages">',
@@ -195,7 +201,7 @@ export function PixieSymbolDossier() {
                         ["Mission", "Afficher un symbole typé."],
                         ["Sélection", "registry · collection · slug"],
                         ["Exemple", "codex.index.personnages"],
-                        ["Masters", "Trois séries originales · 1254 px."],
+                        ["Masters", "Quatre séries originales · 1254 px."],
                         ["Dérivés", "PNG transparent · 384 px."],
                         ["Accessibilité", "Décoratif par défaut."],
                     ].map(([terme, definition]) => (
@@ -351,6 +357,48 @@ export function PixieSymbolDossier() {
                                 <PixieSymbol
                                     registry="blocs"
                                     collection="contributeurs"
+                                    slug={slug}
+                                    size="xl"
+                                    className="mx-auto"
+                                />
+                                <h4 className="mt-5 text-xl text-ink">
+                                    {symbole.label}
+                                </h4>
+                                <p className="mt-2 font-mono text-xs text-muted">
+                                    {slug}
+                                </p>
+                            </article>
+                        );
+                    })}
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="pixie-symbol-blocs-oeuvres"
+                className="mt-16"
+            >
+                <TitreSequence
+                    id="pixie-symbol-blocs-oeuvres"
+                    surTitre="Distribution"
+                    titre="Les trois plans de La pellicule prend vie"
+                    description="Bobine témoin, prisme de projection et photogramme partagé situent l’Œuvre, révèlent son langage puis mettent en jeu les relations de ses personnages."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-3">
+                    {oeuvreBlockSymbolSlugs.map((slug) => {
+                        const symbole = getSymbol("blocs", "oeuvres", slug);
+
+                        return (
+                            <article
+                                key={slug}
+                                className="bg-surface p-6 text-center"
+                                style={{
+                                    borderTop: `4px solid ${symbole.accent}`,
+                                }}
+                            >
+                                <PixieSymbol
+                                    registry="blocs"
+                                    collection="oeuvres"
                                     slug={slug}
                                     size="xl"
                                     className="mx-auto"

@@ -122,12 +122,43 @@ const symbolOptions = [
         },
         definition: getSymbol("blocs", "contributeurs", "transmission"),
     },
+    {
+        key: "blocs.oeuvres.repere",
+        group: "Blocs · Œuvres",
+        selection: {
+            registry: "blocs",
+            collection: "oeuvres",
+            slug: "repere",
+        },
+        definition: getSymbol("blocs", "oeuvres", "repere"),
+    },
+    {
+        key: "blocs.oeuvres.langage",
+        group: "Blocs · Œuvres",
+        selection: {
+            registry: "blocs",
+            collection: "oeuvres",
+            slug: "langage",
+        },
+        definition: getSymbol("blocs", "oeuvres", "langage"),
+    },
+    {
+        key: "blocs.oeuvres.relations",
+        group: "Blocs · Œuvres",
+        selection: {
+            registry: "blocs",
+            collection: "oeuvres",
+            slug: "relations",
+        },
+        definition: getSymbol("blocs", "oeuvres", "relations"),
+    },
 ] as const;
 
 const symbolGroups = [
     "Codex · Index",
     "Blocs · Personnages",
     "Blocs · Contributeurs",
+    "Blocs · Œuvres",
 ] as const;
 
 const tailles: ReadonlyArray<{

@@ -23,6 +23,23 @@ export const symbolsBlocs = {
             accent: "var(--atelier-animation-vert-cellulo)",
         },
     },
+    oeuvres: {
+        repere: {
+            src: "/symbols/blocs/oeuvres/repere.png",
+            label: "Repère",
+            accent: "var(--atelier-animation-gouache)",
+        },
+        langage: {
+            src: "/symbols/blocs/oeuvres/langage.png",
+            label: "Langage",
+            accent: "var(--atelier-animation-bleu-reperage)",
+        },
+        relations: {
+            src: "/symbols/blocs/oeuvres/relations.png",
+            label: "Relations",
+            accent: "var(--atelier-animation-corail-cel)",
+        },
+    },
     personnages: {
         genese: {
             src: "/symbols/blocs/personnages/genese.png",
