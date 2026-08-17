@@ -67,7 +67,7 @@ const accessoires = [
         href: "#pixie-symbol",
     },
     {
-        nom: "Bouton",
+        nom: "PixieDustButton",
         role: "Déclencher une action",
         statut: "Esquisse",
         href: "#bouton",

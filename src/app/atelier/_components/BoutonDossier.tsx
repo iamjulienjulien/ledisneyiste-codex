@@ -1,5 +1,5 @@
 import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
-import { BoutonEsquisse } from "./BoutonEsquisse";
+import { PixieDustButton } from "@/components/ui/PixieDustButton";
 import { BoutonPlayground } from "./BoutonPlayground";
 
 const variantes = [
@@ -104,7 +104,7 @@ export function BoutonDossier() {
                             id="bouton-title"
                             className="mt-4 text-4xl text-ink sm:text-5xl"
                         >
-                            Bouton
+                            PixieDustButton
                         </h2>
                         <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
                             Déclencher une action claire sans voler la lumière
@@ -184,11 +184,11 @@ export function BoutonDossier() {
 
                 <div className="mt-7 grid border border-line lg:grid-cols-2">
                     <div className="relative z-[10000] flex min-h-64 items-center justify-center bg-surface p-8">
-                        <BoutonEsquisse>Ouvrir les archives</BoutonEsquisse>
+                        <PixieDustButton>Ouvrir les archives</PixieDustButton>
                     </div>
-                    <CodeExemple>{`<BoutonEsquisse>
+                    <CodeExemple>{`<PixieDustButton>
     Ouvrir les archives
-</BoutonEsquisse>`}</CodeExemple>
+</PixieDustButton>`}</CodeExemple>
                 </div>
             </section>
 
@@ -207,9 +207,9 @@ export function BoutonDossier() {
                             className="relative z-[10000] bg-surface p-6"
                         >
                             <div className="flex min-h-32 items-center justify-center">
-                                <BoutonEsquisse variante={variante.variante}>
+                                <PixieDustButton variante={variante.variante}>
                                     {variante.nom}
-                                </BoutonEsquisse>
+                                </PixieDustButton>
                             </div>
                             <h4 className="mt-4 text-xl text-ink">
                                 {variante.nom}
@@ -235,7 +235,7 @@ export function BoutonDossier() {
                             Repos
                         </p>
                         <div className="mt-6">
-                            <BoutonEsquisse>Action</BoutonEsquisse>
+                            <PixieDustButton>Action</PixieDustButton>
                         </div>
                     </article>
                     <article className="relative z-[10000] bg-surface p-6">
@@ -243,7 +243,9 @@ export function BoutonDossier() {
                             Focus
                         </p>
                         <div className="mt-6">
-                            <BoutonEsquisse miseAuPoint>Action</BoutonEsquisse>
+                            <PixieDustButton miseAuPoint>
+                                Action
+                            </PixieDustButton>
                         </div>
                     </article>
                     <article className="relative z-[10000] bg-surface p-6">
@@ -251,7 +253,7 @@ export function BoutonDossier() {
                             Désactivé
                         </p>
                         <div className="mt-6">
-                            <BoutonEsquisse disabled>Action</BoutonEsquisse>
+                            <PixieDustButton disabled>Action</PixieDustButton>
                         </div>
                     </article>
                     <article className="relative z-[10000] bg-surface p-6">
@@ -286,12 +288,12 @@ export function BoutonDossier() {
                 />
 
                 <div className="mt-7">
-                    <CodeExemple>{`type VarianteBouton =
+                    <CodeExemple>{`type PixieDustButtonVariant =
     | "principal"
     | "secondaire"
     | "discret";
 
-type TailleBouton = "petit" | "moyen" | "grand";`}</CodeExemple>
+type PixieDustButtonSize = "petit" | "moyen" | "grand";`}</CodeExemple>
                 </div>
 
                 <div className="mt-6">

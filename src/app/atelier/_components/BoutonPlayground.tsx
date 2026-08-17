@@ -4,16 +4,16 @@ import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import {
-    BoutonEsquisse,
-    type TailleBouton,
-    type VarianteBouton,
-} from "./BoutonEsquisse";
+    PixieDustButton,
+    type PixieDustButtonSize,
+    type PixieDustButtonVariant,
+} from "@/components/ui/PixieDustButton";
 
 type Lumiere = "sombre" | "claire";
 type Cadre = "compact" | "moyen" | "large";
 
 const variantes: ReadonlyArray<{
-    value: VarianteBouton;
+    value: PixieDustButtonVariant;
     label: string;
 }> = [
     { value: "principal", label: "Principal" },
@@ -21,7 +21,10 @@ const variantes: ReadonlyArray<{
     { value: "discret", label: "Discret" },
 ];
 
-const tailles: ReadonlyArray<{ value: TailleBouton; label: string }> = [
+const tailles: ReadonlyArray<{
+    value: PixieDustButtonSize;
+    label: string;
+}> = [
     { value: "petit", label: "Petit" },
     { value: "moyen", label: "Moyen" },
     { value: "grand", label: "Grand" },
@@ -41,19 +44,20 @@ const largeurParCadre: Record<Cadre, string> = {
 
 export function BoutonPlayground() {
     const [libelle, setLibelle] = useState("Ouvrir les archives");
-    const [variante, setVariante] = useState<VarianteBouton>("principal");
-    const [taille, setTaille] = useState<TailleBouton>("moyen");
+    const [variante, setVariante] =
+        useState<PixieDustButtonVariant>("principal");
+    const [taille, setTaille] = useState<PixieDustButtonSize>("moyen");
     const [lumiere, setLumiere] = useState<Lumiere>("sombre");
     const [cadre, setCadre] = useState<Cadre>("large");
     const [disabled, setDisabled] = useState(false);
     const [miseAuPoint, setMiseAuPoint] = useState(false);
 
-    const code = `<BoutonEsquisse
+    const code = `<PixieDustButton
     variante="${variante}"
     taille="${taille}"${disabled ? "\n    disabled" : ""}
 >
     ${libelle || "Bouton"}
-</BoutonEsquisse>`;
+</PixieDustButton>`;
 
     return (
         <div className="relative z-[10000] overflow-hidden border border-line bg-surface">
@@ -188,14 +192,14 @@ export function BoutonPlayground() {
                         <div
                             className={`flex min-h-48 w-full items-center justify-center border border-line bg-surface p-6 transition-[max-width] ${largeurParCadre[cadre]}`}
                         >
-                            <BoutonEsquisse
+                            <PixieDustButton
                                 variante={variante}
                                 taille={taille}
                                 disabled={disabled}
                                 miseAuPoint={miseAuPoint}
                             >
                                 {libelle || "Bouton"}
-                            </BoutonEsquisse>
+                            </PixieDustButton>
                         </div>
                     </div>
 
