@@ -19,24 +19,18 @@ export function CodexBlocsEditoriaux<
     }
 
     return blocs.map((bloc) => {
-        const symbolSelection = bloc.type
-            ? ({
-                  registry: "blocs",
-                  collection,
-                  slug: bloc.type,
-              } as SymbolSelection)
-            : undefined;
+        const symbolSelection = {
+            registry: "blocs",
+            collection,
+            slug: bloc.type,
+        } as SymbolSelection;
 
         return (
             <CodexFicheSection
                 key={bloc.titre}
                 eyebrow={bloc.eyebrow}
                 titre={bloc.titre}
-                symbole={
-                    symbolSelection ? (
-                        <PixieSymbol {...symbolSelection} size="lg" />
-                    ) : undefined
-                }
+                symbole={<PixieSymbol {...symbolSelection} size="lg" />}
             >
                 <div className={styles.body}>
                     {bloc.paragraphes.map((paragraphe, index) => (

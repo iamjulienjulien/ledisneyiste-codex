@@ -21,7 +21,7 @@ const categories = [
         domaine: "Primitives",
         description:
             "Les éléments simples et réutilisables qui entreront bientôt dans toutes les scènes du Codex.",
-        statut: "Plateau prêt",
+        statut: "En projection",
         href: "#accessoires",
     },
     {
@@ -225,7 +225,7 @@ export default function AtelierPage() {
                         id="accessoires-title"
                         className="mt-3 text-4xl text-ink"
                     >
-                        Le plateau attend ses premières primitives
+                        Les premières primitives passent devant la caméra
                     </h2>
                     <p className="mt-5 leading-7 text-ink-soft">
                         Le premier composant est prêt à projeter tandis que les
@@ -249,7 +249,7 @@ export default function AtelierPage() {
                                     scope="col"
                                     className="px-5 py-4 font-medium"
                                 >
-                                    Rôle pressenti
+                                    Rôle
                                 </th>
                                 <th
                                     scope="col"
