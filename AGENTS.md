@@ -42,6 +42,8 @@ priorité sur les préférences de mise en œuvre ponctuelles.
    commit.
 7. Respecter la convention de structure et de nommage des composants définie
    ci-dessous pour toute création ou migration sous `src/components`.
+8. Centraliser impérativement toutes les déclarations de types TypeScript dans
+   `src/types`. Aucun type ne doit être déclaré ailleurs dans le projet.
 
 > [!WARNING]
 > **L'emoji et le nom du domaine forment une paire indissociable.** L'emoji
@@ -74,8 +76,8 @@ src/components/<famille>/<NomComposant>/
 
 Les trois fichiers sont obligatoires :
 
-- `<NomComposant>.tsx` contient l'implémentation et les types propres au
-  composant ;
+- `<NomComposant>.tsx` contient uniquement l'implémentation du composant et
+  importe ses types depuis `src/types` ;
 - `<NomComposant>.module.css` contient ses styles encapsulés et doit être
   présent dès la création du composant ;
 - `index.ts` est le barrel public du composant et réexporte son API autorisée.
@@ -116,6 +118,38 @@ doit commencer par le nom de cette famille converti en `PascalCase` :
 
 Cette règle rend immédiatement visible l'appartenance d'un composant et évite
 les noms génériques ou ambigus.
+
+# Convention des types TypeScript
+
+Toutes les déclarations de types TypeScript doivent être centralisées dans
+`src/types` et nulle part ailleurs. Cette règle s'applique à l'ensemble du
+projet, sans exception liée à la proximité d'usage.
+
+Il est notamment interdit de déclarer un `type` ou une `interface` dans :
+
+- un composant ;
+- une page ou un layout ;
+- un registre ;
+- un fichier de données ;
+- un utilitaire ou une librairie ;
+- tout autre dossier que `src/types`.
+
+Les types doivent être regroupés dans `src/types` par domaine ou responsabilité,
+puis importés avec `import type` lorsqu'ils ne sont utilisés qu'au niveau du
+typage.
+
+```ts
+import type { PixieSymbolProps } from "@/types/pixie-symbol";
+```
+
+Les composants peuvent réexporter depuis leur barrel les types nécessaires à
+leur API publique, mais la déclaration originale doit toujours rester dans
+`src/types`.
+
+Les déclarations existantes situées hors de `src/types` constituent une dette
+de migration connue. Elles seront déplacées dans des chantiers dédiés ; ne pas
+mélanger leur migration à un autre chantier sans accord explicite et ne créer
+aucune nouvelle exception entre-temps.
 
 # Convention des commits
 
