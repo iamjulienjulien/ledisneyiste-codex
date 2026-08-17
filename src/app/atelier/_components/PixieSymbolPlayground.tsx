@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
+import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import { PixieSymbol, type PixieSymbolSize } from "@/components/ui/PixieSymbol";
 import { getSymbol, getSymbolSlugs, type SymbolSlug } from "@/registry/symbols";
 
@@ -21,12 +22,6 @@ const tailles: ReadonlyArray<{
     { value: "md", label: "Moyen" },
     { value: "lg", label: "Grand" },
     { value: "xl", label: "Très grand" },
-];
-
-const cadres: ReadonlyArray<{ value: Cadre; label: string }> = [
-    { value: "compact", label: "Compact" },
-    { value: "moyen", label: "Moyen" },
-    { value: "large", label: "Large" },
 ];
 
 const largeurParCadre: Record<Cadre, string> = {
@@ -114,45 +109,6 @@ export function PixieSymbolPlayground() {
                             </div>
                         </fieldset>
 
-                        <fieldset>
-                            <legend className="text-sm font-medium text-ink">
-                                Lumière du plateau
-                            </legend>
-                            <div className="mt-3 space-y-2">
-                                <AtelierOptionRadio
-                                    name="pixie-symbol-lumiere"
-                                    value="sombre"
-                                    label="Sombre"
-                                    selectedValue={lumiere}
-                                    onChange={setLumiere}
-                                />
-                                <AtelierOptionRadio
-                                    name="pixie-symbol-lumiere"
-                                    value="claire"
-                                    label="Claire"
-                                    selectedValue={lumiere}
-                                    onChange={setLumiere}
-                                />
-                            </div>
-                        </fieldset>
-
-                        <fieldset>
-                            <legend className="text-sm font-medium text-ink">
-                                Cadre
-                            </legend>
-                            <div className="mt-3 space-y-2">
-                                {cadres.map((option) => (
-                                    <AtelierOptionRadio
-                                        key={option.value}
-                                        name="pixie-symbol-cadre"
-                                        {...option}
-                                        selectedValue={cadre}
-                                        onChange={setCadre}
-                                    />
-                                ))}
-                            </div>
-                        </fieldset>
-
                         <label className="flex cursor-pointer items-center gap-2 text-sm text-ink-soft">
                             <input
                                 type="checkbox"
@@ -168,6 +124,14 @@ export function PixieSymbolPlayground() {
                 </aside>
 
                 <div className="min-w-0">
+                    <AtelierRegiePlateau
+                        namePrefix="pixie-symbol"
+                        lumiere={lumiere}
+                        onLumiereChange={setLumiere}
+                        cadre={cadre}
+                        onCadreChange={setCadre}
+                    />
+
                     <div
                         data-projection="originale"
                         data-lumiere={lumiere}

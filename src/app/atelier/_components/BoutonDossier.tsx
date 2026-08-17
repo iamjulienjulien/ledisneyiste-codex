@@ -1,5 +1,6 @@
 import { AtelierFicheAccessoire } from "@/components/atelier/AtelierFicheAccessoire";
 import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
+import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { PixieDustButton } from "@/components/ui/PixieDustButton";
 import { BoutonPlayground } from "./BoutonPlayground";
 
@@ -126,8 +127,8 @@ export function BoutonDossier() {
                             <dt className="text-xs uppercase tracking-[0.16em] text-muted">
                                 État
                             </dt>
-                            <dd className="mt-1 text-sm font-medium text-accent">
-                                Esquisse
+                            <dd className="mt-1 text-sm font-medium">
+                                <AtelierStatut statut="Esquisse" />
                             </dd>
                         </div>
                     </dl>
@@ -175,7 +176,10 @@ export function BoutonDossier() {
                 </dl>
             </section>
 
-            <section aria-labelledby="bouton-plan" className="mt-16">
+            <section
+                aria-labelledby="bouton-plan"
+                className="mt-16 border border-line-strong bg-surface-muted p-6 shadow-soft sm:p-8"
+            >
                 <TitreSequence
                     id="bouton-plan"
                     surTitre="Plan maître"
@@ -269,7 +273,10 @@ export function BoutonDossier() {
                 </div>
             </section>
 
-            <section aria-labelledby="bouton-regie" className="mt-16">
+            <section
+                aria-labelledby="bouton-regie"
+                className="mt-16 border border-line-strong bg-surface-muted p-6 shadow-soft sm:p-8"
+            >
                 <TitreSequence
                     id="bouton-regie"
                     surTitre="Régie"
@@ -281,7 +288,10 @@ export function BoutonDossier() {
                 </div>
             </section>
 
-            <section aria-labelledby="bouton-generique" className="mt-16">
+            <section
+                aria-labelledby="bouton-generique"
+                className="mt-16 border border-line-strong bg-surface-muted p-6 shadow-soft sm:p-8"
+            >
                 <TitreSequence
                     id="bouton-generique"
                     surTitre="Générique technique"

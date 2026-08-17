@@ -1,5 +1,6 @@
 import { AtelierFicheAccessoire } from "@/components/atelier/AtelierFicheAccessoire";
 import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
+import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { getSymbol, getSymbolSlugs } from "@/registry/symbols";
 import { PixieSymbolPlayground } from "./PixieSymbolPlayground";
@@ -132,8 +133,8 @@ export function PixieSymbolDossier() {
                             <dt className="text-xs uppercase tracking-[0.16em] text-muted">
                                 État
                             </dt>
-                            <dd className="mt-1 text-sm font-medium text-accent">
-                                Prêt à projeter
+                            <dd className="mt-1 text-sm font-medium">
+                                <AtelierStatut statut="Prêt à projeter" />
                             </dd>
                         </div>
                     </dl>
@@ -169,7 +170,10 @@ export function PixieSymbolDossier() {
                 </dl>
             </section>
 
-            <section aria-labelledby="pixie-symbol-plan" className="mt-16">
+            <section
+                aria-labelledby="pixie-symbol-plan"
+                className="mt-16 border border-line-strong bg-surface-muted p-6 shadow-soft sm:p-8"
+            >
                 <TitreSequence
                     id="pixie-symbol-plan"
                     surTitre="Plan maître"
@@ -268,17 +272,6 @@ export function PixieSymbolDossier() {
                 </div>
             </section>
 
-            <section aria-labelledby="pixie-symbol-regie" className="mt-16">
-                <TitreSequence
-                    id="pixie-symbol-regie"
-                    surTitre="Régie"
-                    titre="Composer un PixieSymbol"
-                    description="Modifier l’index, la taille et le rôle accessible met à jour le rendu et le code d’utilisation."
-                />
-
-                <PixieSymbolPlayground />
-            </section>
-
             <section
                 aria-labelledby="pixie-symbol-accessibilite"
                 className="mt-16"
@@ -323,7 +316,26 @@ export function PixieSymbolDossier() {
                 </div>
             </section>
 
-            <section aria-labelledby="pixie-symbol-reference" className="mt-16">
+            <section
+                aria-labelledby="pixie-symbol-regie"
+                className="mt-16 border border-line-strong bg-surface-muted p-6 shadow-soft sm:p-8"
+            >
+                <TitreSequence
+                    id="pixie-symbol-regie"
+                    surTitre="Régie"
+                    titre="Composer un PixieSymbol"
+                    description="Modifier l’index, la taille et le rôle accessible met à jour le rendu et le code d’utilisation."
+                />
+
+                <div className="mt-7">
+                    <PixieSymbolPlayground />
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="pixie-symbol-reference"
+                className="mt-16 border border-line-strong bg-surface-muted p-6 shadow-soft sm:p-8"
+            >
                 <TitreSequence
                     id="pixie-symbol-reference"
                     surTitre="Générique technique"

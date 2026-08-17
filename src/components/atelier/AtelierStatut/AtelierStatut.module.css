@@ -1,0 +1,11 @@
+.root {
+    color: var(--color-muted);
+}
+
+.root[data-statut="Esquisse"] {
+    color: var(--color-accent);
+}
+
+.root[data-statut="Prêt à projeter"] {
+    color: var(--atelier-animation-vert-cellulo);
+}
