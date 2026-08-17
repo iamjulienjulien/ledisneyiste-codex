@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import {
     contributeurs,
     oeuvres,
@@ -54,6 +55,13 @@ export default function Home() {
                         data-famille="personnages"
                         className="codex-door group border border-line p-6"
                     >
+                        <PixieSymbol
+                            registry="codex"
+                            collection="index"
+                            slug="personnages"
+                            size="lg"
+                            className="mb-5"
+                        />
                         <p className="text-sm text-muted">
                             {personnages.length}{" "}
                             {personnages.length > 1
@@ -80,6 +88,13 @@ export default function Home() {
                         data-famille="createurs"
                         className="codex-door group border border-line p-6"
                     >
+                        <PixieSymbol
+                            registry="codex"
+                            collection="index"
+                            slug="createurs"
+                            size="lg"
+                            className="mb-5"
+                        />
                         <p className="text-sm text-muted">
                             {contributeurs.length}{" "}
                             {contributeurs.length > 1
@@ -106,6 +121,13 @@ export default function Home() {
                         data-famille="oeuvres"
                         className="codex-door group border border-line p-6"
                     >
+                        <PixieSymbol
+                            registry="codex"
+                            collection="index"
+                            slug="oeuvres"
+                            size="lg"
+                            className="mb-5"
+                        />
                         <p className="text-sm text-muted">
                             {oeuvres.length}{" "}
                             {oeuvres.length > 1 ? "œuvres" : "œuvre"}
@@ -130,6 +152,13 @@ export default function Home() {
                         data-famille="epoques"
                         className="codex-door group border border-line p-6"
                     >
+                        <PixieSymbol
+                            registry="codex"
+                            collection="index"
+                            slug="epoques"
+                            size="lg"
+                            className="mb-5"
+                        />
                         <p className="text-sm text-muted">
                             {epoques.length}{" "}
                             {epoques.length > 1 ? "époques" : "époque"}

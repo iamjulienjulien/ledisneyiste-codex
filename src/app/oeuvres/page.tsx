@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { oeuvres } from "@/data/catalogues";
 
 export const metadata: Metadata = {
@@ -11,17 +12,27 @@ export const metadata: Metadata = {
 export default function OeuvresPage() {
     return (
         <main className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20">
-            <header className="max-w-2xl">
-                <p className="text-sm font-medium uppercase tracking-[0.2em] text-famille-oeuvres">
-                    Explorer le Codex
-                </p>
+            <header className="flex max-w-3xl flex-col gap-6 sm:flex-row sm:items-center sm:gap-8">
+                <PixieSymbol
+                    registry="codex"
+                    collection="index"
+                    slug="oeuvres"
+                    size="xl"
+                />
+                <div className="max-w-2xl">
+                    <p className="text-sm font-medium uppercase tracking-[0.2em] text-famille-oeuvres">
+                        Explorer le Codex
+                    </p>
 
-                <h1 className="mt-3 text-5xl text-famille-oeuvres">Œuvres</h1>
+                    <h1 className="mt-3 text-5xl text-famille-oeuvres">
+                        Œuvres
+                    </h1>
 
-                <p className="mt-6 text-lg leading-8 text-ink-soft">
-                    Les films, courts métrages et créations où les imaginaires
-                    Disney prennent forme.
-                </p>
+                    <p className="mt-6 text-lg leading-8 text-ink-soft">
+                        Les films, courts métrages et créations où les
+                        imaginaires Disney prennent forme.
+                    </p>
+                </div>
             </header>
 
             <section className="mt-12 border-t border-line pt-8">

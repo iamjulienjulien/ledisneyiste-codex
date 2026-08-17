@@ -1,0 +1,338 @@
+import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
+import { PixieSymbol } from "@/components/ui/PixieSymbol";
+import { getSymbol, getSymbolSlugs } from "@/registry/symbols";
+import { PixieSymbolPlayground } from "./PixieSymbolPlayground";
+
+const indexSymbolSlugs = getSymbolSlugs("codex", "index");
+
+const dimensions = [
+    ["xs", "24 px"],
+    ["sm", "32 px"],
+    ["md", "48 px"],
+    ["lg", "64 px"],
+    ["xl", "96 px"],
+] as const;
+
+const proprietes = [
+    {
+        name: "registry",
+        type: "SymbolRegistryName",
+        defaultValue: "—",
+        description: "Registre qui contient la famille de symboles.",
+    },
+    {
+        name: "collection",
+        type: "SymbolCollectionName<Registry>",
+        defaultValue: "—",
+        description: "Collection disponible dans le registre sélectionné.",
+    },
+    {
+        name: "slug",
+        type: "SymbolSlug<Registry, Collection>",
+        defaultValue: "—",
+        description: "Identifiant typé du symbole dans le registre.",
+    },
+    {
+        name: "size",
+        type: '"xs" | "sm" | "md" | "lg" | "xl" | number',
+        defaultValue: '"md"',
+        description: "Taille extérieure du symbole en preset ou en pixels.",
+    },
+    {
+        name: "decorative",
+        type: "boolean",
+        defaultValue: "true",
+        description: "Masque le symbole aux technologies d’assistance.",
+    },
+    {
+        name: "label",
+        type: "string",
+        defaultValue: "libellé du registre",
+        description: "Texte alternatif lorsque le symbole est informatif.",
+    },
+    {
+        name: "className",
+        type: "string",
+        defaultValue: '""',
+        description: "Classes ajoutées au conteneur extérieur.",
+    },
+] as const;
+
+function CodeExemple({ children }: Readonly<{ children: string }>) {
+    return (
+        <pre className="overflow-x-auto border border-line bg-canvas p-5 font-mono text-sm leading-6 text-ink-soft">
+            <code>{children}</code>
+        </pre>
+    );
+}
+
+function TitreSequence({
+    id,
+    surTitre,
+    titre,
+    description,
+}: Readonly<{
+    id: string;
+    surTitre: string;
+    titre: string;
+    description?: string;
+}>) {
+    return (
+        <div className="max-w-3xl">
+            <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted">
+                {surTitre}
+            </p>
+            <h3 id={id} className="mt-3 text-3xl text-ink">
+                {titre}
+            </h3>
+            {description ? (
+                <p className="mt-4 leading-7 text-ink-soft">{description}</p>
+            ) : null}
+        </div>
+    );
+}
+
+export function PixieSymbolDossier() {
+    return (
+        <article
+            id="pixie-symbol"
+            aria-labelledby="pixie-symbol-title"
+            className="mt-20 scroll-mt-8 border-t border-line-strong pt-12"
+        >
+            <header className="overflow-hidden border border-line bg-surface">
+                <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
+                    <div className="bg-surface p-6 sm:p-8">
+                        <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
+                            Le clap · Accessoire 001
+                        </p>
+                        <h2
+                            id="pixie-symbol-title"
+                            className="mt-4 text-4xl text-ink sm:text-5xl"
+                        >
+                            PixieSymbol
+                        </h2>
+                        <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
+                            Résoudre et projeter les symboles de tous les
+                            registres sans exposer leur chemin ni leur couleur à
+                            l’écran qui les utilise.
+                        </p>
+                    </div>
+
+                    <dl className="grid min-w-64 grid-cols-2 gap-px bg-line md:grid-cols-1">
+                        <div className="bg-surface-muted px-6 py-4">
+                            <dt className="text-xs uppercase tracking-[0.16em] text-muted">
+                                Version
+                            </dt>
+                            <dd className="mt-1 font-mono text-sm text-ink">
+                                1.0.0
+                            </dd>
+                        </div>
+                        <div className="bg-surface-muted px-6 py-4">
+                            <dt className="text-xs uppercase tracking-[0.16em] text-muted">
+                                État
+                            </dt>
+                            <dd className="mt-1 text-sm font-medium text-accent">
+                                Prêt à projeter
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+            </header>
+
+            <section aria-labelledby="pixie-symbol-identite" className="mt-14">
+                <TitreSequence
+                    id="pixie-symbol-identite"
+                    surTitre="Fiche de rôle"
+                    titre="Une porte unique vers le registre"
+                    description="Le composant reçoit un registre, une collection et un slug stables, retrouve son image, son libellé et sa couleur, puis applique une taille et une stratégie d’accessibilité cohérentes."
+                />
+
+                <dl className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+                    {[
+                        ["Mission", "Afficher un symbole typé."],
+                        ["Sélection", "registry · collection · slug"],
+                        ["Exemple", "codex.index.personnages"],
+                        ["Masters", "Table lumineuse · 1254 px."],
+                        ["Dérivés", "PNG transparent · 384 px."],
+                        ["Accessibilité", "Décoratif par défaut."],
+                    ].map(([terme, definition]) => (
+                        <div key={terme} className="bg-surface p-5">
+                            <dt className="text-xs uppercase tracking-[0.16em] text-muted">
+                                {terme}
+                            </dt>
+                            <dd className="mt-2 leading-7 text-ink-soft">
+                                {definition}
+                            </dd>
+                        </div>
+                    ))}
+                </dl>
+            </section>
+
+            <section aria-labelledby="pixie-symbol-plan" className="mt-16">
+                <TitreSequence
+                    id="pixie-symbol-plan"
+                    surTitre="Plan maître"
+                    titre="Trois coordonnées, un symbole"
+                    description="Le registre global dirige vers une collection spécialisée ; l’écran ne fournit que ces coordonnées et les options de rendu."
+                />
+
+                <div className="mt-7 grid border border-line lg:grid-cols-2">
+                    <div className="flex min-h-72 items-center justify-center bg-surface p-8">
+                        <PixieSymbol
+                            registry="codex"
+                            collection="index"
+                            slug="personnages"
+                            size="xl"
+                        />
+                    </div>
+                    <CodeExemple>{`<PixieSymbol
+    registry="codex"
+    collection="index"
+    slug="personnages"
+    size="xl"
+/>`}</CodeExemple>
+                </div>
+            </section>
+
+            <section aria-labelledby="pixie-symbol-serie" className="mt-16">
+                <TitreSequence
+                    id="pixie-symbol-serie"
+                    surTitre="Distribution"
+                    titre="Les quatre index de la Table lumineuse"
+                    description="Une même matière, un même angle et quatre couleurs éditoriales rendent la série reconnaissable sans uniformiser ses sujets."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+                    {indexSymbolSlugs.map((slug) => {
+                        const symbole = getSymbol("codex", "index", slug);
+
+                        return (
+                            <article
+                                key={slug}
+                                className="bg-surface p-6 text-center"
+                                style={{
+                                    borderTop: `4px solid ${symbole.accent}`,
+                                }}
+                            >
+                                <PixieSymbol
+                                    registry="codex"
+                                    collection="index"
+                                    slug={slug}
+                                    size="xl"
+                                    className="mx-auto"
+                                />
+                                <h4 className="mt-5 text-xl text-ink">
+                                    {symbole.label}
+                                </h4>
+                                <p className="mt-2 font-mono text-xs text-muted">
+                                    {slug}
+                                </p>
+                            </article>
+                        );
+                    })}
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="pixie-symbol-dimensions"
+                className="mt-16"
+            >
+                <TitreSequence
+                    id="pixie-symbol-dimensions"
+                    surTitre="Dimensions"
+                    titre="Cinq tailles de projection"
+                    description="La taille décrit toujours la boîte extérieure réservée au symbole."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-5">
+                    {dimensions.map(([size, pixels]) => (
+                        <article
+                            key={size}
+                            className="flex min-h-44 flex-col items-center justify-end bg-surface p-5"
+                        >
+                            <div className="flex flex-1 items-center">
+                                <PixieSymbol
+                                    registry="codex"
+                                    collection="index"
+                                    slug="oeuvres"
+                                    size={size}
+                                />
+                            </div>
+                            <p className="mt-4 font-mono text-xs text-accent">
+                                {size}
+                            </p>
+                            <p className="mt-1 text-xs text-muted">{pixels}</p>
+                        </article>
+                    ))}
+                </div>
+            </section>
+
+            <section aria-labelledby="pixie-symbol-regie" className="mt-16">
+                <TitreSequence
+                    id="pixie-symbol-regie"
+                    surTitre="Régie"
+                    titre="Composer un PixieSymbol"
+                    description="Modifier l’index, la taille et le rôle accessible met à jour le rendu et le code d’utilisation."
+                />
+
+                <PixieSymbolPlayground />
+            </section>
+
+            <section
+                aria-labelledby="pixie-symbol-accessibilite"
+                className="mt-16"
+            >
+                <TitreSequence
+                    id="pixie-symbol-accessibilite"
+                    surTitre="Accessibilité"
+                    titre="Silencieux lorsqu’un libellé est déjà visible"
+                    description="Le symbole reste décoratif dans une carte ou un titre déjà nommé. Il devient informatif uniquement lorsqu’il porte seul le sens de l’index."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-2">
+                    <article className="bg-surface p-6">
+                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                            Décoratif
+                        </p>
+                        <div className="mt-6 flex items-center gap-5">
+                            <PixieSymbol
+                                registry="codex"
+                                collection="index"
+                                slug="createurs"
+                                size="lg"
+                            />
+                            <p className="text-xl text-ink">Créateurs</p>
+                        </div>
+                    </article>
+                    <article className="bg-surface p-6">
+                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                            Informatif
+                        </p>
+                        <div className="mt-6">
+                            <PixieSymbol
+                                registry="codex"
+                                collection="index"
+                                slug="createurs"
+                                size="lg"
+                                decorative={false}
+                                label="Index des Créateurs"
+                            />
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section aria-labelledby="pixie-symbol-reference" className="mt-16">
+                <TitreSequence
+                    id="pixie-symbol-reference"
+                    surTitre="Générique technique"
+                    titre="Types et propriétés du composant"
+                />
+
+                <div className="mt-7">
+                    <AtelierPropertiesTable properties={proprietes} />
+                </div>
+            </section>
+        </article>
+    );
+}

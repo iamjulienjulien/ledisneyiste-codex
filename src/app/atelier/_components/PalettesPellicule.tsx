@@ -1,3 +1,5 @@
+import { PixieSymbol } from "@/components/ui/PixieSymbol";
+
 type CouleurReference = {
     nom: string;
     token: `--${string}`;
@@ -236,10 +238,15 @@ const rolesSemantiques = [
 ] as const;
 
 const portes = [
-    ["Personnages", "Rouge crayon", "--atelier-famille-personnages"],
-    ["Créateurs", "Jaune lampe", "--atelier-famille-createurs"],
-    ["Œuvres", "Gouache", "--atelier-famille-oeuvres"],
-    ["Époques", "Vert cellulo", "--atelier-famille-epoques"],
+    [
+        "Personnages",
+        "Rouge crayon",
+        "--atelier-famille-personnages",
+        "personnages",
+    ],
+    ["Créateurs", "Jaune lampe", "--atelier-famille-createurs", "createurs"],
+    ["Œuvres", "Gouache", "--atelier-famille-oeuvres", "oeuvres"],
+    ["Époques", "Vert cellulo", "--atelier-famille-epoques", "epoques"],
 ] as const;
 
 function Nuancier({ couleurs }: { couleurs: readonly CouleurReference[] }) {
@@ -391,13 +398,19 @@ export function PalettesPellicule() {
                         contributeurs » derrière la porte des Créateurs.
                     </p>
                     <div className="mt-6 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
-                        {portes.map(([famille, couleur, token]) => (
+                        {portes.map(([famille, couleur, token, slug]) => (
                             <article
                                 key={famille}
                                 className="bg-surface p-5"
                                 style={{ borderTop: `4px solid var(${token})` }}
                             >
-                                <p className="text-lg font-medium text-ink">
+                                <PixieSymbol
+                                    registry="codex"
+                                    collection="index"
+                                    slug={slug}
+                                    size="xl"
+                                />
+                                <p className="mt-4 text-lg font-medium text-ink">
                                     {famille}
                                 </p>
                                 <p

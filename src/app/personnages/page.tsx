@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { personnages } from "@/data/catalogues";
 
 export const metadata: Metadata = {
@@ -11,19 +12,27 @@ export const metadata: Metadata = {
 export default function PersonnagesPage() {
     return (
         <main className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20">
-            <header className="max-w-2xl">
-                <p className="text-sm font-medium uppercase tracking-[0.2em] text-famille-personnages">
-                    Explorer le Codex
-                </p>
+            <header className="flex max-w-3xl flex-col gap-6 sm:flex-row sm:items-center sm:gap-8">
+                <PixieSymbol
+                    registry="codex"
+                    collection="index"
+                    slug="personnages"
+                    size="xl"
+                />
+                <div className="max-w-2xl">
+                    <p className="text-sm font-medium uppercase tracking-[0.2em] text-famille-personnages">
+                        Explorer le Codex
+                    </p>
 
-                <h1 className="mt-3 text-5xl text-famille-personnages">
-                    Personnages
-                </h1>
+                    <h1 className="mt-3 text-5xl text-famille-personnages">
+                        Personnages
+                    </h1>
 
-                <p className="mt-6 text-lg leading-8 text-ink-soft">
-                    Les figures fictives qui peuplent les récits et les
-                    imaginaires Disney.
-                </p>
+                    <p className="mt-6 text-lg leading-8 text-ink-soft">
+                        Les figures fictives qui peuplent les récits et les
+                        imaginaires Disney.
+                    </p>
+                </div>
             </header>
 
             <section className="mt-12 border-t border-line pt-8">

@@ -1,4 +1,5 @@
 import { BoutonDossier } from "./_components/BoutonDossier";
+import { PixieSymbolDossier } from "./_components/PixieSymbolDossier";
 import { PalettesPellicule } from "./_components/PalettesPellicule";
 
 const categories = [
@@ -60,24 +61,34 @@ const categories = [
 
 const accessoires = [
     {
+        nom: "PixieSymbol",
+        role: "Projeter un symbole du registre",
+        statut: "Prêt à projeter",
+        href: "#pixie-symbol",
+    },
+    {
         nom: "Bouton",
         role: "Déclencher une action",
         statut: "Esquisse",
+        href: "#bouton",
     },
     {
         nom: "Lien",
         role: "Conduire vers une autre scène",
         statut: "À inventorier",
+        href: null,
     },
     {
         nom: "Cartouche",
         role: "Qualifier une information brève",
         statut: "À inventorier",
+        href: null,
     },
     {
         nom: "Séparateur",
         role: "Marquer un changement de séquence",
         statut: "À inventorier",
+        href: null,
     },
 ] as const;
 
@@ -261,9 +272,10 @@ export default function AtelierPage() {
                         Le plateau attend ses premières primitives
                     </h2>
                     <p className="mt-5 leading-7 text-ink-soft">
-                        Aucun composant n’est encore déclaré prêt. Le premier
-                        clap ouvrira une fiche complète avec ses essais, ses
-                        états, sa régie et son générique technique.
+                        Le premier composant est prêt à projeter tandis que les
+                        suivants poursuivent leurs essais. Chaque clap ouvre une
+                        fiche complète avec ses états, sa régie et son générique
+                        technique.
                     </p>
                 </div>
 
@@ -298,9 +310,9 @@ export default function AtelierPage() {
                                         scope="row"
                                         className="px-5 py-4 font-medium text-ink"
                                     >
-                                        {accessoire.nom === "Bouton" ? (
+                                        {accessoire.href ? (
                                             <a
-                                                href="#bouton"
+                                                href={accessoire.href}
                                                 className="text-accent underline underline-offset-4 hover:text-accent-hover"
                                             >
                                                 {accessoire.nom} →
@@ -321,6 +333,7 @@ export default function AtelierPage() {
                     </table>
                 </div>
 
+                <PixieSymbolDossier />
                 <BoutonDossier />
             </section>
         </div>
