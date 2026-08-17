@@ -9,15 +9,8 @@ export function getAtelierAnimationColor<
     return colorsAtelierAnimation[slug];
 }
 
-export function getAtelierAnimationColorStyle<
-    Slug extends AtelierAnimationColorSlug,
->(slug: Slug) {
-    const color = getAtelierAnimationColor(slug);
-
-    return {
-        accent: color.cssValue,
-        foreground: color.foreground,
-    } as const;
+export function getAtelierAnimationColorSlugs() {
+    return Object.keys(colorsAtelierAnimation) as AtelierAnimationColorSlug[];
 }
 
 export type {

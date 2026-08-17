@@ -1,9 +1,10 @@
 import type { metadataRegistry } from "@/registry/metadata";
+import type { AtelierAnimationColorSlug } from "@/types/colors";
 
 export type MetadataDefinition = Readonly<{
     label: string;
     description: string;
-    accent: `var(--${string})`;
+    color: AtelierAnimationColorSlug;
 }>;
 
 export type MetadataRegistryName = keyof typeof metadataRegistry;

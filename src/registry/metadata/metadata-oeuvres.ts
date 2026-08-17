@@ -6,34 +6,34 @@ export const metadataOeuvres = {
             label: "Alice Comedies",
             description:
                 "Série mêlant une interprète réelle à un monde dessiné.",
-            accent: "var(--atelier-animation-jaune-lampe)",
+            color: "jaune-lampe",
         },
         oswald: {
             label: "Oswald",
             description:
                 "Courts métrages consacrés à Oswald le lapin chanceux.",
-            accent: "var(--atelier-animation-bleu-reperage)",
+            color: "bleu-reperage",
         },
         "mickey-mouse": {
             label: "Mickey Mouse",
             description: "Courts métrages de la série Mickey Mouse.",
-            accent: "var(--atelier-animation-rouge-crayon)",
+            color: "rouge-crayon",
         },
         "silly-symphonies": {
             label: "Silly Symphonies",
             description:
                 "Courts métrages musicaux servant de laboratoire au studio.",
-            accent: "var(--atelier-animation-gouache)",
+            color: "gouache",
         },
         "donald-duck": {
             label: "Donald Duck",
             description: "Courts métrages de la série Donald Duck.",
-            accent: "var(--atelier-animation-corail-cel)",
+            color: "corail-cel",
         },
         pluto: {
             label: "Pluto",
             description: "Courts métrages de la série Pluto.",
-            accent: "var(--atelier-animation-vert-cellulo)",
+            color: "vert-cellulo",
         },
     },
     types: {
@@ -41,19 +41,19 @@ export const metadataOeuvres = {
             label: "Court métrage d’animation",
             description:
                 "Œuvre animée dont la durée correspond au format du court métrage.",
-            accent: "var(--atelier-animation-jaune-lampe)",
+            color: "jaune-lampe",
         },
         "court-metrage-hybride": {
             label: "Court métrage hybride",
             description:
                 "Court métrage mêlant prises de vues réelles et animation.",
-            accent: "var(--atelier-animation-gouache)",
+            color: "gouache",
         },
         "long-metrage-anime": {
             label: "Long métrage d’animation",
             description:
                 "Œuvre animée dont la durée correspond au format du long métrage.",
-            accent: "var(--atelier-animation-bleu-reperage)",
+            color: "bleu-reperage",
         },
     },
     sons: {
@@ -61,13 +61,13 @@ export const metadataOeuvres = {
             label: "Muet",
             description:
                 "Œuvre diffusée à l’origine sans bande sonore synchronisée.",
-            accent: "var(--atelier-animation-graphite)",
+            color: "graphite",
         },
         sonore: {
             label: "Sonore",
             description:
                 "Œuvre diffusée à l’origine avec une bande sonore synchronisée, avec ou sans dialogues.",
-            accent: "var(--atelier-animation-corail-cel)",
+            color: "corail-cel",
         },
     },
     couleurs: {
@@ -75,12 +75,12 @@ export const metadataOeuvres = {
             label: "Noir et blanc",
             description:
                 "Œuvre produite et diffusée à l’origine en noir et blanc.",
-            accent: "var(--atelier-animation-graphite)",
+            color: "graphite",
         },
         couleur: {
             label: "Couleur",
             description: "Œuvre produite et diffusée à l’origine en couleur.",
-            accent: "var(--atelier-animation-gouache)",
+            color: "gouache",
         },
     },
 } as const satisfies Record<string, Record<string, MetadataDefinition>>;

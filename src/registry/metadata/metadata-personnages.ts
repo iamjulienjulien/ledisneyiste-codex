@@ -5,19 +5,19 @@ export const metadataPersonnages = {
         precurseur: {
             label: "Précurseur",
             description: "Figure qui précède ou prépare le cercle de Mickey.",
-            accent: "var(--atelier-animation-jaune-lampe)",
+            color: "jaune-lampe",
         },
         "cercle-de-mickey": {
             label: "Cercle de Mickey",
             description:
                 "Personnage récurrent lié aux premières séries de Mickey.",
-            accent: "var(--atelier-animation-rouge-crayon)",
+            color: "rouge-crayon",
         },
         antagoniste: {
             label: "Antagoniste",
             description:
                 "Figure d’opposition récurrente dans les récits Disney.",
-            accent: "var(--atelier-animation-gouache)",
+            color: "gouache",
         },
     },
 } as const satisfies Record<string, Record<string, MetadataDefinition>>;

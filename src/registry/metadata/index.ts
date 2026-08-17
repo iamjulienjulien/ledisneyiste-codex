@@ -59,6 +59,21 @@ export function getMetadataSlugs<
     >[];
 }
 
+export function getMetadataSelections(): MetadataSelection[] {
+    return Object.entries(metadataRegistry).flatMap(([registry, collections]) =>
+        Object.entries(collections).flatMap(([collection, definitions]) =>
+            Object.keys(definitions).map(
+                (slug) =>
+                    ({
+                        registry,
+                        collection,
+                        slug,
+                    }) as MetadataSelection,
+            ),
+        ),
+    );
+}
+
 export type {
     MetadataCollectionName,
     MetadataDefinition,
