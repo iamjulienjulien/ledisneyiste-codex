@@ -196,64 +196,17 @@ export default function AtelierPage() {
                         01 · La Pellicule
                     </p>
                     <h2 id="pellicule-title" className="mt-3 text-4xl text-ink">
-                        Les couleurs de la salle et de ce qu’elle projette
+                        Les voix qui donnent corps à ce qui est projeté
                     </h2>
                     <p className="mt-5 leading-7 text-ink-soft">
-                        Deux palettes se partagent le travail. Projection
-                        Originale met en scène l’interface ; L’Atelier
-                        d’animation apporte les couleurs éditoriales qui
-                        distingueront les familles et leurs métadonnées.
+                        Deux typographies se partagent le travail. La
+                        typographie d’affiche ouvre les séquences et installe
+                        leur ton ; la typographie de lecture accompagne les
+                        archives, leurs relations et leurs récits.
                     </p>
                 </div>
 
                 <PalettesPellicule />
-
-                <div className="mt-16 grid gap-6 border-t border-line pt-12 lg:grid-cols-2">
-                    <article className="border border-line bg-surface p-6 sm:p-8">
-                        <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted">
-                            Typographie d’affiche
-                        </p>
-                        <p className="mt-5 font-display text-4xl font-semibold leading-tight tracking-tight text-ink sm:text-5xl">
-                            Il était une fois…
-                        </p>
-                        <p className="mt-5 font-mono text-xs text-accent">
-                            font-display
-                        </p>
-                    </article>
-
-                    <article className="border border-line bg-surface p-6 sm:p-8">
-                        <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted">
-                            Typographie de lecture
-                        </p>
-                        <p className="mt-5 max-w-lg text-lg leading-8 text-ink-soft">
-                            Une voix claire et posée accompagne les archives,
-                            leurs relations et les récits qui les traversent.
-                        </p>
-                        <p className="mt-5 font-mono text-xs text-accent">
-                            font-sans
-                        </p>
-                    </article>
-                </div>
-
-                <div className="mt-6 grid gap-6 sm:grid-cols-3">
-                    {[
-                        ["Petit", "rounded-small"],
-                        ["Moyen", "rounded-medium"],
-                        ["Grand", "rounded-large"],
-                    ].map(([nom, classe]) => (
-                        <article
-                            key={nom}
-                            className={`border border-line bg-surface-muted p-6 ${classe}`}
-                        >
-                            <p className="text-lg font-medium text-ink">
-                                {nom}
-                            </p>
-                            <p className="mt-2 font-mono text-xs text-accent">
-                                {classe}
-                            </p>
-                        </article>
-                    ))}
-                </div>
             </section>
 
             <section

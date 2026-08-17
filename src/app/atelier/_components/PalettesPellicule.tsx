@@ -1,4 +1,6 @@
-import { PixieSymbol } from "@/components/ui/PixieSymbol";
+"use client";
+
+import { useState } from "react";
 
 type CouleurReference = {
     nom: string;
@@ -237,18 +239,6 @@ const rolesSemantiques = [
     ["Line", "border-line", "bg-line", "Séparation"],
 ] as const;
 
-const portes = [
-    [
-        "Personnages",
-        "Rouge crayon",
-        "--atelier-famille-personnages",
-        "personnages",
-    ],
-    ["Créateurs", "Jaune lampe", "--atelier-famille-createurs", "createurs"],
-    ["Œuvres", "Gouache", "--atelier-famille-oeuvres", "oeuvres"],
-    ["Époques", "Vert cellulo", "--atelier-famille-epoques", "epoques"],
-] as const;
-
 function Nuancier({ couleurs }: { couleurs: readonly CouleurReference[] }) {
     return (
         <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -284,147 +274,260 @@ function Nuancier({ couleurs }: { couleurs: readonly CouleurReference[] }) {
 }
 
 export function PalettesPellicule() {
+    const [lumiere, setLumiere] = useState<"sombre" | "claire">("sombre");
+
     return (
         <div className="mt-12 space-y-16">
-            <section aria-labelledby="projection-originale-palette">
-                <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
-                    <div className="max-w-3xl">
-                        <p className="text-xs font-medium uppercase tracking-[0.18em] text-accent">
-                            Palette d’interface
+            <section aria-labelledby="typographie-pellicule">
+                <div className="max-w-3xl">
+                    <p className="text-xs font-medium uppercase tracking-[0.18em] text-accent">
+                        Fondation typographique
+                    </p>
+                    <h3
+                        id="typographie-pellicule"
+                        className="mt-3 text-3xl text-ink"
+                    >
+                        Typographie
+                    </h3>
+                    <p className="mt-4 leading-7 text-ink-soft">
+                        Deux voix composent les intertitres et les récits du
+                        Codex : une présence d’affiche pour ouvrir les scènes,
+                        puis une voix de lecture pour accompagner les archives.
+                    </p>
+                </div>
+
+                <div className="mt-8 grid gap-6 lg:grid-cols-2">
+                    <article className="border border-line bg-surface p-6 sm:p-8">
+                        <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted">
+                            Typographie d’affiche
                         </p>
-                        <h3
-                            id="projection-originale-palette"
-                            className="mt-3 text-3xl text-ink"
-                        >
-                            Projection Originale
-                        </h3>
-                        <p className="mt-4 leading-7 text-ink-soft">
-                            Elle construit la salle : surfaces, encres, lignes,
-                            accents et lumières. Ses références alimentent les
-                            rôles sémantiques sans entrer directement dans les
-                            composants.
+                        <p className="mt-5 font-display text-4xl font-semibold leading-tight tracking-tight text-ink sm:text-5xl">
+                            Il était une fois…
                         </p>
-                    </div>
-                    <p className="font-mono text-xs text-muted">
-                        25 références · 2 lumières
-                    </p>
-                </div>
+                        <p className="mt-5 font-mono text-xs text-accent">
+                            font-display
+                        </p>
+                    </article>
 
-                <div className="mt-8">
-                    <h4 className="text-xl text-ink">Lumière sombre</h4>
-                    <p className="mt-2 text-sm text-muted">
-                        La salle s’efface pour laisser le contenu devenir la
-                        lumière.
-                    </p>
-                    <Nuancier couleurs={projectionSombre} />
-                </div>
-
-                <div className="mt-10">
-                    <h4 className="text-xl text-ink">Lumière claire</h4>
-                    <p className="mt-2 text-sm text-muted">
-                        Le même langage posé sur le papier, la toile et les
-                        encres d’un dossier de projection.
-                    </p>
-                    <Nuancier couleurs={projectionClaire} />
-                </div>
-
-                <div className="mt-12">
-                    <h4 className="text-xl text-ink">
-                        Le contrat de projection
-                    </h4>
-                    <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
-                        Ces rôles restent les seuls points d’entrée des
-                        composants. La palette peut évoluer sans réécrire leurs
-                        styles.
-                    </p>
-                    <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                        {rolesSemantiques.map(([nom, token, classe, usage]) => (
-                            <article
-                                key={nom}
-                                className="border border-line bg-surface p-4"
-                            >
-                                <div
-                                    aria-hidden="true"
-                                    className={`h-20 border border-line ${classe}`}
-                                />
-                                <h5 className="mt-4 font-sans text-lg font-medium tracking-normal text-ink">
-                                    {nom}
-                                </h5>
-                                <p className="mt-1 font-mono text-xs text-accent">
-                                    {token}
-                                </p>
-                                <p className="mt-3 text-sm text-muted">
-                                    {usage}
-                                </p>
-                            </article>
-                        ))}
-                    </div>
+                    <article className="border border-line bg-surface p-6 sm:p-8">
+                        <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted">
+                            Typographie de lecture
+                        </p>
+                        <p className="mt-5 max-w-lg text-lg leading-8 text-ink-soft">
+                            Une voix claire et posée accompagne les archives,
+                            leurs relations et les récits qui les traversent.
+                        </p>
+                        <p className="mt-5 font-mono text-xs text-accent">
+                            font-sans
+                        </p>
+                    </article>
                 </div>
             </section>
 
-            <section
-                aria-labelledby="atelier-animation-palette"
-                className="border-t border-line pt-12"
-            >
-                <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
-                    <div className="max-w-3xl">
-                        <p className="text-xs font-medium uppercase tracking-[0.18em] text-accent">
-                            Palette éditoriale
-                        </p>
-                        <h3
-                            id="atelier-animation-palette"
-                            className="mt-3 text-3xl text-ink"
-                        >
-                            L’Atelier d’animation
-                        </h3>
-                        <p className="mt-4 leading-7 text-ink-soft">
-                            Elle colore ce qui est projeté : familles,
-                            métadonnées, badges et futurs symboles. Elle apporte
-                            des repères sans repeindre la salle.
-                        </p>
-                    </div>
-                    <p className="font-mono text-xs text-muted">
-                        10 références éditoriales
+            <div className="space-y-16 border-t border-line pt-12">
+                <div className="max-w-3xl">
+                    <h3 className="text-4xl text-ink">
+                        Les couleurs de la salle et de ce qu’elle projette
+                    </h3>
+                    <p className="mt-5 leading-7 text-ink-soft">
+                        Deux palettes se partagent le travail. Projection
+                        Originale met en scène l’interface ; L’Atelier
+                        d’animation apporte les couleurs éditoriales qui
+                        distingueront les familles et leurs métadonnées.
                     </p>
                 </div>
 
-                <Nuancier couleurs={atelierAnimation} />
-
-                <div className="mt-10">
-                    <h4 className="text-xl text-ink">Les quatre portes</h4>
-                    <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
-                        Les premiers alias donnent une identité stable aux
-                        familles tout en conservant le nom technique «
-                        contributeurs » derrière la porte des Créateurs.
-                    </p>
-                    <div className="mt-6 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
-                        {portes.map(([famille, couleur, token, slug]) => (
-                            <article
-                                key={famille}
-                                className="bg-surface p-5"
-                                style={{ borderTop: `4px solid var(${token})` }}
+                <section aria-labelledby="projection-originale-palette">
+                    <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
+                        <div className="max-w-3xl">
+                            <p className="text-xs font-medium uppercase tracking-[0.18em] text-accent">
+                                Palette d’interface
+                            </p>
+                            <h3
+                                id="projection-originale-palette"
+                                className="mt-3 text-3xl text-ink"
                             >
-                                <PixieSymbol
-                                    registry="codex"
-                                    collection="index"
-                                    slug={slug}
-                                    size="xl"
-                                />
-                                <p className="mt-4 text-lg font-medium text-ink">
-                                    {famille}
-                                </p>
-                                <p
-                                    className="mt-2 text-sm font-medium"
-                                    style={{ color: `var(${token})` }}
-                                >
-                                    {couleur}
-                                </p>
-                                <p className="mt-4 overflow-x-auto font-mono text-[0.6875rem] text-muted">
-                                    {token}
-                                </p>
-                            </article>
-                        ))}
+                                Projection Originale
+                            </h3>
+                            <p className="mt-4 leading-7 text-ink-soft">
+                                Elle construit la salle : surfaces, encres,
+                                lignes, accents et lumières. Ses références
+                                alimentent les rôles sémantiques sans entrer
+                                directement dans les composants.
+                            </p>
+                        </div>
+                        <p className="font-mono text-xs text-muted">
+                            25 références · 2 lumières
+                        </p>
                     </div>
+
+                    <div className="mt-12">
+                        <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+                            <div>
+                                <h4 className="text-xl text-ink">
+                                    Le contrat de projection
+                                </h4>
+                                <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
+                                    Ces rôles restent les seuls points d’entrée
+                                    des composants. La palette peut évoluer sans
+                                    réécrire leurs styles.
+                                </p>
+                            </div>
+
+                            <div>
+                                <p className="text-xs font-medium uppercase tracking-[0.16em] text-muted">
+                                    Lumière
+                                </p>
+                                <div
+                                    role="group"
+                                    aria-label="Lumière du contrat de projection"
+                                    className="mt-2 inline-flex border border-line bg-surface p-1"
+                                >
+                                    {(["sombre", "claire"] as const).map(
+                                        (option) => (
+                                            <button
+                                                key={option}
+                                                type="button"
+                                                aria-pressed={
+                                                    lumiere === option
+                                                }
+                                                onClick={() =>
+                                                    setLumiere(option)
+                                                }
+                                                className={`px-3 py-2 text-sm font-medium capitalize transition-colors ${
+                                                    lumiere === option
+                                                        ? "bg-accent text-accent-contrast"
+                                                        : "text-ink-soft hover:bg-surface-muted hover:text-ink"
+                                                }`}
+                                            >
+                                                {option}
+                                            </button>
+                                        ),
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            data-projection="originale"
+                            data-lumiere={lumiere}
+                            className="mt-6 border border-line bg-canvas p-5 sm:p-6"
+                        >
+                            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                                {rolesSemantiques.map(
+                                    ([nom, token, classe, usage]) => (
+                                        <article
+                                            key={nom}
+                                            className="border border-line bg-surface p-4"
+                                        >
+                                            <div
+                                                aria-hidden="true"
+                                                className={`h-20 border border-line ${classe}`}
+                                            />
+                                            <h5 className="mt-4 font-sans text-lg font-medium tracking-normal text-ink">
+                                                {nom}
+                                            </h5>
+                                            <p className="mt-1 font-mono text-xs text-accent">
+                                                {token}
+                                            </p>
+                                            <p className="mt-3 text-sm text-muted">
+                                                {usage}
+                                            </p>
+                                        </article>
+                                    ),
+                                )}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="mt-8">
+                        <h4 className="text-xl text-ink">Lumière sombre</h4>
+                        <p className="mt-2 text-sm text-muted">
+                            La salle s’efface pour laisser le contenu devenir la
+                            lumière.
+                        </p>
+                        <Nuancier couleurs={projectionSombre} />
+                    </div>
+
+                    <div className="mt-10">
+                        <h4 className="text-xl text-ink">Lumière claire</h4>
+                        <p className="mt-2 text-sm text-muted">
+                            Le même langage posé sur le papier, la toile et les
+                            encres d’un dossier de projection.
+                        </p>
+                        <Nuancier couleurs={projectionClaire} />
+                    </div>
+                </section>
+
+                <section
+                    aria-labelledby="atelier-animation-palette"
+                    className="border-t border-line pt-12"
+                >
+                    <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
+                        <div className="max-w-3xl">
+                            <p className="text-xs font-medium uppercase tracking-[0.18em] text-accent">
+                                Palette éditoriale
+                            </p>
+                            <h3
+                                id="atelier-animation-palette"
+                                className="mt-3 text-3xl text-ink"
+                            >
+                                L’Atelier d’animation
+                            </h3>
+                            <p className="mt-4 leading-7 text-ink-soft">
+                                Elle colore ce qui est projeté : familles,
+                                métadonnées, badges et futurs symboles. Elle
+                                apporte des repères sans repeindre la salle.
+                            </p>
+                        </div>
+                        <p className="font-mono text-xs text-muted">
+                            10 références éditoriales
+                        </p>
+                    </div>
+
+                    <Nuancier couleurs={atelierAnimation} />
+                </section>
+            </div>
+
+            <section
+                aria-labelledby="formes-pellicule"
+                className="border-t border-line pt-12"
+            >
+                <div className="max-w-3xl">
+                    <p className="text-xs font-medium uppercase tracking-[0.18em] text-accent">
+                        Fondation géométrique
+                    </p>
+                    <h3
+                        id="formes-pellicule"
+                        className="mt-3 text-3xl text-ink"
+                    >
+                        Formes
+                    </h3>
+                    <p className="mt-4 leading-7 text-ink-soft">
+                        Trois rayons règlent la douceur des cadres, des surfaces
+                        et des composants sans effacer leur construction
+                        graphique.
+                    </p>
+                </div>
+
+                <div className="mt-8 grid gap-6 sm:grid-cols-3">
+                    {[
+                        ["Petit", "rounded-small"],
+                        ["Moyen", "rounded-medium"],
+                        ["Grand", "rounded-large"],
+                    ].map(([nom, classe]) => (
+                        <article
+                            key={nom}
+                            className={`border border-line bg-surface-muted p-6 ${classe}`}
+                        >
+                            <p className="text-lg font-medium text-ink">
+                                {nom}
+                            </p>
+                            <p className="mt-2 font-mono text-xs text-accent">
+                                {classe}
+                            </p>
+                        </article>
+                    ))}
                 </div>
             </section>
         </div>
