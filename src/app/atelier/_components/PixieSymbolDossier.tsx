@@ -7,6 +7,7 @@ import { getSymbol, getSymbolSlugs } from "@/registry/symbols";
 import { PixieSymbolPlayground } from "./PixieSymbolPlayground";
 
 const indexSymbolSlugs = getSymbolSlugs("codex", "index");
+const contributeurBlockSymbolSlugs = getSymbolSlugs("blocs", "contributeurs");
 const personnageBlockSymbolSlugs = getSymbolSlugs("blocs", "personnages");
 
 const dimensions = [
@@ -75,7 +76,7 @@ const typesSpecifiques = [
     },
     {
         name: 'SymbolCollectionName<"blocs">',
-        values: ['"personnages"'],
+        values: ['"contributeurs"', '"personnages"'],
         description: "Collections exposées par le registre des blocs.",
     },
     {
@@ -87,6 +88,11 @@ const typesSpecifiques = [
         name: 'SymbolSlug<"codex", "index">',
         values: ['"personnages"', '"createurs"', '"oeuvres"', '"epoques"'],
         description: "Symboles disponibles dans la collection des index.",
+    },
+    {
+        name: 'SymbolSlug<"blocs", "contributeurs">',
+        values: ['"debuts"', '"signature"', '"trajectoire"', '"transmission"'],
+        description: "Symboles des blocs éditoriaux des Contributeurs.",
     },
     {
         name: 'SymbolSlug<"blocs", "personnages">',
@@ -189,10 +195,7 @@ export function PixieSymbolDossier() {
                         ["Mission", "Afficher un symbole typé."],
                         ["Sélection", "registry · collection · slug"],
                         ["Exemple", "codex.index.personnages"],
-                        [
-                            "Masters",
-                            "Table lumineuse et Table d’animation · 1254 px.",
-                        ],
+                        ["Masters", "Trois séries originales · 1254 px."],
                         ["Dérivés", "PNG transparent · 384 px."],
                         ["Accessibilité", "Décoratif par défaut."],
                     ].map(([terme, definition]) => (
@@ -302,6 +305,52 @@ export function PixieSymbolDossier() {
                                 <PixieSymbol
                                     registry="blocs"
                                     collection="personnages"
+                                    slug={slug}
+                                    size="xl"
+                                    className="mx-auto"
+                                />
+                                <h4 className="mt-5 text-xl text-ink">
+                                    {symbole.label}
+                                </h4>
+                                <p className="mt-2 font-mono text-xs text-muted">
+                                    {slug}
+                                </p>
+                            </article>
+                        );
+                    })}
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="pixie-symbol-blocs-contributeurs"
+                className="mt-16"
+            >
+                <TitreSequence
+                    id="pixie-symbol-blocs-contributeurs"
+                    surTitre="Distribution"
+                    titre="Les quatre outils du créateur"
+                    description="Taille-crayon, empreinte, folio et boîte à outils racontent les débuts, la signature, la trajectoire et la transmission des Contributeurs sans reprendre la feuille d’animation des Personnages."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+                    {contributeurBlockSymbolSlugs.map((slug) => {
+                        const symbole = getSymbol(
+                            "blocs",
+                            "contributeurs",
+                            slug,
+                        );
+
+                        return (
+                            <article
+                                key={slug}
+                                className="bg-surface p-6 text-center"
+                                style={{
+                                    borderTop: `4px solid ${symbole.accent}`,
+                                }}
+                            >
+                                <PixieSymbol
+                                    registry="blocs"
+                                    collection="contributeurs"
                                     slug={slug}
                                     size="xl"
                                     className="mx-auto"

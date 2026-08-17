@@ -82,9 +82,53 @@ const symbolOptions = [
         },
         definition: getSymbol("blocs", "personnages", "trajectoire"),
     },
+    {
+        key: "blocs.contributeurs.debuts",
+        group: "Blocs · Contributeurs",
+        selection: {
+            registry: "blocs",
+            collection: "contributeurs",
+            slug: "debuts",
+        },
+        definition: getSymbol("blocs", "contributeurs", "debuts"),
+    },
+    {
+        key: "blocs.contributeurs.signature",
+        group: "Blocs · Contributeurs",
+        selection: {
+            registry: "blocs",
+            collection: "contributeurs",
+            slug: "signature",
+        },
+        definition: getSymbol("blocs", "contributeurs", "signature"),
+    },
+    {
+        key: "blocs.contributeurs.trajectoire",
+        group: "Blocs · Contributeurs",
+        selection: {
+            registry: "blocs",
+            collection: "contributeurs",
+            slug: "trajectoire",
+        },
+        definition: getSymbol("blocs", "contributeurs", "trajectoire"),
+    },
+    {
+        key: "blocs.contributeurs.transmission",
+        group: "Blocs · Contributeurs",
+        selection: {
+            registry: "blocs",
+            collection: "contributeurs",
+            slug: "transmission",
+        },
+        definition: getSymbol("blocs", "contributeurs", "transmission"),
+    },
 ] as const;
 
-const symbolGroups = ["Codex · Index", "Blocs · Personnages"] as const;
+const symbolGroups = [
+    "Codex · Index",
+    "Blocs · Personnages",
+    "Blocs · Contributeurs",
+] as const;
 
 const tailles: ReadonlyArray<{
     value: PixieSymbolPresetSize;
