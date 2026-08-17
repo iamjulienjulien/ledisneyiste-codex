@@ -1,4 +1,4 @@
-import { BoutonDossier } from "./_components/BoutonDossier";
+import { PixieDustButtonDossier } from "./_components/PixieDustButtonDossier";
 import { PixieDustLinkDossier } from "./_components/PixieDustLinkDossier";
 import { PixieSymbolDossier } from "./_components/PixieSymbolDossier";
 import { PalettesPellicule } from "./_components/PalettesPellicule";
@@ -288,7 +288,7 @@ export default function AtelierPage() {
                 </div>
 
                 <PixieSymbolDossier />
-                <BoutonDossier />
+                <PixieDustButtonDossier />
                 <PixieDustLinkDossier />
             </section>
         </div>

@@ -37,7 +37,7 @@ const largeurParCadre: Record<Cadre, string> = {
     large: "max-w-none",
 };
 
-export function BoutonPlayground() {
+export function PixieDustButtonPlayground() {
     const [libelle, setLibelle] = useState("Ouvrir les archives");
     const [variante, setVariante] =
         useState<PixieDustButtonVariant>("principal");

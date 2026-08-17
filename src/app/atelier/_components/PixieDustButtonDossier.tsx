@@ -3,7 +3,7 @@ import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTa
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieDustButton } from "@/components/ui/PixieDustButton";
-import { BoutonPlayground } from "./BoutonPlayground";
+import { PixieDustButtonPlayground } from "./PixieDustButtonPlayground";
 
 const variantes = [
     {
@@ -103,7 +103,7 @@ function TitreSequence({
     );
 }
 
-export function BoutonDossier() {
+export function PixieDustButtonDossier() {
     return (
         <AtelierFicheAccessoire
             id="bouton"
@@ -298,7 +298,7 @@ export function BoutonDossier() {
                     description="Les contrôles modifient l’exemple isolé. Le plateau peut changer de lumière et de largeur sans modifier le reste de l’Atelier."
                 />
                 <div className="mt-7">
-                    <BoutonPlayground />
+                    <PixieDustButtonPlayground />
                 </div>
             </section>
 
