@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { CodexIndexListItem } from "@/components/codex/CodexIndexListItem";
 import { CodexIndexViewSwitch } from "@/components/codex/CodexIndexViewSwitch";
 import { CodexPersonnageCard } from "@/components/codex/CodexPersonnageCard";
+import { PixieBadge } from "@/components/ui/PixieBadge";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { personnages } from "@/data/catalogues";
 import { getFichePersonnageBySlug } from "@/data/personnages";
@@ -75,24 +76,35 @@ export default async function PersonnagesPage({
                         })}
                     </ul>
                 ) : (
-                    <ul className="mt-6 divide-y divide-line">
-                        {personnages.map((personnage) => (
-                            <li key={personnage.slug}>
-                                <Link
-                                    href={`/personnages/${personnage.slug}`}
-                                    className="group block py-6"
+                    <ul className="mt-8 space-y-3">
+                        {personnages.map((personnage, index) => (
+                            <CodexIndexListItem
+                                key={personnage.slug}
+                                href={`/personnages/${personnage.slug}`}
+                                index={index}
+                                famille="personnages"
+                                titre={personnage.nom}
+                                sousTitre={personnage.sousTitre}
+                            >
+                                <ul
+                                    aria-label="Catégories"
+                                    className="flex flex-wrap gap-2"
                                 >
-                                    <h2 className="text-2xl text-ink transition-colors group-hover:text-famille-personnages group-focus-visible:text-famille-personnages">
-                                        {personnage.nom}
-                                    </h2>
-
-                                    {personnage.sousTitre && (
-                                        <p className="mt-2 max-w-2xl leading-7 text-ink-soft">
-                                            {personnage.sousTitre}
-                                        </p>
+                                    {personnage.metadata.categories.map(
+                                        (category) => (
+                                            <li key={category}>
+                                                <PixieBadge
+                                                    registry="personnages"
+                                                    collection="categories"
+                                                    slug={category}
+                                                    size="xs"
+                                                    shape="pill"
+                                                />
+                                            </li>
+                                        ),
                                     )}
-                                </Link>
-                            </li>
+                                </ul>
+                            </CodexIndexListItem>
                         ))}
                     </ul>
                 )}

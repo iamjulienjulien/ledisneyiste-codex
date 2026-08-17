@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { CodexEpoqueCard } from "@/components/codex/CodexEpoqueCard";
+import { CodexIndexListItem } from "@/components/codex/CodexIndexListItem";
 import { CodexIndexViewSwitch } from "@/components/codex/CodexIndexViewSwitch";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { epoques } from "@/data/catalogues";
@@ -91,24 +91,16 @@ export default async function EpoquesPage({
                         })}
                     </ul>
                 ) : (
-                    <ul className="mt-6 divide-y divide-line">
-                        {epoques.map((epoque) => (
-                            <li key={epoque.slug}>
-                                <Link
-                                    href={`/epoques/${epoque.slug}`}
-                                    className="group block py-6"
-                                >
-                                    <h2 className="text-2xl text-ink transition-colors group-hover:text-famille-epoques group-focus-visible:text-famille-epoques">
-                                        {epoque.nom}
-                                    </h2>
-
-                                    {epoque.sousTitre && (
-                                        <p className="mt-2 max-w-2xl leading-7 text-ink-soft">
-                                            {epoque.sousTitre}
-                                        </p>
-                                    )}
-                                </Link>
-                            </li>
+                    <ul className="mt-8 space-y-3">
+                        {epoques.map((epoque, index) => (
+                            <CodexIndexListItem
+                                key={epoque.slug}
+                                href={`/epoques/${epoque.slug}`}
+                                index={index}
+                                famille="epoques"
+                                titre={epoque.nom}
+                                sousTitre={epoque.sousTitre}
+                            />
                         ))}
                     </ul>
                 )}

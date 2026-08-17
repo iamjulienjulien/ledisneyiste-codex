@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { CodexCreateurCard } from "@/components/codex/CodexCreateurCard";
+import { CodexIndexListItem } from "@/components/codex/CodexIndexListItem";
 import { CodexIndexViewSwitch } from "@/components/codex/CodexIndexViewSwitch";
+import { PixieBadge } from "@/components/ui/PixieBadge";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { contributeurs } from "@/data/catalogues";
 import { getFicheContributeurBySlug } from "@/data/contributeurs";
@@ -79,24 +80,35 @@ export default async function ContributeursPage({
                         })}
                     </ul>
                 ) : (
-                    <ul className="mt-6 divide-y divide-line">
-                        {contributeurs.map((contributeur) => (
-                            <li key={contributeur.slug}>
-                                <Link
-                                    href={`/contributeurs/${contributeur.slug}`}
-                                    className="group block py-6"
+                    <ul className="mt-8 space-y-3">
+                        {contributeurs.map((contributeur, index) => (
+                            <CodexIndexListItem
+                                key={contributeur.slug}
+                                href={`/contributeurs/${contributeur.slug}`}
+                                index={index}
+                                famille="createurs"
+                                titre={contributeur.nom}
+                                sousTitre={contributeur.sousTitre}
+                            >
+                                <ul
+                                    aria-label="Catégories"
+                                    className="flex flex-wrap gap-2"
                                 >
-                                    <h2 className="text-2xl text-ink transition-colors group-hover:text-famille-createurs group-focus-visible:text-famille-createurs">
-                                        {contributeur.nom}
-                                    </h2>
-
-                                    {contributeur.sousTitre && (
-                                        <p className="mt-2 max-w-2xl leading-7 text-ink-soft">
-                                            {contributeur.sousTitre}
-                                        </p>
+                                    {contributeur.metadata.categories.map(
+                                        (category) => (
+                                            <li key={category}>
+                                                <PixieBadge
+                                                    registry="contributeurs"
+                                                    collection="categories"
+                                                    slug={category}
+                                                    size="xs"
+                                                    shape="pill"
+                                                />
+                                            </li>
+                                        ),
                                     )}
-                                </Link>
-                            </li>
+                                </ul>
+                            </CodexIndexListItem>
                         ))}
                     </ul>
                 )}

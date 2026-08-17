@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { CodexIndexListItem } from "@/components/codex/CodexIndexListItem";
 import { CodexIndexViewSwitch } from "@/components/codex/CodexIndexViewSwitch";
 import { CodexOeuvreCard } from "@/components/codex/CodexOeuvreCard";
+import { PixieBadge } from "@/components/ui/PixieBadge";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { oeuvres } from "@/data/catalogues";
 import { getFicheOeuvreBySlug } from "@/data/oeuvres";
@@ -73,24 +74,40 @@ export default async function OeuvresPage({
                         })}
                     </ul>
                 ) : (
-                    <ul className="mt-6 divide-y divide-line">
-                        {oeuvres.map((oeuvre) => (
-                            <li key={oeuvre.slug}>
-                                <Link
-                                    href={`/oeuvres/${oeuvre.slug}`}
-                                    className="group block py-6"
+                    <ul className="mt-8 space-y-3">
+                        {oeuvres.map((oeuvre, index) => (
+                            <CodexIndexListItem
+                                key={oeuvre.slug}
+                                href={`/oeuvres/${oeuvre.slug}`}
+                                index={index}
+                                famille="oeuvres"
+                                titre={oeuvre.nom}
+                                sousTitre={oeuvre.sousTitre}
+                            >
+                                <ul
+                                    aria-label="Métadonnées"
+                                    className="flex flex-wrap gap-2"
                                 >
-                                    <h2 className="text-2xl text-ink transition-colors group-hover:text-famille-oeuvres group-focus-visible:text-famille-oeuvres">
-                                        {oeuvre.nom}
-                                    </h2>
-
-                                    {oeuvre.sousTitre && (
-                                        <p className="mt-2 max-w-2xl leading-7 text-ink-soft">
-                                            {oeuvre.sousTitre}
-                                        </p>
-                                    )}
-                                </Link>
-                            </li>
+                                    <li>
+                                        <PixieBadge
+                                            registry="oeuvres"
+                                            collection="collections"
+                                            slug={oeuvre.metadata.collection}
+                                            size="xs"
+                                            shape="pill"
+                                        />
+                                    </li>
+                                    <li>
+                                        <PixieBadge
+                                            registry="oeuvres"
+                                            collection="types"
+                                            slug={oeuvre.metadata.type}
+                                            size="xs"
+                                            shape="pill"
+                                        />
+                                    </li>
+                                </ul>
+                            </CodexIndexListItem>
                         ))}
                     </ul>
                 )}

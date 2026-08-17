@@ -1,0 +1,146 @@
+.root {
+    --codex-list-color: var(--color-accent);
+
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-small);
+    background: var(--color-surface);
+    transition:
+        border-color 170ms ease,
+        background-color 170ms ease;
+}
+
+.root[data-famille="personnages"] {
+    --codex-list-color: var(--color-famille-personnages);
+}
+
+.root[data-famille="createurs"] {
+    --codex-list-color: var(--color-famille-createurs);
+}
+
+.root[data-famille="oeuvres"] {
+    --codex-list-color: var(--color-famille-oeuvres);
+}
+
+.root[data-famille="epoques"] {
+    --codex-list-color: var(--color-famille-epoques);
+}
+
+.root::before {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 0.2rem;
+    background: var(--codex-list-color);
+    content: "";
+    transform: scaleY(0);
+    transform-origin: center;
+    transition: transform 170ms ease;
+}
+
+.root:hover,
+.root:focus-within {
+    border-color: color-mix(
+        in srgb,
+        var(--codex-list-color) 48%,
+        var(--color-line)
+    );
+    background: color-mix(
+        in srgb,
+        var(--codex-list-color) 4%,
+        var(--color-surface)
+    );
+}
+
+.root:hover::before,
+.root:focus-within::before {
+    transform: scaleY(1);
+}
+
+.link {
+    display: grid;
+    grid-template-columns: 2.5rem minmax(0, 1fr) auto;
+    gap: 1rem;
+    align-items: center;
+    padding: 1.25rem 1.25rem 1.25rem 1.5rem;
+    color: inherit;
+    text-decoration: none;
+}
+
+.link:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: -3px;
+}
+
+.number {
+    align-self: start;
+    padding-top: 0.4rem;
+    color: var(--codex-list-color);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+}
+
+.content {
+    min-width: 0;
+}
+
+.heading {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.arrow {
+    color: var(--codex-list-color);
+    opacity: 0;
+    transform: translateX(-0.35rem);
+    transition:
+        opacity 170ms ease,
+        transform 170ms ease;
+}
+
+.root:hover .arrow,
+.root:focus-within .arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.metadata {
+    display: block;
+    margin-top: 0.85rem;
+}
+
+.symbol {
+    display: inline-flex;
+    opacity: 0.78;
+    transition:
+        opacity 170ms ease,
+        transform 170ms ease;
+}
+
+.root:hover .symbol,
+.root:focus-within .symbol {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+@media (max-width: 40rem) {
+    .link {
+        grid-template-columns: 2rem minmax(0, 1fr);
+        gap: 0.75rem;
+        padding: 1.1rem 1rem 1.1rem 1.25rem;
+    }
+
+    .symbol {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .root,
+    .root::before,
+    .arrow,
+    .symbol {
+        transition: none;
+    }
+}
