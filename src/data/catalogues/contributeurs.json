@@ -14,6 +14,15 @@
         "sousTitre": "Le créateur devenu figure fondatrice"
     },
     {
+        "slug": "roy-o-disney",
+        "nom": "Roy O. Disney",
+        "type": "contributeur",
+        "metadata": {
+            "categories": ["fondateur", "producteur"]
+        },
+        "sousTitre": "Le cofondateur qui donna aux rêves une assise durable"
+    },
+    {
         "slug": "ub-iwerks",
         "nom": "Ub Iwerks",
         "type": "contributeur",

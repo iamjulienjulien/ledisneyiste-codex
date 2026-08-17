@@ -22,6 +22,30 @@
         "dateConsultation": "2026-08-18"
     },
     {
+        "id": "d23-roy-oliver-disney",
+        "titre": "Disney, Roy Oliver",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/disney-roy-oliver/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "wdfm-gentle-visionary-roy-o-disney",
+        "titre": "Gentle Visionary: Roy O. Disney",
+        "auteur": "Jennifer Hendrickson",
+        "editeur": "The Walt Disney Family Museum",
+        "datePublication": "2016-06-24",
+        "url": "https://www.waltdisney.org/blog/gentle-visionary-roy-o-disney",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "twc-nine-decades-of-disney",
+        "titre": "Celebrating Nine Decades of Disney",
+        "editeur": "The Walt Disney Company",
+        "datePublication": "2013-10-16",
+        "url": "https://thewaltdisneycompany.com/news/celebrating-nine-decades-of-disney/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
         "id": "d23-about-walt-disney",
         "titre": "About Walt Disney",
         "editeur": "D23: The Official Disney Fan Club",

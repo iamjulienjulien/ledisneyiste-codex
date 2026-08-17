@@ -1,0 +1,75 @@
+{
+    "slug": "roy-o-disney",
+    "type": "contributeur",
+    "introduction": "Roy O. Disney demeure longtemps le frère placé hors du faisceau, celui qui tient les comptes pendant que Walt donne un visage public au studio. Cette discrétion ne fait pourtant pas de lui un simple administrateur des rêves d’un autre. Cofondateur, cameraman des débuts, négociateur, financier et dirigeant, Roy construit les conditions dans lesquelles les paris créatifs peuvent durer. Lorsque Walt disparaît, il reporte enfin sa retraite pour achever Walt Disney World : un dernier projet où la fidélité fraternelle devient à son tour une forme de vision.",
+    "blocsEditoriaux": [
+        {
+            "type": "debuts",
+            "eyebrow": "Association",
+            "titre": "Deux frères font tenir un studio",
+            "paragraphes": [
+                "En 1923, Roy Disney se remet de la tuberculose dans un hôpital pour anciens combattants de Los Angeles lorsque Walt lui présente la réponse favorable de Margaret J. Winkler. Il quitte l’hôpital et s’engage dans l’entreprise nouvelle. Les deux frères rassemblent leurs économies, empruntent à leur oncle Robert et installent leurs premiers moyens de production dans le garage familial.",
+                "Le partage des rôles ne naît pas encore dans un grand organigramme. Roy tient les comptes, actionne la caméra et lave même des cellulos lorsque le travail l’exige ; Walt dirige et dessine. Le Disney Brothers Cartoon Studio devient ainsi une association concrète où la création, la production et la survie quotidienne restent impossibles à séparer.",
+                "Roy propose bientôt d’effacer leur nom commun de l’enseigne au profit de Walt Disney Studio. Le geste résume une disposition durable : il accepte de rester en arrière-plan sans jamais quitter la construction de l’entreprise dont il est l’un des deux fondateurs."
+            ]
+        },
+        {
+            "type": "signature",
+            "eyebrow": "Méthode",
+            "titre": "Donner une structure au risque",
+            "paragraphes": [
+                "La complémentarité des frères est souvent réduite à une formule commode : Walt serait le créatif, Roy le financier. Elle décrit une réalité, mais elle masque aussi la part d’invention propre à la gestion d’un studio qui engage régulièrement davantage de moyens qu’il n’en possède.",
+                "Roy cherche les financements, négocie avec les distributeurs, développe les licences de produits dérivés et protège l’indépendance de l’entreprise. En 1953, il participe notamment à la décision de rompre avec les distributeurs extérieurs pour créer Buena Vista Distribution, donnant au studio un contrôle plus direct sur la circulation de ses films.",
+                "Son rôle n’est donc pas seulement de limiter les dépenses de Walt. Il consiste à transformer des projets risqués en engagements que l’entreprise peut soutenir, puis à préserver assez de continuité pour que le pari suivant reste possible."
+            ]
+        },
+        {
+            "type": "trajectoire",
+            "eyebrow": "Dernier projet",
+            "titre": "Achever le monde de Walt",
+            "paragraphes": [
+                "Après la mort de Walt en décembre 1966, Roy renonce à la retraite qu’il préparait. Il prend une place publique inhabituelle et supervise le financement comme la construction du complexe de Floride. Le projet, que son frère appelait encore Disney World, devient Walt Disney World afin que son nom reste attaché à l’œuvre inachevée.",
+                "Le complexe ouvre le 1er octobre 1971. Grâce au montage financier conduit par Roy et ses équipes, cet investissement de 400 millions de dollars entre en activité sans dette restante pour l’entreprise. Roy assiste à l’inauguration officielle quelques semaines plus tard, puis meurt le 20 décembre.",
+                "Ce dernier acte prolonge la fonction qu’il occupe depuis 1923. Roy ne dessine pas le monde promis au public ; il fait en sorte qu’il puisse ouvrir ses portes."
+            ]
+        }
+    ],
+    "naissance": {
+        "date": {
+            "valeur": "1893-06-24",
+            "precision": "jour"
+        },
+        "lieu": "Chicago, Illinois, États-Unis"
+    },
+    "deces": {
+        "date": {
+            "valeur": "1971-12-20",
+            "precision": "jour"
+        },
+        "lieu": "Burbank, Californie, États-Unis"
+    },
+    "roles": [
+        "cofondateur",
+        "dirigeant",
+        "financier",
+        "producteur",
+        "entrepreneur"
+    ],
+    "periodesActivite": [
+        {
+            "debut": {
+                "valeur": "1923",
+                "precision": "annee"
+            },
+            "fin": {
+                "valeur": "1971",
+                "precision": "annee"
+            }
+        }
+    ],
+    "sources": [
+        "d23-roy-oliver-disney",
+        "wdfm-gentle-visionary-roy-o-disney",
+        "twc-nine-decades-of-disney"
+    ]
+}
