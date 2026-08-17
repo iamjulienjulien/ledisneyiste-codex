@@ -1,6 +1,7 @@
 import { PixieDustButtonDossier } from "./_components/PixieDustButtonDossier";
 import { PixieDustBadgeDossier } from "./_components/PixieDustBadgeDossier";
 import { PixieDustLinkDossier } from "./_components/PixieDustLinkDossier";
+import { PixieDustSeparatorDossier } from "./_components/PixieDustSeparatorDossier";
 import { PixieSymbolDossier } from "./_components/PixieSymbolDossier";
 import { PalettesPellicule } from "./_components/PalettesPellicule";
 
@@ -87,10 +88,10 @@ const accessoires = [
         href: "#cartouche",
     },
     {
-        nom: "Séparateur",
+        nom: "PixieDustSeparator",
         role: "Marquer un changement de séquence",
-        statut: "À inventorier",
-        href: null,
+        statut: "Esquisse",
+        href: "#separateur",
     },
 ] as const;
 
@@ -265,16 +266,12 @@ export default function AtelierPage() {
                                         scope="row"
                                         className="px-5 py-4 font-medium text-ink"
                                     >
-                                        {accessoire.href ? (
-                                            <a
-                                                href={accessoire.href}
-                                                className="text-accent underline underline-offset-4 hover:text-accent-hover"
-                                            >
-                                                {accessoire.nom} →
-                                            </a>
-                                        ) : (
-                                            accessoire.nom
-                                        )}
+                                        <a
+                                            href={accessoire.href}
+                                            className="text-accent underline underline-offset-4 hover:text-accent-hover"
+                                        >
+                                            {accessoire.nom} →
+                                        </a>
                                     </th>
                                     <td className="px-5 py-4 text-ink-soft">
                                         {accessoire.role}
@@ -292,6 +289,7 @@ export default function AtelierPage() {
                 <PixieDustButtonDossier />
                 <PixieDustLinkDossier />
                 <PixieDustBadgeDossier />
+                <PixieDustSeparatorDossier />
             </section>
         </div>
     );

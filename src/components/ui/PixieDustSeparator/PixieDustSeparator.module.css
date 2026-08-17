@@ -1,0 +1,60 @@
+.root {
+    width: 100%;
+    border: 0;
+    color: var(--color-line);
+}
+
+.subtle {
+    color: var(--color-line);
+}
+
+.strong {
+    color: var(--color-line-strong);
+}
+
+.accent {
+    color: var(--pixie-dust-separator-accent, var(--color-accent));
+}
+
+.inherit {
+    color: inherit;
+}
+
+.line {
+    height: 1px;
+    background: currentColor;
+}
+
+.beam {
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        color-mix(in srgb, currentColor 38%, transparent) 18%,
+        currentColor 50%,
+        color-mix(in srgb, currentColor 38%, transparent) 82%,
+        transparent
+    );
+    box-shadow: 0 0 1rem color-mix(in srgb, currentColor 18%, transparent);
+}
+
+.film {
+    height: 0.25rem;
+    background: repeating-linear-gradient(
+        90deg,
+        currentColor 0 1rem,
+        transparent 1rem 1.5rem
+    );
+}
+
+.sm {
+    margin-block: 1rem;
+}
+
+.md {
+    margin-block: 2rem;
+}
+
+.lg {
+    margin-block: 3.5rem;
+}
