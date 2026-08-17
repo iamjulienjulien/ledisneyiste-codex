@@ -1,10 +1,14 @@
 import type { EntreeCatalogueBase } from "@/types/codex";
+import type { CollectionOeuvreDisney } from "@/types/metadata";
 import type { DateHistorique } from "@/types/date";
 import type { FicheCodexBase } from "@/types/fiche";
 import type { ReferenceCodex } from "@/types/reference";
 
 export type OeuvreDisney = EntreeCatalogueBase & {
     type: "oeuvre";
+    metadata: {
+        collection: CollectionOeuvreDisney;
+    };
 };
 
 export type ContributionOeuvre = {

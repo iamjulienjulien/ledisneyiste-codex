@@ -3,66 +3,90 @@
         "slug": "walt-disney",
         "nom": "Walt Disney",
         "type": "contributeur",
+        "metadata": {
+            "categories": [
+                "fondateur",
+                "animateur",
+                "realisateur",
+                "producteur"
+            ]
+        },
         "sousTitre": "Le créateur devenu figure fondatrice"
     },
     {
         "slug": "ub-iwerks",
         "nom": "Ub Iwerks",
         "type": "contributeur",
+        "metadata": {
+            "categories": ["animateur", "realisateur", "technicien"]
+        },
         "sousTitre": "L’animateur et inventeur derrière les premiers pas de Mickey"
     },
     {
         "slug": "les-clark",
         "nom": "Les Clark",
         "type": "contributeur",
+        "metadata": { "categories": ["animateur", "realisateur"] },
         "sousTitre": "Le premier des Nine Old Men et l’un des maîtres de Mickey"
     },
     {
         "slug": "eric-larson",
         "nom": "Eric Larson",
         "type": "contributeur",
+        "metadata": { "categories": ["animateur"] },
         "sousTitre": "L’animateur devenu passeur de l’héritage Disney"
     },
     {
         "slug": "wolfgang-reitherman",
         "nom": "Wolfgang Reitherman",
         "type": "contributeur",
+        "metadata": {
+            "categories": ["animateur", "realisateur", "producteur"]
+        },
         "sousTitre": "L’animateur du mouvement devenu capitaine du studio"
     },
     {
         "slug": "milt-kahl",
         "nom": "Milt Kahl",
         "type": "contributeur",
+        "metadata": { "categories": ["animateur"] },
         "sousTitre": "Le dessinateur qui donna sa ligne au style Disney"
     },
     {
         "slug": "ward-kimball",
         "nom": "Ward Kimball",
         "type": "contributeur",
+        "metadata": {
+            "categories": ["animateur", "realisateur", "producteur"]
+        },
         "sousTitre": "Le caricaturiste qui fit dérailler les habitudes du studio"
     },
     {
         "slug": "frank-thomas",
         "nom": "Frank Thomas",
         "type": "contributeur",
+        "metadata": { "categories": ["animateur"] },
         "sousTitre": "L’animateur qui fit de la personnalité le cœur du mouvement"
     },
     {
         "slug": "ollie-johnston",
         "nom": "Ollie Johnston",
         "type": "contributeur",
+        "metadata": { "categories": ["animateur"] },
         "sousTitre": "L’animateur qui donna chaleur et vérité aux relations"
     },
     {
         "slug": "marc-davis",
         "nom": "Marc Davis",
         "type": "contributeur",
+        "metadata": { "categories": ["animateur"] },
         "sousTitre": "L’artiste qui fit passer les personnages de l’écran aux parcs"
     },
     {
         "slug": "john-lounsbery",
         "nom": "John Lounsbery",
         "type": "contributeur",
+        "metadata": { "categories": ["animateur", "realisateur"] },
         "sousTitre": "L’animateur qui donna poids, élan et humour aux personnages"
     }
 ]
