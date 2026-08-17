@@ -1,0 +1,1 @@
+export { AtelierTypesTable } from "./AtelierTypesTable";

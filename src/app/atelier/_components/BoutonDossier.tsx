@@ -1,6 +1,7 @@
 import { AtelierFicheAccessoire } from "@/components/atelier/AtelierFicheAccessoire";
 import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
+import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieDustButton } from "@/components/ui/PixieDustButton";
 import { BoutonPlayground } from "./BoutonPlayground";
 
@@ -31,13 +32,13 @@ const proprietes = [
     },
     {
         name: "variante",
-        type: '"principal" | "secondaire" | "discret"',
+        type: "PixieDustButtonVariant",
         defaultValue: '"principal"',
         description: "Hiérarchie visuelle et fonctionnelle de l’action.",
     },
     {
         name: "taille",
-        type: '"petit" | "moyen" | "grand"',
+        type: "PixieDustButtonSize",
         defaultValue: '"moyen"',
         description: "Densité et taille de la zone interactive.",
     },
@@ -52,6 +53,19 @@ const proprietes = [
         type: "boolean",
         defaultValue: "false",
         description: "Diagnostic de focus réservé aux essais de l’Atelier.",
+    },
+] as const;
+
+const typesSpecifiques = [
+    {
+        name: "PixieDustButtonVariant",
+        values: ['"principal"', '"secondaire"', '"discret"'],
+        description: "Niveaux de hiérarchie visuelle de l’action.",
+    },
+    {
+        name: "PixieDustButtonSize",
+        values: ['"petit"', '"moyen"', '"grand"'],
+        description: "Tailles prédéfinies de la zone interactive.",
     },
 ] as const;
 
@@ -299,16 +313,17 @@ export function BoutonDossier() {
                 />
 
                 <div className="mt-7">
-                    <CodeExemple>{`type PixieDustButtonVariant =
-    | "principal"
-    | "secondaire"
-    | "discret";
-
-type PixieDustButtonSize = "petit" | "moyen" | "grand";`}</CodeExemple>
+                    <AtelierPropertiesTable properties={proprietes} />
                 </div>
 
-                <div className="mt-6">
-                    <AtelierPropertiesTable properties={proprietes} />
+                <div className="mt-10">
+                    <h4 className="text-xl text-ink">Types spécifiques</h4>
+                    <p className="mt-2 text-sm leading-6 text-muted">
+                        Les variantes et tailles admises par l’esquisse.
+                    </p>
+                    <div className="mt-4">
+                        <AtelierTypesTable types={typesSpecifiques} />
+                    </div>
                 </div>
             </section>
 

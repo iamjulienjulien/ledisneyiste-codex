@@ -1,0 +1,43 @@
+.root {
+    color: var(--color-ink-soft);
+    font-size: inherit;
+}
+
+.root[data-type-kind="string"] {
+    color: var(--atelier-animation-bleu-reperage);
+}
+
+.root[data-type-kind="number"] {
+    color: var(--atelier-animation-jaune-lampe);
+}
+
+.root[data-type-kind="boolean"] {
+    color: var(--atelier-animation-vert-cellulo);
+}
+
+.root[data-type-kind="nullish"] {
+    color: var(--atelier-animation-graphite);
+}
+
+.root[data-type-kind="bigint"] {
+    color: var(--atelier-animation-corail-cel);
+}
+
+.root[data-type-kind="symbol"] {
+    color: var(--atelier-animation-gouache);
+}
+
+.root[data-type-kind="object"] {
+    color: var(--atelier-animation-rouge-crayon);
+}
+
+.root[data-type-kind="reference"] {
+    color: var(--color-accent);
+}
+
+.chip {
+    border: 1px solid var(--color-line);
+    background: var(--color-canvas);
+    padding: 0.25rem 0.375rem;
+    font-size: 0.75rem;
+}

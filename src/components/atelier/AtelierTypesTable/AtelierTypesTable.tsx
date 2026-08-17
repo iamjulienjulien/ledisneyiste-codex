@@ -1,29 +1,25 @@
 import { AtelierTypeToken } from "@/components/atelier/AtelierTypeToken";
-import styles from "./AtelierPropertiesTable.module.css";
+import styles from "./AtelierTypesTable.module.css";
 
-export type AtelierProperty = Readonly<{
-    name: string;
-    type: string;
-    defaultValue: string;
-    description: string;
+type AtelierTypesTableProps = Readonly<{
+    types: readonly Readonly<{
+        name: string;
+        values: readonly string[];
+        description: string;
+    }>[];
 }>;
 
-export function AtelierPropertiesTable({
-    properties,
-}: Readonly<{ properties: readonly AtelierProperty[] }>) {
+export function AtelierTypesTable({ types }: AtelierTypesTableProps) {
     return (
         <div className={styles.root}>
-            <table className="w-full min-w-3xl border-collapse text-left">
+            <table className="w-full min-w-2xl border-collapse text-left">
                 <thead className="bg-surface-muted text-xs uppercase tracking-[0.16em] text-muted">
                     <tr>
-                        <th scope="col" className="px-5 py-4 font-medium">
-                            Propriété
-                        </th>
                         <th scope="col" className="px-5 py-4 font-medium">
                             Type
                         </th>
                         <th scope="col" className="px-5 py-4 font-medium">
-                            Défaut
+                            Valeurs
                         </th>
                         <th scope="col" className="px-5 py-4 font-medium">
                             Rôle
@@ -31,22 +27,27 @@ export function AtelierPropertiesTable({
                     </tr>
                 </thead>
                 <tbody className="divide-y divide-line bg-surface">
-                    {properties.map((property) => (
-                        <tr key={property.name}>
+                    {types.map((type) => (
+                        <tr key={type.name}>
                             <th
                                 scope="row"
                                 className="px-5 py-4 font-mono text-sm font-medium text-accent"
                             >
-                                {property.name}
+                                {type.name}
                             </th>
-                            <td className="px-5 py-4 font-mono text-xs text-ink-soft">
-                                <AtelierTypeToken value={property.type} />
-                            </td>
-                            <td className="px-5 py-4 font-mono text-xs text-muted">
-                                {property.defaultValue}
+                            <td className="px-5 py-4">
+                                <div className={styles.values}>
+                                    {type.values.map((value) => (
+                                        <AtelierTypeToken
+                                            key={value}
+                                            value={value}
+                                            chip
+                                        />
+                                    ))}
+                                </div>
                             </td>
                             <td className="px-5 py-4 text-sm leading-6 text-ink-soft">
-                                {property.description}
+                                {type.description}
                             </td>
                         </tr>
                     ))}

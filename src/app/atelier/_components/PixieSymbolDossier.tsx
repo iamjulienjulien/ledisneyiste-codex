@@ -1,6 +1,7 @@
 import { AtelierFicheAccessoire } from "@/components/atelier/AtelierFicheAccessoire";
 import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
+import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { getSymbol, getSymbolSlugs } from "@/registry/symbols";
 import { PixieSymbolPlayground } from "./PixieSymbolPlayground";
@@ -36,7 +37,7 @@ const proprietes = [
     },
     {
         name: "size",
-        type: '"xs" | "sm" | "md" | "lg" | "xl" | number',
+        type: "PixieSymbolSize",
         defaultValue: '"md"',
         description: "Taille extérieure du symbole en preset ou en pixels.",
     },
@@ -57,6 +58,29 @@ const proprietes = [
         type: "string",
         defaultValue: '""',
         description: "Classes ajoutées au conteneur extérieur.",
+    },
+] as const;
+
+const typesSpecifiques = [
+    {
+        name: "PixieSymbolSize",
+        values: ['"xs"', '"sm"', '"md"', '"lg"', '"xl"', "number"],
+        description: "Tailles prédéfinies ou dimension libre en pixels.",
+    },
+    {
+        name: "SymbolRegistryName",
+        values: ['"codex"'],
+        description: "Registres de symboles actuellement disponibles.",
+    },
+    {
+        name: 'SymbolCollectionName<"codex">',
+        values: ['"index"'],
+        description: "Collections exposées par le registre Codex.",
+    },
+    {
+        name: 'SymbolSlug<"codex", "index">',
+        values: ['"personnages"', '"createurs"', '"oeuvres"', '"epoques"'],
+        description: "Symboles disponibles dans la collection des index.",
     },
 ] as const;
 
@@ -344,6 +368,17 @@ export function PixieSymbolDossier() {
 
                 <div className="mt-7">
                     <AtelierPropertiesTable properties={proprietes} />
+                </div>
+
+                <div className="mt-10">
+                    <h4 className="text-xl text-ink">Types spécifiques</h4>
+                    <p className="mt-2 text-sm leading-6 text-muted">
+                        Les coordonnées et tailles admises par le registre
+                        actuel.
+                    </p>
+                    <div className="mt-4">
+                        <AtelierTypesTable types={typesSpecifiques} />
+                    </div>
                 </div>
             </section>
         </AtelierFicheAccessoire>
