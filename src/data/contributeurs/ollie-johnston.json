@@ -2,6 +2,26 @@
     "slug": "ollie-johnston",
     "type": "contributeur",
     "introduction": "Ollie Johnston cherche dans l’animation ce qui relie les personnages autant que ce qui les met en mouvement. Un geste partagé, une main tenue ou une hésitation deviennent sous son crayon les signes visibles d’une relation et donnent aux récits Disney une chaleur nouvelle. Cette attention à l’émotion accompagne plus de quatre décennies de longs métrages. Après sa retraite, les livres qu’il écrit avec Frank Thomas prolongent cette sensibilité en faisant de leur pratique un langage transmis aux générations suivantes.",
+    "blocsEditoriaux": [
+        {
+            "eyebrow": "Se toucher",
+            "titre": "Faire d’un geste partagé une relation",
+            "paragraphes": [
+                "Ollie Johnston remarque que les personnages de cartoons se touchent rarement autrement que pour se frapper. Il comprend au contraire qu’une main tenue, un appui ou une distance peuvent raconter ce qui circule entre deux êtres avec plus de force qu’une réplique.",
+                "Cette sensibilité anime l’amitié de Baloo et Mowgli dans Le Livre de la jungle comme la dépendance comique de Triste Sire envers le prince Jean dans Robin des Bois. Les corps ne bougent pas seulement côte à côte : chacun adapte son rythme, sa posture et son espace à la présence de l’autre.",
+                "Johnston apporte ainsi à l’animation Disney une chaleur qui ne vient pas d’une douceur uniforme. Une relation peut être tendre, inquiète, soumise ou conflictuelle ; ce qui compte est que le spectateur la perçoive dans les gestes. Le mouvement devient un lien avant de devenir une performance."
+            ]
+        },
+        {
+            "eyebrow": "Compagnonnage",
+            "titre": "Transformer une amitié en mémoire du métier",
+            "paragraphes": [
+                "L’amitié d’Ollie Johnston avec Frank Thomas commence à Stanford et traverse toute leur carrière. Leurs sensibilités restent distinctes, mais elles partagent la même question : comment amener le public à croire qu’un dessin pense, ressent et agit pour une raison ?",
+                "Après leur retraite commune en 1978, les deux animateurs répondent en revenant sur les films, les méthodes et les leçons du studio. Disney Animation: The Illusion of Life puis trois autres livres organisent cette mémoire sans la séparer des exemples concrets qui l’ont produite.",
+                "Leur duo devient à son tour une relation créatrice, semblable à celles que Johnston cherchait dans ses scènes : chacun éclaire et complète le regard de l’autre. En transmettant ensemble ce qu’ils avaient appris, Frank et Ollie donnent aux Nine Old Men un héritage qui peut être discuté, pratiqué et transformé."
+            ]
+        }
+    ],
     "naissance": {
         "date": {
             "valeur": "1912-10-31",

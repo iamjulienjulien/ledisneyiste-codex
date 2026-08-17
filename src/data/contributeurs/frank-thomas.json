@@ -2,6 +2,26 @@
     "slug": "frank-thomas",
     "type": "contributeur",
     "introduction": "Frank Thomas place la personnalité au cœur de l’animation Disney. Son dessin ne cherche pas seulement à produire un mouvement juste : il construit des pensées, des hésitations et des émotions auxquelles le public peut croire. Des premiers longs métrages aux grandes figures de l’après-guerre, il anime ainsi certains des moments les plus intimes du studio. Après sa retraite, les livres qu’il écrit avec Ollie Johnston prolongent cette exigence et transforment une expérience d’atelier en héritage partagé.",
+    "blocsEditoriaux": [
+        {
+            "eyebrow": "Croire",
+            "titre": "Donner une personnalité avant de donner un mouvement",
+            "paragraphes": [
+                "Pour Frank Thomas, un personnage ne devient crédible que lorsque le public peut reconnaître derrière ses actions une personnalité. Cette conviction le conduit vers des scènes où l’animation ne peut pas se cacher derrière la vitesse : les nains réunis autour de Blanche-Neige, Bambi et Panpan découvrant la glace, ou deux chiens hésitant autour d’une assiette de spaghettis.",
+                "La séquence de La Belle et le Clochard résume cette recherche. Écartée après les premiers storyboards, elle est reprise par Thomas, qui transforme un repas en rapprochement progressif. Les regards, les silences et le fil de spaghetti partagé font avancer la relation sans avoir besoin de l’expliquer.",
+                "La même attention nourrit des personnages plus menaçants comme Lady Tremaine, la Reine de Cœur ou le capitaine Crochet. Thomas ne les réduit pas à leur fonction de méchants : une retenue, un emportement ou une vanité précise leur donnent une logique propre. L’émotion naît alors moins d’un effet ajouté que de la cohérence du jeu."
+            ]
+        },
+        {
+            "eyebrow": "Après le studio",
+            "titre": "Écrire avec Ollie ce que l’atelier avait appris",
+            "paragraphes": [
+                "Frank Thomas rencontre Ollie Johnston à Stanford avant que leurs trajectoires ne se rejoignent chez Disney. Ils deviennent collègues, voisins et amis, confrontant pendant des décennies leurs dessins et leurs idées sur la manière de rendre un personnage vivant.",
+                "Lorsqu’ils prennent leur retraite en 1978, cette conversation change de forme. Ensemble, ils écrivent quatre ouvrages, dont Disney Animation: The Illusion of Life. Leur objectif n’est plus de résoudre une scène particulière, mais de rendre transmissibles les observations, les principes et les choix accumulés par les animateurs du studio.",
+                "Ce travail transforme une pratique longtemps apprise par proximité en mémoire partageable. Les livres ne remplacent ni le regard ni l’expérience, mais ils offrent aux générations suivantes un vocabulaire pour interroger leurs propres images. Frank et Ollie prolongent ainsi leur métier au-delà des films qu’ils ont directement animés."
+            ]
+        }
+    ],
     "naissance": {
         "date": {
             "valeur": "1912-09-05",
