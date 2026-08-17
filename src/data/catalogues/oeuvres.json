@@ -1,5 +1,17 @@
 [
     {
+        "slug": "alices-wonderland",
+        "nom": "Alice’s Wonderland",
+        "type": "oeuvre",
+        "metadata": {
+            "collection": "alice-comedies",
+            "type": "court-metrage-hybride",
+            "son": "muet",
+            "couleur": "noir-et-blanc"
+        },
+        "sousTitre": "Le pilote qui emporta Cartoonland jusqu’à Hollywood"
+    },
+    {
         "slug": "steamboat-willie",
         "nom": "Steamboat Willie",
         "type": "oeuvre",

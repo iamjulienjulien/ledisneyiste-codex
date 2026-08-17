@@ -1,0 +1,87 @@
+{
+    "slug": "alices-wonderland",
+    "type": "oeuvre",
+    "introduction": "Alice’s Wonderland précède le studio qu’il contribuera à faire naître. Tourné à Kansas City en 1923, ce pilote mêle la présence réelle de la jeune Virginia Davis à un monde peuplé de figures dessinées. Le film ne connaît alors aucune sortie en salles : Walt Disney l’emporte à Hollywood comme une promesse encore inachevée, assez convaincante pourtant pour ouvrir la voie aux Alice Comedies et transformer un dernier essai du studio Laugh-O-gram en première fondation de l’aventure Disney.",
+    "sortie": {
+        "date": {
+            "valeur": "1923",
+            "precision": "annee"
+        }
+    },
+    "format": "court métrage hybride",
+    "contributions": [
+        {
+            "contributeur": {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            },
+            "roles": ["réalisation", "production"]
+        },
+        {
+            "contributeur": {
+                "nom": "Ub Iwerks",
+                "type": "contributeur",
+                "slug": "ub-iwerks"
+            },
+            "roles": ["animation"]
+        },
+        {
+            "contributeur": {
+                "nom": "Hugh Harman"
+            },
+            "roles": ["animation"]
+        },
+        {
+            "contributeur": {
+                "nom": "Rudolf Ising"
+            },
+            "roles": ["animation"]
+        },
+        {
+            "contributeur": {
+                "nom": "Virginia Davis"
+            },
+            "roles": ["interprétation"]
+        }
+    ],
+    "personnages": [
+        {
+            "nom": "Alice"
+        }
+    ],
+    "blocsEditoriaux": [
+        {
+            "type": "langage",
+            "eyebrow": "Forme",
+            "titre": "Faire entrer une enfant dans le dessin",
+            "paragraphes": [
+                "Les films mêlant animation et prises de vues réelles existent déjà lorsque Walt Disney imagine Alice’s Wonderland. Son renversement donne toutefois au projet sa direction propre : au lieu de faire surgir un personnage dessiné dans le monde réel, il envoie une véritable enfant au milieu d’un univers animé.",
+                "Le film commence par la visite d’Alice au studio, où les dessins semblent s’animer devant elle, puis prolonge cette rencontre dans un rêve. Cartoonland accueille la fillette avant que des lions échappés d’un zoo ne la poursuivent. L’association entre jeu réel, surimpressions et animation pose ainsi le principe que la série reprendra à Hollywood."
+            ]
+        },
+        {
+            "type": "repere",
+            "eyebrow": "Diffusion",
+            "titre": "Un pilote qui ne sort pas en salles",
+            "paragraphes": [
+                "Alice’s Wonderland n’est pas distribué comme un épisode des Alice Comedies. Achevé dans les derniers mois de Laugh-O-gram, il demeure avant tout une démonstration : Walt l’adresse aux distributeurs new-yorkais, puis l’emporte avec lui lorsqu’il quitte Kansas City pour la Californie.",
+                "Cette distinction laisse à Alice’s Day at Sea la place de premier film de la série produit par le nouveau studio et distribué nationalement en 1924. Le pilote de 1923 conserve une autre fonction dans la chronologie : celle de la pellicule qui relie l’échec d’une première entreprise à la naissance de la suivante."
+            ]
+        },
+        {
+            "type": "relations",
+            "eyebrow": "Fondation",
+            "titre": "Le film qui devient un contrat",
+            "paragraphes": [
+                "À Hollywood, Alice’s Wonderland permet à Walt Disney de présenter un projet plutôt qu’une simple ambition. Margaret J. Winkler accepte de distribuer une série fondée sur ce pilote et signe avec lui un contrat le 16 octobre 1923. Roy O. Disney rejoint alors son frère comme associé du Disney Brothers Cartoon Studio.",
+                "Le film appartient encore au monde de Laugh-O-gram, mais la série qu’il déclenche donne au nouveau studio ses premiers revenus, sa première vedette et son premier rythme de production. Avant Oswald et Mickey, la continuité Disney commence donc par une œuvre qui change moins le cinéma par sa diffusion que la trajectoire de ceux qui l’ont fabriquée."
+            ]
+        }
+    ],
+    "sources": [
+        "d23-alices-wonderland",
+        "wdfm-first-disney-bros-movie",
+        "d23-alice-seas-it-all"
+    ]
+}

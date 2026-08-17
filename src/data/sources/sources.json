@@ -1,5 +1,27 @@
 [
     {
+        "id": "d23-alices-wonderland",
+        "titre": "Alice’s Wonderland (film)",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/alices-wonderland-film/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "wdfm-first-disney-bros-movie",
+        "titre": "100 Years Ago: The First Disney Bros. Movie",
+        "editeur": "The Walt Disney Family Museum",
+        "datePublication": "2023-10-16",
+        "url": "https://www.waltdisney.org/blog/100-years-ago-first-disney-bros-movie",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-alice-seas-it-all",
+        "titre": "Alice “Seas” It All",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/alice-seas-it-all/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
         "id": "d23-about-walt-disney",
         "titre": "About Walt Disney",
         "editeur": "D23: The Official Disney Fan Club",
