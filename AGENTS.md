@@ -15,6 +15,40 @@ the tree clean.
 
 <!-- END:nextjs-agent-rules -->
 
+# Règles impératives
+
+Les règles suivantes s'appliquent à toute intervention sur le dépôt. Elles ont
+priorité sur les préférences de mise en œuvre ponctuelles.
+
+1. Respecter l'architecture, les conventions et le vocabulaire déjà en place.
+   Ne pas créer de nouvelle abstraction sans besoin réel et démontré.
+2. Préserver les modifications existantes, y compris lorsqu'elles ne sont pas
+   encore commitées. Ne jamais les écraser, les retirer ou les inclure dans un
+   autre chantier sans accord explicite.
+3. Ne jamais créer un commit sans validation explicite préalable. Avant chaque
+   commit :
+    - lancer `pnpm check` et corriger toute erreur ;
+    - présenter le périmètre exact du commit ;
+    - proposer son titre complet conforme au format canonique ;
+    - attendre l'accord avant d'exécuter `git commit`.
+4. Rédiger tous les commits en français et conserver la signature exacte
+   `🐭 Julien`.
+5. Utiliser `Acte` et `Entracte` uniquement pour des commits vides d'ouverture
+   ou de clôture. Ces commits temporels sont strictement réservés à Julien et
+   doivent impérativement être exécutés par lui-même. Un agent ne doit jamais
+   les créer ; il peut uniquement en proposer la commande lorsque Julien la
+   demande. Pendant un Entracte, ne jamais utiliser le domaine `Scène`.
+6. Vérifier le domaine, son emoji et l'intitulé final dans `git log` après chaque
+   commit.
+
+> [!WARNING]
+> **L'emoji et le nom du domaine forment une paire indissociable.** L'emoji
+> identifie le domaine ; il ne sert pas d'illustration libre pour l'intitulé.
+> Il est interdit d'associer l'emoji d'un domaine au nom d'un autre. Par
+> exemple, `🏗️ Décor` et `🎨 Mise en scène` sont les seules associations
+> valides pour ces deux domaines. Toujours vérifier la table officielle avant
+> de proposer ou de créer un commit.
+
 # Convention des commits
 
 Le dépôt du **Codex du Disneyiste** utilise une convention de commits narrative,
