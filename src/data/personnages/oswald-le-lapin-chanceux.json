@@ -22,7 +22,9 @@
     },
     "premiereApparition": {
         "oeuvre": {
-            "nom": "Trolley Troubles"
+            "nom": "Trolley Troubles",
+            "type": "oeuvre",
+            "slug": "trolley-troubles"
         },
         "date": {
             "valeur": "1927-09-05",

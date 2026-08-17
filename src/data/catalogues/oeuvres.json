@@ -12,6 +12,18 @@
         "sousTitre": "Le pilote qui emporta Cartoonland jusqu’à Hollywood"
     },
     {
+        "slug": "trolley-troubles",
+        "nom": "Trolley Troubles",
+        "type": "oeuvre",
+        "metadata": {
+            "collection": "oswald",
+            "type": "court-metrage-anime",
+            "son": "muet",
+            "couleur": "noir-et-blanc"
+        },
+        "sousTitre": "Le trajet mouvementé qui fit d’Oswald une vedette"
+    },
+    {
         "slug": "steamboat-willie",
         "nom": "Steamboat Willie",
         "type": "oeuvre",

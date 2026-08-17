@@ -86,6 +86,28 @@
         "dateConsultation": "2026-08-18"
     },
     {
+        "id": "d23-trolley-troubles",
+        "titre": "Trolley Troubles (film)",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/trolley-troubles-film/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-oswald-trolley-troubles-video",
+        "titre": "Celebrate Walt Disney’s Trolley Troubles featuring Oswald the Lucky Rabbit",
+        "auteur": "Savannah Salazar",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/d23-video/oswald-trolley-troubles/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "afi-trolley-troubles",
+        "titre": "Trolley Troubles",
+        "editeur": "AFI Catalog of Feature Films",
+        "url": "https://catalog.afi.com/Film/107691-TROLLEY-TROUBLES",
+        "dateConsultation": "2026-08-18"
+    },
+    {
         "id": "d23-about-walt-disney",
         "titre": "About Walt Disney",
         "editeur": "D23: The Official Disney Fan Club",

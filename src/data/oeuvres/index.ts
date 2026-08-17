@@ -5,10 +5,12 @@ import mrDuckStepsOutJson from "@/data/oeuvres/mr-duck-steps-out.json";
 import steamboatWillieJson from "@/data/oeuvres/steamboat-willie.json";
 import theBandConcertJson from "@/data/oeuvres/the-band-concert.json";
 import theWiseLittleHenJson from "@/data/oeuvres/the-wise-little-hen.json";
+import trolleyTroublesJson from "@/data/oeuvres/trolley-troubles.json";
 import type { FicheOeuvreDisney } from "@/types/oeuvre";
 
 export const fichesOeuvres = [
     alicesWonderlandJson as FicheOeuvreDisney,
+    trolleyTroublesJson as FicheOeuvreDisney,
     steamboatWillieJson as FicheOeuvreDisney,
     theWiseLittleHenJson as FicheOeuvreDisney,
     theBandConcertJson as FicheOeuvreDisney,

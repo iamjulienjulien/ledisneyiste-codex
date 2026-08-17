@@ -1,0 +1,88 @@
+{
+    "slug": "trolley-troubles",
+    "type": "oeuvre",
+    "introduction": "Trolley Troubles fait entrer Oswald le lapin chanceux dans les salles et offre au studio Disney sa première vedette entièrement animée. Aux commandes d’un tramway aussi capricieux que le trajet qu’il emprunte, le lapin affronte une vache immobile, une montée impossible puis une descente incontrôlable. Le récit tient dans cette mécanique qui se dérègle, mais sa véritable nouveauté est ailleurs : Oswald ne subit pas seulement les gags, il les provoque, les transforme et leur oppose une personnalité assez vive pour porter toute une série.",
+    "sortie": {
+        "date": {
+            "valeur": "1927-09-05",
+            "precision": "jour"
+        }
+    },
+    "format": "court métrage d’animation",
+    "contributions": [
+        {
+            "contributeur": {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            },
+            "roles": ["réalisation", "animation"]
+        },
+        {
+            "contributeur": {
+                "nom": "Ub Iwerks",
+                "type": "contributeur",
+                "slug": "ub-iwerks"
+            },
+            "roles": ["animation"]
+        },
+        {
+            "contributeur": {
+                "nom": "Charles Mintz"
+            },
+            "roles": ["production"]
+        },
+        {
+            "contributeur": {
+                "nom": "Mike Marcus"
+            },
+            "roles": ["photographie"]
+        }
+    ],
+    "personnages": [
+        {
+            "nom": "Oswald le lapin chanceux",
+            "type": "personnage",
+            "slug": "oswald-le-lapin-chanceux"
+        }
+    ],
+    "blocsEditoriaux": [
+        {
+            "type": "repere",
+            "eyebrow": "Chronologie",
+            "titre": "Le deuxième film ouvre la série",
+            "paragraphes": [
+                "Poor Papa est le premier court métrage d’Oswald produit par le studio, mais Universal rejette cette version du personnage, jugée trop âgée. Le film ne sera finalement distribué que le 11 juin 1928, après une nouvelle série de modifications.",
+                "Trolley Troubles est donc le deuxième film fabriqué et le premier montré au public. Sa sortie du 5 septembre 1927 devient la date de naissance officielle d’Oswald à l’écran, même si le travail de conception et une première aventure le précèdent déjà.",
+                "Cette inversion rend visible le rôle du distributeur dans la formation d’un personnage. L’Oswald que les spectateurs rencontrent n’est pas seulement celui que le studio imagine : il est aussi la réponse remaniée à un premier refus."
+            ]
+        },
+        {
+            "type": "langage",
+            "eyebrow": "Mouvement",
+            "titre": "Un tramway soumis à la logique du dessin",
+            "paragraphes": [
+                "Oswald conduit un tramway chargé de passagers sur une voie où chaque obstacle appelle une solution impossible dans le monde réel. Face à une vache qui refuse de bouger, il réduit le véhicule pour le faire passer sous son ventre. Lorsqu’une côte arrête la machine, un bélier devient une force motrice improvisée.",
+                "Le film construit ainsi ses gags par transformation. Corps, véhicule, animaux et paysage ne possèdent aucune stabilité définitive : leur forme peut changer dès qu’un problème demande une réponse visuelle. La cohérence vient moins de la physique que de l’enchaînement rapide des causes et des effets.",
+                "La descente finale concentre cette logique. Le tramway s’emballe, perd ses passagers, quitte les rails et finit dans l’eau, tandis qu’Oswald continue d’inventer des usages nouveaux pour ce qu’il lui reste. Le personnage affirme sa présence par sa capacité à relancer le mouvement jusque dans l’accident."
+            ]
+        },
+        {
+            "type": "relations",
+            "eyebrow": "Industrie",
+            "titre": "Le premier succès appartient déjà à un autre",
+            "paragraphes": [
+                "La série est fabriquée par le studio Disney pour Charles Mintz, qui a conclu avec Universal un accord de distribution. Cette organisation offre à Oswald un accès à des salles plus importantes que celles des Alice Comedies et permet au jeune studio d’installer enfin une vedette animée récurrente.",
+                "Elle place cependant la propriété du personnage hors de Disney. Le succès de Trolley Troubles et des films suivants augmente la valeur d’Oswald sans donner à Walt la maîtrise de son avenir. Lorsque le contrat se brise en 1928, la première grande réussite du studio révèle donc en même temps sa dépendance.",
+                "Le film devient ainsi une fondation paradoxale : il prouve que Disney peut construire une personnalité populaire, mais il faudra la perte de cette personnalité pour que le studio apprenne à conserver les droits sur la suivante."
+            ]
+        }
+    ],
+    "sources": [
+        "d23-trolley-troubles",
+        "d23-oswald-trolley-troubles-video",
+        "afi-trolley-troubles",
+        "d23-poor-papa-restoration",
+        "wdfm-mickeys-follies"
+    ]
+}
