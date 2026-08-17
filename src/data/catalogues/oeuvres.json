@@ -3,42 +3,72 @@
         "slug": "steamboat-willie",
         "nom": "Steamboat Willie",
         "type": "oeuvre",
-        "metadata": { "collection": "mickey-mouse" },
+        "metadata": {
+            "collection": "mickey-mouse",
+            "type": "court-metrage-anime",
+            "son": "sonore",
+            "couleur": "noir-et-blanc"
+        },
         "sousTitre": "Le court métrage qui fit entendre Mickey"
     },
     {
         "slug": "the-wise-little-hen",
         "nom": "The Wise Little Hen",
         "type": "oeuvre",
-        "metadata": { "collection": "silly-symphonies" },
+        "metadata": {
+            "collection": "silly-symphonies",
+            "type": "court-metrage-anime",
+            "son": "sonore",
+            "couleur": "couleur"
+        },
         "sousTitre": "La Silly Symphony qui fit éclore Donald"
     },
     {
         "slug": "the-band-concert",
         "nom": "The Band Concert",
         "type": "oeuvre",
-        "metadata": { "collection": "mickey-mouse" },
+        "metadata": {
+            "collection": "mickey-mouse",
+            "type": "court-metrage-anime",
+            "son": "sonore",
+            "couleur": "couleur"
+        },
         "sousTitre": "Le concert qui fit entrer la série de Mickey en couleurs"
     },
     {
         "slug": "clock-cleaners",
         "nom": "Clock Cleaners",
         "type": "oeuvre",
-        "metadata": { "collection": "mickey-mouse" },
+        "metadata": {
+            "collection": "mickey-mouse",
+            "type": "court-metrage-anime",
+            "son": "sonore",
+            "couleur": "couleur"
+        },
         "sousTitre": "Le vertige mécanique du trio Mickey, Donald et Dingo"
     },
     {
         "slug": "mr-duck-steps-out",
         "nom": "Mr. Duck Steps Out",
         "type": "oeuvre",
-        "metadata": { "collection": "donald-duck" },
+        "metadata": {
+            "collection": "donald-duck",
+            "type": "court-metrage-anime",
+            "son": "sonore",
+            "couleur": "couleur"
+        },
         "sousTitre": "Le premier rendez-vous de Donald et Daisy"
     },
     {
         "slug": "bone-trouble",
         "nom": "Bone Trouble",
         "type": "oeuvre",
-        "metadata": { "collection": "pluto" },
+        "metadata": {
+            "collection": "pluto",
+            "type": "court-metrage-anime",
+            "son": "sonore",
+            "couleur": "couleur"
+        },
         "sousTitre": "Le face-à-face de Pluto et Butch au palais des glaces"
     }
 ]

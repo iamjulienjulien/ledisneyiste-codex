@@ -38,4 +38,10 @@ export type CategorieContributeurDisney = MetadataSlug<
 
 export type CollectionOeuvreDisney = MetadataSlug<"oeuvres", "collections">;
 
+export type TypeOeuvreDisney = MetadataSlug<"oeuvres", "types">;
+
+export type SonOeuvreDisney = MetadataSlug<"oeuvres", "sons">;
+
+export type CouleurOeuvreDisney = MetadataSlug<"oeuvres", "couleurs">;
+
 export type NatureRecompenseDisney = MetadataSlug<"recompenses", "natures">;
