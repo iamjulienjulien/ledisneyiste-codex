@@ -1,20 +1,20 @@
 import { getAtelierAnimationColor } from "@/registry/colors";
 import { getMetadata } from "@/registry/metadata";
 import type {
-    PixieDustBadgeCustomProps,
-    PixieDustBadgeProps,
-    PixieDustBadgeRegistryProps,
-    PixieDustBadgeStyle,
-} from "./PixieDustBadge.types";
-import styles from "./PixieDustBadge.module.css";
+    PixieBadgeCustomProps,
+    PixieBadgeProps,
+    PixieBadgeRegistryProps,
+    PixieBadgeStyle,
+} from "./PixieBadge.types";
+import styles from "./PixieBadge.module.css";
 
 function isRegistryBadge(
-    props: PixieDustBadgeProps,
-): props is PixieDustBadgeRegistryProps {
+    props: PixieBadgeProps,
+): props is PixieBadgeRegistryProps {
     return props.registry !== undefined;
 }
 
-export function PixieDustBadge(props: PixieDustBadgeProps) {
+export function PixieBadge(props: PixieBadgeProps) {
     const {
         variant = "soft",
         size = "md",
@@ -28,7 +28,7 @@ export function PixieDustBadge(props: PixieDustBadgeProps) {
     const metadata = registryProps ? getMetadata(registryProps) : null;
     const customProps = registryProps
         ? null
-        : (modeProps as PixieDustBadgeCustomProps);
+        : (modeProps as PixieBadgeCustomProps);
     const tone = metadata ? "color" : (customProps?.tone ?? "color");
     const colorSlug = metadata?.color ?? customProps?.color;
     const color = colorSlug ? getAtelierAnimationColor(colorSlug) : null;
@@ -48,13 +48,13 @@ export function PixieDustBadge(props: PixieDustBadgeProps) {
                       key !== "children" && key !== "tone" && key !== "color",
               ),
           );
-    const badgeStyle: PixieDustBadgeStyle = {
+    const badgeStyle: PixieBadgeStyle = {
         ...style,
-        ...(color ? { "--pixie-dust-badge-color": color.cssValue } : {}),
-        "--pixie-dust-badge-foreground":
+        ...(color ? { "--pixie-badge-color": color.cssValue } : {}),
+        "--pixie-badge-foreground":
             color?.foreground === "light"
-                ? "var(--pixie-dust-badge-contrast-light)"
-                : "var(--pixie-dust-badge-contrast-dark)",
+                ? "var(--pixie-badge-contrast-light)"
+                : "var(--pixie-badge-contrast-dark)",
     };
 
     return (
@@ -62,7 +62,7 @@ export function PixieDustBadge(props: PixieDustBadgeProps) {
             {...spanProps}
             className={`${styles.root} ${styles[variant]} ${styles[tone]} ${styles[size]} ${styles[shape]} ${className}`.trim()}
             style={badgeStyle}
-            data-pixie-dust-badge={
+            data-pixie-badge={
                 registryProps
                     ? `${registryProps.registry}.${registryProps.collection}.${registryProps.slug}`
                     : undefined

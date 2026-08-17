@@ -5,12 +5,12 @@ import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import {
-    PixieDustBadge,
-    type PixieDustBadgeShape,
-    type PixieDustBadgeSize,
-    type PixieDustBadgeTone,
-    type PixieDustBadgeVariant,
-} from "@/components/ui/PixieDustBadge";
+    PixieBadge,
+    type PixieBadgeShape,
+    type PixieBadgeSize,
+    type PixieBadgeTone,
+    type PixieBadgeVariant,
+} from "@/components/ui/PixieBadge";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import {
     getAtelierAnimationColor,
@@ -62,15 +62,15 @@ const initialMetadataSelection =
             selection.slug === "court-metrage-anime",
     ) ?? metadataSelections[0];
 
-export function PixieDustBadgePlayground() {
+export function PixieBadgePlayground() {
     const [mode, setMode] = useState<"registry" | "custom">("registry");
     const [metadataSelection, setMetadataSelection] =
         useState<MetadataSelection>(initialMetadataSelection);
     const [label, setLabel] = useState("Court métrage");
-    const [variant, setVariant] = useState<PixieDustBadgeVariant>("solid");
-    const [tone, setTone] = useState<PixieDustBadgeTone>("color");
-    const [size, setSize] = useState<PixieDustBadgeSize>("md");
-    const [shape, setShape] = useState<PixieDustBadgeShape>("rounded");
+    const [variant, setVariant] = useState<PixieBadgeVariant>("solid");
+    const [tone, setTone] = useState<PixieBadgeTone>("color");
+    const [size, setSize] = useState<PixieBadgeSize>("md");
+    const [shape, setShape] = useState<PixieBadgeShape>("rounded");
     const [withIcon, setWithIcon] = useState(false);
     const [color, setColor] =
         useState<AtelierAnimationColorSlug>("rouge-crayon");
@@ -101,7 +101,7 @@ export function PixieDustBadgePlayground() {
         : "";
     const code =
         mode === "registry"
-            ? `<PixieDustBadge
+            ? `<PixieBadge
     registry="${metadataSelection.registry}"
     collection="${metadataSelection.collection}"
     slug="${metadataSelection.slug}"
@@ -109,14 +109,14 @@ export function PixieDustBadgePlayground() {
     size="${size}"
     shape="${shape}"${iconCode}
 />`
-            : `<PixieDustBadge
+            : `<PixieBadge
     variant="${variant}"
     tone="${tone}"
     size="${size}"
     shape="${shape}"${tone === "color" ? `\n    color="${color}"` : ""}${iconCode}
 >
     ${safeLabel}
-</PixieDustBadge>`;
+</PixieBadge>`;
     const icon = withIcon ? (
         <PixieSymbol
             registry="codex"
@@ -416,7 +416,7 @@ export function PixieDustBadgePlayground() {
                             className={`flex min-h-48 w-full items-center justify-center border border-line bg-surface p-6 text-ink transition-[max-width] ${frameWidths[frame]}`}
                         >
                             {mode === "registry" ? (
-                                <PixieDustBadge
+                                <PixieBadge
                                     {...metadataSelection}
                                     variant={variant}
                                     size={size}
@@ -424,7 +424,7 @@ export function PixieDustBadgePlayground() {
                                     icon={icon}
                                 />
                             ) : (
-                                <PixieDustBadge
+                                <PixieBadge
                                     variant={variant}
                                     tone={tone}
                                     size={size}
@@ -433,7 +433,7 @@ export function PixieDustBadgePlayground() {
                                     icon={icon}
                                 >
                                     {safeLabel}
-                                </PixieDustBadge>
+                                </PixieBadge>
                             )}
                         </div>
                     </div>

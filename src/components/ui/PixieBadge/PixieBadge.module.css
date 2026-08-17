@@ -1,6 +1,6 @@
 .root {
-    --pixie-dust-badge-contrast-light: #fff;
-    --pixie-dust-badge-contrast-dark: #000;
+    --pixie-badge-contrast-light: #fff;
+    --pixie-badge-contrast-dark: #000;
 
     position: relative;
     isolation: isolate;
@@ -20,7 +20,7 @@
 }
 
 .color {
-    color: var(--pixie-dust-badge-color, var(--color-accent));
+    color: var(--pixie-badge-color, var(--color-accent));
 }
 
 .inherit {
@@ -59,7 +59,7 @@
 
 .solid .icon,
 .solid .label {
-    color: var(--pixie-dust-badge-foreground);
+    color: var(--pixie-badge-foreground);
 }
 
 .xs {

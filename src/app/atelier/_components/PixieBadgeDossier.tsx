@@ -2,13 +2,13 @@ import { AtelierFicheAccessoire } from "@/components/atelier/AtelierFicheAccesso
 import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
-import { PixieDustBadge } from "@/components/ui/PixieDustBadge";
+import { PixieBadge } from "@/components/ui/PixieBadge";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import {
     getAtelierAnimationColor,
     getAtelierAnimationColorSlugs,
 } from "@/registry/colors";
-import { PixieDustBadgePlayground } from "./PixieDustBadgePlayground";
+import { PixieBadgePlayground } from "./PixieBadgePlayground";
 
 const variants = [
     {
@@ -69,25 +69,25 @@ const properties = [
     },
     {
         name: "variant",
-        type: "PixieDustBadgeVariant",
+        type: "PixieBadgeVariant",
         defaultValue: '"soft"',
         description: "Niveau d’encadrement visuel du cartouche.",
     },
     {
         name: "tone",
-        type: "PixieDustBadgeTone",
+        type: "PixieBadgeTone",
         defaultValue: '"color"',
         description: "Origine de la couleur appliquée au cartouche.",
     },
     {
         name: "size",
-        type: "PixieDustBadgeSize",
+        type: "PixieBadgeSize",
         defaultValue: '"md"',
         description: "Densité typographique et espace intérieur.",
     },
     {
         name: "shape",
-        type: "PixieDustBadgeShape",
+        type: "PixieBadgeShape",
         defaultValue: '"rounded"',
         description: "Forme rectangulaire arrondie ou capsule.",
     },
@@ -114,22 +114,22 @@ const properties = [
 
 const specificTypes = [
     {
-        name: "PixieDustBadgeVariant",
+        name: "PixieBadgeVariant",
         values: ['"soft"', '"outline"', '"plain"', '"solid"'],
         description: "Quatre niveaux de présence du cartouche.",
     },
     {
-        name: "PixieDustBadgeTone",
+        name: "PixieBadgeTone",
         values: ['"neutral"', '"color"', '"inherit"'],
         description: "Trois origines possibles pour sa couleur.",
     },
     {
-        name: "PixieDustBadgeSize",
+        name: "PixieBadgeSize",
         values: ['"xs"', '"sm"', '"md"', '"lg"', '"xl"'],
         description: "Cinq densités, de la série compacte au plan héro.",
     },
     {
-        name: "PixieDustBadgeShape",
+        name: "PixieBadgeShape",
         values: ['"rounded"', '"pill"'],
         description: "Deux silhouettes sans modifier la densité.",
     },
@@ -175,12 +175,12 @@ function SequenceTitle({
     );
 }
 
-export function PixieDustBadgeDossier() {
+export function PixieBadgeDossier() {
     return (
         <AtelierFicheAccessoire
             id="cartouche"
             labelledBy="cartouche-title"
-            nom="PixieDustBadge"
+            nom="PixieBadge"
             className="mt-16 scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
@@ -192,7 +192,7 @@ export function PixieDustBadgeDossier() {
                             id="cartouche-title"
                             className="mt-4 text-4xl text-ink sm:text-5xl"
                         >
-                            PixieDustBadge
+                            PixieBadge
                         </h2>
                         <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
                             Projeter une métadonnée du registre ou qualifier une
@@ -206,7 +206,7 @@ export function PixieDustBadgeDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.2.0
+                                1.0.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -214,7 +214,7 @@ export function PixieDustBadgeDossier() {
                                 État
                             </dt>
                             <dd className="mt-1 text-sm font-medium">
-                                <AtelierStatut statut="Esquisse" />
+                                <AtelierStatut statut="Prêt à projeter" />
                             </dd>
                         </div>
                     </dl>
@@ -273,19 +273,19 @@ export function PixieDustBadgeDossier() {
                     id="cartouche-plan"
                     eyebrow="Plan maître"
                     title="Une métadonnée entre en scène depuis son registre"
-                    description="Les coordonnées suffisent : le registre fournit le libellé et le nom de couleur ; PixieDustBadge résout sa valeur et son contraste sans duplication dans l’écran."
+                    description="Les coordonnées suffisent : le registre fournit le libellé et le nom de couleur ; PixieBadge résout sa valeur et son contraste sans duplication dans l’écran."
                 />
 
                 <div className="mt-7 grid border border-line lg:grid-cols-2">
                     <div className="relative z-[10000] flex min-h-64 items-center justify-center bg-surface p-8">
-                        <PixieDustBadge
+                        <PixieBadge
                             registry="oeuvres"
                             collection="types"
                             slug="court-metrage-anime"
                             variant="solid"
                         />
                     </div>
-                    <CodeExample>{`<PixieDustBadge
+                    <CodeExample>{`<PixieBadge
     registry="oeuvres"
     collection="types"
     slug="court-metrage-anime"
@@ -309,7 +309,7 @@ export function PixieDustBadgeDossier() {
                             className="relative z-[10000] bg-surface p-6"
                         >
                             <div className="flex min-h-28 items-center justify-center">
-                                <PixieDustBadge
+                                <PixieBadge
                                     registry="oeuvres"
                                     collection="types"
                                     slug="court-metrage-anime"
@@ -341,7 +341,7 @@ export function PixieDustBadgeDossier() {
                             Neutre
                         </p>
                         <div className="mt-5">
-                            <PixieDustBadge tone="neutral">1934</PixieDustBadge>
+                            <PixieBadge tone="neutral">1934</PixieBadge>
                         </div>
                     </article>
                     <article className="bg-surface p-6">
@@ -349,9 +349,7 @@ export function PixieDustBadgeDossier() {
                             Couleur
                         </p>
                         <div className="mt-5">
-                            <PixieDustBadge tone="color">
-                                Court métrage
-                            </PixieDustBadge>
+                            <PixieBadge tone="color">Court métrage</PixieBadge>
                         </div>
                     </article>
                     <article className="bg-surface p-6 text-famille-createurs">
@@ -359,9 +357,7 @@ export function PixieDustBadgeDossier() {
                             Hérité
                         </p>
                         <div className="mt-5">
-                            <PixieDustBadge tone="inherit">
-                                Créateur
-                            </PixieDustBadge>
+                            <PixieBadge tone="inherit">Créateur</PixieBadge>
                         </div>
                     </article>
                     <article className="bg-surface p-6">
@@ -369,9 +365,7 @@ export function PixieDustBadgeDossier() {
                             Personnalisé
                         </p>
                         <div className="mt-5">
-                            <PixieDustBadge color="gouache">
-                                Animation
-                            </PixieDustBadge>
+                            <PixieBadge color="gouache">Animation</PixieBadge>
                         </div>
                     </article>
                 </div>
@@ -391,7 +385,7 @@ export function PixieDustBadgeDossier() {
                             Personnages
                         </p>
                         <div className="mt-5">
-                            <PixieDustBadge
+                            <PixieBadge
                                 registry="personnages"
                                 collection="categories"
                                 slug="cercle-de-mickey"
@@ -404,7 +398,7 @@ export function PixieDustBadgeDossier() {
                             Contributeurs
                         </p>
                         <div className="mt-5">
-                            <PixieDustBadge
+                            <PixieBadge
                                 registry="contributeurs"
                                 collection="categories"
                                 slug="animateur"
@@ -417,7 +411,7 @@ export function PixieDustBadgeDossier() {
                             Œuvres
                         </p>
                         <div className="mt-5">
-                            <PixieDustBadge
+                            <PixieBadge
                                 registry="oeuvres"
                                 collection="collections"
                                 slug="silly-symphonies"
@@ -430,7 +424,7 @@ export function PixieDustBadgeDossier() {
                             Récompenses
                         </p>
                         <div className="mt-5">
-                            <PixieDustBadge
+                            <PixieBadge
                                 registry="recompenses"
                                 collection="natures"
                                 slug="honorary"
@@ -462,7 +456,7 @@ export function PixieDustBadgeDossier() {
                             </div>
                             <div className="flex flex-wrap items-center gap-5 bg-surface p-5">
                                 {sizes.map((size) => (
-                                    <PixieDustBadge
+                                    <PixieBadge
                                         key={size.value}
                                         registry="oeuvres"
                                         collection="couleurs"
@@ -491,13 +485,13 @@ export function PixieDustBadgeDossier() {
 
                         return (
                             <article key={slug} className="bg-surface p-5">
-                                <PixieDustBadge
+                                <PixieBadge
                                     variant="solid"
                                     size="sm"
                                     color={slug}
                                 >
                                     {color.label}
-                                </PixieDustBadge>
+                                </PixieBadge>
                             </article>
                         );
                     })}
@@ -518,7 +512,7 @@ export function PixieDustBadgeDossier() {
                             Sans symbole
                         </p>
                         <div className="mt-5">
-                            <PixieDustBadge>Œuvre</PixieDustBadge>
+                            <PixieBadge>Œuvre</PixieBadge>
                         </div>
                     </article>
                     <article className="bg-surface p-6">
@@ -526,7 +520,7 @@ export function PixieDustBadgeDossier() {
                             Avec symbole
                         </p>
                         <div className="mt-5">
-                            <PixieDustBadge
+                            <PixieBadge
                                 icon={
                                     <PixieSymbol
                                         registry="codex"
@@ -537,7 +531,7 @@ export function PixieDustBadgeDossier() {
                                 }
                             >
                                 Œuvre
-                            </PixieDustBadge>
+                            </PixieBadge>
                         </div>
                     </article>
                 </div>
@@ -592,7 +586,7 @@ export function PixieDustBadgeDossier() {
                     description="Le libellé, l’encadrement, la couleur, la densité et le symbole peuvent être combinés sur un plateau isolé."
                 />
                 <div className="mt-7">
-                    <PixieDustBadgePlayground />
+                    <PixieBadgePlayground />
                 </div>
             </section>
 
@@ -603,7 +597,7 @@ export function PixieDustBadgeDossier() {
                 <SequenceTitle
                     id="cartouche-generique"
                     eyebrow="Générique technique"
-                    title="Types et propriétés de l’esquisse"
+                    title="Types et propriétés du composant"
                 />
 
                 <div className="mt-7">
@@ -619,46 +613,6 @@ export function PixieDustBadgeDossier() {
                     <div className="mt-4">
                         <AtelierTypesTable types={specificTypes} />
                     </div>
-                </div>
-            </section>
-
-            <section aria-labelledby="cartouche-journal" className="mt-16">
-                <SequenceTitle
-                    id="cartouche-journal"
-                    eyebrow="Journal de production"
-                    title="Les conditions du passage à PixieBadge"
-                />
-
-                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-3">
-                    <article className="bg-surface p-6">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
-                            Contexte réel
-                        </p>
-                        <p className="mt-3 leading-7 text-ink-soft">
-                            Composer une vraie série de métadonnées sur une
-                            fiche, puis la tester sur mobile et au zoom à 200 %.
-                        </p>
-                    </article>
-                    <article className="bg-surface p-6">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
-                            Validation
-                        </p>
-                        <p className="mt-3 leading-7 text-ink-soft">
-                            Éprouver la palette de L’Atelier d’animation dans
-                            les deux lumières sans faire porter le sens par la
-                            couleur seule.
-                        </p>
-                    </article>
-                    <article className="bg-surface p-6">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
-                            Promotion
-                        </p>
-                        <p className="mt-3 leading-7 text-ink-soft">
-                            Confirmer sa frontière non interactive avec les
-                            futurs filtres, puis le renommer en PixieBadge
-                            1.0.0.
-                        </p>
-                    </article>
                 </div>
             </section>
         </AtelierFicheAccessoire>

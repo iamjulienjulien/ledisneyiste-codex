@@ -1,5 +1,5 @@
 import { PixieDustButtonDossier } from "./_components/PixieDustButtonDossier";
-import { PixieDustBadgeDossier } from "./_components/PixieDustBadgeDossier";
+import { PixieBadgeDossier } from "./_components/PixieBadgeDossier";
 import { PixieDustLinkDossier } from "./_components/PixieDustLinkDossier";
 import { PixieDustSeparatorDossier } from "./_components/PixieDustSeparatorDossier";
 import { PixieSymbolDossier } from "./_components/PixieSymbolDossier";
@@ -82,9 +82,9 @@ const accessoires = [
         href: "#lien",
     },
     {
-        nom: "PixieDustBadge",
+        nom: "PixieBadge",
         role: "Qualifier une information brève",
-        statut: "Esquisse",
+        statut: "Prêt à projeter",
         href: "#cartouche",
     },
     {
@@ -288,7 +288,7 @@ export default function AtelierPage() {
                 <PixieSymbolDossier />
                 <PixieDustButtonDossier />
                 <PixieDustLinkDossier />
-                <PixieDustBadgeDossier />
+                <PixieBadgeDossier />
                 <PixieDustSeparatorDossier />
             </section>
         </div>
