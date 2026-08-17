@@ -1,13 +1,12 @@
-import CodexFicheSection from "@/components/codex/CodexFicheSection";
+import { CodexFicheSection } from "@/components/codex/CodexFicheSection";
 import type { BlocEditorialCodex } from "@/types/fiche";
+import styles from "./CodexBlocsEditoriaux.module.css";
 
-type BlocsEditoriauxCodexProps = {
+type CodexBlocsEditoriauxProps = {
     blocs?: BlocEditorialCodex[];
 };
 
-export default function BlocsEditoriauxCodex({
-    blocs,
-}: BlocsEditoriauxCodexProps) {
+export function CodexBlocsEditoriaux({ blocs }: CodexBlocsEditoriauxProps) {
     if (!blocs?.length) {
         return null;
     }
@@ -18,7 +17,7 @@ export default function BlocsEditoriauxCodex({
             eyebrow={bloc.eyebrow}
             titre={bloc.titre}
         >
-            <div className="max-w-3xl space-y-5">
+            <div className={styles.body}>
                 {bloc.paragraphes.map((paragraphe, index) => (
                     <p key={index} className="text-lg leading-8 text-ink-soft">
                         {paragraphe}

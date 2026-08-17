@@ -5,14 +5,14 @@ type CodexFicheHeaderProps = {
     introduction?: string;
 };
 
-export default function CodexFicheHeader({
+export function CodexFicheHeader({
     eyebrow,
     titre,
     sousTitre,
     introduction,
 }: CodexFicheHeaderProps) {
     return (
-        <header className="max-w-3xl">
+        <header className={styles.root}>
             <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted">
                 {eyebrow}
             </p>
@@ -35,3 +35,4 @@ export default function CodexFicheHeader({
         </header>
     );
 }
+import styles from "./CodexFicheHeader.module.css";

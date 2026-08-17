@@ -1,0 +1,1 @@
+export { CodexRelations } from "./CodexRelations";

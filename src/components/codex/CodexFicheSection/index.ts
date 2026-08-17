@@ -1,0 +1,1 @@
+export { CodexFicheSection } from "./CodexFicheSection";

@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import styles from "./CodexFicheSection.module.css";
 
 type CodexFicheSectionProps = {
     eyebrow?: string;
@@ -7,14 +8,14 @@ type CodexFicheSectionProps = {
     children: ReactNode;
 };
 
-export default function CodexFicheSection({
+export function CodexFicheSection({
     eyebrow,
     titre,
     description,
     children,
 }: CodexFicheSectionProps) {
     return (
-        <section className="mt-16 border-t border-line pt-8">
+        <section className={styles.root}>
             {(eyebrow || titre || description) && (
                 <header className="max-w-2xl">
                     {eyebrow && (

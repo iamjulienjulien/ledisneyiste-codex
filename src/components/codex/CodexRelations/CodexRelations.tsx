@@ -1,16 +1,17 @@
-import ReferenceCodexLink from "@/components/codex/ReferenceCodexLink";
+import { CodexReferenceLink } from "@/components/codex/CodexReferenceLink";
 import type { ReferenceCodex } from "@/types/reference";
+import styles from "./CodexRelations.module.css";
 
-type GroupeRelationsCodex = {
+type CodexRelationsGroup = {
     titre: string;
     references: ReferenceCodex[];
 };
 
-type RelationsCodexProps = {
-    groupes: GroupeRelationsCodex[];
+type CodexRelationsProps = {
+    groupes: CodexRelationsGroup[];
 };
 
-export default function RelationsCodex({ groupes }: RelationsCodexProps) {
+export function CodexRelations({ groupes }: CodexRelationsProps) {
     const groupesVisibles = groupes.filter(
         (groupe) => groupe.references.length > 0,
     );
@@ -20,7 +21,7 @@ export default function RelationsCodex({ groupes }: RelationsCodexProps) {
     }
 
     return (
-        <section className="mt-16 border-t border-line pt-8">
+        <section className={styles.root}>
             <header className="max-w-2xl">
                 <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted">
                     Relations
@@ -49,7 +50,7 @@ export default function RelationsCodex({ groupes }: RelationsCodexProps) {
                                     key={`${reference.type ?? "mention"}-${reference.nom}`}
                                     className="text-lg"
                                 >
-                                    <ReferenceCodexLink reference={reference} />
+                                    <CodexReferenceLink reference={reference} />
                                 </li>
                             ))}
                         </ul>

@@ -1,17 +1,18 @@
 import type { SourceCodex } from "@/types/source";
 import { formatDateISO } from "@/lib/date";
+import styles from "./CodexSources.module.css";
 
-type SourcesCodexProps = {
+type CodexSourcesProps = {
     sources: SourceCodex[];
 };
 
-export default function SourcesCodex({ sources }: SourcesCodexProps) {
+export function CodexSources({ sources }: CodexSourcesProps) {
     if (sources.length === 0) {
         return null;
     }
 
     return (
-        <section className="mt-16 border-t border-line pt-8">
+        <section className={styles.root}>
             <h2 className="text-sm font-medium uppercase tracking-[0.2em] text-muted">
                 Sources et références
             </h2>

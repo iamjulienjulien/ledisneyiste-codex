@@ -1,21 +1,22 @@
-import ReferenceCodexLink from "@/components/codex/ReferenceCodexLink";
+import { CodexReferenceLink } from "@/components/codex/CodexReferenceLink";
 import type { ReferenceCodex } from "@/types/reference";
+import styles from "./CodexEpoque.module.css";
 
-type EpoqueCodexProps = {
+type CodexEpoqueProps = {
     epoque?: ReferenceCodex;
 };
 
-export default function EpoqueCodex({ epoque }: EpoqueCodexProps) {
+export function CodexEpoque({ epoque }: CodexEpoqueProps) {
     if (!epoque) {
         return null;
     }
 
     return (
-        <div>
+        <div className={styles.root}>
             <dt className="text-sm text-muted">Époque</dt>
 
             <dd className="mt-1 text-lg text-ink">
-                <ReferenceCodexLink reference={epoque} />
+                <CodexReferenceLink reference={epoque} />
             </dd>
         </div>
     );

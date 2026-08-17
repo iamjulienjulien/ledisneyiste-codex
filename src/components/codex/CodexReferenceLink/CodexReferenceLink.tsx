@@ -1,7 +1,8 @@
 import Link from "next/link";
 import type { ReferenceCodex } from "@/types/reference";
+import styles from "./CodexReferenceLink.module.css";
 
-type ReferenceCodexLinkProps = {
+type CodexReferenceLinkProps = {
     reference: ReferenceCodex;
 };
 
@@ -24,20 +25,15 @@ function getReferenceHref(reference: ReferenceCodex) {
     }
 }
 
-export default function ReferenceCodexLink({
-    reference,
-}: ReferenceCodexLinkProps) {
+export function CodexReferenceLink({ reference }: CodexReferenceLinkProps) {
     const href = getReferenceHref(reference);
 
     if (!href) {
-        return <span className="text-ink-soft">{reference.nom}</span>;
+        return <span className={styles.unresolved}>{reference.nom}</span>;
     }
 
     return (
-        <Link
-            href={href}
-            className="text-accent underline decoration-line-strong underline-offset-4 transition-colors hover:text-accent-hover hover:decoration-accent"
-        >
+        <Link href={href} className={styles.link}>
             {reference.nom}
         </Link>
     );

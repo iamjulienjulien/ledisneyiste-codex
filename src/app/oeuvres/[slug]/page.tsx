@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import CodexFicheHeader from "@/components/codex/CodexFicheHeader";
-import ReferenceCodexLink from "@/components/codex/ReferenceCodexLink";
-import SourcesCodex from "@/components/codex/SourcesCodex";
-import EpoqueCodex from "@/components/codex/EpoqueCodex";
-import BlocsEditoriauxCodex from "@/components/codex/BlocsEditoriauxCodex";
+import { CodexFicheHeader } from "@/components/codex/CodexFicheHeader";
+import { CodexReferenceLink } from "@/components/codex/CodexReferenceLink";
+import { CodexSources } from "@/components/codex/CodexSources";
+import { CodexEpoque } from "@/components/codex/CodexEpoque";
+import { CodexBlocsEditoriaux } from "@/components/codex/CodexBlocsEditoriaux";
 import { getEpoquePourDate } from "@/data/epoques/relations";
 import { getOeuvreBySlug, oeuvres } from "@/data/catalogues";
 import { getFicheOeuvreBySlug } from "@/data/oeuvres";
@@ -86,7 +86,7 @@ export default async function OeuvrePage({
                     <dd className="mt-1 space-y-3 text-lg text-ink">
                         {fiche.contributions.map((contribution) => (
                             <div key={contribution.contributeur.nom}>
-                                <ReferenceCodexLink
+                                <CodexReferenceLink
                                     reference={contribution.contributeur}
                                 />
 
@@ -104,19 +104,19 @@ export default async function OeuvrePage({
                     <dd className="mt-1 flex flex-wrap gap-x-2 text-lg text-ink">
                         {fiche.personnages.map((personnage, index) => (
                             <span key={personnage.nom}>
-                                <ReferenceCodexLink reference={personnage} />
+                                <CodexReferenceLink reference={personnage} />
                                 {index < fiche.personnages.length - 1 && ","}
                             </span>
                         ))}
                     </dd>
                 </div>
 
-                <EpoqueCodex epoque={epoque} />
+                <CodexEpoque epoque={epoque} />
             </dl>
 
-            <BlocsEditoriauxCodex blocs={fiche.blocsEditoriaux} />
+            <CodexBlocsEditoriaux blocs={fiche.blocsEditoriaux} />
 
-            <SourcesCodex sources={sources} />
+            <CodexSources sources={sources} />
         </main>
     );
 }

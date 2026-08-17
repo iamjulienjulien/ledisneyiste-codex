@@ -7,10 +7,10 @@ import {
     getOeuvresContribueesParContributeur,
     getPersonnagesCreesParContributeur,
 } from "@/data/relations";
-import CodexFicheHeader from "@/components/codex/CodexFicheHeader";
-import SourcesCodex from "@/components/codex/SourcesCodex";
-import RelationsCodex from "@/components/codex/RelationsCodex";
-import BlocsEditoriauxCodex from "@/components/codex/BlocsEditoriauxCodex";
+import { CodexFicheHeader } from "@/components/codex/CodexFicheHeader";
+import { CodexSources } from "@/components/codex/CodexSources";
+import { CodexRelations } from "@/components/codex/CodexRelations";
+import { CodexBlocsEditoriaux } from "@/components/codex/CodexBlocsEditoriaux";
 import { getEpoquesPourContributeur } from "@/data/epoques/relations";
 
 import { formatDateHistorique } from "@/lib/date";
@@ -98,9 +98,9 @@ export default async function ContributeurPage({
                 </div>
             </dl>
 
-            <BlocsEditoriauxCodex blocs={fiche.blocsEditoriaux} />
+            <CodexBlocsEditoriaux blocs={fiche.blocsEditoriaux} />
 
-            <RelationsCodex
+            <CodexRelations
                 groupes={[
                     {
                         titre: "Époques",
@@ -117,7 +117,7 @@ export default async function ContributeurPage({
                 ]}
             />
 
-            <SourcesCodex sources={sources} />
+            <CodexSources sources={sources} />
         </main>
     );
 }

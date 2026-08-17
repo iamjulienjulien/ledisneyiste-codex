@@ -1,0 +1,7 @@
+.body {
+    max-width: 48rem;
+}
+
+.body > * + * {
+    margin-top: 1.25rem;
+}

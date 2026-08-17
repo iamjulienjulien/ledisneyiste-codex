@@ -4,12 +4,12 @@ import { getPersonnageBySlug, personnages } from "@/data/catalogues";
 import { getFichePersonnageBySlug } from "@/data/personnages";
 import { getSourcesByIds } from "@/data/sources";
 import { getOeuvresAvecPersonnage } from "@/data/relations";
-import CodexFicheHeader from "@/components/codex/CodexFicheHeader";
-import ReferenceCodexLink from "@/components/codex/ReferenceCodexLink";
-import SourcesCodex from "@/components/codex/SourcesCodex";
-import RelationsCodex from "@/components/codex/RelationsCodex";
-import EpoqueCodex from "@/components/codex/EpoqueCodex";
-import BlocsEditoriauxCodex from "@/components/codex/BlocsEditoriauxCodex";
+import { CodexFicheHeader } from "@/components/codex/CodexFicheHeader";
+import { CodexReferenceLink } from "@/components/codex/CodexReferenceLink";
+import { CodexSources } from "@/components/codex/CodexSources";
+import { CodexRelations } from "@/components/codex/CodexRelations";
+import { CodexEpoque } from "@/components/codex/CodexEpoque";
+import { CodexBlocsEditoriaux } from "@/components/codex/CodexBlocsEditoriaux";
 import { getEpoquePourDate } from "@/data/epoques/relations";
 import { formatDateHistorique } from "@/lib/date";
 
@@ -87,7 +87,7 @@ export default async function PersonnagePage({
                     <dd className="mt-1 flex flex-wrap gap-x-2 text-lg text-ink">
                         {fiche.creation.createurs.map((createur, index) => (
                             <span key={createur.nom}>
-                                <ReferenceCodexLink reference={createur} />
+                                <CodexReferenceLink reference={createur} />
                                 {index < fiche.creation.createurs.length - 1 &&
                                     ","}
                             </span>
@@ -99,7 +99,7 @@ export default async function PersonnagePage({
                     <dt className="text-sm text-muted">Première apparition</dt>
 
                     <dd className="mt-1 text-lg text-ink">
-                        <ReferenceCodexLink
+                        <CodexReferenceLink
                             reference={fiche.premiereApparition.oeuvre}
                         />
                         {" · "}
@@ -107,12 +107,12 @@ export default async function PersonnagePage({
                     </dd>
                 </div>
 
-                <EpoqueCodex epoque={epoque} />
+                <CodexEpoque epoque={epoque} />
             </dl>
 
-            <BlocsEditoriauxCodex blocs={fiche.blocsEditoriaux} />
+            <CodexBlocsEditoriaux blocs={fiche.blocsEditoriaux} />
 
-            <RelationsCodex
+            <CodexRelations
                 groupes={[
                     {
                         titre: "Œuvres",
@@ -121,7 +121,7 @@ export default async function PersonnagePage({
                 ]}
             />
 
-            <SourcesCodex sources={sources} />
+            <CodexSources sources={sources} />
         </main>
     );
 }

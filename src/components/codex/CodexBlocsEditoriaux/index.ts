@@ -1,0 +1,1 @@
+export { CodexBlocsEditoriaux } from "./CodexBlocsEditoriaux";

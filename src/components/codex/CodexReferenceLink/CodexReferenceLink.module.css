@@ -1,0 +1,18 @@
+.unresolved {
+    color: var(--color-ink-soft);
+}
+
+.link {
+    color: var(--color-accent);
+    text-decoration-line: underline;
+    text-decoration-color: var(--color-line-strong);
+    text-underline-offset: 0.25rem;
+    transition:
+        color 150ms ease,
+        text-decoration-color 150ms ease;
+}
+
+.link:hover {
+    color: var(--color-accent-hover);
+    text-decoration-color: var(--color-accent);
+}

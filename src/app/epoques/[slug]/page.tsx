@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import CodexFicheHeader from "@/components/codex/CodexFicheHeader";
-import SourcesCodex from "@/components/codex/SourcesCodex";
-import RelationsCodex from "@/components/codex/RelationsCodex";
-import BlocsEditoriauxCodex from "@/components/codex/BlocsEditoriauxCodex";
+import { CodexFicheHeader } from "@/components/codex/CodexFicheHeader";
+import { CodexSources } from "@/components/codex/CodexSources";
+import { CodexRelations } from "@/components/codex/CodexRelations";
+import { CodexBlocsEditoriaux } from "@/components/codex/CodexBlocsEditoriaux";
 import {
     getOeuvresDeLEpoque,
     getPersonnagesDeLEpoque,
@@ -106,9 +106,9 @@ export default async function EpoquePage({
                 </section>
             )}
 
-            <BlocsEditoriauxCodex blocs={fiche.blocsEditoriaux} />
+            <CodexBlocsEditoriaux blocs={fiche.blocsEditoriaux} />
 
-            <RelationsCodex
+            <CodexRelations
                 groupes={[
                     {
                         titre: "Créateurs",
@@ -124,7 +124,7 @@ export default async function EpoquePage({
                     },
                 ]}
             />
-            <SourcesCodex sources={sources} />
+            <CodexSources sources={sources} />
         </main>
     );
 }
