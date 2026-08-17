@@ -36,6 +36,18 @@
         "sousTitre": "Le court métrage qui fit entendre Mickey"
     },
     {
+        "slug": "plane-crazy",
+        "nom": "Plane Crazy",
+        "type": "oeuvre",
+        "metadata": {
+            "collection": "mickey-mouse",
+            "type": "court-metrage-anime",
+            "son": "sonore",
+            "couleur": "noir-et-blanc"
+        },
+        "sousTitre": "Le premier vol de Mickey, resté au sol avant le son"
+    },
+    {
         "slug": "the-wise-little-hen",
         "nom": "The Wise Little Hen",
         "type": "oeuvre",

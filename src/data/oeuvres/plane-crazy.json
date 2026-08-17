@@ -1,0 +1,92 @@
+{
+    "slug": "plane-crazy",
+    "type": "oeuvre",
+    "introduction": "Plane Crazy est le premier film de Mickey achevé, mais pas celui qui le présente officiellement au monde. Inspiré par l’enthousiasme entourant les exploits de Charles Lindbergh, le court métrage transforme la construction d’un avion de fortune en aventure aussi téméraire que son jeune héros. Sa projection d’essai silencieuse de mai 1928 ne convainc aucun distributeur. Le film doit attendre le succès de Steamboat Willie, recevoir à son tour une bande sonore et revenir en 1929 dans les salles où Mickey est désormais attendu.",
+    "sortie": {
+        "date": {
+            "valeur": "1929",
+            "precision": "annee"
+        }
+    },
+    "format": "court métrage d’animation",
+    "contributions": [
+        {
+            "contributeur": {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            },
+            "roles": ["réalisation"]
+        },
+        {
+            "contributeur": {
+                "nom": "Ub Iwerks",
+                "type": "contributeur",
+                "slug": "ub-iwerks"
+            },
+            "roles": ["réalisation", "animation"]
+        },
+        {
+            "contributeur": {
+                "nom": "Carl Stalling"
+            },
+            "roles": ["musique"]
+        },
+        {
+            "contributeur": {
+                "nom": "Mike Marcus"
+            },
+            "roles": ["photographie"]
+        }
+    ],
+    "personnages": [
+        {
+            "nom": "Mickey Mouse",
+            "type": "personnage",
+            "slug": "mickey-mouse"
+        },
+        {
+            "nom": "Minnie Mouse",
+            "type": "personnage",
+            "slug": "minnie-mouse"
+        }
+    ],
+    "blocsEditoriaux": [
+        {
+            "type": "repere",
+            "eyebrow": "Chronologie",
+            "titre": "Le premier film attend son personnage",
+            "paragraphes": [
+                "Plane Crazy est le premier court métrage de Mickey mené à son terme. Le studio le présente lors d’une projection d’essai à Hollywood le 15 mai 1928, quelques semaines après la rupture autour d’Oswald. Cette séance place bien la souris sur un écran, mais elle ne débouche sur aucun contrat de distribution.",
+                "The Gallopin’ Gaucho connaît ensuite le même sort. Le studio interrompt alors cette progression silencieuse pour concevoir Steamboat Willie autour d’un son synchronisé. Le troisième film produit devient le premier distribué et donne à Mickey la notoriété dont ses deux aventures antérieures avaient besoin.",
+                "Plane Crazy reçoit à son tour une bande sonore et sort en 1929. Le premier état du personnage arrive donc dans les salles après qu’un film plus tardif a déjà fixé sa voix publique."
+            ]
+        },
+        {
+            "type": "langage",
+            "eyebrow": "Modernité",
+            "titre": "Construire un avion comme on construit un héros",
+            "paragraphes": [
+                "L’exploit transatlantique de Charles Lindbergh alimente alors une fascination populaire pour l’aviation. Mickey s’en empare avec une confiance disproportionnée : après avoir consulté un manuel, il assemble avec les animaux de la ferme un appareil dont chaque pièce semble relever davantage du bricolage animé que de l’aéronautique.",
+                "Le film fait de la construction une suite de transformations. Une saucisse devient un lien, la queue d’un chien sert d’élastique et les corps des animaux participent au mécanisme. Comme chez Oswald, le monde entier reste disponible pour le gag ; la nouveauté tient au héros qui concentre cette énergie autour de sa propre ambition.",
+                "Le vol prolonge le même principe dans l’espace. L’avion monte, chute et se défait tandis que Mickey tente de maintenir l’illusion de sa maîtrise. La machine révèle ainsi le caractère avant de révéler une technique : la modernité dont rêve la souris est encore une acrobatie."
+            ]
+        },
+        {
+            "type": "relations",
+            "eyebrow": "Personnages",
+            "titre": "Un Mickey que le succès n’a pas encore adouci",
+            "paragraphes": [
+                "Le premier Mickey demeure proche de l’insolence et de la souplesse d’Oswald. Il est entreprenant, vantard et peu attentif aux conséquences de ses gestes. Son apparence elle-même n’est pas fixée : ni les gants blancs ni les grandes chaussures qui stabiliseront bientôt sa silhouette ne sont encore présents.",
+                "Cette rudesse apparaît surtout face à Minnie. Après l’avoir embarquée dans un vol dangereux, Mickey insiste pour obtenir un baiser malgré son refus. Minnie se défend, puis quitte l’avion en utilisant son propre sous-vêtement comme parachute. Le gag conserve la brutalité familière de certaines comédies de l’époque, mais montre aussi une partenaire qui oppose clairement sa volonté à celle du héros.",
+                "Plane Crazy ne présente donc pas une icône déjà achevée. Il conserve un Mickey encore expérimental, dont le dessin, le comportement et la relation avec Minnie devront évoluer à mesure que le public commencera à se reconnaître en lui."
+            ]
+        }
+    ],
+    "sources": [
+        "d23-plane-crazy",
+        "wdfm-birth-of-a-mouse",
+        "wdfm-evolution-of-mickey-mouse",
+        "afi-plane-crazy"
+    ]
+}

@@ -108,6 +108,28 @@
         "dateConsultation": "2026-08-18"
     },
     {
+        "id": "d23-plane-crazy",
+        "titre": "Plane Crazy (film)",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/plane-crazy-film/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "wdfm-evolution-of-mickey-mouse",
+        "titre": "The Evolution of Mickey Mouse",
+        "editeur": "The Walt Disney Family Museum",
+        "datePublication": "2020-02-03",
+        "url": "https://www.waltdisney.org/blog/evolution-mickey-mouse",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "afi-plane-crazy",
+        "titre": "Plane Crazy",
+        "editeur": "American Film Institute",
+        "url": "https://catalog.afi.com/Film/98858-PLANE-CRAZY",
+        "dateConsultation": "2026-08-18"
+    },
+    {
         "id": "d23-about-walt-disney",
         "titre": "About Walt Disney",
         "editeur": "D23: The Official Disney Fan Club",
