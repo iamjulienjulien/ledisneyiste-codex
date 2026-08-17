@@ -3,10 +3,12 @@ import donaldDuckJson from "@/data/personnages/donald-duck.json";
 import dingoJson from "@/data/personnages/dingo.json";
 import mickeyMouseJson from "@/data/personnages/mickey-mouse.json";
 import minnieMouseJson from "@/data/personnages/minnie-mouse.json";
+import oswaldLeLapinChanceuxJson from "@/data/personnages/oswald-le-lapin-chanceux.json";
 import plutoJson from "@/data/personnages/pluto.json";
 import type { FichePersonnageDisney } from "@/types/personnage";
 
 export const fichesPersonnages = [
+    oswaldLeLapinChanceuxJson as FichePersonnageDisney,
     mickeyMouseJson as FichePersonnageDisney,
     minnieMouseJson as FichePersonnageDisney,
     donaldDuckJson as FichePersonnageDisney,

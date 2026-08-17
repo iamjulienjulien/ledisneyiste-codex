@@ -1,5 +1,12 @@
 [
     {
+        "slug": "oswald-le-lapin-chanceux",
+        "nom": "Oswald le lapin chanceux",
+        "type": "personnage",
+        "metadata": { "categories": ["precurseur"] },
+        "sousTitre": "Le premier héros animé que Disney dut apprendre à perdre"
+    },
+    {
         "slug": "mickey-mouse",
         "nom": "Mickey Mouse",
         "type": "personnage",

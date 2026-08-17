@@ -46,6 +46,46 @@
         "dateConsultation": "2026-08-18"
     },
     {
+        "id": "d23-oswald-the-lucky-rabbit",
+        "titre": "Oswald the Lucky Rabbit",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/oswald-the-lucky-rabbit/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-poor-papa-restoration",
+        "titre": "Exclusive: Newly Restored Version of Poor Papa a Highlight of Upcoming Pinocchio Blu-Ray Release",
+        "auteur": "Max Lark",
+        "editeur": "D23: The Official Disney Fan Club",
+        "datePublication": "2017-01-09",
+        "url": "https://d23.com/exclusive-newly-restored-version-poor-papa-highlight-upcoming-pinocchio-blu-ray-release/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "wdfm-mickeys-follies",
+        "titre": "Mickey’s Follies: Walt’s Distribution Deals, Defeats, and Decisions",
+        "editeur": "The Walt Disney Family Museum",
+        "url": "https://www.waltdisney.org/blog/mickeys-follies-walts-distribution-deals-defeats-and-decisions",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "twc-oswald-returns-to-disney",
+        "titre": "Walt Disney’s 1927 Animated Star Oswald The Lucky Rabbit Returns To Disney",
+        "editeur": "The Walt Disney Company",
+        "datePublication": "2006-02-09",
+        "url": "https://thewaltdisneycompany.com/press-releases/walt-disneys-1927-animated-star-oswald-the-lucky-rabbit-returns-to-disney/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-oswald-disney100-short",
+        "titre": "All-New Oswald The Lucky Rabbit Short Celebrates Disney100",
+        "auteur": "Zach Johnson",
+        "editeur": "D23: The Official Disney Fan Club",
+        "datePublication": "2022-12-01",
+        "url": "https://d23.com/all-new-oswald-the-lucky-rabbit-short-celebrates-disney-100-years-of-wonder/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
         "id": "d23-about-walt-disney",
         "titre": "About Walt Disney",
         "editeur": "D23: The Official Disney Fan Club",

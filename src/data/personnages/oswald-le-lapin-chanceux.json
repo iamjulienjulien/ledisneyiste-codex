@@ -1,0 +1,72 @@
+{
+    "slug": "oswald-le-lapin-chanceux",
+    "type": "personnage",
+    "introduction": "Oswald le lapin chanceux est la première véritable vedette animée du studio Disney et le personnage autour duquel celui-ci apprend autant à réussir qu’à perdre. Vif, élastique et volontiers frondeur, le lapin donne aux films une personnalité capable de dépasser le simple enchaînement de gags. Mais Oswald appartient juridiquement à Universal : lorsque Walt Disney perd le contrat de production en 1928, le héros quitte ceux qui l’ont façonné et pousse indirectement le studio vers Mickey. Son retour chez Disney en 2006 transforme enfin cette absence en héritage retrouvé.",
+    "creation": {
+        "date": {
+            "valeur": "1927",
+            "precision": "annee"
+        },
+        "createurs": [
+            {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            },
+            {
+                "nom": "Ub Iwerks",
+                "type": "contributeur",
+                "slug": "ub-iwerks"
+            }
+        ]
+    },
+    "premiereApparition": {
+        "oeuvre": {
+            "nom": "Trolley Troubles"
+        },
+        "date": {
+            "valeur": "1927-09-05",
+            "precision": "jour"
+        }
+    },
+    "espece": "lapin anthropomorphe",
+    "blocsEditoriaux": [
+        {
+            "type": "genese",
+            "eyebrow": "Commande",
+            "titre": "Un lapin demandé par le distributeur",
+            "paragraphes": [
+                "Après quatre années d’Alice Comedies, le studio cherche en 1927 une série entièrement animée. Charles Mintz négocie avec Universal, qui veut un nouveau personnage de lapin. Oswald naît donc dans un cadre déjà partagé entre ceux qui le fabriquent, l’intermédiaire qui commande les films et la société qui possède le héros.",
+                "Le premier court métrage produit, Poor Papa, présente un Oswald jugé trop vieux et trop peu séduisant. Universal demande des modifications. Pour Trolley Troubles, Walt Disney et son équipe rajeunissent le personnage, simplifient sa silhouette et lui donnent une énergie mieux accordée aux attentes de la série.",
+                "Ce deuxième film produit devient le premier distribué, le 5 septembre 1927. La chronologie d’Oswald commence ainsi par un écart qui annonce celui des premiers Mickey : l’ordre de fabrication et l’ordre de rencontre avec le public ne coïncident pas."
+            ]
+        },
+        {
+            "type": "caractere",
+            "eyebrow": "Personnalité",
+            "titre": "Faire du corps un réservoir de gags",
+            "paragraphes": [
+                "Oswald appartient à l’animation dite « rubber hose », où les membres se plient avec la souplesse de tuyaux et où l’anatomie obéit d’abord au rythme du gag. Ses longues oreilles peuvent changer de fonction, son corps s’étirer ou se recomposer, et le monde matériel lui-même devient une matière disponible pour l’action.",
+                "Cette liberté ne suffit pourtant pas à expliquer son succès. Les films cherchent à donner au lapin un tempérament reconnaissable : débrouillard, malicieux, parfois fanfaron, il réagit aux obstacles plutôt que de seulement les traverser. Le studio commence ainsi à pousser l’animation vers une personnalité plus lisible, recherche que Mickey prolongera bientôt.",
+                "Oswald reste plus instable et plus rude que la souris qui lui succède. Cette part de désordre conserve la trace d’un moment où le personnage animé peut encore se démonter, tricher avec son propre corps et entraîner le récit dans son mouvement."
+            ]
+        },
+        {
+            "type": "trajectoire",
+            "eyebrow": "Propriété",
+            "titre": "Le personnage que Disney n’a jamais possédé",
+            "paragraphes": [
+                "En 1928, Walt Disney se rend à New York pour renégocier le budget de la série. Il découvre que le contrat attribue la propriété d’Oswald à Universal et que Charles Mintz a recruté une grande partie de son équipe pour poursuivre les films sans le studio Disney. Walt ne perd donc pas juridiquement un droit qu’il détenait : il perd le contrat qui lui permettait de produire le personnage.",
+                "La rupture impose une règle nouvelle. Le studio devra désormais conserver la maîtrise de ses créations. Mickey naît dans ce contexte et transforme l’échec industriel d’Oswald en principe fondateur de l’entreprise qui se reconstruit autour de lui.",
+                "Universal continue à exploiter le lapin, notamment avec Walter Lantz. En 2006, un accord entre Disney et NBCUniversal permet enfin au personnage de revenir dans le catalogue de ses créateurs. Après les jeux vidéo, les parcs et les restaurations, un nouveau court métrage dessiné à la main marque en 2022 son retour à l’écran au sein de Disney Animation."
+            ]
+        }
+    ],
+    "sources": [
+        "d23-oswald-the-lucky-rabbit",
+        "d23-poor-papa-restoration",
+        "wdfm-mickeys-follies",
+        "twc-oswald-returns-to-disney",
+        "d23-oswald-disney100-short"
+    ]
+}
