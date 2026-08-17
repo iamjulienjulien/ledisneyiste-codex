@@ -44,6 +44,8 @@ priorité sur les préférences de mise en œuvre ponctuelles.
    ci-dessous pour toute création ou migration sous `src/components`.
 8. Centraliser impérativement toutes les déclarations de types TypeScript dans
    `src/types`. Aucun type ne doit être déclaré ailleurs dans le projet.
+9. Respecter le rôle, la structure et le parcours d'ajout de l'Atelier définis
+   ci-dessous pour toute fondation ou tout composant qui y est documenté.
 
 > [!WARNING]
 > **L'emoji et le nom du domaine forment une paire indissociable.** L'emoji
@@ -150,6 +152,168 @@ Les déclarations existantes situées hors de `src/types` constituent une dette
 de migration connue. Elles seront déplacées dans des chantiers dédiés ; ne pas
 mélanger leur migration à un autre chantier sans accord explicite et ne créer
 aucune nouvelle exception entre-temps.
+
+# L'Atelier
+
+L'Atelier est l'espace local de conception, d'essai et de documentation du
+système d'interface. Il permet de faire passer une fondation ou un composant de
+l'inventaire à l'esquisse, puis de l'esquisse à une version prête à projeter
+avant son usage généralisé dans le Codex.
+
+Il est accessible en développement à l'adresse `/atelier`. Son layout appelle
+`notFound()` en production et ses métadonnées interdisent l'indexation. Ne
+jamais rendre l'Atelier disponible en production sans demande explicite.
+
+## Structure et responsabilités
+
+```text
+src/app/atelier/
+├── layout.tsx
+├── page.tsx
+└── _components/
+    ├── <Nom>Dossier.tsx
+    └── <Nom>Playground.tsx
+
+src/components/atelier/
+└── <AtelierComposantPartage>/
+    ├── <AtelierComposantPartage>.tsx
+    ├── <AtelierComposantPartage>.module.css
+    └── index.ts
+
+src/components/ui/
+└── <PixieDustOuPixieComposant>/
+    ├── <PixieDustOuPixieComposant>.tsx
+    ├── <PixieDustOuPixieComposant>.module.css
+    └── index.ts
+```
+
+- `layout.tsx` porte le cadre hors production et la navigation générale de
+  l'Atelier.
+- `page.tsx` porte le programme, l'inventaire des catégories, les tables
+  d'items et l'ordre de projection des dossiers.
+- `_components` contient uniquement les dossiers documentaires et leurs
+  playgrounds propres à la route Atelier. Ces fichiers ne constituent pas
+  l'API publique des composants testés.
+- `src/components/atelier` contient les briques documentaires réutilisables par
+  plusieurs dossiers.
+- `src/components/ui` contient les primitives réellement destinées à
+  l'interface du Codex et suit la convention `PixieDust` ou `Pixie`.
+- Tous les types utilisés par ces fichiers restent centralisés dans
+  `src/types` conformément à la convention des types TypeScript.
+
+Les fichiers existants qui ne suivent pas encore cette arborescence canonique
+seront migrés dans un chantier dédié. Toute nouvelle création doit en revanche
+la respecter immédiatement.
+
+## Les six plateaux
+
+| Numéro | Catégorie         | Domaine         | Contenu                                                                 |
+| ------ | ----------------- | --------------- | ----------------------------------------------------------------------- |
+| `01`   | `La Pellicule`    | Fondations      | Couleurs, typographies, formes, rayons, rythmes et autres design tokens |
+| `02`   | `Les Accessoires` | Primitives      | Éléments simples et réutilisables de l'interface                        |
+| `03`   | `Les Décors`      | Surfaces        | Cartes, panneaux, cadres et conteneurs éditoriaux                       |
+| `04`   | `Les Dialogues`   | Formulaires     | Champs, choix, contrôles et interactions de saisie                      |
+| `05`   | `Le Montage`      | Composition     | Assemblages, séquences et rythmes de mise en page                       |
+| `06`   | `Les Effets`      | Retours système | États, alertes, transitions et réactions visibles de l'interface        |
+
+Ne pas créer une septième catégorie pour une nuance mineure. Choisir le
+plateau qui décrit la responsabilité principale de l'item. Toute modification
+de cette taxonomie demande un accord explicite.
+
+Les catégories utilisent trois états :
+
+- `Hors champ` : la catégorie est inventoriée mais son plateau n'est pas encore
+  ouvert ;
+- `Plateau prêt` : la structure peut recevoir ses premiers items ;
+- `En projection` : la catégorie contient une matière active et documentée.
+
+## États et versions des items
+
+- `À inventorier` : l'item est nommé dans la table, mais ne possède pas encore
+  de dossier ni d'implémentation ;
+- `Esquisse` : l'item est activement expérimenté, conserve une version `0.x`
+  et utilise le préfixe `PixieDust` s'il appartient à `components/ui` ;
+- `Prêt à projeter` : l'API, le rendu et l'accessibilité ont été validés, la
+  version passe en `1.x` et le composant UI utilise le préfixe `Pixie`.
+
+Une promotion doit mettre à jour dans le même chantier le nom, la version,
+l'état, le dossier, les exemples, les imports et l'entrée d'inventaire.
+
+## Ajouter un item dans l'Atelier
+
+1. Choisir l'un des six plateaux selon la responsabilité principale de l'item.
+2. Ajouter l'item à l'inventaire de la catégorie dans `page.tsx` avec un nom,
+   un rôle, un état et un `href` lorsque son dossier existe.
+3. Créer ou déplacer l'implémentation réelle dans la famille appropriée de
+   `src/components`, en respectant son sous-dossier `PascalCase`, son module
+   CSS, son barrel, son préfixe de famille et la convention `PixieDust` ou
+   `Pixie` pour les primitives UI.
+4. Déclarer tous ses types dans un fichier adapté de `src/types` et les importer
+   avec `import type` lorsqu'ils sont utilisés uniquement pour le typage.
+5. Créer `<Nom>Dossier.tsx` dans `src/app/atelier/_components`. Ajouter
+   `<Nom>Playground.tsx` uniquement lorsque des propriétés ou des états doivent
+   être manipulés en direct.
+6. Donner au dossier un identifiant stable en `kebab-case` et utiliser
+   exactement ce même identifiant dans le `href` de l'inventaire.
+7. Importer et projeter le dossier dans la section de sa catégorie, dans le
+   même ordre que l'inventaire.
+8. Mettre à jour le nombre de plateaux ouverts et la navigation de l'Atelier si
+   une catégorie jusque-là hors champ devient accessible.
+9. Vérifier le dossier dans l'Atelier local, puis lancer `pnpm check`.
+
+## Contenu obligatoire d'un dossier
+
+Chaque dossier raconte le composant comme une production et conserve le même
+ordre général :
+
+1. un clap d'ouverture avec numéro d'item, nom, version et état ;
+2. une fiche de rôle décrivant mission, usages, limites, dépendances et
+   accessibilité ;
+3. un exemple principal accompagné du code minimal ;
+4. des séries d'exemples couvrant les variantes, tailles, couleurs, états ou
+   autres propriétés pertinentes ;
+5. un playground lorsque le composant possède des réglages interactifs ;
+6. une section d'accessibilité montrant les usages décoratifs, informatifs et
+   les états clavier nécessaires ;
+7. un générique technique présentant les types utiles et la table complète des
+   propriétés ;
+8. pour une esquisse, un journal de production listant les décisions encore à
+   prendre avant sa promotion.
+
+Le vocabulaire cinématographique sert la narration, mais les titres et les
+descriptions doivent rester compréhensibles sans connaître cette convention.
+
+## Composants partagés à utiliser
+
+Les dossiers et playgrounds doivent réutiliser les composants de
+`src/components/atelier` au lieu de recréer localement le même motif :
+
+- `AtelierOptionRadio` pour une option radio typée et cohérente ;
+- `AtelierCodePanel` pour afficher le code généré, le copier et annoncer le
+  résultat aux technologies d'assistance ;
+- `AtelierPropertiesTable` pour la table canonique dont les colonnes sont
+  toujours `Propriété`, `Type`, `Défaut` et `Rôle`.
+
+Un nouveau composant partagé de l'Atelier ne doit être créé que lorsqu'au moins
+deux dossiers ont réellement besoin du même motif. Il suit la convention de
+structure des composants et commence obligatoirement par `Atelier`.
+
+## Règles des playgrounds
+
+- Limiter `"use client"` au playground et aux briques qui nécessitent vraiment
+  un état ou un accès au navigateur ; le dossier documentaire reste un
+  composant serveur.
+- Reprendre la régie canonique : contrôles dans la colonne de gauche, aperçu
+  dans la colonne de droite et code copiable sous l'aperçu.
+- Utiliser des contrôles HTML natifs correctement étiquetés et entièrement
+  utilisables au clavier.
+- Mettre à jour en direct le rendu, les attributs d'accessibilité et le code à
+  copier à chaque changement de réglage.
+- Lorsque le rendu le justifie, proposer les contrôles `Lumière du plateau` et
+  `Cadre` déjà employés par les playgrounds existants.
+- Vérifier au minimum les lumières sombre et claire, les largeurs compactes et
+  larges, le responsive, le focus visible et la synchronisation entre les
+  contrôles, l'aperçu et le code généré.
 
 # Convention des commits
 
