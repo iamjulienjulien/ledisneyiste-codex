@@ -1,7 +1,9 @@
+import { symbolsBlocs } from "./symbols-blocs";
 import { symbolsCodex } from "./symbols-codex";
 import type { SymbolDefinition } from "@/types/symbols";
 
 export const symbolsRegistry = {
+    blocs: symbolsBlocs,
     codex: symbolsCodex,
 } as const;
 
@@ -27,17 +29,31 @@ export type SymbolSelection = {
     }[SymbolCollectionName<Registry>];
 }[SymbolRegistryName];
 
+export function getSymbol(selection: SymbolSelection): SymbolDefinition;
 export function getSymbol<
     Registry extends SymbolRegistryName,
     Collection extends SymbolCollectionName<Registry>,
     Slug extends SymbolSlug<Registry, Collection>,
->(registry: Registry, collection: Collection, slug: Slug): SymbolDefinition {
-    const collections = symbolsRegistry[registry] as Record<
+>(registry: Registry, collection: Collection, slug: Slug): SymbolDefinition;
+export function getSymbol(
+    selectionOrRegistry: SymbolSelection | SymbolRegistryName,
+    collection?: string,
+    slug?: string,
+): SymbolDefinition {
+    const selection =
+        typeof selectionOrRegistry === "string"
+            ? {
+                  registry: selectionOrRegistry,
+                  collection: collection as string,
+                  slug: slug as string,
+              }
+            : selectionOrRegistry;
+    const collections = symbolsRegistry[selection.registry] as Record<
         string,
         Record<string, SymbolDefinition>
     >;
 
-    return collections[collection][slug];
+    return collections[selection.collection][selection.slug];
 }
 
 export function getSymbolSlugs<

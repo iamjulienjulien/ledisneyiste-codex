@@ -5,13 +5,86 @@ import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import { PixieSymbol, type PixieSymbolSize } from "@/components/ui/PixieSymbol";
-import { getSymbol, getSymbolSlugs, type SymbolSlug } from "@/registry/symbols";
+import { getSymbol } from "@/registry/symbols";
 
 type Lumiere = "sombre" | "claire";
 type Cadre = "compact" | "moyen" | "large";
 type PixieSymbolPresetSize = Exclude<PixieSymbolSize, number>;
 
-const indexSymbolSlugs = getSymbolSlugs("codex", "index");
+const symbolOptions = [
+    {
+        key: "codex.index.personnages",
+        group: "Codex · Index",
+        selection: {
+            registry: "codex",
+            collection: "index",
+            slug: "personnages",
+        },
+        definition: getSymbol("codex", "index", "personnages"),
+    },
+    {
+        key: "codex.index.createurs",
+        group: "Codex · Index",
+        selection: {
+            registry: "codex",
+            collection: "index",
+            slug: "createurs",
+        },
+        definition: getSymbol("codex", "index", "createurs"),
+    },
+    {
+        key: "codex.index.oeuvres",
+        group: "Codex · Index",
+        selection: {
+            registry: "codex",
+            collection: "index",
+            slug: "oeuvres",
+        },
+        definition: getSymbol("codex", "index", "oeuvres"),
+    },
+    {
+        key: "codex.index.epoques",
+        group: "Codex · Index",
+        selection: {
+            registry: "codex",
+            collection: "index",
+            slug: "epoques",
+        },
+        definition: getSymbol("codex", "index", "epoques"),
+    },
+    {
+        key: "blocs.personnages.genese",
+        group: "Blocs · Personnages",
+        selection: {
+            registry: "blocs",
+            collection: "personnages",
+            slug: "genese",
+        },
+        definition: getSymbol("blocs", "personnages", "genese"),
+    },
+    {
+        key: "blocs.personnages.caractere",
+        group: "Blocs · Personnages",
+        selection: {
+            registry: "blocs",
+            collection: "personnages",
+            slug: "caractere",
+        },
+        definition: getSymbol("blocs", "personnages", "caractere"),
+    },
+    {
+        key: "blocs.personnages.trajectoire",
+        group: "Blocs · Personnages",
+        selection: {
+            registry: "blocs",
+            collection: "personnages",
+            slug: "trajectoire",
+        },
+        definition: getSymbol("blocs", "personnages", "trajectoire"),
+    },
+] as const;
+
+const symbolGroups = ["Codex · Index", "Blocs · Personnages"] as const;
 
 const tailles: ReadonlyArray<{
     value: PixieSymbolPresetSize;
@@ -31,25 +104,28 @@ const largeurParCadre: Record<Cadre, string> = {
 };
 
 export function PixieSymbolPlayground() {
-    const [slug, setSlug] =
-        useState<SymbolSlug<"codex", "index">>("personnages");
+    const [symbolKey, setSymbolKey] = useState<string>(symbolOptions[0].key);
     const [size, setSize] = useState<PixieSymbolPresetSize>("xl");
     const [lumiere, setLumiere] = useState<Lumiere>("sombre");
     const [cadre, setCadre] = useState<Cadre>("large");
     const [informatif, setInformatif] = useState(false);
-    const symbole = getSymbol("codex", "index", slug);
+    const symbolOption =
+        symbolOptions.find((option) => option.key === symbolKey) ??
+        symbolOptions[0];
+    const symbole = symbolOption.definition;
+    const { registry, collection, slug } = symbolOption.selection;
     const code = informatif
         ? `<PixieSymbol
-    registry="codex"
-    collection="index"
+    registry="${registry}"
+    collection="${collection}"
     slug="${slug}"
     size="${size}"
     decorative={false}
-    label="Index ${symbole.label}"
+    label="${symbole.label}"
 />`
         : `<PixieSymbol
-    registry="codex"
-    collection="index"
+    registry="${registry}"
+    collection="${collection}"
     slug="${slug}"
     size="${size}"
 />`;
@@ -63,31 +139,35 @@ export function PixieSymbolPlayground() {
                     <div className="mt-6 space-y-7">
                         <div>
                             <label
-                                htmlFor="pixie-symbol-index"
+                                htmlFor="pixie-symbol-selection"
                                 className="text-sm font-medium text-ink"
                             >
-                                Index
+                                Symbole
                             </label>
                             <select
-                                id="pixie-symbol-index"
-                                value={slug}
+                                id="pixie-symbol-selection"
+                                value={symbolKey}
                                 onChange={(event) =>
-                                    setSlug(
-                                        event.target.value as SymbolSlug<
-                                            "codex",
-                                            "index"
-                                        >,
-                                    )
+                                    setSymbolKey(event.target.value)
                                 }
                                 className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
                             >
-                                {indexSymbolSlugs.map((option) => (
-                                    <option key={option} value={option}>
-                                        {
-                                            getSymbol("codex", "index", option)
-                                                .label
-                                        }
-                                    </option>
+                                {symbolGroups.map((group) => (
+                                    <optgroup key={group} label={group}>
+                                        {symbolOptions
+                                            .filter(
+                                                (option) =>
+                                                    option.group === group,
+                                            )
+                                            .map((option) => (
+                                                <option
+                                                    key={option.key}
+                                                    value={option.key}
+                                                >
+                                                    {option.definition.label}
+                                                </option>
+                                            ))}
+                                    </optgroup>
                                 ))}
                             </select>
                         </div>
@@ -141,16 +221,10 @@ export function PixieSymbolPlayground() {
                             className={`flex min-h-48 w-full items-center justify-center border border-line bg-surface p-6 transition-[max-width] ${largeurParCadre[cadre]}`}
                         >
                             <PixieSymbol
-                                registry="codex"
-                                collection="index"
-                                slug={slug}
+                                {...symbolOption.selection}
                                 size={size}
                                 decorative={!informatif}
-                                label={
-                                    informatif
-                                        ? `Index ${symbole.label}`
-                                        : undefined
-                                }
+                                label={informatif ? symbole.label : undefined}
                             />
                         </div>
                     </div>

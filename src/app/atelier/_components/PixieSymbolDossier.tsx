@@ -7,6 +7,7 @@ import { getSymbol, getSymbolSlugs } from "@/registry/symbols";
 import { PixieSymbolPlayground } from "./PixieSymbolPlayground";
 
 const indexSymbolSlugs = getSymbolSlugs("codex", "index");
+const personnageBlockSymbolSlugs = getSymbolSlugs("blocs", "personnages");
 
 const dimensions = [
     ["xs", "24 px"],
@@ -69,8 +70,13 @@ const typesSpecifiques = [
     },
     {
         name: "SymbolRegistryName",
-        values: ['"codex"'],
+        values: ['"blocs"', '"codex"'],
         description: "Registres de symboles actuellement disponibles.",
+    },
+    {
+        name: 'SymbolCollectionName<"blocs">',
+        values: ['"personnages"'],
+        description: "Collections exposées par le registre des blocs.",
     },
     {
         name: 'SymbolCollectionName<"codex">',
@@ -81,6 +87,11 @@ const typesSpecifiques = [
         name: 'SymbolSlug<"codex", "index">',
         values: ['"personnages"', '"createurs"', '"oeuvres"', '"epoques"'],
         description: "Symboles disponibles dans la collection des index.",
+    },
+    {
+        name: 'SymbolSlug<"blocs", "personnages">',
+        values: ['"genese"', '"caractere"', '"trajectoire"'],
+        description: "Symboles des blocs éditoriaux des Personnages.",
     },
 ] as const;
 
@@ -178,7 +189,10 @@ export function PixieSymbolDossier() {
                         ["Mission", "Afficher un symbole typé."],
                         ["Sélection", "registry · collection · slug"],
                         ["Exemple", "codex.index.personnages"],
-                        ["Masters", "Table lumineuse · 1254 px."],
+                        [
+                            "Masters",
+                            "Table lumineuse et Table d’animation · 1254 px.",
+                        ],
                         ["Dérivés", "PNG transparent · 384 px."],
                         ["Accessibilité", "Décoratif par défaut."],
                     ].map(([terme, definition]) => (
@@ -246,6 +260,48 @@ export function PixieSymbolDossier() {
                                 <PixieSymbol
                                     registry="codex"
                                     collection="index"
+                                    slug={slug}
+                                    size="xl"
+                                    className="mx-auto"
+                                />
+                                <h4 className="mt-5 text-xl text-ink">
+                                    {symbole.label}
+                                </h4>
+                                <p className="mt-2 font-mono text-xs text-muted">
+                                    {slug}
+                                </p>
+                            </article>
+                        );
+                    })}
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="pixie-symbol-blocs-personnages"
+                className="mt-16"
+            >
+                <TitreSequence
+                    id="pixie-symbol-blocs-personnages"
+                    surTitre="Distribution"
+                    titre="Les trois blocs de la Table d’animation"
+                    description="Construction, interprétation et transformation donnent aux blocs éditoriaux des Personnages trois repères distincts dans une même matière d’atelier."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-3">
+                    {personnageBlockSymbolSlugs.map((slug) => {
+                        const symbole = getSymbol("blocs", "personnages", slug);
+
+                        return (
+                            <article
+                                key={slug}
+                                className="bg-surface p-6 text-center"
+                                style={{
+                                    borderTop: `4px solid ${symbole.accent}`,
+                                }}
+                            >
+                                <PixieSymbol
+                                    registry="blocs"
+                                    collection="personnages"
                                     slug={slug}
                                     size="xl"
                                     className="mx-auto"

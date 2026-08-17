@@ -35,16 +35,17 @@ function getTaille(size: PixieSymbolSize) {
     return tailles[size];
 }
 
-export function PixieSymbol({
-    registry,
-    collection,
-    slug,
-    size = "md",
-    decorative = true,
-    label,
-    className = "",
-}: PixieSymbolProps) {
-    const symbole = getSymbol(registry, collection, slug);
+export function PixieSymbol(props: PixieSymbolProps) {
+    const {
+        registry,
+        collection,
+        slug,
+        size = "md",
+        decorative = true,
+        label,
+        className = "",
+    } = props;
+    const symbole = getSymbol(props);
     const taille = getTaille(size);
     const style: PixieSymbolStyle = {
         "--pixie-symbol-size": `${taille}px`,
