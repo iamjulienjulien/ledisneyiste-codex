@@ -1,7 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CodexEpoqueCard } from "@/components/codex/CodexEpoqueCard";
+import { CodexIndexViewSwitch } from "@/components/codex/CodexIndexViewSwitch";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { epoques } from "@/data/catalogues";
+import {
+    getContributeursDeLEpoque,
+    getOeuvresDeLEpoque,
+    getPersonnagesDeLEpoque,
+} from "@/data/epoques/relations";
+import { getFicheEpoqueBySlug } from "@/data/epoques";
+import { resolveCodexIndexView } from "@/lib/index-view";
 
 export const metadata: Metadata = {
     title: "Époques",
@@ -9,7 +18,12 @@ export const metadata: Metadata = {
         "Explorer les grandes périodes qui racontent les transformations de Disney dans le temps.",
 };
 
-export default function EpoquesPage() {
+export default async function EpoquesPage({
+    searchParams,
+}: PageProps<"/epoques">) {
+    const { view } = await searchParams;
+    const currentView = resolveCodexIndexView(view);
+
     return (
         <main className="mx-auto min-h-screen w-full max-w-6xl px-6 py-16 sm:py-20">
             <header className="flex max-w-3xl flex-col gap-6 sm:flex-row sm:items-center sm:gap-8">
@@ -36,30 +50,68 @@ export default function EpoquesPage() {
             </header>
 
             <section className="mt-12 border-t border-line pt-8">
-                <p className="text-sm text-muted">
-                    {epoques.length} {epoques.length > 1 ? "époques" : "époque"}
-                </p>
+                <div className="flex flex-wrap items-center justify-between gap-4">
+                    <p className="text-sm text-muted">
+                        {epoques.length}{" "}
+                        {epoques.length > 1 ? "époques" : "époque"}
+                    </p>
 
-                <ul className="mt-6 divide-y divide-line">
-                    {epoques.map((epoque) => (
-                        <li key={epoque.slug}>
-                            <Link
-                                href={`/epoques/${epoque.slug}`}
-                                className="group block py-6"
-                            >
-                                <h2 className="text-2xl text-ink transition-colors group-hover:text-famille-epoques group-focus-visible:text-famille-epoques">
-                                    {epoque.nom}
-                                </h2>
+                    <CodexIndexViewSwitch
+                        pathname="/epoques"
+                        currentView={currentView}
+                    />
+                </div>
 
-                                {epoque.sousTitre && (
-                                    <p className="mt-2 max-w-2xl leading-7 text-ink-soft">
-                                        {epoque.sousTitre}
-                                    </p>
-                                )}
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
+                {currentView === "cards" ? (
+                    <ul className="mt-8 grid gap-6 lg:grid-cols-2">
+                        {epoques.map((epoque) => {
+                            const fiche = getFicheEpoqueBySlug(epoque.slug);
+
+                            return fiche ? (
+                                <li key={epoque.slug}>
+                                    <CodexEpoqueCard
+                                        epoque={epoque}
+                                        fiche={fiche}
+                                        nombres={{
+                                            oeuvres: getOeuvresDeLEpoque(
+                                                epoque.slug,
+                                            ).length,
+                                            personnages:
+                                                getPersonnagesDeLEpoque(
+                                                    epoque.slug,
+                                                ).length,
+                                            createurs:
+                                                getContributeursDeLEpoque(
+                                                    epoque.slug,
+                                                ).length,
+                                        }}
+                                    />
+                                </li>
+                            ) : null;
+                        })}
+                    </ul>
+                ) : (
+                    <ul className="mt-6 divide-y divide-line">
+                        {epoques.map((epoque) => (
+                            <li key={epoque.slug}>
+                                <Link
+                                    href={`/epoques/${epoque.slug}`}
+                                    className="group block py-6"
+                                >
+                                    <h2 className="text-2xl text-ink transition-colors group-hover:text-famille-epoques group-focus-visible:text-famille-epoques">
+                                        {epoque.nom}
+                                    </h2>
+
+                                    {epoque.sousTitre && (
+                                        <p className="mt-2 max-w-2xl leading-7 text-ink-soft">
+                                            {epoque.sousTitre}
+                                        </p>
+                                    )}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                )}
             </section>
         </main>
     );
