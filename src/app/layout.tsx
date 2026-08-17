@@ -28,7 +28,7 @@ export default function RootLayout({
         <html lang="fr" data-projection="originale" data-lumiere="sombre">
             <body className="grid grid-rows-[auto_1fr]">
                 <header className="border-b border-line">
-                    <div className="mx-auto flex w-full max-w-5xl flex-col gap-5 px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
+                    <div className="mx-auto flex w-full max-w-6xl flex-col gap-5 px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
                         <Link href="/" className="group">
                             <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted">
                                 Le Disneyiste

@@ -60,7 +60,7 @@ export default async function PersonnagePage({
     const epoque = getEpoquePourDate(fiche.premiereApparition.date);
 
     return (
-        <main className="mx-auto w-full max-w-5xl px-6 py-16">
+        <main className="mx-auto w-full max-w-6xl px-6 py-16">
             <CodexFicheHeader
                 eyebrow="Personnage"
                 titre={personnage.nom}

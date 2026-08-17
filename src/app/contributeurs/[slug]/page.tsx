@@ -65,7 +65,7 @@ export default async function ContributeurPage({
     const oeuvresContribuees = getOeuvresContribueesParContributeur(slug);
 
     return (
-        <main className="mx-auto w-full max-w-5xl px-6 py-16">
+        <main className="mx-auto w-full max-w-6xl px-6 py-16">
             <CodexFicheHeader
                 eyebrow="Créateur"
                 titre={contributeur.nom}

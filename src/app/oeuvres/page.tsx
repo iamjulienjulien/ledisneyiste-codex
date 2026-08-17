@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function OeuvresPage() {
     return (
-        <main className="mx-auto w-full max-w-5xl px-6 py-16 sm:py-20">
+        <main className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20">
             <header className="max-w-2xl">
                 <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted">
                     Explorer le Codex

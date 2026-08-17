@@ -62,7 +62,7 @@ export default async function EpoquePage({
     const oeuvres = getOeuvresDeLEpoque(slug);
 
     return (
-        <main className="mx-auto min-h-screen w-full max-w-5xl px-6 py-16 sm:py-20">
+        <main className="mx-auto min-h-screen w-full max-w-6xl px-6 py-16 sm:py-20">
             <CodexFicheHeader
                 eyebrow="Époque"
                 titre={epoque.nom}

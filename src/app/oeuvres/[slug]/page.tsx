@@ -57,7 +57,7 @@ export default async function OeuvrePage({
     const epoque = getEpoquePourDate(fiche.sortie.date);
 
     return (
-        <main className="mx-auto w-full max-w-5xl px-6 py-16">
+        <main className="mx-auto w-full max-w-6xl px-6 py-16">
             <CodexFicheHeader
                 eyebrow="Œuvre"
                 titre={oeuvre.nom}

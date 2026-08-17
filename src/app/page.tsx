@@ -8,7 +8,7 @@ import {
 
 export default function Home() {
     return (
-        <main className="mx-auto w-full max-w-5xl px-6 py-16 sm:py-24">
+        <main className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-24">
             <header className="max-w-3xl">
                 <p className="text-sm font-medium uppercase tracking-[0.24em] text-muted">
                     Le Disneyiste
