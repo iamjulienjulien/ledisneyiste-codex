@@ -1,0 +1,19 @@
+.root {
+    --projection-accent: var(--atelier-animation-graphite);
+    --projection-accent-hover: color-mix(
+        in srgb,
+        var(--atelier-animation-graphite) 72%,
+        var(--projection-ink)
+    );
+    --projection-accent-soft: color-mix(
+        in srgb,
+        var(--atelier-animation-graphite) 16%,
+        transparent
+    );
+    --projection-focus: var(--atelier-animation-graphite);
+    --projection-selection: color-mix(
+        in srgb,
+        var(--atelier-animation-graphite) 20%,
+        transparent
+    );
+}

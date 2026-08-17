@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import styles from "./AtelierLayout.module.css";
 
 export const metadata: Metadata = {
     title: "L’Atelier · Projection privée",
@@ -22,7 +23,9 @@ export default function AtelierLayout({
     }
 
     return (
-        <main className="mx-auto w-full max-w-6xl px-6 py-10 sm:py-14">
+        <main
+            className={`${styles.root} mx-auto w-full max-w-6xl px-6 py-10 sm:py-14`}
+        >
             <header className="border-b border-line pb-8">
                 <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
                     <div>
