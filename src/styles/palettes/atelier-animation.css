@@ -13,12 +13,22 @@
     --atelier-animation-table-lumineuse: #252a32;
     --atelier-animation-graphite: #88838c;
     --atelier-animation-papier-animation: #f1e7d2;
-    --atelier-animation-bleu-reperage: #5e88ad;
     --atelier-animation-rouge-crayon: #c06464;
-    --atelier-animation-jaune-lampe: #d3ac55;
-    --atelier-animation-vert-cellulo: #6e9a87;
-    --atelier-animation-gouache: #9172a7;
     --atelier-animation-corail-cel: #c5785c;
+    --atelier-animation-sepia-storyboard: #9a735d;
+    --atelier-animation-orange-banc-titre: #c88952;
+    --atelier-animation-ambre-projecteur: #b98745;
+    --atelier-animation-jaune-lampe: #d3ac55;
+    --atelier-animation-olive-decor: #89945f;
+    --atelier-animation-vert-cellulo: #6e9a87;
+    --atelier-animation-turquoise-acetate: #57959a;
+    --atelier-animation-cyan-effets-optiques: #62a4b2;
+    --atelier-animation-bleu-reperage: #5e88ad;
+    --atelier-animation-indigo-nuit-studio: #6875a4;
+    --atelier-animation-violet-ombre-portee: #78658f;
+    --atelier-animation-gouache: #9172a7;
+    --atelier-animation-rose-aerographe: #b87591;
+    --atelier-animation-framboise-encrage: #aa6077;
 
     /* Premiers rôles éditoriaux */
     --atelier-famille-personnages: var(--atelier-animation-rouge-crayon);

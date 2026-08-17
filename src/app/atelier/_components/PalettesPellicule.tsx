@@ -191,15 +191,33 @@ const atelierAnimation = [
         encre: "sombre",
     },
     {
-        nom: "Bleu repérage",
-        token: "--atelier-animation-bleu-reperage",
-        valeur: "#5E88AD",
-        encre: "sombre",
-    },
-    {
         nom: "Rouge crayon",
         token: "--atelier-animation-rouge-crayon",
         valeur: "#C06464",
+        encre: "sombre",
+    },
+    {
+        nom: "Corail cel",
+        token: "--atelier-animation-corail-cel",
+        valeur: "#C5785C",
+        encre: "sombre",
+    },
+    {
+        nom: "Sépia storyboard",
+        token: "--atelier-animation-sepia-storyboard",
+        valeur: "#9A735D",
+        encre: "sombre",
+    },
+    {
+        nom: "Orange banc-titre",
+        token: "--atelier-animation-orange-banc-titre",
+        valeur: "#C88952",
+        encre: "sombre",
+    },
+    {
+        nom: "Ambre projecteur",
+        token: "--atelier-animation-ambre-projecteur",
+        valeur: "#B98745",
         encre: "sombre",
     },
     {
@@ -209,10 +227,46 @@ const atelierAnimation = [
         encre: "sombre",
     },
     {
+        nom: "Olive décor",
+        token: "--atelier-animation-olive-decor",
+        valeur: "#89945F",
+        encre: "sombre",
+    },
+    {
         nom: "Vert cellulo",
         token: "--atelier-animation-vert-cellulo",
         valeur: "#6E9A87",
         encre: "sombre",
+    },
+    {
+        nom: "Turquoise acétate",
+        token: "--atelier-animation-turquoise-acetate",
+        valeur: "#57959A",
+        encre: "sombre",
+    },
+    {
+        nom: "Cyan effets optiques",
+        token: "--atelier-animation-cyan-effets-optiques",
+        valeur: "#62A4B2",
+        encre: "sombre",
+    },
+    {
+        nom: "Bleu repérage",
+        token: "--atelier-animation-bleu-reperage",
+        valeur: "#5E88AD",
+        encre: "sombre",
+    },
+    {
+        nom: "Indigo nuit studio",
+        token: "--atelier-animation-indigo-nuit-studio",
+        valeur: "#6875A4",
+        encre: "claire",
+    },
+    {
+        nom: "Violet ombre portée",
+        token: "--atelier-animation-violet-ombre-portee",
+        valeur: "#78658F",
+        encre: "claire",
     },
     {
         nom: "Gouache",
@@ -221,9 +275,15 @@ const atelierAnimation = [
         encre: "sombre",
     },
     {
-        nom: "Corail cel",
-        token: "--atelier-animation-corail-cel",
-        valeur: "#C5785C",
+        nom: "Rose aérographe",
+        token: "--atelier-animation-rose-aerographe",
+        valeur: "#B87591",
+        encre: "sombre",
+    },
+    {
+        nom: "Framboise encrage",
+        token: "--atelier-animation-framboise-encrage",
+        valeur: "#AA6077",
         encre: "sombre",
     },
 ] as const satisfies readonly CouleurReference[];
@@ -481,7 +541,7 @@ export function PalettesPellicule() {
                             </p>
                         </div>
                         <p className="font-mono text-xs text-muted">
-                            10 références éditoriales
+                            20 références éditoriales
                         </p>
                     </div>
 
