@@ -9,8 +9,9 @@
         "lint": "eslint",
         "format": "prettier . --write",
         "format:check": "prettier . --check",
-        "check": "pnpm format && pnpm format:check && pnpm lint && pnpm build",
-        "check:ci": "pnpm format:check && pnpm lint && pnpm build"
+        "check:symbols": "node scripts/verifier-symboles-editoriaux.mjs",
+        "check": "pnpm format && pnpm format:check && pnpm lint && pnpm check:symbols && pnpm build",
+        "check:ci": "pnpm format:check && pnpm lint && pnpm check:symbols && pnpm build"
     },
     "dependencies": {
         "next": "16.3.1",
