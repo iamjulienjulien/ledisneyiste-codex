@@ -4,6 +4,7 @@
     "introduction": "Ollie Johnston cherche dans l’animation ce qui relie les personnages autant que ce qui les met en mouvement. Un geste partagé, une main tenue ou une hésitation deviennent sous son crayon les signes visibles d’une relation et donnent aux récits Disney une chaleur nouvelle. Cette attention à l’émotion accompagne plus de quatre décennies de longs métrages. Après sa retraite, les livres qu’il écrit avec Frank Thomas prolongent cette sensibilité en faisant de leur pratique un langage transmis aux générations suivantes.",
     "blocsEditoriaux": [
         {
+            "type": "signature",
             "eyebrow": "Se toucher",
             "titre": "Faire d’un geste partagé une relation",
             "paragraphes": [
@@ -13,6 +14,7 @@
             ]
         },
         {
+            "type": "transmission",
             "eyebrow": "Compagnonnage",
             "titre": "Transformer une amitié en mémoire du métier",
             "paragraphes": [

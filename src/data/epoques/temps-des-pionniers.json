@@ -4,6 +4,7 @@
     "introduction": "Entre 1923 et 1936, Disney n’est pas encore l’empire que son nom finira par désigner. C’est un studio fragile qui apprend à survivre en changeant de personnages, de techniques et d’échelle. Des Alice Comedies à Oswald, puis de la perte d’Oswald à la naissance de Mickey, chaque rupture oblige Walt, Roy et leurs collaborateurs à reconstruire. Le son, la musique, la couleur et l’animation de personnalité transforment alors le court métrage en laboratoire. À la fin de la période, les expériences accumulées rendent imaginable un pari qui semblait jusque-là déraisonnable : raconter une histoire animée pendant toute la durée d’un long métrage.",
     "blocsEditoriaux": [
         {
+            "type": "fondations",
             "eyebrow": "1923–1928",
             "titre": "Fonder un studio, perdre un personnage, apprendre à posséder le suivant",
             "paragraphes": [
@@ -13,6 +14,7 @@
             ]
         },
         {
+            "type": "mutations",
             "eyebrow": "1929–1936",
             "titre": "Transformer le court métrage en terrain d’expériences",
             "paragraphes": [

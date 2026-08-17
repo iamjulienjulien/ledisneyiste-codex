@@ -4,6 +4,7 @@
     "introduction": "Milt Kahl impose au dessin Disney une exigence de construction, d’anatomie et de clarté qui devient une référence pour tout le studio. Capable de redéfinir Pinocchio comme d’animer des héros, des animaux ou des méchants flamboyants, il traite chaque personnage comme un problème de forme autant que de jeu. Parmi les Nine Old Men, son trait incarne une autorité artistique : celle qui transforme une personnalité encore abstraite en silhouette immédiatement juste.",
     "blocsEditoriaux": [
         {
+            "type": "signature",
             "eyebrow": "Redessiner",
             "titre": "Trouver l’enfant à l’intérieur de la marionnette",
             "paragraphes": [
@@ -13,6 +14,7 @@
             ]
         },
         {
+            "type": "signature",
             "eyebrow": "Exigence",
             "titre": "Résoudre les personnages les plus difficiles",
             "paragraphes": [

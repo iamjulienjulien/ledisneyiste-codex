@@ -48,6 +48,7 @@
     ],
     "blocsEditoriaux": [
         {
+            "type": "repere",
             "eyebrow": "Couleur",
             "titre": "Mickey trouve sa palette",
             "paragraphes": [
@@ -56,6 +57,7 @@
             ]
         },
         {
+            "type": "langage",
             "eyebrow": "Mise en scène",
             "titre": "Faire jouer ensemble la musique et le chaos",
             "paragraphes": [

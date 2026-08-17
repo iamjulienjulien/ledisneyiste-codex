@@ -27,6 +27,7 @@
     "espece": "chien",
     "blocsEditoriaux": [
         {
+            "type": "genese",
             "eyebrow": "Continuité",
             "titre": "Deux limiers avant un seul Pluto",
             "paragraphes": [
@@ -35,6 +36,7 @@
             ]
         },
         {
+            "type": "caractere",
             "eyebrow": "Animation de caractère",
             "titre": "Penser sans avoir besoin de parler",
             "paragraphes": [

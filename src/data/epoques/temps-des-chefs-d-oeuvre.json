@@ -4,6 +4,7 @@
     "introduction": "De 1937 à 1941, le succès de Blanche-Neige et les Sept Nains fait entrer Disney dans une activité nouvelle : le long métrage d’animation devient le lieu principal où le studio éprouve ses ambitions. Pinocchio, Fantasia et Dumbo ne répètent pourtant pas une formule victorieuse. Chacun déplace le rapport au personnage, à la musique, à la technique ou à l’économie du récit. Cette concentration exceptionnelle d’inventions repose sur un équilibre fragile. La guerre ferme des marchés essentiels, les coûts pèsent sur le studio et Bambi, sorti en 1942 à la borne de l’Époque, marque la fin de cette première poussée continue de grands longs métrages.",
     "blocsEditoriaux": [
         {
+            "type": "mutations",
             "eyebrow": "Changer d’échelle",
             "titre": "Faire du long métrage le nouveau laboratoire du studio",
             "paragraphes": [
@@ -13,6 +14,7 @@
             ]
         },
         {
+            "type": "tensions",
             "eyebrow": "Fragilité",
             "titre": "Découvrir que l’ambition artistique ne garantit pas l’équilibre",
             "paragraphes": [

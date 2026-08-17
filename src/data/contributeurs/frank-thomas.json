@@ -4,6 +4,7 @@
     "introduction": "Frank Thomas place la personnalité au cœur de l’animation Disney. Son dessin ne cherche pas seulement à produire un mouvement juste : il construit des pensées, des hésitations et des émotions auxquelles le public peut croire. Des premiers longs métrages aux grandes figures de l’après-guerre, il anime ainsi certains des moments les plus intimes du studio. Après sa retraite, les livres qu’il écrit avec Ollie Johnston prolongent cette exigence et transforment une expérience d’atelier en héritage partagé.",
     "blocsEditoriaux": [
         {
+            "type": "signature",
             "eyebrow": "Croire",
             "titre": "Donner une personnalité avant de donner un mouvement",
             "paragraphes": [
@@ -13,6 +14,7 @@
             ]
         },
         {
+            "type": "transmission",
             "eyebrow": "Après le studio",
             "titre": "Écrire avec Ollie ce que l’atelier avait appris",
             "paragraphes": [

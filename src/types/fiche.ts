@@ -3,7 +3,7 @@ import type { SymbolCollectionName, SymbolSlug } from "@/registry/symbols";
 export type BlocEditorialCodex<
     Collection extends SymbolCollectionName<"blocs">,
 > = {
-    type?: SymbolSlug<"blocs", Collection>;
+    type: SymbolSlug<"blocs", Collection>;
     eyebrow?: string;
     titre: string;
     paragraphes: string[];

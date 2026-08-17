@@ -32,6 +32,7 @@
     "espece": "canard anthropomorphe",
     "blocsEditoriaux": [
         {
+            "type": "genese",
             "eyebrow": "Naissance d’un personnage",
             "titre": "Une voix avant un dessin définitif",
             "paragraphes": [
@@ -40,6 +41,7 @@
             ]
         },
         {
+            "type": "caractere",
             "eyebrow": "Tempérament",
             "titre": "Le contrepoint comique de Mickey",
             "paragraphes": [

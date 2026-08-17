@@ -4,6 +4,7 @@
     "introduction": "Wolfgang Reitherman fait de l’action une force de caractère. Animateur des poursuites, des combats et des métamorphoses les plus physiques du studio, il passe progressivement du mouvement d’une scène à la conduite d’un film entier. Après la disparition de Walt, son énergie et son autorité contribuent à maintenir le cap de l’animation Disney, faisant de ce membre des Nine Old Men un lien décisif entre l’âge des grands animateurs et celui des réalisateurs de longs métrages.",
     "blocsEditoriaux": [
         {
+            "type": "signature",
             "eyebrow": "Énergie",
             "titre": "Faire de l’action une forme de jeu",
             "paragraphes": [
@@ -13,6 +14,7 @@
             ]
         },
         {
+            "type": "trajectoire",
             "eyebrow": "Prendre le relais",
             "titre": "Tenir le cap après la disparition de Walt",
             "paragraphes": [

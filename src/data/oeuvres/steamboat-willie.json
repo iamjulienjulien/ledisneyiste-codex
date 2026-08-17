@@ -49,6 +49,7 @@
     ],
     "blocsEditoriaux": [
         {
+            "type": "repere",
             "eyebrow": "Chronologie",
             "titre": "Le troisième film ouvre la série",
             "paragraphes": [
@@ -57,6 +58,7 @@
             ]
         },
         {
+            "type": "langage",
             "eyebrow": "Son",
             "titre": "Synchroniser plutôt qu’accompagner",
             "paragraphes": [

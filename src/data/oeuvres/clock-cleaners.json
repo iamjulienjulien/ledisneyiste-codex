@@ -36,6 +36,7 @@
     ],
     "blocsEditoriaux": [
         {
+            "type": "relations",
             "eyebrow": "Le trio",
             "titre": "Trois caractères dans une même machine",
             "paragraphes": [
@@ -44,6 +45,7 @@
             ]
         },
         {
+            "type": "langage",
             "eyebrow": "Vertige",
             "titre": "Dingo marche au bord du vide",
             "paragraphes": [

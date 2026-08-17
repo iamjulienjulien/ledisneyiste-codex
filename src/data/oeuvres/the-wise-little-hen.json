@@ -32,6 +32,7 @@
     ],
     "blocsEditoriaux": [
         {
+            "type": "repere",
             "eyebrow": "Contexte",
             "titre": "Une Silly Symphony comme porte d’entrée",
             "paragraphes": [
@@ -40,6 +41,7 @@
             ]
         },
         {
+            "type": "repere",
             "eyebrow": "Héritage",
             "titre": "Le premier état d’un personnage en devenir",
             "paragraphes": [

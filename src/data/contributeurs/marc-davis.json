@@ -4,6 +4,7 @@
     "introduction": "Marc Davis traverse les formes de création Disney sans laisser le personnage derrière lui. Dans l’animation, son sens du dessin et du jeu donne naissance à des figures féminines aussi différentes que Clochette, Maléfique ou Cruella d’Enfer. Lorsqu’il rejoint WED Enterprises, cette même attention se déploie dans l’espace : silhouettes, situations et enchaînements de scènes deviennent la matière narrative des attractions. Son parcours relie ainsi deux territoires du studio que le Codex pourra progressivement faire dialoguer, de l’écran aux parcs.",
     "blocsEditoriaux": [
         {
+            "type": "signature",
             "eyebrow": "Contrastes",
             "titre": "Donner à chaque héroïne sa propre manière d’occuper l’écran",
             "paragraphes": [
@@ -13,6 +14,7 @@
             ]
         },
         {
+            "type": "trajectoire",
             "eyebrow": "Changer d’espace",
             "titre": "Faire sortir le personnage de l’écran",
             "paragraphes": [

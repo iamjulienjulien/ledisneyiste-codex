@@ -27,6 +27,7 @@
     "espece": "canard anthropomorphe",
     "blocsEditoriaux": [
         {
+            "type": "trajectoire",
             "eyebrow": "Continuité",
             "titre": "De Donna Duck à Daisy",
             "paragraphes": [
@@ -35,6 +36,7 @@
             ]
         },
         {
+            "type": "caractere",
             "eyebrow": "Caractère",
             "titre": "Une partenaire, pas un simple contrechamp",
             "paragraphes": [

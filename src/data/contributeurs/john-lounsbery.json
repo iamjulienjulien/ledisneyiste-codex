@@ -4,6 +4,7 @@
     "introduction": "John Lounsbery donne à l’animation Disney une énergie franche, physique et volontiers caricaturale. Ses personnages prennent de la place, s’étirent, s’écrasent et imposent leur tempérament par le mouvement autant que par le dessin. Longtemps associé à Pluto avant de participer aux grands longs métrages du studio, il devient animateur superviseur puis réalisateur. Son parcours rappelle que la personnalité Disney peut aussi naître d’un geste ample, d’un rythme comique et d’une silhouette qui refuse la discrétion.",
     "blocsEditoriaux": [
         {
+            "type": "signature",
             "eyebrow": "Physicalité",
             "titre": "Donner aux personnages le droit de déborder",
             "paragraphes": [
@@ -13,6 +14,7 @@
             ]
         },
         {
+            "type": "trajectoire",
             "eyebrow": "Conduire",
             "titre": "Passer du caractère d’une scène à la direction d’un film",
             "paragraphes": [

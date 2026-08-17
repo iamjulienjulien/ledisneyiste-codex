@@ -37,6 +37,7 @@
     "espece": "souris anthropomorphe",
     "blocsEditoriaux": [
         {
+            "type": "genese",
             "eyebrow": "Origines",
             "titre": "Partager une naissance publique avec Mickey",
             "paragraphes": [
@@ -45,6 +46,7 @@
             ]
         },
         {
+            "type": "trajectoire",
             "eyebrow": "Trajectoire",
             "titre": "Devenir une icône sans série à son nom",
             "paragraphes": [

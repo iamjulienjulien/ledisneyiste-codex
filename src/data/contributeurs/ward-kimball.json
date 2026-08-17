@@ -4,6 +4,7 @@
     "introduction": "Ward Kimball cultive au sein de Disney une énergie volontiers imprévisible. Son animation privilégie la caricature, le rythme et la surprise, tandis que sa curiosité l’entraîne vers la télévision scientifique, la musique, les trains et même les premiers imaginaires d’Epcot. Parmi les Nine Old Men, il rappelle que la tradition du studio ne se construit pas seulement par la maîtrise : elle avance aussi grâce à ceux qui déplacent les règles et introduisent un peu de désordre dans la machine.",
     "blocsEditoriaux": [
         {
+            "type": "signature",
             "eyebrow": "Caricaturer",
             "titre": "Entrer dans le cœur du public par le rire",
             "paragraphes": [
@@ -13,6 +14,7 @@
             ]
         },
         {
+            "type": "trajectoire",
             "eyebrow": "Curiosité",
             "titre": "Faire circuler l’animation entre science, musique et machines",
             "paragraphes": [

@@ -30,6 +30,7 @@
     "espece": "chien anthropomorphe",
     "blocsEditoriaux": [
         {
+            "type": "genese",
             "eyebrow": "Naissance d’un personnage",
             "titre": "Un rire avant un nom",
             "paragraphes": [
@@ -38,6 +39,7 @@
             ]
         },
         {
+            "type": "caractere",
             "eyebrow": "Langage comique",
             "titre": "L’art de continuer malgré soi",
             "paragraphes": [

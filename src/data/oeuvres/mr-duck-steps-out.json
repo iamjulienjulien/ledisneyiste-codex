@@ -40,6 +40,7 @@
     ],
     "blocsEditoriaux": [
         {
+            "type": "relations",
             "eyebrow": "Comédie de situation",
             "titre": "Un premier rendez-vous jamais à deux",
             "paragraphes": [
@@ -48,6 +49,7 @@
             ]
         },
         {
+            "type": "relations",
             "eyebrow": "Le couple",
             "titre": "Faire de la danse un langage commun",
             "paragraphes": [

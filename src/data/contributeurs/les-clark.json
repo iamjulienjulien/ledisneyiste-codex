@@ -4,6 +4,7 @@
     "introduction": "Les Clark entre chez Disney à la sortie du lycée et accompagne presque un demi-siècle de transformation du studio. Premier des Nine Old Men à rejoindre l’entreprise, il apprend auprès d’Ub Iwerks, anime Mickey dès Steamboat Willie et poursuit son travail jusque dans les longs métrages avant de passer à la réalisation. Sa trajectoire relie ainsi les gestes encore artisanaux des débuts à une animation devenue école, langage et héritage.",
     "blocsEditoriaux": [
         {
+            "type": "debuts",
             "eyebrow": "Fidélité",
             "titre": "Rester quand le premier studio vacille",
             "paragraphes": [
@@ -13,6 +14,7 @@
             ]
         },
         {
+            "type": "trajectoire",
             "eyebrow": "Apprendre",
             "titre": "Ne jamais considérer le dessin comme acquis",
             "paragraphes": [

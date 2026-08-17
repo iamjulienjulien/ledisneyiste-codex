@@ -29,6 +29,7 @@
     ],
     "blocsEditoriaux": [
         {
+            "type": "langage",
             "eyebrow": "Point de vue",
             "titre": "Faire du reflet une émotion visible",
             "paragraphes": [
@@ -37,6 +38,7 @@
             ]
         },
         {
+            "type": "relations",
             "eyebrow": "Rivalité",
             "titre": "Butch donne un poids au danger",
             "paragraphes": [
