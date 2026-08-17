@@ -1,3 +1,4 @@
+import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
 import { BoutonEsquisse } from "./BoutonEsquisse";
 import { BoutonPlayground } from "./BoutonPlayground";
 
@@ -21,33 +22,33 @@ const variantes = [
 
 const proprietes = [
     {
-        nom: "children",
+        name: "children",
         type: "ReactNode",
-        defaut: "—",
+        defaultValue: "—",
         description: "Libellé visible du bouton.",
     },
     {
-        nom: "variante",
+        name: "variante",
         type: '"principal" | "secondaire" | "discret"',
-        defaut: '"principal"',
+        defaultValue: '"principal"',
         description: "Hiérarchie visuelle et fonctionnelle de l’action.",
     },
     {
-        nom: "taille",
+        name: "taille",
         type: '"petit" | "moyen" | "grand"',
-        defaut: '"moyen"',
+        defaultValue: '"moyen"',
         description: "Densité et taille de la zone interactive.",
     },
     {
-        nom: "disabled",
+        name: "disabled",
         type: "boolean",
-        defaut: "false",
+        defaultValue: "false",
         description: "Empêche l’activation et signale l’indisponibilité.",
     },
     {
-        nom: "miseAuPoint",
+        name: "miseAuPoint",
         type: "boolean",
-        defaut: "false",
+        defaultValue: "false",
         description: "Diagnostic de focus réservé aux essais de l’Atelier.",
     },
 ] as const;
@@ -97,7 +98,7 @@ export function BoutonDossier() {
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
                     <div className="bg-surface p-6 sm:p-8">
                         <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
-                            Le clap · Accessoire 001
+                            Le clap · Accessoire 002
                         </p>
                         <h2
                             id="bouton-title"
@@ -293,58 +294,8 @@ export function BoutonDossier() {
 type TailleBouton = "petit" | "moyen" | "grand";`}</CodeExemple>
                 </div>
 
-                <div className="mt-6 overflow-x-auto border border-line">
-                    <table className="w-full min-w-3xl border-collapse text-left">
-                        <thead className="bg-surface-muted text-xs uppercase tracking-[0.16em] text-muted">
-                            <tr>
-                                <th
-                                    scope="col"
-                                    className="px-5 py-4 font-medium"
-                                >
-                                    Propriété
-                                </th>
-                                <th
-                                    scope="col"
-                                    className="px-5 py-4 font-medium"
-                                >
-                                    Type
-                                </th>
-                                <th
-                                    scope="col"
-                                    className="px-5 py-4 font-medium"
-                                >
-                                    Défaut
-                                </th>
-                                <th
-                                    scope="col"
-                                    className="px-5 py-4 font-medium"
-                                >
-                                    Rôle
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody className="divide-y divide-line bg-surface">
-                            {proprietes.map((propriete) => (
-                                <tr key={propriete.nom}>
-                                    <th
-                                        scope="row"
-                                        className="px-5 py-4 font-mono text-sm font-medium text-accent"
-                                    >
-                                        {propriete.nom}
-                                    </th>
-                                    <td className="px-5 py-4 font-mono text-xs text-ink-soft">
-                                        {propriete.type}
-                                    </td>
-                                    <td className="px-5 py-4 font-mono text-xs text-muted">
-                                        {propriete.defaut}
-                                    </td>
-                                    <td className="px-5 py-4 text-sm leading-6 text-ink-soft">
-                                        {propriete.description}
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                <div className="mt-6">
+                    <AtelierPropertiesTable properties={proprietes} />
                 </div>
             </section>
 
