@@ -23,6 +23,23 @@ export const symbolsBlocs = {
             accent: "var(--atelier-animation-vert-cellulo)",
         },
     },
+    epoques: {
+        fondations: {
+            src: "/symbols/blocs/epoques/fondations.png",
+            label: "Fondations",
+            accent: "var(--atelier-animation-jaune-lampe)",
+        },
+        mutations: {
+            src: "/symbols/blocs/epoques/mutations.png",
+            label: "Mutations",
+            accent: "var(--atelier-animation-vert-cellulo)",
+        },
+        tensions: {
+            src: "/symbols/blocs/epoques/tensions.png",
+            label: "Tensions",
+            accent: "var(--atelier-animation-rouge-crayon)",
+        },
+    },
     oeuvres: {
         repere: {
             src: "/symbols/blocs/oeuvres/repere.png",

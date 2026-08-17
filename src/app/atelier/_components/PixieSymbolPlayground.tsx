@@ -152,6 +152,36 @@ const symbolOptions = [
         },
         definition: getSymbol("blocs", "oeuvres", "relations"),
     },
+    {
+        key: "blocs.epoques.fondations",
+        group: "Blocs · Époques",
+        selection: {
+            registry: "blocs",
+            collection: "epoques",
+            slug: "fondations",
+        },
+        definition: getSymbol("blocs", "epoques", "fondations"),
+    },
+    {
+        key: "blocs.epoques.mutations",
+        group: "Blocs · Époques",
+        selection: {
+            registry: "blocs",
+            collection: "epoques",
+            slug: "mutations",
+        },
+        definition: getSymbol("blocs", "epoques", "mutations"),
+    },
+    {
+        key: "blocs.epoques.tensions",
+        group: "Blocs · Époques",
+        selection: {
+            registry: "blocs",
+            collection: "epoques",
+            slug: "tensions",
+        },
+        definition: getSymbol("blocs", "epoques", "tensions"),
+    },
 ] as const;
 
 const symbolGroups = [
@@ -159,6 +189,7 @@ const symbolGroups = [
     "Blocs · Personnages",
     "Blocs · Contributeurs",
     "Blocs · Œuvres",
+    "Blocs · Époques",
 ] as const;
 
 const tailles: ReadonlyArray<{
