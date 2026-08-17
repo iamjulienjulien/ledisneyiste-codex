@@ -1,3 +1,5 @@
+import { BoutonDossier } from "./_components/BoutonDossier";
+
 const categories = [
     {
         numero: "01",
@@ -369,7 +371,16 @@ export default function AtelierPage() {
                                         scope="row"
                                         className="px-5 py-4 font-medium text-ink"
                                     >
-                                        {accessoire.nom}
+                                        {accessoire.nom === "Bouton" ? (
+                                            <a
+                                                href="#bouton"
+                                                className="text-accent underline underline-offset-4 hover:text-accent-hover"
+                                            >
+                                                {accessoire.nom} →
+                                            </a>
+                                        ) : (
+                                            accessoire.nom
+                                        )}
                                     </th>
                                     <td className="px-5 py-4 text-ink-soft">
                                         {accessoire.role}
@@ -382,6 +393,8 @@ export default function AtelierPage() {
                         </tbody>
                     </table>
                 </div>
+
+                <BoutonDossier />
             </section>
         </div>
     );
