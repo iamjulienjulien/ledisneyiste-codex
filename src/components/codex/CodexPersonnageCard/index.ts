@@ -1,0 +1,1 @@
+export { CodexPersonnageCard } from "./CodexPersonnageCard";

@@ -1,0 +1,46 @@
+.root {
+    --codex-card-color: var(--color-famille-epoques);
+
+    position: relative;
+    display: flex;
+    min-height: 100%;
+    overflow: hidden;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-medium);
+    flex-direction: column;
+    color: inherit;
+    background:
+        linear-gradient(
+            145deg,
+            color-mix(in srgb, var(--codex-card-color) 7%, transparent),
+            transparent 46%
+        ),
+        var(--color-surface);
+    box-shadow: var(--shadow-soft);
+    text-decoration: none;
+    transition:
+        border-color 180ms ease,
+        transform 180ms ease;
+}
+
+.root::before {
+    position: absolute;
+    inset: 0 0 auto;
+    height: 0.2rem;
+    background: var(--codex-card-color);
+    content: "";
+}
+
+.root:hover {
+    border-color: color-mix(
+        in srgb,
+        var(--codex-card-color) 55%,
+        var(--color-line)
+    );
+    transform: translateY(-0.2rem);
+}
+
+.root:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 3px;
+}

@@ -1,0 +1,1 @@
+export { CodexEpoqueCard } from "./CodexEpoqueCard";
