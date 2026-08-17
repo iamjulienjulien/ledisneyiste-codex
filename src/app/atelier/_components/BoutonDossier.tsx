@@ -1,3 +1,4 @@
+import { AtelierFicheAccessoire } from "@/components/atelier/AtelierFicheAccessoire";
 import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
 import { PixieDustButton } from "@/components/ui/PixieDustButton";
 import { BoutonPlayground } from "./BoutonPlayground";
@@ -89,12 +90,12 @@ function TitreSequence({
 
 export function BoutonDossier() {
     return (
-        <article
+        <AtelierFicheAccessoire
             id="bouton"
-            aria-labelledby="bouton-title"
-            className="mt-16 scroll-mt-8 border-t border-line-strong pt-12"
-        >
-            <header className="overflow-hidden border border-line bg-surface">
+            labelledBy="bouton-title"
+            nom="PixieDustButton"
+            className="mt-16 scroll-mt-8"
+            header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
                     <div className="bg-surface p-6 sm:p-8">
                         <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
@@ -131,8 +132,8 @@ export function BoutonDossier() {
                         </div>
                     </dl>
                 </div>
-            </header>
-
+            }
+        >
             <section aria-labelledby="bouton-identite" className="mt-14">
                 <TitreSequence
                     id="bouton-identite"
@@ -337,6 +338,6 @@ type PixieDustButtonSize = "petit" | "moyen" | "grand";`}</CodeExemple>
                     </article>
                 </div>
             </section>
-        </article>
+        </AtelierFicheAccessoire>
     );
 }

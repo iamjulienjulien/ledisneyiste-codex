@@ -1,3 +1,4 @@
+import { AtelierFicheAccessoire } from "@/components/atelier/AtelierFicheAccessoire";
 import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { getSymbol, getSymbolSlugs } from "@/registry/symbols";
@@ -94,12 +95,12 @@ function TitreSequence({
 
 export function PixieSymbolDossier() {
     return (
-        <article
+        <AtelierFicheAccessoire
             id="pixie-symbol"
-            aria-labelledby="pixie-symbol-title"
-            className="mt-20 scroll-mt-8 border-t border-line-strong pt-12"
-        >
-            <header className="overflow-hidden border border-line bg-surface">
+            labelledBy="pixie-symbol-title"
+            nom="PixieSymbol"
+            className="mt-20 scroll-mt-8"
+            header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
                     <div className="bg-surface p-6 sm:p-8">
                         <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
@@ -137,8 +138,8 @@ export function PixieSymbolDossier() {
                         </div>
                     </dl>
                 </div>
-            </header>
-
+            }
+        >
             <section aria-labelledby="pixie-symbol-identite" className="mt-14">
                 <TitreSequence
                     id="pixie-symbol-identite"
@@ -333,6 +334,6 @@ export function PixieSymbolDossier() {
                     <AtelierPropertiesTable properties={proprietes} />
                 </div>
             </section>
-        </article>
+        </AtelierFicheAccessoire>
     );
 }
