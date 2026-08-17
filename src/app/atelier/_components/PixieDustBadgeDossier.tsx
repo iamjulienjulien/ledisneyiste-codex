@@ -474,35 +474,37 @@ export function PixieDustBadgeDossier() {
                 <SequenceTitle
                     id="cartouche-journal"
                     eyebrow="Journal de production"
-                    title="Ce qu’il reste à éprouver"
+                    title="Les conditions du passage à PixieBadge"
                 />
 
                 <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-3">
                     <article className="bg-surface p-6">
                         <p className="text-xs uppercase tracking-[0.16em] text-muted">
-                            Densité
+                            Contexte réel
                         </p>
                         <p className="mt-3 leading-7 text-ink-soft">
-                            Tester les séries de plusieurs cartouches sur mobile
-                            et au zoom à 200 %.
+                            Composer une vraie série de métadonnées sur une
+                            fiche, puis la tester sur mobile et au zoom à 200 %.
                         </p>
                     </article>
                     <article className="bg-surface p-6">
                         <p className="text-xs uppercase tracking-[0.16em] text-muted">
-                            Couleurs
+                            Validation
                         </p>
                         <p className="mt-3 leading-7 text-ink-soft">
-                            Éprouver les futures métadonnées avec toute la
-                            palette de L’Atelier d’animation.
+                            Éprouver la palette de L’Atelier d’animation dans
+                            les deux lumières sans faire porter le sens par la
+                            couleur seule.
                         </p>
                     </article>
                     <article className="bg-surface p-6">
                         <p className="text-xs uppercase tracking-[0.16em] text-muted">
-                            Frontière
+                            Promotion
                         </p>
                         <p className="mt-3 leading-7 text-ink-soft">
-                            Préserver la distinction avec les futurs filtres et
-                            cartouches interactifs.
+                            Confirmer sa frontière non interactive avec les
+                            futurs filtres, puis le renommer en PixieBadge
+                            1.0.0.
                         </p>
                     </article>
                 </div>

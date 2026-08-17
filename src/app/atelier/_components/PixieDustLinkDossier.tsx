@@ -434,26 +434,26 @@ export function PixieDustLinkDossier() {
                 <SequenceTitle
                     id="lien-journal"
                     eyebrow="Journal de production"
-                    title="Ce qu’il reste à éprouver"
+                    title="Les conditions du passage à PixieLink"
                 />
 
                 <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-3">
                     <article className="bg-surface p-6">
                         <p className="text-xs uppercase tracking-[0.16em] text-muted">
-                            Migration
+                            Contextes réels
                         </p>
                         <p className="mt-3 leading-7 text-ink-soft">
-                            Tester la variante surface sur les quatre portes de
-                            la home avant de figer son traitement.
+                            Tester la variante surface sur les quatre portes et
+                            la variante inline dans CodexReferenceLink.
                         </p>
                     </article>
                     <article className="bg-surface p-6">
                         <p className="text-xs uppercase tracking-[0.16em] text-muted">
-                            Accessibilité
+                            Validation
                         </p>
                         <p className="mt-3 leading-7 text-ink-soft">
-                            Vérifier contrastes, navigation clavier et zoom à
-                            200 % dans chaque contexte.
+                            Vérifier les contrastes, le clavier, les libellés et
+                            le zoom à 200 % dans chaque contexte.
                         </p>
                     </article>
                     <article className="bg-surface p-6">
@@ -461,8 +461,8 @@ export function PixieDustLinkDossier() {
                             Promotion
                         </p>
                         <p className="mt-3 leading-7 text-ink-soft">
-                            Retirer le diagnostic de focus puis remplacer les
-                            liens publics après validation de l’API.
+                            Retirer le diagnostic de focus, figer l’API et
+                            renommer le composant en PixieLink 1.0.0.
                         </p>
                     </article>
                 </div>

@@ -331,34 +331,36 @@ export function PixieDustButtonDossier() {
                 <TitreSequence
                     id="bouton-journal"
                     surTitre="Journal de production"
-                    titre="Ce qu’il reste à décider"
+                    titre="Les conditions du passage à PixieButton"
                 />
 
                 <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-3">
                     <article className="bg-surface p-6">
                         <p className="text-xs uppercase tracking-[0.16em] text-muted">
-                            Décision
+                            API
                         </p>
                         <p className="mt-3 leading-7 text-ink-soft">
-                            Trois variantes suffisent pour le premier montage.
+                            Figer les trois variantes et les trois tailles, puis
+                            décider si le chargement et l’action destructive
+                            appartiennent à cette primitive.
                         </p>
                     </article>
                     <article className="bg-surface p-6">
                         <p className="text-xs uppercase tracking-[0.16em] text-muted">
-                            Accessibilité
+                            Validation
                         </p>
                         <p className="mt-3 leading-7 text-ink-soft">
-                            Vérifier contrastes, zoom à 200 % et navigation au
-                            clavier avant promotion.
+                            Vérifier les contrastes, le zoom à 200 %, le clavier
+                            et les états désactivés dans les deux lumières.
                         </p>
                     </article>
                     <article className="bg-surface p-6">
                         <p className="text-xs uppercase tracking-[0.16em] text-muted">
-                            Prochain clap
+                            Première affectation
                         </p>
                         <p className="mt-3 leading-7 text-ink-soft">
-                            Définir les cas chargement et action destructive,
-                            puis choisir l’API finale.
+                            Remplacer un bouton réel du Codex sans adaptation
+                            locale avant le renommage en PixieButton 1.0.0.
                         </p>
                     </article>
                 </div>

@@ -425,35 +425,37 @@ export function PixieDustSeparatorDossier() {
                 <SequenceTitle
                     id="separateur-journal"
                     eyebrow="Journal de production"
-                    title="Ce qu’il reste à éprouver"
+                    title="Les conditions du passage à PixieSeparator"
                 />
 
                 <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-3">
                     <article className="bg-surface p-6">
                         <p className="text-xs uppercase tracking-[0.16em] text-muted">
-                            Rythme
+                            Contextes réels
                         </p>
                         <p className="mt-3 leading-7 text-ink-soft">
-                            Comparer les trois respirations sur les fiches
-                            longues et les petits écrans.
+                            Comparer les trois respirations sur une fiche longue
+                            et un petit écran avant de fixer leur rythme.
                         </p>
                     </article>
                     <article className="bg-surface p-6">
                         <p className="text-xs uppercase tracking-[0.16em] text-muted">
-                            Pellicule
+                            Validation
                         </p>
                         <p className="mt-3 leading-7 text-ink-soft">
-                            Vérifier que la variante film reste exceptionnelle
-                            et ne surcharge pas la lecture.
+                            Vérifier la discrétion de la variante film et la
+                            pertinence de chaque rupture avec ou sans
+                            sémantique.
                         </p>
                     </article>
                     <article className="bg-surface p-6">
                         <p className="text-xs uppercase tracking-[0.16em] text-muted">
-                            Migration
+                            Promotion
                         </p>
                         <p className="mt-3 leading-7 text-ink-soft">
-                            Identifier les vraies ruptures thématiques avant de
-                            remplacer les bordures existantes.
+                            Remplacer une vraie rupture sans détourner les
+                            bordures structurelles, puis le renommer en
+                            PixieSeparator 1.0.0.
                         </p>
                     </article>
                 </div>
