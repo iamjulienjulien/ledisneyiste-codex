@@ -1,0 +1,90 @@
+{
+    "slug": "the-gallopin-gaucho",
+    "type": "oeuvre",
+    "introduction": "The Gallopin’ Gaucho transforme Mickey en acteur avant que le public ait encore appris à reconnaître sa personnalité. Dans une Argentine de cinéma inspirée des aventures de Douglas Fairbanks, la souris fume, boit, danse le tango, chevauche une autruche et affronte Pat Hibulaire à l’épée pour délivrer Minnie. Deuxième film de Mickey produit silencieusement, le court métrage reste sans distributeur jusqu’au succès de Steamboat Willie. Une bande sonore lui permet alors de rejoindre les salles le 30 décembre 1928, porteur à la fois du premier dessin de la souris et des transformations déjà provoquées par sa célébrité naissante.",
+    "sortie": {
+        "date": {
+            "valeur": "1928-12-30",
+            "precision": "jour"
+        }
+    },
+    "format": "court métrage d’animation",
+    "contributions": [
+        {
+            "contributeur": {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            },
+            "roles": ["réalisation"]
+        },
+        {
+            "contributeur": {
+                "nom": "Ub Iwerks",
+                "type": "contributeur",
+                "slug": "ub-iwerks"
+            },
+            "roles": ["réalisation", "animation"]
+        },
+        {
+            "contributeur": {
+                "nom": "Carl Stalling"
+            },
+            "roles": ["musique"]
+        }
+    ],
+    "personnages": [
+        {
+            "nom": "Mickey Mouse",
+            "type": "personnage",
+            "slug": "mickey-mouse"
+        },
+        {
+            "nom": "Minnie Mouse",
+            "type": "personnage",
+            "slug": "minnie-mouse"
+        },
+        {
+            "nom": "Pat Hibulaire"
+        }
+    ],
+    "blocsEditoriaux": [
+        {
+            "type": "repere",
+            "eyebrow": "Chronologie",
+            "titre": "Le deuxième film devient le troisième distribué",
+            "paragraphes": [
+                "The Gallopin’ Gaucho suit immédiatement Plane Crazy dans l’ordre de fabrication. Comme lui, il est conçu sans bande sonore et ne convainc aucun distributeur. Les deux premières aventures de Mickey restent donc en attente pendant que le studio cherche encore la forme capable d’imposer sa nouvelle série.",
+                "Steamboat Willie fournit cette réponse en novembre 1928. Son succès permet au studio de revenir aux films déjà achevés, d’y ajouter musique et effets synchronisés puis de les distribuer auprès d’un public qui connaît désormais la souris.",
+                "The Gallopin’ Gaucho sort le 30 décembre 1928, après Steamboat Willie et avant Plane Crazy. Le deuxième Mickey fabriqué devient ainsi le troisième épisode officiellement projeté."
+            ]
+        },
+        {
+            "type": "langage",
+            "eyebrow": "Jeu",
+            "titre": "Mickey entre en scène comme un acteur",
+            "paragraphes": [
+                "Le film parodie les aventures de cape et d’épée de Douglas Fairbanks, en particulier The Gaucho. Mickey n’y prolonge pas simplement son rôle d’aviateur : il interprète une nouvelle figure, celle d’un héros sud-américain qui entre dans une cantina, commande une bière et se met en représentation devant Minnie.",
+                "Cette logique d’acteur donne au personnage une liberté que sa future fonction de mascotte réduira progressivement. La cigarette, l’alcool et la violence du duel appartiennent au gaucho joué dans ce récit autant qu’au tempérament encore instable du premier Mickey.",
+                "La souris commence ainsi sa carrière sans être enfermée dans une biographie continue. Chaque court métrage peut lui attribuer un métier, un lieu et un genre différents ; la permanence naît de son dessin et de son énergie plutôt que d’un monde fictionnel déjà fixé."
+            ]
+        },
+        {
+            "type": "relations",
+            "eyebrow": "Distribution",
+            "titre": "Le trio trouve ses premiers rôles",
+            "paragraphes": [
+                "Minnie apparaît comme danseuse de tango avant d’être enlevée par Pat Hibulaire. Le récit la place encore dans la fonction familière de la partenaire à secourir, mais sa présence fournit à Mickey une scène de séduction, un enjeu dramatique et un partenaire de danse qui élargissent son jeu.",
+                "Pat reprend quant à lui une position d’opposant déjà éprouvée dans les Alice Comedies et les films d’Oswald. Plus massif que Mickey, il donne au nouveau héros un adversaire immédiatement lisible et installe une relation que la série reprendra sous de multiples formes.",
+                "Le dessin de Mickey évolue jusque dans le film. Son apparence initiale reste proche de Plane Crazy, tandis que les dernières séquences se rapprochent du modèle de Steamboat Willie ; ses grandes chaussures caractéristiques font ici leur apparition. La pellicule conserve donc plusieurs moments de sa conception dans un même récit."
+            ]
+        }
+    ],
+    "sources": [
+        "d23-gallopin-gaucho",
+        "d23-gallopin-gaucho-released",
+        "afi-gallopin-gaucho",
+        "wdfm-birth-of-a-mouse",
+        "wdfm-evolution-of-mickey-mouse"
+    ]
+}

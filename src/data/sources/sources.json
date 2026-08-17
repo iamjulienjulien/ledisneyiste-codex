@@ -130,6 +130,28 @@
         "dateConsultation": "2026-08-18"
     },
     {
+        "id": "d23-gallopin-gaucho",
+        "titre": "Gallopin’ Gaucho, The (film)",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/gallopin-gaucho-the-film/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-gallopin-gaucho-released",
+        "titre": "The Gallopin’ Gaucho is Released",
+        "editeur": "D23: The Official Disney Fan Club",
+        "datePublication": "2019-02-07",
+        "url": "https://d23.com/this-day/the-gallopin-gaucho-is-released/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "afi-gallopin-gaucho",
+        "titre": "The Gallopin’ Gaucho",
+        "editeur": "American Film Institute",
+        "url": "https://catalog.afi.com/Film/83609-THE-GALLOPIN%27-GAUCHO",
+        "dateConsultation": "2026-08-18"
+    },
+    {
         "id": "d23-about-walt-disney",
         "titre": "About Walt Disney",
         "editeur": "D23: The Official Disney Fan Club",
