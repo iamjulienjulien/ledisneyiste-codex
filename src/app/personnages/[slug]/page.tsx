@@ -110,7 +110,10 @@ export default async function PersonnagePage({
                 <CodexEpoque epoque={epoque} />
             </dl>
 
-            <CodexBlocsEditoriaux blocs={fiche.blocsEditoriaux} />
+            <CodexBlocsEditoriaux
+                collection="personnages"
+                blocs={fiche.blocsEditoriaux}
+            />
 
             <CodexRelations
                 groupes={[

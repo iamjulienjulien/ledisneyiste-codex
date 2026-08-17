@@ -7,7 +7,7 @@ export type PersonnageDisney = EntreeCatalogueBase & {
     type: "personnage";
 };
 
-export type FichePersonnageDisney = FicheCodexBase & {
+export type FichePersonnageDisney = FicheCodexBase<"personnages"> & {
     type: "personnage";
 
     creation: {

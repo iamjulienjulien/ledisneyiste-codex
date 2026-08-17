@@ -12,7 +12,7 @@ export type ContributionOeuvre = {
     roles: string[];
 };
 
-export type FicheOeuvreDisney = FicheCodexBase & {
+export type FicheOeuvreDisney = FicheCodexBase<"oeuvres"> & {
     type: "oeuvre";
 
     sortie: {

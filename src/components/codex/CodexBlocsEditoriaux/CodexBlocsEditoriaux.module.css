@@ -1,5 +1,6 @@
 .body {
     max-width: 48rem;
+    min-width: 0;
 }
 
 .body > * + * {

@@ -6,7 +6,7 @@ export type EpoqueDisney = EntreeCatalogueBase & {
     type: "epoque";
 };
 
-export type FicheEpoqueDisney = FicheCodexBase & {
+export type FicheEpoqueDisney = FicheCodexBase<"epoques"> & {
     type: "epoque";
 
     periode: {

@@ -114,7 +114,10 @@ export default async function OeuvrePage({
                 <CodexEpoque epoque={epoque} />
             </dl>
 
-            <CodexBlocsEditoriaux blocs={fiche.blocsEditoriaux} />
+            <CodexBlocsEditoriaux
+                collection="oeuvres"
+                blocs={fiche.blocsEditoriaux}
+            />
 
             <CodexSources sources={sources} />
         </main>

@@ -98,7 +98,10 @@ export default async function ContributeurPage({
                 </div>
             </dl>
 
-            <CodexBlocsEditoriaux blocs={fiche.blocsEditoriaux} />
+            <CodexBlocsEditoriaux
+                collection="contributeurs"
+                blocs={fiche.blocsEditoriaux}
+            />
 
             <CodexRelations
                 groupes={[

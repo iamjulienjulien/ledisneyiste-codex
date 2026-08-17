@@ -106,7 +106,10 @@ export default async function EpoquePage({
                 </section>
             )}
 
-            <CodexBlocsEditoriaux blocs={fiche.blocsEditoriaux} />
+            <CodexBlocsEditoriaux
+                collection="epoques"
+                blocs={fiche.blocsEditoriaux}
+            />
 
             <CodexRelations
                 groupes={[
