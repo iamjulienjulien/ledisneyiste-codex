@@ -2,6 +2,26 @@
     "slug": "ward-kimball",
     "type": "contributeur",
     "introduction": "Ward Kimball cultive au sein de Disney une énergie volontiers imprévisible. Son animation privilégie la caricature, le rythme et la surprise, tandis que sa curiosité l’entraîne vers la télévision scientifique, la musique, les trains et même les premiers imaginaires d’Epcot. Parmi les Nine Old Men, il rappelle que la tradition du studio ne se construit pas seulement par la maîtrise : elle avance aussi grâce à ceux qui déplacent les règles et introduisent un peu de désordre dans la machine.",
+    "blocsEditoriaux": [
+        {
+            "eyebrow": "Caricaturer",
+            "titre": "Entrer dans le cœur du public par le rire",
+            "paragraphes": [
+                "Ward Kimball ne cherche pas d’abord la délicatesse ou le réalisme. Son animation grossit une humeur, accélère une réaction et laisse une personnalité déborder de la silhouette. Jiminy Cricket, les jumeaux Tweedledee et Tweedledum ou le chat Lucifer deviennent mémorables parce que leur mouvement assume pleinement la caricature.",
+                "Cette énergie atteint une forme particulièrement libre dans Les Trois Caballeros. La rencontre de Donald, José Carioca et Panchito mêle découpage rapide, ruptures de rythme et action volontairement désordonnée. Kimball ne se contente plus d’animer un personnage : il organise la scène entière comme une explosion comique.",
+                "Sa place parmi les Nine Old Men tient précisément à cet écart. Là où d’autres recherchent une émotion contenue ou une anatomie irréprochable, il rappelle que l’animation peut surprendre en déformant ses propres règles. Le rire devient une autre manière de faire croire au personnage."
+            ]
+        },
+        {
+            "eyebrow": "Curiosité",
+            "titre": "Faire circuler l’animation entre science, musique et machines",
+            "paragraphes": [
+                "Kimball étend rapidement son travail au-delà du long métrage. Il réalise les courts métrages oscarisés Toot, Whistle, Plunk and Boom et It’s Tough to Be a Bird, puis produit pour la télévision trois émissions consacrées à l’espace. L’animation y devient un outil capable d’expliquer des idées scientifiques autant que de créer des personnages.",
+                "Cette curiosité traverse aussi sa vie personnelle. Tromboniste et fondateur du Firehouse Five Plus Two, collectionneur de trains et propriétaire d’une locomotive, il nourrit l’intérêt de Walt Disney pour les chemins de fer miniatures. Musique, mécanique et dessin partagent chez lui un même goût du rythme et du mouvement.",
+                "Après sa retraite, il conseille encore Imagineering sur le pavillon World of Motion d’Epcot. Son parcours dessine ainsi une ligne inattendue mais cohérente : de la caricature animée à la mise en scène de l’histoire des transports, Kimball cherche toujours la machine capable d’étonner le public."
+            ]
+        }
+    ],
     "naissance": {
         "date": {
             "valeur": "1914-03-04",
