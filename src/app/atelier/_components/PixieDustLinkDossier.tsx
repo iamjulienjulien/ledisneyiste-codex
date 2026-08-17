@@ -1,0 +1,472 @@
+import { AtelierFicheAccessoire } from "@/components/atelier/AtelierFicheAccessoire";
+import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
+import { AtelierStatut } from "@/components/atelier/AtelierStatut";
+import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
+import { PixieDustLink } from "@/components/ui/PixieDustLink";
+import { PixieDustLinkPlayground } from "./PixieDustLinkPlayground";
+
+const variants = [
+    {
+        name: "Dans le texte",
+        value: "inline" as const,
+        description: "Relie un nom ou une phrase courte à sa destination.",
+    },
+    {
+        name: "Action",
+        value: "action" as const,
+        description: "Invite explicitement à poursuivre vers une autre page.",
+    },
+    {
+        name: "Surface",
+        value: "surface" as const,
+        description:
+            "Rend une composition complète interactive sans la décorer.",
+    },
+] as const;
+
+const properties = [
+    {
+        name: "href",
+        type: 'LinkProps["href"]',
+        defaultValue: "—",
+        description: "Destination interne transmise au lien Next.js.",
+    },
+    {
+        name: "children",
+        type: "ReactNode",
+        defaultValue: "—",
+        description: "Libellé ou composition complète rendue dans le lien.",
+    },
+    {
+        name: "variant",
+        type: "PixieDustLinkVariant",
+        defaultValue: '"inline"',
+        description: "Niveau de présentation adapté au contexte de navigation.",
+    },
+    {
+        name: "color",
+        type: "PixieDustLinkColor",
+        defaultValue: '"accent"',
+        description: "Couleur d’accent ou couleur héritée du contexte.",
+    },
+    {
+        name: "indicator",
+        type: "PixieDustLinkIndicator",
+        defaultValue: '"none"',
+        description: "Repère décoratif placé après le contenu du lien.",
+    },
+    {
+        name: "className",
+        type: "string",
+        defaultValue: '""',
+        description: "Classes ajoutées au lien pour composer son contexte.",
+    },
+    {
+        name: "focusPreview",
+        type: "boolean",
+        defaultValue: "false",
+        description: "Simule le focus visible pendant les essais de l’Atelier.",
+    },
+    {
+        name: "prefetch",
+        type: "boolean | null",
+        defaultValue: "null",
+        description: "Stratégie de préchargement héritée de Next.js.",
+    },
+] as const;
+
+const specificTypes = [
+    {
+        name: "PixieDustLinkVariant",
+        values: ['"inline"', '"action"', '"surface"'],
+        description:
+            "Trois niveaux de présence pour un même geste de navigation.",
+    },
+    {
+        name: "PixieDustLinkColor",
+        values: ['"accent"', '"inherit"'],
+        description: "Couleur propre au lien ou héritée de sa composition.",
+    },
+    {
+        name: "PixieDustLinkIndicator",
+        values: ['"none"', '"arrow"'],
+        description:
+            "Absence d’indicateur ou flèche directionnelle décorative.",
+    },
+] as const;
+
+function CodeExample({ children }: Readonly<{ children: string }>) {
+    return (
+        <pre className="overflow-x-auto border border-line bg-canvas p-5 font-mono text-sm leading-6 text-ink-soft">
+            <code>{children}</code>
+        </pre>
+    );
+}
+
+function SequenceTitle({
+    id,
+    eyebrow,
+    title,
+    description,
+}: Readonly<{
+    id: string;
+    eyebrow: string;
+    title: string;
+    description?: string;
+}>) {
+    return (
+        <div className="max-w-3xl">
+            <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted">
+                {eyebrow}
+            </p>
+            <h3 id={id} className="mt-3 text-3xl text-ink">
+                {title}
+            </h3>
+            {description ? (
+                <p className="mt-4 leading-7 text-ink-soft">{description}</p>
+            ) : null}
+        </div>
+    );
+}
+
+export function PixieDustLinkDossier() {
+    return (
+        <AtelierFicheAccessoire
+            id="lien"
+            labelledBy="lien-title"
+            nom="PixieDustLink"
+            className="mt-16 scroll-mt-8"
+            header={
+                <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
+                    <div className="bg-surface p-6 sm:p-8">
+                        <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
+                            Le clap · Accessoire 003
+                        </p>
+                        <h2
+                            id="lien-title"
+                            className="mt-4 text-4xl text-ink sm:text-5xl"
+                        >
+                            PixieDustLink
+                        </h2>
+                        <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
+                            Conduire vers une autre scène en restant lisible
+                            dans un texte, une action ou une surface complète.
+                        </p>
+                    </div>
+
+                    <dl className="grid min-w-64 grid-cols-2 gap-px bg-line md:grid-cols-1">
+                        <div className="bg-surface-muted px-6 py-4">
+                            <dt className="text-xs uppercase tracking-[0.16em] text-muted">
+                                Version
+                            </dt>
+                            <dd className="mt-1 font-mono text-sm text-ink">
+                                0.1.0
+                            </dd>
+                        </div>
+                        <div className="bg-surface-muted px-6 py-4">
+                            <dt className="text-xs uppercase tracking-[0.16em] text-muted">
+                                État
+                            </dt>
+                            <dd className="mt-1 text-sm font-medium">
+                                <AtelierStatut statut="Esquisse" />
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+            }
+        >
+            <section aria-labelledby="lien-identite" className="mt-14">
+                <SequenceTitle
+                    id="lien-identite"
+                    eyebrow="Fiche de rôle"
+                    title="Identité du composant"
+                    description="Le lien unifie les gestes de navigation internes sans décider à la place de la carte, du texte ou du composant métier qui l’accueille."
+                />
+
+                <dl className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+                    {[
+                        ["Mission", "Conduire vers une autre page du Codex."],
+                        [
+                            "Usage",
+                            "Texte éditorial, appel à poursuivre ou surface interactive.",
+                        ],
+                        [
+                            "Limite",
+                            "Ne déclenche jamais une action et ne possède pas d’état désactivé.",
+                        ],
+                        [
+                            "Tokens",
+                            "Accent, encres, lignes, focus et transitions courtes.",
+                        ],
+                        [
+                            "Accessibilité",
+                            "Libellé explicite, focus visible et navigation clavier native.",
+                        ],
+                        [
+                            "Dépendances",
+                            "React, Next.js et Projection Originale.",
+                        ],
+                    ].map(([term, definition]) => (
+                        <div key={term} className="bg-surface p-5">
+                            <dt className="text-xs uppercase tracking-[0.16em] text-muted">
+                                {term}
+                            </dt>
+                            <dd className="mt-2 leading-7 text-ink-soft">
+                                {definition}
+                            </dd>
+                        </div>
+                    ))}
+                </dl>
+            </section>
+
+            <section
+                aria-labelledby="lien-plan"
+                className="mt-16 border border-line-strong bg-surface-muted p-6 shadow-soft sm:p-8"
+            >
+                <SequenceTitle
+                    id="lien-plan"
+                    eyebrow="Plan maître"
+                    title="Le lien qui invite à poursuivre"
+                    description="La variante action, la couleur accent et la flèche forment l’exemple principal de l’esquisse."
+                />
+
+                <div className="mt-7 grid border border-line lg:grid-cols-2">
+                    <div className="relative z-[10000] flex min-h-64 items-center justify-center bg-surface p-8">
+                        <PixieDustLink
+                            href="/personnages"
+                            variant="action"
+                            indicator="arrow"
+                        >
+                            Explorer les personnages
+                        </PixieDustLink>
+                    </div>
+                    <CodeExample>{`<PixieDustLink
+    href="/personnages"
+    variant="action"
+    indicator="arrow"
+>
+    Explorer les personnages
+</PixieDustLink>`}</CodeExample>
+                </div>
+            </section>
+
+            <section aria-labelledby="lien-variants" className="mt-16">
+                <SequenceTitle
+                    id="lien-variants"
+                    eyebrow="Essais caméra"
+                    title="Trois présences, une seule destination"
+                    description="La variante décrit le contexte du lien ; elle ne modifie ni sa sémantique ni son comportement de navigation."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-3">
+                    {variants.map((variant) => (
+                        <article
+                            key={variant.value}
+                            className="relative z-[10000] bg-surface p-6"
+                        >
+                            <div className="flex min-h-36 items-center justify-center">
+                                {variant.value === "surface" ? (
+                                    <PixieDustLink
+                                        href="/personnages"
+                                        variant="surface"
+                                        color="inherit"
+                                        className="w-full border border-line bg-surface-muted p-5"
+                                    >
+                                        <span className="text-xs uppercase tracking-[0.16em] text-muted">
+                                            Collection
+                                        </span>
+                                        <span className="mt-3 block text-xl text-ink">
+                                            Personnages
+                                        </span>
+                                    </PixieDustLink>
+                                ) : (
+                                    <PixieDustLink
+                                        href="/personnages"
+                                        variant={variant.value}
+                                        indicator={
+                                            variant.value === "action"
+                                                ? "arrow"
+                                                : "none"
+                                        }
+                                    >
+                                        Explorer les personnages
+                                    </PixieDustLink>
+                                )}
+                            </div>
+                            <h4 className="mt-4 text-xl text-ink">
+                                {variant.name}
+                            </h4>
+                            <p className="mt-2 text-sm leading-6 text-muted">
+                                {variant.description}
+                            </p>
+                        </article>
+                    ))}
+                </div>
+            </section>
+
+            <section aria-labelledby="lien-colors" className="mt-16">
+                <SequenceTitle
+                    id="lien-colors"
+                    eyebrow="Direction artistique"
+                    title="Accent propre ou couleur héritée"
+                    description="La couleur héritée permet aux familles du Codex de conserver leur identité sans ajouter une prop par palette."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
+                    <article className="relative z-[10000] bg-surface p-6">
+                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                            Accent
+                        </p>
+                        <div className="mt-6">
+                            <PixieDustLink
+                                href="/oeuvres"
+                                variant="action"
+                                color="accent"
+                                indicator="arrow"
+                            >
+                                Explorer les œuvres
+                            </PixieDustLink>
+                        </div>
+                    </article>
+                    <article className="relative z-[10000] bg-surface p-6 text-famille-personnages">
+                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                            Héritée
+                        </p>
+                        <div className="mt-6">
+                            <PixieDustLink
+                                href="/personnages"
+                                variant="action"
+                                color="inherit"
+                                indicator="arrow"
+                            >
+                                Explorer les personnages
+                            </PixieDustLink>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section aria-labelledby="lien-accessibilite" className="mt-16">
+                <SequenceTitle
+                    id="lien-accessibilite"
+                    eyebrow="Accessibilité"
+                    title="Une destination compréhensible avant le mouvement"
+                    description="Le texte du lien doit annoncer clairement sa destination. La flèche ne complète jamais un libellé ambigu."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-3">
+                    <article className="relative z-[10000] bg-surface p-6">
+                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                            Libellé explicite
+                        </p>
+                        <p className="mt-4 text-sm leading-6 text-ink-soft">
+                            Préférer « Voir la fiche de Mickey Mouse » à un
+                            simple « En savoir plus ».
+                        </p>
+                    </article>
+                    <article className="relative z-[10000] bg-surface p-6">
+                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                            Focus visible
+                        </p>
+                        <div className="mt-5">
+                            <PixieDustLink
+                                href="/personnages/mickey-mouse"
+                                focusPreview
+                            >
+                                Mickey Mouse
+                            </PixieDustLink>
+                        </div>
+                    </article>
+                    <article className="relative z-[10000] bg-surface p-6">
+                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                            Indicateur silencieux
+                        </p>
+                        <p className="mt-4 text-sm leading-6 text-ink-soft">
+                            La flèche est décorative et reste masquée aux
+                            technologies d’assistance.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="lien-regie"
+                className="mt-16 border border-line-strong bg-surface-muted p-6 shadow-soft sm:p-8"
+            >
+                <SequenceTitle
+                    id="lien-regie"
+                    eyebrow="Régie"
+                    title="Régler le lien en direct"
+                    description="Le libellé, la destination et les trois axes visuels peuvent être combinés sur un plateau isolé."
+                />
+                <div className="mt-7">
+                    <PixieDustLinkPlayground />
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="lien-generique"
+                className="mt-16 border border-line-strong bg-surface-muted p-6 shadow-soft sm:p-8"
+            >
+                <SequenceTitle
+                    id="lien-generique"
+                    eyebrow="Générique technique"
+                    title="Types et propriétés de l’esquisse"
+                />
+
+                <div className="mt-7">
+                    <AtelierPropertiesTable properties={properties} />
+                </div>
+
+                <div className="mt-10">
+                    <h4 className="text-xl text-ink">Types spécifiques</h4>
+                    <p className="mt-2 text-sm leading-6 text-muted">
+                        Les variantes, couleurs et indicateurs admis par le
+                        lien.
+                    </p>
+                    <div className="mt-4">
+                        <AtelierTypesTable types={specificTypes} />
+                    </div>
+                </div>
+            </section>
+
+            <section aria-labelledby="lien-journal" className="mt-16">
+                <SequenceTitle
+                    id="lien-journal"
+                    eyebrow="Journal de production"
+                    title="Ce qu’il reste à éprouver"
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-3">
+                    <article className="bg-surface p-6">
+                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                            Migration
+                        </p>
+                        <p className="mt-3 leading-7 text-ink-soft">
+                            Tester la variante surface sur les quatre portes de
+                            la home avant de figer son traitement.
+                        </p>
+                    </article>
+                    <article className="bg-surface p-6">
+                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                            Accessibilité
+                        </p>
+                        <p className="mt-3 leading-7 text-ink-soft">
+                            Vérifier contrastes, navigation clavier et zoom à
+                            200 % dans chaque contexte.
+                        </p>
+                    </article>
+                    <article className="bg-surface p-6">
+                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                            Promotion
+                        </p>
+                        <p className="mt-3 leading-7 text-ink-soft">
+                            Retirer le diagnostic de focus puis remplacer les
+                            liens publics après validation de l’API.
+                        </p>
+                    </article>
+                </div>
+            </section>
+        </AtelierFicheAccessoire>
+    );
+}

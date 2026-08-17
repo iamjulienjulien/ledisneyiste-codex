@@ -1,4 +1,5 @@
 import { BoutonDossier } from "./_components/BoutonDossier";
+import { PixieDustLinkDossier } from "./_components/PixieDustLinkDossier";
 import { PixieSymbolDossier } from "./_components/PixieSymbolDossier";
 import { PalettesPellicule } from "./_components/PalettesPellicule";
 
@@ -73,10 +74,10 @@ const accessoires = [
         href: "#bouton",
     },
     {
-        nom: "Lien",
+        nom: "PixieDustLink",
         role: "Conduire vers une autre scène",
-        statut: "À inventorier",
-        href: null,
+        statut: "Esquisse",
+        href: "#lien",
     },
     {
         nom: "Cartouche",
@@ -288,6 +289,7 @@ export default function AtelierPage() {
 
                 <PixieSymbolDossier />
                 <BoutonDossier />
+                <PixieDustLinkDossier />
             </section>
         </div>
     );
