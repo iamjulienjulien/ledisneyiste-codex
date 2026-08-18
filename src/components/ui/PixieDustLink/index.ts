@@ -3,5 +3,6 @@ export type {
     PixieDustLinkColor,
     PixieDustLinkIndicator,
     PixieDustLinkProps,
+    PixieDustLinkStyle,
     PixieDustLinkVariant,
-} from "./PixieDustLink";
+} from "./PixieDustLink.types";

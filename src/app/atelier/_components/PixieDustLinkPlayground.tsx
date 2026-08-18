@@ -6,10 +6,14 @@ import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import {
     PixieDustLink,
-    type PixieDustLinkColor,
     type PixieDustLinkIndicator,
     type PixieDustLinkVariant,
 } from "@/components/ui/PixieDustLink";
+import {
+    getAtelierAnimationColor,
+    getAtelierAnimationColorSlugs,
+} from "@/registry/colors";
+import type { AtelierAnimationColorSlug } from "@/types/colors";
 
 type Light = "sombre" | "claire";
 type Frame = "compact" | "moyen" | "large";
@@ -24,11 +28,14 @@ const variants: ReadonlyArray<{
 ];
 
 const colors: ReadonlyArray<{
-    value: PixieDustLinkColor;
+    value: AtelierAnimationColorSlug | "inherit";
     label: string;
 }> = [
-    { value: "accent", label: "Accent" },
     { value: "inherit", label: "Héritée" },
+    ...getAtelierAnimationColorSlugs().map((slug) => ({
+        value: slug,
+        label: getAtelierAnimationColor(slug).label,
+    })),
 ];
 
 const indicators: ReadonlyArray<{
@@ -37,6 +44,10 @@ const indicators: ReadonlyArray<{
 }> = [
     { value: "none", label: "Aucun" },
     { value: "arrow", label: "Flèche" },
+    { value: "chevron", label: "Chevron" },
+    { value: "back", label: "Retour" },
+    { value: "external", label: "Externe" },
+    { value: "anchor", label: "Ancre" },
 ];
 
 const frameWidths: Record<Frame, string> = {
@@ -49,21 +60,24 @@ export function PixieDustLinkPlayground() {
     const [label, setLabel] = useState("Explorer les personnages");
     const [href, setHref] = useState("/personnages");
     const [variant, setVariant] = useState<PixieDustLinkVariant>("action");
-    const [color, setColor] = useState<PixieDustLinkColor>("accent");
+    const [color, setColor] = useState<AtelierAnimationColorSlug | "inherit">(
+        "inherit",
+    );
     const [indicator, setIndicator] = useState<PixieDustLinkIndicator>("arrow");
     const [focusPreview, setFocusPreview] = useState(false);
+    const [currentPage, setCurrentPage] = useState(false);
     const [light, setLight] = useState<Light>("sombre");
     const [frame, setFrame] = useState<Frame>("large");
 
     const safeLabel = label || "Lien";
     const safeHref = href || "/";
-    const surfaceClassName =
-        "w-full border border-line bg-surface p-6 text-ink";
+    const surfaceClassName = "w-full border border-line bg-surface p-6";
+    const colorProp = color === "inherit" ? "" : `\n    color="${color}"`;
+    const currentPageProp = currentPage ? `\n    aria-current="page"` : "";
     const code = `<PixieDustLink
     href="${safeHref}"
-    variant="${variant}"
-    color="${color}"
-    indicator="${indicator}"${variant === "surface" ? `\n    className="${surfaceClassName}"` : ""}
+    variant="${variant}"${colorProp}
+    indicator="${indicator}"${currentPageProp}${variant === "surface" ? `\n    className="${surfaceClassName}"` : ""}
 >
     ${safeLabel}
 </PixieDustLink>`;
@@ -126,22 +140,35 @@ export function PixieDustLinkPlayground() {
                             </div>
                         </fieldset>
 
-                        <fieldset>
-                            <legend className="text-sm font-medium text-ink">
-                                Couleur
-                            </legend>
-                            <div className="mt-3 space-y-2">
+                        <div>
+                            <label
+                                htmlFor="lien-color"
+                                className="text-sm font-medium text-ink"
+                            >
+                                Couleur du registre
+                            </label>
+                            <select
+                                id="lien-color"
+                                value={color}
+                                onChange={(event) =>
+                                    setColor(
+                                        event.target.value as
+                                            | AtelierAnimationColorSlug
+                                            | "inherit",
+                                    )
+                                }
+                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                            >
                                 {colors.map((option) => (
-                                    <AtelierOptionRadio
+                                    <option
                                         key={option.value}
-                                        name="lien-color"
-                                        {...option}
-                                        selectedValue={color}
-                                        onChange={setColor}
-                                    />
+                                        value={option.value}
+                                    >
+                                        {option.label}
+                                    </option>
                                 ))}
-                            </div>
-                        </fieldset>
+                            </select>
+                        </div>
 
                         <fieldset>
                             <legend className="text-sm font-medium text-ink">
@@ -171,6 +198,18 @@ export function PixieDustLinkPlayground() {
                             />
                             Simuler le focus
                         </label>
+
+                        <label className="flex cursor-pointer items-center gap-2 text-sm text-ink-soft">
+                            <input
+                                type="checkbox"
+                                checked={currentPage}
+                                onChange={(event) =>
+                                    setCurrentPage(event.target.checked)
+                                }
+                                className="accent-accent"
+                            />
+                            Marquer comme page courante
+                        </label>
                     </div>
                 </aside>
 
@@ -194,9 +233,12 @@ export function PixieDustLinkPlayground() {
                             <PixieDustLink
                                 href={safeHref}
                                 variant={variant}
-                                color={color}
+                                color={color === "inherit" ? false : color}
                                 indicator={indicator}
-                                focusPreview={focusPreview}
+                                aria-current={currentPage ? "page" : undefined}
+                                data-focus-preview={
+                                    focusPreview ? "true" : undefined
+                                }
                                 className={
                                     variant === "surface"
                                         ? surfaceClassName

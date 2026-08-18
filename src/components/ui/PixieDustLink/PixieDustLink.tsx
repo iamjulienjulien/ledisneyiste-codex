@@ -1,44 +1,59 @@
 import Link from "next/link";
-import type { ComponentProps, ReactNode } from "react";
+import { getAtelierAnimationColor } from "@/registry/colors";
+import type {
+    PixieDustLinkIndicator,
+    PixieDustLinkProps,
+    PixieDustLinkStyle,
+} from "./PixieDustLink.types";
 import styles from "./PixieDustLink.module.css";
 
-export type PixieDustLinkVariant = "inline" | "action" | "surface";
-
-export type PixieDustLinkColor = "accent" | "inherit";
-
-export type PixieDustLinkIndicator = "none" | "arrow";
-
-export type PixieDustLinkProps = Readonly<
-    Omit<ComponentProps<typeof Link>, "children" | "className" | "color"> & {
-        children: ReactNode;
-        variant?: PixieDustLinkVariant;
-        color?: PixieDustLinkColor;
-        indicator?: PixieDustLinkIndicator;
-        className?: string;
-        focusPreview?: boolean;
-    }
->;
+const indicatorGlyphs = {
+    arrow: "→",
+    chevron: "›",
+    back: "←",
+    external: "↗",
+    anchor: "↓",
+} as const satisfies Record<Exclude<PixieDustLinkIndicator, "none">, string>;
 
 export function PixieDustLink({
     children,
     variant = "inline",
-    color = "accent",
+    color = false,
     indicator = "none",
     className = "",
-    focusPreview = false,
+    style,
     ...linkProps
 }: PixieDustLinkProps) {
+    const colorDefinition = color ? getAtelierAnimationColor(color) : null;
+    const linkStyle: PixieDustLinkStyle = {
+        ...style,
+        ...(colorDefinition
+            ? { "--pixie-link-color": colorDefinition.cssValue }
+            : {}),
+    };
+    const indicatorElement =
+        indicator === "none" ? null : (
+            <span
+                aria-hidden="true"
+                className={`${styles.indicator} ${indicator === "back" ? styles.indicatorBefore : styles.indicatorAfter}`}
+            >
+                {indicatorGlyphs[indicator]}
+            </span>
+        );
+
     return (
         <Link
             {...linkProps}
-            className={`${styles.root} ${styles[variant]} ${styles[color]} ${focusPreview ? styles.focusPreview : ""} ${className}`.trim()}
+            className={`${styles.root} ${styles[variant]} ${className}`.trim()}
+            style={linkStyle}
+            data-pixie-link-color={color || "inherit"}
+            data-pixie-link-indicator={indicator}
         >
+            {indicator === "back" ? indicatorElement : null}
             {children}
-            {indicator === "arrow" ? (
-                <span aria-hidden="true" className={styles.indicator}>
-                    →
-                </span>
-            ) : null}
+            {indicator !== "none" && indicator !== "back"
+                ? indicatorElement
+                : null}
         </Link>
     );
 }

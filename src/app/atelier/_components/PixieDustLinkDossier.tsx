@@ -3,6 +3,7 @@ import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTa
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieDustLink } from "@/components/ui/PixieDustLink";
+import { getAtelierAnimationColorSlugs } from "@/registry/colors";
 import { PixieDustLinkPlayground } from "./PixieDustLinkPlayground";
 
 const variants = [
@@ -21,6 +22,39 @@ const variants = [
         value: "surface" as const,
         description:
             "Rend une composition complète interactive sans la décorer.",
+    },
+] as const;
+
+const indicatorExamples = [
+    {
+        value: "none",
+        label: "Aucun",
+        description: "Le texte suffit à annoncer la destination.",
+    },
+    {
+        value: "arrow",
+        label: "Flèche",
+        description: "Poursuivre ou explorer une autre scène.",
+    },
+    {
+        value: "chevron",
+        label: "Chevron",
+        description: "Ouvrir une fiche depuis une liste compacte.",
+    },
+    {
+        value: "back",
+        label: "Retour",
+        description: "Revenir à un index ou à la scène précédente.",
+    },
+    {
+        value: "external",
+        label: "Externe",
+        description: "Quitter le Codex vers une autre source.",
+    },
+    {
+        value: "anchor",
+        label: "Ancre",
+        description: "Descendre vers une section de la même page.",
     },
 ] as const;
 
@@ -46,8 +80,9 @@ const properties = [
     {
         name: "color",
         type: "PixieDustLinkColor",
-        defaultValue: '"accent"',
-        description: "Couleur d’accent ou couleur héritée du contexte.",
+        defaultValue: "false",
+        description:
+            "Teinte du registre de L’Atelier d’animation ou héritage du contexte.",
     },
     {
         name: "indicator",
@@ -62,10 +97,10 @@ const properties = [
         description: "Classes ajoutées au lien pour composer son contexte.",
     },
     {
-        name: "focusPreview",
-        type: "boolean",
-        defaultValue: "false",
-        description: "Simule le focus visible pendant les essais de l’Atelier.",
+        name: "aria-current",
+        type: '"page" | undefined',
+        defaultValue: "undefined",
+        description: "Signale que la destination correspond à la page active.",
     },
     {
         name: "prefetch",
@@ -84,14 +119,25 @@ const specificTypes = [
     },
     {
         name: "PixieDustLinkColor",
-        values: ['"accent"', '"inherit"'],
-        description: "Couleur propre au lien ou héritée de sa composition.",
+        values: [
+            "false",
+            ...getAtelierAnimationColorSlugs().map((slug) => `"${slug}"`),
+        ],
+        description:
+            "Une référence chromatique de L’Atelier d’animation ; false conserve la couleur héritée.",
     },
     {
         name: "PixieDustLinkIndicator",
-        values: ['"none"', '"arrow"'],
+        values: [
+            '"none"',
+            '"arrow"',
+            '"chevron"',
+            '"back"',
+            '"external"',
+            '"anchor"',
+        ],
         description:
-            "Absence d’indicateur ou flèche directionnelle décorative.",
+            "Six repères directionnels cohérents avec le geste de navigation.",
     },
 ] as const;
 
@@ -160,7 +206,7 @@ export function PixieDustLinkDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.1.0
+                                0.2.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -196,7 +242,7 @@ export function PixieDustLinkDossier() {
                         ],
                         [
                             "Tokens",
-                            "Accent, encres, lignes, focus et transitions courtes.",
+                            "Atelier d’animation, encres, lignes, focus et transitions courtes.",
                         ],
                         [
                             "Accessibilité",
@@ -227,7 +273,7 @@ export function PixieDustLinkDossier() {
                     id="lien-plan"
                     eyebrow="Plan maître"
                     title="Le lien qui invite à poursuivre"
-                    description="La variante action, la couleur accent et la flèche forment l’exemple principal de l’esquisse."
+                    description="La variante action, une couleur enregistrée et la flèche forment l’exemple principal de l’esquisse."
                 />
 
                 <div className="mt-7 grid border border-line lg:grid-cols-2">
@@ -235,6 +281,7 @@ export function PixieDustLinkDossier() {
                         <PixieDustLink
                             href="/personnages"
                             variant="action"
+                            color="rouge-crayon"
                             indicator="arrow"
                         >
                             Explorer les personnages
@@ -243,6 +290,7 @@ export function PixieDustLinkDossier() {
                     <CodeExample>{`<PixieDustLink
     href="/personnages"
     variant="action"
+    color="rouge-crayon"
     indicator="arrow"
 >
     Explorer les personnages
@@ -269,7 +317,6 @@ export function PixieDustLinkDossier() {
                                     <PixieDustLink
                                         href="/personnages"
                                         variant="surface"
-                                        color="inherit"
                                         className="w-full border border-line bg-surface-muted p-5"
                                     >
                                         <span className="text-xs uppercase tracking-[0.16em] text-muted">
@@ -304,24 +351,53 @@ export function PixieDustLinkDossier() {
                 </div>
             </section>
 
+            <section aria-labelledby="lien-indicators" className="mt-16">
+                <SequenceTitle
+                    id="lien-indicators"
+                    eyebrow="Signalétique"
+                    title="Six gestes pour annoncer la destination"
+                    description="Chaque indicateur garde un sens stable. Retour précède le libellé ; tous les autres le suivent avec le même espacement."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+                    {indicatorExamples.map((indicator) => (
+                        <article
+                            key={indicator.value}
+                            className="relative z-[10000] bg-surface p-6"
+                        >
+                            <PixieDustLink
+                                href="/personnages"
+                                variant="action"
+                                indicator={indicator.value}
+                            >
+                                {indicator.label}
+                            </PixieDustLink>
+                            <p className="mt-4 text-sm leading-6 text-muted">
+                                {indicator.description}
+                            </p>
+                        </article>
+                    ))}
+                </div>
+            </section>
+
             <section aria-labelledby="lien-colors" className="mt-16">
                 <SequenceTitle
                     id="lien-colors"
                     eyebrow="Direction artistique"
-                    title="Accent propre ou couleur héritée"
-                    description="La couleur héritée permet aux familles du Codex de conserver leur identité sans ajouter une prop par palette."
+                    title="Une teinte enregistrée ou la couleur héritée"
+                    description="Toute couleur explicite vient de L’Atelier d’animation. Sans sélection, le lien conserve naturellement la couleur de son contexte."
                 />
 
                 <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
                     <article className="relative z-[10000] bg-surface p-6">
                         <p className="text-xs uppercase tracking-[0.16em] text-muted">
-                            Accent
+                            Rouge crayon
                         </p>
                         <div className="mt-6">
                             <PixieDustLink
                                 href="/oeuvres"
                                 variant="action"
-                                color="accent"
+                                color="rouge-crayon"
                                 indicator="arrow"
                             >
                                 Explorer les œuvres
@@ -336,10 +412,69 @@ export function PixieDustLinkDossier() {
                             <PixieDustLink
                                 href="/personnages"
                                 variant="action"
-                                color="inherit"
                                 indicator="arrow"
                             >
                                 Explorer les personnages
+                            </PixieDustLink>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section aria-labelledby="lien-etats" className="mt-16">
+                <SequenceTitle
+                    id="lien-etats"
+                    eyebrow="Raccords"
+                    title="Les états qui rendent la navigation lisible"
+                    description="La page courante, les libellés longs et les surfaces complètes doivent rester compréhensibles sans dépendre uniquement de la couleur."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-3">
+                    <article className="relative z-[10000] bg-surface p-6">
+                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                            Page courante
+                        </p>
+                        <div className="mt-5">
+                            <PixieDustLink
+                                href="/personnages"
+                                aria-current="page"
+                                color="rouge-crayon"
+                            >
+                                Personnages
+                            </PixieDustLink>
+                        </div>
+                    </article>
+
+                    <article className="relative z-[10000] bg-surface p-6">
+                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                            Libellé multiligne
+                        </p>
+                        <p className="mt-5 max-w-64 leading-7 text-ink-soft">
+                            Retrouver cette histoire dans la fiche de{" "}
+                            <PixieDustLink href="/personnages/mickey-mouse">
+                                Mickey Mouse et ses premières aventures sonores
+                            </PixieDustLink>
+                            .
+                        </p>
+                    </article>
+
+                    <article className="relative z-[10000] bg-surface p-6">
+                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                            Surface courante
+                        </p>
+                        <div className="mt-5">
+                            <PixieDustLink
+                                href="/oeuvres"
+                                variant="surface"
+                                aria-current="page"
+                                className="border border-line bg-surface-muted p-5"
+                            >
+                                <span className="text-xs uppercase tracking-[0.16em] text-muted">
+                                    Index actif
+                                </span>
+                                <span className="mt-2 block text-xl">
+                                    Œuvres
+                                </span>
                             </PixieDustLink>
                         </div>
                     </article>
@@ -371,7 +506,7 @@ export function PixieDustLinkDossier() {
                         <div className="mt-5">
                             <PixieDustLink
                                 href="/personnages/mickey-mouse"
-                                focusPreview
+                                data-focus-preview="true"
                             >
                                 Mickey Mouse
                             </PixieDustLink>
@@ -461,8 +596,8 @@ export function PixieDustLinkDossier() {
                             Promotion
                         </p>
                         <p className="mt-3 leading-7 text-ink-soft">
-                            Retirer le diagnostic de focus, figer l’API et
-                            renommer le composant en PixieLink 1.0.0.
+                            Figer l’API, raccorder les usages réels et renommer
+                            le composant en PixieLink 1.0.0.
                         </p>
                     </article>
                 </div>
