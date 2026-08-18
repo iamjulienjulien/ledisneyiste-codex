@@ -890,5 +890,12 @@
         "editeur": "D23: The Official Disney Fan Club",
         "url": "https://d23.com/featured-photo/walt-roy-award/",
         "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "ampas-6th-academy-awards",
+        "titre": "The 6th Academy Awards | 1934",
+        "editeur": "Academy of Motion Picture Arts and Sciences",
+        "url": "https://www.oscars.org/oscars/ceremonies/1934",
+        "dateConsultation": "2026-08-18"
     }
 ]
