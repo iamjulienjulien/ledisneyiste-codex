@@ -12,6 +12,12 @@ export type EditionRecompenseDisney = {
     numero?: number;
 };
 
+export type TropheeRecompenseDisney =
+    | "statuette-oscar"
+    | "plaque-technique-multiplane"
+    | "medaille-societe-des-nations"
+    | "medaille-or-venise";
+
 type QualificationRecompenseDisney =
     | {
           categorie: string;
@@ -28,6 +34,7 @@ export type RecompenseDisney = QualificationRecompenseDisney & {
     edition: EditionRecompenseDisney;
     dateAttribution: DateHistorique;
     nature: NatureRecompenseDisney;
+    trophee: TropheeRecompenseDisney;
     beneficiaires: ReferenceCodex[];
     oeuvreConcernee?: ReferenceCodex;
     sources: string[];

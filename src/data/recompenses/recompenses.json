@@ -14,6 +14,7 @@
             "precision": "jour"
         },
         "nature": "honorary",
+        "trophee": "statuette-oscar",
         "motif": "Pour la création de Mickey Mouse",
         "beneficiaires": [
             {
@@ -43,6 +44,7 @@
             "precision": "jour"
         },
         "nature": "competitive",
+        "trophee": "statuette-oscar",
         "categorie": "Meilleur court métrage d’animation",
         "beneficiaires": [
             {
@@ -78,6 +80,7 @@
             "precision": "jour"
         },
         "nature": "competitive",
+        "trophee": "statuette-oscar",
         "categorie": "Meilleur court métrage d’animation",
         "beneficiaires": [
             {
@@ -112,6 +115,7 @@
             "precision": "jour"
         },
         "nature": "competitive",
+        "trophee": "statuette-oscar",
         "categorie": "Meilleur court métrage d’animation",
         "beneficiaires": [
             {
@@ -140,6 +144,7 @@
             "precision": "jour"
         },
         "nature": "competitive",
+        "trophee": "statuette-oscar",
         "categorie": "Meilleur court métrage d’animation",
         "beneficiaires": [
             {
@@ -168,6 +173,7 @@
             "precision": "jour"
         },
         "nature": "competitive",
+        "trophee": "statuette-oscar",
         "categorie": "Meilleur court métrage d’animation",
         "beneficiaires": [
             {
@@ -196,6 +202,7 @@
             "precision": "jour"
         },
         "nature": "competitive",
+        "trophee": "statuette-oscar",
         "categorie": "Meilleur court métrage d’animation",
         "beneficiaires": [
             {
@@ -228,6 +235,7 @@
             "precision": "jour"
         },
         "nature": "technical",
+        "trophee": "plaque-technique-multiplane",
         "categorie": "Récompense scientifique ou technique de classe II",
         "motif": "Pour la conception et l’application en production de la caméra multiplane",
         "beneficiaires": [
@@ -256,6 +264,7 @@
             "precision": "jour"
         },
         "nature": "competitive",
+        "trophee": "statuette-oscar",
         "categorie": "Meilleur court métrage d’animation",
         "beneficiaires": [
             {
@@ -286,6 +295,7 @@
             "precision": "annee"
         },
         "nature": "honorary",
+        "trophee": "medaille-societe-des-nations",
         "motif": "Pour sa contribution exceptionnelle au bonheur des enfants du monde par la création de Mickey Mouse et des Silly Symphonies",
         "beneficiaires": [
             {
@@ -310,6 +320,7 @@
             "precision": "annee"
         },
         "nature": "competitive",
+        "trophee": "medaille-or-venise",
         "categorie": "Médaille d’or du meilleur film d’animation",
         "beneficiaires": [
             {

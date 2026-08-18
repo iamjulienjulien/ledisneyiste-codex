@@ -1,4 +1,5 @@
 import type { SymbolDefinition } from "@/types/symbols";
+import type { TropheeRecompenseDisney } from "@/types/recompense";
 
 export const symbolsRecompenses = {
     trophees: {
@@ -23,4 +24,7 @@ export const symbolsRecompenses = {
             accent: "var(--atelier-animation-framboise-encrage)",
         },
     },
-} as const satisfies Record<string, Record<string, SymbolDefinition>>;
+} as const satisfies Record<
+    string,
+    Record<TropheeRecompenseDisney, SymbolDefinition>
+>;

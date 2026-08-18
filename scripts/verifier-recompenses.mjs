@@ -35,6 +35,25 @@ async function chargerNatures() {
     return new Set(Object.keys(metadataRecompenses.natures));
 }
 
+async function chargerTrophees() {
+    const chemin = path.join(
+        racine,
+        "src/registry/symbols/symbols-recompenses.ts",
+    );
+    const source = await readFile(chemin, "utf8");
+    const { outputText } = ts.transpileModule(source, {
+        compilerOptions: {
+            module: ts.ModuleKind.ESNext,
+            target: ts.ScriptTarget.ES2022,
+        },
+        fileName: chemin,
+    });
+    const moduleUrl = `data:text/javascript;base64,${Buffer.from(outputText).toString("base64")}`;
+    const { symbolsRecompenses } = await import(moduleUrl);
+
+    return new Set(Object.keys(symbolsRecompenses.trophees));
+}
+
 function chaineNonVide(valeur) {
     return typeof valeur === "string" && valeur.trim().length > 0;
 }
@@ -112,6 +131,7 @@ async function verifier() {
     const recompenses = await lireJson("src/data/recompenses/recompenses.json");
     const sources = await lireJson("src/data/sources/sources.json");
     const natures = await chargerNatures();
+    const trophees = await chargerTrophees();
     const erreurs = [];
     const ids = new Set();
     const idsSources = new Set(sources.map((source) => source.id));
@@ -161,6 +181,12 @@ async function verifier() {
             if (!natures.has(recompense.nature)) {
                 erreurs.push(
                     `${contexte} : nature inconnue « ${recompense.nature} »`,
+                );
+            }
+
+            if (!trophees.has(recompense.trophee)) {
+                erreurs.push(
+                    `${contexte} : trophée inconnu « ${recompense.trophee} »`,
                 );
             }
 
