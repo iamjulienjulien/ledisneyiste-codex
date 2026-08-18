@@ -1,10 +1,12 @@
 import { symbolsBlocs } from "./symbols-blocs";
 import { symbolsCodex } from "./symbols-codex";
+import { symbolsRecompenses } from "./symbols-recompenses";
 import type { SymbolDefinition } from "@/types/symbols";
 
 export const symbolsRegistry = {
     blocs: symbolsBlocs,
     codex: symbolsCodex,
+    recompenses: symbolsRecompenses,
 } as const;
 
 export type SymbolRegistryName = keyof typeof symbolsRegistry;
