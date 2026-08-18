@@ -1,7 +1,5 @@
 .root {
     --codex-card-color: var(--color-famille-createurs);
-    --pixie-link-surface-hover-shadow: var(--shadow-soft);
-
     position: relative;
     display: flex;
     min-height: 100%;
@@ -11,6 +9,8 @@
     flex-direction: column;
     color: inherit;
     background:
+        linear-gradient(var(--codex-card-color), var(--codex-card-color)) top /
+            100% 0.2rem no-repeat,
         linear-gradient(
             145deg,
             color-mix(in srgb, var(--codex-card-color) 7%, transparent),
@@ -22,14 +22,6 @@
     transition:
         border-color 180ms ease,
         transform 180ms ease;
-}
-
-.root::before {
-    position: absolute;
-    inset: 0 0 auto;
-    height: 0.2rem;
-    background: var(--codex-card-color);
-    content: "";
 }
 
 .root:hover {

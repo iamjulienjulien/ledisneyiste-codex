@@ -18,7 +18,7 @@ export function CodexEpoqueCard({
             href={`/epoques/${epoque.slug}`}
             variant="surface"
             color="vert-cellulo"
-            className={`${styles.root} group p-6 sm:p-7`}
+            className={`${styles.root} codex-projector group p-6 sm:p-7`}
         >
             <div className="flex items-start justify-between gap-5">
                 <div className="min-w-0">

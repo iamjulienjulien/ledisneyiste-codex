@@ -65,7 +65,7 @@ export default function Home() {
                         variant="surface"
                         color="rouge-crayon"
                         data-famille="personnages"
-                        className="codex-door group !flex h-full flex-col border border-line p-6"
+                        className="codex-projector codex-door group !flex h-full flex-col border border-line p-6"
                     >
                         <PixieSymbol
                             registry="codex"
@@ -100,7 +100,7 @@ export default function Home() {
                         variant="surface"
                         color="jaune-lampe"
                         data-famille="createurs"
-                        className="codex-door group !flex h-full flex-col border border-line p-6"
+                        className="codex-projector codex-door group !flex h-full flex-col border border-line p-6"
                     >
                         <PixieSymbol
                             registry="codex"
@@ -135,7 +135,7 @@ export default function Home() {
                         variant="surface"
                         color="gouache"
                         data-famille="oeuvres"
-                        className="codex-door group !flex h-full flex-col border border-line p-6"
+                        className="codex-projector codex-door group !flex h-full flex-col border border-line p-6"
                     >
                         <PixieSymbol
                             registry="codex"
@@ -168,7 +168,7 @@ export default function Home() {
                         variant="surface"
                         color="vert-cellulo"
                         data-famille="epoques"
-                        className="codex-door group !flex h-full flex-col border border-line p-6"
+                        className="codex-projector codex-door group !flex h-full flex-col border border-line p-6"
                     >
                         <PixieSymbol
                             registry="codex"
