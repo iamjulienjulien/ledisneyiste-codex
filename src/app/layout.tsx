@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PixieLink } from "@/components/ui/PixieLink";
+import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -30,14 +31,27 @@ export default function RootLayout({
             <body className="grid grid-rows-[auto_1fr]">
                 <header className="border-b border-line">
                     <div className="mx-auto flex w-full max-w-6xl flex-col gap-5 px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
-                        <Link href="/" className="group">
-                            <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted">
-                                Le Disneyiste
-                            </p>
+                        <Link
+                            href="/"
+                            className="group flex items-center gap-5"
+                        >
+                            <PixieSymbol
+                                registry="general"
+                                collection="logos"
+                                slug="le-codex-du-disneyiste"
+                                size="lg"
+                                className="-my-1"
+                            />
 
-                            <p className="mt-1 font-display font-semibold tracking-tight text-ink group-hover:underline group-hover:underline-offset-4">
-                                Le Codex
-                            </p>
+                            <span>
+                                <span className="block text-xs font-medium uppercase tracking-[0.2em] text-muted">
+                                    Le Disneyiste
+                                </span>
+
+                                <span className="mt-1 block font-display font-semibold tracking-tight text-ink group-hover:underline group-hover:underline-offset-4">
+                                    Le Codex
+                                </span>
+                            </span>
                         </Link>
 
                         <nav
