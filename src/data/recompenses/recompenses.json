@@ -295,5 +295,34 @@
             }
         ],
         "sources": ["wdfm-evolution-of-a-dream-awards"]
+    },
+    {
+        "id": "venice-film-festival-1935-the-band-concert",
+        "institution": {
+            "nom": "Mostra internationale d’art cinématographique de Venise"
+        },
+        "edition": {
+            "nom": "3e Mostra internationale d’art cinématographique",
+            "numero": 3
+        },
+        "dateAttribution": {
+            "valeur": "1935",
+            "precision": "annee"
+        },
+        "nature": "competitive",
+        "categorie": "Médaille d’or du meilleur film d’animation",
+        "beneficiaires": [
+            {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            }
+        ],
+        "oeuvreConcernee": {
+            "nom": "The Band Concert",
+            "type": "oeuvre",
+            "slug": "the-band-concert"
+        },
+        "sources": ["wdfm-the-band-concert-at-90"]
     }
 ]

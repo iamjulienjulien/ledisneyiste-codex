@@ -960,5 +960,13 @@
         "editeur": "The Walt Disney Family Museum",
         "url": "https://www.waltdisney.org/disneyland-loan",
         "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "wdfm-the-band-concert-at-90",
+        "titre": "Seeing Mickey’s True Colors: The Band Concert at 90",
+        "auteur": "Chris Mullen",
+        "editeur": "The Walt Disney Family Museum",
+        "url": "https://www.waltdisney.org/blog/seeing-mickeys-true-colors-band-concert-90",
+        "dateConsultation": "2026-08-18"
     }
 ]
