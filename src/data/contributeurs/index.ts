@@ -1,4 +1,5 @@
 import carlStallingJson from "@/data/contributeurs/carl-stalling.json";
+import clarenceNashJson from "@/data/contributeurs/clarence-nash.json";
 import ericLarsonJson from "@/data/contributeurs/eric-larson.json";
 import frankThomasJson from "@/data/contributeurs/frank-thomas.json";
 import johnLounsberyJson from "@/data/contributeurs/john-lounsbery.json";
@@ -20,6 +21,7 @@ export const fichesContributeurs = [
     ubIwerksJson as FicheContributeurDisney,
     carlStallingJson as FicheContributeurDisney,
     wilfredJacksonJson as FicheContributeurDisney,
+    clarenceNashJson as FicheContributeurDisney,
     lesClarkJson as FicheContributeurDisney,
     ericLarsonJson as FicheContributeurDisney,
     wolfgangReithermanJson as FicheContributeurDisney,

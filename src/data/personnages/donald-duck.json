@@ -14,7 +14,9 @@
                 "slug": "walt-disney"
             },
             {
-                "nom": "Clarence Nash"
+                "nom": "Clarence Nash",
+                "type": "contributeur",
+                "slug": "clarence-nash"
             }
         ]
     },

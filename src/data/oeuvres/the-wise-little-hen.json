@@ -17,6 +17,14 @@
                 "slug": "wilfred-jackson"
             },
             "roles": ["réalisation"]
+        },
+        {
+            "contributeur": {
+                "nom": "Clarence Nash",
+                "type": "contributeur",
+                "slug": "clarence-nash"
+            },
+            "roles": ["voix de Donald Duck"]
         }
     ],
     "personnages": [

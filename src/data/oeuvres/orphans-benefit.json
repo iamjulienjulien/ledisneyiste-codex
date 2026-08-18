@@ -24,7 +24,9 @@
         },
         {
             "contributeur": {
-                "nom": "Clarence Nash"
+                "nom": "Clarence Nash",
+                "type": "contributeur",
+                "slug": "clarence-nash"
             },
             "roles": ["voix de Donald Duck"]
         }

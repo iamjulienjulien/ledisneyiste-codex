@@ -55,6 +55,13 @@
         "sousTitre": "Le réalisateur qui accorda chaque mouvement à la musique"
     },
     {
+        "slug": "clarence-nash",
+        "nom": "Clarence Nash",
+        "type": "contributeur",
+        "metadata": { "categories": ["interprete"] },
+        "sousTitre": "L’imitateur qui donna sa voix à Donald pendant plus de cinquante ans"
+    },
+    {
         "slug": "les-clark",
         "nom": "Les Clark",
         "type": "contributeur",

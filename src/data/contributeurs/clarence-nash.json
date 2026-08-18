@@ -1,0 +1,71 @@
+{
+    "slug": "clarence-nash",
+    "type": "contributeur",
+    "introduction": "Clarence « Ducky » Nash donne à Donald Duck sa première qualité immédiatement reconnaissable : une voix. Avant même que le dessin du canard soit fixé, cet imitateur animalier formé sur les scènes itinérantes, à la radio et jusque sur un camion de livraison apporte au studio un son assez singulier pour suggérer un personnage. Engagé en 1933, il interprète Donald pendant plus de cinquante ans, dans plus de cent cinquante courts métrages et émissions, en plusieurs langues et jusque dans ses apparitions publiques. Sa performance ne se contente pas d’accompagner l’animation : elle devient l’un des fondements à partir desquels les artistes construisent le tempérament du canard.",
+    "blocsEditoriaux": [
+        {
+            "type": "debuts",
+            "eyebrow": "4 décembre 1933",
+            "titre": "Faire entrer un canard dans une voix de bouc",
+            "paragraphes": [
+                "Né dans une ferme de l’Oklahoma, Clarence Nash grandit entouré d’animaux dont il imite les cris. Il transforme ce jeu en numéro : après les spectacles scolaires, il parcourt le Midwest comme joueur de mandoline et imitateur animalier, puis rejoint à Los Angeles une émission de radio et les tournées promotionnelles d’une laiterie.",
+                "Son personnage de Whistling Clarence divertit les enfants depuis un camion de livraison. Sachant que Disney produit des dessins animés animaliers, Nash se présente au studio et déroule son répertoire lors d’une audition. Sa récitation de Mary Had a Little Lamb avec une voix de bouc retient enfin l’attention : le studio entend dans ce son inattendu le futur canard parlant.",
+                "Clarence Nash est officiellement engagé le 4 décembre 1933, au moment où commence la production de The Wise Little Hen. Donald ne possède pas encore son dessin définitif, mais sa voix existe déjà comme une promesse de caractère."
+            ]
+        },
+        {
+            "type": "signature",
+            "eyebrow": "Interprétation",
+            "titre": "Donner au tempérament une matière sonore",
+            "paragraphes": [
+                "Dans The Wise Little Hen, la diction de Nash distingue immédiatement Donald des autres animaux de la fable. Le canard peut protester, mentir ou chanter avec une sonorité difficile à comprendre parfaitement mais impossible à confondre. Les animateurs disposent ainsi d’une énergie vocale autour de laquelle préciser les gestes et les réactions.",
+                "Orphans’ Benefit révèle quelques semaines plus tard toute la force dramatique de cette voix. Les récitations interrompues puis les explosions de colère donnent à l’animation de Dick Lundy un rythme et une intensité ; le son et le dessin construisent ensemble un personnage capable de transformer chaque contrariété en spectacle.",
+                "Nash doit aussi préserver cette identité dans les versions étrangères. Les dialogues lui sont transcrits phonétiquement afin qu’il puisse faire parler Donald dans plusieurs langues sans perdre le timbre qui relie toutes ses incarnations."
+            ]
+        },
+        {
+            "type": "trajectoire",
+            "eyebrow": "Plus de cinquante ans",
+            "titre": "Parler pour Donald puis transmettre sa voix",
+            "paragraphes": [
+                "Clarence Nash interprète Donald dans plus de cent cinquante courts métrages et émissions ainsi que dans plusieurs longs métrages. Il prête également sa voix à Riri, Fifi et Loulou, à Daisy, puis à d’autres animaux dans Bambi, Les 101 Dalmatiens et l’Enchanted Tiki Room.",
+                "Le lien avec Donald se prolonge hors de l’écran. Avec une marionnette du personnage, Nash se produit dans les écoles, les hôpitaux et les orphelinats ; en 1984, il participe encore aux célébrations nationales du cinquantième anniversaire du canard. Mickey’s Christmas Carol, sorti en 1983, constitue sa dernière interprétation de Donald au cinéma.",
+                "Avant sa mort en 1985, Nash enseigne progressivement la voix à l’animateur Tony Anselmo. Cette transmission transforme une performance personnelle en tradition de studio. Nommé Disney Legend à titre posthume en 1993, l’interprète laisse derrière lui plus qu’un timbre : une continuité vivante entre le premier Donald et ceux qui continueront à le faire parler."
+            ]
+        }
+    ],
+    "naissance": {
+        "date": {
+            "valeur": "1904-12-07",
+            "precision": "jour"
+        },
+        "lieu": "Watonga, Oklahoma, États-Unis"
+    },
+    "deces": {
+        "date": {
+            "valeur": "1985-02-20",
+            "precision": "jour"
+        },
+        "lieu": "Los Angeles, Californie, États-Unis"
+    },
+    "roles": ["interprète vocal", "imitateur animalier"],
+    "periodesActivite": [
+        {
+            "debut": {
+                "valeur": "1933-12-04",
+                "precision": "jour"
+            },
+            "fin": {
+                "valeur": "1985-02-20",
+                "precision": "jour"
+            }
+        }
+    ],
+    "sources": [
+        "d23-clarence-nash",
+        "d23-nash-clarence-ducky",
+        "d23-clarence-nash-joins-studio",
+        "wdfm-designing-a-voice-tony-anselmo",
+        "d23-tony-anselmo"
+    ]
+}
