@@ -2,23 +2,23 @@ import type { ComponentProps, CSSProperties, ReactNode } from "react";
 import type Link from "next/link";
 import type { AtelierAnimationColorSlug } from "@/types/colors";
 
-export type PixieDustLinkVariant = "inline" | "action" | "surface";
+export type PixieLinkVariant = "inline" | "action" | "surface";
 
-export type PixieDustLinkColor = AtelierAnimationColorSlug | false;
+export type PixieLinkColor = AtelierAnimationColorSlug | false;
 
-export type PixieDustLinkIndicator =
+export type PixieLinkIndicator =
     "none" | "arrow" | "chevron" | "back" | "external" | "anchor";
 
-export type PixieDustLinkProps = Readonly<
+export type PixieLinkProps = Readonly<
     Omit<ComponentProps<typeof Link>, "children" | "className" | "color"> & {
         children: ReactNode;
-        variant?: PixieDustLinkVariant;
-        color?: PixieDustLinkColor;
-        indicator?: PixieDustLinkIndicator;
+        variant?: PixieLinkVariant;
+        color?: PixieLinkColor;
+        indicator?: PixieLinkIndicator;
         className?: string;
     }
 >;
 
-export type PixieDustLinkStyle = CSSProperties & {
+export type PixieLinkStyle = CSSProperties & {
     "--pixie-link-color"?: string;
 };

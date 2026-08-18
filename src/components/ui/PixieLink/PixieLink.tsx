@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { getAtelierAnimationColor } from "@/registry/colors";
 import type {
-    PixieDustLinkIndicator,
-    PixieDustLinkProps,
-    PixieDustLinkStyle,
-} from "./PixieDustLink.types";
-import styles from "./PixieDustLink.module.css";
+    PixieLinkIndicator,
+    PixieLinkProps,
+    PixieLinkStyle,
+} from "./PixieLink.types";
+import styles from "./PixieLink.module.css";
 
 const indicatorGlyphs = {
     arrow: "→",
@@ -13,9 +13,9 @@ const indicatorGlyphs = {
     back: "←",
     external: "↗",
     anchor: "↓",
-} as const satisfies Record<Exclude<PixieDustLinkIndicator, "none">, string>;
+} as const satisfies Record<Exclude<PixieLinkIndicator, "none">, string>;
 
-export function PixieDustLink({
+export function PixieLink({
     children,
     variant = "inline",
     color = false,
@@ -23,9 +23,9 @@ export function PixieDustLink({
     className = "",
     style,
     ...linkProps
-}: PixieDustLinkProps) {
+}: PixieLinkProps) {
     const colorDefinition = color ? getAtelierAnimationColor(color) : null;
-    const linkStyle: PixieDustLinkStyle = {
+    const linkStyle: PixieLinkStyle = {
         ...style,
         ...(colorDefinition
             ? { "--pixie-link-color": colorDefinition.cssValue }

@@ -1,6 +1,6 @@
 import { PixieDustButtonDossier } from "./_components/PixieDustButtonDossier";
 import { PixieBadgeDossier } from "./_components/PixieBadgeDossier";
-import { PixieDustLinkDossier } from "./_components/PixieDustLinkDossier";
+import { PixieLinkDossier } from "./_components/PixieLinkDossier";
 import { PixieDustSeparatorDossier } from "./_components/PixieDustSeparatorDossier";
 import { PixieSymbolDossier } from "./_components/PixieSymbolDossier";
 import { PalettesPellicule } from "./_components/PalettesPellicule";
@@ -76,9 +76,9 @@ const accessoires = [
         href: "#bouton",
     },
     {
-        nom: "PixieDustLink",
+        nom: "PixieLink",
         role: "Conduire vers une autre scène",
-        statut: "Esquisse",
+        statut: "Prêt à projeter",
         href: "#lien",
     },
     {
@@ -287,7 +287,7 @@ export default function AtelierPage() {
 
                 <PixieSymbolDossier />
                 <PixieDustButtonDossier />
-                <PixieDustLinkDossier />
+                <PixieLinkDossier />
                 <PixieBadgeDossier />
                 <PixieDustSeparatorDossier />
             </section>

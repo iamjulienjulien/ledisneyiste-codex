@@ -5,10 +5,10 @@ import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import {
-    PixieDustLink,
-    type PixieDustLinkIndicator,
-    type PixieDustLinkVariant,
-} from "@/components/ui/PixieDustLink";
+    PixieLink,
+    type PixieLinkIndicator,
+    type PixieLinkVariant,
+} from "@/components/ui/PixieLink";
 import {
     getAtelierAnimationColor,
     getAtelierAnimationColorSlugs,
@@ -19,7 +19,7 @@ type Light = "sombre" | "claire";
 type Frame = "compact" | "moyen" | "large";
 
 const variants: ReadonlyArray<{
-    value: PixieDustLinkVariant;
+    value: PixieLinkVariant;
     label: string;
 }> = [
     { value: "inline", label: "Dans le texte" },
@@ -39,7 +39,7 @@ const colors: ReadonlyArray<{
 ];
 
 const indicators: ReadonlyArray<{
-    value: PixieDustLinkIndicator;
+    value: PixieLinkIndicator;
     label: string;
 }> = [
     { value: "none", label: "Aucun" },
@@ -56,14 +56,14 @@ const frameWidths: Record<Frame, string> = {
     large: "max-w-none",
 };
 
-export function PixieDustLinkPlayground() {
+export function PixieLinkPlayground() {
     const [label, setLabel] = useState("Explorer les personnages");
     const [href, setHref] = useState("/personnages");
-    const [variant, setVariant] = useState<PixieDustLinkVariant>("action");
+    const [variant, setVariant] = useState<PixieLinkVariant>("action");
     const [color, setColor] = useState<AtelierAnimationColorSlug | "inherit">(
         "inherit",
     );
-    const [indicator, setIndicator] = useState<PixieDustLinkIndicator>("arrow");
+    const [indicator, setIndicator] = useState<PixieLinkIndicator>("arrow");
     const [focusPreview, setFocusPreview] = useState(false);
     const [currentPage, setCurrentPage] = useState(false);
     const [light, setLight] = useState<Light>("sombre");
@@ -74,13 +74,13 @@ export function PixieDustLinkPlayground() {
     const surfaceClassName = "w-full border border-line bg-surface p-6";
     const colorProp = color === "inherit" ? "" : `\n    color="${color}"`;
     const currentPageProp = currentPage ? `\n    aria-current="page"` : "";
-    const code = `<PixieDustLink
+    const code = `<PixieLink
     href="${safeHref}"
     variant="${variant}"${colorProp}
     indicator="${indicator}"${currentPageProp}${variant === "surface" ? `\n    className="${surfaceClassName}"` : ""}
 >
     ${safeLabel}
-</PixieDustLink>`;
+</PixieLink>`;
 
     return (
         <div className="relative z-[10000] overflow-hidden border border-line bg-surface">
@@ -230,7 +230,7 @@ export function PixieDustLinkPlayground() {
                         <div
                             className={`flex min-h-48 w-full items-center justify-center border border-line bg-surface p-6 text-ink transition-[max-width] ${frameWidths[frame]}`}
                         >
-                            <PixieDustLink
+                            <PixieLink
                                 href={safeHref}
                                 variant={variant}
                                 color={color === "inherit" ? false : color}
@@ -247,7 +247,7 @@ export function PixieDustLinkPlayground() {
                                 onClick={(event) => event.preventDefault()}
                             >
                                 {safeLabel}
-                            </PixieDustLink>
+                            </PixieLink>
                         </div>
                     </div>
 
