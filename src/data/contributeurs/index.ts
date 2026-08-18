@@ -7,6 +7,7 @@ import lesClarkJson from "@/data/contributeurs/les-clark.json";
 import marcDavisJson from "@/data/contributeurs/marc-davis.json";
 import miltKahlJson from "@/data/contributeurs/milt-kahl.json";
 import ollieJohnstonJson from "@/data/contributeurs/ollie-johnston.json";
+import pintoColvigJson from "@/data/contributeurs/pinto-colvig.json";
 import royODisneyJson from "@/data/contributeurs/roy-o-disney.json";
 import ubIwerksJson from "@/data/contributeurs/ub-iwerks.json";
 import wardKimballJson from "@/data/contributeurs/ward-kimball.json";
@@ -22,6 +23,7 @@ export const fichesContributeurs = [
     carlStallingJson as FicheContributeurDisney,
     wilfredJacksonJson as FicheContributeurDisney,
     clarenceNashJson as FicheContributeurDisney,
+    pintoColvigJson as FicheContributeurDisney,
     lesClarkJson as FicheContributeurDisney,
     ericLarsonJson as FicheContributeurDisney,
     wolfgangReithermanJson as FicheContributeurDisney,

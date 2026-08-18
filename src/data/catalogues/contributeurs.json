@@ -62,6 +62,13 @@
         "sousTitre": "L’imitateur qui donna sa voix à Donald pendant plus de cinquante ans"
     },
     {
+        "slug": "pinto-colvig",
+        "nom": "Pinto Colvig",
+        "type": "contributeur",
+        "metadata": { "categories": ["interprete", "musicien"] },
+        "sousTitre": "Le clown sonore dont le rire fit naître Dingo"
+    },
+    {
         "slug": "les-clark",
         "nom": "Les Clark",
         "type": "contributeur",

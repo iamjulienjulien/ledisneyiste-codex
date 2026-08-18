@@ -853,5 +853,28 @@
         "editeur": "D23: The Official Disney Fan Club",
         "url": "https://d23.com/walt-disney-legend/tony-anselmo/",
         "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-colvig-pinto",
+        "titre": "Colvig, Pinto",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/colvig-pinto/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-pinto-colvig-born",
+        "titre": "Disney Legend Pinto Colvig is Born",
+        "editeur": "D23: The Official Disney Fan Club",
+        "datePublication": "2019-04-02",
+        "url": "https://d23.com/this-day/disney-legend-pinto-colvig-is-born/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "oregon-encyclopedia-pinto-colvig",
+        "titre": "Vance DeBar (Pinto) Colvig (1892–1967)",
+        "auteur": "Dawna Curler",
+        "editeur": "The Oregon Encyclopedia",
+        "url": "https://www.oregonencyclopedia.org/articles/colvig_vance_debar_pinto_1892_1967_/",
+        "dateConsultation": "2026-08-18"
     }
 ]

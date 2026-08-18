@@ -1,0 +1,79 @@
+{
+    "slug": "pinto-colvig",
+    "type": "contributeur",
+    "introduction": "Vance DeBar « Pinto » Colvig apporte au studio Disney une combinaison de métiers qui semble faite pour le dessin animé sonore : clown de cirque, musicien, dessinateur, homme de récit, imitateur et créateur d’effets. Son rire rauque distingue le futur Dingo avant même que le personnage possède un nom, tandis que ses grognements, aboiements et bruits impossibles donnent une matière audible à quantité d’autres figures. Chez Colvig, la voix ne constitue jamais une spécialité isolée : elle prolonge le gag, le rythme et le dessin jusqu’à faire du son une forme complète de jeu.",
+    "blocsEditoriaux": [
+        {
+            "type": "debuts",
+            "eyebrow": "Du cirque au studio",
+            "titre": "Réunir le clown, le musicien et le dessinateur",
+            "paragraphes": [
+                "Né à Jacksonville dans l’Oregon en 1892, Vance Colvig reçoit le surnom de Pinto à cause de ses taches de rousseur. Dès l’enfance, il imite les animaux et les bruits de son environnement, apprend la clarinette puis se produit à partir de treize ans dans les foires, les carnavals et les spectacles de vaudeville.",
+                "Ses études à l’Oregon State College cèdent régulièrement devant l’appel du cirque. Il devient ensuite dessinateur de presse à San Francisco, tente de produire ses propres films animés puis rejoint Hollywood, où il écrit des cartons, imagine des gags et joue de petits rôles pour les comédies de Mack Sennett.",
+                "En 1930, Colvig signe avec Disney. Cette expérience dispersée trouve enfin un atelier commun : le gagman peut penser une histoire, le musicien en sentir le rythme et le clown lui prêter immédiatement un bruit, une voix ou un corps."
+            ]
+        },
+        {
+            "type": "signature",
+            "eyebrow": "Bibliothèque sonore",
+            "titre": "Faire entendre ce que le dessin ne peut pas nommer",
+            "paragraphes": [
+                "Colvig devient une véritable réserve humaine d’effets sonores. Il crache pour des sauterelles, grogne pour des cochons, aboie pour Pluto et utilise même un vieux trombone cabossé afin d’obtenir des sons qu’un instrument neuf produirait trop proprement.",
+                "Dans Mickey’s Revue, son rire suffit à isoler un spectateur encore anonyme au milieu de la salle. La réaction bruyante retient l’attention du studio, puis survit aux transformations graphiques et aux changements de nom : avant d’être pleinement Dingo, le personnage possède déjà la signature vocale qui permettra de le reconnaître.",
+                "Cette création révèle la continuité entre les métiers de Colvig. Le son naît d’une observation de clown, fonctionne comme un gag de storyman et revient avec la précision d’un motif musical. Il ne commente pas seulement le dessin : il lui indique quel caractère développer."
+            ]
+        },
+        {
+            "type": "trajectoire",
+            "eyebrow": "Des centaines de voix",
+            "titre": "Donner un personnage à chaque registre",
+            "paragraphes": [
+                "Après Dingo, Colvig interprète le Cochon Pratique dans Three Little Pigs et aide Frank Churchill à composer « Who’s Afraid of the Big Bad Wolf? ». Il prête également sa voix à la sauterelle de The Grasshopper and the Ants, puis à Grincheux et Dormeur dans Blanche-Neige et les Sept Nains.",
+                "Il quitte le studio en 1937, mais continue d’enregistrer Dingo de temps à autre jusqu’à sa mort. Cette relation discontinue permet à la voix originale d’accompagner le personnage pendant trente-cinq ans, alors même que Colvig poursuit ailleurs une carrière de radio et devient le premier Bozo the Capitol Clown.",
+                "Pinto Colvig meurt à Los Angeles le 3 octobre 1967. Nommé Disney Legend à titre posthume en 1993, il laisse une œuvre difficile à réduire à une filmographie : des voix, des chansons et une multitude de sons brefs dont chacun aura donné un peu plus de personnalité aux images."
+            ]
+        }
+    ],
+    "naissance": {
+        "date": {
+            "valeur": "1892-09-11",
+            "precision": "jour"
+        },
+        "lieu": "Jacksonville, Oregon, États-Unis"
+    },
+    "deces": {
+        "date": {
+            "valeur": "1967-10-03",
+            "precision": "jour"
+        },
+        "lieu": "Los Angeles, Californie, États-Unis"
+    },
+    "roles": [
+        "artiste de récit",
+        "interprète vocal",
+        "créateur d’effets sonores",
+        "musicien",
+        "clown"
+    ],
+    "periodesActivite": [
+        {
+            "debut": {
+                "valeur": "1930",
+                "precision": "annee"
+            },
+            "fin": {
+                "valeur": "1967-10-03",
+                "precision": "jour"
+            }
+        }
+    ],
+    "sources": [
+        "d23-pinto-colvig",
+        "d23-colvig-pinto",
+        "d23-pinto-colvig-born",
+        "oregon-encyclopedia-pinto-colvig",
+        "d23-goofy",
+        "d23-three-little-pigs",
+        "d23-pluto-90-years"
+    ]
+}

@@ -38,9 +38,11 @@
         },
         {
             "contributeur": {
-                "nom": "Pinto Colvig"
+                "nom": "Pinto Colvig",
+                "type": "contributeur",
+                "slug": "pinto-colvig"
             },
-            "roles": ["voix du Cochon Pratique"]
+            "roles": ["voix du Cochon Pratique", "contribution à la chanson"]
         }
     ],
     "personnages": [

@@ -14,7 +14,9 @@
                 "slug": "walt-disney"
             },
             {
-                "nom": "Pinto Colvig"
+                "nom": "Pinto Colvig",
+                "type": "contributeur",
+                "slug": "pinto-colvig"
             }
         ]
     },

@@ -29,6 +29,14 @@
                 "slug": "clarence-nash"
             },
             "roles": ["voix de Donald Duck"]
+        },
+        {
+            "contributeur": {
+                "nom": "Pinto Colvig",
+                "type": "contributeur",
+                "slug": "pinto-colvig"
+            },
+            "roles": ["voix de Dingo"]
         }
     ],
     "personnages": [

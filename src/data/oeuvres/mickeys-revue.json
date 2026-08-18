@@ -26,7 +26,9 @@
         },
         {
             "contributeur": {
-                "nom": "Pinto Colvig"
+                "nom": "Pinto Colvig",
+                "type": "contributeur",
+                "slug": "pinto-colvig"
             },
             "roles": ["voix du futur Dingo"]
         }
