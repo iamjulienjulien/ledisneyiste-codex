@@ -3,6 +3,7 @@ import { PixieBadgeDossier } from "./_components/PixieBadgeDossier";
 import { PixieLinkDossier } from "./_components/PixieLinkDossier";
 import { PixieSeparatorDossier } from "./_components/PixieSeparatorDossier";
 import { PixieSymbolDossier } from "./_components/PixieSymbolDossier";
+import { PixieDustCardDossier } from "./_components/PixieDustCardDossier";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PalettesPellicule } from "./_components/PalettesPellicule";
 
@@ -100,32 +101,38 @@ const decors = [
     {
         nom: "PixieDustCard",
         role: "Accueillir une unité de contenu répétable",
-        statut: "À esquisser",
+        statut: "Esquisse",
+        href: "#pixie-dust-card",
     },
     {
         nom: "PixieDustPanel",
         role: "Regrouper une section dans une surface structurée",
         statut: "À esquisser",
+        href: null,
     },
     {
         nom: "PixieDustFrame",
         role: "Encadrer un visuel ou un aperçu",
         statut: "À esquisser",
+        href: null,
     },
     {
         nom: "PixieDustCallout",
         role: "Mettre en lumière une annotation éditoriale",
         statut: "À esquisser",
+        href: null,
     },
     {
         nom: "PixieDustInset",
         role: "Creuser une zone d’information secondaire",
         statut: "À esquisser",
+        href: null,
     },
     {
         nom: "PixieDustBackdrop",
         role: "Installer un fond de scène atmosphérique",
         statut: "À esquisser",
+        href: null,
     },
 ] as const;
 
@@ -527,13 +534,13 @@ export default function AtelierPage() {
                         03 · Les Décors
                     </p>
                     <h2 id="decors-title" className="mt-3 text-4xl text-ink">
-                        Les surfaces attendent leur premier coup de pinceau
+                        Le premier décor reçoit son coup de pinceau
                     </h2>
                     <p className="mt-5 leading-7 text-ink-soft">
-                        Cartes, panneaux et cadres donneront une place à chaque
-                        contenu sans confondre décor, composition et action. Ces
-                        six esquisses formeront le premier vocabulaire de
-                        surfaces du Codex.
+                        PixieDustCard ouvre le chantier des surfaces sans
+                        confondre décor, composition et action. Cinq autres
+                        esquisses prolongeront progressivement ce premier
+                        vocabulaire du Codex.
                     </p>
                 </div>
 
@@ -568,7 +575,16 @@ export default function AtelierPage() {
                                         scope="row"
                                         className="px-5 py-4 font-medium text-ink"
                                     >
-                                        {decor.nom}
+                                        {decor.href ? (
+                                            <a
+                                                href={decor.href}
+                                                className="text-accent underline underline-offset-4 hover:text-accent-hover"
+                                            >
+                                                {decor.nom} →
+                                            </a>
+                                        ) : (
+                                            decor.nom
+                                        )}
                                     </th>
                                     <td className="px-5 py-4 text-ink-soft">
                                         {decor.role}
@@ -581,6 +597,8 @@ export default function AtelierPage() {
                         </tbody>
                     </table>
                 </div>
+
+                <PixieDustCardDossier />
             </section>
 
             <section
