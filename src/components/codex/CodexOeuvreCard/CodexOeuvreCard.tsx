@@ -10,10 +10,6 @@ export function CodexOeuvreCard({
     fiche,
     recompenses,
 }: CodexOeuvreCardProps) {
-    const naturesRecompenses = [
-        ...new Set(recompenses.map((recompense) => recompense.nature)),
-    ];
-
     return (
         <Link
             href={`/oeuvres/${oeuvre.slug}`}
@@ -93,18 +89,24 @@ export function CodexOeuvreCard({
                     </p>
 
                     <ul
-                        aria-label="Natures des récompenses"
-                        className="mt-3 flex flex-wrap gap-2"
+                        aria-label="Récompenses obtenues"
+                        className={styles.recompensesList}
                     >
-                        {naturesRecompenses.map((nature) => (
-                            <li key={nature}>
-                                <PixieBadge
+                        {recompenses.map((recompense) => (
+                            <li
+                                key={recompense.id}
+                                className={styles.recompense}
+                            >
+                                <PixieSymbol
                                     registry="recompenses"
-                                    collection="natures"
-                                    slug={nature}
-                                    size="xs"
-                                    shape="pill"
+                                    collection="trophees"
+                                    slug={recompense.trophee}
+                                    size="sm"
                                 />
+
+                                <span className={styles.recompenseLabel}>
+                                    {recompense.categorie ?? recompense.motif}
+                                </span>
                             </li>
                         ))}
                     </ul>

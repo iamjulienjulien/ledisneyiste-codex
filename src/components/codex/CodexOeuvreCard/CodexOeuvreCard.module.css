@@ -50,3 +50,21 @@
     border-top: 1px solid var(--color-line);
     padding-top: 1.25rem;
 }
+
+.recompensesList {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+}
+
+.recompense {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.recompenseLabel {
+    color: var(--color-ink);
+    font-size: 0.875rem;
+    line-height: 1.4;
+}
