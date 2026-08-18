@@ -220,7 +220,7 @@ export function PalettesPellicule() {
         <div className="mt-12 space-y-16">
             <section aria-labelledby="typographie-pellicule">
                 <div className="max-w-3xl">
-                    <p className="text-xs font-medium uppercase tracking-[0.18em] text-accent">
+                    <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-accent">
                         Fondation typographique
                     </p>
                     <h3
@@ -230,27 +230,40 @@ export function PalettesPellicule() {
                         Typographie
                     </h3>
                     <p className="mt-4 leading-7 text-ink-soft">
-                        Deux voix composent les intertitres et les récits du
-                        Codex : une présence d’affiche pour ouvrir les scènes,
-                        puis une voix de lecture pour accompagner les archives.
+                        Cinq voix composent l’identité du Codex : le geste animé
+                        de sa signature, l’élégance de ses intertitres, la
+                        clarté de ses récits, la précision de ses repères et la
+                        rigueur technique de l’Atelier.
                     </p>
                 </div>
 
                 <div className="mt-8 grid gap-6 lg:grid-cols-2">
+                    <article className="border border-line bg-surface p-6 sm:p-8 lg:col-span-2">
+                        <p className="font-eyebrow text-xs font-medium uppercase tracking-[0.18em] text-muted">
+                            Signature du studio
+                        </p>
+                        <p className="mt-5 font-brand text-4xl font-semibold leading-tight tracking-tight text-ink sm:text-6xl">
+                            Le Codex du Disneyiste
+                        </p>
+                        <p className="mt-5 font-mono text-xs text-accent">
+                            font-brand · Grandstander
+                        </p>
+                    </article>
+
                     <article className="border border-line bg-surface p-6 sm:p-8">
-                        <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted">
-                            Typographie d’affiche
+                        <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-muted">
+                            Intertitres et chapitres
                         </p>
                         <p className="mt-5 font-display text-4xl font-semibold leading-tight tracking-tight text-ink sm:text-5xl">
                             Il était une fois…
                         </p>
                         <p className="mt-5 font-mono text-xs text-accent">
-                            font-display
+                            font-display · Fraunces
                         </p>
                     </article>
 
                     <article className="border border-line bg-surface p-6 sm:p-8">
-                        <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted">
+                        <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-muted">
                             Typographie de lecture
                         </p>
                         <p className="mt-5 max-w-lg text-lg leading-8 text-ink-soft">
@@ -258,7 +271,33 @@ export function PalettesPellicule() {
                             leurs relations et les récits qui les traversent.
                         </p>
                         <p className="mt-5 font-mono text-xs text-accent">
-                            font-sans
+                            font-sans · Source Sans 3
+                        </p>
+                    </article>
+
+                    <article className="border border-line bg-surface p-6 sm:p-8">
+                        <p className="font-eyebrow text-xs font-medium uppercase tracking-[0.18em] text-muted">
+                            Repères de production
+                        </p>
+                        <p className="mt-5 font-eyebrow text-2xl font-medium uppercase tracking-[0.16em] text-ink sm:text-3xl">
+                            Projection originale
+                        </p>
+                        <p className="mt-5 font-mono text-xs text-accent">
+                            font-eyebrow · League Spartan
+                        </p>
+                    </article>
+
+                    <article className="border border-line bg-surface p-6 sm:p-8">
+                        <p className="font-eyebrow text-xs font-medium uppercase tracking-[0.18em] text-muted">
+                            Notes de régie
+                        </p>
+                        <p className="mt-5 font-mono text-lg leading-8 text-ink">
+                            --projection-lumiere: sombre;
+                            <br />
+                            plan.status = &quot;prêt à projeter&quot;;
+                        </p>
+                        <p className="mt-5 font-mono text-xs text-accent">
+                            font-mono · IBM Plex Mono
                         </p>
                     </article>
                 </div>
@@ -288,7 +327,7 @@ export function PalettesPellicule() {
                 <section aria-labelledby="projection-originale-palette">
                     <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
                         <div className="max-w-3xl">
-                            <p className="text-xs font-medium uppercase tracking-[0.18em] text-accent">
+                            <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-accent">
                                 Palette d’interface
                             </p>
                             <h3
@@ -323,7 +362,7 @@ export function PalettesPellicule() {
                             </div>
 
                             <div>
-                                <p className="text-xs font-medium uppercase tracking-[0.16em] text-muted">
+                                <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.16em] text-muted">
                                     Lumière
                                 </p>
                                 <div
@@ -417,7 +456,7 @@ export function PalettesPellicule() {
 
                     <div className="mt-12 grid gap-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
                         <div className="max-w-3xl">
-                            <p className="text-xs font-medium uppercase tracking-[0.18em] text-accent">
+                            <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-accent">
                                 Palette éditoriale
                             </p>
                             <h3
@@ -450,7 +489,7 @@ export function PalettesPellicule() {
                 />
 
                 <div className="mt-12 max-w-3xl">
-                    <p className="text-xs font-medium uppercase tracking-[0.18em] text-accent">
+                    <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-accent">
                         Fondation géométrique
                     </p>
                     <h3

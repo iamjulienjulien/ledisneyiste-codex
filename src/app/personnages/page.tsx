@@ -31,7 +31,7 @@ export default async function PersonnagesPage({
                     size="xl"
                 />
                 <div className="max-w-2xl">
-                    <p className="text-sm font-medium uppercase tracking-[0.2em] text-famille-personnages">
+                    <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.2em] text-famille-personnages">
                         Explorer le Codex
                     </p>
 

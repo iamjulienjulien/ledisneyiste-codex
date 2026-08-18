@@ -194,7 +194,7 @@ function SequenceTitle({
 }>) {
     return (
         <div className="max-w-3xl">
-            <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted">
+            <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-muted">
                 {eyebrow}
             </p>
             <h3 id={id} className="mt-3 text-3xl text-ink">
@@ -217,7 +217,7 @@ export function PixieSeparatorDossier() {
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
                     <div className="bg-surface p-6 sm:p-8">
-                        <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
+                        <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.2em] text-accent">
                             Le clap · Accessoire 005
                         </p>
                         <h2
@@ -234,7 +234,7 @@ export function PixieSeparatorDossier() {
 
                     <dl className="grid min-w-64 grid-cols-2 gap-px bg-line md:grid-cols-1">
                         <div className="bg-surface-muted px-6 py-4">
-                            <dt className="text-xs uppercase tracking-[0.16em] text-muted">
+                            <dt className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
@@ -242,7 +242,7 @@ export function PixieSeparatorDossier() {
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
-                            <dt className="text-xs uppercase tracking-[0.16em] text-muted">
+                            <dt className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                                 État
                             </dt>
                             <dd className="mt-1 text-sm font-medium">
@@ -283,7 +283,7 @@ export function PixieSeparatorDossier() {
                         ["Dépendances", "React et Projection Originale."],
                     ].map(([term, definition]) => (
                         <div key={term} className="bg-surface p-5">
-                            <dt className="text-xs uppercase tracking-[0.16em] text-muted">
+                            <dt className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                                 {term}
                             </dt>
                             <dd className="mt-2 leading-7 text-ink-soft">
@@ -370,7 +370,7 @@ export function PixieSeparatorDossier() {
                             <div className="mt-5 space-y-5">
                                 {positions.map((position) => (
                                     <div key={position.value}>
-                                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                                             {position.label}
                                         </p>
                                         <PixieSeparator
@@ -398,13 +398,13 @@ export function PixieSeparatorDossier() {
 
                 <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
                     <article className="bg-surface p-6">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Discret
                         </p>
                         <PixieSeparator intensity="subtle" spacing="sm" />
                     </article>
                     <article className="bg-surface p-6">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Soutenu
                         </p>
                         <PixieSeparator intensity="strong" spacing="sm" />
@@ -430,7 +430,7 @@ export function PixieSeparatorDossier() {
                         ] as const
                     ).map(({ label, spacing }) => (
                         <article key={spacing} className="bg-surface p-6">
-                            <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                            <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                                 {label}
                             </p>
                             <PixieSeparator spacing={spacing} />
@@ -471,7 +471,7 @@ export function PixieSeparatorDossier() {
                         ] as const
                     ).map(({ label, width, align }) => (
                         <article key={label} className="bg-surface p-6">
-                            <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                            <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                                 {label}
                             </p>
                             <PixieSeparator
@@ -520,7 +520,7 @@ export function PixieSeparatorDossier() {
 
                 <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
                     <article className="bg-surface p-6">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Sémantique par défaut
                         </p>
                         <p className="mt-4 text-sm leading-6 text-ink-soft">
@@ -533,7 +533,7 @@ export function PixieSeparatorDossier() {
                         </code>
                     </article>
                     <article className="bg-surface p-6">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Décoratif sur demande
                         </p>
                         <p className="mt-4 text-sm leading-6 text-ink-soft">

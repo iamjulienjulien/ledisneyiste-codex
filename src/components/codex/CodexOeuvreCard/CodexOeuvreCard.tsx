@@ -55,7 +55,7 @@ export function CodexOeuvreCard({
 
             <dl className="grid gap-5 sm:grid-cols-2">
                 <div>
-                    <dt className="text-xs uppercase tracking-[0.14em] text-muted">
+                    <dt className="text-xs font-eyebrow uppercase tracking-[0.14em] text-muted">
                         Sortie
                     </dt>
                     <dd className="mt-2 text-sm text-ink">
@@ -63,7 +63,7 @@ export function CodexOeuvreCard({
                     </dd>
                 </div>
                 <div>
-                    <dt className="text-xs uppercase tracking-[0.14em] text-muted">
+                    <dt className="text-xs font-eyebrow uppercase tracking-[0.14em] text-muted">
                         Format
                     </dt>
                     <dd className="mt-2 text-sm text-ink">{fiche.format}</dd>
@@ -107,7 +107,7 @@ export function CodexOeuvreCard({
                     </div>
 
                     <div className={styles.recompenses}>
-                        <p className="text-xs font-medium uppercase tracking-[0.14em] text-muted">
+                        <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.14em] text-muted">
                             {recompenses.length}{" "}
                             {recompenses.length > 1
                                 ? "récompenses"

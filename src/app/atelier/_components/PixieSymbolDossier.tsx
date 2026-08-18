@@ -161,7 +161,7 @@ function TitreSequence({
 }>) {
     return (
         <div className="max-w-3xl">
-            <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted">
+            <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-muted">
                 {surTitre}
             </p>
             <h3 id={id} className="mt-3 text-3xl text-ink">
@@ -184,7 +184,7 @@ export function PixieSymbolDossier() {
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
                     <div className="bg-surface p-6 sm:p-8">
-                        <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
+                        <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.2em] text-accent">
                             Le clap · Accessoire 001
                         </p>
                         <h2
@@ -202,7 +202,7 @@ export function PixieSymbolDossier() {
 
                     <dl className="grid min-w-64 grid-cols-2 gap-px bg-line md:grid-cols-1">
                         <div className="bg-surface-muted px-6 py-4">
-                            <dt className="text-xs uppercase tracking-[0.16em] text-muted">
+                            <dt className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
@@ -210,7 +210,7 @@ export function PixieSymbolDossier() {
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
-                            <dt className="text-xs uppercase tracking-[0.16em] text-muted">
+                            <dt className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                                 État
                             </dt>
                             <dd className="mt-1 text-sm font-medium">
@@ -239,7 +239,7 @@ export function PixieSymbolDossier() {
                         ["Accessibilité", "Décoratif par défaut."],
                     ].map(([terme, definition]) => (
                         <div key={terme} className="bg-surface p-5">
-                            <dt className="text-xs uppercase tracking-[0.16em] text-muted">
+                            <dt className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                                 {terme}
                             </dt>
                             <dd className="mt-2 leading-7 text-ink-soft">
@@ -625,7 +625,7 @@ export function PixieSymbolDossier() {
 
                 <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-2">
                     <article className="bg-surface p-6">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Décoratif
                         </p>
                         <div className="mt-6 flex items-center gap-5">
@@ -639,7 +639,7 @@ export function PixieSymbolDossier() {
                         </div>
                     </article>
                     <article className="bg-surface p-6">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Informatif
                         </p>
                         <div className="mt-6">

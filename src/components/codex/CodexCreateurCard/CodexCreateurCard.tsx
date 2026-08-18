@@ -66,7 +66,7 @@ export function CodexCreateurCard({
 
             <dl className="space-y-5">
                 <div>
-                    <dt className="text-xs uppercase tracking-[0.14em] text-muted">
+                    <dt className="text-xs font-eyebrow uppercase tracking-[0.14em] text-muted">
                         Rôles
                     </dt>
                     <dd className="mt-2 text-sm leading-6 text-ink">
@@ -74,7 +74,7 @@ export function CodexCreateurCard({
                     </dd>
                 </div>
                 <div>
-                    <dt className="text-xs uppercase tracking-[0.14em] text-muted">
+                    <dt className="text-xs font-eyebrow uppercase tracking-[0.14em] text-muted">
                         Période d’activité
                     </dt>
                     <dd className="mt-2 text-sm leading-6 text-ink">
@@ -90,7 +90,7 @@ export function CodexCreateurCard({
                     </dd>
                 </div>
                 <div>
-                    <dt className="text-xs uppercase tracking-[0.14em] text-muted">
+                    <dt className="text-xs font-eyebrow uppercase tracking-[0.14em] text-muted">
                         Époques traversées
                     </dt>
                     <dd className="mt-2 text-sm leading-6 text-ink">

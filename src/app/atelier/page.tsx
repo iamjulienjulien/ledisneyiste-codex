@@ -307,7 +307,7 @@ export default function AtelierPage() {
     return (
         <div className="py-12 sm:py-16">
             <section aria-labelledby="atelier-introduction">
-                <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted">
+                <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.2em] text-muted">
                     Note d’intention
                 </p>
 
@@ -333,7 +333,7 @@ export default function AtelierPage() {
             >
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                     <div>
-                        <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted">
+                        <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.2em] text-muted">
                             Programme
                         </p>
                         <h2
@@ -355,7 +355,7 @@ export default function AtelierPage() {
                                     <p className="font-mono text-xs text-muted">
                                         {categorie.numero}
                                     </p>
-                                    <p className="text-xs font-medium uppercase tracking-[0.16em] text-muted">
+                                    <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.16em] text-muted">
                                         {categorie.statut}
                                     </p>
                                 </div>
@@ -403,7 +403,7 @@ export default function AtelierPage() {
                 />
 
                 <div className="mt-12 max-w-3xl">
-                    <p className="text-sm font-medium uppercase tracking-[0.2em] text-accent">
+                    <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.2em] text-accent">
                         01 · La Pellicule
                     </p>
                     <h2 id="pellicule-title" className="mt-3 text-4xl text-ink">
@@ -435,7 +435,7 @@ export default function AtelierPage() {
                 />
 
                 <div className="mt-12 max-w-3xl">
-                    <p className="text-sm font-medium uppercase tracking-[0.2em] text-accent">
+                    <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.2em] text-accent">
                         02 · Les Accessoires
                     </p>
                     <h2
@@ -453,7 +453,7 @@ export default function AtelierPage() {
 
                 <div className="mt-10 overflow-x-auto border border-line">
                     <table className="w-full min-w-xl border-collapse text-left">
-                        <thead className="bg-surface-muted text-xs uppercase tracking-[0.16em] text-muted">
+                        <thead className="bg-surface-muted text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             <tr>
                                 <th
                                     scope="col"
@@ -523,7 +523,7 @@ export default function AtelierPage() {
                 />
 
                 <div className="mt-12 max-w-3xl">
-                    <p className="text-sm font-medium uppercase tracking-[0.2em] text-accent">
+                    <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.2em] text-accent">
                         03 · Les Décors
                     </p>
                     <h2 id="decors-title" className="mt-3 text-4xl text-ink">
@@ -539,7 +539,7 @@ export default function AtelierPage() {
 
                 <div className="mt-10 overflow-x-auto border border-line">
                     <table className="w-full min-w-xl border-collapse text-left">
-                        <thead className="bg-surface-muted text-xs uppercase tracking-[0.16em] text-muted">
+                        <thead className="bg-surface-muted text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             <tr>
                                 <th
                                     scope="col"
@@ -598,7 +598,7 @@ export default function AtelierPage() {
                 />
 
                 <div className="mt-12 max-w-3xl">
-                    <p className="text-sm font-medium uppercase tracking-[0.2em] text-accent">
+                    <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.2em] text-accent">
                         04 · Les Dialogues
                     </p>
                     <h2 id="dialogues-title" className="mt-3 text-4xl text-ink">
@@ -615,7 +615,7 @@ export default function AtelierPage() {
 
                 <div className="mt-10 overflow-x-auto border border-line">
                     <table className="w-full min-w-xl border-collapse text-left">
-                        <thead className="bg-surface-muted text-xs uppercase tracking-[0.16em] text-muted">
+                        <thead className="bg-surface-muted text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             <tr>
                                 <th
                                     scope="col"
@@ -674,7 +674,7 @@ export default function AtelierPage() {
                 />
 
                 <div className="mt-12 max-w-3xl">
-                    <p className="text-sm font-medium uppercase tracking-[0.2em] text-accent">
+                    <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.2em] text-accent">
                         05 · Le Montage
                     </p>
                     <h2 id="montage-title" className="mt-3 text-4xl text-ink">
@@ -690,7 +690,7 @@ export default function AtelierPage() {
 
                 <div className="mt-10 overflow-x-auto border border-line">
                     <table className="w-full min-w-xl border-collapse text-left">
-                        <thead className="bg-surface-muted text-xs uppercase tracking-[0.16em] text-muted">
+                        <thead className="bg-surface-muted text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             <tr>
                                 <th
                                     scope="col"
@@ -749,7 +749,7 @@ export default function AtelierPage() {
                 />
 
                 <div className="mt-12 max-w-3xl">
-                    <p className="text-sm font-medium uppercase tracking-[0.2em] text-accent">
+                    <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.2em] text-accent">
                         06 · Les Effets
                     </p>
                     <h2 id="effets-title" className="mt-3 text-4xl text-ink">
@@ -766,7 +766,7 @@ export default function AtelierPage() {
 
                 <div className="mt-10 overflow-x-auto border border-line">
                     <table className="w-full min-w-xl border-collapse text-left">
-                        <thead className="bg-surface-muted text-xs uppercase tracking-[0.16em] text-muted">
+                        <thead className="bg-surface-muted text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             <tr>
                                 <th
                                     scope="col"

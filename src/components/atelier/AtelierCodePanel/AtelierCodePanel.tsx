@@ -20,7 +20,7 @@ export function AtelierCodePanel({ code }: Readonly<{ code: string }>) {
     return (
         <div className={styles.root}>
             <div className="flex items-center justify-between gap-4 border-b border-line px-5 py-3">
-                <p className="text-xs font-medium uppercase tracking-[0.16em] text-muted">
+                <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.16em] text-muted">
                     Code à copier
                 </p>
                 <button

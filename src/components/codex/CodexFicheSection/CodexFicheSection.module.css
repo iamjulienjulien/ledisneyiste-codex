@@ -24,6 +24,7 @@
 }
 
 .eyebrow {
+    font-family: var(--projection-font-eyebrow);
     color: var(--codex-fiche-color, var(--color-muted));
     font-size: 0.875rem;
     font-weight: 500;

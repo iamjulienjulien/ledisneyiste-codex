@@ -4,7 +4,7 @@ export default function NotFound() {
     return (
         <main className="flex items-center justify-center px-6 py-16">
             <section className="w-full max-w-2xl">
-                <p className="text-sm font-medium uppercase tracking-[0.24em] text-muted">
+                <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.24em] text-muted">
                     Erreur 404
                 </p>
 

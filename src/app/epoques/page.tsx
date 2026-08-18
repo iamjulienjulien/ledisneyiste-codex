@@ -35,7 +35,7 @@ export default async function EpoquesPage({
                     size="xl"
                 />
                 <div className="max-w-2xl">
-                    <p className="text-sm font-medium uppercase tracking-[0.2em] text-famille-epoques">
+                    <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.2em] text-famille-epoques">
                         Explorer le Codex
                     </p>
 

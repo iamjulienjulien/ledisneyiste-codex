@@ -12,15 +12,15 @@ export default function Home() {
     return (
         <main className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-24">
             <header>
-                <p className="text-sm font-medium uppercase tracking-[0.24em] text-muted">
+                <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.24em] text-muted">
                     Le Disneyiste
                 </p>
 
-                <h1 className="mt-4 text-5xl text-ink sm:text-7xl">
+                <h1 className="mt-4 font-brand text-5xl text-ink sm:text-7xl">
                     Le Codex du Disneyiste
                 </h1>
 
-                <p className="mt-6 max-w-2xl text-xl leading-9 text-ink-soft">
+                <p className="mt-6 max-w-2xl font-display text-xl leading-9 text-ink-soft">
                     Un atlas éditorial pour explorer, relier et raconter les
                     imaginaires Disney.
                 </p>
@@ -43,7 +43,7 @@ export default function Home() {
                 />
 
                 <div className="mt-12">
-                    <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted">
+                    <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.2em] text-muted">
                         Explorer
                     </p>
 

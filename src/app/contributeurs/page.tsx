@@ -32,7 +32,7 @@ export default async function ContributeursPage({
                     size="xl"
                 />
                 <div className="max-w-2xl">
-                    <p className="text-sm font-medium uppercase tracking-[0.2em] text-famille-createurs">
+                    <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.2em] text-famille-createurs">
                         Explorer le Codex
                     </p>
 

@@ -22,7 +22,7 @@ export function CodexEpoqueCard({
         >
             <div className="flex items-start justify-between gap-5">
                 <div className="min-w-0">
-                    <p className="text-xs font-medium uppercase tracking-[0.16em] text-famille-epoques">
+                    <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.16em] text-famille-epoques">
                         {formatDateHistorique(fiche.periode.debut)}
                         {"–"}
                         {fiche.periode.fin

@@ -162,7 +162,7 @@ function SequenceTitle({
 }>) {
     return (
         <div className="max-w-3xl">
-            <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted">
+            <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-muted">
                 {eyebrow}
             </p>
             <h3 id={id} className="mt-3 text-3xl text-ink">
@@ -185,7 +185,7 @@ export function PixieLinkDossier() {
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
                     <div className="bg-surface p-6 sm:p-8">
-                        <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
+                        <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.2em] text-accent">
                             Le clap · Accessoire 003
                         </p>
                         <h2
@@ -202,7 +202,7 @@ export function PixieLinkDossier() {
 
                     <dl className="grid min-w-64 grid-cols-2 gap-px bg-line md:grid-cols-1">
                         <div className="bg-surface-muted px-6 py-4">
-                            <dt className="text-xs uppercase tracking-[0.16em] text-muted">
+                            <dt className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
@@ -210,7 +210,7 @@ export function PixieLinkDossier() {
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
-                            <dt className="text-xs uppercase tracking-[0.16em] text-muted">
+                            <dt className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                                 État
                             </dt>
                             <dd className="mt-1 text-sm font-medium">
@@ -254,7 +254,7 @@ export function PixieLinkDossier() {
                         ],
                     ].map(([term, definition]) => (
                         <div key={term} className="bg-surface p-5">
-                            <dt className="text-xs uppercase tracking-[0.16em] text-muted">
+                            <dt className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                                 {term}
                             </dt>
                             <dd className="mt-2 leading-7 text-ink-soft">
@@ -319,7 +319,7 @@ export function PixieLinkDossier() {
                                         variant="surface"
                                         className="w-full border border-line bg-surface-muted p-5"
                                     >
-                                        <span className="text-xs uppercase tracking-[0.16em] text-muted">
+                                        <span className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                                             Collection
                                         </span>
                                         <span className="mt-3 block text-xl text-ink">
@@ -390,7 +390,7 @@ export function PixieLinkDossier() {
 
                 <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
                     <article className="relative z-[10000] bg-surface p-6">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Rouge crayon
                         </p>
                         <div className="mt-6">
@@ -405,7 +405,7 @@ export function PixieLinkDossier() {
                         </div>
                     </article>
                     <article className="relative z-[10000] bg-surface p-6 text-famille-personnages">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Héritée
                         </p>
                         <div className="mt-6">
@@ -431,7 +431,7 @@ export function PixieLinkDossier() {
 
                 <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-3">
                     <article className="relative z-[10000] bg-surface p-6">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Page courante
                         </p>
                         <div className="mt-5">
@@ -446,7 +446,7 @@ export function PixieLinkDossier() {
                     </article>
 
                     <article className="relative z-[10000] bg-surface p-6">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Libellé multiligne
                         </p>
                         <p className="mt-5 max-w-64 leading-7 text-ink-soft">
@@ -459,7 +459,7 @@ export function PixieLinkDossier() {
                     </article>
 
                     <article className="relative z-[10000] bg-surface p-6">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Surface courante
                         </p>
                         <div className="mt-5">
@@ -469,7 +469,7 @@ export function PixieLinkDossier() {
                                 aria-current="page"
                                 className="border border-line bg-surface-muted p-5"
                             >
-                                <span className="text-xs uppercase tracking-[0.16em] text-muted">
+                                <span className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                                     Index actif
                                 </span>
                                 <span className="mt-2 block text-xl">
@@ -491,7 +491,7 @@ export function PixieLinkDossier() {
 
                 <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-3">
                     <article className="relative z-[10000] bg-surface p-6">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Libellé explicite
                         </p>
                         <p className="mt-4 text-sm leading-6 text-ink-soft">
@@ -500,7 +500,7 @@ export function PixieLinkDossier() {
                         </p>
                     </article>
                     <article className="relative z-[10000] bg-surface p-6">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Focus visible
                         </p>
                         <div className="mt-5">
@@ -513,7 +513,7 @@ export function PixieLinkDossier() {
                         </div>
                     </article>
                     <article className="relative z-[10000] bg-surface p-6">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Indicateur silencieux
                         </p>
                         <p className="mt-4 text-sm leading-6 text-ink-soft">

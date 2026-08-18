@@ -162,7 +162,7 @@ function SequenceTitle({
 }>) {
     return (
         <div className="max-w-3xl">
-            <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted">
+            <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-muted">
                 {eyebrow}
             </p>
             <h3 id={id} className="mt-3 text-3xl text-ink">
@@ -185,7 +185,7 @@ export function PixieBadgeDossier() {
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
                     <div className="bg-surface p-6 sm:p-8">
-                        <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
+                        <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.2em] text-accent">
                             Le clap · Accessoire 004
                         </p>
                         <h2
@@ -202,7 +202,7 @@ export function PixieBadgeDossier() {
 
                     <dl className="grid min-w-64 grid-cols-2 gap-px bg-line md:grid-cols-1">
                         <div className="bg-surface-muted px-6 py-4">
-                            <dt className="text-xs uppercase tracking-[0.16em] text-muted">
+                            <dt className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
@@ -210,7 +210,7 @@ export function PixieBadgeDossier() {
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
-                            <dt className="text-xs uppercase tracking-[0.16em] text-muted">
+                            <dt className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                                 État
                             </dt>
                             <dd className="mt-1 text-sm font-medium">
@@ -254,7 +254,7 @@ export function PixieBadgeDossier() {
                         ],
                     ].map(([term, definition]) => (
                         <div key={term} className="bg-surface p-5">
-                            <dt className="text-xs uppercase tracking-[0.16em] text-muted">
+                            <dt className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                                 {term}
                             </dt>
                             <dd className="mt-2 leading-7 text-ink-soft">
@@ -337,7 +337,7 @@ export function PixieBadgeDossier() {
 
                 <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
                     <article className="bg-surface p-6">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Neutre
                         </p>
                         <div className="mt-5">
@@ -345,7 +345,7 @@ export function PixieBadgeDossier() {
                         </div>
                     </article>
                     <article className="bg-surface p-6">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Couleur
                         </p>
                         <div className="mt-5">
@@ -353,7 +353,7 @@ export function PixieBadgeDossier() {
                         </div>
                     </article>
                     <article className="bg-surface p-6 text-famille-createurs">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Hérité
                         </p>
                         <div className="mt-5">
@@ -361,7 +361,7 @@ export function PixieBadgeDossier() {
                         </div>
                     </article>
                     <article className="bg-surface p-6">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Personnalisé
                         </p>
                         <div className="mt-5">
@@ -381,7 +381,7 @@ export function PixieBadgeDossier() {
 
                 <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
                     <article className="bg-surface p-6">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Personnages
                         </p>
                         <div className="mt-5">
@@ -394,7 +394,7 @@ export function PixieBadgeDossier() {
                         </div>
                     </article>
                     <article className="bg-surface p-6">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Contributeurs
                         </p>
                         <div className="mt-5">
@@ -407,7 +407,7 @@ export function PixieBadgeDossier() {
                         </div>
                     </article>
                     <article className="bg-surface p-6">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Œuvres
                         </p>
                         <div className="mt-5">
@@ -420,7 +420,7 @@ export function PixieBadgeDossier() {
                         </div>
                     </article>
                     <article className="bg-surface p-6">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Récompenses
                         </p>
                         <div className="mt-5">
@@ -450,7 +450,7 @@ export function PixieBadgeDossier() {
                             className="grid gap-px border-b border-line bg-line last:border-b-0 lg:grid-cols-[12rem_1fr]"
                         >
                             <div className="bg-surface-muted p-5">
-                                <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                                <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                                     {variant.name}
                                 </p>
                             </div>
@@ -508,7 +508,7 @@ export function PixieBadgeDossier() {
 
                 <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
                     <article className="bg-surface p-6">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Sans symbole
                         </p>
                         <div className="mt-5">
@@ -516,7 +516,7 @@ export function PixieBadgeDossier() {
                         </div>
                     </article>
                     <article className="bg-surface p-6">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Avec symbole
                         </p>
                         <div className="mt-5">
@@ -564,7 +564,7 @@ export function PixieBadgeDossier() {
                         ],
                     ].map(([title, description]) => (
                         <article key={title} className="bg-surface p-6">
-                            <h4 className="text-xs uppercase tracking-[0.16em] text-muted">
+                            <h4 className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                                 {title}
                             </h4>
                             <p className="mt-4 text-sm leading-6 text-ink-soft">

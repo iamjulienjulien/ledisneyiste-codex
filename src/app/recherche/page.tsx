@@ -36,7 +36,7 @@ export default async function RecherchePage({
     return (
         <main className="mx-auto min-h-screen w-full max-w-6xl px-6 py-16 sm:py-20">
             <header className="max-w-3xl">
-                <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted">
+                <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.2em] text-muted">
                     Explorer toutes les archives
                 </p>
 
@@ -98,7 +98,7 @@ export default async function RecherchePage({
                     className="mt-10 max-w-2xl"
                     aria-labelledby="attente-title"
                 >
-                    <p className="text-sm font-medium uppercase tracking-[0.18em] text-muted">
+                    <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.18em] text-muted">
                         La table attend son sujet
                     </p>
                     <h2 id="attente-title" className="mt-3 text-3xl text-ink">
@@ -114,7 +114,7 @@ export default async function RecherchePage({
                     className="mt-10 max-w-2xl"
                     aria-labelledby="vide-title"
                 >
-                    <p className="text-sm font-medium uppercase tracking-[0.18em] text-muted">
+                    <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.18em] text-muted">
                         Aucun raccord trouvé
                     </p>
                     <h2 id="vide-title" className="mt-3 text-3xl text-ink">
@@ -145,7 +145,7 @@ export default async function RecherchePage({
                                     size="md"
                                 />
                                 <div>
-                                    <p className="text-xs font-medium uppercase tracking-[0.18em] text-famille-personnages">
+                                    <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-famille-personnages">
                                         {resultats.personnages.length} résultat
                                         {resultats.personnages.length > 1
                                             ? "s"
@@ -192,7 +192,7 @@ export default async function RecherchePage({
                                     size="md"
                                 />
                                 <div>
-                                    <p className="text-xs font-medium uppercase tracking-[0.18em] text-famille-createurs">
+                                    <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-famille-createurs">
                                         {resultats.contributeurs.length}{" "}
                                         résultat
                                         {resultats.contributeurs.length > 1
@@ -243,7 +243,7 @@ export default async function RecherchePage({
                                     size="md"
                                 />
                                 <div>
-                                    <p className="text-xs font-medium uppercase tracking-[0.18em] text-famille-oeuvres">
+                                    <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-famille-oeuvres">
                                         {resultats.oeuvres.length} résultat
                                         {resultats.oeuvres.length > 1
                                             ? "s"
@@ -293,7 +293,7 @@ export default async function RecherchePage({
                                     size="md"
                                 />
                                 <div>
-                                    <p className="text-xs font-medium uppercase tracking-[0.18em] text-famille-epoques">
+                                    <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-famille-epoques">
                                         {resultats.epoques.length} résultat
                                         {resultats.epoques.length > 1
                                             ? "s"

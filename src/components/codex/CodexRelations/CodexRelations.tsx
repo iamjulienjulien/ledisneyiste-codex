@@ -58,7 +58,7 @@ export function CodexRelations({ groupes }: CodexRelationsProps) {
             <div className={styles.groups}>
                 {groupesVisibles.map((groupe) => (
                     <section key={groupe.titre} className={styles.group}>
-                        <h3 className="text-xs font-medium uppercase tracking-[0.16em] text-muted">
+                        <h3 className="text-xs font-medium font-eyebrow uppercase tracking-[0.16em] text-muted">
                             {groupe.titre}
                         </h3>
 

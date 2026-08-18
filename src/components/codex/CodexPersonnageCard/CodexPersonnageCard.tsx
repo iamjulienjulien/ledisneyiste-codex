@@ -65,13 +65,13 @@ export function CodexPersonnageCard({
 
             <dl className="grid gap-5 sm:grid-cols-2">
                 <div>
-                    <dt className="text-xs uppercase tracking-[0.14em] text-muted">
+                    <dt className="text-xs font-eyebrow uppercase tracking-[0.14em] text-muted">
                         Espèce
                     </dt>
                     <dd className="mt-2 text-sm text-ink">{fiche.espece}</dd>
                 </div>
                 <div>
-                    <dt className="text-xs uppercase tracking-[0.14em] text-muted">
+                    <dt className="text-xs font-eyebrow uppercase tracking-[0.14em] text-muted">
                         Première apparition
                     </dt>
                     <dd className="mt-2 text-sm leading-6 text-ink">

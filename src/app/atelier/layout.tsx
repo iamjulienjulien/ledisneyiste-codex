@@ -29,7 +29,7 @@ export default function AtelierLayout({
             <header className="border-b border-line pb-8">
                 <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
                     <div>
-                        <p className="text-xs font-medium uppercase tracking-[0.24em] text-accent">
+                        <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.24em] text-accent">
                             Projection privée
                         </p>
 

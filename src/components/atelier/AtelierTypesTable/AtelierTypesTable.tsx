@@ -13,7 +13,7 @@ export function AtelierTypesTable({ types }: AtelierTypesTableProps) {
     return (
         <div className={styles.root}>
             <table className="w-full min-w-2xl border-collapse text-left">
-                <thead className="bg-surface-muted text-xs uppercase tracking-[0.16em] text-muted">
+                <thead className="bg-surface-muted text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                     <tr>
                         <th scope="col" className="px-5 py-4 font-medium">
                             Type
