@@ -1,6 +1,7 @@
 export { PixieDustButton } from "./PixieDustButton";
 export type {
+    PixieDustButtonColor,
     PixieDustButtonProps,
     PixieDustButtonSize,
     PixieDustButtonVariant,
-} from "./PixieDustButton";
+} from "./PixieDustButton.types";

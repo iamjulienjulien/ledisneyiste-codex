@@ -1,32 +1,52 @@
-import type { ReactNode } from "react";
+import { getAtelierAnimationColor } from "@/registry/colors";
+import type {
+    PixieDustButtonProps,
+    PixieDustButtonStyle,
+} from "./PixieDustButton.types";
 import styles from "./PixieDustButton.module.css";
-
-export type PixieDustButtonVariant = "principal" | "secondaire" | "discret";
-
-export type PixieDustButtonSize = "petit" | "moyen" | "grand";
-
-export type PixieDustButtonProps = Readonly<{
-    children: ReactNode;
-    variante?: PixieDustButtonVariant;
-    taille?: PixieDustButtonSize;
-    disabled?: boolean;
-    miseAuPoint?: boolean;
-}>;
 
 export function PixieDustButton({
     children,
-    variante = "principal",
-    taille = "moyen",
+    variant = "solid",
+    size = "md",
+    color = false,
+    loading = false,
+    fullWidth = false,
     disabled = false,
-    miseAuPoint = false,
+    type = "button",
+    className = "",
+    style,
+    "aria-busy": ariaBusy,
+    ...buttonProps
 }: PixieDustButtonProps) {
+    const colorDefinition = color ? getAtelierAnimationColor(color) : null;
+    const buttonStyle: PixieDustButtonStyle = {
+        ...style,
+        ...(colorDefinition
+            ? { "--pixie-dust-button-color": colorDefinition.cssValue }
+            : {}),
+        "--pixie-dust-button-foreground": colorDefinition
+            ? colorDefinition.foreground === "light"
+                ? "var(--pixie-dust-button-contrast-light)"
+                : "var(--pixie-dust-button-contrast-dark)"
+            : "var(--color-accent-contrast)",
+    };
+
     return (
         <button
-            type="button"
-            disabled={disabled}
-            className={`${styles.root} ${styles[variante]} ${styles[taille]} ${miseAuPoint ? styles.miseAuPoint : ""}`}
+            {...buttonProps}
+            type={type}
+            disabled={disabled || loading}
+            aria-busy={loading ? true : ariaBusy}
+            className={`${styles.root} ${styles[variant]} ${styles[size]} ${fullWidth ? styles.fullWidth : ""} ${loading ? styles.loading : ""} ${className}`.trim()}
+            style={buttonStyle}
+            data-pixie-dust-button-color={color || "theme"}
+            data-pixie-dust-button-loading={loading || undefined}
         >
-            {children}
+            <span className={styles.label}>{children}</span>
+            {loading ? (
+                <span aria-hidden="true" className={styles.spinner} />
+            ) : null}
         </button>
     );
 }

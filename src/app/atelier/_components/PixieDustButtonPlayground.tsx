@@ -6,53 +6,66 @@ import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import {
     PixieDustButton,
+    type PixieDustButtonColor,
     type PixieDustButtonSize,
     type PixieDustButtonVariant,
 } from "@/components/ui/PixieDustButton";
+import {
+    getAtelierAnimationColor,
+    getAtelierAnimationColorSlugs,
+} from "@/registry/colors";
+import type { AtelierAnimationColorSlug } from "@/types/colors";
 
 type Lumiere = "sombre" | "claire";
 type Cadre = "compact" | "moyen" | "large";
 
-const variantes: ReadonlyArray<{
-    value: PixieDustButtonVariant;
-    label: string;
-}> = [
-    { value: "principal", label: "Principal" },
-    { value: "secondaire", label: "Secondaire" },
-    { value: "discret", label: "Discret" },
-];
+const variants = [
+    { value: "solid", label: "Plein" },
+    { value: "soft", label: "Doux" },
+    { value: "outline", label: "Contour" },
+    { value: "ghost", label: "Fantôme" },
+] as const;
 
-const tailles: ReadonlyArray<{
-    value: PixieDustButtonSize;
-    label: string;
-}> = [
-    { value: "petit", label: "Petit" },
-    { value: "moyen", label: "Moyen" },
-    { value: "grand", label: "Grand" },
-];
+const sizes = [
+    { value: "xs", label: "Très petit" },
+    { value: "sm", label: "Petit" },
+    { value: "md", label: "Moyen" },
+    { value: "lg", label: "Grand" },
+    { value: "xl", label: "Très grand" },
+] as const;
 
-const largeurParCadre: Record<Cadre, string> = {
+const colorSlugs = getAtelierAnimationColorSlugs();
+
+const frameWidths: Record<Cadre, string> = {
     compact: "max-w-64",
     moyen: "max-w-md",
     large: "max-w-none",
 };
 
 export function PixieDustButtonPlayground() {
-    const [libelle, setLibelle] = useState("Ouvrir les archives");
-    const [variante, setVariante] =
-        useState<PixieDustButtonVariant>("principal");
-    const [taille, setTaille] = useState<PixieDustButtonSize>("moyen");
-    const [lumiere, setLumiere] = useState<Lumiere>("sombre");
-    const [cadre, setCadre] = useState<Cadre>("large");
+    const [label, setLabel] = useState("Ouvrir les archives");
+    const [variant, setVariant] = useState<PixieDustButtonVariant>("solid");
+    const [size, setSize] = useState<PixieDustButtonSize>("md");
+    const [color, setColor] = useState<PixieDustButtonColor>(false);
     const [disabled, setDisabled] = useState(false);
-    const [miseAuPoint, setMiseAuPoint] = useState(false);
-
+    const [loading, setLoading] = useState(false);
+    const [fullWidth, setFullWidth] = useState(false);
+    const [focusPreview, setFocusPreview] = useState(false);
+    const [light, setLight] = useState<Lumiere>("sombre");
+    const [frame, setFrame] = useState<Cadre>("large");
+    const safeLabel = label || "Bouton";
     const code = `<PixieDustButton
-    variante="${variante}"
-    taille="${taille}"${disabled ? "\n    disabled" : ""}
+    variant="${variant}"
+    size="${size}"${color ? `\n    color="${color}"` : ""}${loading ? "\n    loading" : ""}${fullWidth ? "\n    fullWidth" : ""}${disabled ? "\n    disabled" : ""}
 >
-    ${libelle || "Bouton"}
+    ${safeLabel}
 </PixieDustButton>`;
+
+    function selectColor(value: string) {
+        setColor(
+            value === "theme" ? false : (value as AtelierAnimationColorSlug),
+        );
+    }
 
     return (
         <div className="relative z-[10000] overflow-hidden border border-line bg-surface">
@@ -63,16 +76,16 @@ export function PixieDustButtonPlayground() {
                     <div className="mt-6 space-y-7">
                         <div>
                             <label
-                                htmlFor="bouton-libelle"
+                                htmlFor="button-label"
                                 className="text-sm font-medium text-ink"
                             >
                                 Libellé
                             </label>
                             <input
-                                id="bouton-libelle"
-                                value={libelle}
+                                id="button-label"
+                                value={label}
                                 onChange={(event) =>
-                                    setLibelle(event.target.value)
+                                    setLabel(event.target.value)
                                 }
                                 className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
                             />
@@ -80,16 +93,16 @@ export function PixieDustButtonPlayground() {
 
                         <fieldset>
                             <legend className="text-sm font-medium text-ink">
-                                Variante
+                                Variant
                             </legend>
                             <div className="mt-3 space-y-2">
-                                {variantes.map((option) => (
+                                {variants.map((option) => (
                                     <AtelierOptionRadio
                                         key={option.value}
-                                        name="bouton-variante"
+                                        name="button-variant"
                                         {...option}
-                                        selectedValue={variante}
-                                        onChange={setVariante}
+                                        selectedValue={variant}
+                                        onChange={setVariant}
                                     />
                                 ))}
                             </div>
@@ -100,19 +113,54 @@ export function PixieDustButtonPlayground() {
                                 Taille
                             </legend>
                             <div className="mt-3 space-y-2">
-                                {tailles.map((option) => (
+                                {sizes.map((option) => (
                                     <AtelierOptionRadio
                                         key={option.value}
-                                        name="bouton-taille"
+                                        name="button-size"
                                         {...option}
-                                        selectedValue={taille}
-                                        onChange={setTaille}
+                                        selectedValue={size}
+                                        onChange={setSize}
                                     />
                                 ))}
                             </div>
                         </fieldset>
 
+                        <div>
+                            <label
+                                htmlFor="button-color"
+                                className="text-sm font-medium text-ink"
+                            >
+                                Couleur
+                            </label>
+                            <select
+                                id="button-color"
+                                value={color || "theme"}
+                                onChange={(event) =>
+                                    selectColor(event.target.value)
+                                }
+                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                            >
+                                <option value="theme">Thème</option>
+                                {colorSlugs.map((slug) => (
+                                    <option key={slug} value={slug}>
+                                        {getAtelierAnimationColor(slug).label}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
                         <div className="space-y-3">
+                            <label className="flex cursor-pointer items-center gap-2 text-sm text-ink-soft">
+                                <input
+                                    type="checkbox"
+                                    checked={loading}
+                                    onChange={(event) =>
+                                        setLoading(event.target.checked)
+                                    }
+                                    className="accent-accent"
+                                />
+                                Chargement
+                            </label>
                             <label className="flex cursor-pointer items-center gap-2 text-sm text-ink-soft">
                                 <input
                                     type="checkbox"
@@ -127,9 +175,20 @@ export function PixieDustButtonPlayground() {
                             <label className="flex cursor-pointer items-center gap-2 text-sm text-ink-soft">
                                 <input
                                     type="checkbox"
-                                    checked={miseAuPoint}
+                                    checked={fullWidth}
                                     onChange={(event) =>
-                                        setMiseAuPoint(event.target.checked)
+                                        setFullWidth(event.target.checked)
+                                    }
+                                    className="accent-accent"
+                                />
+                                Pleine largeur
+                            </label>
+                            <label className="flex cursor-pointer items-center gap-2 text-sm text-ink-soft">
+                                <input
+                                    type="checkbox"
+                                    checked={focusPreview}
+                                    onChange={(event) =>
+                                        setFocusPreview(event.target.checked)
                                     }
                                     className="accent-accent"
                                 />
@@ -141,28 +200,33 @@ export function PixieDustButtonPlayground() {
 
                 <div className="min-w-0">
                     <AtelierRegiePlateau
-                        namePrefix="bouton"
-                        lumiere={lumiere}
-                        onLumiereChange={setLumiere}
-                        cadre={cadre}
-                        onCadreChange={setCadre}
+                        namePrefix="button"
+                        lumiere={light}
+                        onLumiereChange={setLight}
+                        cadre={frame}
+                        onCadreChange={setFrame}
                     />
 
                     <div
                         data-projection="originale"
-                        data-lumiere={lumiere}
+                        data-lumiere={light}
                         className="flex min-h-80 items-center justify-center overflow-auto bg-canvas p-8"
                     >
                         <div
-                            className={`flex min-h-48 w-full items-center justify-center border border-line bg-surface p-6 transition-[max-width] ${largeurParCadre[cadre]}`}
+                            className={`flex min-h-48 w-full items-center justify-center border border-line bg-surface p-6 transition-[max-width] ${frameWidths[frame]}`}
                         >
                             <PixieDustButton
-                                variante={variante}
-                                taille={taille}
+                                variant={variant}
+                                size={size}
+                                color={color}
+                                loading={loading}
+                                fullWidth={fullWidth}
                                 disabled={disabled}
-                                miseAuPoint={miseAuPoint}
+                                data-focus-preview={
+                                    focusPreview ? "true" : undefined
+                                }
                             >
-                                {libelle || "Bouton"}
+                                {safeLabel}
                             </PixieDustButton>
                         </div>
                     </div>

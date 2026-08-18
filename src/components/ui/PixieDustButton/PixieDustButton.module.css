@@ -1,79 +1,187 @@
 .root {
+    --pixie-dust-button-contrast-light: #fff;
+    --pixie-dust-button-contrast-dark: #000;
+
+    position: relative;
+    isolation: isolate;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+    border: 1px solid transparent;
     border-radius: var(--radius-small);
+    color: var(--pixie-dust-button-color, var(--color-accent));
+    font: inherit;
     font-weight: 500;
+    line-height: 1.2;
+    text-align: center;
+    cursor: pointer;
     transition:
         color 150ms ease,
         border-color 150ms ease,
-        background-color 150ms ease;
+        background-color 150ms ease,
+        box-shadow 150ms ease,
+        transform 150ms ease;
 }
 
 .root:focus-visible,
-.miseAuPoint {
-    outline: 2px solid var(--color-focus);
+.root[data-focus-preview="true"] {
+    outline: 2px solid var(--pixie-dust-button-color, var(--color-accent));
     outline-offset: 0.1875rem;
+}
+
+.root:not(:disabled):active {
+    transform: translateY(1px);
 }
 
 .root:disabled {
     cursor: not-allowed;
-    opacity: 0.4;
+    opacity: 0.42;
 }
 
-.principal {
-    border: 1px solid var(--color-accent);
-    background: var(--color-accent);
-    color: var(--color-accent-contrast);
+.solid {
+    border-color: var(--pixie-dust-button-color, var(--color-accent));
+    background: var(--pixie-dust-button-color, var(--color-accent));
+    color: var(--pixie-dust-button-foreground);
 }
 
-.principal:not(:disabled):hover {
-    border-color: var(--color-accent-hover);
-    background: var(--color-accent-hover);
+.solid:not(:disabled):hover {
+    border-color: color-mix(
+        in srgb,
+        var(--pixie-dust-button-color, var(--color-accent)) 82%,
+        var(--color-ink)
+    );
+    background: color-mix(
+        in srgb,
+        var(--pixie-dust-button-color, var(--color-accent)) 82%,
+        var(--color-ink)
+    );
 }
 
-.secondaire {
-    border: 1px solid var(--color-line-strong);
-    background: var(--color-surface);
-    color: var(--color-ink);
+.soft {
+    border-color: color-mix(
+        in srgb,
+        var(--pixie-dust-button-color, var(--color-accent)) 22%,
+        transparent
+    );
+    background: color-mix(
+        in srgb,
+        var(--pixie-dust-button-color, var(--color-accent)) 12%,
+        transparent
+    );
 }
 
-.secondaire:not(:disabled):hover {
-    border-color: var(--color-accent);
-    color: var(--color-accent);
+.soft:not(:disabled):hover {
+    border-color: color-mix(
+        in srgb,
+        var(--pixie-dust-button-color, var(--color-accent)) 36%,
+        transparent
+    );
+    background: color-mix(
+        in srgb,
+        var(--pixie-dust-button-color, var(--color-accent)) 20%,
+        transparent
+    );
 }
 
-.discret {
-    border: 1px solid transparent;
+.outline {
+    border-color: color-mix(
+        in srgb,
+        var(--pixie-dust-button-color, var(--color-accent)) 58%,
+        var(--color-line)
+    );
     background: transparent;
-    color: var(--color-accent);
 }
 
-.discret:not(:disabled):hover {
-    background: var(--color-accent-soft);
-    color: var(--color-accent-hover);
+.outline:not(:disabled):hover {
+    border-color: var(--pixie-dust-button-color, var(--color-accent));
+    background: color-mix(
+        in srgb,
+        var(--pixie-dust-button-color, var(--color-accent)) 9%,
+        transparent
+    );
 }
 
-.petit {
+.ghost {
+    border-color: transparent;
+    background: transparent;
+}
+
+.ghost:not(:disabled):hover {
+    background: color-mix(
+        in srgb,
+        var(--pixie-dust-button-color, var(--color-accent)) 11%,
+        transparent
+    );
+}
+
+.xs {
     min-height: 2.25rem;
     padding: 0.375rem 0.75rem;
+    font-size: 0.8125rem;
+}
+
+.sm {
+    min-height: 2.5rem;
+    padding: 0.5rem 0.875rem;
     font-size: 0.875rem;
 }
 
-.moyen {
+.md {
     min-height: 2.75rem;
-    padding: 0.5rem 1rem;
+    padding: 0.625rem 1rem;
     font-size: 1rem;
 }
 
-.grand {
+.lg {
     min-height: 3.25rem;
     padding: 0.75rem 1.25rem;
     font-size: 1.125rem;
 }
 
+.xl {
+    min-height: 3.75rem;
+    padding: 1rem 1.5rem;
+    font-size: 1.25rem;
+}
+
+.fullWidth {
+    width: 100%;
+}
+
+.label {
+    display: inline-flex;
+    min-width: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading .label {
+    opacity: 0;
+}
+
+.spinner {
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    border: 0.125em solid color-mix(in srgb, currentColor 32%, transparent);
+    border-top-color: currentColor;
+    border-radius: 50%;
+    animation: pixie-dust-button-spin 700ms linear infinite;
+}
+
+@keyframes pixie-dust-button-spin {
+    to {
+        transform: rotate(1turn);
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .root {
         transition: none;
+    }
+
+    .spinner {
+        animation: none;
     }
 }
