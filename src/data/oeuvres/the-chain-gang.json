@@ -1,0 +1,76 @@
+{
+    "slug": "the-chain-gang",
+    "type": "oeuvre",
+    "introduction": "The Chain Gang place Mickey du mauvais côté de la loi et Pluto aux frontières de sa propre identité. Prisonnier d’un bagne musical, Mickey s’évade, traverse une poursuite à cheval et finit rejeté dans la cellule qu’il voulait fuir. Deux limiers anonymes lancés sur sa piste introduisent entre-temps la silhouette canine qui deviendra Pluto. Le film ne présente donc pas encore un compagnon fidèle, mais conserve l’instant où un rôle secondaire et dédoublé commence à se détacher du décor pour entrer dans l’histoire des personnages Disney.",
+    "sortie": {
+        "date": {
+            "valeur": "1930-09-05",
+            "precision": "jour"
+        }
+    },
+    "format": "court métrage d’animation",
+    "contributions": [
+        {
+            "contributeur": {
+                "nom": "Burt Gillett"
+            },
+            "roles": ["réalisation"]
+        },
+        {
+            "contributeur": {
+                "nom": "Bert Lewis"
+            },
+            "roles": ["musique"]
+        }
+    ],
+    "personnages": [
+        {
+            "nom": "Mickey Mouse",
+            "type": "personnage",
+            "slug": "mickey-mouse"
+        },
+        {
+            "nom": "Pluto",
+            "type": "personnage",
+            "slug": "pluto"
+        }
+    ],
+    "blocsEditoriaux": [
+        {
+            "type": "repere",
+            "eyebrow": "Première apparition",
+            "titre": "Reconnaître Pluto avant que Pluto n’existe",
+            "paragraphes": [
+                "Lorsque Mickey s’évade, les gardiens lancent deux limiers à sa poursuite. Ils n’ont ni nom propre, ni maître héroïque, ni fonction au-delà de la traque du fugitif. Leur dessin et leur comportement contiennent pourtant la première forme du chien qui deviendra Pluto.",
+                "Cette origine oblige à distinguer apparition et identité. Le personnage n’entre pas dans le film sous une forme achevée : une même silhouette est encore répétée pour remplir un rôle collectif, comme d’autres animaux anonymes des premiers courts métrages.",
+                "Le Codex relie donc The Chain Gang à Pluto tout en conservant cette ambiguïté. La relation ne signifie pas que le compagnon de Mickey est déjà pleinement présent ; elle montre le premier matériau animé à partir duquel il sera construit."
+            ]
+        },
+        {
+            "type": "langage",
+            "eyebrow": "Poursuite",
+            "titre": "Transformer l’évasion en boucle mécanique",
+            "paragraphes": [
+                "Le film organise d’abord le bagne comme un spectacle sonore. Les prisonniers travaillent, chantent et produisent un rythme collectif que Mickey tente de rompre en profitant du désordre pour s’échapper.",
+                "La fuite prolonge cette mécanique dans l’espace. Mickey vole un cheval, subit une chevauchée qu’il contrôle de moins en moins, heurte un poteau puis bascule d’un accident au suivant. Chaque solution devient immédiatement le ressort d’un nouveau danger.",
+                "La trajectoire finit par se refermer : projeté d’une falaise, Mickey traverse le toit de la prison et retombe dans sa cellule. Le héros n’est pas ramené par l’autorité, mais par l’élasticité même du gag qui transforme son évasion en cercle."
+            ]
+        },
+        {
+            "type": "relations",
+            "eyebrow": "Continuité",
+            "titre": "Faire émerger un personnage en trois films",
+            "paragraphes": [
+                "The Chain Gang fournit la silhouette et l’instinct du limier. Quelques semaines plus tard, The Picnic reprend ce modèle pour Rover, le chien de Minnie : l’animal devient unique, reçoit un nom et commence à exister au sein du cercle de Mickey.",
+                "The Moose Hunt achève en 1931 ce premier parcours en installant le chien auprès de Mickey sous le nom de Pluto. L’identité durable naît ainsi par étapes, sans scène officielle où tous ses attributs apparaîtraient simultanément.",
+                "Cette genèse progressive révèle la manière dont les premiers studios réemploient une idée prometteuse. Une silhouette conçue pour une poursuite peut revenir dans une autre relation, gagner un caractère propre puis devenir une vedette sans que son origine disparaisse entièrement."
+            ]
+        }
+    ],
+    "sources": [
+        "d23-chain-gang",
+        "d23-pluto",
+        "d23-pluto-90-years",
+        "afi-chain-gang"
+    ]
+}

@@ -17,7 +17,9 @@
     },
     "premiereApparition": {
         "oeuvre": {
-            "nom": "The Chain Gang"
+            "nom": "The Chain Gang",
+            "type": "oeuvre",
+            "slug": "the-chain-gang"
         },
         "date": {
             "valeur": "1930-09-05",

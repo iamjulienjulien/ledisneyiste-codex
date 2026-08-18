@@ -6,6 +6,7 @@ import mrDuckStepsOutJson from "@/data/oeuvres/mr-duck-steps-out.json";
 import planeCrazyJson from "@/data/oeuvres/plane-crazy.json";
 import steamboatWillieJson from "@/data/oeuvres/steamboat-willie.json";
 import theBandConcertJson from "@/data/oeuvres/the-band-concert.json";
+import theChainGangJson from "@/data/oeuvres/the-chain-gang.json";
 import theGallopinGauchoJson from "@/data/oeuvres/the-gallopin-gaucho.json";
 import theSkeletonDanceJson from "@/data/oeuvres/the-skeleton-dance.json";
 import threeLittlePigsJson from "@/data/oeuvres/three-little-pigs.json";
@@ -20,6 +21,7 @@ export const fichesOeuvres = [
     theGallopinGauchoJson as FicheOeuvreDisney,
     planeCrazyJson as FicheOeuvreDisney,
     theSkeletonDanceJson as FicheOeuvreDisney,
+    theChainGangJson as FicheOeuvreDisney,
     flowersAndTreesJson as FicheOeuvreDisney,
     threeLittlePigsJson as FicheOeuvreDisney,
     theWiseLittleHenJson as FicheOeuvreDisney,
