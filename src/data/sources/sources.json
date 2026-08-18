@@ -897,5 +897,12 @@
         "editeur": "Academy of Motion Picture Arts and Sciences",
         "url": "https://www.oscars.org/oscars/ceremonies/1934",
         "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "ampas-7th-academy-awards",
+        "titre": "The 7th Academy Awards | 1935",
+        "editeur": "Academy of Motion Picture Arts and Sciences",
+        "url": "https://www.oscars.org/oscars/ceremonies/1935",
+        "dateConsultation": "2026-08-18"
     }
 ]

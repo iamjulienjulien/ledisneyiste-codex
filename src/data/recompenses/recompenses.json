@@ -96,5 +96,33 @@
             "d23-academy-awards",
             "d23-three-little-pigs"
         ]
+    },
+    {
+        "id": "academy-awards-1935-the-tortoise-and-the-hare",
+        "institution": {
+            "nom": "Academy of Motion Picture Arts and Sciences",
+            "abreviation": "AMPAS"
+        },
+        "edition": {
+            "nom": "7e cérémonie des Oscars",
+            "numero": 7
+        },
+        "dateAttribution": {
+            "valeur": "1935-02-27",
+            "precision": "jour"
+        },
+        "nature": "competitive",
+        "categorie": "Meilleur court métrage d’animation",
+        "beneficiaires": [
+            {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            }
+        ],
+        "oeuvreConcernee": {
+            "nom": "The Tortoise and the Hare"
+        },
+        "sources": ["ampas-7th-academy-awards", "d23-academy-awards"]
     }
 ]
