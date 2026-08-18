@@ -1,5 +1,6 @@
 import { CodexReferenceLink } from "@/components/codex/CodexReferenceLink";
 import { PixieBadge } from "@/components/ui/PixieBadge";
+import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { formatDateHistorique } from "@/lib/date";
 import type { CodexRecompensesProps } from "@/types/codex-recompenses";
 import styles from "./CodexRecompenses.module.css";
@@ -31,16 +32,26 @@ export function CodexRecompenses({
                 {recompenses.map((recompense) => (
                     <li key={recompense.id} className={styles.item}>
                         <div className={styles.heading}>
-                            <div>
-                                <p className="text-sm text-muted">
-                                    {recompense.institution.nom}
-                                    {recompense.institution.abreviation &&
-                                        ` · ${recompense.institution.abreviation}`}
-                                </p>
+                            <div className={styles.identity}>
+                                <PixieSymbol
+                                    registry="recompenses"
+                                    collection="trophees"
+                                    slug={recompense.trophee}
+                                    size="lg"
+                                />
 
-                                <h3 className="mt-2 text-2xl text-ink">
-                                    {recompense.categorie ?? recompense.motif}
-                                </h3>
+                                <div>
+                                    <p className="text-sm text-muted">
+                                        {recompense.institution.nom}
+                                        {recompense.institution.abreviation &&
+                                            ` · ${recompense.institution.abreviation}`}
+                                    </p>
+
+                                    <h3 className="mt-2 text-2xl text-ink">
+                                        {recompense.categorie ??
+                                            recompense.motif}
+                                    </h3>
+                                </div>
                             </div>
 
                             <PixieBadge
