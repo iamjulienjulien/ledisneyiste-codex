@@ -21,7 +21,7 @@ const categories = [
         nom: "Les Accessoires",
         domaine: "Primitives",
         description:
-            "Les éléments simples et réutilisables qui entreront bientôt dans toutes les scènes du Codex.",
+            "Les éléments simples et réutilisables qui jouent désormais dans toutes les scènes du Codex.",
         statut: "En projection",
         href: "#accessoires",
     },
@@ -113,8 +113,8 @@ export default function AtelierPage() {
 
                 <p className="mt-6 max-w-3xl text-lg leading-8 text-ink-soft">
                     L’Atelier rassemble les fondations et les composants du
-                    Codex dans un espace de répétition. Chaque élément pourra y
-                    être observé seul, essayé dans ses différents états puis
+                    Codex dans un espace de répétition. Chaque élément y est
+                    observé seul, essayé dans ses différents états puis
                     documenté avant d’entrer dans l’interface publique.
                 </p>
             </section>
@@ -244,13 +244,12 @@ export default function AtelierPage() {
                         id="accessoires-title"
                         className="mt-3 text-4xl text-ink"
                     >
-                        Les premières primitives passent devant la caméra
+                        Les premiers accessoires sont prêts à projeter
                     </h2>
                     <p className="mt-5 leading-7 text-ink-soft">
-                        Les primitives validées sont prêtes à entrer dans le
-                        Codex tandis que les autres poursuivent leurs essais.
-                        Chaque clap ouvre une fiche complète avec ses états, sa
-                        régie et son générique technique.
+                        Cinq primitives validées jouent désormais dans le Codex.
+                        Chaque clap ouvre leur fiche complète avec leurs états,
+                        leur régie et leur générique technique.
                     </p>
                 </div>
 

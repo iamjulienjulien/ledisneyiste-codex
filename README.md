@@ -20,18 +20,24 @@ Le projet est personnel, indépendant et non officiel.
 Le Codex est développé progressivement à partir d’objets réels plutôt qu’à
 partir d’une architecture encyclopédique définie à l’avance.
 
-Le catalogue actuel réunit **25 fiches documentaires** réparties dans quatre
+Le catalogue actuel réunit **49 fiches documentaires** réparties dans quatre
 familles :
 
-- 6 Personnages issus du cercle de Mickey ;
-- 11 Créateurs, avec Walt Disney, Ub Iwerks et les Nine Old Men ;
-- 6 Œuvres allant de _Steamboat Willie_ à _Mr. Duck Steps Out_ et
-  _Bone Trouble_ ;
+- 10 Personnages, des précurseurs au cercle de Mickey ;
+- 16 Créateurs, des fondateurs aux Nine Old Men ;
+- 21 Œuvres qui racontent les origines du studio jusqu'aux portes de
+  _Blanche-Neige et les Sept Nains_ ;
 - 2 Époques qui couvrent les années 1923 à 1942.
 
 Ces fiches sont reliées entre elles, rattachées automatiquement à leur Époque
-et développées à partir de sources centralisées. Leurs 50 blocs éditoriaux
-emploient une première collection de symboles illustrés.
+et développées à partir de sources centralisées. Leurs 122 blocs éditoriaux
+emploient une première collection de symboles illustrés. Onze récompenses
+documentent également les premières distinctions du studio.
+
+Les quatre index proposent une vue Cartes par défaut et une vue Liste
+partageable par son URL. Les fiches héritent de l'identité de leur famille,
+leurs métadonnées sont matérialisées par des badges et une première recherche
+globale interroge directement les catalogues.
 
 L’interface possède également son Atelier local : un espace hors production où
 les fondations visuelles et les primitives passent de l’esquisse à leur version
@@ -98,9 +104,13 @@ Interface
 public/
 └── symbols/
     ├── blocs/
-    └── codex/
+    ├── codex/
+    └── recompenses/
 
 scripts/
+├── verifier-metadonnees.mjs
+├── verifier-recompenses.mjs
+├── verifier-relations.mjs
 └── verifier-symboles-editoriaux.mjs
 
 src/
@@ -110,6 +120,7 @@ src/
 │   ├── epoques/
 │   ├── oeuvres/
 │   ├── personnages/
+│   ├── recherche/
 │   ├── globals.css
 │   ├── layout.tsx
 │   ├── not-found.tsx
@@ -126,11 +137,14 @@ src/
 │   ├── epoques/
 │   ├── oeuvres/
 │   ├── personnages/
+│   ├── recompenses/
 │   ├── sources/
 │   └── relations.ts
 │
 ├── lib/
 ├── registry/
+│   ├── colors/
+│   ├── metadata/
 │   └── symbols/
 │
 ├── styles/
@@ -297,6 +311,7 @@ blocs.personnages
 blocs.contributeurs
 blocs.oeuvres
 blocs.epoques
+recompenses.trophees
 ```
 
 `PixieSymbol` constitue la porte d’entrée unique vers ce registre. Son appel ne
@@ -317,9 +332,10 @@ Pixie…     → composant validé et prêt à projeter
 
 ## L’Atelier
 
-L’Atelier documente les palettes, les composants, leurs variantes, leur
-accessibilité, leur API et les décisions restant à prendre avant leur
-promotion.
+L'Atelier documente les palettes, les composants, leurs variantes, leur
+accessibilité et leur API. Ses cinq premiers accessoires — `PixieSymbol`,
+`PixieButton`, `PixieLink`, `PixieBadge` et `PixieSeparator` — sont désormais
+prêts à projeter et utilisés dans le Codex.
 
 Il est accessible uniquement en développement :
 
@@ -378,6 +394,9 @@ format
 → format:check
 → lint
 → check:symbols
+→ check:metadata
+→ check:relations
+→ check:recompenses
 → build
 ```
 
@@ -396,12 +415,17 @@ pnpm format
 pnpm format:check
 pnpm lint
 pnpm check:symbols
+pnpm check:metadata
+pnpm check:relations
+pnpm check:recompenses
 pnpm build
 ```
 
 `check:symbols` vérifie que chaque bloc éditorial possède un type présent dans
-la bonne collection du registre et que l’image correspondante existe dans
-`public`.
+la bonne collection du registre et que l'image correspondante existe dans
+`public`. Les trois contrôles suivants éprouvent les métadonnées des catalogues,
+la cohérence des références et des relations, puis les récompenses, leurs
+bénéficiaires, leurs sources et leurs trophées illustrés.
 
 ---
 
