@@ -272,5 +272,28 @@
             "d23-academy-awards",
             "d23-ferdinand-the-bull-wins-oscar"
         ]
+    },
+    {
+        "id": "league-of-nations-medal-1935-walt-disney",
+        "institution": {
+            "nom": "Comité pour le développement littéraire et artistique du cinéma"
+        },
+        "edition": {
+            "nom": "Médaille de la Société des Nations de 1935"
+        },
+        "dateAttribution": {
+            "valeur": "1935",
+            "precision": "annee"
+        },
+        "nature": "honorary",
+        "motif": "Pour sa contribution exceptionnelle au bonheur des enfants du monde par la création de Mickey Mouse et des Silly Symphonies",
+        "beneficiaires": [
+            {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            }
+        ],
+        "sources": ["wdfm-evolution-of-a-dream-awards"]
     }
 ]
