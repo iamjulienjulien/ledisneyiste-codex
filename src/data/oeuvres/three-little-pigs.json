@@ -1,0 +1,99 @@
+{
+    "slug": "three-little-pigs",
+    "type": "oeuvre",
+    "introduction": "Three Little Pigs transforme une fable familière en démonstration de jeu animé. Les trois héros partagent une silhouette presque identique, mais leurs gestes, leurs voix, leurs maisons et leur rapport au travail suffisent à les rendre immédiatement distincts. Lorsque le Grand Méchant Loup souffle sur leurs certitudes, la chanson de Frank Churchill donne au public de la Grande Dépression un refrain contre la peur. Le succès dépasse celui de nombreux longs métrages, confirme que la personnalité peut porter tout un récit et apporte au studio un deuxième Oscar consécutif pour ses Silly Symphonies.",
+    "sortie": {
+        "date": {
+            "valeur": "1933-05-27",
+            "precision": "jour"
+        }
+    },
+    "format": "court métrage d’animation",
+    "contributions": [
+        {
+            "contributeur": {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            },
+            "roles": ["production"]
+        },
+        {
+            "contributeur": {
+                "nom": "Burt Gillett"
+            },
+            "roles": ["réalisation"]
+        },
+        {
+            "contributeur": {
+                "nom": "Fred Moore"
+            },
+            "roles": ["animation"]
+        },
+        {
+            "contributeur": {
+                "nom": "Frank Churchill"
+            },
+            "roles": ["musique", "chanson"]
+        },
+        {
+            "contributeur": {
+                "nom": "Pinto Colvig"
+            },
+            "roles": ["voix du Cochon Pratique"]
+        }
+    ],
+    "personnages": [
+        {
+            "nom": "Nif-Nif"
+        },
+        {
+            "nom": "Naf-Naf"
+        },
+        {
+            "nom": "Nouf-Nouf"
+        },
+        {
+            "nom": "Le Grand Méchant Loup"
+        }
+    ],
+    "blocsEditoriaux": [
+        {
+            "type": "langage",
+            "eyebrow": "Personnalité",
+            "titre": "Distinguer trois silhouettes par leur manière d’agir",
+            "paragraphes": [
+                "Les trois petits cochons sont construits sur un même modèle graphique. Ce choix oblige l’animation à porter leur identité : Nif-Nif joue de la flûte et bâtit en paille, Nouf-Nouf préfère le violon et les planches, tandis que Naf-Naf travaille méthodiquement à sa maison de briques.",
+                "Fred Moore anime les cochons en donnant à chacun un rythme, une posture et une attitude propres. Leur caractère ne vient plus d’un attribut ajouté au dessin, mais de la cohérence entre leurs décisions et chaque mouvement qui les exprime.",
+                "Walt Disney voit dans le résultat l’accomplissement d’une ambition centrale : obtenir une personnalité véritable pendant toute la durée d’un film. Le studio dispose désormais d’une méthode de jeu capable de rendre plusieurs personnages lisibles avant même qu’ils parlent."
+            ]
+        },
+        {
+            "type": "repere",
+            "eyebrow": "Chanson",
+            "titre": "Donner à la peur un refrain que le public peut reprendre",
+            "paragraphes": [
+                "Walt confie la partition à Frank Churchill. « Who’s Afraid of the Big Bad Wolf? » oppose l’insouciance chantée des deux premiers cochons au sérieux du troisième, puis revient comme une réponse collective à la menace du loup.",
+                "Le public de 1933 s’approprie rapidement la chanson comme un hymne face aux inquiétudes de la Grande Dépression. Le morceau dépasse ainsi sa fonction de commentaire musical : il permet au film de circuler hors de la salle et de rejoindre l’expérience quotidienne des spectateurs.",
+                "Pour Disney, c’est le premier grand succès populaire né d’une chanson de court métrage. Musique, caractère et récit ne forment plus trois couches séparées ; le refrain résume à lui seul la psychologie des héros et l’élan optimiste de l’œuvre."
+            ]
+        },
+        {
+            "type": "relations",
+            "eyebrow": "Phénomène",
+            "titre": "Voir un court métrage prendre le pas sur le programme",
+            "paragraphes": [
+                "À sa sortie le 27 mai 1933, Three Little Pigs devient une attraction à part entière. Le court métrage reste parfois à l’affiche après le départ des longs métrages qu’il accompagnait et son nom peut occuper une place plus visible que celui du programme principal.",
+                "Cette popularité entraîne une vaste diffusion des personnages et ouvre la voie à trois suites. Elle montre surtout qu’une Silly Symphony sans vedette préalable peut créer, en quelques minutes, des figures assez fortes pour porter chansons, produits et nouveaux récits.",
+                "En 1934, le film reçoit l’Academy Award du meilleur dessin animé pour la saison 1932-1933. Après Flowers and Trees, ce deuxième Oscar consécutif récompense moins une nouvelle machine qu’une avancée dans le jeu, la musique et la construction de personnages."
+            ]
+        }
+    ],
+    "sources": [
+        "d23-three-little-pigs",
+        "d23-three-little-pigs-released",
+        "d23-academy-awards",
+        "d23-fred-moore",
+        "d23-pinto-colvig"
+    ]
+}

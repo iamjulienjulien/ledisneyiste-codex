@@ -649,5 +649,34 @@
         "datePublication": "2016-10-19",
         "url": "https://www.waltdisney.org/blog/dumbo-characters",
         "dateConsultation": "2026-08-17"
+    },
+    {
+        "id": "d23-three-little-pigs",
+        "titre": "Three Little Pigs (film)",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/three-little-pigs-film/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-three-little-pigs-released",
+        "titre": "The Three Little Pigs is Released",
+        "editeur": "D23: The Official Disney Fan Club",
+        "datePublication": "2019-03-19",
+        "url": "https://d23.com/this-day/three-little-pigs-is-released/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-academy-awards",
+        "titre": "Academy Awards",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/academy-awards/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-fred-moore",
+        "titre": "Moore, Fred",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/moore-fred/",
+        "dateConsultation": "2026-08-18"
     }
 ]

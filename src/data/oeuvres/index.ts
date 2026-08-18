@@ -8,6 +8,7 @@ import steamboatWillieJson from "@/data/oeuvres/steamboat-willie.json";
 import theBandConcertJson from "@/data/oeuvres/the-band-concert.json";
 import theGallopinGauchoJson from "@/data/oeuvres/the-gallopin-gaucho.json";
 import theSkeletonDanceJson from "@/data/oeuvres/the-skeleton-dance.json";
+import threeLittlePigsJson from "@/data/oeuvres/three-little-pigs.json";
 import theWiseLittleHenJson from "@/data/oeuvres/the-wise-little-hen.json";
 import trolleyTroublesJson from "@/data/oeuvres/trolley-troubles.json";
 import type { FicheOeuvreDisney } from "@/types/oeuvre";
@@ -20,6 +21,7 @@ export const fichesOeuvres = [
     planeCrazyJson as FicheOeuvreDisney,
     theSkeletonDanceJson as FicheOeuvreDisney,
     flowersAndTreesJson as FicheOeuvreDisney,
+    threeLittlePigsJson as FicheOeuvreDisney,
     theWiseLittleHenJson as FicheOeuvreDisney,
     theBandConcertJson as FicheOeuvreDisney,
     clockCleanersJson as FicheOeuvreDisney,
