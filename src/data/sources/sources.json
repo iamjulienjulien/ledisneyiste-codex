@@ -736,5 +736,19 @@
         "editeur": "American Film Institute",
         "url": "https://catalog.afi.com/Film/94082-MICKEY%27S-REVUE",
         "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-orphans-benefit",
+        "titre": "Orphans’ Benefit (film)",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/orphans-benefit-film/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-gillett-burton",
+        "titre": "Gillett, Burton",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/gillett-burton/",
+        "dateConsultation": "2026-08-18"
     }
 ]

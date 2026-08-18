@@ -1,0 +1,97 @@
+{
+    "slug": "orphans-benefit",
+    "type": "oeuvre",
+    "introduction": "Orphans’ Benefit fait entrer Donald dans le spectacle de Mickey quelques semaines seulement après ses débuts dans une Silly Symphony. Devant un public d’orphelins turbulents, le canard tente de réciter une comptine, reçoit œufs et projectiles, recommence malgré tout puis explose dans une colère dont Dick Lundy organise les gestes. Le rôle révèle enfin ce que sa voix promettait : une personnalité capable de résister au cadre, de dérégler toute une représentation et de devenir d’autant plus drôle qu’elle refuse obstinément de perdre.",
+    "sortie": {
+        "date": {
+            "valeur": "1934-08-11",
+            "precision": "jour"
+        }
+    },
+    "format": "court métrage d’animation",
+    "contributions": [
+        {
+            "contributeur": {
+                "nom": "Burt Gillett"
+            },
+            "roles": ["réalisation"]
+        },
+        {
+            "contributeur": {
+                "nom": "Dick Lundy"
+            },
+            "roles": ["animation de Donald"]
+        },
+        {
+            "contributeur": {
+                "nom": "Clarence Nash"
+            },
+            "roles": ["voix de Donald Duck"]
+        }
+    ],
+    "personnages": [
+        {
+            "nom": "Mickey Mouse",
+            "type": "personnage",
+            "slug": "mickey-mouse"
+        },
+        {
+            "nom": "Donald Duck",
+            "type": "personnage",
+            "slug": "donald-duck"
+        },
+        {
+            "nom": "Dingo",
+            "type": "personnage",
+            "slug": "dingo"
+        },
+        {
+            "nom": "Clarabelle Cow"
+        },
+        {
+            "nom": "Horace Horsecollar"
+        },
+        {
+            "nom": "Les orphelins"
+        }
+    ],
+    "blocsEditoriaux": [
+        {
+            "type": "repere",
+            "eyebrow": "Deuxième apparition",
+            "titre": "Faire sortir Donald de sa première fable",
+            "paragraphes": [
+                "Dans The Wise Little Hen, Donald appartient encore au récit autonome d’une Silly Symphony. Sa paresse et sa ruse servent une morale complète, sans le relier aux personnages réguliers qui entourent Mickey.",
+                "Orphans’ Benefit le déplace dans la série Mickey Mouse dès sa deuxième apparition. Il partage désormais l’affiche avec Mickey, Dingo, Horace et Clarabelle, non comme un invité présenté au public, mais comme l’un des artistes déjà réunis pour donner une représentation.",
+                "Ce passage suffit à transformer son avenir. Donald n’est plus seulement un canard efficace dans une fable : il devient une force comique capable de revenir dans des distributions différentes et d’exister face aux vedettes installées."
+            ]
+        },
+        {
+            "type": "langage",
+            "eyebrow": "Colère",
+            "titre": "Donner à la fureur une chorégraphie",
+            "paragraphes": [
+                "Donald veut réciter « Mary Had a Little Lamb », mais les orphelins interrompent chaque tentative, lancent des objets et font tomber des œufs sur lui. Le numéro devient une épreuve de résistance où sa volonté de continuer nourrit elle-même le prochain affront.",
+                "Dick Lundy conçoit pour sa rage une action distinctive : Donald saute sur un pied, brandit le poing et défie toute la salle. La colère n’est plus une simple grimace ajoutée à la voix de Clarence Nash ; elle engage le corps entier dans un rythme que le public peut reconnaître et attendre.",
+                "Cette gestuelle devient l’un des fondements du personnage. Plus Donald perd le contrôle, plus son dessin gagne en précision comique : l’échec ne termine pas le numéro, il révèle la vedette qui était encore contenue dans le rôle précédent."
+            ]
+        },
+        {
+            "type": "relations",
+            "eyebrow": "Distribution",
+            "titre": "Réunir pour la première fois Donald et Dingo",
+            "paragraphes": [
+                "Le film rassemble Donald et Dingo pour la première fois. Ils ne forment pas encore avec Mickey le trio que les courts métrages ultérieurs rendront familier, mais leurs tempéraments occupent déjà des rythmes différents au sein d’un même spectacle.",
+                "Mickey organise et présente, Dingo se prête aux numéros avec son rapport singulier à l’action, tandis que Donald transforme toute contrariété en conflit personnel. Clarabelle et Horace complètent cette troupe où chaque figure peut porter un moment avant de rejoindre l’ensemble.",
+                "Le studio refera Orphans’ Benefit en 1941, en couleurs et avec une animation mise à jour. Cette reprise presque plan pour plan témoigne de la solidité de sa formule : une scène commune suffit à exposer les caractères en laissant le public fictif provoquer leurs réactions."
+            ]
+        }
+    ],
+    "sources": [
+        "d23-orphans-benefit",
+        "wdfm-evolution-of-a-duck",
+        "d23-donald-duck",
+        "d23-goofy",
+        "d23-gillett-burton"
+    ]
+}

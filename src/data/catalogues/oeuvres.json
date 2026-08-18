@@ -132,6 +132,18 @@
         "sousTitre": "La Silly Symphony qui fit éclore Donald"
     },
     {
+        "slug": "orphans-benefit",
+        "nom": "Orphans’ Benefit",
+        "type": "oeuvre",
+        "metadata": {
+            "collection": "mickey-mouse",
+            "type": "court-metrage-anime",
+            "son": "sonore",
+            "couleur": "noir-et-blanc"
+        },
+        "sousTitre": "Le spectacle où Donald trouve sa colère"
+    },
+    {
         "slug": "the-band-concert",
         "nom": "The Band Concert",
         "type": "oeuvre",
