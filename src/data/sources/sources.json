@@ -968,5 +968,27 @@
         "editeur": "The Walt Disney Family Museum",
         "url": "https://www.waltdisney.org/blog/seeing-mickeys-true-colors-band-concert-90",
         "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-tortoise-and-the-hare-film",
+        "titre": "Tortoise and the Hare, The (film)",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/tortoise-and-the-hare-the-film/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-tortoise-and-the-hare-released",
+        "titre": "The Tortoise and the Hare is Released",
+        "editeur": "D23: The Official Disney Fan Club",
+        "datePublication": "2019-03-19",
+        "url": "https://d23.com/this-day/the-tortoise-and-the-hare-is-released/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-ham-luske",
+        "titre": "Ham Luske",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/walt-disney-legend/ham-luske/",
+        "dateConsultation": "2026-08-18"
     }
 ]

@@ -144,6 +144,18 @@
         "sousTitre": "Le spectacle où Donald trouve sa colère"
     },
     {
+        "slug": "the-tortoise-and-the-hare",
+        "nom": "The Tortoise and the Hare",
+        "type": "oeuvre",
+        "metadata": {
+            "collection": "silly-symphonies",
+            "type": "court-metrage-anime",
+            "son": "sonore",
+            "couleur": "couleur"
+        },
+        "sousTitre": "La course qui opposa deux rythmes et deux caractères"
+    },
+    {
         "slug": "the-band-concert",
         "nom": "The Band Concert",
         "type": "oeuvre",

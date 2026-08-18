@@ -125,7 +125,9 @@
             }
         ],
         "oeuvreConcernee": {
-            "nom": "The Tortoise and the Hare"
+            "nom": "The Tortoise and the Hare",
+            "type": "oeuvre",
+            "slug": "the-tortoise-and-the-hare"
         },
         "sources": ["ampas-7th-academy-awards", "d23-academy-awards"]
     },

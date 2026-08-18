@@ -1,0 +1,84 @@
+{
+    "slug": "the-tortoise-and-the-hare",
+    "type": "oeuvre",
+    "introduction": "The Tortoise and the Hare transforme la fable d’Ésope en duel de personnalités. Max Hare possède la vitesse, l’assurance et le goût du spectacle ; Toby Tortoise n’a pour lui qu’une progression obstinée que rien ne détourne de la ligne d’arrivée. Sous la direction de Wilfred Jackson, l’animation ne se contente pas d’illustrer une morale connue : elle oppose deux rythmes, deux manières d’occuper l’écran et deux rapports au public. Le film prolonge ainsi la recherche ouverte par Three Little Pigs et offre aux Silly Symphonies un troisième Oscar consécutif.",
+    "sortie": {
+        "date": {
+            "valeur": "1935-01-05",
+            "precision": "jour"
+        }
+    },
+    "format": "court métrage d’animation",
+    "contributions": [
+        {
+            "contributeur": {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            },
+            "roles": ["production"]
+        },
+        {
+            "contributeur": {
+                "nom": "Wilfred Jackson",
+                "type": "contributeur",
+                "slug": "wilfred-jackson"
+            },
+            "roles": ["réalisation"]
+        },
+        {
+            "contributeur": {
+                "nom": "Ham Luske"
+            },
+            "roles": ["animation de Max Hare"]
+        }
+    ],
+    "personnages": [
+        {
+            "nom": "Toby Tortoise"
+        },
+        {
+            "nom": "Max Hare"
+        }
+    ],
+    "blocsEditoriaux": [
+        {
+            "type": "repere",
+            "eyebrow": "Fable",
+            "titre": "Transformer une morale connue en course-spectacle",
+            "paragraphes": [
+                "Le résultat de la course ne constitue pas une surprise : le récit d’Ésope annonce déjà que la persévérance de la tortue finira par vaincre la vitesse du lièvre. Le film déplace donc son enjeu vers la manière dont chacun traverse un parcours dont le public connaît l’issue.",
+                "Toby avance sans interrompre son effort. Max, convaincu que son avantage le protège de toute conséquence, abandonne régulièrement la piste pour séduire ses admiratrices et multiplier les démonstrations. Chaque détour nourrit le spectacle tout en rapprochant le lièvre de sa défaite.",
+                "La morale naît moins d’une leçon énoncée que d’un contraste répété entre les deux comportements. La Silly Symphony conserve la simplicité de la fable, mais la développe par le rythme, les réactions de la foule et l’attente d’un dépassement devenu inévitable."
+            ]
+        },
+        {
+            "type": "langage",
+            "eyebrow": "Personnalité",
+            "titre": "Faire de Max Hare un caractère avant d’en faire un perdant",
+            "paragraphes": [
+                "Ham Luske anime Max Hare en donnant à sa confiance une forme immédiatement lisible. Sa vitesse ne se mesure pas seulement à ses déplacements : elle traverse ses poses, son aisance devant les spectatrices et la certitude avec laquelle il transforme la compétition en scène personnelle.",
+                "Face à cette énergie expansive, Toby Tortoise reste contenu et constant. Sa lenteur organise un second tempo qui paraît presque immobile, mais dont la continuité finit par dominer les accélérations dispersées de Max.",
+                "Cette opposition poursuit l’apprentissage de l’animation de personnalité engagé par le studio. Deux protagonistes peuvent désormais porter une histoire parce que leurs gestes expriment sans cesse la décision fondamentale qui les définit."
+            ]
+        },
+        {
+            "type": "relations",
+            "eyebrow": "Reconnaissance",
+            "titre": "Installer la Silly Symphony sur le podium pour la troisième fois",
+            "paragraphes": [
+                "Le 27 février 1935, The Tortoise and the Hare reçoit l’Academy Award du meilleur court métrage d’animation pour la production de 1934. Walt Disney est récompensé comme producteur, après Flowers and Trees puis Three Little Pigs.",
+                "Ce troisième succès consécutif montre que la série peut renouveler son langage sans dépendre d’une même innovation. Après la couleur et les trois cochons, l’Academy distingue ici la force d’un affrontement construit autour de deux caractères opposés.",
+                "Toby et Max reviendront dès 1936 dans Toby Tortoise Returns, où la course laisse place à un match de boxe. La suite confirme que les protagonistes n’étaient pas de simples véhicules pour la fable : leurs personnalités suffisent désormais à ouvrir un nouveau récit."
+            ]
+        }
+    ],
+    "sources": [
+        "d23-tortoise-and-the-hare-film",
+        "d23-tortoise-and-the-hare-released",
+        "d23-ham-luske",
+        "d23-wilfred-jackson",
+        "ampas-7th-academy-awards",
+        "d23-academy-awards"
+    ]
+}
