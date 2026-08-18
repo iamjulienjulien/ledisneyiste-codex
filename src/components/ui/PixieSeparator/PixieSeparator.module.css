@@ -11,20 +11,20 @@
     color: var(--color-line-strong);
 }
 
-.root[data-pixie-dust-separator-color]:not(
-        [data-pixie-dust-separator-color="theme"]
+.root[data-pixie-separator-color]:not(
+        [data-pixie-separator-color="theme"]
     ).subtle {
     color: color-mix(
         in srgb,
-        var(--pixie-dust-separator-color) 58%,
+        var(--pixie-separator-color) 58%,
         var(--color-line)
     );
 }
 
-.root[data-pixie-dust-separator-color]:not(
-        [data-pixie-dust-separator-color="theme"]
+.root[data-pixie-separator-color]:not(
+        [data-pixie-separator-color="theme"]
     ).strong {
-    color: var(--pixie-dust-separator-color);
+    color: var(--pixie-separator-color);
 }
 
 .line {
@@ -36,8 +36,7 @@
     height: 2px;
     background:
         linear-gradient(currentColor, currentColor)
-            var(--pixie-dust-separator-position) top / min(4rem, 100%) 2px
-            no-repeat,
+            var(--pixie-separator-position) top / min(4rem, 100%) 2px no-repeat,
         linear-gradient(
                 var(--codex-fiche-border, var(--color-line)),
                 var(--codex-fiche-border, var(--color-line))
@@ -45,7 +44,7 @@
             left top / 100% 1px no-repeat;
 }
 
-.root[data-pixie-dust-separator-color="theme"].section {
+.root[data-pixie-separator-color="theme"].section {
     color: var(--codex-fiche-color, var(--color-accent));
 }
 
@@ -124,8 +123,7 @@
                 currentColor 53% 58%,
                 transparent 59%
             )
-            var(--pixie-dust-separator-safe-position) center / 1rem 100%
-            no-repeat,
+            var(--pixie-separator-safe-position) center / 1rem 100% no-repeat,
         linear-gradient(currentColor, currentColor) center / 100% 1px no-repeat;
 }
 
@@ -138,24 +136,23 @@
                 currentColor 0.21rem 0.27rem,
                 transparent 0.28rem
             )
-            var(--pixie-dust-separator-safe-position) center / 1rem 1rem
-            no-repeat,
+            var(--pixie-separator-safe-position) center / 1rem 1rem no-repeat,
         linear-gradient(currentColor, currentColor) center / 100% 1px no-repeat;
 }
 
 .position-start {
-    --pixie-dust-separator-position: 0%;
-    --pixie-dust-separator-safe-position: left;
+    --pixie-separator-position: 0%;
+    --pixie-separator-safe-position: left;
 }
 
 .position-center {
-    --pixie-dust-separator-position: 50%;
-    --pixie-dust-separator-safe-position: center;
+    --pixie-separator-position: 50%;
+    --pixie-separator-safe-position: center;
 }
 
 .position-end {
-    --pixie-dust-separator-position: 100%;
-    --pixie-dust-separator-safe-position: right;
+    --pixie-separator-position: 100%;
+    --pixie-separator-safe-position: right;
 }
 
 .none {

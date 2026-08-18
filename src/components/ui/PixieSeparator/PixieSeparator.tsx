@@ -1,11 +1,11 @@
 import { getAtelierAnimationColor } from "@/registry/colors";
 import type {
-    PixieDustSeparatorProps,
-    PixieDustSeparatorStyle,
-} from "./PixieDustSeparator.types";
-import styles from "./PixieDustSeparator.module.css";
+    PixieSeparatorProps,
+    PixieSeparatorStyle,
+} from "./PixieSeparator.types";
+import styles from "./PixieSeparator.module.css";
 
-export function PixieDustSeparator({
+export function PixieSeparator({
     variant = "line",
     intensity = "subtle",
     color = false,
@@ -19,15 +19,15 @@ export function PixieDustSeparator({
     role,
     "aria-hidden": ariaHidden,
     ...separatorProps
-}: PixieDustSeparatorProps) {
+}: PixieSeparatorProps) {
     const colorDefinition = color ? getAtelierAnimationColor(color) : null;
     const resolvedPosition =
         position ??
         (variant === "section" || variant === "fade" ? "start" : "center");
-    const separatorStyle: PixieDustSeparatorStyle = {
+    const separatorStyle: PixieSeparatorStyle = {
         ...style,
         ...(colorDefinition
-            ? { "--pixie-dust-separator-color": colorDefinition.cssValue }
+            ? { "--pixie-separator-color": colorDefinition.cssValue }
             : {}),
     };
 
@@ -36,7 +36,7 @@ export function PixieDustSeparator({
             {...separatorProps}
             className={`${styles.root} ${styles[variant]} ${styles[intensity]} ${styles[spacing]} ${styles[width]} ${styles[align]} ${styles[`position-${resolvedPosition}`]} ${className}`.trim()}
             style={separatorStyle}
-            data-pixie-dust-separator-color={color || "theme"}
+            data-pixie-separator-color={color || "theme"}
             role={decorative ? "presentation" : role}
             aria-hidden={decorative ? true : ariaHidden}
         />

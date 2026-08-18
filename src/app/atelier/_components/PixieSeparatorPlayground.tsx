@@ -5,14 +5,14 @@ import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import {
-    PixieDustSeparator,
-    type PixieDustSeparatorAlign,
-    type PixieDustSeparatorIntensity,
-    type PixieDustSeparatorPosition,
-    type PixieDustSeparatorSpacing,
-    type PixieDustSeparatorVariant,
-    type PixieDustSeparatorWidth,
-} from "@/components/ui/PixieDustSeparator";
+    PixieSeparator,
+    type PixieSeparatorAlign,
+    type PixieSeparatorIntensity,
+    type PixieSeparatorPosition,
+    type PixieSeparatorSpacing,
+    type PixieSeparatorVariant,
+    type PixieSeparatorWidth,
+} from "@/components/ui/PixieSeparator";
 import {
     getAtelierAnimationColor,
     getAtelierAnimationColorSlugs,
@@ -67,7 +67,7 @@ const frameWidths = {
     large: "max-w-none",
 } as const;
 
-function supportsPosition(variant: PixieDustSeparatorVariant) {
+function supportsPosition(variant: PixieSeparatorVariant) {
     return (
         variant === "section" ||
         variant === "fade" ||
@@ -76,18 +76,17 @@ function supportsPosition(variant: PixieDustSeparatorVariant) {
     );
 }
 
-export function PixieDustSeparatorPlayground() {
-    const [variant, setVariant] = useState<PixieDustSeparatorVariant>("line");
+export function PixieSeparatorPlayground() {
+    const [variant, setVariant] = useState<PixieSeparatorVariant>("line");
     const [intensity, setIntensity] =
-        useState<PixieDustSeparatorIntensity>("subtle");
+        useState<PixieSeparatorIntensity>("subtle");
     const [color, setColor] = useState<AtelierAnimationColorSlug | "theme">(
         "theme",
     );
-    const [spacing, setSpacing] = useState<PixieDustSeparatorSpacing>("md");
-    const [width, setWidth] = useState<PixieDustSeparatorWidth>("full");
-    const [align, setAlign] = useState<PixieDustSeparatorAlign>("center");
-    const [position, setPosition] =
-        useState<PixieDustSeparatorPosition>("center");
+    const [spacing, setSpacing] = useState<PixieSeparatorSpacing>("md");
+    const [width, setWidth] = useState<PixieSeparatorWidth>("full");
+    const [align, setAlign] = useState<PixieSeparatorAlign>("center");
+    const [position, setPosition] = useState<PixieSeparatorPosition>("center");
     const [decorative, setDecorative] = useState(false);
     const [light, setLight] = useState<"sombre" | "claire">("sombre");
     const [frame, setFrame] = useState<"compact" | "moyen" | "large">("large");
@@ -97,7 +96,7 @@ export function PixieDustSeparatorPlayground() {
         ? `\n    position="${position}"`
         : "";
     const decorativeCode = decorative ? "\n    decorative" : "";
-    const code = `<PixieDustSeparator
+    const code = `<PixieSeparator
     variant="${variant}"
     intensity="${intensity}"${colorCode}
     spacing="${spacing}"
@@ -105,7 +104,7 @@ export function PixieDustSeparatorPlayground() {
     align="${align}"${positionCode}${decorativeCode}
 />`;
 
-    function selectVariant(nextVariant: PixieDustSeparatorVariant) {
+    function selectVariant(nextVariant: PixieSeparatorVariant) {
         setVariant(nextVariant);
 
         if (nextVariant === "section" || nextVariant === "fade") {
@@ -291,7 +290,7 @@ export function PixieDustSeparatorPlayground() {
                             <p className="text-sm leading-6 text-ink-soft">
                                 Une première séquence arrive à son terme.
                             </p>
-                            <PixieDustSeparator
+                            <PixieSeparator
                                 variant={variant}
                                 intensity={intensity}
                                 color={color === "theme" ? false : color}

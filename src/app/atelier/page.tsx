@@ -1,7 +1,7 @@
 import { PixieDustButtonDossier } from "./_components/PixieDustButtonDossier";
 import { PixieBadgeDossier } from "./_components/PixieBadgeDossier";
 import { PixieLinkDossier } from "./_components/PixieLinkDossier";
-import { PixieDustSeparatorDossier } from "./_components/PixieDustSeparatorDossier";
+import { PixieSeparatorDossier } from "./_components/PixieSeparatorDossier";
 import { PixieSymbolDossier } from "./_components/PixieSymbolDossier";
 import { PalettesPellicule } from "./_components/PalettesPellicule";
 
@@ -88,9 +88,9 @@ const accessoires = [
         href: "#cartouche",
     },
     {
-        nom: "PixieDustSeparator",
+        nom: "PixieSeparator",
         role: "Marquer un changement de séquence",
-        statut: "Esquisse",
+        statut: "Prêt à projeter",
         href: "#separateur",
     },
 ] as const;
@@ -228,10 +228,10 @@ export default function AtelierPage() {
                         Les premières primitives passent devant la caméra
                     </h2>
                     <p className="mt-5 leading-7 text-ink-soft">
-                        Le premier composant est prêt à projeter tandis que les
-                        suivants poursuivent leurs essais. Chaque clap ouvre une
-                        fiche complète avec ses états, sa régie et son générique
-                        technique.
+                        Les primitives validées sont prêtes à entrer dans le
+                        Codex tandis que les autres poursuivent leurs essais.
+                        Chaque clap ouvre une fiche complète avec ses états, sa
+                        régie et son générique technique.
                     </p>
                 </div>
 
@@ -289,7 +289,7 @@ export default function AtelierPage() {
                 <PixieDustButtonDossier />
                 <PixieLinkDossier />
                 <PixieBadgeDossier />
-                <PixieDustSeparatorDossier />
+                <PixieSeparatorDossier />
             </section>
         </div>
     );

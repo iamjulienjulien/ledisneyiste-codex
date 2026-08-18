@@ -2,9 +2,9 @@ import { AtelierFicheAccessoire } from "@/components/atelier/AtelierFicheAccesso
 import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
-import { PixieDustSeparator } from "@/components/ui/PixieDustSeparator";
+import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { getAtelierAnimationColorSlugs } from "@/registry/colors";
-import { PixieDustSeparatorPlayground } from "./PixieDustSeparatorPlayground";
+import { PixieSeparatorPlayground } from "./PixieSeparatorPlayground";
 
 const variants = [
     {
@@ -67,44 +67,44 @@ const positions = [
 const properties = [
     {
         name: "variant",
-        type: "PixieDustSeparatorVariant",
+        type: "PixieSeparatorVariant",
         defaultValue: '"line"',
         description: "Traitement visuel de la rupture.",
     },
     {
         name: "intensity",
-        type: "PixieDustSeparatorIntensity",
+        type: "PixieSeparatorIntensity",
         defaultValue: '"subtle"',
         description: "Présence visuelle du séparateur.",
     },
     {
         name: "color",
-        type: "PixieDustSeparatorColor",
+        type: "PixieSeparatorColor",
         defaultValue: "false",
         description:
             "Teinte de L’Atelier d’animation ou couleur sémantique du thème.",
     },
     {
         name: "spacing",
-        type: "PixieDustSeparatorSpacing",
+        type: "PixieSeparatorSpacing",
         defaultValue: '"md"',
         description: "Respiration verticale réservée autour du séparateur.",
     },
     {
         name: "width",
-        type: "PixieDustSeparatorWidth",
+        type: "PixieSeparatorWidth",
         defaultValue: '"full"',
         description: "Longueur occupée dans son conteneur.",
     },
     {
         name: "align",
-        type: "PixieDustSeparatorAlign",
+        type: "PixieSeparatorAlign",
         defaultValue: '"center"',
         description: "Alignement des largeurs medium et short.",
     },
     {
         name: "position",
-        type: "PixieDustSeparatorPosition",
+        type: "PixieSeparatorPosition",
         defaultValue: '"start" ou "center"',
         description:
             "Position du point focal ; start pour section et fade, center pour splice et leader.",
@@ -125,7 +125,7 @@ const properties = [
 
 const specificTypes = [
     {
-        name: "PixieDustSeparatorVariant",
+        name: "PixieSeparatorVariant",
         values: [
             '"line"',
             '"section"',
@@ -138,12 +138,12 @@ const specificTypes = [
         description: "Sept traitements pour différents rythmes narratifs.",
     },
     {
-        name: "PixieDustSeparatorIntensity",
+        name: "PixieSeparatorIntensity",
         values: ['"subtle"', '"strong"'],
         description: "Deux niveaux de présence visuelle.",
     },
     {
-        name: "PixieDustSeparatorColor",
+        name: "PixieSeparatorColor",
         values: [
             "false",
             ...getAtelierAnimationColorSlugs().map((slug) => `"${slug}"`),
@@ -152,22 +152,22 @@ const specificTypes = [
             "Une couleur enregistrée ; false conserve les lignes du thème.",
     },
     {
-        name: "PixieDustSeparatorSpacing",
+        name: "PixieSeparatorSpacing",
         values: ['"none"', '"sm"', '"md"', '"lg"'],
         description: "Quatre respirations verticales prédéfinies.",
     },
     {
-        name: "PixieDustSeparatorWidth",
+        name: "PixieSeparatorWidth",
         values: ['"full"', '"medium"', '"short"'],
         description: "Trois longueurs relatives au conteneur.",
     },
     {
-        name: "PixieDustSeparatorAlign",
+        name: "PixieSeparatorAlign",
         values: ['"start"', '"center"', '"end"'],
         description: "Trois positions pour les séparateurs raccourcis.",
     },
     {
-        name: "PixieDustSeparatorPosition",
+        name: "PixieSeparatorPosition",
         values: ['"start"', '"center"', '"end"'],
         description: "Trois positions internes pour le point focal.",
     },
@@ -207,12 +207,12 @@ function SequenceTitle({
     );
 }
 
-export function PixieDustSeparatorDossier() {
+export function PixieSeparatorDossier() {
     return (
         <AtelierFicheAccessoire
             id="separateur"
             labelledBy="separateur-title"
-            nom="PixieDustSeparator"
+            nom="PixieSeparator"
             className="mt-16 scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
@@ -224,7 +224,7 @@ export function PixieDustSeparatorDossier() {
                             id="separateur-title"
                             className="mt-4 text-4xl text-ink sm:text-5xl"
                         >
-                            PixieDustSeparator
+                            PixieSeparator
                         </h2>
                         <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
                             Marquer le passage entre deux séquences sans ajouter
@@ -238,7 +238,7 @@ export function PixieDustSeparatorDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.2.0
+                                1.0.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -246,7 +246,7 @@ export function PixieDustSeparatorDossier() {
                                 État
                             </dt>
                             <dd className="mt-1 text-sm font-medium">
-                                <AtelierStatut statut="Esquisse" />
+                                <AtelierStatut statut="Prêt à projeter" />
                             </dd>
                         </div>
                     </dl>
@@ -310,12 +310,12 @@ export function PixieDustSeparatorDossier() {
                         <p className="text-sm text-ink-soft">
                             Première séquence
                         </p>
-                        <PixieDustSeparator />
+                        <PixieSeparator />
                         <p className="text-sm text-ink-soft">
                             Séquence suivante
                         </p>
                     </div>
-                    <CodeExample>{`<PixieDustSeparator />`}</CodeExample>
+                    <CodeExample>{`<PixieSeparator />`}</CodeExample>
                 </div>
             </section>
 
@@ -331,7 +331,7 @@ export function PixieDustSeparatorDossier() {
                     {variants.map((variant) => (
                         <article key={variant.value} className="bg-surface p-6">
                             <div className="flex min-h-24 items-center">
-                                <PixieDustSeparator
+                                <PixieSeparator
                                     variant={variant.value}
                                     position={variant.position}
                                     intensity={
@@ -373,7 +373,7 @@ export function PixieDustSeparatorDossier() {
                                         <p className="text-xs uppercase tracking-[0.16em] text-muted">
                                             {position.label}
                                         </p>
-                                        <PixieDustSeparator
+                                        <PixieSeparator
                                             variant={variant.value}
                                             position={position.value}
                                             intensity="strong"
@@ -401,13 +401,13 @@ export function PixieDustSeparatorDossier() {
                         <p className="text-xs uppercase tracking-[0.16em] text-muted">
                             Discret
                         </p>
-                        <PixieDustSeparator intensity="subtle" spacing="sm" />
+                        <PixieSeparator intensity="subtle" spacing="sm" />
                     </article>
                     <article className="bg-surface p-6">
                         <p className="text-xs uppercase tracking-[0.16em] text-muted">
                             Soutenu
                         </p>
-                        <PixieDustSeparator intensity="strong" spacing="sm" />
+                        <PixieSeparator intensity="strong" spacing="sm" />
                     </article>
                 </div>
             </section>
@@ -433,7 +433,7 @@ export function PixieDustSeparatorDossier() {
                             <p className="text-xs uppercase tracking-[0.16em] text-muted">
                                 {label}
                             </p>
-                            <PixieDustSeparator spacing={spacing} />
+                            <PixieSeparator spacing={spacing} />
                             <p className="text-xs text-muted">
                                 spacing=&quot;{spacing}&quot;
                             </p>
@@ -474,7 +474,7 @@ export function PixieDustSeparatorDossier() {
                             <p className="text-xs uppercase tracking-[0.16em] text-muted">
                                 {label}
                             </p>
-                            <PixieDustSeparator
+                            <PixieSeparator
                                 width={width}
                                 align={align}
                                 spacing="sm"
@@ -496,7 +496,7 @@ export function PixieDustSeparatorDossier() {
                 />
 
                 <div className="mt-7 border border-line bg-surface p-8">
-                    <PixieDustSeparator
+                    <PixieSeparator
                         variant="beam"
                         intensity="strong"
                         color="bleu-reperage"
@@ -527,7 +527,7 @@ export function PixieDustSeparatorDossier() {
                             Le composant produit un élément hr qui signale une
                             rupture thématique aux technologies d’assistance.
                         </p>
-                        <PixieDustSeparator spacing="sm" />
+                        <PixieSeparator spacing="sm" />
                         <code className="font-mono text-xs text-accent">
                             decorative=false
                         </code>
@@ -540,7 +540,7 @@ export function PixieDustSeparatorDossier() {
                             Une respiration déjà annoncée par un titre peut être
                             retirée de l’arbre d’accessibilité.
                         </p>
-                        <PixieDustSeparator decorative spacing="sm" />
+                        <PixieSeparator decorative spacing="sm" />
                         <code className="font-mono text-xs text-accent">
                             decorative=true
                         </code>
@@ -559,7 +559,7 @@ export function PixieDustSeparatorDossier() {
                     description="Le traitement, la couleur, la respiration et la sémantique peuvent être combinés sur un plateau isolé."
                 />
                 <div className="mt-7">
-                    <PixieDustSeparatorPlayground />
+                    <PixieSeparatorPlayground />
                 </div>
             </section>
 
@@ -570,7 +570,7 @@ export function PixieDustSeparatorDossier() {
                 <SequenceTitle
                     id="separateur-generique"
                     eyebrow="Générique technique"
-                    title="Types et propriétés de l’esquisse"
+                    title="Types et propriétés du composant"
                 />
 
                 <div className="mt-7">
@@ -586,46 +586,6 @@ export function PixieDustSeparatorDossier() {
                     <div className="mt-4">
                         <AtelierTypesTable types={specificTypes} />
                     </div>
-                </div>
-            </section>
-
-            <section aria-labelledby="separateur-journal" className="mt-16">
-                <SequenceTitle
-                    id="separateur-journal"
-                    eyebrow="Journal de production"
-                    title="Les conditions du passage à PixieSeparator"
-                />
-
-                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-3">
-                    <article className="bg-surface p-6">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
-                            Contextes réels
-                        </p>
-                        <p className="mt-3 leading-7 text-ink-soft">
-                            Comparer les quatre respirations et les trois
-                            longueurs sur une fiche longue et un petit écran.
-                        </p>
-                    </article>
-                    <article className="bg-surface p-6">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
-                            Validation
-                        </p>
-                        <p className="mt-3 leading-7 text-ink-soft">
-                            Vérifier les sept variantes, les couleurs
-                            enregistrées et chaque rupture avec ou sans
-                            sémantique.
-                        </p>
-                    </article>
-                    <article className="bg-surface p-6">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
-                            Promotion
-                        </p>
-                        <p className="mt-3 leading-7 text-ink-soft">
-                            Remplacer une vraie rupture sans détourner les
-                            bordures structurelles, puis le renommer en
-                            PixieSeparator 1.0.0.
-                        </p>
-                    </article>
                 </div>
             </section>
         </AtelierFicheAccessoire>
