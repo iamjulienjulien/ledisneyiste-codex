@@ -89,6 +89,12 @@ export default function AtelierLayout({
                     >
                         Les Dialogues
                     </a>
+                    <a
+                        href="#montage"
+                        className="font-medium text-ink-soft underline-offset-4 hover:text-accent hover:underline"
+                    >
+                        Le Montage
+                    </a>
                 </nav>
             </header>
 

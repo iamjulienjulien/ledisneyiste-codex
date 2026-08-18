@@ -49,8 +49,8 @@ const categories = [
         domaine: "Composition",
         description:
             "Assemblages et rythmes qui transforment les éléments isolés en séquences lisibles.",
-        statut: "Hors champ",
-        href: null,
+        statut: "En préparation",
+        href: "#montage",
     },
     {
         numero: "06",
@@ -187,6 +187,64 @@ const dialogues = [
     },
 ] as const;
 
+const montage = [
+    {
+        nom: "PixieDustContainer",
+        role: "Centrer et contenir une séquence",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustStack",
+        role: "Régler le rythme d’une séquence verticale",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustCluster",
+        role: "Rassembler des éléments avec retour à la ligne",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustSection",
+        role: "Composer une séquence éditoriale complète",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustGrid",
+        role: "Distribuer une collection sur une grille responsive",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustSplit",
+        role: "Répartir deux zones en champ et contrechamp",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustSidebar",
+        role: "Associer un contenu principal à une régie latérale",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustSwitcher",
+        role: "Changer de disposition selon l’espace disponible",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustRail",
+        role: "Dérouler une collection sur un travelling horizontal",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustBleed",
+        role: "Faire sortir une séquence de son cadre de lecture",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustStickyRegion",
+        role: "Maintenir une région visible pendant le défilement",
+        statut: "À esquisser",
+    },
+] as const;
+
 export default function AtelierPage() {
     return (
         <div className="py-12 sm:py-16">
@@ -229,7 +287,7 @@ export default function AtelierPage() {
                     </div>
 
                     <p className="text-sm text-muted">
-                        4 plateaux ouverts · 2 à venir
+                        5 plateaux ouverts · 1 à venir
                     </p>
                 </div>
 
@@ -544,6 +602,81 @@ export default function AtelierPage() {
                                     </td>
                                     <td className="px-5 py-4 text-sm text-muted">
                                         {dialogue.statut}
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section
+                id="montage"
+                aria-labelledby="montage-title"
+                className="mt-24 scroll-mt-8"
+            >
+                <PixieSeparator
+                    variant="film"
+                    intensity="strong"
+                    width="medium"
+                    align="start"
+                    spacing="none"
+                    decorative
+                />
+
+                <div className="mt-12 max-w-3xl">
+                    <p className="text-sm font-medium uppercase tracking-[0.2em] text-accent">
+                        05 · Le Montage
+                    </p>
+                    <h2 id="montage-title" className="mt-3 text-4xl text-ink">
+                        Les plans trouvent leur rythme
+                    </h2>
+                    <p className="mt-5 leading-7 text-ink-soft">
+                        Largeurs, espacements et distributions transformeront
+                        les éléments isolés en séquences lisibles. Ces onze
+                        esquisses organiseront le cadre et le rythme sans
+                        imposer de surface, de couleur ni d’interaction.
+                    </p>
+                </div>
+
+                <div className="mt-10 overflow-x-auto border border-line">
+                    <table className="w-full min-w-xl border-collapse text-left">
+                        <thead className="bg-surface-muted text-xs uppercase tracking-[0.16em] text-muted">
+                            <tr>
+                                <th
+                                    scope="col"
+                                    className="px-5 py-4 font-medium"
+                                >
+                                    Montage
+                                </th>
+                                <th
+                                    scope="col"
+                                    className="px-5 py-4 font-medium"
+                                >
+                                    Rôle
+                                </th>
+                                <th
+                                    scope="col"
+                                    className="px-5 py-4 font-medium"
+                                >
+                                    État
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody className="divide-y divide-line bg-surface">
+                            {montage.map((element) => (
+                                <tr key={element.nom}>
+                                    <th
+                                        scope="row"
+                                        className="px-5 py-4 font-medium text-ink"
+                                    >
+                                        {element.nom}
+                                    </th>
+                                    <td className="px-5 py-4 text-ink-soft">
+                                        {element.role}
+                                    </td>
+                                    <td className="px-5 py-4 text-sm text-muted">
+                                        {element.statut}
                                     </td>
                                 </tr>
                             ))}
