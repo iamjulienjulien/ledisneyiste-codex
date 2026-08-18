@@ -51,7 +51,9 @@
             "slug": "clarabelle-cow"
         },
         {
-            "nom": "Horace Horsecollar"
+            "nom": "Horace Horsecollar",
+            "type": "personnage",
+            "slug": "horace-horsecollar"
         },
         {
             "nom": "Les orphelins"

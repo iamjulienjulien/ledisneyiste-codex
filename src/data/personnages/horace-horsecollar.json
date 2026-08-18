@@ -1,0 +1,65 @@
+{
+    "slug": "horace-horsecollar",
+    "type": "personnage",
+    "introduction": "Horace Horsecollar entre dans les films de Mickey avec un nom qui tient presque du signalement : un cheval anthropomorphe reconnaissable au large collier passé autour de son cou. Il ne devient jamais une vedette comparable à Mickey, Donald ou Dingo, mais sa disponibilité en fait une présence précieuse dans les distributions des années 1930. Partenaire de Clarabelle Cow, acrobate, musicien ou simple camarade selon les besoins du film, Horace incarne l’un des premiers seconds rôles capables de donner à la série l’allure d’une troupe durable.",
+    "creation": {
+        "date": {
+            "valeur": "1929",
+            "precision": "annee"
+        },
+        "createurs": [
+            {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            }
+        ]
+    },
+    "premiereApparition": {
+        "oeuvre": {
+            "nom": "The Plow Boy"
+        },
+        "date": {
+            "valeur": "1929",
+            "precision": "annee"
+        }
+    },
+    "espece": "cheval anthropomorphe",
+    "blocsEditoriaux": [
+        {
+            "type": "genese",
+            "eyebrow": "Première apparition",
+            "titre": "Sortir du labour avec The Plow Boy",
+            "paragraphes": [
+                "Horace fait ses débuts en 1929 dans The Plow Boy, le même dessin animé qui introduit officiellement Clarabelle Cow. Mickey et Minnie y rencontrent les deux personnages dans un environnement agricole, puis les deux couples se jouent mutuellement des tours.",
+                "Cette entrée prolonge le goût des premiers films pour les animaux de ferme tout en donnant au cheval une identité réutilisable. Son grand collier devient un signe graphique aussi direct que son nom : un accessoire suffit à distinguer Horace des animaux anonymes que les gags peuvent transformer à volonté."
+            ]
+        },
+        {
+            "type": "caractere",
+            "eyebrow": "Polyvalence",
+            "titre": "Devenir l’homme à tout faire de la distribution",
+            "paragraphes": [
+                "Horace n’est pas enfermé dans une fonction unique. Sa carrure peut soutenir un effort physique, un numéro d’acrobatie ou la présence d’un musicien au sein d’un orchestre. Le personnage s’adapte ainsi à la mécanique de chaque court métrage sans réclamer que l’histoire soit construite autour de lui.",
+                "Cette souplesse fait de lui un véritable acteur de troupe. Là où les vedettes imposent progressivement des caractères très définis, Horace conserve une disponibilité narrative : il complète un groupe, donne un partenaire à Clarabelle et rend les rassemblements de la série Mickey immédiatement plus peuplés."
+            ]
+        },
+        {
+            "type": "trajectoire",
+            "eyebrow": "Onze films",
+            "titre": "Rester au second plan sans disparaître",
+            "paragraphes": [
+                "Horace apparaît dans onze courts métrages, principalement au sein de la série Mickey Mouse des années 1930. Il est souvent associé à Clarabelle, une répétition qui transforme deux personnages secondaires en duo familier sans leur donner une série autonome.",
+                "Dans Orphans’ Benefit, Horace rejoint Clarabelle et Dingo pour un numéro d’acrobaties. Dans The Band Concert, il prend place parmi les musiciens emportés par le désordre que Donald puis le cyclone imposent à la direction de Mickey.",
+                "Lorsque Donald, Dingo et Pluto occupent davantage le premier plan, Horace se fait plus rare. Ses onze apparitions conservent pourtant la mémoire d’un moment où les films de Mickey construisaient leur monde en ajoutant autour du héros des partenaires capables de tenir une scène, même sans la conduire."
+            ]
+        }
+    ],
+    "sources": [
+        "d23-horace-horsecollar",
+        "d23-plowboy",
+        "d23-camping-out-released",
+        "d23-orphans-benefit-cel-sells",
+        "d23-watch-the-band-concert"
+    ]
+}

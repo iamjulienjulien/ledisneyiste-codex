@@ -35,6 +35,13 @@
         "sousTitre": "La partenaire de scène qui donne de l’ampleur à la troupe de Mickey"
     },
     {
+        "slug": "horace-horsecollar",
+        "nom": "Horace Horsecollar",
+        "type": "personnage",
+        "metadata": { "categories": ["cercle-de-mickey"] },
+        "sousTitre": "Le cheval au grand collier devenu homme à tout faire de la troupe"
+    },
+    {
         "slug": "donald-duck",
         "nom": "Donald Duck",
         "type": "personnage",

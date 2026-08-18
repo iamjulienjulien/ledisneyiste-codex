@@ -803,5 +803,19 @@
         "editeur": "D23: The Official Disney Fan Club",
         "url": "https://d23.com/d23-video/watch-the-band-concert-short/",
         "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-horace-horsecollar",
+        "titre": "Horace Horsecollar",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/horace-horsecollar/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-plowboy",
+        "titre": "The Plowboy (film)",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/plowboy-the-film/",
+        "dateConsultation": "2026-08-18"
     }
 ]
