@@ -1,6 +1,6 @@
 .root {
-    --pixie-dust-button-contrast-light: #fff;
-    --pixie-dust-button-contrast-dark: #000;
+    --pixie-button-contrast-light: #fff;
+    --pixie-button-contrast-dark: #000;
 
     position: relative;
     isolation: isolate;
@@ -10,7 +10,7 @@
     overflow: hidden;
     border: 1px solid transparent;
     border-radius: var(--radius-small);
-    color: var(--pixie-dust-button-color, var(--color-accent));
+    color: var(--pixie-button-color, var(--color-accent));
     font: inherit;
     font-weight: 500;
     line-height: 1.2;
@@ -26,7 +26,7 @@
 
 .root:focus-visible,
 .root[data-focus-preview="true"] {
-    outline: 2px solid var(--pixie-dust-button-color, var(--color-accent));
+    outline: 2px solid var(--pixie-button-color, var(--color-accent));
     outline-offset: 0.1875rem;
 }
 
@@ -40,20 +40,20 @@
 }
 
 .solid {
-    border-color: var(--pixie-dust-button-color, var(--color-accent));
-    background: var(--pixie-dust-button-color, var(--color-accent));
-    color: var(--pixie-dust-button-foreground);
+    border-color: var(--pixie-button-color, var(--color-accent));
+    background: var(--pixie-button-color, var(--color-accent));
+    color: var(--pixie-button-foreground);
 }
 
 .solid:not(:disabled):hover {
     border-color: color-mix(
         in srgb,
-        var(--pixie-dust-button-color, var(--color-accent)) 82%,
+        var(--pixie-button-color, var(--color-accent)) 82%,
         var(--color-ink)
     );
     background: color-mix(
         in srgb,
-        var(--pixie-dust-button-color, var(--color-accent)) 82%,
+        var(--pixie-button-color, var(--color-accent)) 82%,
         var(--color-ink)
     );
 }
@@ -61,12 +61,12 @@
 .soft {
     border-color: color-mix(
         in srgb,
-        var(--pixie-dust-button-color, var(--color-accent)) 22%,
+        var(--pixie-button-color, var(--color-accent)) 22%,
         transparent
     );
     background: color-mix(
         in srgb,
-        var(--pixie-dust-button-color, var(--color-accent)) 12%,
+        var(--pixie-button-color, var(--color-accent)) 12%,
         transparent
     );
 }
@@ -74,12 +74,12 @@
 .soft:not(:disabled):hover {
     border-color: color-mix(
         in srgb,
-        var(--pixie-dust-button-color, var(--color-accent)) 36%,
+        var(--pixie-button-color, var(--color-accent)) 36%,
         transparent
     );
     background: color-mix(
         in srgb,
-        var(--pixie-dust-button-color, var(--color-accent)) 20%,
+        var(--pixie-button-color, var(--color-accent)) 20%,
         transparent
     );
 }
@@ -87,17 +87,17 @@
 .outline {
     border-color: color-mix(
         in srgb,
-        var(--pixie-dust-button-color, var(--color-accent)) 58%,
+        var(--pixie-button-color, var(--color-accent)) 58%,
         var(--color-line)
     );
     background: transparent;
 }
 
 .outline:not(:disabled):hover {
-    border-color: var(--pixie-dust-button-color, var(--color-accent));
+    border-color: var(--pixie-button-color, var(--color-accent));
     background: color-mix(
         in srgb,
-        var(--pixie-dust-button-color, var(--color-accent)) 9%,
+        var(--pixie-button-color, var(--color-accent)) 9%,
         transparent
     );
 }
@@ -110,7 +110,7 @@
 .ghost:not(:disabled):hover {
     background: color-mix(
         in srgb,
-        var(--pixie-dust-button-color, var(--color-accent)) 11%,
+        var(--pixie-button-color, var(--color-accent)) 11%,
         transparent
     );
 }
@@ -167,10 +167,10 @@
     border: 0.125em solid color-mix(in srgb, currentColor 32%, transparent);
     border-top-color: currentColor;
     border-radius: 50%;
-    animation: pixie-dust-button-spin 700ms linear infinite;
+    animation: pixie-button-spin 700ms linear infinite;
 }
 
-@keyframes pixie-dust-button-spin {
+@keyframes pixie-button-spin {
     to {
         transform: rotate(1turn);
     }

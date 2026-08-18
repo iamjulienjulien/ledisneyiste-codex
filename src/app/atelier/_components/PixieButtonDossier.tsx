@@ -2,9 +2,9 @@ import { AtelierFicheAccessoire } from "@/components/atelier/AtelierFicheAccesso
 import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
-import { PixieDustButton } from "@/components/ui/PixieDustButton";
+import { PixieButton } from "@/components/ui/PixieButton";
 import { colorsAtelierAnimation } from "@/registry/colors";
-import { PixieDustButtonPlayground } from "./PixieDustButtonPlayground";
+import { PixieButtonPlayground } from "./PixieButtonPlayground";
 
 const variants = [
     {
@@ -53,19 +53,19 @@ const proprietes = [
     },
     {
         name: "variant",
-        type: "PixieDustButtonVariant",
+        type: "PixieButtonVariant",
         defaultValue: '"solid"',
         description: "Traitement visuel et niveau de présence de l’action.",
     },
     {
         name: "size",
-        type: "PixieDustButtonSize",
+        type: "PixieButtonSize",
         defaultValue: '"md"',
         description: "Densité et taille de la zone interactive.",
     },
     {
         name: "color",
-        type: "PixieDustButtonColor",
+        type: "PixieButtonColor",
         defaultValue: "false",
         description: "Couleur enregistrée ou accent du thème.",
     },
@@ -97,17 +97,17 @@ const proprietes = [
 
 const typesSpecifiques = [
     {
-        name: "PixieDustButtonVariant",
+        name: "PixieButtonVariant",
         values: ['"solid"', '"soft"', '"outline"', '"ghost"'],
         description: "Traitements visuels disponibles pour l’action.",
     },
     {
-        name: "PixieDustButtonSize",
+        name: "PixieButtonSize",
         values: ['"xs"', '"sm"', '"md"', '"lg"', '"xl"'],
         description: "Tailles prédéfinies de la zone interactive.",
     },
     {
-        name: "PixieDustButtonColor",
+        name: "PixieButtonColor",
         values: ["AtelierAnimationColorSlug", "false"],
         description: "Couleur du registre ou accent du thème.",
     },
@@ -147,12 +147,12 @@ function TitreSequence({
     );
 }
 
-export function PixieDustButtonDossier() {
+export function PixieButtonDossier() {
     return (
         <AtelierFicheAccessoire
             id="bouton"
             labelledBy="bouton-title"
-            nom="PixieDustButton"
+            nom="PixieButton"
             className="mt-16 scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
@@ -164,7 +164,7 @@ export function PixieDustButtonDossier() {
                             id="bouton-title"
                             className="mt-4 text-4xl text-ink sm:text-5xl"
                         >
-                            PixieDustButton
+                            PixieButton
                         </h2>
                         <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
                             Déclencher une action claire sans voler la lumière
@@ -178,7 +178,7 @@ export function PixieDustButtonDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.2.0
+                                1.0.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -186,7 +186,7 @@ export function PixieDustButtonDossier() {
                                 État
                             </dt>
                             <dd className="mt-1 text-sm font-medium">
-                                <AtelierStatut statut="Esquisse" />
+                                <AtelierStatut statut="Prêt à projeter" />
                             </dd>
                         </div>
                     </dl>
@@ -198,7 +198,7 @@ export function PixieDustButtonDossier() {
                     id="bouton-identite"
                     surTitre="Fiche de rôle"
                     titre="Identité du composant"
-                    description="Le bouton possède désormais son API cible, ses états complets et une couleur issue du registre. Il reste dans l’Atelier jusqu’à sa première affectation réelle."
+                    description="Le bouton a validé son API, ses états complets et ses couleurs issues du registre. Il peut désormais entrer dans les scènes du Codex."
                 />
 
                 <dl className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
@@ -250,11 +250,11 @@ export function PixieDustButtonDossier() {
 
                 <div className="mt-7 grid border border-line lg:grid-cols-2">
                     <div className="relative z-[10000] flex min-h-64 items-center justify-center bg-surface p-8">
-                        <PixieDustButton>Ouvrir les archives</PixieDustButton>
+                        <PixieButton>Ouvrir les archives</PixieButton>
                     </div>
-                    <CodeExemple>{`<PixieDustButton>
+                    <CodeExemple>{`<PixieButton>
     Ouvrir les archives
-</PixieDustButton>`}</CodeExemple>
+</PixieButton>`}</CodeExemple>
                 </div>
             </section>
 
@@ -273,9 +273,9 @@ export function PixieDustButtonDossier() {
                             className="relative z-[10000] bg-surface p-6"
                         >
                             <div className="flex min-h-32 items-center justify-center">
-                                <PixieDustButton variant={item.variant}>
+                                <PixieButton variant={item.variant}>
                                     {item.name}
-                                </PixieDustButton>
+                                </PixieButton>
                             </div>
                             <h4 className="mt-4 text-xl text-ink">
                                 {item.name}
@@ -303,9 +303,9 @@ export function PixieDustButtonDossier() {
                             className="relative z-[10000] bg-surface p-6"
                         >
                             <div className="flex min-h-32 items-center justify-center">
-                                <PixieDustButton size={item.size}>
+                                <PixieButton size={item.size}>
                                     {item.name}
-                                </PixieDustButton>
+                                </PixieButton>
                             </div>
                             <p className="text-center font-mono text-xs text-muted">
                                 {item.size} · {item.height}
@@ -330,9 +330,7 @@ export function PixieDustButtonDossier() {
                             className="relative z-[10000] bg-surface p-6"
                         >
                             <div className="flex min-h-28 items-center justify-center">
-                                <PixieDustButton color={color}>
-                                    Action
-                                </PixieDustButton>
+                                <PixieButton color={color}>Action</PixieButton>
                             </div>
                             <p className="mt-4 text-center font-mono text-xs text-muted">
                                 {colorsAtelierAnimation[color].label}
@@ -356,7 +354,7 @@ export function PixieDustButtonDossier() {
                             Largeur du contenu
                         </p>
                         <div className="mt-6">
-                            <PixieDustButton>Action</PixieDustButton>
+                            <PixieButton>Action</PixieButton>
                         </div>
                     </article>
                     <article className="relative z-[10000] bg-surface p-6">
@@ -364,9 +362,9 @@ export function PixieDustButtonDossier() {
                             Pleine largeur
                         </p>
                         <div className="mt-6">
-                            <PixieDustButton fullWidth>
+                            <PixieButton fullWidth>
                                 Action principale
-                            </PixieDustButton>
+                            </PixieButton>
                         </div>
                     </article>
                 </div>
@@ -385,7 +383,7 @@ export function PixieDustButtonDossier() {
                             Repos
                         </p>
                         <div className="mt-6">
-                            <PixieDustButton>Action</PixieDustButton>
+                            <PixieButton>Action</PixieButton>
                         </div>
                     </article>
                     <article className="relative z-[10000] bg-surface p-6">
@@ -393,9 +391,9 @@ export function PixieDustButtonDossier() {
                             Focus
                         </p>
                         <div className="mt-6">
-                            <PixieDustButton data-focus-preview="true">
+                            <PixieButton data-focus-preview="true">
                                 Action
-                            </PixieDustButton>
+                            </PixieButton>
                         </div>
                     </article>
                     <article className="relative z-[10000] bg-surface p-6">
@@ -403,7 +401,7 @@ export function PixieDustButtonDossier() {
                             Désactivé
                         </p>
                         <div className="mt-6">
-                            <PixieDustButton disabled>Action</PixieDustButton>
+                            <PixieButton disabled>Action</PixieButton>
                         </div>
                     </article>
                     <article className="relative z-[10000] bg-surface p-6">
@@ -411,7 +409,7 @@ export function PixieDustButtonDossier() {
                             Chargement
                         </p>
                         <div className="mt-6">
-                            <PixieDustButton loading>Action</PixieDustButton>
+                            <PixieButton loading>Action</PixieButton>
                         </div>
                     </article>
                     <article className="relative z-[10000] bg-surface p-6">
@@ -476,7 +474,7 @@ export function PixieDustButtonDossier() {
                     description="Les contrôles modifient l’exemple isolé. Le plateau peut changer de lumière et de largeur sans modifier le reste de l’Atelier."
                 />
                 <div className="mt-7">
-                    <PixieDustButtonPlayground />
+                    <PixieButtonPlayground />
                 </div>
             </section>
 
@@ -487,7 +485,7 @@ export function PixieDustButtonDossier() {
                 <TitreSequence
                     id="bouton-generique"
                     surTitre="Générique technique"
-                    titre="Types et propriétés de l’esquisse"
+                    titre="Types et propriétés du composant"
                 />
 
                 <div className="mt-7">
@@ -497,50 +495,12 @@ export function PixieDustButtonDossier() {
                 <div className="mt-10">
                     <h4 className="text-xl text-ink">Types spécifiques</h4>
                     <p className="mt-2 text-sm leading-6 text-muted">
-                        Les variants, tailles et couleurs admis par l’esquisse.
+                        Les variants, tailles et couleurs admis par le
+                        composant.
                     </p>
                     <div className="mt-4">
                         <AtelierTypesTable types={typesSpecifiques} />
                     </div>
-                </div>
-            </section>
-
-            <section aria-labelledby="bouton-journal" className="mt-16">
-                <TitreSequence
-                    id="bouton-journal"
-                    surTitre="Journal de production"
-                    titre="Les conditions du passage à PixieButton"
-                />
-
-                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-3">
-                    <article className="bg-surface p-6">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
-                            API
-                        </p>
-                        <p className="mt-3 leading-7 text-ink-soft">
-                            Vérifier que les quatre variants, les cinq tailles
-                            et le chargement couvrent les actions réelles sans
-                            nouvelle option.
-                        </p>
-                    </article>
-                    <article className="bg-surface p-6">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
-                            Validation
-                        </p>
-                        <p className="mt-3 leading-7 text-ink-soft">
-                            Vérifier les contrastes, le zoom à 200 %, le clavier
-                            et les états désactivés dans les deux lumières.
-                        </p>
-                    </article>
-                    <article className="bg-surface p-6">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
-                            Première affectation
-                        </p>
-                        <p className="mt-3 leading-7 text-ink-soft">
-                            Remplacer un bouton réel du Codex sans adaptation
-                            locale avant le renommage en PixieButton 1.0.0.
-                        </p>
-                    </article>
                 </div>
             </section>
         </AtelierFicheAccessoire>

@@ -5,11 +5,11 @@ import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import {
-    PixieDustButton,
-    type PixieDustButtonColor,
-    type PixieDustButtonSize,
-    type PixieDustButtonVariant,
-} from "@/components/ui/PixieDustButton";
+    PixieButton,
+    type PixieButtonColor,
+    type PixieButtonSize,
+    type PixieButtonVariant,
+} from "@/components/ui/PixieButton";
 import {
     getAtelierAnimationColor,
     getAtelierAnimationColorSlugs,
@@ -42,11 +42,11 @@ const frameWidths: Record<Cadre, string> = {
     large: "max-w-none",
 };
 
-export function PixieDustButtonPlayground() {
+export function PixieButtonPlayground() {
     const [label, setLabel] = useState("Ouvrir les archives");
-    const [variant, setVariant] = useState<PixieDustButtonVariant>("solid");
-    const [size, setSize] = useState<PixieDustButtonSize>("md");
-    const [color, setColor] = useState<PixieDustButtonColor>(false);
+    const [variant, setVariant] = useState<PixieButtonVariant>("solid");
+    const [size, setSize] = useState<PixieButtonSize>("md");
+    const [color, setColor] = useState<PixieButtonColor>(false);
     const [disabled, setDisabled] = useState(false);
     const [loading, setLoading] = useState(false);
     const [fullWidth, setFullWidth] = useState(false);
@@ -54,12 +54,12 @@ export function PixieDustButtonPlayground() {
     const [light, setLight] = useState<Lumiere>("sombre");
     const [frame, setFrame] = useState<Cadre>("large");
     const safeLabel = label || "Bouton";
-    const code = `<PixieDustButton
+    const code = `<PixieButton
     variant="${variant}"
     size="${size}"${color ? `\n    color="${color}"` : ""}${loading ? "\n    loading" : ""}${fullWidth ? "\n    fullWidth" : ""}${disabled ? "\n    disabled" : ""}
 >
     ${safeLabel}
-</PixieDustButton>`;
+</PixieButton>`;
 
     function selectColor(value: string) {
         setColor(
@@ -215,7 +215,7 @@ export function PixieDustButtonPlayground() {
                         <div
                             className={`flex min-h-48 w-full items-center justify-center border border-line bg-surface p-6 transition-[max-width] ${frameWidths[frame]}`}
                         >
-                            <PixieDustButton
+                            <PixieButton
                                 variant={variant}
                                 size={size}
                                 color={color}
@@ -227,7 +227,7 @@ export function PixieDustButtonPlayground() {
                                 }
                             >
                                 {safeLabel}
-                            </PixieDustButton>
+                            </PixieButton>
                         </div>
                     </div>
 

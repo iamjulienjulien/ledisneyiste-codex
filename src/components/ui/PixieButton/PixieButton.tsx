@@ -1,11 +1,8 @@
 import { getAtelierAnimationColor } from "@/registry/colors";
-import type {
-    PixieDustButtonProps,
-    PixieDustButtonStyle,
-} from "./PixieDustButton.types";
-import styles from "./PixieDustButton.module.css";
+import type { PixieButtonProps, PixieButtonStyle } from "./PixieButton.types";
+import styles from "./PixieButton.module.css";
 
-export function PixieDustButton({
+export function PixieButton({
     children,
     variant = "solid",
     size = "md",
@@ -18,17 +15,17 @@ export function PixieDustButton({
     style,
     "aria-busy": ariaBusy,
     ...buttonProps
-}: PixieDustButtonProps) {
+}: PixieButtonProps) {
     const colorDefinition = color ? getAtelierAnimationColor(color) : null;
-    const buttonStyle: PixieDustButtonStyle = {
+    const buttonStyle: PixieButtonStyle = {
         ...style,
         ...(colorDefinition
-            ? { "--pixie-dust-button-color": colorDefinition.cssValue }
+            ? { "--pixie-button-color": colorDefinition.cssValue }
             : {}),
-        "--pixie-dust-button-foreground": colorDefinition
+        "--pixie-button-foreground": colorDefinition
             ? colorDefinition.foreground === "light"
-                ? "var(--pixie-dust-button-contrast-light)"
-                : "var(--pixie-dust-button-contrast-dark)"
+                ? "var(--pixie-button-contrast-light)"
+                : "var(--pixie-button-contrast-dark)"
             : "var(--color-accent-contrast)",
     };
 
@@ -40,8 +37,8 @@ export function PixieDustButton({
             aria-busy={loading ? true : ariaBusy}
             className={`${styles.root} ${styles[variant]} ${styles[size]} ${fullWidth ? styles.fullWidth : ""} ${loading ? styles.loading : ""} ${className}`.trim()}
             style={buttonStyle}
-            data-pixie-dust-button-color={color || "theme"}
-            data-pixie-dust-button-loading={loading || undefined}
+            data-pixie-button-color={color || "theme"}
+            data-pixie-button-loading={loading || undefined}
         >
             <span className={styles.label}>{children}</span>
             {loading ? (

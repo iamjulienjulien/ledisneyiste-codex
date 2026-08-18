@@ -1,4 +1,4 @@
-import { PixieDustButtonDossier } from "./_components/PixieDustButtonDossier";
+import { PixieButtonDossier } from "./_components/PixieButtonDossier";
 import { PixieBadgeDossier } from "./_components/PixieBadgeDossier";
 import { PixieLinkDossier } from "./_components/PixieLinkDossier";
 import { PixieSeparatorDossier } from "./_components/PixieSeparatorDossier";
@@ -71,9 +71,9 @@ const accessoires = [
         href: "#pixie-symbol",
     },
     {
-        nom: "PixieDustButton",
+        nom: "PixieButton",
         role: "Déclencher une action",
-        statut: "Esquisse",
+        statut: "Prêt à projeter",
         href: "#bouton",
     },
     {
@@ -305,7 +305,7 @@ export default function AtelierPage() {
                 </div>
 
                 <PixieSymbolDossier />
-                <PixieDustButtonDossier />
+                <PixieButtonDossier />
                 <PixieLinkDossier />
                 <PixieBadgeDossier />
                 <PixieSeparatorDossier />
