@@ -1,5 +1,6 @@
 import { CodexReferenceLink } from "@/components/codex/CodexReferenceLink";
 import { PixieBadge } from "@/components/ui/PixieBadge";
+import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { formatDateHistorique } from "@/lib/date";
 import type { CodexRecompensesProps } from "@/types/codex-recompenses";
@@ -15,7 +16,16 @@ export function CodexRecompenses({
 
     return (
         <section className={styles.root}>
-            <header className="max-w-2xl">
+            <PixieSeparator
+                variant="beam"
+                spacing="none"
+                style={{
+                    color: "var(--codex-fiche-color, var(--color-accent))",
+                }}
+                decorative
+            />
+
+            <header className="mt-8 max-w-2xl">
                 <p className={styles.eyebrow}>Palmarès</p>
 
                 <h2 className="mt-3 text-3xl text-ink">Récompenses</h2>
@@ -66,6 +76,15 @@ export function CodexRecompenses({
                                 {recompense.motif}
                             </p>
                         )}
+
+                        <div className={styles.detailsBoundary}>
+                            <PixieSeparator
+                                variant="fade"
+                                position="start"
+                                spacing="none"
+                                decorative
+                            />
+                        </div>
 
                         <dl className={styles.details}>
                             <div>

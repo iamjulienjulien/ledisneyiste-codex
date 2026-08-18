@@ -3,6 +3,7 @@ import { PixieBadgeDossier } from "./_components/PixieBadgeDossier";
 import { PixieLinkDossier } from "./_components/PixieLinkDossier";
 import { PixieSeparatorDossier } from "./_components/PixieSeparatorDossier";
 import { PixieSymbolDossier } from "./_components/PixieSymbolDossier";
+import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PalettesPellicule } from "./_components/PalettesPellicule";
 
 const categories = [
@@ -192,9 +193,18 @@ export default function AtelierPage() {
             <section
                 id="pellicule"
                 aria-labelledby="pellicule-title"
-                className="mt-24 scroll-mt-8 border-t border-line pt-12"
+                className="mt-24 scroll-mt-8"
             >
-                <div className="max-w-3xl">
+                <PixieSeparator
+                    variant="film"
+                    intensity="strong"
+                    width="medium"
+                    align="start"
+                    spacing="none"
+                    decorative
+                />
+
+                <div className="mt-12 max-w-3xl">
                     <p className="text-sm font-medium uppercase tracking-[0.2em] text-accent">
                         01 · La Pellicule
                     </p>
@@ -215,9 +225,18 @@ export default function AtelierPage() {
             <section
                 id="accessoires"
                 aria-labelledby="accessoires-title"
-                className="mt-24 scroll-mt-8 border-t border-line pt-12"
+                className="mt-24 scroll-mt-8"
             >
-                <div className="max-w-3xl">
+                <PixieSeparator
+                    variant="film"
+                    intensity="strong"
+                    width="medium"
+                    align="start"
+                    spacing="none"
+                    decorative
+                />
+
+                <div className="mt-12 max-w-3xl">
                     <p className="text-sm font-medium uppercase tracking-[0.2em] text-accent">
                         02 · Les Accessoires
                     </p>

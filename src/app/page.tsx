@@ -1,4 +1,5 @@
 import { PixieLink } from "@/components/ui/PixieLink";
+import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import {
     contributeurs,
@@ -32,7 +33,16 @@ export default function Home() {
             </header>
 
             <section className="mt-20">
-                <div>
+                <PixieSeparator
+                    variant="beam"
+                    intensity="strong"
+                    width="medium"
+                    align="start"
+                    spacing="none"
+                    decorative
+                />
+
+                <div className="mt-12">
                     <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted">
                         Explorer
                     </p>
@@ -188,8 +198,16 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className="mt-20 border-t border-line pt-12">
-                <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted">
+            <section className="mt-20">
+                <PixieSeparator
+                    variant="film"
+                    width="medium"
+                    align="start"
+                    spacing="none"
+                    decorative
+                />
+
+                <p className="mt-12 text-sm font-medium uppercase tracking-[0.2em] text-muted">
                     Aux origines
                 </p>
 
@@ -256,8 +274,10 @@ export default function Home() {
                 </div>
             </section>
 
-            <footer className="mt-24 border-t border-line pt-8">
-                <div className="flex flex-col gap-4">
+            <footer className="mt-24">
+                <PixieSeparator spacing="none" decorative />
+
+                <div className="mt-8 flex flex-col gap-4">
                     <p className="text-sm font-medium text-ink-soft">
                         Un projet de{" "}
                         <a

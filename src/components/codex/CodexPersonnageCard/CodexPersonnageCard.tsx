@@ -1,5 +1,6 @@
 import { PixieBadge } from "@/components/ui/PixieBadge";
 import { PixieLink } from "@/components/ui/PixieLink";
+import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { formatDateHistorique } from "@/lib/date";
 import type { CodexPersonnageCardProps } from "@/types/codex-cards";
@@ -52,7 +53,17 @@ export function CodexPersonnageCard({
                 {personnage.sousTitre}
             </p>
 
-            <dl className="mt-8 grid gap-5 border-t border-line pt-5 sm:grid-cols-2">
+            <div className="mt-8 mb-5">
+                <PixieSeparator
+                    variant="fade"
+                    color="rouge-crayon"
+                    position="start"
+                    spacing="none"
+                    decorative
+                />
+            </div>
+
+            <dl className="grid gap-5 sm:grid-cols-2">
                 <div>
                     <dt className="text-xs uppercase tracking-[0.14em] text-muted">
                         Espèce

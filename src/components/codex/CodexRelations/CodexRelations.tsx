@@ -1,4 +1,5 @@
 import { CodexReferenceLink } from "@/components/codex/CodexReferenceLink";
+import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import type { CodexFicheFamily } from "@/types/codex-fiche";
 import type { CodexRelationsProps } from "@/types/codex-relations";
@@ -35,7 +36,16 @@ export function CodexRelations({ groupes }: CodexRelationsProps) {
 
     return (
         <section className={styles.root}>
-            <header className="max-w-2xl">
+            <PixieSeparator
+                variant="beam"
+                spacing="none"
+                style={{
+                    color: "var(--codex-fiche-color, var(--color-accent))",
+                }}
+                decorative
+            />
+
+            <header className="mt-8 max-w-2xl">
                 <p className={styles.eyebrow}>Relations</p>
 
                 <h2 className="mt-3 text-3xl text-ink">Dans le Codex</h2>

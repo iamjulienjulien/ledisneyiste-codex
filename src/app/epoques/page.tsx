@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { CodexEpoqueCard } from "@/components/codex/CodexEpoqueCard";
 import { CodexIndexListItem } from "@/components/codex/CodexIndexListItem";
 import { CodexIndexViewSwitch } from "@/components/codex/CodexIndexViewSwitch";
+import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { epoques } from "@/data/catalogues";
 import {
@@ -49,8 +50,16 @@ export default async function EpoquesPage({
                 </div>
             </header>
 
-            <section className="mt-12 border-t border-line pt-8">
-                <div className="flex flex-wrap items-center justify-between gap-4">
+            <section className="mt-12">
+                <PixieSeparator
+                    variant="beam"
+                    intensity="strong"
+                    color="vert-cellulo"
+                    spacing="none"
+                    decorative
+                />
+
+                <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
                     <p className="text-sm text-muted">
                         {epoques.length}{" "}
                         {epoques.length > 1 ? "époques" : "époque"}

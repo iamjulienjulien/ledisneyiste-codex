@@ -3,6 +3,7 @@ import { CodexIndexListItem } from "@/components/codex/CodexIndexListItem";
 import { CodexIndexViewSwitch } from "@/components/codex/CodexIndexViewSwitch";
 import { CodexOeuvreCard } from "@/components/codex/CodexOeuvreCard";
 import { PixieBadge } from "@/components/ui/PixieBadge";
+import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { oeuvres } from "@/data/catalogues";
 import { getFicheOeuvreBySlug } from "@/data/oeuvres";
@@ -46,8 +47,16 @@ export default async function OeuvresPage({
                 </div>
             </header>
 
-            <section className="mt-12 border-t border-line pt-8">
-                <div className="flex flex-wrap items-center justify-between gap-4">
+            <section className="mt-12">
+                <PixieSeparator
+                    variant="beam"
+                    intensity="strong"
+                    color="gouache"
+                    spacing="none"
+                    decorative
+                />
+
+                <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
                     <p className="text-sm text-muted">
                         {oeuvres.length}{" "}
                         {oeuvres.length > 1 ? "œuvres" : "œuvre"}

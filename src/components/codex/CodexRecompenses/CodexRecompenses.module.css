@@ -1,17 +1,5 @@
 .root {
-    position: relative;
     margin-top: 4rem;
-    border-top: 1px solid var(--codex-fiche-border, var(--color-line));
-    padding-top: 2rem;
-}
-
-.root::before {
-    position: absolute;
-    inset: -1px auto auto 0;
-    width: 4rem;
-    height: 2px;
-    background: var(--codex-fiche-color, var(--color-accent));
-    content: "";
 }
 
 .eyebrow {
@@ -62,12 +50,14 @@
     min-width: min(100%, 28rem);
 }
 
+.detailsBoundary {
+    margin-top: 1.5rem;
+    margin-bottom: 1.25rem;
+}
+
 .details {
     display: grid;
     gap: 1.25rem;
-    margin-top: 1.5rem;
-    border-top: 1px solid var(--color-line);
-    padding-top: 1.25rem;
 }
 
 .details dt {

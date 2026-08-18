@@ -1,5 +1,6 @@
 import { PixieBadge } from "@/components/ui/PixieBadge";
 import { PixieLink } from "@/components/ui/PixieLink";
+import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { formatDateHistorique } from "@/lib/date";
 import type { CodexOeuvreCardProps } from "@/types/codex-cards";
@@ -42,7 +43,17 @@ export function CodexOeuvreCard({
 
             <p className="mt-3 leading-7 text-ink-soft">{oeuvre.sousTitre}</p>
 
-            <dl className="mt-8 grid gap-5 border-t border-line pt-5 sm:grid-cols-2">
+            <div className="mt-8 mb-5">
+                <PixieSeparator
+                    variant="fade"
+                    color="gouache"
+                    position="start"
+                    spacing="none"
+                    decorative
+                />
+            </div>
+
+            <dl className="grid gap-5 sm:grid-cols-2">
                 <div>
                     <dt className="text-xs uppercase tracking-[0.14em] text-muted">
                         Sortie
@@ -84,34 +95,49 @@ export function CodexOeuvreCard({
             </ul>
 
             {recompenses.length > 0 && (
-                <div className={styles.recompenses}>
-                    <p className="text-xs font-medium uppercase tracking-[0.14em] text-muted">
-                        {recompenses.length}{" "}
-                        {recompenses.length > 1 ? "récompenses" : "récompense"}
-                    </p>
+                <div>
+                    <div className={styles.recompensesBoundary}>
+                        <PixieSeparator
+                            variant="fade"
+                            color="gouache"
+                            position="start"
+                            spacing="none"
+                            decorative
+                        />
+                    </div>
 
-                    <ul
-                        aria-label="Récompenses obtenues"
-                        className={styles.recompensesList}
-                    >
-                        {recompenses.map((recompense) => (
-                            <li
-                                key={recompense.id}
-                                className={styles.recompense}
-                            >
-                                <PixieSymbol
-                                    registry="recompenses"
-                                    collection="trophees"
-                                    slug={recompense.trophee}
-                                    size="sm"
-                                />
+                    <div className={styles.recompenses}>
+                        <p className="text-xs font-medium uppercase tracking-[0.14em] text-muted">
+                            {recompenses.length}{" "}
+                            {recompenses.length > 1
+                                ? "récompenses"
+                                : "récompense"}
+                        </p>
 
-                                <span className={styles.recompenseLabel}>
-                                    {recompense.categorie ?? recompense.motif}
-                                </span>
-                            </li>
-                        ))}
-                    </ul>
+                        <ul
+                            aria-label="Récompenses obtenues"
+                            className={styles.recompensesList}
+                        >
+                            {recompenses.map((recompense) => (
+                                <li
+                                    key={recompense.id}
+                                    className={styles.recompense}
+                                >
+                                    <PixieSymbol
+                                        registry="recompenses"
+                                        collection="trophees"
+                                        slug={recompense.trophee}
+                                        size="sm"
+                                    />
+
+                                    <span className={styles.recompenseLabel}>
+                                        {recompense.categorie ??
+                                            recompense.motif}
+                                    </span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
             )}
 

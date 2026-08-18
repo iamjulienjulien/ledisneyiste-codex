@@ -1,17 +1,9 @@
 .root {
-    position: relative;
     margin-top: 4rem;
-    border-top: 1px solid var(--codex-fiche-border, var(--color-line));
-    padding-top: 2rem;
 }
 
-.root::before {
-    position: absolute;
-    inset: -1px auto auto 0;
-    width: 4rem;
-    height: 2px;
-    background: var(--codex-fiche-color, var(--color-accent));
-    content: "";
+.content {
+    margin-top: 2rem;
 }
 
 .header {

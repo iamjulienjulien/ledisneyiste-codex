@@ -46,10 +46,12 @@
     outline-offset: 3px;
 }
 
+.recompensesBoundary {
+    margin-top: 1.25rem;
+}
+
 .recompenses {
     margin-top: 1.25rem;
-    border-top: 1px solid var(--color-line);
-    padding-top: 1.25rem;
 }
 
 .recompensesList {

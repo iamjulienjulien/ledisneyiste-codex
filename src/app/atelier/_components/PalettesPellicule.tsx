@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { colorsAtelierAnimation } from "@/registry/colors";
 import type { CouleurReference } from "@/types/colors";
 
@@ -263,7 +264,15 @@ export function PalettesPellicule() {
                 </div>
             </section>
 
-            <div className="space-y-16 border-t border-line pt-12">
+            <PixieSeparator
+                variant="beam"
+                width="medium"
+                align="start"
+                spacing="none"
+                decorative
+            />
+
+            <div className="mt-12 space-y-16">
                 <div className="max-w-3xl">
                     <h3 className="text-4xl text-ink">
                         Les couleurs de la salle et de ce qu’elle projette
@@ -398,11 +407,15 @@ export function PalettesPellicule() {
                     </div>
                 </section>
 
-                <section
-                    aria-labelledby="atelier-animation-palette"
-                    className="border-t border-line pt-12"
-                >
-                    <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
+                <section aria-labelledby="atelier-animation-palette">
+                    <PixieSeparator
+                        variant="fade"
+                        position="start"
+                        spacing="none"
+                        decorative
+                    />
+
+                    <div className="mt-12 grid gap-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
                         <div className="max-w-3xl">
                             <p className="text-xs font-medium uppercase tracking-[0.18em] text-accent">
                                 Palette éditoriale
@@ -428,11 +441,15 @@ export function PalettesPellicule() {
                 </section>
             </div>
 
-            <section
-                aria-labelledby="formes-pellicule"
-                className="border-t border-line pt-12"
-            >
-                <div className="max-w-3xl">
+            <section aria-labelledby="formes-pellicule">
+                <PixieSeparator
+                    variant="splice"
+                    position="start"
+                    spacing="none"
+                    decorative
+                />
+
+                <div className="mt-12 max-w-3xl">
                     <p className="text-xs font-medium uppercase tracking-[0.18em] text-accent">
                         Fondation géométrique
                     </p>

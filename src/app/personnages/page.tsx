@@ -3,6 +3,7 @@ import { CodexIndexListItem } from "@/components/codex/CodexIndexListItem";
 import { CodexIndexViewSwitch } from "@/components/codex/CodexIndexViewSwitch";
 import { CodexPersonnageCard } from "@/components/codex/CodexPersonnageCard";
 import { PixieBadge } from "@/components/ui/PixieBadge";
+import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { personnages } from "@/data/catalogues";
 import { getFichePersonnageBySlug } from "@/data/personnages";
@@ -45,8 +46,16 @@ export default async function PersonnagesPage({
                 </div>
             </header>
 
-            <section className="mt-12 border-t border-line pt-8">
-                <div className="flex flex-wrap items-center justify-between gap-4">
+            <section className="mt-12">
+                <PixieSeparator
+                    variant="beam"
+                    intensity="strong"
+                    color="rouge-crayon"
+                    spacing="none"
+                    decorative
+                />
+
+                <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
                     <p className="text-sm text-muted">
                         {personnages.length}{" "}
                         {personnages.length > 1 ? "personnages" : "personnage"}
