@@ -1,1 +1,31 @@
-[]
+[
+    {
+        "id": "academy-awards-1932-special-award-mickey-mouse",
+        "institution": {
+            "nom": "Academy of Motion Picture Arts and Sciences",
+            "abreviation": "AMPAS"
+        },
+        "edition": {
+            "nom": "5e cérémonie des Oscars",
+            "numero": 5
+        },
+        "dateAttribution": {
+            "valeur": "1932-11-18",
+            "precision": "jour"
+        },
+        "nature": "honorary",
+        "motif": "Pour la création de Mickey Mouse",
+        "beneficiaires": [
+            {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            }
+        ],
+        "sources": [
+            "ampas-5th-academy-awards",
+            "d23-walt-roy-award",
+            "d23-academy-awards"
+        ]
+    }
+]

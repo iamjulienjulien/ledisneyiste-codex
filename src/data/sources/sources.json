@@ -876,5 +876,19 @@
         "editeur": "The Oregon Encyclopedia",
         "url": "https://www.oregonencyclopedia.org/articles/colvig_vance_debar_pinto_1892_1967_/",
         "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "ampas-5th-academy-awards",
+        "titre": "The 5th Academy Awards | 1933",
+        "editeur": "Academy of Motion Picture Arts and Sciences",
+        "url": "https://www.oscars.org/oscars/ceremonies/1933",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-walt-roy-award",
+        "titre": "Walt and Roy with Academy Award®",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/featured-photo/walt-roy-award/",
+        "dateConsultation": "2026-08-18"
     }
 ]
