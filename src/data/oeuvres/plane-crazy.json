@@ -28,7 +28,9 @@
         },
         {
             "contributeur": {
-                "nom": "Carl Stalling"
+                "nom": "Carl Stalling",
+                "type": "contributeur",
+                "slug": "carl-stalling"
             },
             "roles": ["musique"]
         },

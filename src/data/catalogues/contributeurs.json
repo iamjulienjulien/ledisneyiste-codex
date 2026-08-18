@@ -32,6 +32,15 @@
         "sousTitre": "L’animateur et inventeur derrière les premiers pas de Mickey"
     },
     {
+        "slug": "carl-stalling",
+        "nom": "Carl Stalling",
+        "type": "contributeur",
+        "metadata": {
+            "categories": ["musicien", "technicien"]
+        },
+        "sousTitre": "Le compositeur qui fit de la musique une architecture animée"
+    },
+    {
         "slug": "les-clark",
         "nom": "Les Clark",
         "type": "contributeur",

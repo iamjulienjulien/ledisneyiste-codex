@@ -678,5 +678,27 @@
         "editeur": "D23: The Official Disney Fan Club",
         "url": "https://d23.com/a-to-z/moore-fred/",
         "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-carl-stalling",
+        "titre": "Stalling, Carl",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/stalling-carl/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-carl-stalling-resigns",
+        "titre": "Carl Stalling Resigns to Join Ub Iwerks",
+        "editeur": "D23: The Official Disney Fan Club",
+        "datePublication": "2019-03-25",
+        "url": "https://d23.com/this-day/carl-stalling-resigns-to-join-ub-iwerks/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "loc-minnies-yoo-hoo",
+        "titre": "Minnie’s Yoo Hoo: Mickey Mouse theme song",
+        "editeur": "Library of Congress",
+        "url": "https://www.loc.gov/item/2016563951/",
+        "dateConsultation": "2026-08-18"
     }
 ]

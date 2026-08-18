@@ -1,0 +1,71 @@
+{
+    "slug": "carl-stalling",
+    "type": "contributeur",
+    "introduction": "Carl Stalling arrive chez Disney au moment précis où le dessin animé doit apprendre à penser avec le son. Organiste de cinéma rencontré par Walt à Kansas City, il devient en 1928 le premier compositeur employé par le studio et accompagne les débuts sonores de Mickey. Son apport dépasse pourtant la fabrication de partitions : il imagine une série où la musique ne suivrait plus les péripéties d’une vedette, mais commanderait la conception entière du film. De cette proposition naissent The Skeleton Dance et les Silly Symphonies, le laboratoire dans lequel Disney éprouvera bientôt couleur, personnalité et profondeur.",
+    "blocsEditoriaux": [
+        {
+            "type": "debuts",
+            "eyebrow": "Kansas City",
+            "titre": "Retrouver Walt au passage du cinéma sonore",
+            "paragraphes": [
+                "Dans les années 1920, Carl Stalling accompagne les films muets à l’orgue dans les salles de Kansas City. Il y rencontre Walt Disney, alors engagé dans ses premières productions animées. Son métier lui a appris à relier instantanément des images, des airs connus et ses propres improvisations.",
+                "Lorsque Disney cherche à donner une bande sonore à ses nouveaux films de Mickey, il fait appel à cette expérience. Stalling rejoint le studio à partir de 1928 et devient son premier compositeur permanent, au moment où chaque geste doit désormais trouver une place mesurable dans la musique.",
+                "Il compose ou organise les partitions d’environ quinze courts métrages successifs. Plane Crazy et The Gallopin’ Gaucho, d’abord conçus silencieusement, peuvent ainsi revenir dans les salles après le succès sonore de Steamboat Willie."
+            ]
+        },
+        {
+            "type": "signature",
+            "eyebrow": "Synchronisation",
+            "titre": "Faire de la partition un plan pour l’image",
+            "paragraphes": [
+                "L’expérience de l’organiste fournit à Stalling un vocabulaire souple. Une partition peut mêler des thèmes originaux, des airs populaires et des fragments classiques, chacun choisi pour caractériser une action, une humeur ou un changement de rythme.",
+                "La musique n’est plus ajoutée librement pendant la projection. Elle doit être préparée avec l’animation afin que les accents, les pas et les gags se rencontrent au bon instant. Cette contrainte transforme la partition en outil de fabrication partagé par les musiciens et les dessinateurs.",
+                "Stalling compose également « Minnie’s Yoo Hoo », publié en 1930 comme chanson-thème de Mickey. Le personnage acquiert ainsi une identité musicale capable de l’annoncer au-delà d’un film particulier."
+            ]
+        },
+        {
+            "type": "trajectoire",
+            "eyebrow": "Silly Symphonies",
+            "titre": "Proposer une série gouvernée par la musique",
+            "paragraphes": [
+                "Dans les aventures de Mickey, la musique reste soumise à une intrigue et à une vedette déjà définies. Stalling propose à Walt une seconde série où chaque film pourrait au contraire naître d’un thème musical, avec de nouveaux personnages et un nouvel univers.",
+                "Son idée de danse macabre devient The Skeleton Dance, première Silly Symphony. Pour ce film, ses thèmes originaux se mêlent notamment à la Marche des nains d’Edvard Grieg ; le rythme détermine les transformations et fait des corps animés de véritables instruments.",
+                "Stalling quitte Disney le 22 janvier 1930 pour rejoindre Ub Iwerks, avant de construire l’essentiel de sa carrière chez Warner Bros. Son passage au studio aura duré peu de temps, mais la série qu’il a contribué à ouvrir restera pendant dix ans le principal terrain d’expérimentation de Disney."
+            ]
+        }
+    ],
+    "naissance": {
+        "date": {
+            "valeur": "1891-11-10",
+            "precision": "jour"
+        },
+        "lieu": "Lexington, Missouri, États-Unis"
+    },
+    "deces": {
+        "date": {
+            "valeur": "1972-11-29",
+            "precision": "jour"
+        },
+        "lieu": "Los Angeles, Californie, États-Unis"
+    },
+    "roles": ["compositeur", "arrangeur", "directeur musical"],
+    "periodesActivite": [
+        {
+            "debut": {
+                "valeur": "1928",
+                "precision": "annee"
+            },
+            "fin": {
+                "valeur": "1930",
+                "precision": "annee"
+            }
+        }
+    ],
+    "sources": [
+        "d23-carl-stalling",
+        "d23-carl-stalling-resigns",
+        "wdfm-stalling-after-mickey",
+        "wdfm-skeleton-of-an-idea",
+        "loc-minnies-yoo-hoo"
+    ]
+}
