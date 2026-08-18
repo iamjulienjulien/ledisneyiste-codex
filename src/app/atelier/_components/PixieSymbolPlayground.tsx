@@ -53,6 +53,54 @@ const symbolOptions = [
         definition: getSymbol("codex", "index", "epoques"),
     },
     {
+        key: "recompenses.trophees.statuette-oscar",
+        group: "Récompenses · Trophées",
+        selection: {
+            registry: "recompenses",
+            collection: "trophees",
+            slug: "statuette-oscar",
+        },
+        definition: getSymbol("recompenses", "trophees", "statuette-oscar"),
+    },
+    {
+        key: "recompenses.trophees.plaque-technique-multiplane",
+        group: "Récompenses · Trophées",
+        selection: {
+            registry: "recompenses",
+            collection: "trophees",
+            slug: "plaque-technique-multiplane",
+        },
+        definition: getSymbol(
+            "recompenses",
+            "trophees",
+            "plaque-technique-multiplane",
+        ),
+    },
+    {
+        key: "recompenses.trophees.medaille-societe-des-nations",
+        group: "Récompenses · Trophées",
+        selection: {
+            registry: "recompenses",
+            collection: "trophees",
+            slug: "medaille-societe-des-nations",
+        },
+        definition: getSymbol(
+            "recompenses",
+            "trophees",
+            "medaille-societe-des-nations",
+        ),
+    },
+    {
+        key: "recompenses.trophees.medaille-or-venise",
+        group: "Récompenses · Trophées",
+        selection: {
+            registry: "recompenses",
+            collection: "trophees",
+            slug: "medaille-or-venise",
+        },
+        definition: getSymbol("recompenses", "trophees", "medaille-or-venise"),
+    },
+    {
         key: "blocs.personnages.genese",
         group: "Blocs · Personnages",
         selection: {
@@ -186,6 +234,7 @@ const symbolOptions = [
 
 const symbolGroups = [
     "Codex · Index",
+    "Récompenses · Trophées",
     "Blocs · Personnages",
     "Blocs · Contributeurs",
     "Blocs · Œuvres",

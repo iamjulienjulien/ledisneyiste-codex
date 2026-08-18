@@ -7,6 +7,7 @@ import { getSymbol, getSymbolSlugs } from "@/registry/symbols";
 import { PixieSymbolPlayground } from "./PixieSymbolPlayground";
 
 const indexSymbolSlugs = getSymbolSlugs("codex", "index");
+const recompenseTrophySymbolSlugs = getSymbolSlugs("recompenses", "trophees");
 const contributeurBlockSymbolSlugs = getSymbolSlugs("blocs", "contributeurs");
 const epoqueBlockSymbolSlugs = getSymbolSlugs("blocs", "epoques");
 const oeuvreBlockSymbolSlugs = getSymbolSlugs("blocs", "oeuvres");
@@ -73,7 +74,7 @@ const typesSpecifiques = [
     },
     {
         name: "SymbolRegistryName",
-        values: ['"blocs"', '"codex"'],
+        values: ['"blocs"', '"codex"', '"recompenses"'],
         description: "Registres de symboles actuellement disponibles.",
     },
     {
@@ -87,9 +88,24 @@ const typesSpecifiques = [
         description: "Collections exposées par le registre Codex.",
     },
     {
+        name: 'SymbolCollectionName<"recompenses">',
+        values: ['"trophees"'],
+        description: "Collections exposées par le registre des Récompenses.",
+    },
+    {
         name: 'SymbolSlug<"codex", "index">',
         values: ['"personnages"', '"createurs"', '"oeuvres"', '"epoques"'],
         description: "Symboles disponibles dans la collection des index.",
+    },
+    {
+        name: 'SymbolSlug<"recompenses", "trophees">',
+        values: [
+            '"statuette-oscar"',
+            '"plaque-technique-multiplane"',
+            '"medaille-societe-des-nations"',
+            '"medaille-or-venise"',
+        ],
+        description: "Symboles des trophées présents dans les archives.",
     },
     {
         name: 'SymbolSlug<"blocs", "contributeurs">',
@@ -207,7 +223,7 @@ export function PixieSymbolDossier() {
                         ["Mission", "Afficher un symbole typé."],
                         ["Sélection", "registry · collection · slug"],
                         ["Exemple", "codex.index.personnages"],
-                        ["Masters", "Cinq séries originales · 1254 px."],
+                        ["Masters", "Six séries originales · 1254 px."],
                         ["Dérivés", "PNG transparent · 384 px."],
                         ["Accessibilité", "Décoratif par défaut."],
                     ].map(([terme, definition]) => (
@@ -275,6 +291,52 @@ export function PixieSymbolDossier() {
                                 <PixieSymbol
                                     registry="codex"
                                     collection="index"
+                                    slug={slug}
+                                    size="xl"
+                                    className="mx-auto"
+                                />
+                                <h4 className="mt-5 text-xl text-ink">
+                                    {symbole.label}
+                                </h4>
+                                <p className="mt-2 font-mono text-xs text-muted">
+                                    {slug}
+                                </p>
+                            </article>
+                        );
+                    })}
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="pixie-symbol-recompenses-trophees"
+                className="mt-16"
+            >
+                <TitreSequence
+                    id="pixie-symbol-recompenses-trophees"
+                    surTitre="Distribution"
+                    titre="Les quatre trophées des premières archives"
+                    description="Statuette, plaque technique et médailles internationales distinguent les formes de récompenses déjà documentées sans créer un symbole propre à chaque attribution."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+                    {recompenseTrophySymbolSlugs.map((slug) => {
+                        const symbole = getSymbol(
+                            "recompenses",
+                            "trophees",
+                            slug,
+                        );
+
+                        return (
+                            <article
+                                key={slug}
+                                className="bg-surface p-6 text-center"
+                                style={{
+                                    borderTop: `4px solid ${symbole.accent}`,
+                                }}
+                            >
+                                <PixieSymbol
+                                    registry="recompenses"
+                                    collection="trophees"
                                     slug={slug}
                                     size="xl"
                                     className="mx-auto"
