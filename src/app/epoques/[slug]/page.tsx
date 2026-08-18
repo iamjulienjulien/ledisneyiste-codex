@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CodexFiche } from "@/components/codex/CodexFiche";
 import { CodexFicheHeader } from "@/components/codex/CodexFicheHeader";
+import { CodexFicheSection } from "@/components/codex/CodexFicheSection";
 import { CodexSources } from "@/components/codex/CodexSources";
 import { CodexRelations } from "@/components/codex/CodexRelations";
 import { CodexBlocsEditoriaux } from "@/components/codex/CodexBlocsEditoriaux";
@@ -93,19 +94,14 @@ export default async function EpoquePage({
             </dl>
 
             {fiche.description && (
-                <section className="mt-16 border-t border-line pt-8">
-                    <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted">
-                        La période
-                    </p>
-
-                    <h2 className="mt-3 text-3xl text-ink">
-                        Comprendre cette époque
-                    </h2>
-
-                    <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
+                <CodexFicheSection
+                    eyebrow="La période"
+                    titre="Comprendre cette époque"
+                >
+                    <p className="max-w-2xl text-lg leading-8 text-ink-soft">
                         {fiche.description}
                     </p>
-                </section>
+                </CodexFicheSection>
             )}
 
             <CodexBlocsEditoriaux
@@ -116,14 +112,17 @@ export default async function EpoquePage({
             <CodexRelations
                 groupes={[
                     {
+                        family: "createurs",
                         titre: "Créateurs",
                         references: contributeurs,
                     },
                     {
+                        family: "personnages",
                         titre: "Personnages",
                         references: personnages,
                     },
                     {
+                        family: "oeuvres",
                         titre: "Œuvres",
                         references: oeuvres,
                     },

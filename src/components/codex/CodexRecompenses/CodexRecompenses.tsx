@@ -16,9 +16,7 @@ export function CodexRecompenses({
     return (
         <section className={styles.root}>
             <header className="max-w-2xl">
-                <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted">
-                    Palmarès
-                </p>
+                <p className={styles.eyebrow}>Palmarès</p>
 
                 <h2 className="mt-3 text-3xl text-ink">Récompenses</h2>
 

@@ -139,6 +139,7 @@ export default async function PersonnagePage({
             <CodexRelations
                 groupes={[
                     {
+                        family: "oeuvres",
                         titre: "Œuvres",
                         references: oeuvres,
                     },

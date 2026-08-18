@@ -1,7 +1,17 @@
 .root {
+    position: relative;
     margin-top: 4rem;
-    border-top: 1px solid var(--color-line);
+    border-top: 1px solid var(--codex-fiche-border, var(--color-line));
     padding-top: 2rem;
+}
+
+.root::before {
+    position: absolute;
+    inset: -1px auto auto 0;
+    width: 4rem;
+    height: 2px;
+    background: var(--codex-fiche-color, var(--color-accent));
+    content: "";
 }
 
 .header {
@@ -19,6 +29,14 @@
 .symbol {
     display: flex;
     align-items: flex-end;
+}
+
+.eyebrow {
+    color: var(--codex-fiche-color, var(--color-muted));
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
 }
 
 @media (min-width: 640px) {

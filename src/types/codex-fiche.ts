@@ -16,3 +16,11 @@ export type CodexFicheHeaderProps = Readonly<{
     introduction?: string;
     badges?: ReactNode;
 }>;
+
+export type CodexFicheSectionProps = Readonly<{
+    eyebrow?: string;
+    titre?: string;
+    description?: string;
+    symbole?: ReactNode;
+    children: ReactNode;
+}>;

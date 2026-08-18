@@ -1,19 +1,32 @@
 import { CodexReferenceLink } from "@/components/codex/CodexReferenceLink";
-import type { ReferenceCodex } from "@/types/reference";
+import { PixieSymbol } from "@/components/ui/PixieSymbol";
+import type { CodexFicheFamily } from "@/types/codex-fiche";
+import type { CodexRelationsProps } from "@/types/codex-relations";
+import type { TypeReferenceCodex } from "@/types/reference";
 import styles from "./CodexRelations.module.css";
 
-type CodexRelationsGroup = {
-    titre: string;
-    references: ReferenceCodex[];
-};
+const referenceFamilies = {
+    personnage: "personnages",
+    contributeur: "createurs",
+    oeuvre: "oeuvres",
+    epoque: "epoques",
+} as const satisfies Record<TypeReferenceCodex, CodexFicheFamily>;
 
-type CodexRelationsProps = {
-    groupes: CodexRelationsGroup[];
-};
+const familyOrder = {
+    personnages: 0,
+    createurs: 1,
+    oeuvres: 2,
+    epoques: 3,
+} as const satisfies Record<CodexFicheFamily, number>;
 
 export function CodexRelations({ groupes }: CodexRelationsProps) {
     const groupesVisibles = groupes.filter(
         (groupe) => groupe.references.length > 0,
+    );
+
+    groupesVisibles.sort(
+        (premier, second) =>
+            familyOrder[premier.family] - familyOrder[second.family],
     );
 
     if (groupesVisibles.length === 0) {
@@ -23,9 +36,7 @@ export function CodexRelations({ groupes }: CodexRelationsProps) {
     return (
         <section className={styles.root}>
             <header className="max-w-2xl">
-                <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted">
-                    Relations
-                </p>
+                <p className={styles.eyebrow}>Relations</p>
 
                 <h2 className="mt-3 text-3xl text-ink">Dans le Codex</h2>
 
@@ -34,25 +45,44 @@ export function CodexRelations({ groupes }: CodexRelationsProps) {
                 </p>
             </header>
 
-            <div className="mt-8 grid gap-8 sm:grid-cols-2">
+            <div className={styles.groups}>
                 {groupesVisibles.map((groupe) => (
-                    <section
-                        key={groupe.titre}
-                        className="border-l border-line pl-5"
-                    >
+                    <section key={groupe.titre} className={styles.group}>
                         <h3 className="text-xs font-medium uppercase tracking-[0.16em] text-muted">
                             {groupe.titre}
                         </h3>
 
-                        <ul className="mt-4 space-y-3">
-                            {groupe.references.map((reference) => (
-                                <li
-                                    key={`${reference.type ?? "mention"}-${reference.nom}`}
-                                    className="text-lg"
-                                >
-                                    <CodexReferenceLink reference={reference} />
-                                </li>
-                            ))}
+                        <ul className={styles.references}>
+                            {groupe.references.map((reference) => {
+                                const family = reference.type
+                                    ? referenceFamilies[reference.type]
+                                    : null;
+
+                                return (
+                                    <li
+                                        key={`${reference.type ?? "mention"}-${reference.nom}`}
+                                        className={styles.reference}
+                                        data-reference-type={
+                                            reference.type ?? "mention"
+                                        }
+                                    >
+                                        {family ? (
+                                            <PixieSymbol
+                                                registry="codex"
+                                                collection="index"
+                                                slug={family}
+                                                size="sm"
+                                            />
+                                        ) : null}
+
+                                        <span className={styles.referenceLabel}>
+                                            <CodexReferenceLink
+                                                reference={reference}
+                                            />
+                                        </span>
+                                    </li>
+                                );
+                            })}
                         </ul>
                     </section>
                 ))}

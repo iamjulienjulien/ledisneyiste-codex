@@ -137,14 +137,17 @@ export default async function ContributeurPage({
             <CodexRelations
                 groupes={[
                     {
+                        family: "epoques",
                         titre: "Époques",
                         references: epoques,
                     },
                     {
+                        family: "personnages",
                         titre: "Personnages",
                         references: personnagesCrees,
                     },
                     {
+                        family: "oeuvres",
                         titre: "Œuvres",
                         references: oeuvresContribuees,
                     },

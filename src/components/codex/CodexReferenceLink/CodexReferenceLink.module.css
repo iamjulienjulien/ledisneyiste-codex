@@ -3,7 +3,7 @@
 }
 
 .link {
-    color: var(--color-accent);
+    color: var(--codex-link-color, var(--color-accent));
     text-decoration-line: underline;
     text-decoration-color: var(--color-line-strong);
     text-underline-offset: 0.25rem;
@@ -13,6 +13,10 @@
 }
 
 .link:hover {
-    color: var(--color-accent-hover);
-    text-decoration-color: var(--color-accent);
+    color: color-mix(
+        in srgb,
+        var(--codex-link-color, var(--color-accent)) 76%,
+        var(--color-ink)
+    );
+    text-decoration-color: var(--codex-link-color, var(--color-accent));
 }

@@ -7,3 +7,7 @@ export type SourceCodex = {
     datePublication?: string;
     dateConsultation?: string;
 };
+
+export type CodexSourcesProps = Readonly<{
+    sources: SourceCodex[];
+}>;

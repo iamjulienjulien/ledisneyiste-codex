@@ -1,13 +1,5 @@
-import type { ReactNode } from "react";
+import type { CodexFicheSectionProps } from "@/types/codex-fiche";
 import styles from "./CodexFicheSection.module.css";
-
-type CodexFicheSectionProps = {
-    eyebrow?: string;
-    titre?: string;
-    description?: string;
-    symbole?: ReactNode;
-    children: ReactNode;
-};
 
 export function CodexFicheSection({
     eyebrow,
@@ -31,11 +23,7 @@ export function CodexFicheSection({
                     ) : null}
 
                     <div>
-                        {eyebrow && (
-                            <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted">
-                                {eyebrow}
-                            </p>
-                        )}
+                        {eyebrow && <p className={styles.eyebrow}>{eyebrow}</p>}
 
                         {titre && (
                             <h2 className="mt-3 text-3xl text-ink">{titre}</h2>
