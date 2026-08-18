@@ -124,5 +124,33 @@
             "nom": "The Tortoise and the Hare"
         },
         "sources": ["ampas-7th-academy-awards", "d23-academy-awards"]
+    },
+    {
+        "id": "academy-awards-1936-three-orphan-kittens",
+        "institution": {
+            "nom": "Academy of Motion Picture Arts and Sciences",
+            "abreviation": "AMPAS"
+        },
+        "edition": {
+            "nom": "8e cérémonie des Oscars",
+            "numero": 8
+        },
+        "dateAttribution": {
+            "valeur": "1936-03-05",
+            "precision": "jour"
+        },
+        "nature": "competitive",
+        "categorie": "Meilleur court métrage d’animation",
+        "beneficiaires": [
+            {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            }
+        ],
+        "oeuvreConcernee": {
+            "nom": "Three Orphan Kittens"
+        },
+        "sources": ["ampas-8th-academy-awards", "d23-academy-awards"]
     }
 ]

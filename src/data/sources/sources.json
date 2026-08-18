@@ -904,5 +904,12 @@
         "editeur": "Academy of Motion Picture Arts and Sciences",
         "url": "https://www.oscars.org/oscars/ceremonies/1935",
         "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "ampas-8th-academy-awards",
+        "titre": "The 8th Academy Awards | 1936",
+        "editeur": "Academy of Motion Picture Arts and Sciences",
+        "url": "https://www.oscars.org/oscars/ceremonies/1936",
+        "dateConsultation": "2026-08-18"
     }
 ]
