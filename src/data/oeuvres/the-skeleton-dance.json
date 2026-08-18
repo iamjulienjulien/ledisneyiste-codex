@@ -1,0 +1,89 @@
+{
+    "slug": "the-skeleton-dance",
+    "type": "oeuvre",
+    "introduction": "The Skeleton Dance ouvre les Silly Symphonies en faisant de la musique non plus l’accompagnement d’un héros, mais l’architecture entière du film. À minuit, quatre squelettes quittent leurs tombes pour danser, se démonter et jouer de leurs propres os jusqu’au chant du coq. Sans vedette récurrente ni intrigue à prolonger, le studio peut construire une atmosphère, faire naître chaque gag du rythme et traiter le corps dessiné comme un instrument. Cette courte nuit de 1929 devient ainsi le premier laboratoire d’une série où Disney apprendra à éprouver les techniques nécessaires à ses futurs longs métrages.",
+    "sortie": {
+        "date": {
+            "valeur": "1929-08-22",
+            "precision": "jour"
+        }
+    },
+    "format": "court métrage d’animation",
+    "contributions": [
+        {
+            "contributeur": {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            },
+            "roles": ["réalisation", "production"]
+        },
+        {
+            "contributeur": {
+                "nom": "Ub Iwerks",
+                "type": "contributeur",
+                "slug": "ub-iwerks"
+            },
+            "roles": ["animation"]
+        },
+        {
+            "contributeur": {
+                "nom": "Les Clark",
+                "type": "contributeur",
+                "slug": "les-clark"
+            },
+            "roles": ["animation"]
+        },
+        {
+            "contributeur": {
+                "nom": "Carl Stalling"
+            },
+            "roles": ["concept", "musique"]
+        }
+    ],
+    "personnages": [
+        {
+            "nom": "Les quatre squelettes"
+        }
+    ],
+    "blocsEditoriaux": [
+        {
+            "type": "repere",
+            "eyebrow": "Série",
+            "titre": "Une symphonie sans personnage principal",
+            "paragraphes": [
+                "À l’automne 1928, tandis que Steamboat Willie confirme les possibilités du son synchronisé, Carl Stalling propose à Walt Disney une « nouveauté musicale » située dans un cimetière. Le projet doit servir de pilote à une série où chaque film développera un nouveau thème et une nouvelle distribution.",
+                "Cette structure distingue les Silly Symphonies des aventures de Mickey. La continuité ne repose plus sur une personnalité connue, mais sur une promesse de forme : musique, mouvement et décor pourront chaque fois créer un monde complet sans avoir à préserver les habitudes d’une vedette.",
+                "Ub Iwerks anime presque seul The Skeleton Dance en six semaines, avec une participation de Les Clark à la célèbre scène où un squelette joue des côtes d’un autre comme d’un xylophone. Le film sort le 22 août 1929 et devient le premier des soixante-quinze courts métrages de la série."
+            ]
+        },
+        {
+            "type": "langage",
+            "eyebrow": "Musique",
+            "titre": "Dessiner à partir de la partition",
+            "paragraphes": [
+                "Le titre évoque la Danse macabre de Camille Saint-Saëns, mais le film n’en reprend pas la musique. Carl Stalling compose ses propres thèmes et intègre notamment la Marche des nains d’Edvard Grieg. L’inspiration classique fournit une couleur, non une partition à illustrer littéralement.",
+                "La musique organise plutôt la durée des gestes. Pas, claquements d’os, envols et métamorphoses trouvent leur place dans une mesure commune ; les corps deviennent simultanément danseurs, percussion et matière graphique. Le son ne souligne plus seulement ce que l’image montre : il détermine quand et comment elle peut se transformer.",
+                "Cette relation donne au macabre une légèreté particulière. Les squelettes peuvent se briser, échanger leurs membres ou s’utiliser comme instruments sans perdre leur énergie, parce que le rythme assure la continuité que leur anatomie abandonne."
+            ]
+        },
+        {
+            "type": "relations",
+            "eyebrow": "Laboratoire",
+            "titre": "La série où le studio apprend à expérimenter",
+            "paragraphes": [
+                "Libéré d’une intrigue centrée sur Mickey, The Skeleton Dance consacre davantage de temps à l’atmosphère. Éclairs, chauves-souris, branches menaçantes, chats dressés sur les tombes et chien hurlant à la lune installent une nuit qui commence par inquiéter avant de basculer dans la danse.",
+                "Les Silly Symphonies prolongeront cette liberté avec de nouveaux personnages, des contes, des saisons et des recherches graphiques. Elles permettront au studio d’éprouver le son, la couleur, la profondeur, le jeu et la narration sans faire porter chaque risque à sa vedette principale.",
+                "Le premier film ne contient pas encore toutes ces avancées, mais il en pose la méthode. Une série peut devenir un espace d’essai continu où chaque court métrage prépare, sans encore le savoir entièrement, les ambitions du long métrage."
+            ]
+        }
+    ],
+    "sources": [
+        "d23-skeleton-dance",
+        "d23-skeleton-dance-premieres",
+        "wdfm-skeleton-of-an-idea",
+        "wdfm-stalling-after-mickey",
+        "afi-skeleton-dance",
+        "wdfm-first-nine-les-clark"
+    ]
+}

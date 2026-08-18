@@ -60,6 +60,18 @@
         "sousTitre": "Le premier vol de Mickey, resté au sol avant le son"
     },
     {
+        "slug": "the-skeleton-dance",
+        "nom": "The Skeleton Dance",
+        "type": "oeuvre",
+        "metadata": {
+            "collection": "silly-symphonies",
+            "type": "court-metrage-anime",
+            "son": "sonore",
+            "couleur": "noir-et-blanc"
+        },
+        "sousTitre": "La danse macabre qui libéra le dessin animé de sa vedette"
+    },
+    {
         "slug": "the-wise-little-hen",
         "nom": "The Wise Little Hen",
         "type": "oeuvre",

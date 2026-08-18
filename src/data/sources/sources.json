@@ -152,6 +152,46 @@
         "dateConsultation": "2026-08-18"
     },
     {
+        "id": "d23-skeleton-dance",
+        "titre": "Skeleton Dance, The (film)",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/skeleton-dance-the-film/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-skeleton-dance-premieres",
+        "titre": "The Skeleton Dance Premieres",
+        "editeur": "D23: The Official Disney Fan Club",
+        "datePublication": "2019-04-09",
+        "url": "https://d23.com/this-day/the-skeleton-dance-premieres/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "wdfm-skeleton-of-an-idea",
+        "titre": "The Skeleton of an Idea",
+        "auteur": "J. B. Kaufman et Russell Merritt",
+        "editeur": "The Walt Disney Family Museum",
+        "datePublication": "2011-10-25",
+        "url": "https://www.waltdisney.org/blog/skeleton-idea",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "wdfm-stalling-after-mickey",
+        "titre": "Composing Walt Disney’s Silly Symphonies with Historian Ross Care: Stalling After Mickey",
+        "auteur": "Ross Care",
+        "editeur": "The Walt Disney Family Museum",
+        "datePublication": "2019-08-19",
+        "url": "https://www.waltdisney.org/blog/composing-walt-disneys-silly-symphonies-historian-ross-care-stalling-after-mickey",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "afi-skeleton-dance",
+        "titre": "The Skeleton Dance",
+        "editeur": "American Film Institute",
+        "url": "https://catalog.afi.com/Film/70418-THE-SKELETON-DANCE",
+        "dateConsultation": "2026-08-18"
+    },
+    {
         "id": "d23-about-walt-disney",
         "titre": "About Walt Disney",
         "editeur": "D23: The Official Disney Fan Club",
