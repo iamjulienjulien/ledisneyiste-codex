@@ -1,0 +1,79 @@
+{
+    "slug": "the-country-cousin",
+    "type": "oeuvre",
+    "introduction": "The Country Cousin invite une souris de Podunk à découvrir l’abondance trompeuse de la grande ville. Accueilli par son élégant cousin Monty, Abner traverse une table dressée comme un paysage de plaisirs, mais son enthousiasme, l’alcool et la présence d’un chat transforment rapidement le festin en parcours de survie. Wilfred Jackson construit la Silly Symphony sur cette opposition entre raffinement et danger, calme rural et agitation urbaine. En ramenant finalement Abner chez lui, le film fait d’une vieille fable un spectacle de contrastes et poursuit la série d’Oscars remportés par le studio.",
+    "sortie": {
+        "date": {
+            "valeur": "1936-10-31",
+            "precision": "jour"
+        }
+    },
+    "format": "court métrage d’animation",
+    "contributions": [
+        {
+            "contributeur": {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            },
+            "roles": ["production"]
+        },
+        {
+            "contributeur": {
+                "nom": "Wilfred Jackson",
+                "type": "contributeur",
+                "slug": "wilfred-jackson"
+            },
+            "roles": ["réalisation"]
+        }
+    ],
+    "personnages": [
+        {
+            "nom": "Abner"
+        },
+        {
+            "nom": "Monty"
+        },
+        {
+            "nom": "Le chat"
+        }
+    ],
+    "blocsEditoriaux": [
+        {
+            "type": "repere",
+            "eyebrow": "Fable",
+            "titre": "Mesurer la ville à l’appétit d’une souris des champs",
+            "paragraphes": [
+                "Abner arrive de Podunk avec l’émerveillement de celui qui découvre un monde d’abondance. La table de la ville rassemble des mets, des couverts et des objets dont l’élégance contraste avec la simplicité de son origine rurale.",
+                "Monty maîtrise les règles de cet univers. Il avance avec retenue et tente de contenir son cousin, tandis qu’Abner goûte, renverse et explore sans percevoir les limites qui protègent les habitants habitués à la maison.",
+                "Le film donne ainsi une forme immédiate à l’opposition de la fable : la ville promet davantage, mais chaque plaisir y possède son risque. La campagne paraît pauvre en comparaison, jusqu’au moment où sa tranquillité devient le bien le plus désirable."
+            ]
+        },
+        {
+            "type": "langage",
+            "eyebrow": "Contraste",
+            "titre": "Faire basculer le banquet de l’élégance à la panique",
+            "paragraphes": [
+                "Wilfred Jackson organise le début de la visite autour de gestes contenus, d’une table ordonnée et de l’assurance de Monty. Abner introduit progressivement un autre rythme : son ivresse dérègle ses mouvements et fait disparaître la prudence que son cousin tente de lui enseigner.",
+                "L’arrivée du chat révèle brutalement l’échelle réelle du décor. Les aliments cessent d’être un festin, les objets deviennent des obstacles et le raffinement domestique se transforme en menace pour les deux souris.",
+                "Le retour d’Abner vers Podunk ne constitue donc pas seulement la conclusion morale du récit. Il ferme une trajectoire visuelle et rythmique : attiré par le trop-plein de la ville, le personnage choisit finalement l’espace où il peut retrouver sa mesure."
+            ]
+        },
+        {
+            "type": "relations",
+            "eyebrow": "Reconnaissance",
+            "titre": "Donner à Wilfred Jackson un deuxième court métrage oscarisé",
+            "paragraphes": [
+                "Le 4 mars 1937, The Country Cousin reçoit l’Academy Award du meilleur court métrage d’animation pour la production de 1936. Walt Disney est récompensé comme producteur pour la cinquième Silly Symphony victorieuse dans la catégorie.",
+                "Pour Wilfred Jackson, le film devient le deuxième de ses courts métrages oscarisés après The Tortoise and the Hare. Les deux œuvres adaptent une fable familière, mais trouvent leur singularité dans le contraste entre des comportements plutôt que dans la simple répétition d’une morale.",
+                "Jackson poursuivra cette série dès l’année suivante avec The Old Mill. Le passage du duel de caractères à l’exploration d’un décor urbain, puis à la profondeur d’un paysage soumis à l’orage, donne la mesure de la variété atteinte par les Silly Symphonies."
+            ]
+        }
+    ],
+    "sources": [
+        "d23-country-cousin-film",
+        "d23-wilfred-jackson",
+        "ampas-9th-academy-awards",
+        "d23-academy-awards"
+    ]
+}

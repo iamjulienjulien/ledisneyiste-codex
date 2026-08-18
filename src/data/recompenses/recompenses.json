@@ -187,7 +187,9 @@
             }
         ],
         "oeuvreConcernee": {
-            "nom": "The Country Cousin"
+            "nom": "The Country Cousin",
+            "type": "oeuvre",
+            "slug": "the-country-cousin"
         },
         "sources": ["ampas-9th-academy-awards", "d23-academy-awards"]
     },

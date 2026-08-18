@@ -180,6 +180,18 @@
         "sousTitre": "La maison devenue terrain de jeu à hauteur de chaton"
     },
     {
+        "slug": "the-country-cousin",
+        "nom": "The Country Cousin",
+        "type": "oeuvre",
+        "metadata": {
+            "collection": "silly-symphonies",
+            "type": "court-metrage-anime",
+            "son": "sonore",
+            "couleur": "couleur"
+        },
+        "sousTitre": "La fable où l’abondance de la ville révèle son prix"
+    },
+    {
         "slug": "clock-cleaners",
         "nom": "Clock Cleaners",
         "type": "oeuvre",
