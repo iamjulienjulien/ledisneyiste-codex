@@ -6,67 +6,114 @@ import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import {
     PixieDustSeparator,
+    type PixieDustSeparatorAlign,
+    type PixieDustSeparatorIntensity,
+    type PixieDustSeparatorPosition,
     type PixieDustSeparatorSpacing,
-    type PixieDustSeparatorTone,
     type PixieDustSeparatorVariant,
+    type PixieDustSeparatorWidth,
 } from "@/components/ui/PixieDustSeparator";
+import {
+    getAtelierAnimationColor,
+    getAtelierAnimationColorSlugs,
+} from "@/registry/colors";
+import type { AtelierAnimationColorSlug } from "@/types/colors";
 
-type Light = "sombre" | "claire";
-type Frame = "compact" | "moyen" | "large";
-
-const variants: ReadonlyArray<{
-    value: PixieDustSeparatorVariant;
-    label: string;
-}> = [
+const variants = [
     { value: "line", label: "Filet" },
+    { value: "section", label: "Section de fiche" },
     { value: "beam", label: "Faisceau" },
+    { value: "fade", label: "Fondu" },
     { value: "film", label: "Pellicule" },
+    { value: "splice", label: "Raccord" },
+    { value: "leader", label: "Décompte" },
+] as const;
+
+const intensities = [
+    { value: "subtle", label: "Discrète" },
+    { value: "strong", label: "Soutenue" },
+] as const;
+
+const colors = [
+    { value: "theme", label: "Lignes du thème" },
+    ...getAtelierAnimationColorSlugs().map((slug) => ({
+        value: slug,
+        label: getAtelierAnimationColor(slug).label,
+    })),
 ];
 
-const tones: ReadonlyArray<{
-    value: PixieDustSeparatorTone;
-    label: string;
-}> = [
-    { value: "subtle", label: "Discret" },
-    { value: "strong", label: "Soutenu" },
-    { value: "accent", label: "Accent" },
-    { value: "inherit", label: "Hérité" },
-];
+const spacings = [
+    { value: "none", label: "Aucune" },
+    { value: "sm", label: "Petite" },
+    { value: "md", label: "Moyenne" },
+    { value: "lg", label: "Grande" },
+] as const;
 
-const spacings: ReadonlyArray<{
-    value: PixieDustSeparatorSpacing;
-    label: string;
-}> = [
-    { value: "sm", label: "Petit" },
-    { value: "md", label: "Moyen" },
-    { value: "lg", label: "Grand" },
-];
+const widths = [
+    { value: "full", label: "Pleine" },
+    { value: "medium", label: "Moyenne" },
+    { value: "short", label: "Courte" },
+] as const;
 
-const frameWidths: Record<Frame, string> = {
+const aligns = [
+    { value: "start", label: "Départ" },
+    { value: "center", label: "Centre" },
+    { value: "end", label: "Fin" },
+] as const;
+
+const frameWidths = {
     compact: "max-w-64",
     moyen: "max-w-md",
     large: "max-w-none",
-};
+} as const;
+
+function supportsPosition(variant: PixieDustSeparatorVariant) {
+    return (
+        variant === "section" ||
+        variant === "fade" ||
+        variant === "splice" ||
+        variant === "leader"
+    );
+}
 
 export function PixieDustSeparatorPlayground() {
     const [variant, setVariant] = useState<PixieDustSeparatorVariant>("line");
-    const [tone, setTone] = useState<PixieDustSeparatorTone>("subtle");
-    const [spacing, setSpacing] = useState<PixieDustSeparatorSpacing>("md");
-    const [decorative, setDecorative] = useState(false);
-    const [customAccent, setCustomAccent] = useState(false);
-    const [accent, setAccent] = useState(
-        "var(--atelier-animation-bleu-reperage)",
+    const [intensity, setIntensity] =
+        useState<PixieDustSeparatorIntensity>("subtle");
+    const [color, setColor] = useState<AtelierAnimationColorSlug | "theme">(
+        "theme",
     );
-    const [light, setLight] = useState<Light>("sombre");
-    const [frame, setFrame] = useState<Frame>("large");
+    const [spacing, setSpacing] = useState<PixieDustSeparatorSpacing>("md");
+    const [width, setWidth] = useState<PixieDustSeparatorWidth>("full");
+    const [align, setAlign] = useState<PixieDustSeparatorAlign>("center");
+    const [position, setPosition] =
+        useState<PixieDustSeparatorPosition>("center");
+    const [decorative, setDecorative] = useState(false);
+    const [light, setLight] = useState<"sombre" | "claire">("sombre");
+    const [frame, setFrame] = useState<"compact" | "moyen" | "large">("large");
 
-    const accentCode = customAccent ? `\n    accent="${accent}"` : "";
+    const colorCode = color === "theme" ? "" : `\n    color="${color}"`;
+    const positionCode = supportsPosition(variant)
+        ? `\n    position="${position}"`
+        : "";
     const decorativeCode = decorative ? "\n    decorative" : "";
     const code = `<PixieDustSeparator
     variant="${variant}"
-    tone="${tone}"
-    spacing="${spacing}"${accentCode}${decorativeCode}
+    intensity="${intensity}"${colorCode}
+    spacing="${spacing}"
+    width="${width}"
+    align="${align}"${positionCode}${decorativeCode}
 />`;
+
+    function selectVariant(nextVariant: PixieDustSeparatorVariant) {
+        setVariant(nextVariant);
+
+        if (nextVariant === "section" || nextVariant === "fade") {
+            setPosition("start");
+        } else if (nextVariant === "splice" || nextVariant === "leader") {
+            setPosition("center");
+        }
+    }
 
     return (
         <div className="relative z-[10000] overflow-hidden border border-line bg-surface">
@@ -86,28 +133,76 @@ export function PixieDustSeparatorPlayground() {
                                         name="separator-variant"
                                         {...option}
                                         selectedValue={variant}
-                                        onChange={setVariant}
+                                        onChange={selectVariant}
                                     />
                                 ))}
                             </div>
                         </fieldset>
 
+                        {supportsPosition(variant) ? (
+                            <fieldset>
+                                <legend className="text-sm font-medium text-ink">
+                                    Position interne
+                                </legend>
+                                <div className="mt-3 space-y-2">
+                                    {aligns.map((option) => (
+                                        <AtelierOptionRadio
+                                            key={option.value}
+                                            name="separator-position"
+                                            {...option}
+                                            selectedValue={position}
+                                            onChange={setPosition}
+                                        />
+                                    ))}
+                                </div>
+                            </fieldset>
+                        ) : null}
+
                         <fieldset>
                             <legend className="text-sm font-medium text-ink">
-                                Ton
+                                Intensité
                             </legend>
                             <div className="mt-3 space-y-2">
-                                {tones.map((option) => (
+                                {intensities.map((option) => (
                                     <AtelierOptionRadio
                                         key={option.value}
-                                        name="separator-tone"
+                                        name="separator-intensity"
                                         {...option}
-                                        selectedValue={tone}
-                                        onChange={setTone}
+                                        selectedValue={intensity}
+                                        onChange={setIntensity}
                                     />
                                 ))}
                             </div>
                         </fieldset>
+
+                        <div>
+                            <label
+                                htmlFor="separator-color"
+                                className="text-sm font-medium text-ink"
+                            >
+                                Couleur du registre
+                            </label>
+                            <select
+                                id="separator-color"
+                                value={color}
+                                onChange={(event) =>
+                                    setColor(
+                                        event.target.value as
+                                            AtelierAnimationColorSlug | "theme",
+                                    )
+                                }
+                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                            >
+                                {colors.map((option) => (
+                                    <option
+                                        key={option.value}
+                                        value={option.value}
+                                    >
+                                        {option.label}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
 
                         <fieldset>
                             <legend className="text-sm font-medium text-ink">
@@ -126,52 +221,53 @@ export function PixieDustSeparatorPlayground() {
                             </div>
                         </fieldset>
 
-                        <div className="space-y-3">
-                            <label className="flex cursor-pointer items-center gap-2 text-sm text-ink-soft">
-                                <input
-                                    type="checkbox"
-                                    checked={decorative}
-                                    onChange={(event) =>
-                                        setDecorative(event.target.checked)
-                                    }
-                                    className="accent-accent"
-                                />
-                                Purement décoratif
-                            </label>
-                            <label className="flex cursor-pointer items-center gap-2 text-sm text-ink-soft">
-                                <input
-                                    type="checkbox"
-                                    checked={customAccent}
-                                    onChange={(event) => {
-                                        setCustomAccent(event.target.checked);
-                                        if (event.target.checked) {
-                                            setTone("accent");
-                                        }
-                                    }}
-                                    className="accent-accent"
-                                />
-                                Accent personnalisé
-                            </label>
-                        </div>
-
-                        {customAccent ? (
-                            <div>
-                                <label
-                                    htmlFor="separator-accent"
-                                    className="text-sm font-medium text-ink"
-                                >
-                                    Couleur CSS
-                                </label>
-                                <input
-                                    id="separator-accent"
-                                    value={accent}
-                                    onChange={(event) =>
-                                        setAccent(event.target.value)
-                                    }
-                                    className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-xs text-ink"
-                                />
+                        <fieldset>
+                            <legend className="text-sm font-medium text-ink">
+                                Largeur
+                            </legend>
+                            <div className="mt-3 space-y-2">
+                                {widths.map((option) => (
+                                    <AtelierOptionRadio
+                                        key={option.value}
+                                        name="separator-width"
+                                        {...option}
+                                        selectedValue={width}
+                                        onChange={setWidth}
+                                    />
+                                ))}
                             </div>
+                        </fieldset>
+
+                        {width !== "full" ? (
+                            <fieldset>
+                                <legend className="text-sm font-medium text-ink">
+                                    Alignement
+                                </legend>
+                                <div className="mt-3 space-y-2">
+                                    {aligns.map((option) => (
+                                        <AtelierOptionRadio
+                                            key={option.value}
+                                            name="separator-align"
+                                            {...option}
+                                            selectedValue={align}
+                                            onChange={setAlign}
+                                        />
+                                    ))}
+                                </div>
+                            </fieldset>
                         ) : null}
+
+                        <label className="flex cursor-pointer items-center gap-2 text-sm text-ink-soft">
+                            <input
+                                type="checkbox"
+                                checked={decorative}
+                                onChange={(event) =>
+                                    setDecorative(event.target.checked)
+                                }
+                                className="accent-accent"
+                            />
+                            Purement décoratif
+                        </label>
                     </div>
                 </aside>
 
@@ -197,9 +293,12 @@ export function PixieDustSeparatorPlayground() {
                             </p>
                             <PixieDustSeparator
                                 variant={variant}
-                                tone={tone}
+                                intensity={intensity}
+                                color={color === "theme" ? false : color}
                                 spacing={spacing}
-                                accent={customAccent ? accent : undefined}
+                                width={width}
+                                align={align}
+                                position={position}
                                 decorative={decorative}
                             />
                             <p className="text-sm leading-6 text-ink-soft">

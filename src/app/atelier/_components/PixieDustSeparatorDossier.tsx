@@ -3,24 +3,65 @@ import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTa
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieDustSeparator } from "@/components/ui/PixieDustSeparator";
+import { getAtelierAnimationColorSlugs } from "@/registry/colors";
 import { PixieDustSeparatorPlayground } from "./PixieDustSeparatorPlayground";
 
 const variants = [
     {
         name: "Filet",
         value: "line" as const,
+        position: "center" as const,
         description: "Rupture continue pour les séquences courantes.",
+    },
+    {
+        name: "Section de fiche",
+        value: "section" as const,
+        position: "start" as const,
+        description: "Filet du Codex marqué par l’accent familial de la fiche.",
     },
     {
         name: "Faisceau",
         value: "beam" as const,
+        position: "center" as const,
         description: "Lumière centrale pour une transition plus narrative.",
+    },
+    {
+        name: "Fondu",
+        value: "fade" as const,
+        position: "start" as const,
+        description: "Trait qui s’efface pour une sortie de séquence douce.",
     },
     {
         name: "Pellicule",
         value: "film" as const,
+        position: "center" as const,
         description: "Rythme segmenté réservé aux grandes articulations.",
     },
+    {
+        name: "Raccord",
+        value: "splice" as const,
+        position: "center" as const,
+        description: "Double coupe centrale inspirée d’une bande raccordée.",
+    },
+    {
+        name: "Décompte",
+        value: "leader" as const,
+        position: "center" as const,
+        description: "Repère circulaire central emprunté à l’amorce de film.",
+    },
+] as const;
+
+const positionalVariants = [
+    { value: "section", label: "Section de fiche" },
+    { value: "fade", label: "Fondu" },
+    { value: "splice", label: "Raccord" },
+    { value: "leader", label: "Décompte" },
+] as const;
+
+const positions = [
+    { value: "start", label: "Départ" },
+    { value: "center", label: "Centre" },
+    { value: "end", label: "Fin" },
 ] as const;
 
 const properties = [
@@ -31,10 +72,17 @@ const properties = [
         description: "Traitement visuel de la rupture.",
     },
     {
-        name: "tone",
-        type: "PixieDustSeparatorTone",
+        name: "intensity",
+        type: "PixieDustSeparatorIntensity",
         defaultValue: '"subtle"',
-        description: "Origine et intensité de sa couleur.",
+        description: "Présence visuelle du séparateur.",
+    },
+    {
+        name: "color",
+        type: "PixieDustSeparatorColor",
+        defaultValue: "false",
+        description:
+            "Teinte de L’Atelier d’animation ou couleur sémantique du thème.",
     },
     {
         name: "spacing",
@@ -43,10 +91,23 @@ const properties = [
         description: "Respiration verticale réservée autour du séparateur.",
     },
     {
-        name: "accent",
-        type: "string",
-        defaultValue: "accent du thème",
-        description: "Couleur CSS personnalisée utilisée avec le ton accent.",
+        name: "width",
+        type: "PixieDustSeparatorWidth",
+        defaultValue: '"full"',
+        description: "Longueur occupée dans son conteneur.",
+    },
+    {
+        name: "align",
+        type: "PixieDustSeparatorAlign",
+        defaultValue: '"center"',
+        description: "Alignement des largeurs medium et short.",
+    },
+    {
+        name: "position",
+        type: "PixieDustSeparatorPosition",
+        defaultValue: '"start" ou "center"',
+        description:
+            "Position du point focal ; start pour section et fade, center pour splice et leader.",
     },
     {
         name: "decorative",
@@ -65,18 +126,50 @@ const properties = [
 const specificTypes = [
     {
         name: "PixieDustSeparatorVariant",
-        values: ['"line"', '"beam"', '"film"'],
-        description: "Trois traitements pour trois intensités narratives.",
+        values: [
+            '"line"',
+            '"section"',
+            '"beam"',
+            '"fade"',
+            '"film"',
+            '"splice"',
+            '"leader"',
+        ],
+        description: "Sept traitements pour différents rythmes narratifs.",
     },
     {
-        name: "PixieDustSeparatorTone",
-        values: ['"subtle"', '"strong"', '"accent"', '"inherit"'],
-        description: "Quatre origines ou niveaux de couleur.",
+        name: "PixieDustSeparatorIntensity",
+        values: ['"subtle"', '"strong"'],
+        description: "Deux niveaux de présence visuelle.",
+    },
+    {
+        name: "PixieDustSeparatorColor",
+        values: [
+            "false",
+            ...getAtelierAnimationColorSlugs().map((slug) => `"${slug}"`),
+        ],
+        description:
+            "Une couleur enregistrée ; false conserve les lignes du thème.",
     },
     {
         name: "PixieDustSeparatorSpacing",
-        values: ['"sm"', '"md"', '"lg"'],
-        description: "Trois respirations verticales prédéfinies.",
+        values: ['"none"', '"sm"', '"md"', '"lg"'],
+        description: "Quatre respirations verticales prédéfinies.",
+    },
+    {
+        name: "PixieDustSeparatorWidth",
+        values: ['"full"', '"medium"', '"short"'],
+        description: "Trois longueurs relatives au conteneur.",
+    },
+    {
+        name: "PixieDustSeparatorAlign",
+        values: ['"start"', '"center"', '"end"'],
+        description: "Trois positions pour les séparateurs raccourcis.",
+    },
+    {
+        name: "PixieDustSeparatorPosition",
+        values: ['"start"', '"center"', '"end"'],
+        description: "Trois positions internes pour le point focal.",
     },
 ] as const;
 
@@ -145,7 +238,7 @@ export function PixieDustSeparatorDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.1.0
+                                0.2.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -230,16 +323,22 @@ export function PixieDustSeparatorDossier() {
                 <SequenceTitle
                     id="separateur-variants"
                     eyebrow="Essais caméra"
-                    title="Trois manières de couper le plan"
+                    title="Sept manières de couper le plan"
                     description="Chaque variante augmente la présence narrative ; elle ne change pas la sémantique du séparateur."
                 />
 
-                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-3">
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
                     {variants.map((variant) => (
                         <article key={variant.value} className="bg-surface p-6">
                             <div className="flex min-h-24 items-center">
                                 <PixieDustSeparator
                                     variant={variant.value}
+                                    position={variant.position}
+                                    intensity={
+                                        variant.value === "section"
+                                            ? "strong"
+                                            : "subtle"
+                                    }
                                     spacing="sm"
                                 />
                             </div>
@@ -254,38 +353,61 @@ export function PixieDustSeparatorDossier() {
                 </div>
             </section>
 
-            <section aria-labelledby="separateur-tones" className="mt-16">
+            <section aria-labelledby="separateur-position" className="mt-16">
                 <SequenceTitle
-                    id="separateur-tones"
-                    eyebrow="Direction artistique"
-                    title="Quatre intensités de lumière"
-                    description="Le ton discret reste la norme ; les couleurs plus présentes signalent une articulation exceptionnelle."
+                    id="separateur-position"
+                    eyebrow="Placement du repère"
+                    title="Le point focal se déplace dans le plan"
+                    description="La position agit sur le segment épais, la zone opaque, le raccord ou le repère circulaire sans déplacer le séparateur lui-même."
                 />
 
-                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line lg:grid-cols-2">
+                    {positionalVariants.map((variant) => (
+                        <article key={variant.value} className="bg-surface p-6">
+                            <h4 className="text-xl text-ink">
+                                {variant.label}
+                            </h4>
+                            <div className="mt-5 space-y-5">
+                                {positions.map((position) => (
+                                    <div key={position.value}>
+                                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                                            {position.label}
+                                        </p>
+                                        <PixieDustSeparator
+                                            variant={variant.value}
+                                            position={position.value}
+                                            intensity="strong"
+                                            color="bleu-reperage"
+                                            spacing="sm"
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+                        </article>
+                    ))}
+                </div>
+            </section>
+
+            <section aria-labelledby="separateur-intensities" className="mt-16">
+                <SequenceTitle
+                    id="separateur-intensities"
+                    eyebrow="Direction artistique"
+                    title="Deux intensités de lumière"
+                    description="L’intensité discrète reste la norme ; la version soutenue accompagne les articulations importantes."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
                     <article className="bg-surface p-6">
                         <p className="text-xs uppercase tracking-[0.16em] text-muted">
                             Discret
                         </p>
-                        <PixieDustSeparator tone="subtle" spacing="sm" />
+                        <PixieDustSeparator intensity="subtle" spacing="sm" />
                     </article>
                     <article className="bg-surface p-6">
                         <p className="text-xs uppercase tracking-[0.16em] text-muted">
                             Soutenu
                         </p>
-                        <PixieDustSeparator tone="strong" spacing="sm" />
-                    </article>
-                    <article className="bg-surface p-6">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
-                            Accent
-                        </p>
-                        <PixieDustSeparator tone="accent" spacing="sm" />
-                    </article>
-                    <article className="bg-surface p-6 text-famille-epoques">
-                        <p className="text-xs uppercase tracking-[0.16em] text-muted">
-                            Hérité
-                        </p>
-                        <PixieDustSeparator tone="inherit" spacing="sm" />
+                        <PixieDustSeparator intensity="strong" spacing="sm" />
                     </article>
                 </div>
             </section>
@@ -294,23 +416,24 @@ export function PixieDustSeparatorDossier() {
                 <SequenceTitle
                     id="separateur-spacing"
                     eyebrow="Montage"
-                    title="Trois respirations verticales"
+                    title="Quatre respirations verticales"
                     description="La respiration exprime la distance éditoriale entre les séquences, pas l’importance du trait."
                 />
 
-                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-3">
-                    {[
-                        ["Petite", "sm"],
-                        ["Moyenne", "md"],
-                        ["Grande", "lg"],
-                    ].map(([label, spacing]) => (
-                        <article key={label} className="bg-surface p-6">
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+                    {(
+                        [
+                            { label: "Aucune", spacing: "none" },
+                            { label: "Petite", spacing: "sm" },
+                            { label: "Moyenne", spacing: "md" },
+                            { label: "Grande", spacing: "lg" },
+                        ] as const
+                    ).map(({ label, spacing }) => (
+                        <article key={spacing} className="bg-surface p-6">
                             <p className="text-xs uppercase tracking-[0.16em] text-muted">
                                 {label}
                             </p>
-                            <PixieDustSeparator
-                                spacing={spacing as "sm" | "md" | "lg"}
-                            />
+                            <PixieDustSeparator spacing={spacing} />
                             <p className="text-xs text-muted">
                                 spacing=&quot;{spacing}&quot;
                             </p>
@@ -319,19 +442,64 @@ export function PixieDustSeparatorDossier() {
                 </div>
             </section>
 
-            <section aria-labelledby="separateur-accent" className="mt-16">
+            <section aria-labelledby="separateur-width" className="mt-16">
                 <SequenceTitle
-                    id="separateur-accent"
+                    id="separateur-width"
+                    eyebrow="Cadrage"
+                    title="Trois longueurs dans le plan"
+                    description="Une rupture peut traverser tout le cadre ou devenir une respiration plus localisée."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-3">
+                    {(
+                        [
+                            {
+                                label: "Pleine largeur",
+                                width: "full",
+                                align: "center",
+                            },
+                            {
+                                label: "Moyenne au départ",
+                                width: "medium",
+                                align: "start",
+                            },
+                            {
+                                label: "Courte à la fin",
+                                width: "short",
+                                align: "end",
+                            },
+                        ] as const
+                    ).map(({ label, width, align }) => (
+                        <article key={label} className="bg-surface p-6">
+                            <p className="text-xs uppercase tracking-[0.16em] text-muted">
+                                {label}
+                            </p>
+                            <PixieDustSeparator
+                                width={width}
+                                align={align}
+                                spacing="sm"
+                            />
+                            <p className="font-mono text-xs text-muted">
+                                {width} · {align}
+                            </p>
+                        </article>
+                    ))}
+                </div>
+            </section>
+
+            <section aria-labelledby="separateur-color" className="mt-16">
+                <SequenceTitle
+                    id="separateur-color"
                     eyebrow="Couleur de production"
-                    title="Un accent pour les ruptures éditoriales"
-                    description="Une couleur de L’Atelier d’animation peut remplacer l’accent du thème lorsque le contexte le justifie."
+                    title="Une couleur enregistrée pour les ruptures éditoriales"
+                    description="Une référence de L’Atelier d’animation peut remplacer les lignes du thème lorsque le contexte le justifie."
                 />
 
                 <div className="mt-7 border border-line bg-surface p-8">
                     <PixieDustSeparator
                         variant="beam"
-                        tone="accent"
-                        accent="var(--atelier-animation-bleu-reperage)"
+                        intensity="strong"
+                        color="bleu-reperage"
                     />
                     <p className="text-center text-sm text-muted">
                         Repère bleu de la table lumineuse
@@ -412,8 +580,8 @@ export function PixieDustSeparatorDossier() {
                 <div className="mt-10">
                     <h4 className="text-xl text-ink">Types spécifiques</h4>
                     <p className="mt-2 text-sm leading-6 text-muted">
-                        Les traitements, tons et respirations admis par le
-                        séparateur.
+                        Les traitements, intensités, couleurs, respirations et
+                        cadrages admis par le séparateur.
                     </p>
                     <div className="mt-4">
                         <AtelierTypesTable types={specificTypes} />
@@ -434,8 +602,8 @@ export function PixieDustSeparatorDossier() {
                             Contextes réels
                         </p>
                         <p className="mt-3 leading-7 text-ink-soft">
-                            Comparer les trois respirations sur une fiche longue
-                            et un petit écran avant de fixer leur rythme.
+                            Comparer les quatre respirations et les trois
+                            longueurs sur une fiche longue et un petit écran.
                         </p>
                     </article>
                     <article className="bg-surface p-6">
@@ -443,8 +611,8 @@ export function PixieDustSeparatorDossier() {
                             Validation
                         </p>
                         <p className="mt-3 leading-7 text-ink-soft">
-                            Vérifier la discrétion de la variante film et la
-                            pertinence de chaque rupture avec ou sans
+                            Vérifier les sept variantes, les couleurs
+                            enregistrées et chaque rupture avec ou sans
                             sémantique.
                         </p>
                     </article>

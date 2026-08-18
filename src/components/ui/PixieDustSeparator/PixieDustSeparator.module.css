@@ -1,5 +1,4 @@
 .root {
-    width: 100%;
     border: 0;
     color: var(--color-line);
 }
@@ -12,17 +11,42 @@
     color: var(--color-line-strong);
 }
 
-.accent {
-    color: var(--pixie-dust-separator-accent, var(--color-accent));
+.root[data-pixie-dust-separator-color]:not(
+        [data-pixie-dust-separator-color="theme"]
+    ).subtle {
+    color: color-mix(
+        in srgb,
+        var(--pixie-dust-separator-color) 58%,
+        var(--color-line)
+    );
 }
 
-.inherit {
-    color: inherit;
+.root[data-pixie-dust-separator-color]:not(
+        [data-pixie-dust-separator-color="theme"]
+    ).strong {
+    color: var(--pixie-dust-separator-color);
 }
 
 .line {
     height: 1px;
     background: currentColor;
+}
+
+.section {
+    height: 2px;
+    background:
+        linear-gradient(currentColor, currentColor)
+            var(--pixie-dust-separator-position) top / min(4rem, 100%) 2px
+            no-repeat,
+        linear-gradient(
+                var(--codex-fiche-border, var(--color-line)),
+                var(--codex-fiche-border, var(--color-line))
+            )
+            left top / 100% 1px no-repeat;
+}
+
+.root[data-pixie-dust-separator-color="theme"].section {
+    color: var(--codex-fiche-color, var(--color-accent));
 }
 
 .beam {
@@ -38,13 +62,104 @@
     box-shadow: 0 0 1rem color-mix(in srgb, currentColor 18%, transparent);
 }
 
-.film {
-    height: 0.25rem;
-    background: repeating-linear-gradient(
+.fade {
+    height: 1px;
+}
+
+.fade.position-start {
+    background: linear-gradient(
         90deg,
-        currentColor 0 1rem,
-        transparent 1rem 1.5rem
+        currentColor,
+        color-mix(in srgb, currentColor 42%, transparent) 58%,
+        transparent
     );
+}
+
+.fade.position-center {
+    background: linear-gradient(
+        90deg,
+        transparent,
+        color-mix(in srgb, currentColor 42%, transparent) 28%,
+        currentColor 50%,
+        color-mix(in srgb, currentColor 42%, transparent) 72%,
+        transparent
+    );
+}
+
+.fade.position-end {
+    background: linear-gradient(
+        90deg,
+        transparent,
+        color-mix(in srgb, currentColor 42%, transparent) 42%,
+        currentColor
+    );
+}
+
+.film {
+    height: 0.4375rem;
+    background:
+        linear-gradient(currentColor, currentColor) center / 100% 1px no-repeat,
+        repeating-linear-gradient(
+                90deg,
+                currentColor 0 0.75rem,
+                transparent 0.75rem 1rem
+            )
+            top / 100% 1px no-repeat,
+        repeating-linear-gradient(
+                90deg,
+                currentColor 0 0.75rem,
+                transparent 0.75rem 1rem
+            )
+            bottom / 100% 1px no-repeat;
+}
+
+.splice {
+    height: 0.75rem;
+    background:
+        linear-gradient(
+                62deg,
+                transparent 42%,
+                currentColor 43% 48%,
+                transparent 49% 52%,
+                currentColor 53% 58%,
+                transparent 59%
+            )
+            var(--pixie-dust-separator-safe-position) center / 1rem 100%
+            no-repeat,
+        linear-gradient(currentColor, currentColor) center / 100% 1px no-repeat;
+}
+
+.leader {
+    height: 1rem;
+    background:
+        radial-gradient(
+                circle at center,
+                transparent 0 0.2rem,
+                currentColor 0.21rem 0.27rem,
+                transparent 0.28rem
+            )
+            var(--pixie-dust-separator-safe-position) center / 1rem 1rem
+            no-repeat,
+        linear-gradient(currentColor, currentColor) center / 100% 1px no-repeat;
+}
+
+.position-start {
+    --pixie-dust-separator-position: 0%;
+    --pixie-dust-separator-safe-position: left;
+}
+
+.position-center {
+    --pixie-dust-separator-position: 50%;
+    --pixie-dust-separator-safe-position: center;
+}
+
+.position-end {
+    --pixie-dust-separator-position: 100%;
+    --pixie-dust-separator-safe-position: right;
+}
+
+.none {
+    margin-block: 0;
 }
 
 .sm {
@@ -57,4 +172,28 @@
 
 .lg {
     margin-block: 3.5rem;
+}
+
+.full {
+    width: 100%;
+}
+
+.medium {
+    width: 66.6667%;
+}
+
+.short {
+    width: 33.3333%;
+}
+
+.start {
+    margin-inline: 0 auto;
+}
+
+.center {
+    margin-inline: auto;
+}
+
+.end {
+    margin-inline: auto 0;
 }

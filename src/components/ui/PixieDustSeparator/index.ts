@@ -1,7 +1,11 @@
 export { PixieDustSeparator } from "./PixieDustSeparator";
 export type {
+    PixieDustSeparatorAlign,
+    PixieDustSeparatorColor,
+    PixieDustSeparatorIntensity,
+    PixieDustSeparatorPosition,
     PixieDustSeparatorProps,
     PixieDustSeparatorSpacing,
-    PixieDustSeparatorTone,
     PixieDustSeparatorVariant,
-} from "./PixieDustSeparator";
+    PixieDustSeparatorWidth,
+} from "./PixieDustSeparator.types";
