@@ -11,7 +11,7 @@ import {
 export default function Home() {
     return (
         <main className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-24">
-            <header className="max-w-3xl">
+            <header>
                 <p className="text-sm font-medium uppercase tracking-[0.24em] text-muted">
                     Le Disneyiste
                 </p>
@@ -65,7 +65,7 @@ export default function Home() {
                         variant="surface"
                         color="rouge-crayon"
                         data-famille="personnages"
-                        className="codex-door group border border-line p-6"
+                        className="codex-door group !flex h-full flex-col border border-line p-6"
                     >
                         <PixieSymbol
                             registry="codex"
@@ -90,7 +90,7 @@ export default function Home() {
                             imaginaires Disney.
                         </p>
 
-                        <p className="mt-6 font-medium text-famille-personnages transition-[filter] group-hover:brightness-125">
+                        <p className="mt-auto pt-6 font-medium text-famille-personnages transition-[filter] group-hover:brightness-125">
                             Explorer les personnages →
                         </p>
                     </PixieLink>
@@ -100,7 +100,7 @@ export default function Home() {
                         variant="surface"
                         color="jaune-lampe"
                         data-famille="createurs"
-                        className="codex-door group border border-line p-6"
+                        className="codex-door group !flex h-full flex-col border border-line p-6"
                     >
                         <PixieSymbol
                             registry="codex"
@@ -125,7 +125,7 @@ export default function Home() {
                             transformé Disney.
                         </p>
 
-                        <p className="mt-6 font-medium text-famille-createurs transition-[filter] group-hover:brightness-125">
+                        <p className="mt-auto pt-6 font-medium text-famille-createurs transition-[filter] group-hover:brightness-125">
                             Explorer les créateurs →
                         </p>
                     </PixieLink>
@@ -135,7 +135,7 @@ export default function Home() {
                         variant="surface"
                         color="gouache"
                         data-famille="oeuvres"
-                        className="codex-door group border border-line p-6"
+                        className="codex-door group !flex h-full flex-col border border-line p-6"
                     >
                         <PixieSymbol
                             registry="codex"
@@ -158,7 +158,7 @@ export default function Home() {
                             imaginaires Disney prennent forme.
                         </p>
 
-                        <p className="mt-6 font-medium text-famille-oeuvres transition-[filter] group-hover:brightness-125">
+                        <p className="mt-auto pt-6 font-medium text-famille-oeuvres transition-[filter] group-hover:brightness-125">
                             Explorer les œuvres →
                         </p>
                     </PixieLink>
@@ -168,7 +168,7 @@ export default function Home() {
                         variant="surface"
                         color="vert-cellulo"
                         data-famille="epoques"
-                        className="codex-door group border border-line p-6"
+                        className="codex-door group !flex h-full flex-col border border-line p-6"
                     >
                         <PixieSymbol
                             registry="codex"
@@ -191,7 +191,7 @@ export default function Home() {
                             transformations de Disney dans le temps.
                         </p>
 
-                        <p className="mt-6 font-medium text-famille-epoques transition-[filter] group-hover:brightness-125">
+                        <p className="mt-auto pt-6 font-medium text-famille-epoques transition-[filter] group-hover:brightness-125">
                             Explorer les époques →
                         </p>
                     </PixieLink>
