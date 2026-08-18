@@ -44,3 +44,9 @@
     outline: 2px solid var(--color-focus);
     outline-offset: 3px;
 }
+
+.recompenses {
+    margin-top: 1.25rem;
+    border-top: 1px solid var(--color-line);
+    padding-top: 1.25rem;
+}

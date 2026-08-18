@@ -5,10 +5,12 @@ import { CodexReferenceLink } from "@/components/codex/CodexReferenceLink";
 import { CodexSources } from "@/components/codex/CodexSources";
 import { CodexEpoque } from "@/components/codex/CodexEpoque";
 import { CodexBlocsEditoriaux } from "@/components/codex/CodexBlocsEditoriaux";
+import { CodexRecompenses } from "@/components/codex/CodexRecompenses";
 import { PixieBadge } from "@/components/ui/PixieBadge";
 import { getEpoquePourDate } from "@/data/epoques/relations";
 import { getOeuvreBySlug, oeuvres } from "@/data/catalogues";
 import { getFicheOeuvreBySlug } from "@/data/oeuvres";
+import { getRecompensesPourOeuvre } from "@/data/recompenses/relations";
 import { getSourcesByIds } from "@/data/sources";
 import { formatDateHistorique } from "@/lib/date";
 
@@ -54,7 +56,13 @@ export default async function OeuvrePage({
         notFound();
     }
 
-    const sources = getSourcesByIds(fiche.sources);
+    const recompenses = getRecompensesPourOeuvre(slug);
+    const sources = getSourcesByIds([
+        ...new Set([
+            ...fiche.sources,
+            ...recompenses.flatMap((recompense) => recompense.sources),
+        ]),
+    ]);
     const epoque = getEpoquePourDate(fiche.sortie.date);
 
     return (
@@ -156,6 +164,8 @@ export default async function OeuvrePage({
 
                 <CodexEpoque epoque={epoque} />
             </dl>
+
+            <CodexRecompenses recompenses={recompenses} />
 
             <CodexBlocsEditoriaux
                 collection="oeuvres"

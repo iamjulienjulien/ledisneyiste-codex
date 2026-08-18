@@ -9,6 +9,7 @@ import type {
     PersonnageDisney,
 } from "@/types/personnage";
 import type { ReferenceCodex } from "@/types/reference";
+import type { RecompenseDisney } from "@/types/recompense";
 
 export type CodexPersonnageCardProps = Readonly<{
     personnage: PersonnageDisney;
@@ -24,6 +25,7 @@ export type CodexCreateurCardProps = Readonly<{
 export type CodexOeuvreCardProps = Readonly<{
     oeuvre: OeuvreDisney;
     fiche: FicheOeuvreDisney;
+    recompenses: RecompenseDisney[];
 }>;
 
 export type CodexEpoqueCardProps = Readonly<{

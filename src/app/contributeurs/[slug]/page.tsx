@@ -11,8 +11,10 @@ import { CodexFicheHeader } from "@/components/codex/CodexFicheHeader";
 import { CodexSources } from "@/components/codex/CodexSources";
 import { CodexRelations } from "@/components/codex/CodexRelations";
 import { CodexBlocsEditoriaux } from "@/components/codex/CodexBlocsEditoriaux";
+import { CodexRecompenses } from "@/components/codex/CodexRecompenses";
 import { PixieBadge } from "@/components/ui/PixieBadge";
 import { getEpoquesPourContributeur } from "@/data/epoques/relations";
+import { getRecompensesPourContributeur } from "@/data/recompenses/relations";
 
 import { formatDateHistorique } from "@/lib/date";
 
@@ -58,7 +60,13 @@ export default async function ContributeurPage({
         notFound();
     }
 
-    const sources = getSourcesByIds(fiche.sources);
+    const recompenses = getRecompensesPourContributeur(slug);
+    const sources = getSourcesByIds([
+        ...new Set([
+            ...fiche.sources,
+            ...recompenses.flatMap((recompense) => recompense.sources),
+        ]),
+    ]);
     const epoques = getEpoquesPourContributeur(slug);
 
     const personnagesCrees = getPersonnagesCreesParContributeur(slug);
@@ -120,6 +128,8 @@ export default async function ContributeurPage({
                 collection="contributeurs"
                 blocs={fiche.blocsEditoriaux}
             />
+
+            <CodexRecompenses recompenses={recompenses} showWork />
 
             <CodexRelations
                 groupes={[

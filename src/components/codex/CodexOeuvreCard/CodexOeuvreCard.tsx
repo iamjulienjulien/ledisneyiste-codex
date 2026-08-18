@@ -5,7 +5,15 @@ import { formatDateHistorique } from "@/lib/date";
 import type { CodexOeuvreCardProps } from "@/types/codex-cards";
 import styles from "./CodexOeuvreCard.module.css";
 
-export function CodexOeuvreCard({ oeuvre, fiche }: CodexOeuvreCardProps) {
+export function CodexOeuvreCard({
+    oeuvre,
+    fiche,
+    recompenses,
+}: CodexOeuvreCardProps) {
+    const naturesRecompenses = [
+        ...new Set(recompenses.map((recompense) => recompense.nature)),
+    ];
+
     return (
         <Link
             href={`/oeuvres/${oeuvre.slug}`}
@@ -76,6 +84,32 @@ export function CodexOeuvreCard({ oeuvre, fiche }: CodexOeuvreCardProps) {
                     />
                 </li>
             </ul>
+
+            {recompenses.length > 0 && (
+                <div className={styles.recompenses}>
+                    <p className="text-xs font-medium uppercase tracking-[0.14em] text-muted">
+                        {recompenses.length}{" "}
+                        {recompenses.length > 1 ? "récompenses" : "récompense"}
+                    </p>
+
+                    <ul
+                        aria-label="Natures des récompenses"
+                        className="mt-3 flex flex-wrap gap-2"
+                    >
+                        {naturesRecompenses.map((nature) => (
+                            <li key={nature}>
+                                <PixieBadge
+                                    registry="recompenses"
+                                    collection="natures"
+                                    slug={nature}
+                                    size="xs"
+                                    shape="pill"
+                                />
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
 
             <span className="mt-auto pt-8 text-sm font-medium text-famille-oeuvres">
                 Ouvrir la fiche →

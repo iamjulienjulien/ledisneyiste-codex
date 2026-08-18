@@ -6,6 +6,7 @@ import { PixieBadge } from "@/components/ui/PixieBadge";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { oeuvres } from "@/data/catalogues";
 import { getFicheOeuvreBySlug } from "@/data/oeuvres";
+import { getRecompensesPourOeuvre } from "@/data/recompenses/relations";
 import { resolveCodexIndexView } from "@/lib/index-view";
 
 export const metadata: Metadata = {
@@ -62,12 +63,16 @@ export default async function OeuvresPage({
                     <ul className="mt-8 grid gap-6 lg:grid-cols-2">
                         {oeuvres.map((oeuvre) => {
                             const fiche = getFicheOeuvreBySlug(oeuvre.slug);
+                            const recompenses = getRecompensesPourOeuvre(
+                                oeuvre.slug,
+                            );
 
                             return fiche ? (
                                 <li key={oeuvre.slug}>
                                     <CodexOeuvreCard
                                         oeuvre={oeuvre}
                                         fiche={fiche}
+                                        recompenses={recompenses}
                                     />
                                 </li>
                             ) : null;
