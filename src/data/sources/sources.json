@@ -918,5 +918,19 @@
         "editeur": "Academy of Motion Picture Arts and Sciences",
         "url": "https://www.oscars.org/oscars/ceremonies/1937",
         "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "ampas-10th-academy-awards",
+        "titre": "The 10th Academy Awards | 1938",
+        "editeur": "Academy of Motion Picture Arts and Sciences",
+        "url": "https://www.oscars.org/oscars/ceremonies/1938",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-the-old-mill-wins-academy-award",
+        "titre": "The Old Mill Wins Academy Award® for Best Short Subject Cartoons",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/this-day/the-old-mill-wins-academy-award174-for-best-short-subject-cartoons/",
+        "dateConsultation": "2026-08-18"
     }
 ]

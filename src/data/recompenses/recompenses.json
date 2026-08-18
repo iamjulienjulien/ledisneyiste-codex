@@ -180,5 +180,37 @@
             "nom": "The Country Cousin"
         },
         "sources": ["ampas-9th-academy-awards", "d23-academy-awards"]
+    },
+    {
+        "id": "academy-awards-1938-the-old-mill",
+        "institution": {
+            "nom": "Academy of Motion Picture Arts and Sciences",
+            "abreviation": "AMPAS"
+        },
+        "edition": {
+            "nom": "10e cérémonie des Oscars",
+            "numero": 10
+        },
+        "dateAttribution": {
+            "valeur": "1938-03-10",
+            "precision": "jour"
+        },
+        "nature": "competitive",
+        "categorie": "Meilleur court métrage d’animation",
+        "beneficiaires": [
+            {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            }
+        ],
+        "oeuvreConcernee": {
+            "nom": "The Old Mill"
+        },
+        "sources": [
+            "ampas-10th-academy-awards",
+            "d23-academy-awards",
+            "d23-the-old-mill-wins-academy-award"
+        ]
     }
 ]
