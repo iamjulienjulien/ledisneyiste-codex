@@ -198,86 +198,17 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className="mt-20">
-                <PixieSeparator
-                    variant="film"
-                    width="medium"
-                    align="start"
-                    spacing="none"
-                    decorative
-                />
-
-                <p className="mt-12 text-sm font-medium uppercase tracking-[0.2em] text-muted">
-                    Aux origines
-                </p>
-
-                <h2 className="mt-3 text-3xl text-ink">
-                    Un homme, deux souris et un bateau
-                </h2>
-
-                <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
-                    Le premier réseau du Codex se noue autour de quelques
-                    figures fondatrices : Walt Disney et Ub Iwerks imaginent,
-                    Mickey et Minnie prennent forme, puis
-                    <em> Steamboat Willie</em> les rassemble dans l’une des
-                    scènes d’origine les plus célèbres de l’histoire de Disney.
-                    À partir de ces quelques liens, le Codex commence déjà à
-                    raconter comment un imaginaire se fabrique, circule et
-                    devient mémoire.
-                </p>
-
-                <div className="mt-8 flex flex-wrap gap-x-8 gap-y-4">
-                    <PixieLink
-                        href="/contributeurs/walt-disney"
-                        variant="action"
-                        color="jaune-lampe"
-                        indicator="arrow"
-                    >
-                        Walt Disney
-                    </PixieLink>
-
-                    <PixieLink
-                        href="/contributeurs/ub-iwerks"
-                        variant="action"
-                        color="jaune-lampe"
-                        indicator="arrow"
-                    >
-                        Ub Iwerks
-                    </PixieLink>
-
-                    <PixieLink
-                        href="/personnages/mickey-mouse"
-                        variant="action"
-                        color="rouge-crayon"
-                        indicator="arrow"
-                    >
-                        Mickey Mouse
-                    </PixieLink>
-
-                    <PixieLink
-                        href="/personnages/minnie-mouse"
-                        variant="action"
-                        color="rouge-crayon"
-                        indicator="arrow"
-                    >
-                        Minnie Mouse
-                    </PixieLink>
-
-                    <PixieLink
-                        href="/oeuvres/steamboat-willie"
-                        variant="action"
-                        color="gouache"
-                        indicator="arrow"
-                    >
-                        Steamboat Willie
-                    </PixieLink>
-                </div>
-            </section>
-
             <footer className="mt-24">
                 <PixieSeparator spacing="none" decorative />
 
                 <div className="mt-8 flex flex-col gap-4">
+                    <p className="max-w-2xl text-sm leading-6 text-muted">
+                        Le Disneyiste est un projet éditorial personnel,
+                        indépendant et non officiel. Il n’est affilié ni à The
+                        Walt Disney Company ni à ses filiales, et n’est ni
+                        approuvé ni sponsorisé par celles-ci.
+                    </p>
+
                     <p className="text-sm font-medium text-ink-soft">
                         Un projet de{" "}
                         <a
@@ -289,13 +220,6 @@ export default function Home() {
                             Julien Julien
                         </a>
                         .
-                    </p>
-
-                    <p className="max-w-2xl text-sm leading-6 text-muted">
-                        Le Disneyiste est un projet éditorial personnel,
-                        indépendant et non officiel. Il n’est affilié ni à The
-                        Walt Disney Company ni à ses filiales, et n’est ni
-                        approuvé ni sponsorisé par celles-ci.
                     </p>
                 </div>
             </footer>
