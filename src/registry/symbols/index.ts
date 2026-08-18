@@ -1,11 +1,13 @@
 import { symbolsBlocs } from "./symbols-blocs";
 import { symbolsCodex } from "./symbols-codex";
+import { symbolsGeneral } from "./symbols-general";
 import { symbolsRecompenses } from "./symbols-recompenses";
 import type { SymbolDefinition } from "@/types/symbols";
 
 export const symbolsRegistry = {
     blocs: symbolsBlocs,
     codex: symbolsCodex,
+    general: symbolsGeneral,
     recompenses: symbolsRecompenses,
 } as const;
 

@@ -306,6 +306,7 @@ Les symboles illustrés sont résolus par un registre global composé de
 sous-registres et de collections :
 
 ```text
+general.logos
 codex.index
 blocs.personnages
 blocs.contributeurs

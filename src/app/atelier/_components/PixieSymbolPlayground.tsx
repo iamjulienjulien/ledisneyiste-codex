@@ -13,6 +13,16 @@ type PixieSymbolPresetSize = Exclude<PixieSymbolSize, number>;
 
 const symbolOptions = [
     {
+        key: "general.logos.le-codex-du-disneyiste",
+        group: "Général · Logos",
+        selection: {
+            registry: "general",
+            collection: "logos",
+            slug: "le-codex-du-disneyiste",
+        },
+        definition: getSymbol("general", "logos", "le-codex-du-disneyiste"),
+    },
+    {
         key: "codex.index.personnages",
         group: "Codex · Index",
         selection: {
@@ -233,6 +243,7 @@ const symbolOptions = [
 ] as const;
 
 const symbolGroups = [
+    "Général · Logos",
     "Codex · Index",
     "Récompenses · Trophées",
     "Blocs · Personnages",

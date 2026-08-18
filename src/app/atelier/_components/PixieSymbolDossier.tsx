@@ -6,6 +6,7 @@ import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { getSymbol, getSymbolSlugs } from "@/registry/symbols";
 import { PixieSymbolPlayground } from "./PixieSymbolPlayground";
 
+const generalLogoSymbolSlugs = getSymbolSlugs("general", "logos");
 const indexSymbolSlugs = getSymbolSlugs("codex", "index");
 const recompenseTrophySymbolSlugs = getSymbolSlugs("recompenses", "trophees");
 const contributeurBlockSymbolSlugs = getSymbolSlugs("blocs", "contributeurs");
@@ -74,7 +75,7 @@ const typesSpecifiques = [
     },
     {
         name: "SymbolRegistryName",
-        values: ['"blocs"', '"codex"', '"recompenses"'],
+        values: ['"blocs"', '"codex"', '"general"', '"recompenses"'],
         description: "Registres de symboles actuellement disponibles.",
     },
     {
@@ -88,6 +89,11 @@ const typesSpecifiques = [
         description: "Collections exposées par le registre Codex.",
     },
     {
+        name: 'SymbolCollectionName<"general">',
+        values: ['"logos"'],
+        description: "Collections exposées par le registre Général.",
+    },
+    {
         name: 'SymbolCollectionName<"recompenses">',
         values: ['"trophees"'],
         description: "Collections exposées par le registre des Récompenses.",
@@ -96,6 +102,11 @@ const typesSpecifiques = [
         name: 'SymbolSlug<"codex", "index">',
         values: ['"personnages"', '"createurs"', '"oeuvres"', '"epoques"'],
         description: "Symboles disponibles dans la collection des index.",
+    },
+    {
+        name: 'SymbolSlug<"general", "logos">',
+        values: ['"le-codex-du-disneyiste"'],
+        description: "Logos généraux disponibles dans le registre.",
     },
     {
         name: 'SymbolSlug<"recompenses", "trophees">',
@@ -223,7 +234,7 @@ export function PixieSymbolDossier() {
                         ["Mission", "Afficher un symbole typé."],
                         ["Sélection", "registry · collection · slug"],
                         ["Exemple", "codex.index.personnages"],
-                        ["Masters", "Six séries originales · 1254 px."],
+                        ["Masters", "Sept séries originales · 1254 px."],
                         ["Dérivés", "PNG transparent · 384 px."],
                         ["Accessibilité", "Décoratif par défaut."],
                     ].map(([terme, definition]) => (
@@ -265,6 +276,48 @@ export function PixieSymbolDossier() {
     slug="personnages"
     size="xl"
 />`}</CodeExemple>
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="pixie-symbol-general-logos"
+                className="mt-16"
+            >
+                <TitreSequence
+                    id="pixie-symbol-general-logos"
+                    surTitre="Distribution"
+                    titre="Le logo général du Codex"
+                    description="La boussole enchantée réunit le livre, le crayon et la baguette pour identifier Le Codex du Disneyiste dans tous ses espaces."
+                />
+
+                <div className="mt-7 grid max-w-sm gap-px overflow-hidden border border-line bg-line">
+                    {generalLogoSymbolSlugs.map((slug) => {
+                        const symbole = getSymbol("general", "logos", slug);
+
+                        return (
+                            <article
+                                key={slug}
+                                className="bg-surface p-6 text-center"
+                                style={{
+                                    borderTop: `4px solid ${symbole.accent}`,
+                                }}
+                            >
+                                <PixieSymbol
+                                    registry="general"
+                                    collection="logos"
+                                    slug={slug}
+                                    size="xl"
+                                    className="mx-auto"
+                                />
+                                <h4 className="mt-5 text-xl text-ink">
+                                    {symbole.label}
+                                </h4>
+                                <p className="mt-2 font-mono text-xs text-muted">
+                                    {slug}
+                                </p>
+                            </article>
+                        );
+                    })}
                 </div>
             </section>
 
