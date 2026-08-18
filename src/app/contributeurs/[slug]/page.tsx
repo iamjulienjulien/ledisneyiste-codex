@@ -7,6 +7,7 @@ import {
     getOeuvresContribueesParContributeur,
     getPersonnagesCreesParContributeur,
 } from "@/data/relations";
+import { CodexFiche } from "@/components/codex/CodexFiche";
 import { CodexFicheHeader } from "@/components/codex/CodexFicheHeader";
 import { CodexSources } from "@/components/codex/CodexSources";
 import { CodexRelations } from "@/components/codex/CodexRelations";
@@ -74,30 +75,32 @@ export default async function ContributeurPage({
     const oeuvresContribuees = getOeuvresContribueesParContributeur(slug);
 
     return (
-        <main className="mx-auto w-full max-w-6xl px-6 py-16">
+        <CodexFiche family="createurs">
             <CodexFicheHeader
+                family="createurs"
                 eyebrow="Créateur"
                 titre={contributeur.nom}
                 sousTitre={contributeur.sousTitre}
                 introduction={fiche.introduction}
+                badges={
+                    <ul
+                        aria-label="Métadonnées du créateur"
+                        className="flex flex-wrap gap-2"
+                    >
+                        {contributeur.metadata.categories.map((category) => (
+                            <li key={category}>
+                                <PixieBadge
+                                    registry="contributeurs"
+                                    collection="categories"
+                                    slug={category}
+                                    size="sm"
+                                    shape="pill"
+                                />
+                            </li>
+                        ))}
+                    </ul>
+                }
             />
-
-            <ul
-                aria-label="Métadonnées du créateur"
-                className="mt-8 flex flex-wrap gap-2"
-            >
-                {contributeur.metadata.categories.map((category) => (
-                    <li key={category}>
-                        <PixieBadge
-                            registry="contributeurs"
-                            collection="categories"
-                            slug={category}
-                            size="sm"
-                            shape="pill"
-                        />
-                    </li>
-                ))}
-            </ul>
 
             <dl className="mt-12 grid gap-8 sm:grid-cols-2">
                 <div>
@@ -149,6 +152,6 @@ export default async function ContributeurPage({
             />
 
             <CodexSources sources={sources} />
-        </main>
+        </CodexFiche>
     );
 }

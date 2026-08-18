@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { CodexFiche } from "@/components/codex/CodexFiche";
 import { CodexFicheHeader } from "@/components/codex/CodexFicheHeader";
 import { CodexSources } from "@/components/codex/CodexSources";
 import { CodexRelations } from "@/components/codex/CodexRelations";
@@ -62,8 +63,9 @@ export default async function EpoquePage({
     const oeuvres = getOeuvresDeLEpoque(slug);
 
     return (
-        <main className="mx-auto min-h-screen w-full max-w-6xl px-6 py-16 sm:py-20">
+        <CodexFiche family="epoques">
             <CodexFicheHeader
+                family="epoques"
                 eyebrow="Époque"
                 titre={epoque.nom}
                 sousTitre={epoque.sousTitre}
@@ -128,6 +130,6 @@ export default async function EpoquePage({
                 ]}
             />
             <CodexSources sources={sources} />
-        </main>
+        </CodexFiche>
     );
 }

@@ -1,32 +1,48 @@
-type CodexFicheHeaderProps = {
-    eyebrow: string;
-    titre: string;
-    sousTitre?: string;
-    introduction?: string;
-};
+import { PixieSymbol } from "@/components/ui/PixieSymbol";
+import type { CodexFicheHeaderProps } from "@/types/codex-fiche";
+import styles from "./CodexFicheHeader.module.css";
 
 export function CodexFicheHeader({
+    family,
     eyebrow,
     titre,
     sousTitre,
     introduction,
+    badges,
 }: CodexFicheHeaderProps) {
     return (
         <header className={styles.root}>
-            <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted">
-                {eyebrow}
-            </p>
+            <div className={styles.heading}>
+                <div className={styles.symbol}>
+                    <PixieSymbol
+                        registry="codex"
+                        collection="index"
+                        slug={family}
+                        size={72}
+                    />
+                </div>
 
-            <h1 className="mt-3 text-5xl text-ink sm:text-6xl">{titre}</h1>
+                <div className={styles.identity}>
+                    <p className={styles.eyebrow}>{eyebrow}</p>
 
-            {sousTitre && (
-                <p className="mt-3 text-xl leading-8 text-ink-soft">
-                    {sousTitre}
-                </p>
-            )}
+                    <h1 className="mt-3 text-5xl text-ink sm:text-6xl">
+                        {titre}
+                    </h1>
+
+                    {sousTitre && (
+                        <p className="mt-3 text-xl leading-8 text-ink-soft">
+                            {sousTitre}
+                        </p>
+                    )}
+
+                    {badges ? (
+                        <div className={styles.badges}>{badges}</div>
+                    ) : null}
+                </div>
+            </div>
 
             {introduction && (
-                <div className="mt-8 max-w-3xl border-l-2 border-accent pl-6 sm:pl-8">
+                <div className={styles.introduction}>
                     <p className="text-lg leading-8 text-ink sm:text-xl sm:leading-9">
                         {introduction}
                     </p>
@@ -35,4 +51,3 @@ export function CodexFicheHeader({
         </header>
     );
 }
-import styles from "./CodexFicheHeader.module.css";

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { CodexFiche } from "@/components/codex/CodexFiche";
 import { CodexFicheHeader } from "@/components/codex/CodexFicheHeader";
 import { CodexReferenceLink } from "@/components/codex/CodexReferenceLink";
 import { CodexSources } from "@/components/codex/CodexSources";
@@ -66,55 +67,57 @@ export default async function OeuvrePage({
     const epoque = getEpoquePourDate(fiche.sortie.date);
 
     return (
-        <main className="mx-auto w-full max-w-6xl px-6 py-16">
+        <CodexFiche family="oeuvres">
             <CodexFicheHeader
+                family="oeuvres"
                 eyebrow="Œuvre"
                 titre={oeuvre.nom}
                 sousTitre={oeuvre.sousTitre}
                 introduction={fiche.introduction}
+                badges={
+                    <ul
+                        aria-label="Métadonnées de l’œuvre"
+                        className="flex flex-wrap gap-2"
+                    >
+                        <li>
+                            <PixieBadge
+                                registry="oeuvres"
+                                collection="collections"
+                                slug={oeuvre.metadata.collection}
+                                size="sm"
+                                shape="pill"
+                            />
+                        </li>
+                        <li>
+                            <PixieBadge
+                                registry="oeuvres"
+                                collection="types"
+                                slug={oeuvre.metadata.type}
+                                size="sm"
+                                shape="pill"
+                            />
+                        </li>
+                        <li>
+                            <PixieBadge
+                                registry="oeuvres"
+                                collection="sons"
+                                slug={oeuvre.metadata.son}
+                                size="sm"
+                                shape="pill"
+                            />
+                        </li>
+                        <li>
+                            <PixieBadge
+                                registry="oeuvres"
+                                collection="couleurs"
+                                slug={oeuvre.metadata.couleur}
+                                size="sm"
+                                shape="pill"
+                            />
+                        </li>
+                    </ul>
+                }
             />
-
-            <ul
-                aria-label="Métadonnées de l’œuvre"
-                className="mt-8 flex flex-wrap gap-2"
-            >
-                <li>
-                    <PixieBadge
-                        registry="oeuvres"
-                        collection="collections"
-                        slug={oeuvre.metadata.collection}
-                        size="sm"
-                        shape="pill"
-                    />
-                </li>
-                <li>
-                    <PixieBadge
-                        registry="oeuvres"
-                        collection="types"
-                        slug={oeuvre.metadata.type}
-                        size="sm"
-                        shape="pill"
-                    />
-                </li>
-                <li>
-                    <PixieBadge
-                        registry="oeuvres"
-                        collection="sons"
-                        slug={oeuvre.metadata.son}
-                        size="sm"
-                        shape="pill"
-                    />
-                </li>
-                <li>
-                    <PixieBadge
-                        registry="oeuvres"
-                        collection="couleurs"
-                        slug={oeuvre.metadata.couleur}
-                        size="sm"
-                        shape="pill"
-                    />
-                </li>
-            </ul>
 
             <dl className="mt-12 grid gap-8 sm:grid-cols-2">
                 <div>
@@ -173,6 +176,6 @@ export default async function OeuvrePage({
             />
 
             <CodexSources sources={sources} />
-        </main>
+        </CodexFiche>
     );
 }

@@ -1,0 +1,41 @@
+.root {
+    --codex-fiche-color: var(--color-accent);
+    --codex-fiche-border: color-mix(
+        in srgb,
+        var(--codex-fiche-color) 34%,
+        var(--color-line)
+    );
+    --codex-fiche-surface: color-mix(
+        in srgb,
+        var(--codex-fiche-color) 7%,
+        var(--color-surface)
+    );
+
+    width: 100%;
+    max-width: 72rem;
+    min-height: 100vh;
+    margin-inline: auto;
+    padding: 4rem 1.5rem;
+}
+
+.root[data-codex-family="personnages"] {
+    --codex-fiche-color: var(--color-famille-personnages);
+}
+
+.root[data-codex-family="createurs"] {
+    --codex-fiche-color: var(--color-famille-createurs);
+}
+
+.root[data-codex-family="oeuvres"] {
+    --codex-fiche-color: var(--color-famille-oeuvres);
+}
+
+.root[data-codex-family="epoques"] {
+    --codex-fiche-color: var(--color-famille-epoques);
+}
+
+@media (min-width: 640px) {
+    .root {
+        padding-block: 5rem;
+    }
+}
