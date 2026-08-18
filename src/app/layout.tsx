@@ -75,6 +75,10 @@ export default function RootLayout({
                             >
                                 Époques
                             </PixieLink>
+
+                            <PixieLink href="/recherche" variant="action">
+                                Recherche
+                            </PixieLink>
                         </nav>
                     </div>
                 </header>
