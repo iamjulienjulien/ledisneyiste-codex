@@ -1,0 +1,91 @@
+{
+    "slug": "mickeys-revue",
+    "type": "oeuvre",
+    "introduction": "Mickey’s Revue installe un spectacle sur scène, mais sa découverte essentielle se trouve dans la salle. Parmi les spectateurs, un chien anthropomorphe âgé, barbu et muni de lunettes ponctue la représentation d’un rire assez étrange pour irriter ses voisins et retenir l’attention du studio. Il n’est pas encore Dingo, n’a aucun rôle dans la troupe et ne porte même pas de nom. La voix de Pinto Colvig suffit pourtant à le détacher de la foule : un personnage commence à exister parce qu’on l’entend avant de savoir exactement qui il est.",
+    "sortie": {
+        "date": {
+            "valeur": "1932-05-25",
+            "precision": "jour"
+        }
+    },
+    "format": "court métrage d’animation",
+    "contributions": [
+        {
+            "contributeur": {
+                "nom": "Wilfred Jackson",
+                "type": "contributeur",
+                "slug": "wilfred-jackson"
+            },
+            "roles": ["réalisation"]
+        },
+        {
+            "contributeur": {
+                "nom": "Bert Lewis"
+            },
+            "roles": ["musique"]
+        },
+        {
+            "contributeur": {
+                "nom": "Pinto Colvig"
+            },
+            "roles": ["voix du futur Dingo"]
+        }
+    ],
+    "personnages": [
+        {
+            "nom": "Mickey Mouse",
+            "type": "personnage",
+            "slug": "mickey-mouse"
+        },
+        {
+            "nom": "Pluto",
+            "type": "personnage",
+            "slug": "pluto"
+        },
+        {
+            "nom": "Dingo",
+            "type": "personnage",
+            "slug": "dingo"
+        }
+    ],
+    "blocsEditoriaux": [
+        {
+            "type": "repere",
+            "eyebrow": "Première apparition",
+            "titre": "Découvrir Dingo parmi les spectateurs",
+            "paragraphes": [
+                "Le futur Dingo ne rejoint pas Mickey sur scène. Il reste assis dans le public, sous l’apparence d’un chien anthropomorphe plus âgé que le personnage qui se fixera ensuite, et encourage bruyamment la comédie musicale.",
+                "Son dessin le distingue encore assez peu des autres figures de la salle. Son rire rauque, interprété par Pinto Colvig, revient en revanche avec une insistance qui agace ses voisins et donne à cette silhouette secondaire une présence immédiatement reconnaissable.",
+                "Disney retient précisément cette voix et cette attitude. L’apparition ne révèle donc pas un héros déjà conçu, mais une combinaison comique assez forte pour justifier de reprendre le personnage et de découvrir progressivement ce qu’il peut devenir."
+            ]
+        },
+        {
+            "type": "langage",
+            "eyebrow": "Voix",
+            "titre": "Faire naître un caractère par un rire",
+            "paragraphes": [
+                "Le cinéma sonore permet ici une forme particulière de création. Le rire ne vient pas compléter une personnalité entièrement dessinée : il constitue le premier trait stable autour duquel le personnage pourra être reconstruit.",
+                "Pinto Colvig apporte l’expérience du clown, du musicien et de l’imitateur. Son « a-hyuck » étire la réaction du spectateur jusqu’à en faire un événement autonome, aussi perturbateur pour la salle que les numéros présentés sur scène.",
+                "Cette identité sonore survivra aux transformations graphiques et aux changements de nom. Avant la démarche, les vêtements ou la maladresse familière de Dingo, le studio possède déjà une manière unique de l’entendre entrer dans une scène."
+            ]
+        },
+        {
+            "type": "relations",
+            "eyebrow": "Le cercle de Mickey",
+            "titre": "Faire passer un spectateur dans la troupe",
+            "paragraphes": [
+                "Mickey’s Revue présente encore le futur Dingo à l’extérieur du groupe. Mickey conduit le spectacle, Pluto provoque sa fin en poursuivant des chats sur scène, tandis que le nouveau venu demeure dans la salle et ne partage aucune aventure avec eux.",
+                "Ses apparitions suivantes réduiront cette distance. Les bandes dessinées lui donneront le nom de Dippy Dawg, puis les courts métrages l’intégreront progressivement aux partenaires de Mickey avant que Goofy and Wilbur ne fixe son nom définitif en 1939.",
+                "Le film conserve ainsi le seuil d’une relation. Dingo n’entre pas dans le cercle par une présentation officielle : il est remarqué comme le serait un spectateur trop expressif, puis invité à revenir jusqu’à devenir indispensable au spectacle."
+            ]
+        }
+    ],
+    "sources": [
+        "d23-mickeys-revue",
+        "d23-mickeys-revue-released",
+        "d23-goofy",
+        "d23-pinto-colvig",
+        "d23-wilfred-jackson",
+        "afi-mickeys-revue"
+    ]
+}

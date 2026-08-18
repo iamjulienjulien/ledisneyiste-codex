@@ -84,6 +84,18 @@
         "sousTitre": "L’évasion qui laisse apparaître le premier Pluto"
     },
     {
+        "slug": "mickeys-revue",
+        "nom": "Mickey’s Revue",
+        "type": "oeuvre",
+        "metadata": {
+            "collection": "mickey-mouse",
+            "type": "court-metrage-anime",
+            "son": "sonore",
+            "couleur": "noir-et-blanc"
+        },
+        "sousTitre": "La revue où le rire de Dingo sort de la salle"
+    },
+    {
         "slug": "flowers-and-trees",
         "nom": "Flowers and Trees",
         "type": "oeuvre",

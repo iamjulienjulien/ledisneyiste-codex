@@ -721,5 +721,20 @@
         "editeur": "American Film Institute",
         "url": "https://catalog.afi.com/Film/76849-THE-CHAIN-GANG",
         "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-mickeys-revue-released",
+        "titre": "Mickey’s Revue is Released",
+        "editeur": "D23: The Official Disney Fan Club",
+        "datePublication": "2019-01-24",
+        "url": "https://d23.com/this-day/mickeys-revue-is-released/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "afi-mickeys-revue",
+        "titre": "Mickey’s Revue",
+        "editeur": "American Film Institute",
+        "url": "https://catalog.afi.com/Film/94082-MICKEY%27S-REVUE",
+        "dateConsultation": "2026-08-18"
     }
 ]

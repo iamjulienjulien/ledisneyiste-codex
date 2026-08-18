@@ -20,7 +20,9 @@
     },
     "premiereApparition": {
         "oeuvre": {
-            "nom": "Mickey’s Revue"
+            "nom": "Mickey’s Revue",
+            "type": "oeuvre",
+            "slug": "mickeys-revue"
         },
         "date": {
             "valeur": "1932-05-25",
