@@ -1,0 +1,106 @@
+{
+    "slug": "ferdinand-the-bull",
+    "type": "oeuvre",
+    "introduction": "Ferdinand the Bull oppose la douceur d’un taureau qui préfère sentir les fleurs au spectacle de violence que son apparence semble lui imposer. Adapté du livre de Munro Leaf illustré par Robert Lawson, ce cartoon spécial conduit Ferdinand de son pâturage paisible jusqu’à une arène où chacun attend de lui un rôle qu’il refuse simplement de jouer. Dick Rickard réalise une fable sur la fidélité à soi-même, peuplée de caricatures des artistes du studio et portée jusque dans ses voix par Walt Disney et Milt Kahl. Son calme traverse le tumulte de la corrida et mène l’œuvre au dernier Oscar du court métrage d’animation remporté par Disney avant la récompense honorifique de Blanche-Neige.",
+    "sortie": {
+        "date": {
+            "valeur": "1938-11-25",
+            "precision": "jour"
+        }
+    },
+    "format": "court métrage d’animation",
+    "contributions": [
+        {
+            "contributeur": {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            },
+            "roles": ["production", "voix de Ferdinand"]
+        },
+        {
+            "contributeur": {
+                "nom": "Dick Rickard"
+            },
+            "roles": ["réalisation"]
+        },
+        {
+            "contributeur": {
+                "nom": "Milt Kahl",
+                "type": "contributeur",
+                "slug": "milt-kahl"
+            },
+            "roles": ["voix de la mère de Ferdinand"]
+        },
+        {
+            "contributeur": {
+                "nom": "Albert Hay Malotte"
+            },
+            "roles": ["musique"]
+        },
+        {
+            "contributeur": {
+                "nom": "Munro Leaf"
+            },
+            "roles": ["histoire originale"]
+        },
+        {
+            "contributeur": {
+                "nom": "Robert Lawson"
+            },
+            "roles": ["illustrations originales"]
+        }
+    ],
+    "personnages": [
+        {
+            "nom": "Ferdinand"
+        },
+        {
+            "nom": "La mère de Ferdinand"
+        },
+        {
+            "nom": "Le matador"
+        }
+    ],
+    "blocsEditoriaux": [
+        {
+            "type": "repere",
+            "eyebrow": "Adaptation",
+            "titre": "Laisser Ferdinand choisir le parfum des fleurs",
+            "paragraphes": [
+                "Le récit reprend le livre de Munro Leaf et les illustrations de Robert Lawson. Ferdinand grandit parmi les autres taureaux, mais ne partage ni leur goût du combat ni leur désir d’être choisis pour l’arène : il préfère rester sous son arbre à sentir les fleurs.",
+                "La piqûre d’une abeille suffit à faire croire aux hommes qu’ils ont découvert un animal féroce. Emporté vers la ville, Ferdinand devient prisonnier d’une interprétation fondée sur un instant de douleur et sur l’apparence puissante que son calme n’a jamais cherchée.",
+                "Dans l’arène, il ne triomphe pas du matador et ne se transforme pas pour satisfaire la foule. Il s’assoit, retrouve le parfum des fleurs et rend le combat impossible. Son refus constitue toute son action : Ferdinand reste lui-même jusqu’à pouvoir rentrer chez lui."
+            ]
+        },
+        {
+            "type": "langage",
+            "eyebrow": "Studio",
+            "titre": "Faire entrer les artistes dans leur propre corrida",
+            "paragraphes": [
+                "La séquence de l’arène transforme plusieurs membres du studio en caricatures. Walt Disney apparaît sous les traits du matador, tandis que d’autres artistes prennent place parmi les banderilleros, les picadors et les assistants qui entourent Ferdinand.",
+                "Le jeu se prolonge dans les voix. Walt prononce les quelques mots de Ferdinand et Milt Kahl prête sa voix à la mère du taureau. Derrière la fable adaptée, le film laisse ainsi apparaître l’atelier qui la fabrique.",
+                "Cette présence collective renforce le contraste central : tout le spectacle de la corrida s’agite autour d’un personnage qui refuse d’y participer. Les caricatures, les costumes et la musique d’Albert Hay Malotte amplifient l’attente de la foule, afin que l’immobilité de Ferdinand devienne le gag décisif."
+            ]
+        },
+        {
+            "type": "relations",
+            "eyebrow": "Reconnaissance",
+            "titre": "Faire gagner la douceur au milieu de quatre nominations Disney",
+            "paragraphes": [
+                "Le 23 février 1939, Ferdinand the Bull reçoit l’Academy Award du meilleur court métrage d’animation pour la production de 1938. Walt Disney est récompensé comme producteur lors d’une édition où trois autres cartoons du studio figurent parmi les œuvres nommées.",
+                "Le film s’impose face à Brave Little Tailor, Good Scouts et Mother Goose Goes Hollywood. Cette présence massive du studio dans la catégorie mesure le chemin parcouru depuis Flowers and Trees, mais l’œuvre victorieuse demeure la plus paisible du groupe.",
+                "Ferdinand apporte à Disney une septième victoire pour un court métrage d’animation. Le même soir, l’Academy remettra à Walt la récompense honorifique conçue pour Blanche-Neige et les Sept Nains, faisant se rejoindre dans une même cérémonie l’aboutissement du court métrage et la reconnaissance du long."
+            ]
+        }
+    ],
+    "sources": [
+        "d23-ferdinand-the-bull-film",
+        "d23-ferdinand-the-bull-released",
+        "wdfm-silly-symphonies-musical-interlude-features",
+        "d23-milt-kahl",
+        "d23-ferdinand-the-bull-wins-oscar",
+        "ampas-11th-academy-awards",
+        "d23-academy-awards"
+    ]
+}

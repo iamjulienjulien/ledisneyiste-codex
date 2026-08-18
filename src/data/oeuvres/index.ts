@@ -1,6 +1,7 @@
 import alicesWonderlandJson from "@/data/oeuvres/alices-wonderland.json";
 import boneTroubleJson from "@/data/oeuvres/bone-trouble.json";
 import clockCleanersJson from "@/data/oeuvres/clock-cleaners.json";
+import ferdinandTheBullJson from "@/data/oeuvres/ferdinand-the-bull.json";
 import flowersAndTreesJson from "@/data/oeuvres/flowers-and-trees.json";
 import mickeysRevueJson from "@/data/oeuvres/mickeys-revue.json";
 import mrDuckStepsOutJson from "@/data/oeuvres/mr-duck-steps-out.json";
@@ -39,6 +40,7 @@ export const fichesOeuvres = [
     theCountryCousinJson as FicheOeuvreDisney,
     clockCleanersJson as FicheOeuvreDisney,
     theOldMillJson as FicheOeuvreDisney,
+    ferdinandTheBullJson as FicheOeuvreDisney,
     mrDuckStepsOutJson as FicheOeuvreDisney,
     boneTroubleJson as FicheOeuvreDisney,
 ];

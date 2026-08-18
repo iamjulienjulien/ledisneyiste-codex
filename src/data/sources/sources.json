@@ -1041,5 +1041,27 @@
         "datePublication": "2015-12-16",
         "url": "https://www.loc.gov/item/prn-15-216/",
         "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-ferdinand-the-bull-film",
+        "titre": "Ferdinand the Bull (film)",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/ferdinand-the-bull-film/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-ferdinand-the-bull-released",
+        "titre": "Ferdinand the Bull is Released",
+        "editeur": "D23: The Official Disney Fan Club",
+        "datePublication": "2019-02-07",
+        "url": "https://d23.com/this-day/ferdinand-the-bull-is-released/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "wdfm-silly-symphonies-musical-interlude-features",
+        "titre": "Composing Walt Disney’s Silly Symphonies with Historian Ross Care: A Musical Interlude to Features",
+        "editeur": "The Walt Disney Family Museum",
+        "url": "https://www.waltdisney.org/blog/composing-walt-disneys-silly-symphonies-historian-ross-care-musical-interlude-features",
+        "dateConsultation": "2026-08-18"
     }
 ]

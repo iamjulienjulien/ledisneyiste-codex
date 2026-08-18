@@ -25,6 +25,12 @@ export const metadataOeuvres = {
                 "Courts métrages musicaux servant de laboratoire au studio.",
             color: "gouache",
         },
+        specials: {
+            label: "Cartoons spéciaux",
+            description:
+                "Courts métrages autonomes publiés hors des séries régulières.",
+            color: "vert-cellulo",
+        },
         "donald-duck": {
             label: "Donald Duck",
             description: "Courts métrages de la série Donald Duck.",
