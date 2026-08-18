@@ -1,4 +1,4 @@
-import { readFile } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import ts from "typescript";
@@ -51,7 +51,7 @@ async function chargerTrophees() {
     const moduleUrl = `data:text/javascript;base64,${Buffer.from(outputText).toString("base64")}`;
     const { symbolsRecompenses } = await import(moduleUrl);
 
-    return new Set(Object.keys(symbolsRecompenses.trophees));
+    return symbolsRecompenses.trophees;
 }
 
 function chaineNonVide(valeur) {
@@ -93,7 +93,7 @@ function dateEstValide(date) {
     }
 }
 
-function verifierReference(reference, contexte, slugsParType, erreurs) {
+function verifierReference(reference, contexte, entreesParType, erreurs) {
     if (!reference || !chaineNonVide(reference.nom)) {
         erreurs.push(`${contexte} : nom absent`);
         return;
@@ -113,17 +113,46 @@ function verifierReference(reference, contexte, slugsParType, erreurs) {
         return;
     }
 
-    const slugs = slugsParType.get(reference.type);
+    const entrees = entreesParType.get(reference.type);
 
-    if (!slugs) {
+    if (!entrees) {
         erreurs.push(`${contexte} : type inconnu « ${reference.type} »`);
         return;
     }
 
-    if (!chaineNonVide(reference.slug) || !slugs.has(reference.slug)) {
+    const entree = entrees.get(reference.slug);
+
+    if (!chaineNonVide(reference.slug) || !entree) {
         erreurs.push(
             `${contexte} : référence ${reference.type} « ${reference.slug} » introuvable`,
         );
+    } else if (entree.nom !== reference.nom) {
+        erreurs.push(
+            `${contexte} : nom « ${reference.nom} » différent du catalogue « ${entree.nom} »`,
+        );
+    }
+}
+
+async function verifierTrophees(trophees, erreurs) {
+    for (const [slug, trophee] of Object.entries(trophees)) {
+        const contexte = `Trophée « ${slug} »`;
+
+        if (!chaineNonVide(trophee.label)) {
+            erreurs.push(`${contexte} : libellé absent`);
+        }
+
+        if (!trophee.src.startsWith("/symbols/recompenses/trophees/")) {
+            erreurs.push(
+                `${contexte} : chemin d’image invalide « ${trophee.src} »`,
+            );
+            continue;
+        }
+
+        try {
+            await access(path.join(racine, "public", trophee.src.slice(1)));
+        } catch {
+            erreurs.push(`${contexte} : image introuvable « ${trophee.src} »`);
+        }
     }
 }
 
@@ -135,12 +164,17 @@ async function verifier() {
     const erreurs = [];
     const ids = new Set();
     const idsSources = new Set(sources.map((source) => source.id));
-    const slugsParType = new Map();
+    const entreesParType = new Map();
 
     for (const [type, chemin] of Object.entries(catalogues)) {
         const entrees = await lireJson(chemin);
-        slugsParType.set(type, new Set(entrees.map((entree) => entree.slug)));
+        entreesParType.set(
+            type,
+            new Map(entrees.map((entree) => [entree.slug, entree])),
+        );
     }
+
+    await verifierTrophees(trophees, erreurs);
 
     if (!Array.isArray(recompenses)) {
         erreurs.push("Le registre des récompenses doit être un tableau");
@@ -184,7 +218,7 @@ async function verifier() {
                 );
             }
 
-            if (!trophees.has(recompense.trophee)) {
+            if (!trophees[recompense.trophee]) {
                 erreurs.push(
                     `${contexte} : trophée inconnu « ${recompense.trophee} »`,
                 );
@@ -203,21 +237,36 @@ async function verifier() {
             ) {
                 erreurs.push(`${contexte} : bénéficiaire obligatoire`);
             } else {
+                const beneficiaires = new Set();
                 recompense.beneficiaires.forEach((beneficiaire, position) =>
                     verifierReference(
                         beneficiaire,
                         `${contexte} · bénéficiaire ${position + 1}`,
-                        slugsParType,
+                        entreesParType,
                         erreurs,
                     ),
                 );
+
+                for (const beneficiaire of recompense.beneficiaires) {
+                    const cle =
+                        beneficiaire.type && beneficiaire.slug
+                            ? `${beneficiaire.type}:${beneficiaire.slug}`
+                            : `non-resolue:${beneficiaire.nom}`;
+
+                    if (beneficiaires.has(cle)) {
+                        erreurs.push(
+                            `${contexte} : bénéficiaire dupliqué « ${cle} »`,
+                        );
+                    }
+                    beneficiaires.add(cle);
+                }
             }
 
             if (recompense.oeuvreConcernee !== undefined) {
                 verifierReference(
                     recompense.oeuvreConcernee,
                     `${contexte} · œuvre concernée`,
-                    slugsParType,
+                    entreesParType,
                     erreurs,
                 );
 
@@ -237,12 +286,20 @@ async function verifier() {
             ) {
                 erreurs.push(`${contexte} : source obligatoire`);
             } else {
+                const sourcesRecompense = new Set();
                 for (const idSource of recompense.sources) {
                     if (!idsSources.has(idSource)) {
                         erreurs.push(
                             `${contexte} : source « ${idSource} » introuvable`,
                         );
                     }
+
+                    if (sourcesRecompense.has(idSource)) {
+                        erreurs.push(
+                            `${contexte} : source dupliquée « ${idSource} »`,
+                        );
+                    }
+                    sourcesRecompense.add(idSource);
                 }
             }
         }
