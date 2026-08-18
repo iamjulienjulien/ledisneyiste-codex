@@ -911,5 +911,12 @@
         "editeur": "Academy of Motion Picture Arts and Sciences",
         "url": "https://www.oscars.org/oscars/ceremonies/1936",
         "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "ampas-9th-academy-awards",
+        "titre": "The 9th Academy Awards | 1937",
+        "editeur": "Academy of Motion Picture Arts and Sciences",
+        "url": "https://www.oscars.org/oscars/ceremonies/1937",
+        "dateConsultation": "2026-08-18"
     }
 ]

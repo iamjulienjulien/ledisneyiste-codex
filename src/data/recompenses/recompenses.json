@@ -152,5 +152,33 @@
             "nom": "Three Orphan Kittens"
         },
         "sources": ["ampas-8th-academy-awards", "d23-academy-awards"]
+    },
+    {
+        "id": "academy-awards-1937-the-country-cousin",
+        "institution": {
+            "nom": "Academy of Motion Picture Arts and Sciences",
+            "abreviation": "AMPAS"
+        },
+        "edition": {
+            "nom": "9e cérémonie des Oscars",
+            "numero": 9
+        },
+        "dateAttribution": {
+            "valeur": "1937-03-04",
+            "precision": "jour"
+        },
+        "nature": "competitive",
+        "categorie": "Meilleur court métrage d’animation",
+        "beneficiaires": [
+            {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            }
+        ],
+        "oeuvreConcernee": {
+            "nom": "The Country Cousin"
+        },
+        "sources": ["ampas-9th-academy-awards", "d23-academy-awards"]
     }
 ]
