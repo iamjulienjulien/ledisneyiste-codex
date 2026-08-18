@@ -1,0 +1,64 @@
+{
+    "slug": "clarabelle-cow",
+    "type": "personnage",
+    "introduction": "Clarabelle Cow appartient à la première génération qui transforme les aventures de Mickey en véritable troupe. Reconnaissable à ses grandes narines et à ses deux dents proéminentes, elle ne porte pas une série à son nom mais revient assez souvent pour donner au groupe une vie qui dépasse ses vedettes. Partenaire régulière d’Horace Horsecollar, musicienne, danseuse ou acrobate selon les films, Clarabelle occupe l’espace avec une assurance théâtrale : celle d’un personnage secondaire qui sait faire de chaque apparition un numéro.",
+    "creation": {
+        "date": {
+            "valeur": "1929",
+            "precision": "annee"
+        },
+        "createurs": [
+            {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            }
+        ]
+    },
+    "premiereApparition": {
+        "oeuvre": {
+            "nom": "The Plow Boy"
+        },
+        "date": {
+            "valeur": "1929",
+            "precision": "annee"
+        }
+    },
+    "espece": "vache anthropomorphe",
+    "blocsEditoriaux": [
+        {
+            "type": "genese",
+            "eyebrow": "Première apparition",
+            "titre": "Entrer dans la troupe avec The Plow Boy",
+            "paragraphes": [
+                "Clarabelle fait officiellement ses débuts en 1929 dans The Plow Boy, le huitième dessin animé de Mickey. Les premiers films de la souris utilisaient déjà les animaux de la ferme comme partenaires de gag, mais cette apparition donne à la vache une identité appelée à revenir au-delà d’une seule situation.",
+                "Le personnage se fixe par quelques signes graphiques immédiatement lisibles : de grandes narines, deux dents proéminentes et une silhouette capable d’occuper l’image face aux corps plus petits de Mickey et Minnie. Cette économie de traits lui permet de rester reconnaissable tout en changeant de costume et de numéro."
+            ]
+        },
+        {
+            "type": "caractere",
+            "eyebrow": "Présence",
+            "titre": "Faire d’un second rôle un spectacle",
+            "paragraphes": [
+                "Clarabelle existe moins par une psychologie continue que par son goût de la représentation. Elle chante, danse, joue de la musique ou se prête à des numéros collectifs avec une énergie qui donne du volume aux scènes de groupe.",
+                "Sa taille et son expressivité en font une partenaire comique plutôt qu’un simple élément de décor. Là où Mickey organise souvent l’action, Clarabelle peut l’élargir d’un geste, d’une pose ou d’une entrée en scène : elle affirme la présence d’une troupe autour du héros."
+            ]
+        },
+        {
+            "type": "trajectoire",
+            "eyebrow": "Dix-sept films",
+            "titre": "Former un duo sans quitter l’ensemble",
+            "paragraphes": [
+                "Clarabelle apparaît dans dix-sept films, principalement au sein des dessins animés de Mickey des années 1930. Elle est souvent associée à Horace Horsecollar, avec lequel elle forme un duo récurrent sans que cette relation les sépare du reste de la distribution.",
+                "Dans Orphans’ Benefit, Clarabelle, Horace et Dingo présentent ensemble un numéro d’acrobaties. Dans The Band Concert, elle rejoint l’orchestre que Mickey tente de diriger malgré les interruptions de Donald. Ces rôles résument sa place : non pas conduire seule le récit, mais rendre crédible le monde collectif dans lequel les vedettes peuvent se rencontrer.",
+                "Cette fonction explique sa permanence. Même lorsque les courts métrages accordent davantage de place à Donald, Dingo ou Pluto, Clarabelle demeure l’un des visages capables de rappeler que le cercle de Mickey fut d’abord une compagnie de scène."
+            ]
+        }
+    ],
+    "sources": [
+        "d23-clarabelle-cow",
+        "d23-camping-out-released",
+        "d23-orphans-benefit-cel-sells",
+        "d23-watch-the-band-concert"
+    ]
+}

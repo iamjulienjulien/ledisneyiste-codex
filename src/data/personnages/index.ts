@@ -1,3 +1,4 @@
+import clarabelleCowJson from "@/data/personnages/clarabelle-cow.json";
 import daisyDuckJson from "@/data/personnages/daisy-duck.json";
 import donaldDuckJson from "@/data/personnages/donald-duck.json";
 import dingoJson from "@/data/personnages/dingo.json";
@@ -13,6 +14,7 @@ export const fichesPersonnages = [
     patHibulaireJson as FichePersonnageDisney,
     mickeyMouseJson as FichePersonnageDisney,
     minnieMouseJson as FichePersonnageDisney,
+    clarabelleCowJson as FichePersonnageDisney,
     donaldDuckJson as FichePersonnageDisney,
     dingoJson as FichePersonnageDisney,
     daisyDuckJson as FichePersonnageDisney,

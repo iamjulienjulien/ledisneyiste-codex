@@ -28,6 +28,13 @@
         "sousTitre": "L’icône née aux côtés de Mickey"
     },
     {
+        "slug": "clarabelle-cow",
+        "nom": "Clarabelle Cow",
+        "type": "personnage",
+        "metadata": { "categories": ["cercle-de-mickey"] },
+        "sousTitre": "La partenaire de scène qui donne de l’ampleur à la troupe de Mickey"
+    },
+    {
         "slug": "donald-duck",
         "nom": "Donald Duck",
         "type": "personnage",

@@ -46,7 +46,9 @@
             "slug": "dingo"
         },
         {
-            "nom": "Clarabelle Cow"
+            "nom": "Clarabelle Cow",
+            "type": "personnage",
+            "slug": "clarabelle-cow"
         },
         {
             "nom": "Horace Horsecollar"
