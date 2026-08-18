@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { PixieBadge } from "@/components/ui/PixieBadge";
+import { PixieLink } from "@/components/ui/PixieLink";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { formatDateHistorique } from "@/lib/date";
 import type { CodexOeuvreCardProps } from "@/types/codex-cards";
@@ -11,8 +11,10 @@ export function CodexOeuvreCard({
     recompenses,
 }: CodexOeuvreCardProps) {
     return (
-        <Link
+        <PixieLink
             href={`/oeuvres/${oeuvre.slug}`}
+            variant="surface"
+            color="gouache"
             className={`${styles.root} group p-6 sm:p-7`}
         >
             <div className="flex items-start justify-between gap-5">
@@ -116,6 +118,6 @@ export function CodexOeuvreCard({
             <span className="mt-auto pt-8 text-sm font-medium text-famille-oeuvres">
                 Ouvrir la fiche →
             </span>
-        </Link>
+        </PixieLink>
     );
 }

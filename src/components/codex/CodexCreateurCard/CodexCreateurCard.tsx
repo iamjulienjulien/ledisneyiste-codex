@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { PixieBadge } from "@/components/ui/PixieBadge";
+import { PixieLink } from "@/components/ui/PixieLink";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { formatDateHistorique } from "@/lib/date";
 import type { CodexCreateurCardProps } from "@/types/codex-cards";
@@ -11,8 +11,10 @@ export function CodexCreateurCard({
     epoques,
 }: CodexCreateurCardProps) {
     return (
-        <Link
+        <PixieLink
             href={`/contributeurs/${contributeur.slug}`}
+            variant="surface"
+            color="jaune-lampe"
             className={`${styles.root} group p-6 sm:p-7`}
         >
             <div className="flex items-start justify-between gap-5">
@@ -89,6 +91,6 @@ export function CodexCreateurCard({
             <span className="mt-auto pt-8 text-sm font-medium text-famille-createurs">
                 Ouvrir la fiche →
             </span>
-        </Link>
+        </PixieLink>
     );
 }

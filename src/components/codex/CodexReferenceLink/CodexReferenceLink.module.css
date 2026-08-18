@@ -3,20 +3,5 @@
 }
 
 .link {
-    color: var(--codex-link-color, var(--color-accent));
-    text-decoration-line: underline;
-    text-decoration-color: var(--color-line-strong);
-    text-underline-offset: 0.25rem;
-    transition:
-        color 150ms ease,
-        text-decoration-color 150ms ease;
-}
-
-.link:hover {
-    color: color-mix(
-        in srgb,
-        var(--codex-link-color, var(--color-accent)) 76%,
-        var(--color-ink)
-    );
-    text-decoration-color: var(--codex-link-color, var(--color-accent));
+    --pixie-link-color: var(--codex-link-color, var(--color-accent));
 }

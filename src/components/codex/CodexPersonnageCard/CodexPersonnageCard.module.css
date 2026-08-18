@@ -1,5 +1,6 @@
 .root {
     --codex-card-color: var(--color-famille-personnages);
+    --pixie-link-surface-hover-shadow: var(--shadow-soft);
 
     position: relative;
     display: flex;

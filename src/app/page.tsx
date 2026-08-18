@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { PixieLink } from "@/components/ui/PixieLink";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import {
     contributeurs,
@@ -50,8 +50,10 @@ export default function Home() {
                 </div>
 
                 <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                    <Link
+                    <PixieLink
                         href="/personnages"
+                        variant="surface"
+                        color="rouge-crayon"
                         data-famille="personnages"
                         className="codex-door group border border-line p-6"
                     >
@@ -81,10 +83,12 @@ export default function Home() {
                         <p className="mt-6 font-medium text-famille-personnages transition-[filter] group-hover:brightness-125">
                             Explorer les personnages →
                         </p>
-                    </Link>
+                    </PixieLink>
 
-                    <Link
+                    <PixieLink
                         href="/contributeurs"
+                        variant="surface"
+                        color="jaune-lampe"
                         data-famille="createurs"
                         className="codex-door group border border-line p-6"
                     >
@@ -114,10 +118,12 @@ export default function Home() {
                         <p className="mt-6 font-medium text-famille-createurs transition-[filter] group-hover:brightness-125">
                             Explorer les créateurs →
                         </p>
-                    </Link>
+                    </PixieLink>
 
-                    <Link
+                    <PixieLink
                         href="/oeuvres"
+                        variant="surface"
+                        color="gouache"
                         data-famille="oeuvres"
                         className="codex-door group border border-line p-6"
                     >
@@ -145,10 +151,12 @@ export default function Home() {
                         <p className="mt-6 font-medium text-famille-oeuvres transition-[filter] group-hover:brightness-125">
                             Explorer les œuvres →
                         </p>
-                    </Link>
+                    </PixieLink>
 
-                    <Link
+                    <PixieLink
                         href="/epoques"
+                        variant="surface"
+                        color="vert-cellulo"
                         data-famille="epoques"
                         className="codex-door group border border-line p-6"
                     >
@@ -176,7 +184,7 @@ export default function Home() {
                         <p className="mt-6 font-medium text-famille-epoques transition-[filter] group-hover:brightness-125">
                             Explorer les époques →
                         </p>
-                    </Link>
+                    </PixieLink>
                 </div>
             </section>
 
@@ -201,40 +209,50 @@ export default function Home() {
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-x-8 gap-y-4">
-                    <Link
+                    <PixieLink
                         href="/contributeurs/walt-disney"
-                        className="font-medium text-accent underline underline-offset-4 hover:text-accent-hover"
+                        variant="action"
+                        color="jaune-lampe"
+                        indicator="arrow"
                     >
-                        Walt Disney →
-                    </Link>
+                        Walt Disney
+                    </PixieLink>
 
-                    <Link
+                    <PixieLink
                         href="/contributeurs/ub-iwerks"
-                        className="font-medium text-accent underline underline-offset-4 hover:text-accent-hover"
+                        variant="action"
+                        color="jaune-lampe"
+                        indicator="arrow"
                     >
-                        Ub Iwerks →
-                    </Link>
+                        Ub Iwerks
+                    </PixieLink>
 
-                    <Link
+                    <PixieLink
                         href="/personnages/mickey-mouse"
-                        className="font-medium text-accent underline underline-offset-4 hover:text-accent-hover"
+                        variant="action"
+                        color="rouge-crayon"
+                        indicator="arrow"
                     >
-                        Mickey Mouse →
-                    </Link>
+                        Mickey Mouse
+                    </PixieLink>
 
-                    <Link
+                    <PixieLink
                         href="/personnages/minnie-mouse"
-                        className="font-medium text-accent underline underline-offset-4 hover:text-accent-hover"
+                        variant="action"
+                        color="rouge-crayon"
+                        indicator="arrow"
                     >
-                        Minnie Mouse →
-                    </Link>
+                        Minnie Mouse
+                    </PixieLink>
 
-                    <Link
+                    <PixieLink
                         href="/oeuvres/steamboat-willie"
-                        className="font-medium text-accent underline underline-offset-4 hover:text-accent-hover"
+                        variant="action"
+                        color="gouache"
+                        indicator="arrow"
                     >
-                        Steamboat Willie →
-                    </Link>
+                        Steamboat Willie
+                    </PixieLink>
                 </div>
             </section>
 

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { PixieLink } from "@/components/ui/PixieLink";
 import type { ReferenceCodex } from "@/types/reference";
 import styles from "./CodexReferenceLink.module.css";
 
@@ -33,8 +33,8 @@ export function CodexReferenceLink({ reference }: CodexReferenceLinkProps) {
     }
 
     return (
-        <Link href={href} className={styles.link}>
+        <PixieLink href={href} className={styles.link}>
             {reference.nom}
-        </Link>
+        </PixieLink>
     );
 }

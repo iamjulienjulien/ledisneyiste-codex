@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PixieLink } from "@/components/ui/PixieLink";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -43,33 +44,37 @@ export default function RootLayout({
                             aria-label="Navigation principale"
                             className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm"
                         >
-                            <Link
+                            <PixieLink
                                 href="/personnages"
-                                className="text-famille-personnages transition-[filter] hover:brightness-125"
+                                variant="action"
+                                color="rouge-crayon"
                             >
                                 Personnages
-                            </Link>
+                            </PixieLink>
 
-                            <Link
+                            <PixieLink
                                 href="/contributeurs"
-                                className="text-famille-createurs transition-[filter] hover:brightness-125"
+                                variant="action"
+                                color="jaune-lampe"
                             >
                                 Créateurs
-                            </Link>
+                            </PixieLink>
 
-                            <Link
+                            <PixieLink
                                 href="/oeuvres"
-                                className="text-famille-oeuvres transition-[filter] hover:brightness-125"
+                                variant="action"
+                                color="gouache"
                             >
                                 Œuvres
-                            </Link>
+                            </PixieLink>
 
-                            <Link
+                            <PixieLink
                                 href="/epoques"
-                                className="text-famille-epoques transition-[filter] hover:brightness-125"
+                                variant="action"
+                                color="vert-cellulo"
                             >
                                 Époques
-                            </Link>
+                            </PixieLink>
                         </nav>
                     </div>
                 </header>

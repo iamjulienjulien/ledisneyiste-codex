@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { PixieBadge } from "@/components/ui/PixieBadge";
+import { PixieLink } from "@/components/ui/PixieLink";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { formatDateHistorique } from "@/lib/date";
 import type { CodexPersonnageCardProps } from "@/types/codex-cards";
@@ -10,8 +10,10 @@ export function CodexPersonnageCard({
     fiche,
 }: CodexPersonnageCardProps) {
     return (
-        <Link
+        <PixieLink
             href={`/personnages/${personnage.slug}`}
+            variant="surface"
+            color="rouge-crayon"
             className={`${styles.root} group p-6 sm:p-7`}
         >
             <div className="flex items-start justify-between gap-5">
@@ -75,6 +77,6 @@ export function CodexPersonnageCard({
             <span className="mt-auto pt-8 text-sm font-medium text-famille-personnages">
                 Ouvrir la fiche →
             </span>
-        </Link>
+        </PixieLink>
     );
 }

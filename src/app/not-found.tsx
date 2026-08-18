@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { PixieLink } from "@/components/ui/PixieLink";
 
 export default function NotFound() {
     return (
@@ -19,33 +19,36 @@ export default function NotFound() {
                 </p>
 
                 <div className="mt-10 grid gap-4 sm:grid-cols-2">
-                    <Link
-                        href="/"
-                        className="font-medium underline underline-offset-4"
-                    >
+                    <PixieLink href="/" variant="action" indicator="back">
                         Revenir à l’accueil
-                    </Link>
+                    </PixieLink>
 
-                    <Link
+                    <PixieLink
                         href="/personnages"
-                        className="font-medium underline underline-offset-4"
+                        variant="action"
+                        color="rouge-crayon"
+                        indicator="arrow"
                     >
                         Explorer les personnages
-                    </Link>
+                    </PixieLink>
 
-                    <Link
+                    <PixieLink
                         href="/contributeurs"
-                        className="font-medium underline underline-offset-4"
+                        variant="action"
+                        color="jaune-lampe"
+                        indicator="arrow"
                     >
                         Explorer les créateurs
-                    </Link>
+                    </PixieLink>
 
-                    <Link
+                    <PixieLink
                         href="/oeuvres"
-                        className="font-medium underline underline-offset-4"
+                        variant="action"
+                        color="gouache"
+                        indicator="arrow"
                     >
                         Explorer les œuvres
-                    </Link>
+                    </PixieLink>
                 </div>
             </section>
         </main>
