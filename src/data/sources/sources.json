@@ -932,5 +932,12 @@
         "editeur": "D23: The Official Disney Fan Club",
         "url": "https://d23.com/this-day/the-old-mill-wins-academy-award174-for-best-short-subject-cartoons/",
         "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "wdfm-multiplane-educator-guide",
+        "titre": "Multiplane Educator Guide",
+        "editeur": "The Walt Disney Family Museum",
+        "url": "https://www.waltdisney.org/sites/default/files/2018-08/WDFMMultiplaneEducatorGuide.pdf",
+        "dateConsultation": "2026-08-18"
     }
 ]
