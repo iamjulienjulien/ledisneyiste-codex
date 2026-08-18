@@ -10,6 +10,7 @@ import royODisneyJson from "@/data/contributeurs/roy-o-disney.json";
 import ubIwerksJson from "@/data/contributeurs/ub-iwerks.json";
 import wardKimballJson from "@/data/contributeurs/ward-kimball.json";
 import waltDisneyJson from "@/data/contributeurs/walt-disney.json";
+import wilfredJacksonJson from "@/data/contributeurs/wilfred-jackson.json";
 import wolfgangReithermanJson from "@/data/contributeurs/wolfgang-reitherman.json";
 import type { FicheContributeurDisney } from "@/types/contributeur";
 
@@ -18,6 +19,7 @@ export const fichesContributeurs = [
     royODisneyJson as FicheContributeurDisney,
     ubIwerksJson as FicheContributeurDisney,
     carlStallingJson as FicheContributeurDisney,
+    wilfredJacksonJson as FicheContributeurDisney,
     lesClarkJson as FicheContributeurDisney,
     ericLarsonJson as FicheContributeurDisney,
     wolfgangReithermanJson as FicheContributeurDisney,

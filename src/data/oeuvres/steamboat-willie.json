@@ -33,6 +33,14 @@
                 "slug": "les-clark"
             },
             "roles": ["animation"]
+        },
+        {
+            "contributeur": {
+                "nom": "Wilfred Jackson",
+                "type": "contributeur",
+                "slug": "wilfred-jackson"
+            },
+            "roles": ["synchronisation"]
         }
     ],
     "personnages": [

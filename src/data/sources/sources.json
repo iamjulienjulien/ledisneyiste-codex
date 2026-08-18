@@ -700,5 +700,19 @@
         "editeur": "Library of Congress",
         "url": "https://www.loc.gov/item/2016563951/",
         "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-wilfred-jackson",
+        "titre": "Wilfred Jackson",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/walt-disney-legend/wilfred-jackson/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-jackson-wilfred-jaxon",
+        "titre": "Jackson, Wilfred (« Jaxon »)",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/jackson-wilfred-jaxon/",
+        "dateConsultation": "2026-08-18"
     }
 ]

@@ -41,6 +41,20 @@
         "sousTitre": "Le compositeur qui fit de la musique une architecture animée"
     },
     {
+        "slug": "wilfred-jackson",
+        "nom": "Wilfred Jackson",
+        "type": "contributeur",
+        "metadata": {
+            "categories": [
+                "animateur",
+                "realisateur",
+                "producteur",
+                "technicien"
+            ]
+        },
+        "sousTitre": "Le réalisateur qui accorda chaque mouvement à la musique"
+    },
+    {
         "slug": "les-clark",
         "nom": "Les Clark",
         "type": "contributeur",

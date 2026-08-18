@@ -1,0 +1,72 @@
+{
+    "slug": "wilfred-jackson",
+    "type": "contributeur",
+    "introduction": "Wilfred Jackson entre chez Disney sans avoir jamais été formellement embauché et y demeure près de trente-cinq ans. Arrivé au moment où Mickey et le cinéma sonore prennent forme ensemble, il met au point une méthode permettant de préparer l’animation selon un tempo mesurable. Cette précision technique devient bientôt une signature de réalisateur : de The Wise Little Hen à The Band Concert, puis dans les longs métrages, Jackson ne traite jamais la musique comme un simple accompagnement. Il construit des séquences où rythme, action et personnalité semblent naître du même geste.",
+    "blocsEditoriaux": [
+        {
+            "type": "debuts",
+            "eyebrow": "1928",
+            "titre": "Entrer au studio sans avoir été embauché",
+            "paragraphes": [
+                "Wilfred Jackson étudie à l’Otis Art Institute lorsqu’il commence à fréquenter le studio en 1928. La perte d’Oswald rend le moment peu favorable à une embauche ; il propose néanmoins de laver des cellulos et d’assister les animateurs jusqu’au jour où un salaire lui est versé.",
+                "Le jeune artiste rejoint ainsi l’équipe pendant la préparation de Steamboat Willie. Walt cherche encore comment accorder précisément la musique à des dessins déjà décomposés en images, après que les premières expériences d’enregistrement ont révélé la fragilité d’une synchronisation approximative.",
+                "Jackson conçoit un système fondé sur le métronome, puis la feuille de mesures qui coordonne les actions animées et la bande sonore. Cette méthode permet de prévoir le rythme avant l’enregistrement et contribue à donner au premier Mickey distribué sa continuité sonore."
+            ]
+        },
+        {
+            "type": "signature",
+            "eyebrow": "Mise en scène",
+            "titre": "Faire jouer la musique comme un personnage",
+            "paragraphes": [
+                "Walt promeut rapidement Jackson de l’animation à la réalisation. Son exigence de synchronisation ne l’enferme pas dans une mécanique régulière : elle lui permet au contraire de transformer chaque variation musicale en décision de jeu, en gag ou en changement de rapport entre les personnages.",
+                "The Wise Little Hen lui confie une fable musicale dont Donald Duck détourne l’équilibre par sa voix et sa mauvaise foi. L’année suivante, The Band Concert pousse cette logique plus loin : l’ouverture de Guillaume Tell dirigée par Mickey et Turkey in the Straw imposé par Donald deviennent deux volontés rivales.",
+                "Même lorsqu’un cyclone emporte l’orchestre, la musique maintient la scène ensemble. Le rythme ne souligne pas le chaos après coup ; il donne à chaque personnage une façon particulière de lui résister, de le provoquer ou de continuer à jouer."
+            ]
+        },
+        {
+            "type": "trajectoire",
+            "eyebrow": "Du court au long",
+            "titre": "Étendre le sens du rythme à toute une séquence",
+            "paragraphes": [
+                "Jackson réalise trente-cinq courts métrages, dont trois recevront un Academy Award : The Tortoise and the Hare, The Country Cousin et The Old Mill. Cette dernière Silly Symphony pousse notamment son art de la progression musicale vers une atmosphère plus continue et plus dramatique.",
+                "Il devient ensuite réalisateur de séquences sur onze longs métrages, de Blanche-Neige et les Sept Nains à La Belle et le Clochard. Son travail comprend notamment la séquence « Une nuit sur le mont Chauve » de Fantasia et l’ensemble des parties animées ou mêlant animation et prises de vues réelles de Mélodie du Sud.",
+                "À partir de 1954, il transpose encore cette méthode à la télévision en produisant et réalisant des épisodes de Disneyland. Il prend sa retraite en 1961 : le technicien arrivé pour régler un métronome laisse derrière lui une manière complète de mettre l’animation en scène."
+            ]
+        }
+    ],
+    "naissance": {
+        "date": {
+            "valeur": "1906-01-24",
+            "precision": "jour"
+        },
+        "lieu": "Chicago, Illinois, États-Unis"
+    },
+    "deces": {
+        "date": {
+            "valeur": "1988-08-07",
+            "precision": "jour"
+        },
+        "lieu": "Newport Beach, Californie, États-Unis"
+    },
+    "roles": ["animateur", "réalisateur", "producteur", "technicien"],
+    "periodesActivite": [
+        {
+            "debut": {
+                "valeur": "1928",
+                "precision": "annee"
+            },
+            "fin": {
+                "valeur": "1961",
+                "precision": "annee"
+            }
+        }
+    ],
+    "sources": [
+        "d23-wilfred-jackson",
+        "d23-jackson-wilfred-jaxon",
+        "d23-steamboat-willie",
+        "d23-wise-little-hen",
+        "d23-band-concert",
+        "wdfm-band-concert-90"
+    ]
+}

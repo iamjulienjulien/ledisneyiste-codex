@@ -12,7 +12,9 @@
     "contributions": [
         {
             "contributeur": {
-                "nom": "Wilfred Jackson"
+                "nom": "Wilfred Jackson",
+                "type": "contributeur",
+                "slug": "wilfred-jackson"
             },
             "roles": ["réalisation"]
         }
