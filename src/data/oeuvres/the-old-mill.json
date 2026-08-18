@@ -1,0 +1,82 @@
+{
+    "slug": "the-old-mill",
+    "type": "oeuvre",
+    "introduction": "The Old Mill fait d’un moulin abandonné le centre immobile d’un monde traversé par la nuit et l’orage. Oiseaux, souris, chauves-souris et hibou occupent ses mécanismes fragiles tandis que le vent réveille une roue depuis longtemps arrêtée. Sous la direction de Wilfred Jackson, la Silly Symphony remplace la fable et le dialogue par une progression de lumière, de musique et de mouvement. La caméra multiplane donne une profondeur nouvelle à cette traversée du paysage ; le film devient à la fois l’épreuve artistique d’une invention destinée aux longs métrages et l’une des œuvres les plus reconnues du laboratoire Disney.",
+    "sortie": {
+        "date": {
+            "valeur": "1937-11-05",
+            "precision": "jour"
+        }
+    },
+    "format": "court métrage d’animation",
+    "contributions": [
+        {
+            "contributeur": {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            },
+            "roles": ["production"]
+        },
+        {
+            "contributeur": {
+                "nom": "Wilfred Jackson",
+                "type": "contributeur",
+                "slug": "wilfred-jackson"
+            },
+            "roles": ["réalisation"]
+        },
+        {
+            "contributeur": {
+                "nom": "Bill Garity"
+            },
+            "roles": ["développement de la caméra multiplane"]
+        }
+    ],
+    "personnages": [
+        {
+            "nom": "Les habitants du vieux moulin"
+        }
+    ],
+    "blocsEditoriaux": [
+        {
+            "type": "repere",
+            "eyebrow": "Atmosphère",
+            "titre": "Faire de l’orage le seul événement nécessaire",
+            "paragraphes": [
+                "Le film entre dans le paysage en suivant les différents plans qui entourent le moulin. Les animaux apparaissent comme les habitants d’un édifice dont les parties brisées forment à la fois un refuge et une menace silencieuse.",
+                "À mesure que la nuit avance, le vent, la pluie et le tonnerre remplacent toute intrigue énoncée. La roue se remet à tourner, les mécanismes grincent et la structure entière paraît pouvoir céder sous la tempête.",
+                "Lorsque le calme revient, le moulin a résisté et ses habitants reprennent leur place. Cette trajectoire élémentaire suffit à produire un récit complet : la mise en scène transforme un changement météorologique en épreuve collective, sans avoir besoin d’un héros unique ni d’une morale formulée."
+            ]
+        },
+        {
+            "type": "langage",
+            "eyebrow": "Multiplane",
+            "titre": "Traverser le décor au lieu de le regarder à plat",
+            "paragraphes": [
+                "The Old Mill constitue le premier essai en production de la caméra multiplane développée au studio avec le technicien Bill Garity. Plusieurs niveaux de peintures sur verre peuvent se déplacer à des vitesses différentes sous l’objectif afin de créer une illusion de profondeur.",
+                "Le mouvement d’ouverture conduit ainsi le regard vers le moulin en traversant le premier plan, le milieu du paysage et l’arrière-plan. Le mouvement inverse referme le film après l’orage, donnant à l’espace lui-même une fonction d’introduction et de conclusion.",
+                "Cette profondeur n’est pas une démonstration séparée du récit. Elle rapproche progressivement le spectateur des animaux, amplifie la violence des éléments et permet au décor de respirer. L’outil technique devient une manière de diriger l’attention et de donner une présence physique au monde animé."
+            ]
+        },
+        {
+            "type": "relations",
+            "eyebrow": "Reconnaissance",
+            "titre": "Voir une expérience recevoir deux formes de récompense",
+            "paragraphes": [
+                "Le 10 mars 1938, The Old Mill reçoit l’Academy Award du meilleur court métrage d’animation pour la production de 1937. Walt Disney est récompensé comme producteur, tandis que Walt Disney Productions obtient une plaque scientifique et technique de classe II pour la conception et l’application de la caméra multiplane.",
+                "Les deux distinctions séparent clairement ce que le film avait réuni : l’une reconnaît l’œuvre achevée, l’autre l’instrument qui a permis de renouveler sa profondeur. Le laboratoire des Silly Symphonies prouve ainsi qu’une innovation peut être jugée à la fois pour son ingénierie et pour l’émotion qu’elle rend possible.",
+                "En 2015, la Library of Congress inscrit The Old Mill au National Film Registry parmi les œuvres jugées importantes sur les plans culturel, historique ou esthétique. La place du court métrage dépasse alors le palmarès de 1938 : il devient un jalon officiellement préservé de l’histoire du cinéma américain."
+            ]
+        }
+    ],
+    "sources": [
+        "d23-old-mill-film",
+        "d23-old-mill-premieres",
+        "wdfm-multiplane-educator-guide",
+        "d23-the-old-mill-wins-academy-award",
+        "ampas-10th-academy-awards",
+        "loc-old-mill-national-film-registry",
+        "d23-wilfred-jackson"
+    ]
+}

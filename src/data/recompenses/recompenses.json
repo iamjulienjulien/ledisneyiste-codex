@@ -218,7 +218,9 @@
             }
         ],
         "oeuvreConcernee": {
-            "nom": "The Old Mill"
+            "nom": "The Old Mill",
+            "type": "oeuvre",
+            "slug": "the-old-mill"
         },
         "sources": [
             "ampas-10th-academy-awards",
