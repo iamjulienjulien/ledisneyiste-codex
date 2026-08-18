@@ -42,8 +42,10 @@ priorité sur les préférences de mise en œuvre ponctuelles.
    commit.
 7. Respecter la convention de structure et de nommage des composants définie
    ci-dessous pour toute création ou migration sous `src/components`.
-8. Centraliser impérativement toutes les déclarations de types TypeScript dans
-   `src/types`. Aucun type ne doit être déclaré ailleurs dans le projet.
+8. Ranger les types TypeScript selon leur portée : les types propres à un
+   composant restent dans son dossier sous le nom
+   `<NomComposant>.types.ts` ; les types globaux, métier ou partagés restent
+   centralisés dans `src/types`.
 9. Respecter le rôle, la structure et le parcours d'ajout de l'Atelier définis
    ci-dessous pour toute fondation ou tout composant qui y est documenté.
 
@@ -73,15 +75,20 @@ strictement identiques.
 src/components/<famille>/<NomComposant>/
 ├── <NomComposant>.tsx
 ├── <NomComposant>.module.css
+├── <NomComposant>.types.ts
 └── index.ts
 ```
 
-Les trois fichiers sont obligatoires :
+Les quatre fichiers sont obligatoires :
 
 - `<NomComposant>.tsx` contient uniquement l'implémentation du composant et
-  importe ses types depuis `src/types` ;
+  importe ses types spécifiques depuis le fichier voisin
+  `<NomComposant>.types.ts` ;
 - `<NomComposant>.module.css` contient ses styles encapsulés et doit être
   présent dès la création du composant ;
+- `<NomComposant>.types.ts` déclare les propriétés et tous les types propres au
+  composant ; son nom reprend obligatoirement et exactement celui du composant
+  en `PascalCase`, suivi du suffixe `.types.ts` ;
 - `index.ts` est le barrel public du composant et réexporte son API autorisée.
 
 Les consommateurs importent le composant depuis son dossier, jamais depuis son
@@ -123,35 +130,29 @@ les noms génériques ou ambigus.
 
 # Convention des types TypeScript
 
-Toutes les déclarations de types TypeScript doivent être centralisées dans
-`src/types` et nulle part ailleurs. Cette règle s'applique à l'ensemble du
-projet, sans exception liée à la proximité d'usage.
+Les types TypeScript sont rangés selon leur portée afin de garder leur
+responsabilité immédiatement lisible.
 
-Il est notamment interdit de déclarer un `type` ou une `interface` dans :
-
-- un composant ;
-- une page ou un layout ;
-- un registre ;
-- un fichier de données ;
-- un utilitaire ou une librairie ;
-- tout autre dossier que `src/types`.
-
-Les types doivent être regroupés dans `src/types` par domaine ou responsabilité,
-puis importés avec `import type` lorsqu'ils ne sont utilisés qu'au niveau du
-typage.
+Les types propres à un composant, notamment ses propriétés, ses variantes et
+ses unions internes, doivent être déclarés dans son dossier sous le nom exact
+`<NomComposant>.types.ts`. Ils ne doivent être placés ni dans le fichier `.tsx`,
+ni dans `src/types`, ni dans un fichier générique au nom différent.
 
 ```ts
-import type { PixieSymbolProps } from "@/types/pixie-symbol";
+import type { PixieDustCardProps } from "./PixieDustCard.types";
 ```
 
-Les composants peuvent réexporter depuis leur barrel les types nécessaires à
-leur API publique, mais la déclaration originale doit toujours rester dans
-`src/types`.
+Le barrel du composant réexporte les types nécessaires à son API publique.
 
-Les déclarations existantes situées hors de `src/types` constituent une dette
-de migration connue. Elles seront déplacées dans des chantiers dédiés ; ne pas
-mélanger leur migration à un autre chantier sans accord explicite et ne créer
-aucune nouvelle exception entre-temps.
+`src/types` reste réservé aux types globaux, métier ou réellement partagés par
+plusieurs composants, registres ou couches du projet. Ces types sont regroupés
+par domaine ou responsabilité et importés avec `import type` lorsqu'ils ne sont
+utilisés qu'au niveau du typage.
+
+Les déclarations existantes qui ne respectent pas encore cette répartition
+constituent une dette de migration connue. Elles seront déplacées dans des
+chantiers dédiés ; ne pas mélanger leur migration à un autre chantier sans
+accord explicite.
 
 # L'Atelier
 
@@ -178,12 +179,14 @@ src/components/atelier/
 └── <AtelierComposantPartage>/
     ├── <AtelierComposantPartage>.tsx
     ├── <AtelierComposantPartage>.module.css
+    ├── <AtelierComposantPartage>.types.ts
     └── index.ts
 
 src/components/ui/
 └── <PixieDustOuPixieComposant>/
     ├── <PixieDustOuPixieComposant>.tsx
     ├── <PixieDustOuPixieComposant>.module.css
+    ├── <PixieDustOuPixieComposant>.types.ts
     └── index.ts
 ```
 
@@ -198,8 +201,9 @@ src/components/ui/
   plusieurs dossiers.
 - `src/components/ui` contient les primitives réellement destinées à
   l'interface du Codex et suit la convention `PixieDust` ou `Pixie`.
-- Tous les types utilisés par ces fichiers restent centralisés dans
-  `src/types` conformément à la convention des types TypeScript.
+- Les types spécifiques de chaque composant restent dans son dossier sous le
+  nom `<NomComposant>.types.ts` ; seuls les types globaux, métier ou partagés
+  restent centralisés dans `src/types`.
 
 Les fichiers existants qui ne suivent pas encore cette arborescence canonique
 seront migrés dans un chantier dédié. Toute nouvelle création doit en revanche
@@ -248,8 +252,10 @@ l'état, le dossier, les exemples, les imports et l'entrée d'inventaire.
    `src/components`, en respectant son sous-dossier `PascalCase`, son module
    CSS, son barrel, son préfixe de famille et la convention `PixieDust` ou
    `Pixie` pour les primitives UI.
-4. Déclarer tous ses types dans un fichier adapté de `src/types` et les importer
-   avec `import type` lorsqu'ils sont utilisés uniquement pour le typage.
+4. Déclarer ses types spécifiques dans
+   `<NomComposant>/<NomComposant>.types.ts`. Réserver `src/types` aux types
+   globaux, métier ou partagés, et utiliser `import type` pour les imports
+   exclusivement employés au niveau du typage.
 5. Créer `<Nom>Dossier.tsx` dans `src/app/atelier/_components`. Ajouter
    `<Nom>Playground.tsx` uniquement lorsque des propriétés ou des états doivent
    être manipulés en direct.
