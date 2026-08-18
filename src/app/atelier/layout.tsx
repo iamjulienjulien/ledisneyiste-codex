@@ -77,6 +77,12 @@ export default function AtelierLayout({
                     >
                         Les Accessoires
                     </a>
+                    <a
+                        href="#decors"
+                        className="font-medium text-ink-soft underline-offset-4 hover:text-accent hover:underline"
+                    >
+                        Les Décors
+                    </a>
                 </nav>
             </header>
 

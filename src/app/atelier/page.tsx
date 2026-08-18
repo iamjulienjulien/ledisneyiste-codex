@@ -31,8 +31,8 @@ const categories = [
         domaine: "Surfaces",
         description:
             "Cartes, panneaux et cadres qui organisent les espaces éditoriaux.",
-        statut: "Hors champ",
-        href: null,
+        statut: "En préparation",
+        href: "#decors",
     },
     {
         numero: "04",
@@ -96,6 +96,39 @@ const accessoires = [
     },
 ] as const;
 
+const decors = [
+    {
+        nom: "PixieDustCard",
+        role: "Accueillir une unité de contenu répétable",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustPanel",
+        role: "Regrouper une section dans une surface structurée",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustFrame",
+        role: "Encadrer un visuel ou un aperçu",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustCallout",
+        role: "Mettre en lumière une annotation éditoriale",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustInset",
+        role: "Creuser une zone d’information secondaire",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustBackdrop",
+        role: "Installer un fond de scène atmosphérique",
+        statut: "À esquisser",
+    },
+] as const;
+
 export default function AtelierPage() {
     return (
         <div className="py-12 sm:py-16">
@@ -138,7 +171,7 @@ export default function AtelierPage() {
                     </div>
 
                     <p className="text-sm text-muted">
-                        2 plateaux ouverts · 4 à venir
+                        3 plateaux ouverts · 3 à venir
                     </p>
                 </div>
 
@@ -308,6 +341,81 @@ export default function AtelierPage() {
                 <PixieLinkDossier />
                 <PixieBadgeDossier />
                 <PixieSeparatorDossier />
+            </section>
+
+            <section
+                id="decors"
+                aria-labelledby="decors-title"
+                className="mt-24 scroll-mt-8"
+            >
+                <PixieSeparator
+                    variant="film"
+                    intensity="strong"
+                    width="medium"
+                    align="start"
+                    spacing="none"
+                    decorative
+                />
+
+                <div className="mt-12 max-w-3xl">
+                    <p className="text-sm font-medium uppercase tracking-[0.2em] text-accent">
+                        03 · Les Décors
+                    </p>
+                    <h2 id="decors-title" className="mt-3 text-4xl text-ink">
+                        Les surfaces attendent leur premier coup de pinceau
+                    </h2>
+                    <p className="mt-5 leading-7 text-ink-soft">
+                        Cartes, panneaux et cadres donneront une place à chaque
+                        contenu sans confondre décor, composition et action. Ces
+                        six esquisses formeront le premier vocabulaire de
+                        surfaces du Codex.
+                    </p>
+                </div>
+
+                <div className="mt-10 overflow-x-auto border border-line">
+                    <table className="w-full min-w-xl border-collapse text-left">
+                        <thead className="bg-surface-muted text-xs uppercase tracking-[0.16em] text-muted">
+                            <tr>
+                                <th
+                                    scope="col"
+                                    className="px-5 py-4 font-medium"
+                                >
+                                    Décor
+                                </th>
+                                <th
+                                    scope="col"
+                                    className="px-5 py-4 font-medium"
+                                >
+                                    Rôle
+                                </th>
+                                <th
+                                    scope="col"
+                                    className="px-5 py-4 font-medium"
+                                >
+                                    État
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody className="divide-y divide-line bg-surface">
+                            {decors.map((decor) => (
+                                <tr key={decor.nom}>
+                                    <th
+                                        scope="row"
+                                        className="px-5 py-4 font-medium text-ink"
+                                    >
+                                        {decor.nom}
+                                    </th>
+                                    <td className="px-5 py-4 text-ink-soft">
+                                        {decor.role}
+                                    </td>
+                                    <td className="px-5 py-4 text-sm text-muted">
+                                        {decor.statut}
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             </section>
         </div>
     );
