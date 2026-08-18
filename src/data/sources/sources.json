@@ -939,5 +939,19 @@
         "editeur": "The Walt Disney Family Museum",
         "url": "https://www.waltdisney.org/sites/default/files/2018-08/WDFMMultiplaneEducatorGuide.pdf",
         "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "ampas-11th-academy-awards",
+        "titre": "The 11th Academy Awards | 1939",
+        "editeur": "Academy of Motion Picture Arts and Sciences",
+        "url": "https://www.oscars.org/oscars/ceremonies/1939",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-ferdinand-the-bull-wins-oscar",
+        "titre": "Ferdinand the Bull wins the Oscar® for Best Cartoon Short",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/this-day/ampas-awards-oscar-to-disney-for-ferdinand-the-bull/",
+        "dateConsultation": "2026-08-18"
     }
 ]

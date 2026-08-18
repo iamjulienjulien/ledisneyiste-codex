@@ -240,5 +240,37 @@
             "wdfm-multiplane-educator-guide",
             "d23-academy-awards"
         ]
+    },
+    {
+        "id": "academy-awards-1939-ferdinand-the-bull",
+        "institution": {
+            "nom": "Academy of Motion Picture Arts and Sciences",
+            "abreviation": "AMPAS"
+        },
+        "edition": {
+            "nom": "11e cérémonie des Oscars",
+            "numero": 11
+        },
+        "dateAttribution": {
+            "valeur": "1939-02-23",
+            "precision": "jour"
+        },
+        "nature": "competitive",
+        "categorie": "Meilleur court métrage d’animation",
+        "beneficiaires": [
+            {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            }
+        ],
+        "oeuvreConcernee": {
+            "nom": "Ferdinand the Bull"
+        },
+        "sources": [
+            "ampas-11th-academy-awards",
+            "d23-academy-awards",
+            "d23-ferdinand-the-bull-wins-oscar"
+        ]
     }
 ]
