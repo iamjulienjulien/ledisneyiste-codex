@@ -15,6 +15,7 @@ import theTortoiseAndTheHareJson from "@/data/oeuvres/the-tortoise-and-the-hare.
 import threeLittlePigsJson from "@/data/oeuvres/three-little-pigs.json";
 import theWiseLittleHenJson from "@/data/oeuvres/the-wise-little-hen.json";
 import trolleyTroublesJson from "@/data/oeuvres/trolley-troubles.json";
+import threeOrphanKittensJson from "@/data/oeuvres/three-orphan-kittens.json";
 import type { FicheOeuvreDisney } from "@/types/oeuvre";
 
 export const fichesOeuvres = [
@@ -32,6 +33,7 @@ export const fichesOeuvres = [
     orphansBenefitJson as FicheOeuvreDisney,
     theTortoiseAndTheHareJson as FicheOeuvreDisney,
     theBandConcertJson as FicheOeuvreDisney,
+    threeOrphanKittensJson as FicheOeuvreDisney,
     clockCleanersJson as FicheOeuvreDisney,
     mrDuckStepsOutJson as FicheOeuvreDisney,
     boneTroubleJson as FicheOeuvreDisney,

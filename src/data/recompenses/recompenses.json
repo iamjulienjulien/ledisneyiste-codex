@@ -156,7 +156,9 @@
             }
         ],
         "oeuvreConcernee": {
-            "nom": "Three Orphan Kittens"
+            "nom": "Three Orphan Kittens",
+            "type": "oeuvre",
+            "slug": "three-orphan-kittens"
         },
         "sources": ["ampas-8th-academy-awards", "d23-academy-awards"]
     },

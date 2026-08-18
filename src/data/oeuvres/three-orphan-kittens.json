@@ -1,0 +1,78 @@
+{
+    "slug": "three-orphan-kittens",
+    "type": "oeuvre",
+    "introduction": "Three Orphan Kittens fait d’une maison ordinaire un territoire immense, imprévisible et merveilleux. Chassés du froid, trois chatons trouvent refuge parmi les meubles, les jouets et un piano dont chaque mécanisme devient une aventure. Sous la direction de David Hand, le dessin animé adopte leur échelle et transforme la perspective conçue par Ken Anderson en moteur de découverte. La Silly Symphony délaisse la grande fable pour observer le désordre minuscule de ses héros et offre à Walt Disney un quatrième Oscar consécutif dans la catégorie du court métrage d’animation.",
+    "sortie": {
+        "date": {
+            "valeur": "1935-10-26",
+            "precision": "jour"
+        }
+    },
+    "format": "court métrage d’animation",
+    "contributions": [
+        {
+            "contributeur": {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            },
+            "roles": ["production"]
+        },
+        {
+            "contributeur": {
+                "nom": "David Hand"
+            },
+            "roles": ["réalisation"]
+        },
+        {
+            "contributeur": {
+                "nom": "Ken Anderson"
+            },
+            "roles": ["conception visuelle", "perspective"]
+        }
+    ],
+    "personnages": [
+        {
+            "nom": "Les trois chatons orphelins"
+        }
+    ],
+    "blocsEditoriaux": [
+        {
+            "type": "repere",
+            "eyebrow": "Refuge",
+            "titre": "Entrer dans la maison à hauteur de chaton",
+            "paragraphes": [
+                "Les trois chatons passent du froid extérieur à la chaleur d’une maison inconnue. Ce changement d’espace ne les met pas immédiatement à l’abri : chaque meuble, chaque objet et chaque recoin devient une présence disproportionnée qu’il faut approcher, contourner ou escalader.",
+                "Le film suit moins une quête qu’une succession de découvertes. Les chatons avancent par curiosité, déclenchent des réactions qu’ils ne maîtrisent pas et transforment progressivement le refuge en terrain de jeu.",
+                "En adoptant leur point de vue, la Silly Symphony renouvelle un décor domestique familier. La maison paraît animée non parce qu’elle possède un caractère propre, mais parce que l’échelle des visiteurs révèle des mouvements et des dangers que le regard humain ne remarquerait pas."
+            ]
+        },
+        {
+            "type": "langage",
+            "eyebrow": "Perspective",
+            "titre": "Faire des volumes du décor une mécanique de gags",
+            "paragraphes": [
+                "Ken Anderson conçoit pour le film un travail remarquable de dessin et de perspective. Les lignes du mobilier, les profondeurs de la pièce et les changements d’échelle permettent aux chatons de circuler dans un espace qui demeure cohérent malgré l’accumulation des incidents.",
+                "Le piano condense cette approche. Touches, pédales, marteaux et cordes ne forment plus un simple accessoire musical : vus par les chatons, ils deviennent une machine immense dont chaque action produit simultanément un son, un mouvement et un nouveau gag.",
+                "Cette attention au volume prépare le studio à penser ses décors comme des lieux que la caméra et les personnages peuvent véritablement explorer. L’environnement ne se contente plus d’encadrer l’animation ; il participe à son rythme et à sa mise en scène."
+            ]
+        },
+        {
+            "type": "relations",
+            "eyebrow": "Reconnaissance",
+            "titre": "Prolonger le désordre au-delà d’un premier Oscar",
+            "paragraphes": [
+                "Le 5 mars 1936, Three Orphan Kittens reçoit l’Academy Award du meilleur court métrage d’animation pour la production de 1935. Walt Disney est récompensé comme producteur, poursuivant la série ouverte par Flowers and Trees.",
+                "L’Oscar distingue une œuvre qui ne repose ni sur une vedette déjà installée ni sur une rupture technologique spectaculaire. Son efficacité vient de la précision du décor, de la curiosité des chatons et de la capacité du film à faire naître une histoire de leur interaction avec les objets.",
+                "Le trio reviendra en 1936 dans More Kittens. Comme Toby Tortoise et Max Hare avant lui, il montre qu’une Silly Symphony peut engendrer des personnages assez identifiables pour sortir du récit unique auquel ils semblaient d’abord attachés."
+            ]
+        }
+    ],
+    "sources": [
+        "d23-three-orphan-kittens-film",
+        "d23-david-hand",
+        "d23-ken-anderson",
+        "ampas-8th-academy-awards",
+        "d23-academy-awards"
+    ]
+}

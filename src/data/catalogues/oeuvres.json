@@ -168,6 +168,18 @@
         "sousTitre": "Le concert qui fit entrer la série de Mickey en couleurs"
     },
     {
+        "slug": "three-orphan-kittens",
+        "nom": "Three Orphan Kittens",
+        "type": "oeuvre",
+        "metadata": {
+            "collection": "silly-symphonies",
+            "type": "court-metrage-anime",
+            "son": "sonore",
+            "couleur": "couleur"
+        },
+        "sousTitre": "La maison devenue terrain de jeu à hauteur de chaton"
+    },
+    {
         "slug": "clock-cleaners",
         "nom": "Clock Cleaners",
         "type": "oeuvre",

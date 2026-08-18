@@ -990,5 +990,26 @@
         "editeur": "D23: The Official Disney Fan Club",
         "url": "https://d23.com/walt-disney-legend/ham-luske/",
         "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-three-orphan-kittens-film",
+        "titre": "Three Orphan Kittens (film)",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/three-orphan-kittens-film/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-david-hand",
+        "titre": "David Hand",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/walt-disney-legend/david-hand/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-ken-anderson",
+        "titre": "Ken Anderson",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/walt-disney-legend/ken-anderson/",
+        "dateConsultation": "2026-08-18"
     }
 ]
