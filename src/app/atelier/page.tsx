@@ -40,8 +40,8 @@ const categories = [
         domaine: "Formulaires",
         description:
             "Champs, choix et contrôles par lesquels le public répond au Codex.",
-        statut: "Hors champ",
-        href: null,
+        statut: "En préparation",
+        href: "#dialogues",
     },
     {
         numero: "05",
@@ -129,6 +129,64 @@ const decors = [
     },
 ] as const;
 
+const dialogues = [
+    {
+        nom: "PixieDustField",
+        role: "Associer un contrôle à ses indications",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustInput",
+        role: "Recueillir une saisie courte",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustTextarea",
+        role: "Recueillir une réponse développée",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustSelect",
+        role: "Choisir une valeur dans une liste fermée",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustCheckbox",
+        role: "Marquer un choix indépendant",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustRadioGroup",
+        role: "Choisir une seule option parmi plusieurs",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustSwitch",
+        role: "Activer ou désactiver une préférence",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustFilterChip",
+        role: "Activer un filtre compact",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustSearchField",
+        role: "Composer une recherche complète",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustCombobox",
+        role: "Saisir et choisir parmi des suggestions",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustRange",
+        role: "Définir une valeur ou une période",
+        statut: "À esquisser",
+    },
+] as const;
+
 export default function AtelierPage() {
     return (
         <div className="py-12 sm:py-16">
@@ -171,7 +229,7 @@ export default function AtelierPage() {
                     </div>
 
                     <p className="text-sm text-muted">
-                        3 plateaux ouverts · 3 à venir
+                        4 plateaux ouverts · 2 à venir
                     </p>
                 </div>
 
@@ -410,6 +468,82 @@ export default function AtelierPage() {
                                     </td>
                                     <td className="px-5 py-4 text-sm text-muted">
                                         {decor.statut}
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section
+                id="dialogues"
+                aria-labelledby="dialogues-title"
+                className="mt-24 scroll-mt-8"
+            >
+                <PixieSeparator
+                    variant="film"
+                    intensity="strong"
+                    width="medium"
+                    align="start"
+                    spacing="none"
+                    decorative
+                />
+
+                <div className="mt-12 max-w-3xl">
+                    <p className="text-sm font-medium uppercase tracking-[0.2em] text-accent">
+                        04 · Les Dialogues
+                    </p>
+                    <h2 id="dialogues-title" className="mt-3 text-4xl text-ink">
+                        Le public entre dans la conversation
+                    </h2>
+                    <p className="mt-5 leading-7 text-ink-soft">
+                        Champs, choix et contrôles permettront au public de
+                        chercher, filtrer et répondre au Codex. Ces onze
+                        esquisses couvriront la saisie, la décision et
+                        l’affinement sans confondre dialogue, action et retour
+                        système.
+                    </p>
+                </div>
+
+                <div className="mt-10 overflow-x-auto border border-line">
+                    <table className="w-full min-w-xl border-collapse text-left">
+                        <thead className="bg-surface-muted text-xs uppercase tracking-[0.16em] text-muted">
+                            <tr>
+                                <th
+                                    scope="col"
+                                    className="px-5 py-4 font-medium"
+                                >
+                                    Dialogue
+                                </th>
+                                <th
+                                    scope="col"
+                                    className="px-5 py-4 font-medium"
+                                >
+                                    Rôle
+                                </th>
+                                <th
+                                    scope="col"
+                                    className="px-5 py-4 font-medium"
+                                >
+                                    État
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody className="divide-y divide-line bg-surface">
+                            {dialogues.map((dialogue) => (
+                                <tr key={dialogue.nom}>
+                                    <th
+                                        scope="row"
+                                        className="px-5 py-4 font-medium text-ink"
+                                    >
+                                        {dialogue.nom}
+                                    </th>
+                                    <td className="px-5 py-4 text-ink-soft">
+                                        {dialogue.role}
+                                    </td>
+                                    <td className="px-5 py-4 text-sm text-muted">
+                                        {dialogue.statut}
                                     </td>
                                 </tr>
                             ))}
