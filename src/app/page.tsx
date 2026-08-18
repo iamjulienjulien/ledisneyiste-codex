@@ -20,7 +20,7 @@ export default function Home() {
                     Le Codex du Disneyiste
                 </h1>
 
-                <p className="mt-6 max-w-2xl font-display text-xl leading-9 text-ink-soft">
+                <p className="mt-6 font-display text-xl leading-9 text-ink-soft">
                     Un atlas éditorial pour explorer, relier et raconter les
                     imaginaires Disney.
                 </p>
