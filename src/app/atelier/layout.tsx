@@ -95,6 +95,12 @@ export default function AtelierLayout({
                     >
                         Le Montage
                     </a>
+                    <a
+                        href="#effets"
+                        className="font-medium text-ink-soft underline-offset-4 hover:text-accent hover:underline"
+                    >
+                        Les Effets
+                    </a>
                 </nav>
             </header>
 

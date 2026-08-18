@@ -58,8 +58,8 @@ const categories = [
         domaine: "Retours système",
         description:
             "États, alertes et transitions qui rendent visibles les réactions de l’interface.",
-        statut: "Hors champ",
-        href: null,
+        statut: "En préparation",
+        href: "#effets",
     },
 ] as const;
 
@@ -245,6 +245,64 @@ const montage = [
     },
 ] as const;
 
+const effets = [
+    {
+        nom: "PixieDustAlert",
+        role: "Afficher un message persistant selon son niveau d’attention",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustToast",
+        role: "Signaler brièvement le résultat d’une action",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustStatus",
+        role: "Représenter un état système compact",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustProgress",
+        role: "Montrer l’avancement d’une opération",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustLoader",
+        role: "Matérialiser une attente de durée indéterminée",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustSkeleton",
+        role: "Préserver la structure pendant le chargement",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustEmptyState",
+        role: "Mettre en scène une collection vide et la prochaine action",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustErrorSummary",
+        role: "Rassembler les erreurs et guider leur correction",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustLiveMessage",
+        role: "Annoncer les changements dynamiques aux aides techniques",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustPresence",
+        role: "Orchestrer l’apparition et la disparition d’un élément",
+        statut: "À esquisser",
+    },
+    {
+        nom: "PixieDustHighlight",
+        role: "Attirer temporairement l’attention sur un contenu actualisé",
+        statut: "À esquisser",
+    },
+] as const;
+
 export default function AtelierPage() {
     return (
         <div className="py-12 sm:py-16">
@@ -286,9 +344,7 @@ export default function AtelierPage() {
                         </h2>
                     </div>
 
-                    <p className="text-sm text-muted">
-                        5 plateaux ouverts · 1 à venir
-                    </p>
+                    <p className="text-sm text-muted">6 plateaux ouverts</p>
                 </div>
 
                 <div className="mt-8 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-2 xl:grid-cols-3">
@@ -316,7 +372,7 @@ export default function AtelierPage() {
                             </>
                         );
 
-                        return categorie.href ? (
+                        return (
                             <a
                                 key={categorie.numero}
                                 href={categorie.href}
@@ -327,13 +383,6 @@ export default function AtelierPage() {
                                     Entrer sur le plateau →
                                 </p>
                             </a>
-                        ) : (
-                            <article
-                                key={categorie.numero}
-                                className="bg-surface p-6 opacity-60"
-                            >
-                                {contenu}
-                            </article>
                         );
                     })}
                 </div>
@@ -677,6 +726,82 @@ export default function AtelierPage() {
                                     </td>
                                     <td className="px-5 py-4 text-sm text-muted">
                                         {element.statut}
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section
+                id="effets"
+                aria-labelledby="effets-title"
+                className="mt-24 scroll-mt-8"
+            >
+                <PixieSeparator
+                    variant="film"
+                    intensity="strong"
+                    width="medium"
+                    align="start"
+                    spacing="none"
+                    decorative
+                />
+
+                <div className="mt-12 max-w-3xl">
+                    <p className="text-sm font-medium uppercase tracking-[0.2em] text-accent">
+                        06 · Les Effets
+                    </p>
+                    <h2 id="effets-title" className="mt-3 text-4xl text-ink">
+                        L’interface accuse réception
+                    </h2>
+                    <p className="mt-5 leading-7 text-ink-soft">
+                        États, alertes et transitions rendront perceptibles les
+                        réactions du Codex. Ces onze esquisses informeront le
+                        public, accompagneront l’attente et guideront
+                        l’attention sans dépendre uniquement de la couleur ou du
+                        mouvement.
+                    </p>
+                </div>
+
+                <div className="mt-10 overflow-x-auto border border-line">
+                    <table className="w-full min-w-xl border-collapse text-left">
+                        <thead className="bg-surface-muted text-xs uppercase tracking-[0.16em] text-muted">
+                            <tr>
+                                <th
+                                    scope="col"
+                                    className="px-5 py-4 font-medium"
+                                >
+                                    Effet
+                                </th>
+                                <th
+                                    scope="col"
+                                    className="px-5 py-4 font-medium"
+                                >
+                                    Rôle
+                                </th>
+                                <th
+                                    scope="col"
+                                    className="px-5 py-4 font-medium"
+                                >
+                                    État
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody className="divide-y divide-line bg-surface">
+                            {effets.map((effet) => (
+                                <tr key={effet.nom}>
+                                    <th
+                                        scope="row"
+                                        className="px-5 py-4 font-medium text-ink"
+                                    >
+                                        {effet.nom}
+                                    </th>
+                                    <td className="px-5 py-4 text-ink-soft">
+                                        {effet.role}
+                                    </td>
+                                    <td className="px-5 py-4 text-sm text-muted">
+                                        {effet.statut}
                                     </td>
                                 </tr>
                             ))}
