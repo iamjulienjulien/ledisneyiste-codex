@@ -53,6 +53,11 @@
             "nom": "Minnie Mouse",
             "type": "personnage",
             "slug": "minnie-mouse"
+        },
+        {
+            "nom": "Pat Hibulaire",
+            "type": "personnage",
+            "slug": "pat-hibulaire"
         }
     ],
     "blocsEditoriaux": [

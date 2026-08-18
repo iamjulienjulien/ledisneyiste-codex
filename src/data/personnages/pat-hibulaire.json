@@ -1,0 +1,67 @@
+{
+    "slug": "pat-hibulaire",
+    "type": "personnage",
+    "introduction": "Pat Hibulaire est plus ancien que Mickey et presque aussi persistant que lui. Né en 1925 dans une Alice Comedy sous le nom de Bootleg Pete, il traverse les films d’Oswald puis accueille la nouvelle souris en capitaine autoritaire dans Steamboat Willie et en ravisseur dans The Gallopin’ Gaucho. Sa masse, sa brutalité et son goût du pouvoir donnent aux héros souples de Disney un obstacle immédiatement lisible. Même lorsque sa jambe de bois disparaît et que ses métiers changent, Pat conserve cette fonction : être la force que l’aventure doit contourner, ridiculiser ou renverser.",
+    "creation": {
+        "date": {
+            "valeur": "1925",
+            "precision": "annee"
+        },
+        "createurs": [
+            {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            }
+        ]
+    },
+    "premiereApparition": {
+        "oeuvre": {
+            "nom": "Alice Solves the Puzzle"
+        },
+        "date": {
+            "valeur": "1925-02-15",
+            "precision": "jour"
+        }
+    },
+    "espece": "chat anthropomorphe",
+    "blocsEditoriaux": [
+        {
+            "type": "genese",
+            "eyebrow": "Bootleg Pete",
+            "titre": "Commencer par voler un mot croisé",
+            "paragraphes": [
+                "Pat apparaît dans Alice Solves the Puzzle, une comédie hybride où la jeune Alice tente de terminer une grille de mots croisés avec Julius le chat. Sous le nom de Bootleg Pete, il collectionne illégalement les grilles rares et cherche à s’emparer de celle de l’héroïne.",
+                "La poursuite le conduit jusqu’au sommet d’un phare avant que Julius ne vienne au secours d’Alice. Le premier Pat ne possède donc pas encore Mickey comme adversaire ni un métier durable : il est une menace assez simple pour mettre en mouvement le monde dessiné autour de l’interprète réelle.",
+                "Cette apparition de 1925 fait pourtant de lui l’un des personnages récurrents les plus anciens du catalogue Disney. Il précède Oswald, Mickey et le cercle qui se formera autour de la souris."
+            ]
+        },
+        {
+            "type": "caractere",
+            "eyebrow": "Rapport de force",
+            "titre": "Opposer la masse à l’élasticité des héros",
+            "paragraphes": [
+                "Pat se reconnaît moins à une biographie continue qu’à une présence physique. Plus grand, plus lourd et plus brutal que les héros qu’il affronte, il occupe volontiers une position d’autorité : capitaine, shérif, propriétaire ou chef dont le pouvoir devient immédiatement un obstacle.",
+                "Sa jambe de bois lui vaut longtemps les noms Peg Leg Pete et Pat Hibulaire en français. Les animateurs l’abandonnent progressivement lorsqu’elle devient trop contraignante pour les histoires, sans que cette disparition affaiblisse l’identité du personnage.",
+                "Le contraste demeure en effet intact. Face aux corps souples de Julius, Oswald ou Mickey, Pat représente le poids, la contrainte et la violence ; le gag naît de la manière dont un héros plus petit transforme cette supériorité apparente en maladresse."
+            ]
+        },
+        {
+            "type": "trajectoire",
+            "eyebrow": "Trois séries",
+            "titre": "Changer de héros sans quitter son rôle",
+            "paragraphes": [
+                "Après les Alice Comedies, Pat rejoint plusieurs aventures d’Oswald. Il peut y être adversaire ou compagnon querelleur, comme dans Hungry Hoboes, signe que les relations restent encore aussi élastiques que les corps des personnages.",
+                "La naissance de Mickey lui donne une fonction plus stable. Dans Steamboat Willie, il commande le bateau et rabaisse la souris ; dans The Gallopin’ Gaucho, il enlève Minnie et fournit au nouveau héros son premier duel spectaculaire.",
+                "Pat devient ensuite l’ennemi principal de Mickey, puis affronte également Donald. Cette capacité à changer de costume, d’époque et de série tout en conservant son rapport de force explique sa longévité : chaque nouveau héros peut immédiatement se définir contre lui."
+            ]
+        }
+    ],
+    "sources": [
+        "d23-pete",
+        "d23-alice-solves-the-puzzle-released",
+        "d23-hungry-hoboes",
+        "d23-steamboat-willie",
+        "d23-gallopin-gaucho"
+    ]
+}

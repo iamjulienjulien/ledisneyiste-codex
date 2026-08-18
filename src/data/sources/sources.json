@@ -750,5 +750,28 @@
         "editeur": "D23: The Official Disney Fan Club",
         "url": "https://d23.com/a-to-z/gillett-burton/",
         "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-pete",
+        "titre": "Pete",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/pete/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-alice-solves-the-puzzle-released",
+        "titre": "Alice Solves the Puzzle is Released",
+        "editeur": "D23: The Official Disney Fan Club",
+        "datePublication": "2018-03-22",
+        "url": "https://d23.com/this-day/alice-solves-the-puzzle-is-released/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-hungry-hoboes",
+        "titre": "Oswald Historian Lauds Debut of Lost Short Hungry Hoboes",
+        "editeur": "D23: The Official Disney Fan Club",
+        "datePublication": "2016-02-01",
+        "url": "https://d23.com/oswald-historian-lauds-debut-of-lost-short-hungry-hoboes/",
+        "dateConsultation": "2026-08-18"
     }
 ]
