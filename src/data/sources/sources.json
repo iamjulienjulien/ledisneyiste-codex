@@ -192,6 +192,53 @@
         "dateConsultation": "2026-08-18"
     },
     {
+        "id": "d23-flowers-and-trees",
+        "titre": "Flowers and Trees (film)",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/flowers-and-trees-film/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-flowers-and-trees-premieres",
+        "titre": "Flowers and Trees Premieres",
+        "editeur": "D23: The Official Disney Fan Club",
+        "datePublication": "2019-04-12",
+        "url": "https://d23.com/this-day/flowers-and-trees-premieres/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "wdfm-flowers-and-trees-first-color",
+        "titre": "Flowers and Trees at 90: Disney’s First Color Movie",
+        "auteur": "Lucas O. Seastrom",
+        "editeur": "The Walt Disney Family Museum",
+        "datePublication": "2022-10-17",
+        "url": "https://www.waltdisney.org/blog/flowers-and-trees-first-color-movie",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-flowers-and-trees-member-gift",
+        "titre": "This Member Gift Honors A Film that Was Ahead of its Time",
+        "auteur": "Steven Vagnini",
+        "editeur": "D23: The Official Disney Fan Club",
+        "datePublication": "2016-03-21",
+        "url": "https://d23.com/this-member-gift-honors-a-film-that-was-ahead-of-its-time/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "ampas-animation-activities-guide",
+        "titre": "Animation: Activities Guide",
+        "editeur": "Academy of Motion Picture Arts and Sciences",
+        "url": "https://www.oscars.org/sites/oscars/files/complete_animation_activities_guide.pdf",
+        "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-david-hand",
+        "titre": "David Hand",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/walt-disney-legend/david-hand/",
+        "dateConsultation": "2026-08-18"
+    },
+    {
         "id": "d23-about-walt-disney",
         "titre": "About Walt Disney",
         "editeur": "D23: The Official Disney Fan Club",

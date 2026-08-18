@@ -1,0 +1,105 @@
+{
+    "slug": "flowers-and-trees",
+    "type": "oeuvre",
+    "introduction": "Flowers and Trees ne se contente pas d’ajouter des teintes à une Silly Symphony : il oblige le studio à repenser la manière dont une forêt peut vivre, aimer, brûler et renaître. Commencé en noir et blanc, le film est repris à grands frais lorsque Walt Disney choisit le nouveau procédé Technicolor à trois bandes. La couleur devient alors une force du récit, opposant la fraîcheur du matin à la jalousie d’une souche desséchée puis à l’incendie qu’elle déclenche. Le pari ouvre une avance technique décisive et vaut à Disney le premier Oscar attribué à un court métrage d’animation.",
+    "sortie": {
+        "date": {
+            "valeur": "1932-07-30",
+            "precision": "jour"
+        }
+    },
+    "format": "court métrage d’animation",
+    "contributions": [
+        {
+            "contributeur": {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            },
+            "roles": ["production"]
+        },
+        {
+            "contributeur": {
+                "nom": "Burt Gillett"
+            },
+            "roles": ["réalisation"]
+        },
+        {
+            "contributeur": {
+                "nom": "Les Clark",
+                "type": "contributeur",
+                "slug": "les-clark"
+            },
+            "roles": ["animation"]
+        },
+        {
+            "contributeur": {
+                "nom": "David Hand"
+            },
+            "roles": ["animation"]
+        },
+        {
+            "contributeur": {
+                "nom": "Frank Churchill"
+            },
+            "roles": ["musique"]
+        },
+        {
+            "contributeur": {
+                "nom": "Bert Lewis"
+            },
+            "roles": ["musique"]
+        }
+    ],
+    "personnages": [
+        {
+            "nom": "L’Arbre jeune"
+        },
+        {
+            "nom": "L’Arbre demoiselle"
+        },
+        {
+            "nom": "La vieille souche"
+        }
+    ],
+    "blocsEditoriaux": [
+        {
+            "type": "repere",
+            "eyebrow": "Technicolor",
+            "titre": "Recommencer le film pour le faire entrer en couleurs",
+            "paragraphes": [
+                "Flowers and Trees est déjà engagé en noir et blanc lorsque Walt Disney découvre le procédé Technicolor à trois bandes. Convaincu que cette technique peut enfin produire une gamme suffisamment riche pour l’animation, il interrompt le travail et demande que le court métrage soit repris en couleurs.",
+                "La décision ajoute des mois de travail et oblige les peintres, les décorateurs comme les techniciens à inventer de nouvelles méthodes. Les valeurs de gris sont lavées des cellulos, les arrière-plans sont recréés et les couleurs doivent résister à la chaleur des éclairages utilisés pour la photographie chez Technicolor.",
+                "Walt obtient en parallèle une exclusivité de deux ans sur le procédé pour les courts métrages animés. Lorsque le film sort le 30 juillet 1932, cette avance empêche temporairement les studios concurrents d’adopter la même palette."
+            ]
+        },
+        {
+            "type": "langage",
+            "eyebrow": "Couleur",
+            "titre": "Faire de la palette une force dramatique",
+            "paragraphes": [
+                "Le film s’ouvre au lever du soleil. Arbres, fleurs et animaux s’éveillent dans une forêt dont les couleurs installent immédiatement la chaleur, la fraîcheur et la profondeur. Le monde végétal n’est plus seulement anthropomorphe : ses états émotionnels peuvent désormais se lire dans les variations de la lumière et de la palette.",
+                "La vieille souche desséchée introduit une dissonance visuelle avant même de mettre le feu à la forêt. Lorsque les flammes se répandent, les tons chauds transforment l’image entière en menace ; la pluie apportée par les oiseaux restitue ensuite aux verts et aux fleurs leur fonction de renaissance.",
+                "La couleur ne recouvre donc pas un récit conçu indépendamment d’elle. Elle organise l’opposition entre désir et jalousie, vie et dessèchement, harmonie et incendie. Le procédé technique devient un vocabulaire narratif."
+            ]
+        },
+        {
+            "type": "relations",
+            "eyebrow": "Reconnaissance",
+            "titre": "Le laboratoire reçoit son premier Oscar",
+            "paragraphes": [
+                "Le 18 novembre 1932, Flowers and Trees reçoit le premier Academy Award remis dans la catégorie du court métrage d’animation. Walt Disney est récompensé comme producteur, le même soir où un prix spécial salue la création de Mickey Mouse.",
+                "Cette reconnaissance valide simultanément une œuvre, un risque industriel et la fonction des Silly Symphonies. La série sans vedette, parfois plus difficile à vendre que les aventures de Mickey, devient le lieu où une innovation coûteuse peut prouver sa valeur artistique et commerciale.",
+                "Les courts métrages Disney adopteront rapidement la couleur, tandis que les Silly Symphonies poursuivront leurs expériences de personnalité, de profondeur et de mise en scène. Flowers and Trees relie ainsi directement le laboratoire ouvert par The Skeleton Dance aux ambitions qui conduiront le studio vers le long métrage."
+            ]
+        }
+    ],
+    "sources": [
+        "d23-flowers-and-trees",
+        "d23-flowers-and-trees-premieres",
+        "wdfm-flowers-and-trees-first-color",
+        "d23-flowers-and-trees-member-gift",
+        "ampas-animation-activities-guide",
+        "d23-david-hand"
+    ]
+}
