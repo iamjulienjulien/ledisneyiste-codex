@@ -4,6 +4,7 @@ import { PixieLinkDossier } from "./_components/PixieLinkDossier";
 import { PixieSeparatorDossier } from "./_components/PixieSeparatorDossier";
 import { PixieSymbolDossier } from "./_components/PixieSymbolDossier";
 import { PixieDustCardDossier } from "./_components/PixieDustCardDossier";
+import { PixieDustPanelDossier } from "./_components/PixieDustPanelDossier";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PalettesPellicule } from "./_components/PalettesPellicule";
 
@@ -32,7 +33,7 @@ const categories = [
         domaine: "Surfaces",
         description:
             "Cartes, panneaux et cadres qui organisent les espaces éditoriaux.",
-        statut: "En préparation",
+        statut: "En projection",
         href: "#decors",
     },
     {
@@ -107,8 +108,8 @@ const decors = [
     {
         nom: "PixieDustPanel",
         role: "Regrouper une section dans une surface structurée",
-        statut: "À esquisser",
-        href: null,
+        statut: "Esquisse",
+        href: "#pixie-dust-panel",
     },
     {
         nom: "PixieDustFrame",
@@ -534,13 +535,13 @@ export default function AtelierPage() {
                         03 · Les Décors
                     </p>
                     <h2 id="decors-title" className="mt-3 text-4xl text-ink">
-                        Le premier décor reçoit son coup de pinceau
+                        Les surfaces prennent place sur le plateau
                     </h2>
                     <p className="mt-5 leading-7 text-ink-soft">
-                        PixieDustCard ouvre le chantier des surfaces sans
-                        confondre décor, composition et action. Cinq autres
-                        esquisses prolongeront progressivement ce premier
-                        vocabulaire du Codex.
+                        PixieDustCard accueille les unités répétables tandis que
+                        PixieDustPanel structure désormais des sections
+                        complètes. Quatre autres esquisses prolongeront
+                        progressivement ce vocabulaire du Codex.
                     </p>
                 </div>
 
@@ -599,6 +600,7 @@ export default function AtelierPage() {
                 </div>
 
                 <PixieDustCardDossier />
+                <PixieDustPanelDossier />
             </section>
 
             <section
