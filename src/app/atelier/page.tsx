@@ -6,6 +6,7 @@ import { PixieSymbolDossier } from "./_components/PixieSymbolDossier";
 import { PixieDustCardDossier } from "./_components/PixieDustCardDossier";
 import { PixieDustPanelDossier } from "./_components/PixieDustPanelDossier";
 import { PixieDustFrameDossier } from "./_components/PixieDustFrameDossier";
+import { PixieDustCalloutDossier } from "./_components/PixieDustCalloutDossier";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PalettesPellicule } from "./_components/PalettesPellicule";
 
@@ -121,8 +122,8 @@ const decors = [
     {
         nom: "PixieDustCallout",
         role: "Mettre en lumière une annotation éditoriale",
-        statut: "À esquisser",
-        href: null,
+        statut: "Esquisse",
+        href: "#pixie-dust-callout",
     },
     {
         nom: "PixieDustInset",
@@ -541,9 +542,9 @@ export default function AtelierPage() {
                     <p className="mt-5 leading-7 text-ink-soft">
                         PixieDustCard accueille les unités répétables,
                         PixieDustPanel structure les sections et PixieDustFrame
-                        met désormais les médias en scène. Trois autres
-                        esquisses prolongeront progressivement ce vocabulaire du
-                        Codex.
+                        met les médias en scène. PixieDustCallout éclaire
+                        désormais les annotations éditoriales. Deux autres
+                        esquisses prolongeront progressivement ce vocabulaire.
                     </p>
                 </div>
 
@@ -604,6 +605,7 @@ export default function AtelierPage() {
                 <PixieDustCardDossier />
                 <PixieDustPanelDossier />
                 <PixieDustFrameDossier />
+                <PixieDustCalloutDossier />
             </section>
 
             <section

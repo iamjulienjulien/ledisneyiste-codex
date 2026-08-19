@@ -1,0 +1,190 @@
+.root {
+    --callout-accent: var(--pixie-callout-color, var(--color-accent));
+    --callout-accent-soft: color-mix(
+        in srgb,
+        var(--callout-accent) 10%,
+        transparent
+    );
+    --callout-accent-line: color-mix(
+        in srgb,
+        var(--callout-accent) 48%,
+        var(--color-line)
+    );
+
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    min-width: 0;
+    color: inherit;
+}
+
+.root > * {
+    position: relative;
+    z-index: 1;
+}
+
+.subtle {
+    border: 1px solid transparent;
+    background:
+        linear-gradient(var(--callout-accent-soft), var(--callout-accent-soft)),
+        var(--color-surface);
+}
+
+.outline {
+    border: 1px solid var(--callout-accent-line);
+    background: transparent;
+}
+
+.accent {
+    border: 1px solid var(--color-line);
+    background:
+        linear-gradient(90deg, var(--callout-accent) 0 0.25rem, transparent 0),
+        linear-gradient(135deg, var(--callout-accent-soft), transparent 52%),
+        var(--color-surface);
+}
+
+.spotlight {
+    border: 1px solid var(--callout-accent-line);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-soft);
+}
+
+.spotlight::before {
+    position: absolute;
+    z-index: 0;
+    inset: -65% -25% 10%;
+    background: radial-gradient(
+        ellipse at 20% 20%,
+        color-mix(in srgb, var(--callout-accent) 18%, transparent),
+        transparent 66%
+    );
+    content: "";
+    pointer-events: none;
+}
+
+.stacked {
+    display: block;
+}
+
+.inline {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    column-gap: 1.25rem;
+}
+
+.inline[data-pixie-callout-icon="false"] {
+    display: block;
+}
+
+.stacked .icon {
+    margin-bottom: 1rem;
+}
+
+.icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--callout-accent);
+}
+
+.content {
+    min-width: 0;
+}
+
+.header {
+    margin-bottom: 0.75rem;
+}
+
+.eyebrow {
+    color: var(--callout-accent);
+    font-family: var(--font-eyebrow), sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.eyebrow > * {
+    margin: 0;
+    color: inherit;
+    font: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+}
+
+.heading {
+    margin-top: 0.35rem;
+    color: var(--color-ink);
+    font-family: var(--font-display), serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+.heading > * {
+    margin: 0;
+    color: inherit;
+    font: inherit;
+}
+
+.body {
+    color: var(--color-ink-soft);
+    line-height: 1.7;
+}
+
+.body > :first-child {
+    margin-top: 0;
+}
+
+.body > :last-child {
+    margin-bottom: 0;
+}
+
+.footer {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-line);
+}
+
+.paddingSmall {
+    padding: 1rem;
+}
+
+.paddingMedium {
+    padding: 1.5rem;
+}
+
+.paddingLarge {
+    padding: 2rem;
+}
+
+.radiusNone {
+    border-radius: 0;
+}
+
+.radiusSmall {
+    border-radius: var(--radius-small);
+}
+
+.radiusMedium {
+    border-radius: var(--radius-medium);
+}
+
+.radiusLarge {
+    border-radius: var(--radius-large);
+}
+
+@media (forced-colors: active) {
+    .subtle,
+    .outline,
+    .accent,
+    .spotlight {
+        border-color: CanvasText;
+    }
+
+    .spotlight::before {
+        display: none;
+    }
+}
