@@ -5,6 +5,7 @@ import { PixieSeparatorDossier } from "./_components/PixieSeparatorDossier";
 import { PixieSymbolDossier } from "./_components/PixieSymbolDossier";
 import { PixieDustCardDossier } from "./_components/PixieDustCardDossier";
 import { PixieDustPanelDossier } from "./_components/PixieDustPanelDossier";
+import { PixieDustFrameDossier } from "./_components/PixieDustFrameDossier";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PalettesPellicule } from "./_components/PalettesPellicule";
 
@@ -114,8 +115,8 @@ const decors = [
     {
         nom: "PixieDustFrame",
         role: "Encadrer un visuel ou un aperçu",
-        statut: "À esquisser",
-        href: null,
+        statut: "Esquisse",
+        href: "#pixie-dust-frame",
     },
     {
         nom: "PixieDustCallout",
@@ -538,10 +539,11 @@ export default function AtelierPage() {
                         Les surfaces prennent place sur le plateau
                     </h2>
                     <p className="mt-5 leading-7 text-ink-soft">
-                        PixieDustCard accueille les unités répétables tandis que
-                        PixieDustPanel structure désormais des sections
-                        complètes. Quatre autres esquisses prolongeront
-                        progressivement ce vocabulaire du Codex.
+                        PixieDustCard accueille les unités répétables,
+                        PixieDustPanel structure les sections et PixieDustFrame
+                        met désormais les médias en scène. Trois autres
+                        esquisses prolongeront progressivement ce vocabulaire du
+                        Codex.
                     </p>
                 </div>
 
@@ -601,6 +603,7 @@ export default function AtelierPage() {
 
                 <PixieDustCardDossier />
                 <PixieDustPanelDossier />
+                <PixieDustFrameDossier />
             </section>
 
             <section
