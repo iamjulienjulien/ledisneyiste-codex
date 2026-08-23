@@ -9,6 +9,7 @@ import { PixieDustFrameDossier } from "./_components/PixieDustFrameDossier";
 import { PixieDustCalloutDossier } from "./_components/PixieDustCalloutDossier";
 import { PixieDustInsetDossier } from "./_components/PixieDustInsetDossier";
 import { PixieDustBackdropDossier } from "./_components/PixieDustBackdropDossier";
+import { PixieDustContainerDossier } from "./_components/PixieDustContainerDossier";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PalettesPellicule } from "./_components/PalettesPellicule";
 
@@ -55,7 +56,7 @@ const categories = [
         domaine: "Composition",
         description:
             "Assemblages et rythmes qui transforment les éléments isolés en séquences lisibles.",
-        statut: "En préparation",
+        statut: "En projection",
         href: "#montage",
     },
     {
@@ -203,57 +204,68 @@ const montage = [
     {
         nom: "PixieDustContainer",
         role: "Centrer et contenir une séquence",
-        statut: "À esquisser",
+        statut: "Esquisse",
+        href: "#pixie-dust-container",
     },
     {
         nom: "PixieDustStack",
         role: "Régler le rythme d’une séquence verticale",
         statut: "À esquisser",
+        href: null,
     },
     {
         nom: "PixieDustCluster",
         role: "Rassembler des éléments avec retour à la ligne",
         statut: "À esquisser",
+        href: null,
     },
     {
         nom: "PixieDustSection",
         role: "Composer une séquence éditoriale complète",
         statut: "À esquisser",
+        href: null,
     },
     {
         nom: "PixieDustGrid",
         role: "Distribuer une collection sur une grille responsive",
         statut: "À esquisser",
+        href: null,
     },
     {
         nom: "PixieDustSplit",
         role: "Répartir deux zones en champ et contrechamp",
         statut: "À esquisser",
+        href: null,
     },
     {
         nom: "PixieDustSidebar",
         role: "Associer un contenu principal à une régie latérale",
         statut: "À esquisser",
+        href: null,
     },
     {
         nom: "PixieDustSwitcher",
         role: "Changer de disposition selon l’espace disponible",
         statut: "À esquisser",
+        href: null,
     },
     {
         nom: "PixieDustRail",
         role: "Dérouler une collection sur un travelling horizontal",
         statut: "À esquisser",
+        href: null,
     },
     {
         nom: "PixieDustBleed",
         role: "Faire sortir une séquence de son cadre de lecture",
         statut: "À esquisser",
+        href: null,
     },
     {
         nom: "PixieDustStickyRegion",
         role: "Maintenir une région visible pendant le défilement",
         statut: "À esquisser",
+        href: null,
     },
 ] as const;
 
@@ -708,10 +720,12 @@ export default function AtelierPage() {
                         Les plans trouvent leur rythme
                     </h2>
                     <p className="mt-5 leading-7 text-ink-soft">
-                        Largeurs, espacements et distributions transformeront
-                        les éléments isolés en séquences lisibles. Ces onze
-                        esquisses organiseront le cadre et le rythme sans
-                        imposer de surface, de couleur ni d’interaction.
+                        Largeurs, espacements et distributions transforment les
+                        éléments isolés en séquences lisibles.
+                        PixieDustContainer ouvre le premier cadre de ce plateau
+                        ; les dix esquisses suivantes organiseront le rythme et
+                        les distributions sans imposer de surface, de couleur ni
+                        d’interaction.
                     </p>
                 </div>
 
@@ -746,7 +760,16 @@ export default function AtelierPage() {
                                         scope="row"
                                         className="px-5 py-4 font-medium text-ink"
                                     >
-                                        {element.nom}
+                                        {element.href ? (
+                                            <a
+                                                href={element.href}
+                                                className="text-accent underline underline-offset-4 hover:text-accent-hover"
+                                            >
+                                                {element.nom} →
+                                            </a>
+                                        ) : (
+                                            element.nom
+                                        )}
                                     </th>
                                     <td className="px-5 py-4 text-ink-soft">
                                         {element.role}
@@ -759,6 +782,8 @@ export default function AtelierPage() {
                         </tbody>
                     </table>
                 </div>
+
+                <PixieDustContainerDossier />
             </section>
 
             <section

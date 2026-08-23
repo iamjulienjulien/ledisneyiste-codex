@@ -1,0 +1,36 @@
+.root {
+    width: 100%;
+    margin-inline: auto;
+}
+
+.widthNarrow {
+    max-width: 42rem;
+}
+
+.widthMedium {
+    max-width: 56rem;
+}
+
+.widthWide {
+    max-width: 72rem;
+}
+
+.widthFull {
+    max-width: none;
+}
+
+.gutterNone {
+    padding-inline: 0;
+}
+
+.gutterSmall {
+    padding-inline: 1rem;
+}
+
+.gutterMedium {
+    padding-inline: 1.5rem;
+}
+
+.gutterLarge {
+    padding-inline: clamp(2rem, 4vw, 3rem);
+}
