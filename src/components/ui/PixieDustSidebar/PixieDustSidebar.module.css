@@ -1,0 +1,88 @@
+.root {
+    display: flex;
+    min-width: 0;
+    flex-wrap: wrap;
+    gap: var(--pixie-sidebar-gap);
+}
+
+.sideStart > :first-child,
+.sideEnd > :last-child {
+    min-width: min(100%, var(--pixie-sidebar-side-width));
+    flex-basis: var(--pixie-sidebar-side-width);
+    flex-grow: 1;
+}
+
+.sideStart > :last-child,
+.sideEnd > :first-child {
+    min-width: min(100%, var(--pixie-sidebar-content-min-width));
+    flex-basis: 0;
+    flex-grow: 999;
+}
+
+.sideWidthExtraSmall {
+    --pixie-sidebar-side-width: 10rem;
+}
+
+.sideWidthSmall {
+    --pixie-sidebar-side-width: 14rem;
+}
+
+.sideWidthMedium {
+    --pixie-sidebar-side-width: 18rem;
+}
+
+.sideWidthLarge {
+    --pixie-sidebar-side-width: 24rem;
+}
+
+.contentMinWidthHalf {
+    --pixie-sidebar-content-min-width: 50%;
+}
+
+.contentMinWidthTwoThirds {
+    --pixie-sidebar-content-min-width: 66.6667%;
+}
+
+.contentMinWidthThreeQuarters {
+    --pixie-sidebar-content-min-width: 75%;
+}
+
+.gapNone {
+    --pixie-sidebar-gap: 0rem;
+}
+
+.gapExtraSmall {
+    --pixie-sidebar-gap: 0.5rem;
+}
+
+.gapSmall {
+    --pixie-sidebar-gap: 1rem;
+}
+
+.gapMedium {
+    --pixie-sidebar-gap: 1.5rem;
+}
+
+.gapLarge {
+    --pixie-sidebar-gap: 2rem;
+}
+
+.gapExtraLarge {
+    --pixie-sidebar-gap: 3rem;
+}
+
+.alignStretch {
+    align-items: stretch;
+}
+
+.alignStart {
+    align-items: flex-start;
+}
+
+.alignCenter {
+    align-items: center;
+}
+
+.alignEnd {
+    align-items: flex-end;
+}

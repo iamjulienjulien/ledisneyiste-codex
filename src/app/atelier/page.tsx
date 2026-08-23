@@ -15,6 +15,7 @@ import { PixieDustClusterDossier } from "./_components/PixieDustClusterDossier";
 import { PixieDustSectionDossier } from "./_components/PixieDustSectionDossier";
 import { PixieDustGridDossier } from "./_components/PixieDustGridDossier";
 import { PixieDustSplitDossier } from "./_components/PixieDustSplitDossier";
+import { PixieDustSidebarDossier } from "./_components/PixieDustSidebarDossier";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PalettesPellicule } from "./_components/PalettesPellicule";
 
@@ -245,8 +246,8 @@ const montage = [
     {
         nom: "PixieDustSidebar",
         role: "Associer un contenu principal à une régie latérale",
-        statut: "À esquisser",
-        href: null,
+        statut: "Esquisse",
+        href: "#pixie-dust-sidebar",
     },
     {
         nom: "PixieDustSwitcher",
@@ -794,6 +795,7 @@ export default function AtelierPage() {
                 <PixieDustSectionDossier />
                 <PixieDustGridDossier />
                 <PixieDustSplitDossier />
+                <PixieDustSidebarDossier />
             </section>
 
             <section
