@@ -1,0 +1,177 @@
+.root {
+    --backdrop-accent: var(--pixie-backdrop-color, var(--color-accent));
+    --backdrop-accent-soft: color-mix(
+        in srgb,
+        var(--backdrop-accent) 18%,
+        transparent
+    );
+    --backdrop-accent-glow: color-mix(
+        in srgb,
+        var(--backdrop-accent) 28%,
+        transparent
+    );
+    --backdrop-shadow: color-mix(in srgb, var(--color-ink) 24%, transparent);
+    --backdrop-origin-x: 50%;
+    --backdrop-layer-opacity: 0.72;
+    --backdrop-projector-position: 50%;
+
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    min-width: 0;
+    color: inherit;
+    background: var(--color-surface);
+}
+
+.root::before,
+.root::after {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    content: "";
+    pointer-events: none;
+}
+
+.root::before {
+    opacity: var(--backdrop-layer-opacity);
+}
+
+.root::after {
+    display: none;
+    opacity: var(--projection-grain-opacity, 0.025);
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.75'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 180px 180px;
+    mix-blend-mode: soft-light;
+}
+
+.root > * {
+    position: relative;
+    z-index: 1;
+}
+
+.grain::after {
+    display: block;
+}
+
+.wash::before {
+    background: linear-gradient(
+        var(--backdrop-accent-soft),
+        var(--backdrop-accent-soft)
+    );
+}
+
+.gradient::before {
+    background: radial-gradient(
+        ellipse 90% 130% at var(--backdrop-origin-x) 50%,
+        var(--backdrop-accent-glow),
+        var(--backdrop-accent-soft) 42%,
+        transparent 76%
+    );
+}
+
+.halo::before {
+    background: radial-gradient(
+        circle at var(--backdrop-origin-x) 48%,
+        var(--backdrop-accent-glow),
+        var(--backdrop-accent-soft) 28%,
+        transparent 66%
+    );
+}
+
+.vignette::before {
+    background: radial-gradient(
+        ellipse at center,
+        transparent 24%,
+        color-mix(in srgb, var(--color-ink) 6%, transparent) 62%,
+        var(--backdrop-shadow) 100%
+    );
+}
+
+.projector::before {
+    inset: -55% -70%;
+    background: linear-gradient(
+        112deg,
+        transparent 34%,
+        var(--backdrop-accent-soft) 43%,
+        var(--backdrop-accent-glow) 50%,
+        var(--backdrop-accent-soft) 57%,
+        transparent 66%
+    );
+    transform: translateX(var(--backdrop-projector-position));
+}
+
+.intensitySubtle {
+    --backdrop-layer-opacity: 0.44;
+}
+
+.intensityMedium {
+    --backdrop-layer-opacity: 0.72;
+}
+
+.intensityStrong {
+    --backdrop-layer-opacity: 1;
+}
+
+.positionStart {
+    --backdrop-origin-x: 16%;
+    --backdrop-projector-position: -20%;
+}
+
+.positionCenter {
+    --backdrop-origin-x: 50%;
+    --backdrop-projector-position: 0%;
+}
+
+.positionEnd {
+    --backdrop-origin-x: 84%;
+    --backdrop-projector-position: 20%;
+}
+
+.paddingNone {
+    padding: 0;
+}
+
+.paddingSmall {
+    padding: 1rem;
+}
+
+.paddingMedium {
+    padding: 1.5rem;
+}
+
+.paddingLarge {
+    padding: 2rem;
+}
+
+.paddingExtraLarge {
+    padding: 3rem;
+}
+
+.radiusNone {
+    border-radius: 0;
+}
+
+.radiusSmall {
+    border-radius: var(--radius-small);
+}
+
+.radiusMedium {
+    border-radius: var(--radius-medium);
+}
+
+.radiusLarge {
+    border-radius: var(--radius-large);
+}
+
+@media (forced-colors: active) {
+    .root {
+        border: 1px solid CanvasText;
+        background: Canvas;
+    }
+
+    .root::before,
+    .root::after {
+        display: none;
+    }
+}

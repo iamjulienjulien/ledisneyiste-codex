@@ -8,6 +8,7 @@ import { PixieDustPanelDossier } from "./_components/PixieDustPanelDossier";
 import { PixieDustFrameDossier } from "./_components/PixieDustFrameDossier";
 import { PixieDustCalloutDossier } from "./_components/PixieDustCalloutDossier";
 import { PixieDustInsetDossier } from "./_components/PixieDustInsetDossier";
+import { PixieDustBackdropDossier } from "./_components/PixieDustBackdropDossier";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PalettesPellicule } from "./_components/PalettesPellicule";
 
@@ -135,8 +136,8 @@ const decors = [
     {
         nom: "PixieDustBackdrop",
         role: "Installer un fond de scène atmosphérique",
-        statut: "À esquisser",
-        href: null,
+        statut: "Esquisse",
+        href: "#pixie-dust-backdrop",
     },
 ] as const;
 
@@ -545,8 +546,9 @@ export default function AtelierPage() {
                         PixieDustPanel structure les sections et PixieDustFrame
                         met les médias en scène. PixieDustCallout éclaire les
                         annotations éditoriales tandis que PixieDustInset place
-                        les informations secondaires en retrait. Une dernière
-                        esquisse prolongera progressivement ce vocabulaire.
+                        les informations secondaires en retrait.
+                        PixieDustBackdrop installe enfin une atmosphère derrière
+                        les compositions complètes.
                     </p>
                 </div>
 
@@ -581,16 +583,12 @@ export default function AtelierPage() {
                                         scope="row"
                                         className="px-5 py-4 font-medium text-ink"
                                     >
-                                        {decor.href ? (
-                                            <a
-                                                href={decor.href}
-                                                className="text-accent underline underline-offset-4 hover:text-accent-hover"
-                                            >
-                                                {decor.nom} →
-                                            </a>
-                                        ) : (
-                                            decor.nom
-                                        )}
+                                        <a
+                                            href={decor.href}
+                                            className="text-accent underline underline-offset-4 hover:text-accent-hover"
+                                        >
+                                            {decor.nom} →
+                                        </a>
                                     </th>
                                     <td className="px-5 py-4 text-ink-soft">
                                         {decor.role}
@@ -609,6 +607,7 @@ export default function AtelierPage() {
                 <PixieDustFrameDossier />
                 <PixieDustCalloutDossier />
                 <PixieDustInsetDossier />
+                <PixieDustBackdropDossier />
             </section>
 
             <section
