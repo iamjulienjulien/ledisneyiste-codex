@@ -1,0 +1,83 @@
+.root {
+    display: flex;
+    min-width: 0;
+    flex-wrap: wrap;
+    gap: var(--pixie-split-gap);
+}
+
+.root > :first-child,
+.root > :last-child {
+    min-width: min(100%, var(--pixie-split-min-pane-width));
+    flex-basis: 0;
+}
+
+.ratioEqual > :first-child,
+.ratioEqual > :last-child {
+    flex-grow: 1;
+}
+
+.ratioStartWide > :first-child,
+.ratioEndWide > :last-child {
+    flex-grow: 3;
+}
+
+.ratioStartWide > :last-child,
+.ratioEndWide > :first-child {
+    flex-grow: 2;
+}
+
+.minPaneWidthExtraSmall {
+    --pixie-split-min-pane-width: 10rem;
+}
+
+.minPaneWidthSmall {
+    --pixie-split-min-pane-width: 14rem;
+}
+
+.minPaneWidthMedium {
+    --pixie-split-min-pane-width: 18rem;
+}
+
+.minPaneWidthLarge {
+    --pixie-split-min-pane-width: 24rem;
+}
+
+.gapNone {
+    --pixie-split-gap: 0rem;
+}
+
+.gapExtraSmall {
+    --pixie-split-gap: 0.5rem;
+}
+
+.gapSmall {
+    --pixie-split-gap: 1rem;
+}
+
+.gapMedium {
+    --pixie-split-gap: 1.5rem;
+}
+
+.gapLarge {
+    --pixie-split-gap: 2rem;
+}
+
+.gapExtraLarge {
+    --pixie-split-gap: 3rem;
+}
+
+.alignStretch {
+    align-items: stretch;
+}
+
+.alignStart {
+    align-items: flex-start;
+}
+
+.alignCenter {
+    align-items: center;
+}
+
+.alignEnd {
+    align-items: flex-end;
+}
