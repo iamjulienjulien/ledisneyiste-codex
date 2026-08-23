@@ -1,0 +1,81 @@
+.root {
+    display: flex;
+    min-width: 0;
+    flex-wrap: wrap;
+    gap: var(--pixie-switcher-gap);
+}
+
+.root > * {
+    min-width: 0;
+    flex-grow: 1;
+    flex-basis: calc((var(--pixie-switcher-threshold) - 100%) * 999);
+}
+
+.thresholdExtraSmall {
+    --pixie-switcher-threshold: 30rem;
+}
+
+.thresholdSmall {
+    --pixie-switcher-threshold: 40rem;
+}
+
+.thresholdMedium {
+    --pixie-switcher-threshold: 50rem;
+}
+
+.thresholdLarge {
+    --pixie-switcher-threshold: 60rem;
+}
+
+.limitTwo > :nth-last-child(n + 3),
+.limitTwo > :nth-last-child(n + 3) ~ *,
+.limitThree > :nth-last-child(n + 4),
+.limitThree > :nth-last-child(n + 4) ~ *,
+.limitFour > :nth-last-child(n + 5),
+.limitFour > :nth-last-child(n + 5) ~ *,
+.limitFive > :nth-last-child(n + 6),
+.limitFive > :nth-last-child(n + 6) ~ *,
+.limitSix > :nth-last-child(n + 7),
+.limitSix > :nth-last-child(n + 7) ~ * {
+    flex-basis: 100%;
+}
+
+.gapNone {
+    --pixie-switcher-gap: 0rem;
+}
+
+.gapExtraSmall {
+    --pixie-switcher-gap: 0.5rem;
+}
+
+.gapSmall {
+    --pixie-switcher-gap: 1rem;
+}
+
+.gapMedium {
+    --pixie-switcher-gap: 1.5rem;
+}
+
+.gapLarge {
+    --pixie-switcher-gap: 2rem;
+}
+
+.gapExtraLarge {
+    --pixie-switcher-gap: 3rem;
+}
+
+.alignStretch {
+    align-items: stretch;
+}
+
+.alignStart {
+    align-items: flex-start;
+}
+
+.alignCenter {
+    align-items: center;
+}
+
+.alignEnd {
+    align-items: flex-end;
+}
