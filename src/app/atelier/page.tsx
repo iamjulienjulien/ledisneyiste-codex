@@ -13,6 +13,7 @@ import { PixieDustContainerDossier } from "./_components/PixieDustContainerDossi
 import { PixieDustStackDossier } from "./_components/PixieDustStackDossier";
 import { PixieDustClusterDossier } from "./_components/PixieDustClusterDossier";
 import { PixieDustSectionDossier } from "./_components/PixieDustSectionDossier";
+import { PixieDustGridDossier } from "./_components/PixieDustGridDossier";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PalettesPellicule } from "./_components/PalettesPellicule";
 
@@ -231,8 +232,8 @@ const montage = [
     {
         nom: "PixieDustGrid",
         role: "Distribuer une collection sur une grille responsive",
-        statut: "À esquisser",
-        href: null,
+        statut: "Esquisse",
+        href: "#pixie-dust-grid",
     },
     {
         nom: "PixieDustSplit",
@@ -790,6 +791,7 @@ export default function AtelierPage() {
                 <PixieDustStackDossier />
                 <PixieDustClusterDossier />
                 <PixieDustSectionDossier />
+                <PixieDustGridDossier />
             </section>
 
             <section

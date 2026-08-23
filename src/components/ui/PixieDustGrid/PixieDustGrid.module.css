@@ -1,0 +1,104 @@
+.root {
+    display: grid;
+    min-width: 0;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(
+            min(
+                100%,
+                max(
+                    var(--pixie-grid-min-item-width),
+                    calc(
+                        (
+                                100% - (var(--pixie-grid-columns) - 1) *
+                                    var(--pixie-grid-gap)
+                            ) /
+                            var(--pixie-grid-columns)
+                    )
+                )
+            ),
+            1fr
+        )
+    );
+    gap: var(--pixie-grid-gap);
+}
+
+.columnsOne {
+    --pixie-grid-columns: 1;
+}
+
+.columnsTwo {
+    --pixie-grid-columns: 2;
+}
+
+.columnsThree {
+    --pixie-grid-columns: 3;
+}
+
+.columnsFour {
+    --pixie-grid-columns: 4;
+}
+
+.columnsFive {
+    --pixie-grid-columns: 5;
+}
+
+.columnsSix {
+    --pixie-grid-columns: 6;
+}
+
+.minItemWidthExtraSmall {
+    --pixie-grid-min-item-width: 10rem;
+}
+
+.minItemWidthSmall {
+    --pixie-grid-min-item-width: 14rem;
+}
+
+.minItemWidthMedium {
+    --pixie-grid-min-item-width: 18rem;
+}
+
+.minItemWidthLarge {
+    --pixie-grid-min-item-width: 24rem;
+}
+
+.gapNone {
+    --pixie-grid-gap: 0rem;
+}
+
+.gapExtraSmall {
+    --pixie-grid-gap: 0.5rem;
+}
+
+.gapSmall {
+    --pixie-grid-gap: 1rem;
+}
+
+.gapMedium {
+    --pixie-grid-gap: 1.5rem;
+}
+
+.gapLarge {
+    --pixie-grid-gap: 2rem;
+}
+
+.gapExtraLarge {
+    --pixie-grid-gap: 3rem;
+}
+
+.alignStretch {
+    align-items: stretch;
+}
+
+.alignStart {
+    align-items: start;
+}
+
+.alignCenter {
+    align-items: center;
+}
+
+.alignEnd {
+    align-items: end;
+}
