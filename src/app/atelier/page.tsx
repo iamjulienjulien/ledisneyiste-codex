@@ -7,6 +7,7 @@ import { PixieDustCardDossier } from "./_components/PixieDustCardDossier";
 import { PixieDustPanelDossier } from "./_components/PixieDustPanelDossier";
 import { PixieDustFrameDossier } from "./_components/PixieDustFrameDossier";
 import { PixieDustCalloutDossier } from "./_components/PixieDustCalloutDossier";
+import { PixieDustInsetDossier } from "./_components/PixieDustInsetDossier";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PalettesPellicule } from "./_components/PalettesPellicule";
 
@@ -128,8 +129,8 @@ const decors = [
     {
         nom: "PixieDustInset",
         role: "Creuser une zone d’information secondaire",
-        statut: "À esquisser",
-        href: null,
+        statut: "Esquisse",
+        href: "#pixie-dust-inset",
     },
     {
         nom: "PixieDustBackdrop",
@@ -542,9 +543,10 @@ export default function AtelierPage() {
                     <p className="mt-5 leading-7 text-ink-soft">
                         PixieDustCard accueille les unités répétables,
                         PixieDustPanel structure les sections et PixieDustFrame
-                        met les médias en scène. PixieDustCallout éclaire
-                        désormais les annotations éditoriales. Deux autres
-                        esquisses prolongeront progressivement ce vocabulaire.
+                        met les médias en scène. PixieDustCallout éclaire les
+                        annotations éditoriales tandis que PixieDustInset place
+                        les informations secondaires en retrait. Une dernière
+                        esquisse prolongera progressivement ce vocabulaire.
                     </p>
                 </div>
 
@@ -606,6 +608,7 @@ export default function AtelierPage() {
                 <PixieDustPanelDossier />
                 <PixieDustFrameDossier />
                 <PixieDustCalloutDossier />
+                <PixieDustInsetDossier />
             </section>
 
             <section

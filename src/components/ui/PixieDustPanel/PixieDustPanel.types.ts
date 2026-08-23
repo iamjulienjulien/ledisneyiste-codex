@@ -3,7 +3,7 @@ import type { AtelierAnimationColorSlug } from "@/types/colors";
 
 export type PixieDustPanelElement = "div" | "section" | "aside";
 
-export type PixieDustPanelVariant = "surface" | "outline" | "inset" | "accent";
+export type PixieDustPanelVariant = "surface" | "outline" | "accent";
 
 export type PixieDustPanelPadding = "none" | "sm" | "md" | "lg" | "xl";
 

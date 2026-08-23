@@ -1,0 +1,113 @@
+.root {
+    --inset-accent: var(--pixie-inset-color, var(--color-accent));
+    --inset-accent-soft: color-mix(
+        in srgb,
+        var(--inset-accent) 10%,
+        transparent
+    );
+    --inset-accent-line: color-mix(
+        in srgb,
+        var(--inset-accent) 42%,
+        var(--color-line)
+    );
+    --inset-shadow-color: color-mix(in srgb, var(--color-ink) 18%, transparent);
+    --inset-shadow: inset 0 0.125rem 0.35rem var(--inset-shadow-color);
+
+    position: relative;
+    min-width: 0;
+    color: inherit;
+}
+
+.subtle {
+    border: 1px solid transparent;
+    background: color-mix(
+        in srgb,
+        var(--color-surface-muted) 76%,
+        var(--color-surface)
+    );
+    box-shadow: var(--inset-shadow);
+}
+
+.recessed {
+    border: 1px solid var(--color-line);
+    background: var(--color-surface-muted);
+    box-shadow: var(--inset-shadow);
+}
+
+.groove {
+    border: 1px solid var(--color-line);
+    border-top-color: var(--color-line-strong);
+    border-bottom-color: color-mix(in srgb, var(--color-line) 46%, transparent);
+    background:
+        linear-gradient(
+            180deg,
+            color-mix(in srgb, var(--color-ink) 5%, transparent),
+            transparent 28%
+        ),
+        var(--color-surface-muted);
+    box-shadow: var(--inset-shadow);
+}
+
+.accent {
+    border: 1px solid var(--inset-accent-line);
+    background:
+        linear-gradient(90deg, var(--inset-accent) 0 0.1875rem, transparent 0),
+        linear-gradient(var(--inset-accent-soft), var(--inset-accent-soft)),
+        var(--color-surface-muted);
+    box-shadow: var(--inset-shadow);
+}
+
+.depthShallow {
+    --inset-shadow: inset 0 0.0625rem 0.125rem var(--inset-shadow-color);
+}
+
+.depthMedium {
+    --inset-shadow: inset 0 0.125rem 0.35rem var(--inset-shadow-color);
+}
+
+.depthDeep {
+    --inset-shadow: inset 0 0.25rem 0.85rem var(--inset-shadow-color);
+}
+
+.paddingNone {
+    padding: 0;
+}
+
+.paddingSmall {
+    padding: 1rem;
+}
+
+.paddingMedium {
+    padding: 1.5rem;
+}
+
+.paddingLarge {
+    padding: 2rem;
+}
+
+.radiusNone {
+    border-radius: 0;
+}
+
+.radiusSmall {
+    border-radius: var(--radius-small);
+}
+
+.radiusMedium {
+    border-radius: var(--radius-medium);
+}
+
+.radiusLarge {
+    border-radius: var(--radius-large);
+}
+
+@media (forced-colors: active) {
+    .subtle,
+    .recessed,
+    .groove,
+    .accent {
+        border-color: CanvasText;
+        background: Canvas;
+        box-shadow: none;
+    }
+}

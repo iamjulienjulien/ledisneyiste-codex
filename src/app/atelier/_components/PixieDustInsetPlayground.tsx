@@ -5,14 +5,14 @@ import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import {
-    PixieDustPanel,
-    type PixieDustPanelColor,
-    type PixieDustPanelElement,
-    type PixieDustPanelPadding,
-    type PixieDustPanelRadius,
-    type PixieDustPanelVariant,
-} from "@/components/ui/PixieDustPanel";
-import { PixieLink } from "@/components/ui/PixieLink";
+    PixieDustInset,
+    type PixieDustInsetColor,
+    type PixieDustInsetDepth,
+    type PixieDustInsetElement,
+    type PixieDustInsetPadding,
+    type PixieDustInsetRadius,
+    type PixieDustInsetVariant,
+} from "@/components/ui/PixieDustInset";
 import {
     getAtelierAnimationColor,
     getAtelierAnimationColorSlugs,
@@ -20,9 +20,16 @@ import {
 import type { AtelierAnimationColorSlug } from "@/types/colors";
 
 const variants = [
-    { value: "surface", label: "Surface" },
-    { value: "outline", label: "Contour" },
+    { value: "subtle", label: "Discret" },
+    { value: "recessed", label: "Creusé" },
+    { value: "groove", label: "Rainure" },
     { value: "accent", label: "Accent" },
+] as const;
+
+const depths = [
+    { value: "shallow", label: "Faible" },
+    { value: "medium", label: "Moyenne" },
+    { value: "deep", label: "Profonde" },
 ] as const;
 
 const paddings = [
@@ -30,7 +37,6 @@ const paddings = [
     { value: "sm", label: "Petit" },
     { value: "md", label: "Moyen" },
     { value: "lg", label: "Grand" },
-    { value: "xl", label: "Très grand" },
 ] as const;
 
 const radii = [
@@ -44,39 +50,35 @@ const elements = ["div", "section", "aside"] as const;
 const colorSlugs = getAtelierAnimationColorSlugs();
 
 const frameWidths = {
-    compact: "max-w-md",
-    moyen: "max-w-2xl",
-    large: "max-w-4xl",
+    compact: "max-w-sm",
+    moyen: "max-w-xl",
+    large: "max-w-3xl",
 } as const satisfies Record<"compact" | "moyen" | "large", string>;
 
-export function PixieDustPanelPlayground() {
-    const [element, setElement] = useState<PixieDustPanelElement>("section");
-    const [variant, setVariant] = useState<PixieDustPanelVariant>("accent");
-    const [padding, setPadding] = useState<PixieDustPanelPadding>("lg");
-    const [radius, setRadius] = useState<PixieDustPanelRadius>("medium");
-    const [color, setColor] = useState<PixieDustPanelColor>("bleu-reperage");
-    const [dividers, setDividers] = useState(true);
-    const [showHeader, setShowHeader] = useState(true);
-    const [showFooter, setShowFooter] = useState(true);
+export function PixieDustInsetPlayground() {
+    const [element, setElement] = useState<PixieDustInsetElement>("div");
+    const [variant, setVariant] = useState<PixieDustInsetVariant>("recessed");
+    const [depth, setDepth] = useState<PixieDustInsetDepth>("medium");
+    const [padding, setPadding] = useState<PixieDustInsetPadding>("md");
+    const [radius, setRadius] = useState<PixieDustInsetRadius>("medium");
+    const [color, setColor] = useState<PixieDustInsetColor>("ambre-projecteur");
     const [light, setLight] = useState<"sombre" | "claire">("sombre");
     const [frame, setFrame] = useState<"compact" | "moyen" | "large">("moyen");
 
     const optionalProps = [
         color ? `    color="${color}"` : null,
-        dividers ? "    dividers" : null,
-        showHeader ? "    header={<h2>Documents de production</h2>}" : null,
-        showFooter
-            ? '    footer={<PixieLink href="/sources">Voir les sources</PixieLink>}'
-            : null,
+        element !== "div" ? '    aria-labelledby="inset-heading"' : null,
     ].filter((line): line is string => line !== null);
-    const code = `<PixieDustPanel
+    const code = `<PixieDustInset
     as="${element}"
     variant="${variant}"
+    depth="${depth}"
     padding="${padding}"
     radius="${radius}"${optionalProps.length > 0 ? `\n${optionalProps.join("\n")}` : ""}
 >
-    {/* Contenu de la section */}
-</PixieDustPanel>`;
+    <h3 id="inset-heading">Repères de consultation</h3>
+    <p>Première projection : 18 novembre 1928</p>
+</PixieDustInset>`;
 
     function selectColor(value: string) {
         setColor(
@@ -93,18 +95,18 @@ export function PixieDustPanelPlayground() {
                     <div className="mt-6 space-y-7">
                         <div>
                             <label
-                                htmlFor="panel-element"
+                                htmlFor="inset-element"
                                 className="text-sm font-medium text-ink"
                             >
                                 Élément sémantique
                             </label>
                             <select
-                                id="panel-element"
+                                id="inset-element"
                                 value={element}
                                 onChange={(event) =>
                                     setElement(
                                         event.target
-                                            .value as PixieDustPanelElement,
+                                            .value as PixieDustInsetElement,
                                     )
                                 }
                                 className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink"
@@ -125,10 +127,27 @@ export function PixieDustPanelPlayground() {
                                 {variants.map((option) => (
                                     <AtelierOptionRadio
                                         key={option.value}
-                                        name="panel-variant"
+                                        name="inset-variant"
                                         {...option}
                                         selectedValue={variant}
                                         onChange={setVariant}
+                                    />
+                                ))}
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend className="text-sm font-medium text-ink">
+                                Profondeur
+                            </legend>
+                            <div className="mt-3 space-y-2">
+                                {depths.map((option) => (
+                                    <AtelierOptionRadio
+                                        key={option.value}
+                                        name="inset-depth"
+                                        {...option}
+                                        selectedValue={depth}
+                                        onChange={setDepth}
                                     />
                                 ))}
                             </div>
@@ -142,7 +161,7 @@ export function PixieDustPanelPlayground() {
                                 {paddings.map((option) => (
                                     <AtelierOptionRadio
                                         key={option.value}
-                                        name="panel-padding"
+                                        name="inset-padding"
                                         {...option}
                                         selectedValue={padding}
                                         onChange={setPadding}
@@ -159,7 +178,7 @@ export function PixieDustPanelPlayground() {
                                 {radii.map((option) => (
                                     <AtelierOptionRadio
                                         key={option.value}
-                                        name="panel-radius"
+                                        name="inset-radius"
                                         {...option}
                                         selectedValue={radius}
                                         onChange={setRadius}
@@ -170,13 +189,13 @@ export function PixieDustPanelPlayground() {
 
                         <div>
                             <label
-                                htmlFor="panel-color"
+                                htmlFor="inset-color"
                                 className="text-sm font-medium text-ink"
                             >
                                 Couleur
                             </label>
                             <select
-                                id="panel-color"
+                                id="inset-color"
                                 value={color || "theme"}
                                 onChange={(event) =>
                                     selectColor(event.target.value)
@@ -191,48 +210,12 @@ export function PixieDustPanelPlayground() {
                                 ))}
                             </select>
                         </div>
-
-                        <div className="space-y-3">
-                            <label className="flex cursor-pointer items-center gap-2 text-sm text-ink-soft">
-                                <input
-                                    type="checkbox"
-                                    checked={showHeader}
-                                    onChange={(event) =>
-                                        setShowHeader(event.target.checked)
-                                    }
-                                    className="accent-accent"
-                                />
-                                Afficher le header
-                            </label>
-                            <label className="flex cursor-pointer items-center gap-2 text-sm text-ink-soft">
-                                <input
-                                    type="checkbox"
-                                    checked={showFooter}
-                                    onChange={(event) =>
-                                        setShowFooter(event.target.checked)
-                                    }
-                                    className="accent-accent"
-                                />
-                                Afficher le footer
-                            </label>
-                            <label className="flex cursor-pointer items-center gap-2 text-sm text-ink-soft">
-                                <input
-                                    type="checkbox"
-                                    checked={dividers}
-                                    onChange={(event) =>
-                                        setDividers(event.target.checked)
-                                    }
-                                    className="accent-accent"
-                                />
-                                Séparer les zones
-                            </label>
-                        </div>
                     </div>
                 </aside>
 
                 <div className="min-w-0">
                     <AtelierRegiePlateau
-                        namePrefix="panel"
+                        namePrefix="inset"
                         lumiere={light}
                         onLumiereChange={setLight}
                         cadre={frame}
@@ -247,63 +230,52 @@ export function PixieDustPanelPlayground() {
                         <div
                             className={`w-full transition-[max-width] ${frameWidths[frame]}`}
                         >
-                            <PixieDustPanel
-                                as={element}
-                                variant={variant}
-                                padding={padding}
-                                radius={radius}
-                                color={color}
-                                dividers={dividers}
-                                aria-label="Documents de production"
-                                header={
-                                    showHeader ? (
-                                        <div>
-                                            <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
-                                                Registre de plateau
-                                            </p>
-                                            <h4 className="mt-2 text-2xl text-ink">
-                                                Documents de production
-                                            </h4>
-                                        </div>
-                                    ) : undefined
-                                }
-                                footer={
-                                    showFooter ? (
-                                        <PixieLink
-                                            href="#pixie-dust-panel-playground"
-                                            variant="action"
-                                            color={color}
-                                            indicator="arrow"
-                                        >
-                                            Consulter les sources
-                                        </PixieLink>
-                                    ) : undefined
-                                }
-                            >
+                            <div className="border border-line bg-surface p-6 shadow-soft sm:p-8">
                                 <p className="leading-7 text-ink-soft">
-                                    Le panneau organise une zone durable de la
-                                    page sans transformer son contenu en carte
-                                    ni lui ajouter une interaction.
+                                    Le récit principal conserve toute la lumière
+                                    pendant que les repères se placent en
+                                    retrait.
                                 </p>
-                                <dl className="mt-5 grid gap-3 sm:grid-cols-2">
-                                    <div className="border border-line p-4">
-                                        <dt className="text-xs font-eyebrow uppercase tracking-[0.14em] text-muted">
-                                            État
-                                        </dt>
-                                        <dd className="mt-2 text-ink">
-                                            En préparation
-                                        </dd>
-                                    </div>
-                                    <div className="border border-line p-4">
-                                        <dt className="text-xs font-eyebrow uppercase tracking-[0.14em] text-muted">
-                                            Séquence
-                                        </dt>
-                                        <dd className="mt-2 text-ink">
-                                            Projection 04
-                                        </dd>
-                                    </div>
-                                </dl>
-                            </PixieDustPanel>
+                                <PixieDustInset
+                                    as={element}
+                                    variant={variant}
+                                    depth={depth}
+                                    padding={padding}
+                                    radius={radius}
+                                    color={color}
+                                    aria-labelledby={
+                                        element !== "div"
+                                            ? "inset-preview-heading"
+                                            : undefined
+                                    }
+                                    className="mt-6"
+                                >
+                                    <h4
+                                        id="inset-preview-heading"
+                                        className="text-xl text-ink"
+                                    >
+                                        Repères de consultation
+                                    </h4>
+                                    <dl className="mt-4 grid gap-4 text-sm sm:grid-cols-2">
+                                        <div>
+                                            <dt className="font-eyebrow uppercase tracking-[0.14em] text-muted">
+                                                Première projection
+                                            </dt>
+                                            <dd className="mt-1 text-ink">
+                                                18 novembre 1928
+                                            </dd>
+                                        </div>
+                                        <div>
+                                            <dt className="font-eyebrow uppercase tracking-[0.14em] text-muted">
+                                                Durée
+                                            </dt>
+                                            <dd className="mt-1 text-ink">
+                                                7 minutes 42 secondes
+                                            </dd>
+                                        </div>
+                                    </dl>
+                                </PixieDustInset>
+                            </div>
                         </div>
                     </div>
 

@@ -11,7 +11,6 @@ import type {
 const variantClasses = {
     surface: styles.surface,
     outline: styles.outline,
-    inset: styles.inset,
     accent: styles.accent,
 } as const satisfies Record<PixieDustPanelVariant, string>;
 

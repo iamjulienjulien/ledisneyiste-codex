@@ -23,11 +23,6 @@ const variants = [
         description: "Une structure transparente délimitée par une ligne.",
     },
     {
-        name: "Creusé",
-        value: "inset" as const,
-        description: "Un espace en retrait pour les réglages et les notes.",
-    },
-    {
         name: "Accent",
         value: "accent" as const,
         description: "Une entrée colorée qui identifie la zone sans la nommer.",
@@ -131,7 +126,7 @@ const specificTypes = [
     },
     {
         name: "PixieDustPanelVariant",
-        values: ['"surface"', '"outline"', '"inset"', '"accent"'],
+        values: ['"surface"', '"outline"', '"accent"'],
         description: "Traitements visuels d’une zone structurelle.",
     },
     {
@@ -368,7 +363,7 @@ export function PixieDustPanelDossier() {
                 <SequenceTitle
                     id="panel-variants-title"
                     eyebrow="Direction artistique"
-                    title="Quatre profondeurs pour structurer la page"
+                    title="Trois surfaces pour structurer la page"
                     description="Chaque variant décrit la relation du panneau avec son arrière-plan, sans modifier son contenu ni sa sémantique."
                 />
 
@@ -433,7 +428,7 @@ export function PixieDustPanelDossier() {
 
                     <PixieDustPanel
                         as="div"
-                        variant="inset"
+                        variant="surface"
                         padding="md"
                         dividers
                         footer={
@@ -598,7 +593,7 @@ export function PixieDustPanelDossier() {
                     {[
                         "Éprouver la différence entre PixieDustCard et PixieDustPanel dans les index.",
                         "Vérifier si les trois zones couvrent les compositions réelles sans créer de slots supplémentaires.",
-                        "Tester le variant inset dans les deux Lumières et en contraste forcé.",
+                        "Composer PixieDustInset dans le panneau sans confondre leurs responsabilités.",
                         "Valider l’espacement xl sur mobile et à 200 % de zoom.",
                         "Contrôler l’annonce des sections et des aside avec un lecteur d’écran.",
                         "Décider si dividers doit rester un réglage global ou devenir plus précis.",
