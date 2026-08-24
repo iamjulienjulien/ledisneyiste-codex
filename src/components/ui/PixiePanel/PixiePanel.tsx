@@ -1,16 +1,16 @@
 import { getAtelierAnimationColor } from "@/registry/colors";
-import styles from "./PixieDustPanel.module.css";
+import styles from "./PixiePanel.module.css";
 import type {
-    PixieDustPanelAccentPosition,
-    PixieDustPanelDividers,
-    PixieDustPanelElevation,
-    PixieDustPanelPadding,
-    PixieDustPanelProps,
-    PixieDustPanelRadius,
-    PixieDustPanelScroll,
-    PixieDustPanelStyle,
-    PixieDustPanelVariant,
-} from "./PixieDustPanel.types";
+    PixiePanelAccentPosition,
+    PixiePanelDividers,
+    PixiePanelElevation,
+    PixiePanelPadding,
+    PixiePanelProps,
+    PixiePanelRadius,
+    PixiePanelScroll,
+    PixiePanelStyle,
+    PixiePanelVariant,
+} from "./PixiePanel.types";
 
 const variantClasses = {
     plain: styles.plain,
@@ -19,7 +19,7 @@ const variantClasses = {
     outline: styles.outline,
     accent: styles.accent,
     tinted: styles.tinted,
-} as const satisfies Record<PixieDustPanelVariant, string>;
+} as const satisfies Record<PixiePanelVariant, string>;
 
 const paddingClasses = {
     none: styles.paddingNone,
@@ -27,41 +27,41 @@ const paddingClasses = {
     md: styles.paddingMedium,
     lg: styles.paddingLarge,
     xl: styles.paddingExtraLarge,
-} as const satisfies Record<PixieDustPanelPadding, string>;
+} as const satisfies Record<PixiePanelPadding, string>;
 
 const radiusClasses = {
     none: styles.radiusNone,
     small: styles.radiusSmall,
     medium: styles.radiusMedium,
     large: styles.radiusLarge,
-} as const satisfies Record<PixieDustPanelRadius, string>;
+} as const satisfies Record<PixiePanelRadius, string>;
 
 const accentPositionClasses = {
     top: styles.accentTop,
     end: styles.accentEnd,
     bottom: styles.accentBottom,
     start: styles.accentStart,
-} as const satisfies Record<PixieDustPanelAccentPosition, string>;
+} as const satisfies Record<PixiePanelAccentPosition, string>;
 
 const elevationClasses = {
     none: styles.elevationNone,
     soft: styles.elevationSoft,
     strong: styles.elevationStrong,
-} as const satisfies Record<PixieDustPanelElevation, string>;
+} as const satisfies Record<PixiePanelElevation, string>;
 
 const dividerClasses = {
     none: "",
     header: styles.dividerHeader,
     footer: styles.dividerFooter,
     both: styles.dividersBoth,
-} as const satisfies Record<PixieDustPanelDividers, string>;
+} as const satisfies Record<PixiePanelDividers, string>;
 
 const scrollClasses = {
     none: "",
     body: styles.scrollBody,
-} as const satisfies Record<PixieDustPanelScroll, string>;
+} as const satisfies Record<PixiePanelScroll, string>;
 
-export function PixieDustPanel({
+export function PixiePanel({
     as: Element = "section",
     variant = "surface",
     padding = "lg",
@@ -81,9 +81,9 @@ export function PixieDustPanel({
     style,
     children,
     ...elementProps
-}: PixieDustPanelProps) {
+}: PixiePanelProps) {
     const colorDefinition = color ? getAtelierAnimationColor(color) : null;
-    const panelStyle: PixieDustPanelStyle = {
+    const panelStyle: PixiePanelStyle = {
         ...style,
         ...(maxHeight != null ? { maxHeight } : {}),
         ...(colorDefinition
