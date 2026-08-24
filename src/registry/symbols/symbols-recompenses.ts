@@ -23,6 +23,16 @@ export const symbolsRecompenses = {
             label: "Médaille d’or de Venise",
             accent: "var(--atelier-animation-framboise-encrage)",
         },
+        "grand-trophee-art-venise": {
+            src: "/symbols/recompenses/trophees/grand-trophee-art-venise.png",
+            label: "Grand trophée d’art de Venise",
+            accent: "var(--atelier-animation-framboise-encrage)",
+        },
+        "rouleau-nyfcc": {
+            src: "/symbols/recompenses/trophees/rouleau-nyfcc.png",
+            label: "Rouleau du New York Film Critics Circle",
+            accent: "var(--atelier-animation-sepia-storyboard)",
+        },
     },
 } as const satisfies Record<
     string,

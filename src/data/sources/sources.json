@@ -1319,5 +1319,27 @@
         "editeur": "Television Academy",
         "url": "https://www.televisionacademy.com/bios/marge-champion",
         "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "catalogo-beniculturali-snow-white-poster",
+        "titre": "Walt Disney Biancaneve e i 7 nani. Biancaneve e i sette nani",
+        "editeur": "Catalogo generale dei Beni Culturali",
+        "url": "https://catalogo.beniculturali.it/detail/HistoricOrArtisticProperty/0500665255",
+        "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "nyfcc-1938-awards",
+        "titre": "Awards — 1938",
+        "editeur": "New York Film Critics Circle",
+        "url": "https://www.nyfcc.com/awards/?awardyear=1938",
+        "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "times-1939-nyfcc-snow-white",
+        "titre": "American Prizes for British Films",
+        "editeur": "The Times",
+        "datePublication": "1939-01-04",
+        "url": "https://the.hitchcock.zone/wiki/The_Times_(04/Jan/1939)_-_American_prizes_for_British_films",
+        "dateConsultation": "2026-08-24"
     }
 ]

@@ -345,5 +345,106 @@
             "slug": "the-band-concert"
         },
         "sources": ["wdfm-the-band-concert-at-90"]
+    },
+    {
+        "id": "venice-film-festival-1938-snow-white",
+        "institution": {
+            "nom": "Mostra internationale d’art cinématographique de Venise"
+        },
+        "edition": {
+            "nom": "6e Mostra internationale d’art cinématographique",
+            "numero": 6
+        },
+        "dateAttribution": {
+            "valeur": "1938",
+            "precision": "annee"
+        },
+        "nature": "competitive",
+        "trophee": "grand-trophee-art-venise",
+        "categorie": "Grand trophée d’art",
+        "beneficiaires": [
+            {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            }
+        ],
+        "oeuvreConcernee": {
+            "nom": "Snow White and the Seven Dwarfs",
+            "type": "oeuvre",
+            "slug": "snow-white-and-the-seven-dwarfs"
+        },
+        "sources": [
+            "catalogo-beniculturali-snow-white-poster",
+            "loc-snow-white-kaufman"
+        ]
+    },
+    {
+        "id": "nyfcc-1938-snow-white-special-award",
+        "institution": {
+            "nom": "New York Film Critics Circle",
+            "abreviation": "NYFCC"
+        },
+        "edition": {
+            "nom": "4e prix du New York Film Critics Circle",
+            "numero": 4
+        },
+        "dateAttribution": {
+            "valeur": "1939-01-08",
+            "precision": "jour"
+        },
+        "nature": "honorary",
+        "trophee": "rouleau-nyfcc",
+        "categorie": "Prix spécial",
+        "motif": "Pour le caractère unique de Snow White and the Seven Dwarfs",
+        "beneficiaires": [
+            {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            }
+        ],
+        "oeuvreConcernee": {
+            "nom": "Snow White and the Seven Dwarfs",
+            "type": "oeuvre",
+            "slug": "snow-white-and-the-seven-dwarfs"
+        },
+        "sources": ["nyfcc-1938-awards", "times-1939-nyfcc-snow-white"]
+    },
+    {
+        "id": "academy-awards-1939-snow-white-honorary",
+        "institution": {
+            "nom": "Academy of Motion Picture Arts and Sciences",
+            "abreviation": "AMPAS"
+        },
+        "edition": {
+            "nom": "11e cérémonie des Oscars",
+            "numero": 11
+        },
+        "dateAttribution": {
+            "valeur": "1939-02-23",
+            "precision": "jour"
+        },
+        "nature": "honorary",
+        "trophee": "statuette-oscar",
+        "categorie": "Oscar d’honneur",
+        "motif": "Une statuette et sept miniatures remises pour une innovation majeure ayant charmé des millions de spectateurs et ouvert un nouveau champ au dessin animé cinématographique",
+        "beneficiaires": [
+            {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            }
+        ],
+        "oeuvreConcernee": {
+            "nom": "Snow White and the Seven Dwarfs",
+            "type": "oeuvre",
+            "slug": "snow-white-and-the-seven-dwarfs"
+        },
+        "sources": [
+            "ampas-11th-academy-awards",
+            "d23-snow-white-oscars-look-back",
+            "d23-snow-white-film"
+        ]
     }
 ]

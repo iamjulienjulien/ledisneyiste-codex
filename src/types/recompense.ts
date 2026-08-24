@@ -16,7 +16,9 @@ export type TropheeRecompenseDisney =
     | "statuette-oscar"
     | "plaque-technique-multiplane"
     | "medaille-societe-des-nations"
-    | "medaille-or-venise";
+    | "medaille-or-venise"
+    | "grand-trophee-art-venise"
+    | "rouleau-nyfcc";
 
 type QualificationRecompenseDisney =
     | {
