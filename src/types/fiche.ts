@@ -7,6 +7,7 @@ export type BlocEditorialCodex<
     eyebrow?: string;
     titre: string;
     paragraphes: string[];
+    sources?: string[];
 };
 
 export type FicheCodexBase<Collection extends SymbolCollectionName<"blocs">> = {

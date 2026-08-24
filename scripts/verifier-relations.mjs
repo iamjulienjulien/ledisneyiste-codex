@@ -224,6 +224,39 @@ async function verifier() {
                     catalogues,
                     erreurs,
                 );
+
+                if (fiche.relationsOeuvres !== undefined) {
+                    if (!Array.isArray(fiche.relationsOeuvres)) {
+                        erreurs.push(
+                            `${contexte} · relations d’œuvres : tableau attendu`,
+                        );
+                    } else {
+                        const relations = new Set();
+
+                        fiche.relationsOeuvres.forEach((relation, index) => {
+                            const contexteRelation = `${contexte} · relation d’œuvre ${index + 1}`;
+                            const oeuvre = relation.oeuvre;
+
+                            if (oeuvre?.type === "oeuvre") {
+                                verifierReference(
+                                    oeuvre,
+                                    contexteRelation,
+                                    catalogues,
+                                    erreurs,
+                                );
+                                referencesVerifiees += 1;
+                            }
+
+                            const cle = `${relation.nature}:${oeuvre?.type}:${oeuvre?.slug ?? oeuvre?.nom}`;
+                            if (relations.has(cle)) {
+                                erreurs.push(
+                                    `${contexte} : relation d’œuvre dupliquée « ${cle} »`,
+                                );
+                            }
+                            relations.add(cle);
+                        });
+                    }
+                }
             }
         }
 

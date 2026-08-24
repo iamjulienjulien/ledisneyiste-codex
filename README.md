@@ -457,6 +457,7 @@ format
 → lint
 → check:symbols
 → check:metadata
+→ check:oeuvres
 → check:relations
 → check:recompenses
 → build
@@ -478,6 +479,7 @@ pnpm format:check
 pnpm lint
 pnpm check:symbols
 pnpm check:metadata
+pnpm check:oeuvres
 pnpm check:relations
 pnpm check:recompenses
 pnpm build
@@ -485,9 +487,10 @@ pnpm build
 
 `check:symbols` vérifie que chaque bloc éditorial possède un type présent dans
 la bonne collection du registre et que l'image correspondante existe dans
-`public`. Les trois contrôles suivants éprouvent les métadonnées des catalogues,
-la cohérence des références et des relations, puis les récompenses, leurs
-bénéficiaires, leurs sources et leurs trophées illustrés.
+`public`. Les contrôles suivants éprouvent les métadonnées des catalogues, le
+modèle des Œuvres et sa fixture de long métrage, la cohérence des références et
+des relations, puis les récompenses, leurs bénéficiaires, leurs sources et leurs
+trophées illustrés.
 
 ---
 

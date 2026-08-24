@@ -11,10 +11,11 @@
         "format:check": "prettier . --check",
         "check:symbols": "node scripts/verifier-symboles-editoriaux.mjs",
         "check:metadata": "node scripts/verifier-metadonnees.mjs",
+        "check:oeuvres": "node scripts/verifier-oeuvres.mjs",
         "check:relations": "node scripts/verifier-relations.mjs",
         "check:recompenses": "node scripts/verifier-recompenses.mjs",
-        "check": "pnpm format && pnpm format:check && pnpm lint && pnpm check:symbols && pnpm check:metadata && pnpm check:relations && pnpm check:recompenses && pnpm build",
-        "check:ci": "pnpm format:check && pnpm lint && pnpm check:symbols && pnpm check:metadata && pnpm check:relations && pnpm check:recompenses && pnpm build"
+        "check": "pnpm format && pnpm format:check && pnpm lint && pnpm check:symbols && pnpm check:metadata && pnpm check:oeuvres && pnpm check:relations && pnpm check:recompenses && pnpm build",
+        "check:ci": "pnpm format:check && pnpm lint && pnpm check:symbols && pnpm check:metadata && pnpm check:oeuvres && pnpm check:relations && pnpm check:recompenses && pnpm build"
     },
     "dependencies": {
         "next": "16.3.1",

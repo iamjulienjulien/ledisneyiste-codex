@@ -1,0 +1,156 @@
+{
+    "slug": "fixture-long-metrage",
+    "type": "oeuvre",
+    "introduction": "Fixture couvrant les capacités documentaires nécessaires à un long métrage.",
+    "titresAlternatifs": [
+        {
+            "titre": "Titre territorial de référence",
+            "nature": "sortie-territoriale",
+            "langue": "fr",
+            "territoire": "France",
+            "sources": ["fixture-source-a"]
+        }
+    ],
+    "sortie": {
+        "date": {
+            "valeur": "1937-12-21",
+            "precision": "jour"
+        },
+        "evenements": [
+            {
+                "date": {
+                    "valeur": "1937-12-21",
+                    "precision": "jour"
+                },
+                "territoire": "États-Unis",
+                "nature": "premiere-mondiale",
+                "lieu": "Lieu de la première",
+                "sources": ["fixture-source-a"]
+            },
+            {
+                "date": {
+                    "valeur": "1938",
+                    "precision": "annee"
+                },
+                "territoire": "France",
+                "nature": "sortie-nationale",
+                "sources": ["fixture-source-b"]
+            }
+        ]
+    },
+    "format": "long métrage d’animation",
+    "durees": [
+        {
+            "valeur": 83,
+            "unite": "minutes",
+            "version": "Version de référence",
+            "sources": ["fixture-source-a"]
+        }
+    ],
+    "production": {
+        "debut": {
+            "valeur": "1934",
+            "precision": "annee"
+        },
+        "fin": {
+            "valeur": "1937",
+            "precision": "annee"
+        },
+        "sources": ["fixture-source-a"]
+    },
+    "donneesEconomiques": [
+        {
+            "nature": "cout-production",
+            "valeur": 1000000,
+            "unite": "monetaire",
+            "devise": "USD",
+            "territoire": "États-Unis",
+            "periode": {
+                "debut": {
+                    "valeur": "1934",
+                    "precision": "annee"
+                },
+                "fin": {
+                    "valeur": "1937",
+                    "precision": "annee"
+                }
+            },
+            "certitude": "estimation",
+            "sources": ["fixture-source-a"]
+        },
+        {
+            "nature": "entrees",
+            "valeur": 20000000,
+            "unite": "entrees",
+            "territoire": "Monde",
+            "periode": {
+                "debut": {
+                    "valeur": "1937-12",
+                    "precision": "mois"
+                },
+                "fin": {
+                    "valeur": "1938-03",
+                    "precision": "mois"
+                }
+            },
+            "certitude": "documente",
+            "sources": ["fixture-source-b"]
+        }
+    ],
+    "relationsOeuvres": [
+        {
+            "nature": "source",
+            "oeuvre": {
+                "nom": "Œuvre littéraire extérieure",
+                "type": "oeuvre-exterieure",
+                "auteurs": ["Autrice ou auteur de référence"],
+                "date": {
+                    "valeur": "1812",
+                    "precision": "annee"
+                }
+            },
+            "sources": ["fixture-source-a"]
+        },
+        {
+            "nature": "preparation",
+            "oeuvre": {
+                "nom": "Œuvre préparatoire du Codex",
+                "type": "oeuvre",
+                "slug": "oeuvre-preparatoire"
+            },
+            "sources": ["fixture-source-b"]
+        }
+    ],
+    "contributions": [
+        {
+            "contributeur": {
+                "nom": "Créatrice ou créateur référencé"
+            },
+            "roles": ["réalisation"],
+            "domaine": "production-direction"
+        },
+        {
+            "contributeur": {
+                "nom": "Collaboratrice ou collaborateur sans fiche"
+            },
+            "roles": ["animation"],
+            "domaine": "animation-personnages"
+        }
+    ],
+    "personnages": [
+        {
+            "nom": "Personnage de la fixture"
+        }
+    ],
+    "blocsEditoriaux": [
+        {
+            "type": "langage",
+            "titre": "Un chapitre documenté",
+            "paragraphes": [
+                "Les sources peuvent désormais accompagner le chapitre qui les mobilise."
+            ],
+            "sources": ["fixture-source-b"]
+        }
+    ],
+    "sources": ["fixture-source-a", "fixture-source-b"]
+}
