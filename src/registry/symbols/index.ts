@@ -2,6 +2,7 @@ import { symbolsBlocs } from "./symbols-blocs";
 import { symbolsCodex } from "./symbols-codex";
 import { symbolsGeneral } from "./symbols-general";
 import { symbolsRecompenses } from "./symbols-recompenses";
+import { symbolsTechniques } from "./symbols-techniques";
 import type { SymbolDefinition } from "@/types/symbols";
 
 export const symbolsRegistry = {
@@ -9,6 +10,7 @@ export const symbolsRegistry = {
     codex: symbolsCodex,
     general: symbolsGeneral,
     recompenses: symbolsRecompenses,
+    techniques: symbolsTechniques,
 } as const;
 
 export type SymbolRegistryName = keyof typeof symbolsRegistry;
