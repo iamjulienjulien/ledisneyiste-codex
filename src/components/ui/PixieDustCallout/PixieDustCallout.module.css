@@ -5,61 +5,93 @@
         var(--callout-accent) 10%,
         transparent
     );
+    --callout-accent-medium: color-mix(
+        in srgb,
+        var(--callout-accent) 18%,
+        transparent
+    );
     --callout-accent-line: color-mix(
         in srgb,
         var(--callout-accent) 48%,
         var(--color-line)
     );
+    --callout-accent-position: left;
+    --callout-accent-size: 0.25rem 100%;
+    --callout-wash-angle: 35deg;
+    --callout-effect-x: 0%;
+    --callout-effect-y: 20%;
+    --callout-effect-opacity: 0.32;
 
     position: relative;
     isolation: isolate;
-    overflow: hidden;
     min-width: 0;
+    border: 1px solid transparent;
     color: inherit;
 }
 
-.root > * {
+.decoration {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    overflow: hidden;
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+.decoration::before,
+.decoration::after {
+    position: absolute;
+    content: "";
+    pointer-events: none;
+}
+
+.root > :not(.decoration) {
     position: relative;
     z-index: 1;
 }
 
+.plain {
+    border-color: transparent;
+    background: transparent;
+}
+
 .subtle {
-    border: 1px solid transparent;
+    border-color: transparent;
     background:
         linear-gradient(var(--callout-accent-soft), var(--callout-accent-soft)),
         var(--color-surface);
 }
 
 .outline {
-    border: 1px solid var(--callout-accent-line);
+    border-color: var(--callout-accent-line);
     background: transparent;
 }
 
 .accent {
-    border: 1px solid var(--color-line);
-    background:
-        linear-gradient(90deg, var(--callout-accent) 0 0.25rem, transparent 0),
-        linear-gradient(135deg, var(--callout-accent-soft), transparent 52%),
-        var(--color-surface);
-}
-
-.spotlight {
-    border: 1px solid var(--callout-accent-line);
+    border-color: var(--color-line);
     background: var(--color-surface);
-    box-shadow: var(--shadow-soft);
 }
 
-.spotlight::before {
-    position: absolute;
-    z-index: 0;
-    inset: -65% -25% 10%;
-    background: radial-gradient(
-        ellipse at 20% 20%,
-        color-mix(in srgb, var(--callout-accent) 18%, transparent),
-        transparent 66%
+.accent .decoration::after {
+    inset: 0;
+    background:
+        linear-gradient(var(--callout-accent), var(--callout-accent))
+            var(--callout-accent-position) / var(--callout-accent-size)
+            no-repeat,
+        linear-gradient(
+            var(--callout-wash-angle),
+            var(--callout-accent-soft),
+            transparent 52%
+        );
+}
+
+.tinted {
+    border-color: var(--callout-accent-line);
+    background: color-mix(
+        in srgb,
+        var(--callout-accent) 12%,
+        var(--color-surface)
     );
-    content: "";
-    pointer-events: none;
 }
 
 .stacked {
@@ -77,6 +109,62 @@
     display: block;
 }
 
+.headerLayout {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    column-gap: 1rem;
+}
+
+.headerLayout .content {
+    display: contents;
+}
+
+.headerLayout .icon {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.headerLayout .header {
+    grid-column: 2;
+    grid-row: 1;
+    margin-bottom: 0;
+}
+
+.headerLayout .body {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    margin-top: 1rem;
+}
+
+.headerLayout .footer {
+    grid-column: 1 / -1;
+    grid-row: 3;
+}
+
+.headerLayout[data-pixie-callout-icon="false"] {
+    display: block;
+}
+
+.headerLayout[data-pixie-callout-icon="false"] .content {
+    display: block;
+}
+
+.headerLayout[data-pixie-callout-icon="false"] .body {
+    margin-top: 0;
+}
+
+.headerLayout[data-pixie-callout-header="false"] .body {
+    grid-column: 2;
+    grid-row: 1;
+    margin-top: 0;
+}
+
+.headerLayout[data-pixie-callout-header="false"] .footer {
+    grid-column: 2;
+    grid-row: 2;
+}
+
 .stacked .icon {
     margin-bottom: 1rem;
 }
@@ -86,6 +174,14 @@
     align-items: center;
     justify-content: center;
     color: var(--callout-accent);
+}
+
+.iconAlignStart .icon {
+    align-self: start;
+}
+
+.iconAlignCenter .icon {
+    align-self: center;
 }
 
 .content {
@@ -130,6 +226,7 @@
 }
 
 .body {
+    min-width: 0;
     color: var(--color-ink-soft);
     line-height: 1.7;
 }
@@ -142,10 +239,40 @@
     margin-bottom: 0;
 }
 
+.dividerHeader .header,
+.dividersBoth .header {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-line);
+}
+
+.headerLayout.dividerHeader .header,
+.headerLayout.dividersBoth .header {
+    margin-bottom: 0;
+}
+
+.dividersNone {
+    --callout-divider: transparent;
+}
+
 .footer {
+    display: flex;
+    width: 100%;
     margin-top: 1rem;
+}
+
+.dividerFooter .footer,
+.dividersBoth .footer {
     padding-top: 1rem;
     border-top: 1px solid var(--color-line);
+}
+
+.footerAlignStart {
+    justify-content: flex-start;
+}
+
+.footerAlignEnd {
+    justify-content: flex-end;
 }
 
 .paddingSmall {
@@ -158,6 +285,10 @@
 
 .paddingLarge {
     padding: 2rem;
+}
+
+.paddingExtraLarge {
+    padding: 2.5rem;
 }
 
 .radiusNone {
@@ -176,15 +307,141 @@
     border-radius: var(--radius-large);
 }
 
+.accentTop {
+    --callout-accent-position: top;
+    --callout-accent-size: 100% 0.25rem;
+    --callout-wash-angle: 145deg;
+    --callout-effect-x: 20%;
+    --callout-effect-y: 0%;
+}
+
+.accentEnd {
+    --callout-accent-position: right;
+    --callout-accent-size: 0.25rem 100%;
+    --callout-wash-angle: 215deg;
+    --callout-effect-x: 100%;
+    --callout-effect-y: 20%;
+}
+
+.accentBottom {
+    --callout-accent-position: bottom;
+    --callout-accent-size: 100% 0.25rem;
+    --callout-wash-angle: 325deg;
+    --callout-effect-x: 80%;
+    --callout-effect-y: 100%;
+}
+
+.accentStart {
+    --callout-accent-position: left;
+    --callout-accent-size: 0.25rem 100%;
+    --callout-wash-angle: 35deg;
+    --callout-effect-x: 0%;
+    --callout-effect-y: 20%;
+}
+
+.accentEnd:dir(rtl) {
+    --callout-accent-position: left;
+    --callout-wash-angle: 35deg;
+    --callout-effect-x: 0%;
+}
+
+.accentStart:dir(rtl) {
+    --callout-accent-position: right;
+    --callout-wash-angle: 215deg;
+    --callout-effect-x: 100%;
+}
+
+.elevationNone {
+    box-shadow: none;
+}
+
+.elevationSoft {
+    box-shadow: var(--shadow-soft);
+}
+
+.elevationStrong {
+    box-shadow:
+        var(--shadow-soft),
+        0 0 1.5rem var(--callout-accent-soft);
+}
+
+.intensitySubtle {
+    --callout-effect-opacity: 0.18;
+}
+
+.intensityMedium {
+    --callout-effect-opacity: 0.34;
+}
+
+.intensityStrong {
+    --callout-effect-opacity: 0.56;
+}
+
+.effectNone .decoration::before {
+    display: none;
+}
+
+.effectGrain .decoration::before {
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.62'/%3E%3C/svg%3E");
+    background-size: 8rem 8rem;
+    opacity: var(--callout-effect-opacity);
+    mix-blend-mode: soft-light;
+}
+
+.effectHalo .decoration::before {
+    inset: -20%;
+    background: radial-gradient(
+        ellipse 70% 72% at var(--callout-effect-x) var(--callout-effect-y),
+        var(--callout-accent-medium),
+        transparent 72%
+    );
+    opacity: var(--callout-effect-opacity);
+}
+
+.effectProjector .decoration::before {
+    inset: -45% -35%;
+    background:
+        radial-gradient(
+            ellipse 48% 62% at var(--callout-effect-x) var(--callout-effect-y),
+            color-mix(in srgb, var(--callout-accent) 22%, transparent),
+            transparent 72%
+        ),
+        linear-gradient(
+            112deg,
+            transparent 30%,
+            color-mix(in srgb, var(--projection-beam) 72%, transparent) 46%,
+            var(--callout-accent-soft) 52%,
+            transparent 68%
+        );
+    opacity: var(--callout-effect-opacity);
+}
+
 @media (forced-colors: active) {
     .subtle,
     .outline,
     .accent,
-    .spotlight {
+    .tinted {
         border-color: CanvasText;
+        box-shadow: none;
     }
 
-    .spotlight::before {
+    .decoration::before {
         display: none;
+    }
+
+    .accent .decoration::after {
+        background: CanvasText var(--callout-accent-position) /
+            var(--callout-accent-size) no-repeat;
+    }
+}
+
+@media print {
+    .decoration::before {
+        display: none;
+    }
+
+    .root {
+        box-shadow: none;
     }
 }
