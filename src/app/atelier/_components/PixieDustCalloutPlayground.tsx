@@ -6,8 +6,15 @@ import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import {
     PixieDustCallout,
+    type PixieDustCalloutAccentPosition,
     type PixieDustCalloutColor,
+    type PixieDustCalloutDividers,
+    type PixieDustCalloutEffect,
+    type PixieDustCalloutEffectIntensity,
     type PixieDustCalloutElement,
+    type PixieDustCalloutElevation,
+    type PixieDustCalloutFooterAlign,
+    type PixieDustCalloutIconAlign,
     type PixieDustCalloutLayout,
     type PixieDustCalloutPadding,
     type PixieDustCalloutRadius,
@@ -22,31 +29,35 @@ import {
 import type { AtelierAnimationColorSlug } from "@/types/colors";
 
 const variants = [
+    { value: "plain", label: "Libre" },
     { value: "subtle", label: "Discret" },
     { value: "outline", label: "Contour" },
     { value: "accent", label: "Accent" },
-    { value: "spotlight", label: "Projecteur" },
+    { value: "tinted", label: "Teinté" },
 ] as const;
 
 const layouts = [
     { value: "stacked", label: "Empilé" },
     { value: "inline", label: "En ligne" },
+    { value: "header", label: "En-tête" },
 ] as const;
 
-const paddings = [
-    { value: "sm", label: "Petit" },
-    { value: "md", label: "Moyen" },
-    { value: "lg", label: "Grand" },
-] as const;
-
-const radii = [
+const effects = [
     { value: "none", label: "Aucun" },
-    { value: "small", label: "Petit" },
-    { value: "medium", label: "Moyen" },
-    { value: "large", label: "Grand" },
+    { value: "grain", label: "Grain" },
+    { value: "halo", label: "Halo" },
+    { value: "projector", label: "Projecteur" },
 ] as const;
 
 const elements = ["aside", "section", "div"] as const;
+const paddings = ["sm", "md", "lg", "xl"] as const;
+const radii = ["none", "small", "medium", "large"] as const;
+const accentPositions = ["top", "end", "bottom", "start"] as const;
+const elevations = ["none", "soft", "strong"] as const;
+const dividers = ["none", "header", "footer", "both"] as const;
+const footerAlignments = ["start", "end"] as const;
+const effectIntensities = ["subtle", "medium", "strong"] as const;
+const iconAlignments = ["start", "center"] as const;
 const colorSlugs = getAtelierAnimationColorSlugs();
 
 const frameWidths = {
@@ -55,14 +66,29 @@ const frameWidths = {
     large: "max-w-3xl",
 } as const satisfies Record<"compact" | "moyen" | "large", string>;
 
+const selectClassName =
+    "mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink";
+
 export function PixieDustCalloutPlayground() {
     const [element, setElement] = useState<PixieDustCalloutElement>("aside");
     const [variant, setVariant] = useState<PixieDustCalloutVariant>("accent");
-    const [layout, setLayout] = useState<PixieDustCalloutLayout>("inline");
+    const [layout, setLayout] = useState<PixieDustCalloutLayout>("header");
     const [padding, setPadding] = useState<PixieDustCalloutPadding>("md");
     const [radius, setRadius] = useState<PixieDustCalloutRadius>("medium");
     const [color, setColor] =
         useState<PixieDustCalloutColor>("ambre-projecteur");
+    const [accentPosition, setAccentPosition] =
+        useState<PixieDustCalloutAccentPosition>("start");
+    const [elevation, setElevation] =
+        useState<PixieDustCalloutElevation>("soft");
+    const [divider, setDivider] = useState<PixieDustCalloutDividers>("footer");
+    const [footerAlign, setFooterAlign] =
+        useState<PixieDustCalloutFooterAlign>("start");
+    const [effect, setEffect] = useState<PixieDustCalloutEffect>("halo");
+    const [effectIntensity, setEffectIntensity] =
+        useState<PixieDustCalloutEffectIntensity>("subtle");
+    const [iconAlign, setIconAlign] =
+        useState<PixieDustCalloutIconAlign>("start");
     const [showIcon, setShowIcon] = useState(true);
     const [showEyebrow, setShowEyebrow] = useState(true);
     const [showHeading, setShowHeading] = useState(true);
@@ -93,7 +119,14 @@ export function PixieDustCalloutPlayground() {
     variant="${variant}"
     layout="${layout}"
     padding="${padding}"
-    radius="${radius}"${optionalProps.length > 0 ? `\n${optionalProps.join("\n")}` : ""}
+    radius="${radius}"
+    accentPosition="${accentPosition}"
+    elevation="${elevation}"
+    dividers="${divider}"
+    footerAlign="${footerAlign}"
+    effect="${effect}"
+    effectIntensity="${effectIntensity}"
+    iconAlign="${iconAlign}"${optionalProps.length > 0 ? `\n${optionalProps.join("\n")}` : ""}
 >
     <p>Les documents conservés ne permettent pas encore de retenir une date unique.</p>
 </PixieDustCallout>`;
@@ -112,7 +145,7 @@ export function PixieDustCalloutPlayground() {
 
     return (
         <div className="overflow-hidden border border-line bg-surface">
-            <div className="grid lg:grid-cols-[18rem_1fr]">
+            <div className="grid lg:grid-cols-[19rem_1fr]">
                 <aside className="border-b border-line bg-surface-muted p-6 lg:border-r lg:border-b-0">
                     <h4 className="text-xl text-ink">Table de réglage</h4>
 
@@ -133,7 +166,7 @@ export function PixieDustCalloutPlayground() {
                                             .value as PixieDustCalloutElement,
                                     )
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink"
+                                className={`${selectClassName} font-mono`}
                             >
                                 {elements.map((value) => (
                                     <option key={value} value={value}>
@@ -177,39 +210,42 @@ export function PixieDustCalloutPlayground() {
                             </div>
                         </fieldset>
 
-                        <fieldset>
-                            <legend className="text-sm font-medium text-ink">
-                                Espacement intérieur
-                            </legend>
-                            <div className="mt-3 space-y-2">
-                                {paddings.map((option) => (
-                                    <AtelierOptionRadio
-                                        key={option.value}
-                                        name="callout-padding"
-                                        {...option}
-                                        selectedValue={padding}
-                                        onChange={setPadding}
-                                    />
-                                ))}
-                            </div>
-                        </fieldset>
-
-                        <fieldset>
-                            <legend className="text-sm font-medium text-ink">
+                        <div className="grid grid-cols-2 gap-3">
+                            <label className="text-sm font-medium text-ink">
+                                Espacement
+                                <select
+                                    value={padding}
+                                    onChange={(event) =>
+                                        setPadding(
+                                            event.target
+                                                .value as PixieDustCalloutPadding,
+                                        )
+                                    }
+                                    className={selectClassName}
+                                >
+                                    {paddings.map((value) => (
+                                        <option key={value}>{value}</option>
+                                    ))}
+                                </select>
+                            </label>
+                            <label className="text-sm font-medium text-ink">
                                 Rayon
-                            </legend>
-                            <div className="mt-3 space-y-2">
-                                {radii.map((option) => (
-                                    <AtelierOptionRadio
-                                        key={option.value}
-                                        name="callout-radius"
-                                        {...option}
-                                        selectedValue={radius}
-                                        onChange={setRadius}
-                                    />
-                                ))}
-                            </div>
-                        </fieldset>
+                                <select
+                                    value={radius}
+                                    onChange={(event) =>
+                                        setRadius(
+                                            event.target
+                                                .value as PixieDustCalloutRadius,
+                                        )
+                                    }
+                                    className={selectClassName}
+                                >
+                                    {radii.map((value) => (
+                                        <option key={value}>{value}</option>
+                                    ))}
+                                </select>
+                            </label>
+                        </div>
 
                         <div>
                             <label
@@ -224,7 +260,7 @@ export function PixieDustCalloutPlayground() {
                                 onChange={(event) =>
                                     selectColor(event.target.value)
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                className={selectClassName}
                             >
                                 <option value="theme">Accent du thème</option>
                                 {colorSlugs.map((slug) => (
@@ -233,6 +269,134 @@ export function PixieDustCalloutPlayground() {
                                     </option>
                                 ))}
                             </select>
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-3">
+                            <label className="text-sm font-medium text-ink">
+                                Position accent
+                                <select
+                                    value={accentPosition}
+                                    onChange={(event) =>
+                                        setAccentPosition(
+                                            event.target
+                                                .value as PixieDustCalloutAccentPosition,
+                                        )
+                                    }
+                                    className={selectClassName}
+                                >
+                                    {accentPositions.map((value) => (
+                                        <option key={value}>{value}</option>
+                                    ))}
+                                </select>
+                            </label>
+                            <label className="text-sm font-medium text-ink">
+                                Élévation
+                                <select
+                                    value={elevation}
+                                    onChange={(event) =>
+                                        setElevation(
+                                            event.target
+                                                .value as PixieDustCalloutElevation,
+                                        )
+                                    }
+                                    className={selectClassName}
+                                >
+                                    {elevations.map((value) => (
+                                        <option key={value}>{value}</option>
+                                    ))}
+                                </select>
+                            </label>
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-3">
+                            <label className="text-sm font-medium text-ink">
+                                Séparateurs
+                                <select
+                                    value={divider}
+                                    onChange={(event) =>
+                                        setDivider(
+                                            event.target
+                                                .value as PixieDustCalloutDividers,
+                                        )
+                                    }
+                                    className={selectClassName}
+                                >
+                                    {dividers.map((value) => (
+                                        <option key={value}>{value}</option>
+                                    ))}
+                                </select>
+                            </label>
+                            <label className="text-sm font-medium text-ink">
+                                Alignement footer
+                                <select
+                                    value={footerAlign}
+                                    onChange={(event) =>
+                                        setFooterAlign(
+                                            event.target
+                                                .value as PixieDustCalloutFooterAlign,
+                                        )
+                                    }
+                                    className={selectClassName}
+                                >
+                                    {footerAlignments.map((value) => (
+                                        <option key={value}>{value}</option>
+                                    ))}
+                                </select>
+                            </label>
+                        </div>
+
+                        <fieldset>
+                            <legend className="text-sm font-medium text-ink">
+                                Effet
+                            </legend>
+                            <div className="mt-3 space-y-2">
+                                {effects.map((option) => (
+                                    <AtelierOptionRadio
+                                        key={option.value}
+                                        name="callout-effect"
+                                        {...option}
+                                        selectedValue={effect}
+                                        onChange={setEffect}
+                                    />
+                                ))}
+                            </div>
+                        </fieldset>
+
+                        <div className="grid grid-cols-2 gap-3">
+                            <label className="text-sm font-medium text-ink">
+                                Intensité
+                                <select
+                                    value={effectIntensity}
+                                    onChange={(event) =>
+                                        setEffectIntensity(
+                                            event.target
+                                                .value as PixieDustCalloutEffectIntensity,
+                                        )
+                                    }
+                                    className={selectClassName}
+                                >
+                                    {effectIntensities.map((value) => (
+                                        <option key={value}>{value}</option>
+                                    ))}
+                                </select>
+                            </label>
+                            <label className="text-sm font-medium text-ink">
+                                Symbole
+                                <select
+                                    value={iconAlign}
+                                    onChange={(event) =>
+                                        setIconAlign(
+                                            event.target
+                                                .value as PixieDustCalloutIconAlign,
+                                        )
+                                    }
+                                    className={selectClassName}
+                                >
+                                    {iconAlignments.map((value) => (
+                                        <option key={value}>{value}</option>
+                                    ))}
+                                </select>
+                            </label>
                         </div>
 
                         <div className="space-y-3">
@@ -270,7 +434,7 @@ export function PixieDustCalloutPlayground() {
                     <div
                         data-projection="originale"
                         data-lumiere={light}
-                        className="flex min-h-[34rem] items-center justify-center overflow-auto bg-canvas p-8"
+                        className="flex min-h-[38rem] items-center justify-center overflow-auto bg-canvas p-8"
                     >
                         <div
                             className={`w-full transition-[max-width] ${frameWidths[frame]}`}
@@ -282,6 +446,13 @@ export function PixieDustCalloutPlayground() {
                                 padding={padding}
                                 radius={radius}
                                 color={color}
+                                accentPosition={accentPosition}
+                                elevation={elevation}
+                                dividers={divider}
+                                footerAlign={footerAlign}
+                                effect={effect}
+                                effectIntensity={effectIntensity}
+                                iconAlign={iconAlign}
                                 aria-labelledby={
                                     showHeading
                                         ? "callout-preview-heading"

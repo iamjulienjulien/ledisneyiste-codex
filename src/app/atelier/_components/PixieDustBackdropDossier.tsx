@@ -734,7 +734,7 @@ export function PixieDustBackdropDossier() {
                     {[
                         "Éprouver les cinq atmosphères dans les deux Lumières et sur plusieurs largeurs.",
                         "Comparer projector au halo interactif des Cards sans confondre leurs responsabilités.",
-                        "Comparer halo au spotlight du Callout dans une composition réelle.",
+                        "Comparer halo à l’effet projector du Callout dans une composition réelle.",
                         "Vérifier le grain à 200 % de zoom et en contraste forcé.",
                         "Tester les contenus longs et les contrôles focusables au-dessus des couches.",
                         "Décider si position doit rester exposé pour wash et vignette malgré son effet neutre.",
