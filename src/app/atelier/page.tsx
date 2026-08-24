@@ -20,6 +20,7 @@ import { PixieDustSwitcherDossier } from "./_components/PixieDustSwitcherDossier
 import { PixieDustRailDossier } from "./_components/PixieDustRailDossier";
 import { PixieDustBleedDossier } from "./_components/PixieDustBleedDossier";
 import { PixieDustStickyRegionDossier } from "./_components/PixieDustStickyRegionDossier";
+import { PixieDustFieldDossier } from "./_components/PixieDustFieldDossier";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PalettesPellicule } from "./_components/PalettesPellicule";
 
@@ -57,7 +58,7 @@ const categories = [
         domaine: "Formulaires",
         description:
             "Champs, choix et contrôles par lesquels le public répond au Codex.",
-        statut: "En préparation",
+        statut: "En projection",
         href: "#dialogues",
     },
     {
@@ -156,7 +157,8 @@ const dialogues = [
     {
         nom: "PixieDustField",
         role: "Associer un contrôle à ses indications",
-        statut: "À esquisser",
+        statut: "Esquisse",
+        href: "#pixie-dust-field",
     },
     {
         nom: "PixieDustInput",
@@ -693,7 +695,16 @@ export default function AtelierPage() {
                                         scope="row"
                                         className="px-5 py-4 font-medium text-ink"
                                     >
-                                        {dialogue.nom}
+                                        {"href" in dialogue ? (
+                                            <a
+                                                href={dialogue.href}
+                                                className="text-accent underline underline-offset-4 hover:text-accent-hover"
+                                            >
+                                                {dialogue.nom} →
+                                            </a>
+                                        ) : (
+                                            dialogue.nom
+                                        )}
                                     </th>
                                     <td className="px-5 py-4 text-ink-soft">
                                         {dialogue.role}
@@ -706,6 +717,8 @@ export default function AtelierPage() {
                         </tbody>
                     </table>
                 </div>
+
+                <PixieDustFieldDossier />
             </section>
 
             <section
