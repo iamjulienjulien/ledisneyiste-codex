@@ -11,6 +11,9 @@ atlas éditorial de cet imaginaire culturel.
 
 Le projet est personnel, indépendant et non officiel.
 
+Son histoire de fabrication, des premiers Actes à leurs raccords, est conservée
+dans le [`Journal de projection`](./CHANGELOG.md).
+
 ---
 
 ## État du projet
@@ -105,7 +108,12 @@ public/
 └── symbols/
     ├── blocs/
     ├── codex/
-    └── recompenses/
+    ├── general/
+    │   ├── cinema/
+    │   └── logos/
+    ├── recompenses/
+    └── techniques/
+        └── animation/
 
 scripts/
 ├── verifier-metadonnees.mjs
@@ -300,6 +308,27 @@ src/styles/palettes/atelier-animation.css
 
 ---
 
+## Typographies et hall du Codex
+
+Cinq familles typographiques donnent désormais un rôle distinct à chaque voix
+de l’interface :
+
+```text
+Grandstander  → marque et grand titre de la page d’accueil
+Fraunces      → titres éditoriaux et sous-titre d’ouverture
+Source Sans 3 → textes courants
+League Spartan → eyebrows et repères de navigation
+IBM Plex Mono → code, types et tokens de l’Atelier
+```
+
+La page d’accueil ouvre la projection avec un titre et un sous-titre en pleine
+largeur. Son récit se concentre sur les quatre portes du Codex : leurs cartes
+partagent une même hauteur, alignent leurs appels à l’action et font apparaître
+un halo de projecteur au survol. Le pied de page rassemble enfin la mention
+d’indépendance et la signature du projet.
+
+---
+
 ## Symboles et composants Pixie
 
 Les symboles illustrés sont résolus par un registre global composé de
@@ -307,13 +336,20 @@ sous-registres et de collections :
 
 ```text
 general.logos
+general.cinema
 codex.index
 blocs.personnages
 blocs.contributeurs
 blocs.oeuvres
 blocs.epoques
 recompenses.trophees
+techniques.animation
 ```
+
+`general.cinema` rassemble les notions transversales liées à la salle, à la
+pellicule et à la projection. `techniques.animation` identifie les procédés qui
+donnent mouvement et profondeur aux images. Ces collections complètent le logo,
+les quatre index, les blocs éditoriaux et les trophées déjà illustrés.
 
 `PixieSymbol` constitue la porte d’entrée unique vers ce registre. Son appel ne
 dépend pas du chemin d’une image, mais d’une sélection typée :
@@ -337,6 +373,31 @@ L'Atelier documente les palettes, les composants, leurs variantes, leur
 accessibilité et leur API. Ses cinq premiers accessoires — `PixieSymbol`,
 `PixieButton`, `PixieLink`, `PixieBadge` et `PixieSeparator` — sont désormais
 prêts à projeter et utilisés dans le Codex.
+
+Ses six plateaux de travail sont maintenant actifs :
+
+1. **La Pellicule** réunit les typographies, les palettes et les formes ;
+2. **Les Accessoires** éprouvent les primitives avant leur entrée dans le
+   Codex ;
+3. **Les Décors** façonnent les surfaces et leurs profondeurs ;
+4. **Les Dialogues** composent les champs et contrôles de formulaire ;
+5. **Le Montage** règle la composition et le rythme des séquences ;
+6. **Les Effets** rendent visibles les attentes et les retours du système.
+
+L’Atelier documente actuellement **26 esquisses PixieDust** sur ses quatre
+nouveaux plateaux :
+
+- **Décors — 6 :** `PixieDustCard`, `PixieDustPanel`, `PixieDustFrame`,
+  `PixieDustCallout`, `PixieDustInset` et `PixieDustBackdrop` ;
+- **Dialogues — 6 :** `PixieDustField`, `PixieDustInput`,
+  `PixieDustTextarea`, `PixieDustSelect`, `PixieDustSwitch` et
+  `PixieDustSearchField` ;
+- **Montage — 11 :** `PixieDustContainer`, `PixieDustStack`,
+  `PixieDustCluster`, `PixieDustSection`, `PixieDustGrid`, `PixieDustSplit`,
+  `PixieDustSidebar`, `PixieDustSwitcher`, `PixieDustRail`, `PixieDustBleed`
+  et `PixieDustStickyRegion` ;
+- **Effets — 3 :** `PixieDustToast`, `PixieDustLoader` et
+  `PixieDustSkeleton`.
 
 Il est accessible uniquement en développement :
 
@@ -448,6 +509,9 @@ Les règles de contribution et la convention narrative des commits sont
 documentées dans :
 
 [`AGENTS.md`](./AGENTS.md)
+
+La chronologie des Actes, des Entractes, de leurs tags et de leurs génériques
+est consignée dans le [`Journal de projection`](./CHANGELOG.md).
 
 Le développement est notamment rythmé par des **Actes** et des **Entractes**.
 
