@@ -1,0 +1,57 @@
+{
+    "slug": "marge-champion",
+    "type": "contributeur",
+    "introduction": "Marge Champion prête à Blanche-Neige non pas sa voix, mais une mémoire du mouvement. Filmée en train de danser, de marcher et d’accomplir les gestes du personnage, elle donne aux animateurs une matière réelle qu’ils peuvent observer, sélectionner puis transformer. Cette référence aide le studio à rendre humaine sa princesse sans l’arracher au monde du dessin.",
+    "blocsEditoriaux": [
+        {
+            "type": "signature",
+            "eyebrow": "Référence filmée",
+            "titre": "Donner du poids et du rythme à une princesse dessinée",
+            "paragraphes": [
+                "Fille du chorégraphe Ernest Belcher, Marjorie Belcher danse depuis l’enfance et enseigne déjà dans l’école de son père lorsqu’un recruteur Disney vient chercher un modèle pour Blanche-Neige.",
+                "Devant la caméra, elle interprète des scènes, des danses et des mouvements particuliers avec des accessoires qui suggèrent les objets et les partenaires absents. Les animateurs peuvent alors étudier les appuis, les changements d’équilibre et le rythme général d’une action avant de la reconstruire selon les besoins du personnage.",
+                "Cette méthode ne remplace pas l’animation : elle fournit une continuité physique à partir de laquelle Hamilton Luske, Grim Natwick et leurs équipes peuvent choisir, simplifier et exagérer."
+            ],
+            "sources": [
+                "d23-marge-champion",
+                "loc-marge-champion",
+                "afi-snow-white"
+            ]
+        },
+        {
+            "type": "trajectoire",
+            "eyebrow": "Danse",
+            "titre": "Passer du mouvement observé au mouvement mis en scène",
+            "paragraphes": [
+                "Champion revient comme modèle pour la Fée bleue de Pinocchio, l’hippopotame Hyacinthe de Fantasia et certains gestes de Dumbo. Chaque personnage transforme différemment son expérience de danseuse, de la grâce humaine à la parodie de ballet.",
+                "Avec Gower Champion, elle devient ensuite l’une des grandes figures dansantes des comédies musicales de la MGM, puis travaille pour la scène et la télévision comme interprète et chorégraphe.",
+                "Son parcours rend visible un dialogue durable entre animation et danse : l’une observe le corps pour inventer, l’autre compose le mouvement pour qu’il puisse être lu depuis la salle."
+            ],
+            "sources": [
+                "d23-marge-champion",
+                "television-academy-marge-champion"
+            ]
+        }
+    ],
+    "naissance": {
+        "date": { "valeur": "1919-09-02", "precision": "jour" },
+        "lieu": "Los Angeles, Californie, États-Unis"
+    },
+    "deces": {
+        "date": { "valeur": "2020-10-21", "precision": "jour" },
+        "lieu": "Los Angeles, Californie, États-Unis"
+    },
+    "roles": ["danseuse", "chorégraphe", "modèle filmé de Blanche-Neige"],
+    "periodesActivite": [
+        {
+            "debut": { "valeur": "1933", "precision": "annee" },
+            "fin": { "valeur": "1940", "precision": "annee" }
+        }
+    ],
+    "sources": [
+        "d23-marge-champion",
+        "loc-marge-champion",
+        "television-academy-marge-champion",
+        "afi-snow-white"
+    ]
+}

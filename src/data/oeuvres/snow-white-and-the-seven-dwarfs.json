@@ -386,7 +386,9 @@
         },
         {
             "contributeur": {
-                "nom": "Adriana Caselotti"
+                "nom": "Adriana Caselotti",
+                "type": "contributeur",
+                "slug": "adriana-caselotti"
             },
             "roles": ["voix de Blanche-Neige"],
             "domaine": "interpretation-vocale"
@@ -400,7 +402,9 @@
         },
         {
             "contributeur": {
-                "nom": "Lucille La Verne"
+                "nom": "Lucille La Verne",
+                "type": "contributeur",
+                "slug": "lucille-la-verne"
             },
             "roles": ["voix de la Reine et de la Sorcière"],
             "domaine": "interpretation-vocale"
@@ -451,7 +455,9 @@
         },
         {
             "contributeur": {
-                "nom": "Marge Champion"
+                "nom": "Marge Champion",
+                "type": "contributeur",
+                "slug": "marge-champion"
             },
             "roles": ["modèle filmé de Blanche-Neige"],
             "domaine": "reference-filmee"

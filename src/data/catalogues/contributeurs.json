@@ -227,5 +227,26 @@
         "type": "contributeur",
         "metadata": { "categories": ["musicien"] },
         "sousTitre": "Le compositeur d’émotions qui accompagna trois décennies de Disney"
+    },
+    {
+        "slug": "adriana-caselotti",
+        "nom": "Adriana Caselotti",
+        "type": "contributeur",
+        "metadata": { "categories": ["interprete"] },
+        "sousTitre": "La voix chantée qui donna à Blanche-Neige son innocence"
+    },
+    {
+        "slug": "lucille-la-verne",
+        "nom": "Lucille La Verne",
+        "type": "contributeur",
+        "metadata": { "categories": ["interprete"] },
+        "sousTitre": "La grande actrice qui réunit la Reine et la Sorcière dans une même voix"
+    },
+    {
+        "slug": "marge-champion",
+        "nom": "Marge Champion",
+        "type": "contributeur",
+        "metadata": { "categories": ["interprete"] },
+        "sousTitre": "La danseuse dont les gestes apprirent à Blanche-Neige à habiter l’écran"
     }
 ]

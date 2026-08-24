@@ -1,0 +1,53 @@
+{
+    "slug": "lucille-la-verne",
+    "type": "contributeur",
+    "introduction": "Lucille La Verne apporte à la Reine et à la Sorcière une expérience de scène assez vaste pour faire entendre deux apparences sans rompre leur unité. Actrice, metteuse en scène, autrice et productrice de théâtre, elle aborde son dernier rôle au cinéma avec plusieurs décennies de personnages derrière elle. Sa voix maintient la volonté de la souveraine jusque dans le corps déformé de la vieille marchande.",
+    "blocsEditoriaux": [
+        {
+            "type": "signature",
+            "eyebrow": "Deux visages",
+            "titre": "Transformer la voix sans perdre le personnage",
+            "paragraphes": [
+                "Lorsque Disney choisit Lucille La Verne, la comédienne possède déjà une longue carrière sur les scènes américaines et à Broadway. Elle a joué, écrit, dirigé et produit, développant une maîtrise du rythme et de la présence qui ne dépend pas du seul visage de l’acteur.",
+                "Dans Blanche-Neige et les Sept Nains, elle interprète la Reine et sa forme de Sorcière. La première retient sa colère derrière une diction souveraine ; la seconde libère une énergie plus mobile et jubilatoire, sans jamais faire oublier qu’une même volonté conduit les deux corps.",
+                "La métamorphose devient ainsi une performance avant d’être un effet. Le changement de timbre révèle ce que la Reine contenait déjà plutôt qu’il ne crée un nouvel adversaire."
+            ],
+            "sources": [
+                "afi-snow-white",
+                "d23-snow-white-film",
+                "ibdb-lucille-la-verne"
+            ]
+        },
+        {
+            "type": "trajectoire",
+            "eyebrow": "Dernier rôle",
+            "titre": "Achever une carrière de scène dans un corps dessiné",
+            "paragraphes": [
+                "La Verne avait fait de Broadway un terrain où elle pouvait être simultanément interprète et responsable de la représentation. Le registre de l’Internet Broadway Database conserve cette pluralité de rôles, de Sun-Up à Black Widow.",
+                "Blanche-Neige constitue sa dernière apparition au cinéma. Son jeu passe alors entièrement par une voix enregistrée, puis reconstruite par le dessin et le montage : une conclusion singulière pour une carrière fondée sur la présence physique au théâtre.",
+                "Cette dernière interprétation reste pourtant la plus largement entendue. La première grande méchante du long métrage Disney conserve dans ses deux formes la mémoire d’une actrice venue d’un autre âge du spectacle."
+            ],
+            "sources": ["ibdb-lucille-la-verne", "afi-snow-white"]
+        }
+    ],
+    "naissance": {
+        "date": { "valeur": "1872-11-08", "precision": "jour" },
+        "lieu": "Nashville, Tennessee, États-Unis"
+    },
+    "deces": {
+        "date": { "valeur": "1945-03-04", "precision": "jour" },
+        "lieu": "Los Angeles, Californie, États-Unis"
+    },
+    "roles": ["actrice", "interprète vocale de la Reine et de la Sorcière"],
+    "periodesActivite": [
+        {
+            "debut": { "valeur": "1936", "precision": "annee" },
+            "fin": { "valeur": "1937", "precision": "annee" }
+        }
+    ],
+    "sources": [
+        "ibdb-lucille-la-verne",
+        "afi-snow-white",
+        "d23-snow-white-film"
+    ]
+}

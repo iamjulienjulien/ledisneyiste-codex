@@ -1289,5 +1289,35 @@
         "editeur": "The New York Public Library",
         "url": "https://www.nypl.org/research/research-catalog/bib/b21716446",
         "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "ibdb-lucille-la-verne",
+        "titre": "Lucille La Verne",
+        "editeur": "Internet Broadway Database — The Broadway League",
+        "url": "https://www.ibdb.com/broadway-cast-staff/lucille-la-verne-7431",
+        "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "d23-marge-champion",
+        "titre": "Marge Champion",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/walt-disney-legend/marge-champion/",
+        "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "loc-marge-champion",
+        "titre": "Marge Champion, Fairest of Them All: The Towering Talent Behind Disney’s Snow White and the Seven Dwarfs",
+        "auteur": "Mark Eden Horowitz",
+        "editeur": "Library of Congress",
+        "datePublication": "2018-06-04",
+        "url": "https://blogs.loc.gov/music/2018/06/marge-champion-fairest-of-them-all-the-towering-talent-behind-disneys-snow-white-and-the-seven-dwarfs/",
+        "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "television-academy-marge-champion",
+        "titre": "Marge Champion",
+        "editeur": "Television Academy",
+        "url": "https://www.televisionacademy.com/bios/marge-champion",
+        "dateConsultation": "2026-08-24"
     }
 ]

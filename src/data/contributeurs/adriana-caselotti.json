@@ -1,0 +1,53 @@
+{
+    "slug": "adriana-caselotti",
+    "type": "contributeur",
+    "introduction": "Adriana Caselotti donne à Blanche-Neige une voix capable de parler, de chanter et de maintenir la même innocence à travers tout le film. Choisie alors qu’elle n’a encore jamais travaillé dans le spectacle, elle ne construit pas seulement une performance vocale : son timbre devient l’un des points d’unité du premier long métrage Disney, depuis l’appel au puits jusqu’à l’espoir d’un amour retrouvé.",
+    "blocsEditoriaux": [
+        {
+            "type": "signature",
+            "eyebrow": "Blanche-Neige",
+            "titre": "Trouver une voix qui puisse appartenir au dessin",
+            "paragraphes": [
+                "Issue d’une famille de musiciens et formée au chant par son père, Adriana Caselotti entend par hasard celui-ci répondre à un directeur de casting Disney. Plus de cent cinquante candidates ont été envisagées, mais Walt cherche encore une voix dont la jeunesse puisse rester crédible dans les dialogues comme dans les chansons.",
+                "Caselotti passe des essais, enregistre pendant près d’un an et offre aux animateurs certains gestes à observer. Son interprétation ne sépare jamais complètement la comédienne de la chanteuse : les inflexions parlées préparent les mélodies, et les chansons prolongent les désirs déjà présents dans la scène.",
+                "Cette continuité permet à Blanche-Neige de rester le centre émotionnel du film face aux corps plus caricaturaux des Nains et à la puissance dramatique de la Reine."
+            ],
+            "sources": [
+                "d23-adriana-caselotti",
+                "d23-snow-white-film",
+                "afi-snow-white"
+            ]
+        },
+        {
+            "type": "trajectoire",
+            "eyebrow": "Une voix pour une vie",
+            "titre": "Rester liée au personnage qui l’a révélée",
+            "paragraphes": [
+                "Après le succès du film, Caselotti apparaît à la radio et tient quelques petits rôles au cinéma, mais aucune autre interprétation ne prend la place de Blanche-Neige dans son parcours.",
+                "Elle accompagne les ressorties et les anniversaires du film pendant des décennies, retrouvant spontanément ses chansons lors des événements publics. Cette fidélité transforme une prestation de jeunesse en relation durable avec le personnage et avec le public.",
+                "En 1994, sa nomination comme Disney Legend reconnaît cette voix comme une part permanente de l’identité du premier grand classique du studio."
+            ],
+            "sources": ["d23-adriana-caselotti"]
+        }
+    ],
+    "naissance": {
+        "date": { "valeur": "1916-05-06", "precision": "jour" },
+        "lieu": "Bridgeport, Connecticut, États-Unis"
+    },
+    "deces": {
+        "date": { "valeur": "1997-01-19", "precision": "jour" },
+        "lieu": "Los Angeles, Californie, États-Unis"
+    },
+    "roles": ["chanteuse", "interprète vocale de Blanche-Neige"],
+    "periodesActivite": [
+        {
+            "debut": { "valeur": "1936", "precision": "annee" },
+            "fin": { "valeur": "1937", "precision": "annee" }
+        }
+    ],
+    "sources": [
+        "d23-adriana-caselotti",
+        "d23-snow-white-film",
+        "afi-snow-white"
+    ]
+}
