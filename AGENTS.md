@@ -142,7 +142,7 @@ ses unions internes, doivent être déclarés dans son dossier sous le nom exact
 ni dans `src/types`, ni dans un fichier générique au nom différent.
 
 ```ts
-import type { PixieDustCardProps } from "./PixieDustCard.types";
+import type { PixieCardProps } from "./PixieCard.types";
 ```
 
 Le barrel du composant réexporte les types nécessaires à son API publique.
