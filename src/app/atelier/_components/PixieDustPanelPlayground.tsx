@@ -6,10 +6,14 @@ import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import {
     PixieDustPanel,
+    type PixieDustPanelAccentPosition,
     type PixieDustPanelColor,
+    type PixieDustPanelDividers,
     type PixieDustPanelElement,
+    type PixieDustPanelElevation,
     type PixieDustPanelPadding,
     type PixieDustPanelRadius,
+    type PixieDustPanelScroll,
     type PixieDustPanelVariant,
 } from "@/components/ui/PixieDustPanel";
 import { PixieLink } from "@/components/ui/PixieLink";
@@ -20,9 +24,12 @@ import {
 import type { AtelierAnimationColorSlug } from "@/types/colors";
 
 const variants = [
+    { value: "plain", label: "Sans surface" },
     { value: "surface", label: "Surface" },
+    { value: "muted", label: "Atténué" },
     { value: "outline", label: "Contour" },
     { value: "accent", label: "Accent" },
+    { value: "tinted", label: "Teinté" },
 ] as const;
 
 const paddings = [
@@ -40,7 +47,32 @@ const radii = [
     { value: "large", label: "Grand" },
 ] as const;
 
-const elements = ["div", "section", "aside"] as const;
+const accentPositions = [
+    { value: "top", label: "Haut" },
+    { value: "end", label: "Fin" },
+    { value: "bottom", label: "Bas" },
+    { value: "start", label: "Début" },
+] as const;
+
+const elevations = [
+    { value: "none", label: "Aucune" },
+    { value: "soft", label: "Douce" },
+    { value: "strong", label: "Forte" },
+] as const;
+
+const dividersOptions = [
+    { value: "none", label: "Aucun" },
+    { value: "header", label: "Après le header" },
+    { value: "footer", label: "Avant le footer" },
+    { value: "both", label: "Les deux" },
+] as const;
+
+const scrollOptions = [
+    { value: "none", label: "Aucun" },
+    { value: "body", label: "Corps du panneau" },
+] as const;
+
+const elements = ["div", "section", "aside", "article"] as const;
 const colorSlugs = getAtelierAnimationColorSlugs();
 
 const frameWidths = {
@@ -53,9 +85,18 @@ export function PixieDustPanelPlayground() {
     const [element, setElement] = useState<PixieDustPanelElement>("section");
     const [variant, setVariant] = useState<PixieDustPanelVariant>("accent");
     const [padding, setPadding] = useState<PixieDustPanelPadding>("lg");
+    const [headerPadding, setHeaderPadding] =
+        useState<PixieDustPanelPadding>("lg");
+    const [bodyPadding, setBodyPadding] = useState<PixieDustPanelPadding>("lg");
+    const [footerPadding, setFooterPadding] =
+        useState<PixieDustPanelPadding>("lg");
     const [radius, setRadius] = useState<PixieDustPanelRadius>("medium");
     const [color, setColor] = useState<PixieDustPanelColor>("bleu-reperage");
-    const [dividers, setDividers] = useState(true);
+    const [accentPosition, setAccentPosition] =
+        useState<PixieDustPanelAccentPosition>("start");
+    const [elevation, setElevation] = useState<PixieDustPanelElevation>("soft");
+    const [dividers, setDividers] = useState<PixieDustPanelDividers>("both");
+    const [scroll, setScroll] = useState<PixieDustPanelScroll>("none");
     const [showHeader, setShowHeader] = useState(true);
     const [showFooter, setShowFooter] = useState(true);
     const [light, setLight] = useState<"sombre" | "claire">("sombre");
@@ -63,7 +104,19 @@ export function PixieDustPanelPlayground() {
 
     const optionalProps = [
         color ? `    color="${color}"` : null,
-        dividers ? "    dividers" : null,
+        accentPosition !== "start"
+            ? `    accentPosition="${accentPosition}"`
+            : null,
+        elevation !== "none" ? `    elevation="${elevation}"` : null,
+        dividers !== "none" ? `    dividers="${dividers}"` : null,
+        headerPadding !== padding
+            ? `    headerPadding="${headerPadding}"`
+            : null,
+        bodyPadding !== padding ? `    bodyPadding="${bodyPadding}"` : null,
+        footerPadding !== padding
+            ? `    footerPadding="${footerPadding}"`
+            : null,
+        scroll === "body" ? '    scroll="body"\n    maxHeight="28rem"' : null,
         showHeader ? "    header={<h2>Documents de production</h2>}" : null,
         showFooter
             ? '    footer={<PixieLink href="/sources">Voir les sources</PixieLink>}'
@@ -153,6 +206,62 @@ export function PixieDustPanelPlayground() {
 
                         <fieldset>
                             <legend className="text-sm font-medium text-ink">
+                                Espacement par zone
+                            </legend>
+                            <div className="mt-3 grid gap-3">
+                                {[
+                                    {
+                                        id: "header-padding",
+                                        label: "Header",
+                                        value: headerPadding,
+                                        onChange: setHeaderPadding,
+                                    },
+                                    {
+                                        id: "body-padding",
+                                        label: "Corps",
+                                        value: bodyPadding,
+                                        onChange: setBodyPadding,
+                                    },
+                                    {
+                                        id: "footer-padding",
+                                        label: "Footer",
+                                        value: footerPadding,
+                                        onChange: setFooterPadding,
+                                    },
+                                ].map((control) => (
+                                    <label
+                                        key={control.id}
+                                        htmlFor={`panel-${control.id}`}
+                                        className="grid grid-cols-[4rem_1fr] items-center gap-3 text-sm text-ink-soft"
+                                    >
+                                        {control.label}
+                                        <select
+                                            id={`panel-${control.id}`}
+                                            value={control.value}
+                                            onChange={(event) =>
+                                                control.onChange(
+                                                    event.target
+                                                        .value as PixieDustPanelPadding,
+                                                )
+                                            }
+                                            className="min-w-0 border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                        >
+                                            {paddings.map((option) => (
+                                                <option
+                                                    key={option.value}
+                                                    value={option.value}
+                                                >
+                                                    {option.label}
+                                                </option>
+                                            ))}
+                                        </select>
+                                    </label>
+                                ))}
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend className="text-sm font-medium text-ink">
                                 Rayon
                             </legend>
                             <div className="mt-3 space-y-2">
@@ -167,6 +276,122 @@ export function PixieDustPanelPlayground() {
                                 ))}
                             </div>
                         </fieldset>
+
+                        <div>
+                            <label
+                                htmlFor="panel-accent-position"
+                                className="text-sm font-medium text-ink"
+                            >
+                                Position de l’accent
+                            </label>
+                            <select
+                                id="panel-accent-position"
+                                value={accentPosition}
+                                onChange={(event) =>
+                                    setAccentPosition(
+                                        event.target
+                                            .value as PixieDustPanelAccentPosition,
+                                    )
+                                }
+                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                            >
+                                {accentPositions.map((option) => (
+                                    <option
+                                        key={option.value}
+                                        value={option.value}
+                                    >
+                                        {option.label}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label
+                                htmlFor="panel-elevation"
+                                className="text-sm font-medium text-ink"
+                            >
+                                Élévation
+                            </label>
+                            <select
+                                id="panel-elevation"
+                                value={elevation}
+                                onChange={(event) =>
+                                    setElevation(
+                                        event.target
+                                            .value as PixieDustPanelElevation,
+                                    )
+                                }
+                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                            >
+                                {elevations.map((option) => (
+                                    <option
+                                        key={option.value}
+                                        value={option.value}
+                                    >
+                                        {option.label}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label
+                                htmlFor="panel-dividers"
+                                className="text-sm font-medium text-ink"
+                            >
+                                Séparateurs
+                            </label>
+                            <select
+                                id="panel-dividers"
+                                value={dividers}
+                                onChange={(event) =>
+                                    setDividers(
+                                        event.target
+                                            .value as PixieDustPanelDividers,
+                                    )
+                                }
+                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                            >
+                                {dividersOptions.map((option) => (
+                                    <option
+                                        key={option.value}
+                                        value={option.value}
+                                    >
+                                        {option.label}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label
+                                htmlFor="panel-scroll"
+                                className="text-sm font-medium text-ink"
+                            >
+                                Défilement
+                            </label>
+                            <select
+                                id="panel-scroll"
+                                value={scroll}
+                                onChange={(event) =>
+                                    setScroll(
+                                        event.target
+                                            .value as PixieDustPanelScroll,
+                                    )
+                                }
+                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                            >
+                                {scrollOptions.map((option) => (
+                                    <option
+                                        key={option.value}
+                                        value={option.value}
+                                    >
+                                        {option.label}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
 
                         <div>
                             <label
@@ -215,17 +440,6 @@ export function PixieDustPanelPlayground() {
                                 />
                                 Afficher le footer
                             </label>
-                            <label className="flex cursor-pointer items-center gap-2 text-sm text-ink-soft">
-                                <input
-                                    type="checkbox"
-                                    checked={dividers}
-                                    onChange={(event) =>
-                                        setDividers(event.target.checked)
-                                    }
-                                    className="accent-accent"
-                                />
-                                Séparer les zones
-                            </label>
                         </div>
                     </div>
                 </aside>
@@ -251,9 +465,18 @@ export function PixieDustPanelPlayground() {
                                 as={element}
                                 variant={variant}
                                 padding={padding}
+                                headerPadding={headerPadding}
+                                bodyPadding={bodyPadding}
+                                footerPadding={footerPadding}
                                 radius={radius}
                                 color={color}
+                                accentPosition={accentPosition}
+                                elevation={elevation}
                                 dividers={dividers}
+                                scroll={scroll}
+                                maxHeight={
+                                    scroll === "body" ? "28rem" : undefined
+                                }
                                 aria-label="Documents de production"
                                 header={
                                     showHeader ? (
@@ -303,6 +526,25 @@ export function PixieDustPanelPlayground() {
                                         </dd>
                                     </div>
                                 </dl>
+                                {scroll === "body" ? (
+                                    <div className="mt-5 space-y-3">
+                                        {Array.from(
+                                            { length: 5 },
+                                            (_, index) => (
+                                                <p
+                                                    key={index}
+                                                    className="border-t border-line pt-3 text-sm leading-6 text-ink-soft"
+                                                >
+                                                    Note de production{" "}
+                                                    {index + 1} · Le corps
+                                                    poursuit seul son défilement
+                                                    pendant que ses repères
+                                                    restent en place.
+                                                </p>
+                                            ),
+                                        )}
+                                    </div>
+                                ) : null}
                             </PixieDustPanel>
                         </div>
                     </div>

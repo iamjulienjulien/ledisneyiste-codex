@@ -13,9 +13,19 @@ import { PixieDustPanelPlayground } from "./PixieDustPanelPlayground";
 
 const variants = [
     {
+        name: "Sans surface",
+        value: "plain" as const,
+        description: "Une anatomie en trois zones sans décor visible.",
+    },
+    {
         name: "Surface",
         value: "surface" as const,
         description: "Une zone stable qui se détache discrètement du fond.",
+    },
+    {
+        name: "Atténué",
+        value: "muted" as const,
+        description: "Une région secondaire posée en retrait du récit.",
     },
     {
         name: "Contour",
@@ -26,6 +36,11 @@ const variants = [
         name: "Accent",
         value: "accent" as const,
         description: "Une entrée colorée qui identifie la zone sans la nommer.",
+    },
+    {
+        name: "Teinté",
+        value: "tinted" as const,
+        description: "Une lumière colorée diffuse sur toute la surface.",
     },
 ] as const satisfies readonly Readonly<{
     name: string;
@@ -75,6 +90,24 @@ const properties = [
         description: "Espacement intérieur appliqué à chacune des zones.",
     },
     {
+        name: "headerPadding",
+        type: "PixieDustPanelPadding",
+        defaultValue: "padding",
+        description: "Surcharge l’espacement de la zone d’en-tête.",
+    },
+    {
+        name: "bodyPadding",
+        type: "PixieDustPanelPadding",
+        defaultValue: "padding",
+        description: "Surcharge l’espacement du contenu principal.",
+    },
+    {
+        name: "footerPadding",
+        type: "PixieDustPanelPadding",
+        defaultValue: "padding",
+        description: "Surcharge l’espacement de la zone de conclusion.",
+    },
+    {
         name: "radius",
         type: "PixieDustPanelRadius",
         defaultValue: '"medium"',
@@ -87,10 +120,34 @@ const properties = [
         description: "Couleur du registre ou accent courant du thème.",
     },
     {
+        name: "accentPosition",
+        type: "PixieDustPanelAccentPosition",
+        defaultValue: '"start"',
+        description: "Place le repère coloré sur l’un des quatre bords.",
+    },
+    {
+        name: "elevation",
+        type: "PixieDustPanelElevation",
+        defaultValue: '"none"',
+        description: "Règle la profondeur indépendamment de la surface.",
+    },
+    {
         name: "dividers",
-        type: "boolean",
-        defaultValue: "false",
-        description: "Sépare visuellement le header et le footer du contenu.",
+        type: "PixieDustPanelDividers",
+        defaultValue: '"none"',
+        description: "Sépare une zone précise ou les deux zones périphériques.",
+    },
+    {
+        name: "scroll",
+        type: "PixieDustPanelScroll",
+        defaultValue: '"none"',
+        description: "Confie le défilement au seul corps du panneau.",
+    },
+    {
+        name: "maxHeight",
+        type: 'CSSProperties["maxHeight"]',
+        defaultValue: "—",
+        description: 'Contraint la hauteur, notamment avec scroll="body".',
     },
     {
         name: "header",
@@ -121,12 +178,19 @@ const properties = [
 const specificTypes = [
     {
         name: "PixieDustPanelElement",
-        values: ['"div"', '"section"', '"aside"'],
+        values: ['"div"', '"section"', '"aside"', '"article"'],
         description: "Éléments sémantiques autorisés pour le panneau.",
     },
     {
         name: "PixieDustPanelVariant",
-        values: ['"surface"', '"outline"', '"accent"'],
+        values: [
+            '"plain"',
+            '"surface"',
+            '"muted"',
+            '"outline"',
+            '"accent"',
+            '"tinted"',
+        ],
         description: "Traitements visuels d’une zone structurelle.",
     },
     {
@@ -143,6 +207,26 @@ const specificTypes = [
         name: "PixieDustPanelRadius",
         values: ['"none"', '"small"', '"medium"', '"large"'],
         description: "Rayons disponibles dans la Projection Originale.",
+    },
+    {
+        name: "PixieDustPanelAccentPosition",
+        values: ['"top"', '"end"', '"bottom"', '"start"'],
+        description: "Bord qui reçoit le repère coloré du variant accent.",
+    },
+    {
+        name: "PixieDustPanelElevation",
+        values: ['"none"', '"soft"', '"strong"'],
+        description: "Niveaux de profondeur indépendants du variant.",
+    },
+    {
+        name: "PixieDustPanelDividers",
+        values: ['"none"', '"header"', '"footer"', '"both"'],
+        description: "Zones périphériques séparées du contenu central.",
+    },
+    {
+        name: "PixieDustPanelScroll",
+        values: ['"none"', '"body"'],
+        description: "Région autorisée à défiler dans une hauteur contrainte.",
     },
 ] as const;
 
@@ -250,7 +334,7 @@ export function PixieDustPanelDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.1.0
+                                0.2.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -325,7 +409,8 @@ export function PixieDustPanelDossier() {
                         <PixieDustPanel
                             variant="accent"
                             color="bleu-reperage"
-                            dividers
+                            elevation="soft"
+                            dividers="both"
                             aria-labelledby="panel-master-title"
                             header={<PanelHeader />}
                             footer={
@@ -346,9 +431,10 @@ export function PixieDustPanelDossier() {
                     <CodeExample>{`<PixieDustPanel
     variant="accent"
     color="bleu-reperage"
+    elevation="soft"
     header={<PanelHeader />}
     footer={<PanelFooter />}
-    dividers
+    dividers="both"
 >
     {/* Contenu de la section */}
 </PixieDustPanel>`}</CodeExample>
@@ -363,8 +449,8 @@ export function PixieDustPanelDossier() {
                 <SequenceTitle
                     id="panel-variants-title"
                     eyebrow="Direction artistique"
-                    title="Trois surfaces pour structurer la page"
-                    description="Chaque variant décrit la relation du panneau avec son arrière-plan, sans modifier son contenu ni sa sémantique."
+                    title="Six surfaces pour structurer la page"
+                    description="Chaque variant décrit la relation du panneau avec son arrière-plan. La profondeur et l’accent restent des réglages indépendants."
                 />
 
                 <div className="mt-7 grid gap-6 bg-surface-muted p-6 lg:grid-cols-2">
@@ -380,7 +466,7 @@ export function PixieDustPanelDossier() {
                                     {variant.name}
                                 </p>
                             }
-                            dividers
+                            dividers="header"
                         >
                             <h4 className="text-2xl text-ink">
                                 {variant.value}
@@ -413,7 +499,7 @@ export function PixieDustPanelDossier() {
                         as="div"
                         variant="surface"
                         padding="md"
-                        dividers
+                        dividers="header"
                         header={
                             <p className="font-eyebrow uppercase tracking-[0.14em] text-muted">
                                 Header
@@ -430,7 +516,7 @@ export function PixieDustPanelDossier() {
                         as="div"
                         variant="surface"
                         padding="md"
-                        dividers
+                        dividers="footer"
                         footer={
                             <p className="text-sm text-muted">
                                 Dernière mise à jour · aujourd’hui
@@ -449,8 +535,8 @@ export function PixieDustPanelDossier() {
                 <SequenceTitle
                     id="panel-density"
                     eyebrow="Construction du décor"
-                    title="Densité et contour accompagnent la composition"
-                    description="Le même espacement est appliqué à chaque zone présente afin de préserver leurs alignements."
+                    title="Densité, contour et profondeur accompagnent la composition"
+                    description="Un espacement commun aligne les zones par défaut ; chaque slot peut ensuite recevoir une densité adaptée à son contenu."
                 />
 
                 <div className="mt-7 grid gap-8 xl:grid-cols-2">
@@ -502,6 +588,239 @@ export function PixieDustPanelDossier() {
                 </div>
             </section>
 
+            <section aria-labelledby="panel-scenarios" className="mt-16">
+                <SequenceTitle
+                    id="panel-scenarios"
+                    eyebrow="Scénarios de plateau"
+                    title="Six régions, six rôles structurels"
+                    description="Ces compositions éprouvent le panneau comme une région durable de la page, jamais comme une carte répétable ou une cible interactive."
+                />
+
+                <div className="mt-7 grid gap-6 xl:grid-cols-2">
+                    <div className="bg-surface-muted p-5 sm:p-7">
+                        <p className="mb-4 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            Régie de filtres
+                        </p>
+                        <PixieDustPanel
+                            as="section"
+                            variant="surface"
+                            padding="md"
+                            dividers="both"
+                            elevation="soft"
+                            aria-labelledby="panel-scenario-filters"
+                            header={
+                                <div>
+                                    <h4
+                                        id="panel-scenario-filters"
+                                        className="text-xl text-ink"
+                                    >
+                                        Affiner la projection
+                                    </h4>
+                                    <p className="mt-2 text-sm text-muted">
+                                        Trois critères disponibles
+                                    </p>
+                                </div>
+                            }
+                            footer={
+                                <PixieLink
+                                    href="#panel-scenarios"
+                                    variant="action"
+                                    indicator="arrow"
+                                >
+                                    Appliquer les réglages
+                                </PixieLink>
+                            }
+                        >
+                            <div className="grid gap-3">
+                                {["Famille", "Époque", "Format"].map(
+                                    (label) => (
+                                        <div
+                                            key={label}
+                                            className="flex items-center justify-between border border-line px-4 py-3"
+                                        >
+                                            <span className="text-sm text-ink-soft">
+                                                {label}
+                                            </span>
+                                            <span className="font-mono text-xs text-muted">
+                                                Tous
+                                            </span>
+                                        </div>
+                                    ),
+                                )}
+                            </div>
+                        </PixieDustPanel>
+                    </div>
+
+                    <div className="bg-surface-muted p-5 sm:p-7">
+                        <p className="mb-4 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            Dossier documentaire
+                        </p>
+                        <PixieDustPanel
+                            as="article"
+                            variant="outline"
+                            padding="lg"
+                            headerPadding="md"
+                            dividers="header"
+                            header={
+                                <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                                    Note de production · 1937
+                                </p>
+                            }
+                        >
+                            <h4 className="text-2xl text-ink">
+                                Une nouvelle profondeur de champ
+                            </h4>
+                            <p className="mt-4 leading-7 text-ink-soft">
+                                Le panneau rassemble une séquence éditoriale
+                                complète sans lui donner le comportement d’une
+                                unité de collection.
+                            </p>
+                        </PixieDustPanel>
+                    </div>
+
+                    <div className="bg-surface-muted p-5 sm:p-7">
+                        <p className="mb-4 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            Collection sans gouttière
+                        </p>
+                        <PixieDustPanel
+                            as="section"
+                            variant="muted"
+                            padding="md"
+                            bodyPadding="none"
+                            dividers="both"
+                            aria-labelledby="panel-scenario-register"
+                            header={
+                                <h4
+                                    id="panel-scenario-register"
+                                    className="text-xl text-ink"
+                                >
+                                    Documents du plateau
+                                </h4>
+                            }
+                            footer={
+                                <p className="text-sm text-muted">
+                                    3 documents enregistrés
+                                </p>
+                            }
+                        >
+                            <ul className="divide-y divide-line">
+                                {[
+                                    "Feuille d’exposition",
+                                    "Découpage de la séquence",
+                                    "Notes de caméra",
+                                ].map((document) => (
+                                    <li
+                                        key={document}
+                                        className="bg-surface px-5 py-4 text-sm text-ink-soft"
+                                    >
+                                        {document}
+                                    </li>
+                                ))}
+                            </ul>
+                        </PixieDustPanel>
+                    </div>
+
+                    <div className="bg-surface-muted p-5 sm:p-7">
+                        <p className="mb-4 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            Aparté contextuel
+                        </p>
+                        <PixieDustPanel
+                            as="aside"
+                            variant="tinted"
+                            color="ambre-projecteur"
+                            padding="lg"
+                            radius="large"
+                            aria-labelledby="panel-scenario-aside"
+                        >
+                            <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                                Hors champ
+                            </p>
+                            <h4
+                                id="panel-scenario-aside"
+                                className="mt-3 text-2xl text-ink"
+                            >
+                                Une précision éclaire le récit
+                            </h4>
+                            <p className="mt-4 leading-7 text-ink-soft">
+                                L’aside complète la matière principale sans
+                                interrompre sa progression.
+                            </p>
+                        </PixieDustPanel>
+                    </div>
+
+                    <div className="bg-surface-muted p-5 sm:p-7">
+                        <p className="mb-4 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            Panneau de palmarès
+                        </p>
+                        <PixieDustPanel
+                            as="section"
+                            variant="accent"
+                            color="jaune-lampe"
+                            accentPosition="top"
+                            elevation="strong"
+                            padding="lg"
+                            aria-labelledby="panel-scenario-awards"
+                        >
+                            <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                                Première cérémonie
+                            </p>
+                            <h4
+                                id="panel-scenario-awards"
+                                className="mt-3 text-2xl text-ink"
+                            >
+                                Le trophée entre au Codex
+                            </h4>
+                            <p className="mt-4 leading-7 text-ink-soft">
+                                L’accent supérieur et l’élévation signalent une
+                                région importante sans rendre la couleur seule
+                                porteuse de sens.
+                            </p>
+                        </PixieDustPanel>
+                    </div>
+
+                    <div className="bg-surface-muted p-5 sm:p-7">
+                        <p className="mb-4 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            Régie à contenu long
+                        </p>
+                        <PixieDustPanel
+                            as="section"
+                            variant="surface"
+                            padding="md"
+                            dividers="both"
+                            scroll="body"
+                            maxHeight="21rem"
+                            aria-labelledby="panel-scenario-scroll"
+                            header={
+                                <h4
+                                    id="panel-scenario-scroll"
+                                    className="text-xl text-ink"
+                                >
+                                    Journal des raccords
+                                </h4>
+                            }
+                            footer={
+                                <p className="text-sm text-muted">
+                                    Header et footer restent en place
+                                </p>
+                            }
+                        >
+                            <ol className="space-y-3">
+                                {Array.from({ length: 8 }, (_, index) => (
+                                    <li
+                                        key={index}
+                                        className="border border-line p-4 text-sm leading-6 text-ink-soft"
+                                    >
+                                        Raccord{" "}
+                                        {String(index + 1).padStart(2, "0")} ·
+                                        Vérifier la continuité de la séquence.
+                                    </li>
+                                ))}
+                            </ol>
+                        </PixieDustPanel>
+                    </div>
+                </div>
+            </section>
+
             <section
                 id="pixie-dust-panel-playground"
                 aria-labelledby="panel-playground-title"
@@ -540,12 +859,20 @@ export function PixieDustPanelDossier() {
                             'Employer as="aside" lorsque le contenu complète le récit principal.',
                         ],
                         [
+                            "Article autonome",
+                            'Employer as="article" uniquement lorsque le panneau forme une composition indépendante et redistribuable.',
+                        ],
+                        [
                             "Simple regroupement",
                             'Employer as="div" lorsque la surface n’ajoute aucune structure documentaire.',
                         ],
                         [
                             "Actions réelles",
                             "Placer PixieLink ou PixieButton dans les zones sans rendre le panneau entier interactif.",
+                        ],
+                        [
+                            "Contenu défilable",
+                            "Conserver des repères visibles et un ordre de lecture naturel lorsque seul le corps du panneau défile.",
                         ],
                     ].map(([title, description]) => (
                         <article key={title} className="bg-surface p-6">
@@ -595,8 +922,8 @@ export function PixieDustPanelDossier() {
                         "Vérifier si les trois zones couvrent les compositions réelles sans créer de slots supplémentaires.",
                         "Composer PixieDustInset dans le panneau sans confondre leurs responsabilités.",
                         "Valider l’espacement xl sur mobile et à 200 % de zoom.",
-                        "Contrôler l’annonce des sections et des aside avec un lecteur d’écran.",
-                        "Décider si dividers doit rester un réglage global ou devenir plus précis.",
+                        "Contrôler l’annonce des sections, aside et article avec un lecteur d’écran.",
+                        "Éprouver le corps défilable avec du contenu long et uniquement au clavier.",
                     ].map((decision) => (
                         <li
                             key={decision}
