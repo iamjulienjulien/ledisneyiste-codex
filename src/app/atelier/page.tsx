@@ -26,6 +26,7 @@ import { PixieDustTextareaDossier } from "./_components/PixieDustTextareaDossier
 import { PixieDustSelectDossier } from "./_components/PixieDustSelectDossier";
 import { PixieDustSwitchDossier } from "./_components/PixieDustSwitchDossier";
 import { PixieDustSearchFieldDossier } from "./_components/PixieDustSearchFieldDossier";
+import { PixieDustToastDossier } from "./_components/PixieDustToastDossier";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PalettesPellicule } from "./_components/PalettesPellicule";
 
@@ -300,7 +301,8 @@ const effets = [
     {
         nom: "PixieDustToast",
         role: "Signaler brièvement le résultat d’une action",
-        statut: "À esquisser",
+        statut: "Esquisse",
+        href: "#pixie-dust-toast",
     },
     {
         nom: "PixieDustStatus",
@@ -891,7 +893,16 @@ export default function AtelierPage() {
                                         scope="row"
                                         className="px-5 py-4 font-medium text-ink"
                                     >
-                                        {effet.nom}
+                                        {"href" in effet ? (
+                                            <a
+                                                href={effet.href}
+                                                className="text-accent underline decoration-line-strong underline-offset-4 transition-colors hover:text-ink"
+                                            >
+                                                {effet.nom}
+                                            </a>
+                                        ) : (
+                                            effet.nom
+                                        )}
                                     </th>
                                     <td className="px-5 py-4 text-ink-soft">
                                         {effet.role}
@@ -904,6 +915,8 @@ export default function AtelierPage() {
                         </tbody>
                     </table>
                 </div>
+
+                <PixieDustToastDossier />
             </section>
         </div>
     );

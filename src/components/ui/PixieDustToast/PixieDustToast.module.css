@@ -1,0 +1,178 @@
+.root {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto auto;
+    align-items: start;
+    width: 100%;
+    max-width: 30rem;
+    overflow: hidden;
+    border: 1px solid var(--color-line);
+    color: var(--color-ink);
+    box-shadow: 0 1rem 2.5rem rgb(0 0 0 / 18%);
+    animation: toast-enter 180ms ease-out both;
+}
+
+.surface {
+    background:
+        linear-gradient(
+            90deg,
+            color-mix(in srgb, var(--pixie-toast-color) 13%, transparent),
+            transparent 42%
+        ),
+        var(--color-surface);
+}
+
+.outline {
+    border-color: var(--pixie-toast-color);
+    background: var(--color-canvas);
+}
+
+.solid {
+    border-color: var(--pixie-toast-color);
+    background: var(--pixie-toast-color);
+    color: var(--pixie-toast-foreground);
+}
+
+.sm {
+    gap: 0.625rem;
+    padding: 0.75rem 0.75rem 0.75rem 1rem;
+    font-size: 0.875rem;
+}
+
+.md {
+    gap: 0.75rem;
+    padding: 1rem 1rem 1rem 1.25rem;
+    font-size: 0.9375rem;
+}
+
+.rail {
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+    width: 0.25rem;
+    background: var(--pixie-toast-color);
+}
+
+.solid .rail {
+    background: currentcolor;
+    opacity: 0.55;
+}
+
+.icon {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 1px solid
+        color-mix(in srgb, var(--pixie-toast-color) 65%, transparent);
+    border-radius: 50%;
+    color: var(--pixie-toast-color);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.solid .icon {
+    border-color: currentcolor;
+    color: currentcolor;
+}
+
+.content {
+    min-width: 0;
+}
+
+.title {
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.message {
+    line-height: 1.55;
+    opacity: 0.82;
+}
+
+.title + .message {
+    margin-top: 0.2rem;
+}
+
+.action,
+.dismiss {
+    min-width: 2rem;
+    min-height: 2rem;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+}
+
+.action {
+    align-self: center;
+    padding-inline: 0.375rem;
+    color: var(--pixie-toast-color);
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+}
+
+.solid .action {
+    color: currentcolor;
+}
+
+.dismiss {
+    display: grid;
+    place-items: center;
+    margin: -0.35rem -0.35rem 0 0;
+    font-size: 1.25rem;
+    line-height: 1;
+    opacity: 0.7;
+}
+
+.action:hover,
+.dismiss:hover {
+    opacity: 1;
+}
+
+.action:focus-visible,
+.dismiss:focus-visible {
+    outline: 2px solid var(--pixie-toast-color);
+    outline-offset: 2px;
+}
+
+.solid .action:focus-visible,
+.solid .dismiss:focus-visible {
+    outline-color: currentcolor;
+}
+
+@keyframes toast-enter {
+    from {
+        opacity: 0;
+        transform: translateY(0.5rem) scale(0.985);
+    }
+}
+
+@media (max-width: 32rem) {
+    .root {
+        grid-template-columns: auto minmax(0, 1fr) auto;
+    }
+
+    .action {
+        grid-column: 2;
+        justify-self: start;
+        padding-inline: 0;
+    }
+
+    .dismiss {
+        grid-column: 3;
+        grid-row: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .root {
+        animation-duration: 1ms;
+    }
+}
