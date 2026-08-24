@@ -1,21 +1,21 @@
 import { getAtelierAnimationColor } from "@/registry/colors";
-import styles from "./PixieDustFrame.module.css";
+import styles from "./PixieFrame.module.css";
 import type {
-    PixieDustFrameAspect,
-    PixieDustFrameCaptionAlign,
-    PixieDustFrameEffect,
-    PixieDustFrameElevation,
-    PixieDustFrameFit,
-    PixieDustFrameIntensity,
-    PixieDustFrameOverlayPosition,
-    PixieDustFramePadding,
-    PixieDustFramePosition,
-    PixieDustFrameProps,
-    PixieDustFrameRadius,
-    PixieDustFrameStyle,
-    PixieDustFrameTreatment,
-    PixieDustFrameVariant,
-} from "./PixieDustFrame.types";
+    PixieFrameAspect,
+    PixieFrameCaptionAlign,
+    PixieFrameEffect,
+    PixieFrameElevation,
+    PixieFrameFit,
+    PixieFrameIntensity,
+    PixieFrameOverlayPosition,
+    PixieFramePadding,
+    PixieFramePosition,
+    PixieFrameProps,
+    PixieFrameRadius,
+    PixieFrameStyle,
+    PixieFrameTreatment,
+    PixieFrameVariant,
+} from "./PixieFrame.types";
 
 const variantClasses = {
     plain: styles.plain,
@@ -24,7 +24,7 @@ const variantClasses = {
     film: styles.film,
     slide: styles.slide,
     cel: styles.cel,
-} as const satisfies Record<PixieDustFrameVariant, string>;
+} as const satisfies Record<PixieFrameVariant, string>;
 
 const aspectClasses = {
     auto: styles.aspectAuto,
@@ -35,7 +35,7 @@ const aspectClasses = {
     wide: styles.aspectWide,
     cinema: styles.aspectCinema,
     scope: styles.aspectScope,
-} as const satisfies Record<PixieDustFrameAspect, string>;
+} as const satisfies Record<PixieFrameAspect, string>;
 
 const fitClasses = {
     cover: styles.fitCover,
@@ -43,7 +43,7 @@ const fitClasses = {
     fill: styles.fitFill,
     none: styles.fitNone,
     "scale-down": styles.fitScaleDown,
-} as const satisfies Record<PixieDustFrameFit, string>;
+} as const satisfies Record<PixieFrameFit, string>;
 
 const positionClasses = {
     center: styles.positionCenter,
@@ -55,7 +55,7 @@ const positionClasses = {
     "top-end": styles.positionTopEnd,
     "bottom-start": styles.positionBottomStart,
     "bottom-end": styles.positionBottomEnd,
-} as const satisfies Record<PixieDustFramePosition, string>;
+} as const satisfies Record<PixieFramePosition, string>;
 
 const paddingClasses = {
     none: styles.paddingNone,
@@ -63,33 +63,33 @@ const paddingClasses = {
     sm: styles.paddingSmall,
     md: styles.paddingMedium,
     lg: styles.paddingLarge,
-} as const satisfies Record<PixieDustFramePadding, string>;
+} as const satisfies Record<PixieFramePadding, string>;
 
 const radiusClasses = {
     none: styles.radiusNone,
     small: styles.radiusSmall,
     medium: styles.radiusMedium,
     large: styles.radiusLarge,
-} as const satisfies Record<PixieDustFrameRadius, string>;
+} as const satisfies Record<PixieFrameRadius, string>;
 
 const mediaRadiusClasses = {
     none: styles.mediaRadiusNone,
     small: styles.mediaRadiusSmall,
     medium: styles.mediaRadiusMedium,
     large: styles.mediaRadiusLarge,
-} as const satisfies Record<PixieDustFrameRadius, string>;
+} as const satisfies Record<PixieFrameRadius, string>;
 
 const elevationClasses = {
     none: styles.elevationNone,
     soft: styles.elevationSoft,
     strong: styles.elevationStrong,
-} as const satisfies Record<PixieDustFrameElevation, string>;
+} as const satisfies Record<PixieFrameElevation, string>;
 
 const treatmentClasses = {
     original: styles.treatmentOriginal,
     monochrome: styles.treatmentMonochrome,
     sepia: styles.treatmentSepia,
-} as const satisfies Record<PixieDustFrameTreatment, string>;
+} as const satisfies Record<PixieFrameTreatment, string>;
 
 const effectClasses = {
     none: "",
@@ -97,13 +97,13 @@ const effectClasses = {
     vignette: styles.effectVignette,
     "light-leak": styles.effectLightLeak,
     projector: styles.effectProjector,
-} as const satisfies Record<PixieDustFrameEffect, string>;
+} as const satisfies Record<PixieFrameEffect, string>;
 
 const intensityClasses = {
     subtle: styles.intensitySubtle,
     medium: styles.intensityMedium,
     strong: styles.intensityStrong,
-} as const satisfies Record<PixieDustFrameIntensity, string>;
+} as const satisfies Record<PixieFrameIntensity, string>;
 
 const overlayPositionClasses = {
     "top-start": styles.overlayTopStart,
@@ -111,19 +111,19 @@ const overlayPositionClasses = {
     center: styles.overlayCenter,
     "bottom-start": styles.overlayBottomStart,
     "bottom-end": styles.overlayBottomEnd,
-} as const satisfies Record<PixieDustFrameOverlayPosition, string>;
+} as const satisfies Record<PixieFrameOverlayPosition, string>;
 
 const captionAlignClasses = {
     start: styles.captionAlignStart,
     center: styles.captionAlignCenter,
     end: styles.captionAlignEnd,
-} as const satisfies Record<PixieDustFrameCaptionAlign, string>;
+} as const satisfies Record<PixieFrameCaptionAlign, string>;
 
 function clampPercentage(value: number) {
     return Math.min(100, Math.max(0, value));
 }
 
-export function PixieDustFrame({
+export function PixieFrame({
     as: Element = "figure",
     variant = "plain",
     aspect = "auto",
@@ -148,9 +148,9 @@ export function PixieDustFrame({
     style,
     children,
     ...elementProps
-}: PixieDustFrameProps) {
+}: PixieFrameProps) {
     const colorDefinition = color ? getAtelierAnimationColor(color) : null;
-    const frameStyle: PixieDustFrameStyle = {
+    const frameStyle: PixieFrameStyle = {
         ...style,
         ...(customAspect != null
             ? { "--pixie-frame-aspect": customAspect }

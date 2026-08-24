@@ -1,0 +1,20 @@
+export { PixieFrame } from "./PixieFrame";
+export type {
+    PixieFrameAspect,
+    PixieFrameCaptionAlign,
+    PixieFrameCaptionPosition,
+    PixieFrameColor,
+    PixieFrameElement,
+    PixieFrameEffect,
+    PixieFrameElevation,
+    PixieFrameFit,
+    PixieFrameFocalPoint,
+    PixieFrameIntensity,
+    PixieFrameOverlayPosition,
+    PixieFramePadding,
+    PixieFramePosition,
+    PixieFrameProps,
+    PixieFrameRadius,
+    PixieFrameTreatment,
+    PixieFrameVariant,
+} from "./PixieFrame.types";
