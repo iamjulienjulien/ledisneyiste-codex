@@ -7,6 +7,8 @@ import { getSymbol, getSymbolSlugs } from "@/registry/symbols";
 import { PixieSymbolPlayground } from "./PixieSymbolPlayground";
 
 const generalLogoSymbolSlugs = getSymbolSlugs("general", "logos");
+const generalCinemaSymbolSlugs = getSymbolSlugs("general", "cinema");
+const animationTechniqueSymbolSlugs = getSymbolSlugs("techniques", "animation");
 const indexSymbolSlugs = getSymbolSlugs("codex", "index");
 const recompenseTrophySymbolSlugs = getSymbolSlugs("recompenses", "trophees");
 const contributeurBlockSymbolSlugs = getSymbolSlugs("blocs", "contributeurs");
@@ -75,7 +77,13 @@ const typesSpecifiques = [
     },
     {
         name: "SymbolRegistryName",
-        values: ['"blocs"', '"codex"', '"general"', '"recompenses"'],
+        values: [
+            '"blocs"',
+            '"codex"',
+            '"general"',
+            '"recompenses"',
+            '"techniques"',
+        ],
         description: "Registres de symboles actuellement disponibles.",
     },
     {
@@ -90,13 +98,18 @@ const typesSpecifiques = [
     },
     {
         name: 'SymbolCollectionName<"general">',
-        values: ['"logos"'],
+        values: ['"cinema"', '"logos"'],
         description: "Collections exposées par le registre Général.",
     },
     {
         name: 'SymbolCollectionName<"recompenses">',
         values: ['"trophees"'],
         description: "Collections exposées par le registre des Récompenses.",
+    },
+    {
+        name: 'SymbolCollectionName<"techniques">',
+        values: ['"animation"'],
+        description: "Collections exposées par le registre des Techniques.",
     },
     {
         name: 'SymbolSlug<"codex", "index">',
@@ -107,6 +120,51 @@ const typesSpecifiques = [
         name: 'SymbolSlug<"general", "logos">',
         values: ['"le-codex-du-disneyiste"'],
         description: "Logos généraux disponibles dans le registre.",
+    },
+    {
+        name: 'SymbolSlug<"general", "cinema">',
+        values: [
+            '"bobine"',
+            '"camera-cinema"',
+            '"casque-studio"',
+            '"clap"',
+            '"fauteuil-realisateur"',
+            '"haut-parleur"',
+            '"megaphone"',
+            '"micro-perche"',
+            '"pellicule"',
+            '"projecteur-cinema"',
+            '"projecteur-plateau"',
+            '"rideau-cinema"',
+            '"scenario"',
+            '"storyboard"',
+            '"ticket-cinema"',
+        ],
+        description: "Accessoires généraux du langage cinématographique.",
+    },
+    {
+        name: 'SymbolSlug<"techniques", "animation">',
+        values: [
+            '"camera-banc-titre"',
+            '"camera-multiplane"',
+            '"camera-pencil-test"',
+            '"cellulo-peint"',
+            '"crayons-animation"',
+            '"disque-animation"',
+            '"feuille-animation"',
+            '"feuille-exposition"',
+            '"kit-encrage-cellulo"',
+            '"metronome-synchronisation"',
+            '"pile-cellulos"',
+            '"planche-modele"',
+            '"regle-a-tenons"',
+            '"rotoscope"',
+            '"station-caps"',
+            '"table-lumineuse"',
+            '"taille-crayon-mecanique"',
+            '"xerographie"',
+        ],
+        description: "Outils et procédés de la chaîne de l’animation.",
     },
     {
         name: 'SymbolSlug<"recompenses", "trophees">',
@@ -234,7 +292,7 @@ export function PixieSymbolDossier() {
                         ["Mission", "Afficher un symbole typé."],
                         ["Sélection", "registry · collection · slug"],
                         ["Exemple", "codex.index.personnages"],
-                        ["Masters", "Sept séries originales · 1254 px."],
+                        ["Masters", "Neuf séries originales · 1254 px."],
                         ["Dérivés", "PNG transparent · 384 px."],
                         ["Accessibilité", "Décoratif par défaut."],
                     ].map(([terme, definition]) => (
@@ -321,6 +379,48 @@ export function PixieSymbolDossier() {
                 </div>
             </section>
 
+            <section
+                aria-labelledby="pixie-symbol-general-cinema"
+                className="mt-16"
+            >
+                <TitreSequence
+                    id="pixie-symbol-general-cinema"
+                    surTitre="Distribution"
+                    titre="Les accessoires du cinéma"
+                    description="Clap, caméra, projecteurs, pellicule, son, scénario et salle composent un vocabulaire général réutilisable partout où le Codex parle de cinéma."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-5">
+                    {generalCinemaSymbolSlugs.map((slug) => {
+                        const symbole = getSymbol("general", "cinema", slug);
+
+                        return (
+                            <article
+                                key={slug}
+                                className="bg-surface p-6 text-center"
+                                style={{
+                                    borderTop: `4px solid ${symbole.accent}`,
+                                }}
+                            >
+                                <PixieSymbol
+                                    registry="general"
+                                    collection="cinema"
+                                    slug={slug}
+                                    size="xl"
+                                    className="mx-auto"
+                                />
+                                <h4 className="mt-5 text-xl text-ink">
+                                    {symbole.label}
+                                </h4>
+                                <p className="mt-2 font-mono text-xs text-muted">
+                                    {slug}
+                                </p>
+                            </article>
+                        );
+                    })}
+                </div>
+            </section>
+
             <section aria-labelledby="pixie-symbol-serie" className="mt-16">
                 <TitreSequence
                     id="pixie-symbol-serie"
@@ -390,6 +490,52 @@ export function PixieSymbolDossier() {
                                 <PixieSymbol
                                     registry="recompenses"
                                     collection="trophees"
+                                    slug={slug}
+                                    size="xl"
+                                    className="mx-auto"
+                                />
+                                <h4 className="mt-5 text-xl text-ink">
+                                    {symbole.label}
+                                </h4>
+                                <p className="mt-2 font-mono text-xs text-muted">
+                                    {slug}
+                                </p>
+                            </article>
+                        );
+                    })}
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="pixie-symbol-techniques-animation"
+                className="mt-16"
+            >
+                <TitreSequence
+                    id="pixie-symbol-techniques-animation"
+                    surTitre="Distribution"
+                    titre="La chaîne technique de l’animation"
+                    description="Du dessin sur papier à l’encrage, au tournage, à la xérographie et à la mise en couleur numérique, les outils situent chaque étape de fabrication sans se confondre avec les accessoires généraux du cinéma."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-6">
+                    {animationTechniqueSymbolSlugs.map((slug) => {
+                        const symbole = getSymbol(
+                            "techniques",
+                            "animation",
+                            slug,
+                        );
+
+                        return (
+                            <article
+                                key={slug}
+                                className="bg-surface p-6 text-center"
+                                style={{
+                                    borderTop: `4px solid ${symbole.accent}`,
+                                }}
+                            >
+                                <PixieSymbol
+                                    registry="techniques"
+                                    collection="animation"
                                     slug={slug}
                                     size="xl"
                                     className="mx-auto"

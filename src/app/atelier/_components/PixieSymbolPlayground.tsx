@@ -5,11 +5,38 @@ import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import { PixieSymbol, type PixieSymbolSize } from "@/components/ui/PixieSymbol";
-import { getSymbol } from "@/registry/symbols";
+import { getSymbol, getSymbolSlugs } from "@/registry/symbols";
 
 type Lumiere = "sombre" | "claire";
 type Cadre = "compact" | "moyen" | "large";
 type PixieSymbolPresetSize = Exclude<PixieSymbolSize, number>;
+
+const generalCinemaSymbolOptions = getSymbolSlugs("general", "cinema").map(
+    (slug) => ({
+        key: `general.cinema.${slug}`,
+        group: "Général · Cinéma" as const,
+        selection: {
+            registry: "general",
+            collection: "cinema",
+            slug,
+        } as const,
+        definition: getSymbol("general", "cinema", slug),
+    }),
+);
+
+const animationTechniqueSymbolOptions = getSymbolSlugs(
+    "techniques",
+    "animation",
+).map((slug) => ({
+    key: `techniques.animation.${slug}`,
+    group: "Techniques · Animation" as const,
+    selection: {
+        registry: "techniques",
+        collection: "animation",
+        slug,
+    } as const,
+    definition: getSymbol("techniques", "animation", slug),
+}));
 
 const symbolOptions = [
     {
@@ -22,6 +49,7 @@ const symbolOptions = [
         },
         definition: getSymbol("general", "logos", "le-codex-du-disneyiste"),
     },
+    ...generalCinemaSymbolOptions,
     {
         key: "codex.index.personnages",
         group: "Codex · Index",
@@ -240,12 +268,15 @@ const symbolOptions = [
         },
         definition: getSymbol("blocs", "epoques", "tensions"),
     },
+    ...animationTechniqueSymbolOptions,
 ] as const;
 
 const symbolGroups = [
     "Général · Logos",
+    "Général · Cinéma",
     "Codex · Index",
     "Récompenses · Trophées",
+    "Techniques · Animation",
     "Blocs · Personnages",
     "Blocs · Contributeurs",
     "Blocs · Œuvres",
