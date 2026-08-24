@@ -1,0 +1,40 @@
+.root {
+    position: sticky;
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+    align-self: flex-start;
+}
+
+.edgeStart {
+    inset-block-start: var(--pixie-sticky-region-offset);
+}
+
+.edgeEnd {
+    align-self: flex-end;
+    inset-block-end: var(--pixie-sticky-region-offset);
+}
+
+.offsetNone {
+    --pixie-sticky-region-offset: 0rem;
+}
+
+.offsetExtraSmall {
+    --pixie-sticky-region-offset: 0.5rem;
+}
+
+.offsetSmall {
+    --pixie-sticky-region-offset: 1rem;
+}
+
+.offsetMedium {
+    --pixie-sticky-region-offset: 1.5rem;
+}
+
+.offsetLarge {
+    --pixie-sticky-region-offset: 2rem;
+}
+
+.offsetExtraLarge {
+    --pixie-sticky-region-offset: 3rem;
+}

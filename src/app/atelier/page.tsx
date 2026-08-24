@@ -19,6 +19,7 @@ import { PixieDustSidebarDossier } from "./_components/PixieDustSidebarDossier";
 import { PixieDustSwitcherDossier } from "./_components/PixieDustSwitcherDossier";
 import { PixieDustRailDossier } from "./_components/PixieDustRailDossier";
 import { PixieDustBleedDossier } from "./_components/PixieDustBleedDossier";
+import { PixieDustStickyRegionDossier } from "./_components/PixieDustStickyRegionDossier";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PalettesPellicule } from "./_components/PalettesPellicule";
 
@@ -273,8 +274,8 @@ const montage = [
     {
         nom: "PixieDustStickyRegion",
         role: "Maintenir une région visible pendant le défilement",
-        statut: "À esquisser",
-        href: null,
+        statut: "Esquisse",
+        href: "#pixie-dust-sticky-region",
     },
 ] as const;
 
@@ -769,16 +770,12 @@ export default function AtelierPage() {
                                         scope="row"
                                         className="px-5 py-4 font-medium text-ink"
                                     >
-                                        {element.href ? (
-                                            <a
-                                                href={element.href}
-                                                className="text-accent underline underline-offset-4 hover:text-accent-hover"
-                                            >
-                                                {element.nom} →
-                                            </a>
-                                        ) : (
-                                            element.nom
-                                        )}
+                                        <a
+                                            href={element.href}
+                                            className="text-accent underline underline-offset-4 hover:text-accent-hover"
+                                        >
+                                            {element.nom} →
+                                        </a>
                                     </th>
                                     <td className="px-5 py-4 text-ink-soft">
                                         {element.role}
@@ -802,6 +799,7 @@ export default function AtelierPage() {
                 <PixieDustSwitcherDossier />
                 <PixieDustRailDossier />
                 <PixieDustBleedDossier />
+                <PixieDustStickyRegionDossier />
             </section>
 
             <section
