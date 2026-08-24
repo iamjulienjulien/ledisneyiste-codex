@@ -1,0 +1,52 @@
+{
+    "slug": "joe-grant",
+    "type": "contributeur",
+    "introduction": "Joe Grant fait du personnage un langage que tout le studio peut partager. Caricaturiste devenu concepteur, auteur et responsable des modèles, il relie l’apparence d’une figure à sa personnalité, puis transforme cette recherche en documents capables de guider une production entière. Sur Blanche-Neige et les Sept Nains, son travail participe à donner aux personnages une cohérence assez forte pour soutenir le premier long métrage animé du studio.",
+    "blocsEditoriaux": [
+        {
+            "type": "signature",
+            "eyebrow": "Conception",
+            "titre": "Faire tenir une personnalité dans un dessin",
+            "paragraphes": [
+                "Walt Disney remarque les caricatures hollywoodiennes de Joe Grant et l’engage en 1933 pour Mickey’s Gala Premiere. Grant entre ensuite au studio comme artiste et homme d’histoire, à un moment où la personnalité commence à devenir le véritable moteur de l’animation.",
+                "Sur Blanche-Neige et les Sept Nains, il contribue au développement visuel et narratif des personnages. Son dessin ne cherche pas une belle silhouette isolée : il met à l’épreuve une attitude, un tempérament et les règles qui permettront à plusieurs animateurs de reconnaître la même figure.",
+                "Cette méthode trouve son prolongement dans le Character Model Department qu’il fonde et dirige. Les feuilles de modèles deviennent un point de rencontre entre conception, histoire et animation."
+            ],
+            "sources": ["d23-joe-grant", "afi-snow-white"]
+        },
+        {
+            "type": "trajectoire",
+            "eyebrow": "Deux carrières",
+            "titre": "Revenir au studio sans perdre le fil",
+            "paragraphes": [
+                "Après Pinocchio, Fantasia et Dumbo, Grant quitte Disney en 1949 pour développer ses propres activités artistiques. Quarante ans plus tard, le studio l’invite à revenir comme consultant sur La Belle et la Bête.",
+                "Il accompagne alors une nouvelle génération sur Aladdin, Le Roi Lion, Mulan et plusieurs autres films. Ce retour tardif fait de lui un lien vivant entre la construction du long métrage classique et la renaissance de l’animation Disney."
+            ],
+            "sources": ["d23-joe-grant"]
+        }
+    ],
+    "naissance": {
+        "date": { "valeur": "1908-05-15", "precision": "jour" },
+        "lieu": "New York, New York, États-Unis"
+    },
+    "deces": {
+        "date": { "valeur": "2005-05-06", "precision": "jour" },
+        "lieu": "Californie, États-Unis"
+    },
+    "roles": [
+        "concepteur de personnages",
+        "artiste d’histoire",
+        "responsable des modèles"
+    ],
+    "periodesActivite": [
+        {
+            "debut": { "valeur": "1933", "precision": "annee" },
+            "fin": { "valeur": "1949", "precision": "annee" }
+        },
+        {
+            "debut": { "valeur": "1989", "precision": "annee" },
+            "fin": { "valeur": "2005", "precision": "annee" }
+        }
+    ],
+    "sources": ["d23-joe-grant", "afi-snow-white"]
+}

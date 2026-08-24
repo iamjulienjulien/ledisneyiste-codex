@@ -178,5 +178,33 @@
         "type": "contributeur",
         "metadata": { "categories": ["animateur"] },
         "sousTitre": "Le dessinateur du corps humain qui anima Blanche-Neige et son Prince"
+    },
+    {
+        "slug": "albert-hurter",
+        "nom": "Albert Hurter",
+        "type": "contributeur",
+        "metadata": { "categories": ["artiste"] },
+        "sousTitre": "L’artiste d’inspiration qui donna au royaume sa mémoire graphique"
+    },
+    {
+        "slug": "joe-grant",
+        "nom": "Joe Grant",
+        "type": "contributeur",
+        "metadata": { "categories": ["artiste"] },
+        "sousTitre": "Le concepteur qui transforma les personnages en modèles partagés"
+    },
+    {
+        "slug": "gustaf-tenggren",
+        "nom": "Gustaf Tenggren",
+        "type": "contributeur",
+        "metadata": { "categories": ["artiste"] },
+        "sousTitre": "L’illustrateur qui donna au conte sa profondeur européenne"
+    },
+    {
+        "slug": "hazel-sewell",
+        "nom": "Hazel Sewell",
+        "type": "contributeur",
+        "metadata": { "categories": ["artiste"] },
+        "sousTitre": "La pionnière de l’encrage devenue directrice artistique"
     }
 ]

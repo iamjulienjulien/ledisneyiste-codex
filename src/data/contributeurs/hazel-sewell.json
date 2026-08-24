@@ -1,0 +1,47 @@
+{
+    "slug": "hazel-sewell",
+    "type": "contributeur",
+    "introduction": "Hazel Sewell relie deux âges du studio : celui où quelques mains encrent les premiers Mickey et celui où des centaines de milliers de cellulos donnent corps à Blanche-Neige et les Sept Nains. Responsable de l’encrage et de la peinture, puis directrice artistique du film, elle transforme une maîtrise patiente de la ligne et de la couleur en regard porté sur l’ensemble d’une production.",
+    "blocsEditoriaux": [
+        {
+            "type": "signature",
+            "eyebrow": "Encrage et peinture",
+            "titre": "Préserver le sentiment jusque sur le cellulo",
+            "paragraphes": [
+                "Hazel Sewell rejoint le jeune studio peu après sa sœur Lillian Bounds. Walt reconnaît sa précision et la place à la tête du département Encrage et Peinture, où le trait des animateurs doit être reporté sans perdre son énergie.",
+                "Cette responsabilité est artistique autant que technique. Les encreuses ne copient pas mécaniquement un dessin : elles doivent en conserver la qualité de ligne, tandis que les choix de teintes assurent la continuité des personnages et des scènes.",
+                "De Plane Crazy à Blanche-Neige et les Sept Nains, Sewell accompagne ainsi le passage d’un atelier resserré à une production industrielle qui ne peut renoncer à la sensibilité du geste."
+            ],
+            "sources": ["wdfm-hazel-sewell"]
+        },
+        {
+            "type": "trajectoire",
+            "eyebrow": "Blanche-Neige",
+            "titre": "Faire entendre son regard dans la direction artistique",
+            "paragraphes": [
+                "Les notes de production conservées par le Walt Disney Family Museum montrent que l’avis de Hazel Sewell est sollicité sur les couleurs des Nains. Le film la crédite parmi ses directeurs artistiques, reconnaissance d’un regard construit au contact quotidien de la ligne et de la couleur.",
+                "Elle quitte le studio en 1938, après l’achèvement du film, mais demeure liée à son histoire. En 1941, elle participe avec son mari Bill Cottrell au voyage de Walt Disney en Amérique latine, futur point de départ de nouvelles œuvres."
+            ],
+            "sources": ["wdfm-hazel-sewell", "afi-snow-white"]
+        }
+    ],
+    "naissance": {
+        "date": { "valeur": "1898", "precision": "annee" },
+        "lieu": "Idaho, États-Unis"
+    },
+    "deces": {
+        "date": { "valeur": "1975", "precision": "annee" },
+        "lieu": "Los Angeles, Californie, États-Unis"
+    },
+    "roles": [
+        "responsable de l’encrage et de la peinture",
+        "directrice artistique"
+    ],
+    "periodesActivite": [
+        {
+            "debut": { "valeur": "1924", "precision": "annee" },
+            "fin": { "valeur": "1938", "precision": "annee" }
+        }
+    ],
+    "sources": ["wdfm-hazel-sewell", "afi-snow-white"]
+}

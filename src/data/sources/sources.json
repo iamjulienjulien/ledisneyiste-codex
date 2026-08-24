@@ -1224,5 +1224,42 @@
         "datePublication": "2016-10-09",
         "url": "https://www.waltdisney.org/blog/gentle-visionary-walts-advance-man",
         "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "wdfm-heinrich-kley-company",
+        "titre": "Program Recap—Heinrich Kley and Company",
+        "editeur": "The Walt Disney Family Museum",
+        "url": "https://www.waltdisney.org/blog/program-recap-heinrich-kley-and-company",
+        "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "wdfm-fantasia-pastoral",
+        "titre": "Fantasia in Eight Parts: The Pastoral Symphony",
+        "editeur": "The Walt Disney Family Museum",
+        "url": "https://www.waltdisney.org/blog/fantasia-eight-parts-pastoral-symphony",
+        "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "d23-joe-grant",
+        "titre": "Joe Grant",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/walt-disney-legend/joe-grant/",
+        "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "nationalmuseum-gustaf-tenggren",
+        "titre": "Gustaf Tenggren",
+        "editeur": "Nationalmuseum",
+        "url": "https://collection.nationalmuseum.se/sv/artists/artist/16447/",
+        "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "wdfm-hazel-sewell",
+        "titre": "Important Women in Disney History: Hazel Sewell",
+        "auteur": "Brenda Litzinger",
+        "editeur": "The Walt Disney Family Museum",
+        "datePublication": "2012-03-13",
+        "url": "https://www.waltdisney.org/blog/important-women-disney-history-hazel-sewell",
+        "dateConsultation": "2026-08-24"
     }
 ]

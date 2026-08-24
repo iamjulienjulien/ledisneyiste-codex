@@ -1,12 +1,16 @@
 import carlStallingJson from "@/data/contributeurs/carl-stalling.json";
 import clarenceNashJson from "@/data/contributeurs/clarence-nash.json";
+import albertHurterJson from "@/data/contributeurs/albert-hurter.json";
 import davidHandJson from "@/data/contributeurs/david-hand.json";
 import ericLarsonJson from "@/data/contributeurs/eric-larson.json";
 import frankThomasJson from "@/data/contributeurs/frank-thomas.json";
 import fredMooreJson from "@/data/contributeurs/fred-moore.json";
 import grimNatwickJson from "@/data/contributeurs/grim-natwick.json";
+import gustafTenggrenJson from "@/data/contributeurs/gustaf-tenggren.json";
 import hamiltonLuskeJson from "@/data/contributeurs/hamilton-luske.json";
+import hazelSewellJson from "@/data/contributeurs/hazel-sewell.json";
 import johnLounsberyJson from "@/data/contributeurs/john-lounsbery.json";
+import joeGrantJson from "@/data/contributeurs/joe-grant.json";
 import lesClarkJson from "@/data/contributeurs/les-clark.json";
 import marcDavisJson from "@/data/contributeurs/marc-davis.json";
 import miltKahlJson from "@/data/contributeurs/milt-kahl.json";
@@ -45,6 +49,10 @@ export const fichesContributeurs = [
     vladimirBillTytlaJson as FicheContributeurDisney,
     normanFergusonJson as FicheContributeurDisney,
     grimNatwickJson as FicheContributeurDisney,
+    albertHurterJson as FicheContributeurDisney,
+    joeGrantJson as FicheContributeurDisney,
+    gustafTenggrenJson as FicheContributeurDisney,
+    hazelSewellJson as FicheContributeurDisney,
 ];
 
 export function getFicheContributeurBySlug(slug: string) {

@@ -13,6 +13,12 @@ export const metadataContributeurs = {
                 "Artiste qui construit le mouvement et le jeu des personnages.",
             color: "bleu-reperage",
         },
+        artiste: {
+            label: "Artiste visuel",
+            description:
+                "Créateur qui façonne les personnages, les décors ou l’identité graphique d’une œuvre.",
+            color: "violet-ombre-portee",
+        },
         realisateur: {
             label: "Réalisateur",
             description:

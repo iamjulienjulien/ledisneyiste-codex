@@ -1,0 +1,59 @@
+{
+    "slug": "gustaf-tenggren",
+    "type": "contributeur",
+    "introduction": "Gustaf Tenggren apporte à Blanche-Neige et les Sept Nains la profondeur d’un conte déjà ancien. Formé en Suède et héritier d’une tradition d’illustration nourrie de folklore, il aide le studio à dépasser le décor fonctionnel pour construire des paysages chargés d’ombre, de matière et de mémoire. Son passage bref chez Disney laisse au premier long métrage une part essentielle de son atmosphère européenne.",
+    "blocsEditoriaux": [
+        {
+            "type": "signature",
+            "eyebrow": "Direction artistique",
+            "titre": "Faire entrer le conte dans la profondeur",
+            "paragraphes": [
+                "Avant Disney, Tenggren s’est fait connaître comme illustrateur de contes et de livres pour enfants. Son dessin associe silhouettes, forêts, architectures et contrastes dramatiques dans une tradition européenne que le studio peut mobiliser pour son premier long métrage.",
+                "Engagé en 1936, il participe à la direction artistique de Blanche-Neige et les Sept Nains. Ses études donnent aux espaces une densité qui accompagne le passage de l’émerveillement à la menace : la forêt, le château et les lointains cessent d’être de simples fonds pour devenir des forces du récit.",
+                "Cette contribution aide le film à conserver la lisibilité de l’animation américaine tout en retrouvant la gravité visuelle des livres de contes."
+            ],
+            "sources": [
+                "wdfm-heinrich-kley-company",
+                "nationalmuseum-gustaf-tenggren",
+                "afi-snow-white"
+            ]
+        },
+        {
+            "type": "trajectoire",
+            "eyebrow": "Illustration",
+            "titre": "Quitter le studio, rester dans les livres",
+            "paragraphes": [
+                "Tenggren travaille chez Disney de 1936 à 1939 et contribue aussi à The Old Mill et Pinocchio. Son passage accompagne le moment où le studio cherche pour chaque film une identité visuelle plus ambitieuse que celle des séries de courts métrages.",
+                "Après Disney, il poursuit une carrière majeure dans l’édition jeunesse, notamment au sein des Little Golden Books. Le monde imprimé dont il était venu redevient son principal terrain, enrichi par l’expérience d’images pensées pour prendre vie."
+            ],
+            "sources": [
+                "wdfm-heinrich-kley-company",
+                "nationalmuseum-gustaf-tenggren"
+            ]
+        }
+    ],
+    "naissance": {
+        "date": { "valeur": "1896", "precision": "annee" },
+        "lieu": "Magra, Suède"
+    },
+    "deces": {
+        "date": { "valeur": "1970", "precision": "annee" },
+        "lieu": "Maine, États-Unis"
+    },
+    "roles": [
+        "illustrateur",
+        "directeur artistique",
+        "artiste de développement visuel"
+    ],
+    "periodesActivite": [
+        {
+            "debut": { "valeur": "1936", "precision": "annee" },
+            "fin": { "valeur": "1939", "precision": "annee" }
+        }
+    ],
+    "sources": [
+        "wdfm-heinrich-kley-company",
+        "nationalmuseum-gustaf-tenggren",
+        "afi-snow-white"
+    ]
+}

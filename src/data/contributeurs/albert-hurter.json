@@ -1,0 +1,51 @@
+{
+    "slug": "albert-hurter",
+    "type": "contributeur",
+    "introduction": "Albert Hurter apporte au studio une mémoire visuelle nourrie par l’illustration européenne, l’art classique et le dessin fantastique. Premier artiste d’inspiration de Disney, il ne dessine pas seulement ce qui apparaîtra à l’écran : il ouvre des directions, éprouve des formes et fournit aux équipes un monde commun dans lequel inscrire personnages et décors. Blanche-Neige et les Sept Nains devient le premier grand terrain où cette fonction nouvelle révèle sa portée.",
+    "blocsEditoriaux": [
+        {
+            "type": "signature",
+            "eyebrow": "Inspiration",
+            "titre": "Donner une mémoire au royaume",
+            "paragraphes": [
+                "Lorsqu’il rejoint Disney en 1931, Albert Hurter devient le premier artiste chargé de produire des esquisses d’inspiration. Son travail ne suit pas une séquence précise : il rassemble formes, silhouettes, accessoires, architectures et créatures afin de hausser le niveau graphique de toute la production.",
+                "Pour Blanche-Neige et les Sept Nains, ses recherches contribuent à la conception des personnages comme des lieux. Elles offrent aux réalisateurs, animateurs et décorateurs un réservoir cohérent où le conte populaire peut rencontrer l’exigence du long métrage.",
+                "La scène où les Nains pleurent Blanche-Neige montre cette influence jusque dans l’émotion : les études de Hurter préparent une composition que l’animation peut ensuite transformer en jeu sensible."
+            ],
+            "sources": ["wdfm-heinrich-kley-company", "afi-snow-white"]
+        },
+        {
+            "type": "trajectoire",
+            "eyebrow": "Héritage",
+            "titre": "Faire de l’inspiration une étape de fabrication",
+            "paragraphes": [
+                "Hurter poursuit ce travail sur Pinocchio et Fantasia. Sa culture de l’art ancien, du symbolisme et du fantastique donne au studio des références qui dépassent les habitudes du cartoon américain.",
+                "Son rôle installe durablement l’idée qu’un film d’animation doit chercher son monde avant de le produire. Les futurs artistes de développement visuel hériteront de cette place ouverte entre la documentation, l’imagination et la fabrication."
+            ],
+            "sources": ["wdfm-fantasia-pastoral", "wdfm-heinrich-kley-company"]
+        }
+    ],
+    "naissance": {
+        "date": { "valeur": "1883", "precision": "annee" },
+        "lieu": "Suisse"
+    },
+    "deces": {
+        "date": { "valeur": "1942", "precision": "annee" },
+        "lieu": "États-Unis"
+    },
+    "roles": [
+        "artiste d’inspiration",
+        "concepteur de personnages et de décors"
+    ],
+    "periodesActivite": [
+        {
+            "debut": { "valeur": "1931", "precision": "annee" },
+            "fin": { "valeur": "1942", "precision": "annee" }
+        }
+    ],
+    "sources": [
+        "wdfm-heinrich-kley-company",
+        "wdfm-fantasia-pastoral",
+        "afi-snow-white"
+    ]
+}

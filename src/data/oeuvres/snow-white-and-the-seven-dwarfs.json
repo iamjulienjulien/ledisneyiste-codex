@@ -309,7 +309,27 @@
         },
         {
             "contributeur": {
-                "nom": "Gustaf Tenggren"
+                "nom": "Albert Hurter",
+                "type": "contributeur",
+                "slug": "albert-hurter"
+            },
+            "roles": ["conception de personnages", "recherches d’inspiration"],
+            "domaine": "direction-artistique-conception"
+        },
+        {
+            "contributeur": {
+                "nom": "Joe Grant",
+                "type": "contributeur",
+                "slug": "joe-grant"
+            },
+            "roles": ["conception de personnages", "développement visuel"],
+            "domaine": "direction-artistique-conception"
+        },
+        {
+            "contributeur": {
+                "nom": "Gustaf Tenggren",
+                "type": "contributeur",
+                "slug": "gustaf-tenggren"
             },
             "roles": ["direction artistique"],
             "domaine": "direction-artistique-conception"
@@ -323,7 +343,9 @@
         },
         {
             "contributeur": {
-                "nom": "Hazel Sewell"
+                "nom": "Hazel Sewell",
+                "type": "contributeur",
+                "slug": "hazel-sewell"
             },
             "roles": ["direction artistique"],
             "domaine": "direction-artistique-conception"
