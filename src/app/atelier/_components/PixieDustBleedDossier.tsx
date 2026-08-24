@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/PixieDustBleed";
 import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieDustContainer } from "@/components/ui/PixieDustContainer";
-import { PixieDustFrame } from "@/components/ui/PixieDustFrame";
+import { PixieFrame } from "@/components/ui/PixieFrame";
 import { PixieDustRail } from "@/components/ui/PixieDustRail";
 import { PixieDustSection } from "@/components/ui/PixieDustSection";
 import { PixieDustStack } from "@/components/ui/PixieDustStack";
@@ -207,7 +207,7 @@ function Stage({ children }: Readonly<{ children: ReactNode }>) {
 
 function Panorama({ label = "Panorama" }: Readonly<{ label?: string }>) {
     return (
-        <PixieDustFrame variant="film" padding="none">
+        <PixieFrame variant="film" padding="none">
             <div className="relative min-h-48 overflow-hidden bg-surface-muted">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_35%,var(--color-accent)_0,transparent_25%),linear-gradient(135deg,var(--color-surface-muted),var(--color-canvas))] opacity-60" />
                 <div className="relative flex min-h-48 items-end p-6">
@@ -221,7 +221,7 @@ function Panorama({ label = "Panorama" }: Readonly<{ label?: string }>) {
                     </div>
                 </div>
             </div>
-        </PixieDustFrame>
+        </PixieFrame>
     );
 }
 

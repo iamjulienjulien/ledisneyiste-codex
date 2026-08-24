@@ -6,7 +6,7 @@ import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import { PixieBadge } from "@/components/ui/PixieBadge";
 import { PixieDustCluster } from "@/components/ui/PixieDustCluster";
-import { PixieDustFrame } from "@/components/ui/PixieDustFrame";
+import { PixieFrame } from "@/components/ui/PixieFrame";
 import {
     PixieDustSplit,
     type PixieDustSplitAlign,
@@ -74,7 +74,7 @@ export function PixieDustSplitPlayground() {
     align="${align}"
 ${labelledBy}>
     <div>{/* Champ éditorial */}</div>
-    <PixieDustFrame>{/* Contrechamp visuel */}</PixieDustFrame>
+    <PixieFrame>{/* Contrechamp visuel */}</PixieFrame>
 </PixieDustSplit>`;
 
     return (
@@ -242,7 +242,7 @@ ${labelledBy}>
                                     </PixieDustCluster>
                                 </PixieDustStack>
 
-                                <PixieDustFrame
+                                <PixieFrame
                                     variant="film"
                                     aspect="landscape"
                                     padding="sm"
@@ -255,7 +255,7 @@ ${labelledBy}>
                                             ♪
                                         </span>
                                     </div>
-                                </PixieDustFrame>
+                                </PixieFrame>
                             </PixieDustSplit>
                         </div>
                     </div>

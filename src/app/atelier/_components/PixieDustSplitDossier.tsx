@@ -6,7 +6,7 @@ import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieBadge } from "@/components/ui/PixieBadge";
 import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieDustCluster } from "@/components/ui/PixieDustCluster";
-import { PixieDustFrame } from "@/components/ui/PixieDustFrame";
+import { PixieFrame } from "@/components/ui/PixieFrame";
 import { PixieDustSection } from "@/components/ui/PixieDustSection";
 import {
     PixieDustSplit,
@@ -408,7 +408,7 @@ export function PixieDustSplitDossier() {
                                     )}
                                 </PixieDustCluster>
                             </PixieDustStack>
-                            <PixieDustFrame
+                            <PixieFrame
                                 variant="film"
                                 aspect="landscape"
                                 padding="sm"
@@ -419,7 +419,7 @@ export function PixieDustSplitDossier() {
                                 <div className="flex h-full items-center justify-center bg-surface-muted text-5xl">
                                     <span aria-hidden>♪</span>
                                 </div>
-                            </PixieDustFrame>
+                            </PixieFrame>
                         </PixieDustSplit>
                     </div>
                     <CodeExample>{`<PixieDustSplit
@@ -429,9 +429,9 @@ export function PixieDustSplitDossier() {
     align="center"
 >
     <div>{/* Champ éditorial */}</div>
-    <PixieDustFrame>
+    <PixieFrame>
         {/* Contrechamp visuel */}
-    </PixieDustFrame>
+    </PixieFrame>
 </PixieDustSplit>`}</CodeExample>
                 </div>
             </section>

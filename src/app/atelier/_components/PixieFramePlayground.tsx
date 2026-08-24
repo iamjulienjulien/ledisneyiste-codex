@@ -6,23 +6,23 @@ import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import {
-    PixieDustFrame,
-    type PixieDustFrameAspect,
-    type PixieDustFrameCaptionAlign,
-    type PixieDustFrameCaptionPosition,
-    type PixieDustFrameColor,
-    type PixieDustFrameEffect,
-    type PixieDustFrameElement,
-    type PixieDustFrameElevation,
-    type PixieDustFrameFit,
-    type PixieDustFrameIntensity,
-    type PixieDustFrameOverlayPosition,
-    type PixieDustFramePadding,
-    type PixieDustFramePosition,
-    type PixieDustFrameRadius,
-    type PixieDustFrameTreatment,
-    type PixieDustFrameVariant,
-} from "@/components/ui/PixieDustFrame";
+    PixieFrame,
+    type PixieFrameAspect,
+    type PixieFrameCaptionAlign,
+    type PixieFrameCaptionPosition,
+    type PixieFrameColor,
+    type PixieFrameEffect,
+    type PixieFrameElement,
+    type PixieFrameElevation,
+    type PixieFrameFit,
+    type PixieFrameIntensity,
+    type PixieFrameOverlayPosition,
+    type PixieFramePadding,
+    type PixieFramePosition,
+    type PixieFrameRadius,
+    type PixieFrameTreatment,
+    type PixieFrameVariant,
+} from "@/components/ui/PixieFrame";
 import {
     getAtelierAnimationColor,
     getAtelierAnimationColorSlugs,
@@ -93,37 +93,35 @@ const frameWidths = {
 const selectClassName =
     "mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink";
 
-export function PixieDustFramePlayground() {
-    const [element, setElement] = useState<PixieDustFrameElement>("figure");
-    const [variant, setVariant] = useState<PixieDustFrameVariant>("mount");
-    const [aspect, setAspect] = useState<PixieDustFrameAspect>("landscape");
+export function PixieFramePlayground() {
+    const [element, setElement] = useState<PixieFrameElement>("figure");
+    const [variant, setVariant] = useState<PixieFrameVariant>("mount");
+    const [aspect, setAspect] = useState<PixieFrameAspect>("landscape");
     const [useCustomAspect, setUseCustomAspect] = useState(false);
     const [customAspect, setCustomAspect] = useState("5 / 2");
-    const [fit, setFit] = useState<PixieDustFrameFit>("contain");
-    const [position, setPosition] = useState<PixieDustFramePosition>("center");
+    const [fit, setFit] = useState<PixieFrameFit>("contain");
+    const [position, setPosition] = useState<PixieFramePosition>("center");
     const [useFocalPoint, setUseFocalPoint] = useState(false);
     const [focalX, setFocalX] = useState(50);
     const [focalY, setFocalY] = useState(50);
-    const [padding, setPadding] = useState<PixieDustFramePadding>("md");
-    const [radius, setRadius] = useState<PixieDustFrameRadius>("medium");
+    const [padding, setPadding] = useState<PixieFramePadding>("md");
+    const [radius, setRadius] = useState<PixieFrameRadius>("medium");
     const [mediaRadius, setMediaRadius] = useState<
-        PixieDustFrameRadius | "inherit"
+        PixieFrameRadius | "inherit"
     >("inherit");
-    const [color, setColor] = useState<PixieDustFrameColor>("ambre-projecteur");
-    const [elevation, setElevation] = useState<PixieDustFrameElevation>("soft");
-    const [treatment, setTreatment] =
-        useState<PixieDustFrameTreatment>("original");
-    const [effect, setEffect] = useState<PixieDustFrameEffect>("none");
-    const [intensity, setIntensity] =
-        useState<PixieDustFrameIntensity>("subtle");
+    const [color, setColor] = useState<PixieFrameColor>("ambre-projecteur");
+    const [elevation, setElevation] = useState<PixieFrameElevation>("soft");
+    const [treatment, setTreatment] = useState<PixieFrameTreatment>("original");
+    const [effect, setEffect] = useState<PixieFrameEffect>("none");
+    const [intensity, setIntensity] = useState<PixieFrameIntensity>("subtle");
     const [showOverlay, setShowOverlay] = useState(false);
     const [overlayPosition, setOverlayPosition] =
-        useState<PixieDustFrameOverlayPosition>("top-end");
+        useState<PixieFrameOverlayPosition>("top-end");
     const [showCaption, setShowCaption] = useState(true);
     const [captionPosition, setCaptionPosition] =
-        useState<PixieDustFrameCaptionPosition>("outside");
+        useState<PixieFrameCaptionPosition>("outside");
     const [captionAlign, setCaptionAlign] =
-        useState<PixieDustFrameCaptionAlign>("start");
+        useState<PixieFrameCaptionAlign>("start");
     const [light, setLight] = useState<"sombre" | "claire">("sombre");
     const [frame, setFrame] = useState<"compact" | "moyen" | "large">("moyen");
 
@@ -156,7 +154,7 @@ export function PixieDustFramePlayground() {
             ? `    captionAlign="${captionAlign}"`
             : null,
     ].filter((line): line is string => line !== null);
-    const code = `<PixieDustFrame
+    const code = `<PixieFrame
     as="${element}"
     variant="${variant}"
     fit="${fit}"
@@ -169,7 +167,7 @@ export function PixieDustFramePlayground() {
         width={1024}
         height={1024}
     />
-</PixieDustFrame>`;
+</PixieFrame>`;
 
     function selectColor(value: string) {
         setColor(
@@ -196,8 +194,7 @@ export function PixieDustFramePlayground() {
                                 value={element}
                                 onChange={(event) =>
                                     setElement(
-                                        event.target
-                                            .value as PixieDustFrameElement,
+                                        event.target.value as PixieFrameElement,
                                     )
                                 }
                                 className={selectClassName}
@@ -238,8 +235,7 @@ export function PixieDustFramePlayground() {
                                 disabled={useCustomAspect}
                                 onChange={(event) =>
                                     setAspect(
-                                        event.target
-                                            .value as PixieDustFrameAspect,
+                                        event.target.value as PixieFrameAspect,
                                     )
                                 }
                                 className={`${selectClassName} disabled:cursor-not-allowed disabled:opacity-50`}
@@ -287,9 +283,7 @@ export function PixieDustFramePlayground() {
                                 id="frame-fit"
                                 value={fit}
                                 onChange={(event) =>
-                                    setFit(
-                                        event.target.value as PixieDustFrameFit,
-                                    )
+                                    setFit(event.target.value as PixieFrameFit)
                                 }
                                 className={selectClassName}
                             >
@@ -313,7 +307,7 @@ export function PixieDustFramePlayground() {
                                 onChange={(event) =>
                                     setPosition(
                                         event.target
-                                            .value as PixieDustFramePosition,
+                                            .value as PixieFramePosition,
                                     )
                                 }
                                 className={`${selectClassName} disabled:cursor-not-allowed disabled:opacity-50`}
@@ -377,7 +371,7 @@ export function PixieDustFramePlayground() {
                                     onChange={(event) =>
                                         setPadding(
                                             event.target
-                                                .value as PixieDustFramePadding,
+                                                .value as PixieFramePadding,
                                         )
                                     }
                                     className={selectClassName}
@@ -394,7 +388,7 @@ export function PixieDustFramePlayground() {
                                     onChange={(event) =>
                                         setRadius(
                                             event.target
-                                                .value as PixieDustFrameRadius,
+                                                .value as PixieFrameRadius,
                                         )
                                     }
                                     className={selectClassName}
@@ -419,7 +413,7 @@ export function PixieDustFramePlayground() {
                                 onChange={(event) =>
                                     setMediaRadius(
                                         event.target.value as
-                                            PixieDustFrameRadius | "inherit",
+                                            PixieFrameRadius | "inherit",
                                     )
                                 }
                                 className={selectClassName}
@@ -465,7 +459,7 @@ export function PixieDustFramePlayground() {
                                     onChange={(event) =>
                                         setElevation(
                                             event.target
-                                                .value as PixieDustFrameElevation,
+                                                .value as PixieFrameElevation,
                                         )
                                     }
                                     className={selectClassName}
@@ -482,7 +476,7 @@ export function PixieDustFramePlayground() {
                                     onChange={(event) =>
                                         setTreatment(
                                             event.target
-                                                .value as PixieDustFrameTreatment,
+                                                .value as PixieFrameTreatment,
                                         )
                                     }
                                     className={selectClassName}
@@ -502,7 +496,7 @@ export function PixieDustFramePlayground() {
                                     onChange={(event) =>
                                         setEffect(
                                             event.target
-                                                .value as PixieDustFrameEffect,
+                                                .value as PixieFrameEffect,
                                         )
                                     }
                                     className={selectClassName}
@@ -520,7 +514,7 @@ export function PixieDustFramePlayground() {
                                     onChange={(event) =>
                                         setIntensity(
                                             event.target
-                                                .value as PixieDustFrameIntensity,
+                                                .value as PixieFrameIntensity,
                                         )
                                     }
                                     className={`${selectClassName} disabled:cursor-not-allowed disabled:opacity-50`}
@@ -551,7 +545,7 @@ export function PixieDustFramePlayground() {
                                 onChange={(event) =>
                                     setOverlayPosition(
                                         event.target
-                                            .value as PixieDustFrameOverlayPosition,
+                                            .value as PixieFrameOverlayPosition,
                                     )
                                 }
                                 className={`${selectClassName} disabled:cursor-not-allowed disabled:opacity-50`}
@@ -582,7 +576,7 @@ export function PixieDustFramePlayground() {
                                     onChange={(event) =>
                                         setCaptionPosition(
                                             event.target
-                                                .value as PixieDustFrameCaptionPosition,
+                                                .value as PixieFrameCaptionPosition,
                                         )
                                     }
                                     className={`${selectClassName} disabled:cursor-not-allowed disabled:opacity-50`}
@@ -597,7 +591,7 @@ export function PixieDustFramePlayground() {
                                     onChange={(event) =>
                                         setCaptionAlign(
                                             event.target
-                                                .value as PixieDustFrameCaptionAlign,
+                                                .value as PixieFrameCaptionAlign,
                                         )
                                     }
                                     className={`${selectClassName} disabled:cursor-not-allowed disabled:opacity-50`}
@@ -628,7 +622,7 @@ export function PixieDustFramePlayground() {
                         <div
                             className={`w-full transition-[max-width] ${frameWidths[frame]}`}
                         >
-                            <PixieDustFrame
+                            <PixieFrame
                                 as={element}
                                 variant={variant}
                                 aspect={aspect}
@@ -673,7 +667,7 @@ export function PixieDustFramePlayground() {
                                     height={1024}
                                     sizes="(max-width: 1024px) 80vw, 48rem"
                                 />
-                            </PixieDustFrame>
+                            </PixieFrame>
                         </div>
                     </div>
 

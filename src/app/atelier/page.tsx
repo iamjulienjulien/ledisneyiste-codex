@@ -5,7 +5,7 @@ import { PixieSeparatorDossier } from "./_components/PixieSeparatorDossier";
 import { PixieSymbolDossier } from "./_components/PixieSymbolDossier";
 import { PixieCardDossier } from "./_components/PixieCardDossier";
 import { PixiePanelDossier } from "./_components/PixiePanelDossier";
-import { PixieDustFrameDossier } from "./_components/PixieDustFrameDossier";
+import { PixieFrameDossier } from "./_components/PixieFrameDossier";
 import { PixieDustCalloutDossier } from "./_components/PixieDustCalloutDossier";
 import { PixieDustInsetDossier } from "./_components/PixieDustInsetDossier";
 import { PixieDustBackdropDossier } from "./_components/PixieDustBackdropDossier";
@@ -136,10 +136,10 @@ const decors = [
         href: "#pixie-panel",
     },
     {
-        nom: "PixieDustFrame",
+        nom: "PixieFrame",
         role: "Encadrer un visuel ou un aperçu",
-        statut: "Esquisse",
-        href: "#pixie-dust-frame",
+        statut: "Prêt à projeter",
+        href: "#pixie-frame",
     },
     {
         nom: "PixieDustCallout",
@@ -583,7 +583,7 @@ export default function AtelierPage() {
                     </h2>
                     <p className="mt-5 leading-7 text-ink-soft">
                         PixieCard accueille les unités répétables et PixiePanel
-                        structure les sections. PixieDustFrame met les médias en
+                        structure les sections. PixieFrame met les médias en
                         scène, PixieDustCallout éclaire les annotations
                         éditoriales et PixieDustInset place les informations
                         secondaires en retrait. PixieDustBackdrop installe enfin
@@ -643,7 +643,7 @@ export default function AtelierPage() {
 
                 <PixieCardDossier />
                 <PixiePanelDossier />
-                <PixieDustFrameDossier />
+                <PixieFrameDossier />
                 <PixieDustCalloutDossier />
                 <PixieDustInsetDossier />
                 <PixieDustBackdropDossier />

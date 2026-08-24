@@ -13,7 +13,7 @@ import {
     type PixieDustBleedSide,
 } from "@/components/ui/PixieDustBleed";
 import { PixieCard } from "@/components/ui/PixieCard";
-import { PixieDustFrame } from "@/components/ui/PixieDustFrame";
+import { PixieFrame } from "@/components/ui/PixieFrame";
 import { PixieDustRail } from "@/components/ui/PixieDustRail";
 import { PixieDustStack } from "@/components/ui/PixieDustStack";
 
@@ -114,7 +114,7 @@ function BleedContent({ mode }: Readonly<{ mode: ContentMode }>) {
     }
 
     return (
-        <PixieDustFrame variant="film" padding="none">
+        <PixieFrame variant="film" padding="none">
             <div className="relative min-h-64 overflow-hidden bg-surface-muted">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_28%_36%,var(--color-accent)_0,transparent_24%),linear-gradient(135deg,var(--color-surface-muted),var(--color-canvas))] opacity-60" />
                 <div className="relative flex min-h-64 items-end p-6 sm:p-8">
@@ -128,7 +128,7 @@ function BleedContent({ mode }: Readonly<{ mode: ContentMode }>) {
                     </div>
                 </div>
             </div>
-        </PixieDustFrame>
+        </PixieFrame>
     );
 }
 

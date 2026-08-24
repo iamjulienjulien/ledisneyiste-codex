@@ -11,7 +11,7 @@ import {
     type PixieDustBackdropVariant,
 } from "@/components/ui/PixieDustBackdrop";
 import { PixieCard } from "@/components/ui/PixieCard";
-import { PixieDustFrame } from "@/components/ui/PixieDustFrame";
+import { PixieFrame } from "@/components/ui/PixieFrame";
 import { PixiePanel } from "@/components/ui/PixiePanel";
 import { PixieDustBackdropPlayground } from "./PixieDustBackdropPlayground";
 
@@ -563,7 +563,7 @@ export function PixieDustBackdropDossier() {
                             </h4>
                         </PixiePanel>
 
-                        <PixieDustFrame
+                        <PixieFrame
                             as="div"
                             variant="outline"
                             padding="sm"
@@ -574,7 +574,7 @@ export function PixieDustBackdropDossier() {
                                     Frame · Média
                                 </p>
                             </div>
-                        </PixieDustFrame>
+                        </PixieFrame>
                     </div>
                 </PixieDustBackdrop>
             </section>

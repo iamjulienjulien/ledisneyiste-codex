@@ -4,13 +4,13 @@ import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTa
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import {
-    PixieDustFrame,
-    type PixieDustFrameAspect,
-    type PixieDustFramePadding,
-    type PixieDustFrameRadius,
-    type PixieDustFrameVariant,
-} from "@/components/ui/PixieDustFrame";
-import { PixieDustFramePlayground } from "./PixieDustFramePlayground";
+    PixieFrame,
+    type PixieFrameAspect,
+    type PixieFramePadding,
+    type PixieFrameRadius,
+    type PixieFrameVariant,
+} from "@/components/ui/PixieFrame";
+import { PixieFramePlayground } from "./PixieFramePlayground";
 
 const variants = [
     {
@@ -45,7 +45,7 @@ const variants = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustFrameVariant;
+    value: PixieFrameVariant;
     description: string;
 }>[];
 
@@ -60,7 +60,7 @@ const aspects = [
     { name: "Scope", value: "scope" as const, ratio: "2,39 / 1" },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustFrameAspect;
+    value: PixieFrameAspect;
     ratio: string;
 }>[];
 
@@ -72,7 +72,7 @@ const paddings = [
     { name: "Grand", value: "lg" as const, token: "1,5 rem" },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustFramePadding;
+    value: PixieFramePadding;
     token: string;
 }>[];
 
@@ -83,25 +83,25 @@ const radii = [
     { name: "Grand", value: "large" as const },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustFrameRadius;
+    value: PixieFrameRadius;
 }>[];
 
 const properties = [
     {
         name: "as",
-        type: "PixieDustFrameElement",
+        type: "PixieFrameElement",
         defaultValue: '"figure"',
         description: "Élément HTML porté par le cadre.",
     },
     {
         name: "variant",
-        type: "PixieDustFrameVariant",
+        type: "PixieFrameVariant",
         defaultValue: '"plain"',
         description: "Traitement visuel autour du média.",
     },
     {
         name: "aspect",
-        type: "PixieDustFrameAspect",
+        type: "PixieFrameAspect",
         defaultValue: '"auto"',
         description: "Proportion réservée au média.",
     },
@@ -113,68 +113,68 @@ const properties = [
     },
     {
         name: "fit",
-        type: "PixieDustFrameFit",
+        type: "PixieFrameFit",
         defaultValue: '"cover"',
         description: "Remplissage ou conservation complète du média.",
     },
     {
         name: "position",
-        type: "PixieDustFramePosition",
+        type: "PixieFramePosition",
         defaultValue: '"center"',
         description: "Point d’ancrage employé lors du recadrage.",
     },
     {
         name: "focalPoint",
-        type: "PixieDustFrameFocalPoint",
+        type: "PixieFrameFocalPoint",
         defaultValue: "—",
         description:
             "Point focal précis en pourcentages, limité entre 0 et 100.",
     },
     {
         name: "padding",
-        type: "PixieDustFramePadding",
+        type: "PixieFramePadding",
         defaultValue: '"none"',
         description: "Marge entre le média et son cadre.",
     },
     {
         name: "radius",
-        type: "PixieDustFrameRadius",
+        type: "PixieFrameRadius",
         defaultValue: '"medium"',
         description: "Arrondi du cadre et de la fenêtre intérieure.",
     },
     {
         name: "mediaRadius",
-        type: "PixieDustFrameRadius",
+        type: "PixieFrameRadius",
         defaultValue: "radius",
         description: "Arrondi indépendant de la fenêtre du média.",
     },
     {
         name: "color",
-        type: "PixieDustFrameColor",
+        type: "PixieFrameColor",
         defaultValue: "false",
         description: "Couleur du registre ou accent courant du thème.",
     },
     {
         name: "elevation",
-        type: "PixieDustFrameElevation",
+        type: "PixieFrameElevation",
         defaultValue: '"none"',
         description: "Niveau de détachement du cadre par rapport au décor.",
     },
     {
         name: "treatment",
-        type: "PixieDustFrameTreatment",
+        type: "PixieFrameTreatment",
         defaultValue: '"original"',
         description: "Traitement colorimétrique non destructif du média.",
     },
     {
         name: "effect",
-        type: "PixieDustFrameEffect",
+        type: "PixieFrameEffect",
         defaultValue: '"none"',
         description: "Effet atmosphérique silencieux superposé au média.",
     },
     {
         name: "intensity",
-        type: "PixieDustFrameIntensity",
+        type: "PixieFrameIntensity",
         defaultValue: '"subtle"',
         description: "Présence visuelle de l’effet atmosphérique.",
     },
@@ -186,7 +186,7 @@ const properties = [
     },
     {
         name: "overlayPosition",
-        type: "PixieDustFrameOverlayPosition",
+        type: "PixieFrameOverlayPosition",
         defaultValue: '"bottom-end"',
         description: "Point d’ancrage du contenu superposé.",
     },
@@ -198,13 +198,13 @@ const properties = [
     },
     {
         name: "captionPosition",
-        type: "PixieDustFrameCaptionPosition",
+        type: "PixieFrameCaptionPosition",
         defaultValue: '"outside"',
         description: "Placement extérieur ou superposé de la légende.",
     },
     {
         name: "captionAlign",
-        type: "PixieDustFrameCaptionAlign",
+        type: "PixieFrameCaptionAlign",
         defaultValue: '"start"',
         description: "Alignement typographique de la légende.",
     },
@@ -224,12 +224,12 @@ const properties = [
 
 const specificTypes = [
     {
-        name: "PixieDustFrameElement",
+        name: "PixieFrameElement",
         values: ['"figure"', '"div"'],
         description: "Figure sémantique ou simple conteneur visuel.",
     },
     {
-        name: "PixieDustFrameVariant",
+        name: "PixieFrameVariant",
         values: [
             '"plain"',
             '"outline"',
@@ -241,7 +241,7 @@ const specificTypes = [
         description: "Traitements du cadre indépendants du média.",
     },
     {
-        name: "PixieDustFrameAspect",
+        name: "PixieFrameAspect",
         values: [
             '"auto"',
             '"square"',
@@ -255,12 +255,12 @@ const specificTypes = [
         description: "Proportions naturelles ou prédéfinies.",
     },
     {
-        name: "PixieDustFrameFit",
+        name: "PixieFrameFit",
         values: ['"cover"', '"contain"', '"fill"', '"none"', '"scale-down"'],
         description: "Modes de mise à l’échelle du média.",
     },
     {
-        name: "PixieDustFramePosition",
+        name: "PixieFramePosition",
         values: [
             '"center"',
             '"top"',
@@ -275,42 +275,42 @@ const specificTypes = [
         description: "Points d’ancrage du recadrage.",
     },
     {
-        name: "PixieDustFrameFocalPoint",
+        name: "PixieFrameFocalPoint",
         values: ["{ x: number; y: number }"],
         description: "Coordonnées en pourcentages du sujet à préserver.",
     },
     {
-        name: "PixieDustFramePadding",
+        name: "PixieFramePadding",
         values: ['"none"', '"xs"', '"sm"', '"md"', '"lg"'],
         description: "Largeurs du passe-partout.",
     },
     {
-        name: "PixieDustFrameRadius",
+        name: "PixieFrameRadius",
         values: ['"none"', '"small"', '"medium"', '"large"'],
         description: "Rayons disponibles dans la Projection Originale.",
     },
     {
-        name: "PixieDustFrameColor",
+        name: "PixieFrameColor",
         values: ["AtelierAnimationColorSlug", "false"],
         description: "Couleur enregistrée ou accent courant du thème.",
     },
     {
-        name: "PixieDustFrameCaptionPosition",
+        name: "PixieFrameCaptionPosition",
         values: ['"outside"', '"overlay"'],
         description: "Positions proposées pour la légende.",
     },
     {
-        name: "PixieDustFrameElevation",
+        name: "PixieFrameElevation",
         values: ['"none"', '"soft"', '"strong"'],
         description: "Niveaux de relief du support.",
     },
     {
-        name: "PixieDustFrameTreatment",
+        name: "PixieFrameTreatment",
         values: ['"original"', '"monochrome"', '"sepia"'],
         description: "Traitements colorimétriques du média.",
     },
     {
-        name: "PixieDustFrameEffect",
+        name: "PixieFrameEffect",
         values: [
             '"none"',
             '"grain"',
@@ -321,12 +321,12 @@ const specificTypes = [
         description: "Effets atmosphériques superposés.",
     },
     {
-        name: "PixieDustFrameIntensity",
+        name: "PixieFrameIntensity",
         values: ['"subtle"', '"medium"', '"strong"'],
         description: "Intensités disponibles pour les effets.",
     },
     {
-        name: "PixieDustFrameOverlayPosition",
+        name: "PixieFrameOverlayPosition",
         values: [
             '"top-start"',
             '"top-end"',
@@ -337,7 +337,7 @@ const specificTypes = [
         description: "Points d’ancrage d’une annotation superposée.",
     },
     {
-        name: "PixieDustFrameCaptionAlign",
+        name: "PixieFrameCaptionAlign",
         values: ['"start"', '"center"', '"end"'],
         description: "Alignements typographiques de la légende.",
     },
@@ -401,12 +401,12 @@ function PersonnagesImage({ alt = "" }: Readonly<{ alt?: string }>) {
     );
 }
 
-export function PixieDustFrameDossier() {
+export function PixieFrameDossier() {
     return (
         <AtelierFicheAccessoire
-            id="pixie-dust-frame"
-            labelledBy="pixie-dust-frame-title"
-            nom="PixieDustFrame"
+            id="pixie-frame"
+            labelledBy="pixie-frame-title"
+            nom="PixieFrame"
             className="mt-16 scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
@@ -415,10 +415,10 @@ export function PixieDustFrameDossier() {
                             Le clap · Décor 003
                         </p>
                         <h2
-                            id="pixie-dust-frame-title"
+                            id="pixie-frame-title"
                             className="mt-4 text-4xl text-ink sm:text-5xl"
                         >
-                            PixieDustFrame
+                            PixieFrame
                         </h2>
                         <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
                             Mettre un média en scène sans décider de ce qu’il
@@ -432,7 +432,7 @@ export function PixieDustFrameDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.2.0
+                                1.0.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -440,7 +440,7 @@ export function PixieDustFrameDossier() {
                                 État
                             </dt>
                             <dd className="mt-1 text-sm font-medium">
-                                <AtelierStatut statut="Esquisse" />
+                                <AtelierStatut statut="Prêt à projeter" />
                             </dd>
                         </div>
                     </dl>
@@ -504,7 +504,7 @@ export function PixieDustFrameDossier() {
 
                 <div className="mt-7 grid border border-line xl:grid-cols-2">
                     <div className="flex min-h-[32rem] items-center justify-center bg-canvas p-8">
-                        <PixieDustFrame
+                        <PixieFrame
                             variant="mount"
                             aspect="landscape"
                             fit="contain"
@@ -514,9 +514,9 @@ export function PixieDustFrameDossier() {
                             className="w-full max-w-xl"
                         >
                             <OeuvresImage alt="Symbole illustré des Œuvres" />
-                        </PixieDustFrame>
+                        </PixieFrame>
                     </div>
-                    <CodeExample>{`<PixieDustFrame
+                    <CodeExample>{`<PixieFrame
     variant="mount"
     aspect="landscape"
     fit="contain"
@@ -528,7 +528,7 @@ export function PixieDustFrameDossier() {
         src="/symbols/codex/index/oeuvres.png"
         alt="Symbole illustré des Œuvres"
     />
-</PixieDustFrame>`}</CodeExample>
+</PixieFrame>`}</CodeExample>
                 </div>
             </section>
 
@@ -547,7 +547,7 @@ export function PixieDustFrameDossier() {
                 <div className="mt-7 grid gap-6 bg-surface-muted p-6 sm:grid-cols-2 xl:grid-cols-3">
                     {variants.map((variant) => (
                         <div key={variant.value}>
-                            <PixieDustFrame
+                            <PixieFrame
                                 as="div"
                                 variant={variant.value}
                                 aspect="square"
@@ -558,7 +558,7 @@ export function PixieDustFrameDossier() {
                                 color="rouge-crayon"
                             >
                                 <PersonnagesImage />
-                            </PixieDustFrame>
+                            </PixieFrame>
                             <h4 className="mt-4 text-xl text-ink">
                                 {variant.name}
                             </h4>
@@ -581,7 +581,7 @@ export function PixieDustFrameDossier() {
                 <div className="mt-7 grid items-start gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                     {aspects.map((aspect) => (
                         <div key={aspect.value}>
-                            <PixieDustFrame
+                            <PixieFrame
                                 as="div"
                                 variant="outline"
                                 aspect={aspect.value}
@@ -589,7 +589,7 @@ export function PixieDustFrameDossier() {
                                 radius="small"
                             >
                                 <OeuvresImage />
-                            </PixieDustFrame>
+                            </PixieFrame>
                             <p className="mt-3 font-medium text-ink">
                                 {aspect.name}
                             </p>
@@ -611,7 +611,7 @@ export function PixieDustFrameDossier() {
 
                 <div className="mt-7 grid gap-8 lg:grid-cols-2">
                     <div>
-                        <PixieDustFrame
+                        <PixieFrame
                             as="div"
                             variant="mount"
                             aspect="cinema"
@@ -620,7 +620,7 @@ export function PixieDustFrameDossier() {
                             color="bleu-reperage"
                         >
                             <PersonnagesImage />
-                        </PixieDustFrame>
+                        </PixieFrame>
                         <h4 className="mt-4 text-xl text-ink">Contain</h4>
                         <p className="mt-2 leading-7 text-ink-soft">
                             Le symbole reste entier, quitte à laisser respirer
@@ -629,7 +629,7 @@ export function PixieDustFrameDossier() {
                     </div>
 
                     <div>
-                        <PixieDustFrame
+                        <PixieFrame
                             as="div"
                             variant="mount"
                             aspect="cinema"
@@ -639,7 +639,7 @@ export function PixieDustFrameDossier() {
                             color="bleu-reperage"
                         >
                             <PersonnagesImage />
-                        </PixieDustFrame>
+                        </PixieFrame>
                         <h4 className="mt-4 text-xl text-ink">Cover · top</h4>
                         <p className="mt-2 leading-7 text-ink-soft">
                             La fenêtre est remplie et conserve ici la partie
@@ -663,7 +663,7 @@ export function PixieDustFrameDossier() {
                         <div className="mt-4 grid grid-cols-2 gap-4">
                             {paddings.map((padding) => (
                                 <div key={padding.value}>
-                                    <PixieDustFrame
+                                    <PixieFrame
                                         as="div"
                                         variant="mount"
                                         aspect="square"
@@ -673,7 +673,7 @@ export function PixieDustFrameDossier() {
                                         color="vert-cellulo"
                                     >
                                         <OeuvresImage />
-                                    </PixieDustFrame>
+                                    </PixieFrame>
                                     <p className="mt-2 font-mono text-xs text-muted">
                                         {padding.value} · {padding.token}
                                     </p>
@@ -687,7 +687,7 @@ export function PixieDustFrameDossier() {
                         <div className="mt-4 grid grid-cols-2 gap-4">
                             {radii.map((radius) => (
                                 <div key={radius.value}>
-                                    <PixieDustFrame
+                                    <PixieFrame
                                         as="div"
                                         variant="outline"
                                         aspect="square"
@@ -695,7 +695,7 @@ export function PixieDustFrameDossier() {
                                         radius={radius.value}
                                     >
                                         <PersonnagesImage />
-                                    </PixieDustFrame>
+                                    </PixieFrame>
                                     <p className="mt-2 font-mono text-xs text-muted">
                                         {radius.value} · {radius.name}
                                     </p>
@@ -715,16 +715,16 @@ export function PixieDustFrameDossier() {
                 />
 
                 <div className="mt-7 grid items-start gap-8 lg:grid-cols-2">
-                    <PixieDustFrame
+                    <PixieFrame
                         variant="outline"
                         aspect="landscape"
                         fit="contain"
                         caption="Légende extérieure · La lecture reste séparée du média"
                     >
                         <OeuvresImage alt="Symbole illustré des Œuvres" />
-                    </PixieDustFrame>
+                    </PixieFrame>
 
-                    <PixieDustFrame
+                    <PixieFrame
                         variant="film"
                         aspect="landscape"
                         fit="cover"
@@ -734,7 +734,7 @@ export function PixieDustFrameDossier() {
                         captionPosition="overlay"
                     >
                         <PersonnagesImage alt="Symbole illustré des Personnages" />
-                    </PixieDustFrame>
+                    </PixieFrame>
                 </div>
             </section>
 
@@ -743,12 +743,12 @@ export function PixieDustFrameDossier() {
                     id="frame-scenarios"
                     eyebrow="Plans préparés"
                     title="Huit mises en scène pour éprouver le cadre"
-                    description="Ces compositions croisent formats, focalisation, matières, traitements et annotations sans transformer PixieDustFrame en composant métier."
+                    description="Ces compositions croisent formats, focalisation, matières, traitements et annotations sans transformer PixieFrame en composant métier."
                 />
 
                 <div className="mt-7 grid items-start gap-8 md:grid-cols-2">
                     <article>
-                        <PixieDustFrame
+                        <PixieFrame
                             as="div"
                             variant="mount"
                             aspect="landscape"
@@ -758,7 +758,7 @@ export function PixieDustFrameDossier() {
                             elevation="soft"
                         >
                             <OeuvresImage />
-                        </PixieDustFrame>
+                        </PixieFrame>
                         <h4 className="mt-4 text-xl text-ink">
                             Dessin sur table lumineuse
                         </h4>
@@ -769,7 +769,7 @@ export function PixieDustFrameDossier() {
                     </article>
 
                     <article>
-                        <PixieDustFrame
+                        <PixieFrame
                             variant="film"
                             aspect="cinema"
                             fit="cover"
@@ -781,7 +781,7 @@ export function PixieDustFrameDossier() {
                             caption="Photogramme de repérage · point focal 42 × 30"
                         >
                             <PersonnagesImage alt="Symbole illustré des Personnages" />
-                        </PixieDustFrame>
+                        </PixieFrame>
                         <h4 className="mt-4 text-xl text-ink">
                             Photogramme recadré
                         </h4>
@@ -792,7 +792,7 @@ export function PixieDustFrameDossier() {
                     </article>
 
                     <article className="md:max-w-sm">
-                        <PixieDustFrame
+                        <PixieFrame
                             variant="slide"
                             aspect="poster"
                             fit="cover"
@@ -806,7 +806,7 @@ export function PixieDustFrameDossier() {
                             captionAlign="center"
                         >
                             <OeuvresImage alt="Symbole illustré des Œuvres" />
-                        </PixieDustFrame>
+                        </PixieFrame>
                         <h4 className="mt-4 text-xl text-ink">
                             Affiche de présentation
                         </h4>
@@ -817,7 +817,7 @@ export function PixieDustFrameDossier() {
                     </article>
 
                     <article>
-                        <PixieDustFrame
+                        <PixieFrame
                             as="div"
                             variant="cel"
                             aspect="square"
@@ -828,7 +828,7 @@ export function PixieDustFrameDossier() {
                             overlayPosition="top-end"
                         >
                             <PersonnagesImage />
-                        </PixieDustFrame>
+                        </PixieFrame>
                         <h4 className="mt-4 text-xl text-ink">
                             Cellulo annoté
                         </h4>
@@ -839,7 +839,7 @@ export function PixieDustFrameDossier() {
                     </article>
 
                     <article>
-                        <PixieDustFrame
+                        <PixieFrame
                             variant="outline"
                             aspect="wide"
                             fit="cover"
@@ -849,7 +849,7 @@ export function PixieDustFrameDossier() {
                             caption="Archive restaurée · copie de travail"
                         >
                             <OeuvresImage alt="Symbole illustré des Œuvres" />
-                        </PixieDustFrame>
+                        </PixieFrame>
                         <h4 className="mt-4 text-xl text-ink">
                             Archive monochrome
                         </h4>
@@ -860,7 +860,7 @@ export function PixieDustFrameDossier() {
                     </article>
 
                     <article>
-                        <PixieDustFrame
+                        <PixieFrame
                             as="div"
                             variant="plain"
                             aspect="scope"
@@ -871,7 +871,7 @@ export function PixieDustFrameDossier() {
                             elevation="soft"
                         >
                             <PersonnagesImage />
-                        </PixieDustFrame>
+                        </PixieFrame>
                         <h4 className="mt-4 text-xl text-ink">
                             Fuite de lumière
                         </h4>
@@ -882,7 +882,7 @@ export function PixieDustFrameDossier() {
                     </article>
 
                     <article>
-                        <PixieDustFrame
+                        <PixieFrame
                             variant="film"
                             aspect="cinema"
                             fit="contain"
@@ -897,7 +897,7 @@ export function PixieDustFrameDossier() {
                             captionAlign="end"
                         >
                             <OeuvresImage alt="Symbole illustré des Œuvres" />
-                        </PixieDustFrame>
+                        </PixieFrame>
                         <h4 className="mt-4 text-xl text-ink">
                             Projection légendée
                         </h4>
@@ -908,7 +908,7 @@ export function PixieDustFrameDossier() {
                     </article>
 
                     <article>
-                        <PixieDustFrame
+                        <PixieFrame
                             as="div"
                             variant="slide"
                             customAspect="5 / 2"
@@ -919,7 +919,7 @@ export function PixieDustFrameDossier() {
                             treatment="sepia"
                         >
                             <PersonnagesImage />
-                        </PixieDustFrame>
+                        </PixieFrame>
                         <h4 className="mt-4 text-xl text-ink">
                             Format de banc-titre libre
                         </h4>
@@ -932,18 +932,18 @@ export function PixieDustFrameDossier() {
             </section>
 
             <section
-                id="pixie-dust-frame-playground"
+                id="pixie-frame-playground"
                 aria-labelledby="frame-playground-title"
                 className="mt-16 scroll-mt-8 border border-line-strong bg-surface-muted p-6 shadow-soft sm:p-8"
             >
                 <SequenceTitle
                     id="frame-playground-title"
                     eyebrow="Régie"
-                    title="Composer un PixieDustFrame"
+                    title="Composer un PixieFrame"
                     description="Réglez le cadre, la fenêtre et la légende ; le code d’utilisation suit chaque changement."
                 />
                 <div className="mt-8">
-                    <PixieDustFramePlayground />
+                    <PixieFramePlayground />
                 </div>
             </section>
 
@@ -955,7 +955,7 @@ export function PixieDustFrameDossier() {
                     id="frame-accessibility"
                     eyebrow="Accessibilité"
                     title="Le cadre présente, le média se décrit"
-                    description="PixieDustFrame n’invente ni alternative textuelle, ni interaction, ni rôle pour le contenu qu’il reçoit."
+                    description="PixieFrame n’invente ni alternative textuelle, ni interaction, ni rôle pour le contenu qu’il reçoit."
                 />
 
                 <div className="mt-7 grid gap-px bg-line md:grid-cols-2">
@@ -1002,8 +1002,8 @@ export function PixieDustFrameDossier() {
                 <SequenceTitle
                     id="frame-technical"
                     eyebrow="Générique technique"
-                    title="API de l’esquisse"
-                    description="Les types spécifiques sont colocalisés dans PixieDustFrame.types.ts et les attributs HTML compatibles sont transmis à l’élément rendu."
+                    title="API du composant"
+                    description="Les types spécifiques sont colocalisés dans PixieFrame.types.ts et les attributs HTML compatibles sont transmis à l’élément rendu."
                 />
 
                 <div className="mt-7">
@@ -1021,19 +1021,19 @@ export function PixieDustFrameDossier() {
             <section aria-labelledby="frame-journal" className="mt-16">
                 <SequenceTitle
                     id="frame-journal"
-                    eyebrow="Journal de production"
-                    title="Décisions avant la promotion"
-                    description="L’esquisse doit être confrontée à de véritables médias du Codex avant de devenir PixieFrame."
+                    eyebrow="Contrat de projection"
+                    title="Les garanties de la version 1.0.0"
+                    description="PixieFrame est prêt à mettre les médias du Codex en scène sans décider de leur contenu ni de leur signification."
                 />
 
                 <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
                     {[
-                        "Éprouver les ratios avec des photographies, des symboles et des vidéos.",
-                        "Vérifier que film, slide et cel restent discrets dans les deux Lumières.",
-                        "Contrôler le comportement de picture, video, svg et canvas comme enfants directs.",
-                        "Valider les légendes et annotations superposées sur des médias clairs et sombres.",
-                        "Tester les recadrages à 200 % de zoom et dans les cadres compacts.",
-                        "Éprouver les points focaux et les formats libres avant la promotion.",
+                        "Les formats prédéfinis et libres réservent une fenêtre stable sans connaître le média.",
+                        "Le point focal protège le sujet pendant les recadrages responsives.",
+                        "Image, picture, video, svg et canvas conservent la responsabilité de leur propre accessibilité.",
+                        "Les légendes restent reliées à leur figure et les annotations demeurent facultatives.",
+                        "Film, slide, cel et les effets atmosphériques restent lisibles dans les deux Lumières.",
+                        "Grain, fuite lumineuse et projecteur respectent la préférence de mouvement réduit.",
                     ].map((decision) => (
                         <li
                             key={decision}
