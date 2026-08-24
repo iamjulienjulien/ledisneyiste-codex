@@ -1,0 +1,81 @@
+{
+    "slug": "blanche-neige",
+    "type": "personnage",
+    "introduction": "Blanche-Neige porte sur ses gestes et sur sa voix une part essentielle du pari du premier long métrage Disney. Le public doit croire à sa peur, à sa bonté et à son espoir sans que sa présence humaine rompe le monde dessiné qui l’entoure. Adriana Caselotti lui donne un chant immédiatement reconnaissable, tandis que Hamilton Luske, Grim Natwick et leurs équipes transforment l’observation du mouvement réel en animation. Auprès des animaux puis des Sept Nains, la princesse devient moins une démonstration technique qu’un centre émotionnel autour duquel le récit peut tenir.",
+    "nomsAlternatifs": [
+        {
+            "nom": "Snow White",
+            "nature": "original",
+            "langue": "en",
+            "sources": ["d23-snow-white-character", "afi-snow-white"]
+        }
+    ],
+    "creation": {
+        "date": {
+            "valeur": "1937",
+            "precision": "annee"
+        },
+        "createurs": [
+            {
+                "nom": "Hamilton Luske"
+            },
+            {
+                "nom": "Grim Natwick"
+            }
+        ]
+    },
+    "premiereApparition": {
+        "oeuvre": {
+            "nom": "Snow White and the Seven Dwarfs",
+            "type": "oeuvre",
+            "slug": "snow-white-and-the-seven-dwarfs"
+        },
+        "date": {
+            "valeur": "1937-12-21",
+            "precision": "jour"
+        }
+    },
+    "espece": "humaine",
+    "blocsEditoriaux": [
+        {
+            "type": "genese",
+            "eyebrow": "Figure humaine",
+            "titre": "Faire croire à une princesse au milieu du dessin",
+            "paragraphes": [
+                "Walt Disney confie à Hamilton Luske la responsabilité de Blanche-Neige dès 1935. Le personnage doit rester assez réaliste pour soutenir l’émotion du film, mais assez stylisé pour appartenir au même monde que les nains et les animaux.",
+                "Des prises de vues de Marge Champion servent de référence au mouvement. Elles ne sont pas destinées à être simplement recopiées : les animateurs les étudient pour comprendre le poids, le rythme et les changements d’attitude avant de reconstruire chaque scène par le dessin.",
+                "Grim Natwick apporte une autre sensibilité à cette animation. La coexistence de plusieurs approches donne à la princesse une présence moins uniforme et fait de sa crédibilité un travail collectif plutôt qu’une formule déjà trouvée."
+            ],
+            "sources": [
+                "afi-snow-white",
+                "loc-snow-white-kaufman",
+                "d23-ham-luske",
+                "d23-snow-white-oscars-look-back"
+            ]
+        },
+        {
+            "type": "caractere",
+            "eyebrow": "Voix",
+            "titre": "Donner au récit une innocence qui puisse se chanter",
+            "paragraphes": [
+                "Adriana Caselotti est choisie parmi plus de cent cinquante candidates. La jeunesse de son timbre permet aux dialogues et aux chansons de préserver une même identité, de l’appel au puits jusqu’à l’espoir de revoir le Prince.",
+                "La bonté de Blanche-Neige s’exprime surtout dans sa manière d’agir sur les autres. Elle apprivoise la forêt, remet en mouvement la maison endormie et distingue progressivement les nains comme des individus plutôt que comme une foule comique.",
+                "Cette douceur n’efface ni la fuite ni la peur. Elle offre au film un point d’équilibre : plus les menaces de la Reine deviennent sombres, plus la voix et les gestes de Blanche-Neige maintiennent la possibilité d’un monde habitable."
+            ],
+            "sources": [
+                "d23-snow-white-character",
+                "d23-adriana-caselotti",
+                "d23-snow-white-film"
+            ]
+        }
+    ],
+    "sources": [
+        "d23-snow-white-character",
+        "d23-adriana-caselotti",
+        "d23-ham-luske",
+        "d23-snow-white-film",
+        "d23-snow-white-oscars-look-back",
+        "afi-snow-white",
+        "loc-snow-white-kaufman"
+    ]
+}

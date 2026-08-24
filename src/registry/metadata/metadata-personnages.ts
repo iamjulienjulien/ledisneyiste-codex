@@ -15,9 +15,25 @@ export const metadataPersonnages = {
         },
         antagoniste: {
             label: "Antagoniste",
-            description:
-                "Figure d’opposition récurrente dans les récits Disney.",
+            description: "Figure d’opposition dans les récits Disney.",
             color: "gouache",
+        },
+        protagoniste: {
+            label: "Protagoniste",
+            description: "Figure au centre du récit et de ses enjeux.",
+            color: "bleu-reperage",
+        },
+        allie: {
+            label: "Allié",
+            description:
+                "Figure qui protège, accompagne ou soutient le protagoniste.",
+            color: "vert-cellulo",
+        },
+        "figure-magique": {
+            label: "Figure magique",
+            description:
+                "Présence surnaturelle qui agit sur le cours du récit.",
+            color: "violet-ombre-portee",
         },
     },
 } as const satisfies Record<string, Record<string, MetadataDefinition>>;

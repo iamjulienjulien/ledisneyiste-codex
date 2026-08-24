@@ -405,19 +405,29 @@
     ],
     "personnages": [
         {
-            "nom": "Blanche-Neige"
+            "nom": "Blanche-Neige",
+            "type": "personnage",
+            "slug": "blanche-neige"
         },
         {
-            "nom": "La Reine"
+            "nom": "La Reine",
+            "type": "personnage",
+            "slug": "la-reine"
         },
         {
-            "nom": "Le Prince"
+            "nom": "Le Prince",
+            "type": "personnage",
+            "slug": "le-prince"
         },
         {
-            "nom": "Le Chasseur"
+            "nom": "Le Chasseur",
+            "type": "personnage",
+            "slug": "le-chasseur"
         },
         {
-            "nom": "Le Miroir magique"
+            "nom": "Le Miroir magique",
+            "type": "personnage",
+            "slug": "le-miroir-magique"
         },
         {
             "nom": "Prof"

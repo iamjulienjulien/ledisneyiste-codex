@@ -1143,5 +1143,41 @@
         "editeur": "Disney",
         "url": "https://disney.go.com/disneyvideos/moviefinder/html/memorylane/ml38_main.html",
         "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "d23-snow-white-character",
+        "titre": "Snow White",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/snow-white/",
+        "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "d23-adriana-caselotti",
+        "titre": "Adriana Caselotti",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/walt-disney-legend/adriana-caselotti/",
+        "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "d23-ham-luske",
+        "titre": "Ham Luske",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/walt-disney-legend/ham-luske/",
+        "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "d23-snow-white-queen-witch-gallery",
+        "titre": "Characters — Disney Animation — Snow White and the Seven Dwarfs — Queen/Witch",
+        "editeur": "D23: The Official Disney Fan Club",
+        "datePublication": "2015-07-28",
+        "url": "https://d23.com/gallery/characters-disney-animation-snow-white-and-the-seven-dwarfs-queenwitch/",
+        "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "d23-snow-white-evil-queen",
+        "titre": "Our Nominees for Best Performance by a Disney Character in an Animated Role",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/nominees-best-performance-disney-character-animated-role/",
+        "dateConsultation": "2026-08-24"
     }
 ]

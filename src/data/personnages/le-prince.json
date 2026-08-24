@@ -1,0 +1,50 @@
+{
+    "slug": "le-prince",
+    "type": "personnage",
+    "introduction": "Le Prince apparaît moins comme un compagnon d’aventure que comme la promesse qui ouvre et referme le récit de Blanche-Neige. Harry Stockwell lui donne sa voix, tandis que Grim Natwick travaille à une présence humaine dont la retenue contraste avec l’expressivité des nains. Son chant au pied du château offre à la princesse un horizon avant sa fuite ; son retour devant le cercueil de verre transforme cet horizon en réveil. Entre ces deux scènes, son absence laisse Blanche-Neige et les habitants de la forêt porter seuls le cœur du film.",
+    "nomsAlternatifs": [
+        {
+            "nom": "The Prince",
+            "nature": "original",
+            "langue": "en",
+            "sources": ["afi-snow-white", "d23-snow-white-film"]
+        }
+    ],
+    "creation": {
+        "date": {
+            "valeur": "1937",
+            "precision": "annee"
+        },
+        "createurs": [
+            {
+                "nom": "Grim Natwick"
+            }
+        ]
+    },
+    "premiereApparition": {
+        "oeuvre": {
+            "nom": "Snow White and the Seven Dwarfs",
+            "type": "oeuvre",
+            "slug": "snow-white-and-the-seven-dwarfs"
+        },
+        "date": {
+            "valeur": "1937-12-21",
+            "precision": "jour"
+        }
+    },
+    "espece": "humain",
+    "blocsEditoriaux": [
+        {
+            "type": "trajectoire",
+            "eyebrow": "Promesse",
+            "titre": "Encadrer le récit par une chanson et un réveil",
+            "paragraphes": [
+                "Le Prince répond au chant de Blanche-Neige dès l’ouverture. Cette rencontre brève suffit à donner une forme à l’espoir qu’elle reprendra plus tard devant les nains avec Some Day My Prince Will Come.",
+                "Le personnage disparaît ensuite de la lutte contre la Reine. Cette absence concentre le milieu du film sur la nouvelle communauté formée par Blanche-Neige, les animaux et les Sept Nains.",
+                "Lorsqu’il revient, son baiser rompt le sommeil produit par la pomme. Le Prince accomplit ainsi une fonction de cadre : il relie le désir énoncé avant la fuite à la dernière image d’un avenir enfin accessible."
+            ],
+            "sources": ["d23-snow-white-film", "afi-snow-white"]
+        }
+    ],
+    "sources": ["d23-snow-white-film", "afi-snow-white"]
+}

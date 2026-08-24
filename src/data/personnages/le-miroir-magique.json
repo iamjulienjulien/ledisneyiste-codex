@@ -1,0 +1,50 @@
+{
+    "slug": "le-miroir-magique",
+    "type": "personnage",
+    "introduction": "Le Miroir magique ne commande rien et ne quitte jamais le mur de la Reine. Sa puissance tient à une fonction plus simple : répondre sans adapter la vérité au désir de celle qui l’interroge. La voix profonde de Moroni Olsen donne une présence au visage qui apparaît dans la fumée, tandis que ses verdicts désignent successivement Blanche-Neige puis la chaumière où elle vit encore. Chaque réponse retire à la Reine le contrôle de son propre récit et transforme son besoin d’être rassurée en nouvelle étape de violence.",
+    "nomsAlternatifs": [
+        {
+            "nom": "Magic Mirror",
+            "nature": "original",
+            "langue": "en",
+            "sources": ["afi-snow-white", "d23-snow-white-film"]
+        }
+    ],
+    "creation": {
+        "date": {
+            "valeur": "1937",
+            "precision": "annee"
+        },
+        "createurs": [
+            {
+                "nom": "Walt Disney Productions"
+            }
+        ]
+    },
+    "premiereApparition": {
+        "oeuvre": {
+            "nom": "Snow White and the Seven Dwarfs",
+            "type": "oeuvre",
+            "slug": "snow-white-and-the-seven-dwarfs"
+        },
+        "date": {
+            "valeur": "1937-12-21",
+            "precision": "jour"
+        }
+    },
+    "espece": "entité magique",
+    "blocsEditoriaux": [
+        {
+            "type": "caractere",
+            "eyebrow": "Vérité",
+            "titre": "Répondre sans jamais servir",
+            "paragraphes": [
+                "Le Miroir est enfermé dans le château, mais sa parole ne se plie pas à celle de la souveraine. Il nomme Blanche-Neige comme la plus belle malgré la menace contenue dans chaque question.",
+                "Après la tentative du Chasseur, il révèle que le cœur présenté comme preuve appartient à un animal. Plus tard, il indique encore que Blanche-Neige vit dans la maison des Sept Nains.",
+                "Ses réponses font avancer le récit sans faire de lui un allié volontaire. Le Miroir ne protège pas la princesse : il maintient une vérité fixe face à un pouvoir qui voudrait la modifier."
+            ],
+            "sources": ["d23-snow-white-film", "afi-snow-white"]
+        }
+    ],
+    "sources": ["d23-snow-white-film", "afi-snow-white"]
+}

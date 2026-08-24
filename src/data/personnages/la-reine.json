@@ -1,0 +1,93 @@
+{
+    "slug": "la-reine",
+    "type": "personnage",
+    "introduction": "La Reine construit sa puissance sur l’apparence et la transforme en violence lorsque le Miroir lui refuse la première place. Sa silhouette souveraine, contenue et verticale cède alors la place à celle d’une vieille Sorcière courbée, capable d’approcher Blanche-Neige sous le masque de la faiblesse. Lucille La Verne relie ces deux formes par la voix, tandis que Norman Ferguson participe à leur animation. Le Codex les réunit dans une même fiche parce que le film ne présente pas deux adversaires : il révèle les deux visages d’une jalousie qui choisit de se métamorphoser pour agir.",
+    "nomsAlternatifs": [
+        {
+            "nom": "The Queen",
+            "nature": "original",
+            "langue": "en",
+            "sources": ["afi-snow-white", "d23-snow-white-film"]
+        },
+        {
+            "nom": "The Evil Queen",
+            "nature": "alias",
+            "langue": "en",
+            "sources": ["d23-snow-white-evil-queen"]
+        }
+    ],
+    "formes": [
+        {
+            "slug": "reine",
+            "nom": "La Reine",
+            "description": "La forme royale, majestueuse et contenue sous laquelle elle gouverne et consulte le Miroir magique.",
+            "sources": ["d23-snow-white-film", "afi-snow-white"]
+        },
+        {
+            "slug": "sorciere",
+            "nom": "La Sorcière",
+            "description": "La forme âgée et voûtée qu’elle adopte pour tromper Blanche-Neige avec la pomme empoisonnée.",
+            "sources": [
+                "d23-snow-white-film",
+                "d23-snow-white-queen-witch-gallery"
+            ]
+        }
+    ],
+    "creation": {
+        "date": {
+            "valeur": "1937",
+            "precision": "annee"
+        },
+        "createurs": [
+            {
+                "nom": "Norman Ferguson"
+            }
+        ]
+    },
+    "premiereApparition": {
+        "oeuvre": {
+            "nom": "Snow White and the Seven Dwarfs",
+            "type": "oeuvre",
+            "slug": "snow-white-and-the-seven-dwarfs"
+        },
+        "date": {
+            "valeur": "1937-12-21",
+            "precision": "jour"
+        }
+    },
+    "espece": "humaine",
+    "blocsEditoriaux": [
+        {
+            "type": "genese",
+            "eyebrow": "Deux formes",
+            "titre": "Changer de corps sans changer de volonté",
+            "paragraphes": [
+                "Dans sa forme royale, le personnage limite ses gestes et laisse son costume, son regard et sa verticalité installer l’autorité. La menace vient de ce contrôle avant même que le laboratoire ne révèle ses pouvoirs.",
+                "La transformation inverse chaque signe. Le corps se courbe, les mains s’agitent et le visage devient expressif jusqu’à la caricature. Cette mobilité nouvelle permet à la Sorcière de jouer la fragilité pour mieux dissimuler son projet.",
+                "Lucille La Verne interprète les deux apparences. La continuité de sa voix confirme que la métamorphose n’efface pas la Reine : elle libère une manière plus directe et presque jubilatoire d’accomplir la même jalousie."
+            ],
+            "sources": [
+                "afi-snow-white",
+                "d23-snow-white-film",
+                "d23-snow-white-queen-witch-gallery"
+            ]
+        },
+        {
+            "type": "caractere",
+            "eyebrow": "Jalousie",
+            "titre": "Faire de la vérité une offense à supprimer",
+            "paragraphes": [
+                "La Reine n’interroge pas le Miroir pour découvrir le monde, mais pour obtenir la confirmation répétée de sa supériorité. Lorsque la réponse change, Blanche-Neige devient immédiatement une menace politique et intime.",
+                "Elle délègue d’abord le meurtre au Chasseur, puis agit elle-même lorsque cet ordre échoue. Sa trajectoire resserre ainsi progressivement le récit : du château à la forêt, puis du laboratoire à la porte de la chaumière.",
+                "La pomme condense enfin toute sa méthode. Belle à l’extérieur et mortelle sous sa surface, elle reproduit l’obsession de l’apparence qui gouverne le personnage depuis sa première question au miroir."
+            ],
+            "sources": ["d23-snow-white-film", "afi-snow-white"]
+        }
+    ],
+    "sources": [
+        "d23-snow-white-film",
+        "d23-snow-white-evil-queen",
+        "d23-snow-white-queen-witch-gallery",
+        "afi-snow-white"
+    ]
+}

@@ -1,0 +1,55 @@
+{
+    "slug": "le-chasseur",
+    "type": "personnage",
+    "introduction": "Le Chasseur reçoit de la Reine l’ordre qui devrait interrompre l’histoire de Blanche-Neige, mais son refus ouvre au contraire le chemin de la forêt. Stuart Buchanan lui prête une voix prise entre l’autorité qu’il sert et l’effroi devant le meurtre demandé. Son apparition est courte : il lève son arme, renonce, demande pardon et révèle à la princesse le danger. Cette rupture suffit pourtant à faire de lui le premier personnage qui oppose une limite morale au pouvoir de la Reine.",
+    "nomsAlternatifs": [
+        {
+            "nom": "The Huntsman",
+            "nature": "original",
+            "langue": "en",
+            "sources": ["afi-snow-white"]
+        },
+        {
+            "nom": "Humbert",
+            "nature": "alias",
+            "sources": ["afi-snow-white"]
+        }
+    ],
+    "creation": {
+        "date": {
+            "valeur": "1937",
+            "precision": "annee"
+        },
+        "createurs": [
+            {
+                "nom": "Walt Disney Productions"
+            }
+        ]
+    },
+    "premiereApparition": {
+        "oeuvre": {
+            "nom": "Snow White and the Seven Dwarfs",
+            "type": "oeuvre",
+            "slug": "snow-white-and-the-seven-dwarfs"
+        },
+        "date": {
+            "valeur": "1937-12-21",
+            "precision": "jour"
+        }
+    },
+    "espece": "humain",
+    "blocsEditoriaux": [
+        {
+            "type": "caractere",
+            "eyebrow": "Refus",
+            "titre": "Faire basculer le récit en désobéissant",
+            "paragraphes": [
+                "La Reine choisit le Chasseur comme prolongement de son autorité et exige une preuve matérielle de la mort de Blanche-Neige. La scène le place d’abord dans la position d’un exécutant dont la force ne devrait laisser aucune issue.",
+                "Son geste s’interrompt pourtant au dernier instant. Incapable de frapper, il avoue le complot et ordonne à la princesse de fuir assez loin pour échapper au château.",
+                "Le personnage ne revient pas chercher une récompense ni rejoindre les alliés. Son unique décision suffit : en refusant d’obéir, il transforme une exécution annoncée en fuite et rend possible tout le récit de la chaumière."
+            ],
+            "sources": ["d23-snow-white-film", "afi-snow-white"]
+        }
+    ],
+    "sources": ["d23-snow-white-film", "afi-snow-white"]
+}

@@ -68,5 +68,40 @@
         "type": "personnage",
         "metadata": { "categories": ["cercle-de-mickey"] },
         "sousTitre": "Le chien de Mickey qui raconte tout sans parler"
+    },
+    {
+        "slug": "blanche-neige",
+        "nom": "Blanche-Neige",
+        "type": "personnage",
+        "metadata": { "categories": ["protagoniste"] },
+        "sousTitre": "La princesse dont la présence devait rendre le long métrage crédible"
+    },
+    {
+        "slug": "la-reine",
+        "nom": "La Reine",
+        "type": "personnage",
+        "metadata": { "categories": ["antagoniste"] },
+        "sousTitre": "La souveraine qui traverse le miroir pour devenir Sorcière"
+    },
+    {
+        "slug": "le-prince",
+        "nom": "Le Prince",
+        "type": "personnage",
+        "metadata": { "categories": ["allie"] },
+        "sousTitre": "La promesse chantée qui encadre le destin de Blanche-Neige"
+    },
+    {
+        "slug": "le-chasseur",
+        "nom": "Le Chasseur",
+        "type": "personnage",
+        "metadata": { "categories": ["allie"] },
+        "sousTitre": "L’exécutant qui rompt l’ordre de la Reine au seuil de la forêt"
+    },
+    {
+        "slug": "le-miroir-magique",
+        "nom": "Le Miroir magique",
+        "type": "personnage",
+        "metadata": { "categories": ["figure-magique"] },
+        "sousTitre": "La voix de vérité qui met la jalousie de la Reine en mouvement"
     }
 ]
