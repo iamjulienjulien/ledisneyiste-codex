@@ -19,14 +19,31 @@
     color: inherit;
 }
 
+.root::before {
+    position: absolute;
+    z-index: 0;
+    content: "";
+    pointer-events: none;
+}
+
 .root > * {
     position: relative;
     z-index: 1;
 }
 
+.plain {
+    border: 1px solid transparent;
+    background: transparent;
+}
+
 .surface {
     border: 1px solid transparent;
     background: var(--color-surface);
+}
+
+.muted {
+    border: 1px solid transparent;
+    background: var(--color-surface-muted);
 }
 
 .outline {
@@ -36,11 +53,46 @@
 
 .accent {
     border: 1px solid var(--panel-accent-line);
+    background: var(--color-surface);
+}
+
+.accent::before {
+    background: var(--panel-accent);
+}
+
+.tinted {
+    border: 1px solid var(--panel-accent-line);
     background:
-        linear-gradient(90deg, var(--panel-accent) 0 0.25rem, transparent 0),
-        linear-gradient(135deg, var(--panel-accent-soft), transparent 48%),
+        linear-gradient(135deg, var(--panel-accent-soft), transparent 56%),
         var(--color-surface);
-    box-shadow: var(--shadow-soft);
+}
+
+.accentTop::before {
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 0.25rem;
+}
+
+.accentEnd::before {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 0.25rem;
+}
+
+.accentBottom::before {
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 0.25rem;
+}
+
+.accentStart::before {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 0.25rem;
 }
 
 .header,
@@ -49,12 +101,38 @@
     padding: var(--panel-padding);
 }
 
-.dividers .header {
+.dividerHeader .header,
+.dividersBoth .header {
     border-bottom: 1px solid var(--color-line);
 }
 
-.dividers .footer {
+.dividerFooter .footer,
+.dividersBoth .footer {
     border-top: 1px solid var(--color-line);
+}
+
+.elevationNone {
+    box-shadow: none;
+}
+
+.elevationSoft {
+    box-shadow: var(--shadow-soft);
+}
+
+.elevationStrong {
+    box-shadow:
+        var(--shadow-soft),
+        0 0 0 1px var(--panel-accent-line);
+}
+
+.scrollBody {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+}
+
+.scrollBody .body {
+    overscroll-behavior: contain;
+    overflow: auto;
 }
 
 .paddingNone {
@@ -95,8 +173,14 @@
 
 @media (forced-colors: active) {
     .surface,
+    .muted,
     .outline,
-    .accent {
+    .accent,
+    .tinted {
         border-color: CanvasText;
+    }
+
+    .accent::before {
+        background: CanvasText;
     }
 }
