@@ -1,0 +1,54 @@
+{
+    "slug": "prof",
+    "type": "personnage",
+    "introduction": "Prof se donne la responsabilité de parler et de décider pour les Sept Nains, même lorsque les mots se bousculent avant de sortir. Ses lunettes, son maintien et la voix de Roy Atwell installent une autorité que le groupe accepte sans cesser de la chahuter. Il montre ainsi qu’un meneur peut organiser l’action sans devenir un chef infaillible.",
+    "nomsAlternatifs": [
+        {
+            "nom": "Doc",
+            "nature": "original",
+            "langue": "en",
+            "sources": [
+                "d23-seven-dwarfs-personality",
+                "d23-wish-animation-nods"
+            ]
+        }
+    ],
+    "creation": {
+        "date": { "valeur": "1937", "precision": "annee" },
+        "createurs": [
+            { "nom": "Fred Moore" },
+            { "nom": "Vladimir “Bill” Tytla" }
+        ]
+    },
+    "premiereApparition": {
+        "oeuvre": {
+            "nom": "Snow White and the Seven Dwarfs",
+            "type": "oeuvre",
+            "slug": "snow-white-and-the-seven-dwarfs"
+        },
+        "date": { "valeur": "1937-12-21", "precision": "jour" }
+    },
+    "espece": "nain",
+    "blocsEditoriaux": [
+        {
+            "type": "caractere",
+            "eyebrow": "Personnalité",
+            "titre": "Diriger le groupe sans dominer la scène",
+            "paragraphes": [
+                "Walt Disney présente Doc comme le meneur autoproclamé des Sept Nains. Prof prend l’initiative devant l’inconnu, distribue la parole et tente de transformer les réactions de chacun en décision commune.",
+                "Ses hésitations verbales empêchent pourtant cette autorité de devenir rigide. L’animation distingue ainsi son rôle de sa capacité réelle à tout maîtriser : il ouvre la marche, mais reste un membre de la troupe soumis au même désordre comique."
+            ],
+            "sources": [
+                "d23-seven-dwarfs-personality",
+                "loc-snow-white-kaufman"
+            ]
+        }
+    ],
+    "sources": [
+        "d23-seven-dwarfs-personality",
+        "d23-wish-animation-nods",
+        "disney-fr-seven-dwarfs-names",
+        "loc-snow-white-kaufman",
+        "afi-snow-white"
+    ]
+}

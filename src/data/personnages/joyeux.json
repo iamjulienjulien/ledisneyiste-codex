@@ -1,0 +1,55 @@
+{
+    "slug": "joyeux",
+    "type": "personnage",
+    "introduction": "Joyeux porte jusque dans son nom la disponibilité avec laquelle il accueille le monde. Son sourire, son rire et la voix d’Otis Harlan donnent au groupe un élan qui contraste avec les précautions de Prof et les refus de Grincheux. Sa personnalité ne réclame pas une intrigue séparée : elle entretient la chaleur collective grâce à laquelle Blanche-Neige peut trouver une place dans la chaumière.",
+    "nomsAlternatifs": [
+        {
+            "nom": "Happy",
+            "nature": "original",
+            "langue": "en",
+            "sources": [
+                "d23-seven-dwarfs-personality",
+                "d23-wish-animation-nods"
+            ]
+        }
+    ],
+    "creation": {
+        "date": { "valeur": "1937", "precision": "annee" },
+        "createurs": [
+            { "nom": "Fred Moore" },
+            { "nom": "Vladimir “Bill” Tytla" }
+        ]
+    },
+    "premiereApparition": {
+        "oeuvre": {
+            "nom": "Snow White and the Seven Dwarfs",
+            "type": "oeuvre",
+            "slug": "snow-white-and-the-seven-dwarfs"
+        },
+        "date": { "valeur": "1937-12-21", "precision": "jour" }
+    },
+    "espece": "nain",
+    "blocsEditoriaux": [
+        {
+            "type": "caractere",
+            "eyebrow": "Élan",
+            "titre": "Faire du sourire une force collective",
+            "paragraphes": [
+                "Joyeux réagit avant tout par l’adhésion. Son visage ouvert et son énergie rendent immédiatement visible la disposition que son nom annonce, selon le principe qui permet au public de distinguer les sept nains dès leurs premiers gestes.",
+                "Cette constance soutient les scènes de groupe. Sans prendre la tête de la troupe, il facilite le passage de la surprise à l’accueil, puis du travail à la danse, et maintient dans la chaumière un espace où la peur peut momentanément reculer."
+            ],
+            "sources": [
+                "d23-seven-dwarfs-personality",
+                "d23-wish-animation-nods",
+                "loc-snow-white-kaufman"
+            ]
+        }
+    ],
+    "sources": [
+        "d23-seven-dwarfs-personality",
+        "d23-wish-animation-nods",
+        "disney-fr-seven-dwarfs-names",
+        "loc-snow-white-kaufman",
+        "afi-snow-white"
+    ]
+}

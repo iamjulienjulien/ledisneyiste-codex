@@ -430,25 +430,39 @@
             "slug": "le-miroir-magique"
         },
         {
-            "nom": "Prof"
+            "nom": "Prof",
+            "type": "personnage",
+            "slug": "prof"
         },
         {
-            "nom": "Grincheux"
+            "nom": "Grincheux",
+            "type": "personnage",
+            "slug": "grincheux"
         },
         {
-            "nom": "Joyeux"
+            "nom": "Joyeux",
+            "type": "personnage",
+            "slug": "joyeux"
         },
         {
-            "nom": "Dormeur"
+            "nom": "Dormeur",
+            "type": "personnage",
+            "slug": "dormeur"
         },
         {
-            "nom": "Timide"
+            "nom": "Timide",
+            "type": "personnage",
+            "slug": "timide"
         },
         {
-            "nom": "Atchoum"
+            "nom": "Atchoum",
+            "type": "personnage",
+            "slug": "atchoum"
         },
         {
-            "nom": "Simplet"
+            "nom": "Simplet",
+            "type": "personnage",
+            "slug": "simplet"
         }
     ],
     "blocsEditoriaux": [

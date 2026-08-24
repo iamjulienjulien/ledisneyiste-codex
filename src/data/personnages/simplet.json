@@ -1,0 +1,55 @@
+{
+    "slug": "simplet",
+    "type": "personnage",
+    "introduction": "Simplet ne formule pas de dialogue, mais il n’est jamais absent de la conversation. Ses oreilles, ses mains, ses regards et ses déplacements composent un langage de pantomime que les autres nains comprennent immédiatement. Eddie Collins contribue à sa présence sonore, tandis que l’animation fait de son innocence un point de contact direct entre le groupe, Blanche-Neige et le public.",
+    "nomsAlternatifs": [
+        {
+            "nom": "Dopey",
+            "nature": "original",
+            "langue": "en",
+            "sources": [
+                "d23-seven-dwarfs-personality",
+                "d23-wish-animation-nods"
+            ]
+        }
+    ],
+    "creation": {
+        "date": { "valeur": "1937", "precision": "annee" },
+        "createurs": [
+            { "nom": "Fred Moore" },
+            { "nom": "Vladimir “Bill” Tytla" }
+        ]
+    },
+    "premiereApparition": {
+        "oeuvre": {
+            "nom": "Snow White and the Seven Dwarfs",
+            "type": "oeuvre",
+            "slug": "snow-white-and-the-seven-dwarfs"
+        },
+        "date": { "valeur": "1937-12-21", "precision": "jour" }
+    },
+    "espece": "nain",
+    "blocsEditoriaux": [
+        {
+            "type": "caractere",
+            "eyebrow": "Pantomime",
+            "titre": "Parler avec tout le corps",
+            "paragraphes": [
+                "Simplet transforme le silence en espace de jeu. Ses réactions sont plus amples, ses intentions passent par le regard et chaque tentative de suivre les autres peut devenir une petite scène autonome.",
+                "Cette innocence n’efface pas son appartenance au groupe. Elle lui donne une autre manière d’y participer : sans discours, il rend visibles la curiosité, l’affection et la peur, et rappelle que l’animation peut construire une pensée uniquement par le mouvement."
+            ],
+            "sources": [
+                "d23-seven-dwarfs-personality",
+                "d23-wish-animation-nods",
+                "loc-snow-white-kaufman"
+            ]
+        }
+    ],
+    "sources": [
+        "d23-seven-dwarfs-personality",
+        "d23-wish-animation-nods",
+        "disney-fr-seven-dwarfs-names",
+        "loc-snow-white-kaufman",
+        "afi-snow-white"
+    ]
+}

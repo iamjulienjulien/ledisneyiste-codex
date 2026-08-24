@@ -1,0 +1,55 @@
+{
+    "slug": "timide",
+    "type": "personnage",
+    "introduction": "Timide laisse ses sentiments apparaître avant de parvenir à les formuler. Son regard se dérobe, ses doigts se nouent dans sa barbe et la voix de Scotty Mattraw prolonge cette hésitation jusque dans chaque phrase. Son affection pour Blanche-Neige donne à la personnalité animation un registre tendre où le moindre changement d’attitude devient lisible.",
+    "nomsAlternatifs": [
+        {
+            "nom": "Bashful",
+            "nature": "original",
+            "langue": "en",
+            "sources": [
+                "d23-seven-dwarfs-personality",
+                "d23-wish-animation-nods"
+            ]
+        }
+    ],
+    "creation": {
+        "date": { "valeur": "1937", "precision": "annee" },
+        "createurs": [
+            { "nom": "Fred Moore" },
+            { "nom": "Vladimir “Bill” Tytla" }
+        ]
+    },
+    "premiereApparition": {
+        "oeuvre": {
+            "nom": "Snow White and the Seven Dwarfs",
+            "type": "oeuvre",
+            "slug": "snow-white-and-the-seven-dwarfs"
+        },
+        "date": { "valeur": "1937-12-21", "precision": "jour" }
+    },
+    "espece": "nain",
+    "blocsEditoriaux": [
+        {
+            "type": "caractere",
+            "eyebrow": "Émotion",
+            "titre": "Faire passer la tendresse par le geste",
+            "paragraphes": [
+                "Le film définit Timide par une sensibilité qui envahit son corps. Il détourne les yeux, rougit et se cache dans sa barbe dès que l’attention se pose sur lui, en particulier devant Blanche-Neige.",
+                "Sa réserve ne le rend pas indistinct. Elle produit au contraire une gestuelle immédiatement reconnaissable et montre comment l’animation peut laisser un personnage exprimer davantage par ses réactions que par les mots qu’il n’ose pas prononcer."
+            ],
+            "sources": [
+                "d23-seven-dwarfs-personality",
+                "d23-wish-animation-nods",
+                "loc-snow-white-kaufman"
+            ]
+        }
+    ],
+    "sources": [
+        "d23-seven-dwarfs-personality",
+        "d23-wish-animation-nods",
+        "disney-fr-seven-dwarfs-names",
+        "loc-snow-white-kaufman",
+        "afi-snow-white"
+    ]
+}

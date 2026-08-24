@@ -1,0 +1,56 @@
+{
+    "slug": "atchoum",
+    "type": "personnage",
+    "introduction": "Atchoum vit sous la menace d’un éternuement capable d’emporter tout ce que la scène vient d’ordonner. Billy Gilbert donne à cette attente une voix qui gonfle jusqu’à l’explosion, tandis que les autres nains tentent souvent d’en contenir les effets. Ce trait unique devient un véritable mécanisme collectif : son corps annonce le gag et toute la troupe se réorganise autour de lui.",
+    "nomsAlternatifs": [
+        {
+            "nom": "Sneezy",
+            "nature": "original",
+            "langue": "en",
+            "sources": [
+                "d23-seven-dwarfs-personality",
+                "d23-wish-animation-nods"
+            ]
+        }
+    ],
+    "creation": {
+        "date": { "valeur": "1937", "precision": "annee" },
+        "createurs": [
+            { "nom": "Fred Moore" },
+            { "nom": "Vladimir “Bill” Tytla" }
+        ]
+    },
+    "premiereApparition": {
+        "oeuvre": {
+            "nom": "Snow White and the Seven Dwarfs",
+            "type": "oeuvre",
+            "slug": "snow-white-and-the-seven-dwarfs"
+        },
+        "date": { "valeur": "1937-12-21", "precision": "jour" }
+    },
+    "espece": "nain",
+    "blocsEditoriaux": [
+        {
+            "type": "caractere",
+            "eyebrow": "Mouvement",
+            "titre": "Construire un gag comme une déflagration annoncée",
+            "paragraphes": [
+                "Le rhume des foins d’Atchoum transforme une réaction involontaire en événement. L’éternuement se prépare assez longtemps pour que le public et les autres personnages en anticipent ensemble la puissance.",
+                "Cette montée fait de lui un moteur de mise en scène plutôt qu’un simple bruit récurrent. Les gestes destinés à l’arrêter, puis le désordre produit lorsqu’ils échouent, donnent à toute la troupe une occasion de révéler sa personnalité."
+            ],
+            "sources": [
+                "d23-seven-dwarfs-personality",
+                "d23-wish-animation-nods",
+                "loc-snow-white-kaufman"
+            ]
+        }
+    ],
+    "sources": [
+        "d23-seven-dwarfs-personality",
+        "d23-wish-animation-nods",
+        "d23-snow-white-film",
+        "disney-fr-seven-dwarfs-names",
+        "loc-snow-white-kaufman",
+        "afi-snow-white"
+    ]
+}

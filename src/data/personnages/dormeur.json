@@ -1,0 +1,56 @@
+{
+    "slug": "dormeur",
+    "type": "personnage",
+    "introduction": "Dormeur traverse le travail, la musique et le danger comme s’il restait toujours au bord d’un rêve. Ses paupières lourdes et la voix de Pinto Colvig suffisent à faire exister cette fatigue sans l’exclure de l’action commune. Le sommeil devient ainsi moins une absence qu’un rythme personnel, capable de produire ses propres gags au milieu d’une troupe toujours en mouvement.",
+    "nomsAlternatifs": [
+        {
+            "nom": "Sleepy",
+            "nature": "original",
+            "langue": "en",
+            "sources": [
+                "d23-seven-dwarfs-personality",
+                "d23-wish-animation-nods"
+            ]
+        }
+    ],
+    "creation": {
+        "date": { "valeur": "1937", "precision": "annee" },
+        "createurs": [
+            { "nom": "Fred Moore" },
+            { "nom": "Vladimir “Bill” Tytla" }
+        ]
+    },
+    "premiereApparition": {
+        "oeuvre": {
+            "nom": "Snow White and the Seven Dwarfs",
+            "type": "oeuvre",
+            "slug": "snow-white-and-the-seven-dwarfs"
+        },
+        "date": { "valeur": "1937-12-21", "precision": "jour" }
+    },
+    "espece": "nain",
+    "blocsEditoriaux": [
+        {
+            "type": "caractere",
+            "eyebrow": "Rythme",
+            "titre": "Rester dans la scène au bord du sommeil",
+            "paragraphes": [
+                "Dormeur est reconnaissable avant même de parler : ses yeux tombants, ses bâillements et ses mouvements ralentis semblent toujours répondre avec un temps de retard à l’agitation environnante.",
+                "Cette fatigue n’empêche ni le travail ni la solidarité. Elle module plutôt les scènes collectives en leur donnant un contretemps permanent, preuve que l’individualité d’un personnage peut tenir dans une manière singulière d’occuper le même mouvement que les autres."
+            ],
+            "sources": [
+                "d23-seven-dwarfs-personality",
+                "d23-wish-animation-nods",
+                "loc-snow-white-kaufman"
+            ]
+        }
+    ],
+    "sources": [
+        "d23-seven-dwarfs-personality",
+        "d23-wish-animation-nods",
+        "d23-pinto-colvig",
+        "disney-fr-seven-dwarfs-names",
+        "loc-snow-white-kaufman",
+        "afi-snow-white"
+    ]
+}

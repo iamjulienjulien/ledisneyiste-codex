@@ -103,5 +103,54 @@
         "type": "personnage",
         "metadata": { "categories": ["figure-magique"] },
         "sousTitre": "La voix de vérité qui met la jalousie de la Reine en mouvement"
+    },
+    {
+        "slug": "prof",
+        "nom": "Prof",
+        "type": "personnage",
+        "metadata": { "categories": ["allie"] },
+        "sousTitre": "Le meneur dont les mots courent parfois moins vite que les idées"
+    },
+    {
+        "slug": "grincheux",
+        "nom": "Grincheux",
+        "type": "personnage",
+        "metadata": { "categories": ["allie"] },
+        "sousTitre": "Le méfiant qui transforme son refus en attachement"
+    },
+    {
+        "slug": "joyeux",
+        "nom": "Joyeux",
+        "type": "personnage",
+        "metadata": { "categories": ["allie"] },
+        "sousTitre": "Le sourire qui accueille chaque événement comme une fête"
+    },
+    {
+        "slug": "dormeur",
+        "nom": "Dormeur",
+        "type": "personnage",
+        "metadata": { "categories": ["allie"] },
+        "sousTitre": "Le rêveur qui lutte contre le sommeil jusque dans l’action"
+    },
+    {
+        "slug": "timide",
+        "nom": "Timide",
+        "type": "personnage",
+        "metadata": { "categories": ["allie"] },
+        "sousTitre": "Le sensible dont chaque émotion monte jusqu’aux joues"
+    },
+    {
+        "slug": "atchoum",
+        "nom": "Atchoum",
+        "type": "personnage",
+        "metadata": { "categories": ["allie"] },
+        "sousTitre": "Le mineur dont chaque éternuement bouleverse la scène"
+    },
+    {
+        "slug": "simplet",
+        "nom": "Simplet",
+        "type": "personnage",
+        "metadata": { "categories": ["allie"] },
+        "sousTitre": "Le silencieux qui fait de tout son corps un langage"
     }
 ]

@@ -1,0 +1,56 @@
+{
+    "slug": "grincheux",
+    "type": "personnage",
+    "introduction": "Grincheux accueille Blanche-Neige par la méfiance et conteste presque chaque mouvement du groupe. La voix de Pinto Colvig et une animation faite de regards fermés, de bras croisés et d’explosions soudaines rendent son opposition immédiatement lisible. Pourtant, lorsqu’elle est menacée, cette résistance se transforme en attachement et le plus hostile des nains entraîne les autres à son secours.",
+    "nomsAlternatifs": [
+        {
+            "nom": "Grumpy",
+            "nature": "original",
+            "langue": "en",
+            "sources": [
+                "d23-seven-dwarfs-personality",
+                "d23-wish-animation-nods"
+            ]
+        }
+    ],
+    "creation": {
+        "date": { "valeur": "1937", "precision": "annee" },
+        "createurs": [
+            { "nom": "Fred Moore" },
+            { "nom": "Vladimir “Bill” Tytla" }
+        ]
+    },
+    "premiereApparition": {
+        "oeuvre": {
+            "nom": "Snow White and the Seven Dwarfs",
+            "type": "oeuvre",
+            "slug": "snow-white-and-the-seven-dwarfs"
+        },
+        "date": { "valeur": "1937-12-21", "precision": "jour" }
+    },
+    "espece": "nain",
+    "blocsEditoriaux": [
+        {
+            "type": "trajectoire",
+            "eyebrow": "Résistance",
+            "titre": "Laisser l’attachement traverser la colère",
+            "paragraphes": [
+                "Grincheux refuse d’abord la présence de Blanche-Neige et interprète le danger qu’elle fuit comme une menace pour la chaumière. Sa colère lui donne une fonction utile : il formule les risques que l’enthousiasme des autres voudrait oublier.",
+                "Le film ne le convertit pas par un discours. Ses gestes le trahissent progressivement, jusqu’au moment où il prend la tête de la poursuite contre la Sorcière puis pleure devant le cercueil. L’émotion devient d’autant plus forte qu’elle traverse une personnalité construite pour lui résister."
+            ],
+            "sources": [
+                "d23-wish-animation-nods",
+                "loc-snow-white-kaufman",
+                "d23-snow-white-film"
+            ]
+        }
+    ],
+    "sources": [
+        "d23-seven-dwarfs-personality",
+        "d23-wish-animation-nods",
+        "d23-pinto-colvig",
+        "disney-fr-seven-dwarfs-names",
+        "loc-snow-white-kaufman",
+        "afi-snow-white"
+    ]
+}
