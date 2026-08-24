@@ -1261,5 +1261,33 @@
         "datePublication": "2012-03-13",
         "url": "https://www.waltdisney.org/blog/important-women-disney-history-hazel-sewell",
         "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "d23-frank-churchill",
+        "titre": "Frank Churchill",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/walt-disney-legend/frank-churchill/",
+        "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "d23-leigh-harline",
+        "titre": "Leigh Harline",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/walt-disney-legend/leigh-harline/",
+        "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "d23-paul-smith",
+        "titre": "Paul Smith",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/walt-disney-legend/paul-smith/",
+        "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "nypl-snow-white-score",
+        "titre": "Walt Disney's Snow White and the Seven Dwarfs",
+        "editeur": "The New York Public Library",
+        "url": "https://www.nypl.org/research/research-catalog/bib/b21716446",
+        "dateConsultation": "2026-08-24"
     }
 ]

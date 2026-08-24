@@ -40,7 +40,9 @@
         },
         {
             "contributeur": {
-                "nom": "Frank Churchill"
+                "nom": "Frank Churchill",
+                "type": "contributeur",
+                "slug": "frank-churchill"
             },
             "roles": ["musique"]
         },

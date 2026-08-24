@@ -206,5 +206,26 @@
         "type": "contributeur",
         "metadata": { "categories": ["artiste"] },
         "sousTitre": "La pionnière de l’encrage devenue directrice artistique"
+    },
+    {
+        "slug": "frank-churchill",
+        "nom": "Frank Churchill",
+        "type": "contributeur",
+        "metadata": { "categories": ["musicien"] },
+        "sousTitre": "Le mélodiste qui fit chanter le premier long métrage"
+    },
+    {
+        "slug": "leigh-harline",
+        "nom": "Leigh Harline",
+        "type": "contributeur",
+        "metadata": { "categories": ["musicien"] },
+        "sousTitre": "Le compositeur qui donna au conte sa profondeur symphonique"
+    },
+    {
+        "slug": "paul-j-smith",
+        "nom": "Paul J. Smith",
+        "type": "contributeur",
+        "metadata": { "categories": ["musicien"] },
+        "sousTitre": "Le compositeur d’émotions qui accompagna trois décennies de Disney"
     }
 ]

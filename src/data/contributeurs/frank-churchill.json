@@ -1,0 +1,52 @@
+{
+    "slug": "frank-churchill",
+    "type": "contributeur",
+    "introduction": "Frank Churchill comprend très tôt qu’une chanson peut faire davantage qu’accompagner un dessin animé : elle peut révéler un personnage, porter une émotion hors de l’écran et rester dans la mémoire du public. Après avoir donné aux Trois Petits Cochons leur refrain contre la peur, il compose pour Blanche-Neige et les Sept Nains les mélodies qui permettent au premier long métrage Disney de chanter son récit sans interrompre son mouvement.",
+    "blocsEditoriaux": [
+        {
+            "type": "signature",
+            "eyebrow": "Mélodie",
+            "titre": "Faire avancer le récit en le faisant chanter",
+            "paragraphes": [
+                "Frank Churchill rejoint Disney en décembre 1930 et compose pour près de soixante-cinq courts métrages. Son succès décisif arrive avec « Who’s Afraid of the Big Bad Wolf? », dont la simplicité mélodique transforme Three Little Pigs en phénomène populaire.",
+                "Pour Blanche-Neige et les Sept Nains, Churchill part des personnages et des situations. « Whistle While You Work », « Heigh-Ho » ou « Someday My Prince Will Come » ne forment pas des pauses musicales : chaque chanson révèle un désir, règle le rythme d’une action ou rassemble un groupe autour d’un même geste.",
+                "Avec les paroles de Larry Morey et la partition développée par Leigh Harline et Paul J. Smith, ces thèmes traversent le film et donnent à son univers une continuité immédiatement reconnaissable."
+            ],
+            "sources": [
+                "d23-frank-churchill",
+                "nypl-snow-white-score",
+                "afi-snow-white"
+            ]
+        },
+        {
+            "type": "trajectoire",
+            "eyebrow": "Du court au long métrage",
+            "titre": "Donner au studio une voix durable",
+            "paragraphes": [
+                "Le passage de Three Little Pigs à Blanche-Neige montre comment Churchill élargit son langage sans perdre sa force populaire. La chanson du court métrage pouvait devenir un succès autonome ; celles du long métrage doivent en plus soutenir une architecture dramatique de plus d’une heure.",
+                "Devenu superviseur de la musique, il poursuit ce travail sur Dumbo et Bambi. Ses mélodies installent une manière Disney de faire naître l’émotion par une chanson simple, étroitement liée à la personnalité et capable de survivre au film qui l’a fait entendre."
+            ],
+            "sources": ["d23-frank-churchill"]
+        }
+    ],
+    "naissance": {
+        "date": { "valeur": "1901-10-20", "precision": "jour" },
+        "lieu": "Rumford, Maine, États-Unis"
+    },
+    "deces": {
+        "date": { "valeur": "1942-05-14", "precision": "jour" },
+        "lieu": "Newhall, Californie, États-Unis"
+    },
+    "roles": ["compositeur", "auteur de chansons", "superviseur de la musique"],
+    "periodesActivite": [
+        {
+            "debut": { "valeur": "1930", "precision": "annee" },
+            "fin": { "valeur": "1942", "precision": "annee" }
+        }
+    ],
+    "sources": [
+        "d23-frank-churchill",
+        "nypl-snow-white-score",
+        "afi-snow-white"
+    ]
+}

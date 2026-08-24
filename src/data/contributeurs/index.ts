@@ -3,6 +3,7 @@ import clarenceNashJson from "@/data/contributeurs/clarence-nash.json";
 import albertHurterJson from "@/data/contributeurs/albert-hurter.json";
 import davidHandJson from "@/data/contributeurs/david-hand.json";
 import ericLarsonJson from "@/data/contributeurs/eric-larson.json";
+import frankChurchillJson from "@/data/contributeurs/frank-churchill.json";
 import frankThomasJson from "@/data/contributeurs/frank-thomas.json";
 import fredMooreJson from "@/data/contributeurs/fred-moore.json";
 import grimNatwickJson from "@/data/contributeurs/grim-natwick.json";
@@ -12,11 +13,13 @@ import hazelSewellJson from "@/data/contributeurs/hazel-sewell.json";
 import johnLounsberyJson from "@/data/contributeurs/john-lounsbery.json";
 import joeGrantJson from "@/data/contributeurs/joe-grant.json";
 import lesClarkJson from "@/data/contributeurs/les-clark.json";
+import leighHarlineJson from "@/data/contributeurs/leigh-harline.json";
 import marcDavisJson from "@/data/contributeurs/marc-davis.json";
 import miltKahlJson from "@/data/contributeurs/milt-kahl.json";
 import normanFergusonJson from "@/data/contributeurs/norman-ferguson.json";
 import ollieJohnstonJson from "@/data/contributeurs/ollie-johnston.json";
 import pintoColvigJson from "@/data/contributeurs/pinto-colvig.json";
+import paulJSmithJson from "@/data/contributeurs/paul-j-smith.json";
 import royODisneyJson from "@/data/contributeurs/roy-o-disney.json";
 import ubIwerksJson from "@/data/contributeurs/ub-iwerks.json";
 import wardKimballJson from "@/data/contributeurs/ward-kimball.json";
@@ -53,6 +56,9 @@ export const fichesContributeurs = [
     joeGrantJson as FicheContributeurDisney,
     gustafTenggrenJson as FicheContributeurDisney,
     hazelSewellJson as FicheContributeurDisney,
+    frankChurchillJson as FicheContributeurDisney,
+    leighHarlineJson as FicheContributeurDisney,
+    paulJSmithJson as FicheContributeurDisney,
 ];
 
 export function getFicheContributeurBySlug(slug: string) {

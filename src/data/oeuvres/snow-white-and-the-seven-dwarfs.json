@@ -352,23 +352,36 @@
         },
         {
             "contributeur": {
-                "nom": "Frank Churchill"
+                "nom": "Frank Churchill",
+                "type": "contributeur",
+                "slug": "frank-churchill"
             },
-            "roles": ["musique", "chansons"],
+            "roles": ["composition des chansons", "musique"],
             "domaine": "musique-chansons"
         },
         {
             "contributeur": {
-                "nom": "Leigh Harline"
+                "nom": "Leigh Harline",
+                "type": "contributeur",
+                "slug": "leigh-harline"
             },
-            "roles": ["musique"],
+            "roles": ["partition", "musique additionnelle"],
             "domaine": "musique-chansons"
         },
         {
             "contributeur": {
-                "nom": "Paul J. Smith"
+                "nom": "Paul J. Smith",
+                "type": "contributeur",
+                "slug": "paul-j-smith"
             },
-            "roles": ["musique"],
+            "roles": ["partition", "musique additionnelle"],
+            "domaine": "musique-chansons"
+        },
+        {
+            "contributeur": {
+                "nom": "Larry Morey"
+            },
+            "roles": ["paroles des chansons"],
             "domaine": "musique-chansons"
         },
         {

@@ -28,6 +28,14 @@
         },
         {
             "contributeur": {
+                "nom": "Leigh Harline",
+                "type": "contributeur",
+                "slug": "leigh-harline"
+            },
+            "roles": ["musique"]
+        },
+        {
+            "contributeur": {
                 "nom": "Bill Garity"
             },
             "roles": ["développement de la caméra multiplane"]

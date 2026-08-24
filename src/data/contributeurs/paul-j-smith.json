@@ -1,0 +1,49 @@
+{
+    "slug": "paul-j-smith",
+    "type": "contributeur",
+    "introduction": "Paul J. Smith accompagne l’animation Disney pendant près de trois décennies en donnant à chaque image un prolongement orchestral précis. Musicien formé à plusieurs instruments, il connaît l’orchestre de l’intérieur et sait transformer ses couleurs en mouvement, en tension ou en respiration. Sur Blanche-Neige et les Sept Nains, cette polyvalence aide la musique du cartoon à devenir une véritable partition de cinéma.",
+    "blocsEditoriaux": [
+        {
+            "type": "signature",
+            "eyebrow": "Orchestre",
+            "titre": "Mettre toutes les couleurs de la musique au service de l’image",
+            "paragraphes": [
+                "Paul J. Smith grandit dans une famille de musiciens et apprend très jeune le piano, le violon, la trompette et l’alto. Cette connaissance pratique des instruments lui donne une compréhension directe de leurs timbres et de la façon dont ils peuvent se répondre.",
+                "Arrivé chez Disney en 1934, il participe à la partition de Blanche-Neige et les Sept Nains avec Frank Churchill et Leigh Harline. L’enjeu n’est plus seulement de ponctuer des gestes : l’orchestre doit installer une atmosphère, relier les séquences et porter la peur, l’attente ou l’apaisement sur toute la durée du film.",
+                "La nomination collective de la partition à l’Oscar mesure l’ampleur de ce changement, même si elle ne constitue pas une récompense obtenue dans le palmarès du Codex."
+            ],
+            "sources": [
+                "d23-paul-smith",
+                "nypl-snow-white-score",
+                "afi-snow-white"
+            ]
+        },
+        {
+            "type": "trajectoire",
+            "eyebrow": "Trois décennies",
+            "titre": "Faire circuler le langage du cartoon vers le documentaire",
+            "paragraphes": [
+                "Smith remporte ensuite l’Oscar de la partition de Pinocchio avec Leigh Harline et Ned Washington. Son travail traverse les longs métrages d’animation, de Saludos Amigos à Cendrillon, mais ne s’y limite pas.",
+                "Dans les années 1950, il compose pour la plupart des True-Life Adventures. Les techniques musicales apprises au contact de l’animation donnent aux animaux filmés un rythme, une personnalité et une présence narrative sans les réduire à de simples illustrations documentaires.",
+                "Lorsqu’il quitte Disney en 1962, son parcours relie ainsi le premier long métrage animé aux grandes productions en prises de vues réelles du studio."
+            ],
+            "sources": ["d23-paul-smith"]
+        }
+    ],
+    "naissance": {
+        "date": { "valeur": "1906-10-30", "precision": "jour" },
+        "lieu": "Calumet, Michigan, États-Unis"
+    },
+    "deces": {
+        "date": { "valeur": "1985-01-25", "precision": "jour" },
+        "lieu": "Glendale, Californie, États-Unis"
+    },
+    "roles": ["compositeur"],
+    "periodesActivite": [
+        {
+            "debut": { "valeur": "1934", "precision": "annee" },
+            "fin": { "valeur": "1962", "precision": "annee" }
+        }
+    ],
+    "sources": ["d23-paul-smith", "nypl-snow-white-score", "afi-snow-white"]
+}

@@ -1,0 +1,48 @@
+{
+    "slug": "leigh-harline",
+    "type": "contributeur",
+    "introduction": "Leigh Harline donne à la musique Disney une profondeur qui ne dépend plus seulement de la synchronisation immédiate entre un geste et un son. Compositeur, arrangeur et orchestrateur, il construit des contrechants, des harmonies et des atmosphères capables de soutenir les silences comme les transformations. Blanche-Neige et les Sept Nains lui offre l’espace nécessaire pour faire de la partition un décor invisible du récit.",
+    "blocsEditoriaux": [
+        {
+            "type": "signature",
+            "eyebrow": "Partition",
+            "titre": "Faire entendre ce que l’image ne dit pas",
+            "paragraphes": [
+                "Harline rejoint Disney en 1932 après une formation musicale et plusieurs années de radio. Dans plus de cinquante courts métrages, il développe une écriture mélodique dont les harmonies et les contrechants donnent aux images une richesse qui dépasse le simple accompagnement.",
+                "Sur Blanche-Neige et les Sept Nains, il participe à la partition aux côtés de Frank Churchill et Paul J. Smith. Sa musique lie les chansons aux passages dramatiques et accompagne notamment la transformation de la Reine, où l’orchestre rend sensible une menace que le dialogue seul ne pourrait contenir.",
+                "La partition permet ainsi au film de changer d’échelle : les motifs connus restent présents, mais leur orchestration donne au conte une continuité et une gravité de long métrage."
+            ],
+            "sources": [
+                "d23-leigh-harline",
+                "nypl-snow-white-score",
+                "afi-snow-white"
+            ]
+        },
+        {
+            "type": "trajectoire",
+            "eyebrow": "Après Blanche-Neige",
+            "titre": "Écrire la mélodie qui deviendra une signature",
+            "paragraphes": [
+                "Harline poursuit cette recherche sur Pinocchio. Avec le parolier Ned Washington, il compose « When You Wish Upon a Star », chanson qui reçoit un Oscar et devient progressivement l’une des signatures musicales les plus durables de Disney.",
+                "Il quitte le studio en 1941 et travaille ensuite pour de nombreuses productions hollywoodiennes. Son parcours montre comment le langage élaboré dans les Silly Symphonies puis élargi par Blanche-Neige pouvait rejoindre pleinement la tradition symphonique du cinéma."
+            ],
+            "sources": ["d23-leigh-harline"]
+        }
+    ],
+    "naissance": {
+        "date": { "valeur": "1907-03-26", "precision": "jour" },
+        "lieu": "Salt Lake City, Utah, États-Unis"
+    },
+    "deces": {
+        "date": { "valeur": "1969-12-10", "precision": "jour" },
+        "lieu": "Long Beach, Californie, États-Unis"
+    },
+    "roles": ["compositeur", "arrangeur", "orchestrateur"],
+    "periodesActivite": [
+        {
+            "debut": { "valeur": "1932", "precision": "annee" },
+            "fin": { "valeur": "1941", "precision": "annee" }
+        }
+    ],
+    "sources": ["d23-leigh-harline", "nypl-snow-white-score", "afi-snow-white"]
+}
