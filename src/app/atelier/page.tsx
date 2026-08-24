@@ -22,6 +22,7 @@ import { PixieDustBleedDossier } from "./_components/PixieDustBleedDossier";
 import { PixieDustStickyRegionDossier } from "./_components/PixieDustStickyRegionDossier";
 import { PixieDustFieldDossier } from "./_components/PixieDustFieldDossier";
 import { PixieDustInputDossier } from "./_components/PixieDustInputDossier";
+import { PixieDustTextareaDossier } from "./_components/PixieDustTextareaDossier";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PalettesPellicule } from "./_components/PalettesPellicule";
 
@@ -170,7 +171,8 @@ const dialogues = [
     {
         nom: "PixieDustTextarea",
         role: "Recueillir une réponse développée",
-        statut: "À esquisser",
+        statut: "Esquisse",
+        href: "#pixie-dust-textarea",
     },
     {
         nom: "PixieDustSelect",
@@ -722,6 +724,7 @@ export default function AtelierPage() {
 
                 <PixieDustFieldDossier />
                 <PixieDustInputDossier />
+                <PixieDustTextareaDossier />
             </section>
 
             <section
