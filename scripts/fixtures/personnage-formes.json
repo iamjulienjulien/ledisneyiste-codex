@@ -1,0 +1,55 @@
+{
+    "slug": "fixture-personnage-formes",
+    "type": "personnage",
+    "introduction": "Fixture couvrant les variantes de noms et les différentes formes d’un même personnage.",
+    "nomsAlternatifs": [
+        {
+            "nom": "The Queen",
+            "nature": "original",
+            "langue": "en",
+            "sources": ["fixture-source-a"]
+        },
+        {
+            "nom": "The Evil Queen",
+            "nature": "alias",
+            "langue": "en",
+            "sources": ["fixture-source-b"]
+        }
+    ],
+    "formes": [
+        {
+            "slug": "reine",
+            "nom": "La Reine",
+            "description": "La forme royale sous laquelle le personnage gouverne et consulte le miroir.",
+            "sources": ["fixture-source-a"]
+        },
+        {
+            "slug": "sorciere",
+            "nom": "La Sorcière",
+            "description": "La forme transformée sous laquelle le même personnage apporte la pomme empoisonnée.",
+            "sources": ["fixture-source-b"]
+        }
+    ],
+    "creation": {
+        "date": {
+            "valeur": "1937",
+            "precision": "annee"
+        },
+        "createurs": [
+            {
+                "nom": "Créatrice ou créateur de référence"
+            }
+        ]
+    },
+    "premiereApparition": {
+        "oeuvre": {
+            "nom": "Œuvre de référence"
+        },
+        "date": {
+            "valeur": "1937",
+            "precision": "annee"
+        }
+    },
+    "espece": "humaine",
+    "sources": ["fixture-source-a", "fixture-source-b"]
+}

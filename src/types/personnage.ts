@@ -11,8 +11,30 @@ export type PersonnageDisney = EntreeCatalogueBase & {
     };
 };
 
+export type NatureNomAlternatifPersonnage =
+    "original" | "localise" | "alias" | "ancien";
+
+export type NomAlternatifPersonnage = {
+    nom: string;
+    nature: NatureNomAlternatifPersonnage;
+    langue?: string;
+    territoire?: string;
+    sources: string[];
+};
+
+export type FormePersonnage = {
+    slug: string;
+    nom: string;
+    description: string;
+    sources: string[];
+};
+
 export type FichePersonnageDisney = FicheCodexBase<"personnages"> & {
     type: "personnage";
+
+    nomsAlternatifs?: NomAlternatifPersonnage[];
+
+    formes?: FormePersonnage[];
 
     creation: {
         date: DateHistorique;
