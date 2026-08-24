@@ -4,7 +4,7 @@ import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTa
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieBadge } from "@/components/ui/PixieBadge";
-import { PixieDustCard } from "@/components/ui/PixieDustCard";
+import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieDustCluster } from "@/components/ui/PixieDustCluster";
 import { PixieDustFrame } from "@/components/ui/PixieDustFrame";
 import { PixieDustSection } from "@/components/ui/PixieDustSection";
@@ -661,7 +661,7 @@ export function PixieDustSplitDossier() {
                             minPaneWidth="md"
                             gap="lg"
                         >
-                            <PixieDustCard
+                            <PixieCard
                                 as="article"
                                 variant="outline"
                                 padding="lg"
@@ -672,8 +672,8 @@ export function PixieDustSplitDossier() {
                                 <h5 className="mt-3 text-2xl text-ink">
                                     Steamboat Willie
                                 </h5>
-                            </PixieDustCard>
-                            <PixieDustCard
+                            </PixieCard>
+                            <PixieCard
                                 as="article"
                                 variant="outline"
                                 padding="lg"
@@ -684,7 +684,7 @@ export function PixieDustSplitDossier() {
                                 <h5 className="mt-3 text-2xl text-ink">
                                     The Skeleton Dance
                                 </h5>
-                            </PixieDustCard>
+                            </PixieCard>
                         </PixieDustSplit>
                     </PixieDustSection>
                 </div>

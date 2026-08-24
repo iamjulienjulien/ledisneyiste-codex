@@ -4,7 +4,7 @@ import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
-import { PixieDustCard } from "@/components/ui/PixieDustCard";
+import { PixieCard } from "@/components/ui/PixieCard";
 import {
     PixieDustGrid,
     type PixieDustGridAlign,
@@ -221,7 +221,7 @@ ${itemOpening}
                                 {previewItems.map(
                                     ([year, title, description]) => {
                                         const card = (
-                                            <PixieDustCard
+                                            <PixieCard
                                                 as="article"
                                                 variant="outline"
                                                 padding="md"
@@ -236,7 +236,7 @@ ${itemOpening}
                                                 <p className="mt-3 text-sm leading-6 text-ink-soft">
                                                     {description}
                                                 </p>
-                                            </PixieDustCard>
+                                            </PixieCard>
                                         );
 
                                         return element === "div" ? (

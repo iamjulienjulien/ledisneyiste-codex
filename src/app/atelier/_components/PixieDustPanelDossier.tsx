@@ -591,7 +591,7 @@ export function PixieDustPanelDossier() {
 
                 <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
                     {[
-                        "Éprouver la différence entre PixieDustCard et PixieDustPanel dans les index.",
+                        "Éprouver la différence entre PixieCard et PixieDustPanel dans les index.",
                         "Vérifier si les trois zones couvrent les compositions réelles sans créer de slots supplémentaires.",
                         "Composer PixieDustInset dans le panneau sans confondre leurs responsabilités.",
                         "Valider l’espacement xl sur mobile et à 200 % de zoom.",

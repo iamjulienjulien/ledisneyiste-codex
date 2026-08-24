@@ -5,16 +5,16 @@ import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import {
-    PixieDustCard,
-    type PixieDustCardAccentPosition,
-    type PixieDustCardColor,
-    type PixieDustCardEffect,
-    type PixieDustCardEffectIntensity,
-    type PixieDustCardElement,
-    type PixieDustCardPadding,
-    type PixieDustCardRadius,
-    type PixieDustCardVariant,
-} from "@/components/ui/PixieDustCard";
+    PixieCard,
+    type PixieCardAccentPosition,
+    type PixieCardColor,
+    type PixieCardEffect,
+    type PixieCardEffectIntensity,
+    type PixieCardElement,
+    type PixieCardPadding,
+    type PixieCardRadius,
+    type PixieCardVariant,
+} from "@/components/ui/PixieCard";
 import { PixieLink } from "@/components/ui/PixieLink";
 import {
     getAtelierAnimationColor,
@@ -82,25 +82,25 @@ const frameWidths = {
     large: "max-w-2xl",
 } as const satisfies Record<"compact" | "moyen" | "large", string>;
 
-export function PixieDustCardPlayground() {
-    const [element, setElement] = useState<PixieDustCardElement>("article");
+export function PixieCardPlayground() {
+    const [element, setElement] = useState<PixieCardElement>("article");
     const [asChild, setAsChild] = useState(true);
-    const [variant, setVariant] = useState<PixieDustCardVariant>("accent");
-    const [padding, setPadding] = useState<PixieDustCardPadding>("md");
-    const [radius, setRadius] = useState<PixieDustCardRadius>("medium");
+    const [variant, setVariant] = useState<PixieCardVariant>("accent");
+    const [padding, setPadding] = useState<PixieCardPadding>("md");
+    const [radius, setRadius] = useState<PixieCardRadius>("medium");
     const [accentPosition, setAccentPosition] =
-        useState<PixieDustCardAccentPosition>("top");
-    const [effect, setEffect] = useState<PixieDustCardEffect>("projector");
+        useState<PixieCardAccentPosition>("top");
+    const [effect, setEffect] = useState<PixieCardEffect>("projector");
     const [effectIntensity, setEffectIntensity] =
-        useState<PixieDustCardEffectIntensity>("medium");
-    const [color, setColor] = useState<PixieDustCardColor>("rouge-crayon");
+        useState<PixieCardEffectIntensity>("medium");
+    const [color, setColor] = useState<PixieCardColor>("rouge-crayon");
     const [contentLength, setContentLength] = useState<
         "short" | "medium" | "long"
     >("medium");
     const [effectPreview, setEffectPreview] = useState(false);
     const [light, setLight] = useState<"sombre" | "claire">("sombre");
     const [frame, setFrame] = useState<"compact" | "moyen" | "large">("moyen");
-    const cardCode = `<PixieDustCard${asChild ? "\n    asChild" : `\n    as="${element}"`}
+    const cardCode = `<PixieCard${asChild ? "\n    asChild" : `\n    as="${element}"`}
     variant="${variant}"${color ? `\n    color="${color}"` : ""}
     padding="${padding}"
     radius="${radius}"
@@ -115,7 +115,7 @@ export function PixieDustCardPlayground() {
     </PixieLink>`
             : "{/* Contenu libre */}"
     }
-</PixieDustCard>`;
+</PixieCard>`;
     const code =
         !asChild && element === "li"
             ? `<ul>\n${cardCode
@@ -152,10 +152,10 @@ export function PixieDustCardPlayground() {
         "data-effect-preview": effectPreview ? "true" : undefined,
     } as const;
     const staticPreview = (
-        <PixieDustCard as={element} {...cardProps}>
+        <PixieCard as={element} {...cardProps}>
             {previewContent}
             <PixieLink
-                href="#pixie-dust-card-playground"
+                href="#pixie-card-playground"
                 variant="action"
                 color={color}
                 indicator="arrow"
@@ -163,12 +163,12 @@ export function PixieDustCardPlayground() {
             >
                 Examiner le plan
             </PixieLink>
-        </PixieDustCard>
+        </PixieCard>
     );
     const slottedPreview = (
-        <PixieDustCard asChild {...cardProps}>
+        <PixieCard asChild {...cardProps}>
             <PixieLink
-                href="#pixie-dust-card-playground"
+                href="#pixie-card-playground"
                 variant="surface"
                 color={color}
             >
@@ -177,7 +177,7 @@ export function PixieDustCardPlayground() {
                     Examiner le plan →
                 </span>
             </PixieLink>
-        </PixieDustCard>
+        </PixieCard>
     );
     const preview = asChild ? slottedPreview : staticPreview;
 
@@ -207,8 +207,7 @@ export function PixieDustCardPlayground() {
                                 disabled={asChild}
                                 onChange={(event) =>
                                     setElement(
-                                        event.target
-                                            .value as PixieDustCardElement,
+                                        event.target.value as PixieCardElement,
                                     )
                                 }
                                 className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink disabled:cursor-not-allowed disabled:opacity-50"

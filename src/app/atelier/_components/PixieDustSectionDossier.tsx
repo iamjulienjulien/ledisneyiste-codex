@@ -5,7 +5,7 @@ import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieBadge } from "@/components/ui/PixieBadge";
 import { PixieDustBackdrop } from "@/components/ui/PixieDustBackdrop";
-import { PixieDustCard } from "@/components/ui/PixieDustCard";
+import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieDustCluster } from "@/components/ui/PixieDustCluster";
 import {
     PixieDustSection,
@@ -421,7 +421,7 @@ export function PixieDustSectionDossier() {
                                     ),
                                 )}
                             </PixieDustCluster>
-                            <PixieDustCard
+                            <PixieCard
                                 as="article"
                                 variant="outline"
                                 padding="md"
@@ -429,7 +429,7 @@ export function PixieDustSectionDossier() {
                                 <h5 className="text-xl text-ink">
                                     The Skeleton Dance
                                 </h5>
-                            </PixieDustCard>
+                            </PixieCard>
                         </PixieDustSection>
                     </div>
                     <CodeExample>{`<PixieDustSection
@@ -696,7 +696,7 @@ export function PixieDustSectionDossier() {
                         <div className="grid gap-4 sm:grid-cols-2">
                             {["The Skeleton Dance", "Flowers and Trees"].map(
                                 (title) => (
-                                    <PixieDustCard
+                                    <PixieCard
                                         key={title}
                                         as="article"
                                         variant="outline"
@@ -705,7 +705,7 @@ export function PixieDustSectionDossier() {
                                         <h5 className="text-xl text-ink">
                                             {title}
                                         </h5>
-                                    </PixieDustCard>
+                                    </PixieCard>
                                 ),
                             )}
                         </div>

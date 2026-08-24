@@ -4,7 +4,7 @@ import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
-import { PixieDustCard } from "@/components/ui/PixieDustCard";
+import { PixieCard } from "@/components/ui/PixieCard";
 import {
     PixieDustRail,
     type PixieDustRailAlign,
@@ -75,7 +75,7 @@ function RailCard({
     description,
 }: Readonly<{ year: string; title: string; description: string }>) {
     return (
-        <PixieDustCard
+        <PixieCard
             as="article"
             variant="outline"
             padding="md"
@@ -86,7 +86,7 @@ function RailCard({
             <p className="mt-3 text-sm leading-6 text-ink-soft">
                 {description}
             </p>
-        </PixieDustCard>
+        </PixieCard>
     );
 }
 

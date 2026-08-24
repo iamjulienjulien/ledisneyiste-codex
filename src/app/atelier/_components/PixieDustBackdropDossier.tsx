@@ -10,7 +10,7 @@ import {
     type PixieDustBackdropRadius,
     type PixieDustBackdropVariant,
 } from "@/components/ui/PixieDustBackdrop";
-import { PixieDustCard } from "@/components/ui/PixieDustCard";
+import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieDustFrame } from "@/components/ui/PixieDustFrame";
 import { PixieDustPanel } from "@/components/ui/PixieDustPanel";
 import { PixieDustBackdropPlayground } from "./PixieDustBackdropPlayground";
@@ -228,7 +228,7 @@ function ArchiveCard({
     year,
 }: Readonly<{ title: string; year: string }>) {
     return (
-        <PixieDustCard
+        <PixieCard
             as="div"
             variant="outline"
             padding="md"
@@ -238,7 +238,7 @@ function ArchiveCard({
                 Archive · {year}
             </p>
             <h4 className="mt-2 text-xl text-ink">{title}</h4>
-        </PixieDustCard>
+        </PixieCard>
     );
 }
 
@@ -545,14 +545,14 @@ export function PixieDustBackdropDossier() {
                     className="mt-7"
                 >
                     <div className="grid gap-6 xl:grid-cols-3">
-                        <PixieDustCard as="div" variant="elevated" padding="md">
+                        <PixieCard as="div" variant="elevated" padding="md">
                             <p className="text-xs font-eyebrow uppercase tracking-[0.14em] text-muted">
                                 Card
                             </p>
                             <h4 className="mt-2 text-xl text-ink">
                                 Une archive autonome
                             </h4>
-                        </PixieDustCard>
+                        </PixieCard>
 
                         <PixieDustPanel as="div" variant="outline" padding="md">
                             <p className="text-xs font-eyebrow uppercase tracking-[0.14em] text-muted">

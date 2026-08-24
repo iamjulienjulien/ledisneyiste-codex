@@ -4,7 +4,7 @@ import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTa
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieDustBackdrop } from "@/components/ui/PixieDustBackdrop";
-import { PixieDustCard } from "@/components/ui/PixieDustCard";
+import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieDustContainer } from "@/components/ui/PixieDustContainer";
 import {
     PixieDustStack,
@@ -561,7 +561,7 @@ export function PixieDustStackDossier() {
                                     "Steamboat Willie",
                                     "The Skeleton Dance",
                                 ].map((title) => (
-                                    <PixieDustCard
+                                    <PixieCard
                                         key={title}
                                         as="article"
                                         variant="outline"
@@ -570,7 +570,7 @@ export function PixieDustStackDossier() {
                                         <h5 className="text-xl text-ink">
                                             {title}
                                         </h5>
-                                    </PixieDustCard>
+                                    </PixieCard>
                                 ))}
                             </PixieDustStack>
                         </PixieDustStack>

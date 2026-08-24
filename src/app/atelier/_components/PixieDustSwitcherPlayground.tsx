@@ -4,7 +4,7 @@ import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
-import { PixieDustCard } from "@/components/ui/PixieDustCard";
+import { PixieCard } from "@/components/ui/PixieCard";
 import {
     PixieDustSwitcher,
     type PixieDustSwitcherAlign,
@@ -60,7 +60,7 @@ function SwitcherItem({
     index,
 }: Readonly<{ title: string; description: string; index: number }>) {
     return (
-        <PixieDustCard as="article" variant="outline" padding="md">
+        <PixieCard as="article" variant="outline" padding="md">
             <p className="font-mono text-xs text-accent">
                 Plan {String(index + 1).padStart(2, "0")}
             </p>
@@ -68,7 +68,7 @@ function SwitcherItem({
             <p className="mt-3 text-sm leading-6 text-ink-soft">
                 {description}
             </p>
-        </PixieDustCard>
+        </PixieCard>
     );
 }
 

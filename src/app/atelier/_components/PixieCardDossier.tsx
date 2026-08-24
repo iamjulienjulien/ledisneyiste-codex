@@ -3,16 +3,16 @@ import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTa
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import {
-    PixieDustCard,
-    type PixieDustCardAccentPosition,
-    type PixieDustCardEffect,
-    type PixieDustCardEffectIntensity,
-    type PixieDustCardPadding,
-    type PixieDustCardRadius,
-    type PixieDustCardVariant,
-} from "@/components/ui/PixieDustCard";
+    PixieCard,
+    type PixieCardAccentPosition,
+    type PixieCardEffect,
+    type PixieCardEffectIntensity,
+    type PixieCardPadding,
+    type PixieCardRadius,
+    type PixieCardVariant,
+} from "@/components/ui/PixieCard";
 import { PixieLink } from "@/components/ui/PixieLink";
-import { PixieDustCardPlayground } from "./PixieDustCardPlayground";
+import { PixieCardPlayground } from "./PixieCardPlayground";
 
 const variants = [
     {
@@ -47,7 +47,7 @@ const variants = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustCardVariant;
+    value: PixieCardVariant;
     description: string;
 }>[];
 
@@ -59,7 +59,7 @@ const paddings = [
     { name: "Très grand", value: "xl" as const, token: "2,5 rem" },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustCardPadding;
+    value: PixieCardPadding;
     token: string;
 }>[];
 
@@ -70,7 +70,7 @@ const radii = [
     { name: "Grand", value: "large" as const },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustCardRadius;
+    value: PixieCardRadius;
 }>[];
 
 const effects = [
@@ -101,7 +101,7 @@ const effects = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustCardEffect;
+    value: PixieCardEffect;
     description: string;
 }>[];
 
@@ -112,7 +112,7 @@ const accentPositions = [
     { name: "Début", value: "start" as const },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustCardAccentPosition;
+    value: PixieCardAccentPosition;
 }>[];
 
 const effectIntensities = [
@@ -133,14 +133,14 @@ const effectIntensities = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustCardEffectIntensity;
+    value: PixieCardEffectIntensity;
     description: string;
 }>[];
 
 const properties = [
     {
         name: "as",
-        type: "PixieDustCardElement",
+        type: "PixieCardElement",
         defaultValue: '"div"',
         description: "Élément HTML porté par la surface.",
     },
@@ -152,43 +152,43 @@ const properties = [
     },
     {
         name: "variant",
-        type: "PixieDustCardVariant",
+        type: "PixieCardVariant",
         defaultValue: '"surface"',
         description: "Nature visuelle du décor.",
     },
     {
         name: "color",
-        type: "PixieDustCardColor",
+        type: "PixieCardColor",
         defaultValue: "false",
         description: "Couleur du registre ou accent courant du thème.",
     },
     {
         name: "padding",
-        type: "PixieDustCardPadding",
+        type: "PixieCardPadding",
         defaultValue: '"md"',
         description: "Espacement intérieur sans présumer du contenu.",
     },
     {
         name: "radius",
-        type: "PixieDustCardRadius",
+        type: "PixieCardRadius",
         defaultValue: '"medium"',
         description: "Arrondi du cadre selon les tokens de la Projection.",
     },
     {
         name: "accentPosition",
-        type: "PixieDustCardAccentPosition",
+        type: "PixieCardAccentPosition",
         defaultValue: '"top"',
         description: "Place logiquement le filet et l’origine lumineuse.",
     },
     {
         name: "effect",
-        type: "PixieDustCardEffect",
+        type: "PixieCardEffect",
         defaultValue: '"none"',
         description: "Réaction visuelle au survol ou au focus interne.",
     },
     {
         name: "effectIntensity",
-        type: "PixieDustCardEffectIntensity",
+        type: "PixieCardEffectIntensity",
         defaultValue: '"medium"',
         description: "Règle l’amplitude du halo, du faisceau et du mouvement.",
     },
@@ -208,12 +208,12 @@ const properties = [
 
 const specificTypes = [
     {
-        name: "PixieDustCardElement",
+        name: "PixieCardElement",
         values: ['"div"', '"article"', '"section"', '"li"'],
         description: "Éléments sémantiques autorisés pour la surface.",
     },
     {
-        name: "PixieDustCardVariant",
+        name: "PixieCardVariant",
         values: [
             '"surface"',
             '"muted"',
@@ -225,32 +225,32 @@ const specificTypes = [
         description: "Traitements visuels indépendants du contenu.",
     },
     {
-        name: "PixieDustCardColor",
+        name: "PixieCardColor",
         values: ["AtelierAnimationColorSlug", "false"],
         description: "Couleur enregistrée ou accent courant du thème.",
     },
     {
-        name: "PixieDustCardPadding",
+        name: "PixieCardPadding",
         values: ['"none"', '"sm"', '"md"', '"lg"', '"xl"'],
         description: "Densités d’espacement intérieur.",
     },
     {
-        name: "PixieDustCardRadius",
+        name: "PixieCardRadius",
         values: ['"none"', '"small"', '"medium"', '"large"'],
         description: "Rayons disponibles dans la Projection.",
     },
     {
-        name: "PixieDustCardAccentPosition",
+        name: "PixieCardAccentPosition",
         values: ['"top"', '"end"', '"bottom"', '"start"'],
         description: "Positions physiques et logiques du filet coloré.",
     },
     {
-        name: "PixieDustCardEffect",
+        name: "PixieCardEffect",
         values: ['"none"', '"lift"', '"glow"', '"reveal"', '"projector"'],
         description: "Réactions visuelles facultatives de la surface.",
     },
     {
-        name: "PixieDustCardEffectIntensity",
+        name: "PixieCardEffectIntensity",
         values: ['"subtle"', '"medium"', '"strong"'],
         description: "Amplitudes partagées par les effets de la carte.",
     },
@@ -307,12 +307,12 @@ function ExampleContent() {
     );
 }
 
-export function PixieDustCardDossier() {
+export function PixieCardDossier() {
     return (
         <AtelierFicheAccessoire
-            id="pixie-dust-card"
-            labelledBy="pixie-dust-card-title"
-            nom="PixieDustCard"
+            id="pixie-card"
+            labelledBy="pixie-card-title"
+            nom="PixieCard"
             className="mt-16 scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
@@ -321,10 +321,10 @@ export function PixieDustCardDossier() {
                             Le clap · Décor 001
                         </p>
                         <h2
-                            id="pixie-dust-card-title"
+                            id="pixie-card-title"
                             className="mt-4 text-4xl text-ink sm:text-5xl"
                         >
-                            PixieDustCard
+                            PixieCard
                         </h2>
                         <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
                             Installer une surface cohérente sans écrire à la
@@ -338,7 +338,7 @@ export function PixieDustCardDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.2.0
+                                1.0.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -346,7 +346,7 @@ export function PixieDustCardDossier() {
                                 État
                             </dt>
                             <dd className="mt-1 text-sm font-medium">
-                                <AtelierStatut statut="Esquisse" />
+                                <AtelierStatut statut="Prêt à projeter" />
                             </dd>
                         </div>
                     </dl>
@@ -413,7 +413,7 @@ export function PixieDustCardDossier() {
 
                 <div className="mt-7 grid border border-line lg:grid-cols-2">
                     <div className="flex min-h-80 items-center justify-center bg-canvas p-8">
-                        <PixieDustCard
+                        <PixieCard
                             asChild
                             variant="accent"
                             color="rouge-crayon"
@@ -432,9 +432,9 @@ export function PixieDustCardDossier() {
                                     Voir les essais →
                                 </span>
                             </PixieLink>
-                        </PixieDustCard>
+                        </PixieCard>
                     </div>
-                    <CodeExample>{`<PixieDustCard
+                    <CodeExample>{`<PixieCard
     asChild
     variant="accent"
     color="rouge-crayon"
@@ -443,7 +443,7 @@ export function PixieDustCardDossier() {
     <PixieLink href="/archives" variant="surface">
         {/* Contenu libre */}
     </PixieLink>
-</PixieDustCard>`}</CodeExample>
+</PixieCard>`}</CodeExample>
                 </div>
             </section>
 
@@ -461,7 +461,7 @@ export function PixieDustCardDossier() {
 
                 <div className="mt-7 grid gap-6 bg-surface-muted p-6 md:grid-cols-2">
                     {variants.map((variant) => (
-                        <PixieDustCard
+                        <PixieCard
                             key={variant.value}
                             as="article"
                             variant={variant.value}
@@ -477,7 +477,7 @@ export function PixieDustCardDossier() {
                             <p className="mt-4 leading-7 text-ink-soft">
                                 {variant.description}
                             </p>
-                        </PixieDustCard>
+                        </PixieCard>
                     ))}
                 </div>
             </section>
@@ -495,7 +495,7 @@ export function PixieDustCardDossier() {
                         <h4 className="text-xl text-ink">Espacements</h4>
                         <div className="mt-4 grid gap-4 sm:grid-cols-2">
                             {paddings.map((padding) => (
-                                <PixieDustCard
+                                <PixieCard
                                     key={padding.value}
                                     variant="outline"
                                     padding={padding.value}
@@ -507,7 +507,7 @@ export function PixieDustCardDossier() {
                                             {padding.value} · {padding.token}
                                         </p>
                                     </div>
-                                </PixieDustCard>
+                                </PixieCard>
                             ))}
                         </div>
                     </div>
@@ -516,7 +516,7 @@ export function PixieDustCardDossier() {
                         <h4 className="text-xl text-ink">Rayons</h4>
                         <div className="mt-4 grid gap-4 sm:grid-cols-2">
                             {radii.map((radius) => (
-                                <PixieDustCard
+                                <PixieCard
                                     key={radius.value}
                                     variant="accent"
                                     color="vert-cellulo"
@@ -529,7 +529,7 @@ export function PixieDustCardDossier() {
                                     <p className="mt-3 text-sm text-ink-soft">
                                         {radius.name}
                                     </p>
-                                </PixieDustCard>
+                                </PixieCard>
                             ))}
                         </div>
                     </div>
@@ -546,7 +546,7 @@ export function PixieDustCardDossier() {
 
                 <div className="mt-7 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
                     {accentPositions.map((position) => (
-                        <PixieDustCard
+                        <PixieCard
                             key={position.value}
                             variant="accent"
                             color="jaune-lampe"
@@ -559,7 +559,7 @@ export function PixieDustCardDossier() {
                             <p className="mt-4 font-mono text-sm text-ink">
                                 accentPosition=&quot;{position.value}&quot;
                             </p>
-                        </PixieDustCard>
+                        </PixieCard>
                     ))}
                 </div>
             </section>
@@ -574,7 +574,7 @@ export function PixieDustCardDossier() {
 
                 <div className="mt-7 grid gap-6 lg:grid-cols-3">
                     {effects.map((effect) => (
-                        <PixieDustCard
+                        <PixieCard
                             key={effect.value}
                             as="article"
                             variant="elevated"
@@ -592,7 +592,7 @@ export function PixieDustCardDossier() {
                                 {effect.description}
                             </p>
                             <PixieLink
-                                href="#pixie-dust-card-playground"
+                                href="#pixie-card-playground"
                                 variant="action"
                                 color="bleu-reperage"
                                 indicator="arrow"
@@ -600,13 +600,13 @@ export function PixieDustCardDossier() {
                             >
                                 Donner le focus
                             </PixieLink>
-                        </PixieDustCard>
+                        </PixieCard>
                     ))}
                 </div>
 
                 <div className="mt-8 grid gap-5 md:grid-cols-3">
                     {effectIntensities.map((intensity) => (
-                        <PixieDustCard
+                        <PixieCard
                             key={intensity.value}
                             as="article"
                             variant="outline"
@@ -624,7 +624,7 @@ export function PixieDustCardDossier() {
                             <p className="mt-3 leading-7 text-ink-soft">
                                 {intensity.description}
                             </p>
-                        </PixieDustCard>
+                        </PixieCard>
                     ))}
                 </div>
             </section>
@@ -646,7 +646,7 @@ export function PixieDustCardDossier() {
                         <p className="mb-3 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Carte métier actionnable
                         </p>
-                        <PixieDustCard
+                        <PixieCard
                             asChild
                             variant="accent"
                             color="rouge-crayon"
@@ -654,7 +654,7 @@ export function PixieDustCardDossier() {
                             effectIntensity="medium"
                         >
                             <PixieLink
-                                href="#pixie-dust-card-playground"
+                                href="#pixie-card-playground"
                                 variant="surface"
                                 color="rouge-crayon"
                                 className="!flex min-h-72 flex-col"
@@ -673,14 +673,14 @@ export function PixieDustCardDossier() {
                                     Ouvrir la fiche →
                                 </span>
                             </PixieLink>
-                        </PixieDustCard>
+                        </PixieCard>
                     </div>
 
                     <div>
                         <p className="mb-3 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Porte de navigation
                         </p>
-                        <PixieDustCard
+                        <PixieCard
                             asChild
                             variant="outline"
                             color="vert-cellulo"
@@ -705,14 +705,14 @@ export function PixieDustCardDossier() {
                                     Explorer les époques →
                                 </span>
                             </PixieLink>
-                        </PixieDustCard>
+                        </PixieCard>
                     </div>
 
                     <div>
                         <p className="mb-3 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Relation apparentée
                         </p>
-                        <PixieDustCard
+                        <PixieCard
                             as="article"
                             variant="muted"
                             color="bleu-reperage"
@@ -740,14 +740,14 @@ export function PixieDustCardDossier() {
                             >
                                 Suivre la relation
                             </PixieLink>
-                        </PixieDustCard>
+                        </PixieCard>
                     </div>
 
                     <div>
                         <p className="mb-3 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Contenu éditorial statique
                         </p>
-                        <PixieDustCard
+                        <PixieCard
                             as="article"
                             variant="surface"
                             effect="none"
@@ -765,14 +765,14 @@ export function PixieDustCardDossier() {
                                 unité éditoriale et laisse toute la hiérarchie
                                 au contenu.
                             </p>
-                        </PixieDustCard>
+                        </PixieCard>
                     </div>
 
                     <div className="lg:col-span-2">
                         <p className="mb-3 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Carte mise en avant
                         </p>
-                        <PixieDustCard
+                        <PixieCard
                             asChild
                             variant="tinted"
                             color="gouache"
@@ -804,24 +804,24 @@ export function PixieDustCardDossier() {
                                     Revoir les accents →
                                 </span>
                             </PixieLink>
-                        </PixieDustCard>
+                        </PixieCard>
                     </div>
                 </div>
             </section>
 
             <section
-                id="pixie-dust-card-playground"
+                id="pixie-card-playground"
                 aria-labelledby="card-playground-title"
                 className="mt-16 scroll-mt-8 border border-line-strong bg-surface-muted p-6 shadow-soft sm:p-8"
             >
                 <SequenceTitle
                     id="card-playground-title"
                     eyebrow="Régie"
-                    title="Composer un PixieDustCard"
+                    title="Composer un PixieCard"
                     description="Réglez sa sémantique, sa présence et ses effets ; le code d’utilisation se met à jour avec le rendu."
                 />
                 <div className="mt-8">
-                    <PixieDustCardPlayground />
+                    <PixieCardPlayground />
                 </div>
             </section>
 
@@ -900,18 +900,18 @@ export function PixieDustCardDossier() {
                 <SequenceTitle
                     id="card-journal"
                     eyebrow="Journal de production"
-                    title="Décisions avant la promotion"
-                    description="L’esquisse doit encore être éprouvée dans de vraies compositions avant de devenir PixieCard."
+                    title="Décisions de la version stable"
+                    description="Les cinq scénarios de répétition ont validé une API capable de rester neutre ou de porter les effets les plus expressifs du Codex."
                 />
 
                 <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
                     {[
-                        "Éprouver les six variantes dans deux contextes réels du Codex.",
-                        "Valider asChild sur les cartes métier et les portes de la home.",
-                        "Comparer projector à .codex-projector avant toute suppression globale.",
-                        "Valider les surfaces imbriquées dans les deux Lumières.",
-                        "Tester clavier, mouvement réduit, couleurs forcées et zoom à 200 %.",
-                        "Confirmer l’API avant le passage de PixieDustCard à PixieCard.",
+                        "Six variantes couvrent les surfaces neutres, secondaires, élevées et colorées.",
+                        "asChild transmet le décor à PixieLink sans ajouter de racine au DOM.",
+                        "Les effets restent facultatifs et indépendants de la nature de la surface.",
+                        "Les deux Lumières conservent leurs contrastes et leurs contours structurels.",
+                        "Mouvement réduit et couleurs forcées neutralisent les artifices sans masquer l’état.",
+                        "Les cartes métier et les portes pourront désormais adopter PixieCard progressivement.",
                     ].map((decision) => (
                         <li
                             key={decision}

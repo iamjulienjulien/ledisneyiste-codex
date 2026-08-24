@@ -3,7 +3,7 @@ import { PixieBadgeDossier } from "./_components/PixieBadgeDossier";
 import { PixieLinkDossier } from "./_components/PixieLinkDossier";
 import { PixieSeparatorDossier } from "./_components/PixieSeparatorDossier";
 import { PixieSymbolDossier } from "./_components/PixieSymbolDossier";
-import { PixieDustCardDossier } from "./_components/PixieDustCardDossier";
+import { PixieCardDossier } from "./_components/PixieCardDossier";
 import { PixieDustPanelDossier } from "./_components/PixieDustPanelDossier";
 import { PixieDustFrameDossier } from "./_components/PixieDustFrameDossier";
 import { PixieDustCalloutDossier } from "./_components/PixieDustCalloutDossier";
@@ -124,10 +124,10 @@ const accessoires = [
 
 const decors = [
     {
-        nom: "PixieDustCard",
+        nom: "PixieCard",
         role: "Accueillir une unité de contenu répétable",
-        statut: "Esquisse",
-        href: "#pixie-dust-card",
+        statut: "Prêt à projeter",
+        href: "#pixie-card",
     },
     {
         nom: "PixieDustPanel",
@@ -582,7 +582,7 @@ export default function AtelierPage() {
                         Les surfaces prennent place sur le plateau
                     </h2>
                     <p className="mt-5 leading-7 text-ink-soft">
-                        PixieDustCard accueille les unités répétables,
+                        PixieCard accueille les unités répétables,
                         PixieDustPanel structure les sections et PixieDustFrame
                         met les médias en scène. PixieDustCallout éclaire les
                         annotations éditoriales tandis que PixieDustInset place
@@ -642,7 +642,7 @@ export default function AtelierPage() {
                     </table>
                 </div>
 
-                <PixieDustCardDossier />
+                <PixieCardDossier />
                 <PixieDustPanelDossier />
                 <PixieDustFrameDossier />
                 <PixieDustCalloutDossier />

@@ -3,7 +3,7 @@ import { AtelierFicheAccessoire } from "@/components/atelier/AtelierFicheAccesso
 import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
-import { PixieDustCard } from "@/components/ui/PixieDustCard";
+import { PixieCard } from "@/components/ui/PixieCard";
 import {
     PixieDustRail,
     type PixieDustRailAlign,
@@ -263,7 +263,7 @@ function FilmCard({
     compact?: boolean;
 }>) {
     return (
-        <PixieDustCard
+        <PixieCard
             as="article"
             variant="outline"
             padding="md"
@@ -280,7 +280,7 @@ function FilmCard({
                     {description}
                 </p>
             ) : null}
-        </PixieDustCard>
+        </PixieCard>
     );
 }
 

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
-import { PixieDustCard } from "@/components/ui/PixieDustCard";
+import { PixieCard } from "@/components/ui/PixieCard";
 import {
     PixieDustStack,
     type PixieDustStackAlign,
@@ -175,7 +175,7 @@ ${labelledBy}>
                             >
                                 {previewItems.map((item, index) => {
                                     const card = (
-                                        <PixieDustCard
+                                        <PixieCard
                                             as={isList ? "div" : "article"}
                                             variant="outline"
                                             padding="md"
@@ -199,7 +199,7 @@ ${labelledBy}>
                                             <p className="mt-3 text-sm leading-6 text-ink-soft">
                                                 {item.description}
                                             </p>
-                                        </PixieDustCard>
+                                        </PixieCard>
                                     );
 
                                     return isList ? (

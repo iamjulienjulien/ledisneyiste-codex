@@ -10,7 +10,7 @@ import {
     type PixieDustBleedGutter,
     type PixieDustBleedSide,
 } from "@/components/ui/PixieDustBleed";
-import { PixieDustCard } from "@/components/ui/PixieDustCard";
+import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieDustContainer } from "@/components/ui/PixieDustContainer";
 import { PixieDustFrame } from "@/components/ui/PixieDustFrame";
 import { PixieDustRail } from "@/components/ui/PixieDustRail";
@@ -578,7 +578,7 @@ export function PixieDustBleedDossier() {
                             >
                                 {films.map(([year, title]) => (
                                     <li key={title}>
-                                        <PixieDustCard
+                                        <PixieCard
                                             as="article"
                                             variant="outline"
                                             padding="md"
@@ -590,7 +590,7 @@ export function PixieDustBleedDossier() {
                                             <h5 className="mt-3 text-lg text-ink">
                                                 {title}
                                             </h5>
-                                        </PixieDustCard>
+                                        </PixieCard>
                                     </li>
                                 ))}
                             </PixieDustRail>

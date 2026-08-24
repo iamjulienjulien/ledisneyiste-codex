@@ -4,7 +4,7 @@ import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTa
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieBadge } from "@/components/ui/PixieBadge";
-import { PixieDustCard } from "@/components/ui/PixieDustCard";
+import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieDustCluster } from "@/components/ui/PixieDustCluster";
 import { PixieDustGrid } from "@/components/ui/PixieDustGrid";
 import { PixieDustSection } from "@/components/ui/PixieDustSection";
@@ -479,7 +479,7 @@ export function PixieDustSidebarDossier() {
                                         gap="sm"
                                     >
                                         {archiveTitles.map((title, index) => (
-                                            <PixieDustCard
+                                            <PixieCard
                                                 key={title}
                                                 as="article"
                                                 variant="outline"
@@ -491,7 +491,7 @@ export function PixieDustSidebarDossier() {
                                                 <h5 className="mt-2 text-lg text-ink">
                                                     {title}
                                                 </h5>
-                                            </PixieDustCard>
+                                            </PixieCard>
                                         ))}
                                     </PixieDustGrid>
                                 </PixieDustStack>
@@ -813,7 +813,7 @@ export function PixieDustSidebarDossier() {
                                 gap="md"
                             >
                                 {archiveTitles.slice(0, 3).map((title) => (
-                                    <PixieDustCard
+                                    <PixieCard
                                         key={title}
                                         as="article"
                                         variant="outline"
@@ -822,7 +822,7 @@ export function PixieDustSidebarDossier() {
                                         <h5 className="text-lg text-ink">
                                             {title}
                                         </h5>
-                                    </PixieDustCard>
+                                    </PixieCard>
                                 ))}
                             </PixieDustGrid>
                         </PixieDustSidebar>

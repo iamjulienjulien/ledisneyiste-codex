@@ -3,7 +3,7 @@ import { AtelierFicheAccessoire } from "@/components/atelier/AtelierFicheAccesso
 import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
-import { PixieDustCard } from "@/components/ui/PixieDustCard";
+import { PixieCard } from "@/components/ui/PixieCard";
 import {
     PixieDustGrid,
     type PixieDustGridAlign,
@@ -204,7 +204,7 @@ function ArchiveCard({
     description,
 }: Readonly<{ year: string; title: string; description: string }>) {
     return (
-        <PixieDustCard
+        <PixieCard
             as="article"
             variant="outline"
             padding="md"
@@ -215,7 +215,7 @@ function ArchiveCard({
             <p className="mt-3 text-sm leading-6 text-ink-soft">
                 {description}
             </p>
-        </PixieDustCard>
+        </PixieCard>
     );
 }
 

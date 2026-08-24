@@ -3,7 +3,7 @@ import { AtelierFicheAccessoire } from "@/components/atelier/AtelierFicheAccesso
 import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
-import { PixieDustCard } from "@/components/ui/PixieDustCard";
+import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieDustSection } from "@/components/ui/PixieDustSection";
 import { PixieDustStack } from "@/components/ui/PixieDustStack";
 import {
@@ -197,7 +197,7 @@ function Plan({
     compact = false,
 }: Readonly<{ title: string; description?: string; compact?: boolean }>) {
     return (
-        <PixieDustCard as="article" variant="outline" padding="md">
+        <PixieCard as="article" variant="outline" padding="md">
             <p className="font-mono text-xs text-accent">Plan</p>
             <h4
                 className={`${compact ? "mt-2 text-lg" : "mt-3 text-xl"} text-ink`}
@@ -209,7 +209,7 @@ function Plan({
                     {description}
                 </p>
             ) : null}
-        </PixieDustCard>
+        </PixieCard>
     );
 }
 

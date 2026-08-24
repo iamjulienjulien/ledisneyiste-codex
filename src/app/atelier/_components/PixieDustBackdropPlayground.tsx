@@ -14,7 +14,7 @@ import {
     type PixieDustBackdropRadius,
     type PixieDustBackdropVariant,
 } from "@/components/ui/PixieDustBackdrop";
-import { PixieDustCard } from "@/components/ui/PixieDustCard";
+import { PixieCard } from "@/components/ui/PixieCard";
 import {
     getAtelierAnimationColor,
     getAtelierAnimationColorSlugs,
@@ -306,7 +306,7 @@ export function PixieDustBackdropPlayground() {
                                     remplacer les surfaces qui portent le récit.
                                 </p>
 
-                                <PixieDustCard
+                                <PixieCard
                                     as="div"
                                     variant="outline"
                                     padding="md"
@@ -318,7 +318,7 @@ export function PixieDustBackdropPlayground() {
                                     <p className="mt-2 text-xl text-ink">
                                         Alice’s Wonderland · 1923
                                     </p>
-                                </PixieDustCard>
+                                </PixieCard>
                             </PixieDustBackdrop>
                         </div>
                     </div>

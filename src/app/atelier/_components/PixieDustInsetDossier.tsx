@@ -3,7 +3,7 @@ import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTa
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieDustCallout } from "@/components/ui/PixieDustCallout";
-import { PixieDustCard } from "@/components/ui/PixieDustCard";
+import { PixieCard } from "@/components/ui/PixieCard";
 import {
     PixieDustInset,
     type PixieDustInsetDepth,
@@ -431,7 +431,7 @@ export function PixieDustInsetDossier() {
                 />
 
                 <div className="mt-7 grid gap-6 xl:grid-cols-3">
-                    <PixieDustCard as="div" variant="outline" padding="md">
+                    <PixieCard as="div" variant="outline" padding="md">
                         <h4 className="text-xl text-ink">Dans une Card</h4>
                         <p className="mt-3 leading-7 text-ink-soft">
                             Les données annexes restent liées à l’unité.
@@ -446,7 +446,7 @@ export function PixieDustInsetDossier() {
                                 Collection · Mickey Mouse
                             </p>
                         </PixieDustInset>
-                    </PixieDustCard>
+                    </PixieCard>
 
                     <PixieDustPanel as="div" variant="surface" padding="md">
                         <h4 className="text-xl text-ink">Dans un Panel</h4>

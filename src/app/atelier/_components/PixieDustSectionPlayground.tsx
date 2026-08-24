@@ -5,7 +5,7 @@ import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import { PixieBadge } from "@/components/ui/PixieBadge";
-import { PixieDustCard } from "@/components/ui/PixieDustCard";
+import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieDustCluster } from "@/components/ui/PixieDustCluster";
 import {
     PixieDustSection,
@@ -288,7 +288,7 @@ ${labelledBy}>
                                     ))}
                                 </PixieDustCluster>
 
-                                <PixieDustCard
+                                <PixieCard
                                     as="article"
                                     variant="outline"
                                     padding="md"
@@ -300,7 +300,7 @@ ${labelledBy}>
                                     <h5 className="mt-2 text-xl text-ink">
                                         The Skeleton Dance
                                     </h5>
-                                </PixieDustCard>
+                                </PixieCard>
                             </PixieDustSection>
                         </div>
                     </div>

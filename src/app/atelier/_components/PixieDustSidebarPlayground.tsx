@@ -4,7 +4,7 @@ import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
-import { PixieDustCard } from "@/components/ui/PixieDustCard";
+import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieDustGrid } from "@/components/ui/PixieDustGrid";
 import {
     PixieDustSidebar,
@@ -145,7 +145,7 @@ ${panes}
                 </div>
                 <PixieDustGrid columns={2} minItemWidth="sm" gap="sm">
                     {archiveTitles.map((title, index) => (
-                        <PixieDustCard
+                        <PixieCard
                             key={title}
                             as="article"
                             variant="outline"
@@ -155,7 +155,7 @@ ${panes}
                                 19{28 + index}
                             </p>
                             <h6 className="mt-2 text-lg text-ink">{title}</h6>
-                        </PixieDustCard>
+                        </PixieCard>
                     ))}
                 </PixieDustGrid>
             </PixieDustStack>
