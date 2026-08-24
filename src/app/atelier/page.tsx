@@ -27,6 +27,7 @@ import { PixieDustSelectDossier } from "./_components/PixieDustSelectDossier";
 import { PixieDustSwitchDossier } from "./_components/PixieDustSwitchDossier";
 import { PixieDustSearchFieldDossier } from "./_components/PixieDustSearchFieldDossier";
 import { PixieDustToastDossier } from "./_components/PixieDustToastDossier";
+import { PixieDustLoaderDossier } from "./_components/PixieDustLoaderDossier";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PalettesPellicule } from "./_components/PalettesPellicule";
 
@@ -82,7 +83,7 @@ const categories = [
         domaine: "Retours système",
         description:
             "États, alertes et transitions qui rendent visibles les réactions de l’interface.",
-        statut: "En préparation",
+        statut: "En projection",
         href: "#effets",
     },
 ] as const;
@@ -317,7 +318,8 @@ const effets = [
     {
         nom: "PixieDustLoader",
         role: "Matérialiser une attente de durée indéterminée",
-        statut: "À esquisser",
+        statut: "Esquisse",
+        href: "#pixie-dust-loader",
     },
     {
         nom: "PixieDustSkeleton",
@@ -917,6 +919,7 @@ export default function AtelierPage() {
                 </div>
 
                 <PixieDustToastDossier />
+                <PixieDustLoaderDossier />
             </section>
         </div>
     );
