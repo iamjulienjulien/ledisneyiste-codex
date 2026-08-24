@@ -10,7 +10,7 @@ import {
     type PixieDustInputType,
     type PixieDustInputVariant,
 } from "@/components/ui/PixieDustInput";
-import { PixieDustPanel } from "@/components/ui/PixieDustPanel";
+import { PixiePanel } from "@/components/ui/PixiePanel";
 import { PixieDustStack } from "@/components/ui/PixieDustStack";
 import { PixieDustInputPlayground } from "./PixieDustInputPlayground";
 
@@ -496,7 +496,7 @@ export function PixieDustInputDossier() {
                             title="Un vrai contrôle derrière chaque décor"
                         />
                         <div className="mt-8 grid gap-5 md:grid-cols-2">
-                            <PixieDustPanel variant="outline" padding="md">
+                            <PixiePanel variant="outline" padding="md">
                                 <h4 className="text-xl text-ink">
                                     Toujours le nommer
                                 </h4>
@@ -505,8 +505,8 @@ export function PixieDustInputDossier() {
                                     un aria-label explicite. Le placeholder ne
                                     constitue jamais son libellé.
                                 </p>
-                            </PixieDustPanel>
-                            <PixieDustPanel variant="outline" padding="md">
+                            </PixiePanel>
+                            <PixiePanel variant="outline" padding="md">
                                 <h4 className="text-xl text-ink">
                                     Conserver les états natifs
                                 </h4>
@@ -516,7 +516,7 @@ export function PixieDustInputDossier() {
                                     sélectionnable. L’invalidité ne repose pas
                                     uniquement sur sa couleur.
                                 </p>
-                            </PixieDustPanel>
+                            </PixiePanel>
                         </div>
                     </div>
                 </section>

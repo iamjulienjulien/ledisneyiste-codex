@@ -12,7 +12,7 @@ import {
     type PixieDustClusterJustify,
 } from "@/components/ui/PixieDustCluster";
 import { PixieDustContainer } from "@/components/ui/PixieDustContainer";
-import { PixieDustPanel } from "@/components/ui/PixieDustPanel";
+import { PixiePanel } from "@/components/ui/PixiePanel";
 import { PixieDustStack } from "@/components/ui/PixieDustStack";
 import { PixieDustClusterPlayground } from "./PixieDustClusterPlayground";
 
@@ -568,7 +568,7 @@ export function PixieDustClusterDossier() {
                     description="Le groupe rejoint une composition complète sans reprendre les responsabilités des autres primitives."
                 />
 
-                <PixieDustPanel
+                <PixiePanel
                     as="section"
                     variant="outline"
                     padding="lg"
@@ -627,7 +627,7 @@ export function PixieDustClusterDossier() {
                             </PixieDustCluster>
                         </PixieDustStack>
                     </PixieDustContainer>
-                </PixieDustPanel>
+                </PixiePanel>
             </section>
 
             <section aria-labelledby="cluster-boundaries" className="mt-16">

@@ -4,7 +4,7 @@ import { PixieLinkDossier } from "./_components/PixieLinkDossier";
 import { PixieSeparatorDossier } from "./_components/PixieSeparatorDossier";
 import { PixieSymbolDossier } from "./_components/PixieSymbolDossier";
 import { PixieCardDossier } from "./_components/PixieCardDossier";
-import { PixieDustPanelDossier } from "./_components/PixieDustPanelDossier";
+import { PixiePanelDossier } from "./_components/PixiePanelDossier";
 import { PixieDustFrameDossier } from "./_components/PixieDustFrameDossier";
 import { PixieDustCalloutDossier } from "./_components/PixieDustCalloutDossier";
 import { PixieDustInsetDossier } from "./_components/PixieDustInsetDossier";
@@ -130,10 +130,10 @@ const decors = [
         href: "#pixie-card",
     },
     {
-        nom: "PixieDustPanel",
+        nom: "PixiePanel",
         role: "Regrouper une section dans une surface structurée",
-        statut: "Esquisse",
-        href: "#pixie-dust-panel",
+        statut: "Prêt à projeter",
+        href: "#pixie-panel",
     },
     {
         nom: "PixieDustFrame",
@@ -582,13 +582,12 @@ export default function AtelierPage() {
                         Les surfaces prennent place sur le plateau
                     </h2>
                     <p className="mt-5 leading-7 text-ink-soft">
-                        PixieCard accueille les unités répétables,
-                        PixieDustPanel structure les sections et PixieDustFrame
-                        met les médias en scène. PixieDustCallout éclaire les
-                        annotations éditoriales tandis que PixieDustInset place
-                        les informations secondaires en retrait.
-                        PixieDustBackdrop installe enfin une atmosphère derrière
-                        les compositions complètes.
+                        PixieCard accueille les unités répétables et PixiePanel
+                        structure les sections. PixieDustFrame met les médias en
+                        scène, PixieDustCallout éclaire les annotations
+                        éditoriales et PixieDustInset place les informations
+                        secondaires en retrait. PixieDustBackdrop installe enfin
+                        une atmosphère derrière les compositions complètes.
                     </p>
                 </div>
 
@@ -643,7 +642,7 @@ export default function AtelierPage() {
                 </div>
 
                 <PixieCardDossier />
-                <PixieDustPanelDossier />
+                <PixiePanelDossier />
                 <PixieDustFrameDossier />
                 <PixieDustCalloutDossier />
                 <PixieDustInsetDossier />

@@ -5,17 +5,17 @@ import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import {
-    PixieDustPanel,
-    type PixieDustPanelAccentPosition,
-    type PixieDustPanelColor,
-    type PixieDustPanelDividers,
-    type PixieDustPanelElement,
-    type PixieDustPanelElevation,
-    type PixieDustPanelPadding,
-    type PixieDustPanelRadius,
-    type PixieDustPanelScroll,
-    type PixieDustPanelVariant,
-} from "@/components/ui/PixieDustPanel";
+    PixiePanel,
+    type PixiePanelAccentPosition,
+    type PixiePanelColor,
+    type PixiePanelDividers,
+    type PixiePanelElement,
+    type PixiePanelElevation,
+    type PixiePanelPadding,
+    type PixiePanelRadius,
+    type PixiePanelScroll,
+    type PixiePanelVariant,
+} from "@/components/ui/PixiePanel";
 import { PixieLink } from "@/components/ui/PixieLink";
 import {
     getAtelierAnimationColor,
@@ -81,22 +81,20 @@ const frameWidths = {
     large: "max-w-4xl",
 } as const satisfies Record<"compact" | "moyen" | "large", string>;
 
-export function PixieDustPanelPlayground() {
-    const [element, setElement] = useState<PixieDustPanelElement>("section");
-    const [variant, setVariant] = useState<PixieDustPanelVariant>("accent");
-    const [padding, setPadding] = useState<PixieDustPanelPadding>("lg");
-    const [headerPadding, setHeaderPadding] =
-        useState<PixieDustPanelPadding>("lg");
-    const [bodyPadding, setBodyPadding] = useState<PixieDustPanelPadding>("lg");
-    const [footerPadding, setFooterPadding] =
-        useState<PixieDustPanelPadding>("lg");
-    const [radius, setRadius] = useState<PixieDustPanelRadius>("medium");
-    const [color, setColor] = useState<PixieDustPanelColor>("bleu-reperage");
+export function PixiePanelPlayground() {
+    const [element, setElement] = useState<PixiePanelElement>("section");
+    const [variant, setVariant] = useState<PixiePanelVariant>("accent");
+    const [padding, setPadding] = useState<PixiePanelPadding>("lg");
+    const [headerPadding, setHeaderPadding] = useState<PixiePanelPadding>("lg");
+    const [bodyPadding, setBodyPadding] = useState<PixiePanelPadding>("lg");
+    const [footerPadding, setFooterPadding] = useState<PixiePanelPadding>("lg");
+    const [radius, setRadius] = useState<PixiePanelRadius>("medium");
+    const [color, setColor] = useState<PixiePanelColor>("bleu-reperage");
     const [accentPosition, setAccentPosition] =
-        useState<PixieDustPanelAccentPosition>("start");
-    const [elevation, setElevation] = useState<PixieDustPanelElevation>("soft");
-    const [dividers, setDividers] = useState<PixieDustPanelDividers>("both");
-    const [scroll, setScroll] = useState<PixieDustPanelScroll>("none");
+        useState<PixiePanelAccentPosition>("start");
+    const [elevation, setElevation] = useState<PixiePanelElevation>("soft");
+    const [dividers, setDividers] = useState<PixiePanelDividers>("both");
+    const [scroll, setScroll] = useState<PixiePanelScroll>("none");
     const [showHeader, setShowHeader] = useState(true);
     const [showFooter, setShowFooter] = useState(true);
     const [light, setLight] = useState<"sombre" | "claire">("sombre");
@@ -122,14 +120,14 @@ export function PixieDustPanelPlayground() {
             ? '    footer={<PixieLink href="/sources">Voir les sources</PixieLink>}'
             : null,
     ].filter((line): line is string => line !== null);
-    const code = `<PixieDustPanel
+    const code = `<PixiePanel
     as="${element}"
     variant="${variant}"
     padding="${padding}"
     radius="${radius}"${optionalProps.length > 0 ? `\n${optionalProps.join("\n")}` : ""}
 >
     {/* Contenu de la section */}
-</PixieDustPanel>`;
+</PixiePanel>`;
 
     function selectColor(value: string) {
         setColor(
@@ -156,8 +154,7 @@ export function PixieDustPanelPlayground() {
                                 value={element}
                                 onChange={(event) =>
                                     setElement(
-                                        event.target
-                                            .value as PixieDustPanelElement,
+                                        event.target.value as PixiePanelElement,
                                     )
                                 }
                                 className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink"
@@ -241,7 +238,7 @@ export function PixieDustPanelPlayground() {
                                             onChange={(event) =>
                                                 control.onChange(
                                                     event.target
-                                                        .value as PixieDustPanelPadding,
+                                                        .value as PixiePanelPadding,
                                                 )
                                             }
                                             className="min-w-0 border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
@@ -290,7 +287,7 @@ export function PixieDustPanelPlayground() {
                                 onChange={(event) =>
                                     setAccentPosition(
                                         event.target
-                                            .value as PixieDustPanelAccentPosition,
+                                            .value as PixiePanelAccentPosition,
                                     )
                                 }
                                 className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
@@ -319,7 +316,7 @@ export function PixieDustPanelPlayground() {
                                 onChange={(event) =>
                                     setElevation(
                                         event.target
-                                            .value as PixieDustPanelElevation,
+                                            .value as PixiePanelElevation,
                                     )
                                 }
                                 className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
@@ -348,7 +345,7 @@ export function PixieDustPanelPlayground() {
                                 onChange={(event) =>
                                     setDividers(
                                         event.target
-                                            .value as PixieDustPanelDividers,
+                                            .value as PixiePanelDividers,
                                     )
                                 }
                                 className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
@@ -376,8 +373,7 @@ export function PixieDustPanelPlayground() {
                                 value={scroll}
                                 onChange={(event) =>
                                     setScroll(
-                                        event.target
-                                            .value as PixieDustPanelScroll,
+                                        event.target.value as PixiePanelScroll,
                                     )
                                 }
                                 className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
@@ -461,7 +457,7 @@ export function PixieDustPanelPlayground() {
                         <div
                             className={`w-full transition-[max-width] ${frameWidths[frame]}`}
                         >
-                            <PixieDustPanel
+                            <PixiePanel
                                 as={element}
                                 variant={variant}
                                 padding={padding}
@@ -493,7 +489,7 @@ export function PixieDustPanelPlayground() {
                                 footer={
                                     showFooter ? (
                                         <PixieLink
-                                            href="#pixie-dust-panel-playground"
+                                            href="#pixie-panel-playground"
                                             variant="action"
                                             color={color}
                                             indicator="arrow"
@@ -545,7 +541,7 @@ export function PixieDustPanelPlayground() {
                                         )}
                                     </div>
                                 ) : null}
-                            </PixieDustPanel>
+                            </PixiePanel>
                         </div>
                     </div>
 

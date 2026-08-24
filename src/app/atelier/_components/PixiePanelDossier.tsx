@@ -3,13 +3,13 @@ import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTa
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import {
-    PixieDustPanel,
-    type PixieDustPanelPadding,
-    type PixieDustPanelRadius,
-    type PixieDustPanelVariant,
-} from "@/components/ui/PixieDustPanel";
+    PixiePanel,
+    type PixiePanelPadding,
+    type PixiePanelRadius,
+    type PixiePanelVariant,
+} from "@/components/ui/PixiePanel";
 import { PixieLink } from "@/components/ui/PixieLink";
-import { PixieDustPanelPlayground } from "./PixieDustPanelPlayground";
+import { PixiePanelPlayground } from "./PixiePanelPlayground";
 
 const variants = [
     {
@@ -44,7 +44,7 @@ const variants = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustPanelVariant;
+    value: PixiePanelVariant;
     description: string;
 }>[];
 
@@ -56,7 +56,7 @@ const paddings = [
     { name: "Très grand", value: "xl" as const, token: "2,5 rem" },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustPanelPadding;
+    value: PixiePanelPadding;
     token: string;
 }>[];
 
@@ -67,79 +67,79 @@ const radii = [
     { name: "Grand", value: "large" as const },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustPanelRadius;
+    value: PixiePanelRadius;
 }>[];
 
 const properties = [
     {
         name: "as",
-        type: "PixieDustPanelElement",
+        type: "PixiePanelElement",
         defaultValue: '"section"',
         description: "Élément HTML porté par le panneau.",
     },
     {
         name: "variant",
-        type: "PixieDustPanelVariant",
+        type: "PixiePanelVariant",
         defaultValue: '"surface"',
         description: "Traitement visuel de la surface structurée.",
     },
     {
         name: "padding",
-        type: "PixieDustPanelPadding",
+        type: "PixiePanelPadding",
         defaultValue: '"lg"',
         description: "Espacement intérieur appliqué à chacune des zones.",
     },
     {
         name: "headerPadding",
-        type: "PixieDustPanelPadding",
+        type: "PixiePanelPadding",
         defaultValue: "padding",
         description: "Surcharge l’espacement de la zone d’en-tête.",
     },
     {
         name: "bodyPadding",
-        type: "PixieDustPanelPadding",
+        type: "PixiePanelPadding",
         defaultValue: "padding",
         description: "Surcharge l’espacement du contenu principal.",
     },
     {
         name: "footerPadding",
-        type: "PixieDustPanelPadding",
+        type: "PixiePanelPadding",
         defaultValue: "padding",
         description: "Surcharge l’espacement de la zone de conclusion.",
     },
     {
         name: "radius",
-        type: "PixieDustPanelRadius",
+        type: "PixiePanelRadius",
         defaultValue: '"medium"',
         description: "Arrondi extérieur du panneau.",
     },
     {
         name: "color",
-        type: "PixieDustPanelColor",
+        type: "PixiePanelColor",
         defaultValue: "false",
         description: "Couleur du registre ou accent courant du thème.",
     },
     {
         name: "accentPosition",
-        type: "PixieDustPanelAccentPosition",
+        type: "PixiePanelAccentPosition",
         defaultValue: '"start"',
         description: "Place le repère coloré sur l’un des quatre bords.",
     },
     {
         name: "elevation",
-        type: "PixieDustPanelElevation",
+        type: "PixiePanelElevation",
         defaultValue: '"none"',
         description: "Règle la profondeur indépendamment de la surface.",
     },
     {
         name: "dividers",
-        type: "PixieDustPanelDividers",
+        type: "PixiePanelDividers",
         defaultValue: '"none"',
         description: "Sépare une zone précise ou les deux zones périphériques.",
     },
     {
         name: "scroll",
-        type: "PixieDustPanelScroll",
+        type: "PixiePanelScroll",
         defaultValue: '"none"',
         description: "Confie le défilement au seul corps du panneau.",
     },
@@ -177,12 +177,12 @@ const properties = [
 
 const specificTypes = [
     {
-        name: "PixieDustPanelElement",
+        name: "PixiePanelElement",
         values: ['"div"', '"section"', '"aside"', '"article"'],
         description: "Éléments sémantiques autorisés pour le panneau.",
     },
     {
-        name: "PixieDustPanelVariant",
+        name: "PixiePanelVariant",
         values: [
             '"plain"',
             '"surface"',
@@ -194,37 +194,37 @@ const specificTypes = [
         description: "Traitements visuels d’une zone structurelle.",
     },
     {
-        name: "PixieDustPanelColor",
+        name: "PixiePanelColor",
         values: ["AtelierAnimationColorSlug", "false"],
         description: "Couleur enregistrée ou accent courant du thème.",
     },
     {
-        name: "PixieDustPanelPadding",
+        name: "PixiePanelPadding",
         values: ['"none"', '"sm"', '"md"', '"lg"', '"xl"'],
         description: "Densités appliquées uniformément aux zones présentes.",
     },
     {
-        name: "PixieDustPanelRadius",
+        name: "PixiePanelRadius",
         values: ['"none"', '"small"', '"medium"', '"large"'],
         description: "Rayons disponibles dans la Projection Originale.",
     },
     {
-        name: "PixieDustPanelAccentPosition",
+        name: "PixiePanelAccentPosition",
         values: ['"top"', '"end"', '"bottom"', '"start"'],
         description: "Bord qui reçoit le repère coloré du variant accent.",
     },
     {
-        name: "PixieDustPanelElevation",
+        name: "PixiePanelElevation",
         values: ['"none"', '"soft"', '"strong"'],
         description: "Niveaux de profondeur indépendants du variant.",
     },
     {
-        name: "PixieDustPanelDividers",
+        name: "PixiePanelDividers",
         values: ['"none"', '"header"', '"footer"', '"both"'],
         description: "Zones périphériques séparées du contenu central.",
     },
     {
-        name: "PixieDustPanelScroll",
+        name: "PixiePanelScroll",
         values: ['"none"', '"body"'],
         description: "Région autorisée à défiler dans une hauteur contrainte.",
     },
@@ -303,12 +303,12 @@ function PanelContent() {
     );
 }
 
-export function PixieDustPanelDossier() {
+export function PixiePanelDossier() {
     return (
         <AtelierFicheAccessoire
-            id="pixie-dust-panel"
-            labelledBy="pixie-dust-panel-title"
-            nom="PixieDustPanel"
+            id="pixie-panel"
+            labelledBy="pixie-panel-title"
+            nom="PixiePanel"
             className="mt-16 scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
@@ -317,10 +317,10 @@ export function PixieDustPanelDossier() {
                             Le clap · Décor 002
                         </p>
                         <h2
-                            id="pixie-dust-panel-title"
+                            id="pixie-panel-title"
                             className="mt-4 text-4xl text-ink sm:text-5xl"
                         >
-                            PixieDustPanel
+                            PixiePanel
                         </h2>
                         <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
                             Regrouper une section complète dans une surface
@@ -334,7 +334,7 @@ export function PixieDustPanelDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.2.0
+                                1.0.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -342,7 +342,7 @@ export function PixieDustPanelDossier() {
                                 État
                             </dt>
                             <dd className="mt-1 text-sm font-medium">
-                                <AtelierStatut statut="Esquisse" />
+                                <AtelierStatut statut="Prêt à projeter" />
                             </dd>
                         </div>
                     </dl>
@@ -406,7 +406,7 @@ export function PixieDustPanelDossier() {
 
                 <div className="mt-7 grid border border-line xl:grid-cols-2">
                     <div className="flex min-h-[30rem] items-center justify-center bg-canvas p-8">
-                        <PixieDustPanel
+                        <PixiePanel
                             variant="accent"
                             color="bleu-reperage"
                             elevation="soft"
@@ -426,9 +426,9 @@ export function PixieDustPanelDossier() {
                             className="w-full max-w-xl"
                         >
                             <PanelContent />
-                        </PixieDustPanel>
+                        </PixiePanel>
                     </div>
-                    <CodeExample>{`<PixieDustPanel
+                    <CodeExample>{`<PixiePanel
     variant="accent"
     color="bleu-reperage"
     elevation="soft"
@@ -437,7 +437,7 @@ export function PixieDustPanelDossier() {
     dividers="both"
 >
     {/* Contenu de la section */}
-</PixieDustPanel>`}</CodeExample>
+</PixiePanel>`}</CodeExample>
                 </div>
             </section>
 
@@ -455,7 +455,7 @@ export function PixieDustPanelDossier() {
 
                 <div className="mt-7 grid gap-6 bg-surface-muted p-6 lg:grid-cols-2">
                     {variants.map((variant) => (
-                        <PixieDustPanel
+                        <PixiePanel
                             key={variant.value}
                             as="div"
                             variant={variant.value}
@@ -474,7 +474,7 @@ export function PixieDustPanelDossier() {
                             <p className="mt-4 leading-7 text-ink-soft">
                                 {variant.description}
                             </p>
-                        </PixieDustPanel>
+                        </PixiePanel>
                     ))}
                 </div>
             </section>
@@ -488,14 +488,14 @@ export function PixieDustPanelDossier() {
                 />
 
                 <div className="mt-7 grid gap-6 xl:grid-cols-3">
-                    <PixieDustPanel as="div" variant="outline" padding="md">
+                    <PixiePanel as="div" variant="outline" padding="md">
                         <h4 className="text-xl text-ink">Contenu seul</h4>
                         <p className="mt-3 leading-7 text-ink-soft">
                             Le panneau reste un simple regroupement visuel.
                         </p>
-                    </PixieDustPanel>
+                    </PixiePanel>
 
-                    <PixieDustPanel
+                    <PixiePanel
                         as="div"
                         variant="surface"
                         padding="md"
@@ -510,9 +510,9 @@ export function PixieDustPanelDossier() {
                         <p className="mt-3 leading-7 text-ink-soft">
                             Une zone annonce la matière qui suit.
                         </p>
-                    </PixieDustPanel>
+                    </PixiePanel>
 
-                    <PixieDustPanel
+                    <PixiePanel
                         as="div"
                         variant="surface"
                         padding="md"
@@ -527,7 +527,7 @@ export function PixieDustPanelDossier() {
                         <p className="mt-3 leading-7 text-ink-soft">
                             Le footer ferme la séquence sans action imposée.
                         </p>
-                    </PixieDustPanel>
+                    </PixiePanel>
                 </div>
             </section>
 
@@ -544,7 +544,7 @@ export function PixieDustPanelDossier() {
                         <h4 className="text-xl text-ink">Espacements</h4>
                         <div className="mt-4 grid gap-4 sm:grid-cols-2">
                             {paddings.map((padding) => (
-                                <PixieDustPanel
+                                <PixiePanel
                                     key={padding.value}
                                     as="div"
                                     variant="outline"
@@ -557,7 +557,7 @@ export function PixieDustPanelDossier() {
                                             {padding.value} · {padding.token}
                                         </p>
                                     </div>
-                                </PixieDustPanel>
+                                </PixiePanel>
                             ))}
                         </div>
                     </div>
@@ -566,7 +566,7 @@ export function PixieDustPanelDossier() {
                         <h4 className="text-xl text-ink">Rayons</h4>
                         <div className="mt-4 grid gap-4 sm:grid-cols-2">
                             {radii.map((radius) => (
-                                <PixieDustPanel
+                                <PixiePanel
                                     key={radius.value}
                                     as="div"
                                     variant="accent"
@@ -581,7 +581,7 @@ export function PixieDustPanelDossier() {
                                     <p className="mt-3 text-sm text-ink-soft">
                                         {radius.name}
                                     </p>
-                                </PixieDustPanel>
+                                </PixiePanel>
                             ))}
                         </div>
                     </div>
@@ -601,7 +601,7 @@ export function PixieDustPanelDossier() {
                         <p className="mb-4 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Régie de filtres
                         </p>
-                        <PixieDustPanel
+                        <PixiePanel
                             as="section"
                             variant="surface"
                             padding="md"
@@ -648,14 +648,14 @@ export function PixieDustPanelDossier() {
                                     ),
                                 )}
                             </div>
-                        </PixieDustPanel>
+                        </PixiePanel>
                     </div>
 
                     <div className="bg-surface-muted p-5 sm:p-7">
                         <p className="mb-4 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Dossier documentaire
                         </p>
-                        <PixieDustPanel
+                        <PixiePanel
                             as="article"
                             variant="outline"
                             padding="lg"
@@ -675,14 +675,14 @@ export function PixieDustPanelDossier() {
                                 complète sans lui donner le comportement d’une
                                 unité de collection.
                             </p>
-                        </PixieDustPanel>
+                        </PixiePanel>
                     </div>
 
                     <div className="bg-surface-muted p-5 sm:p-7">
                         <p className="mb-4 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Collection sans gouttière
                         </p>
-                        <PixieDustPanel
+                        <PixiePanel
                             as="section"
                             variant="muted"
                             padding="md"
@@ -717,14 +717,14 @@ export function PixieDustPanelDossier() {
                                     </li>
                                 ))}
                             </ul>
-                        </PixieDustPanel>
+                        </PixiePanel>
                     </div>
 
                     <div className="bg-surface-muted p-5 sm:p-7">
                         <p className="mb-4 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Aparté contextuel
                         </p>
-                        <PixieDustPanel
+                        <PixiePanel
                             as="aside"
                             variant="tinted"
                             color="ambre-projecteur"
@@ -745,14 +745,14 @@ export function PixieDustPanelDossier() {
                                 L’aside complète la matière principale sans
                                 interrompre sa progression.
                             </p>
-                        </PixieDustPanel>
+                        </PixiePanel>
                     </div>
 
                     <div className="bg-surface-muted p-5 sm:p-7">
                         <p className="mb-4 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Panneau de palmarès
                         </p>
-                        <PixieDustPanel
+                        <PixiePanel
                             as="section"
                             variant="accent"
                             color="jaune-lampe"
@@ -775,14 +775,14 @@ export function PixieDustPanelDossier() {
                                 région importante sans rendre la couleur seule
                                 porteuse de sens.
                             </p>
-                        </PixieDustPanel>
+                        </PixiePanel>
                     </div>
 
                     <div className="bg-surface-muted p-5 sm:p-7">
                         <p className="mb-4 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Régie à contenu long
                         </p>
-                        <PixieDustPanel
+                        <PixiePanel
                             as="section"
                             variant="surface"
                             padding="md"
@@ -816,24 +816,24 @@ export function PixieDustPanelDossier() {
                                     </li>
                                 ))}
                             </ol>
-                        </PixieDustPanel>
+                        </PixiePanel>
                     </div>
                 </div>
             </section>
 
             <section
-                id="pixie-dust-panel-playground"
+                id="pixie-panel-playground"
                 aria-labelledby="panel-playground-title"
                 className="mt-16 scroll-mt-8 border border-line-strong bg-surface-muted p-6 shadow-soft sm:p-8"
             >
                 <SequenceTitle
                     id="panel-playground-title"
                     eyebrow="Régie"
-                    title="Composer un PixieDustPanel"
+                    title="Composer un PixiePanel"
                     description="Réglez sa sémantique, ses zones et son traitement ; le code d’utilisation suit chaque changement."
                 />
                 <div className="mt-8">
-                    <PixieDustPanelPlayground />
+                    <PixiePanelPlayground />
                 </div>
             </section>
 
@@ -892,8 +892,8 @@ export function PixieDustPanelDossier() {
                 <SequenceTitle
                     id="panel-technical"
                     eyebrow="Générique technique"
-                    title="API de l’esquisse"
-                    description="Les types spécifiques sont colocalisés dans PixieDustPanel.types.ts et les attributs HTML compatibles sont transmis à l’élément rendu."
+                    title="API du composant"
+                    description="Les types spécifiques sont colocalisés dans PixiePanel.types.ts et les attributs HTML compatibles sont transmis à l’élément rendu."
                 />
 
                 <div className="mt-7">
@@ -911,19 +911,19 @@ export function PixieDustPanelDossier() {
             <section aria-labelledby="panel-journal" className="mt-16">
                 <SequenceTitle
                     id="panel-journal"
-                    eyebrow="Journal de production"
-                    title="Décisions avant la promotion"
-                    description="L’esquisse doit être éprouvée dans de vraies sections du Codex avant de devenir PixiePanel."
+                    eyebrow="Contrat de projection"
+                    title="Les garanties de la version 1.0.0"
+                    description="PixiePanel est prêt à structurer les régions durables du Codex sans empiéter sur les responsabilités des autres Décors."
                 />
 
                 <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
                     {[
-                        "Éprouver la différence entre PixieCard et PixieDustPanel dans les index.",
-                        "Vérifier si les trois zones couvrent les compositions réelles sans créer de slots supplémentaires.",
-                        "Composer PixieDustInset dans le panneau sans confondre leurs responsabilités.",
-                        "Valider l’espacement xl sur mobile et à 200 % de zoom.",
-                        "Contrôler l’annonce des sections, aside et article avec un lecteur d’écran.",
-                        "Éprouver le corps défilable avec du contenu long et uniquement au clavier.",
+                        "PixieCard porte les unités répétables ; PixiePanel structure les régions durables.",
+                        "Header, corps et footer couvrent les compositions sans multiplier les slots spécialisés.",
+                        "PixieDustInset peut être composé dans le panneau tout en gardant son rôle secondaire.",
+                        "Les cinq densités restent lisibles sur mobile et à 200 % de zoom.",
+                        "Section, aside et article conservent leur sémantique et leur nom accessible.",
+                        "Le corps défilable préserve ses repères et reste utilisable uniquement au clavier.",
                     ].map((decision) => (
                         <li
                             key={decision}

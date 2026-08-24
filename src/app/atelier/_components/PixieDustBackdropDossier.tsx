@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/PixieDustBackdrop";
 import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieDustFrame } from "@/components/ui/PixieDustFrame";
-import { PixieDustPanel } from "@/components/ui/PixieDustPanel";
+import { PixiePanel } from "@/components/ui/PixiePanel";
 import { PixieDustBackdropPlayground } from "./PixieDustBackdropPlayground";
 
 const variants = [
@@ -554,14 +554,14 @@ export function PixieDustBackdropDossier() {
                             </h4>
                         </PixieCard>
 
-                        <PixieDustPanel as="div" variant="outline" padding="md">
+                        <PixiePanel as="div" variant="outline" padding="md">
                             <p className="text-xs font-eyebrow uppercase tracking-[0.14em] text-muted">
                                 Panel
                             </p>
                             <h4 className="mt-2 text-xl text-ink">
                                 Une région structurée
                             </h4>
-                        </PixieDustPanel>
+                        </PixiePanel>
 
                         <PixieDustFrame
                             as="div"

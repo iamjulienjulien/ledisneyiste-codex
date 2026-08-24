@@ -4,7 +4,7 @@ import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTa
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieDustField } from "@/components/ui/PixieDustField";
-import { PixieDustPanel } from "@/components/ui/PixieDustPanel";
+import { PixiePanel } from "@/components/ui/PixiePanel";
 import { PixieDustStack } from "@/components/ui/PixieDustStack";
 import { PixieDustFieldPlayground } from "./PixieDustFieldPlayground";
 
@@ -381,7 +381,7 @@ export function PixieDustFieldDossier() {
                             title="Le sens ne quitte jamais le contrôle"
                         />
                         <div className="mt-8 grid gap-5 md:grid-cols-2">
-                            <PixieDustPanel variant="outline" padding="md">
+                            <PixiePanel variant="outline" padding="md">
                                 <h4 className="text-xl text-ink">
                                     Relations automatiques
                                 </h4>
@@ -391,8 +391,8 @@ export function PixieDustFieldDossier() {
                                     tandis que l’erreur active aussi les états
                                     invalid et errormessage.
                                 </p>
-                            </PixieDustPanel>
-                            <PixieDustPanel variant="outline" padding="md">
+                            </PixiePanel>
+                            <PixiePanel variant="outline" padding="md">
                                 <h4 className="text-xl text-ink">
                                     Responsabilité partagée
                                 </h4>
@@ -402,7 +402,7 @@ export function PixieDustFieldDossier() {
                                     son attribut required pour bénéficier de sa
                                     validation propre.
                                 </p>
-                            </PixieDustPanel>
+                            </PixiePanel>
                         </div>
                     </div>
                 </section>

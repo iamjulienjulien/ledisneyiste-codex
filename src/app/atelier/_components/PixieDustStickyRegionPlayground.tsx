@@ -5,7 +5,7 @@ import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import { PixieDustInset } from "@/components/ui/PixieDustInset";
-import { PixieDustPanel } from "@/components/ui/PixieDustPanel";
+import { PixiePanel } from "@/components/ui/PixiePanel";
 import { PixieDustSidebar } from "@/components/ui/PixieDustSidebar";
 import { PixieDustStack } from "@/components/ui/PixieDustStack";
 import {
@@ -103,7 +103,7 @@ function RegionContent({ material }: Readonly<{ material: Material }>) {
 
     if (material === "actions") {
         return (
-            <PixieDustPanel variant="accent" padding="md">
+            <PixiePanel variant="accent" padding="md">
                 <p className="text-sm font-medium text-ink">
                     Conserver ce raccord ?
                 </p>
@@ -121,12 +121,12 @@ function RegionContent({ material }: Readonly<{ material: Material }>) {
                         Enregistrer
                     </button>
                 </div>
-            </PixieDustPanel>
+            </PixiePanel>
         );
     }
 
     return (
-        <PixieDustPanel variant="outline" padding="md">
+        <PixiePanel variant="outline" padding="md">
             <p className="text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
                 Dans cette fiche
             </p>
@@ -142,7 +142,7 @@ function RegionContent({ material }: Readonly<{ material: Material }>) {
                     ),
                 )}
             </ol>
-        </PixieDustPanel>
+        </PixiePanel>
     );
 }
 

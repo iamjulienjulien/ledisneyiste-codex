@@ -4,7 +4,7 @@ import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTa
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieDustField } from "@/components/ui/PixieDustField";
-import { PixieDustPanel } from "@/components/ui/PixieDustPanel";
+import { PixiePanel } from "@/components/ui/PixiePanel";
 import { PixieDustStack } from "@/components/ui/PixieDustStack";
 import {
     PixieDustTextarea,
@@ -511,7 +511,7 @@ export function PixieDustTextareaDossier() {
                             title="La longueur ne doit jamais effacer la consigne"
                         />
                         <div className="mt-8 grid gap-5 md:grid-cols-2">
-                            <PixieDustPanel variant="outline" padding="md">
+                            <PixiePanel variant="outline" padding="md">
                                 <h4 className="text-xl text-ink">
                                     Nom et limites explicites
                                 </h4>
@@ -521,8 +521,8 @@ export function PixieDustTextareaDossier() {
                                     caractères est annoncée dans sa description,
                                     pas seulement par un compteur.
                                 </p>
-                            </PixieDustPanel>
-                            <PixieDustPanel variant="outline" padding="md">
+                            </PixiePanel>
+                            <PixiePanel variant="outline" padding="md">
                                 <h4 className="text-xl text-ink">
                                     Liberté de redimensionnement
                                 </h4>
@@ -532,7 +532,7 @@ export function PixieDustTextareaDossier() {
                                     hauteur suffisante et une vraie contrainte
                                     de mise en page.
                                 </p>
-                            </PixieDustPanel>
+                            </PixiePanel>
                         </div>
                     </div>
                 </section>

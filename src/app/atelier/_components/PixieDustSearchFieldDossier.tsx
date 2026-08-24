@@ -3,7 +3,7 @@ import { AtelierFicheAccessoire } from "@/components/atelier/AtelierFicheAccesso
 import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
-import { PixieDustPanel } from "@/components/ui/PixieDustPanel";
+import { PixiePanel } from "@/components/ui/PixiePanel";
 import {
     PixieDustSearchField,
     type PixieDustSearchFieldLayout,
@@ -569,22 +569,22 @@ export function PixieDustSearchFieldDossier() {
                         description="Action, method et name composent directement l’URL. Le composant ne dépend d’aucun moteur externe pour transmettre la requête."
                     />
                     <div className="mt-8 grid gap-5 md:grid-cols-2">
-                        <PixieDustPanel variant="outline" padding="md">
+                        <PixiePanel variant="outline" padding="md">
                             <h4 className="text-xl text-ink">Entrée</h4>
                             <p className="mt-3 text-sm leading-6 text-ink-soft">
                                 Depuis le champ, Entrée soumet le formulaire et
                                 conserve le comportement attendu d’une recherche
                                 web.
                             </p>
-                        </PixieDustPanel>
-                        <PixieDustPanel variant="outline" padding="md">
+                        </PixiePanel>
+                        <PixiePanel variant="outline" padding="md">
                             <h4 className="text-xl text-ink">
                                 URL partageable
                             </h4>
                             <p className="mt-3 font-mono text-sm leading-6 text-ink-soft">
                                 /recherche?q=mickey
                             </p>
-                        </PixieDustPanel>
+                        </PixiePanel>
                     </div>
                 </section>
 
@@ -608,7 +608,7 @@ export function PixieDustSearchFieldDossier() {
                             title="Chaque commande annonce précisément son rôle"
                         />
                         <div className="mt-8 grid gap-5 md:grid-cols-2">
-                            <PixieDustPanel variant="outline" padding="md">
+                            <PixiePanel variant="outline" padding="md">
                                 <h4 className="text-xl text-ink">
                                     Une région et un champ nommés
                                 </h4>
@@ -617,8 +617,8 @@ export function PixieDustSearchFieldDossier() {
                                     reste visible par défaut et le placeholder
                                     ne sert jamais de nom accessible.
                                 </p>
-                            </PixieDustPanel>
-                            <PixieDustPanel variant="outline" padding="md">
+                            </PixiePanel>
+                            <PixiePanel variant="outline" padding="md">
                                 <h4 className="text-xl text-ink">
                                     Deux commandes sans ambiguïté
                                 </h4>
@@ -628,7 +628,7 @@ export function PixieDustSearchFieldDossier() {
                                     remet le focus dans le champ et ne soumet
                                     jamais le formulaire.
                                 </p>
-                            </PixieDustPanel>
+                            </PixiePanel>
                         </div>
                     </div>
                 </section>

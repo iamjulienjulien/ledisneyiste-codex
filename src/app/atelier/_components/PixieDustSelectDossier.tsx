@@ -4,7 +4,7 @@ import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTa
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieDustField } from "@/components/ui/PixieDustField";
-import { PixieDustPanel } from "@/components/ui/PixieDustPanel";
+import { PixiePanel } from "@/components/ui/PixiePanel";
 import {
     PixieDustSelect,
     type PixieDustSelectColor,
@@ -504,7 +504,7 @@ export function PixieDustSelectDossier() {
                             title="Le navigateur reste maître de la liste"
                         />
                         <div className="mt-8 grid gap-5 md:grid-cols-2">
-                            <PixieDustPanel variant="outline" padding="md">
+                            <PixiePanel variant="outline" padding="md">
                                 <h4 className="text-xl text-ink">
                                     Un nom, pas seulement une instruction
                                 </h4>
@@ -513,8 +513,8 @@ export function PixieDustSelectDossier() {
                                     remplace jamais le label de Field. L’erreur
                                     doit également rester formulée en texte.
                                 </p>
-                            </PixieDustPanel>
-                            <PixieDustPanel variant="outline" padding="md">
+                            </PixiePanel>
+                            <PixiePanel variant="outline" padding="md">
                                 <h4 className="text-xl text-ink">
                                     Interactions natives préservées
                                 </h4>
@@ -524,7 +524,7 @@ export function PixieDustSelectDossier() {
                                     natif. Le chevron Pixie est purement
                                     décoratif.
                                 </p>
-                            </PixieDustPanel>
+                            </PixiePanel>
                         </div>
                     </div>
                 </section>

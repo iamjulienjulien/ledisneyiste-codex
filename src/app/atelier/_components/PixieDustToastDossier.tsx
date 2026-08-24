@@ -3,7 +3,7 @@ import { AtelierFicheAccessoire } from "@/components/atelier/AtelierFicheAccesso
 import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
-import { PixieDustPanel } from "@/components/ui/PixieDustPanel";
+import { PixiePanel } from "@/components/ui/PixiePanel";
 import { PixieDustStack } from "@/components/ui/PixieDustStack";
 import {
     PixieDustToast,
@@ -457,7 +457,7 @@ export function PixieDustToastDossier() {
                             title="Informer sans déplacer le public"
                         />
                         <div className="mt-8 grid gap-5 md:grid-cols-2">
-                            <PixieDustPanel variant="outline" padding="md">
+                            <PixiePanel variant="outline" padding="md">
                                 <h4 className="text-xl text-ink">
                                     Une annonce proportionnée
                                 </h4>
@@ -466,8 +466,8 @@ export function PixieDustToastDossier() {
                                     Warning et danger utilisent alert, sauf
                                     priorité explicitement choisie.
                                 </p>
-                            </PixieDustPanel>
-                            <PixieDustPanel variant="outline" padding="md">
+                            </PixiePanel>
+                            <PixiePanel variant="outline" padding="md">
                                 <h4 className="text-xl text-ink">
                                     Aucun vol de focus
                                 </h4>
@@ -476,7 +476,7 @@ export function PixieDustToastDossier() {
                                     délai se suspend au survol et lorsque
                                     l’action ou la fermeture reçoit le clavier.
                                 </p>
-                            </PixieDustPanel>
+                            </PixiePanel>
                         </div>
                     </div>
                 </section>

@@ -4,7 +4,7 @@ import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTa
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieDustCluster } from "@/components/ui/PixieDustCluster";
-import { PixieDustPanel } from "@/components/ui/PixieDustPanel";
+import { PixiePanel } from "@/components/ui/PixiePanel";
 import {
     PixieDustSkeleton,
     type PixieDustSkeletonAnimation,
@@ -598,7 +598,7 @@ export function PixieDustSkeletonDossier() {
                             title="La structure visible ne doit pas devenir un chœur d’annonces"
                         />
                         <div className="mt-8 grid gap-5 md:grid-cols-3">
-                            <PixieDustPanel variant="outline" padding="md">
+                            <PixiePanel variant="outline" padding="md">
                                 <h4 className="text-xl text-ink">
                                     Décoratif par défaut
                                 </h4>
@@ -607,8 +607,8 @@ export function PixieDustSkeletonDossier() {
                                     empreintes. Elles restent silencieuses pour
                                     éviter les répétitions.
                                 </p>
-                            </PixieDustPanel>
-                            <PixieDustPanel variant="outline" padding="md">
+                            </PixiePanel>
+                            <PixiePanel variant="outline" padding="md">
                                 <h4 className="text-xl text-ink">
                                     La région parle
                                 </h4>
@@ -617,8 +617,8 @@ export function PixieDustSkeletonDossier() {
                                     aria-busy jusqu’à son remplacement par la
                                     scène réelle.
                                 </p>
-                            </PixieDustPanel>
-                            <PixieDustPanel variant="outline" padding="md">
+                            </PixiePanel>
+                            <PixiePanel variant="outline" padding="md">
                                 <h4 className="text-xl text-ink">
                                     Mouvement réduit
                                 </h4>
@@ -627,7 +627,7 @@ export function PixieDustSkeletonDossier() {
                                     modifier la géométrie ni masquer
                                     l’empreinte.
                                 </p>
-                            </PixieDustPanel>
+                            </PixiePanel>
                         </div>
                         <div
                             className="mt-5 border border-line bg-canvas p-5"

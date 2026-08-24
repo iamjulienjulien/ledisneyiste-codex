@@ -4,7 +4,7 @@ import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTa
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieDustField } from "@/components/ui/PixieDustField";
-import { PixieDustPanel } from "@/components/ui/PixieDustPanel";
+import { PixiePanel } from "@/components/ui/PixiePanel";
 import { PixieDustStack } from "@/components/ui/PixieDustStack";
 import {
     PixieDustSwitch,
@@ -479,21 +479,21 @@ export function PixieDustSwitchDossier() {
                         title="Switch applique, Checkbox prépare une réponse"
                     />
                     <div className="mt-8 grid gap-5 md:grid-cols-2">
-                        <PixieDustPanel variant="outline" padding="md">
+                        <PixiePanel variant="outline" padding="md">
                             <h4 className="text-xl text-ink">Switch</h4>
                             <p className="mt-3 text-sm leading-6 text-ink-soft">
                                 Le changement prend effet dès l’activation :
                                 lumière, son, contraste ou préférence
                                 d’affichage.
                             </p>
-                        </PixieDustPanel>
-                        <PixieDustPanel variant="outline" padding="md">
+                        </PixiePanel>
+                        <PixiePanel variant="outline" padding="md">
                             <h4 className="text-xl text-ink">Checkbox</h4>
                             <p className="mt-3 text-sm leading-6 text-ink-soft">
                                 Le choix rejoint généralement un ensemble de
                                 réponses qui sera validé ou envoyé plus tard.
                             </p>
-                        </PixieDustPanel>
+                        </PixiePanel>
                     </div>
                 </section>
 
@@ -517,7 +517,7 @@ export function PixieDustSwitchDossier() {
                             title="L’état se lit, s’entend et se commande"
                         />
                         <div className="mt-8 grid gap-5 md:grid-cols-2">
-                            <PixieDustPanel variant="outline" padding="md">
+                            <PixiePanel variant="outline" padding="md">
                                 <h4 className="text-xl text-ink">
                                     Une préférence précisément nommée
                                 </h4>
@@ -526,8 +526,8 @@ export function PixieDustSwitchDossier() {
                                     projection ». Le texte décrit la préférence,
                                     sans répéter « activer » ou « désactiver ».
                                 </p>
-                            </PixieDustPanel>
-                            <PixieDustPanel variant="outline" padding="md">
+                            </PixiePanel>
+                            <PixiePanel variant="outline" padding="md">
                                 <h4 className="text-xl text-ink">
                                     Un comportement réellement natif
                                 </h4>
@@ -536,7 +536,7 @@ export function PixieDustSwitchDossier() {
                                     modifie, le halo apparaît au clavier, et la
                                     position du bouton complète la couleur.
                                 </p>
-                            </PixieDustPanel>
+                            </PixiePanel>
                         </div>
                     </div>
                 </section>

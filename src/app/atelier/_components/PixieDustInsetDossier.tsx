@@ -11,7 +11,7 @@ import {
     type PixieDustInsetRadius,
     type PixieDustInsetVariant,
 } from "@/components/ui/PixieDustInset";
-import { PixieDustPanel } from "@/components/ui/PixieDustPanel";
+import { PixiePanel } from "@/components/ui/PixiePanel";
 import { PixieDustInsetPlayground } from "./PixieDustInsetPlayground";
 
 const variants = [
@@ -324,7 +324,7 @@ export function PixieDustInsetDossier() {
 
                 <div className="mt-7 grid border border-line xl:grid-cols-2">
                     <div className="flex min-h-[30rem] items-center justify-center bg-canvas p-8">
-                        <PixieDustPanel
+                        <PixiePanel
                             as="div"
                             variant="surface"
                             padding="lg"
@@ -347,7 +347,7 @@ export function PixieDustInsetDossier() {
                             >
                                 <SecondaryMetadata />
                             </PixieDustInset>
-                        </PixieDustPanel>
+                        </PixiePanel>
                     </div>
                     <CodeExample>{`<PixieDustInset
     variant="accent"
@@ -448,7 +448,7 @@ export function PixieDustInsetDossier() {
                         </PixieDustInset>
                     </PixieCard>
 
-                    <PixieDustPanel as="div" variant="surface" padding="md">
+                    <PixiePanel as="div" variant="surface" padding="md">
                         <h4 className="text-xl text-ink">Dans un Panel</h4>
                         <p className="mt-3 leading-7 text-ink-soft">
                             Une sous-zone organise les repères techniques.
@@ -462,7 +462,7 @@ export function PixieDustInsetDossier() {
                                 4 relations documentées
                             </p>
                         </PixieDustInset>
-                    </PixieDustPanel>
+                    </PixiePanel>
 
                     <PixieDustCallout
                         as="div"

@@ -3,7 +3,7 @@ import { AtelierFicheAccessoire } from "@/components/atelier/AtelierFicheAccesso
 import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
-import { PixieDustPanel } from "@/components/ui/PixieDustPanel";
+import { PixiePanel } from "@/components/ui/PixiePanel";
 import { PixieDustStack } from "@/components/ui/PixieDustStack";
 import {
     PixieDustLoader,
@@ -466,21 +466,21 @@ export function PixieDustLoaderDossier() {
                             title="L’attente reste compréhensible lorsque le mouvement s’arrête"
                         />
                         <div className="mt-8 grid gap-5 md:grid-cols-3">
-                            <PixieDustPanel variant="outline" padding="md">
+                            <PixiePanel variant="outline" padding="md">
                                 <h4 className="text-xl text-ink">Informatif</h4>
                                 <p className="mt-3 text-sm leading-6 text-ink-soft">
                                     Le loader expose un status et son label. Il
                                     n’attire ni ne déplace le focus.
                                 </p>
-                            </PixieDustPanel>
-                            <PixieDustPanel variant="outline" padding="md">
+                            </PixiePanel>
+                            <PixiePanel variant="outline" padding="md">
                                 <h4 className="text-xl text-ink">Décoratif</h4>
                                 <p className="mt-3 text-sm leading-6 text-ink-soft">
                                     decorative masque le signe et son label
                                     lorsque le contexte annonce déjà l’attente.
                                 </p>
-                            </PixieDustPanel>
-                            <PixieDustPanel variant="outline" padding="md">
+                            </PixiePanel>
+                            <PixiePanel variant="outline" padding="md">
                                 <h4 className="text-xl text-ink">
                                     Mouvement réduit
                                 </h4>
@@ -488,7 +488,7 @@ export function PixieDustLoaderDossier() {
                                     Les rotations et balayages deviennent une
                                     image fixe ; le label conserve tout le sens.
                                 </p>
-                            </PixieDustPanel>
+                            </PixiePanel>
                         </div>
                         <p className="mt-5 border-l-2 border-accent px-5 py-3 text-sm leading-6 text-ink-soft">
                             La région réellement chargée doit porter son propre

@@ -4,7 +4,7 @@ import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTa
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieDustInset } from "@/components/ui/PixieDustInset";
-import { PixieDustPanel } from "@/components/ui/PixieDustPanel";
+import { PixiePanel } from "@/components/ui/PixiePanel";
 import { PixieDustSidebar } from "@/components/ui/PixieDustSidebar";
 import { PixieDustStack } from "@/components/ui/PixieDustStack";
 import {
@@ -174,7 +174,7 @@ function SummaryPanel({
     title = "Dans cette fiche",
 }: Readonly<{ title?: string }>) {
     return (
-        <PixieDustPanel variant="outline" padding="md">
+        <PixiePanel variant="outline" padding="md">
             <p className="text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
                 {title}
             </p>
@@ -190,7 +190,7 @@ function SummaryPanel({
                     ),
                 )}
             </ol>
-        </PixieDustPanel>
+        </PixiePanel>
     );
 }
 
@@ -384,7 +384,7 @@ export function PixieDustStickyRegionDossier() {
         offset="lg"
         aria-label="Dans cette fiche"
     >
-        <PixieDustPanel>{/* Sommaire */}</PixieDustPanel>
+        <PixiePanel>{/* Sommaire */}</PixiePanel>
     </PixieDustStickyRegion>
 
     <PixieDustStack>{/* Long récit */}</PixieDustStack>
@@ -414,7 +414,7 @@ export function PixieDustStickyRegionDossier() {
                                         edge={edge.value}
                                         offset="sm"
                                     >
-                                        <PixieDustPanel
+                                        <PixiePanel
                                             variant="accent"
                                             padding="md"
                                         >
@@ -425,7 +425,7 @@ export function PixieDustStickyRegionDossier() {
                                                 Cette région révèle son maintien
                                                 au cours du défilement.
                                             </p>
-                                        </PixieDustPanel>
+                                        </PixiePanel>
                                     </PixieDustStickyRegion>
                                     <Story count={5} />
                                 </PixieDustStack>
@@ -512,7 +512,7 @@ export function PixieDustStickyRegionDossier() {
                         </PixieDustInset>
                     </article>
                     <article className="bg-canvas p-6">
-                        <PixieDustPanel variant="accent" padding="md">
+                        <PixiePanel variant="accent" padding="md">
                             <p className="text-sm font-medium text-ink">
                                 Conserver ce raccord ?
                             </p>
@@ -530,7 +530,7 @@ export function PixieDustStickyRegionDossier() {
                                     Enregistrer
                                 </button>
                             </div>
-                        </PixieDustPanel>
+                        </PixiePanel>
                     </article>
                 </div>
             </section>
@@ -567,14 +567,11 @@ export function PixieDustStickyRegionDossier() {
                                 className="mt-5"
                             >
                                 <PixieDustStickyRegion offset="sm">
-                                    <PixieDustPanel
-                                        variant="accent"
-                                        padding="sm"
-                                    >
+                                    <PixiePanel variant="accent" padding="sm">
                                         <p className="text-sm text-ink">
                                             Repère limité
                                         </p>
-                                    </PixieDustPanel>
+                                    </PixiePanel>
                                 </PixieDustStickyRegion>
                                 <Story count={5} />
                             </PixieDustSidebar>
