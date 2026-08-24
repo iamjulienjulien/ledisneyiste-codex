@@ -1,13 +1,20 @@
 export { PixieDustFrame } from "./PixieDustFrame";
 export type {
     PixieDustFrameAspect,
+    PixieDustFrameCaptionAlign,
     PixieDustFrameCaptionPosition,
     PixieDustFrameColor,
     PixieDustFrameElement,
+    PixieDustFrameEffect,
+    PixieDustFrameElevation,
     PixieDustFrameFit,
+    PixieDustFrameFocalPoint,
+    PixieDustFrameIntensity,
+    PixieDustFrameOverlayPosition,
     PixieDustFramePadding,
     PixieDustFramePosition,
     PixieDustFrameProps,
     PixieDustFrameRadius,
+    PixieDustFrameTreatment,
     PixieDustFrameVariant,
 } from "./PixieDustFrame.types";
