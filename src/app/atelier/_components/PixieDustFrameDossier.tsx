@@ -33,6 +33,16 @@ const variants = [
         value: "film" as const,
         description: "Deux bandes rythmées évoquent la matière du film.",
     },
+    {
+        name: "Diapositive",
+        value: "slide" as const,
+        description: "Un double filet rappelle un cache de projection.",
+    },
+    {
+        name: "Cellulo",
+        value: "cel" as const,
+        description: "Une surface translucide évoque les feuilles d’animation.",
+    },
 ] as const satisfies readonly Readonly<{
     name: string;
     value: PixieDustFrameVariant;
@@ -42,9 +52,12 @@ const variants = [
 const aspects = [
     { name: "Naturel", value: "auto" as const, ratio: "dimensions du média" },
     { name: "Carré", value: "square" as const, ratio: "1 / 1" },
+    { name: "Affiche", value: "poster" as const, ratio: "2 / 3" },
     { name: "Portrait", value: "portrait" as const, ratio: "3 / 4" },
     { name: "Paysage", value: "landscape" as const, ratio: "4 / 3" },
+    { name: "Large", value: "wide" as const, ratio: "3 / 2" },
     { name: "Cinéma", value: "cinema" as const, ratio: "16 / 9" },
+    { name: "Scope", value: "scope" as const, ratio: "2,39 / 1" },
 ] as const satisfies readonly Readonly<{
     name: string;
     value: PixieDustFrameAspect;
@@ -53,6 +66,7 @@ const aspects = [
 
 const paddings = [
     { name: "Aucun", value: "none" as const, token: "0" },
+    { name: "Très petit", value: "xs" as const, token: "0,25 rem" },
     { name: "Petit", value: "sm" as const, token: "0,5 rem" },
     { name: "Moyen", value: "md" as const, token: "1 rem" },
     { name: "Grand", value: "lg" as const, token: "1,5 rem" },
@@ -92,6 +106,12 @@ const properties = [
         description: "Proportion réservée au média.",
     },
     {
+        name: "customAspect",
+        type: 'CSSProperties["aspectRatio"]',
+        defaultValue: "—",
+        description: "Proportion libre prioritaire sur le preset aspect.",
+    },
+    {
         name: "fit",
         type: "PixieDustFrameFit",
         defaultValue: '"cover"',
@@ -102,6 +122,13 @@ const properties = [
         type: "PixieDustFramePosition",
         defaultValue: '"center"',
         description: "Point d’ancrage employé lors du recadrage.",
+    },
+    {
+        name: "focalPoint",
+        type: "PixieDustFrameFocalPoint",
+        defaultValue: "—",
+        description:
+            "Point focal précis en pourcentages, limité entre 0 et 100.",
     },
     {
         name: "padding",
@@ -116,10 +143,52 @@ const properties = [
         description: "Arrondi du cadre et de la fenêtre intérieure.",
     },
     {
+        name: "mediaRadius",
+        type: "PixieDustFrameRadius",
+        defaultValue: "radius",
+        description: "Arrondi indépendant de la fenêtre du média.",
+    },
+    {
         name: "color",
         type: "PixieDustFrameColor",
         defaultValue: "false",
         description: "Couleur du registre ou accent courant du thème.",
+    },
+    {
+        name: "elevation",
+        type: "PixieDustFrameElevation",
+        defaultValue: '"none"',
+        description: "Niveau de détachement du cadre par rapport au décor.",
+    },
+    {
+        name: "treatment",
+        type: "PixieDustFrameTreatment",
+        defaultValue: '"original"',
+        description: "Traitement colorimétrique non destructif du média.",
+    },
+    {
+        name: "effect",
+        type: "PixieDustFrameEffect",
+        defaultValue: '"none"',
+        description: "Effet atmosphérique silencieux superposé au média.",
+    },
+    {
+        name: "intensity",
+        type: "PixieDustFrameIntensity",
+        defaultValue: '"subtle"',
+        description: "Présence visuelle de l’effet atmosphérique.",
+    },
+    {
+        name: "overlay",
+        type: "ReactNode",
+        defaultValue: "—",
+        description: "Annotation ou contenu bref placé au-dessus du média.",
+    },
+    {
+        name: "overlayPosition",
+        type: "PixieDustFrameOverlayPosition",
+        defaultValue: '"bottom-end"',
+        description: "Point d’ancrage du contenu superposé.",
     },
     {
         name: "caption",
@@ -132,6 +201,12 @@ const properties = [
         type: "PixieDustFrameCaptionPosition",
         defaultValue: '"outside"',
         description: "Placement extérieur ou superposé de la légende.",
+    },
+    {
+        name: "captionAlign",
+        type: "PixieDustFrameCaptionAlign",
+        defaultValue: '"start"',
+        description: "Alignement typographique de la légende.",
     },
     {
         name: "children",
@@ -155,27 +230,58 @@ const specificTypes = [
     },
     {
         name: "PixieDustFrameVariant",
-        values: ['"plain"', '"outline"', '"mount"', '"film"'],
+        values: [
+            '"plain"',
+            '"outline"',
+            '"mount"',
+            '"film"',
+            '"slide"',
+            '"cel"',
+        ],
         description: "Traitements du cadre indépendants du média.",
     },
     {
         name: "PixieDustFrameAspect",
-        values: ['"auto"', '"square"', '"portrait"', '"landscape"', '"cinema"'],
+        values: [
+            '"auto"',
+            '"square"',
+            '"poster"',
+            '"portrait"',
+            '"landscape"',
+            '"wide"',
+            '"cinema"',
+            '"scope"',
+        ],
         description: "Proportions naturelles ou prédéfinies.",
     },
     {
         name: "PixieDustFrameFit",
-        values: ['"cover"', '"contain"'],
+        values: ['"cover"', '"contain"', '"fill"', '"none"', '"scale-down"'],
         description: "Modes de mise à l’échelle du média.",
     },
     {
         name: "PixieDustFramePosition",
-        values: ['"center"', '"top"', '"bottom"', '"left"', '"right"'],
+        values: [
+            '"center"',
+            '"top"',
+            '"bottom"',
+            '"left"',
+            '"right"',
+            '"top-start"',
+            '"top-end"',
+            '"bottom-start"',
+            '"bottom-end"',
+        ],
         description: "Points d’ancrage du recadrage.",
     },
     {
+        name: "PixieDustFrameFocalPoint",
+        values: ["{ x: number; y: number }"],
+        description: "Coordonnées en pourcentages du sujet à préserver.",
+    },
+    {
         name: "PixieDustFramePadding",
-        values: ['"none"', '"sm"', '"md"', '"lg"'],
+        values: ['"none"', '"xs"', '"sm"', '"md"', '"lg"'],
         description: "Largeurs du passe-partout.",
     },
     {
@@ -192,6 +298,48 @@ const specificTypes = [
         name: "PixieDustFrameCaptionPosition",
         values: ['"outside"', '"overlay"'],
         description: "Positions proposées pour la légende.",
+    },
+    {
+        name: "PixieDustFrameElevation",
+        values: ['"none"', '"soft"', '"strong"'],
+        description: "Niveaux de relief du support.",
+    },
+    {
+        name: "PixieDustFrameTreatment",
+        values: ['"original"', '"monochrome"', '"sepia"'],
+        description: "Traitements colorimétriques du média.",
+    },
+    {
+        name: "PixieDustFrameEffect",
+        values: [
+            '"none"',
+            '"grain"',
+            '"vignette"',
+            '"light-leak"',
+            '"projector"',
+        ],
+        description: "Effets atmosphériques superposés.",
+    },
+    {
+        name: "PixieDustFrameIntensity",
+        values: ['"subtle"', '"medium"', '"strong"'],
+        description: "Intensités disponibles pour les effets.",
+    },
+    {
+        name: "PixieDustFrameOverlayPosition",
+        values: [
+            '"top-start"',
+            '"top-end"',
+            '"center"',
+            '"bottom-start"',
+            '"bottom-end"',
+        ],
+        description: "Points d’ancrage d’une annotation superposée.",
+    },
+    {
+        name: "PixieDustFrameCaptionAlign",
+        values: ['"start"', '"center"', '"end"'],
+        description: "Alignements typographiques de la légende.",
     },
 ] as const;
 
@@ -284,7 +432,7 @@ export function PixieDustFrameDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.1.0
+                                0.2.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -320,7 +468,7 @@ export function PixieDustFrameDossier() {
                         ],
                         [
                             "Cadrage",
-                            "Proportion, ajustement, position, marge et rayon.",
+                            "Proportion, point focal, ajustement, marge et rayons indépendants.",
                         ],
                         [
                             "Accessibilité",
@@ -392,11 +540,11 @@ export function PixieDustFrameDossier() {
                 <SequenceTitle
                     id="frame-variants-title"
                     eyebrow="Direction artistique"
-                    title="Quatre manières d’entourer le visuel"
+                    title="Six manières d’entourer le visuel"
                     description="Le variant agit autour du média. La proportion et le recadrage restent des axes indépendants."
                 />
 
-                <div className="mt-7 grid gap-6 bg-surface-muted p-6 sm:grid-cols-2 xl:grid-cols-4">
+                <div className="mt-7 grid gap-6 bg-surface-muted p-6 sm:grid-cols-2 xl:grid-cols-3">
                     {variants.map((variant) => (
                         <div key={variant.value}>
                             <PixieDustFrame
@@ -426,11 +574,11 @@ export function PixieDustFrameDossier() {
                 <SequenceTitle
                     id="frame-aspects"
                     eyebrow="Formats de projection"
-                    title="Cinq proportions pour réserver la fenêtre"
-                    description="Le ratio naturel suit le média. Les quatre formats imposés stabilisent les grilles et les aperçus."
+                    title="Huit proportions pour réserver la fenêtre"
+                    description="Le ratio naturel suit le média. Les sept formats imposés stabilisent affiches, grilles et projections panoramiques."
                 />
 
-                <div className="mt-7 grid items-start gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+                <div className="mt-7 grid items-start gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                     {aspects.map((aspect) => (
                         <div key={aspect.value}>
                             <PixieDustFrame
@@ -590,6 +738,199 @@ export function PixieDustFrameDossier() {
                 </div>
             </section>
 
+            <section aria-labelledby="frame-scenarios" className="mt-16">
+                <SequenceTitle
+                    id="frame-scenarios"
+                    eyebrow="Plans préparés"
+                    title="Huit mises en scène pour éprouver le cadre"
+                    description="Ces compositions croisent formats, focalisation, matières, traitements et annotations sans transformer PixieDustFrame en composant métier."
+                />
+
+                <div className="mt-7 grid items-start gap-8 md:grid-cols-2">
+                    <article>
+                        <PixieDustFrame
+                            as="div"
+                            variant="mount"
+                            aspect="landscape"
+                            fit="contain"
+                            padding="lg"
+                            color="ambre-projecteur"
+                            elevation="soft"
+                        >
+                            <OeuvresImage />
+                        </PixieDustFrame>
+                        <h4 className="mt-4 text-xl text-ink">
+                            Dessin sur table lumineuse
+                        </h4>
+                        <p className="mt-2 leading-7 text-ink-soft">
+                            Un passe-partout ample laisse respirer un master
+                            conservé dans son intégralité.
+                        </p>
+                    </article>
+
+                    <article>
+                        <PixieDustFrame
+                            variant="film"
+                            aspect="cinema"
+                            fit="cover"
+                            focalPoint={{ x: 42, y: 30 }}
+                            padding="sm"
+                            color="bleu-reperage"
+                            effect="grain"
+                            intensity="medium"
+                            caption="Photogramme de repérage · point focal 42 × 30"
+                        >
+                            <PersonnagesImage alt="Symbole illustré des Personnages" />
+                        </PixieDustFrame>
+                        <h4 className="mt-4 text-xl text-ink">
+                            Photogramme recadré
+                        </h4>
+                        <p className="mt-2 leading-7 text-ink-soft">
+                            Le point focal protège le sujet pendant que le grain
+                            suggère la projection.
+                        </p>
+                    </article>
+
+                    <article className="md:max-w-sm">
+                        <PixieDustFrame
+                            variant="slide"
+                            aspect="poster"
+                            fit="cover"
+                            position="top"
+                            padding="xs"
+                            radius="small"
+                            mediaRadius="none"
+                            color="violet-ombre-portee"
+                            elevation="strong"
+                            caption="Affiche de présentation · format 2 / 3"
+                            captionAlign="center"
+                        >
+                            <OeuvresImage alt="Symbole illustré des Œuvres" />
+                        </PixieDustFrame>
+                        <h4 className="mt-4 text-xl text-ink">
+                            Affiche de présentation
+                        </h4>
+                        <p className="mt-2 leading-7 text-ink-soft">
+                            Le cache de diapositive et les deux rayons donnent
+                            une silhouette éditoriale plus précise.
+                        </p>
+                    </article>
+
+                    <article>
+                        <PixieDustFrame
+                            as="div"
+                            variant="cel"
+                            aspect="square"
+                            fit="contain"
+                            padding="md"
+                            color="vert-cellulo"
+                            overlay="Cellulo A-12"
+                            overlayPosition="top-end"
+                        >
+                            <PersonnagesImage />
+                        </PixieDustFrame>
+                        <h4 className="mt-4 text-xl text-ink">
+                            Cellulo annoté
+                        </h4>
+                        <p className="mt-2 leading-7 text-ink-soft">
+                            Une annotation brève rejoint la surface sans entrer
+                            dans le contenu du média.
+                        </p>
+                    </article>
+
+                    <article>
+                        <PixieDustFrame
+                            variant="outline"
+                            aspect="wide"
+                            fit="cover"
+                            treatment="monochrome"
+                            effect="vignette"
+                            intensity="strong"
+                            caption="Archive restaurée · copie de travail"
+                        >
+                            <OeuvresImage alt="Symbole illustré des Œuvres" />
+                        </PixieDustFrame>
+                        <h4 className="mt-4 text-xl text-ink">
+                            Archive monochrome
+                        </h4>
+                        <p className="mt-2 leading-7 text-ink-soft">
+                            Le traitement et la vignette modifient la lecture
+                            sans altérer la source.
+                        </p>
+                    </article>
+
+                    <article>
+                        <PixieDustFrame
+                            as="div"
+                            variant="plain"
+                            aspect="scope"
+                            fit="cover"
+                            color="corail-cel"
+                            effect="light-leak"
+                            intensity="medium"
+                            elevation="soft"
+                        >
+                            <PersonnagesImage />
+                        </PixieDustFrame>
+                        <h4 className="mt-4 text-xl text-ink">
+                            Fuite de lumière
+                        </h4>
+                        <p className="mt-2 leading-7 text-ink-soft">
+                            Un plan panoramique reçoit un accident lumineux
+                            discret, silencieux et sensible au mouvement réduit.
+                        </p>
+                    </article>
+
+                    <article>
+                        <PixieDustFrame
+                            variant="film"
+                            aspect="cinema"
+                            fit="contain"
+                            padding="sm"
+                            color="jaune-lampe"
+                            effect="projector"
+                            intensity="subtle"
+                            overlay="Plan maître"
+                            overlayPosition="top-start"
+                            caption="Projection de contrôle"
+                            captionPosition="overlay"
+                            captionAlign="end"
+                        >
+                            <OeuvresImage alt="Symbole illustré des Œuvres" />
+                        </PixieDustFrame>
+                        <h4 className="mt-4 text-xl text-ink">
+                            Projection légendée
+                        </h4>
+                        <p className="mt-2 leading-7 text-ink-soft">
+                            Annotation, légende et lumière de projecteur
+                            occupent des couches distinctes.
+                        </p>
+                    </article>
+
+                    <article>
+                        <PixieDustFrame
+                            as="div"
+                            variant="slide"
+                            customAspect="5 / 2"
+                            fit="scale-down"
+                            padding="md"
+                            mediaRadius="large"
+                            color="rouge-crayon"
+                            treatment="sepia"
+                        >
+                            <PersonnagesImage />
+                        </PixieDustFrame>
+                        <h4 className="mt-4 text-xl text-ink">
+                            Format de banc-titre libre
+                        </h4>
+                        <p className="mt-2 leading-7 text-ink-soft">
+                            Une proportion personnalisée et un arrondi intérieur
+                            indépendant couvrent les cadrages hors catalogue.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
             <section
                 id="pixie-dust-frame-playground"
                 aria-labelledby="frame-playground-title"
@@ -688,11 +1029,11 @@ export function PixieDustFrameDossier() {
                 <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
                     {[
                         "Éprouver les ratios avec des photographies, des symboles et des vidéos.",
-                        "Vérifier que le variant film reste discret dans les deux Lumières.",
+                        "Vérifier que film, slide et cel restent discrets dans les deux Lumières.",
                         "Contrôler le comportement de picture, video, svg et canvas comme enfants directs.",
-                        "Valider les légendes superposées sur des médias clairs et sombres.",
+                        "Valider les légendes et annotations superposées sur des médias clairs et sombres.",
                         "Tester les recadrages à 200 % de zoom et dans les cadres compacts.",
-                        "Décider si les cinq positions suffisent avant la promotion.",
+                        "Éprouver les points focaux et les formats libres avant la promotion.",
                     ].map((decision) => (
                         <li
                             key={decision}
