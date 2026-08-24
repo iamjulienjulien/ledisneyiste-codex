@@ -28,6 +28,7 @@ import { PixieDustSwitchDossier } from "./_components/PixieDustSwitchDossier";
 import { PixieDustSearchFieldDossier } from "./_components/PixieDustSearchFieldDossier";
 import { PixieDustToastDossier } from "./_components/PixieDustToastDossier";
 import { PixieDustLoaderDossier } from "./_components/PixieDustLoaderDossier";
+import { PixieDustSkeletonDossier } from "./_components/PixieDustSkeletonDossier";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PalettesPellicule } from "./_components/PalettesPellicule";
 
@@ -324,7 +325,8 @@ const effets = [
     {
         nom: "PixieDustSkeleton",
         role: "Préserver la structure pendant le chargement",
-        statut: "À esquisser",
+        statut: "Esquisse",
+        href: "#pixie-dust-skeleton",
     },
     {
         nom: "PixieDustEmptyState",
@@ -920,6 +922,7 @@ export default function AtelierPage() {
 
                 <PixieDustToastDossier />
                 <PixieDustLoaderDossier />
+                <PixieDustSkeletonDossier />
             </section>
         </div>
     );

@@ -1,0 +1,133 @@
+.root {
+    display: grid;
+    width: var(--pixie-skeleton-width);
+    max-width: 100%;
+}
+
+.shape {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: var(--pixie-skeleton-height);
+    overflow: hidden;
+    background: color-mix(
+        in srgb,
+        var(--pixie-skeleton-color) 22%,
+        var(--color-surface)
+    );
+}
+
+.shape::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    pointer-events: none;
+}
+
+.text .lastLine {
+    width: var(--pixie-skeleton-last-line-width);
+}
+
+.block .shape {
+    min-height: 1px;
+}
+
+.circle {
+    width: var(--pixie-skeleton-width);
+}
+
+.circle .shape {
+    height: var(--pixie-skeleton-height);
+    border-radius: 50%;
+}
+
+.gapXs {
+    gap: 0.25rem;
+}
+
+.gapSm {
+    gap: 0.5rem;
+}
+
+.gapMd {
+    gap: 0.75rem;
+}
+
+.radiusNone .shape {
+    border-radius: 0;
+}
+
+.radiusSm .shape {
+    border-radius: 0.125rem;
+}
+
+.radiusMd .shape {
+    border-radius: 0.375rem;
+}
+
+.radiusLg .shape {
+    border-radius: 0.75rem;
+}
+
+.radiusFull .shape {
+    border-radius: 999px;
+}
+
+.circle .shape {
+    border-radius: 50%;
+}
+
+.shimmer .shape::after {
+    background: linear-gradient(
+        100deg,
+        transparent 18%,
+        color-mix(in srgb, var(--pixie-skeleton-color) 18%, transparent) 42%,
+        color-mix(in srgb, var(--color-canvas) 62%, transparent) 50%,
+        color-mix(in srgb, var(--pixie-skeleton-color) 18%, transparent) 58%,
+        transparent 82%
+    );
+    transform: translateX(-110%);
+    animation: skeleton-shimmer 1.9s ease-in-out infinite;
+}
+
+.pulse .shape {
+    animation: skeleton-pulse 1.7s ease-in-out infinite;
+}
+
+.still .shape::after {
+    display: none;
+}
+
+.visuallyHidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+@keyframes skeleton-shimmer {
+    55%,
+    100% {
+        transform: translateX(110%);
+    }
+}
+
+@keyframes skeleton-pulse {
+    50% {
+        opacity: 0.58;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .shimmer .shape::after,
+    .pulse .shape {
+        animation: none;
+    }
+
+    .shimmer .shape::after {
+        display: none;
+    }
+}
