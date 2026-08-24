@@ -24,6 +24,7 @@ import { PixieDustFieldDossier } from "./_components/PixieDustFieldDossier";
 import { PixieDustInputDossier } from "./_components/PixieDustInputDossier";
 import { PixieDustTextareaDossier } from "./_components/PixieDustTextareaDossier";
 import { PixieDustSelectDossier } from "./_components/PixieDustSelectDossier";
+import { PixieDustSwitchDossier } from "./_components/PixieDustSwitchDossier";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PalettesPellicule } from "./_components/PalettesPellicule";
 
@@ -194,7 +195,8 @@ const dialogues = [
     {
         nom: "PixieDustSwitch",
         role: "Activer ou désactiver une préférence",
-        statut: "À esquisser",
+        statut: "Esquisse",
+        href: "#pixie-dust-switch",
     },
     {
         nom: "PixieDustFilterChip",
@@ -728,6 +730,7 @@ export default function AtelierPage() {
                 <PixieDustInputDossier />
                 <PixieDustTextareaDossier />
                 <PixieDustSelectDossier />
+                <PixieDustSwitchDossier />
             </section>
 
             <section
