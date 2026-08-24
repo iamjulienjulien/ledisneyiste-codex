@@ -25,6 +25,7 @@ import { PixieDustInputDossier } from "./_components/PixieDustInputDossier";
 import { PixieDustTextareaDossier } from "./_components/PixieDustTextareaDossier";
 import { PixieDustSelectDossier } from "./_components/PixieDustSelectDossier";
 import { PixieDustSwitchDossier } from "./_components/PixieDustSwitchDossier";
+import { PixieDustSearchFieldDossier } from "./_components/PixieDustSearchFieldDossier";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PalettesPellicule } from "./_components/PalettesPellicule";
 
@@ -206,7 +207,8 @@ const dialogues = [
     {
         nom: "PixieDustSearchField",
         role: "Composer une recherche complète",
-        statut: "À esquisser",
+        statut: "Esquisse",
+        href: "#pixie-dust-search-field",
     },
     {
         nom: "PixieDustCombobox",
@@ -731,6 +733,7 @@ export default function AtelierPage() {
                 <PixieDustTextareaDossier />
                 <PixieDustSelectDossier />
                 <PixieDustSwitchDossier />
+                <PixieDustSearchFieldDossier />
             </section>
 
             <section

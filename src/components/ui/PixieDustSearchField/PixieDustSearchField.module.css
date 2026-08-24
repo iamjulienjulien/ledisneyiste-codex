@@ -1,0 +1,57 @@
+.root,
+.form {
+    width: 100%;
+    min-width: 0;
+}
+
+.controls {
+    display: grid;
+    width: 100%;
+    min-width: 0;
+    gap: 0.625rem;
+}
+
+.inline {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: start;
+}
+
+.stacked {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.stacked .clearButton,
+.stacked .submitButton {
+    width: 100%;
+}
+
+.responsive {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.responsive .clearButton,
+.responsive .submitButton {
+    width: 100%;
+}
+
+.clearButton {
+    min-width: 2.25rem;
+    padding-inline: 0.625rem;
+    font-size: 1.25em;
+}
+
+.searchInput::-webkit-search-cancel-button {
+    appearance: none;
+}
+
+@media (min-width: 36rem) {
+    .responsive {
+        grid-template-columns: minmax(0, 1fr) auto auto;
+        align-items: start;
+    }
+
+    .responsive .clearButton,
+    .responsive .submitButton {
+        width: auto;
+    }
+}
