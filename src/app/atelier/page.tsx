@@ -23,6 +23,7 @@ import { PixieDustStickyRegionDossier } from "./_components/PixieDustStickyRegio
 import { PixieDustFieldDossier } from "./_components/PixieDustFieldDossier";
 import { PixieDustInputDossier } from "./_components/PixieDustInputDossier";
 import { PixieDustTextareaDossier } from "./_components/PixieDustTextareaDossier";
+import { PixieDustSelectDossier } from "./_components/PixieDustSelectDossier";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PalettesPellicule } from "./_components/PalettesPellicule";
 
@@ -177,7 +178,8 @@ const dialogues = [
     {
         nom: "PixieDustSelect",
         role: "Choisir une valeur dans une liste fermée",
-        statut: "À esquisser",
+        statut: "Esquisse",
+        href: "#pixie-dust-select",
     },
     {
         nom: "PixieDustCheckbox",
@@ -725,6 +727,7 @@ export default function AtelierPage() {
                 <PixieDustFieldDossier />
                 <PixieDustInputDossier />
                 <PixieDustTextareaDossier />
+                <PixieDustSelectDossier />
             </section>
 
             <section
