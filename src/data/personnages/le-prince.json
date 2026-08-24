@@ -17,7 +17,9 @@
         },
         "createurs": [
             {
-                "nom": "Grim Natwick"
+                "nom": "Grim Natwick",
+                "type": "contributeur",
+                "slug": "grim-natwick"
             }
         ]
     },

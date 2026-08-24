@@ -1,0 +1,55 @@
+{
+    "slug": "grim-natwick",
+    "type": "contributeur",
+    "introduction": "Grim Natwick apporte au studio Disney une longue expérience du dessin, de la pantomime et du corps humain. Après avoir participé à la création graphique de Betty Boop, il rejoint en 1934 la production qui deviendra Blanche-Neige et les Sept Nains. Aux côtés de Hamilton Luske, il anime la princesse et affronte aussi les difficultés du Prince, donnant aux figures réalistes une souplesse que le studio cherche encore à maîtriser.",
+    "blocsEditoriaux": [
+        {
+            "type": "signature",
+            "eyebrow": "Corps humain",
+            "titre": "Faire entrer la princesse dans le monde dessiné",
+            "paragraphes": [
+                "La formation artistique de Natwick et son expérience de la pantomime en font un spécialiste des figures humaines. Sur Blanche-Neige, il dirige une unité distincte de celle de Hamilton Luske, avec une approche du dessin qui ne produit pas exactement les mêmes accents.",
+                "Cette différence ne disparaît pas entièrement dans le film. Elle crée une tension discrète entre plusieurs manières de construire la princesse, tout en maintenant assez de continuité pour que le public croie à un même personnage.",
+                "Natwick travaille également sur le Prince, dont les scènes sont réduites face à la difficulté de lui donner une présence masculine convaincante. Milt Kahl et Marc Davis l’assistent sur plusieurs de ces passages exigeants."
+            ],
+            "sources": [
+                "d23-grim-natwick",
+                "loc-snow-white-kaufman",
+                "wdfm-marc-alice-davis",
+                "wdfm-unusual-suspects-prince"
+            ]
+        },
+        {
+            "type": "trajectoire",
+            "eyebrow": "Pionnier",
+            "titre": "Traverser les studios sans perdre le goût du mouvement",
+            "paragraphes": [
+                "Natwick arrive chez Disney après avoir travaillé dans l’animation muette, chez Fleischer et auprès d’Ub Iwerks. Il a déjà contribué à définir Betty Boop, une autre figure féminine devenue inséparable de son époque.",
+                "Il quitte Disney en 1938 et poursuit une carrière qui traverse plusieurs studios et plusieurs transformations du métier. Cette circulation fait de lui moins l’homme d’une seule maison qu’un lien vivant entre les premiers artisans de l’animation et les générations qui viennent apprendre auprès de lui."
+            ],
+            "sources": ["d23-grim-natwick"]
+        }
+    ],
+    "naissance": {
+        "date": { "valeur": "1890", "precision": "annee" },
+        "lieu": ""
+    },
+    "deces": {
+        "date": { "valeur": "1990", "precision": "annee" },
+        "lieu": ""
+    },
+    "roles": ["animateur", "concepteur de personnages"],
+    "periodesActivite": [
+        {
+            "debut": { "valeur": "1934", "precision": "annee" },
+            "fin": { "valeur": "1938", "precision": "annee" }
+        }
+    ],
+    "sources": [
+        "d23-grim-natwick",
+        "afi-snow-white",
+        "loc-snow-white-kaufman",
+        "wdfm-marc-alice-davis",
+        "wdfm-unusual-suspects-prince"
+    ]
+}

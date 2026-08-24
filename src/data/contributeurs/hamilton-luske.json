@@ -1,0 +1,52 @@
+{
+    "slug": "hamilton-luske",
+    "type": "contributeur",
+    "introduction": "Hamilton Luske aborde l’animation comme un travail de préparation, d’observation et de clarté. Walt Disney lui confie Blanche-Neige, la figure dont dépend la crédibilité émotionnelle du premier long métrage. En organisant les références filmées et l’animation de la princesse, Luske cherche moins à copier un corps réel qu’à comprendre les gestes capables de rendre un personnage humain compatible avec le monde dessiné qui l’entoure.",
+    "blocsEditoriaux": [
+        {
+            "type": "signature",
+            "eyebrow": "Figure humaine",
+            "titre": "Construire la crédibilité de Blanche-Neige",
+            "paragraphes": [
+                "Walt assigne officiellement Hamilton Luske à Blanche-Neige en 1935. La princesse doit porter le récit sans paraître raide auprès des nains et des animaux, une difficulté qui conduit le studio à préparer ses scènes avec des prises de vues de Marge Champion.",
+                "Luske dirige ces références en pensant déjà à leur usage par les animateurs. Le film réel fournit le poids, le rythme et les changements d’attitude ; le dessin sélectionne, simplifie et reconstruit ces observations pour préserver l’unité du personnage.",
+                "Avec Grim Natwick et leurs équipes, il donne ainsi au long métrage une présence humaine assez vraisemblable pour soutenir la peur, la tendresse et le chant sans sortir du langage de l’animation."
+            ],
+            "sources": [
+                "d23-ham-luske",
+                "loc-snow-white-kaufman",
+                "wdfm-marc-alice-davis"
+            ]
+        },
+        {
+            "type": "transmission",
+            "eyebrow": "Planifier",
+            "titre": "Faire d’une méthode de scène un outil collectif",
+            "paragraphes": [
+                "Luske développe une manière progressive de préparer les scènes qui le rend aussi précieux auprès des animateurs moins expérimentés. Les décisions de jeu deviennent des étapes observables plutôt qu’une intuition impossible à transmettre.",
+                "Après Blanche-Neige, cette capacité l’oriente vers la réalisation. Il participe à Pinocchio, Fantasia, Cendrillon, Alice au pays des merveilles et plusieurs productions mêlant animation, prises de vues réelles et télévision."
+            ],
+            "sources": ["d23-ham-luske"]
+        }
+    ],
+    "naissance": {
+        "date": { "valeur": "1903-10-16", "precision": "jour" },
+        "lieu": "Chicago, Illinois, États-Unis"
+    },
+    "deces": {
+        "date": { "valeur": "1968-02-18", "precision": "jour" },
+        "lieu": ""
+    },
+    "roles": ["animateur", "animateur superviseur", "réalisateur"],
+    "periodesActivite": [
+        {
+            "debut": { "valeur": "1931", "precision": "annee" },
+            "fin": { "valeur": "1968", "precision": "annee" }
+        }
+    ],
+    "sources": [
+        "d23-ham-luske",
+        "loc-snow-white-kaufman",
+        "wdfm-marc-alice-davis"
+    ]
+}

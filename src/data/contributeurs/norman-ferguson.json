@@ -1,0 +1,47 @@
+{
+    "slug": "norman-ferguson",
+    "type": "contributeur",
+    "introduction": "Norman Ferguson préfère la force d’une performance aux règles trop visibles du dessin. Son animation de Pluto montre qu’un personnage peut réfléchir à l’écran sans prononcer un mot ; celle de la Sorcière dans Blanche-Neige et les Sept Nains transforme une silhouette voûtée en menace jubilatoire. Cet instinct de comédien conduit « Fergy » de l’animation à la supervision puis à la réalisation de séquences.",
+    "blocsEditoriaux": [
+        {
+            "type": "signature",
+            "eyebrow": "Performance",
+            "titre": "Dessiner ce que le personnage pense",
+            "paragraphes": [
+                "Dans Playful Pluto, Ferguson construit la lutte contre le papier tue-mouches comme une suite de tentatives. Les réactions permettent au public de suivre la pensée du chien et font de cette courte scène une étape majeure de la personality animation.",
+                "Walt lui confie ensuite la supervision de la Sorcière de Blanche-Neige. Le contrôle hiératique de la Reine laisse place à un corps mobile, des mains agitées et une joie mauvaise que Ferguson pousse jusqu’à la caricature sans perdre l’intention du personnage.",
+                "La métamorphose devient ainsi un changement de jeu autant que d’apparence. Le dessin ne respecte pas une anatomie idéale : il choisit les déformations capables de rendre la pensée plus nette."
+            ],
+            "sources": [
+                "d23-norm-ferguson",
+                "d23-snow-white-queen-witch-gallery"
+            ]
+        },
+        {
+            "type": "trajectoire",
+            "eyebrow": "Élargir le cadre",
+            "titre": "Passer du jeu d’un personnage à la conduite des séquences",
+            "paragraphes": [
+                "Après Blanche-Neige, Ferguson anime notamment Grand Coquin et Gédéon dans Pinocchio avant de prendre davantage de responsabilités dans la conduite des productions.",
+                "Il devient réalisateur de séquences, superviseur de production et réalisateur sur plusieurs classiques. Ce déplacement prolonge sa première force : comprendre assez précisément le jeu pour organiser autour de lui le rythme d’une scène entière."
+            ],
+            "sources": ["d23-norm-ferguson"]
+        }
+    ],
+    "naissance": {
+        "date": { "valeur": "1902-09-02", "precision": "jour" },
+        "lieu": ""
+    },
+    "deces": {
+        "date": { "valeur": "1957-11-02", "precision": "jour" },
+        "lieu": "Los Angeles, Californie, États-Unis"
+    },
+    "roles": ["animateur", "animateur superviseur", "réalisateur"],
+    "periodesActivite": [
+        {
+            "debut": { "valeur": "1929", "precision": "annee" },
+            "fin": { "valeur": "1953", "precision": "annee" }
+        }
+    ],
+    "sources": ["d23-norm-ferguson", "d23-snow-white-queen-witch-gallery"]
+}

@@ -17,10 +17,14 @@
         },
         "createurs": [
             {
-                "nom": "Hamilton Luske"
+                "nom": "Hamilton Luske",
+                "type": "contributeur",
+                "slug": "hamilton-luske"
             },
             {
-                "nom": "Grim Natwick"
+                "nom": "Grim Natwick",
+                "type": "contributeur",
+                "slug": "grim-natwick"
             }
         ]
     },

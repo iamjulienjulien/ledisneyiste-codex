@@ -189,7 +189,9 @@
         },
         {
             "contributeur": {
-                "nom": "David Hand"
+                "nom": "David Hand",
+                "type": "contributeur",
+                "slug": "david-hand"
             },
             "roles": ["supervision de la réalisation"],
             "domaine": "production-direction"
@@ -205,7 +207,9 @@
         },
         {
             "contributeur": {
-                "nom": "Hamilton Luske"
+                "nom": "Hamilton Luske",
+                "type": "contributeur",
+                "slug": "hamilton-luske"
             },
             "roles": [
                 "supervision de l’animation",
@@ -215,23 +219,38 @@
         },
         {
             "contributeur": {
-                "nom": "Fred Moore"
+                "nom": "Fred Moore",
+                "type": "contributeur",
+                "slug": "fred-moore"
             },
             "roles": ["supervision de l’animation", "animation de Simplet"],
             "domaine": "animation-personnages"
         },
         {
             "contributeur": {
-                "nom": "Vladimir Tytla"
+                "nom": "Vladimir “Bill” Tytla",
+                "type": "contributeur",
+                "slug": "vladimir-bill-tytla"
             },
             "roles": ["supervision de l’animation", "animation de Grincheux"],
             "domaine": "animation-personnages"
         },
         {
             "contributeur": {
-                "nom": "Norman Ferguson"
+                "nom": "Norman Ferguson",
+                "type": "contributeur",
+                "slug": "norman-ferguson"
             },
             "roles": ["supervision de l’animation", "animation de la Reine"],
+            "domaine": "animation-personnages"
+        },
+        {
+            "contributeur": {
+                "nom": "Grim Natwick",
+                "type": "contributeur",
+                "slug": "grim-natwick"
+            },
+            "roles": ["animation de Blanche-Neige", "animation du Prince"],
             "domaine": "animation-personnages"
         },
         {

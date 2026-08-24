@@ -1,0 +1,48 @@
+{
+    "slug": "vladimir-bill-tytla",
+    "type": "contributeur",
+    "introduction": "Vladimir « Bill » Tytla anime en cherchant d’abord ce que le personnage éprouve. Sa formation artistique et son goût du jeu physique lui permettent de donner au dessin une intensité qui dépasse la simple virtuosité. Sur Blanche-Neige et les Sept Nains, il travaille avec Fred Moore à maintenir sept personnalités distinctes jusque dans les scènes collectives, puis pousse cette exigence vers Stromboli, Chernabog et Dumbo.",
+    "blocsEditoriaux": [
+        {
+            "type": "signature",
+            "eyebrow": "Sentiment",
+            "titre": "Entrer dans le personnage avant de déplacer le dessin",
+            "paragraphes": [
+                "Tytla prépare ses scènes comme un acteur. Il mime les attitudes, cherche leur force intérieure et laisse le sentiment déterminer la posture, le poids et l’amplitude du mouvement.",
+                "Avec les Sept Nains, cette méthode doit rester compatible avec un ensemble. Même lorsqu’ils traversent le cadre en groupe, chacun continue de réagir selon sa propre logique ; Grincheux ne peut pas partager une joie ou une peur comme Simplet ou Prof.",
+                "Cette attention donne aux séquences comiques une profondeur inattendue. Le gag ne remplace pas le personnage : il devient la conséquence de sa manière particulière d’habiter la scène."
+            ],
+            "sources": ["d23-bill-tytla", "loc-snow-white-kaufman"]
+        },
+        {
+            "type": "trajectoire",
+            "eyebrow": "Intensité",
+            "titre": "Étendre le jeu de la tendresse à la démesure",
+            "paragraphes": [
+                "Après les nains, Tytla anime des figures dont l’échelle et le registre changent radicalement : Stromboli dans Pinocchio, Chernabog dans Fantasia, puis Dumbo. La menace monumentale et la vulnérabilité silencieuse procèdent pourtant de la même recherche d’un sentiment lisible.",
+                "Il quitte Disney en 1943 après neuf années au studio. Cette période relativement brève suffit à laisser une référence durable : le mouvement paraît juste lorsque l’animateur ne décrit pas seulement une action, mais engage tout le corps du personnage dans ce qu’il ressent."
+            ],
+            "sources": ["d23-bill-tytla"]
+        }
+    ],
+    "naissance": {
+        "date": { "valeur": "1904-10-25", "precision": "jour" },
+        "lieu": "Yonkers, New York, États-Unis"
+    },
+    "deces": {
+        "date": { "valeur": "1968-12-31", "precision": "jour" },
+        "lieu": "East Lyme, Connecticut, États-Unis"
+    },
+    "roles": ["animateur", "animateur superviseur"],
+    "periodesActivite": [
+        {
+            "debut": { "valeur": "1934", "precision": "annee" },
+            "fin": { "valeur": "1943", "precision": "annee" }
+        }
+    ],
+    "sources": [
+        "d23-bill-tytla",
+        "loc-snow-white-kaufman",
+        "wdfm-roy-advance-man"
+    ]
+}

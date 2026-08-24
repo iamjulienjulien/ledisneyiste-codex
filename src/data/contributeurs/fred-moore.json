@@ -1,0 +1,56 @@
+{
+    "slug": "fred-moore",
+    "type": "contributeur",
+    "introduction": "Fred Moore fait du charme une qualité de construction. Dessinateur presque entièrement autodidacte, il sait donner à une silhouette du poids, de la souplesse et une émotion immédiatement accessible. Walt lui confie la direction de l’animation des Sept Nains en 1934 : une responsabilité qui transforme sept corps comparables en sept présences impossibles à confondre et place la personnalité au centre du premier long métrage.",
+    "blocsEditoriaux": [
+        {
+            "type": "signature",
+            "eyebrow": "Personnalité",
+            "titre": "Distinguer sept silhouettes par leur manière de vivre",
+            "paragraphes": [
+                "Les Sept Nains partagent une taille, un métier et la plupart de leurs scènes. Leur individualité ne peut donc pas dépendre uniquement d’un costume ou d’un nom : chaque geste, chaque posture et chaque réaction doivent confirmer une personnalité.",
+                "Fred Moore conduit ce travail avec Vladimir “Bill” Tytla et une équipe d’animateurs. Son dessin donne aux volumes une élasticité convaincante et laisse le caractère modifier la façon de marcher, de regarder Blanche-Neige ou de participer à une action collective.",
+                "Cette cohérence reste visible jusque dans les scènes de foule. Le film ne suspend jamais les personnalités pour déplacer le groupe : il fait de leur coexistence même le moteur du mouvement."
+            ],
+            "sources": [
+                "d23-fred-moore",
+                "loc-snow-white-kaufman",
+                "d23-seven-dwarfs-personality"
+            ]
+        },
+        {
+            "type": "transmission",
+            "eyebrow": "Dessiner devant les autres",
+            "titre": "Montrer une solution plutôt que l’expliquer",
+            "paragraphes": [
+                "Les artistes viennent chercher Moore lorsqu’un dessin résiste. Il répond moins par une théorie que par une démonstration, trouvant directement sur le papier la ligne capable de rendre une action plus claire et plus séduisante.",
+                "Cette influence traverse ses propres personnages, des nains à Lampwick et Timothy, mais aussi les animateurs qu’il aide. Son apport au studio devient un langage de formes que d’autres peuvent observer, reprendre et déplacer."
+            ],
+            "sources": ["d23-fred-moore"]
+        }
+    ],
+    "naissance": {
+        "date": { "valeur": "1911-09-07", "precision": "jour" },
+        "lieu": "Los Angeles, Californie, États-Unis"
+    },
+    "deces": {
+        "date": { "valeur": "1952-11-25", "precision": "jour" },
+        "lieu": ""
+    },
+    "roles": [
+        "animateur",
+        "animateur superviseur",
+        "concepteur de personnages"
+    ],
+    "periodesActivite": [
+        {
+            "debut": { "valeur": "1930", "precision": "annee" },
+            "fin": { "valeur": "1952", "precision": "annee" }
+        }
+    ],
+    "sources": [
+        "d23-fred-moore",
+        "loc-snow-white-kaufman",
+        "d23-seven-dwarfs-personality"
+    ]
+}

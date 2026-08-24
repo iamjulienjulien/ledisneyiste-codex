@@ -5,6 +5,21 @@
     "blocsEditoriaux": [
         {
             "type": "signature",
+            "eyebrow": "Premier long métrage",
+            "titre": "Résoudre le Prince dans l’ombre de Blanche-Neige",
+            "paragraphes": [
+                "Sur Blanche-Neige et les Sept Nains, Milt Kahl travaille comme assistant dans l’unité de Grim Natwick. Le Prince résiste aux animateurs : son anatomie doit rester crédible, mais sa présence manque facilement de naturel face aux personnages plus caricaturaux.",
+                "Kahl et Marc Davis reprennent plusieurs scènes difficiles et consolident leur dessin. Le rôle du Prince est finalement réduit, mais ce travail révèle chez les deux jeunes artistes une aptitude particulière à construire les figures humaines.",
+                "Cette expérience annonce la place que Kahl occupera bientôt dans le studio. Avant même de redéfinir Pinocchio, il apprend qu’une forme juste doit résoudre simultanément l’anatomie, le mouvement et la fonction dramatique du personnage."
+            ],
+            "sources": [
+                "wdfm-unusual-suspects-prince",
+                "wdfm-marc-alice-davis",
+                "afi-snow-white"
+            ]
+        },
+        {
+            "type": "signature",
             "eyebrow": "Redessiner",
             "titre": "Trouver l’enfant à l’intérieur de la marionnette",
             "paragraphes": [
@@ -55,5 +70,11 @@
             }
         }
     ],
-    "sources": ["d23-milt-kahl", "wdfm-milt-kahl-master-puppeteer"]
+    "sources": [
+        "d23-milt-kahl",
+        "wdfm-milt-kahl-master-puppeteer",
+        "wdfm-unusual-suspects-prince",
+        "wdfm-marc-alice-davis",
+        "afi-snow-white"
+    ]
 }

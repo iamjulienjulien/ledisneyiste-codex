@@ -16,8 +16,16 @@
     "creation": {
         "date": { "valeur": "1937", "precision": "annee" },
         "createurs": [
-            { "nom": "Fred Moore" },
-            { "nom": "Vladimir “Bill” Tytla" }
+            {
+                "nom": "Fred Moore",
+                "type": "contributeur",
+                "slug": "fred-moore"
+            },
+            {
+                "nom": "Vladimir “Bill” Tytla",
+                "type": "contributeur",
+                "slug": "vladimir-bill-tytla"
+            }
         ]
     },
     "premiereApparition": {

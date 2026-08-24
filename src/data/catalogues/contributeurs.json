@@ -134,5 +134,49 @@
         "type": "contributeur",
         "metadata": { "categories": ["animateur", "realisateur"] },
         "sousTitre": "L’animateur qui donna poids, élan et humour aux personnages"
+    },
+    {
+        "slug": "david-hand",
+        "nom": "David Hand",
+        "type": "contributeur",
+        "metadata": {
+            "categories": ["animateur", "realisateur", "producteur"]
+        },
+        "sousTitre": "Le superviseur qui transforma l’ambition de Walt en production"
+    },
+    {
+        "slug": "hamilton-luske",
+        "nom": "Hamilton Luske",
+        "type": "contributeur",
+        "metadata": { "categories": ["animateur", "realisateur"] },
+        "sousTitre": "L’animateur qui chercha la vérité humaine de Blanche-Neige"
+    },
+    {
+        "slug": "fred-moore",
+        "nom": "Fred Moore",
+        "type": "contributeur",
+        "metadata": { "categories": ["animateur"] },
+        "sousTitre": "Le dessinateur qui donna charme et personnalité aux Sept Nains"
+    },
+    {
+        "slug": "vladimir-bill-tytla",
+        "nom": "Vladimir “Bill” Tytla",
+        "type": "contributeur",
+        "metadata": { "categories": ["animateur"] },
+        "sousTitre": "L’acteur du crayon qui cherchait le sentiment derrière chaque geste"
+    },
+    {
+        "slug": "norman-ferguson",
+        "nom": "Norman Ferguson",
+        "type": "contributeur",
+        "metadata": { "categories": ["animateur", "realisateur"] },
+        "sousTitre": "L’instinctif qui fit penser Pluto et jubiler la Sorcière"
+    },
+    {
+        "slug": "grim-natwick",
+        "nom": "Grim Natwick",
+        "type": "contributeur",
+        "metadata": { "categories": ["animateur"] },
+        "sousTitre": "Le dessinateur du corps humain qui anima Blanche-Neige et son Prince"
     }
 ]

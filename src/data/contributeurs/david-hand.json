@@ -1,0 +1,44 @@
+{
+    "slug": "david-hand",
+    "type": "contributeur",
+    "introduction": "David Hand transforme les ambitions de Walt Disney en travail partageable. Animateur devenu réalisateur puis superviseur de production, il organise le passage du court métrage au premier long métrage sans chercher à substituer sa vision à celle de Walt. Sur Blanche-Neige et les Sept Nains, sa responsabilité consiste à tenir ensemble les séquences, les équipes, les exigences artistiques et les limites concrètes d’une fabrication sans précédent au studio.",
+    "blocsEditoriaux": [
+        {
+            "type": "signature",
+            "eyebrow": "Supervision",
+            "titre": "Transformer une ambition en production",
+            "paragraphes": [
+                "David Hand rejoint Disney en 1930 comme animateur, puis passe rapidement à la réalisation. Walt reconnaît chez lui une capacité à faire avancer le travail et le nomme superviseur de production en 1933, au moment où le studio commence à envisager une autre échelle.",
+                "Sur Blanche-Neige et les Sept Nains, Hand supervise la réalisation pendant que plusieurs réalisateurs conduisent les séquences. Il fait circuler les décisions, maintient la continuité et veille à ce que les exigences formulées par Walt trouvent une traduction praticable dans les scènes.",
+                "Cette position ne se confond ni avec celle d’un auteur unique ni avec une simple administration. Elle donne au film un centre opérationnel capable d’accorder des centaines de contributions sans effacer leurs différences."
+            ],
+            "sources": ["d23-david-hand", "afi-snow-white"]
+        },
+        {
+            "type": "trajectoire",
+            "eyebrow": "Après Blanche-Neige",
+            "titre": "Porter l’expérience du long métrage vers d’autres studios",
+            "paragraphes": [
+                "Hand supervise ensuite Bambi et poursuit chez Disney jusqu’en 1944. Son passage par le premier long métrage lui a donné l’expérience d’une production où la direction artistique dépend autant de l’organisation que du dessin.",
+                "Invité en Angleterre par J. Arthur Rank, il y met en place un studio d’animation et développe les séries Animaland et Musical Paintbox. Le savoir acquis à Hollywood circule ainsi vers une nouvelle génération d’artistes britanniques."
+            ],
+            "sources": ["d23-david-hand"]
+        }
+    ],
+    "naissance": {
+        "date": { "valeur": "1900-01-23", "precision": "jour" },
+        "lieu": "Plainfield, New Jersey, États-Unis"
+    },
+    "deces": {
+        "date": { "valeur": "1986-10-11", "precision": "jour" },
+        "lieu": "San Luis Obispo, Californie, États-Unis"
+    },
+    "roles": ["animateur", "réalisateur", "superviseur de production"],
+    "periodesActivite": [
+        {
+            "debut": { "valeur": "1930", "precision": "annee" },
+            "fin": { "valeur": "1944", "precision": "annee" }
+        }
+    ],
+    "sources": ["d23-david-hand", "afi-snow-white"]
+}

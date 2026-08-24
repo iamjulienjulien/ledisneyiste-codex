@@ -40,7 +40,9 @@
         },
         "createurs": [
             {
-                "nom": "Norman Ferguson"
+                "nom": "Norman Ferguson",
+                "type": "contributeur",
+                "slug": "norman-ferguson"
             }
         ]
     },

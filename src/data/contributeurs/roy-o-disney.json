@@ -25,6 +25,17 @@
         },
         {
             "type": "trajectoire",
+            "eyebrow": "Préparer Blanche-Neige",
+            "titre": "Chercher les artistes avant que le pari ne commence",
+            "paragraphes": [
+                "La préparation de Blanche-Neige ne dépend pas seulement d’une idée et d’un budget. Le studio doit réunir assez d’animateurs expérimentés pour soutenir une production dont l’échelle dépasse tout ce qu’il a encore entrepris.",
+                "En 1933, Roy profite de ses déplacements à New York pour rencontrer des artistes et rendre compte à Walt de leur situation. Il approche notamment Vladimir « Bill » Tytla, alors chez Terrytoons, avec la prudence d’un recruteur qui prépare une possibilité avant de pouvoir formuler une offre.",
+                "Tytla rejoint finalement Disney en 1934 et participe au développement des Sept Nains. Le rôle de Roy apparaît ici sous une forme concrète : anticiper les personnes et les conditions dont le risque créatif aura besoin pour devenir une production."
+            ],
+            "sources": ["wdfm-roy-advance-man", "d23-bill-tytla"]
+        },
+        {
+            "type": "trajectoire",
             "eyebrow": "Dernier projet",
             "titre": "Achever le monde de Walt",
             "paragraphes": [
@@ -70,6 +81,7 @@
     "sources": [
         "d23-roy-oliver-disney",
         "wdfm-gentle-visionary-roy-o-disney",
+        "wdfm-roy-advance-man",
         "twc-nine-decades-of-disney"
     ]
 }

@@ -608,14 +608,6 @@
         "dateConsultation": "2026-08-17"
     },
     {
-        "id": "wdfm-first-disney-bros-movie",
-        "titre": "100 Years Ago: The First Disney Bros. Movie",
-        "editeur": "The Walt Disney Family Museum",
-        "datePublication": "2023-10-16",
-        "url": "https://www.waltdisney.org/blog/100-years-ago-first-disney-bros-movie",
-        "dateConsultation": "2026-08-17"
-    },
-    {
         "id": "wdfm-composing-silly-symphonies",
         "titre": "Composing Walt Disney’s Silly Symphonies with Historian Ross Care: Stalling After Mickey",
         "auteur": "Ross Care",
@@ -999,13 +991,6 @@
         "dateConsultation": "2026-08-18"
     },
     {
-        "id": "d23-david-hand",
-        "titre": "David Hand",
-        "editeur": "D23: The Official Disney Fan Club",
-        "url": "https://d23.com/walt-disney-legend/david-hand/",
-        "dateConsultation": "2026-08-18"
-    },
-    {
         "id": "d23-ken-anderson",
         "titre": "Ken Anderson",
         "editeur": "D23: The Official Disney Fan Club",
@@ -1159,13 +1144,6 @@
         "dateConsultation": "2026-08-24"
     },
     {
-        "id": "d23-ham-luske",
-        "titre": "Ham Luske",
-        "editeur": "D23: The Official Disney Fan Club",
-        "url": "https://d23.com/walt-disney-legend/ham-luske/",
-        "dateConsultation": "2026-08-24"
-    },
-    {
         "id": "d23-snow-white-queen-witch-gallery",
         "titre": "Characters — Disney Animation — Snow White and the Seven Dwarfs — Queen/Witch",
         "editeur": "D23: The Official Disney Fan Club",
@@ -1200,6 +1178,51 @@
         "titre": "Blanche-Neige et les Sept Nains, la toute nouvelle collection Disney X Cath Kidston",
         "editeur": "Disney France Newsroom",
         "url": "https://newsroom.disney.fr/actualites/blanche-neige-et-les-sept-nains-la-toute-nouvelle-collection-disney-x-cath-kidston-78a4-dc71f.html",
+        "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "d23-bill-tytla",
+        "titre": "Bill Tytla",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/walt-disney-legend/bill-tytla/",
+        "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "d23-norm-ferguson",
+        "titre": "Norm Ferguson",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/walt-disney-legend/norm-ferguson/",
+        "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "d23-grim-natwick",
+        "titre": "Natwick, Grim",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/natwick-grim/",
+        "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "wdfm-marc-alice-davis",
+        "titre": "Marc and Alice Davis: The Dynamic Duo of Disney",
+        "editeur": "The Walt Disney Family Museum",
+        "url": "https://www.waltdisney.org/blog/marc-and-alice-davis",
+        "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "wdfm-unusual-suspects-prince",
+        "titre": "Unusual Suspects: The Prince",
+        "auteur": "J. B. Kaufman",
+        "editeur": "The Walt Disney Family Museum",
+        "url": "https://www.waltdisney.org/blog/unusual-suspects-prince",
+        "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "wdfm-roy-advance-man",
+        "titre": "Gentle Visionary: Walt's Advance Man",
+        "auteur": "David Lesjak",
+        "editeur": "The Walt Disney Family Museum",
+        "datePublication": "2016-10-09",
+        "url": "https://www.waltdisney.org/blog/gentle-visionary-walts-advance-man",
         "dateConsultation": "2026-08-24"
     }
 ]
