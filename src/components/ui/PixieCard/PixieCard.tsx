@@ -2,16 +2,16 @@ import { cloneElement } from "react";
 import type { CSSProperties, ReactElement, ReactNode } from "react";
 import { getAtelierAnimationColor } from "@/registry/colors";
 import type {
-    PixieDustCardAccentPosition,
-    PixieDustCardEffect,
-    PixieDustCardEffectIntensity,
-    PixieDustCardPadding,
-    PixieDustCardProps,
-    PixieDustCardRadius,
-    PixieDustCardStyle,
-    PixieDustCardVariant,
-} from "./PixieDustCard.types";
-import styles from "./PixieDustCard.module.css";
+    PixieCardAccentPosition,
+    PixieCardEffect,
+    PixieCardEffectIntensity,
+    PixieCardPadding,
+    PixieCardProps,
+    PixieCardRadius,
+    PixieCardStyle,
+    PixieCardVariant,
+} from "./PixieCard.types";
+import styles from "./PixieCard.module.css";
 
 const variantClasses = {
     surface: styles.surface,
@@ -20,7 +20,7 @@ const variantClasses = {
     elevated: styles.elevated,
     accent: styles.accent,
     tinted: styles.tinted,
-} as const satisfies Record<PixieDustCardVariant, string>;
+} as const satisfies Record<PixieCardVariant, string>;
 
 const paddingClasses = {
     none: styles.paddingNone,
@@ -28,14 +28,14 @@ const paddingClasses = {
     md: styles.paddingMedium,
     lg: styles.paddingLarge,
     xl: styles.paddingExtraLarge,
-} as const satisfies Record<PixieDustCardPadding, string>;
+} as const satisfies Record<PixieCardPadding, string>;
 
 const radiusClasses = {
     none: styles.radiusNone,
     small: styles.radiusSmall,
     medium: styles.radiusMedium,
     large: styles.radiusLarge,
-} as const satisfies Record<PixieDustCardRadius, string>;
+} as const satisfies Record<PixieCardRadius, string>;
 
 const effectClasses = {
     none: styles.effectNone,
@@ -43,22 +43,22 @@ const effectClasses = {
     glow: styles.effectGlow,
     reveal: styles.effectReveal,
     projector: styles.effectProjector,
-} as const satisfies Record<PixieDustCardEffect, string>;
+} as const satisfies Record<PixieCardEffect, string>;
 
 const accentPositionClasses = {
     top: styles.accentTop,
     end: styles.accentEnd,
     bottom: styles.accentBottom,
     start: styles.accentStart,
-} as const satisfies Record<PixieDustCardAccentPosition, string>;
+} as const satisfies Record<PixieCardAccentPosition, string>;
 
 const effectIntensityClasses = {
     subtle: styles.intensitySubtle,
     medium: styles.intensityMedium,
     strong: styles.intensityStrong,
-} as const satisfies Record<PixieDustCardEffectIntensity, string>;
+} as const satisfies Record<PixieCardEffectIntensity, string>;
 
-export function PixieDustCard({
+export function PixieCard({
     as: Element = "div",
     asChild = false,
     variant = "surface",
@@ -72,9 +72,9 @@ export function PixieDustCard({
     style,
     children,
     ...elementProps
-}: PixieDustCardProps) {
+}: PixieCardProps) {
     const colorDefinition = color ? getAtelierAnimationColor(color) : null;
-    const cardStyle: PixieDustCardStyle = {
+    const cardStyle: PixieCardStyle = {
         ...style,
         ...(colorDefinition
             ? { "--pixie-card-color": colorDefinition.cssValue }
