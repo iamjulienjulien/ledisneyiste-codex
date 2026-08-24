@@ -41,6 +41,12 @@ export const metadataOeuvres = {
             description: "Courts métrages de la série Pluto.",
             color: "vert-cellulo",
         },
+        "classiques-animation": {
+            label: "Classiques d’animation",
+            description:
+                "Longs métrages d’animation produits par le studio Disney.",
+            color: "bleu-reperage",
+        },
     },
     types: {
         "court-metrage-anime": {

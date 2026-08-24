@@ -1,0 +1,497 @@
+{
+    "slug": "snow-white-and-the-seven-dwarfs",
+    "type": "oeuvre",
+    "introduction": "Snow White and the Seven Dwarfs fait passer Disney du laboratoire du court métrage à la durée, au risque et à la continuité d’un grand récit. Pendant trois années, les recherches menées sur la couleur, le jeu des personnages, les figures humaines, les décors et la profondeur doivent désormais soutenir une émotion pendant plus d’une heure. Le conte des frères Grimm devient une œuvre où chaque nain possède son caractère, où la Reine traverse le miroir pour prendre une autre forme et où une chanson peut guider tout un monde. Son succès mondial ne valide pas seulement un pari industriel : il ouvre au studio un nouvel horizon de création.",
+    "titresAlternatifs": [
+        {
+            "titre": "Blanche-Neige et les Sept Nains",
+            "nature": "sortie-territoriale",
+            "langue": "fr",
+            "territoire": "France",
+            "sources": ["cnc-snow-white", "retronews-snow-white"]
+        }
+    ],
+    "sortie": {
+        "date": {
+            "valeur": "1937-12-21",
+            "precision": "jour"
+        },
+        "evenements": [
+            {
+                "date": {
+                    "valeur": "1937-12-21",
+                    "precision": "jour"
+                },
+                "territoire": "États-Unis",
+                "nature": "premiere-mondiale",
+                "lieu": "Carthay Circle Theatre, Hollywood",
+                "sources": ["afi-snow-white", "d23-snow-white-film"]
+            },
+            {
+                "date": {
+                    "valeur": "1938-02-04",
+                    "precision": "jour"
+                },
+                "territoire": "États-Unis",
+                "nature": "sortie-nationale",
+                "sources": ["afi-snow-white", "disney-memory-lane-1938"]
+            },
+            {
+                "date": {
+                    "valeur": "1938-05-06",
+                    "precision": "jour"
+                },
+                "territoire": "France",
+                "nature": "sortie-nationale",
+                "sources": ["cnc-snow-white", "retronews-snow-white"]
+            }
+        ]
+    },
+    "format": "long métrage d’animation",
+    "durees": [
+        {
+            "valeur": 83,
+            "unite": "minutes",
+            "version": "durée consignée dans les archives du studio",
+            "sources": ["afi-snow-white", "d23-snow-white-film"]
+        }
+    ],
+    "production": {
+        "debut": {
+            "valeur": "1934",
+            "precision": "annee"
+        },
+        "fin": {
+            "valeur": "1937",
+            "precision": "annee"
+        },
+        "sources": ["afi-snow-white", "d23-snow-white-film"]
+    },
+    "donneesEconomiques": [
+        {
+            "nature": "cout-production",
+            "valeur": 1400000,
+            "unite": "monetaire",
+            "devise": "USD",
+            "territoire": "États-Unis",
+            "periode": {
+                "debut": {
+                    "valeur": "1934",
+                    "precision": "annee"
+                },
+                "fin": {
+                    "valeur": "1937",
+                    "precision": "annee"
+                }
+            },
+            "certitude": "estimation",
+            "sources": ["d23-snow-white-film"]
+        },
+        {
+            "nature": "cout-production",
+            "valeur": 1488423,
+            "unite": "monetaire",
+            "devise": "USD",
+            "territoire": "États-Unis",
+            "periode": {
+                "debut": {
+                    "valeur": "1934",
+                    "precision": "annee"
+                },
+                "fin": {
+                    "valeur": "1937",
+                    "precision": "annee"
+                }
+            },
+            "certitude": "estimation",
+            "sources": ["afi-snow-white"]
+        },
+        {
+            "nature": "revenus",
+            "valeur": 8500000,
+            "unite": "monetaire",
+            "devise": "USD",
+            "territoire": "Monde",
+            "periode": {
+                "debut": {
+                    "valeur": "1937",
+                    "precision": "annee"
+                },
+                "fin": {
+                    "valeur": "1938",
+                    "precision": "annee"
+                }
+            },
+            "certitude": "estimation",
+            "sources": ["afi-snow-white", "d23-snow-white-film"]
+        },
+        {
+            "nature": "entrees",
+            "valeur": 20000000,
+            "unite": "entrees",
+            "territoire": "Non précisé par la source",
+            "periode": {
+                "debut": {
+                    "valeur": "1937-12",
+                    "precision": "mois"
+                },
+                "fin": {
+                    "valeur": "1938-03",
+                    "precision": "mois"
+                }
+            },
+            "certitude": "documente",
+            "sources": ["afi-snow-white"]
+        }
+    ],
+    "relationsOeuvres": [
+        {
+            "nature": "source",
+            "oeuvre": {
+                "nom": "Schneewittchen",
+                "type": "oeuvre-exterieure",
+                "auteurs": ["Jacob Grimm", "Wilhelm Grimm"],
+                "date": {
+                    "valeur": "1812",
+                    "precision": "annee"
+                }
+            },
+            "sources": ["afi-snow-white"]
+        },
+        {
+            "nature": "preparation",
+            "oeuvre": {
+                "nom": "The Goddess of Spring",
+                "type": "oeuvre",
+                "slug": "the-goddess-of-spring"
+            },
+            "sources": ["d23-snow-white-oscars-look-back"]
+        },
+        {
+            "nature": "preparation",
+            "oeuvre": {
+                "nom": "The Old Mill",
+                "type": "oeuvre",
+                "slug": "the-old-mill"
+            },
+            "sources": ["afi-snow-white"]
+        }
+    ],
+    "contributions": [
+        {
+            "contributeur": {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            },
+            "roles": ["production"],
+            "domaine": "production-direction"
+        },
+        {
+            "contributeur": {
+                "nom": "David Hand"
+            },
+            "roles": ["supervision de la réalisation"],
+            "domaine": "production-direction"
+        },
+        {
+            "contributeur": {
+                "nom": "Wilfred Jackson",
+                "type": "contributeur",
+                "slug": "wilfred-jackson"
+            },
+            "roles": ["réalisation de séquences"],
+            "domaine": "production-direction"
+        },
+        {
+            "contributeur": {
+                "nom": "Hamilton Luske"
+            },
+            "roles": [
+                "supervision de l’animation",
+                "animation de Blanche-Neige"
+            ],
+            "domaine": "animation-personnages"
+        },
+        {
+            "contributeur": {
+                "nom": "Fred Moore"
+            },
+            "roles": ["supervision de l’animation", "animation de Simplet"],
+            "domaine": "animation-personnages"
+        },
+        {
+            "contributeur": {
+                "nom": "Vladimir Tytla"
+            },
+            "roles": ["supervision de l’animation", "animation de Grincheux"],
+            "domaine": "animation-personnages"
+        },
+        {
+            "contributeur": {
+                "nom": "Norman Ferguson"
+            },
+            "roles": ["supervision de l’animation", "animation de la Reine"],
+            "domaine": "animation-personnages"
+        },
+        {
+            "contributeur": {
+                "nom": "Les Clark",
+                "type": "contributeur",
+                "slug": "les-clark"
+            },
+            "roles": ["animation"],
+            "domaine": "animation-personnages"
+        },
+        {
+            "contributeur": {
+                "nom": "Eric Larson",
+                "type": "contributeur",
+                "slug": "eric-larson"
+            },
+            "roles": ["animation des animaux de la forêt"],
+            "domaine": "animation-personnages"
+        },
+        {
+            "contributeur": {
+                "nom": "Milt Kahl",
+                "type": "contributeur",
+                "slug": "milt-kahl"
+            },
+            "roles": ["animation des animaux de la forêt"],
+            "domaine": "animation-personnages"
+        },
+        {
+            "contributeur": {
+                "nom": "Ward Kimball",
+                "type": "contributeur",
+                "slug": "ward-kimball"
+            },
+            "roles": ["animation"],
+            "domaine": "animation-personnages"
+        },
+        {
+            "contributeur": {
+                "nom": "Wolfgang Reitherman",
+                "type": "contributeur",
+                "slug": "wolfgang-reitherman"
+            },
+            "roles": ["animation"],
+            "domaine": "animation-personnages"
+        },
+        {
+            "contributeur": {
+                "nom": "Frank Thomas",
+                "type": "contributeur",
+                "slug": "frank-thomas"
+            },
+            "roles": ["animation des Sept Nains"],
+            "domaine": "animation-personnages"
+        },
+        {
+            "contributeur": {
+                "nom": "Gustaf Tenggren"
+            },
+            "roles": ["direction artistique"],
+            "domaine": "direction-artistique-conception"
+        },
+        {
+            "contributeur": {
+                "nom": "Ken Anderson"
+            },
+            "roles": ["direction artistique"],
+            "domaine": "direction-artistique-conception"
+        },
+        {
+            "contributeur": {
+                "nom": "Hazel Sewell"
+            },
+            "roles": ["direction artistique"],
+            "domaine": "direction-artistique-conception"
+        },
+        {
+            "contributeur": {
+                "nom": "Frank Churchill"
+            },
+            "roles": ["musique", "chansons"],
+            "domaine": "musique-chansons"
+        },
+        {
+            "contributeur": {
+                "nom": "Leigh Harline"
+            },
+            "roles": ["musique"],
+            "domaine": "musique-chansons"
+        },
+        {
+            "contributeur": {
+                "nom": "Paul J. Smith"
+            },
+            "roles": ["musique"],
+            "domaine": "musique-chansons"
+        },
+        {
+            "contributeur": {
+                "nom": "Adriana Caselotti"
+            },
+            "roles": ["voix de Blanche-Neige"],
+            "domaine": "interpretation-vocale"
+        },
+        {
+            "contributeur": {
+                "nom": "Harry Stockwell"
+            },
+            "roles": ["voix du Prince"],
+            "domaine": "interpretation-vocale"
+        },
+        {
+            "contributeur": {
+                "nom": "Lucille La Verne"
+            },
+            "roles": ["voix de la Reine et de la Sorcière"],
+            "domaine": "interpretation-vocale"
+        },
+        {
+            "contributeur": {
+                "nom": "Moroni Olsen"
+            },
+            "roles": ["voix du Miroir magique"],
+            "domaine": "interpretation-vocale"
+        },
+        {
+            "contributeur": {
+                "nom": "Billy Gilbert"
+            },
+            "roles": ["voix d’Atchoum"],
+            "domaine": "interpretation-vocale"
+        },
+        {
+            "contributeur": {
+                "nom": "Otis Harlan"
+            },
+            "roles": ["voix de Joyeux"],
+            "domaine": "interpretation-vocale"
+        },
+        {
+            "contributeur": {
+                "nom": "Pinto Colvig",
+                "type": "contributeur",
+                "slug": "pinto-colvig"
+            },
+            "roles": ["voix de Dormeur et de Grincheux"],
+            "domaine": "interpretation-vocale"
+        },
+        {
+            "contributeur": {
+                "nom": "Scotty Mattraw"
+            },
+            "roles": ["voix de Timide"],
+            "domaine": "interpretation-vocale"
+        },
+        {
+            "contributeur": {
+                "nom": "Stuart Buchanan"
+            },
+            "roles": ["voix du Chasseur"],
+            "domaine": "interpretation-vocale"
+        },
+        {
+            "contributeur": {
+                "nom": "Marge Champion"
+            },
+            "roles": ["modèle filmé de Blanche-Neige"],
+            "domaine": "reference-filmee"
+        }
+    ],
+    "personnages": [
+        {
+            "nom": "Blanche-Neige"
+        },
+        {
+            "nom": "La Reine"
+        },
+        {
+            "nom": "Le Prince"
+        },
+        {
+            "nom": "Le Chasseur"
+        },
+        {
+            "nom": "Le Miroir magique"
+        },
+        {
+            "nom": "Prof"
+        },
+        {
+            "nom": "Grincheux"
+        },
+        {
+            "nom": "Joyeux"
+        },
+        {
+            "nom": "Dormeur"
+        },
+        {
+            "nom": "Timide"
+        },
+        {
+            "nom": "Atchoum"
+        },
+        {
+            "nom": "Simplet"
+        }
+    ],
+    "blocsEditoriaux": [
+        {
+            "type": "repere",
+            "eyebrow": "Pari",
+            "titre": "Engager tout le studio dans une durée encore inconnue",
+            "paragraphes": [
+                "En 1934, le projet a déjà dépassé l’idée lancée l’année précédente : une adaptation structurée, des milliers de dessins, des gags et des modèles commencent à donner au conte l’échelle d’une production. Les voix sont choisies en 1935 et l’animation proprement dite s’engage en 1936.",
+                "La fabrication mobilise plus de 750 artistes selon D23. Les sources ne réduisent pas son coût à un chiffre parfaitement stable : Disney le résume à 1,4 million de dollars, tandis que les sources contemporaines réunies par l’AFI avancent un coût négatif estimé à 1 488 423 dollars.",
+                "Cette dépense ne sert pas seulement à allonger un court métrage. Chaque séquence doit préserver la continuité des personnages, des espaces et de l’émotion pendant 83 minutes, tout en maintenant le niveau de couleur, de musique et de mouvement construit par les expériences précédentes."
+            ],
+            "sources": ["afi-snow-white", "d23-snow-white-film"]
+        },
+        {
+            "type": "langage",
+            "eyebrow": "Personnalité",
+            "titre": "Faire tenir le récit dans des personnages immédiatement distincts",
+            "paragraphes": [
+                "Les Sept Nains donnent au studio son exercice le plus visible de personality animation. Leurs tailles et leurs silhouettes proches obligent le dessin à faire surgir sept identités par le rythme, la posture, les hésitations, les colères et les gestes quotidiens.",
+                "Blanche-Neige, le Prince et la Reine posent une difficulté différente : leurs mouvements stylisés doivent rester ancrés dans une réalité humaine reconnaissable. Hamilton Luske, Grim Natwick et les autres animateurs s’appuient notamment sur des références filmées pour étudier ces présences sans simplement les recopier.",
+                "Les innovations de caméra et la profondeur éprouvées dans The Old Mill permettent en parallèle au décor de guider le regard. Personnages, musique et espace cessent ainsi d’être des démonstrations séparées : ils deviennent les instruments continus d’un même récit."
+            ],
+            "sources": [
+                "afi-snow-white",
+                "loc-snow-white-kaufman",
+                "d23-snow-white-oscars-look-back"
+            ]
+        },
+        {
+            "type": "relations",
+            "eyebrow": "Passage",
+            "titre": "Transformer les apprentissages du court métrage en nouvel horizon",
+            "paragraphes": [
+                "Le film adapte Schneewittchen des frères Grimm sans ouvrir encore le catalogue public du Codex aux œuvres extérieures à Disney. Cette source littéraire reste donc structurée dans la fiche, aux côtés des courts métrages qui ont préparé des difficultés précises.",
+                "The Goddess of Spring avait exposé les limites de l’animation d’une jeune figure humaine ; The Old Mill avait mis la caméra multiplane à l’épreuve d’un décor traversé en profondeur. Blanche-Neige rassemble ces apprentissages et les soumet à la cohérence d’un long métrage.",
+                "Le résultat rencontre un public d’une ampleur nouvelle. Une source contemporaine citée par l’AFI estime que vingt millions de personnes voient le film pendant ses trois premiers mois, tandis que D23 situe ses recettes mondiales initiales à 8,5 millions de dollars. Le laboratoire ne disparaît pas : son succès lui donne désormais la possibilité de soutenir d’autres grands récits."
+            ],
+            "sources": [
+                "afi-snow-white",
+                "d23-snow-white-film",
+                "d23-snow-white-oscars-look-back"
+            ]
+        }
+    ],
+    "sources": [
+        "afi-snow-white",
+        "d23-snow-white-film",
+        "d23-snow-white-oscars-look-back",
+        "wdfm-snow-white-legacy",
+        "loc-snow-white-kaufman",
+        "cnc-snow-white",
+        "retronews-snow-white",
+        "disney-memory-lane-1938"
+    ]
+}

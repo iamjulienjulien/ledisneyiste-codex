@@ -7,6 +7,7 @@ import mickeysRevueJson from "@/data/oeuvres/mickeys-revue.json";
 import mrDuckStepsOutJson from "@/data/oeuvres/mr-duck-steps-out.json";
 import orphansBenefitJson from "@/data/oeuvres/orphans-benefit.json";
 import planeCrazyJson from "@/data/oeuvres/plane-crazy.json";
+import snowWhiteAndTheSevenDwarfsJson from "@/data/oeuvres/snow-white-and-the-seven-dwarfs.json";
 import steamboatWillieJson from "@/data/oeuvres/steamboat-willie.json";
 import theBandConcertJson from "@/data/oeuvres/the-band-concert.json";
 import theChainGangJson from "@/data/oeuvres/the-chain-gang.json";
@@ -42,6 +43,7 @@ export const fichesOeuvres = [
     theCountryCousinJson as FicheOeuvreDisney,
     clockCleanersJson as FicheOeuvreDisney,
     theOldMillJson as FicheOeuvreDisney,
+    snowWhiteAndTheSevenDwarfsJson as FicheOeuvreDisney,
     ferdinandTheBullJson as FicheOeuvreDisney,
     mrDuckStepsOutJson as FicheOeuvreDisney,
     boneTroubleJson as FicheOeuvreDisney,

@@ -1098,5 +1098,50 @@
         "editeur": "Disney+",
         "url": "https://www.disneyplus.com/browse/entity-b738faa1-b367-460c-aef1-2e1e0959b477",
         "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "afi-snow-white",
+        "titre": "Snow White and the Seven Dwarfs",
+        "editeur": "AFI Catalog of Feature Films",
+        "url": "https://catalog.afi.com/Film/5865-SNOW-WHITE-AND-THE-SEVEN-DWARFS",
+        "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "d23-snow-white-film",
+        "titre": "Snow White and the Seven Dwarfs (film)",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/snow-white-and-the-seven-dwarfs-film/",
+        "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "loc-snow-white-kaufman",
+        "titre": "Snow White and the Seven Dwarfs",
+        "auteur": "J. B. Kaufman",
+        "editeur": "Library of Congress",
+        "url": "https://www.loc.gov/static/programs/national-film-preservation-board/documents/snow_white_dwarfs.rev.pdf",
+        "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "cnc-snow-white",
+        "titre": "Blanche Neige et les 7 nains",
+        "editeur": "Centre national du cinéma et de l’image animée",
+        "url": "https://www.cnc.fr/professionnels/visas-et-classification/2891",
+        "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "retronews-snow-white",
+        "titre": "« Blanche-Neige », premier long-métrage Disney",
+        "auteur": "Pierre Ancery",
+        "editeur": "RétroNews",
+        "datePublication": "2024-11-22",
+        "url": "https://www.retronews.fr/arts/echo-de-presse/2017/12/28/blanche-neige-premier-long-metrage-disney",
+        "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "disney-memory-lane-1938",
+        "titre": "Memory Lane: 1938",
+        "editeur": "Disney",
+        "url": "https://disney.go.com/disneyvideos/moviefinder/html/memorylane/ml38_main.html",
+        "dateConsultation": "2026-08-24"
     }
 ]

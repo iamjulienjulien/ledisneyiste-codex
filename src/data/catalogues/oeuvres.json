@@ -228,6 +228,18 @@
         "sousTitre": "L’orage qui donna une profondeur nouvelle au dessin animé"
     },
     {
+        "slug": "snow-white-and-the-seven-dwarfs",
+        "nom": "Snow White and the Seven Dwarfs",
+        "type": "oeuvre",
+        "metadata": {
+            "collection": "classiques-animation",
+            "type": "long-metrage-anime",
+            "son": "sonore",
+            "couleur": "couleur"
+        },
+        "sousTitre": "Blanche-Neige transforme le laboratoire en grand récit"
+    },
+    {
         "slug": "ferdinand-the-bull",
         "nom": "Ferdinand the Bull",
         "type": "oeuvre",
