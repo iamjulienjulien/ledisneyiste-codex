@@ -48,6 +48,9 @@ priorité sur les préférences de mise en œuvre ponctuelles.
    centralisés dans `src/types`.
 9. Respecter le rôle, la structure et le parcours d'ajout de l'Atelier définis
    ci-dessous pour toute fondation ou tout composant qui y est documenté.
+10. Respecter la convention de publication des tags, des Releases, de leurs
+    notes et du Journal de projection. Ne jamais créer ni publier un tag ou une
+    Release sans validation explicite de Julien.
 
 > [!WARNING]
 > **L'emoji et le nom du domaine forment une paire indissociable.** L'emoji
@@ -728,6 +731,130 @@ de fichiers.
 > **Pendant l'Entracte, on peaufine ce qui existe déjà. Les changements gardent
 > leur domaine propre, et le popcorn ne devient jamais une catégorie
 > technique.**
+
+---
+
+## Tags, Releases et Journal de projection
+
+Les tags, les Releases GitHub et le fichier `CHANGELOG.md` prolongent la
+chronologie narrative du dépôt sans modifier l'historique des commits.
+
+### Tags de clôture
+
+Chaque Acte et chaque Entracte terminé reçoit un tag Git annoté placé
+exclusivement sur son commit vide de clôture :
+
+- `acte-i`, `acte-ii`, `acte-iii`, etc. pour les Actes ;
+- `entracte-i`, `entracte-ii`, `entracte-iii`, etc. pour les Entractes ;
+- le numéro d'un Entracte correspond à celui de l'Acte qu'il suit.
+
+Ne jamais taguer le commit d'ouverture ni un commit de travail intermédiaire.
+Un tag déjà publié ne doit pas être déplacé ou remplacé sans accord explicite.
+
+Le message du tag commence par l'emoji temporel, indique le numéro de la
+période et lui donne un titre descriptif :
+
+```text
+🎞️ Acte III · Le Codex apprend à raconter le temps
+```
+
+```text
+🍿 Entracte III · Le Codex ouvre son Atelier et façonne son langage visuel
+```
+
+Le titre d'un Acte reprend son intitulé canonique d'ouverture. Celui d'un
+Entracte résume les raccords réellement accomplis ; il ne reprend pas
+automatiquement le texte de son commit d'ouverture ou de clôture.
+
+Créer un tag annoté en ciblant explicitement le SHA de clôture :
+
+```bash
+git tag -a acte-iii <sha-cloture> \
+  -m "🎞️ Acte III · Le Codex apprend à raconter le temps"
+```
+
+Toujours vérifier la cible avant publication :
+
+```bash
+git show acte-iii
+```
+
+Publier chaque tag individuellement :
+
+```bash
+git push origin acte-iii
+```
+
+Ne pas utiliser `git push --tags`, afin de ne jamais publier accidentellement
+d'autres tags locaux.
+
+### Releases des Actes
+
+Seuls les Actes donnent lieu à une Release GitHub. Les Entractes restent
+repérables par leur tag et leur entrée dans `CHANGELOG.md`, mais ne possèdent
+pas de Release.
+
+Une Release d'Acte respecte les règles suivantes :
+
+- elle utilise le tag `acte-<numéro>` déjà publié ;
+- son titre est strictement identique au message du tag ;
+- elle n'est pas marquée comme préversion ;
+- elle ne contient aucun fichier binaire, sauf demande explicite ;
+- si GitHub demande un tag précédent pour générer une comparaison, choisir le
+  tag de l'Entracte qui précède immédiatement l'Acte afin d'isoler son contenu ;
+- ses notes sont relues et rédigées manuellement, même lorsqu'une génération
+  automatique sert de point de départ.
+
+Les notes d'une Release suivent cette structure :
+
+1. un titre de niveau 1 identique à celui de la Release ;
+2. une courte citation qui présente la promesse narrative de l'Acte ;
+3. une section `✨ Dans ce ... Acte` résumant ses apports principaux ;
+4. une section `🎬 Les scènes de l'Acte` listant tous ses commits dans l'ordre
+   chronologique, de l'ouverture à la clôture ;
+5. une section finale `🎞️ Fin de l'Acte ...` reprenant sa dernière image.
+
+Chaque ligne du générique conserve le SHA court et le message complet du
+commit, sans le réécrire :
+
+```text
+1. `51f19b1` — 🎞️ Acte > Acte III · Le Codex apprend à raconter le temps > 🐭 Julien
+```
+
+### Journal de projection
+
+Le fichier racine `CHANGELOG.md`, intitulé `Journal de projection`, constitue
+la chronologie complète du projet :
+
+- les Actes y possèdent une entrée synthétique en complément de leur Release ;
+- les Entractes y documentent les travaux de relecture, d'expérimentation et
+  de raccord qui ne font pas l'objet d'une Release ;
+- les entrées sont classées de la plus récente à la plus ancienne ;
+- une nouvelle entrée est ajoutée après la clôture et la création du tag, sans
+  réécrire le commit vide de clôture.
+
+Une entrée d'Acte contient, dans cet ordre :
+
+1. `🎞️ Acte <numéro> · <titre>` ;
+2. le tag, le SHA d'ouverture et le SHA de clôture ;
+3. `La projection` ;
+4. `À l'écran` ;
+5. `Générique des commits` dans l'ordre chronologique ;
+6. `Dernière image`.
+
+Une entrée d'Entracte contient, dans cet ordre :
+
+1. `🍿 Entracte <numéro> · <titre descriptif>` ;
+2. le tag, les SHA d'ouverture et de clôture, puis les deux Actes qu'il relie ;
+3. `Le raccord` ;
+4. `Pendant l'Entracte` ;
+5. `Générique des commits` dans l'ordre chronologique ;
+6. `Dernière image`.
+
+Le Journal doit rester factuel, narratif et fidèle aux commits. Il résume les
+changements sans inventer de capacité absente de la période concernée. Les
+titres de films et d'œuvres sont écrits en italique dans la prose, tandis que
+les messages de commits sont reproduits exactement.
 
 ---
 
