@@ -144,6 +144,18 @@
         "sousTitre": "Le spectacle où Donald trouve sa colère"
     },
     {
+        "slug": "the-goddess-of-spring",
+        "nom": "The Goddess of Spring",
+        "type": "oeuvre",
+        "metadata": {
+            "collection": "silly-symphonies",
+            "type": "court-metrage-anime",
+            "son": "sonore",
+            "couleur": "couleur"
+        },
+        "sousTitre": "La Silly Symphony qui éprouva l’animation humaine avant Blanche-Neige"
+    },
+    {
         "slug": "the-tortoise-and-the-hare",
         "nom": "The Tortoise and the Hare",
         "type": "oeuvre",

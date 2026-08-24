@@ -1,0 +1,99 @@
+{
+    "slug": "the-goddess-of-spring",
+    "type": "oeuvre",
+    "introduction": "The Goddess of Spring transpose le mythe de Perséphone dans le laboratoire des Silly Symphonies. Son enlèvement par Pluto plonge la surface dans l’hiver, puis un accord partage l’année entre le monde souterrain et le retour du printemps. Derrière cette fable musicale, le studio affronte une difficulté nouvelle : faire jouer une jeune femme aux proportions humaines. Le résultat demeure imparfait, mais l’expérience donne aux artistes un premier terrain d’apprentissage avant que Blanche-Neige n’impose cette recherche au cœur d’un long métrage.",
+    "sortie": {
+        "date": {
+            "valeur": "1934-11-03",
+            "precision": "jour"
+        }
+    },
+    "format": "court métrage d’animation",
+    "durees": [
+        {
+            "valeur": 9,
+            "unite": "minutes",
+            "version": "version proposée par Disney+",
+            "sources": ["disney-plus-goddess-of-spring"]
+        }
+    ],
+    "contributions": [
+        {
+            "contributeur": {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            },
+            "roles": ["production"]
+        },
+        {
+            "contributeur": {
+                "nom": "Wilfred Jackson",
+                "type": "contributeur",
+                "slug": "wilfred-jackson"
+            },
+            "roles": ["réalisation"]
+        }
+    ],
+    "personnages": [
+        {
+            "nom": "Perséphone"
+        },
+        {
+            "nom": "Pluto, roi des Enfers"
+        }
+    ],
+    "blocsEditoriaux": [
+        {
+            "type": "repere",
+            "eyebrow": "Mythe",
+            "titre": "Faire des saisons la conséquence d’un enlèvement",
+            "paragraphes": [
+                "Perséphone règne sur un printemps où les fleurs, les oiseaux et les petits êtres du jardin partagent son chant. Lorsque Pluto l’emporte dans son royaume souterrain pour en faire son épouse, la joie disparaît de la surface et l’hiver recouvre le monde.",
+                "La déesse refuse cette couronne et réclame de revoir la lumière. Le souverain des Enfers finit par accepter qu’elle retourne sur terre pendant six mois chaque année, donnant au film son cycle de disparition et de renaissance.",
+                "La Silly Symphony condense ainsi le mythe en une opposition immédiatement lisible entre deux espaces, deux palettes et deux saisons. La musique relie leurs transformations sans interrompre le récit par une explication extérieure."
+            ],
+            "sources": [
+                "d23-goddess-of-spring-film",
+                "d23-persephone",
+                "d23-pluto-devil",
+                "disney-plus-goddess-of-spring"
+            ]
+        },
+        {
+            "type": "langage",
+            "eyebrow": "Figure humaine",
+            "titre": "Apprendre en laissant les difficultés visibles",
+            "paragraphes": [
+                "Sous la direction de Wilfred Jackson, les artistes doivent donner à Perséphone une grâce et une continuité de mouvement différentes de celles des animaux et des objets anthropomorphes qui peuplent habituellement les Silly Symphonies.",
+                "D23 souligne que l’animation de la déesse demeure peu réaliste. Cette limite rend précisément l’essai précieux : le film révèle les problèmes de poids, d’anatomie et de jeu que la stylisation comique permettait jusque-là de contourner.",
+                "The Goddess of Spring ne constitue donc pas un modèle achevé de personnage humain. Il enregistre une étape de travail, avec ses maladresses, et transforme un court métrage autonome en répétition concrète pour une ambition encore plus vaste."
+            ],
+            "sources": [
+                "d23-goddess-of-spring-film",
+                "d23-snow-white-oscars-look-back"
+            ]
+        },
+        {
+            "type": "relations",
+            "eyebrow": "Préparation",
+            "titre": "Faire passer l’expérience du court au long métrage",
+            "paragraphes": [
+                "Les Silly Symphonies offrent au studio un espace où chaque film peut isoler une difficulté nouvelle. Avec The Goddess of Spring, cette fonction de laboratoire se déplace vers la présence crédible d’une figure humaine au centre du récit.",
+                "D23 relie explicitement cette expérience au travail ultérieur sur Blanche-Neige. Les mouvements plus élégants de l’héroïne du long métrage s’appuieront sur d’autres méthodes, notamment la référence filmée, mais aussi sur les enseignements tirés de ce premier essai réaliste.",
+                "Le court métrage prend ainsi place entre deux échelles de production : il reste une fable musicale complète, tout en préparant une partie du langage dont le studio aura besoin pour soutenir son premier grand récit animé."
+            ],
+            "sources": [
+                "d23-goddess-of-spring-film",
+                "d23-snow-white-oscars-look-back"
+            ]
+        }
+    ],
+    "sources": [
+        "d23-goddess-of-spring-film",
+        "d23-persephone",
+        "d23-pluto-devil",
+        "d23-snow-white-oscars-look-back",
+        "disney-plus-goddess-of-spring"
+    ]
+}

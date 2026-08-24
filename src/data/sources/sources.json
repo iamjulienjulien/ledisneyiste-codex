@@ -1063,5 +1063,40 @@
         "editeur": "The Walt Disney Family Museum",
         "url": "https://www.waltdisney.org/blog/composing-walt-disneys-silly-symphonies-historian-ross-care-musical-interlude-features",
         "dateConsultation": "2026-08-18"
+    },
+    {
+        "id": "d23-goddess-of-spring-film",
+        "titre": "Goddess of Spring, The (film)",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/goddess-of-spring-the-film/",
+        "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "d23-persephone",
+        "titre": "Persephone",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/persephone/",
+        "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "d23-pluto-devil",
+        "titre": "Pluto (devil)",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/pluto-devil/",
+        "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "d23-snow-white-oscars-look-back",
+        "titre": "A Look Back at the Oscars — Snow White and the Seven Dwarfs",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/wda-a-look-back-at-the-oscars-snow-white-and-the-seven-dwarfs/",
+        "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "disney-plus-goddess-of-spring",
+        "titre": "The Goddess of Spring",
+        "editeur": "Disney+",
+        "url": "https://www.disneyplus.com/browse/entity-b738faa1-b367-460c-aef1-2e1e0959b477",
+        "dateConsultation": "2026-08-24"
     }
 ]
