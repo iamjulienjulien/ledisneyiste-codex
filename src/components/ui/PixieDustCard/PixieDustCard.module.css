@@ -1,49 +1,100 @@
 .root {
     --card-accent: var(--pixie-card-color, var(--color-accent));
     --card-accent-soft: color-mix(in srgb, var(--card-accent) 9%, transparent);
+    --card-accent-medium: color-mix(
+        in srgb,
+        var(--card-accent) 18%,
+        transparent
+    );
     --card-beam-edge: color-mix(in srgb, var(--card-accent) 30%, transparent);
-    --card-glow: color-mix(in srgb, var(--card-accent) 14%, transparent);
+    --card-accent-position: top;
+    --card-accent-size: 100% 0.2rem;
+    --card-wash-angle: 145deg;
+    --card-glow-x: 20%;
+    --card-glow-y: 0%;
+    --card-lift-distance: -0.2rem;
+    --card-beam-opacity: 1;
+    --card-glow-opacity: 1;
+    --card-effect-shadow:
+        0 1rem 2.5rem rgb(0 0 0 / 0.12), inset 0 1px 0 var(--card-beam-edge);
 
     position: relative;
     isolation: isolate;
-    overflow: hidden;
     min-width: 0;
-    color: inherit;
+    border: 1px solid transparent;
     transition:
         border-color 180ms ease,
         box-shadow 240ms ease,
         transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.root > * {
+.decoration {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    overflow: hidden;
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+.decoration::before,
+.decoration::after {
+    position: absolute;
+    content: "";
+    opacity: 0;
+    pointer-events: none;
+}
+
+.root > :not(.decoration) {
     position: relative;
     z-index: 1;
 }
 
 .surface {
-    border: 1px solid transparent;
+    border-color: var(--color-line);
     background: var(--color-surface);
 }
 
+.muted {
+    border-color: var(--color-line);
+    background: var(--color-surface-muted);
+}
+
 .outline {
-    border: 1px solid var(--color-line-strong);
+    border-color: var(--color-line-strong);
     background: transparent;
 }
 
 .elevated {
-    border: 1px solid var(--color-line);
+    border-color: var(--color-line);
     background: var(--color-surface);
     box-shadow: var(--shadow-soft);
 }
 
 .accent {
-    border: 1px solid var(--color-line);
-    background:
-        linear-gradient(var(--card-accent), var(--card-accent)) top / 100%
-            0.2rem no-repeat,
-        linear-gradient(145deg, var(--card-accent-soft), transparent 48%),
-        var(--color-surface);
+    border-color: var(--color-line);
+    background: var(--color-surface);
     box-shadow: var(--shadow-soft);
+}
+
+.accent .decoration {
+    background:
+        linear-gradient(var(--card-accent), var(--card-accent))
+            var(--card-accent-position) / var(--card-accent-size) no-repeat,
+        linear-gradient(
+            var(--card-wash-angle),
+            var(--card-accent-soft),
+            transparent 48%
+        );
+}
+
+.tinted {
+    border-color: color-mix(in srgb, var(--card-accent) 46%, var(--color-line));
+    background: color-mix(
+        in srgb,
+        var(--card-accent) 12%,
+        var(--color-surface)
+    );
 }
 
 .paddingNone {
@@ -62,6 +113,10 @@
     padding: 2rem;
 }
 
+.paddingExtraLarge {
+    padding: 2.5rem;
+}
+
 .radiusNone {
     border-radius: 0;
 }
@@ -78,29 +133,130 @@
     border-radius: var(--radius-large);
 }
 
+.accentTop {
+    --card-accent-position: top;
+    --card-accent-size: 100% 0.2rem;
+    --card-wash-angle: 145deg;
+    --card-glow-x: 20%;
+    --card-glow-y: 0%;
+}
+
+.accentEnd {
+    --card-accent-position: right;
+    --card-accent-size: 0.2rem 100%;
+    --card-wash-angle: 215deg;
+    --card-glow-x: 100%;
+    --card-glow-y: 20%;
+}
+
+.accentBottom {
+    --card-accent-position: bottom;
+    --card-accent-size: 100% 0.2rem;
+    --card-wash-angle: 325deg;
+    --card-glow-x: 80%;
+    --card-glow-y: 100%;
+}
+
+.accentStart {
+    --card-accent-position: left;
+    --card-accent-size: 0.2rem 100%;
+    --card-wash-angle: 35deg;
+    --card-glow-x: 0%;
+    --card-glow-y: 20%;
+}
+
+.accentEnd:dir(rtl) {
+    --card-accent-position: left;
+    --card-wash-angle: 35deg;
+    --card-glow-x: 0%;
+}
+
+.accentStart:dir(rtl) {
+    --card-accent-position: right;
+    --card-wash-angle: 215deg;
+    --card-glow-x: 100%;
+}
+
+.intensitySubtle {
+    --card-lift-distance: -0.1rem;
+    --card-beam-opacity: 0.58;
+    --card-glow-opacity: 0.5;
+    --card-effect-shadow: var(--shadow-soft);
+}
+
+.intensityMedium {
+    --card-lift-distance: -0.2rem;
+    --card-beam-opacity: 0.82;
+    --card-glow-opacity: 0.78;
+    --card-effect-shadow:
+        0 1rem 2.5rem rgb(0 0 0 / 0.12), inset 0 1px 0 var(--card-beam-edge);
+}
+
+.intensityStrong {
+    --card-lift-distance: -0.3rem;
+    --card-beam-opacity: 1;
+    --card-glow-opacity: 1;
+    --card-effect-shadow:
+        0 1.25rem 3rem rgb(0 0 0 / 0.18), 0 0 2rem var(--card-accent-soft),
+        inset 0 1px 0 var(--card-beam-edge);
+}
+
 .effectNone {
     transform: none;
 }
 
-.effectLift:is(:hover, :focus-within),
-.effectLift[data-effect-preview="true"] {
+.effectLift:is(:focus-visible, :focus-within, [data-effect-preview="true"]) {
     border-color: color-mix(in srgb, var(--card-accent) 46%, var(--color-line));
+    box-shadow: var(--card-effect-shadow);
+    transform: translateY(var(--card-lift-distance));
+}
+
+.effectGlow .decoration::after,
+.effectProjector .decoration::after {
+    inset: 0;
+    background: radial-gradient(
+        ellipse 85% 65% at var(--card-glow-x) var(--card-glow-y),
+        var(--card-accent-medium),
+        transparent 72%
+    );
+    transition: opacity 450ms ease;
+}
+
+.effectGlow:is(:focus-visible, :focus-within, [data-effect-preview="true"]) {
+    border-color: var(--card-accent);
     box-shadow:
-        0 1rem 2.5rem rgb(0 0 0 / 0.12),
-        inset 0 1px 0 var(--card-beam-edge);
-    transform: translateY(-0.2rem);
+        0 0 0 1px var(--card-beam-edge),
+        var(--card-effect-shadow);
 }
 
-.effectProjector::before,
-.effectProjector::after {
-    position: absolute;
-    z-index: 0;
-    content: "";
-    opacity: 0;
-    pointer-events: none;
+.effectGlow:is(:focus-visible, :focus-within, [data-effect-preview="true"])
+    .decoration::after {
+    opacity: var(--card-glow-opacity);
 }
 
-.effectProjector::before {
+.effectReveal .decoration::after {
+    inset: 0;
+    background:
+        linear-gradient(var(--card-accent), var(--card-accent))
+            var(--card-accent-position) / var(--card-accent-size) no-repeat,
+        linear-gradient(
+            var(--card-wash-angle),
+            var(--card-accent-medium),
+            transparent 52%
+        );
+    transition: opacity 360ms ease;
+}
+
+.effectReveal:is(:focus-visible, :focus-within, [data-effect-preview="true"]) {
+    border-color: color-mix(in srgb, var(--card-accent) 62%, var(--color-line));
+}
+
+.effectReveal:is(:focus-visible, :focus-within, [data-effect-preview="true"])
+    .decoration::after {
+    opacity: var(--card-glow-opacity);
+}
+
+.effectProjector .decoration::before {
     inset: -60% -80%;
     background: linear-gradient(
         112deg,
@@ -116,49 +272,109 @@
         transform 850ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.effectProjector::after {
-    inset: 0;
-    background: radial-gradient(
-        ellipse 85% 65% at 20% 0%,
-        var(--card-glow),
-        transparent 72%
-    );
-    transition: opacity 450ms ease;
-}
-
-.effectProjector:is(:hover, :focus-within),
-.effectProjector[data-effect-preview="true"] {
+.effectProjector:is(
+    :focus-visible,
+    :focus-within,
+    [data-effect-preview="true"]
+) {
     border-color: var(--card-accent);
-    box-shadow:
-        0 1.125rem 2.8125rem rgb(0 0 0 / 0.16),
-        inset 0 1px 0 var(--card-beam-edge);
-    transform: translateY(-0.25rem);
+    box-shadow: var(--card-effect-shadow);
+    transform: translateY(var(--card-lift-distance));
 }
 
-.effectProjector:is(:hover, :focus-within)::before,
-.effectProjector[data-effect-preview="true"]::before {
-    opacity: 1;
+.effectProjector:is(:focus-visible, :focus-within, [data-effect-preview="true"])
+    .decoration::before {
+    opacity: var(--card-beam-opacity);
     transform: translateX(42%);
 }
 
-.effectProjector:is(:hover, :focus-within)::after,
-.effectProjector[data-effect-preview="true"]::after {
-    opacity: 1;
+.effectProjector:is(:focus-visible, :focus-within, [data-effect-preview="true"])
+    .decoration::after {
+    opacity: var(--card-glow-opacity);
+}
+
+@media (hover: hover) {
+    .effectLift:hover {
+        border-color: color-mix(
+            in srgb,
+            var(--card-accent) 46%,
+            var(--color-line)
+        );
+        box-shadow: var(--card-effect-shadow);
+        transform: translateY(var(--card-lift-distance));
+    }
+
+    .effectGlow:hover {
+        border-color: var(--card-accent);
+        box-shadow:
+            0 0 0 1px var(--card-beam-edge),
+            var(--card-effect-shadow);
+    }
+
+    .effectGlow:hover .decoration::after,
+    .effectReveal:hover .decoration::after {
+        opacity: var(--card-glow-opacity);
+    }
+
+    .effectReveal:hover {
+        border-color: color-mix(
+            in srgb,
+            var(--card-accent) 62%,
+            var(--color-line)
+        );
+    }
+
+    .effectProjector:hover {
+        border-color: var(--card-accent);
+        box-shadow: var(--card-effect-shadow);
+        transform: translateY(var(--card-lift-distance));
+    }
+
+    .effectProjector:hover .decoration::before {
+        opacity: var(--card-beam-opacity);
+        transform: translateX(42%);
+    }
+
+    .effectProjector:hover .decoration::after {
+        opacity: var(--card-glow-opacity);
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
     .root,
-    .effectProjector::before,
-    .effectProjector::after {
+    .decoration::before,
+    .decoration::after {
         transition-duration: 0.01ms;
     }
 
-    .effectLift:is(:hover, :focus-within),
-    .effectLift[data-effect-preview="true"],
-    .effectProjector:is(:hover, :focus-within),
-    .effectProjector[data-effect-preview="true"],
-    .effectProjector:is(:hover, :focus-within)::before,
-    .effectProjector[data-effect-preview="true"]::before {
+    .effectLift:is(
+        :hover,
+        :focus-visible,
+        :focus-within,
+        [data-effect-preview="true"]
+    ),
+    .effectProjector:is(
+        :hover,
+        :focus-visible,
+        :focus-within,
+        [data-effect-preview="true"]
+    ) {
         transform: none;
+    }
+
+    .effectProjector .decoration::before {
+        display: none;
+    }
+}
+
+@media (forced-colors: active) {
+    .root {
+        border-color: CanvasText;
+        box-shadow: none;
+        transform: none;
+    }
+
+    .decoration {
+        display: none;
     }
 }
