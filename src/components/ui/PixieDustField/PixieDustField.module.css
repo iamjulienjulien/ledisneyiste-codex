@@ -62,7 +62,7 @@
 }
 
 .error {
-    color: var(--atelier-animation-rouge);
+    color: var(--atelier-animation-rouge-crayon);
     font-weight: 600;
 }
 
