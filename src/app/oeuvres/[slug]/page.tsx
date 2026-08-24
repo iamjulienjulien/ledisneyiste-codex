@@ -7,6 +7,7 @@ import { CodexSources } from "@/components/codex/CodexSources";
 import { CodexEpoque } from "@/components/codex/CodexEpoque";
 import { CodexBlocsEditoriaux } from "@/components/codex/CodexBlocsEditoriaux";
 import { CodexRecompenses } from "@/components/codex/CodexRecompenses";
+import { CodexOeuvreDetails } from "@/components/codex/CodexOeuvreDetails";
 import { PixieBadge } from "@/components/ui/PixieBadge";
 import { getEpoquePourDate } from "@/data/epoques/relations";
 import { getOeuvreBySlug, oeuvres } from "@/data/catalogues";
@@ -65,6 +66,9 @@ export default async function OeuvrePage({
         ]),
     ]);
     const epoque = getEpoquePourDate(fiche.sortie.date);
+    const hasGroupedCredits = fiche.contributions.some(
+        (contribution) => contribution.domaine,
+    );
 
     return (
         <CodexFiche family="oeuvres">
@@ -134,23 +138,25 @@ export default async function OeuvrePage({
                     <dd className="mt-1 text-lg text-ink">{fiche.format}</dd>
                 </div>
 
-                <div>
-                    <dt className="text-sm text-muted">Contributions</dt>
+                {!hasGroupedCredits && (
+                    <div>
+                        <dt className="text-sm text-muted">Contributions</dt>
 
-                    <dd className="mt-1 space-y-3 text-lg text-ink">
-                        {fiche.contributions.map((contribution) => (
-                            <div key={contribution.contributeur.nom}>
-                                <CodexReferenceLink
-                                    reference={contribution.contributeur}
-                                />
+                        <dd className="mt-1 space-y-3 text-lg text-ink">
+                            {fiche.contributions.map((contribution) => (
+                                <div key={contribution.contributeur.nom}>
+                                    <CodexReferenceLink
+                                        reference={contribution.contributeur}
+                                    />
 
-                                <p className="mt-1 text-sm text-muted">
-                                    {contribution.roles.join(", ")}
-                                </p>
-                            </div>
-                        ))}
-                    </dd>
-                </div>
+                                    <p className="mt-1 text-sm text-muted">
+                                        {contribution.roles.join(", ")}
+                                    </p>
+                                </div>
+                            ))}
+                        </dd>
+                    </div>
+                )}
 
                 <div>
                     <dt className="text-sm text-muted">Personnages</dt>
@@ -167,6 +173,8 @@ export default async function OeuvrePage({
 
                 <CodexEpoque epoque={epoque} />
             </dl>
+
+            <CodexOeuvreDetails fiche={fiche} />
 
             <CodexRecompenses recompenses={recompenses} />
 

@@ -16,7 +16,10 @@ import {
 import { getFicheEpoqueBySlug } from "@/data/epoques";
 import { getFicheOeuvreBySlug } from "@/data/oeuvres";
 import { getFichePersonnageBySlug } from "@/data/personnages";
-import { getRecompensesPourOeuvre } from "@/data/recompenses/relations";
+import {
+    getRecompensesPourContributeur,
+    getRecompensesPourOeuvre,
+} from "@/data/recompenses/relations";
 import { rechercherDansCatalogues } from "@/lib/recherche";
 
 export const metadata: Metadata = {
@@ -220,6 +223,9 @@ export default async function RecherchePage({
                                                 contributeur={contributeur}
                                                 fiche={fiche}
                                                 epoques={getEpoquesPourContributeur(
+                                                    contributeur.slug,
+                                                )}
+                                                recompenses={getRecompensesPourContributeur(
                                                     contributeur.slug,
                                                 )}
                                             />

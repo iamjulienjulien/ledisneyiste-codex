@@ -10,6 +10,7 @@ export function CodexCreateurCard({
     contributeur,
     fiche,
     epoques,
+    recompenses,
 }: CodexCreateurCardProps) {
     return (
         <PixieLink
@@ -98,6 +99,45 @@ export function CodexCreateurCard({
                     </dd>
                 </div>
             </dl>
+
+            {recompenses.length > 0 && (
+                <div className={styles.recompenses}>
+                    <PixieSeparator
+                        variant="fade"
+                        color="jaune-lampe"
+                        position="start"
+                        spacing="none"
+                        decorative
+                    />
+
+                    <p className={styles.recompensesTitle}>
+                        {recompenses.length}{" "}
+                        {recompenses.length > 1 ? "récompenses" : "récompense"}
+                    </p>
+
+                    <ul
+                        aria-label="Récompenses obtenues"
+                        className={styles.recompensesList}
+                    >
+                        {recompenses.map((recompense) => (
+                            <li
+                                key={recompense.id}
+                                className={styles.recompense}
+                            >
+                                <PixieSymbol
+                                    registry="recompenses"
+                                    collection="trophees"
+                                    slug={recompense.trophee}
+                                    size="sm"
+                                />
+                                <span>
+                                    {recompense.categorie ?? recompense.motif}
+                                </span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
 
             <span className="mt-auto pt-8 text-sm font-medium text-famille-createurs">
                 Ouvrir la fiche →

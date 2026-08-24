@@ -20,6 +20,7 @@ export type CodexCreateurCardProps = Readonly<{
     contributeur: ContributeurDisney;
     fiche: FicheContributeurDisney;
     epoques: ReferenceCodex[];
+    recompenses: RecompenseDisney[];
 }>;
 
 export type CodexOeuvreCardProps = Readonly<{

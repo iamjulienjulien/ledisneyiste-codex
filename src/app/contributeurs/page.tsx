@@ -8,6 +8,7 @@ import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { contributeurs } from "@/data/catalogues";
 import { getFicheContributeurBySlug } from "@/data/contributeurs";
 import { getEpoquesPourContributeur } from "@/data/epoques/relations";
+import { getRecompensesPourContributeur } from "@/data/recompenses/relations";
 import { resolveCodexIndexView } from "@/lib/index-view";
 
 export const metadata: Metadata = {
@@ -81,6 +82,9 @@ export default async function ContributeursPage({
                                         contributeur={contributeur}
                                         fiche={fiche}
                                         epoques={getEpoquesPourContributeur(
+                                            contributeur.slug,
+                                        )}
+                                        recompenses={getRecompensesPourContributeur(
                                             contributeur.slug,
                                         )}
                                     />
