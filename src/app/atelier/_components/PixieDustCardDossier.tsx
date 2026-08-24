@@ -4,7 +4,9 @@ import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import {
     PixieDustCard,
+    type PixieDustCardAccentPosition,
     type PixieDustCardEffect,
+    type PixieDustCardEffectIntensity,
     type PixieDustCardPadding,
     type PixieDustCardRadius,
     type PixieDustCardVariant,
@@ -16,7 +18,12 @@ const variants = [
     {
         name: "Surface",
         value: "surface" as const,
-        description: "Une présence neutre sans ligne ni élévation visible.",
+        description: "Une présence neutre avec une limite discrète.",
+    },
+    {
+        name: "Atténué",
+        value: "muted" as const,
+        description: "Une surface secondaire qui calme la hiérarchie.",
     },
     {
         name: "Contour",
@@ -33,6 +40,11 @@ const variants = [
         value: "accent" as const,
         description: "Un filet coloré et une lumière éditoriale discrète.",
     },
+    {
+        name: "Teinté",
+        value: "tinted" as const,
+        description: "Une surface doucement imprégnée par sa couleur.",
+    },
 ] as const satisfies readonly Readonly<{
     name: string;
     value: PixieDustCardVariant;
@@ -44,6 +56,7 @@ const paddings = [
     { name: "Petit", value: "sm" as const, token: "1 rem" },
     { name: "Moyen", value: "md" as const, token: "1,5 rem" },
     { name: "Grand", value: "lg" as const, token: "2 rem" },
+    { name: "Très grand", value: "xl" as const, token: "2,5 rem" },
 ] as const satisfies readonly Readonly<{
     name: string;
     value: PixieDustCardPadding;
@@ -72,6 +85,16 @@ const effects = [
         description: "La surface se détache légèrement au survol.",
     },
     {
+        name: "Halo",
+        value: "glow" as const,
+        description: "Une lumière se dépose sans déplacer la surface.",
+    },
+    {
+        name: "Révélation",
+        value: "reveal" as const,
+        description: "Le filet et la teinte apparaissent progressivement.",
+    },
+    {
         name: "Projecteur",
         value: "projector" as const,
         description: "Un faisceau traverse la surface et y dépose un halo.",
@@ -82,12 +105,50 @@ const effects = [
     description: string;
 }>[];
 
+const accentPositions = [
+    { name: "Haut", value: "top" as const },
+    { name: "Fin", value: "end" as const },
+    { name: "Bas", value: "bottom" as const },
+    { name: "Début", value: "start" as const },
+] as const satisfies readonly Readonly<{
+    name: string;
+    value: PixieDustCardAccentPosition;
+}>[];
+
+const effectIntensities = [
+    {
+        name: "Subtile",
+        value: "subtle" as const,
+        description: "Un raccord discret pour les contenus secondaires.",
+    },
+    {
+        name: "Moyenne",
+        value: "medium" as const,
+        description: "Le réglage de référence pour les cartes métier.",
+    },
+    {
+        name: "Forte",
+        value: "strong" as const,
+        description: "Une présence réservée aux portes et cartes vedettes.",
+    },
+] as const satisfies readonly Readonly<{
+    name: string;
+    value: PixieDustCardEffectIntensity;
+    description: string;
+}>[];
+
 const properties = [
     {
         name: "as",
         type: "PixieDustCardElement",
         defaultValue: '"div"',
         description: "Élément HTML porté par la surface.",
+    },
+    {
+        name: "asChild",
+        type: "boolean",
+        defaultValue: "false",
+        description: "Transmet la surface à un unique enfant racine.",
     },
     {
         name: "variant",
@@ -114,10 +175,22 @@ const properties = [
         description: "Arrondi du cadre selon les tokens de la Projection.",
     },
     {
+        name: "accentPosition",
+        type: "PixieDustCardAccentPosition",
+        defaultValue: '"top"',
+        description: "Place logiquement le filet et l’origine lumineuse.",
+    },
+    {
         name: "effect",
         type: "PixieDustCardEffect",
         defaultValue: '"none"',
         description: "Réaction visuelle au survol ou au focus interne.",
+    },
+    {
+        name: "effectIntensity",
+        type: "PixieDustCardEffectIntensity",
+        defaultValue: '"medium"',
+        description: "Règle l’amplitude du halo, du faisceau et du mouvement.",
     },
     {
         name: "children",
@@ -141,7 +214,14 @@ const specificTypes = [
     },
     {
         name: "PixieDustCardVariant",
-        values: ['"surface"', '"outline"', '"elevated"', '"accent"'],
+        values: [
+            '"surface"',
+            '"muted"',
+            '"outline"',
+            '"elevated"',
+            '"accent"',
+            '"tinted"',
+        ],
         description: "Traitements visuels indépendants du contenu.",
     },
     {
@@ -151,7 +231,7 @@ const specificTypes = [
     },
     {
         name: "PixieDustCardPadding",
-        values: ['"none"', '"sm"', '"md"', '"lg"'],
+        values: ['"none"', '"sm"', '"md"', '"lg"', '"xl"'],
         description: "Densités d’espacement intérieur.",
     },
     {
@@ -160,9 +240,19 @@ const specificTypes = [
         description: "Rayons disponibles dans la Projection.",
     },
     {
+        name: "PixieDustCardAccentPosition",
+        values: ['"top"', '"end"', '"bottom"', '"start"'],
+        description: "Positions physiques et logiques du filet coloré.",
+    },
+    {
         name: "PixieDustCardEffect",
-        values: ['"none"', '"lift"', '"projector"'],
+        values: ['"none"', '"lift"', '"glow"', '"reveal"', '"projector"'],
         description: "Réactions visuelles facultatives de la surface.",
+    },
+    {
+        name: "PixieDustCardEffectIntensity",
+        values: ['"subtle"', '"medium"', '"strong"'],
+        description: "Amplitudes partagées par les effets de la carte.",
     },
 ] as const;
 
@@ -248,7 +338,7 @@ export function PixieDustCardDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.1.0
+                                0.2.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -324,31 +414,35 @@ export function PixieDustCardDossier() {
                 <div className="mt-7 grid border border-line lg:grid-cols-2">
                     <div className="flex min-h-80 items-center justify-center bg-canvas p-8">
                         <PixieDustCard
-                            as="article"
+                            asChild
                             variant="accent"
                             color="rouge-crayon"
                             effect="projector"
+                            effectIntensity="medium"
                             className="max-w-md"
                         >
-                            <ExampleContent />
                             <PixieLink
                                 href="#card-variants"
-                                variant="action"
+                                variant="surface"
                                 color="rouge-crayon"
-                                indicator="arrow"
-                                className="mt-6"
+                                className="block"
                             >
-                                Voir les essais
+                                <ExampleContent />
+                                <span className="mt-6 block font-medium text-accent">
+                                    Voir les essais →
+                                </span>
                             </PixieLink>
                         </PixieDustCard>
                     </div>
                     <CodeExample>{`<PixieDustCard
-    as="article"
+    asChild
     variant="accent"
     color="rouge-crayon"
     effect="projector"
 >
-    {/* Contenu libre */}
+    <PixieLink href="/archives" variant="surface">
+        {/* Contenu libre */}
+    </PixieLink>
 </PixieDustCard>`}</CodeExample>
                 </div>
             </section>
@@ -361,7 +455,7 @@ export function PixieDustCardDossier() {
                 <SequenceTitle
                     id="card-variants-title"
                     eyebrow="Direction artistique"
-                    title="Quatre natures de surface"
+                    title="Six natures de surface"
                     description="Le variant décrit le décor au repos. Il reste indépendant de l’effet qui peut l’animer."
                 />
 
@@ -442,6 +536,34 @@ export function PixieDustCardDossier() {
                 </div>
             </section>
 
+            <section aria-labelledby="card-accents" className="mt-16">
+                <SequenceTitle
+                    id="card-accents"
+                    eyebrow="Repères de composition"
+                    title="L’accent trouve sa place dans le cadre"
+                    description="Le filet suit la logique de lecture et déplace avec lui l’origine de la lumière, sans modifier le contenu."
+                />
+
+                <div className="mt-7 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+                    {accentPositions.map((position) => (
+                        <PixieDustCard
+                            key={position.value}
+                            variant="accent"
+                            color="jaune-lampe"
+                            accentPosition={position.value}
+                            className="min-h-44"
+                        >
+                            <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                                {position.name}
+                            </p>
+                            <p className="mt-4 font-mono text-sm text-ink">
+                                accentPosition=&quot;{position.value}&quot;
+                            </p>
+                        </PixieDustCard>
+                    ))}
+                </div>
+            </section>
+
             <section aria-labelledby="card-effects" className="mt-16">
                 <SequenceTitle
                     id="card-effects"
@@ -480,6 +602,210 @@ export function PixieDustCardDossier() {
                             </PixieLink>
                         </PixieDustCard>
                     ))}
+                </div>
+
+                <div className="mt-8 grid gap-5 md:grid-cols-3">
+                    {effectIntensities.map((intensity) => (
+                        <PixieDustCard
+                            key={intensity.value}
+                            as="article"
+                            variant="outline"
+                            color="bleu-reperage"
+                            effect="glow"
+                            effectIntensity={intensity.value}
+                            data-effect-preview="true"
+                        >
+                            <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                                Intensité {intensity.name}
+                            </p>
+                            <p className="mt-4 font-mono text-sm text-ink">
+                                {intensity.value}
+                            </p>
+                            <p className="mt-3 leading-7 text-ink-soft">
+                                {intensity.description}
+                            </p>
+                        </PixieDustCard>
+                    ))}
+                </div>
+            </section>
+
+            <section
+                id="card-scenarios"
+                aria-labelledby="card-scenarios-title"
+                className="mt-16 scroll-mt-8"
+            >
+                <SequenceTitle
+                    id="card-scenarios-title"
+                    eyebrow="Scénarios préparés"
+                    title="Une même surface, cinq rôles sur le plateau"
+                    description="Ces compositions préfigurent les contextes réels sans introduire de logique métier dans la primitive."
+                />
+
+                <div className="mt-7 grid gap-6 lg:grid-cols-2">
+                    <div>
+                        <p className="mb-3 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            Carte métier actionnable
+                        </p>
+                        <PixieDustCard
+                            asChild
+                            variant="accent"
+                            color="rouge-crayon"
+                            effect="projector"
+                            effectIntensity="medium"
+                        >
+                            <PixieLink
+                                href="#pixie-dust-card-playground"
+                                variant="surface"
+                                color="rouge-crayon"
+                                className="!flex min-h-72 flex-col"
+                            >
+                                <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                                    Personnage
+                                </p>
+                                <h4 className="mt-4 text-3xl text-ink">
+                                    Mickey Mouse
+                                </h4>
+                                <p className="mt-3 leading-7 text-ink-soft">
+                                    Une unité autonome dont toute la surface
+                                    conduit vers sa fiche.
+                                </p>
+                                <span className="mt-auto pt-8 font-medium text-accent">
+                                    Ouvrir la fiche →
+                                </span>
+                            </PixieLink>
+                        </PixieDustCard>
+                    </div>
+
+                    <div>
+                        <p className="mb-3 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            Porte de navigation
+                        </p>
+                        <PixieDustCard
+                            asChild
+                            variant="outline"
+                            color="vert-cellulo"
+                            effect="projector"
+                            effectIntensity="strong"
+                        >
+                            <PixieLink
+                                href="#card-variants"
+                                variant="surface"
+                                color="vert-cellulo"
+                                className="!flex min-h-72 flex-col"
+                            >
+                                <p className="text-sm text-muted">2 époques</p>
+                                <h4 className="mt-4 text-3xl text-ink">
+                                    Époques
+                                </h4>
+                                <p className="mt-3 leading-7 text-ink-soft">
+                                    Une entrée majeure reçoit un projecteur plus
+                                    franc sans changer de sémantique.
+                                </p>
+                                <span className="mt-auto pt-8 font-medium text-accent">
+                                    Explorer les époques →
+                                </span>
+                            </PixieLink>
+                        </PixieDustCard>
+                    </div>
+
+                    <div>
+                        <p className="mb-3 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            Relation apparentée
+                        </p>
+                        <PixieDustCard
+                            as="article"
+                            variant="muted"
+                            color="bleu-reperage"
+                            effect="glow"
+                            effectIntensity="subtle"
+                            accentPosition="start"
+                            className="min-h-64"
+                        >
+                            <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                                Dans le Codex
+                            </p>
+                            <h4 className="mt-4 text-2xl text-ink">
+                                The Band Concert
+                            </h4>
+                            <p className="mt-3 leading-7 text-ink-soft">
+                                La carte reste statique ; seule son action
+                                secondaire entre dans le parcours clavier.
+                            </p>
+                            <PixieLink
+                                href="#card-scenarios"
+                                variant="action"
+                                color="bleu-reperage"
+                                indicator="arrow"
+                                className="mt-6"
+                            >
+                                Suivre la relation
+                            </PixieLink>
+                        </PixieDustCard>
+                    </div>
+
+                    <div>
+                        <p className="mb-3 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            Contenu éditorial statique
+                        </p>
+                        <PixieDustCard
+                            as="article"
+                            variant="surface"
+                            effect="none"
+                            padding="lg"
+                            className="min-h-64"
+                        >
+                            <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                                Note de production
+                            </p>
+                            <h4 className="mt-4 text-2xl text-ink">
+                                Le décor sait aussi rester immobile
+                            </h4>
+                            <p className="mt-3 leading-7 text-ink-soft">
+                                Sans action ni mouvement, la carte organise une
+                                unité éditoriale et laisse toute la hiérarchie
+                                au contenu.
+                            </p>
+                        </PixieDustCard>
+                    </div>
+
+                    <div className="lg:col-span-2">
+                        <p className="mb-3 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            Carte mise en avant
+                        </p>
+                        <PixieDustCard
+                            asChild
+                            variant="tinted"
+                            color="gouache"
+                            accentPosition="start"
+                            effect="reveal"
+                            effectIntensity="medium"
+                            padding="xl"
+                        >
+                            <PixieLink
+                                href="#card-accents"
+                                variant="surface"
+                                color="gouache"
+                                className="!grid gap-6 md:grid-cols-[1fr_auto] md:items-end"
+                            >
+                                <div>
+                                    <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                                        À l’affiche
+                                    </p>
+                                    <h4 className="mt-4 text-3xl text-ink">
+                                        Blanche-Neige et les Sept Nains
+                                    </h4>
+                                    <p className="mt-3 max-w-2xl leading-7 text-ink-soft">
+                                        Une surface teintée attire l’attention
+                                        sans imposer une couleur saturée au
+                                        texte.
+                                    </p>
+                                </div>
+                                <span className="font-medium text-accent">
+                                    Revoir les accents →
+                                </span>
+                            </PixieLink>
+                        </PixieDustCard>
+                    </div>
                 </div>
             </section>
 
@@ -525,8 +851,16 @@ export function PixieDustCardDossier() {
                             "Employer PixieLink ou PixieButton pour l’action, sans onClick ni tabIndex sur la surface.",
                         ],
                         [
+                            "Racine transmise",
+                            "asChild applique la surface à un unique PixieLink sans produire de conteneur supplémentaire.",
+                        ],
+                        [
                             "Mouvement facultatif",
                             "Les effets disparaissent avec prefers-reduced-motion sans retirer aucune information.",
+                        ],
+                        [
+                            "Couleurs forcées",
+                            "La couche lumineuse s’efface tandis qu’un contour système préserve la limite de la carte.",
                         ],
                     ].map(([title, description]) => (
                         <article key={title} className="bg-surface p-6">
@@ -547,7 +881,7 @@ export function PixieDustCardDossier() {
                     id="card-technical"
                     eyebrow="Générique technique"
                     title="API de l’esquisse"
-                    description="Les types restent centralisés dans src/types et les attributs HTML compatibles sont transmis à l’élément rendu."
+                    description="Les types propres à la Card vivent dans son dossier ; les attributs HTML compatibles sont transmis à sa racine réelle."
                 />
 
                 <div className="mt-7">
@@ -572,12 +906,12 @@ export function PixieDustCardDossier() {
 
                 <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
                     {[
-                        "Vérifier si variant et effect restent bien deux axes indépendants.",
-                        "Éprouver les quatre rayons dans les cartes métier existantes.",
-                        "Comparer projector avec le halo actuel des index sans dupliquer leurs responsabilités.",
+                        "Éprouver les six variantes dans deux contextes réels du Codex.",
+                        "Valider asChild sur les cartes métier et les portes de la home.",
+                        "Comparer projector à .codex-projector avant toute suppression globale.",
                         "Valider les surfaces imbriquées dans les deux Lumières.",
-                        "Tester la lecture et le focus à 200 % de zoom.",
-                        "Décider si l’élément li doit rester dans l’API finale.",
+                        "Tester clavier, mouvement réduit, couleurs forcées et zoom à 200 %.",
+                        "Confirmer l’API avant le passage de PixieDustCard à PixieCard.",
                     ].map((decision) => (
                         <li
                             key={decision}

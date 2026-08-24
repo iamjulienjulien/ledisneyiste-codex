@@ -6,8 +6,10 @@ import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import {
     PixieDustCard,
+    type PixieDustCardAccentPosition,
     type PixieDustCardColor,
     type PixieDustCardEffect,
+    type PixieDustCardEffectIntensity,
     type PixieDustCardElement,
     type PixieDustCardPadding,
     type PixieDustCardRadius,
@@ -22,9 +24,11 @@ import type { AtelierAnimationColorSlug } from "@/types/colors";
 
 const variants = [
     { value: "surface", label: "Surface" },
+    { value: "muted", label: "Atténué" },
     { value: "outline", label: "Contour" },
     { value: "elevated", label: "Élevé" },
     { value: "accent", label: "Accent" },
+    { value: "tinted", label: "Teinté" },
 ] as const;
 
 const paddings = [
@@ -32,6 +36,7 @@ const paddings = [
     { value: "sm", label: "Petit" },
     { value: "md", label: "Moyen" },
     { value: "lg", label: "Grand" },
+    { value: "xl", label: "Très grand" },
 ] as const;
 
 const radii = [
@@ -44,7 +49,28 @@ const radii = [
 const effects = [
     { value: "none", label: "Aucun" },
     { value: "lift", label: "Élévation" },
+    { value: "glow", label: "Halo" },
+    { value: "reveal", label: "Révélation" },
     { value: "projector", label: "Projecteur" },
+] as const;
+
+const accentPositions = [
+    { value: "top", label: "Haut" },
+    { value: "end", label: "Fin" },
+    { value: "bottom", label: "Bas" },
+    { value: "start", label: "Début" },
+] as const;
+
+const effectIntensities = [
+    { value: "subtle", label: "Subtile" },
+    { value: "medium", label: "Moyenne" },
+    { value: "strong", label: "Forte" },
+] as const;
+
+const contentLengths = [
+    { value: "short", label: "Court" },
+    { value: "medium", label: "Moyen" },
+    { value: "long", label: "Long" },
 ] as const;
 
 const elements = ["div", "article", "section", "li"] as const;
@@ -58,40 +84,52 @@ const frameWidths = {
 
 export function PixieDustCardPlayground() {
     const [element, setElement] = useState<PixieDustCardElement>("article");
+    const [asChild, setAsChild] = useState(true);
     const [variant, setVariant] = useState<PixieDustCardVariant>("accent");
     const [padding, setPadding] = useState<PixieDustCardPadding>("md");
     const [radius, setRadius] = useState<PixieDustCardRadius>("medium");
+    const [accentPosition, setAccentPosition] =
+        useState<PixieDustCardAccentPosition>("top");
     const [effect, setEffect] = useState<PixieDustCardEffect>("projector");
+    const [effectIntensity, setEffectIntensity] =
+        useState<PixieDustCardEffectIntensity>("medium");
     const [color, setColor] = useState<PixieDustCardColor>("rouge-crayon");
+    const [contentLength, setContentLength] = useState<
+        "short" | "medium" | "long"
+    >("medium");
     const [effectPreview, setEffectPreview] = useState(false);
     const [light, setLight] = useState<"sombre" | "claire">("sombre");
     const [frame, setFrame] = useState<"compact" | "moyen" | "large">("moyen");
-    const cardCode = `<PixieDustCard
-    as="${element}"
+    const cardCode = `<PixieDustCard${asChild ? "\n    asChild" : `\n    as="${element}"`}
     variant="${variant}"${color ? `\n    color="${color}"` : ""}
     padding="${padding}"
     radius="${radius}"
+    accentPosition="${accentPosition}"
     effect="${effect}"
+    effectIntensity="${effectIntensity}"
 >
-    {/* Contenu libre */}
+    ${
+        asChild
+            ? `<PixieLink href="/archives" variant="surface"${color ? ` color="${color}"` : ""}>
+        {/* Contenu libre */}
+    </PixieLink>`
+            : "{/* Contenu libre */}"
+    }
 </PixieDustCard>`;
     const code =
-        element === "li"
+        !asChild && element === "li"
             ? `<ul>\n${cardCode
                   .split("\n")
                   .map((line) => `    ${line}`)
                   .join("\n")}\n</ul>`
             : cardCode;
-    const preview = (
-        <PixieDustCard
-            as={element}
-            variant={variant}
-            color={color}
-            padding={padding}
-            radius={radius}
-            effect={effect}
-            data-effect-preview={effectPreview ? "true" : undefined}
-        >
+    const descriptions = {
+        short: "La carte installe le décor sans écrire le récit.",
+        medium: "La carte installe le décor sans décider de la distribution des informations qu’elle accueille.",
+        long: "La carte installe le décor sans décider de la distribution des informations qu’elle accueille. Cette version volontairement développée permet d’observer les retours à la ligne, l’équilibre des espacements et la stabilité de la surface lorsque le contenu prend davantage de place.",
+    } as const;
+    const previewContent = (
+        <>
             <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.16em] text-muted">
                 Archive en préparation
             </p>
@@ -99,9 +137,23 @@ export function PixieDustCardPlayground() {
                 Une surface laisse le contenu jouer
             </h4>
             <p className="mt-4 leading-7 text-ink-soft">
-                La carte installe le décor sans décider de la distribution des
-                informations qu’elle accueille.
+                {descriptions[contentLength]}
             </p>
+        </>
+    );
+    const cardProps = {
+        variant,
+        color,
+        padding,
+        radius,
+        accentPosition,
+        effect,
+        effectIntensity,
+        "data-effect-preview": effectPreview ? "true" : undefined,
+    } as const;
+    const staticPreview = (
+        <PixieDustCard as={element} {...cardProps}>
+            {previewContent}
             <PixieLink
                 href="#pixie-dust-card-playground"
                 variant="action"
@@ -113,6 +165,21 @@ export function PixieDustCardPlayground() {
             </PixieLink>
         </PixieDustCard>
     );
+    const slottedPreview = (
+        <PixieDustCard asChild {...cardProps}>
+            <PixieLink
+                href="#pixie-dust-card-playground"
+                variant="surface"
+                color={color}
+            >
+                {previewContent}
+                <span className="mt-6 block font-medium text-accent">
+                    Examiner le plan →
+                </span>
+            </PixieLink>
+        </PixieDustCard>
+    );
+    const preview = asChild ? slottedPreview : staticPreview;
 
     function selectColor(value: string) {
         setColor(
@@ -137,13 +204,14 @@ export function PixieDustCardPlayground() {
                             <select
                                 id="card-element"
                                 value={element}
+                                disabled={asChild}
                                 onChange={(event) =>
                                     setElement(
                                         event.target
                                             .value as PixieDustCardElement,
                                     )
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink"
+                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink disabled:cursor-not-allowed disabled:opacity-50"
                             >
                                 {elements.map((value) => (
                                     <option key={value} value={value}>
@@ -152,6 +220,23 @@ export function PixieDustCardPlayground() {
                                 ))}
                             </select>
                         </div>
+
+                        <label className="flex cursor-pointer items-start gap-2 text-sm text-ink-soft">
+                            <input
+                                type="checkbox"
+                                checked={asChild}
+                                onChange={(event) =>
+                                    setAsChild(event.target.checked)
+                                }
+                                className="mt-0.5 accent-accent"
+                            />
+                            <span>
+                                Transmettre la racine à PixieLink
+                                <span className="mt-1 block text-xs leading-5 text-muted">
+                                    Désactive le choix de l’élément sémantique.
+                                </span>
+                            </span>
+                        </label>
 
                         <fieldset>
                             <legend className="text-sm font-medium text-ink">
@@ -169,6 +254,35 @@ export function PixieDustCardPlayground() {
                                 ))}
                             </div>
                         </fieldset>
+
+                        <div>
+                            <label
+                                htmlFor="card-content-length"
+                                className="text-sm font-medium text-ink"
+                            >
+                                Longueur du contenu
+                            </label>
+                            <select
+                                id="card-content-length"
+                                value={contentLength}
+                                onChange={(event) =>
+                                    setContentLength(
+                                        event.target.value as
+                                            "short" | "medium" | "long",
+                                    )
+                                }
+                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                            >
+                                {contentLengths.map((option) => (
+                                    <option
+                                        key={option.value}
+                                        value={option.value}
+                                    >
+                                        {option.label}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
 
                         <fieldset>
                             <legend className="text-sm font-medium text-ink">
@@ -189,6 +303,23 @@ export function PixieDustCardPlayground() {
 
                         <fieldset>
                             <legend className="text-sm font-medium text-ink">
+                                Position de l’accent
+                            </legend>
+                            <div className="mt-3 space-y-2">
+                                {accentPositions.map((option) => (
+                                    <AtelierOptionRadio
+                                        key={option.value}
+                                        name="card-accent-position"
+                                        {...option}
+                                        selectedValue={accentPosition}
+                                        onChange={setAccentPosition}
+                                    />
+                                ))}
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend className="text-sm font-medium text-ink">
                                 Rayon
                             </legend>
                             <div className="mt-3 space-y-2">
@@ -199,6 +330,23 @@ export function PixieDustCardPlayground() {
                                         {...option}
                                         selectedValue={radius}
                                         onChange={setRadius}
+                                    />
+                                ))}
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend className="text-sm font-medium text-ink">
+                                Intensité
+                            </legend>
+                            <div className="mt-3 space-y-2">
+                                {effectIntensities.map((option) => (
+                                    <AtelierOptionRadio
+                                        key={option.value}
+                                        name="card-effect-intensity"
+                                        {...option}
+                                        selectedValue={effectIntensity}
+                                        onChange={setEffectIntensity}
                                     />
                                 ))}
                             </div>
@@ -276,7 +424,11 @@ export function PixieDustCardPlayground() {
                         <div
                             className={`w-full transition-[max-width] ${frameWidths[frame]}`}
                         >
-                            {element === "li" ? <ul>{preview}</ul> : preview}
+                            {!asChild && element === "li" ? (
+                                <ul>{preview}</ul>
+                            ) : (
+                                preview
+                            )}
                         </div>
                     </div>
 
