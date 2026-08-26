@@ -1,16 +1,16 @@
 import { getAtelierAnimationColor } from "@/registry/colors";
-import styles from "./PixieDustInset.module.css";
+import styles from "./PixieInset.module.css";
 import type {
-    PixieDustInsetAccentPosition,
-    PixieDustInsetDepth,
-    PixieDustInsetPadding,
-    PixieDustInsetProps,
-    PixieDustInsetRadius,
-    PixieDustInsetStyle,
-    PixieDustInsetTexture,
-    PixieDustInsetTextureIntensity,
-    PixieDustInsetVariant,
-} from "./PixieDustInset.types";
+    PixieInsetAccentPosition,
+    PixieInsetDepth,
+    PixieInsetPadding,
+    PixieInsetProps,
+    PixieInsetRadius,
+    PixieInsetStyle,
+    PixieInsetTexture,
+    PixieInsetTextureIntensity,
+    PixieInsetVariant,
+} from "./PixieInset.types";
 
 const variantClasses = {
     plain: styles.plain,
@@ -19,14 +19,14 @@ const variantClasses = {
     groove: styles.groove,
     accent: styles.accent,
     tinted: styles.tinted,
-} as const satisfies Record<PixieDustInsetVariant, string>;
+} as const satisfies Record<PixieInsetVariant, string>;
 
 const depthClasses = {
     none: styles.depthNone,
     shallow: styles.depthShallow,
     medium: styles.depthMedium,
     deep: styles.depthDeep,
-} as const satisfies Record<PixieDustInsetDepth, string>;
+} as const satisfies Record<PixieInsetDepth, string>;
 
 const paddingClasses = {
     none: styles.paddingNone,
@@ -34,36 +34,36 @@ const paddingClasses = {
     md: styles.paddingMedium,
     lg: styles.paddingLarge,
     xl: styles.paddingExtraLarge,
-} as const satisfies Record<PixieDustInsetPadding, string>;
+} as const satisfies Record<PixieInsetPadding, string>;
 
 const radiusClasses = {
     none: styles.radiusNone,
     small: styles.radiusSmall,
     medium: styles.radiusMedium,
     large: styles.radiusLarge,
-} as const satisfies Record<PixieDustInsetRadius, string>;
+} as const satisfies Record<PixieInsetRadius, string>;
 
 const accentPositionClasses = {
     top: styles.accentTop,
     end: styles.accentEnd,
     bottom: styles.accentBottom,
     start: styles.accentStart,
-} as const satisfies Record<PixieDustInsetAccentPosition, string>;
+} as const satisfies Record<PixieInsetAccentPosition, string>;
 
 const textureClasses = {
     none: styles.textureNone,
     grain: styles.textureGrain,
     grid: styles.textureGrid,
     crosshatch: styles.textureCrosshatch,
-} as const satisfies Record<PixieDustInsetTexture, string>;
+} as const satisfies Record<PixieInsetTexture, string>;
 
 const textureIntensityClasses = {
     subtle: styles.textureIntensitySubtle,
     medium: styles.textureIntensityMedium,
     strong: styles.textureIntensityStrong,
-} as const satisfies Record<PixieDustInsetTextureIntensity, string>;
+} as const satisfies Record<PixieInsetTextureIntensity, string>;
 
-export function PixieDustInset({
+export function PixieInset({
     as: Element = "div",
     variant = "recessed",
     depth = "medium",
@@ -77,9 +77,9 @@ export function PixieDustInset({
     style,
     children,
     ...elementProps
-}: PixieDustInsetProps) {
+}: PixieInsetProps) {
     const colorDefinition = color ? getAtelierAnimationColor(color) : null;
-    const insetStyle: PixieDustInsetStyle = {
+    const insetStyle: PixieInsetStyle = {
         ...style,
         ...(colorDefinition
             ? { "--pixie-inset-color": colorDefinition.cssValue }
