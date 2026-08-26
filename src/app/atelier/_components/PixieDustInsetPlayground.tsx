@@ -6,11 +6,14 @@ import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import {
     PixieDustInset,
+    type PixieDustInsetAccentPosition,
     type PixieDustInsetColor,
     type PixieDustInsetDepth,
     type PixieDustInsetElement,
     type PixieDustInsetPadding,
     type PixieDustInsetRadius,
+    type PixieDustInsetTexture,
+    type PixieDustInsetTextureIntensity,
     type PixieDustInsetVariant,
 } from "@/components/ui/PixieDustInset";
 import {
@@ -20,33 +23,27 @@ import {
 import type { AtelierAnimationColorSlug } from "@/types/colors";
 
 const variants = [
+    { value: "plain", label: "Nu" },
     { value: "subtle", label: "Discret" },
     { value: "recessed", label: "Creusé" },
     { value: "groove", label: "Rainure" },
     { value: "accent", label: "Accent" },
+    { value: "tinted", label: "Teinté" },
 ] as const;
 
 const depths = [
+    { value: "none", label: "Aucune" },
     { value: "shallow", label: "Faible" },
     { value: "medium", label: "Moyenne" },
     { value: "deep", label: "Profonde" },
 ] as const;
 
-const paddings = [
-    { value: "none", label: "Aucun" },
-    { value: "sm", label: "Petit" },
-    { value: "md", label: "Moyen" },
-    { value: "lg", label: "Grand" },
-] as const;
-
-const radii = [
-    { value: "none", label: "Aucun" },
-    { value: "small", label: "Petit" },
-    { value: "medium", label: "Moyen" },
-    { value: "large", label: "Grand" },
-] as const;
-
+const paddings = ["none", "sm", "md", "lg", "xl"] as const;
+const radii = ["none", "small", "medium", "large"] as const;
 const elements = ["div", "section", "aside"] as const;
+const accentPositions = ["top", "end", "bottom", "start"] as const;
+const textures = ["none", "grain", "grid", "crosshatch"] as const;
+const textureIntensities = ["subtle", "medium", "strong"] as const;
 const colorSlugs = getAtelierAnimationColorSlugs();
 
 const frameWidths = {
@@ -55,30 +52,40 @@ const frameWidths = {
     large: "max-w-3xl",
 } as const satisfies Record<"compact" | "moyen" | "large", string>;
 
+const selectClassName =
+    "mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink";
+
 export function PixieDustInsetPlayground() {
     const [element, setElement] = useState<PixieDustInsetElement>("div");
-    const [variant, setVariant] = useState<PixieDustInsetVariant>("recessed");
+    const [variant, setVariant] = useState<PixieDustInsetVariant>("accent");
     const [depth, setDepth] = useState<PixieDustInsetDepth>("medium");
     const [padding, setPadding] = useState<PixieDustInsetPadding>("md");
     const [radius, setRadius] = useState<PixieDustInsetRadius>("medium");
     const [color, setColor] = useState<PixieDustInsetColor>("ambre-projecteur");
+    const [accentPosition, setAccentPosition] =
+        useState<PixieDustInsetAccentPosition>("start");
+    const [texture, setTexture] = useState<PixieDustInsetTexture>("grain");
+    const [textureIntensity, setTextureIntensity] =
+        useState<PixieDustInsetTextureIntensity>("subtle");
     const [light, setLight] = useState<"sombre" | "claire">("sombre");
     const [frame, setFrame] = useState<"compact" | "moyen" | "large">("moyen");
 
-    const optionalProps = [
+    const props = [
+        `    as="${element}"`,
+        `    variant="${variant}"`,
+        `    depth="${depth}"`,
+        `    padding="${padding}"`,
+        `    radius="${radius}"`,
         color ? `    color="${color}"` : null,
+        variant === "accent" ? `    accentPosition="${accentPosition}"` : null,
+        texture !== "none" ? `    texture="${texture}"` : null,
+        texture !== "none"
+            ? `    textureIntensity="${textureIntensity}"`
+            : null,
         element !== "div" ? '    aria-labelledby="inset-heading"' : null,
     ].filter((line): line is string => line !== null);
-    const code = `<PixieDustInset
-    as="${element}"
-    variant="${variant}"
-    depth="${depth}"
-    padding="${padding}"
-    radius="${radius}"${optionalProps.length > 0 ? `\n${optionalProps.join("\n")}` : ""}
->
-    <h3 id="inset-heading">Repères de consultation</h3>
-    <p>Première projection : 18 novembre 1928</p>
-</PixieDustInset>`;
+
+    const code = `<PixieDustInset\n${props.join("\n")}\n>\n    <h3 id="inset-heading">Repères de consultation</h3>\n    <p>Première projection : 18 novembre 1928</p>\n</PixieDustInset>`;
 
     function selectColor(value: string) {
         setColor(
@@ -109,7 +116,7 @@ export function PixieDustInsetPlayground() {
                                             .value as PixieDustInsetElement,
                                     )
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink"
+                                className={`${selectClassName} font-mono`}
                             >
                                 {elements.map((value) => (
                                     <option key={value} value={value}>
@@ -153,39 +160,57 @@ export function PixieDustInsetPlayground() {
                             </div>
                         </fieldset>
 
-                        <fieldset>
-                            <legend className="text-sm font-medium text-ink">
+                        <div>
+                            <label
+                                htmlFor="inset-padding"
+                                className="text-sm font-medium text-ink"
+                            >
                                 Espacement intérieur
-                            </legend>
-                            <div className="mt-3 space-y-2">
-                                {paddings.map((option) => (
-                                    <AtelierOptionRadio
-                                        key={option.value}
-                                        name="inset-padding"
-                                        {...option}
-                                        selectedValue={padding}
-                                        onChange={setPadding}
-                                    />
+                            </label>
+                            <select
+                                id="inset-padding"
+                                value={padding}
+                                onChange={(event) =>
+                                    setPadding(
+                                        event.target
+                                            .value as PixieDustInsetPadding,
+                                    )
+                                }
+                                className={selectClassName}
+                            >
+                                {paddings.map((value) => (
+                                    <option key={value} value={value}>
+                                        {value}
+                                    </option>
                                 ))}
-                            </div>
-                        </fieldset>
+                            </select>
+                        </div>
 
-                        <fieldset>
-                            <legend className="text-sm font-medium text-ink">
+                        <div>
+                            <label
+                                htmlFor="inset-radius"
+                                className="text-sm font-medium text-ink"
+                            >
                                 Rayon
-                            </legend>
-                            <div className="mt-3 space-y-2">
-                                {radii.map((option) => (
-                                    <AtelierOptionRadio
-                                        key={option.value}
-                                        name="inset-radius"
-                                        {...option}
-                                        selectedValue={radius}
-                                        onChange={setRadius}
-                                    />
+                            </label>
+                            <select
+                                id="inset-radius"
+                                value={radius}
+                                onChange={(event) =>
+                                    setRadius(
+                                        event.target
+                                            .value as PixieDustInsetRadius,
+                                    )
+                                }
+                                className={selectClassName}
+                            >
+                                {radii.map((value) => (
+                                    <option key={value} value={value}>
+                                        {value}
+                                    </option>
                                 ))}
-                            </div>
-                        </fieldset>
+                            </select>
+                        </div>
 
                         <div>
                             <label
@@ -200,12 +225,92 @@ export function PixieDustInsetPlayground() {
                                 onChange={(event) =>
                                     selectColor(event.target.value)
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                className={selectClassName}
                             >
                                 <option value="theme">Accent du thème</option>
                                 {colorSlugs.map((slug) => (
                                     <option key={slug} value={slug}>
                                         {getAtelierAnimationColor(slug).label}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label
+                                htmlFor="inset-accent-position"
+                                className="text-sm font-medium text-ink"
+                            >
+                                Position de l’accent
+                            </label>
+                            <select
+                                id="inset-accent-position"
+                                value={accentPosition}
+                                onChange={(event) =>
+                                    setAccentPosition(
+                                        event.target
+                                            .value as PixieDustInsetAccentPosition,
+                                    )
+                                }
+                                disabled={variant !== "accent"}
+                                className={selectClassName}
+                            >
+                                {accentPositions.map((value) => (
+                                    <option key={value} value={value}>
+                                        {value}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label
+                                htmlFor="inset-texture"
+                                className="text-sm font-medium text-ink"
+                            >
+                                Texture
+                            </label>
+                            <select
+                                id="inset-texture"
+                                value={texture}
+                                onChange={(event) =>
+                                    setTexture(
+                                        event.target
+                                            .value as PixieDustInsetTexture,
+                                    )
+                                }
+                                className={selectClassName}
+                            >
+                                {textures.map((value) => (
+                                    <option key={value} value={value}>
+                                        {value}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label
+                                htmlFor="inset-texture-intensity"
+                                className="text-sm font-medium text-ink"
+                            >
+                                Intensité de la texture
+                            </label>
+                            <select
+                                id="inset-texture-intensity"
+                                value={textureIntensity}
+                                onChange={(event) =>
+                                    setTextureIntensity(
+                                        event.target
+                                            .value as PixieDustInsetTextureIntensity,
+                                    )
+                                }
+                                disabled={texture === "none"}
+                                className={selectClassName}
+                            >
+                                {textureIntensities.map((value) => (
+                                    <option key={value} value={value}>
+                                        {value}
                                     </option>
                                 ))}
                             </select>
@@ -243,6 +348,9 @@ export function PixieDustInsetPlayground() {
                                     padding={padding}
                                     radius={radius}
                                     color={color}
+                                    accentPosition={accentPosition}
+                                    texture={texture}
+                                    textureIntensity={textureIntensity}
                                     aria-labelledby={
                                         element !== "div"
                                             ? "inset-preview-heading"

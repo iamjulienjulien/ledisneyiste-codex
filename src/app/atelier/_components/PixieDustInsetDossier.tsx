@@ -6,15 +6,23 @@ import { PixieCallout } from "@/components/ui/PixieCallout";
 import { PixieCard } from "@/components/ui/PixieCard";
 import {
     PixieDustInset,
+    type PixieDustInsetAccentPosition,
     type PixieDustInsetDepth,
     type PixieDustInsetPadding,
     type PixieDustInsetRadius,
+    type PixieDustInsetTexture,
+    type PixieDustInsetTextureIntensity,
     type PixieDustInsetVariant,
 } from "@/components/ui/PixieDustInset";
 import { PixiePanel } from "@/components/ui/PixiePanel";
 import { PixieDustInsetPlayground } from "./PixieDustInsetPlayground";
 
 const variants = [
+    {
+        name: "Nu",
+        value: "plain" as const,
+        description: "La profondeur seule, sans surface ajoutée.",
+    },
     {
         name: "Discret",
         value: "subtle" as const,
@@ -35,6 +43,11 @@ const variants = [
         value: "accent" as const,
         description: "Une arête colorée identifie le complément.",
     },
+    {
+        name: "Teinté",
+        value: "tinted" as const,
+        description: "La couleur baigne toute la surface secondaire.",
+    },
 ] as const satisfies readonly Readonly<{
     name: string;
     value: PixieDustInsetVariant;
@@ -42,6 +55,11 @@ const variants = [
 }>[];
 
 const depths = [
+    {
+        name: "Aucune",
+        value: "none" as const,
+        description: "Une sous-zone structurée sans effet de creux.",
+    },
     {
         name: "Faible",
         value: "shallow" as const,
@@ -68,6 +86,7 @@ const paddings = [
     { name: "Petit", value: "sm" as const, token: "1 rem" },
     { name: "Moyen", value: "md" as const, token: "1,5 rem" },
     { name: "Grand", value: "lg" as const, token: "2 rem" },
+    { name: "Très grand", value: "xl" as const, token: "2,5 rem" },
 ] as const satisfies readonly Readonly<{
     name: string;
     value: PixieDustInsetPadding;
@@ -82,6 +101,52 @@ const radii = [
 ] as const satisfies readonly Readonly<{
     name: string;
     value: PixieDustInsetRadius;
+}>[];
+
+const accentPositions = [
+    { name: "Haut", value: "top" as const },
+    { name: "Fin", value: "end" as const },
+    { name: "Bas", value: "bottom" as const },
+    { name: "Début", value: "start" as const },
+] as const satisfies readonly Readonly<{
+    name: string;
+    value: PixieDustInsetAccentPosition;
+}>[];
+
+const textures = [
+    {
+        name: "Aucune",
+        value: "none" as const,
+        description: "Une surface silencieuse pour les données denses.",
+    },
+    {
+        name: "Grain",
+        value: "grain" as const,
+        description: "Une poussière fixe évoque la matière projetée.",
+    },
+    {
+        name: "Grille",
+        value: "grid" as const,
+        description: "Un quadrillage discret accueille les mesures.",
+    },
+    {
+        name: "Hachures",
+        value: "crosshatch" as const,
+        description: "Un réseau croisé rappelle les annotations d’atelier.",
+    },
+] as const satisfies readonly Readonly<{
+    name: string;
+    value: PixieDustInsetTexture;
+    description: string;
+}>[];
+
+const textureIntensities = [
+    { name: "Discrète", value: "subtle" as const },
+    { name: "Moyenne", value: "medium" as const },
+    { name: "Forte", value: "strong" as const },
+] as const satisfies readonly Readonly<{
+    name: string;
+    value: PixieDustInsetTextureIntensity;
 }>[];
 
 const properties = [
@@ -122,6 +187,24 @@ const properties = [
         description: "Couleur du registre ou accent courant du thème.",
     },
     {
+        name: "accentPosition",
+        type: "PixieDustInsetAccentPosition",
+        defaultValue: '"start"',
+        description: "Côté portant l’arête du variant accent.",
+    },
+    {
+        name: "texture",
+        type: "PixieDustInsetTexture",
+        defaultValue: '"none"',
+        description: "Matière décorative fixe déposée dans la sous-zone.",
+    },
+    {
+        name: "textureIntensity",
+        type: "PixieDustInsetTextureIntensity",
+        defaultValue: '"medium"',
+        description: "Présence visuelle de la texture choisie.",
+    },
+    {
         name: "children",
         type: "ReactNode",
         defaultValue: "—",
@@ -143,17 +226,24 @@ const specificTypes = [
     },
     {
         name: "PixieDustInsetVariant",
-        values: ['"subtle"', '"recessed"', '"groove"', '"accent"'],
+        values: [
+            '"plain"',
+            '"subtle"',
+            '"recessed"',
+            '"groove"',
+            '"accent"',
+            '"tinted"',
+        ],
         description: "Traitements visuels de la zone creusée.",
     },
     {
         name: "PixieDustInsetDepth",
-        values: ['"shallow"', '"medium"', '"deep"'],
+        values: ['"none"', '"shallow"', '"medium"', '"deep"'],
         description: "Intensités de l’ombre intérieure.",
     },
     {
         name: "PixieDustInsetPadding",
-        values: ['"none"', '"sm"', '"md"', '"lg"'],
+        values: ['"none"', '"sm"', '"md"', '"lg"', '"xl"'],
         description: "Densités intérieures disponibles.",
     },
     {
@@ -165,6 +255,21 @@ const specificTypes = [
         name: "PixieDustInsetColor",
         values: ["AtelierAnimationColorSlug", "false"],
         description: "Couleur enregistrée ou accent courant du thème.",
+    },
+    {
+        name: "PixieDustInsetAccentPosition",
+        values: ['"top"', '"end"', '"bottom"', '"start"'],
+        description: "Positions logiques de l’arête colorée.",
+    },
+    {
+        name: "PixieDustInsetTexture",
+        values: ['"none"', '"grain"', '"grid"', '"crosshatch"'],
+        description: "Matières statiques disponibles.",
+    },
+    {
+        name: "PixieDustInsetTextureIntensity",
+        values: ['"subtle"', '"medium"', '"strong"'],
+        description: "Niveaux de présence des textures.",
     },
 ] as const;
 
@@ -252,7 +357,7 @@ export function PixieDustInsetDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.1.0
+                                0.2.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -343,6 +448,9 @@ export function PixieDustInsetDossier() {
                             <PixieDustInset
                                 variant="accent"
                                 color="ambre-projecteur"
+                                accentPosition="start"
+                                texture="grain"
+                                textureIntensity="subtle"
                                 className="mt-7"
                             >
                                 <SecondaryMetadata />
@@ -353,6 +461,9 @@ export function PixieDustInsetDossier() {
     variant="accent"
     depth="medium"
     color="ambre-projecteur"
+    accentPosition="start"
+    texture="grain"
+    textureIntensity="subtle"
 >
     <MetadataList />
 </PixieDustInset>`}</CodeExample>
@@ -367,7 +478,7 @@ export function PixieDustInsetDossier() {
                 <SequenceTitle
                     id="inset-variants-title"
                     eyebrow="Direction artistique"
-                    title="Quatre manières de creuser le décor"
+                    title="Six manières de creuser le décor"
                     description="Les variants changent le dessin de la découpe sans modifier la valeur documentaire de son contenu."
                 />
 
@@ -396,7 +507,7 @@ export function PixieDustInsetDossier() {
                 <SequenceTitle
                     id="inset-depth"
                     eyebrow="Profondeur de champ"
-                    title="Trois retraits pour accompagner l’échelle"
+                    title="Quatre retraits pour accompagner l’échelle"
                     description="La profondeur règle seulement l’ombre intérieure. Une zone plus profonde n’est jamais plus importante."
                 />
 
@@ -484,6 +595,303 @@ export function PixieDustInsetDossier() {
                             </p>
                         </PixieDustInset>
                     </PixieCallout>
+                </div>
+            </section>
+
+            <section aria-labelledby="inset-accent" className="mt-16">
+                <SequenceTitle
+                    id="inset-accent"
+                    eyebrow="Repère coloré"
+                    title="L’arête suit le sens de la composition"
+                    description="Les positions logiques restent cohérentes en écriture de gauche à droite comme de droite à gauche. Elles n’altèrent pas l’ordre du contenu."
+                />
+
+                <div className="mt-7 grid gap-5 bg-surface p-6 sm:grid-cols-2 xl:grid-cols-4">
+                    {accentPositions.map((position) => (
+                        <PixieDustInset
+                            key={position.value}
+                            variant="accent"
+                            depth="shallow"
+                            padding="md"
+                            color="corail-cel"
+                            accentPosition={position.value}
+                            className="min-h-36"
+                        >
+                            <p className="font-mono text-xs text-accent">
+                                {position.value}
+                            </p>
+                            <p className="mt-4 leading-7 text-ink-soft">
+                                Accent placé en {position.name.toLowerCase()}.
+                            </p>
+                        </PixieDustInset>
+                    ))}
+                </div>
+            </section>
+
+            <section aria-labelledby="inset-textures" className="mt-16">
+                <SequenceTitle
+                    id="inset-textures"
+                    eyebrow="Matière du décor"
+                    title="Trois textures sans mouvement"
+                    description="Le grain, la grille et les hachures ajoutent un contexte visuel discret. La surface sans texture reste le choix de référence pour les contenus denses."
+                />
+
+                <div className="mt-7 grid gap-5 bg-surface p-6 md:grid-cols-2">
+                    {textures.map((texture, index) => (
+                        <PixieDustInset
+                            key={texture.value}
+                            variant={
+                                texture.value === "none" ? "recessed" : "tinted"
+                            }
+                            depth="shallow"
+                            padding="lg"
+                            color="bleu-reperage"
+                            texture={texture.value}
+                            textureIntensity={
+                                textureIntensities[
+                                    index % textureIntensities.length
+                                ].value
+                            }
+                            className="min-h-44"
+                        >
+                            <p className="font-mono text-xs text-accent">
+                                texture=&quot;{texture.value}&quot;
+                            </p>
+                            <h4 className="mt-3 text-2xl text-ink">
+                                {texture.name}
+                            </h4>
+                            <p className="mt-3 leading-7 text-ink-soft">
+                                {texture.description}
+                            </p>
+                        </PixieDustInset>
+                    ))}
+                </div>
+
+                <div className="mt-6 grid gap-5 sm:grid-cols-3">
+                    {textureIntensities.map((intensity) => (
+                        <PixieDustInset
+                            key={intensity.value}
+                            variant="subtle"
+                            depth="none"
+                            texture="crosshatch"
+                            textureIntensity={intensity.value}
+                            padding="md"
+                            color="violet-ombre-portee"
+                        >
+                            <p className="font-mono text-xs text-ink">
+                                {intensity.value}
+                            </p>
+                            <p className="mt-2 text-sm text-ink-soft">
+                                Intensité {intensity.name.toLowerCase()}
+                            </p>
+                        </PixieDustInset>
+                    ))}
+                </div>
+            </section>
+
+            <section aria-labelledby="inset-scenarios" className="mt-16">
+                <SequenceTitle
+                    id="inset-scenarios"
+                    eyebrow="Scénarios préparés"
+                    title="Des seconds plans pour les archives"
+                    description="Ces compositions confrontent l’esquisse aux métadonnées, notes longues, mesures et provenances qu’elle devra réellement accueillir."
+                />
+
+                <div className="mt-7 grid gap-6 xl:grid-cols-2">
+                    <PixiePanel as="article" variant="surface" padding="lg">
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            Métadonnées dans un Panel
+                        </p>
+                        <h4 className="mt-3 text-2xl text-ink">
+                            Une lecture rapide de l’œuvre
+                        </h4>
+                        <PixieDustInset
+                            variant="recessed"
+                            depth="shallow"
+                            padding="md"
+                            className="mt-6"
+                        >
+                            <SecondaryMetadata />
+                        </PixieDustInset>
+                    </PixiePanel>
+
+                    <PixieCard as="article" variant="outline" padding="lg">
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            Détails techniques dans une Card
+                        </p>
+                        <h4 className="mt-3 text-2xl text-ink">
+                            La mécanique derrière le plan
+                        </h4>
+                        <PixieDustInset
+                            variant="tinted"
+                            color="bleu-reperage"
+                            texture="grid"
+                            textureIntensity="subtle"
+                            padding="md"
+                            className="mt-6"
+                        >
+                            <dl className="grid gap-4 text-sm sm:grid-cols-2">
+                                <div>
+                                    <dt className="text-muted">Format</dt>
+                                    <dd className="mt-1 text-ink">35 mm</dd>
+                                </div>
+                                <div>
+                                    <dt className="text-muted">Son</dt>
+                                    <dd className="mt-1 text-ink">
+                                        Mono optique
+                                    </dd>
+                                </div>
+                            </dl>
+                        </PixieDustInset>
+                    </PixieCard>
+
+                    <PixieCallout
+                        as="div"
+                        variant="outline"
+                        padding="lg"
+                        heading={<h4>Provenance documentée</h4>}
+                    >
+                        <p>
+                            Le Callout porte l’information importante ; l’Inset
+                            n’en conserve que la trace de consultation.
+                        </p>
+                        <PixieDustInset
+                            variant="plain"
+                            depth="shallow"
+                            padding="sm"
+                            className="mt-5"
+                        >
+                            <p className="text-sm text-ink-soft">
+                                Catalogue D23 · consultation du 23 août 2026
+                            </p>
+                        </PixieDustInset>
+                    </PixieCallout>
+
+                    <PixiePanel as="article" variant="outline" padding="lg">
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            Repère chronologique compact
+                        </p>
+                        <div className="mt-6 grid gap-3">
+                            {[
+                                "1923 · Alice",
+                                "1927 · Oswald",
+                                "1928 · Mickey",
+                            ].map((marker, index) => (
+                                <PixieDustInset
+                                    key={marker}
+                                    variant={index === 2 ? "accent" : "subtle"}
+                                    depth="none"
+                                    padding="sm"
+                                    color="ambre-projecteur"
+                                >
+                                    <p className="font-mono text-sm text-ink">
+                                        {marker}
+                                    </p>
+                                </PixieDustInset>
+                            ))}
+                        </div>
+                    </PixiePanel>
+
+                    <PixieCard as="article" variant="surface" padding="lg">
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            Mesures et indicateurs
+                        </p>
+                        <div className="mt-6 grid grid-cols-2 gap-4">
+                            {[
+                                ["21", "œuvres"],
+                                ["16", "créateurs"],
+                                ["10", "personnages"],
+                                ["2", "époques"],
+                            ].map(([value, label]) => (
+                                <PixieDustInset
+                                    key={label}
+                                    variant="groove"
+                                    depth="medium"
+                                    padding="sm"
+                                    radius="small"
+                                >
+                                    <strong className="block text-2xl text-ink">
+                                        {value}
+                                    </strong>
+                                    <span className="text-sm text-ink-soft">
+                                        {label}
+                                    </span>
+                                </PixieDustInset>
+                            ))}
+                        </div>
+                    </PixieCard>
+
+                    <PixiePanel as="article" variant="surface" padding="lg">
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            Note documentaire longue
+                        </p>
+                        <PixieDustInset
+                            as="aside"
+                            aria-label="Précision documentaire"
+                            variant="accent"
+                            accentPosition="top"
+                            depth="deep"
+                            padding="xl"
+                            color="vert-cellulo"
+                            texture="grain"
+                            textureIntensity="subtle"
+                            className="mt-6"
+                        >
+                            <p className="leading-7 text-ink-soft">
+                                Les dates de production et de diffusion ne
+                                racontent pas toujours le même ordre. Cette note
+                                conserve la nuance sans interrompre le récit
+                                principal de la fiche.
+                            </p>
+                        </PixieDustInset>
+                    </PixiePanel>
+
+                    <PixieCard as="article" variant="outline" padding="lg">
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            Surface minimale
+                        </p>
+                        <PixieDustInset
+                            variant="plain"
+                            depth="none"
+                            padding="md"
+                            radius="none"
+                            className="mt-5 border-y border-line"
+                        >
+                            <p className="text-ink-soft">
+                                Aucun effet de profondeur : seule la composition
+                                signale le second plan.
+                            </p>
+                        </PixieDustInset>
+                    </PixieCard>
+
+                    <PixiePanel as="article" variant="surface" padding="lg">
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            Composition imbriquée
+                        </p>
+                        <h4 className="mt-3 text-2xl text-ink">
+                            Un creux, puis un seul détail
+                        </h4>
+                        <PixieDustInset
+                            variant="tinted"
+                            color="violet-ombre-portee"
+                            padding="lg"
+                            className="mt-6"
+                        >
+                            <p className="leading-7 text-ink-soft">
+                                Le premier retrait rassemble le contexte.
+                            </p>
+                            <PixieDustInset
+                                variant="recessed"
+                                depth="shallow"
+                                padding="sm"
+                                className="mt-4"
+                            >
+                                <p className="text-sm text-ink-soft">
+                                    Restauration 4K contrôlée en 2025
+                                </p>
+                            </PixieDustInset>
+                        </PixieDustInset>
+                    </PixiePanel>
                 </div>
             </section>
 
@@ -589,7 +997,7 @@ export function PixieDustInsetDossier() {
                         ],
                         [
                             "Contraste",
-                            "Maintenir la lisibilité dans les deux Lumières et en contraste forcé.",
+                            "Les textures disparaissent en contraste forcé et ne portent jamais seules une information.",
                         ],
                         [
                             "Sens",
@@ -634,17 +1042,17 @@ export function PixieDustInsetDossier() {
                     id="inset-journal"
                     eyebrow="Journal de production"
                     title="Décisions avant la promotion"
-                    description="L’esquisse doit trouver sa profondeur juste dans de vraies surfaces du Codex avant de devenir PixieInset."
+                    description="La version 0.2.0 doit maintenant confirmer ses nouveaux traitements dans de vraies surfaces du Codex avant de devenir PixieInset."
                 />
 
                 <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
                     {[
-                        "Éprouver les quatre variants dans des fiches et des cartes métier.",
-                        "Vérifier que les trois profondeurs restent lisibles dans les deux Lumières.",
-                        "Tester le contraste forcé, le zoom à 200 % et les contenus longs.",
+                        "Éprouver les six variants dans des fiches et des cartes métier.",
+                        "Vérifier que l’absence de profondeur reste distincte des trois niveaux creusés.",
+                        "Tester les textures, le contraste forcé, l’impression et le zoom à 200 %.",
                         "Valider la frontière entre PixieDustInset et PixieCallout.",
-                        "Contrôler les sections et aside nommés avec un lecteur d’écran.",
-                        "Décider si le variant groove apporte un usage durable au système.",
+                        "Contrôler les sections et aside nommés, les contenus longs et les liens au clavier.",
+                        "Valider les quatre positions logiques de l’accent en français et en RTL.",
                     ].map((decision) => (
                         <li
                             key={decision}
