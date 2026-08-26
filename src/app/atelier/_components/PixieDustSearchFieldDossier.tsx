@@ -8,7 +8,7 @@ import {
     PixieDustSearchField,
     type PixieDustSearchFieldLayout,
 } from "@/components/ui/PixieDustSearchField";
-import { PixieDustStack } from "@/components/ui/PixieDustStack";
+import { PixieStack } from "@/components/ui/PixieStack";
 import type {
     PixieDustInputSize,
     PixieDustInputVariant,
@@ -488,7 +488,7 @@ export function PixieDustSearchFieldDossier() {
                         title="La régie s’adapte au cadre disponible"
                         description="L’ordre reste toujours champ, effacement, puis soumission ; seule leur distribution visuelle change."
                     />
-                    <PixieDustStack gap="md" className="mt-8">
+                    <PixieStack gap="md" className="mt-8">
                         {layouts.map((layout) => (
                             <Stage key={layout.value}>
                                 <div className="grid gap-6 lg:grid-cols-[15rem_1fr] lg:items-center">
@@ -513,7 +513,7 @@ export function PixieDustSearchFieldDossier() {
                                 </div>
                             </Stage>
                         ))}
-                    </PixieDustStack>
+                    </PixieStack>
                 </section>
 
                 <section aria-labelledby="search-field-states-title">
@@ -656,7 +656,7 @@ export function PixieDustSearchFieldDossier() {
                         eyebrow="Journal de production"
                         title="Avant la version prête à projeter"
                     />
-                    <PixieDustStack as="ul" gap="sm" className="mt-8">
+                    <PixieStack as="ul" gap="sm" className="mt-8">
                         {[
                             "Éprouver la soumission GET réelle vers /recherche.",
                             "Vérifier l’effacement en modes contrôlé et non contrôlé.",
@@ -671,7 +671,7 @@ export function PixieDustSearchFieldDossier() {
                                 {item}
                             </li>
                         ))}
-                    </PixieDustStack>
+                    </PixieStack>
                 </section>
             </div>
         </AtelierFicheAccessoire>

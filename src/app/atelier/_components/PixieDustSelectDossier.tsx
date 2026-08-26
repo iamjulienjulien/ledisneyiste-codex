@@ -11,7 +11,7 @@ import {
     type PixieDustSelectSize,
     type PixieDustSelectVariant,
 } from "@/components/ui/PixieDustSelect";
-import { PixieDustStack } from "@/components/ui/PixieDustStack";
+import { PixieStack } from "@/components/ui/PixieStack";
 import { PixieDustSelectPlayground } from "./PixieDustSelectPlayground";
 
 const variants = [
@@ -552,7 +552,7 @@ export function PixieDustSelectDossier() {
                         eyebrow="Journal de production"
                         title="Avant la version prête à projeter"
                     />
-                    <PixieDustStack as="ul" gap="sm" className="mt-8">
+                    <PixieStack as="ul" gap="sm" className="mt-8">
                         {[
                             "Éprouver l’ouverture native dans Firefox, Safari et Chrome.",
                             "Vérifier les listes longues, les optgroup et les libellés tronqués.",
@@ -566,7 +566,7 @@ export function PixieDustSelectDossier() {
                                 {item}
                             </li>
                         ))}
-                    </PixieDustStack>
+                    </PixieStack>
                 </section>
             </div>
         </AtelierFicheAccessoire>

@@ -6,7 +6,7 @@ import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieInset } from "@/components/ui/PixieInset";
 import { PixiePanel } from "@/components/ui/PixiePanel";
 import { PixieDustSidebar } from "@/components/ui/PixieDustSidebar";
-import { PixieDustStack } from "@/components/ui/PixieDustStack";
+import { PixieStack } from "@/components/ui/PixieStack";
 import {
     PixieDustStickyRegion,
     type PixieDustStickyRegionEdge,
@@ -196,7 +196,7 @@ function SummaryPanel({
 
 function Story({ count = 6 }: Readonly<{ count?: number }>) {
     return (
-        <PixieDustStack gap="xl">
+        <PixieStack gap="xl">
             {storySections
                 .slice(0, count)
                 .map(([title, description], index) => (
@@ -211,7 +211,7 @@ function Story({ count = 6 }: Readonly<{ count?: number }>) {
                         <div className="mt-5 h-20 border border-dashed border-line-strong bg-surface-muted" />
                     </section>
                 ))}
-        </PixieDustStack>
+        </PixieStack>
     );
 }
 
@@ -387,7 +387,7 @@ export function PixieDustStickyRegionDossier() {
         <PixiePanel>{/* Sommaire */}</PixiePanel>
     </PixieDustStickyRegion>
 
-    <PixieDustStack>{/* Long récit */}</PixieDustStack>
+    <PixieStack>{/* Long récit */}</PixieStack>
 </PixieDustSidebar>`}</CodeExample>
                 </div>
             </section>
@@ -406,7 +406,7 @@ export function PixieDustStickyRegionDossier() {
                             <ScrollStage
                                 label={`Région attachée au bord ${edge.name}`}
                             >
-                                <PixieDustStack gap="lg">
+                                <PixieStack gap="lg">
                                     {edge.value === "end" ? (
                                         <Story count={2} />
                                     ) : null}
@@ -428,7 +428,7 @@ export function PixieDustStickyRegionDossier() {
                                         </PixiePanel>
                                     </PixieDustStickyRegion>
                                     <Story count={5} />
-                                </PixieDustStack>
+                                </PixieStack>
                             </ScrollStage>
                             <div className="border-t border-line bg-surface p-4">
                                 <code className="font-mono text-xs text-accent">

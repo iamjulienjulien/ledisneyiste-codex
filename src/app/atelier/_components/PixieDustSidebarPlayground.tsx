@@ -15,7 +15,7 @@ import {
     type PixieDustSidebarSide,
     type PixieDustSidebarSideWidth,
 } from "@/components/ui/PixieDustSidebar";
-import { PixieDustStack } from "@/components/ui/PixieDustStack";
+import { PixieStack } from "@/components/ui/PixieStack";
 
 const elements = ["div", "section", "article"] as const;
 
@@ -108,7 +108,7 @@ ${panes}
                 <legend className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                     Séries
                 </legend>
-                <PixieDustStack gap="xs" className="mt-3">
+                <PixieStack gap="xs" className="mt-3">
                     {["Mickey Mouse", "Silly Symphonies", "Oswald"].map(
                         (label, index) => (
                             <label
@@ -124,14 +124,14 @@ ${panes}
                             </label>
                         ),
                     )}
-                </PixieDustStack>
+                </PixieStack>
             </fieldset>
         </aside>
     );
 
     const contentPane = (
         <section aria-labelledby="sidebar-preview-results" className="min-w-0">
-            <PixieDustStack gap="md">
+            <PixieStack gap="md">
                 <div>
                     <p className="text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
                         Contenu principal
@@ -158,7 +158,7 @@ ${panes}
                         </PixieCard>
                     ))}
                 </PixieDustGrid>
-            </PixieDustStack>
+            </PixieStack>
         </section>
     );
 

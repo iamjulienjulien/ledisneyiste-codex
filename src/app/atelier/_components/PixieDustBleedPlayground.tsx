@@ -15,7 +15,7 @@ import {
 import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieFrame } from "@/components/ui/PixieFrame";
 import { PixieDustRail } from "@/components/ui/PixieDustRail";
-import { PixieDustStack } from "@/components/ui/PixieDustStack";
+import { PixieStack } from "@/components/ui/PixieStack";
 
 const elements = ["div", "figure", "section"] as const;
 
@@ -282,7 +282,7 @@ ${labelLine}>
                         <div
                             className={`w-full border border-dashed border-line-strong px-8 py-10 transition-[max-width] sm:px-12 ${frameWidths[frame]}`}
                         >
-                            <PixieDustStack gap="lg">
+                            <PixieStack gap="lg">
                                 <div>
                                     <p className="text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
                                         Avant le débordement
@@ -319,7 +319,7 @@ ${labelLine}>
                                         colonne de lecture.
                                     </p>
                                 </div>
-                            </PixieDustStack>
+                            </PixieStack>
                         </div>
                     </div>
 

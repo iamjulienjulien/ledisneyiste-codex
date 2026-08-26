@@ -4,7 +4,7 @@ import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTa
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixiePanel } from "@/components/ui/PixiePanel";
-import { PixieDustStack } from "@/components/ui/PixieDustStack";
+import { PixieStack } from "@/components/ui/PixieStack";
 import {
     PixieDustLoader,
     type PixieDustLoaderLayout,
@@ -521,7 +521,7 @@ export function PixieDustLoaderDossier() {
                         eyebrow="Journal de production"
                         title="Avant la version prête à projeter"
                     />
-                    <PixieDustStack as="ul" gap="sm" className="mt-8">
+                    <PixieStack as="ul" gap="sm" className="mt-8">
                         {[
                             "Éprouver les trois chorégraphies dans les deux Lumières et à 200 %.",
                             "Contrôler le délai sur des attentes très brèves et des changements d’état rapides.",
@@ -536,7 +536,7 @@ export function PixieDustLoaderDossier() {
                                 {item}
                             </li>
                         ))}
-                    </PixieDustStack>
+                    </PixieStack>
                 </section>
             </div>
         </AtelierFicheAccessoire>

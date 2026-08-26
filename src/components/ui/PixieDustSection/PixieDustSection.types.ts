@@ -4,9 +4,9 @@ import type {
     PixieContainerWidth,
 } from "@/components/ui/PixieContainer";
 import type {
-    PixieDustStackAlign,
-    PixieDustStackGap,
-} from "@/components/ui/PixieDustStack";
+    PixieStackAlign,
+    PixieStackGap,
+} from "@/components/ui/PixieStack";
 
 export type PixieDustSectionElement = "section" | "article" | "div";
 
@@ -16,9 +16,9 @@ export type PixieDustSectionGutter = PixieContainerGutter;
 
 export type PixieDustSectionSpacing = "none" | "sm" | "md" | "lg" | "xl";
 
-export type PixieDustSectionGap = PixieDustStackGap;
+export type PixieDustSectionGap = PixieStackGap;
 
-export type PixieDustSectionAlign = PixieDustStackAlign;
+export type PixieDustSectionAlign = PixieStackAlign;
 
 export type PixieDustSectionProps = Readonly<
     Omit<HTMLAttributes<HTMLElement>, "children"> & {

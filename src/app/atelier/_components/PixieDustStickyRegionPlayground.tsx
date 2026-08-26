@@ -7,7 +7,7 @@ import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import { PixieInset } from "@/components/ui/PixieInset";
 import { PixiePanel } from "@/components/ui/PixiePanel";
 import { PixieDustSidebar } from "@/components/ui/PixieDustSidebar";
-import { PixieDustStack } from "@/components/ui/PixieDustStack";
+import { PixieStack } from "@/components/ui/PixieStack";
 import {
     PixieDustStickyRegion,
     type PixieDustStickyRegionEdge,
@@ -188,7 +188,7 @@ ${labelLine}>
     );
 
     const editorialContent = (
-        <PixieDustStack gap="xl">
+        <PixieStack gap="xl">
             {sections.slice(0, length).map(([title, description], index) => (
                 <section
                     key={title}
@@ -209,7 +209,7 @@ ${labelLine}>
                     <div className="mt-5 h-20 border border-dashed border-line-strong bg-surface-muted" />
                 </section>
             ))}
-        </PixieDustStack>
+        </PixieStack>
     );
 
     return (
@@ -364,10 +364,10 @@ ${labelLine}>
                                         {editorialContent}
                                     </PixieDustSidebar>
                                 ) : (
-                                    <PixieDustStack gap="xl">
+                                    <PixieStack gap="xl">
                                         {editorialContent}
                                         {stickyRegion}
-                                    </PixieDustStack>
+                                    </PixieStack>
                                 )}
                             </div>
                         </div>

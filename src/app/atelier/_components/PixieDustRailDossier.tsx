@@ -13,7 +13,7 @@ import {
     type PixieDustRailSnap,
 } from "@/components/ui/PixieDustRail";
 import { PixieDustSection } from "@/components/ui/PixieDustSection";
-import { PixieDustStack } from "@/components/ui/PixieDustStack";
+import { PixieStack } from "@/components/ui/PixieStack";
 import { PixieDustRailPlayground } from "./PixieDustRailPlayground";
 
 const itemWidths = [
@@ -792,7 +792,7 @@ export function PixieDustRailDossier() {
                         gap="lg"
                         aria-labelledby="rail-composition-heading"
                     >
-                        <PixieDustStack gap="xs">
+                        <PixieStack gap="xs">
                             <p className="text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
                                 Chronologie
                             </p>
@@ -802,7 +802,7 @@ export function PixieDustRailDossier() {
                             >
                                 Le dessin animé trouve son langage
                             </h4>
-                        </PixieDustStack>
+                        </PixieStack>
                         <PixieDustRail
                             as="ol"
                             itemWidth="md"

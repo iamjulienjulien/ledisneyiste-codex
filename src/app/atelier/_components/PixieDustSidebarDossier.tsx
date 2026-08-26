@@ -16,7 +16,7 @@ import {
     type PixieDustSidebarSide,
     type PixieDustSidebarSideWidth,
 } from "@/components/ui/PixieDustSidebar";
-import { PixieDustStack } from "@/components/ui/PixieDustStack";
+import { PixieStack } from "@/components/ui/PixieStack";
 import { PixieDustSidebarPlayground } from "./PixieDustSidebarPlayground";
 
 const sides = [
@@ -265,7 +265,7 @@ function SidebarPane({
             className={`border border-line bg-surface-muted p-5 ${className}`.trim()}
         >
             <p className="font-mono text-xs text-accent">{label}</p>
-            <PixieDustStack gap="xs" className="mt-4">
+            <PixieStack gap="xs" className="mt-4">
                 {[
                     "Premier réglage",
                     "Deuxième réglage",
@@ -278,7 +278,7 @@ function SidebarPane({
                         {item}
                     </div>
                 ))}
-            </PixieDustStack>
+            </PixieStack>
         </aside>
     );
 }
@@ -445,7 +445,7 @@ export function PixieDustSidebarDossier() {
                                 >
                                     Régie des archives
                                 </h4>
-                                <PixieDustStack gap="xs" className="mt-5">
+                                <PixieStack gap="xs" className="mt-5">
                                     {[
                                         "Mickey Mouse",
                                         "Silly Symphonies",
@@ -458,10 +458,10 @@ export function PixieDustSidebarDossier() {
                                             {label}
                                         </div>
                                     ))}
-                                </PixieDustStack>
+                                </PixieStack>
                             </aside>
                             <section aria-labelledby="sidebar-master-results">
-                                <PixieDustStack gap="md">
+                                <PixieStack gap="md">
                                     <div>
                                         <p className="text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
                                             Contenu principal
@@ -494,7 +494,7 @@ export function PixieDustSidebarDossier() {
                                             </PixieCard>
                                         ))}
                                     </PixieDustGrid>
-                                </PixieDustStack>
+                                </PixieStack>
                             </section>
                         </PixieDustSidebar>
                     </div>
@@ -772,7 +772,7 @@ export function PixieDustSidebarDossier() {
                         gap="lg"
                         aria-labelledby="sidebar-composition-heading"
                     >
-                        <PixieDustStack gap="xs">
+                        <PixieStack gap="xs">
                             <p className="text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
                                 Archives en projection
                             </p>
@@ -782,7 +782,7 @@ export function PixieDustSidebarDossier() {
                             >
                                 Une collection guidée par ses repères
                             </h4>
-                        </PixieDustStack>
+                        </PixieStack>
                         <PixieDustSidebar
                             side="start"
                             sideWidth="sm"

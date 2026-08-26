@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/PixieDustCluster";
 import { PixieContainer } from "@/components/ui/PixieContainer";
 import { PixiePanel } from "@/components/ui/PixiePanel";
-import { PixieDustStack } from "@/components/ui/PixieDustStack";
+import { PixieStack } from "@/components/ui/PixieStack";
 import { PixieDustClusterPlayground } from "./PixieDustClusterPlayground";
 
 const gaps = [
@@ -576,8 +576,8 @@ export function PixieDustClusterDossier() {
                     className="mt-7"
                 >
                     <PixieContainer width="56" gutter="none">
-                        <PixieDustStack gap="lg">
-                            <PixieDustStack gap="xs">
+                        <PixieStack gap="lg">
+                            <PixieStack gap="xs">
                                 <p className="text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
                                     Première projection
                                 </p>
@@ -587,7 +587,7 @@ export function PixieDustClusterDossier() {
                                 >
                                     Le mouvement rejoint la musique
                                 </h4>
-                            </PixieDustStack>
+                            </PixieStack>
 
                             <p className="max-w-2xl leading-7 text-ink-soft">
                                 Les métadonnées et les actions forment deux
@@ -625,7 +625,7 @@ export function PixieDustClusterDossier() {
                                     Voir les relations
                                 </PixieButton>
                             </PixieDustCluster>
-                        </PixieDustStack>
+                        </PixieStack>
                     </PixieContainer>
                 </PixiePanel>
             </section>

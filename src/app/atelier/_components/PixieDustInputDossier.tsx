@@ -11,7 +11,7 @@ import {
     type PixieDustInputVariant,
 } from "@/components/ui/PixieDustInput";
 import { PixiePanel } from "@/components/ui/PixiePanel";
-import { PixieDustStack } from "@/components/ui/PixieDustStack";
+import { PixieStack } from "@/components/ui/PixieStack";
 import { PixieDustInputPlayground } from "./PixieDustInputPlayground";
 
 const variants = [
@@ -544,7 +544,7 @@ export function PixieDustInputDossier() {
                         eyebrow="Journal de production"
                         title="Avant la version prête à projeter"
                     />
-                    <PixieDustStack as="ul" gap="sm" className="mt-8">
+                    <PixieStack as="ul" gap="sm" className="mt-8">
                         {[
                             "Éprouver les remplissages automatiques sur les deux Lumières.",
                             "Contrôler les claviers mobiles associés à chaque type.",
@@ -558,7 +558,7 @@ export function PixieDustInputDossier() {
                                 {item}
                             </li>
                         ))}
-                    </PixieDustStack>
+                    </PixieStack>
                 </section>
             </div>
         </AtelierFicheAccessoire>

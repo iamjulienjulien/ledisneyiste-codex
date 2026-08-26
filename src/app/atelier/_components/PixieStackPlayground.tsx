@@ -6,11 +6,11 @@ import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import { PixieCard } from "@/components/ui/PixieCard";
 import {
-    PixieDustStack,
-    type PixieDustStackAlign,
-    type PixieDustStackElement,
-    type PixieDustStackGap,
-} from "@/components/ui/PixieDustStack";
+    PixieStack,
+    type PixieStackAlign,
+    type PixieStackElement,
+    type PixieStackGap,
+} from "@/components/ui/PixieStack";
 
 const elements = ["div", "section", "article", "nav", "ul", "ol"] as const;
 
@@ -57,10 +57,10 @@ const previewItems = [
     },
 ] as const;
 
-export function PixieDustStackPlayground() {
-    const [element, setElement] = useState<PixieDustStackElement>("section");
-    const [gap, setGap] = useState<PixieDustStackGap>("md");
-    const [align, setAlign] = useState<PixieDustStackAlign>("stretch");
+export function PixieStackPlayground() {
+    const [element, setElement] = useState<PixieStackElement>("section");
+    const [gap, setGap] = useState<PixieStackGap>("md");
+    const [align, setAlign] = useState<PixieStackAlign>("stretch");
     const [light, setLight] = useState<"sombre" | "claire">("sombre");
     const [frame, setFrame] = useState<"compact" | "moyen" | "large">("moyen");
 
@@ -81,13 +81,13 @@ export function PixieDustStackPlayground() {
               : element === "article"
                 ? "    <div>Premier plan</div>\n    <div>Deuxième plan</div>\n    <div>Troisième plan</div>"
                 : "    <article>Premier plan</article>\n    <article>Deuxième plan</article>\n    <article>Troisième plan</article>";
-    const code = `<PixieDustStack
+    const code = `<PixieStack
     as="${element}"
     gap="${gap}"
     align="${align}"
 ${labelledBy}>
 ${heading}${codeChildren}
-</PixieDustStack>`;
+</PixieStack>`;
     const itemWidth = align === "stretch" ? "w-full" : "w-full max-w-sm";
 
     return (
@@ -109,8 +109,7 @@ ${heading}${codeChildren}
                                 value={element}
                                 onChange={(event) =>
                                     setElement(
-                                        event.target
-                                            .value as PixieDustStackElement,
+                                        event.target.value as PixieStackElement,
                                     )
                                 }
                                 className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink"
@@ -180,7 +179,7 @@ ${heading}${codeChildren}
                         <div
                             className={`w-full transition-[max-width] ${frameWidths[frame]}`}
                         >
-                            <PixieDustStack
+                            <PixieStack
                                 as={element}
                                 gap={gap}
                                 align={align}
@@ -250,7 +249,7 @@ ${heading}${codeChildren}
                                         </div>
                                     );
                                 })}
-                            </PixieDustStack>
+                            </PixieStack>
                         </div>
                     </div>
 

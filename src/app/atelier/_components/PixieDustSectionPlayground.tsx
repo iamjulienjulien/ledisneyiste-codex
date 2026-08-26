@@ -16,7 +16,7 @@ import {
     type PixieDustSectionSpacing,
     type PixieDustSectionWidth,
 } from "@/components/ui/PixieDustSection";
-import { PixieDustStack } from "@/components/ui/PixieDustStack";
+import { PixieStack } from "@/components/ui/PixieStack";
 
 const elements = ["section", "article", "div"] as const;
 
@@ -245,10 +245,7 @@ ${labelledBy}>
                                 }
                                 className="bg-surface-muted/60"
                             >
-                                <PixieDustStack
-                                    gap="xs"
-                                    className={contentWidth}
-                                >
+                                <PixieStack gap="xs" className={contentWidth}>
                                     <p className="text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
                                         Le dessin animé trouve son langage
                                     </p>
@@ -258,7 +255,7 @@ ${labelledBy}>
                                     >
                                         Le mouvement rejoint la musique
                                     </h4>
-                                </PixieDustStack>
+                                </PixieStack>
 
                                 <p
                                     className={`${contentWidth} leading-7 text-ink-soft`}

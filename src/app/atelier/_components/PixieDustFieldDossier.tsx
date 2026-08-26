@@ -5,7 +5,7 @@ import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieDustField } from "@/components/ui/PixieDustField";
 import { PixiePanel } from "@/components/ui/PixiePanel";
-import { PixieDustStack } from "@/components/ui/PixieDustStack";
+import { PixieStack } from "@/components/ui/PixieStack";
 import { PixieDustFieldPlayground } from "./PixieDustFieldPlayground";
 
 const controlClassName =
@@ -430,7 +430,7 @@ export function PixieDustFieldDossier() {
                         eyebrow="Journal de production"
                         title="Avant la version prête à projeter"
                     />
-                    <PixieDustStack as="ul" gap="sm" className="mt-8">
+                    <PixieStack as="ul" gap="sm" className="mt-8">
                         {[
                             "Éprouver l’association avec les futurs Input, Select et Textarea.",
                             "Valider le comportement des erreurs ajoutées après interaction.",
@@ -444,7 +444,7 @@ export function PixieDustFieldDossier() {
                                 {item}
                             </li>
                         ))}
-                    </PixieDustStack>
+                    </PixieStack>
                 </section>
             </div>
         </AtelierFicheAccessoire>

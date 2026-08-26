@@ -10,7 +10,7 @@ import { PixieCalloutDossier } from "./_components/PixieCalloutDossier";
 import { PixieInsetDossier } from "./_components/PixieInsetDossier";
 import { PixieBackdropDossier } from "./_components/PixieBackdropDossier";
 import { PixieContainerDossier } from "./_components/PixieContainerDossier";
-import { PixieDustStackDossier } from "./_components/PixieDustStackDossier";
+import { PixieStackDossier } from "./_components/PixieStackDossier";
 import { PixieDustClusterDossier } from "./_components/PixieDustClusterDossier";
 import { PixieDustSectionDossier } from "./_components/PixieDustSectionDossier";
 import { PixieDustGridDossier } from "./_components/PixieDustGridDossier";
@@ -233,10 +233,10 @@ const montage = [
         href: "#pixie-container",
     },
     {
-        nom: "PixieDustStack",
+        nom: "PixieStack",
         role: "Régler le rythme d’une séquence verticale",
-        statut: "Esquisse",
-        href: "#pixie-dust-stack",
+        statut: "Prêt à projeter",
+        href: "#pixie-stack",
     },
     {
         nom: "PixieDustCluster",
@@ -765,9 +765,10 @@ export default function AtelierPage() {
                     <p className="mt-5 leading-7 text-ink-soft">
                         Largeurs, espacements et distributions transforment les
                         éléments isolés en séquences lisibles. PixieContainer
-                        ouvre le premier cadre de ce plateau. Les dix esquisses
-                        suivantes organiseront le rythme et les distributions
-                        sans imposer de surface, de couleur ni d’interaction.
+                        ouvre le cadre et PixieStack règle désormais le rythme
+                        vertical. Les neuf esquisses suivantes organiseront les
+                        autres distributions sans imposer de surface, de couleur
+                        ni d’interaction.
                     </p>
                 </div>
 
@@ -822,7 +823,7 @@ export default function AtelierPage() {
                 </div>
 
                 <PixieContainerDossier />
-                <PixieDustStackDossier />
+                <PixieStackDossier />
                 <PixieDustClusterDossier />
                 <PixieDustSectionDossier />
                 <PixieDustGridDossier />

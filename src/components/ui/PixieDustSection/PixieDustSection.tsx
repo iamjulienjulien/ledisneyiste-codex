@@ -1,5 +1,5 @@
 import { PixieContainer } from "@/components/ui/PixieContainer";
-import { PixieDustStack } from "@/components/ui/PixieDustStack";
+import { PixieStack } from "@/components/ui/PixieStack";
 import styles from "./PixieDustSection.module.css";
 import type {
     PixieDustSectionProps,
@@ -36,9 +36,9 @@ export function PixieDustSection({
             data-pixie-section-align={align}
         >
             <PixieContainer width={width} gutter={gutter}>
-                <PixieDustStack gap={gap} align={align}>
+                <PixieStack gap={gap} align={align}>
                     {children}
-                </PixieDustStack>
+                </PixieStack>
             </PixieContainer>
         </Element>
     );

@@ -15,7 +15,7 @@ import {
     type PixieDustSectionSpacing,
     type PixieDustSectionWidth,
 } from "@/components/ui/PixieDustSection";
-import { PixieDustStack } from "@/components/ui/PixieDustStack";
+import { PixieStack } from "@/components/ui/PixieStack";
 import { PixieDustSectionPlayground } from "./PixieDustSectionPlayground";
 
 const spacings = [
@@ -324,7 +324,7 @@ export function PixieDustSectionDossier() {
                             "Accessibilité",
                             "La structure externe est explicite et doit recevoir le bon nom.",
                         ],
-                        ["Dépendances", "PixieContainer et PixieDustStack."],
+                        ["Dépendances", "PixieContainer et PixieStack."],
                     ].map(([term, definition]) => (
                         <div key={term} className="bg-surface p-5">
                             <dt className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
@@ -356,7 +356,7 @@ export function PixieDustSectionDossier() {
                         </p>
                         <div className="mt-4 border border-dashed border-line-strong bg-canvas p-4 sm:p-6">
                             <p className="font-mono text-xs text-accent">
-                                PixieDustStack · gap + align
+                                PixieStack · gap + align
                             </p>
                             <div className="mt-4 space-y-3">
                                 <SectionPlan label="Plan 01 · Ouverture" />
@@ -389,7 +389,7 @@ export function PixieDustSectionDossier() {
                             aria-labelledby="section-master-heading"
                             className="bg-surface-muted/60"
                         >
-                            <PixieDustStack gap="xs">
+                            <PixieStack gap="xs">
                                 <p className="text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
                                     Le dessin animé trouve son langage
                                 </p>
@@ -399,7 +399,7 @@ export function PixieDustSectionDossier() {
                                 >
                                     Le mouvement rejoint la musique
                                 </h4>
-                            </PixieDustStack>
+                            </PixieStack>
                             <p className="max-w-2xl leading-7 text-ink-soft">
                                 Le cadre et le rythme sont réglés par la section
                                 ; le récit reste entièrement explicite.
@@ -663,7 +663,7 @@ export function PixieDustSectionDossier() {
                         gap="lg"
                         aria-labelledby="section-composition-heading"
                     >
-                        <PixieDustStack gap="xs">
+                        <PixieStack gap="xs">
                             <p className="text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
                                 Projection générale
                             </p>
@@ -673,7 +673,7 @@ export function PixieDustSectionDossier() {
                             >
                                 Une séquence traverse plusieurs accessoires
                             </h4>
-                        </PixieDustStack>
+                        </PixieStack>
                         <p className="max-w-2xl leading-7 text-ink-soft">
                             Le décor s’étend sur tout le plan ; la section
                             maintient son cadre et son rythme.

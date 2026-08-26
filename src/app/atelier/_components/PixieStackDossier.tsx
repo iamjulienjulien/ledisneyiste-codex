@@ -7,11 +7,11 @@ import { PixieBackdrop } from "@/components/ui/PixieBackdrop";
 import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieContainer } from "@/components/ui/PixieContainer";
 import {
-    PixieDustStack,
-    type PixieDustStackAlign,
-    type PixieDustStackGap,
-} from "@/components/ui/PixieDustStack";
-import { PixieDustStackPlayground } from "./PixieDustStackPlayground";
+    PixieStack,
+    type PixieStackAlign,
+    type PixieStackGap,
+} from "@/components/ui/PixieStack";
+import { PixieStackPlayground } from "./PixieStackPlayground";
 
 const gaps = [
     {
@@ -52,7 +52,7 @@ const gaps = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustStackGap;
+    value: PixieStackGap;
     token: string;
     role: string;
 }>[];
@@ -80,26 +80,26 @@ const alignments = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustStackAlign;
+    value: PixieStackAlign;
     description: string;
 }>[];
 
 const properties = [
     {
         name: "as",
-        type: "PixieDustStackElement",
+        type: "PixieStackElement",
         defaultValue: '"div"',
         description: "Élément HTML qui porte la séquence verticale.",
     },
     {
         name: "gap",
-        type: "PixieDustStackGap",
+        type: "PixieStackGap",
         defaultValue: '"md"',
         description: "Espace régulier entre les enfants directs.",
     },
     {
         name: "align",
-        type: "PixieDustStackAlign",
+        type: "PixieStackAlign",
         defaultValue: '"stretch"',
         description: "Alignement des enfants sur l’axe horizontal.",
     },
@@ -119,17 +119,17 @@ const properties = [
 
 const specificTypes = [
     {
-        name: "PixieDustStackElement",
+        name: "PixieStackElement",
         values: ['"div"', '"section"', '"article"', '"nav"', '"ul"', '"ol"'],
         description: "Structures verticales autorisées.",
     },
     {
-        name: "PixieDustStackGap",
+        name: "PixieStackGap",
         values: ['"none"', '"xs"', '"sm"', '"md"', '"lg"', '"xl"'],
         description: "Rythmes verticaux disponibles.",
     },
     {
-        name: "PixieDustStackAlign",
+        name: "PixieStackAlign",
         values: ['"stretch"', '"start"', '"center"', '"end"'],
         description: "Alignements sur l’axe transversal.",
     },
@@ -190,12 +190,12 @@ function Stage({ children }: Readonly<{ children: ReactNode }>) {
     );
 }
 
-export function PixieDustStackDossier() {
+export function PixieStackDossier() {
     return (
         <AtelierFicheAccessoire
-            id="pixie-dust-stack"
-            labelledBy="pixie-dust-stack-title"
-            nom="PixieDustStack"
+            id="pixie-stack"
+            labelledBy="pixie-stack-title"
+            nom="PixieStack"
             className="mt-16 scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
@@ -204,10 +204,10 @@ export function PixieDustStackDossier() {
                             Le clap · Montage 002
                         </p>
                         <h2
-                            id="pixie-dust-stack-title"
+                            id="pixie-stack-title"
                             className="mt-4 text-4xl text-ink sm:text-5xl"
                         >
-                            PixieDustStack
+                            PixieStack
                         </h2>
                         <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
                             Régler le rythme d’une séquence verticale sans
@@ -221,7 +221,7 @@ export function PixieDustStackDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.2.0
+                                1.0.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -229,7 +229,7 @@ export function PixieDustStackDossier() {
                                 État
                             </dt>
                             <dd className="mt-1 text-sm font-medium">
-                                <AtelierStatut statut="Esquisse" />
+                                <AtelierStatut statut="Prêt à projeter" />
                             </dd>
                         </div>
                     </dl>
@@ -293,12 +293,12 @@ export function PixieDustStackDossier() {
 
                 <div className="mt-7 grid border border-line xl:grid-cols-2">
                     <div className="bg-canvas p-8">
-                        <PixieDustStack
+                        <PixieStack
                             as="section"
                             gap="lg"
                             aria-labelledby="stack-master-heading"
                         >
-                            <PixieDustStack gap="xs">
+                            <PixieStack gap="xs">
                                 <p className="text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
                                     Le dessin animé trouve son langage
                                 </p>
@@ -308,36 +308,36 @@ export function PixieDustStackDossier() {
                                 >
                                     Le mouvement, la musique et la couleur
                                 </h4>
-                            </PixieDustStack>
+                            </PixieStack>
 
                             <p className="max-w-2xl leading-7 text-ink-soft">
                                 Chaque plan conserve sa voix tandis que Stack
                                 rend leurs intervalles explicites.
                             </p>
 
-                            <PixieDustStack gap="sm">
+                            <PixieStack gap="sm">
                                 <RhythmBlock label="The Skeleton Dance · 1929" />
                                 <RhythmBlock label="Flowers and Trees · 1932" />
                                 <RhythmBlock label="Three Little Pigs · 1933" />
-                            </PixieDustStack>
-                        </PixieDustStack>
+                            </PixieStack>
+                        </PixieStack>
                     </div>
-                    <CodeExample>{`<PixieDustStack
+                    <CodeExample>{`<PixieStack
     as="section"
     gap="lg"
     aria-labelledby="sequence-title"
 >
-    <PixieDustStack gap="xs">
+    <PixieStack gap="xs">
         <p>Le dessin animé trouve son langage</p>
         <h2 id="sequence-title">Le mouvement, la musique et la couleur</h2>
-    </PixieDustStack>
+    </PixieStack>
 
     <p>Introduction éditoriale.</p>
 
-    <PixieDustStack gap="sm">
+    <PixieStack gap="sm">
         {/* Archives */}
-    </PixieDustStack>
-</PixieDustStack>`}</CodeExample>
+    </PixieStack>
+</PixieStack>`}</CodeExample>
                 </div>
             </section>
 
@@ -358,11 +358,11 @@ export function PixieDustStackDossier() {
                                     {gap.value} · {gap.token}
                                 </code>
                             </div>
-                            <PixieDustStack gap={gap.value}>
+                            <PixieStack gap={gap.value}>
                                 <RhythmBlock label="Plan A" />
                                 <RhythmBlock label="Plan B" />
                                 <RhythmBlock label="Plan C" />
-                            </PixieDustStack>
+                            </PixieStack>
                             <p className="mt-5 text-sm leading-6 text-muted">
                                 {gap.role}
                             </p>
@@ -388,7 +388,7 @@ export function PixieDustStackDossier() {
                             <p className="mt-2 text-sm leading-6 text-muted">
                                 {alignment.description}
                             </p>
-                            <PixieDustStack
+                            <PixieStack
                                 gap="sm"
                                 align={alignment.value}
                                 className="mt-5 border-y border-dashed border-line-strong py-4"
@@ -409,7 +409,7 @@ export function PixieDustStackDossier() {
                                             : "w-3/4"
                                     }
                                 />
-                            </PixieDustStack>
+                            </PixieStack>
                         </Stage>
                     ))}
                 </div>
@@ -425,10 +425,10 @@ export function PixieDustStackDossier() {
 
                 <div className="mt-7 grid gap-8 xl:grid-cols-2">
                     <Stage>
-                        <PixieDustStack gap="xl">
+                        <PixieStack gap="xl">
                             {["Personnages", "Créateurs", "Œuvres"].map(
                                 (title, index) => (
-                                    <PixieDustStack key={title} gap="xs">
+                                    <PixieStack key={title} gap="xs">
                                         <p className="font-mono text-xs text-accent">
                                             Groupe{" "}
                                             {String(index + 1).padStart(2, "0")}
@@ -441,20 +441,20 @@ export function PixieDustStackDossier() {
                                             proches ; le groupe suivant reçoit
                                             davantage d’air.
                                         </p>
-                                    </PixieDustStack>
+                                    </PixieStack>
                                 ),
                             )}
-                        </PixieDustStack>
+                        </PixieStack>
                     </Stage>
-                    <CodeExample>{`<PixieDustStack gap="xl">
+                    <CodeExample>{`<PixieStack gap="xl">
     {groups.map((group) => (
-        <PixieDustStack key={group.id} gap="xs">
+        <PixieStack key={group.id} gap="xs">
             <p>{group.eyebrow}</p>
             <h3>{group.title}</h3>
             <p>{group.description}</p>
-        </PixieDustStack>
+        </PixieStack>
     ))}
-</PixieDustStack>`}</CodeExample>
+</PixieStack>`}</CodeExample>
                 </div>
             </section>
 
@@ -463,12 +463,12 @@ export function PixieDustStackDossier() {
                     id="stack-scenarios"
                     eyebrow="Scénarios préparés"
                     title="Un même rythme traverse plusieurs matières"
-                    description="Ces scènes éprouvent la version 0.2.0 avec du récit long, des métadonnées compactes et une navigation nommée, sans lui confier le cadre ou la surface."
+                    description="Ces scènes ont validé la version 1.0.0 avec du récit long, des métadonnées compactes et une navigation nommée, sans lui confier le cadre ou la surface."
                 />
 
                 <div className="mt-7 grid gap-6 xl:grid-cols-3">
                     <Stage>
-                        <PixieDustStack
+                        <PixieStack
                             as="article"
                             gap="sm"
                             aria-labelledby="stack-scenario-editorial"
@@ -488,11 +488,11 @@ export function PixieDustStackDossier() {
                                 développé conservent un axe de lecture stable,
                                 même lorsque le cadre se resserre.
                             </p>
-                        </PixieDustStack>
+                        </PixieStack>
                     </Stage>
 
                     <Stage>
-                        <PixieDustStack as="ul" gap="xs">
+                        <PixieStack as="ul" gap="xs">
                             {[
                                 ["Sortie", "18 novembre 1928"],
                                 ["Série", "Mickey Mouse"],
@@ -510,11 +510,11 @@ export function PixieDustStackDossier() {
                                     </span>
                                 </li>
                             ))}
-                        </PixieDustStack>
+                        </PixieStack>
                     </Stage>
 
                     <Stage>
-                        <PixieDustStack
+                        <PixieStack
                             as="nav"
                             gap="sm"
                             aria-labelledby="stack-scenario-navigation"
@@ -525,7 +525,7 @@ export function PixieDustStackDossier() {
                             >
                                 Rejoindre une famille
                             </h4>
-                            <PixieDustStack as="ul" gap="xs">
+                            <PixieStack as="ul" gap="xs">
                                 {[
                                     ["Cadence", "#stack-gaps"],
                                     ["Alignements", "#stack-alignments"],
@@ -540,8 +540,8 @@ export function PixieDustStackDossier() {
                                         </a>
                                     </li>
                                 ))}
-                            </PixieDustStack>
-                        </PixieDustStack>
+                            </PixieStack>
+                        </PixieStack>
                     </Stage>
                 </div>
             </section>
@@ -559,7 +559,7 @@ export function PixieDustStackDossier() {
                         <p className="mb-5 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Liste ordonnée
                         </p>
-                        <PixieDustStack as="ol" gap="sm">
+                        <PixieStack as="ol" gap="sm">
                             {[
                                 "Préparer les dessins",
                                 "Photographier les cellulos",
@@ -580,14 +580,14 @@ export function PixieDustStackDossier() {
                                     </span>
                                 </li>
                             ))}
-                        </PixieDustStack>
+                        </PixieStack>
                     </Stage>
 
                     <Stage>
                         <p className="mb-5 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Section nommée
                         </p>
-                        <PixieDustStack
+                        <PixieStack
                             as="section"
                             gap="md"
                             aria-labelledby="stack-semantic-heading"
@@ -602,14 +602,14 @@ export function PixieDustStackDossier() {
                                 Le titre visible donne un nom à la région ;
                                 Stack ne crée aucun rôle supplémentaire.
                             </p>
-                        </PixieDustStack>
+                        </PixieStack>
                     </Stage>
 
                     <Stage>
                         <p className="mb-5 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Navigation nommée
                         </p>
-                        <PixieDustStack
+                        <PixieStack
                             as="nav"
                             gap="sm"
                             aria-labelledby="stack-semantic-navigation"
@@ -624,7 +624,7 @@ export function PixieDustStackDossier() {
                                 La région de navigation conserve son rôle natif
                                 et reçoit un nom perceptible.
                             </p>
-                        </PixieDustStack>
+                        </PixieStack>
                     </Stage>
                 </div>
             </section>
@@ -647,12 +647,12 @@ export function PixieDustStackDossier() {
                     className="mt-7 py-12"
                 >
                     <PixieContainer width="56" gutter="lg">
-                        <PixieDustStack
+                        <PixieStack
                             as="section"
                             gap="lg"
                             aria-labelledby="stack-composition-heading"
                         >
-                            <PixieDustStack gap="xs">
+                            <PixieStack gap="xs">
                                 <p className="text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
                                     Projection générale
                                 </p>
@@ -663,9 +663,9 @@ export function PixieDustStackDossier() {
                                     Trois archives entrent dans le même
                                     mouvement
                                 </h4>
-                            </PixieDustStack>
+                            </PixieStack>
 
-                            <PixieDustStack gap="sm">
+                            <PixieStack gap="sm">
                                 {[
                                     "Plane Crazy",
                                     "Steamboat Willie",
@@ -682,8 +682,8 @@ export function PixieDustStackDossier() {
                                         </h5>
                                     </PixieCard>
                                 ))}
-                            </PixieDustStack>
-                        </PixieDustStack>
+                            </PixieStack>
+                        </PixieStack>
                     </PixieContainer>
                 </PixieBackdrop>
             </section>
@@ -717,18 +717,18 @@ export function PixieDustStackDossier() {
             </section>
 
             <section
-                id="pixie-dust-stack-playground"
+                id="pixie-stack-playground"
                 aria-labelledby="stack-playground-title"
                 className="mt-16 scroll-mt-8 border border-line-strong bg-surface-muted p-6 shadow-soft sm:p-8"
             >
                 <SequenceTitle
                     id="stack-playground-title"
                     eyebrow="Régie"
-                    title="Composer un PixieDustStack"
+                    title="Composer un PixieStack"
                     description="Réglez son rythme, son alignement et sa structure ; le code d’utilisation suit chaque changement."
                 />
                 <div className="mt-8">
-                    <PixieDustStackPlayground />
+                    <PixieStackPlayground />
                 </div>
             </section>
 
@@ -787,8 +787,8 @@ export function PixieDustStackDossier() {
                 <SequenceTitle
                     id="stack-technical"
                     eyebrow="Générique technique"
-                    title="API de l’esquisse 0.2.0"
-                    description="Les types spécifiques sont colocalisés dans PixieDustStack.types.ts et les attributs HTML compatibles sont transmis à l’élément rendu."
+                    title="API du composant"
+                    description="Les types spécifiques sont colocalisés dans PixieStack.types.ts et les attributs HTML compatibles sont transmis à l’élément rendu."
                 />
 
                 <div className="mt-7">
@@ -806,20 +806,20 @@ export function PixieDustStackDossier() {
             <section aria-labelledby="stack-journal" className="mt-16">
                 <SequenceTitle
                     id="stack-journal"
-                    eyebrow="Journal de production"
-                    title="Décisions avant la promotion"
-                    description="L’esquisse devra remplacer des marges manuelles sans devenir une primitive de composition universelle."
+                    eyebrow="Contrat de projection"
+                    title="Les garanties de la version 1.0.0"
+                    description="PixieStack est prêt à rythmer les futures compositions du Codex sans prendre en charge leur cadre, leur surface ou leur distribution."
                 />
 
                 <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
                     {[
-                        "Recenser les suites verticales dont les marges pourraient devenir un gap explicite.",
-                        "Éprouver les six rythmes avec textes courts, textes longs et surfaces répétées.",
-                        "Vérifier ul, ol et nav avec les technologies d’assistance et les styles globaux.",
-                        "Tester les quatre alignements dans les cadres compact, moyen et large.",
-                        "Comparer les Stack imbriqués à PixieDustSection sans absorber sa responsabilité éditoriale.",
-                        "Confirmer que les marges externes des enfants restent documentées comme additives au row-gap.",
-                        "Promouvoir l’esquisse en PixieStack avant toute intégration dans une page publique du Codex.",
+                        "Les six rythmes s’appliquent uniquement entre les enfants directs avec un row-gap explicite.",
+                        "Les quatre alignements agissent sur l’axe horizontal sans modifier l’ordre documentaire.",
+                        "Div, section, article, nav, ul et ol conservent leur sémantique native.",
+                        "Les listes restent composées de li et les régions significatives reçoivent un nom perceptible.",
+                        "Les marges externes des enfants restent additives et ne sont jamais neutralisées par la primitive.",
+                        "Min-width et min-height protègent les compositions imbriquées dans les cadres contraints.",
+                        "La primitive reste un composant serveur sans surface, séparation, inversion ou JavaScript client.",
                     ].map((decision) => (
                         <li
                             key={decision}

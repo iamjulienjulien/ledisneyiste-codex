@@ -5,7 +5,7 @@ import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieDustSection } from "@/components/ui/PixieDustSection";
-import { PixieDustStack } from "@/components/ui/PixieDustStack";
+import { PixieStack } from "@/components/ui/PixieStack";
 import {
     PixieDustSwitcher,
     type PixieDustSwitcherAlign,
@@ -593,7 +593,7 @@ export function PixieDustSwitcherDossier() {
                         gap="lg"
                         aria-labelledby="switcher-composition-heading"
                     >
-                        <PixieDustStack gap="xs">
+                        <PixieStack gap="xs">
                             <p className="text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
                                 Quatre portes
                             </p>
@@ -603,7 +603,7 @@ export function PixieDustSwitcherDossier() {
                             >
                                 Explorer le Codex
                             </h4>
-                        </PixieDustStack>
+                        </PixieStack>
                         <PixieDustSwitcher threshold="md" limit={4} gap="md">
                             {plans.map(([title, description]) => (
                                 <div key={title}>

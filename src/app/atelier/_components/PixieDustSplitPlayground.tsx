@@ -15,7 +15,7 @@ import {
     type PixieDustSplitMinPaneWidth,
     type PixieDustSplitRatio,
 } from "@/components/ui/PixieDustSplit";
-import { PixieDustStack } from "@/components/ui/PixieDustStack";
+import { PixieStack } from "@/components/ui/PixieStack";
 
 const elements = ["div", "section", "article"] as const;
 
@@ -209,8 +209,8 @@ ${labelledBy}>
                                         : "split-preview-heading"
                                 }
                             >
-                                <PixieDustStack gap="md">
-                                    <PixieDustStack gap="xs">
+                                <PixieStack gap="md">
+                                    <PixieStack gap="xs">
                                         <p className="text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
                                             Le dessin animé trouve son langage
                                         </p>
@@ -220,7 +220,7 @@ ${labelledBy}>
                                         >
                                             Le mouvement rejoint la musique
                                         </h5>
-                                    </PixieDustStack>
+                                    </PixieStack>
                                     <p className="leading-7 text-ink-soft">
                                         Le champ installe le récit pendant que
                                         le contrechamp lui donne une présence
@@ -240,7 +240,7 @@ ${labelledBy}>
                                             ),
                                         )}
                                     </PixieDustCluster>
-                                </PixieDustStack>
+                                </PixieStack>
 
                                 <PixieFrame
                                     variant="film"

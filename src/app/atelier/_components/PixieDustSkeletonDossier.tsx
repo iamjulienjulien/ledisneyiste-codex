@@ -12,7 +12,7 @@ import {
     type PixieDustSkeletonRadius,
     type PixieDustSkeletonVariant,
 } from "@/components/ui/PixieDustSkeleton";
-import { PixieDustStack } from "@/components/ui/PixieDustStack";
+import { PixieStack } from "@/components/ui/PixieStack";
 import type { AtelierAnimationColorSlug } from "@/types/colors";
 import { PixieDustSkeletonPlayground } from "./PixieDustSkeletonPlayground";
 
@@ -254,7 +254,7 @@ function OeuvreCardSkeleton() {
             aria-busy="true"
             aria-label="Chargement d’une œuvre"
         >
-            <PixieDustStack gap="md">
+            <PixieStack gap="md">
                 <PixieDustSkeleton variant="block" height="10rem" radius="md" />
                 <PixieDustSkeleton width="42%" height="0.65rem" />
                 <PixieDustSkeleton
@@ -279,7 +279,7 @@ function OeuvreCardSkeleton() {
                         radius="full"
                     />
                 </PixieDustCluster>
-            </PixieDustStack>
+            </PixieStack>
         </div>
     );
 }
@@ -380,7 +380,7 @@ export function PixieDustSkeletonDossier() {
                             <Stage>
                                 <OeuvreCardSkeleton />
                             </Stage>
-                            <CodeExample>{`<PixieDustStack gap="md">
+                            <CodeExample>{`<PixieStack gap="md">
     <PixieDustSkeleton
         variant="block"
         height="10rem"
@@ -393,7 +393,7 @@ export function PixieDustSkeletonDossier() {
         lines={3}
         height="0.8rem"
     />
-</PixieDustStack>`}</CodeExample>
+</PixieStack>`}</CodeExample>
                         </div>
                     </div>
                 </section>
@@ -665,7 +665,7 @@ export function PixieDustSkeletonDossier() {
                         eyebrow="Journal de production"
                         title="Avant la version prête à projeter"
                     />
-                    <PixieDustStack as="ul" gap="sm" className="mt-8">
+                    <PixieStack as="ul" gap="sm" className="mt-8">
                         {[
                             "Comparer les empreintes aux dimensions réelles des quatre Cards métier.",
                             "Vérifier le reflet, la respiration et les teintes dans les deux Lumières.",
@@ -680,7 +680,7 @@ export function PixieDustSkeletonDossier() {
                                 {item}
                             </li>
                         ))}
-                    </PixieDustStack>
+                    </PixieStack>
                 </section>
             </div>
         </AtelierFicheAccessoire>

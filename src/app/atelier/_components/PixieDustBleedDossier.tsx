@@ -15,7 +15,7 @@ import { PixieContainer } from "@/components/ui/PixieContainer";
 import { PixieFrame } from "@/components/ui/PixieFrame";
 import { PixieDustRail } from "@/components/ui/PixieDustRail";
 import { PixieDustSection } from "@/components/ui/PixieDustSection";
-import { PixieDustStack } from "@/components/ui/PixieDustStack";
+import { PixieStack } from "@/components/ui/PixieStack";
 import { PixieDustBleedPlayground } from "./PixieDustBleedPlayground";
 
 const sides = [
@@ -364,7 +364,7 @@ export function PixieDustBleedDossier() {
                 <div className="mt-7 grid min-w-0 border border-line xl:grid-cols-2">
                     <div className="min-w-0 overflow-hidden bg-canvas py-8">
                         <PixieContainer width="42" gutter="lg">
-                            <PixieDustStack gap="lg">
+                            <PixieStack gap="lg">
                                 <p className="leading-7 text-ink-soft">
                                     Le studio prépare une nouvelle manière de
                                     donner de la profondeur à ses images.
@@ -386,7 +386,7 @@ export function PixieDustBleedDossier() {
                                     La lecture retrouve ensuite sa colonne sans
                                     rupture dans l’ordre du document.
                                 </p>
-                            </PixieDustStack>
+                            </PixieStack>
                         </PixieContainer>
                     </div>
                     <CodeExample>{`<PixieContainer width="42">

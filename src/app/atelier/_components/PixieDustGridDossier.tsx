@@ -12,7 +12,7 @@ import {
     type PixieDustGridMinItemWidth,
 } from "@/components/ui/PixieDustGrid";
 import { PixieDustSection } from "@/components/ui/PixieDustSection";
-import { PixieDustStack } from "@/components/ui/PixieDustStack";
+import { PixieStack } from "@/components/ui/PixieStack";
 import { PixieDustGridPlayground } from "./PixieDustGridPlayground";
 
 const columns = [
@@ -607,7 +607,7 @@ export function PixieDustGridDossier() {
                         gap="lg"
                         aria-labelledby="grid-composition-heading"
                     >
-                        <PixieDustStack gap="xs">
+                        <PixieStack gap="xs">
                             <p className="text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
                                 Archives en projection
                             </p>
@@ -617,7 +617,7 @@ export function PixieDustGridDossier() {
                             >
                                 Le dessin animé trouve son langage
                             </h4>
-                        </PixieDustStack>
+                        </PixieStack>
                         <PixieDustGrid columns={3} minItemWidth="sm" gap="md">
                             {archiveCards
                                 .slice(0, 3)

@@ -4,7 +4,7 @@ import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTa
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixiePanel } from "@/components/ui/PixiePanel";
-import { PixieDustStack } from "@/components/ui/PixieDustStack";
+import { PixieStack } from "@/components/ui/PixieStack";
 import {
     PixieDustToast,
     type PixieDustToastSize,
@@ -346,7 +346,7 @@ export function PixieDustToastDossier() {
                         title="Cinq intentions, cinq repères complémentaires"
                         description="L’icône, le libellé et le rôle d’annonce conservent le sens lorsque la couleur disparaît."
                     />
-                    <PixieDustStack gap="sm" className="mt-8">
+                    <PixieStack gap="sm" className="mt-8">
                         {tones.map((tone) => (
                             <PixieDustToast
                                 key={tone.value}
@@ -357,7 +357,7 @@ export function PixieDustToastDossier() {
                                 {tone.example}
                             </PixieDustToast>
                         ))}
-                    </PixieDustStack>
+                    </PixieStack>
                 </section>
 
                 <section aria-labelledby="toast-variants-title">
@@ -504,7 +504,7 @@ export function PixieDustToastDossier() {
                         eyebrow="Journal de production"
                         title="Avant la version prête à projeter"
                     />
-                    <PixieDustStack as="ul" gap="sm" className="mt-8">
+                    <PixieStack as="ul" gap="sm" className="mt-8">
                         {[
                             "Éprouver les annonces status et alert avec plusieurs lecteurs d’écran.",
                             "Confirmer le calcul du temps restant après survol et navigation clavier.",
@@ -518,7 +518,7 @@ export function PixieDustToastDossier() {
                                 {item}
                             </li>
                         ))}
-                    </PixieDustStack>
+                    </PixieStack>
                 </section>
             </div>
         </AtelierFicheAccessoire>

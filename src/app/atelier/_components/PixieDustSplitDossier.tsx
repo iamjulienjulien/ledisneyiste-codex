@@ -15,7 +15,7 @@ import {
     type PixieDustSplitMinPaneWidth,
     type PixieDustSplitRatio,
 } from "@/components/ui/PixieDustSplit";
-import { PixieDustStack } from "@/components/ui/PixieDustStack";
+import { PixieStack } from "@/components/ui/PixieStack";
 import { PixieDustSplitPlayground } from "./PixieDustSplitPlayground";
 
 const ratios = [
@@ -380,15 +380,15 @@ export function PixieDustSplitDossier() {
                             gap="xl"
                             align="center"
                         >
-                            <PixieDustStack gap="md">
-                                <PixieDustStack gap="xs">
+                            <PixieStack gap="md">
+                                <PixieStack gap="xs">
                                     <p className="text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
                                         Le dessin animé trouve son langage
                                     </p>
                                     <h4 className="text-3xl text-ink">
                                         Le mouvement rejoint la musique
                                     </h4>
-                                </PixieDustStack>
+                                </PixieStack>
                                 <p className="leading-7 text-ink-soft">
                                     Le récit reste lisible lorsque les deux
                                     plans se retrouvent dans une seule colonne.
@@ -407,7 +407,7 @@ export function PixieDustSplitDossier() {
                                         ),
                                     )}
                                 </PixieDustCluster>
-                            </PixieDustStack>
+                            </PixieStack>
                             <PixieFrame
                                 variant="film"
                                 aspect="landscape"
@@ -645,7 +645,7 @@ export function PixieDustSplitDossier() {
                         gap="lg"
                         aria-labelledby="split-composition-heading"
                     >
-                        <PixieDustStack gap="xs">
+                        <PixieStack gap="xs">
                             <p className="text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
                                 Champ et contrechamp
                             </p>
@@ -655,7 +655,7 @@ export function PixieDustSplitDossier() {
                             >
                                 Deux archives se répondent
                             </h4>
-                        </PixieDustStack>
+                        </PixieStack>
                         <PixieDustSplit
                             ratio="equal"
                             minPaneWidth="md"
