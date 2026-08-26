@@ -1,8 +1,8 @@
 import type { HTMLAttributes, ReactNode } from "react";
 import type {
-    PixieDustContainerGutter,
-    PixieDustContainerWidth,
-} from "@/components/ui/PixieDustContainer";
+    PixieContainerGutter,
+    PixieContainerWidth,
+} from "@/components/ui/PixieContainer";
 import type {
     PixieDustStackAlign,
     PixieDustStackGap,
@@ -10,9 +10,9 @@ import type {
 
 export type PixieDustSectionElement = "section" | "article" | "div";
 
-export type PixieDustSectionWidth = PixieDustContainerWidth;
+export type PixieDustSectionWidth = PixieContainerWidth;
 
-export type PixieDustSectionGutter = PixieDustContainerGutter;
+export type PixieDustSectionGutter = PixieContainerGutter;
 
 export type PixieDustSectionSpacing = "none" | "sm" | "md" | "lg" | "xl";
 

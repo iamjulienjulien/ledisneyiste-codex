@@ -5,7 +5,7 @@ import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieBackdrop } from "@/components/ui/PixieBackdrop";
 import { PixieCard } from "@/components/ui/PixieCard";
-import { PixieDustContainer } from "@/components/ui/PixieDustContainer";
+import { PixieContainer } from "@/components/ui/PixieContainer";
 import {
     PixieDustStack,
     type PixieDustStackAlign,
@@ -536,7 +536,7 @@ export function PixieDustStackDossier() {
                     texture="grain"
                     className="mt-7 py-12"
                 >
-                    <PixieDustContainer width="56" gutter="lg">
+                    <PixieContainer width="56" gutter="lg">
                         <PixieDustStack
                             as="section"
                             gap="lg"
@@ -574,7 +574,7 @@ export function PixieDustStackDossier() {
                                 ))}
                             </PixieDustStack>
                         </PixieDustStack>
-                    </PixieDustContainer>
+                    </PixieContainer>
                 </PixieBackdrop>
             </section>
 

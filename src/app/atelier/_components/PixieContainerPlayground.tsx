@@ -5,10 +5,10 @@ import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import {
-    PixieDustContainer,
-    type PixieDustContainerGutter,
-    type PixieDustContainerWidth,
-} from "@/components/ui/PixieDustContainer";
+    PixieContainer,
+    type PixieContainerGutter,
+    type PixieContainerWidth,
+} from "@/components/ui/PixieContainer";
 
 type PlaygroundElement = "div" | "section";
 
@@ -37,10 +37,10 @@ const frameWidths = {
     large: "max-w-none",
 } as const satisfies Record<"compact" | "moyen" | "large", string>;
 
-export function PixieDustContainerPlayground() {
+export function PixieContainerPlayground() {
     const [element, setElement] = useState<PlaygroundElement>("section");
-    const [width, setWidth] = useState<PixieDustContainerWidth>("72");
-    const [gutter, setGutter] = useState<PixieDustContainerGutter>("md");
+    const [width, setWidth] = useState<PixieContainerWidth>("72");
+    const [gutter, setGutter] = useState<PixieContainerGutter>("md");
     const [light, setLight] = useState<"sombre" | "claire">("sombre");
     const [frame, setFrame] = useState<"compact" | "moyen" | "large">("moyen");
 
@@ -48,14 +48,14 @@ export function PixieDustContainerPlayground() {
         element === "section"
             ? '    aria-labelledby="container-heading"\n'
             : "";
-    const code = `<PixieDustContainer
+    const code = `<PixieContainer
     as="${element}"
     width="${width}"
     gutter="${gutter}"
 ${labelledBy}>
     <h2 id="container-heading">Le dessin animé trouve son langage</h2>
     <p>Une séquence centrée dans un cadre de lecture stable.</p>
-</PixieDustContainer>`;
+</PixieContainer>`;
 
     return (
         <div className="overflow-hidden border border-line bg-surface">
@@ -148,7 +148,7 @@ ${labelledBy}>
                         <div
                             className={`w-full border border-dashed border-line-strong py-10 transition-[max-width] ${frameWidths[frame]}`}
                         >
-                            <PixieDustContainer
+                            <PixieContainer
                                 as={element}
                                 width={width}
                                 gutter={gutter}
@@ -176,7 +176,7 @@ ${labelledBy}>
                                         qu’il accueille.
                                     </p>
                                 </div>
-                            </PixieDustContainer>
+                            </PixieContainer>
                         </div>
                     </div>
 

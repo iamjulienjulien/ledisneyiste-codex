@@ -9,7 +9,7 @@ import { PixieFrameDossier } from "./_components/PixieFrameDossier";
 import { PixieCalloutDossier } from "./_components/PixieCalloutDossier";
 import { PixieInsetDossier } from "./_components/PixieInsetDossier";
 import { PixieBackdropDossier } from "./_components/PixieBackdropDossier";
-import { PixieDustContainerDossier } from "./_components/PixieDustContainerDossier";
+import { PixieContainerDossier } from "./_components/PixieContainerDossier";
 import { PixieDustStackDossier } from "./_components/PixieDustStackDossier";
 import { PixieDustClusterDossier } from "./_components/PixieDustClusterDossier";
 import { PixieDustSectionDossier } from "./_components/PixieDustSectionDossier";
@@ -227,10 +227,10 @@ const dialogues = [
 
 const montage = [
     {
-        nom: "PixieDustContainer",
+        nom: "PixieContainer",
         role: "Centrer et contenir une séquence",
-        statut: "Esquisse",
-        href: "#pixie-dust-container",
+        statut: "Prêt à projeter",
+        href: "#pixie-container",
     },
     {
         nom: "PixieDustStack",
@@ -764,11 +764,10 @@ export default function AtelierPage() {
                     </h2>
                     <p className="mt-5 leading-7 text-ink-soft">
                         Largeurs, espacements et distributions transforment les
-                        éléments isolés en séquences lisibles.
-                        PixieDustContainer ouvre le premier cadre de ce plateau
-                        ; les dix esquisses suivantes organiseront le rythme et
-                        les distributions sans imposer de surface, de couleur ni
-                        d’interaction.
+                        éléments isolés en séquences lisibles. PixieContainer
+                        ouvre le premier cadre de ce plateau. Les dix esquisses
+                        suivantes organiseront le rythme et les distributions
+                        sans imposer de surface, de couleur ni d’interaction.
                     </p>
                 </div>
 
@@ -822,7 +821,7 @@ export default function AtelierPage() {
                     </table>
                 </div>
 
-                <PixieDustContainerDossier />
+                <PixieContainerDossier />
                 <PixieDustStackDossier />
                 <PixieDustClusterDossier />
                 <PixieDustSectionDossier />

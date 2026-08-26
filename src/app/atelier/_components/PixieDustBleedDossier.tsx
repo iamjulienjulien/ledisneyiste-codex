@@ -11,7 +11,7 @@ import {
     type PixieDustBleedSide,
 } from "@/components/ui/PixieDustBleed";
 import { PixieCard } from "@/components/ui/PixieCard";
-import { PixieDustContainer } from "@/components/ui/PixieDustContainer";
+import { PixieContainer } from "@/components/ui/PixieContainer";
 import { PixieFrame } from "@/components/ui/PixieFrame";
 import { PixieDustRail } from "@/components/ui/PixieDustRail";
 import { PixieDustSection } from "@/components/ui/PixieDustSection";
@@ -363,7 +363,7 @@ export function PixieDustBleedDossier() {
 
                 <div className="mt-7 grid min-w-0 border border-line xl:grid-cols-2">
                     <div className="min-w-0 overflow-hidden bg-canvas py-8">
-                        <PixieDustContainer width="42" gutter="lg">
+                        <PixieContainer width="42" gutter="lg">
                             <PixieDustStack gap="lg">
                                 <p className="leading-7 text-ink-soft">
                                     Le studio prépare une nouvelle manière de
@@ -387,9 +387,9 @@ export function PixieDustBleedDossier() {
                                     rupture dans l’ordre du document.
                                 </p>
                             </PixieDustStack>
-                        </PixieDustContainer>
+                        </PixieContainer>
                     </div>
-                    <CodeExample>{`<PixieDustContainer width="42">
+                    <CodeExample>{`<PixieContainer width="42">
     <TexteEditorial />
     <PixieDustBleed
         as="figure"
@@ -400,7 +400,7 @@ export function PixieDustBleedDossier() {
         <figcaption>...</figcaption>
     </PixieDustBleed>
     <TexteEditorial />
-</PixieDustContainer>`}</CodeExample>
+</PixieContainer>`}</CodeExample>
                 </div>
             </section>
 

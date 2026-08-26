@@ -11,7 +11,7 @@ import {
     type PixieDustClusterGap,
     type PixieDustClusterJustify,
 } from "@/components/ui/PixieDustCluster";
-import { PixieDustContainer } from "@/components/ui/PixieDustContainer";
+import { PixieContainer } from "@/components/ui/PixieContainer";
 import { PixiePanel } from "@/components/ui/PixiePanel";
 import { PixieDustStack } from "@/components/ui/PixieDustStack";
 import { PixieDustClusterPlayground } from "./PixieDustClusterPlayground";
@@ -575,7 +575,7 @@ export function PixieDustClusterDossier() {
                     aria-labelledby="cluster-composition-heading"
                     className="mt-7"
                 >
-                    <PixieDustContainer width="56" gutter="none">
+                    <PixieContainer width="56" gutter="none">
                         <PixieDustStack gap="lg">
                             <PixieDustStack gap="xs">
                                 <p className="text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
@@ -626,7 +626,7 @@ export function PixieDustClusterDossier() {
                                 </PixieButton>
                             </PixieDustCluster>
                         </PixieDustStack>
-                    </PixieDustContainer>
+                    </PixieContainer>
                 </PixiePanel>
             </section>
 

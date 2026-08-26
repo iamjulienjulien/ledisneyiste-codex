@@ -324,10 +324,7 @@ export function PixieDustSectionDossier() {
                             "Accessibilité",
                             "La structure externe est explicite et doit recevoir le bon nom.",
                         ],
-                        [
-                            "Dépendances",
-                            "PixieDustContainer et PixieDustStack.",
-                        ],
+                        ["Dépendances", "PixieContainer et PixieDustStack."],
                     ].map(([term, definition]) => (
                         <div key={term} className="bg-surface p-5">
                             <dt className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
@@ -355,7 +352,7 @@ export function PixieDustSectionDossier() {
                     </p>
                     <div className="mt-4 border border-line-strong bg-surface-muted p-4 sm:p-6">
                         <p className="font-mono text-xs text-accent">
-                            PixieDustContainer · width + gutter
+                            PixieContainer · width + gutter
                         </p>
                         <div className="mt-4 border border-dashed border-line-strong bg-canvas p-4 sm:p-6">
                             <p className="font-mono text-xs text-accent">

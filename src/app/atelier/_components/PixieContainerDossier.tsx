@@ -5,11 +5,11 @@ import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieBackdrop } from "@/components/ui/PixieBackdrop";
 import {
-    PixieDustContainer,
-    type PixieDustContainerGutter,
-    type PixieDustContainerWidth,
-} from "@/components/ui/PixieDustContainer";
-import { PixieDustContainerPlayground } from "./PixieDustContainerPlayground";
+    PixieContainer,
+    type PixieContainerGutter,
+    type PixieContainerWidth,
+} from "@/components/ui/PixieContainer";
+import { PixieContainerPlayground } from "./PixieContainerPlayground";
 
 const widths = [
     {
@@ -38,7 +38,7 @@ const widths = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustContainerWidth;
+    value: PixieContainerWidth;
     token: string;
     role: string;
 }>[];
@@ -54,26 +54,26 @@ const gutters = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustContainerGutter;
+    value: PixieContainerGutter;
     token: string;
 }>[];
 
 const properties = [
     {
         name: "as",
-        type: "PixieDustContainerElement",
+        type: "PixieContainerElement",
         defaultValue: '"div"',
         description: "Élément HTML qui porte la séquence.",
     },
     {
         name: "width",
-        type: "PixieDustContainerWidth",
+        type: "PixieContainerWidth",
         defaultValue: '"72"',
         description: "Largeur maximale du cadre centré.",
     },
     {
         name: "gutter",
-        type: "PixieDustContainerGutter",
+        type: "PixieContainerGutter",
         defaultValue: '"md"',
         description: "Protection horizontale comprise dans le cadre.",
     },
@@ -93,17 +93,17 @@ const properties = [
 
 const specificTypes = [
     {
-        name: "PixieDustContainerElement",
+        name: "PixieContainerElement",
         values: ['"div"', '"main"', '"section"'],
         description: "Structures de page autorisées.",
     },
     {
-        name: "PixieDustContainerWidth",
+        name: "PixieContainerWidth",
         values: ['"42"', '"56"', '"72"', '"full"'],
         description: "Cadres de lecture disponibles.",
     },
     {
-        name: "PixieDustContainerGutter",
+        name: "PixieContainerGutter",
         values: ['"none"', '"sm"', '"md"', '"lg"'],
         description: "Protections horizontales disponibles.",
     },
@@ -151,12 +151,12 @@ function Guide({ children }: Readonly<{ children: ReactNode }>) {
     );
 }
 
-export function PixieDustContainerDossier() {
+export function PixieContainerDossier() {
     return (
         <AtelierFicheAccessoire
-            id="pixie-dust-container"
-            labelledBy="pixie-dust-container-title"
-            nom="PixieDustContainer"
+            id="pixie-container"
+            labelledBy="pixie-container-title"
+            nom="PixieContainer"
             className="mt-16 scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
@@ -165,10 +165,10 @@ export function PixieDustContainerDossier() {
                             Le clap · Montage 001
                         </p>
                         <h2
-                            id="pixie-dust-container-title"
+                            id="pixie-container-title"
                             className="mt-4 text-4xl text-ink sm:text-5xl"
                         >
-                            PixieDustContainer
+                            PixieContainer
                         </h2>
                         <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
                             Centrer et contenir une séquence dans un cadre de
@@ -182,7 +182,7 @@ export function PixieDustContainerDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.2.0
+                                1.0.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -190,7 +190,7 @@ export function PixieDustContainerDossier() {
                                 État
                             </dt>
                             <dd className="mt-1 text-sm font-medium">
-                                <AtelierStatut statut="Esquisse" />
+                                <AtelierStatut statut="Prêt à projeter" />
                             </dd>
                         </div>
                     </dl>
@@ -257,7 +257,7 @@ export function PixieDustContainerDossier() {
 
                 <div className="mt-7 grid border border-line xl:grid-cols-2">
                     <div className="overflow-hidden bg-canvas py-10">
-                        <PixieDustContainer
+                        <PixieContainer
                             as="section"
                             width="72"
                             gutter="md"
@@ -278,9 +278,9 @@ export function PixieDustContainerDossier() {
                                     et son propre rythme à l’intérieur du cadre.
                                 </p>
                             </Guide>
-                        </PixieDustContainer>
+                        </PixieContainer>
                     </div>
-                    <CodeExample>{`<PixieDustContainer
+                    <CodeExample>{`<PixieContainer
     as="section"
     width="72"
     gutter="md"
@@ -288,7 +288,7 @@ export function PixieDustContainerDossier() {
 >
     <h2 id="sequence-title">Le dessin animé trouve son langage</h2>
     {/* Contenu de la séquence */}
-</PixieDustContainer>`}</CodeExample>
+</PixieContainer>`}</CodeExample>
                 </div>
             </section>
 
@@ -302,7 +302,7 @@ export function PixieDustContainerDossier() {
 
                 <div className="mt-7 space-y-6 overflow-hidden bg-canvas py-8">
                     {widths.map((width) => (
-                        <PixieDustContainer
+                        <PixieContainer
                             key={width.value}
                             width={width.value}
                             gutter="md"
@@ -320,7 +320,7 @@ export function PixieDustContainerDossier() {
                                     {width.role}
                                 </p>
                             </Guide>
-                        </PixieDustContainer>
+                        </PixieContainer>
                     ))}
                 </div>
             </section>
@@ -330,7 +330,7 @@ export function PixieDustContainerDossier() {
                     id="container-scenarios"
                     eyebrow="Scénarios préparés"
                     title="Quatre cadres avant leur entrée dans le Codex"
-                    description="Ces scènes restent confinées à l’Atelier tant que l’esquisse n’est pas promue. Elles préparent les usages qui seront ensuite confirmés avec PixieContainer."
+                    description="Ces scènes ont validé les quatre cadres de lecture avant leur emploi dans les futures compositions du Codex."
                 />
 
                 <div className="mt-7 space-y-8 overflow-hidden bg-canvas py-8">
@@ -338,7 +338,7 @@ export function PixieDustContainerDossier() {
                         <p className="mb-3 px-5 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Lecture suivie · 42 rem
                         </p>
-                        <PixieDustContainer width="42" gutter="lg">
+                        <PixieContainer width="42" gutter="lg">
                             <Guide>
                                 <h4 className="text-2xl text-ink">
                                     Une colonne qui laisse respirer le récit
@@ -356,14 +356,14 @@ export function PixieDustContainerDossier() {
                                     </p>
                                 </div>
                             </Guide>
-                        </PixieDustContainer>
+                        </PixieContainer>
                     </div>
 
                     <div>
                         <p className="mb-3 px-5 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Ouverture de page · 56 rem
                         </p>
-                        <PixieDustContainer width="56" gutter="md">
+                        <PixieContainer width="56" gutter="md">
                             <Guide>
                                 <p className="text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
                                     Archives · Œuvre
@@ -377,14 +377,14 @@ export function PixieDustContainerDossier() {
                                     leur apparence.
                                 </p>
                             </Guide>
-                        </PixieDustContainer>
+                        </PixieContainer>
                     </div>
 
                     <div>
                         <p className="mb-3 px-5 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Collection · 72 rem
                         </p>
-                        <PixieDustContainer width="72" gutter="lg">
+                        <PixieContainer width="72" gutter="lg">
                             <div className="grid gap-px border border-line bg-line sm:grid-cols-3">
                                 {["Personnages", "Créateurs", "Œuvres"].map(
                                     (label, index) => (
@@ -406,14 +406,14 @@ export function PixieDustContainerDossier() {
                                     ),
                                 )}
                             </div>
-                        </PixieDustContainer>
+                        </PixieContainer>
                     </div>
 
                     <div className="mx-auto max-w-4xl border border-dashed border-line-strong py-5">
                         <p className="mb-3 px-5 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Parent borné · full
                         </p>
-                        <PixieDustContainer width="full" gutter="sm">
+                        <PixieContainer width="full" gutter="sm">
                             <Guide>
                                 <p className="leading-7 text-ink-soft">
                                     Full remplit ce parent de démonstration sans
@@ -421,7 +421,7 @@ export function PixieDustContainerDossier() {
                                     débordement de type Bleed.
                                 </p>
                             </Guide>
-                        </PixieDustContainer>
+                        </PixieContainer>
                     </div>
                 </div>
             </section>
@@ -440,10 +440,7 @@ export function PixieDustContainerDossier() {
                             key={gutter.value}
                             className="overflow-hidden border border-dashed border-line-strong py-5"
                         >
-                            <PixieDustContainer
-                                width="full"
-                                gutter={gutter.value}
-                            >
+                            <PixieContainer width="full" gutter={gutter.value}>
                                 <Guide>
                                     <h4 className="text-lg text-ink">
                                         {gutter.name}
@@ -453,7 +450,7 @@ export function PixieDustContainerDossier() {
                                         {gutter.token}
                                     </p>
                                 </Guide>
-                            </PixieDustContainer>
+                            </PixieContainer>
                         </div>
                     ))}
                 </div>
@@ -477,14 +474,14 @@ export function PixieDustContainerDossier() {
                                 {label}
                             </p>
                             <div className="overflow-hidden border border-dashed border-line-strong bg-canvas py-6">
-                                <PixieDustContainer width="72" gutter="md">
+                                <PixieContainer width="72" gutter="md">
                                     <Guide>
                                         <p className="leading-7 text-ink-soft">
                                             Le cadre reste lisible sans produire
                                             de défilement horizontal.
                                         </p>
                                     </Guide>
-                                </PixieDustContainer>
+                                </PixieContainer>
                             </div>
                         </div>
                     ))}
@@ -508,7 +505,7 @@ export function PixieDustContainerDossier() {
                     texture="grain"
                     className="mt-7 py-12"
                 >
-                    <PixieDustContainer
+                    <PixieContainer
                         as="section"
                         width="56"
                         gutter="lg"
@@ -527,7 +524,7 @@ export function PixieDustContainerDossier() {
                             Le décor peut s’étendre jusqu’aux bords ; la lecture
                             conserve son propre repère horizontal.
                         </p>
-                    </PixieDustContainer>
+                    </PixieContainer>
                 </PixieBackdrop>
             </section>
 
@@ -557,18 +554,18 @@ export function PixieDustContainerDossier() {
             </section>
 
             <section
-                id="pixie-dust-container-playground"
+                id="pixie-container-playground"
                 aria-labelledby="container-playground-title"
                 className="mt-16 scroll-mt-8 border border-line-strong bg-surface-muted p-6 shadow-soft sm:p-8"
             >
                 <SequenceTitle
                     id="container-playground-title"
                     eyebrow="Régie"
-                    title="Composer un PixieDustContainer"
+                    title="Composer un PixieContainer"
                     description="Réglez sa largeur, ses gouttières et le cadre d’essai ; le code d’utilisation suit chaque changement."
                 />
                 <div className="mt-8">
-                    <PixieDustContainerPlayground />
+                    <PixieContainerPlayground />
                 </div>
             </section>
 
@@ -627,8 +624,8 @@ export function PixieDustContainerDossier() {
                 <SequenceTitle
                     id="container-technical"
                     eyebrow="Générique technique"
-                    title="API de l’esquisse 0.2.0"
-                    description="Les types spécifiques sont colocalisés dans PixieDustContainer.types.ts et les attributs HTML compatibles sont transmis à l’élément rendu."
+                    title="API du composant"
+                    description="Les types spécifiques sont colocalisés dans PixieContainer.types.ts et les attributs HTML compatibles sont transmis à l’élément rendu."
                 />
 
                 <div className="mt-7">
@@ -646,20 +643,20 @@ export function PixieDustContainerDossier() {
             <section aria-labelledby="container-journal" className="mt-16">
                 <SequenceTitle
                     id="container-journal"
-                    eyebrow="Journal de production"
-                    title="Décisions avant la promotion"
-                    description="L’esquisse doit prouver son contrat dans l’Atelier avant sa promotion. Aucune page publique ne doit l’utiliser sous son nom PixieDust."
+                    eyebrow="Contrat de projection"
+                    title="Les garanties de la version 1.0.0"
+                    description="PixieContainer est prêt à cadrer les futures compositions du Codex sans prendre en charge leur surface ni leur rythme."
                 />
 
                 <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
                     {[
-                        "Éprouver les quatre largeurs dans des scénarios préparant pages, index et fiches.",
-                        "Vérifier les gouttières à 200 % de zoom et dans un cadre très compact.",
-                        "Comparer le cadre 42 aux colonnes de lecture actuellement écrites à la main.",
-                        "Tester l’imbrication dans PixieBackdrop et les autres composants du Montage.",
-                        "Recenser les max-width existants avant toute promotion ou migration.",
-                        "Valider que full reste utile sans devenir un raccourci pour les sorties de cadre.",
-                        "Promouvoir en PixieContainer avant toute intégration dans une page du Codex.",
+                        "Les cadres 42, 56 et 72 annoncent explicitement leur largeur maximale en rem.",
+                        "Full remplit son parent sans devenir un raccourci pour les sorties de cadre.",
+                        "Les quatre gouttières protègent la lecture sans imposer de padding aux surfaces contenues.",
+                        "Le centrage reste automatique et le cadre se contracte avec son parent sur petit écran.",
+                        "PixieBackdrop peut déborder visuellement tandis que PixieContainer maintient l’axe du récit.",
+                        "La sémantique choisie avec as ne modifie ni l’ordre du contenu ni le parcours du clavier.",
+                        "La primitive n’ajoute ni surface, ni couleur, ni ombre, ni rythme vertical.",
                     ].map((decision) => (
                         <li
                             key={decision}
