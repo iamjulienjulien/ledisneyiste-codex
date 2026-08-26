@@ -325,6 +325,107 @@ export function PixieDustContainerDossier() {
                 </div>
             </section>
 
+            <section aria-labelledby="container-scenarios" className="mt-16">
+                <SequenceTitle
+                    id="container-scenarios"
+                    eyebrow="Scénarios préparés"
+                    title="Quatre cadres avant leur entrée dans le Codex"
+                    description="Ces scènes restent confinées à l’Atelier tant que l’esquisse n’est pas promue. Elles préparent les usages qui seront ensuite confirmés avec PixieContainer."
+                />
+
+                <div className="mt-7 space-y-8 overflow-hidden bg-canvas py-8">
+                    <div>
+                        <p className="mb-3 px-5 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            Lecture suivie · 42 rem
+                        </p>
+                        <PixieDustContainer width="42" gutter="lg">
+                            <Guide>
+                                <h4 className="text-2xl text-ink">
+                                    Une colonne qui laisse respirer le récit
+                                </h4>
+                                <div className="mt-4 space-y-4 leading-7 text-ink-soft">
+                                    <p>
+                                        Le cadre de 42 rem accompagne les textes
+                                        longs sans transformer Container en
+                                        composant typographique.
+                                    </p>
+                                    <p>
+                                        Les paragraphes conservent leur propre
+                                        rythme ; seule leur ligne de lecture est
+                                        bornée et centrée.
+                                    </p>
+                                </div>
+                            </Guide>
+                        </PixieDustContainer>
+                    </div>
+
+                    <div>
+                        <p className="mb-3 px-5 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            Ouverture de page · 56 rem
+                        </p>
+                        <PixieDustContainer width="56" gutter="md">
+                            <Guide>
+                                <p className="text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
+                                    Archives · Œuvre
+                                </p>
+                                <h4 className="mt-3 text-3xl text-ink">
+                                    Blanche-Neige et les Sept Nains
+                                </h4>
+                                <p className="mt-4 max-w-2xl leading-7 text-ink-soft">
+                                    Un cadre éditorial accueille un titre, son
+                                    introduction et ses repères sans décider de
+                                    leur apparence.
+                                </p>
+                            </Guide>
+                        </PixieDustContainer>
+                    </div>
+
+                    <div>
+                        <p className="mb-3 px-5 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            Collection · 72 rem
+                        </p>
+                        <PixieDustContainer width="72" gutter="lg">
+                            <div className="grid gap-px border border-line bg-line sm:grid-cols-3">
+                                {["Personnages", "Créateurs", "Œuvres"].map(
+                                    (label, index) => (
+                                        <article
+                                            key={label}
+                                            className="min-w-0 bg-surface p-5"
+                                        >
+                                            <p className="font-mono text-xs text-accent">
+                                                0{index + 1}
+                                            </p>
+                                            <h4 className="mt-3 text-xl text-ink">
+                                                {label}
+                                            </h4>
+                                            <p className="mt-2 text-sm leading-6 text-ink-soft">
+                                                La grille compose ; le Container
+                                                borne uniquement la collection.
+                                            </p>
+                                        </article>
+                                    ),
+                                )}
+                            </div>
+                        </PixieDustContainer>
+                    </div>
+
+                    <div className="mx-auto max-w-4xl border border-dashed border-line-strong py-5">
+                        <p className="mb-3 px-5 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            Parent borné · full
+                        </p>
+                        <PixieDustContainer width="full" gutter="sm">
+                            <Guide>
+                                <p className="leading-7 text-ink-soft">
+                                    Full remplit ce parent de démonstration sans
+                                    franchir ses limites et sans simuler un
+                                    débordement de type Bleed.
+                                </p>
+                            </Guide>
+                        </PixieDustContainer>
+                    </div>
+                </div>
+            </section>
+
             <section aria-labelledby="container-gutters" className="mt-16">
                 <SequenceTitle
                     id="container-gutters"
@@ -547,17 +648,18 @@ export function PixieDustContainerDossier() {
                     id="container-journal"
                     eyebrow="Journal de production"
                     title="Décisions avant la promotion"
-                    description="L’esquisse devra prouver que ses limites restent prévisibles dans les pages réelles du Codex."
+                    description="L’esquisse doit prouver son contrat dans l’Atelier avant sa promotion. Aucune page publique ne doit l’utiliser sous son nom PixieDust."
                 />
 
                 <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
                     {[
-                        "Éprouver les quatre largeurs sur les pages, index et fiches du Codex.",
+                        "Éprouver les quatre largeurs dans des scénarios préparant pages, index et fiches.",
                         "Vérifier les gouttières à 200 % de zoom et dans un cadre très compact.",
-                        "Comparer narrow aux colonnes de lecture actuellement écrites à la main.",
-                        "Tester l’imbrication dans Backdrop, Panel et les futurs composants du Montage.",
+                        "Comparer le cadre 42 aux colonnes de lecture actuellement écrites à la main.",
+                        "Tester l’imbrication dans PixieBackdrop et les autres composants du Montage.",
                         "Recenser les max-width existants avant toute promotion ou migration.",
                         "Valider que full reste utile sans devenir un raccourci pour les sorties de cadre.",
+                        "Promouvoir en PixieContainer avant toute intégration dans une page du Codex.",
                     ].map((decision) => (
                         <li
                             key={decision}
