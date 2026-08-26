@@ -1,13 +1,13 @@
-import styles from "./PixieDustGrid.module.css";
+import styles from "./PixieGrid.module.css";
 import type {
-    PixieDustGridAlign,
-    PixieDustGridDistribution,
-    PixieDustGridGap,
-    PixieDustGridJustify,
-    PixieDustGridMaxColumns,
-    PixieDustGridMinItemWidth,
-    PixieDustGridProps,
-} from "./PixieDustGrid.types";
+    PixieGridAlign,
+    PixieGridDistribution,
+    PixieGridGap,
+    PixieGridJustify,
+    PixieGridMaxColumns,
+    PixieGridMinItemWidth,
+    PixieGridProps,
+} from "./PixieGrid.types";
 
 const columnClasses = {
     1: styles.columnsOne,
@@ -16,14 +16,14 @@ const columnClasses = {
     4: styles.columnsFour,
     5: styles.columnsFive,
     6: styles.columnsSix,
-} as const satisfies Record<PixieDustGridMaxColumns, string>;
+} as const satisfies Record<PixieGridMaxColumns, string>;
 
 const minItemWidthClasses = {
     xs: styles.minItemWidthExtraSmall,
     sm: styles.minItemWidthSmall,
     md: styles.minItemWidthMedium,
     lg: styles.minItemWidthLarge,
-} as const satisfies Record<PixieDustGridMinItemWidth, string>;
+} as const satisfies Record<PixieGridMinItemWidth, string>;
 
 const gapClasses = {
     none: styles.gapNone,
@@ -32,7 +32,7 @@ const gapClasses = {
     md: styles.gapMedium,
     lg: styles.gapLarge,
     xl: styles.gapExtraLarge,
-} as const satisfies Record<PixieDustGridGap, string>;
+} as const satisfies Record<PixieGridGap, string>;
 
 const rowGapClasses = {
     none: styles.rowGapNone,
@@ -41,7 +41,7 @@ const rowGapClasses = {
     md: styles.rowGapMedium,
     lg: styles.rowGapLarge,
     xl: styles.rowGapExtraLarge,
-} as const satisfies Record<PixieDustGridGap, string>;
+} as const satisfies Record<PixieGridGap, string>;
 
 const columnGapClasses = {
     none: styles.columnGapNone,
@@ -50,28 +50,28 @@ const columnGapClasses = {
     md: styles.columnGapMedium,
     lg: styles.columnGapLarge,
     xl: styles.columnGapExtraLarge,
-} as const satisfies Record<PixieDustGridGap, string>;
+} as const satisfies Record<PixieGridGap, string>;
 
 const alignClasses = {
     stretch: styles.alignStretch,
     start: styles.alignStart,
     center: styles.alignCenter,
     end: styles.alignEnd,
-} as const satisfies Record<PixieDustGridAlign, string>;
+} as const satisfies Record<PixieGridAlign, string>;
 
 const justifyClasses = {
     stretch: styles.justifyStretch,
     start: styles.justifyStart,
     center: styles.justifyCenter,
     end: styles.justifyEnd,
-} as const satisfies Record<PixieDustGridJustify, string>;
+} as const satisfies Record<PixieGridJustify, string>;
 
 const distributionClasses = {
     fit: styles.distributionFit,
     fill: styles.distributionFill,
-} as const satisfies Record<PixieDustGridDistribution, string>;
+} as const satisfies Record<PixieGridDistribution, string>;
 
-export function PixieDustGrid({
+export function PixieGrid({
     as: Element = "div",
     maxColumns = 3,
     minItemWidth = "md",
@@ -84,7 +84,7 @@ export function PixieDustGrid({
     className = "",
     children,
     ...elementProps
-}: PixieDustGridProps) {
+}: PixieGridProps) {
     const rowGapClass = rowGap ? rowGapClasses[rowGap] : "";
     const columnGapClass = columnGap ? columnGapClasses[columnGap] : "";
 
