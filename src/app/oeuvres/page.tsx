@@ -4,6 +4,7 @@ import { CodexIndexListItem } from "@/components/codex/CodexIndexListItem";
 import { CodexIndexViewSwitch } from "@/components/codex/CodexIndexViewSwitch";
 import { CodexOeuvreCard } from "@/components/codex/CodexOeuvreCard";
 import { PixieBadge } from "@/components/ui/PixieBadge";
+import { PixieGrid } from "@/components/ui/PixieGrid";
 import { oeuvres } from "@/data/catalogues";
 import { getFicheOeuvreBySlug } from "@/data/oeuvres";
 import { getRecompensesPourOeuvre } from "@/data/recompenses/relations";
@@ -40,7 +41,7 @@ export default async function OeuvresPage({
             }
         >
             {currentView === "cards" ? (
-                <ul className="grid gap-6 lg:grid-cols-2">
+                <PixieGrid as="ul" maxColumns={2} minItemWidth="lg" gap="md">
                     {oeuvres.map((oeuvre) => {
                         const fiche = getFicheOeuvreBySlug(oeuvre.slug);
                         const recompenses = getRecompensesPourOeuvre(
@@ -57,7 +58,7 @@ export default async function OeuvresPage({
                             </li>
                         ) : null;
                     })}
-                </ul>
+                </PixieGrid>
             ) : (
                 <ul className="space-y-3">
                     {oeuvres.map((oeuvre, index) => (

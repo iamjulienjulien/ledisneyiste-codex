@@ -4,6 +4,7 @@ import { CodexIndexPage } from "@/components/codex/CodexIndexPage";
 import { CodexIndexListItem } from "@/components/codex/CodexIndexListItem";
 import { CodexIndexViewSwitch } from "@/components/codex/CodexIndexViewSwitch";
 import { PixieBadge } from "@/components/ui/PixieBadge";
+import { PixieGrid } from "@/components/ui/PixieGrid";
 import { contributeurs } from "@/data/catalogues";
 import { getFicheContributeurBySlug } from "@/data/contributeurs";
 import { getEpoquesPourContributeur } from "@/data/epoques/relations";
@@ -41,7 +42,7 @@ export default async function ContributeursPage({
             }
         >
             {currentView === "cards" ? (
-                <ul className="grid gap-6 lg:grid-cols-2">
+                <PixieGrid as="ul" maxColumns={2} minItemWidth="lg" gap="md">
                     {contributeurs.map((contributeur) => {
                         const fiche = getFicheContributeurBySlug(
                             contributeur.slug,
@@ -62,7 +63,7 @@ export default async function ContributeursPage({
                             </li>
                         ) : null;
                     })}
-                </ul>
+                </PixieGrid>
             ) : (
                 <ul className="space-y-3">
                     {contributeurs.map((contributeur, index) => (

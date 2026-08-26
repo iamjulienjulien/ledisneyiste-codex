@@ -3,6 +3,7 @@ import { CodexEpoqueCard } from "@/components/codex/CodexEpoqueCard";
 import { CodexIndexPage } from "@/components/codex/CodexIndexPage";
 import { CodexIndexListItem } from "@/components/codex/CodexIndexListItem";
 import { CodexIndexViewSwitch } from "@/components/codex/CodexIndexViewSwitch";
+import { PixieGrid } from "@/components/ui/PixieGrid";
 import { epoques } from "@/data/catalogues";
 import {
     getContributeursDeLEpoque,
@@ -43,7 +44,7 @@ export default async function EpoquesPage({
             }
         >
             {currentView === "cards" ? (
-                <ul className="grid gap-6 lg:grid-cols-2">
+                <PixieGrid as="ul" maxColumns={2} minItemWidth="lg" gap="md">
                     {epoques.map((epoque) => {
                         const fiche = getFicheEpoqueBySlug(epoque.slug);
 
@@ -67,7 +68,7 @@ export default async function EpoquesPage({
                             </li>
                         ) : null;
                     })}
-                </ul>
+                </PixieGrid>
             ) : (
                 <ul className="space-y-3">
                     {epoques.map((epoque, index) => (

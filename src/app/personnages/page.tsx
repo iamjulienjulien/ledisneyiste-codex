@@ -4,6 +4,7 @@ import { CodexIndexListItem } from "@/components/codex/CodexIndexListItem";
 import { CodexIndexViewSwitch } from "@/components/codex/CodexIndexViewSwitch";
 import { CodexPersonnageCard } from "@/components/codex/CodexPersonnageCard";
 import { PixieBadge } from "@/components/ui/PixieBadge";
+import { PixieGrid } from "@/components/ui/PixieGrid";
 import { personnages } from "@/data/catalogues";
 import { getFichePersonnageBySlug } from "@/data/personnages";
 import { resolveCodexIndexView } from "@/lib/index-view";
@@ -39,7 +40,7 @@ export default async function PersonnagesPage({
             }
         >
             {currentView === "cards" ? (
-                <ul className="grid gap-6 lg:grid-cols-2">
+                <PixieGrid as="ul" maxColumns={2} minItemWidth="lg" gap="md">
                     {personnages.map((personnage) => {
                         const fiche = getFichePersonnageBySlug(personnage.slug);
 
@@ -52,7 +53,7 @@ export default async function PersonnagesPage({
                             </li>
                         ) : null;
                     })}
-                </ul>
+                </PixieGrid>
             ) : (
                 <ul className="space-y-3">
                     {personnages.map((personnage, index) => (
