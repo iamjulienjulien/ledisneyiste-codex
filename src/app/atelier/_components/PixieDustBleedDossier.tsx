@@ -14,7 +14,7 @@ import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieContainer } from "@/components/ui/PixieContainer";
 import { PixieFrame } from "@/components/ui/PixieFrame";
 import { PixieDustRail } from "@/components/ui/PixieDustRail";
-import { PixieDustSection } from "@/components/ui/PixieDustSection";
+import { PixieSection } from "@/components/ui/PixieSection";
 import { PixieStack } from "@/components/ui/PixieStack";
 import { PixieDustBleedPlayground } from "./PixieDustBleedPlayground";
 
@@ -550,7 +550,7 @@ export function PixieDustBleedDossier() {
                 />
 
                 <div className="mt-7 min-w-0 overflow-hidden border border-line bg-canvas py-8">
-                    <PixieDustSection
+                    <PixieSection
                         width="42"
                         gutter="lg"
                         spacing="md"
@@ -595,7 +595,7 @@ export function PixieDustBleedDossier() {
                                 ))}
                             </PixieDustRail>
                         </PixieDustBleed>
-                    </PixieDustSection>
+                    </PixieSection>
                 </div>
             </section>
 

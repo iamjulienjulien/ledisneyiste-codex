@@ -4,7 +4,7 @@ import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTa
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieCard } from "@/components/ui/PixieCard";
-import { PixieDustSection } from "@/components/ui/PixieDustSection";
+import { PixieSection } from "@/components/ui/PixieSection";
 import { PixieStack } from "@/components/ui/PixieStack";
 import {
     PixieDustSwitcher,
@@ -586,7 +586,7 @@ export function PixieDustSwitcherDossier() {
                 />
 
                 <div className="mt-7 border border-line bg-canvas">
-                    <PixieDustSection
+                    <PixieSection
                         width="72"
                         gutter="lg"
                         spacing="lg"
@@ -614,7 +614,7 @@ export function PixieDustSwitcherDossier() {
                                 </div>
                             ))}
                         </PixieDustSwitcher>
-                    </PixieDustSection>
+                    </PixieSection>
                 </div>
             </section>
 

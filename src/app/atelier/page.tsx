@@ -12,7 +12,7 @@ import { PixieBackdropDossier } from "./_components/PixieBackdropDossier";
 import { PixieContainerDossier } from "./_components/PixieContainerDossier";
 import { PixieStackDossier } from "./_components/PixieStackDossier";
 import { PixieClusterDossier } from "./_components/PixieClusterDossier";
-import { PixieDustSectionDossier } from "./_components/PixieDustSectionDossier";
+import { PixieSectionDossier } from "./_components/PixieSectionDossier";
 import { PixieDustGridDossier } from "./_components/PixieDustGridDossier";
 import { PixieDustSplitDossier } from "./_components/PixieDustSplitDossier";
 import { PixieDustSidebarDossier } from "./_components/PixieDustSidebarDossier";
@@ -245,10 +245,10 @@ const montage = [
         href: "#pixie-cluster",
     },
     {
-        nom: "PixieDustSection",
+        nom: "PixieSection",
         role: "Composer une séquence éditoriale complète",
-        statut: "Esquisse",
-        href: "#pixie-dust-section",
+        statut: "Prêt à projeter",
+        href: "#pixie-section",
     },
     {
         nom: "PixieDustGrid",
@@ -765,11 +765,12 @@ export default function AtelierPage() {
                     <p className="mt-5 leading-7 text-ink-soft">
                         Largeurs, espacements et distributions transforment les
                         éléments isolés en séquences lisibles. PixieContainer
-                        ouvre le cadre, PixieStack règle le rythme vertical et
-                        PixieCluster rassemble désormais les groupes repliables.
-                        Les huit esquisses suivantes organiseront les autres
-                        distributions sans imposer de surface, de couleur ni
-                        d’interaction.
+                        ouvre le cadre, PixieStack règle le rythme vertical,
+                        PixieCluster rassemble les groupes repliables et
+                        PixieSection compose désormais les séquences éditoriales
+                        complètes. Les sept esquisses suivantes organiseront les
+                        autres distributions sans imposer de surface, de couleur
+                        ni d’interaction.
                     </p>
                 </div>
 
@@ -826,7 +827,7 @@ export default function AtelierPage() {
                 <PixieContainerDossier />
                 <PixieStackDossier />
                 <PixieClusterDossier />
-                <PixieDustSectionDossier />
+                <PixieSectionDossier />
                 <PixieDustGridDossier />
                 <PixieDustSplitDossier />
                 <PixieDustSidebarDossier />

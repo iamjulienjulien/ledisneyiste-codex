@@ -8,15 +8,15 @@ import { PixieBackdrop } from "@/components/ui/PixieBackdrop";
 import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieCluster } from "@/components/ui/PixieCluster";
 import {
-    PixieDustSection,
-    type PixieDustSectionAlign,
-    type PixieDustSectionGap,
-    type PixieDustSectionGutter,
-    type PixieDustSectionSpacing,
-    type PixieDustSectionWidth,
-} from "@/components/ui/PixieDustSection";
+    PixieSection,
+    type PixieSectionAlign,
+    type PixieSectionGap,
+    type PixieSectionGutter,
+    type PixieSectionSpacing,
+    type PixieSectionWidth,
+} from "@/components/ui/PixieSection";
 import { PixieStack } from "@/components/ui/PixieStack";
-import { PixieDustSectionPlayground } from "./PixieDustSectionPlayground";
+import { PixieSectionPlayground } from "./PixieSectionPlayground";
 
 const spacings = [
     {
@@ -51,7 +51,7 @@ const spacings = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustSectionSpacing;
+    value: PixieSectionSpacing;
     token: string;
     role: string;
 }>[];
@@ -67,7 +67,7 @@ const widths = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustSectionWidth;
+    value: PixieSectionWidth;
     token: string;
 }>[];
 
@@ -82,7 +82,7 @@ const gutters = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustSectionGutter;
+    value: PixieSectionGutter;
     token: string;
 }>[];
 
@@ -95,7 +95,7 @@ const gaps = [
     { name: "Très grand", value: "xl" as const, token: "3 rem" },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustSectionGap;
+    value: PixieSectionGap;
     token: string;
 }>[];
 
@@ -106,56 +106,56 @@ const alignments = [
     { name: "Fin", value: "end" as const },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustSectionAlign;
+    value: PixieSectionAlign;
 }>[];
 
 const properties = [
     {
         name: "as",
-        type: "PixieDustSectionElement",
+        type: "PixieSectionElement",
         defaultValue: '"section"',
         description: "Structure documentaire externe de la séquence.",
     },
     {
         name: "width",
-        type: "PixieDustSectionWidth",
+        type: "PixieSectionWidth",
         defaultValue: '"72"',
         description: "Largeur transmise au Container interne.",
     },
     {
         name: "gutter",
-        type: "PixieDustSectionGutter",
+        type: "PixieSectionGutter",
         defaultValue: '"md"',
         description: "Protection horizontale transmise au Container.",
     },
     {
         name: "spacing",
-        type: "PixieDustSectionSpacing",
+        type: "PixieSectionSpacing",
         defaultValue: '"lg"',
         description:
             "Respiration verticale de référence autour de la séquence.",
     },
     {
         name: "spacingStart",
-        type: "PixieDustSectionSpacing",
+        type: "PixieSectionSpacing",
         defaultValue: "spacing",
         description: "Surcharge logique de la respiration d’ouverture.",
     },
     {
         name: "spacingEnd",
-        type: "PixieDustSectionSpacing",
+        type: "PixieSectionSpacing",
         defaultValue: "spacing",
         description: "Surcharge logique de la respiration de fermeture.",
     },
     {
         name: "gap",
-        type: "PixieDustSectionGap",
+        type: "PixieSectionGap",
         defaultValue: '"lg"',
         description: "Rythme transmis au Stack interne.",
     },
     {
         name: "align",
-        type: "PixieDustSectionAlign",
+        type: "PixieSectionAlign",
         defaultValue: '"stretch"',
         description: "Alignement transmis au Stack interne.",
     },
@@ -175,32 +175,32 @@ const properties = [
 
 const specificTypes = [
     {
-        name: "PixieDustSectionElement",
+        name: "PixieSectionElement",
         values: ['"section"', '"article"', '"div"'],
         description: "Structures documentaires autorisées.",
     },
     {
-        name: "PixieDustSectionWidth",
+        name: "PixieSectionWidth",
         values: ['"42"', '"56"', '"72"', '"full"'],
         description: "Alias du contrat de largeur de Container.",
     },
     {
-        name: "PixieDustSectionGutter",
+        name: "PixieSectionGutter",
         values: ['"none"', '"sm"', '"md"', '"lg"'],
         description: "Alias du contrat de gouttière de Container.",
     },
     {
-        name: "PixieDustSectionSpacing",
+        name: "PixieSectionSpacing",
         values: ['"none"', '"sm"', '"md"', '"lg"', '"xl"'],
         description: "Respirations verticales propres à la séquence.",
     },
     {
-        name: "PixieDustSectionGap",
+        name: "PixieSectionGap",
         values: ['"none"', '"xs"', '"sm"', '"md"', '"lg"', '"xl"'],
         description: "Alias du contrat de rythme de Stack.",
     },
     {
-        name: "PixieDustSectionAlign",
+        name: "PixieSectionAlign",
         values: ['"stretch"', '"start"', '"center"', '"end"'],
         description: "Alias du contrat d’alignement de Stack.",
     },
@@ -261,12 +261,12 @@ function SectionPlan({
     );
 }
 
-export function PixieDustSectionDossier() {
+export function PixieSectionDossier() {
     return (
         <AtelierFicheAccessoire
-            id="pixie-dust-section"
-            labelledBy="pixie-dust-section-title"
-            nom="PixieDustSection"
+            id="pixie-section"
+            labelledBy="pixie-section-title"
+            nom="PixieSection"
             className="mt-16 scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
@@ -275,10 +275,10 @@ export function PixieDustSectionDossier() {
                             Le clap · Montage 004
                         </p>
                         <h2
-                            id="pixie-dust-section-title"
+                            id="pixie-section-title"
                             className="mt-4 text-4xl text-ink sm:text-5xl"
                         >
-                            PixieDustSection
+                            PixieSection
                         </h2>
                         <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
                             Composer une séquence éditoriale complète en
@@ -292,7 +292,7 @@ export function PixieDustSectionDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.2.0
+                                1.0.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -300,7 +300,7 @@ export function PixieDustSectionDossier() {
                                 État
                             </dt>
                             <dd className="mt-1 text-sm font-medium">
-                                <AtelierStatut statut="Esquisse" />
+                                <AtelierStatut statut="Prêt à projeter" />
                             </dd>
                         </div>
                     </dl>
@@ -361,7 +361,7 @@ export function PixieDustSectionDossier() {
 
                 <div className="mt-7 border border-accent/60 bg-canvas p-4 sm:p-6">
                     <p className="font-mono text-xs text-accent">
-                        PixieDustSection · spacing
+                        PixieSection · spacing
                     </p>
                     <div className="mt-4 border border-line-strong bg-surface-muted p-4 sm:p-6">
                         <p className="font-mono text-xs text-accent">
@@ -394,7 +394,7 @@ export function PixieDustSectionDossier() {
 
                 <div className="mt-7 grid border border-line xl:grid-cols-2">
                     <div className="bg-canvas">
-                        <PixieDustSection
+                        <PixieSection
                             width="56"
                             gutter="lg"
                             spacing="lg"
@@ -440,9 +440,9 @@ export function PixieDustSectionDossier() {
                                     The Skeleton Dance
                                 </h5>
                             </PixieCard>
-                        </PixieDustSection>
+                        </PixieSection>
                     </div>
-                    <CodeExample>{`<PixieDustSection
+                    <CodeExample>{`<PixieSection
     aria-labelledby="sequence-title"
     width="56"
     gutter="lg"
@@ -456,7 +456,7 @@ export function PixieDustSectionDossier() {
     <p>Introduction éditoriale.</p>
     <PixieCluster>{/* Métadonnées */}</PixieCluster>
     {/* Matière principale */}
-</PixieDustSection>`}</CodeExample>
+</PixieSection>`}</CodeExample>
                 </div>
             </section>
 
@@ -471,7 +471,7 @@ export function PixieDustSectionDossier() {
                 <div className="mt-7 grid gap-6 bg-canvas p-6 lg:grid-cols-2">
                     {spacings.map((spacing) => (
                         <Stage key={spacing.value}>
-                            <PixieDustSection
+                            <PixieSection
                                 as="div"
                                 width="full"
                                 gutter="md"
@@ -480,7 +480,7 @@ export function PixieDustSectionDossier() {
                                 className="bg-surface-muted/60"
                             >
                                 <SectionPlan label="Matière de la séquence" />
-                            </PixieDustSection>
+                            </PixieSection>
                             <div className="border-t border-line bg-surface p-4">
                                 <div className="flex flex-wrap items-baseline justify-between gap-3">
                                     <h4 className="text-lg text-ink">
@@ -532,7 +532,7 @@ export function PixieDustSectionDossier() {
                         },
                     ].map((raccord) => (
                         <Stage key={raccord.title}>
-                            <PixieDustSection
+                            <PixieSection
                                 as="div"
                                 width="full"
                                 gutter="md"
@@ -548,7 +548,7 @@ export function PixieDustSectionDossier() {
                                 <p className="text-sm leading-6 text-ink-soft">
                                     {raccord.description}
                                 </p>
-                            </PixieDustSection>
+                            </PixieSection>
                             <p className="border-t border-line bg-surface p-4 font-mono text-xs leading-6 text-accent">
                                 start=&quot;{raccord.start}&quot; · end=&quot;
                                 {raccord.end}&quot;
@@ -558,13 +558,13 @@ export function PixieDustSectionDossier() {
                 </div>
 
                 <div className="mt-8">
-                    <CodeExample>{`<PixieDustSection
+                    <CodeExample>{`<PixieSection
     spacing="md"
     spacingStart="xl"
     spacingEnd="sm"
 >
     {/* Séquence */}
-</PixieDustSection>`}</CodeExample>
+</PixieSection>`}</CodeExample>
                 </div>
             </section>
 
@@ -578,7 +578,7 @@ export function PixieDustSectionDossier() {
 
                 <div className="mt-7 space-y-6 overflow-hidden bg-canvas py-8">
                     {widths.map((width) => (
-                        <PixieDustSection
+                        <PixieSection
                             key={width.value}
                             as="div"
                             width={width.value}
@@ -596,14 +596,14 @@ export function PixieDustSectionDossier() {
                                     </code>
                                 </div>
                             </div>
-                        </PixieDustSection>
+                        </PixieSection>
                     ))}
                 </div>
 
                 <div className="mt-8 grid gap-6 bg-canvas p-6 lg:grid-cols-2">
                     {gutters.map((gutter) => (
                         <Stage key={gutter.value}>
-                            <PixieDustSection
+                            <PixieSection
                                 as="div"
                                 width="full"
                                 gutter={gutter.value}
@@ -613,7 +613,7 @@ export function PixieDustSectionDossier() {
                                 <SectionPlan
                                     label={`gutter="${gutter.value}" · ${gutter.token}`}
                                 />
-                            </PixieDustSection>
+                            </PixieSection>
                         </Stage>
                     ))}
                 </div>
@@ -630,7 +630,7 @@ export function PixieDustSectionDossier() {
                 <div className="mt-7 grid gap-6 bg-canvas p-6 md:grid-cols-2 xl:grid-cols-3">
                     {gaps.map((gap) => (
                         <Stage key={gap.value}>
-                            <PixieDustSection
+                            <PixieSection
                                 as="div"
                                 width="full"
                                 gutter="sm"
@@ -640,7 +640,7 @@ export function PixieDustSectionDossier() {
                                 <SectionPlan label="Plan A" />
                                 <SectionPlan label="Plan B" />
                                 <SectionPlan label="Plan C" />
-                            </PixieDustSection>
+                            </PixieSection>
                             <p className="border-t border-line bg-surface p-4 font-mono text-xs text-accent">
                                 {gap.name} · {gap.value} · {gap.token}
                             </p>
@@ -660,7 +660,7 @@ export function PixieDustSectionDossier() {
                 <div className="mt-7 grid gap-6 bg-canvas p-6 lg:grid-cols-2">
                     {alignments.map((alignment) => (
                         <Stage key={alignment.value}>
-                            <PixieDustSection
+                            <PixieSection
                                 as="div"
                                 width="full"
                                 gutter="md"
@@ -675,7 +675,7 @@ export function PixieDustSectionDossier() {
                                 <p className="w-full max-w-md text-sm leading-6 text-ink-soft">
                                     align=&quot;{alignment.value}&quot;
                                 </p>
-                            </PixieDustSection>
+                            </PixieSection>
                         </Stage>
                     ))}
                 </div>
@@ -699,7 +699,7 @@ export function PixieDustSectionDossier() {
                         ],
                     ].map(([element, description]) => (
                         <Stage key={element}>
-                            <PixieDustSection
+                            <PixieSection
                                 as={element as "section" | "article" | "div"}
                                 width="full"
                                 gutter="md"
@@ -715,7 +715,7 @@ export function PixieDustSectionDossier() {
                                 <p className="text-sm leading-6 text-ink-soft">
                                     {description}
                                 </p>
-                            </PixieDustSection>
+                            </PixieSection>
                         </Stage>
                     ))}
                 </div>
@@ -726,12 +726,12 @@ export function PixieDustSectionDossier() {
                     id="section-scenarios"
                     eyebrow="Scénarios préparés"
                     title="La séquence s’adapte au hall comme au chapitre"
-                    description="Ces scènes préparent les futurs contextes du Codex sans intégrer l’esquisse dans une page publique avant sa promotion."
+                    description="Ces scènes éprouvent les futurs contextes du Codex avant les migrations dédiées de ses pages publiques."
                 />
 
                 <div className="mt-7 grid gap-6 xl:grid-cols-2">
                     <Stage>
-                        <PixieDustSection
+                        <PixieSection
                             width="full"
                             gutter="md"
                             spacing="md"
@@ -774,11 +774,11 @@ export function PixieDustSectionDossier() {
                                     <SectionPlan key={year} label={year} />
                                 ))}
                             </div>
-                        </PixieDustSection>
+                        </PixieSection>
                     </Stage>
 
                     <Stage>
-                        <PixieDustSection
+                        <PixieSection
                             as="article"
                             width="42"
                             gutter="md"
@@ -822,12 +822,12 @@ export function PixieDustSectionDossier() {
                                     </PixieBadge>
                                 ))}
                             </PixieCluster>
-                        </PixieDustSection>
+                        </PixieSection>
                     </Stage>
                 </div>
 
                 <div className="mt-6 overflow-hidden border border-dashed border-line-strong bg-canvas">
-                    <PixieDustSection
+                    <PixieSection
                         as="div"
                         width="56"
                         gutter="md"
@@ -843,8 +843,8 @@ export function PixieDustSectionDossier() {
                         <h4 className="text-2xl text-ink">
                             Le récit ouvre son premier chapitre
                         </h4>
-                    </PixieDustSection>
-                    <PixieDustSection
+                    </PixieSection>
+                    <PixieSection
                         as="div"
                         width="56"
                         gutter="md"
@@ -861,7 +861,7 @@ export function PixieDustSectionDossier() {
                             Le raccord conserve la continuité sans fusionner les
                             chapitres
                         </h4>
-                    </PixieDustSection>
+                    </PixieSection>
                 </div>
             </section>
 
@@ -882,7 +882,7 @@ export function PixieDustSectionDossier() {
                     texture="grain"
                     className="mt-7"
                 >
-                    <PixieDustSection
+                    <PixieSection
                         width="56"
                         gutter="lg"
                         spacing="xl"
@@ -932,7 +932,7 @@ export function PixieDustSectionDossier() {
                                 ),
                             )}
                         </div>
-                    </PixieDustSection>
+                    </PixieSection>
                 </PixieBackdrop>
             </section>
 
@@ -962,18 +962,18 @@ export function PixieDustSectionDossier() {
             </section>
 
             <section
-                id="pixie-dust-section-playground"
+                id="pixie-section-playground"
                 aria-labelledby="section-playground-title"
                 className="mt-16 scroll-mt-8 border border-line-strong bg-surface-muted p-6 shadow-soft sm:p-8"
             >
                 <SequenceTitle
                     id="section-playground-title"
                     eyebrow="Régie"
-                    title="Composer un PixieDustSection"
+                    title="Composer un PixieSection"
                     description="Réglez sa structure, son cadre et ses deux rythmes ; le code d’utilisation suit chaque changement."
                 />
                 <div className="mt-8">
-                    <PixieDustSectionPlayground />
+                    <PixieSectionPlayground />
                 </div>
             </section>
 
@@ -1036,8 +1036,8 @@ export function PixieDustSectionDossier() {
                 <SequenceTitle
                     id="section-technical"
                     eyebrow="Générique technique"
-                    title="API de l’esquisse 0.2.0"
-                    description="Les types spécifiques sont colocalisés dans PixieDustSection.types.ts ; les contrats horizontaux et verticaux sont des alias de Container et Stack."
+                    title="API du composant 1.0.0"
+                    description="Les types spécifiques sont colocalisés dans PixieSection.types.ts ; les contrats horizontaux et verticaux sont des alias de Container et Stack."
                 />
 
                 <div className="mt-7">
@@ -1056,8 +1056,8 @@ export function PixieDustSectionDossier() {
                 <SequenceTitle
                     id="section-journal"
                     eyebrow="Journal de production"
-                    title="Décisions avant la promotion"
-                    description="L’esquisse devra remplacer les assemblages répétitifs sans devenir le nouveau cadre obligatoire de toutes les pages."
+                    title="Décisions après la promotion"
+                    description="PixieSection peut désormais remplacer les assemblages répétitifs sans devenir le nouveau cadre obligatoire de toutes les pages."
                 />
 
                 <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">

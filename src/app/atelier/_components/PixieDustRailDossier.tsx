@@ -12,7 +12,7 @@ import {
     type PixieDustRailItemWidth,
     type PixieDustRailSnap,
 } from "@/components/ui/PixieDustRail";
-import { PixieDustSection } from "@/components/ui/PixieDustSection";
+import { PixieSection } from "@/components/ui/PixieSection";
 import { PixieStack } from "@/components/ui/PixieStack";
 import { PixieDustRailPlayground } from "./PixieDustRailPlayground";
 
@@ -785,7 +785,7 @@ export function PixieDustRailDossier() {
                 />
 
                 <div className="mt-7 min-w-0 border border-line bg-canvas">
-                    <PixieDustSection
+                    <PixieSection
                         width="72"
                         gutter="lg"
                         spacing="lg"
@@ -821,7 +821,7 @@ export function PixieDustRailDossier() {
                                 </li>
                             ))}
                         </PixieDustRail>
-                    </PixieDustSection>
+                    </PixieSection>
                 </div>
             </section>
 

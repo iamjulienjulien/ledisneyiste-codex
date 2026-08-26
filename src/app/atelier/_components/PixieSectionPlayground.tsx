@@ -8,14 +8,14 @@ import { PixieBadge } from "@/components/ui/PixieBadge";
 import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieCluster } from "@/components/ui/PixieCluster";
 import {
-    PixieDustSection,
-    type PixieDustSectionAlign,
-    type PixieDustSectionElement,
-    type PixieDustSectionGap,
-    type PixieDustSectionGutter,
-    type PixieDustSectionSpacing,
-    type PixieDustSectionWidth,
-} from "@/components/ui/PixieDustSection";
+    PixieSection,
+    type PixieSectionAlign,
+    type PixieSectionElement,
+    type PixieSectionGap,
+    type PixieSectionGutter,
+    type PixieSectionSpacing,
+    type PixieSectionWidth,
+} from "@/components/ui/PixieSection";
 import { PixieStack } from "@/components/ui/PixieStack";
 
 const elements = ["section", "article", "div"] as const;
@@ -42,7 +42,7 @@ const spacings = [
     { value: "xl", label: "Très grande" },
 ] as const;
 
-type SpacingOverride = PixieDustSectionSpacing | "inherit";
+type SpacingOverride = PixieSectionSpacing | "inherit";
 
 const spacingOverrides = [
     { value: "inherit", label: "Hériter de spacing" },
@@ -71,16 +71,16 @@ const frameWidths = {
     large: "max-w-5xl",
 } as const satisfies Record<"compact" | "moyen" | "large", string>;
 
-export function PixieDustSectionPlayground() {
-    const [element, setElement] = useState<PixieDustSectionElement>("section");
-    const [width, setWidth] = useState<PixieDustSectionWidth>("72");
-    const [gutter, setGutter] = useState<PixieDustSectionGutter>("md");
-    const [spacing, setSpacing] = useState<PixieDustSectionSpacing>("lg");
+export function PixieSectionPlayground() {
+    const [element, setElement] = useState<PixieSectionElement>("section");
+    const [width, setWidth] = useState<PixieSectionWidth>("72");
+    const [gutter, setGutter] = useState<PixieSectionGutter>("md");
+    const [spacing, setSpacing] = useState<PixieSectionSpacing>("lg");
     const [spacingStart, setSpacingStart] =
         useState<SpacingOverride>("inherit");
     const [spacingEnd, setSpacingEnd] = useState<SpacingOverride>("inherit");
-    const [gap, setGap] = useState<PixieDustSectionGap>("lg");
-    const [align, setAlign] = useState<PixieDustSectionAlign>("stretch");
+    const [gap, setGap] = useState<PixieSectionGap>("lg");
+    const [align, setAlign] = useState<PixieSectionAlign>("stretch");
     const [light, setLight] = useState<"sombre" | "claire">("sombre");
     const [frame, setFrame] = useState<"compact" | "moyen" | "large">("moyen");
 
@@ -92,7 +92,7 @@ export function PixieDustSectionPlayground() {
             : `    spacingStart="${spacingStart}"\n`;
     const spacingEndProp =
         spacingEnd === "inherit" ? "" : `    spacingEnd="${spacingEnd}"\n`;
-    const code = `<PixieDustSection
+    const code = `<PixieSection
     as="${element}"
     width="${width}"
     gutter="${gutter}"
@@ -107,7 +107,7 @@ ${labelledBy}>
     <p>Une introduction éditoriale installe la séquence.</p>
     <PixieCluster>{/* Métadonnées */}</PixieCluster>
     {/* Matière principale */}
-</PixieDustSection>`;
+</PixieSection>`;
     const contentWidth = align === "stretch" ? "w-full" : "w-full max-w-2xl";
 
     return (
@@ -130,7 +130,7 @@ ${labelledBy}>
                                 onChange={(event) =>
                                     setElement(
                                         event.target
-                                            .value as PixieDustSectionElement,
+                                            .value as PixieSectionElement,
                                     )
                                 }
                                 className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink"
@@ -307,7 +307,7 @@ ${labelledBy}>
                         <div
                             className={`w-full overflow-hidden border border-dashed border-line-strong transition-[max-width] ${frameWidths[frame]}`}
                         >
-                            <PixieDustSection
+                            <PixieSection
                                 as={element}
                                 width={width}
                                 gutter={gutter}
@@ -381,7 +381,7 @@ ${labelledBy}>
                                         The Skeleton Dance
                                     </h5>
                                 </PixieCard>
-                            </PixieDustSection>
+                            </PixieSection>
                         </div>
                     </div>
 

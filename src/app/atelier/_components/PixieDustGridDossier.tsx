@@ -11,7 +11,7 @@ import {
     type PixieDustGridGap,
     type PixieDustGridMinItemWidth,
 } from "@/components/ui/PixieDustGrid";
-import { PixieDustSection } from "@/components/ui/PixieDustSection";
+import { PixieSection } from "@/components/ui/PixieSection";
 import { PixieStack } from "@/components/ui/PixieStack";
 import { PixieDustGridPlayground } from "./PixieDustGridPlayground";
 
@@ -600,7 +600,7 @@ export function PixieDustGridDossier() {
                 />
 
                 <div className="mt-7 border border-line bg-canvas">
-                    <PixieDustSection
+                    <PixieSection
                         width="72"
                         gutter="lg"
                         spacing="lg"
@@ -630,7 +630,7 @@ export function PixieDustGridDossier() {
                                     />
                                 ))}
                         </PixieDustGrid>
-                    </PixieDustSection>
+                    </PixieSection>
                 </div>
             </section>
 

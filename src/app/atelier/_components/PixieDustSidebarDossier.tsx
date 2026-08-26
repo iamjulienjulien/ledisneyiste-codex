@@ -7,7 +7,7 @@ import { PixieBadge } from "@/components/ui/PixieBadge";
 import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieCluster } from "@/components/ui/PixieCluster";
 import { PixieDustGrid } from "@/components/ui/PixieDustGrid";
-import { PixieDustSection } from "@/components/ui/PixieDustSection";
+import { PixieSection } from "@/components/ui/PixieSection";
 import {
     PixieDustSidebar,
     type PixieDustSidebarAlign,
@@ -765,7 +765,7 @@ export function PixieDustSidebarDossier() {
                 />
 
                 <div className="mt-7 border border-line bg-canvas">
-                    <PixieDustSection
+                    <PixieSection
                         width="72"
                         gutter="lg"
                         spacing="lg"
@@ -826,7 +826,7 @@ export function PixieDustSidebarDossier() {
                                 ))}
                             </PixieDustGrid>
                         </PixieDustSidebar>
-                    </PixieDustSection>
+                    </PixieSection>
                 </div>
             </section>
 
