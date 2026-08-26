@@ -920,7 +920,7 @@ export function PixiePanelDossier() {
                     {[
                         "PixieCard porte les unités répétables ; PixiePanel structure les régions durables.",
                         "Header, corps et footer couvrent les compositions sans multiplier les slots spécialisés.",
-                        "PixieDustInset peut être composé dans le panneau tout en gardant son rôle secondaire.",
+                        "PixieInset peut être composé dans le panneau tout en gardant son rôle secondaire.",
                         "Les cinq densités restent lisibles sur mobile et à 200 % de zoom.",
                         "Section, aside et article conservent leur sémantique et leur nom accessible.",
                         "Le corps défilable préserve ses repères et reste utilisable uniquement au clavier.",

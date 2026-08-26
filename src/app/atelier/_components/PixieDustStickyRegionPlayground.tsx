@@ -4,7 +4,7 @@ import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
-import { PixieDustInset } from "@/components/ui/PixieDustInset";
+import { PixieInset } from "@/components/ui/PixieInset";
 import { PixiePanel } from "@/components/ui/PixiePanel";
 import { PixieDustSidebar } from "@/components/ui/PixieDustSidebar";
 import { PixieDustStack } from "@/components/ui/PixieDustStack";
@@ -79,7 +79,7 @@ type Material = (typeof materials)[number]["value"];
 function RegionContent({ material }: Readonly<{ material: Material }>) {
     if (material === "metadata") {
         return (
-            <PixieDustInset variant="recessed" depth="medium" padding="md">
+            <PixieInset variant="recessed" depth="medium" padding="md">
                 <p className="text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
                     Repères
                 </p>
@@ -97,7 +97,7 @@ function RegionContent({ material }: Readonly<{ material: Material }>) {
                         <dd className="mt-1 text-ink">Projection originale</dd>
                     </div>
                 </dl>
-            </PixieDustInset>
+            </PixieInset>
         );
     }
 

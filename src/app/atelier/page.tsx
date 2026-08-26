@@ -7,7 +7,7 @@ import { PixieCardDossier } from "./_components/PixieCardDossier";
 import { PixiePanelDossier } from "./_components/PixiePanelDossier";
 import { PixieFrameDossier } from "./_components/PixieFrameDossier";
 import { PixieCalloutDossier } from "./_components/PixieCalloutDossier";
-import { PixieDustInsetDossier } from "./_components/PixieDustInsetDossier";
+import { PixieInsetDossier } from "./_components/PixieInsetDossier";
 import { PixieDustBackdropDossier } from "./_components/PixieDustBackdropDossier";
 import { PixieDustContainerDossier } from "./_components/PixieDustContainerDossier";
 import { PixieDustStackDossier } from "./_components/PixieDustStackDossier";
@@ -148,10 +148,10 @@ const decors = [
         href: "#pixie-callout",
     },
     {
-        nom: "PixieDustInset",
+        nom: "PixieInset",
         role: "Creuser une zone d’information secondaire",
-        statut: "Esquisse",
-        href: "#pixie-dust-inset",
+        statut: "Prêt à projeter",
+        href: "#pixie-inset",
     },
     {
         nom: "PixieDustBackdrop",
@@ -585,7 +585,7 @@ export default function AtelierPage() {
                         PixieCard accueille les unités répétables et PixiePanel
                         structure les sections. PixieFrame met les médias en
                         scène, PixieCallout éclaire les annotations éditoriales
-                        et PixieDustInset place les informations secondaires en
+                        et PixieInset place les informations secondaires en
                         retrait. PixieDustBackdrop installe enfin une atmosphère
                         derrière les compositions complètes.
                     </p>
@@ -645,7 +645,7 @@ export default function AtelierPage() {
                 <PixiePanelDossier />
                 <PixieFrameDossier />
                 <PixieCalloutDossier />
-                <PixieDustInsetDossier />
+                <PixieInsetDossier />
                 <PixieDustBackdropDossier />
             </section>
 

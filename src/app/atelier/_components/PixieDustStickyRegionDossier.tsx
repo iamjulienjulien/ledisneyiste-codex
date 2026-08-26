@@ -3,7 +3,7 @@ import { AtelierFicheAccessoire } from "@/components/atelier/AtelierFicheAccesso
 import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
-import { PixieDustInset } from "@/components/ui/PixieDustInset";
+import { PixieInset } from "@/components/ui/PixieInset";
 import { PixiePanel } from "@/components/ui/PixiePanel";
 import { PixieDustSidebar } from "@/components/ui/PixieDustSidebar";
 import { PixieDustStack } from "@/components/ui/PixieDustStack";
@@ -459,17 +459,14 @@ export function PixieDustStickyRegionDossier() {
                                 height="h-72"
                             >
                                 <PixieDustStickyRegion offset={offset.value}>
-                                    <PixieDustInset
-                                        variant="recessed"
-                                        padding="md"
-                                    >
+                                    <PixieInset variant="recessed" padding="md">
                                         <p className="font-mono text-xs text-accent">
                                             offset=&quot;{offset.value}&quot;
                                         </p>
                                         <p className="mt-3 text-sm text-ink-soft">
                                             Ligne d’arrêt · {offset.token}
                                         </p>
-                                    </PixieDustInset>
+                                    </PixieInset>
                                 </PixieDustStickyRegion>
                                 <div className="mt-6">
                                     <Story count={4} />
@@ -493,7 +490,7 @@ export function PixieDustStickyRegionDossier() {
                         <SummaryPanel title="Sommaire local" />
                     </article>
                     <article className="bg-canvas p-6">
-                        <PixieDustInset variant="recessed" padding="md">
+                        <PixieInset variant="recessed" padding="md">
                             <p className="text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
                                 Métadonnées
                             </p>
@@ -509,7 +506,7 @@ export function PixieDustStickyRegionDossier() {
                                     </dd>
                                 </div>
                             </dl>
-                        </PixieDustInset>
+                        </PixieInset>
                     </article>
                     <article className="bg-canvas p-6">
                         <PixiePanel variant="accent" padding="md">

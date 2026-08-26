@@ -976,7 +976,7 @@ export function PixieCalloutDossier() {
                         "Grain, halo et projector restent décoratifs dans les deux Lumières, à l’impression et en contraste forcé.",
                         "Aside, section et div conservent la responsabilité de leur nom et de leur rôle accessibles.",
                         "Les contenus longs, les positions logiques et les liens restent utilisables à 200 % de zoom.",
-                        "PixieCallout porte les annotations éditoriales ; PixieDustInset et les retours système gardent leurs propres responsabilités.",
+                        "PixieCallout porte les annotations éditoriales ; PixieInset et les retours système gardent leurs propres responsabilités.",
                     ].map((decision) => (
                         <li
                             key={decision}

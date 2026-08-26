@@ -5,17 +5,17 @@ import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import {
-    PixieDustInset,
-    type PixieDustInsetAccentPosition,
-    type PixieDustInsetColor,
-    type PixieDustInsetDepth,
-    type PixieDustInsetElement,
-    type PixieDustInsetPadding,
-    type PixieDustInsetRadius,
-    type PixieDustInsetTexture,
-    type PixieDustInsetTextureIntensity,
-    type PixieDustInsetVariant,
-} from "@/components/ui/PixieDustInset";
+    PixieInset,
+    type PixieInsetAccentPosition,
+    type PixieInsetColor,
+    type PixieInsetDepth,
+    type PixieInsetElement,
+    type PixieInsetPadding,
+    type PixieInsetRadius,
+    type PixieInsetTexture,
+    type PixieInsetTextureIntensity,
+    type PixieInsetVariant,
+} from "@/components/ui/PixieInset";
 import {
     getAtelierAnimationColor,
     getAtelierAnimationColorSlugs,
@@ -55,18 +55,18 @@ const frameWidths = {
 const selectClassName =
     "mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink";
 
-export function PixieDustInsetPlayground() {
-    const [element, setElement] = useState<PixieDustInsetElement>("div");
-    const [variant, setVariant] = useState<PixieDustInsetVariant>("accent");
-    const [depth, setDepth] = useState<PixieDustInsetDepth>("medium");
-    const [padding, setPadding] = useState<PixieDustInsetPadding>("md");
-    const [radius, setRadius] = useState<PixieDustInsetRadius>("medium");
-    const [color, setColor] = useState<PixieDustInsetColor>("ambre-projecteur");
+export function PixieInsetPlayground() {
+    const [element, setElement] = useState<PixieInsetElement>("div");
+    const [variant, setVariant] = useState<PixieInsetVariant>("accent");
+    const [depth, setDepth] = useState<PixieInsetDepth>("medium");
+    const [padding, setPadding] = useState<PixieInsetPadding>("md");
+    const [radius, setRadius] = useState<PixieInsetRadius>("medium");
+    const [color, setColor] = useState<PixieInsetColor>("ambre-projecteur");
     const [accentPosition, setAccentPosition] =
-        useState<PixieDustInsetAccentPosition>("start");
-    const [texture, setTexture] = useState<PixieDustInsetTexture>("grain");
+        useState<PixieInsetAccentPosition>("start");
+    const [texture, setTexture] = useState<PixieInsetTexture>("grain");
     const [textureIntensity, setTextureIntensity] =
-        useState<PixieDustInsetTextureIntensity>("subtle");
+        useState<PixieInsetTextureIntensity>("subtle");
     const [light, setLight] = useState<"sombre" | "claire">("sombre");
     const [frame, setFrame] = useState<"compact" | "moyen" | "large">("moyen");
 
@@ -85,7 +85,7 @@ export function PixieDustInsetPlayground() {
         element !== "div" ? '    aria-labelledby="inset-heading"' : null,
     ].filter((line): line is string => line !== null);
 
-    const code = `<PixieDustInset\n${props.join("\n")}\n>\n    <h3 id="inset-heading">Repères de consultation</h3>\n    <p>Première projection : 18 novembre 1928</p>\n</PixieDustInset>`;
+    const code = `<PixieInset\n${props.join("\n")}\n>\n    <h3 id="inset-heading">Repères de consultation</h3>\n    <p>Première projection : 18 novembre 1928</p>\n</PixieInset>`;
 
     function selectColor(value: string) {
         setColor(
@@ -112,8 +112,7 @@ export function PixieDustInsetPlayground() {
                                 value={element}
                                 onChange={(event) =>
                                     setElement(
-                                        event.target
-                                            .value as PixieDustInsetElement,
+                                        event.target.value as PixieInsetElement,
                                     )
                                 }
                                 className={`${selectClassName} font-mono`}
@@ -172,8 +171,7 @@ export function PixieDustInsetPlayground() {
                                 value={padding}
                                 onChange={(event) =>
                                     setPadding(
-                                        event.target
-                                            .value as PixieDustInsetPadding,
+                                        event.target.value as PixieInsetPadding,
                                     )
                                 }
                                 className={selectClassName}
@@ -198,8 +196,7 @@ export function PixieDustInsetPlayground() {
                                 value={radius}
                                 onChange={(event) =>
                                     setRadius(
-                                        event.target
-                                            .value as PixieDustInsetRadius,
+                                        event.target.value as PixieInsetRadius,
                                     )
                                 }
                                 className={selectClassName}
@@ -249,7 +246,7 @@ export function PixieDustInsetPlayground() {
                                 onChange={(event) =>
                                     setAccentPosition(
                                         event.target
-                                            .value as PixieDustInsetAccentPosition,
+                                            .value as PixieInsetAccentPosition,
                                     )
                                 }
                                 disabled={variant !== "accent"}
@@ -275,8 +272,7 @@ export function PixieDustInsetPlayground() {
                                 value={texture}
                                 onChange={(event) =>
                                     setTexture(
-                                        event.target
-                                            .value as PixieDustInsetTexture,
+                                        event.target.value as PixieInsetTexture,
                                     )
                                 }
                                 className={selectClassName}
@@ -302,7 +298,7 @@ export function PixieDustInsetPlayground() {
                                 onChange={(event) =>
                                     setTextureIntensity(
                                         event.target
-                                            .value as PixieDustInsetTextureIntensity,
+                                            .value as PixieInsetTextureIntensity,
                                     )
                                 }
                                 disabled={texture === "none"}
@@ -341,7 +337,7 @@ export function PixieDustInsetPlayground() {
                                     pendant que les repères se placent en
                                     retrait.
                                 </p>
-                                <PixieDustInset
+                                <PixieInset
                                     as={element}
                                     variant={variant}
                                     depth={depth}
@@ -382,7 +378,7 @@ export function PixieDustInsetPlayground() {
                                             </dd>
                                         </div>
                                     </dl>
-                                </PixieDustInset>
+                                </PixieInset>
                             </div>
                         </div>
                     </div>

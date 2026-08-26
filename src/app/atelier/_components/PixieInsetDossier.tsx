@@ -5,17 +5,17 @@ import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieCallout } from "@/components/ui/PixieCallout";
 import { PixieCard } from "@/components/ui/PixieCard";
 import {
-    PixieDustInset,
-    type PixieDustInsetAccentPosition,
-    type PixieDustInsetDepth,
-    type PixieDustInsetPadding,
-    type PixieDustInsetRadius,
-    type PixieDustInsetTexture,
-    type PixieDustInsetTextureIntensity,
-    type PixieDustInsetVariant,
-} from "@/components/ui/PixieDustInset";
+    PixieInset,
+    type PixieInsetAccentPosition,
+    type PixieInsetDepth,
+    type PixieInsetPadding,
+    type PixieInsetRadius,
+    type PixieInsetTexture,
+    type PixieInsetTextureIntensity,
+    type PixieInsetVariant,
+} from "@/components/ui/PixieInset";
 import { PixiePanel } from "@/components/ui/PixiePanel";
-import { PixieDustInsetPlayground } from "./PixieDustInsetPlayground";
+import { PixieInsetPlayground } from "./PixieInsetPlayground";
 
 const variants = [
     {
@@ -50,7 +50,7 @@ const variants = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustInsetVariant;
+    value: PixieInsetVariant;
     description: string;
 }>[];
 
@@ -77,7 +77,7 @@ const depths = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustInsetDepth;
+    value: PixieInsetDepth;
     description: string;
 }>[];
 
@@ -89,7 +89,7 @@ const paddings = [
     { name: "Très grand", value: "xl" as const, token: "2,5 rem" },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustInsetPadding;
+    value: PixieInsetPadding;
     token: string;
 }>[];
 
@@ -100,7 +100,7 @@ const radii = [
     { name: "Grand", value: "large" as const },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustInsetRadius;
+    value: PixieInsetRadius;
 }>[];
 
 const accentPositions = [
@@ -110,7 +110,7 @@ const accentPositions = [
     { name: "Début", value: "start" as const },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustInsetAccentPosition;
+    value: PixieInsetAccentPosition;
 }>[];
 
 const textures = [
@@ -136,7 +136,7 @@ const textures = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustInsetTexture;
+    value: PixieInsetTexture;
     description: string;
 }>[];
 
@@ -146,61 +146,61 @@ const textureIntensities = [
     { name: "Forte", value: "strong" as const },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustInsetTextureIntensity;
+    value: PixieInsetTextureIntensity;
 }>[];
 
 const properties = [
     {
         name: "as",
-        type: "PixieDustInsetElement",
+        type: "PixieInsetElement",
         defaultValue: '"div"',
         description: "Élément HTML porté par la zone secondaire.",
     },
     {
         name: "variant",
-        type: "PixieDustInsetVariant",
+        type: "PixieInsetVariant",
         defaultValue: '"recessed"',
         description: "Traitement visuel de la découpe.",
     },
     {
         name: "depth",
-        type: "PixieDustInsetDepth",
+        type: "PixieInsetDepth",
         defaultValue: '"medium"',
         description: "Intensité de la profondeur intérieure.",
     },
     {
         name: "padding",
-        type: "PixieDustInsetPadding",
+        type: "PixieInsetPadding",
         defaultValue: '"md"',
         description: "Espacement intérieur de la zone.",
     },
     {
         name: "radius",
-        type: "PixieDustInsetRadius",
+        type: "PixieInsetRadius",
         defaultValue: '"medium"',
         description: "Arrondi de la découpe.",
     },
     {
         name: "color",
-        type: "PixieDustInsetColor",
+        type: "PixieInsetColor",
         defaultValue: "false",
         description: "Couleur du registre ou accent courant du thème.",
     },
     {
         name: "accentPosition",
-        type: "PixieDustInsetAccentPosition",
+        type: "PixieInsetAccentPosition",
         defaultValue: '"start"',
         description: "Côté portant l’arête du variant accent.",
     },
     {
         name: "texture",
-        type: "PixieDustInsetTexture",
+        type: "PixieInsetTexture",
         defaultValue: '"none"',
         description: "Matière décorative fixe déposée dans la sous-zone.",
     },
     {
         name: "textureIntensity",
-        type: "PixieDustInsetTextureIntensity",
+        type: "PixieInsetTextureIntensity",
         defaultValue: '"medium"',
         description: "Présence visuelle de la texture choisie.",
     },
@@ -220,12 +220,12 @@ const properties = [
 
 const specificTypes = [
     {
-        name: "PixieDustInsetElement",
+        name: "PixieInsetElement",
         values: ['"div"', '"section"', '"aside"'],
         description: "Structures documentaires autorisées.",
     },
     {
-        name: "PixieDustInsetVariant",
+        name: "PixieInsetVariant",
         values: [
             '"plain"',
             '"subtle"',
@@ -237,37 +237,37 @@ const specificTypes = [
         description: "Traitements visuels de la zone creusée.",
     },
     {
-        name: "PixieDustInsetDepth",
+        name: "PixieInsetDepth",
         values: ['"none"', '"shallow"', '"medium"', '"deep"'],
         description: "Intensités de l’ombre intérieure.",
     },
     {
-        name: "PixieDustInsetPadding",
+        name: "PixieInsetPadding",
         values: ['"none"', '"sm"', '"md"', '"lg"', '"xl"'],
         description: "Densités intérieures disponibles.",
     },
     {
-        name: "PixieDustInsetRadius",
+        name: "PixieInsetRadius",
         values: ['"none"', '"small"', '"medium"', '"large"'],
         description: "Rayons disponibles dans la Projection Originale.",
     },
     {
-        name: "PixieDustInsetColor",
+        name: "PixieInsetColor",
         values: ["AtelierAnimationColorSlug", "false"],
         description: "Couleur enregistrée ou accent courant du thème.",
     },
     {
-        name: "PixieDustInsetAccentPosition",
+        name: "PixieInsetAccentPosition",
         values: ['"top"', '"end"', '"bottom"', '"start"'],
         description: "Positions logiques de l’arête colorée.",
     },
     {
-        name: "PixieDustInsetTexture",
+        name: "PixieInsetTexture",
         values: ['"none"', '"grain"', '"grid"', '"crosshatch"'],
         description: "Matières statiques disponibles.",
     },
     {
-        name: "PixieDustInsetTextureIntensity",
+        name: "PixieInsetTextureIntensity",
         values: ['"subtle"', '"medium"', '"strong"'],
         description: "Niveaux de présence des textures.",
     },
@@ -326,12 +326,12 @@ function SecondaryMetadata() {
     );
 }
 
-export function PixieDustInsetDossier() {
+export function PixieInsetDossier() {
     return (
         <AtelierFicheAccessoire
-            id="pixie-dust-inset"
-            labelledBy="pixie-dust-inset-title"
-            nom="PixieDustInset"
+            id="pixie-inset"
+            labelledBy="pixie-inset-title"
+            nom="PixieInset"
             className="mt-16 scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
@@ -340,10 +340,10 @@ export function PixieDustInsetDossier() {
                             Le clap · Décor 005
                         </p>
                         <h2
-                            id="pixie-dust-inset-title"
+                            id="pixie-inset-title"
                             className="mt-4 text-4xl text-ink sm:text-5xl"
                         >
-                            PixieDustInset
+                            PixieInset
                         </h2>
                         <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
                             Creuser une zone d’information secondaire sans
@@ -357,7 +357,7 @@ export function PixieDustInsetDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.2.0
+                                1.0.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -365,7 +365,7 @@ export function PixieDustInsetDossier() {
                                 État
                             </dt>
                             <dd className="mt-1 text-sm font-medium">
-                                <AtelierStatut statut="Esquisse" />
+                                <AtelierStatut statut="Prêt à projeter" />
                             </dd>
                         </div>
                     </dl>
@@ -445,7 +445,7 @@ export function PixieDustInsetDossier() {
                                 Le son synchronisé devient ici une mécanique de
                                 jeu et donne au mouvement un nouveau rythme.
                             </p>
-                            <PixieDustInset
+                            <PixieInset
                                 variant="accent"
                                 color="ambre-projecteur"
                                 accentPosition="start"
@@ -454,10 +454,10 @@ export function PixieDustInsetDossier() {
                                 className="mt-7"
                             >
                                 <SecondaryMetadata />
-                            </PixieDustInset>
+                            </PixieInset>
                         </PixiePanel>
                     </div>
-                    <CodeExample>{`<PixieDustInset
+                    <CodeExample>{`<PixieInset
     variant="accent"
     depth="medium"
     color="ambre-projecteur"
@@ -466,7 +466,7 @@ export function PixieDustInsetDossier() {
     textureIntensity="subtle"
 >
     <MetadataList />
-</PixieDustInset>`}</CodeExample>
+</PixieInset>`}</CodeExample>
                 </div>
             </section>
 
@@ -484,7 +484,7 @@ export function PixieDustInsetDossier() {
 
                 <div className="mt-7 grid gap-6 bg-surface p-6 lg:grid-cols-2">
                     {variants.map((variant) => (
-                        <PixieDustInset
+                        <PixieInset
                             key={variant.value}
                             variant={variant.value}
                             color="violet-ombre-portee"
@@ -498,7 +498,7 @@ export function PixieDustInsetDossier() {
                             <p className="mt-3 leading-7 text-ink-soft">
                                 {variant.description}
                             </p>
-                        </PixieDustInset>
+                        </PixieInset>
                     ))}
                 </div>
             </section>
@@ -513,7 +513,7 @@ export function PixieDustInsetDossier() {
 
                 <div className="mt-7 grid gap-6 bg-surface p-6 lg:grid-cols-3">
                     {depths.map((depth) => (
-                        <PixieDustInset
+                        <PixieInset
                             key={depth.value}
                             variant="recessed"
                             depth={depth.value}
@@ -528,7 +528,7 @@ export function PixieDustInsetDossier() {
                             <p className="mt-3 leading-7 text-ink-soft">
                                 {depth.description}
                             </p>
-                        </PixieDustInset>
+                        </PixieInset>
                     ))}
                 </div>
             </section>
@@ -547,7 +547,7 @@ export function PixieDustInsetDossier() {
                         <p className="mt-3 leading-7 text-ink-soft">
                             Les données annexes restent liées à l’unité.
                         </p>
-                        <PixieDustInset
+                        <PixieInset
                             variant="subtle"
                             depth="shallow"
                             padding="sm"
@@ -556,7 +556,7 @@ export function PixieDustInsetDossier() {
                             <p className="text-sm text-ink-soft">
                                 Collection · Mickey Mouse
                             </p>
-                        </PixieDustInset>
+                        </PixieInset>
                     </PixieCard>
 
                     <PixiePanel as="div" variant="surface" padding="md">
@@ -564,7 +564,7 @@ export function PixieDustInsetDossier() {
                         <p className="mt-3 leading-7 text-ink-soft">
                             Une sous-zone organise les repères techniques.
                         </p>
-                        <PixieDustInset
+                        <PixieInset
                             variant="recessed"
                             padding="sm"
                             className="mt-5"
@@ -572,7 +572,7 @@ export function PixieDustInsetDossier() {
                             <p className="text-sm text-ink-soft">
                                 4 relations documentées
                             </p>
-                        </PixieDustInset>
+                        </PixieInset>
                     </PixiePanel>
 
                     <PixieCallout
@@ -584,7 +584,7 @@ export function PixieDustInsetDossier() {
                         <p>
                             La précision conserve un dernier niveau de détail.
                         </p>
-                        <PixieDustInset
+                        <PixieInset
                             variant="accent"
                             color="vert-cellulo"
                             padding="sm"
@@ -593,7 +593,7 @@ export function PixieDustInsetDossier() {
                             <p className="text-sm text-ink-soft">
                                 Source consultée le 23 août 2026
                             </p>
-                        </PixieDustInset>
+                        </PixieInset>
                     </PixieCallout>
                 </div>
             </section>
@@ -608,7 +608,7 @@ export function PixieDustInsetDossier() {
 
                 <div className="mt-7 grid gap-5 bg-surface p-6 sm:grid-cols-2 xl:grid-cols-4">
                     {accentPositions.map((position) => (
-                        <PixieDustInset
+                        <PixieInset
                             key={position.value}
                             variant="accent"
                             depth="shallow"
@@ -623,7 +623,7 @@ export function PixieDustInsetDossier() {
                             <p className="mt-4 leading-7 text-ink-soft">
                                 Accent placé en {position.name.toLowerCase()}.
                             </p>
-                        </PixieDustInset>
+                        </PixieInset>
                     ))}
                 </div>
             </section>
@@ -638,7 +638,7 @@ export function PixieDustInsetDossier() {
 
                 <div className="mt-7 grid gap-5 bg-surface p-6 md:grid-cols-2">
                     {textures.map((texture, index) => (
-                        <PixieDustInset
+                        <PixieInset
                             key={texture.value}
                             variant={
                                 texture.value === "none" ? "recessed" : "tinted"
@@ -663,13 +663,13 @@ export function PixieDustInsetDossier() {
                             <p className="mt-3 leading-7 text-ink-soft">
                                 {texture.description}
                             </p>
-                        </PixieDustInset>
+                        </PixieInset>
                     ))}
                 </div>
 
                 <div className="mt-6 grid gap-5 sm:grid-cols-3">
                     {textureIntensities.map((intensity) => (
-                        <PixieDustInset
+                        <PixieInset
                             key={intensity.value}
                             variant="subtle"
                             depth="none"
@@ -684,7 +684,7 @@ export function PixieDustInsetDossier() {
                             <p className="mt-2 text-sm text-ink-soft">
                                 Intensité {intensity.name.toLowerCase()}
                             </p>
-                        </PixieDustInset>
+                        </PixieInset>
                     ))}
                 </div>
             </section>
@@ -705,14 +705,14 @@ export function PixieDustInsetDossier() {
                         <h4 className="mt-3 text-2xl text-ink">
                             Une lecture rapide de l’œuvre
                         </h4>
-                        <PixieDustInset
+                        <PixieInset
                             variant="recessed"
                             depth="shallow"
                             padding="md"
                             className="mt-6"
                         >
                             <SecondaryMetadata />
-                        </PixieDustInset>
+                        </PixieInset>
                     </PixiePanel>
 
                     <PixieCard as="article" variant="outline" padding="lg">
@@ -722,7 +722,7 @@ export function PixieDustInsetDossier() {
                         <h4 className="mt-3 text-2xl text-ink">
                             La mécanique derrière le plan
                         </h4>
-                        <PixieDustInset
+                        <PixieInset
                             variant="tinted"
                             color="bleu-reperage"
                             texture="grid"
@@ -742,7 +742,7 @@ export function PixieDustInsetDossier() {
                                     </dd>
                                 </div>
                             </dl>
-                        </PixieDustInset>
+                        </PixieInset>
                     </PixieCard>
 
                     <PixieCallout
@@ -755,7 +755,7 @@ export function PixieDustInsetDossier() {
                             Le Callout porte l’information importante ; l’Inset
                             n’en conserve que la trace de consultation.
                         </p>
-                        <PixieDustInset
+                        <PixieInset
                             variant="plain"
                             depth="shallow"
                             padding="sm"
@@ -764,7 +764,7 @@ export function PixieDustInsetDossier() {
                             <p className="text-sm text-ink-soft">
                                 Catalogue D23 · consultation du 23 août 2026
                             </p>
-                        </PixieDustInset>
+                        </PixieInset>
                     </PixieCallout>
 
                     <PixiePanel as="article" variant="outline" padding="lg">
@@ -777,7 +777,7 @@ export function PixieDustInsetDossier() {
                                 "1927 · Oswald",
                                 "1928 · Mickey",
                             ].map((marker, index) => (
-                                <PixieDustInset
+                                <PixieInset
                                     key={marker}
                                     variant={index === 2 ? "accent" : "subtle"}
                                     depth="none"
@@ -787,7 +787,7 @@ export function PixieDustInsetDossier() {
                                     <p className="font-mono text-sm text-ink">
                                         {marker}
                                     </p>
-                                </PixieDustInset>
+                                </PixieInset>
                             ))}
                         </div>
                     </PixiePanel>
@@ -803,7 +803,7 @@ export function PixieDustInsetDossier() {
                                 ["10", "personnages"],
                                 ["2", "époques"],
                             ].map(([value, label]) => (
-                                <PixieDustInset
+                                <PixieInset
                                     key={label}
                                     variant="groove"
                                     depth="medium"
@@ -816,7 +816,7 @@ export function PixieDustInsetDossier() {
                                     <span className="text-sm text-ink-soft">
                                         {label}
                                     </span>
-                                </PixieDustInset>
+                                </PixieInset>
                             ))}
                         </div>
                     </PixieCard>
@@ -825,7 +825,7 @@ export function PixieDustInsetDossier() {
                         <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Note documentaire longue
                         </p>
-                        <PixieDustInset
+                        <PixieInset
                             as="aside"
                             aria-label="Précision documentaire"
                             variant="accent"
@@ -843,14 +843,14 @@ export function PixieDustInsetDossier() {
                                 conserve la nuance sans interrompre le récit
                                 principal de la fiche.
                             </p>
-                        </PixieDustInset>
+                        </PixieInset>
                     </PixiePanel>
 
                     <PixieCard as="article" variant="outline" padding="lg">
                         <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Surface minimale
                         </p>
-                        <PixieDustInset
+                        <PixieInset
                             variant="plain"
                             depth="none"
                             padding="md"
@@ -861,7 +861,7 @@ export function PixieDustInsetDossier() {
                                 Aucun effet de profondeur : seule la composition
                                 signale le second plan.
                             </p>
-                        </PixieDustInset>
+                        </PixieInset>
                     </PixieCard>
 
                     <PixiePanel as="article" variant="surface" padding="lg">
@@ -871,7 +871,7 @@ export function PixieDustInsetDossier() {
                         <h4 className="mt-3 text-2xl text-ink">
                             Un creux, puis un seul détail
                         </h4>
-                        <PixieDustInset
+                        <PixieInset
                             variant="tinted"
                             color="violet-ombre-portee"
                             padding="lg"
@@ -880,7 +880,7 @@ export function PixieDustInsetDossier() {
                             <p className="leading-7 text-ink-soft">
                                 Le premier retrait rassemble le contexte.
                             </p>
-                            <PixieDustInset
+                            <PixieInset
                                 variant="recessed"
                                 depth="shallow"
                                 padding="sm"
@@ -889,8 +889,8 @@ export function PixieDustInsetDossier() {
                                 <p className="text-sm text-ink-soft">
                                     Restauration 4K contrôlée en 2025
                                 </p>
-                            </PixieDustInset>
-                        </PixieDustInset>
+                            </PixieInset>
+                        </PixieInset>
                     </PixiePanel>
                 </div>
             </section>
@@ -908,7 +908,7 @@ export function PixieDustInsetDossier() {
                         <h4 className="text-xl text-ink">Espacements</h4>
                         <div className="mt-4 grid gap-4 sm:grid-cols-2">
                             {paddings.map((padding) => (
-                                <PixieDustInset
+                                <PixieInset
                                     key={padding.value}
                                     variant="recessed"
                                     padding={padding.value}
@@ -920,7 +920,7 @@ export function PixieDustInsetDossier() {
                                             {padding.value} · {padding.token}
                                         </p>
                                     </div>
-                                </PixieDustInset>
+                                </PixieInset>
                             ))}
                         </div>
                     </div>
@@ -929,7 +929,7 @@ export function PixieDustInsetDossier() {
                         <h4 className="text-xl text-ink">Rayons</h4>
                         <div className="mt-4 grid gap-4 sm:grid-cols-2">
                             {radii.map((radius) => (
-                                <PixieDustInset
+                                <PixieInset
                                     key={radius.value}
                                     variant="accent"
                                     color="bleu-reperage"
@@ -943,7 +943,7 @@ export function PixieDustInsetDossier() {
                                     <p className="mt-3 text-sm text-ink-soft">
                                         {radius.name}
                                     </p>
-                                </PixieDustInset>
+                                </PixieInset>
                             ))}
                         </div>
                     </div>
@@ -951,18 +951,18 @@ export function PixieDustInsetDossier() {
             </section>
 
             <section
-                id="pixie-dust-inset-playground"
+                id="pixie-inset-playground"
                 aria-labelledby="inset-playground-title"
                 className="mt-16 scroll-mt-8 border border-line-strong bg-surface-muted p-6 shadow-soft sm:p-8"
             >
                 <SequenceTitle
                     id="inset-playground-title"
                     eyebrow="Régie"
-                    title="Composer un PixieDustInset"
+                    title="Composer un PixieInset"
                     description="Réglez sa sémantique, sa découpe et sa profondeur ; le code d’utilisation suit chaque changement."
                 />
                 <div className="mt-8">
-                    <PixieDustInsetPlayground />
+                    <PixieInsetPlayground />
                 </div>
             </section>
 
@@ -1021,8 +1021,8 @@ export function PixieDustInsetDossier() {
                 <SequenceTitle
                     id="inset-technical"
                     eyebrow="Générique technique"
-                    title="API de l’esquisse"
-                    description="Les types spécifiques sont colocalisés dans PixieDustInset.types.ts et les attributs HTML compatibles sont transmis à l’élément rendu."
+                    title="API du composant"
+                    description="Les types spécifiques sont colocalisés dans PixieInset.types.ts et les attributs HTML compatibles sont transmis à l’élément rendu."
                 />
 
                 <div className="mt-7">
@@ -1040,19 +1040,19 @@ export function PixieDustInsetDossier() {
             <section aria-labelledby="inset-journal" className="mt-16">
                 <SequenceTitle
                     id="inset-journal"
-                    eyebrow="Journal de production"
-                    title="Décisions avant la promotion"
-                    description="La version 0.2.0 doit maintenant confirmer ses nouveaux traitements dans de vraies surfaces du Codex avant de devenir PixieInset."
+                    eyebrow="Contrat de projection"
+                    title="Les garanties de la version 1.0.0"
+                    description="PixieInset est prêt à creuser les seconds plans du Codex sans détourner la lumière du contenu principal."
                 />
 
                 <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
                     {[
-                        "Éprouver les six variants dans des fiches et des cartes métier.",
-                        "Vérifier que l’absence de profondeur reste distincte des trois niveaux creusés.",
-                        "Tester les textures, le contraste forcé, l’impression et le zoom à 200 %.",
-                        "Valider la frontière entre PixieDustInset et PixieCallout.",
-                        "Contrôler les sections et aside nommés, les contenus longs et les liens au clavier.",
-                        "Valider les quatre positions logiques de l’accent en français et en RTL.",
+                        "Les six variants règlent la surface sans modifier la valeur documentaire du contenu.",
+                        "L’absence de profondeur et les trois niveaux creusés restent distincts dans les deux Lumières.",
+                        "Les textures sont décoratives et s’effacent à l’impression comme en contraste forcé.",
+                        "Div, section et aside conservent la responsabilité de leur nom et de leur rôle accessibles.",
+                        "Les contenus longs, les liens et les positions logiques restent utilisables à 200 % de zoom.",
+                        "PixieInset porte les informations secondaires ; PixiePanel et PixieCallout gardent leurs propres responsabilités.",
                     ].map((decision) => (
                         <li
                             key={decision}
