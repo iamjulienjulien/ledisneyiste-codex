@@ -132,7 +132,20 @@ const properties = [
         name: "spacing",
         type: "PixieDustSectionSpacing",
         defaultValue: '"lg"',
-        description: "Respiration verticale autour de la séquence.",
+        description:
+            "Respiration verticale de référence autour de la séquence.",
+    },
+    {
+        name: "spacingStart",
+        type: "PixieDustSectionSpacing",
+        defaultValue: "spacing",
+        description: "Surcharge logique de la respiration d’ouverture.",
+    },
+    {
+        name: "spacingEnd",
+        type: "PixieDustSectionSpacing",
+        defaultValue: "spacing",
+        description: "Surcharge logique de la respiration de fermeture.",
     },
     {
         name: "gap",
@@ -279,7 +292,7 @@ export function PixieDustSectionDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.1.0
+                                0.2.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -318,7 +331,7 @@ export function PixieDustSectionDossier() {
                         ],
                         [
                             "Anatomie",
-                            "Une enveloppe, un Container puis un Stack interne.",
+                            "Une enveloppe, deux respirations logiques, un Container puis un Stack interne.",
                         ],
                         [
                             "Accessibilité",
@@ -452,7 +465,7 @@ export function PixieDustSectionDossier() {
                     id="section-spacing"
                     eyebrow="Respiration externe"
                     title="Cinq espacements ouvrent et referment la séquence"
-                    description="spacing agit uniquement avant le premier plan et après le dernier. Les valeurs fluides se contractent sur les petits écrans."
+                    description="spacing fournit la valeur de référence avant le premier plan et après le dernier. Les valeurs fluides se contractent sur les petits écrans."
                 />
 
                 <div className="mt-7 grid gap-6 bg-canvas p-6 lg:grid-cols-2">
@@ -483,6 +496,75 @@ export function PixieDustSectionDossier() {
                             </div>
                         </Stage>
                     ))}
+                </div>
+            </section>
+
+            <section aria-labelledby="section-asymmetric" className="mt-16">
+                <SequenceTitle
+                    id="section-asymmetric"
+                    eyebrow="Raccords asymétriques"
+                    title="L’ouverture et la fermeture règlent leurs propres respirations"
+                    description="spacing reste le rythme de référence. spacingStart et spacingEnd ne le surchargent que sur le bord logique qui en a besoin."
+                />
+
+                <div className="mt-7 grid gap-6 bg-canvas p-6 xl:grid-cols-3">
+                    {[
+                        {
+                            title: "Grande ouverture",
+                            start: "xl" as const,
+                            end: "sm" as const,
+                            description:
+                                "Une entrée ample rejoint rapidement la séquence suivante.",
+                        },
+                        {
+                            title: "Raccord continu",
+                            start: "sm" as const,
+                            end: "sm" as const,
+                            description:
+                                "Deux chapitres proches conservent une respiration discrète.",
+                        },
+                        {
+                            title: "Dernière image",
+                            start: "sm" as const,
+                            end: "xl" as const,
+                            description:
+                                "La fermeture laisse davantage d’air avant le changement de scène.",
+                        },
+                    ].map((raccord) => (
+                        <Stage key={raccord.title}>
+                            <PixieDustSection
+                                as="div"
+                                width="full"
+                                gutter="md"
+                                spacing="md"
+                                spacingStart={raccord.start}
+                                spacingEnd={raccord.end}
+                                gap="sm"
+                                className="bg-surface-muted/60"
+                            >
+                                <h4 className="text-xl text-ink">
+                                    {raccord.title}
+                                </h4>
+                                <p className="text-sm leading-6 text-ink-soft">
+                                    {raccord.description}
+                                </p>
+                            </PixieDustSection>
+                            <p className="border-t border-line bg-surface p-4 font-mono text-xs leading-6 text-accent">
+                                start=&quot;{raccord.start}&quot; · end=&quot;
+                                {raccord.end}&quot;
+                            </p>
+                        </Stage>
+                    ))}
+                </div>
+
+                <div className="mt-8">
+                    <CodeExample>{`<PixieDustSection
+    spacing="md"
+    spacingStart="xl"
+    spacingEnd="sm"
+>
+    {/* Séquence */}
+</PixieDustSection>`}</CodeExample>
                 </div>
             </section>
 
@@ -639,6 +721,150 @@ export function PixieDustSectionDossier() {
                 </div>
             </section>
 
+            <section aria-labelledby="section-scenarios" className="mt-16">
+                <SequenceTitle
+                    id="section-scenarios"
+                    eyebrow="Scénarios préparés"
+                    title="La séquence s’adapte au hall comme au chapitre"
+                    description="Ces scènes préparent les futurs contextes du Codex sans intégrer l’esquisse dans une page publique avant sa promotion."
+                />
+
+                <div className="mt-7 grid gap-6 xl:grid-cols-2">
+                    <Stage>
+                        <PixieDustSection
+                            width="full"
+                            gutter="md"
+                            spacing="md"
+                            spacingStart="xl"
+                            spacingEnd="md"
+                            gap="lg"
+                            aria-labelledby="section-scenario-index"
+                        >
+                            <PixieStack gap="xs">
+                                <p className="text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
+                                    Index · Œuvres
+                                </p>
+                                <h4
+                                    id="section-scenario-index"
+                                    className="max-w-3xl text-3xl text-ink"
+                                >
+                                    Les films, courts métrages et créations où
+                                    les imaginaires Disney prennent forme
+                                </h4>
+                            </PixieStack>
+                            <PixieCluster
+                                gap="sm"
+                                justify="between"
+                                className="border-y border-line py-4"
+                            >
+                                <span className="text-sm text-ink-soft">
+                                    23 œuvres dans les archives
+                                </span>
+                                <PixieCluster gap="xs">
+                                    <PixieBadge variant="outline" size="sm">
+                                        Cartes
+                                    </PixieBadge>
+                                    <PixieBadge variant="outline" size="sm">
+                                        Liste
+                                    </PixieBadge>
+                                </PixieCluster>
+                            </PixieCluster>
+                            <div className="grid gap-3 sm:grid-cols-3">
+                                {["1928", "1932", "1937"].map((year) => (
+                                    <SectionPlan key={year} label={year} />
+                                ))}
+                            </div>
+                        </PixieDustSection>
+                    </Stage>
+
+                    <Stage>
+                        <PixieDustSection
+                            as="article"
+                            width="42"
+                            gutter="md"
+                            spacing="md"
+                            spacingStart="md"
+                            spacingEnd="xl"
+                            gap="md"
+                            aria-labelledby="section-scenario-chapter"
+                        >
+                            <PixieStack gap="xs">
+                                <p className="text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
+                                    Chapitre documentaire
+                                </p>
+                                <h4
+                                    id="section-scenario-chapter"
+                                    className="text-3xl text-ink"
+                                >
+                                    Quand le studio engage tout son avenir dans
+                                    un long métrage que beaucoup pensent
+                                    impossible
+                                </h4>
+                            </PixieStack>
+                            <p className="leading-8 text-ink-soft">
+                                Une largeur de lecture, un rythme intérieur et
+                                une fermeture ample suffisent à structurer le
+                                chapitre sans lui imposer de surface.
+                            </p>
+                            <PixieCluster gap="xs">
+                                {[
+                                    "Long métrage",
+                                    "Technicolor",
+                                    "Caméra multiplane",
+                                ].map((label) => (
+                                    <PixieBadge
+                                        key={label}
+                                        variant="soft"
+                                        size="sm"
+                                        color="violet-ombre-portee"
+                                    >
+                                        {label}
+                                    </PixieBadge>
+                                ))}
+                            </PixieCluster>
+                        </PixieDustSection>
+                    </Stage>
+                </div>
+
+                <div className="mt-6 overflow-hidden border border-dashed border-line-strong bg-canvas">
+                    <PixieDustSection
+                        as="div"
+                        width="56"
+                        gutter="md"
+                        spacing="md"
+                        spacingStart="lg"
+                        spacingEnd="sm"
+                        gap="xs"
+                        className="bg-surface-muted/60"
+                    >
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            Séquence 01
+                        </p>
+                        <h4 className="text-2xl text-ink">
+                            Le récit ouvre son premier chapitre
+                        </h4>
+                    </PixieDustSection>
+                    <PixieDustSection
+                        as="div"
+                        width="56"
+                        gutter="md"
+                        spacing="md"
+                        spacingStart="sm"
+                        spacingEnd="lg"
+                        gap="xs"
+                        className="border-t border-line bg-surface"
+                    >
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            Séquence 02
+                        </p>
+                        <h4 className="text-2xl text-ink">
+                            Le raccord conserve la continuité sans fusionner les
+                            chapitres
+                        </h4>
+                    </PixieDustSection>
+                </div>
+            </section>
+
             <section aria-labelledby="section-composition" className="mt-16">
                 <SequenceTitle
                     id="section-composition"
@@ -785,6 +1011,10 @@ export function PixieDustSectionDossier() {
                             "Container et Stack ne modifient ni l’ordre DOM ni le parcours clavier.",
                         ],
                         [
+                            "Raccords invisibles",
+                            "spacingStart et spacingEnd modifient uniquement la respiration, jamais la structure ni l’ordre de lecture.",
+                        ],
+                        [
                             "Zoom à 200 %",
                             "Largeurs, gouttières et espacements fluides ne doivent créer aucun débordement.",
                         ],
@@ -806,7 +1036,7 @@ export function PixieDustSectionDossier() {
                 <SequenceTitle
                     id="section-technical"
                     eyebrow="Générique technique"
-                    title="API de l’esquisse"
+                    title="API de l’esquisse 0.2.0"
                     description="Les types spécifiques sont colocalisés dans PixieDustSection.types.ts ; les contrats horizontaux et verticaux sont des alias de Container et Stack."
                 />
 
@@ -838,6 +1068,8 @@ export function PixieDustSectionDossier() {
                         "Tester les contenus courts, longs, interactifs et fortement imbriqués.",
                         "Vérifier qu’aucune surface ou typographie ne fuit dans le contrat.",
                         "Décider si spacing lg reste le bon défaut après plusieurs migrations réelles.",
+                        "Éprouver les surcharges start et end entre plusieurs séquences consécutives.",
+                        "Confirmer que les respirations asymétriques ne remplacent ni Separator ni Bleed.",
                     ].map((decision) => (
                         <li
                             key={decision}

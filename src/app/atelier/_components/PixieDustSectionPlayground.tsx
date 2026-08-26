@@ -42,6 +42,13 @@ const spacings = [
     { value: "xl", label: "Très grande" },
 ] as const;
 
+type SpacingOverride = PixieDustSectionSpacing | "inherit";
+
+const spacingOverrides = [
+    { value: "inherit", label: "Hériter de spacing" },
+    ...spacings,
+] as const;
+
 const gaps = [
     { value: "none", label: "Aucun" },
     { value: "xs", label: "Très petit" },
@@ -69,6 +76,9 @@ export function PixieDustSectionPlayground() {
     const [width, setWidth] = useState<PixieDustSectionWidth>("72");
     const [gutter, setGutter] = useState<PixieDustSectionGutter>("md");
     const [spacing, setSpacing] = useState<PixieDustSectionSpacing>("lg");
+    const [spacingStart, setSpacingStart] =
+        useState<SpacingOverride>("inherit");
+    const [spacingEnd, setSpacingEnd] = useState<SpacingOverride>("inherit");
     const [gap, setGap] = useState<PixieDustSectionGap>("lg");
     const [align, setAlign] = useState<PixieDustSectionAlign>("stretch");
     const [light, setLight] = useState<"sombre" | "claire">("sombre");
@@ -76,12 +86,18 @@ export function PixieDustSectionPlayground() {
 
     const labelledBy =
         element === "div" ? "" : '    aria-labelledby="section-heading"\n';
+    const spacingStartProp =
+        spacingStart === "inherit"
+            ? ""
+            : `    spacingStart="${spacingStart}"\n`;
+    const spacingEndProp =
+        spacingEnd === "inherit" ? "" : `    spacingEnd="${spacingEnd}"\n`;
     const code = `<PixieDustSection
     as="${element}"
     width="${width}"
     gutter="${gutter}"
     spacing="${spacing}"
-    gap="${gap}"
+${spacingStartProp}${spacingEndProp}    gap="${gap}"
     align="${align}"
 ${labelledBy}>
     <header>
@@ -178,6 +194,66 @@ ${labelledBy}>
                             </div>
                         </fieldset>
 
+                        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+                            <div>
+                                <label
+                                    htmlFor="section-spacing-start"
+                                    className="text-sm font-medium text-ink"
+                                >
+                                    Respiration d’ouverture
+                                </label>
+                                <select
+                                    id="section-spacing-start"
+                                    value={spacingStart}
+                                    onChange={(event) =>
+                                        setSpacingStart(
+                                            event.target
+                                                .value as SpacingOverride,
+                                        )
+                                    }
+                                    className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                >
+                                    {spacingOverrides.map((option) => (
+                                        <option
+                                            key={option.value}
+                                            value={option.value}
+                                        >
+                                            {option.label}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+
+                            <div>
+                                <label
+                                    htmlFor="section-spacing-end"
+                                    className="text-sm font-medium text-ink"
+                                >
+                                    Respiration de fermeture
+                                </label>
+                                <select
+                                    id="section-spacing-end"
+                                    value={spacingEnd}
+                                    onChange={(event) =>
+                                        setSpacingEnd(
+                                            event.target
+                                                .value as SpacingOverride,
+                                        )
+                                    }
+                                    className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                >
+                                    {spacingOverrides.map((option) => (
+                                        <option
+                                            key={option.value}
+                                            value={option.value}
+                                        >
+                                            {option.label}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                        </div>
+
                         <fieldset>
                             <legend className="text-sm font-medium text-ink">
                                 Rythme interne
@@ -236,6 +312,16 @@ ${labelledBy}>
                                 width={width}
                                 gutter={gutter}
                                 spacing={spacing}
+                                spacingStart={
+                                    spacingStart === "inherit"
+                                        ? undefined
+                                        : spacingStart
+                                }
+                                spacingEnd={
+                                    spacingEnd === "inherit"
+                                        ? undefined
+                                        : spacingEnd
+                                }
                                 gap={gap}
                                 align={align}
                                 aria-labelledby={
