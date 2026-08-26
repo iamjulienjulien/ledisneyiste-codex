@@ -1,32 +1,32 @@
-import styles from "./PixieDustContainer.module.css";
+import styles from "./PixieContainer.module.css";
 import type {
-    PixieDustContainerGutter,
-    PixieDustContainerProps,
-    PixieDustContainerWidth,
-} from "./PixieDustContainer.types";
+    PixieContainerGutter,
+    PixieContainerProps,
+    PixieContainerWidth,
+} from "./PixieContainer.types";
 
 const widthClasses = {
     "42": styles.width42,
     "56": styles.width56,
     "72": styles.width72,
     full: styles.widthFull,
-} as const satisfies Record<PixieDustContainerWidth, string>;
+} as const satisfies Record<PixieContainerWidth, string>;
 
 const gutterClasses = {
     none: styles.gutterNone,
     sm: styles.gutterSmall,
     md: styles.gutterMedium,
     lg: styles.gutterLarge,
-} as const satisfies Record<PixieDustContainerGutter, string>;
+} as const satisfies Record<PixieContainerGutter, string>;
 
-export function PixieDustContainer({
+export function PixieContainer({
     as: Element = "div",
     width = "72",
     gutter = "md",
     className = "",
     children,
     ...elementProps
-}: PixieDustContainerProps) {
+}: PixieContainerProps) {
     return (
         <Element
             {...elementProps}
