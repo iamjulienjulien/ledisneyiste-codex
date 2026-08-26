@@ -1,5 +1,9 @@
 .root {
     --backdrop-accent: var(--pixie-backdrop-color, var(--color-accent));
+    --backdrop-secondary: var(
+        --pixie-backdrop-secondary-color,
+        color-mix(in srgb, var(--backdrop-accent) 52%, var(--color-ink))
+    );
     --backdrop-accent-soft: color-mix(
         in srgb,
         var(--backdrop-accent) 18%,
@@ -7,102 +11,244 @@
     );
     --backdrop-accent-glow: color-mix(
         in srgb,
-        var(--backdrop-accent) 28%,
+        var(--backdrop-accent) 34%,
         transparent
     );
-    --backdrop-shadow: color-mix(in srgb, var(--color-ink) 24%, transparent);
+    --backdrop-secondary-soft: color-mix(
+        in srgb,
+        var(--backdrop-secondary) 18%,
+        transparent
+    );
+    --backdrop-secondary-glow: color-mix(
+        in srgb,
+        var(--backdrop-secondary) 32%,
+        transparent
+    );
+    --backdrop-shadow: color-mix(in srgb, var(--color-ink) 26%, transparent);
     --backdrop-origin-x: 50%;
+    --backdrop-origin-y: 50%;
+    --backdrop-shift-x: 0%;
+    --backdrop-shift-y: 0%;
+    --backdrop-angle: 90deg;
+    --backdrop-spread: 68%;
+    --backdrop-beam-start: 38%;
+    --backdrop-beam-inner: 46%;
+    --backdrop-beam-outer: 54%;
+    --backdrop-beam-end: 62%;
     --backdrop-layer-opacity: 0.72;
-    --backdrop-projector-position: 50%;
+    --backdrop-texture-opacity: 0.08;
 
     position: relative;
     isolation: isolate;
-    overflow: hidden;
     min-width: 0;
     color: inherit;
-    background: var(--color-surface);
 }
 
-.root::before,
-.root::after {
+.atmosphere {
     position: absolute;
     z-index: 0;
     inset: 0;
-    content: "";
+    overflow: hidden;
+    border-radius: inherit;
     pointer-events: none;
 }
 
-.root::before {
+.primaryLayer,
+.secondaryLayer,
+.textureLayer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.primaryLayer,
+.secondaryLayer {
     opacity: var(--backdrop-layer-opacity);
 }
 
-.root::after {
-    display: none;
-    opacity: var(--projection-grain-opacity, 0.025);
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.75'/%3E%3C/svg%3E");
-    background-repeat: repeat;
-    background-size: 180px 180px;
-    mix-blend-mode: soft-light;
+.textureLayer {
+    z-index: 2;
+    opacity: var(--backdrop-texture-opacity);
 }
 
-.root > * {
+.content {
     position: relative;
     z-index: 1;
+    min-width: 0;
 }
 
-.grain::after {
-    display: block;
+.baseTransparent {
+    background: transparent;
 }
 
-.wash::before {
+.baseCanvas {
+    background: var(--color-canvas);
+}
+
+.baseSurface {
+    background: var(--color-surface);
+}
+
+.baseMuted {
+    background: var(--color-surface-muted);
+}
+
+.wash .primaryLayer {
     background: linear-gradient(
         var(--backdrop-accent-soft),
         var(--backdrop-accent-soft)
     );
 }
 
-.gradient::before {
+.wash .secondaryLayer {
+    background: linear-gradient(
+        var(--backdrop-secondary-soft),
+        var(--backdrop-secondary-soft)
+    );
+    opacity: calc(var(--backdrop-layer-opacity) * 0.35);
+}
+
+.gradient .primaryLayer {
     background: radial-gradient(
-        ellipse 90% 130% at var(--backdrop-origin-x) 50%,
+        ellipse var(--backdrop-spread) var(--backdrop-spread) at
+            var(--backdrop-origin-x) var(--backdrop-origin-y),
         var(--backdrop-accent-glow),
         var(--backdrop-accent-soft) 42%,
+        transparent 78%
+    );
+}
+
+.gradient .secondaryLayer {
+    background: radial-gradient(
+        ellipse 55% 70% at calc(100% - var(--backdrop-origin-x))
+            calc(100% - var(--backdrop-origin-y)),
+        var(--backdrop-secondary-soft),
+        transparent 72%
+    );
+}
+
+.halo .primaryLayer {
+    background: radial-gradient(
+        circle var(--backdrop-spread) at var(--backdrop-origin-x)
+            var(--backdrop-origin-y),
+        var(--backdrop-accent-glow),
+        var(--backdrop-accent-soft) 34%,
+        transparent 72%
+    );
+}
+
+.halo .secondaryLayer {
+    background: radial-gradient(
+        circle 36% at calc(100% - var(--backdrop-origin-x))
+            calc(100% - var(--backdrop-origin-y)),
+        var(--backdrop-secondary-soft),
         transparent 76%
     );
 }
 
-.halo::before {
+.vignette .primaryLayer {
     background: radial-gradient(
-        circle at var(--backdrop-origin-x) 48%,
-        var(--backdrop-accent-glow),
-        var(--backdrop-accent-soft) 28%,
-        transparent 66%
-    );
-}
-
-.vignette::before {
-    background: radial-gradient(
-        ellipse at center,
-        transparent 24%,
-        color-mix(in srgb, var(--color-ink) 6%, transparent) 62%,
+        ellipse var(--backdrop-spread) var(--backdrop-spread) at
+            var(--backdrop-origin-x) var(--backdrop-origin-y),
+        transparent 18%,
+        color-mix(in srgb, var(--color-ink) 7%, transparent) 62%,
         var(--backdrop-shadow) 100%
     );
 }
 
-.projector::before {
-    inset: -55% -70%;
+.vignette .secondaryLayer {
+    display: none;
+}
+
+.projector .primaryLayer,
+.projector .secondaryLayer,
+.horizon .primaryLayer,
+.horizon .secondaryLayer {
+    inset: -65%;
+    transform: translate(var(--backdrop-shift-x), var(--backdrop-shift-y));
+}
+
+.projector .primaryLayer {
     background: linear-gradient(
-        112deg,
-        transparent 34%,
+        var(--backdrop-angle),
+        transparent var(--backdrop-beam-start),
+        var(--backdrop-accent-soft) var(--backdrop-beam-inner),
+        var(--backdrop-accent-glow) 50%,
+        var(--backdrop-accent-soft) var(--backdrop-beam-outer),
+        transparent var(--backdrop-beam-end)
+    );
+}
+
+.projector .secondaryLayer {
+    background: linear-gradient(
+        calc(var(--backdrop-angle) + 9deg),
+        transparent 42%,
+        var(--backdrop-secondary-soft) 49%,
+        transparent 58%
+    );
+    opacity: calc(var(--backdrop-layer-opacity) * 0.62);
+}
+
+.horizon .primaryLayer {
+    background: linear-gradient(
+        var(--backdrop-angle),
+        transparent 28%,
         var(--backdrop-accent-soft) 43%,
         var(--backdrop-accent-glow) 50%,
-        var(--backdrop-accent-soft) 57%,
+        var(--backdrop-secondary-soft) 57%,
+        transparent 72%
+    );
+}
+
+.horizon .secondaryLayer {
+    background: linear-gradient(
+        calc(var(--backdrop-angle) + 90deg),
+        transparent 34%,
+        var(--backdrop-secondary-soft) 50%,
         transparent 66%
     );
-    transform: translateX(var(--backdrop-projector-position));
+    opacity: calc(var(--backdrop-layer-opacity) * 0.48);
+}
+
+.split .primaryLayer {
+    background: linear-gradient(
+        var(--backdrop-angle),
+        var(--backdrop-accent-soft) 0 46%,
+        transparent 52%
+    );
+}
+
+.split .secondaryLayer {
+    background: linear-gradient(
+        var(--backdrop-angle),
+        transparent 48%,
+        var(--backdrop-secondary-soft) 54% 100%
+    );
+}
+
+.cel .primaryLayer {
+    background:
+        radial-gradient(
+            ellipse 72% 58% at var(--backdrop-origin-x) var(--backdrop-origin-y),
+            var(--backdrop-accent-glow),
+            transparent 72%
+        ),
+        linear-gradient(132deg, var(--backdrop-accent-soft), transparent 58%);
+}
+
+.cel .secondaryLayer {
+    background:
+        radial-gradient(
+            ellipse 66% 52% at calc(100% - var(--backdrop-origin-x))
+                calc(100% - var(--backdrop-origin-y)),
+            var(--backdrop-secondary-glow),
+            transparent 74%
+        ),
+        linear-gradient(312deg, var(--backdrop-secondary-soft), transparent 56%);
 }
 
 .intensitySubtle {
-    --backdrop-layer-opacity: 0.44;
+    --backdrop-layer-opacity: 0.42;
 }
 
 .intensityMedium {
@@ -113,19 +259,101 @@
     --backdrop-layer-opacity: 1;
 }
 
+.positionTopStart {
+    --backdrop-origin-x: 16%;
+    --backdrop-origin-y: 18%;
+    --backdrop-shift-x: -18%;
+    --backdrop-shift-y: -14%;
+}
+
+.positionTop {
+    --backdrop-origin-x: 50%;
+    --backdrop-origin-y: 18%;
+    --backdrop-shift-y: -14%;
+}
+
+.positionTopEnd {
+    --backdrop-origin-x: 84%;
+    --backdrop-origin-y: 18%;
+    --backdrop-shift-x: 18%;
+    --backdrop-shift-y: -14%;
+}
+
 .positionStart {
     --backdrop-origin-x: 16%;
-    --backdrop-projector-position: -20%;
+    --backdrop-origin-y: 50%;
+    --backdrop-shift-x: -18%;
 }
 
 .positionCenter {
     --backdrop-origin-x: 50%;
-    --backdrop-projector-position: 0%;
+    --backdrop-origin-y: 50%;
 }
 
 .positionEnd {
     --backdrop-origin-x: 84%;
-    --backdrop-projector-position: 20%;
+    --backdrop-origin-y: 50%;
+    --backdrop-shift-x: 18%;
+}
+
+.positionBottomStart {
+    --backdrop-origin-x: 16%;
+    --backdrop-origin-y: 82%;
+    --backdrop-shift-x: -18%;
+    --backdrop-shift-y: 14%;
+}
+
+.positionBottom {
+    --backdrop-origin-x: 50%;
+    --backdrop-origin-y: 82%;
+    --backdrop-shift-y: 14%;
+}
+
+.positionBottomEnd {
+    --backdrop-origin-x: 84%;
+    --backdrop-origin-y: 82%;
+    --backdrop-shift-x: 18%;
+    --backdrop-shift-y: 14%;
+}
+
+.directionHorizontal {
+    --backdrop-angle: 90deg;
+}
+
+.directionVertical {
+    --backdrop-angle: 180deg;
+}
+
+.directionDiagonalUp {
+    --backdrop-angle: 45deg;
+}
+
+.directionDiagonalDown {
+    --backdrop-angle: 135deg;
+}
+
+.spreadNarrow {
+    --backdrop-spread: 44%;
+    --backdrop-beam-start: 44%;
+    --backdrop-beam-inner: 48%;
+    --backdrop-beam-outer: 52%;
+    --backdrop-beam-end: 56%;
+}
+
+.spreadMedium {
+    --backdrop-spread: 68%;
+    --backdrop-beam-start: 38%;
+    --backdrop-beam-inner: 46%;
+    --backdrop-beam-outer: 54%;
+    --backdrop-beam-end: 62%;
+}
+
+.spreadWide {
+    --backdrop-spread: 94%;
+    --backdrop-beam-start: 30%;
+    --backdrop-beam-inner: 42%;
+    --backdrop-beam-outer: 58%;
+    --backdrop-beam-end: 70%;
 }
 
 .paddingNone {
@@ -164,14 +392,162 @@
     border-radius: var(--radius-large);
 }
 
+.textureNone .textureLayer {
+    display: none;
+}
+
+.textureGrain .textureLayer {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.75'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 180px 180px;
+    mix-blend-mode: soft-light;
+}
+
+.textureDust .textureLayer {
+    background-image:
+        radial-gradient(
+            circle at 12% 18%,
+            var(--backdrop-accent) 0 0.05rem,
+            transparent 0.065rem
+        ),
+        radial-gradient(
+            circle at 63% 37%,
+            var(--color-ink) 0 0.035rem,
+            transparent 0.055rem
+        ),
+        radial-gradient(
+            circle at 34% 78%,
+            var(--backdrop-secondary) 0 0.045rem,
+            transparent 0.065rem
+        ),
+        radial-gradient(
+            circle at 87% 69%,
+            var(--color-ink) 0 0.04rem,
+            transparent 0.06rem
+        );
+    background-size:
+        1.7rem 1.7rem,
+        2.3rem 2.3rem,
+        1.35rem 1.35rem,
+        2.8rem 2.8rem;
+}
+
+.texturePaper .textureLayer {
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            transparent 0 0.35rem,
+            var(--color-ink) 0.35rem 0.375rem
+        ),
+        repeating-linear-gradient(
+            92deg,
+            transparent 0 1.1rem,
+            var(--backdrop-accent) 1.1rem 1.125rem
+        );
+    mix-blend-mode: soft-light;
+}
+
+.textureIntensitySubtle {
+    --backdrop-texture-opacity: 0.035;
+}
+
+.textureIntensityMedium {
+    --backdrop-texture-opacity: 0.08;
+}
+
+.textureIntensityStrong {
+    --backdrop-texture-opacity: 0.15;
+}
+
+.motionNone .primaryLayer,
+.motionNone .secondaryLayer {
+    animation: none;
+}
+
+.motionDrift .primaryLayer {
+    animation: backdrop-drift 18s ease-in-out infinite alternate;
+}
+
+.motionDrift .secondaryLayer {
+    animation: backdrop-drift-reverse 22s ease-in-out infinite alternate;
+}
+
+.motionBreathe .primaryLayer,
+.motionBreathe .secondaryLayer {
+    animation: backdrop-breathe 8s ease-in-out infinite;
+}
+
+@keyframes backdrop-drift {
+    from {
+        translate: -1.5% -0.75%;
+    }
+
+    to {
+        translate: 1.5% 0.75%;
+    }
+}
+
+@keyframes backdrop-drift-reverse {
+    from {
+        translate: 1% -1%;
+    }
+
+    to {
+        translate: -1% 1%;
+    }
+}
+
+@keyframes backdrop-breathe {
+    0%,
+    100% {
+        opacity: calc(var(--backdrop-layer-opacity) * 0.74);
+    }
+
+    50% {
+        opacity: var(--backdrop-layer-opacity);
+    }
+}
+
+:global([dir="rtl"]) .positionTopStart,
+:global([dir="rtl"]) .positionStart,
+:global([dir="rtl"]) .positionBottomStart {
+    --backdrop-origin-x: 84%;
+    --backdrop-shift-x: 18%;
+}
+
+:global([dir="rtl"]) .positionTopEnd,
+:global([dir="rtl"]) .positionEnd,
+:global([dir="rtl"]) .positionBottomEnd {
+    --backdrop-origin-x: 16%;
+    --backdrop-shift-x: -18%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .motionDrift .primaryLayer,
+    .motionDrift .secondaryLayer,
+    .motionBreathe .primaryLayer,
+    .motionBreathe .secondaryLayer {
+        animation: none;
+    }
+}
+
 @media (forced-colors: active) {
     .root {
         border: 1px solid CanvasText;
         background: Canvas;
     }
 
-    .root::before,
-    .root::after {
+    .atmosphere {
+        display: none;
+    }
+}
+
+@media print {
+    .root {
+        background: transparent;
+    }
+
+    .atmosphere {
         display: none;
     }
 }
