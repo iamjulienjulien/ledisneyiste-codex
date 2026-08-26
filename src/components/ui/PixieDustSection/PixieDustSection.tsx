@@ -6,12 +6,20 @@ import type {
     PixieDustSectionSpacing,
 } from "./PixieDustSection.types";
 
-const spacingClasses = {
-    none: styles.spacingNone,
-    sm: styles.spacingSmall,
-    md: styles.spacingMedium,
-    lg: styles.spacingLarge,
-    xl: styles.spacingExtraLarge,
+const spacingStartClasses = {
+    none: styles.spacingStartNone,
+    sm: styles.spacingStartSmall,
+    md: styles.spacingStartMedium,
+    lg: styles.spacingStartLarge,
+    xl: styles.spacingStartExtraLarge,
+} as const satisfies Record<PixieDustSectionSpacing, string>;
+
+const spacingEndClasses = {
+    none: styles.spacingEndNone,
+    sm: styles.spacingEndSmall,
+    md: styles.spacingEndMedium,
+    lg: styles.spacingEndLarge,
+    xl: styles.spacingEndExtraLarge,
 } as const satisfies Record<PixieDustSectionSpacing, string>;
 
 export function PixieDustSection({
@@ -19,19 +27,26 @@ export function PixieDustSection({
     width = "72",
     gutter = "md",
     spacing = "lg",
+    spacingStart,
+    spacingEnd,
     gap = "lg",
     align = "stretch",
     className = "",
     children,
     ...elementProps
 }: PixieDustSectionProps) {
+    const resolvedSpacingStart = spacingStart ?? spacing;
+    const resolvedSpacingEnd = spacingEnd ?? spacing;
+
     return (
         <Element
             {...elementProps}
-            className={`${styles.root} ${spacingClasses[spacing]} ${className}`.trim()}
+            className={`${styles.root} ${spacingStartClasses[resolvedSpacingStart]} ${spacingEndClasses[resolvedSpacingEnd]} ${className}`.trim()}
             data-pixie-section-width={width}
             data-pixie-section-gutter={gutter}
             data-pixie-section-spacing={spacing}
+            data-pixie-section-spacing-start={resolvedSpacingStart}
+            data-pixie-section-spacing-end={resolvedSpacingEnd}
             data-pixie-section-gap={gap}
             data-pixie-section-align={align}
         >

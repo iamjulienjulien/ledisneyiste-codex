@@ -26,6 +26,8 @@ export type PixieDustSectionProps = Readonly<
         width?: PixieDustSectionWidth;
         gutter?: PixieDustSectionGutter;
         spacing?: PixieDustSectionSpacing;
+        spacingStart?: PixieDustSectionSpacing;
+        spacingEnd?: PixieDustSectionSpacing;
         gap?: PixieDustSectionGap;
         align?: PixieDustSectionAlign;
         children: ReactNode;
