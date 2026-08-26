@@ -19,6 +19,7 @@ const justifyClasses = {
     start: styles.justifyStart,
     center: styles.justifyCenter,
     end: styles.justifyEnd,
+    between: styles.justifyBetween,
 } as const satisfies Record<PixieDustClusterJustify, string>;
 
 const alignClasses = {

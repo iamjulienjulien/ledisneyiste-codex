@@ -1,6 +1,7 @@
 .root {
     display: flex;
     min-width: 0;
+    min-height: 0;
     flex-wrap: wrap;
 }
 
@@ -38,6 +39,10 @@
 
 .justifyEnd {
     justify-content: flex-end;
+}
+
+.justifyBetween {
+    justify-content: space-between;
 }
 
 .alignStart {
