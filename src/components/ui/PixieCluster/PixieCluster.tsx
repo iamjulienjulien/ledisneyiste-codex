@@ -1,10 +1,10 @@
-import styles from "./PixieDustCluster.module.css";
+import styles from "./PixieCluster.module.css";
 import type {
-    PixieDustClusterAlign,
-    PixieDustClusterGap,
-    PixieDustClusterJustify,
-    PixieDustClusterProps,
-} from "./PixieDustCluster.types";
+    PixieClusterAlign,
+    PixieClusterGap,
+    PixieClusterJustify,
+    PixieClusterProps,
+} from "./PixieCluster.types";
 
 const gapClasses = {
     none: styles.gapNone,
@@ -13,23 +13,23 @@ const gapClasses = {
     md: styles.gapMedium,
     lg: styles.gapLarge,
     xl: styles.gapExtraLarge,
-} as const satisfies Record<PixieDustClusterGap, string>;
+} as const satisfies Record<PixieClusterGap, string>;
 
 const justifyClasses = {
     start: styles.justifyStart,
     center: styles.justifyCenter,
     end: styles.justifyEnd,
     between: styles.justifyBetween,
-} as const satisfies Record<PixieDustClusterJustify, string>;
+} as const satisfies Record<PixieClusterJustify, string>;
 
 const alignClasses = {
     start: styles.alignStart,
     center: styles.alignCenter,
     end: styles.alignEnd,
     baseline: styles.alignBaseline,
-} as const satisfies Record<PixieDustClusterAlign, string>;
+} as const satisfies Record<PixieClusterAlign, string>;
 
-export function PixieDustCluster({
+export function PixieCluster({
     as: Element = "div",
     gap = "sm",
     justify = "start",
@@ -37,7 +37,7 @@ export function PixieDustCluster({
     className = "",
     children,
     ...elementProps
-}: PixieDustClusterProps) {
+}: PixieClusterProps) {
     return (
         <Element
             {...elementProps}
