@@ -1,6 +1,7 @@
 import type { HTMLAttributes, ReactNode } from "react";
 
-export type PixieDustStackElement = "div" | "section" | "ul" | "ol";
+export type PixieDustStackElement =
+    "div" | "section" | "article" | "nav" | "ul" | "ol";
 
 export type PixieDustStackGap = "none" | "xs" | "sm" | "md" | "lg" | "xl";
 

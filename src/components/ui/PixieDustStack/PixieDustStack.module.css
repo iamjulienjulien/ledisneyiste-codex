@@ -1,31 +1,32 @@
 .root {
     display: flex;
     min-width: 0;
+    min-height: 0;
     flex-direction: column;
 }
 
 .gapNone {
-    gap: 0;
+    row-gap: 0;
 }
 
 .gapExtraSmall {
-    gap: 0.5rem;
+    row-gap: 0.5rem;
 }
 
 .gapSmall {
-    gap: 1rem;
+    row-gap: 1rem;
 }
 
 .gapMedium {
-    gap: 1.5rem;
+    row-gap: 1.5rem;
 }
 
 .gapLarge {
-    gap: 2rem;
+    row-gap: 2rem;
 }
 
 .gapExtraLarge {
-    gap: 3rem;
+    row-gap: 3rem;
 }
 
 .alignStretch {
