@@ -1,10 +1,10 @@
 import { PixieContainer } from "@/components/ui/PixieContainer";
 import { PixieStack } from "@/components/ui/PixieStack";
-import styles from "./PixieDustSection.module.css";
+import styles from "./PixieSection.module.css";
 import type {
-    PixieDustSectionProps,
-    PixieDustSectionSpacing,
-} from "./PixieDustSection.types";
+    PixieSectionProps,
+    PixieSectionSpacing,
+} from "./PixieSection.types";
 
 const spacingStartClasses = {
     none: styles.spacingStartNone,
@@ -12,7 +12,7 @@ const spacingStartClasses = {
     md: styles.spacingStartMedium,
     lg: styles.spacingStartLarge,
     xl: styles.spacingStartExtraLarge,
-} as const satisfies Record<PixieDustSectionSpacing, string>;
+} as const satisfies Record<PixieSectionSpacing, string>;
 
 const spacingEndClasses = {
     none: styles.spacingEndNone,
@@ -20,9 +20,9 @@ const spacingEndClasses = {
     md: styles.spacingEndMedium,
     lg: styles.spacingEndLarge,
     xl: styles.spacingEndExtraLarge,
-} as const satisfies Record<PixieDustSectionSpacing, string>;
+} as const satisfies Record<PixieSectionSpacing, string>;
 
-export function PixieDustSection({
+export function PixieSection({
     as: Element = "section",
     width = "72",
     gutter = "md",
@@ -34,7 +34,7 @@ export function PixieDustSection({
     className = "",
     children,
     ...elementProps
-}: PixieDustSectionProps) {
+}: PixieSectionProps) {
     const resolvedSpacingStart = spacingStart ?? spacing;
     const resolvedSpacingEnd = spacingEnd ?? spacing;
 
