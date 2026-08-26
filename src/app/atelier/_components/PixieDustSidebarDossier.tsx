@@ -474,7 +474,7 @@ export function PixieDustSidebarDossier() {
                                         </h4>
                                     </div>
                                     <PixieDustGrid
-                                        columns={2}
+                                        maxColumns={2}
                                         minItemWidth="sm"
                                         gap="sm"
                                     >
@@ -808,7 +808,7 @@ export function PixieDustSidebarDossier() {
                                 </PixieCluster>
                             </aside>
                             <PixieDustGrid
-                                columns={3}
+                                maxColumns={3}
                                 minItemWidth="sm"
                                 gap="md"
                             >

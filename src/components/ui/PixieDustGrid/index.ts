@@ -1,9 +1,11 @@
 export { PixieDustGrid } from "./PixieDustGrid";
 export type {
     PixieDustGridAlign,
-    PixieDustGridColumns,
+    PixieDustGridDistribution,
     PixieDustGridElement,
     PixieDustGridGap,
+    PixieDustGridJustify,
+    PixieDustGridMaxColumns,
     PixieDustGridMinItemWidth,
     PixieDustGridProps,
 } from "./PixieDustGrid.types";

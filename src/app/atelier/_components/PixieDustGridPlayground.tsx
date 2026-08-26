@@ -8,9 +8,11 @@ import { PixieCard } from "@/components/ui/PixieCard";
 import {
     PixieDustGrid,
     type PixieDustGridAlign,
-    type PixieDustGridColumns,
+    type PixieDustGridDistribution,
     type PixieDustGridElement,
     type PixieDustGridGap,
+    type PixieDustGridJustify,
+    type PixieDustGridMaxColumns,
     type PixieDustGridMinItemWidth,
 } from "@/components/ui/PixieDustGrid";
 
@@ -39,6 +41,20 @@ const alignments = [
     { value: "end", label: "Fin" },
 ] as const;
 
+const justifications = [
+    { value: "stretch", label: "Étiré" },
+    { value: "start", label: "Début" },
+    { value: "center", label: "Centre" },
+    { value: "end", label: "Fin" },
+] as const;
+
+const distributions = [
+    { value: "fit", label: "Ajustée" },
+    { value: "fill", label: "Réservée" },
+] as const;
+
+type GapOverride = PixieDustGridGap | "inherit";
+
 const frameWidths = {
     compact: "max-w-md",
     moyen: "max-w-3xl",
@@ -55,22 +71,32 @@ const previewItems = [
 
 export function PixieDustGridPlayground() {
     const [element, setElement] = useState<PixieDustGridElement>("ul");
-    const [columns, setColumns] = useState<PixieDustGridColumns>(3);
+    const [maxColumns, setMaxColumns] = useState<PixieDustGridMaxColumns>(3);
     const [minItemWidth, setMinItemWidth] =
         useState<PixieDustGridMinItemWidth>("md");
     const [gap, setGap] = useState<PixieDustGridGap>("md");
+    const [rowGap, setRowGap] = useState<GapOverride>("inherit");
+    const [columnGap, setColumnGap] = useState<GapOverride>("inherit");
     const [align, setAlign] = useState<PixieDustGridAlign>("stretch");
+    const [justify, setJustify] = useState<PixieDustGridJustify>("stretch");
+    const [distribution, setDistribution] =
+        useState<PixieDustGridDistribution>("fit");
     const [light, setLight] = useState<"sombre" | "claire">("sombre");
     const [frame, setFrame] = useState<"compact" | "moyen" | "large">("moyen");
 
     const itemOpening =
         element === "div" ? "    <Card />" : "    <li><Card /></li>";
+    const rowGapLine = rowGap === "inherit" ? "" : `\n    rowGap="${rowGap}"`;
+    const columnGapLine =
+        columnGap === "inherit" ? "" : `\n    columnGap="${columnGap}"`;
     const code = `<PixieDustGrid
     as="${element}"
-    columns={${columns}}
+    maxColumns={${maxColumns}}
     minItemWidth="${minItemWidth}"
-    gap="${gap}"
+    gap="${gap}"${rowGapLine}${columnGapLine}
     align="${align}"
+    justify="${justify}"
+    distribution="${distribution}"
 >
 ${itemOpening}
     {/* … */}
@@ -111,19 +137,19 @@ ${itemOpening}
 
                         <div>
                             <label
-                                htmlFor="grid-columns"
+                                htmlFor="grid-max-columns"
                                 className="text-sm font-medium text-ink"
                             >
                                 Colonnes maximales
                             </label>
                             <select
-                                id="grid-columns"
-                                value={columns}
+                                id="grid-max-columns"
+                                value={maxColumns}
                                 onChange={(event) =>
-                                    setColumns(
+                                    setMaxColumns(
                                         Number(
                                             event.target.value,
-                                        ) as PixieDustGridColumns,
+                                        ) as PixieDustGridMaxColumns,
                                     )
                                 }
                                 className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink"
@@ -155,7 +181,7 @@ ${itemOpening}
 
                         <fieldset>
                             <legend className="text-sm font-medium text-ink">
-                                Espacement
+                                Espacement commun
                             </legend>
                             <div className="mt-3 space-y-2">
                                 {gaps.map((option) => (
@@ -165,6 +191,96 @@ ${itemOpening}
                                         {...option}
                                         selectedValue={gap}
                                         onChange={setGap}
+                                    />
+                                ))}
+                            </div>
+                        </fieldset>
+
+                        <div>
+                            <label
+                                htmlFor="grid-row-gap"
+                                className="text-sm font-medium text-ink"
+                            >
+                                Intervalle des rangées
+                            </label>
+                            <select
+                                id="grid-row-gap"
+                                value={rowGap}
+                                onChange={(event) =>
+                                    setRowGap(event.target.value as GapOverride)
+                                }
+                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink"
+                            >
+                                <option value="inherit">Hériter de gap</option>
+                                {gaps.map((option) => (
+                                    <option
+                                        key={option.value}
+                                        value={option.value}
+                                    >
+                                        {option.label}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label
+                                htmlFor="grid-column-gap"
+                                className="text-sm font-medium text-ink"
+                            >
+                                Intervalle des colonnes
+                            </label>
+                            <select
+                                id="grid-column-gap"
+                                value={columnGap}
+                                onChange={(event) =>
+                                    setColumnGap(
+                                        event.target.value as GapOverride,
+                                    )
+                                }
+                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink"
+                            >
+                                <option value="inherit">Hériter de gap</option>
+                                {gaps.map((option) => (
+                                    <option
+                                        key={option.value}
+                                        value={option.value}
+                                    >
+                                        {option.label}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <fieldset>
+                            <legend className="text-sm font-medium text-ink">
+                                Alignement horizontal
+                            </legend>
+                            <div className="mt-3 space-y-2">
+                                {justifications.map((option) => (
+                                    <AtelierOptionRadio
+                                        key={option.value}
+                                        name="grid-justify"
+                                        {...option}
+                                        selectedValue={justify}
+                                        onChange={setJustify}
+                                    />
+                                ))}
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend className="text-sm font-medium text-ink">
+                                Dernière rangée
+                            </legend>
+                            <div className="mt-3 space-y-2">
+                                {distributions.map((option) => (
+                                    <AtelierOptionRadio
+                                        key={option.value}
+                                        name="grid-distribution"
+                                        {...option}
+                                        selectedValue={distribution}
+                                        onChange={setDistribution}
                                     />
                                 ))}
                             </div>
@@ -208,10 +324,20 @@ ${itemOpening}
                         >
                             <PixieDustGrid
                                 as={element}
-                                columns={columns}
+                                maxColumns={maxColumns}
                                 minItemWidth={minItemWidth}
                                 gap={gap}
+                                rowGap={
+                                    rowGap === "inherit" ? undefined : rowGap
+                                }
+                                columnGap={
+                                    columnGap === "inherit"
+                                        ? undefined
+                                        : columnGap
+                                }
                                 align={align}
+                                justify={justify}
+                                distribution={distribution}
                                 aria-label={
                                     element === "div"
                                         ? undefined

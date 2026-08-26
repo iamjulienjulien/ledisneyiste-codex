@@ -1,8 +1,11 @@
 .root {
+    --pixie-grid-row-gap: var(--pixie-grid-gap);
+    --pixie-grid-column-gap: var(--pixie-grid-gap);
+
     display: grid;
     min-width: 0;
     grid-template-columns: repeat(
-        auto-fit,
+        var(--pixie-grid-distribution),
         minmax(
             min(
                 100%,
@@ -10,41 +13,50 @@
                     var(--pixie-grid-min-item-width),
                     calc(
                         (
-                                100% - (var(--pixie-grid-columns) - 1) *
-                                    var(--pixie-grid-gap)
+                                100% - (var(--pixie-grid-max-columns) - 1) *
+                                    var(--pixie-grid-column-gap)
                             ) /
-                            var(--pixie-grid-columns)
+                            var(--pixie-grid-max-columns)
                     )
                 )
             ),
             1fr
         )
     );
-    gap: var(--pixie-grid-gap);
+    row-gap: var(--pixie-grid-row-gap);
+    column-gap: var(--pixie-grid-column-gap);
+}
+
+.distributionFit {
+    --pixie-grid-distribution: auto-fit;
+}
+
+.distributionFill {
+    --pixie-grid-distribution: auto-fill;
 }
 
 .columnsOne {
-    --pixie-grid-columns: 1;
+    --pixie-grid-max-columns: 1;
 }
 
 .columnsTwo {
-    --pixie-grid-columns: 2;
+    --pixie-grid-max-columns: 2;
 }
 
 .columnsThree {
-    --pixie-grid-columns: 3;
+    --pixie-grid-max-columns: 3;
 }
 
 .columnsFour {
-    --pixie-grid-columns: 4;
+    --pixie-grid-max-columns: 4;
 }
 
 .columnsFive {
-    --pixie-grid-columns: 5;
+    --pixie-grid-max-columns: 5;
 }
 
 .columnsSix {
-    --pixie-grid-columns: 6;
+    --pixie-grid-max-columns: 6;
 }
 
 .minItemWidthExtraSmall {
@@ -87,6 +99,54 @@
     --pixie-grid-gap: 3rem;
 }
 
+.rowGapNone {
+    --pixie-grid-row-gap: 0rem;
+}
+
+.rowGapExtraSmall {
+    --pixie-grid-row-gap: 0.5rem;
+}
+
+.rowGapSmall {
+    --pixie-grid-row-gap: 1rem;
+}
+
+.rowGapMedium {
+    --pixie-grid-row-gap: 1.5rem;
+}
+
+.rowGapLarge {
+    --pixie-grid-row-gap: 2rem;
+}
+
+.rowGapExtraLarge {
+    --pixie-grid-row-gap: 3rem;
+}
+
+.columnGapNone {
+    --pixie-grid-column-gap: 0rem;
+}
+
+.columnGapExtraSmall {
+    --pixie-grid-column-gap: 0.5rem;
+}
+
+.columnGapSmall {
+    --pixie-grid-column-gap: 1rem;
+}
+
+.columnGapMedium {
+    --pixie-grid-column-gap: 1.5rem;
+}
+
+.columnGapLarge {
+    --pixie-grid-column-gap: 2rem;
+}
+
+.columnGapExtraLarge {
+    --pixie-grid-column-gap: 3rem;
+}
+
 .alignStretch {
     align-items: stretch;
 }
@@ -101,4 +161,20 @@
 
 .alignEnd {
     align-items: end;
+}
+
+.justifyStretch {
+    justify-items: stretch;
+}
+
+.justifyStart {
+    justify-items: start;
+}
+
+.justifyCenter {
+    justify-items: center;
+}
+
+.justifyEnd {
+    justify-items: end;
 }

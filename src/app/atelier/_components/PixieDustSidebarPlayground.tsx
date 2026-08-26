@@ -143,7 +143,7 @@ ${panes}
                         Quatre archives à projeter
                     </h5>
                 </div>
-                <PixieDustGrid columns={2} minItemWidth="sm" gap="sm">
+                <PixieDustGrid maxColumns={2} minItemWidth="sm" gap="sm">
                     {archiveTitles.map((title, index) => (
                         <PixieCard
                             key={title}
