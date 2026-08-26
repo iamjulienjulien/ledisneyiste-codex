@@ -373,9 +373,9 @@ L'Atelier documente les palettes, les composants, leurs variantes, leur
 accessibilité et leur API. Ses cinq premiers accessoires — `PixieSymbol`,
 `PixieButton`, `PixieLink`, `PixieBadge` et `PixieSeparator` —, ses six Décors
 — `PixieCard`, `PixiePanel`, `PixieFrame`, `PixieCallout`, `PixieInset` et
-`PixieBackdrop` — et les trois premiers composants du Montage,
-`PixieContainer`, `PixieStack` et `PixieCluster`, sont désormais prêts à
-projeter.
+`PixieBackdrop` — et les quatre premiers composants du Montage,
+`PixieContainer`, `PixieStack`, `PixieCluster` et `PixieSection`, sont désormais
+prêts à projeter.
 
 Ses six plateaux de travail sont maintenant actifs :
 
@@ -387,8 +387,8 @@ Ses six plateaux de travail sont maintenant actifs :
 5. **Le Montage** règle la composition et le rythme des séquences ;
 6. **Les Effets** rendent visibles les attentes et les retours du système.
 
-L’Atelier documente actuellement **17 esquisses PixieDust**, auxquelles
-s’ajoutent les six Décors et les trois premiers composants du Montage prêts à
+L’Atelier documente actuellement **16 esquisses PixieDust**, auxquelles
+s’ajoutent les six Décors et les quatre premiers composants du Montage prêts à
 projeter :
 
 - **Décors — 6 composants validés :** `PixieCard`, `PixiePanel`, `PixieFrame`,
@@ -396,10 +396,10 @@ projeter :
 - **Dialogues — 6 :** `PixieDustField`, `PixieDustInput`,
   `PixieDustTextarea`, `PixieDustSelect`, `PixieDustSwitch` et
   `PixieDustSearchField` ;
-- **Montage — 3 composants validés et 8 esquisses :** `PixieContainer`,
-  `PixieStack`, `PixieCluster`, `PixieDustSection`, `PixieDustGrid`,
-  `PixieDustSplit`, `PixieDustSidebar`, `PixieDustSwitcher`, `PixieDustRail`,
-  `PixieDustBleed` et `PixieDustStickyRegion` ;
+- **Montage — 4 composants validés et 7 esquisses :** `PixieContainer`,
+  `PixieStack`, `PixieCluster`, `PixieSection`, `PixieDustGrid`, `PixieDustSplit`,
+  `PixieDustSidebar`, `PixieDustSwitcher`, `PixieDustRail`, `PixieDustBleed` et
+  `PixieDustStickyRegion` ;
 - **Effets — 3 :** `PixieDustToast`, `PixieDustLoader` et
   `PixieDustSkeleton`.
 
