@@ -12,7 +12,7 @@ import {
     type PixieDustStackGap,
 } from "@/components/ui/PixieDustStack";
 
-const elements = ["div", "section", "ul", "ol"] as const;
+const elements = ["div", "section", "article", "nav", "ul", "ol"] as const;
 
 const gaps = [
     { value: "none", label: "Aucun" },
@@ -41,16 +41,19 @@ const previewItems = [
         eyebrow: "Plan 01",
         title: "Le mouvement se dessine",
         description: "Un premier groupe ouvre la séquence.",
+        href: "#stack-gaps",
     },
     {
         eyebrow: "Plan 02",
         title: "Le rythme s’installe",
         description: "L’intervalle relie les éléments sans les fusionner.",
+        href: "#stack-alignments",
     },
     {
         eyebrow: "Plan 03",
         title: "La scène respire",
         description: "Le dernier plan referme la composition.",
+        href: "#stack-semantics",
     },
 ] as const;
 
@@ -62,17 +65,28 @@ export function PixieDustStackPlayground() {
     const [frame, setFrame] = useState<"compact" | "moyen" | "large">("moyen");
 
     const isList = element === "ul" || element === "ol";
-    const childElement = isList ? "li" : "article";
-    const labelledBy =
-        element === "section" ? '    aria-labelledby="stack-heading"\n' : "";
+    const isNamedRegion =
+        element === "section" || element === "article" || element === "nav";
+    const labelledBy = isNamedRegion
+        ? '    aria-labelledby="stack-heading"\n'
+        : "";
+    const heading = isNamedRegion
+        ? '    <h2 id="stack-heading">Titre de la séquence</h2>\n'
+        : "";
+    const codeChildren =
+        element === "nav"
+            ? '    <a href="#premier-plan">Premier plan</a>\n    <a href="#deuxieme-plan">Deuxième plan</a>\n    <a href="#troisieme-plan">Troisième plan</a>'
+            : isList
+              ? "    <li>Premier plan</li>\n    <li>Deuxième plan</li>\n    <li>Troisième plan</li>"
+              : element === "article"
+                ? "    <div>Premier plan</div>\n    <div>Deuxième plan</div>\n    <div>Troisième plan</div>"
+                : "    <article>Premier plan</article>\n    <article>Deuxième plan</article>\n    <article>Troisième plan</article>";
     const code = `<PixieDustStack
     as="${element}"
     gap="${gap}"
     align="${align}"
 ${labelledBy}>
-    <${childElement}>Premier plan</${childElement}>
-    <${childElement}>Deuxième plan</${childElement}>
-    <${childElement}>Troisième plan</${childElement}>
+${heading}${codeChildren}
 </PixieDustStack>`;
     const itemWidth = align === "stretch" ? "w-full" : "w-full max-w-sm";
 
@@ -107,6 +121,10 @@ ${labelledBy}>
                                     </option>
                                 ))}
                             </select>
+                            <p className="mt-2 text-xs leading-5 text-muted">
+                                Les régions section, article et nav reçoivent un
+                                nom visible dans l’aperçu.
+                            </p>
                         </div>
 
                         <fieldset>
@@ -167,7 +185,7 @@ ${labelledBy}>
                                 gap={gap}
                                 align={align}
                                 aria-labelledby={
-                                    element === "section"
+                                    isNamedRegion
                                         ? "stack-preview-heading"
                                         : undefined
                                 }
@@ -176,7 +194,13 @@ ${labelledBy}>
                                 {previewItems.map((item, index) => {
                                     const card = (
                                         <PixieCard
-                                            as={isList ? "div" : "article"}
+                                            as={
+                                                isList ||
+                                                element === "article" ||
+                                                element === "nav"
+                                                    ? "div"
+                                                    : "article"
+                                            }
                                             variant="outline"
                                             padding="md"
                                             className={
@@ -209,6 +233,14 @@ ${labelledBy}>
                                         >
                                             {card}
                                         </li>
+                                    ) : element === "nav" ? (
+                                        <a
+                                            key={item.title}
+                                            href={item.href}
+                                            className={`${itemWidth} focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent`}
+                                        >
+                                            {card}
+                                        </a>
                                     ) : (
                                         <div
                                             key={item.title}

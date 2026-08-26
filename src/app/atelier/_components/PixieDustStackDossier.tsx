@@ -120,7 +120,7 @@ const properties = [
 const specificTypes = [
     {
         name: "PixieDustStackElement",
-        values: ['"div"', '"section"', '"ul"', '"ol"'],
+        values: ['"div"', '"section"', '"article"', '"nav"', '"ul"', '"ol"'],
         description: "Structures verticales autorisées.",
     },
     {
@@ -221,7 +221,7 @@ export function PixieDustStackDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.1.0
+                                0.2.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -249,7 +249,7 @@ export function PixieDustStackDossier() {
                         ["Mission", "Donner une cadence verticale prévisible."],
                         [
                             "Usage",
-                            "Groupes de textes, listes, cartes et séquences éditoriales.",
+                            "Groupes de textes, listes, cartes, articles et navigations.",
                         ],
                         [
                             "Limite",
@@ -265,7 +265,7 @@ export function PixieDustStackDossier() {
                         ],
                         [
                             "Dépendances",
-                            "Aucune ; les rythmes utilisent l’échelle de l’Atelier.",
+                            "Aucune ; la primitive reste un composant serveur sans JavaScript client.",
                         ],
                     ].map(([term, definition]) => (
                         <div key={term} className="bg-surface p-5">
@@ -346,7 +346,7 @@ export function PixieDustStackDossier() {
                     id="stack-gaps"
                     eyebrow="Cadence"
                     title="Six intervalles rythment les plans"
-                    description="Le gap s’applique seulement entre les enfants directs. Il ne crée aucun espace avant le premier plan ni après le dernier."
+                    description="Le row-gap s’applique seulement entre les enfants directs. Il ne crée aucun espace avant le premier plan ni après le dernier, et ne neutralise jamais leurs propres marges."
                 />
 
                 <div className="mt-7 grid gap-6 bg-canvas p-6 md:grid-cols-2 xl:grid-cols-3">
@@ -458,6 +458,94 @@ export function PixieDustStackDossier() {
                 </div>
             </section>
 
+            <section aria-labelledby="stack-scenarios" className="mt-16">
+                <SequenceTitle
+                    id="stack-scenarios"
+                    eyebrow="Scénarios préparés"
+                    title="Un même rythme traverse plusieurs matières"
+                    description="Ces scènes éprouvent la version 0.2.0 avec du récit long, des métadonnées compactes et une navigation nommée, sans lui confier le cadre ou la surface."
+                />
+
+                <div className="mt-7 grid gap-6 xl:grid-cols-3">
+                    <Stage>
+                        <PixieDustStack
+                            as="article"
+                            gap="sm"
+                            aria-labelledby="stack-scenario-editorial"
+                        >
+                            <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                                Récit éditorial
+                            </p>
+                            <h4
+                                id="stack-scenario-editorial"
+                                className="text-2xl text-ink"
+                            >
+                                Le studio apprend à donner une personnalité au
+                                mouvement
+                            </h4>
+                            <p className="leading-7 text-ink-soft">
+                                Un titre sur plusieurs lignes et un paragraphe
+                                développé conservent un axe de lecture stable,
+                                même lorsque le cadre se resserre.
+                            </p>
+                        </PixieDustStack>
+                    </Stage>
+
+                    <Stage>
+                        <PixieDustStack as="ul" gap="xs">
+                            {[
+                                ["Sortie", "18 novembre 1928"],
+                                ["Série", "Mickey Mouse"],
+                                ["Son", "Synchronisé"],
+                            ].map(([label, value]) => (
+                                <li
+                                    key={label}
+                                    className="grid grid-cols-[5rem_1fr] gap-3 border-b border-line py-3 first:pt-0 last:border-b-0 last:pb-0"
+                                >
+                                    <span className="text-xs font-eyebrow uppercase tracking-[0.12em] text-muted">
+                                        {label}
+                                    </span>
+                                    <span className="text-sm text-ink-soft">
+                                        {value}
+                                    </span>
+                                </li>
+                            ))}
+                        </PixieDustStack>
+                    </Stage>
+
+                    <Stage>
+                        <PixieDustStack
+                            as="nav"
+                            gap="sm"
+                            aria-labelledby="stack-scenario-navigation"
+                        >
+                            <h4
+                                id="stack-scenario-navigation"
+                                className="text-xl text-ink"
+                            >
+                                Rejoindre une famille
+                            </h4>
+                            <PixieDustStack as="ul" gap="xs">
+                                {[
+                                    ["Cadence", "#stack-gaps"],
+                                    ["Alignements", "#stack-alignments"],
+                                    ["Sémantique", "#stack-semantics"],
+                                ].map(([label, href]) => (
+                                    <li key={label}>
+                                        <a
+                                            href={href}
+                                            className="block border border-line bg-surface px-4 py-3 text-sm text-ink-soft transition-colors hover:border-line-strong hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                                        >
+                                            {label}
+                                        </a>
+                                    </li>
+                                ))}
+                            </PixieDustStack>
+                        </PixieDustStack>
+                    </Stage>
+                </div>
+            </section>
+
             <section aria-labelledby="stack-semantics" className="mt-16">
                 <SequenceTitle
                     id="stack-semantics"
@@ -466,7 +554,7 @@ export function PixieDustStackDossier() {
                     description="ul et ol conservent leur sémantique native. Leurs enfants directs restent impérativement des éléments li."
                 />
 
-                <div className="mt-7 grid gap-6 lg:grid-cols-2">
+                <div className="mt-7 grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
                     <Stage>
                         <p className="mb-5 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Liste ordonnée
@@ -513,6 +601,28 @@ export function PixieDustStackDossier() {
                             <p className="leading-7 text-ink-soft">
                                 Le titre visible donne un nom à la région ;
                                 Stack ne crée aucun rôle supplémentaire.
+                            </p>
+                        </PixieDustStack>
+                    </Stage>
+
+                    <Stage>
+                        <p className="mb-5 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            Navigation nommée
+                        </p>
+                        <PixieDustStack
+                            as="nav"
+                            gap="sm"
+                            aria-labelledby="stack-semantic-navigation"
+                        >
+                            <h4
+                                id="stack-semantic-navigation"
+                                className="text-2xl text-ink"
+                            >
+                                Autour de Mickey
+                            </h4>
+                            <p className="leading-7 text-ink-soft">
+                                La région de navigation conserve son rôle natif
+                                et reçoit un nom perceptible.
                             </p>
                         </PixieDustStack>
                     </Stage>
@@ -640,8 +750,8 @@ export function PixieDustStackDossier() {
                             "Ne jamais inverser visuellement les enfants ni modifier leur ordre DOM.",
                         ],
                         [
-                            "Section nommée",
-                            'Associer as="section" à un titre visible, aria-labelledby ou aria-label.',
+                            "Région nommée",
+                            'Associer as="section" ou as="nav" à un titre visible, aria-labelledby ou aria-label.',
                         ],
                         [
                             "Listes valides",
@@ -677,7 +787,7 @@ export function PixieDustStackDossier() {
                 <SequenceTitle
                     id="stack-technical"
                     eyebrow="Générique technique"
-                    title="API de l’esquisse"
+                    title="API de l’esquisse 0.2.0"
                     description="Les types spécifiques sont colocalisés dans PixieDustStack.types.ts et les attributs HTML compatibles sont transmis à l’élément rendu."
                 />
 
@@ -705,10 +815,11 @@ export function PixieDustStackDossier() {
                     {[
                         "Recenser les suites verticales dont les marges pourraient devenir un gap explicite.",
                         "Éprouver les six rythmes avec textes courts, textes longs et surfaces répétées.",
-                        "Vérifier ul et ol avec les technologies d’assistance et les styles globaux.",
+                        "Vérifier ul, ol et nav avec les technologies d’assistance et les styles globaux.",
                         "Tester les quatre alignements dans les cadres compact, moyen et large.",
-                        "Comparer les Stack imbriqués à une future PixieDustSection.",
-                        "Décider si les enfants porteurs de marges externes doivent seulement être documentés ou signalés.",
+                        "Comparer les Stack imbriqués à PixieDustSection sans absorber sa responsabilité éditoriale.",
+                        "Confirmer que les marges externes des enfants restent documentées comme additives au row-gap.",
+                        "Promouvoir l’esquisse en PixieStack avant toute intégration dans une page publique du Codex.",
                     ].map((decision) => (
                         <li
                             key={decision}
