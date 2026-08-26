@@ -533,7 +533,7 @@ export function PixieDustStackDossier() {
                     position="start"
                     color="indigo-nuit-studio"
                     padding="none"
-                    grain
+                    texture="grain"
                     className="mt-7 py-12"
                 >
                     <PixieDustContainer width="medium" gutter="lg">

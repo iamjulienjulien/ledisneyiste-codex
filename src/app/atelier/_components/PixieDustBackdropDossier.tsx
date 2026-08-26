@@ -4,14 +4,21 @@ import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import {
     PixieDustBackdrop,
+    type PixieDustBackdropBase,
+    type PixieDustBackdropDirection,
     type PixieDustBackdropIntensity,
+    type PixieDustBackdropMotion,
     type PixieDustBackdropPadding,
     type PixieDustBackdropPosition,
     type PixieDustBackdropRadius,
+    type PixieDustBackdropSpread,
+    type PixieDustBackdropTexture,
+    type PixieDustBackdropTextureIntensity,
     type PixieDustBackdropVariant,
 } from "@/components/ui/PixieDustBackdrop";
 import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieFrame } from "@/components/ui/PixieFrame";
+import { PixieInset } from "@/components/ui/PixieInset";
 import { PixiePanel } from "@/components/ui/PixiePanel";
 import { PixieDustBackdropPlayground } from "./PixieDustBackdropPlayground";
 
@@ -41,6 +48,21 @@ const variants = [
         value: "projector" as const,
         description: "Un faisceau oblique traverse le fond de scène.",
     },
+    {
+        name: "Horizon",
+        value: "horizon" as const,
+        description: "Une ligne lumineuse ouvre la profondeur du décor.",
+    },
+    {
+        name: "Champ / contrechamp",
+        value: "split" as const,
+        description: "Deux plages colorées se rencontrent dans le cadre.",
+    },
+    {
+        name: "Celluloïd",
+        value: "cel" as const,
+        description: "Deux aplats translucides se superposent comme des cels.",
+    },
 ] as const satisfies readonly Readonly<{
     name: string;
     value: PixieDustBackdropVariant;
@@ -58,12 +80,105 @@ const intensities = [
 }>[];
 
 const positions = [
+    { name: "Haut · début", value: "top-start" as const },
+    { name: "Haut", value: "top" as const },
+    { name: "Haut · fin", value: "top-end" as const },
     { name: "Début", value: "start" as const },
     { name: "Centre", value: "center" as const },
     { name: "Fin", value: "end" as const },
+    { name: "Bas · début", value: "bottom-start" as const },
+    { name: "Bas", value: "bottom" as const },
+    { name: "Bas · fin", value: "bottom-end" as const },
 ] as const satisfies readonly Readonly<{
     name: string;
     value: PixieDustBackdropPosition;
+}>[];
+
+const directions = [
+    { name: "Horizontale", value: "horizontal" as const },
+    { name: "Verticale", value: "vertical" as const },
+    { name: "Diagonale montante", value: "diagonal-up" as const },
+    { name: "Diagonale descendante", value: "diagonal-down" as const },
+] as const satisfies readonly Readonly<{
+    name: string;
+    value: PixieDustBackdropDirection;
+}>[];
+
+const spreads = [
+    { name: "Étroite", value: "narrow" as const },
+    { name: "Moyenne", value: "medium" as const },
+    { name: "Large", value: "wide" as const },
+] as const satisfies readonly Readonly<{
+    name: string;
+    value: PixieDustBackdropSpread;
+}>[];
+
+const bases = [
+    { name: "Transparente", value: "transparent" as const },
+    { name: "Toile", value: "canvas" as const },
+    { name: "Surface", value: "surface" as const },
+    { name: "Surface atténuée", value: "muted" as const },
+] as const satisfies readonly Readonly<{
+    name: string;
+    value: PixieDustBackdropBase;
+}>[];
+
+const textures = [
+    {
+        name: "Aucune",
+        value: "none" as const,
+        description: "La lumière reste parfaitement nette.",
+    },
+    {
+        name: "Grain",
+        value: "grain" as const,
+        description: "Une matière de projection couvre le cadre.",
+    },
+    {
+        name: "Poussière",
+        value: "dust" as const,
+        description: "Quelques particules fixes ponctuent l’atmosphère.",
+    },
+    {
+        name: "Papier",
+        value: "paper" as const,
+        description: "Des fibres légères rappellent le support d’animation.",
+    },
+] as const satisfies readonly Readonly<{
+    name: string;
+    value: PixieDustBackdropTexture;
+    description: string;
+}>[];
+
+const textureIntensities = [
+    { name: "Discrète", value: "subtle" as const },
+    { name: "Moyenne", value: "medium" as const },
+    { name: "Forte", value: "strong" as const },
+] as const satisfies readonly Readonly<{
+    name: string;
+    value: PixieDustBackdropTextureIntensity;
+}>[];
+
+const motions = [
+    {
+        name: "Immobile",
+        value: "none" as const,
+        description: "La scène reste fixe par défaut.",
+    },
+    {
+        name: "Dérive",
+        value: "drift" as const,
+        description: "Les couches se déplacent lentement en sens opposés.",
+    },
+    {
+        name: "Respiration",
+        value: "breathe" as const,
+        description: "La présence lumineuse varie sans toucher au contenu.",
+    },
+] as const satisfies readonly Readonly<{
+    name: string;
+    value: PixieDustBackdropMotion;
+    description: string;
 }>[];
 
 const paddings = [
@@ -114,6 +229,18 @@ const properties = [
         description: "Origine du dégradé, du halo ou du faisceau.",
     },
     {
+        name: "direction",
+        type: "PixieDustBackdropDirection",
+        defaultValue: '"horizontal"',
+        description: "Axe suivi par les couches lumineuses.",
+    },
+    {
+        name: "spread",
+        type: "PixieDustBackdropSpread",
+        defaultValue: '"medium"',
+        description: "Étendue de la lumière dans le cadre.",
+    },
+    {
         name: "padding",
         type: "PixieDustBackdropPadding",
         defaultValue: '"lg"',
@@ -132,10 +259,37 @@ const properties = [
         description: "Couleur du registre ou accent courant du thème.",
     },
     {
-        name: "grain",
-        type: "boolean",
+        name: "secondaryColor",
+        type: "PixieDustBackdropColor",
         defaultValue: "false",
-        description: "Ajoute une texture statique de projection.",
+        description:
+            "Seconde couleur, dérivée de la première lorsqu’elle est absente.",
+    },
+    {
+        name: "base",
+        type: "PixieDustBackdropBase",
+        defaultValue: '"surface"',
+        description:
+            "Surface neutre installée sous les couches atmosphériques.",
+    },
+    {
+        name: "texture",
+        type: "PixieDustBackdropTexture",
+        defaultValue: '"none"',
+        description: "Matière décorative superposée au fond.",
+    },
+    {
+        name: "textureIntensity",
+        type: "PixieDustBackdropTextureIntensity",
+        defaultValue: '"medium"',
+        description: "Présence de la matière sans modifier la lumière.",
+    },
+    {
+        name: "motion",
+        type: "PixieDustBackdropMotion",
+        defaultValue: '"none"',
+        description:
+            "Animation atmosphérique facultative des couches décoratives.",
     },
     {
         name: "children",
@@ -159,7 +313,16 @@ const specificTypes = [
     },
     {
         name: "PixieDustBackdropVariant",
-        values: ['"wash"', '"gradient"', '"halo"', '"vignette"', '"projector"'],
+        values: [
+            '"wash"',
+            '"gradient"',
+            '"halo"',
+            '"vignette"',
+            '"projector"',
+            '"horizon"',
+            '"split"',
+            '"cel"',
+        ],
         description: "Atmosphères disponibles derrière le contenu.",
     },
     {
@@ -169,8 +332,33 @@ const specificTypes = [
     },
     {
         name: "PixieDustBackdropPosition",
-        values: ['"start"', '"center"', '"end"'],
-        description: "Origines horizontales de la lumière.",
+        values: [
+            '"top-start"',
+            '"top"',
+            '"top-end"',
+            '"start"',
+            '"center"',
+            '"end"',
+            '"bottom-start"',
+            '"bottom"',
+            '"bottom-end"',
+        ],
+        description: "Neuf origines possibles dans le cadre.",
+    },
+    {
+        name: "PixieDustBackdropDirection",
+        values: [
+            '"horizontal"',
+            '"vertical"',
+            '"diagonal-up"',
+            '"diagonal-down"',
+        ],
+        description: "Axes de progression de l’atmosphère.",
+    },
+    {
+        name: "PixieDustBackdropSpread",
+        values: ['"narrow"', '"medium"', '"wide"'],
+        description: "Largeurs relatives du foyer lumineux.",
     },
     {
         name: "PixieDustBackdropPadding",
@@ -186,6 +374,26 @@ const specificTypes = [
         name: "PixieDustBackdropColor",
         values: ["AtelierAnimationColorSlug", "false"],
         description: "Couleur enregistrée ou accent courant du thème.",
+    },
+    {
+        name: "PixieDustBackdropBase",
+        values: ['"transparent"', '"canvas"', '"surface"', '"muted"'],
+        description: "Surfaces neutres sous la projection.",
+    },
+    {
+        name: "PixieDustBackdropTexture",
+        values: ['"none"', '"grain"', '"dust"', '"paper"'],
+        description: "Matières décoratives disponibles.",
+    },
+    {
+        name: "PixieDustBackdropTextureIntensity",
+        values: ['"subtle"', '"medium"', '"strong"'],
+        description: "Niveaux de présence de la matière.",
+    },
+    {
+        name: "PixieDustBackdropMotion",
+        values: ['"none"', '"drift"', '"breathe"'],
+        description: "Mouvements facultatifs, neutralisés en mouvement réduit.",
     },
 ] as const;
 
@@ -273,7 +481,7 @@ export function PixieDustBackdropDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.1.0
+                                0.2.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -293,7 +501,7 @@ export function PixieDustBackdropDossier() {
                     id="backdrop-identity"
                     eyebrow="Fiche de rôle"
                     title="Identité du composant"
-                    description="Le Backdrop enveloppe plusieurs éléments dans une même ambiance. Ses couches restent décoratives, statiques et toujours placées derrière le récit."
+                    description="Le Backdrop enveloppe plusieurs éléments dans une même ambiance. Ses couches restent décoratives, séparées du contenu et toujours placées derrière le récit."
                 />
 
                 <dl className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
@@ -309,11 +517,11 @@ export function PixieDustBackdropDossier() {
                         ],
                         [
                             "Anatomie",
-                            "Une couche atmosphérique, un grain facultatif et le contenu.",
+                            "Une base, deux couches lumineuses, une texture facultative et le contenu.",
                         ],
                         [
                             "Accessibilité",
-                            "Les pseudo-éléments restent invisibles aux technologies d’assistance.",
+                            "Le décor est masqué aux technologies d’assistance et respecte le mouvement réduit.",
                         ],
                         [
                             "Dépendances",
@@ -339,20 +547,25 @@ export function PixieDustBackdropDossier() {
                 <SequenceTitle
                     id="backdrop-master"
                     eyebrow="Plan maître"
-                    title="Un faisceau ouvre la prochaine séquence"
-                    description="Le plan de référence installe une lumière large derrière un titre et plusieurs archives sans modifier leurs propres surfaces."
+                    title="Deux celluloïds ouvrent la prochaine séquence"
+                    description="Le plan de référence superpose deux couleurs et une matière légère derrière plusieurs archives, sans modifier leurs propres surfaces."
                 />
 
                 <div className="mt-7 grid border border-line xl:grid-cols-2">
                     <div className="bg-canvas p-8">
                         <PixieDustBackdrop
-                            variant="projector"
+                            variant="cel"
                             intensity="strong"
-                            position="start"
+                            position="top-start"
+                            direction="diagonal-down"
+                            spread="wide"
                             color="ambre-projecteur"
+                            secondaryColor="violet-ombre-portee"
+                            base="surface"
                             padding="xl"
                             radius="large"
-                            grain
+                            texture="grain"
+                            textureIntensity="subtle"
                         >
                             <p className="text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
                                 Les premières images
@@ -373,13 +586,18 @@ export function PixieDustBackdropDossier() {
                         </PixieDustBackdrop>
                     </div>
                     <CodeExample>{`<PixieDustBackdrop
-    variant="projector"
+    variant="cel"
     intensity="strong"
-    position="start"
+    position="top-start"
+    direction="diagonal-down"
+    spread="wide"
     color="ambre-projecteur"
+    secondaryColor="violet-ombre-portee"
+    base="surface"
     padding="xl"
     radius="large"
-    grain
+    texture="grain"
+    textureIntensity="subtle"
 >
     {/* Titre et surfaces au premier plan */}
 </PixieDustBackdrop>`}</CodeExample>
@@ -394,7 +612,7 @@ export function PixieDustBackdropDossier() {
                 <SequenceTitle
                     id="backdrop-variants-title"
                     eyebrow="Direction artistique"
-                    title="Cinq atmosphères pour ouvrir le décor"
+                    title="Huit atmosphères pour ouvrir le décor"
                     description="Chaque variant transforme uniquement l’arrière-plan ; le contenu et sa lisibilité conservent la même structure."
                 />
 
@@ -459,11 +677,11 @@ export function PixieDustBackdropDossier() {
                 <SequenceTitle
                     id="backdrop-position"
                     eyebrow="Placement du projecteur"
-                    title="La lumière entre par trois côtés du cadre"
-                    description="La position déplace le foyer des dégradés, halos et faisceaux sans réordonner le contenu."
+                    title="La lumière trouve neuf foyers dans le cadre"
+                    description="La position déplace le foyer sur les deux axes sans réordonner le contenu ni changer sa lecture."
                 />
 
-                <div className="mt-7 grid gap-6 bg-canvas p-6 lg:grid-cols-3">
+                <div className="mt-7 grid gap-6 bg-canvas p-6 sm:grid-cols-2 xl:grid-cols-3">
                     {positions.map((position) => (
                         <PixieDustBackdrop
                             key={position.value}
@@ -485,45 +703,162 @@ export function PixieDustBackdropDossier() {
                 </div>
             </section>
 
-            <section aria-labelledby="backdrop-grain" className="mt-16">
+            <section aria-labelledby="backdrop-direction" className="mt-16">
                 <SequenceTitle
-                    id="backdrop-grain"
-                    eyebrow="Texture de projection"
-                    title="Le grain reste une présence facultative"
-                    description="La texture reprend l’opacité de Projection Originale, ne bouge jamais et disparaît en contraste forcé."
+                    id="backdrop-direction"
+                    eyebrow="Trajectoire de la lumière"
+                    title="Quatre directions et trois ouvertures de champ"
+                    description="La direction règle l’axe des couches tandis que l’étendue resserre ou élargit leur présence."
                 />
 
-                <div className="mt-7 grid gap-6 bg-canvas p-6 lg:grid-cols-2">
-                    <PixieDustBackdrop
-                        variant="gradient"
-                        color="vert-cellulo"
-                        padding="lg"
-                        radius="medium"
-                        className="min-h-64"
-                    >
-                        <p className="font-mono text-xs text-accent">
-                            grain=false
-                        </p>
-                        <h4 className="mt-3 text-2xl text-ink">
-                            Surface nette
-                        </h4>
-                    </PixieDustBackdrop>
+                <div className="mt-7 grid gap-8 xl:grid-cols-[1.35fr_1fr]">
+                    <div className="grid gap-5 bg-canvas p-6 sm:grid-cols-2">
+                        {directions.map((direction) => (
+                            <PixieDustBackdrop
+                                key={direction.value}
+                                variant="projector"
+                                direction={direction.value}
+                                spread="medium"
+                                color="ambre-projecteur"
+                                padding="lg"
+                                radius="medium"
+                                className="min-h-52"
+                            >
+                                <p className="font-mono text-xs text-accent">
+                                    direction=&quot;{direction.value}&quot;
+                                </p>
+                                <h4 className="mt-3 text-xl text-ink">
+                                    {direction.name}
+                                </h4>
+                            </PixieDustBackdrop>
+                        ))}
+                    </div>
 
-                    <PixieDustBackdrop
-                        variant="gradient"
-                        color="vert-cellulo"
-                        padding="lg"
-                        radius="medium"
-                        grain
-                        className="min-h-64"
-                    >
-                        <p className="font-mono text-xs text-accent">
-                            grain=true
-                        </p>
-                        <h4 className="mt-3 text-2xl text-ink">
-                            Surface projetée
-                        </h4>
-                    </PixieDustBackdrop>
+                    <div className="grid gap-5 bg-canvas p-6">
+                        {spreads.map((spread) => (
+                            <PixieDustBackdrop
+                                key={spread.value}
+                                variant="horizon"
+                                spread={spread.value}
+                                color="bleu-reperage"
+                                padding="md"
+                                radius="medium"
+                                className="min-h-36"
+                            >
+                                <p className="font-mono text-xs text-accent">
+                                    spread=&quot;{spread.value}&quot;
+                                </p>
+                                <h4 className="mt-2 text-lg text-ink">
+                                    {spread.name}
+                                </h4>
+                            </PixieDustBackdrop>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section aria-labelledby="backdrop-colors" className="mt-16">
+                <SequenceTitle
+                    id="backdrop-colors"
+                    eyebrow="Toile et couleurs"
+                    title="Une base stable sous un dialogue coloré"
+                    description="La base reste issue de Projection Originale. Les deux couleurs de l’Atelier d’animation composent ensuite le climat éditorial."
+                />
+
+                <div className="mt-7 grid gap-6 bg-canvas p-6 sm:grid-cols-2 xl:grid-cols-4">
+                    {bases.map((base) => (
+                        <PixieDustBackdrop
+                            key={base.value}
+                            variant="split"
+                            color="corail-cel"
+                            secondaryColor="turquoise-acetate"
+                            base={base.value}
+                            padding="lg"
+                            radius="medium"
+                            className="min-h-52"
+                        >
+                            <p className="font-mono text-xs text-accent">
+                                base=&quot;{base.value}&quot;
+                            </p>
+                            <h4 className="mt-3 text-xl text-ink">
+                                {base.name}
+                            </h4>
+                        </PixieDustBackdrop>
+                    ))}
+                </div>
+            </section>
+
+            <section aria-labelledby="backdrop-textures" className="mt-16">
+                <SequenceTitle
+                    id="backdrop-textures"
+                    eyebrow="Matière de projection"
+                    title="Quatre finitions, trois degrés de présence"
+                    description="La texture est indépendante de la lumière, reste silencieuse et disparaît lorsque le mode de contraste l’exige."
+                />
+
+                <div className="mt-7 grid gap-6 bg-canvas p-6 sm:grid-cols-2 xl:grid-cols-4">
+                    {textures.map((texture, index) => (
+                        <PixieDustBackdrop
+                            key={texture.value}
+                            variant="gradient"
+                            color="vert-cellulo"
+                            padding="lg"
+                            radius="medium"
+                            texture={texture.value}
+                            textureIntensity={
+                                textureIntensities[
+                                    index % textureIntensities.length
+                                ].value
+                            }
+                            className="min-h-64"
+                        >
+                            <p className="font-mono text-xs text-accent">
+                                texture=&quot;{texture.value}&quot;
+                            </p>
+                            <h4 className="mt-3 text-2xl text-ink">
+                                {texture.name}
+                            </h4>
+                            <p className="mt-4 text-sm leading-6 text-ink-soft">
+                                {texture.description}
+                            </p>
+                        </PixieDustBackdrop>
+                    ))}
+                </div>
+            </section>
+
+            <section aria-labelledby="backdrop-motion" className="mt-16">
+                <SequenceTitle
+                    id="backdrop-motion"
+                    eyebrow="Mouvement atmosphérique"
+                    title="La scène reste immobile tant qu’on ne l’anime pas"
+                    description="Deux mouvements lents peuvent enrichir une ouverture exceptionnelle. Ils sont automatiquement neutralisés lorsque le public demande moins d’animation."
+                />
+
+                <div className="mt-7 grid gap-6 bg-canvas p-6 lg:grid-cols-3">
+                    {motions.map((motion) => (
+                        <PixieDustBackdrop
+                            key={motion.value}
+                            variant="cel"
+                            color="ambre-projecteur"
+                            secondaryColor="violet-ombre-portee"
+                            motion={motion.value}
+                            texture="dust"
+                            textureIntensity="subtle"
+                            padding="lg"
+                            radius="medium"
+                            className="min-h-56"
+                        >
+                            <p className="font-mono text-xs text-accent">
+                                motion=&quot;{motion.value}&quot;
+                            </p>
+                            <h4 className="mt-3 text-xl text-ink">
+                                {motion.name}
+                            </h4>
+                            <p className="mt-3 text-sm leading-6 text-ink-soft">
+                                {motion.description}
+                            </p>
+                        </PixieDustBackdrop>
+                    ))}
                 </div>
             </section>
 
@@ -541,7 +876,8 @@ export function PixieDustBackdropDossier() {
                     color="indigo-nuit-studio"
                     padding="xl"
                     radius="large"
-                    grain
+                    texture="grain"
+                    textureIntensity="subtle"
                     className="mt-7"
                 >
                     <div className="grid gap-6 xl:grid-cols-3">
@@ -577,6 +913,275 @@ export function PixieDustBackdropDossier() {
                         </PixieFrame>
                     </div>
                 </PixieDustBackdrop>
+            </section>
+
+            <section aria-labelledby="backdrop-scenarios" className="mt-16">
+                <SequenceTitle
+                    id="backdrop-scenarios"
+                    eyebrow="Scénarios préparés"
+                    title="Huit décors pour éprouver la composition"
+                    description="Ces plans couvrent les ouvertures, les collections, les raccords documentaires et les régions longues avant toute promotion du composant."
+                />
+
+                <div className="mt-7 grid gap-8">
+                    <PixieDustBackdrop
+                        as="header"
+                        variant="cel"
+                        intensity="strong"
+                        position="top-start"
+                        direction="diagonal-down"
+                        spread="wide"
+                        color="ambre-projecteur"
+                        secondaryColor="violet-ombre-portee"
+                        base="canvas"
+                        padding="xl"
+                        texture="paper"
+                        textureIntensity="subtle"
+                    >
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
+                            Accueil · Ouverture
+                        </p>
+                        <h4 className="mt-3 max-w-3xl text-4xl text-ink sm:text-5xl">
+                            Chaque archive attend que le projecteur la révèle
+                        </h4>
+                        <p className="mt-5 max-w-2xl leading-7 text-ink-soft">
+                            Un héros ample conserve une base lisible pendant que
+                            deux couleurs installent l’identité du récit.
+                        </p>
+                    </PixieDustBackdrop>
+
+                    <div className="grid gap-8 xl:grid-cols-2">
+                        <PixieDustBackdrop
+                            as="section"
+                            aria-labelledby="backdrop-scenario-index"
+                            variant="gradient"
+                            position="start"
+                            direction="horizontal"
+                            color="rouge-crayon"
+                            base="surface"
+                            padding="lg"
+                            radius="large"
+                        >
+                            <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                                Index · Introduction
+                            </p>
+                            <h4
+                                id="backdrop-scenario-index"
+                                className="mt-3 text-3xl text-ink"
+                            >
+                                Les personnages
+                            </h4>
+                            <p className="mt-4 leading-7 text-ink-soft">
+                                Une seule couleur de famille suffit à donner le
+                                ton sans devenir une métadonnée.
+                            </p>
+                        </PixieDustBackdrop>
+
+                        <PixieDustBackdrop
+                            as="section"
+                            aria-labelledby="backdrop-scenario-epoch"
+                            variant="horizon"
+                            position="bottom"
+                            spread="wide"
+                            color="bleu-reperage"
+                            base="muted"
+                            padding="lg"
+                            radius="large"
+                        >
+                            <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                                Époque · Raccord
+                            </p>
+                            <h4
+                                id="backdrop-scenario-epoch"
+                                className="mt-3 text-3xl text-ink"
+                            >
+                                Le temps des pionniers
+                            </h4>
+                            <p className="mt-4 leading-7 text-ink-soft">
+                                L’horizon marque une transition temporelle sans
+                                ajouter de séparateur structurel.
+                            </p>
+                        </PixieDustBackdrop>
+                    </div>
+
+                    <PixieDustBackdrop
+                        as="section"
+                        aria-labelledby="backdrop-scenario-collection"
+                        variant="projector"
+                        position="top-end"
+                        direction="diagonal-up"
+                        spread="wide"
+                        color="ambre-projecteur"
+                        base="canvas"
+                        padding="xl"
+                        radius="large"
+                    >
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            Collection · Cartes métier
+                        </p>
+                        <h4
+                            id="backdrop-scenario-collection"
+                            className="mt-3 text-3xl text-ink"
+                        >
+                            Les archives entrent dans le champ
+                        </h4>
+                        <div className="mt-7 grid gap-4 sm:grid-cols-3">
+                            <ArchiveCard title="Plane Crazy" year="1928" />
+                            <ArchiveCard
+                                title="The Skeleton Dance"
+                                year="1929"
+                            />
+                            <ArchiveCard
+                                title="Flowers and Trees"
+                                year="1932"
+                            />
+                        </div>
+                    </PixieDustBackdrop>
+
+                    <PixieDustBackdrop
+                        variant="cel"
+                        color="vert-cellulo"
+                        secondaryColor="turquoise-acetate"
+                        base="surface"
+                        padding="xl"
+                        radius="large"
+                        texture="grain"
+                        textureIntensity="subtle"
+                    >
+                        <div className="grid gap-6 xl:grid-cols-[1.2fr_0.8fr]">
+                            <PixiePanel
+                                as="section"
+                                variant="outline"
+                                padding="lg"
+                                header={
+                                    <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                                        Panel · Premier plan
+                                    </p>
+                                }
+                            >
+                                <h4 className="text-2xl text-ink">
+                                    Une région structurée garde son rôle
+                                </h4>
+                                <p className="mt-4 leading-7 text-ink-soft">
+                                    Le Backdrop compose l’ambiance ; le Panel
+                                    organise toujours le contenu.
+                                </p>
+                            </PixiePanel>
+                            <PixieInset
+                                as="aside"
+                                variant="recessed"
+                                depth="medium"
+                                padding="lg"
+                            >
+                                <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                                    Inset · Note secondaire
+                                </p>
+                                <p className="mt-3 leading-7 text-ink-soft">
+                                    Une information complémentaire conserve sa
+                                    propre profondeur.
+                                </p>
+                            </PixieInset>
+                        </div>
+                    </PixieDustBackdrop>
+
+                    <div className="grid gap-8 xl:grid-cols-2">
+                        <PixieDustBackdrop
+                            as="section"
+                            aria-labelledby="backdrop-scenario-empty"
+                            variant="wash"
+                            color="graphite"
+                            base="muted"
+                            padding="xl"
+                            radius="large"
+                            className="text-center"
+                        >
+                            <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                                Recherche · Aucun résultat
+                            </p>
+                            <h4
+                                id="backdrop-scenario-empty"
+                                className="mt-3 text-3xl text-ink"
+                            >
+                                La pellicule est vide
+                            </h4>
+                            <p className="mx-auto mt-4 max-w-md leading-7 text-ink-soft">
+                                Le décor soutient l’état vide sans porter seul
+                                son sens.
+                            </p>
+                        </PixieDustBackdrop>
+
+                        <PixieDustBackdrop
+                            as="footer"
+                            variant="vignette"
+                            color="indigo-nuit-studio"
+                            base="canvas"
+                            padding="xl"
+                            radius="large"
+                        >
+                            <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                                Générique · Dernière image
+                            </p>
+                            <h4 className="mt-3 text-3xl text-ink">
+                                Les lumières peuvent baisser
+                            </h4>
+                            <p className="mt-4 leading-7 text-ink-soft">
+                                Une vignette referme calmement la séquence.
+                            </p>
+                        </PixieDustBackdrop>
+                    </div>
+
+                    <PixieDustBackdrop
+                        as="section"
+                        aria-labelledby="backdrop-scenario-long"
+                        variant="split"
+                        position="bottom-end"
+                        direction="diagonal-down"
+                        spread="wide"
+                        color="corail-cel"
+                        secondaryColor="bleu-reperage"
+                        base="surface"
+                        padding="xl"
+                        radius="large"
+                        texture="paper"
+                        textureIntensity="subtle"
+                    >
+                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            Épreuve · Contenu long et focus
+                        </p>
+                        <h4
+                            id="backdrop-scenario-long"
+                            className="mt-3 text-3xl text-ink"
+                        >
+                            Le récit reste au premier plan
+                        </h4>
+                        <div className="mt-5 max-w-3xl space-y-4 leading-7 text-ink-soft">
+                            <p>
+                                Plusieurs paragraphes vérifient que les couches
+                                ne gênent ni la lecture, ni la sélection du
+                                texte, ni l’allongement naturel de la région.
+                            </p>
+                            <p>
+                                Les éléments focusables doivent également
+                                conserver leur halo complet, y compris au bord
+                                du rayon et sous une texture forte.
+                            </p>
+                        </div>
+                        <div className="mt-7 flex flex-wrap gap-5">
+                            <a
+                                href="#pixie-dust-backdrop-playground"
+                                className="font-medium text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+                            >
+                                Ouvrir la régie
+                            </a>
+                            <a
+                                href="#backdrop-accessibility"
+                                className="font-medium text-ink underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+                            >
+                                Lire les règles d’accessibilité
+                            </a>
+                        </div>
+                    </PixieDustBackdrop>
+                </div>
             </section>
 
             <section aria-labelledby="backdrop-construction" className="mt-16">
@@ -644,7 +1249,7 @@ export function PixieDustBackdropDossier() {
                     id="backdrop-playground-title"
                     eyebrow="Régie"
                     title="Composer un PixieDustBackdrop"
-                    description="Réglez son atmosphère, son origine et son grain ; le code d’utilisation suit chaque changement."
+                    description="Réglez ses couches, leur trajectoire, leur matière et leur mouvement ; le code d’utilisation suit chaque changement."
                 />
                 <div className="mt-8">
                     <PixieDustBackdropPlayground />
@@ -678,7 +1283,7 @@ export function PixieDustBackdropDossier() {
                         ],
                         [
                             "Focus",
-                            "Maintenir le halo de focus des contrôles contenus au-dessus des couches décoratives.",
+                            "La couche atmosphérique possède son propre écrin afin de ne jamais rogner le halo des contrôles contenus.",
                         ],
                         [
                             "Contraste",
@@ -686,7 +1291,11 @@ export function PixieDustBackdropDossier() {
                         ],
                         [
                             "Contraste forcé",
-                            "Supprimer atmosphère et grain pour laisser la structure native apparaître.",
+                            "Supprimer atmosphère et texture pour laisser la structure native apparaître.",
+                        ],
+                        [
+                            "Mouvement réduit",
+                            "Neutraliser dérive et respiration sans demander de configuration supplémentaire.",
                         ],
                     ].map(([title, description]) => (
                         <article key={title} className="bg-surface p-6">
@@ -732,12 +1341,13 @@ export function PixieDustBackdropDossier() {
 
                 <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
                     {[
-                        "Éprouver les cinq atmosphères dans les deux Lumières et sur plusieurs largeurs.",
+                        "Éprouver les huit atmosphères dans les deux Lumières et sur plusieurs largeurs.",
                         "Comparer projector au halo interactif des Cards sans confondre leurs responsabilités.",
-                        "Comparer halo à l’effet projector du Callout dans une composition réelle.",
-                        "Vérifier le grain à 200 % de zoom et en contraste forcé.",
+                        "Vérifier que split et cel justifient réellement une seconde couleur.",
+                        "Vérifier les trois textures à 200 % de zoom et en contraste forcé.",
                         "Tester les contenus longs et les contrôles focusables au-dessus des couches.",
-                        "Décider si position doit rester exposé pour wash et vignette malgré son effet neutre.",
+                        "Comparer dérive et respiration avec le composant Loader en mouvement réduit.",
+                        "Décider si les neuf positions restent toutes utiles après les scénarios métier.",
                     ].map((decision) => (
                         <li
                             key={decision}

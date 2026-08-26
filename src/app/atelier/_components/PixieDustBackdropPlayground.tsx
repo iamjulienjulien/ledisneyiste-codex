@@ -6,12 +6,18 @@ import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import {
     PixieDustBackdrop,
+    type PixieDustBackdropBase,
     type PixieDustBackdropColor,
+    type PixieDustBackdropDirection,
     type PixieDustBackdropElement,
     type PixieDustBackdropIntensity,
+    type PixieDustBackdropMotion,
     type PixieDustBackdropPadding,
     type PixieDustBackdropPosition,
     type PixieDustBackdropRadius,
+    type PixieDustBackdropSpread,
+    type PixieDustBackdropTexture,
+    type PixieDustBackdropTextureIntensity,
     type PixieDustBackdropVariant,
 } from "@/components/ui/PixieDustBackdrop";
 import { PixieCard } from "@/components/ui/PixieCard";
@@ -27,6 +33,9 @@ const variants = [
     { value: "halo", label: "Halo" },
     { value: "vignette", label: "Vignette" },
     { value: "projector", label: "Projecteur" },
+    { value: "horizon", label: "Horizon" },
+    { value: "split", label: "Champ / contrechamp" },
+    { value: "cel", label: "Celluloïd" },
 ] as const;
 
 const intensities = [
@@ -36,26 +45,30 @@ const intensities = [
 ] as const;
 
 const positions = [
-    { value: "start", label: "Début" },
-    { value: "center", label: "Centre" },
-    { value: "end", label: "Fin" },
+    "top-start",
+    "top",
+    "top-end",
+    "start",
+    "center",
+    "end",
+    "bottom-start",
+    "bottom",
+    "bottom-end",
 ] as const;
 
-const paddings = [
-    { value: "none", label: "Aucun" },
-    { value: "sm", label: "Petit" },
-    { value: "md", label: "Moyen" },
-    { value: "lg", label: "Grand" },
-    { value: "xl", label: "Très grand" },
+const directions = [
+    "horizontal",
+    "vertical",
+    "diagonal-up",
+    "diagonal-down",
 ] as const;
-
-const radii = [
-    { value: "none", label: "Aucun" },
-    { value: "small", label: "Petit" },
-    { value: "medium", label: "Moyen" },
-    { value: "large", label: "Grand" },
-] as const;
-
+const spreads = ["narrow", "medium", "wide"] as const;
+const paddings = ["none", "sm", "md", "lg", "xl"] as const;
+const radii = ["none", "small", "medium", "large"] as const;
+const bases = ["transparent", "canvas", "surface", "muted"] as const;
+const textures = ["none", "grain", "dust", "paper"] as const;
+const textureIntensities = ["subtle", "medium", "strong"] as const;
+const motions = ["none", "drift", "breathe"] as const;
 const elements = ["div", "section", "header", "footer"] as const;
 const colorSlugs = getAtelierAnimationColorSlugs();
 
@@ -65,41 +78,60 @@ const frameWidths = {
     large: "max-w-4xl",
 } as const satisfies Record<"compact" | "moyen" | "large", string>;
 
+const selectClassName =
+    "mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink";
+
 export function PixieDustBackdropPlayground() {
     const [element, setElement] = useState<PixieDustBackdropElement>("section");
-    const [variant, setVariant] =
-        useState<PixieDustBackdropVariant>("projector");
+    const [variant, setVariant] = useState<PixieDustBackdropVariant>("cel");
     const [intensity, setIntensity] =
-        useState<PixieDustBackdropIntensity>("medium");
+        useState<PixieDustBackdropIntensity>("strong");
     const [position, setPosition] =
-        useState<PixieDustBackdropPosition>("start");
-    const [padding, setPadding] = useState<PixieDustBackdropPadding>("lg");
+        useState<PixieDustBackdropPosition>("top-start");
+    const [direction, setDirection] =
+        useState<PixieDustBackdropDirection>("diagonal-down");
+    const [spread, setSpread] = useState<PixieDustBackdropSpread>("wide");
+    const [padding, setPadding] = useState<PixieDustBackdropPadding>("xl");
     const [radius, setRadius] = useState<PixieDustBackdropRadius>("large");
     const [color, setColor] =
         useState<PixieDustBackdropColor>("ambre-projecteur");
-    const [grain, setGrain] = useState(true);
+    const [secondaryColor, setSecondaryColor] =
+        useState<PixieDustBackdropColor>("violet-ombre-portee");
+    const [base, setBase] = useState<PixieDustBackdropBase>("surface");
+    const [texture, setTexture] = useState<PixieDustBackdropTexture>("grain");
+    const [textureIntensity, setTextureIntensity] =
+        useState<PixieDustBackdropTextureIntensity>("subtle");
+    const [motion, setMotion] = useState<PixieDustBackdropMotion>("none");
     const [light, setLight] = useState<"sombre" | "claire">("sombre");
     const [frame, setFrame] = useState<"compact" | "moyen" | "large">("moyen");
 
-    const optionalProps = [
+    const props = [
+        `    as="${element}"`,
+        `    variant="${variant}"`,
+        `    intensity="${intensity}"`,
+        `    position="${position}"`,
+        `    direction="${direction}"`,
+        `    spread="${spread}"`,
+        `    padding="${padding}"`,
+        `    radius="${radius}"`,
+        `    base="${base}"`,
         color ? `    color="${color}"` : null,
-        grain ? "    grain" : null,
+        secondaryColor ? `    secondaryColor="${secondaryColor}"` : null,
+        texture !== "none" ? `    texture="${texture}"` : null,
+        texture !== "none"
+            ? `    textureIntensity="${textureIntensity}"`
+            : null,
+        motion !== "none" ? `    motion="${motion}"` : null,
         element === "section" ? '    aria-labelledby="backdrop-heading"' : null,
     ].filter((line): line is string => line !== null);
-    const code = `<PixieDustBackdrop
-    as="${element}"
-    variant="${variant}"
-    intensity="${intensity}"
-    position="${position}"
-    padding="${padding}"
-    radius="${radius}"${optionalProps.length > 0 ? `\n${optionalProps.join("\n")}` : ""}
->
-    <h2 id="backdrop-heading">Les origines retrouvent leur lumière</h2>
-    {/* Composition au premier plan */}
-</PixieDustBackdrop>`;
 
-    function selectColor(value: string) {
-        setColor(
+    const code = `<PixieDustBackdrop\n${props.join("\n")}\n>\n    <h2 id="backdrop-heading">Les origines retrouvent leur lumière</h2>\n    {/* Composition au premier plan */}\n</PixieDustBackdrop>`;
+
+    function selectColor(
+        value: string,
+        setter: (color: PixieDustBackdropColor) => void,
+    ) {
+        setter(
             value === "theme" ? false : (value as AtelierAnimationColorSlug),
         );
     }
@@ -127,7 +159,7 @@ export function PixieDustBackdropPlayground() {
                                             .value as PixieDustBackdropElement,
                                     )
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink"
+                                className={`${selectClassName} font-mono`}
                             >
                                 {elements.map((value) => (
                                     <option key={value} value={value}>
@@ -171,71 +203,176 @@ export function PixieDustBackdropPlayground() {
                             </div>
                         </fieldset>
 
-                        <fieldset>
-                            <legend className="text-sm font-medium text-ink">
-                                Position
-                            </legend>
-                            <div className="mt-3 space-y-2">
-                                {positions.map((option) => (
-                                    <AtelierOptionRadio
-                                        key={option.value}
-                                        name="backdrop-position"
-                                        {...option}
-                                        selectedValue={position}
-                                        onChange={setPosition}
-                                    />
+                        <div>
+                            <label
+                                htmlFor="backdrop-position"
+                                className="text-sm font-medium text-ink"
+                            >
+                                Position du foyer
+                            </label>
+                            <select
+                                id="backdrop-position"
+                                value={position}
+                                onChange={(event) =>
+                                    setPosition(
+                                        event.target
+                                            .value as PixieDustBackdropPosition,
+                                    )
+                                }
+                                className={selectClassName}
+                            >
+                                {positions.map((value) => (
+                                    <option key={value} value={value}>
+                                        {value}
+                                    </option>
                                 ))}
-                            </div>
-                        </fieldset>
+                            </select>
+                        </div>
 
-                        <fieldset>
-                            <legend className="text-sm font-medium text-ink">
+                        <div>
+                            <label
+                                htmlFor="backdrop-direction"
+                                className="text-sm font-medium text-ink"
+                            >
+                                Direction
+                            </label>
+                            <select
+                                id="backdrop-direction"
+                                value={direction}
+                                onChange={(event) =>
+                                    setDirection(
+                                        event.target
+                                            .value as PixieDustBackdropDirection,
+                                    )
+                                }
+                                className={selectClassName}
+                            >
+                                {directions.map((value) => (
+                                    <option key={value} value={value}>
+                                        {value}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label
+                                htmlFor="backdrop-spread"
+                                className="text-sm font-medium text-ink"
+                            >
+                                Étendue
+                            </label>
+                            <select
+                                id="backdrop-spread"
+                                value={spread}
+                                onChange={(event) =>
+                                    setSpread(
+                                        event.target
+                                            .value as PixieDustBackdropSpread,
+                                    )
+                                }
+                                className={selectClassName}
+                            >
+                                {spreads.map((value) => (
+                                    <option key={value} value={value}>
+                                        {value}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label
+                                htmlFor="backdrop-base"
+                                className="text-sm font-medium text-ink"
+                            >
+                                Surface de base
+                            </label>
+                            <select
+                                id="backdrop-base"
+                                value={base}
+                                onChange={(event) =>
+                                    setBase(
+                                        event.target
+                                            .value as PixieDustBackdropBase,
+                                    )
+                                }
+                                className={selectClassName}
+                            >
+                                {bases.map((value) => (
+                                    <option key={value} value={value}>
+                                        {value}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label
+                                htmlFor="backdrop-padding"
+                                className="text-sm font-medium text-ink"
+                            >
                                 Espacement intérieur
-                            </legend>
-                            <div className="mt-3 space-y-2">
-                                {paddings.map((option) => (
-                                    <AtelierOptionRadio
-                                        key={option.value}
-                                        name="backdrop-padding"
-                                        {...option}
-                                        selectedValue={padding}
-                                        onChange={setPadding}
-                                    />
+                            </label>
+                            <select
+                                id="backdrop-padding"
+                                value={padding}
+                                onChange={(event) =>
+                                    setPadding(
+                                        event.target
+                                            .value as PixieDustBackdropPadding,
+                                    )
+                                }
+                                className={selectClassName}
+                            >
+                                {paddings.map((value) => (
+                                    <option key={value} value={value}>
+                                        {value}
+                                    </option>
                                 ))}
-                            </div>
-                        </fieldset>
+                            </select>
+                        </div>
 
-                        <fieldset>
-                            <legend className="text-sm font-medium text-ink">
+                        <div>
+                            <label
+                                htmlFor="backdrop-radius"
+                                className="text-sm font-medium text-ink"
+                            >
                                 Rayon
-                            </legend>
-                            <div className="mt-3 space-y-2">
-                                {radii.map((option) => (
-                                    <AtelierOptionRadio
-                                        key={option.value}
-                                        name="backdrop-radius"
-                                        {...option}
-                                        selectedValue={radius}
-                                        onChange={setRadius}
-                                    />
+                            </label>
+                            <select
+                                id="backdrop-radius"
+                                value={radius}
+                                onChange={(event) =>
+                                    setRadius(
+                                        event.target
+                                            .value as PixieDustBackdropRadius,
+                                    )
+                                }
+                                className={selectClassName}
+                            >
+                                {radii.map((value) => (
+                                    <option key={value} value={value}>
+                                        {value}
+                                    </option>
                                 ))}
-                            </div>
-                        </fieldset>
+                            </select>
+                        </div>
 
                         <div>
                             <label
                                 htmlFor="backdrop-color"
                                 className="text-sm font-medium text-ink"
                             >
-                                Couleur
+                                Couleur principale
                             </label>
                             <select
                                 id="backdrop-color"
                                 value={color || "theme"}
                                 onChange={(event) =>
-                                    selectColor(event.target.value)
+                                    selectColor(event.target.value, setColor)
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                className={selectClassName}
                             >
                                 <option value="theme">Accent du thème</option>
                                 {colorSlugs.map((slug) => (
@@ -246,17 +383,111 @@ export function PixieDustBackdropPlayground() {
                             </select>
                         </div>
 
-                        <label className="flex cursor-pointer items-center gap-2 text-sm text-ink-soft">
-                            <input
-                                type="checkbox"
-                                checked={grain}
+                        <div>
+                            <label
+                                htmlFor="backdrop-secondary-color"
+                                className="text-sm font-medium text-ink"
+                            >
+                                Couleur secondaire
+                            </label>
+                            <select
+                                id="backdrop-secondary-color"
+                                value={secondaryColor || "theme"}
                                 onChange={(event) =>
-                                    setGrain(event.target.checked)
+                                    selectColor(
+                                        event.target.value,
+                                        setSecondaryColor,
+                                    )
                                 }
-                                className="accent-accent"
-                            />
-                            Ajouter le grain
-                        </label>
+                                className={selectClassName}
+                            >
+                                <option value="theme">Teinte dérivée</option>
+                                {colorSlugs.map((slug) => (
+                                    <option key={slug} value={slug}>
+                                        {getAtelierAnimationColor(slug).label}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label
+                                htmlFor="backdrop-texture"
+                                className="text-sm font-medium text-ink"
+                            >
+                                Texture
+                            </label>
+                            <select
+                                id="backdrop-texture"
+                                value={texture}
+                                onChange={(event) =>
+                                    setTexture(
+                                        event.target
+                                            .value as PixieDustBackdropTexture,
+                                    )
+                                }
+                                className={selectClassName}
+                            >
+                                {textures.map((value) => (
+                                    <option key={value} value={value}>
+                                        {value}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label
+                                htmlFor="backdrop-texture-intensity"
+                                className="text-sm font-medium text-ink"
+                            >
+                                Intensité de la texture
+                            </label>
+                            <select
+                                id="backdrop-texture-intensity"
+                                value={textureIntensity}
+                                onChange={(event) =>
+                                    setTextureIntensity(
+                                        event.target
+                                            .value as PixieDustBackdropTextureIntensity,
+                                    )
+                                }
+                                disabled={texture === "none"}
+                                className={selectClassName}
+                            >
+                                {textureIntensities.map((value) => (
+                                    <option key={value} value={value}>
+                                        {value}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label
+                                htmlFor="backdrop-motion"
+                                className="text-sm font-medium text-ink"
+                            >
+                                Mouvement
+                            </label>
+                            <select
+                                id="backdrop-motion"
+                                value={motion}
+                                onChange={(event) =>
+                                    setMotion(
+                                        event.target
+                                            .value as PixieDustBackdropMotion,
+                                    )
+                                }
+                                className={selectClassName}
+                            >
+                                {motions.map((value) => (
+                                    <option key={value} value={value}>
+                                        {value}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
                     </div>
                 </aside>
 
@@ -272,7 +503,7 @@ export function PixieDustBackdropPlayground() {
                     <div
                         data-projection="originale"
                         data-lumiere={light}
-                        className="flex min-h-[38rem] items-center justify-center overflow-auto bg-canvas p-8"
+                        className="flex min-h-[42rem] items-center justify-center overflow-auto bg-canvas p-8"
                     >
                         <div
                             className={`w-full transition-[max-width] ${frameWidths[frame]}`}
@@ -282,10 +513,16 @@ export function PixieDustBackdropPlayground() {
                                 variant={variant}
                                 intensity={intensity}
                                 position={position}
+                                direction={direction}
+                                spread={spread}
                                 padding={padding}
                                 radius={radius}
                                 color={color}
-                                grain={grain}
+                                secondaryColor={secondaryColor}
+                                base={base}
+                                texture={texture}
+                                textureIntensity={textureIntensity}
+                                motion={motion}
                                 aria-labelledby={
                                     element === "section"
                                         ? "backdrop-preview-heading"

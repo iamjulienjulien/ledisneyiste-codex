@@ -396,7 +396,7 @@ export function PixieDustContainerDossier() {
                     position="start"
                     color="ambre-projecteur"
                     padding="none"
-                    grain
+                    texture="grain"
                     className="mt-7 py-12"
                 >
                     <PixieDustContainer
