@@ -5,21 +5,21 @@ import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieCard } from "@/components/ui/PixieCard";
 import {
-    PixieDustGrid,
-    type PixieDustGridAlign,
-    type PixieDustGridDistribution,
-    type PixieDustGridGap,
-    type PixieDustGridJustify,
-    type PixieDustGridMaxColumns,
-    type PixieDustGridMinItemWidth,
-} from "@/components/ui/PixieDustGrid";
+    PixieGrid,
+    type PixieGridAlign,
+    type PixieGridDistribution,
+    type PixieGridGap,
+    type PixieGridJustify,
+    type PixieGridMaxColumns,
+    type PixieGridMinItemWidth,
+} from "@/components/ui/PixieGrid";
 import { PixieSection } from "@/components/ui/PixieSection";
 import { PixieStack } from "@/components/ui/PixieStack";
-import { PixieDustGridPlayground } from "./PixieDustGridPlayground";
+import { PixieGridPlayground } from "./PixieGridPlayground";
 
 const maxColumns = [
     1, 2, 3, 4, 5, 6,
-] as const satisfies readonly PixieDustGridMaxColumns[];
+] as const satisfies readonly PixieGridMaxColumns[];
 
 const minItemWidths = [
     {
@@ -48,7 +48,7 @@ const minItemWidths = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustGridMinItemWidth;
+    value: PixieGridMinItemWidth;
     token: string;
     role: string;
 }>[];
@@ -62,7 +62,7 @@ const gaps = [
     { name: "Très grand", value: "xl" as const, token: "3 rem" },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustGridGap;
+    value: PixieGridGap;
     token: string;
 }>[];
 
@@ -73,7 +73,7 @@ const alignments = [
     { name: "Fin", value: "end" as const },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustGridAlign;
+    value: PixieGridAlign;
 }>[];
 
 const justifications = [
@@ -83,7 +83,7 @@ const justifications = [
     { name: "Fin", value: "end" as const },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustGridJustify;
+    value: PixieGridJustify;
 }>[];
 
 const distributions = [
@@ -99,63 +99,63 @@ const distributions = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustGridDistribution;
+    value: PixieGridDistribution;
     role: string;
 }>[];
 
 const properties = [
     {
         name: "as",
-        type: "PixieDustGridElement",
+        type: "PixieGridElement",
         defaultValue: '"div"',
         description: "Élément HTML qui porte la collection.",
     },
     {
         name: "maxColumns",
-        type: "PixieDustGridMaxColumns",
+        type: "PixieGridMaxColumns",
         defaultValue: "3",
         description: "Nombre maximal de colonnes dans le cadre disponible.",
     },
     {
         name: "minItemWidth",
-        type: "PixieDustGridMinItemWidth",
+        type: "PixieGridMinItemWidth",
         defaultValue: '"md"',
         description: "Largeur minimale souhaitée pour chaque cellule.",
     },
     {
         name: "gap",
-        type: "PixieDustGridGap",
+        type: "PixieGridGap",
         defaultValue: '"md"',
         description: "Espacement horizontal et vertical entre les cellules.",
     },
     {
         name: "rowGap",
-        type: "PixieDustGridGap",
+        type: "PixieGridGap",
         defaultValue: "gap",
         description: "Surcharge facultative de l’intervalle entre les rangées.",
     },
     {
         name: "columnGap",
-        type: "PixieDustGridGap",
+        type: "PixieGridGap",
         defaultValue: "gap",
         description:
             "Surcharge facultative de l’intervalle entre les colonnes.",
     },
     {
         name: "align",
-        type: "PixieDustGridAlign",
+        type: "PixieGridAlign",
         defaultValue: '"stretch"',
         description: "Alignement vertical des éléments dans leur rangée.",
     },
     {
         name: "justify",
-        type: "PixieDustGridJustify",
+        type: "PixieGridJustify",
         defaultValue: '"stretch"',
         description: "Alignement horizontal des éléments dans leur piste.",
     },
     {
         name: "distribution",
-        type: "PixieDustGridDistribution",
+        type: "PixieGridDistribution",
         defaultValue: '"fit"',
         description: "Gestion des pistes vides sur la dernière rangée.",
     },
@@ -175,37 +175,37 @@ const properties = [
 
 const specificTypes = [
     {
-        name: "PixieDustGridElement",
+        name: "PixieGridElement",
         values: ['"div"', '"ul"', '"ol"'],
         description: "Structures neutre et listes autorisées.",
     },
     {
-        name: "PixieDustGridMaxColumns",
+        name: "PixieGridMaxColumns",
         values: ["1", "2", "3", "4", "5", "6"],
         description: "Maximum de pistes pouvant partager une rangée.",
     },
     {
-        name: "PixieDustGridMinItemWidth",
+        name: "PixieGridMinItemWidth",
         values: ['"xs"', '"sm"', '"md"', '"lg"'],
         description: "Largeurs minimales de cellule issues du Montage.",
     },
     {
-        name: "PixieDustGridGap",
+        name: "PixieGridGap",
         values: ['"none"', '"xs"', '"sm"', '"md"', '"lg"', '"xl"'],
         description: "Échelle partagée des intervalles de composition.",
     },
     {
-        name: "PixieDustGridAlign",
+        name: "PixieGridAlign",
         values: ['"stretch"', '"start"', '"center"', '"end"'],
         description: "Alignements possibles sur l’axe vertical.",
     },
     {
-        name: "PixieDustGridJustify",
+        name: "PixieGridJustify",
         values: ['"stretch"', '"start"', '"center"', '"end"'],
         description: "Alignements possibles sur l’axe horizontal.",
     },
     {
-        name: "PixieDustGridDistribution",
+        name: "PixieGridDistribution",
         values: ['"fit"', '"fill"'],
         description: "Gestion des pistes vides de la dernière rangée.",
     },
@@ -283,12 +283,12 @@ function ArchiveCard({
     );
 }
 
-export function PixieDustGridDossier() {
+export function PixieGridDossier() {
     return (
         <AtelierFicheAccessoire
-            id="pixie-dust-grid"
-            labelledBy="pixie-dust-grid-title"
-            nom="PixieDustGrid"
+            id="pixie-grid"
+            labelledBy="pixie-grid-title"
+            nom="PixieGrid"
             className="mt-16 scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
@@ -297,10 +297,10 @@ export function PixieDustGridDossier() {
                             Le clap · Montage 005
                         </p>
                         <h2
-                            id="pixie-dust-grid-title"
+                            id="pixie-grid-title"
                             className="mt-4 text-4xl text-ink sm:text-5xl"
                         >
-                            PixieDustGrid
+                            PixieGrid
                         </h2>
                         <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
                             Distribuer une collection sur des pistes régulières
@@ -314,7 +314,7 @@ export function PixieDustGridDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.2.0
+                                1.0.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -322,7 +322,7 @@ export function PixieDustGridDossier() {
                                 État
                             </dt>
                             <dd className="mt-1 text-sm font-medium">
-                                <AtelierStatut statut="Esquisse" />
+                                <AtelierStatut statut="Prêt à projeter" />
                             </dd>
                         </div>
                     </dl>
@@ -383,7 +383,7 @@ export function PixieDustGridDossier() {
 
                 <div className="mt-7 border border-accent/60 bg-canvas p-4 sm:p-6">
                     <p className="font-mono text-xs text-accent">
-                        PixieDustGrid · maxColumns + minItemWidth + gap
+                        PixieGrid · maxColumns + minItemWidth + gap
                     </p>
                     <div className="mt-4 grid grid-cols-3 gap-3">
                         {["Piste 01", "Piste 02", "Piste 03"].map((label) => (
@@ -411,7 +411,7 @@ export function PixieDustGridDossier() {
 
                 <div className="mt-7 grid border border-line xl:grid-cols-2">
                     <div className="bg-canvas p-5 sm:p-7">
-                        <PixieDustGrid
+                        <PixieGrid
                             as="ul"
                             maxColumns={3}
                             minItemWidth="sm"
@@ -427,9 +427,9 @@ export function PixieDustGridDossier() {
                                     />
                                 </li>
                             ))}
-                        </PixieDustGrid>
+                        </PixieGrid>
                     </div>
-                    <CodeExample>{`<PixieDustGrid
+                    <CodeExample>{`<PixieGrid
     as="ul"
     maxColumns={3}
     minItemWidth="sm"
@@ -440,7 +440,7 @@ export function PixieDustGridDossier() {
             <ArchiveCard archive={archive} />
         </li>
     ))}
-</PixieDustGrid>`}</CodeExample>
+</PixieGrid>`}</CodeExample>
                 </div>
             </section>
 
@@ -455,7 +455,7 @@ export function PixieDustGridDossier() {
                 <div className="mt-7 space-y-6 bg-canvas p-6">
                     {maxColumns.map((columnCount) => (
                         <Stage key={columnCount}>
-                            <PixieDustGrid
+                            <PixieGrid
                                 maxColumns={columnCount}
                                 minItemWidth="xs"
                                 gap="xs"
@@ -472,7 +472,7 @@ export function PixieDustGridDossier() {
                                         </div>
                                     ),
                                 )}
-                            </PixieDustGrid>
+                            </PixieGrid>
                             <p className="border-t border-line bg-surface p-4 font-mono text-xs text-accent">
                                 maxColumns={columnCount}
                             </p>
@@ -492,7 +492,7 @@ export function PixieDustGridDossier() {
                 <div className="mt-7 grid gap-6 bg-canvas p-6 lg:grid-cols-2">
                     {minItemWidths.map((width) => (
                         <Stage key={width.value}>
-                            <PixieDustGrid
+                            <PixieGrid
                                 maxColumns={3}
                                 minItemWidth={width.value}
                                 gap="sm"
@@ -504,7 +504,7 @@ export function PixieDustGridDossier() {
                                         className="min-h-20 border border-line bg-surface"
                                     />
                                 ))}
-                            </PixieDustGrid>
+                            </PixieGrid>
                             <div className="border-t border-line bg-surface p-4">
                                 <div className="flex flex-wrap items-baseline justify-between gap-3">
                                     <h4 className="text-lg text-ink">
@@ -534,7 +534,7 @@ export function PixieDustGridDossier() {
                 <div className="mt-7 grid gap-6 bg-canvas p-6 md:grid-cols-2 xl:grid-cols-3">
                     {gaps.map((gap) => (
                         <Stage key={gap.value}>
-                            <PixieDustGrid
+                            <PixieGrid
                                 maxColumns={2}
                                 minItemWidth="xs"
                                 gap={gap.value}
@@ -546,7 +546,7 @@ export function PixieDustGridDossier() {
                                         className="min-h-16 border border-line bg-surface"
                                     />
                                 ))}
-                            </PixieDustGrid>
+                            </PixieGrid>
                             <p className="border-t border-line bg-surface p-4 font-mono text-xs text-accent">
                                 {gap.name} · {gap.value} · {gap.token}
                             </p>
@@ -564,7 +564,7 @@ export function PixieDustGridDossier() {
                 />
 
                 <div className="mt-7 border border-line bg-canvas p-6">
-                    <PixieDustGrid
+                    <PixieGrid
                         maxColumns={3}
                         minItemWidth="sm"
                         gap="sm"
@@ -579,7 +579,7 @@ export function PixieDustGridDossier() {
                                 Plan {item}
                             </div>
                         ))}
-                    </PixieDustGrid>
+                    </PixieGrid>
                     <p className="mt-5 font-mono text-xs leading-6 text-muted">
                         gap=&quot;sm&quot; · rowGap=&quot;xl&quot; ·
                         columnGap=&quot;xs&quot;
@@ -598,7 +598,7 @@ export function PixieDustGridDossier() {
                 <div className="mt-7 grid gap-6 bg-canvas p-6 lg:grid-cols-2">
                     {distributions.map((distribution) => (
                         <Stage key={distribution.value}>
-                            <PixieDustGrid
+                            <PixieGrid
                                 maxColumns={3}
                                 minItemWidth="xs"
                                 gap="sm"
@@ -613,7 +613,7 @@ export function PixieDustGridDossier() {
                                         Plan {item}
                                     </div>
                                 ))}
-                            </PixieDustGrid>
+                            </PixieGrid>
                             <div className="border-t border-line bg-surface p-4">
                                 <code className="font-mono text-xs text-accent">
                                     distribution=&quot;{distribution.value}
@@ -639,7 +639,7 @@ export function PixieDustGridDossier() {
                 <div className="mt-7 grid gap-6 bg-canvas p-6 lg:grid-cols-2">
                     {alignments.map((alignment) => (
                         <Stage key={alignment.value}>
-                            <PixieDustGrid
+                            <PixieGrid
                                 maxColumns={3}
                                 minItemWidth="xs"
                                 gap="sm"
@@ -656,7 +656,7 @@ export function PixieDustGridDossier() {
                                         </div>
                                     ),
                                 )}
-                            </PixieDustGrid>
+                            </PixieGrid>
                             <p className="border-t border-line bg-surface p-4 font-mono text-xs text-accent">
                                 align=&quot;{alignment.value}&quot;
                             </p>
@@ -676,7 +676,7 @@ export function PixieDustGridDossier() {
                 <div className="mt-7 grid gap-6 bg-canvas p-6 lg:grid-cols-2">
                     {justifications.map((justification) => (
                         <Stage key={justification.value}>
-                            <PixieDustGrid
+                            <PixieGrid
                                 maxColumns={3}
                                 minItemWidth="xs"
                                 gap="sm"
@@ -693,7 +693,7 @@ export function PixieDustGridDossier() {
                                         </div>
                                     ),
                                 )}
-                            </PixieDustGrid>
+                            </PixieGrid>
                             <p className="border-t border-line bg-surface p-4 font-mono text-xs text-accent">
                                 justify=&quot;{justification.value}&quot;
                             </p>
@@ -720,7 +720,7 @@ export function PixieDustGridDossier() {
                             <p className="mb-3 font-mono text-xs text-accent">
                                 {label}
                             </p>
-                            <PixieDustGrid
+                            <PixieGrid
                                 maxColumns={4}
                                 minItemWidth="sm"
                                 gap="sm"
@@ -733,7 +733,7 @@ export function PixieDustGridDossier() {
                                         Plan {item}
                                     </div>
                                 ))}
-                            </PixieDustGrid>
+                            </PixieGrid>
                         </div>
                     ))}
                 </div>
@@ -743,8 +743,8 @@ export function PixieDustGridDossier() {
                 <SequenceTitle
                     id="grid-scenarios"
                     eyebrow="Scénarios préparés"
-                    title="Deux collections réelles avant la promotion"
-                    description="L’esquisse prépare la grille des cartes métier et celle des relations, sans descendre leur vocabulaire dans la primitive."
+                    title="Deux collections préparent l’entrée dans le Codex"
+                    description="La version stable éprouve la grille des cartes métier et celle des relations, sans descendre leur vocabulaire dans la primitive."
                 />
 
                 <div className="mt-7 space-y-8 bg-canvas p-6">
@@ -752,7 +752,7 @@ export function PixieDustGridDossier() {
                         <p className="mb-4 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Cartes métier · deux pistes
                         </p>
-                        <PixieDustGrid
+                        <PixieGrid
                             as="ul"
                             maxColumns={2}
                             minItemWidth="lg"
@@ -791,14 +791,14 @@ export function PixieDustGridDossier() {
                                     </PixieCard>
                                 </li>
                             ))}
-                        </PixieDustGrid>
+                        </PixieGrid>
                     </div>
 
                     <div>
                         <p className="mb-4 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Relations · trois pistes compactes
                         </p>
-                        <PixieDustGrid
+                        <PixieGrid
                             as="ul"
                             maxColumns={3}
                             minItemWidth="sm"
@@ -824,7 +824,7 @@ export function PixieDustGridDossier() {
                                     </PixieCard>
                                 </li>
                             ))}
-                        </PixieDustGrid>
+                        </PixieGrid>
                     </div>
                 </div>
             </section>
@@ -882,11 +882,7 @@ export function PixieDustGridDossier() {
                                 Le dessin animé trouve son langage
                             </h4>
                         </PixieStack>
-                        <PixieDustGrid
-                            maxColumns={3}
-                            minItemWidth="sm"
-                            gap="md"
-                        >
+                        <PixieGrid maxColumns={3} minItemWidth="sm" gap="md">
                             {archiveCards
                                 .slice(0, 3)
                                 .map(([year, title, description]) => (
@@ -897,7 +893,7 @@ export function PixieDustGridDossier() {
                                         description={description}
                                     />
                                 ))}
-                        </PixieDustGrid>
+                        </PixieGrid>
                     </PixieSection>
                 </div>
             </section>
@@ -931,18 +927,18 @@ export function PixieDustGridDossier() {
             </section>
 
             <section
-                id="pixie-dust-grid-playground"
+                id="pixie-grid-playground"
                 aria-labelledby="grid-playground-title"
                 className="mt-16 scroll-mt-8 border border-line-strong bg-surface-muted p-6 shadow-soft sm:p-8"
             >
                 <SequenceTitle
                     id="grid-playground-title"
                     eyebrow="Régie"
-                    title="Composer un PixieDustGrid"
+                    title="Composer un PixieGrid"
                     description="Réglez son maximum, sa largeur minimale et son rythme ; observez comment le cadre recompose la collection."
                 />
                 <div className="mt-8">
-                    <PixieDustGridPlayground />
+                    <PixieGridPlayground />
                 </div>
             </section>
 
@@ -1001,8 +997,8 @@ export function PixieDustGridDossier() {
                 <SequenceTitle
                     id="grid-technical"
                     eyebrow="Générique technique"
-                    title="API de l’esquisse"
-                    description="Les types spécifiques restent colocalisés dans PixieDustGrid.types.ts ; le composant reste un composant serveur tant qu’aucune interaction ne lui est ajoutée."
+                    title="API du composant"
+                    description="Les types spécifiques restent colocalisés dans PixieGrid.types.ts ; le composant reste un composant serveur tant qu’aucune interaction ne lui est ajoutée."
                 />
 
                 <div className="mt-7">
@@ -1021,18 +1017,18 @@ export function PixieDustGridDossier() {
                 <SequenceTitle
                     id="grid-journal"
                     eyebrow="Journal de production"
-                    title="Décisions avant la promotion"
-                    description="L’esquisse devra être éprouvée sur de vraies collections avant de devenir le montage commun des index."
+                    title="Décisions de projection"
+                    description="La version stable fixe un contrat de distribution générique avant son entrée progressive dans les collections du Codex."
                 />
 
                 <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
                     {[
-                        "Tester les quatre familles de cartes métier avec des contenus courts et longs.",
-                        "Éprouver les six plafonds dans des Containers étroits, moyens et larges.",
-                        "Vérifier les quatre largeurs minimales sur mobile et à 200 % de zoom.",
-                        "Éprouver fit et fill sur des dernières rangées incomplètes.",
-                        "Contrôler les listes ul et ol avec plusieurs lecteurs d’écran.",
-                        "Décider si trois colonnes et une largeur md restent les bons défauts.",
+                        "maxColumns reste un plafond et ne force jamais une largeur illisible.",
+                        "fit demeure la distribution par défaut des collections courantes.",
+                        "rowGap et columnGap ne surchargent gap qu’en cas de besoin éditorial.",
+                        "Les listes ul et ol conservent leurs éléments li et leur ordre source.",
+                        "Aucun mode dense ne peut réordonner visuellement la collection.",
+                        "Le composant reste serveur et ne dessine aucune surface métier.",
                     ].map((decision) => (
                         <li
                             key={decision}

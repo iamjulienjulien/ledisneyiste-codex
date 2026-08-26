@@ -5,7 +5,7 @@ import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import { PixieCard } from "@/components/ui/PixieCard";
-import { PixieDustGrid } from "@/components/ui/PixieDustGrid";
+import { PixieGrid } from "@/components/ui/PixieGrid";
 import {
     PixieDustSidebar,
     type PixieDustSidebarAlign,
@@ -143,7 +143,7 @@ ${panes}
                         Quatre archives à projeter
                     </h5>
                 </div>
-                <PixieDustGrid maxColumns={2} minItemWidth="sm" gap="sm">
+                <PixieGrid maxColumns={2} minItemWidth="sm" gap="sm">
                     {archiveTitles.map((title, index) => (
                         <PixieCard
                             key={title}
@@ -157,7 +157,7 @@ ${panes}
                             <h6 className="mt-2 text-lg text-ink">{title}</h6>
                         </PixieCard>
                     ))}
-                </PixieDustGrid>
+                </PixieGrid>
             </PixieStack>
         </section>
     );

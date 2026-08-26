@@ -6,7 +6,7 @@ import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieBadge } from "@/components/ui/PixieBadge";
 import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieCluster } from "@/components/ui/PixieCluster";
-import { PixieDustGrid } from "@/components/ui/PixieDustGrid";
+import { PixieGrid } from "@/components/ui/PixieGrid";
 import { PixieSection } from "@/components/ui/PixieSection";
 import {
     PixieDustSidebar,
@@ -473,7 +473,7 @@ export function PixieDustSidebarDossier() {
                                             Quatre archives
                                         </h4>
                                     </div>
-                                    <PixieDustGrid
+                                    <PixieGrid
                                         maxColumns={2}
                                         minItemWidth="sm"
                                         gap="sm"
@@ -493,7 +493,7 @@ export function PixieDustSidebarDossier() {
                                                 </h5>
                                             </PixieCard>
                                         ))}
-                                    </PixieDustGrid>
+                                    </PixieGrid>
                                 </PixieStack>
                             </section>
                         </PixieDustSidebar>
@@ -807,7 +807,7 @@ export function PixieDustSidebarDossier() {
                                     ))}
                                 </PixieCluster>
                             </aside>
-                            <PixieDustGrid
+                            <PixieGrid
                                 maxColumns={3}
                                 minItemWidth="sm"
                                 gap="md"
@@ -824,7 +824,7 @@ export function PixieDustSidebarDossier() {
                                         </h5>
                                     </PixieCard>
                                 ))}
-                            </PixieDustGrid>
+                            </PixieGrid>
                         </PixieDustSidebar>
                     </PixieSection>
                 </div>

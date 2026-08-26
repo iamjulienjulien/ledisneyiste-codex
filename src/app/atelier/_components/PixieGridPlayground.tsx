@@ -6,15 +6,15 @@ import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import { PixieCard } from "@/components/ui/PixieCard";
 import {
-    PixieDustGrid,
-    type PixieDustGridAlign,
-    type PixieDustGridDistribution,
-    type PixieDustGridElement,
-    type PixieDustGridGap,
-    type PixieDustGridJustify,
-    type PixieDustGridMaxColumns,
-    type PixieDustGridMinItemWidth,
-} from "@/components/ui/PixieDustGrid";
+    PixieGrid,
+    type PixieGridAlign,
+    type PixieGridDistribution,
+    type PixieGridElement,
+    type PixieGridGap,
+    type PixieGridJustify,
+    type PixieGridMaxColumns,
+    type PixieGridMinItemWidth,
+} from "@/components/ui/PixieGrid";
 
 const elements = ["div", "ul", "ol"] as const;
 
@@ -53,7 +53,7 @@ const distributions = [
     { value: "fill", label: "Réservée" },
 ] as const;
 
-type GapOverride = PixieDustGridGap | "inherit";
+type GapOverride = PixieGridGap | "inherit";
 
 const frameWidths = {
     compact: "max-w-md",
@@ -69,18 +69,18 @@ const previewItems = [
     ["1935", "The Band Concert", "Mickey dirige la couleur"],
 ] as const;
 
-export function PixieDustGridPlayground() {
-    const [element, setElement] = useState<PixieDustGridElement>("ul");
-    const [maxColumns, setMaxColumns] = useState<PixieDustGridMaxColumns>(3);
+export function PixieGridPlayground() {
+    const [element, setElement] = useState<PixieGridElement>("ul");
+    const [maxColumns, setMaxColumns] = useState<PixieGridMaxColumns>(3);
     const [minItemWidth, setMinItemWidth] =
-        useState<PixieDustGridMinItemWidth>("md");
-    const [gap, setGap] = useState<PixieDustGridGap>("md");
+        useState<PixieGridMinItemWidth>("md");
+    const [gap, setGap] = useState<PixieGridGap>("md");
     const [rowGap, setRowGap] = useState<GapOverride>("inherit");
     const [columnGap, setColumnGap] = useState<GapOverride>("inherit");
-    const [align, setAlign] = useState<PixieDustGridAlign>("stretch");
-    const [justify, setJustify] = useState<PixieDustGridJustify>("stretch");
+    const [align, setAlign] = useState<PixieGridAlign>("stretch");
+    const [justify, setJustify] = useState<PixieGridJustify>("stretch");
     const [distribution, setDistribution] =
-        useState<PixieDustGridDistribution>("fit");
+        useState<PixieGridDistribution>("fit");
     const [light, setLight] = useState<"sombre" | "claire">("sombre");
     const [frame, setFrame] = useState<"compact" | "moyen" | "large">("moyen");
 
@@ -89,7 +89,7 @@ export function PixieDustGridPlayground() {
     const rowGapLine = rowGap === "inherit" ? "" : `\n    rowGap="${rowGap}"`;
     const columnGapLine =
         columnGap === "inherit" ? "" : `\n    columnGap="${columnGap}"`;
-    const code = `<PixieDustGrid
+    const code = `<PixieGrid
     as="${element}"
     maxColumns={${maxColumns}}
     minItemWidth="${minItemWidth}"
@@ -100,7 +100,7 @@ export function PixieDustGridPlayground() {
 >
 ${itemOpening}
     {/* … */}
-</PixieDustGrid>`;
+</PixieGrid>`;
 
     return (
         <div className="overflow-hidden border border-line bg-surface">
@@ -121,8 +121,7 @@ ${itemOpening}
                                 value={element}
                                 onChange={(event) =>
                                     setElement(
-                                        event.target
-                                            .value as PixieDustGridElement,
+                                        event.target.value as PixieGridElement,
                                     )
                                 }
                                 className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink"
@@ -149,7 +148,7 @@ ${itemOpening}
                                     setMaxColumns(
                                         Number(
                                             event.target.value,
-                                        ) as PixieDustGridMaxColumns,
+                                        ) as PixieGridMaxColumns,
                                     )
                                 }
                                 className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink"
@@ -322,7 +321,7 @@ ${itemOpening}
                         <div
                             className={`w-full border border-dashed border-line-strong p-4 transition-[max-width] sm:p-6 ${frameWidths[frame]}`}
                         >
-                            <PixieDustGrid
+                            <PixieGrid
                                 as={element}
                                 maxColumns={maxColumns}
                                 minItemWidth={minItemWidth}
@@ -372,7 +371,7 @@ ${itemOpening}
                                         );
                                     },
                                 )}
-                            </PixieDustGrid>
+                            </PixieGrid>
                         </div>
                     </div>
 

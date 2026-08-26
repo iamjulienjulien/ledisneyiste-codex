@@ -13,7 +13,7 @@ import { PixieContainerDossier } from "./_components/PixieContainerDossier";
 import { PixieStackDossier } from "./_components/PixieStackDossier";
 import { PixieClusterDossier } from "./_components/PixieClusterDossier";
 import { PixieSectionDossier } from "./_components/PixieSectionDossier";
-import { PixieDustGridDossier } from "./_components/PixieDustGridDossier";
+import { PixieGridDossier } from "./_components/PixieGridDossier";
 import { PixieDustSplitDossier } from "./_components/PixieDustSplitDossier";
 import { PixieDustSidebarDossier } from "./_components/PixieDustSidebarDossier";
 import { PixieDustSwitcherDossier } from "./_components/PixieDustSwitcherDossier";
@@ -251,10 +251,10 @@ const montage = [
         href: "#pixie-section",
     },
     {
-        nom: "PixieDustGrid",
+        nom: "PixieGrid",
         role: "Distribuer une collection sur une grille responsive",
-        statut: "Esquisse",
-        href: "#pixie-dust-grid",
+        statut: "Prêt à projeter",
+        href: "#pixie-grid",
     },
     {
         nom: "PixieDustSplit",
@@ -768,9 +768,10 @@ export default function AtelierPage() {
                         ouvre le cadre, PixieStack règle le rythme vertical,
                         PixieCluster rassemble les groupes repliables et
                         PixieSection compose désormais les séquences éditoriales
-                        complètes. Les sept esquisses suivantes organiseront les
-                        autres distributions sans imposer de surface, de couleur
-                        ni d’interaction.
+                        complètes. PixieGrid distribue les collections sur des
+                        pistes responsives. Les six esquisses suivantes
+                        organiseront les autres distributions sans imposer de
+                        surface, de couleur ni d’interaction.
                     </p>
                 </div>
 
@@ -828,7 +829,7 @@ export default function AtelierPage() {
                 <PixieStackDossier />
                 <PixieClusterDossier />
                 <PixieSectionDossier />
-                <PixieDustGridDossier />
+                <PixieGridDossier />
                 <PixieDustSplitDossier />
                 <PixieDustSidebarDossier />
                 <PixieDustSwitcherDossier />
