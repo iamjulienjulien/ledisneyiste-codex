@@ -5,21 +5,21 @@ import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import {
-    PixieDustCallout,
-    type PixieDustCalloutAccentPosition,
-    type PixieDustCalloutColor,
-    type PixieDustCalloutDividers,
-    type PixieDustCalloutEffect,
-    type PixieDustCalloutEffectIntensity,
-    type PixieDustCalloutElement,
-    type PixieDustCalloutElevation,
-    type PixieDustCalloutFooterAlign,
-    type PixieDustCalloutIconAlign,
-    type PixieDustCalloutLayout,
-    type PixieDustCalloutPadding,
-    type PixieDustCalloutRadius,
-    type PixieDustCalloutVariant,
-} from "@/components/ui/PixieDustCallout";
+    PixieCallout,
+    type PixieCalloutAccentPosition,
+    type PixieCalloutColor,
+    type PixieCalloutDividers,
+    type PixieCalloutEffect,
+    type PixieCalloutEffectIntensity,
+    type PixieCalloutElement,
+    type PixieCalloutElevation,
+    type PixieCalloutFooterAlign,
+    type PixieCalloutIconAlign,
+    type PixieCalloutLayout,
+    type PixieCalloutPadding,
+    type PixieCalloutRadius,
+    type PixieCalloutVariant,
+} from "@/components/ui/PixieCallout";
 import { PixieLink } from "@/components/ui/PixieLink";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import {
@@ -69,26 +69,23 @@ const frameWidths = {
 const selectClassName =
     "mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink";
 
-export function PixieDustCalloutPlayground() {
-    const [element, setElement] = useState<PixieDustCalloutElement>("aside");
-    const [variant, setVariant] = useState<PixieDustCalloutVariant>("accent");
-    const [layout, setLayout] = useState<PixieDustCalloutLayout>("header");
-    const [padding, setPadding] = useState<PixieDustCalloutPadding>("md");
-    const [radius, setRadius] = useState<PixieDustCalloutRadius>("medium");
-    const [color, setColor] =
-        useState<PixieDustCalloutColor>("ambre-projecteur");
+export function PixieCalloutPlayground() {
+    const [element, setElement] = useState<PixieCalloutElement>("aside");
+    const [variant, setVariant] = useState<PixieCalloutVariant>("accent");
+    const [layout, setLayout] = useState<PixieCalloutLayout>("header");
+    const [padding, setPadding] = useState<PixieCalloutPadding>("md");
+    const [radius, setRadius] = useState<PixieCalloutRadius>("medium");
+    const [color, setColor] = useState<PixieCalloutColor>("ambre-projecteur");
     const [accentPosition, setAccentPosition] =
-        useState<PixieDustCalloutAccentPosition>("start");
-    const [elevation, setElevation] =
-        useState<PixieDustCalloutElevation>("soft");
-    const [divider, setDivider] = useState<PixieDustCalloutDividers>("footer");
+        useState<PixieCalloutAccentPosition>("start");
+    const [elevation, setElevation] = useState<PixieCalloutElevation>("soft");
+    const [divider, setDivider] = useState<PixieCalloutDividers>("footer");
     const [footerAlign, setFooterAlign] =
-        useState<PixieDustCalloutFooterAlign>("start");
-    const [effect, setEffect] = useState<PixieDustCalloutEffect>("halo");
+        useState<PixieCalloutFooterAlign>("start");
+    const [effect, setEffect] = useState<PixieCalloutEffect>("halo");
     const [effectIntensity, setEffectIntensity] =
-        useState<PixieDustCalloutEffectIntensity>("subtle");
-    const [iconAlign, setIconAlign] =
-        useState<PixieDustCalloutIconAlign>("start");
+        useState<PixieCalloutEffectIntensity>("subtle");
+    const [iconAlign, setIconAlign] = useState<PixieCalloutIconAlign>("start");
     const [showIcon, setShowIcon] = useState(true);
     const [showEyebrow, setShowEyebrow] = useState(true);
     const [showHeading, setShowHeading] = useState(true);
@@ -114,7 +111,7 @@ export function PixieDustCalloutPlayground() {
             ? '    footer={<PixieLink href="#sources">Consulter les sources</PixieLink>}'
             : null,
     ].filter((line): line is string => line !== null);
-    const code = `<PixieDustCallout
+    const code = `<PixieCallout
     as="${element}"
     variant="${variant}"
     layout="${layout}"
@@ -129,7 +126,7 @@ export function PixieDustCalloutPlayground() {
     iconAlign="${iconAlign}"${optionalProps.length > 0 ? `\n${optionalProps.join("\n")}` : ""}
 >
     <p>Les documents conservés ne permettent pas encore de retenir une date unique.</p>
-</PixieDustCallout>`;
+</PixieCallout>`;
     const slotControls = [
         { label: "Symbole", checked: showIcon, onChange: setShowIcon },
         { label: "Eyebrow", checked: showEyebrow, onChange: setShowEyebrow },
@@ -163,7 +160,7 @@ export function PixieDustCalloutPlayground() {
                                 onChange={(event) =>
                                     setElement(
                                         event.target
-                                            .value as PixieDustCalloutElement,
+                                            .value as PixieCalloutElement,
                                     )
                                 }
                                 className={`${selectClassName} font-mono`}
@@ -218,7 +215,7 @@ export function PixieDustCalloutPlayground() {
                                     onChange={(event) =>
                                         setPadding(
                                             event.target
-                                                .value as PixieDustCalloutPadding,
+                                                .value as PixieCalloutPadding,
                                         )
                                     }
                                     className={selectClassName}
@@ -235,7 +232,7 @@ export function PixieDustCalloutPlayground() {
                                     onChange={(event) =>
                                         setRadius(
                                             event.target
-                                                .value as PixieDustCalloutRadius,
+                                                .value as PixieCalloutRadius,
                                         )
                                     }
                                     className={selectClassName}
@@ -279,7 +276,7 @@ export function PixieDustCalloutPlayground() {
                                     onChange={(event) =>
                                         setAccentPosition(
                                             event.target
-                                                .value as PixieDustCalloutAccentPosition,
+                                                .value as PixieCalloutAccentPosition,
                                         )
                                     }
                                     className={selectClassName}
@@ -296,7 +293,7 @@ export function PixieDustCalloutPlayground() {
                                     onChange={(event) =>
                                         setElevation(
                                             event.target
-                                                .value as PixieDustCalloutElevation,
+                                                .value as PixieCalloutElevation,
                                         )
                                     }
                                     className={selectClassName}
@@ -316,7 +313,7 @@ export function PixieDustCalloutPlayground() {
                                     onChange={(event) =>
                                         setDivider(
                                             event.target
-                                                .value as PixieDustCalloutDividers,
+                                                .value as PixieCalloutDividers,
                                         )
                                     }
                                     className={selectClassName}
@@ -333,7 +330,7 @@ export function PixieDustCalloutPlayground() {
                                     onChange={(event) =>
                                         setFooterAlign(
                                             event.target
-                                                .value as PixieDustCalloutFooterAlign,
+                                                .value as PixieCalloutFooterAlign,
                                         )
                                     }
                                     className={selectClassName}
@@ -370,7 +367,7 @@ export function PixieDustCalloutPlayground() {
                                     onChange={(event) =>
                                         setEffectIntensity(
                                             event.target
-                                                .value as PixieDustCalloutEffectIntensity,
+                                                .value as PixieCalloutEffectIntensity,
                                         )
                                     }
                                     className={selectClassName}
@@ -387,7 +384,7 @@ export function PixieDustCalloutPlayground() {
                                     onChange={(event) =>
                                         setIconAlign(
                                             event.target
-                                                .value as PixieDustCalloutIconAlign,
+                                                .value as PixieCalloutIconAlign,
                                         )
                                     }
                                     className={selectClassName}
@@ -439,7 +436,7 @@ export function PixieDustCalloutPlayground() {
                         <div
                             className={`w-full transition-[max-width] ${frameWidths[frame]}`}
                         >
-                            <PixieDustCallout
+                            <PixieCallout
                                 as={element}
                                 variant={variant}
                                 layout={layout}
@@ -489,7 +486,7 @@ export function PixieDustCalloutPlayground() {
                                 footer={
                                     showFooter ? (
                                         <PixieLink
-                                            href="#pixie-dust-callout-playground"
+                                            href="#pixie-callout-playground"
                                             variant="action"
                                             color={color}
                                             indicator="arrow"
@@ -504,7 +501,7 @@ export function PixieDustCalloutPlayground() {
                                     encore de retenir une date unique avec une
                                     certitude suffisante.
                                 </p>
-                            </PixieDustCallout>
+                            </PixieCallout>
                         </div>
                     </div>
 

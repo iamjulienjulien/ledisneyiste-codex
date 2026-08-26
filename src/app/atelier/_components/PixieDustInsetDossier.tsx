@@ -2,7 +2,7 @@ import { AtelierFicheAccessoire } from "@/components/atelier/AtelierFicheAccesso
 import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
-import { PixieDustCallout } from "@/components/ui/PixieDustCallout";
+import { PixieCallout } from "@/components/ui/PixieCallout";
 import { PixieCard } from "@/components/ui/PixieCard";
 import {
     PixieDustInset,
@@ -464,7 +464,7 @@ export function PixieDustInsetDossier() {
                         </PixieDustInset>
                     </PixiePanel>
 
-                    <PixieDustCallout
+                    <PixieCallout
                         as="div"
                         variant="outline"
                         padding="md"
@@ -483,7 +483,7 @@ export function PixieDustInsetDossier() {
                                 Source consultée le 23 août 2026
                             </p>
                         </PixieDustInset>
-                    </PixieDustCallout>
+                    </PixieCallout>
                 </div>
             </section>
 
@@ -642,7 +642,7 @@ export function PixieDustInsetDossier() {
                         "Éprouver les quatre variants dans des fiches et des cartes métier.",
                         "Vérifier que les trois profondeurs restent lisibles dans les deux Lumières.",
                         "Tester le contraste forcé, le zoom à 200 % et les contenus longs.",
-                        "Valider la frontière entre PixieDustInset et PixieDustCallout.",
+                        "Valider la frontière entre PixieDustInset et PixieCallout.",
                         "Contrôler les sections et aside nommés avec un lecteur d’écran.",
                         "Décider si le variant groove apporte un usage durable au système.",
                     ].map((decision) => (

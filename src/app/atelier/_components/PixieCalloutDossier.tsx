@@ -3,16 +3,16 @@ import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTa
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import {
-    PixieDustCallout,
-    type PixieDustCalloutEffect,
-    type PixieDustCalloutLayout,
-    type PixieDustCalloutPadding,
-    type PixieDustCalloutRadius,
-    type PixieDustCalloutVariant,
-} from "@/components/ui/PixieDustCallout";
+    PixieCallout,
+    type PixieCalloutEffect,
+    type PixieCalloutLayout,
+    type PixieCalloutPadding,
+    type PixieCalloutRadius,
+    type PixieCalloutVariant,
+} from "@/components/ui/PixieCallout";
 import { PixieLink } from "@/components/ui/PixieLink";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
-import { PixieDustCalloutPlayground } from "./PixieDustCalloutPlayground";
+import { PixieCalloutPlayground } from "./PixieCalloutPlayground";
 
 const variants = [
     {
@@ -42,7 +42,7 @@ const variants = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustCalloutVariant;
+    value: PixieCalloutVariant;
     description: string;
 }>[];
 
@@ -66,7 +66,7 @@ const layouts = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustCalloutLayout;
+    value: PixieCalloutLayout;
     description: string;
 }>[];
 
@@ -77,7 +77,7 @@ const paddings = [
     { name: "Très grand", value: "xl" as const, token: "2,5 rem" },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustCalloutPadding;
+    value: PixieCalloutPadding;
     token: string;
 }>[];
 
@@ -88,7 +88,7 @@ const radii = [
     { name: "Grand", value: "large" as const },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustCalloutRadius;
+    value: PixieCalloutRadius;
 }>[];
 
 const accentPositions = [
@@ -121,7 +121,7 @@ const effects = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustCalloutEffect;
+    value: PixieCalloutEffect;
     description: string;
 }>[];
 
@@ -236,79 +236,79 @@ const scenarios = [
 const properties = [
     {
         name: "as",
-        type: "PixieDustCalloutElement",
+        type: "PixieCalloutElement",
         defaultValue: '"aside"',
         description: "Élément HTML porté par l’annotation.",
     },
     {
         name: "variant",
-        type: "PixieDustCalloutVariant",
+        type: "PixieCalloutVariant",
         defaultValue: '"subtle"',
         description: "Niveau de présence visuelle du callout.",
     },
     {
         name: "layout",
-        type: "PixieDustCalloutLayout",
+        type: "PixieCalloutLayout",
         defaultValue: '"stacked"',
         description: "Disposition du symbole et du contenu.",
     },
     {
         name: "padding",
-        type: "PixieDustCalloutPadding",
+        type: "PixieCalloutPadding",
         defaultValue: '"md"',
         description: "Espacement intérieur de l’annotation.",
     },
     {
         name: "radius",
-        type: "PixieDustCalloutRadius",
+        type: "PixieCalloutRadius",
         defaultValue: '"medium"',
         description: "Arrondi extérieur du callout.",
     },
     {
         name: "color",
-        type: "PixieDustCalloutColor",
+        type: "PixieCalloutColor",
         defaultValue: "false",
         description: "Couleur du registre ou accent courant du thème.",
     },
     {
         name: "accentPosition",
-        type: "PixieDustCalloutAccentPosition",
+        type: "PixieCalloutAccentPosition",
         defaultValue: '"start"',
         description: "Bord depuis lequel l’accent et sa lumière apparaissent.",
     },
     {
         name: "elevation",
-        type: "PixieDustCalloutElevation",
+        type: "PixieCalloutElevation",
         defaultValue: '"none"',
         description: "Profondeur portée par la surface.",
     },
     {
         name: "dividers",
-        type: "PixieDustCalloutDividers",
+        type: "PixieCalloutDividers",
         defaultValue: '"none"',
         description: "Séparateurs placés après le header ou avant le footer.",
     },
     {
         name: "footerAlign",
-        type: "PixieDustCalloutFooterAlign",
+        type: "PixieCalloutFooterAlign",
         defaultValue: '"start"',
         description: "Alignement horizontal du footer.",
     },
     {
         name: "effect",
-        type: "PixieDustCalloutEffect",
+        type: "PixieCalloutEffect",
         defaultValue: '"none"',
         description: "Atmosphère décorative indépendante de la surface.",
     },
     {
         name: "effectIntensity",
-        type: "PixieDustCalloutEffectIntensity",
+        type: "PixieCalloutEffectIntensity",
         defaultValue: '"medium"',
         description: "Présence visuelle de l’effet décoratif.",
     },
     {
         name: "iconAlign",
-        type: "PixieDustCalloutIconAlign",
+        type: "PixieCalloutIconAlign",
         defaultValue: '"start"',
         description: "Alignement vertical du symbole dans sa zone.",
     },
@@ -352,67 +352,67 @@ const properties = [
 
 const specificTypes = [
     {
-        name: "PixieDustCalloutElement",
+        name: "PixieCalloutElement",
         values: ['"aside"', '"section"', '"div"'],
         description: "Structures documentaires autorisées.",
     },
     {
-        name: "PixieDustCalloutVariant",
+        name: "PixieCalloutVariant",
         values: ['"plain"', '"subtle"', '"outline"', '"accent"', '"tinted"'],
         description: "Traitements éditoriaux sans notion de statut système.",
     },
     {
-        name: "PixieDustCalloutLayout",
+        name: "PixieCalloutLayout",
         values: ['"stacked"', '"inline"', '"header"'],
         description: "Dispositions du symbole par rapport au contenu.",
     },
     {
-        name: "PixieDustCalloutPadding",
+        name: "PixieCalloutPadding",
         values: ['"sm"', '"md"', '"lg"', '"xl"'],
         description: "Densités intérieures de l’annotation.",
     },
     {
-        name: "PixieDustCalloutRadius",
+        name: "PixieCalloutRadius",
         values: ['"none"', '"small"', '"medium"', '"large"'],
         description: "Rayons disponibles dans la Projection Originale.",
     },
     {
-        name: "PixieDustCalloutColor",
+        name: "PixieCalloutColor",
         values: ["AtelierAnimationColorSlug", "false"],
         description: "Couleur enregistrée ou accent courant du thème.",
     },
     {
-        name: "PixieDustCalloutAccentPosition",
+        name: "PixieCalloutAccentPosition",
         values: ['"top"', '"end"', '"bottom"', '"start"'],
         description: "Positions logiques de la ligne et de la lumière.",
     },
     {
-        name: "PixieDustCalloutElevation",
+        name: "PixieCalloutElevation",
         values: ['"none"', '"soft"', '"strong"'],
         description: "Niveaux de profondeur disponibles.",
     },
     {
-        name: "PixieDustCalloutDividers",
+        name: "PixieCalloutDividers",
         values: ['"none"', '"header"', '"footer"', '"both"'],
         description: "Découpes internes de l’annotation.",
     },
     {
-        name: "PixieDustCalloutFooterAlign",
+        name: "PixieCalloutFooterAlign",
         values: ['"start"', '"end"'],
         description: "Alignements logiques du complément final.",
     },
     {
-        name: "PixieDustCalloutEffect",
+        name: "PixieCalloutEffect",
         values: ['"none"', '"grain"', '"halo"', '"projector"'],
         description: "Effets atmosphériques sans portée sémantique.",
     },
     {
-        name: "PixieDustCalloutEffectIntensity",
+        name: "PixieCalloutEffectIntensity",
         values: ['"subtle"', '"medium"', '"strong"'],
         description: "Intensités des effets décoratifs.",
     },
     {
-        name: "PixieDustCalloutIconAlign",
+        name: "PixieCalloutIconAlign",
         values: ['"start"', '"center"'],
         description: "Alignements verticaux du symbole.",
     },
@@ -464,12 +464,12 @@ function RepereSymbol() {
     );
 }
 
-export function PixieDustCalloutDossier() {
+export function PixieCalloutDossier() {
     return (
         <AtelierFicheAccessoire
-            id="pixie-dust-callout"
-            labelledBy="pixie-dust-callout-title"
-            nom="PixieDustCallout"
+            id="pixie-callout"
+            labelledBy="pixie-callout-title"
+            nom="PixieCallout"
             className="mt-16 scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
@@ -478,10 +478,10 @@ export function PixieDustCalloutDossier() {
                             Le clap · Décor 004
                         </p>
                         <h2
-                            id="pixie-dust-callout-title"
+                            id="pixie-callout-title"
                             className="mt-4 text-4xl text-ink sm:text-5xl"
                         >
-                            PixieDustCallout
+                            PixieCallout
                         </h2>
                         <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
                             Mettre une annotation éditoriale en lumière sans la
@@ -495,7 +495,7 @@ export function PixieDustCalloutDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.2.0
+                                1.0.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -503,7 +503,7 @@ export function PixieDustCalloutDossier() {
                                 État
                             </dt>
                             <dd className="mt-1 text-sm font-medium">
-                                <AtelierStatut statut="Esquisse" />
+                                <AtelierStatut statut="Prêt à projeter" />
                             </dd>
                         </div>
                     </dl>
@@ -567,7 +567,7 @@ export function PixieDustCalloutDossier() {
 
                 <div className="mt-7 grid border border-line xl:grid-cols-2">
                     <div className="flex min-h-[28rem] items-center justify-center bg-canvas p-8">
-                        <PixieDustCallout
+                        <PixieCallout
                             variant="accent"
                             layout="header"
                             color="ambre-projecteur"
@@ -601,9 +601,9 @@ export function PixieDustCalloutDossier() {
                                 de retenir une date unique avec une certitude
                                 suffisante.
                             </p>
-                        </PixieDustCallout>
+                        </PixieCallout>
                     </div>
-                    <CodeExample>{`<PixieDustCallout
+                    <CodeExample>{`<PixieCallout
     variant="accent"
     layout="header"
     color="ambre-projecteur"
@@ -617,7 +617,7 @@ export function PixieDustCalloutDossier() {
     footer={<PixieLink href="#sources">Consulter les sources</PixieLink>}
 >
     <p>{/* Annotation éditoriale */}</p>
-</PixieDustCallout>`}</CodeExample>
+</PixieCallout>`}</CodeExample>
                 </div>
             </section>
 
@@ -635,7 +635,7 @@ export function PixieDustCalloutDossier() {
 
                 <div className="mt-7 grid gap-6 bg-surface-muted p-6 lg:grid-cols-2">
                     {variants.map((variant) => (
-                        <PixieDustCallout
+                        <PixieCallout
                             key={variant.value}
                             as="div"
                             variant={variant.value}
@@ -644,7 +644,7 @@ export function PixieDustCalloutDossier() {
                             heading={<h4>{variant.value}</h4>}
                         >
                             <p>{variant.description}</p>
-                        </PixieDustCallout>
+                        </PixieCallout>
                     ))}
                 </div>
             </section>
@@ -660,7 +660,7 @@ export function PixieDustCalloutDossier() {
                 <div className="mt-7 grid items-start gap-8 lg:grid-cols-2">
                     {layouts.map((layout) => (
                         <div key={layout.value}>
-                            <PixieDustCallout
+                            <PixieCallout
                                 as="div"
                                 variant="outline"
                                 layout={layout.value}
@@ -670,7 +670,7 @@ export function PixieDustCalloutDossier() {
                                 heading={<h4>Repère documentaire</h4>}
                             >
                                 <p>{layout.description}</p>
-                            </PixieDustCallout>
+                            </PixieCallout>
                             <p className="mt-3 font-mono text-xs text-muted">
                                 layout=&quot;{layout.value}&quot;
                             </p>
@@ -689,7 +689,7 @@ export function PixieDustCalloutDossier() {
 
                 <div className="mt-7 grid gap-6 lg:grid-cols-2">
                     {effects.map((effect) => (
-                        <PixieDustCallout
+                        <PixieCallout
                             key={effect.value}
                             as="div"
                             variant="outline"
@@ -700,7 +700,7 @@ export function PixieDustCalloutDossier() {
                             heading={<h4>{effect.value}</h4>}
                         >
                             <p>{effect.description}</p>
-                        </PixieDustCallout>
+                        </PixieCallout>
                     ))}
                 </div>
             </section>
@@ -714,14 +714,14 @@ export function PixieDustCalloutDossier() {
                 />
 
                 <div className="mt-7 grid items-start gap-6 xl:grid-cols-3">
-                    <PixieDustCallout as="div" variant="subtle">
+                    <PixieCallout as="div" variant="subtle">
                         <p>
                             Une annotation peut se présenter sans aucun
                             accessoire lorsque le contexte suffit.
                         </p>
-                    </PixieDustCallout>
+                    </PixieCallout>
 
-                    <PixieDustCallout
+                    <PixieCallout
                         as="div"
                         variant="accent"
                         color="corail-cel"
@@ -731,9 +731,9 @@ export function PixieDustCalloutDossier() {
                         <p>
                             Eyebrow et titre installent une hiérarchie claire.
                         </p>
-                    </PixieDustCallout>
+                    </PixieCallout>
 
-                    <PixieDustCallout
+                    <PixieCallout
                         as="div"
                         variant="outline"
                         color="gouache"
@@ -747,7 +747,7 @@ export function PixieDustCalloutDossier() {
                             Le footer peut porter une provenance sans ajouter
                             d’action.
                         </p>
-                    </PixieDustCallout>
+                    </PixieCallout>
                 </div>
             </section>
 
@@ -764,7 +764,7 @@ export function PixieDustCalloutDossier() {
                         <h4 className="text-xl text-ink">Espacements</h4>
                         <div className="mt-4 space-y-4">
                             {paddings.map((padding) => (
-                                <PixieDustCallout
+                                <PixieCallout
                                     key={padding.value}
                                     as="div"
                                     variant="outline"
@@ -772,7 +772,7 @@ export function PixieDustCalloutDossier() {
                                     eyebrow={`${padding.name} · ${padding.token}`}
                                 >
                                     <p>padding=&quot;{padding.value}&quot;</p>
-                                </PixieDustCallout>
+                                </PixieCallout>
                             ))}
                         </div>
                     </div>
@@ -781,7 +781,7 @@ export function PixieDustCalloutDossier() {
                         <h4 className="text-xl text-ink">Rayons</h4>
                         <div className="mt-4 grid grid-cols-2 gap-4">
                             {radii.map((radius) => (
-                                <PixieDustCallout
+                                <PixieCallout
                                     key={radius.value}
                                     as="div"
                                     variant="accent"
@@ -792,7 +792,7 @@ export function PixieDustCalloutDossier() {
                                     <p className="font-mono text-sm">
                                         {radius.value}
                                     </p>
-                                </PixieDustCallout>
+                                </PixieCallout>
                             ))}
                         </div>
                     </div>
@@ -809,7 +809,7 @@ export function PixieDustCalloutDossier() {
 
                 <div className="mt-7 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
                     {accentPositions.map((position) => (
-                        <PixieDustCallout
+                        <PixieCallout
                             key={position.value}
                             as="div"
                             variant="accent"
@@ -822,7 +822,7 @@ export function PixieDustCalloutDossier() {
                             <p className="font-mono text-sm">
                                 {position.value}
                             </p>
-                        </PixieDustCallout>
+                        </PixieCallout>
                     ))}
                 </div>
             </section>
@@ -831,13 +831,13 @@ export function PixieDustCalloutDossier() {
                 <SequenceTitle
                     id="callout-uses"
                     eyebrow="Scénarios préparés"
-                    title="Sept annotations confrontent l’esquisse au récit"
+                    title="Sept annotations confrontent le composant au récit"
                     description="Chaque composition répond à un besoin éditorial identifiable. La couleur et l’effet accompagnent le texte sans devenir seuls porteurs de sens."
                 />
 
                 <div className="mt-7 grid gap-6 lg:grid-cols-2">
                     {scenarios.map((scenario) => (
-                        <PixieDustCallout
+                        <PixieCallout
                             key={scenario.title}
                             as="div"
                             variant={scenario.variant}
@@ -869,24 +869,24 @@ export function PixieDustCalloutDossier() {
                             }
                         >
                             <p>{scenario.description}</p>
-                        </PixieDustCallout>
+                        </PixieCallout>
                     ))}
                 </div>
             </section>
 
             <section
-                id="pixie-dust-callout-playground"
+                id="pixie-callout-playground"
                 aria-labelledby="callout-playground-title"
                 className="mt-16 scroll-mt-8 border border-line-strong bg-surface-muted p-6 shadow-soft sm:p-8"
             >
                 <SequenceTitle
                     id="callout-playground-title"
                     eyebrow="Régie"
-                    title="Composer un PixieDustCallout"
+                    title="Composer un PixieCallout"
                     description="Réglez sa présence, sa disposition et son anatomie ; le code d’utilisation suit chaque changement."
                 />
                 <div className="mt-8">
-                    <PixieDustCalloutPlayground />
+                    <PixieCalloutPlayground />
                 </div>
             </section>
 
@@ -945,8 +945,8 @@ export function PixieDustCalloutDossier() {
                 <SequenceTitle
                     id="callout-technical"
                     eyebrow="Générique technique"
-                    title="API de l’esquisse"
-                    description="Les types spécifiques sont colocalisés dans PixieDustCallout.types.ts et les attributs HTML compatibles sont transmis à l’élément rendu."
+                    title="API du composant"
+                    description="Les types spécifiques sont colocalisés dans PixieCallout.types.ts et les attributs HTML compatibles sont transmis à l’élément rendu."
                 />
 
                 <div className="mt-7">
@@ -964,19 +964,19 @@ export function PixieDustCalloutDossier() {
             <section aria-labelledby="callout-journal" className="mt-16">
                 <SequenceTitle
                     id="callout-journal"
-                    eyebrow="Journal de production"
-                    title="Décisions avant la promotion"
-                    description="L’esquisse doit être confrontée aux véritables annotations du Codex avant de devenir PixieCallout."
+                    eyebrow="Contrat de projection"
+                    title="Les garanties de la version 1.0.0"
+                    description="PixieCallout est prêt à mettre en lumière les annotations du Codex sans les transformer en alertes ni leur inventer une urgence."
                 />
 
                 <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
                     {[
-                        "Éprouver les cinq variants dans les fiches documentaires existantes.",
-                        "Valider les trois layouts avec les symboles réellement employés par les archives.",
-                        "Contrôler grain, halo et projector dans les deux Lumières, à l’impression et en contraste forcé.",
-                        "Valider les callouts sans titre avec les lecteurs d’écran.",
-                        "Tester les contenus longs, les positions logiques, les liens et le zoom à 200 %.",
-                        "Confirmer la frontière avec PixieDustInset et les futurs retours système.",
+                        "Les cinq variants règlent la présence visuelle sans modifier la priorité sémantique de l’annotation.",
+                        "Les trois layouts accueillent les symboles du registre sans déplacer l’ordre naturel de lecture.",
+                        "Grain, halo et projector restent décoratifs dans les deux Lumières, à l’impression et en contraste forcé.",
+                        "Aside, section et div conservent la responsabilité de leur nom et de leur rôle accessibles.",
+                        "Les contenus longs, les positions logiques et les liens restent utilisables à 200 % de zoom.",
+                        "PixieCallout porte les annotations éditoriales ; PixieDustInset et les retours système gardent leurs propres responsabilités.",
                     ].map((decision) => (
                         <li
                             key={decision}
