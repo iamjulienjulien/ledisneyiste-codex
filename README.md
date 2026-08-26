@@ -372,8 +372,8 @@ Pixie…     → composant validé et prêt à projeter
 L'Atelier documente les palettes, les composants, leurs variantes, leur
 accessibilité et leur API. Ses cinq premiers accessoires — `PixieSymbol`,
 `PixieButton`, `PixieLink`, `PixieBadge` et `PixieSeparator` — ainsi que ses
-quatre premiers Décors, `PixieCard`, `PixiePanel`, `PixieFrame` et
-`PixieCallout`, sont désormais prêts à projeter.
+cinq premiers Décors, `PixieCard`, `PixiePanel`, `PixieFrame`, `PixieCallout`
+et `PixieInset`, sont désormais prêts à projeter.
 
 Ses six plateaux de travail sont maintenant actifs :
 
@@ -385,12 +385,12 @@ Ses six plateaux de travail sont maintenant actifs :
 5. **Le Montage** règle la composition et le rythme des séquences ;
 6. **Les Effets** rendent visibles les attentes et les retours du système.
 
-L’Atelier documente actuellement **22 esquisses PixieDust**, auxquelles
-s’ajoutent `PixieCard`, `PixiePanel`, `PixieFrame` et `PixieCallout`, les quatre
-premiers Décors prêts à projeter :
+L’Atelier documente actuellement **21 esquisses PixieDust**, auxquelles
+s’ajoutent `PixieCard`, `PixiePanel`, `PixieFrame`, `PixieCallout` et
+`PixieInset`, les cinq premiers Décors prêts à projeter :
 
-- **Décors — 4 composants validés et 2 esquisses :** `PixieCard`, `PixiePanel`,
-  `PixieFrame`, `PixieCallout`, `PixieDustInset` et `PixieDustBackdrop` ;
+- **Décors — 5 composants validés et 1 esquisse :** `PixieCard`, `PixiePanel`,
+  `PixieFrame`, `PixieCallout`, `PixieInset` et `PixieDustBackdrop` ;
 - **Dialogues — 6 :** `PixieDustField`, `PixieDustInput`,
   `PixieDustTextarea`, `PixieDustSelect`, `PixieDustSwitch` et
   `PixieDustSearchField` ;
