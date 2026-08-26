@@ -1,0 +1,85 @@
+.root {
+    min-height: 100vh;
+}
+
+.hero {
+    max-width: 54rem;
+}
+
+.symbolFrame {
+    width: 8rem;
+    flex: 0 0 auto;
+}
+
+.symbolFrame [data-pixie-frame-slot="media"] {
+    display: grid;
+    place-items: center;
+}
+
+.heading {
+    min-width: 0;
+    max-width: 42rem;
+}
+
+.eyebrow {
+    color: var(--codex-index-color);
+    font-family: var(--font-eyebrow);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.title {
+    color: var(--codex-index-color);
+    font-size: clamp(3rem, 8vw, 4.5rem);
+    line-height: 0.98;
+}
+
+.introduction {
+    color: var(--color-ink-soft);
+    font-size: 1.125rem;
+    line-height: 2rem;
+}
+
+.toolbar {
+    width: 100%;
+}
+
+.counter {
+    color: var(--color-muted);
+    font-size: 0.875rem;
+}
+
+.root[data-family="personnages"] {
+    --codex-index-color: var(--atelier-animation-rouge-crayon);
+}
+
+.root[data-family="createurs"] {
+    --codex-index-color: var(--atelier-animation-jaune-lampe);
+}
+
+.root[data-family="oeuvres"] {
+    --codex-index-color: var(--atelier-animation-gouache);
+}
+
+.root[data-family="epoques"] {
+    --codex-index-color: var(--atelier-animation-vert-cellulo);
+}
+
+@media (max-width: 39.999rem) {
+    .hero {
+        align-items: flex-start;
+    }
+
+    .symbolFrame {
+        width: 7rem;
+    }
+}
+
+@media (forced-colors: active) {
+    .eyebrow,
+    .title {
+        color: CanvasText;
+    }
+}
