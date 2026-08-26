@@ -363,7 +363,7 @@ export function PixieDustBleedDossier() {
 
                 <div className="mt-7 grid min-w-0 border border-line xl:grid-cols-2">
                     <div className="min-w-0 overflow-hidden bg-canvas py-8">
-                        <PixieDustContainer width="narrow" gutter="lg">
+                        <PixieDustContainer width="42" gutter="lg">
                             <PixieDustStack gap="lg">
                                 <p className="leading-7 text-ink-soft">
                                     Le studio prépare une nouvelle manière de
@@ -389,7 +389,7 @@ export function PixieDustBleedDossier() {
                             </PixieDustStack>
                         </PixieDustContainer>
                     </div>
-                    <CodeExample>{`<PixieDustContainer width="narrow">
+                    <CodeExample>{`<PixieDustContainer width="42">
     <TexteEditorial />
     <PixieDustBleed
         as="figure"
@@ -551,7 +551,7 @@ export function PixieDustBleedDossier() {
 
                 <div className="mt-7 min-w-0 overflow-hidden border border-line bg-canvas py-8">
                     <PixieDustSection
-                        width="narrow"
+                        width="42"
                         gutter="lg"
                         spacing="md"
                         gap="lg"

@@ -2,7 +2,7 @@ import type { HTMLAttributes, ReactNode } from "react";
 
 export type PixieDustContainerElement = "div" | "main" | "section";
 
-export type PixieDustContainerWidth = "narrow" | "medium" | "wide" | "full";
+export type PixieDustContainerWidth = "42" | "56" | "72" | "full";
 
 export type PixieDustContainerGutter = "none" | "sm" | "md" | "lg";
 

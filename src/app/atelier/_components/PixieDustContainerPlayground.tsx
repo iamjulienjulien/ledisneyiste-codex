@@ -18,9 +18,9 @@ const elements = [
 ] as const satisfies readonly PlaygroundElement[];
 
 const widths = [
-    { value: "narrow", label: "Étroit" },
-    { value: "medium", label: "Moyen" },
-    { value: "wide", label: "Large" },
+    { value: "42", label: "42 rem · Lecture" },
+    { value: "56", label: "56 rem · Éditorial" },
+    { value: "72", label: "72 rem · Collection" },
     { value: "full", label: "Pleine largeur" },
 ] as const;
 
@@ -39,7 +39,7 @@ const frameWidths = {
 
 export function PixieDustContainerPlayground() {
     const [element, setElement] = useState<PlaygroundElement>("section");
-    const [width, setWidth] = useState<PixieDustContainerWidth>("medium");
+    const [width, setWidth] = useState<PixieDustContainerWidth>("72");
     const [gutter, setGutter] = useState<PixieDustContainerGutter>("md");
     const [light, setLight] = useState<"sombre" | "claire">("sombre");
     const [frame, setFrame] = useState<"compact" | "moyen" | "large">("moyen");

@@ -6,9 +6,9 @@ import type {
 } from "./PixieDustContainer.types";
 
 const widthClasses = {
-    narrow: styles.widthNarrow,
-    medium: styles.widthMedium,
-    wide: styles.widthWide,
+    "42": styles.width42,
+    "56": styles.width56,
+    "72": styles.width72,
     full: styles.widthFull,
 } as const satisfies Record<PixieDustContainerWidth, string>;
 
@@ -21,7 +21,7 @@ const gutterClasses = {
 
 export function PixieDustContainer({
     as: Element = "div",
-    width = "wide",
+    width = "72",
     gutter = "md",
     className = "",
     children,

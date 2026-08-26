@@ -3,15 +3,15 @@
     margin-inline: auto;
 }
 
-.widthNarrow {
+.width42 {
     max-width: 42rem;
 }
 
-.widthMedium {
+.width56 {
     max-width: 56rem;
 }
 
-.widthWide {
+.width72 {
     max-width: 72rem;
 }
 

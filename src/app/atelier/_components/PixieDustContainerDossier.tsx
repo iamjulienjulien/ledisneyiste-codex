@@ -13,20 +13,20 @@ import { PixieDustContainerPlayground } from "./PixieDustContainerPlayground";
 
 const widths = [
     {
-        name: "Étroit",
-        value: "narrow" as const,
+        name: "Cadre de lecture",
+        value: "42" as const,
         token: "42 rem",
         role: "Texte long et lecture suivie.",
     },
     {
-        name: "Moyen",
-        value: "medium" as const,
+        name: "Cadre éditorial",
+        value: "56" as const,
         token: "56 rem",
         role: "Séquence éditoriale et composition simple.",
     },
     {
-        name: "Large",
-        value: "wide" as const,
+        name: "Cadre de collection",
+        value: "72" as const,
         token: "72 rem",
         role: "Cadre principal du Codex et collections.",
     },
@@ -68,7 +68,7 @@ const properties = [
     {
         name: "width",
         type: "PixieDustContainerWidth",
-        defaultValue: '"wide"',
+        defaultValue: '"72"',
         description: "Largeur maximale du cadre centré.",
     },
     {
@@ -99,7 +99,7 @@ const specificTypes = [
     },
     {
         name: "PixieDustContainerWidth",
-        values: ['"narrow"', '"medium"', '"wide"', '"full"'],
+        values: ['"42"', '"56"', '"72"', '"full"'],
         description: "Cadres de lecture disponibles.",
     },
     {
@@ -182,7 +182,7 @@ export function PixieDustContainerDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.1.0
+                                0.2.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -202,7 +202,7 @@ export function PixieDustContainerDossier() {
                     id="container-identity"
                     eyebrow="Fiche de rôle"
                     title="Identité du composant"
-                    description="Le Container définit uniquement l’axe horizontal d’une composition : sa largeur maximale, son centrage et ses gouttières."
+                    description="Le Container définit uniquement l’axe horizontal d’une composition : une largeur maximale explicite, un centrage automatique et des gouttières prévisibles."
                 />
 
                 <dl className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
@@ -221,7 +221,7 @@ export function PixieDustContainerDossier() {
                         ],
                         [
                             "Anatomie",
-                            "Une largeur maximale, un centrage et deux gouttières.",
+                            "Une largeur maximale, un centrage et deux gouttières latérales.",
                         ],
                         [
                             "Accessibilité",
@@ -257,12 +257,20 @@ export function PixieDustContainerDossier() {
 
                 <div className="mt-7 grid border border-line xl:grid-cols-2">
                     <div className="overflow-hidden bg-canvas py-10">
-                        <PixieDustContainer width="wide" gutter="md">
+                        <PixieDustContainer
+                            as="section"
+                            width="72"
+                            gutter="md"
+                            aria-labelledby="container-master-heading"
+                        >
                             <Guide>
                                 <p className="text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
                                     Séquence 01
                                 </p>
-                                <h4 className="mt-3 text-3xl text-ink">
+                                <h4
+                                    id="container-master-heading"
+                                    className="mt-3 text-3xl text-ink"
+                                >
                                     Le dessin animé trouve son langage
                                 </h4>
                                 <p className="mt-4 max-w-2xl leading-7 text-ink-soft">
@@ -274,7 +282,7 @@ export function PixieDustContainerDossier() {
                     </div>
                     <CodeExample>{`<PixieDustContainer
     as="section"
-    width="wide"
+    width="72"
     gutter="md"
     aria-labelledby="sequence-title"
 >
@@ -288,8 +296,8 @@ export function PixieDustContainerDossier() {
                 <SequenceTitle
                     id="container-widths"
                     eyebrow="Cadres de lecture"
-                    title="Quatre largeurs pour changer d’échelle"
-                    description="Chaque valeur fixe une limite maximale ; le composant reste fluide lorsque son parent ou la fenêtre devient plus étroit."
+                    title="Quatre repères explicites pour changer d’échelle"
+                    description="Les valeurs 42, 56 et 72 annoncent directement leur largeur en rem. Full retire seulement la limite maximale ; le composant reste fluide lorsque son parent devient plus étroit."
                 />
 
                 <div className="mt-7 space-y-6 overflow-hidden bg-canvas py-8">
@@ -368,7 +376,7 @@ export function PixieDustContainerDossier() {
                                 {label}
                             </p>
                             <div className="overflow-hidden border border-dashed border-line-strong bg-canvas py-6">
-                                <PixieDustContainer width="wide" gutter="md">
+                                <PixieDustContainer width="72" gutter="md">
                                     <Guide>
                                         <p className="leading-7 text-ink-soft">
                                             Le cadre reste lisible sans produire
@@ -401,7 +409,7 @@ export function PixieDustContainerDossier() {
                 >
                     <PixieDustContainer
                         as="section"
-                        width="medium"
+                        width="56"
                         gutter="lg"
                         aria-labelledby="container-composition-heading"
                     >
@@ -427,7 +435,7 @@ export function PixieDustContainerDossier() {
                     id="container-boundaries"
                     eyebrow="Raccords de montage"
                     title="Le Container ne monte pas la séquence à lui seul"
-                    description="Cette première primitive fixe les limites du cadre. Les futurs composants du Montage prendront en charge le rythme, la distribution et les sorties de cadre."
+                    description="Cette primitive fixe les limites du cadre. Les autres composants du Montage prennent en charge le rythme, la distribution et les sorties de cadre."
                 />
 
                 <div className="mt-7 grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
@@ -518,7 +526,7 @@ export function PixieDustContainerDossier() {
                 <SequenceTitle
                     id="container-technical"
                     eyebrow="Générique technique"
-                    title="API de l’esquisse"
+                    title="API de l’esquisse 0.2.0"
                     description="Les types spécifiques sont colocalisés dans PixieDustContainer.types.ts et les attributs HTML compatibles sont transmis à l’élément rendu."
                 />
 

@@ -16,7 +16,7 @@ const spacingClasses = {
 
 export function PixieDustSection({
     as: Element = "section",
-    width = "wide",
+    width = "72",
     gutter = "md",
     spacing = "lg",
     gap = "lg",

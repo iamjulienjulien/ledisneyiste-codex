@@ -536,7 +536,7 @@ export function PixieDustStackDossier() {
                     texture="grain"
                     className="mt-7 py-12"
                 >
-                    <PixieDustContainer width="medium" gutter="lg">
+                    <PixieDustContainer width="56" gutter="lg">
                         <PixieDustStack
                             as="section"
                             gap="lg"

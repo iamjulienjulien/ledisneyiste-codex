@@ -57,9 +57,9 @@ const spacings = [
 }>[];
 
 const widths = [
-    { name: "Étroit", value: "narrow" as const, token: "42 rem" },
-    { name: "Moyen", value: "medium" as const, token: "56 rem" },
-    { name: "Large", value: "wide" as const, token: "72 rem" },
+    { name: "Lecture", value: "42" as const, token: "42 rem" },
+    { name: "Éditorial", value: "56" as const, token: "56 rem" },
+    { name: "Collection", value: "72" as const, token: "72 rem" },
     {
         name: "Pleine largeur",
         value: "full" as const,
@@ -119,7 +119,7 @@ const properties = [
     {
         name: "width",
         type: "PixieDustSectionWidth",
-        defaultValue: '"wide"',
+        defaultValue: '"72"',
         description: "Largeur transmise au Container interne.",
     },
     {
@@ -168,7 +168,7 @@ const specificTypes = [
     },
     {
         name: "PixieDustSectionWidth",
-        values: ['"narrow"', '"medium"', '"wide"', '"full"'],
+        values: ['"42"', '"56"', '"72"', '"full"'],
         description: "Alias du contrat de largeur de Container.",
     },
     {
@@ -385,7 +385,7 @@ export function PixieDustSectionDossier() {
                 <div className="mt-7 grid border border-line xl:grid-cols-2">
                     <div className="bg-canvas">
                         <PixieDustSection
-                            width="medium"
+                            width="56"
                             gutter="lg"
                             spacing="lg"
                             gap="lg"
@@ -434,7 +434,7 @@ export function PixieDustSectionDossier() {
                     </div>
                     <CodeExample>{`<PixieDustSection
     aria-labelledby="sequence-title"
-    width="medium"
+    width="56"
     gutter="lg"
     spacing="lg"
     gap="lg"
@@ -660,7 +660,7 @@ export function PixieDustSectionDossier() {
                     className="mt-7"
                 >
                     <PixieDustSection
-                        width="medium"
+                        width="56"
                         gutter="lg"
                         spacing="xl"
                         gap="lg"

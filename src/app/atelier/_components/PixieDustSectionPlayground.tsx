@@ -21,9 +21,9 @@ import { PixieDustStack } from "@/components/ui/PixieDustStack";
 const elements = ["section", "article", "div"] as const;
 
 const widths = [
-    { value: "narrow", label: "Étroit" },
-    { value: "medium", label: "Moyen" },
-    { value: "wide", label: "Large" },
+    { value: "42", label: "42 rem · Lecture" },
+    { value: "56", label: "56 rem · Éditorial" },
+    { value: "72", label: "72 rem · Collection" },
     { value: "full", label: "Pleine largeur" },
 ] as const;
 
@@ -66,7 +66,7 @@ const frameWidths = {
 
 export function PixieDustSectionPlayground() {
     const [element, setElement] = useState<PixieDustSectionElement>("section");
-    const [width, setWidth] = useState<PixieDustSectionWidth>("medium");
+    const [width, setWidth] = useState<PixieDustSectionWidth>("72");
     const [gutter, setGutter] = useState<PixieDustSectionGutter>("md");
     const [spacing, setSpacing] = useState<PixieDustSectionSpacing>("lg");
     const [gap, setGap] = useState<PixieDustSectionGap>("lg");

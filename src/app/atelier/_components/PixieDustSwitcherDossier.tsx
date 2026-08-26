@@ -587,7 +587,7 @@ export function PixieDustSwitcherDossier() {
 
                 <div className="mt-7 border border-line bg-canvas">
                     <PixieDustSection
-                        width="wide"
+                        width="72"
                         gutter="lg"
                         spacing="lg"
                         gap="lg"

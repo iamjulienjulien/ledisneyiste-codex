@@ -786,7 +786,7 @@ export function PixieDustRailDossier() {
 
                 <div className="mt-7 min-w-0 border border-line bg-canvas">
                     <PixieDustSection
-                        width="wide"
+                        width="72"
                         gutter="lg"
                         spacing="lg"
                         gap="lg"
