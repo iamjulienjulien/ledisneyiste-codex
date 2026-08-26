@@ -1,20 +1,20 @@
 import { getAtelierAnimationColor } from "@/registry/colors";
-import styles from "./PixieDustCallout.module.css";
+import styles from "./PixieCallout.module.css";
 import type {
-    PixieDustCalloutAccentPosition,
-    PixieDustCalloutDividers,
-    PixieDustCalloutEffect,
-    PixieDustCalloutEffectIntensity,
-    PixieDustCalloutElevation,
-    PixieDustCalloutFooterAlign,
-    PixieDustCalloutIconAlign,
-    PixieDustCalloutLayout,
-    PixieDustCalloutPadding,
-    PixieDustCalloutProps,
-    PixieDustCalloutRadius,
-    PixieDustCalloutStyle,
-    PixieDustCalloutVariant,
-} from "./PixieDustCallout.types";
+    PixieCalloutAccentPosition,
+    PixieCalloutDividers,
+    PixieCalloutEffect,
+    PixieCalloutEffectIntensity,
+    PixieCalloutElevation,
+    PixieCalloutFooterAlign,
+    PixieCalloutIconAlign,
+    PixieCalloutLayout,
+    PixieCalloutPadding,
+    PixieCalloutProps,
+    PixieCalloutRadius,
+    PixieCalloutStyle,
+    PixieCalloutVariant,
+} from "./PixieCallout.types";
 
 const variantClasses = {
     plain: styles.plain,
@@ -22,72 +22,72 @@ const variantClasses = {
     outline: styles.outline,
     accent: styles.accent,
     tinted: styles.tinted,
-} as const satisfies Record<PixieDustCalloutVariant, string>;
+} as const satisfies Record<PixieCalloutVariant, string>;
 
 const layoutClasses = {
     stacked: styles.stacked,
     inline: styles.inline,
     header: styles.headerLayout,
-} as const satisfies Record<PixieDustCalloutLayout, string>;
+} as const satisfies Record<PixieCalloutLayout, string>;
 
 const paddingClasses = {
     sm: styles.paddingSmall,
     md: styles.paddingMedium,
     lg: styles.paddingLarge,
     xl: styles.paddingExtraLarge,
-} as const satisfies Record<PixieDustCalloutPadding, string>;
+} as const satisfies Record<PixieCalloutPadding, string>;
 
 const radiusClasses = {
     none: styles.radiusNone,
     small: styles.radiusSmall,
     medium: styles.radiusMedium,
     large: styles.radiusLarge,
-} as const satisfies Record<PixieDustCalloutRadius, string>;
+} as const satisfies Record<PixieCalloutRadius, string>;
 
 const accentPositionClasses = {
     top: styles.accentTop,
     end: styles.accentEnd,
     bottom: styles.accentBottom,
     start: styles.accentStart,
-} as const satisfies Record<PixieDustCalloutAccentPosition, string>;
+} as const satisfies Record<PixieCalloutAccentPosition, string>;
 
 const elevationClasses = {
     none: styles.elevationNone,
     soft: styles.elevationSoft,
     strong: styles.elevationStrong,
-} as const satisfies Record<PixieDustCalloutElevation, string>;
+} as const satisfies Record<PixieCalloutElevation, string>;
 
 const dividerClasses = {
     none: styles.dividersNone,
     header: styles.dividerHeader,
     footer: styles.dividerFooter,
     both: styles.dividersBoth,
-} as const satisfies Record<PixieDustCalloutDividers, string>;
+} as const satisfies Record<PixieCalloutDividers, string>;
 
 const footerAlignClasses = {
     start: styles.footerAlignStart,
     end: styles.footerAlignEnd,
-} as const satisfies Record<PixieDustCalloutFooterAlign, string>;
+} as const satisfies Record<PixieCalloutFooterAlign, string>;
 
 const effectClasses = {
     none: styles.effectNone,
     grain: styles.effectGrain,
     halo: styles.effectHalo,
     projector: styles.effectProjector,
-} as const satisfies Record<PixieDustCalloutEffect, string>;
+} as const satisfies Record<PixieCalloutEffect, string>;
 
 const effectIntensityClasses = {
     subtle: styles.intensitySubtle,
     medium: styles.intensityMedium,
     strong: styles.intensityStrong,
-} as const satisfies Record<PixieDustCalloutEffectIntensity, string>;
+} as const satisfies Record<PixieCalloutEffectIntensity, string>;
 
 const iconAlignClasses = {
     start: styles.iconAlignStart,
     center: styles.iconAlignCenter,
-} as const satisfies Record<PixieDustCalloutIconAlign, string>;
+} as const satisfies Record<PixieCalloutIconAlign, string>;
 
-export function PixieDustCallout({
+export function PixieCallout({
     as: Element = "aside",
     variant = "subtle",
     layout = "stacked",
@@ -109,9 +109,9 @@ export function PixieDustCallout({
     style,
     children,
     ...elementProps
-}: PixieDustCalloutProps) {
+}: PixieCalloutProps) {
     const colorDefinition = color ? getAtelierAnimationColor(color) : null;
-    const calloutStyle: PixieDustCalloutStyle = {
+    const calloutStyle: PixieCalloutStyle = {
         ...style,
         ...(colorDefinition
             ? { "--pixie-callout-color": colorDefinition.cssValue }
