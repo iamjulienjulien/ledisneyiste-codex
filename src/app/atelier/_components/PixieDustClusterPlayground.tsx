@@ -28,6 +28,7 @@ const justifications = [
     { value: "start", label: "Début" },
     { value: "center", label: "Centre" },
     { value: "end", label: "Fin" },
+    { value: "between", label: "Entre les plans" },
 ] as const;
 
 const alignments = [
@@ -154,7 +155,7 @@ ${childrenCode}
 
                         <fieldset>
                             <legend className="text-sm font-medium text-ink">
-                                Placement horizontal
+                                Distribution horizontale
                             </legend>
                             <div className="mt-3 space-y-2">
                                 {justifications.map((option) => (
@@ -250,6 +251,13 @@ ${childrenCode}
                                     return <div key={item.label}>{badge}</div>;
                                 })}
                             </PixieDustCluster>
+                            {justify === "between" ? (
+                                <p className="mt-4 text-sm leading-6 text-muted">
+                                    Chaque ligne distribue indépendamment son
+                                    espace disponible, y compris la dernière
+                                    après un retour à la ligne.
+                                </p>
+                            ) : null}
                         </div>
                     </div>
 

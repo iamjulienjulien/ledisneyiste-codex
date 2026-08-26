@@ -76,6 +76,11 @@ const justifications = [
         value: "end" as const,
         description: "Le groupe rejoint le bord de fin du cadre.",
     },
+    {
+        name: "Entre les plans",
+        value: "between" as const,
+        description: "Chaque ligne répartit son espace libre entre les plans.",
+    },
 ] as const satisfies readonly Readonly<{
     name: string;
     value: PixieDustClusterJustify;
@@ -126,7 +131,7 @@ const properties = [
         name: "justify",
         type: "PixieDustClusterJustify",
         defaultValue: '"start"',
-        description: "Placement horizontal des lignes du groupe.",
+        description: "Placement ou distribution horizontale de chaque ligne.",
     },
     {
         name: "align",
@@ -161,8 +166,8 @@ const specificTypes = [
     },
     {
         name: "PixieDustClusterJustify",
-        values: ['"start"', '"center"', '"end"'],
-        description: "Placements horizontaux disponibles.",
+        values: ['"start"', '"center"', '"end"', '"between"'],
+        description: "Placements et distribution horizontale disponibles.",
     },
     {
         name: "PixieDustClusterAlign",
@@ -264,7 +269,7 @@ export function PixieDustClusterDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.1.0
+                                0.2.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -296,7 +301,7 @@ export function PixieDustClusterDossier() {
                         ],
                         [
                             "Limite",
-                            "Ne crée ni grille, ni rail, ni distribution entre deux régions.",
+                            "Ne crée ni grille, ni rail, ni régions stables en champ et contrechamp.",
                         ],
                         [
                             "Anatomie",
@@ -401,11 +406,11 @@ export function PixieDustClusterDossier() {
                 <SequenceTitle
                     id="cluster-justify"
                     eyebrow="Placement horizontal"
-                    title="Trois positions gardent le groupe compact"
-                    description="Chaque ligne se place au début, au centre ou à la fin. L’absence de space-between évite une distribution différente après chaque retour à la ligne."
+                    title="Quatre distributions placent chaque ligne"
+                    description="Début, centre et fin gardent le groupe compact. Between distribue l’espace libre entre les enfants de chaque ligne, y compris la dernière après un retour."
                 />
 
-                <div className="mt-7 grid gap-6 bg-canvas p-6 lg:grid-cols-3">
+                <div className="mt-7 grid gap-6 bg-canvas p-6 md:grid-cols-2 xl:grid-cols-4">
                     {justifications.map((justification) => (
                         <Stage key={justification.value}>
                             <h4 className="text-xl text-ink">
@@ -425,6 +430,102 @@ export function PixieDustClusterDossier() {
                             </PixieDustCluster>
                         </Stage>
                     ))}
+                </div>
+            </section>
+
+            <section aria-labelledby="cluster-between" className="mt-16">
+                <SequenceTitle
+                    id="cluster-between"
+                    eyebrow="Scénarios préparés"
+                    title="Between ouvre l’espace sans figer la composition"
+                    description="La nouvelle distribution convient aux en-têtes souples et aux petits groupes de repères. Le retour à la ligne reste celui d’un Cluster, pas celui d’un Split."
+                />
+
+                <div className="mt-7 grid gap-6 xl:grid-cols-3">
+                    <Stage>
+                        <p className="mb-5 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            Informations et actions
+                        </p>
+                        <PixieDustCluster
+                            gap="sm"
+                            justify="between"
+                            align="center"
+                        >
+                            <PixieStack gap="xs">
+                                <span className="text-xs font-eyebrow uppercase tracking-[0.14em] text-muted">
+                                    Œuvre · 1932
+                                </span>
+                                <strong className="text-xl text-ink">
+                                    Flowers and Trees
+                                </strong>
+                            </PixieStack>
+                            <PixieDustCluster gap="xs">
+                                <PixieButton
+                                    type="button"
+                                    variant="outline"
+                                    size="xs"
+                                    color="ambre-projecteur"
+                                >
+                                    Sources
+                                </PixieButton>
+                                <PixieButton
+                                    type="button"
+                                    variant="solid"
+                                    size="xs"
+                                    color="ambre-projecteur"
+                                >
+                                    Ouvrir
+                                </PixieButton>
+                            </PixieDustCluster>
+                        </PixieDustCluster>
+                    </Stage>
+
+                    <Stage>
+                        <p className="mb-5 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            Trois repères
+                        </p>
+                        <PixieDustCluster gap="sm" justify="between">
+                            <ClusterChip>1928</ClusterChip>
+                            <ClusterChip>1932</ClusterChip>
+                            <ClusterChip>1937</ClusterChip>
+                        </PixieDustCluster>
+                    </Stage>
+
+                    <Stage>
+                        <p className="mb-5 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            Dernière ligne visible
+                        </p>
+                        <div className="max-w-64 border-x border-dashed border-line-strong px-2">
+                            <PixieDustCluster gap="xs" justify="between">
+                                {["Animation", "Musique", "Couleur", "Son"].map(
+                                    (label) => (
+                                        <ClusterChip key={label}>
+                                            {label}
+                                        </ClusterChip>
+                                    ),
+                                )}
+                            </PixieDustCluster>
+                        </div>
+                        <p className="mt-4 text-sm leading-6 text-muted">
+                            Chaque ligne répartit son propre espace : ce rendu
+                            doit rester un choix conscient.
+                        </p>
+                    </Stage>
+                </div>
+
+                <div className="mt-8">
+                    <CodeExample>{`<PixieDustCluster
+    gap="sm"
+    justify="between"
+    align="center"
+>
+    <PixieDustCluster gap="xs">
+        {/* Informations */}
+    </PixieDustCluster>
+    <PixieDustCluster gap="xs">
+        {/* Actions */}
+    </PixieDustCluster>
+</PixieDustCluster>`}</CodeExample>
                 </div>
             </section>
 
@@ -640,11 +741,14 @@ export function PixieDustClusterDossier() {
 
                 <div className="mt-7 grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
                     {[
-                        ["Cluster", "Flux horizontal compact et repliable."],
+                        [
+                            "Cluster",
+                            "Flux horizontal repliable, compact ou distribué avec between.",
+                        ],
                         ["Grid", "Colonnes régulières et largeur distribuée."],
                         [
                             "Split",
-                            "Deux régions placées en champ et contrechamp.",
+                            "Deux régions stables placées en champ et contrechamp.",
                         ],
                         [
                             "Rail",
@@ -711,6 +815,10 @@ export function PixieDustClusterDossier() {
                             "Autoriser les éléments à se contracter ou leur texte à revenir à la ligne.",
                         ],
                         [
+                            "Distribution between",
+                            "Vérifier que la lecture reste cohérente lorsque chaque ligne répartit séparément son espace.",
+                        ],
+                        [
                             "Zoom à 200 %",
                             "Le groupe doit gagner des lignes sans produire de défilement horizontal.",
                         ],
@@ -732,7 +840,7 @@ export function PixieDustClusterDossier() {
                 <SequenceTitle
                     id="cluster-technical"
                     eyebrow="Générique technique"
-                    title="API de l’esquisse"
+                    title="API de l’esquisse 0.2.0"
                     description="Les types spécifiques sont colocalisés dans PixieDustCluster.types.ts et les attributs HTML compatibles sont transmis à l’élément rendu."
                 />
 
@@ -763,7 +871,8 @@ export function PixieDustClusterDossier() {
                         "Tester baseline avec les tailles réelles des accessoires Pixie.",
                         "Contrôler nav et ul au clavier et avec les technologies d’assistance.",
                         "Comparer les groupes d’actions existants avant toute migration.",
-                        "Confirmer que l’absence de space-between préserve la frontière avec Split.",
+                        "Éprouver between avec deux, trois et plusieurs enfants dans chaque largeur de cadre.",
+                        "Confirmer que between reste un groupe repliable et ne remplace ni Split ni Switcher.",
                     ].map((decision) => (
                         <li
                             key={decision}
