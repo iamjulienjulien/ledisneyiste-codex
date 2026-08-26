@@ -272,6 +272,10 @@
         transform 850ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.effectProjector {
+    --pixie-link-surface-hover-shadow: var(--card-effect-shadow);
+}
+
 .effectProjector:is(
     :focus-visible,
     :focus-within,
