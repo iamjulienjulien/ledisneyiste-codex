@@ -1,20 +1,20 @@
 import { getAtelierAnimationColor } from "@/registry/colors";
-import styles from "./PixieDustBackdrop.module.css";
+import styles from "./PixieBackdrop.module.css";
 import type {
-    PixieDustBackdropBase,
-    PixieDustBackdropDirection,
-    PixieDustBackdropIntensity,
-    PixieDustBackdropMotion,
-    PixieDustBackdropPadding,
-    PixieDustBackdropPosition,
-    PixieDustBackdropProps,
-    PixieDustBackdropRadius,
-    PixieDustBackdropSpread,
-    PixieDustBackdropStyle,
-    PixieDustBackdropTexture,
-    PixieDustBackdropTextureIntensity,
-    PixieDustBackdropVariant,
-} from "./PixieDustBackdrop.types";
+    PixieBackdropBase,
+    PixieBackdropDirection,
+    PixieBackdropIntensity,
+    PixieBackdropMotion,
+    PixieBackdropPadding,
+    PixieBackdropPosition,
+    PixieBackdropProps,
+    PixieBackdropRadius,
+    PixieBackdropSpread,
+    PixieBackdropStyle,
+    PixieBackdropTexture,
+    PixieBackdropTextureIntensity,
+    PixieBackdropVariant,
+} from "./PixieBackdrop.types";
 
 const variantClasses = {
     wash: styles.wash,
@@ -25,13 +25,13 @@ const variantClasses = {
     horizon: styles.horizon,
     split: styles.split,
     cel: styles.cel,
-} as const satisfies Record<PixieDustBackdropVariant, string>;
+} as const satisfies Record<PixieBackdropVariant, string>;
 
 const intensityClasses = {
     subtle: styles.intensitySubtle,
     medium: styles.intensityMedium,
     strong: styles.intensityStrong,
-} as const satisfies Record<PixieDustBackdropIntensity, string>;
+} as const satisfies Record<PixieBackdropIntensity, string>;
 
 const positionClasses = {
     "top-start": styles.positionTopStart,
@@ -43,20 +43,20 @@ const positionClasses = {
     "bottom-start": styles.positionBottomStart,
     bottom: styles.positionBottom,
     "bottom-end": styles.positionBottomEnd,
-} as const satisfies Record<PixieDustBackdropPosition, string>;
+} as const satisfies Record<PixieBackdropPosition, string>;
 
 const directionClasses = {
     horizontal: styles.directionHorizontal,
     vertical: styles.directionVertical,
     "diagonal-up": styles.directionDiagonalUp,
     "diagonal-down": styles.directionDiagonalDown,
-} as const satisfies Record<PixieDustBackdropDirection, string>;
+} as const satisfies Record<PixieBackdropDirection, string>;
 
 const spreadClasses = {
     narrow: styles.spreadNarrow,
     medium: styles.spreadMedium,
     wide: styles.spreadWide,
-} as const satisfies Record<PixieDustBackdropSpread, string>;
+} as const satisfies Record<PixieBackdropSpread, string>;
 
 const paddingClasses = {
     none: styles.paddingNone,
@@ -64,42 +64,42 @@ const paddingClasses = {
     md: styles.paddingMedium,
     lg: styles.paddingLarge,
     xl: styles.paddingExtraLarge,
-} as const satisfies Record<PixieDustBackdropPadding, string>;
+} as const satisfies Record<PixieBackdropPadding, string>;
 
 const radiusClasses = {
     none: styles.radiusNone,
     small: styles.radiusSmall,
     medium: styles.radiusMedium,
     large: styles.radiusLarge,
-} as const satisfies Record<PixieDustBackdropRadius, string>;
+} as const satisfies Record<PixieBackdropRadius, string>;
 
 const baseClasses = {
     transparent: styles.baseTransparent,
     canvas: styles.baseCanvas,
     surface: styles.baseSurface,
     muted: styles.baseMuted,
-} as const satisfies Record<PixieDustBackdropBase, string>;
+} as const satisfies Record<PixieBackdropBase, string>;
 
 const textureClasses = {
     none: styles.textureNone,
     grain: styles.textureGrain,
     dust: styles.textureDust,
     paper: styles.texturePaper,
-} as const satisfies Record<PixieDustBackdropTexture, string>;
+} as const satisfies Record<PixieBackdropTexture, string>;
 
 const textureIntensityClasses = {
     subtle: styles.textureIntensitySubtle,
     medium: styles.textureIntensityMedium,
     strong: styles.textureIntensityStrong,
-} as const satisfies Record<PixieDustBackdropTextureIntensity, string>;
+} as const satisfies Record<PixieBackdropTextureIntensity, string>;
 
 const motionClasses = {
     none: styles.motionNone,
     drift: styles.motionDrift,
     breathe: styles.motionBreathe,
-} as const satisfies Record<PixieDustBackdropMotion, string>;
+} as const satisfies Record<PixieBackdropMotion, string>;
 
-export function PixieDustBackdrop({
+export function PixieBackdrop({
     as: Element = "div",
     variant = "wash",
     intensity = "medium",
@@ -118,12 +118,12 @@ export function PixieDustBackdrop({
     style,
     children,
     ...elementProps
-}: PixieDustBackdropProps) {
+}: PixieBackdropProps) {
     const colorDefinition = color ? getAtelierAnimationColor(color) : null;
     const secondaryColorDefinition = secondaryColor
         ? getAtelierAnimationColor(secondaryColor)
         : null;
-    const backdropStyle: PixieDustBackdropStyle = {
+    const backdropStyle: PixieBackdropStyle = {
         ...style,
         ...(colorDefinition
             ? { "--pixie-backdrop-color": colorDefinition.cssValue }
