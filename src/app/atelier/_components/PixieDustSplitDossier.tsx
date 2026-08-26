@@ -5,7 +5,7 @@ import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieBadge } from "@/components/ui/PixieBadge";
 import { PixieCard } from "@/components/ui/PixieCard";
-import { PixieDustCluster } from "@/components/ui/PixieDustCluster";
+import { PixieCluster } from "@/components/ui/PixieCluster";
 import { PixieFrame } from "@/components/ui/PixieFrame";
 import { PixieDustSection } from "@/components/ui/PixieDustSection";
 import {
@@ -393,7 +393,7 @@ export function PixieDustSplitDossier() {
                                     Le récit reste lisible lorsque les deux
                                     plans se retrouvent dans une seule colonne.
                                 </p>
-                                <PixieDustCluster gap="xs">
+                                <PixieCluster gap="xs">
                                     {["1929", "Musique", "Animation"].map(
                                         (label) => (
                                             <PixieBadge
@@ -406,7 +406,7 @@ export function PixieDustSplitDossier() {
                                             </PixieBadge>
                                         ),
                                     )}
-                                </PixieDustCluster>
+                                </PixieCluster>
                             </PixieStack>
                             <PixieFrame
                                 variant="film"

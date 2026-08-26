@@ -6,7 +6,7 @@ import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieBadge } from "@/components/ui/PixieBadge";
 import { PixieBackdrop } from "@/components/ui/PixieBackdrop";
 import { PixieCard } from "@/components/ui/PixieCard";
-import { PixieDustCluster } from "@/components/ui/PixieDustCluster";
+import { PixieCluster } from "@/components/ui/PixieCluster";
 import {
     PixieDustSection,
     type PixieDustSectionAlign,
@@ -404,7 +404,7 @@ export function PixieDustSectionDossier() {
                                 Le cadre et le rythme sont réglés par la section
                                 ; le récit reste entièrement explicite.
                             </p>
-                            <PixieDustCluster gap="xs">
+                            <PixieCluster gap="xs">
                                 {["Animation", "Musique", "1929"].map(
                                     (label) => (
                                         <PixieBadge
@@ -417,7 +417,7 @@ export function PixieDustSectionDossier() {
                                         </PixieBadge>
                                     ),
                                 )}
-                            </PixieDustCluster>
+                            </PixieCluster>
                             <PixieCard
                                 as="article"
                                 variant="outline"
@@ -441,7 +441,7 @@ export function PixieDustSectionDossier() {
         <h2 id="sequence-title">Le mouvement rejoint la musique</h2>
     </header>
     <p>Introduction éditoriale.</p>
-    <PixieDustCluster>{/* Métadonnées */}</PixieDustCluster>
+    <PixieCluster>{/* Métadonnées */}</PixieCluster>
     {/* Matière principale */}
 </PixieDustSection>`}</CodeExample>
                 </div>
@@ -678,7 +678,7 @@ export function PixieDustSectionDossier() {
                             Le décor s’étend sur tout le plan ; la section
                             maintient son cadre et son rythme.
                         </p>
-                        <PixieDustCluster gap="xs">
+                        <PixieCluster gap="xs">
                             {["Cadre", "Rythme", "Métadonnées"].map((label) => (
                                 <PixieBadge
                                     key={label}
@@ -689,7 +689,7 @@ export function PixieDustSectionDossier() {
                                     {label}
                                 </PixieBadge>
                             ))}
-                        </PixieDustCluster>
+                        </PixieCluster>
                         <div className="grid gap-4 sm:grid-cols-2">
                             {["The Skeleton Dance", "Flowers and Trees"].map(
                                 (title) => (

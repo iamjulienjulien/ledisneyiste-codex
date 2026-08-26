@@ -6,12 +6,12 @@ import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import { PixieBadge, type PixieBadgeSize } from "@/components/ui/PixieBadge";
 import {
-    PixieDustCluster,
-    type PixieDustClusterAlign,
-    type PixieDustClusterElement,
-    type PixieDustClusterGap,
-    type PixieDustClusterJustify,
-} from "@/components/ui/PixieDustCluster";
+    PixieCluster,
+    type PixieClusterAlign,
+    type PixieClusterElement,
+    type PixieClusterGap,
+    type PixieClusterJustify,
+} from "@/components/ui/PixieCluster";
 
 const elements = ["div", "section", "nav", "ul"] as const;
 
@@ -66,11 +66,11 @@ function PreviewBadge({
     );
 }
 
-export function PixieDustClusterPlayground() {
-    const [element, setElement] = useState<PixieDustClusterElement>("div");
-    const [gap, setGap] = useState<PixieDustClusterGap>("sm");
-    const [justify, setJustify] = useState<PixieDustClusterJustify>("start");
-    const [align, setAlign] = useState<PixieDustClusterAlign>("center");
+export function PixieClusterPlayground() {
+    const [element, setElement] = useState<PixieClusterElement>("div");
+    const [gap, setGap] = useState<PixieClusterGap>("sm");
+    const [justify, setJustify] = useState<PixieClusterJustify>("start");
+    const [align, setAlign] = useState<PixieClusterAlign>("center");
     const [light, setLight] = useState<"sombre" | "claire">("sombre");
     const [frame, setFrame] = useState<"compact" | "moyen" | "large">("moyen");
 
@@ -94,14 +94,14 @@ export function PixieDustClusterPlayground() {
               : `    <PixieBadge>Personnages</PixieBadge>
     <PixieBadge>Cercle de Mickey</PixieBadge>
     <PixieBadge>Silly Symphonies</PixieBadge>`;
-    const code = `<PixieDustCluster
+    const code = `<PixieCluster
     as="${element}"
     gap="${gap}"
     justify="${justify}"
     align="${align}"
 ${semanticProp}>
 ${childrenCode}
-</PixieDustCluster>`;
+</PixieCluster>`;
 
     return (
         <div className="overflow-hidden border border-line bg-surface">
@@ -123,7 +123,7 @@ ${childrenCode}
                                 onChange={(event) =>
                                     setElement(
                                         event.target
-                                            .value as PixieDustClusterElement,
+                                            .value as PixieClusterElement,
                                     )
                                 }
                                 className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink"
@@ -212,7 +212,7 @@ ${childrenCode}
                             >
                                 Métadonnées de la séquence
                             </p>
-                            <PixieDustCluster
+                            <PixieCluster
                                 as={element}
                                 gap={gap}
                                 justify={justify}
@@ -250,7 +250,7 @@ ${childrenCode}
 
                                     return <div key={item.label}>{badge}</div>;
                                 })}
-                            </PixieDustCluster>
+                            </PixieCluster>
                             {justify === "between" ? (
                                 <p className="mt-4 text-sm leading-6 text-muted">
                                     Chaque ligne distribue indépendamment son

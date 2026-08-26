@@ -5,7 +5,7 @@ import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import { PixieBadge } from "@/components/ui/PixieBadge";
-import { PixieDustCluster } from "@/components/ui/PixieDustCluster";
+import { PixieCluster } from "@/components/ui/PixieCluster";
 import { PixieFrame } from "@/components/ui/PixieFrame";
 import {
     PixieDustSplit,
@@ -226,7 +226,7 @@ ${labelledBy}>
                                         le contrechamp lui donne une présence
                                         visuelle.
                                     </p>
-                                    <PixieDustCluster gap="xs">
+                                    <PixieCluster gap="xs">
                                         {["1929", "Musique", "Animation"].map(
                                             (label) => (
                                                 <PixieBadge
@@ -239,7 +239,7 @@ ${labelledBy}>
                                                 </PixieBadge>
                                             ),
                                         )}
-                                    </PixieDustCluster>
+                                    </PixieCluster>
                                 </PixieStack>
 
                                 <PixieFrame

@@ -5,7 +5,7 @@ import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieBadge } from "@/components/ui/PixieBadge";
 import { PixieCard } from "@/components/ui/PixieCard";
-import { PixieDustCluster } from "@/components/ui/PixieDustCluster";
+import { PixieCluster } from "@/components/ui/PixieCluster";
 import { PixieDustGrid } from "@/components/ui/PixieDustGrid";
 import { PixieDustSection } from "@/components/ui/PixieDustSection";
 import {
@@ -794,7 +794,7 @@ export function PixieDustSidebarDossier() {
                                 aria-label="Repères"
                                 className="border border-line bg-surface-muted p-5"
                             >
-                                <PixieDustCluster gap="xs">
+                                <PixieCluster gap="xs">
                                     {["1928", "1929", "1932"].map((label) => (
                                         <PixieBadge
                                             key={label}
@@ -805,7 +805,7 @@ export function PixieDustSidebarDossier() {
                                             {label}
                                         </PixieBadge>
                                     ))}
-                                </PixieDustCluster>
+                                </PixieCluster>
                             </aside>
                             <PixieDustGrid
                                 columns={3}

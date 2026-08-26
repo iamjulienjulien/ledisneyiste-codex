@@ -6,15 +6,15 @@ import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieBadge } from "@/components/ui/PixieBadge";
 import { PixieButton } from "@/components/ui/PixieButton";
 import {
-    PixieDustCluster,
-    type PixieDustClusterAlign,
-    type PixieDustClusterGap,
-    type PixieDustClusterJustify,
-} from "@/components/ui/PixieDustCluster";
+    PixieCluster,
+    type PixieClusterAlign,
+    type PixieClusterGap,
+    type PixieClusterJustify,
+} from "@/components/ui/PixieCluster";
 import { PixieContainer } from "@/components/ui/PixieContainer";
 import { PixiePanel } from "@/components/ui/PixiePanel";
 import { PixieStack } from "@/components/ui/PixieStack";
-import { PixieDustClusterPlayground } from "./PixieDustClusterPlayground";
+import { PixieClusterPlayground } from "./PixieClusterPlayground";
 
 const gaps = [
     {
@@ -55,7 +55,7 @@ const gaps = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustClusterGap;
+    value: PixieClusterGap;
     token: string;
     role: string;
 }>[];
@@ -83,7 +83,7 @@ const justifications = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustClusterJustify;
+    value: PixieClusterJustify;
     description: string;
 }>[];
 
@@ -110,32 +110,32 @@ const alignments = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustClusterAlign;
+    value: PixieClusterAlign;
     description: string;
 }>[];
 
 const properties = [
     {
         name: "as",
-        type: "PixieDustClusterElement",
+        type: "PixieClusterElement",
         defaultValue: '"div"',
         description: "Élément HTML qui porte le groupe repliable.",
     },
     {
         name: "gap",
-        type: "PixieDustClusterGap",
+        type: "PixieClusterGap",
         defaultValue: '"sm"',
         description: "Espace horizontal et vertical entre les enfants.",
     },
     {
         name: "justify",
-        type: "PixieDustClusterJustify",
+        type: "PixieClusterJustify",
         defaultValue: '"start"',
         description: "Placement ou distribution horizontale de chaque ligne.",
     },
     {
         name: "align",
-        type: "PixieDustClusterAlign",
+        type: "PixieClusterAlign",
         defaultValue: '"center"',
         description: "Alignement vertical des éléments sur chaque ligne.",
     },
@@ -155,22 +155,22 @@ const properties = [
 
 const specificTypes = [
     {
-        name: "PixieDustClusterElement",
+        name: "PixieClusterElement",
         values: ['"div"', '"section"', '"nav"', '"ul"'],
         description: "Structures de regroupement autorisées.",
     },
     {
-        name: "PixieDustClusterGap",
+        name: "PixieClusterGap",
         values: ['"none"', '"xs"', '"sm"', '"md"', '"lg"', '"xl"'],
         description: "Espacements bidirectionnels disponibles.",
     },
     {
-        name: "PixieDustClusterJustify",
+        name: "PixieClusterJustify",
         values: ['"start"', '"center"', '"end"', '"between"'],
         description: "Placements et distribution horizontale disponibles.",
     },
     {
-        name: "PixieDustClusterAlign",
+        name: "PixieClusterAlign",
         values: ['"start"', '"center"', '"end"', '"baseline"'],
         description: "Alignements verticaux disponibles.",
     },
@@ -238,12 +238,12 @@ function ClusterChip({
     );
 }
 
-export function PixieDustClusterDossier() {
+export function PixieClusterDossier() {
     return (
         <AtelierFicheAccessoire
-            id="pixie-dust-cluster"
-            labelledBy="pixie-dust-cluster-title"
-            nom="PixieDustCluster"
+            id="pixie-cluster"
+            labelledBy="pixie-cluster-title"
+            nom="PixieCluster"
             className="mt-16 scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
@@ -252,10 +252,10 @@ export function PixieDustClusterDossier() {
                             Le clap · Montage 003
                         </p>
                         <h2
-                            id="pixie-dust-cluster-title"
+                            id="pixie-cluster-title"
                             className="mt-4 text-4xl text-ink sm:text-5xl"
                         >
-                            PixieDustCluster
+                            PixieCluster
                         </h2>
                         <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
                             Rassembler des éléments liés et les laisser revenir
@@ -269,7 +269,7 @@ export function PixieDustClusterDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.2.0
+                                1.0.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -277,7 +277,7 @@ export function PixieDustClusterDossier() {
                                 État
                             </dt>
                             <dd className="mt-1 text-sm font-medium">
-                                <AtelierStatut statut="Esquisse" />
+                                <AtelierStatut statut="Prêt à projeter" />
                             </dd>
                         </div>
                     </dl>
@@ -341,7 +341,7 @@ export function PixieDustClusterDossier() {
 
                 <div className="mt-7 grid border border-line xl:grid-cols-2">
                     <div className="bg-canvas p-8">
-                        <PixieDustCluster as="ul" gap="sm" align="center">
+                        <PixieCluster as="ul" gap="sm" align="center">
                             {metadata.map(([label, color]) => (
                                 <li key={label}>
                                     <PixieBadge
@@ -354,9 +354,9 @@ export function PixieDustClusterDossier() {
                                     </PixieBadge>
                                 </li>
                             ))}
-                        </PixieDustCluster>
+                        </PixieCluster>
                     </div>
-                    <CodeExample>{`<PixieDustCluster
+                    <CodeExample>{`<PixieCluster
     as="ul"
     gap="sm"
     justify="start"
@@ -367,7 +367,7 @@ export function PixieDustClusterDossier() {
             <PixieBadge>{item.label}</PixieBadge>
         </li>
     ))}
-</PixieDustCluster>`}</CodeExample>
+</PixieCluster>`}</CodeExample>
                 </div>
             </section>
 
@@ -388,12 +388,12 @@ export function PixieDustClusterDossier() {
                                     {gap.value} · {gap.token}
                                 </code>
                             </div>
-                            <PixieDustCluster gap={gap.value}>
+                            <PixieCluster gap={gap.value}>
                                 <ClusterChip>Plan A</ClusterChip>
                                 <ClusterChip>Plan B</ClusterChip>
                                 <ClusterChip>Plan C</ClusterChip>
                                 <ClusterChip>Plan D</ClusterChip>
-                            </PixieDustCluster>
+                            </PixieCluster>
                             <p className="mt-5 text-sm leading-6 text-muted">
                                 {gap.role}
                             </p>
@@ -419,7 +419,7 @@ export function PixieDustClusterDossier() {
                             <p className="mt-2 min-h-12 text-sm leading-6 text-muted">
                                 {justification.description}
                             </p>
-                            <PixieDustCluster
+                            <PixieCluster
                                 gap="xs"
                                 justify={justification.value}
                                 className="mt-5 border-y border-dashed border-line-strong py-4"
@@ -427,7 +427,7 @@ export function PixieDustClusterDossier() {
                                 <ClusterChip>A</ClusterChip>
                                 <ClusterChip>B</ClusterChip>
                                 <ClusterChip>C</ClusterChip>
-                            </PixieDustCluster>
+                            </PixieCluster>
                         </Stage>
                     ))}
                 </div>
@@ -446,11 +446,7 @@ export function PixieDustClusterDossier() {
                         <p className="mb-5 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Informations et actions
                         </p>
-                        <PixieDustCluster
-                            gap="sm"
-                            justify="between"
-                            align="center"
-                        >
+                        <PixieCluster gap="sm" justify="between" align="center">
                             <PixieStack gap="xs">
                                 <span className="text-xs font-eyebrow uppercase tracking-[0.14em] text-muted">
                                     Œuvre · 1932
@@ -459,7 +455,7 @@ export function PixieDustClusterDossier() {
                                     Flowers and Trees
                                 </strong>
                             </PixieStack>
-                            <PixieDustCluster gap="xs">
+                            <PixieCluster gap="xs">
                                 <PixieButton
                                     type="button"
                                     variant="outline"
@@ -476,19 +472,19 @@ export function PixieDustClusterDossier() {
                                 >
                                     Ouvrir
                                 </PixieButton>
-                            </PixieDustCluster>
-                        </PixieDustCluster>
+                            </PixieCluster>
+                        </PixieCluster>
                     </Stage>
 
                     <Stage>
                         <p className="mb-5 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Trois repères
                         </p>
-                        <PixieDustCluster gap="sm" justify="between">
+                        <PixieCluster gap="sm" justify="between">
                             <ClusterChip>1928</ClusterChip>
                             <ClusterChip>1932</ClusterChip>
                             <ClusterChip>1937</ClusterChip>
-                        </PixieDustCluster>
+                        </PixieCluster>
                     </Stage>
 
                     <Stage>
@@ -496,7 +492,7 @@ export function PixieDustClusterDossier() {
                             Dernière ligne visible
                         </p>
                         <div className="max-w-64 border-x border-dashed border-line-strong px-2">
-                            <PixieDustCluster gap="xs" justify="between">
+                            <PixieCluster gap="xs" justify="between">
                                 {["Animation", "Musique", "Couleur", "Son"].map(
                                     (label) => (
                                         <ClusterChip key={label}>
@@ -504,7 +500,7 @@ export function PixieDustClusterDossier() {
                                         </ClusterChip>
                                     ),
                                 )}
-                            </PixieDustCluster>
+                            </PixieCluster>
                         </div>
                         <p className="mt-4 text-sm leading-6 text-muted">
                             Chaque ligne répartit son propre espace : ce rendu
@@ -514,18 +510,18 @@ export function PixieDustClusterDossier() {
                 </div>
 
                 <div className="mt-8">
-                    <CodeExample>{`<PixieDustCluster
+                    <CodeExample>{`<PixieCluster
     gap="sm"
     justify="between"
     align="center"
 >
-    <PixieDustCluster gap="xs">
+    <PixieCluster gap="xs">
         {/* Informations */}
-    </PixieDustCluster>
-    <PixieDustCluster gap="xs">
+    </PixieCluster>
+    <PixieCluster gap="xs">
         {/* Actions */}
-    </PixieDustCluster>
-</PixieDustCluster>`}</CodeExample>
+    </PixieCluster>
+</PixieCluster>`}</CodeExample>
                 </div>
             </section>
 
@@ -546,7 +542,7 @@ export function PixieDustClusterDossier() {
                             <p className="mt-2 text-sm leading-6 text-muted">
                                 {alignment.description}
                             </p>
-                            <PixieDustCluster
+                            <PixieCluster
                                 gap="sm"
                                 align={alignment.value}
                                 className="mt-5 min-h-28 border-y border-dashed border-line-strong py-4"
@@ -560,7 +556,7 @@ export function PixieDustClusterDossier() {
                                 <span className="border border-line bg-surface px-3 py-3 text-sm text-ink-soft">
                                     Moyen
                                 </span>
-                            </PixieDustCluster>
+                            </PixieCluster>
                         </Stage>
                     ))}
                 </div>
@@ -585,7 +581,7 @@ export function PixieDustClusterDossier() {
                                 {label}
                             </p>
                             <Stage>
-                                <PixieDustCluster gap="sm">
+                                <PixieCluster gap="sm">
                                     {[
                                         "Animation",
                                         "Musique",
@@ -597,7 +593,7 @@ export function PixieDustClusterDossier() {
                                             {label}
                                         </ClusterChip>
                                     ))}
-                                </PixieDustCluster>
+                                </PixieCluster>
                             </Stage>
                         </div>
                     ))}
@@ -617,7 +613,7 @@ export function PixieDustClusterDossier() {
                         <p className="mb-5 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Liste de métadonnées
                         </p>
-                        <PixieDustCluster as="ul" gap="xs" aria-label="Formats">
+                        <PixieCluster as="ul" gap="xs" aria-label="Formats">
                             {["Court métrage", "Sonore", "Noir et blanc"].map(
                                 (label) => (
                                     <li key={label}>
@@ -631,14 +627,14 @@ export function PixieDustClusterDossier() {
                                     </li>
                                 ),
                             )}
-                        </PixieDustCluster>
+                        </PixieCluster>
                     </Stage>
 
                     <Stage>
                         <p className="mb-5 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Navigation nommée
                         </p>
-                        <PixieDustCluster
+                        <PixieCluster
                             as="nav"
                             gap="sm"
                             aria-label="Explorer les familles"
@@ -656,7 +652,7 @@ export function PixieDustClusterDossier() {
                                     {label}
                                 </a>
                             ))}
-                        </PixieDustCluster>
+                        </PixieCluster>
                     </Stage>
                 </div>
             </section>
@@ -695,7 +691,7 @@ export function PixieDustClusterDossier() {
                                 groupes distincts dans le rythme général.
                             </p>
 
-                            <PixieDustCluster gap="xs">
+                            <PixieCluster gap="xs">
                                 {metadata.map(([label, color]) => (
                                     <PixieBadge
                                         key={label}
@@ -706,9 +702,9 @@ export function PixieDustClusterDossier() {
                                         {label}
                                     </PixieBadge>
                                 ))}
-                            </PixieDustCluster>
+                            </PixieCluster>
 
-                            <PixieDustCluster gap="sm">
+                            <PixieCluster gap="sm">
                                 <PixieButton
                                     type="button"
                                     variant="solid"
@@ -725,7 +721,7 @@ export function PixieDustClusterDossier() {
                                 >
                                     Voir les relations
                                 </PixieButton>
-                            </PixieDustCluster>
+                            </PixieCluster>
                         </PixieStack>
                     </PixieContainer>
                 </PixiePanel>
@@ -766,18 +762,18 @@ export function PixieDustClusterDossier() {
             </section>
 
             <section
-                id="pixie-dust-cluster-playground"
+                id="pixie-cluster-playground"
                 aria-labelledby="cluster-playground-title"
                 className="mt-16 scroll-mt-8 border border-line-strong bg-surface-muted p-6 shadow-soft sm:p-8"
             >
                 <SequenceTitle
                     id="cluster-playground-title"
                     eyebrow="Régie"
-                    title="Composer un PixieDustCluster"
+                    title="Composer un PixieCluster"
                     description="Réglez son espacement, ses deux axes et sa structure ; le code d’utilisation suit chaque changement."
                 />
                 <div className="mt-8">
-                    <PixieDustClusterPlayground />
+                    <PixieClusterPlayground />
                 </div>
             </section>
 
@@ -840,8 +836,8 @@ export function PixieDustClusterDossier() {
                 <SequenceTitle
                     id="cluster-technical"
                     eyebrow="Générique technique"
-                    title="API de l’esquisse 0.2.0"
-                    description="Les types spécifiques sont colocalisés dans PixieDustCluster.types.ts et les attributs HTML compatibles sont transmis à l’élément rendu."
+                    title="API du composant"
+                    description="Les types spécifiques sont colocalisés dans PixieCluster.types.ts et les attributs HTML compatibles sont transmis à l’élément rendu."
                 />
 
                 <div className="mt-7">
@@ -859,20 +855,20 @@ export function PixieDustClusterDossier() {
             <section aria-labelledby="cluster-journal" className="mt-16">
                 <SequenceTitle
                     id="cluster-journal"
-                    eyebrow="Journal de production"
-                    title="Décisions avant la promotion"
-                    description="L’esquisse devra prouver que son retour à la ligne reste prévisible avec les contenus réels du Codex."
+                    eyebrow="Contrat de projection"
+                    title="Les garanties de la version 1.0.0"
+                    description="PixieCluster est prêt à rassembler les futurs groupes du Codex sans prendre en charge leur surface, leur grille ou leurs régions de composition."
                 />
 
                 <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
                     {[
-                        "Éprouver les six gaps avec badges, boutons, liens et textes longs.",
-                        "Vérifier les retours à la ligne dans les cadres compact, moyen et large.",
-                        "Tester baseline avec les tailles réelles des accessoires Pixie.",
-                        "Contrôler nav et ul au clavier et avec les technologies d’assistance.",
-                        "Comparer les groupes d’actions existants avant toute migration.",
-                        "Éprouver between avec deux, trois et plusieurs enfants dans chaque largeur de cadre.",
-                        "Confirmer que between reste un groupe repliable et ne remplace ni Split ni Switcher.",
+                        "Les six gaps séparent les enfants directs dans les deux directions lorsque le groupe se replie.",
+                        "Les quatre distributions horizontales s’appliquent à chaque ligne ; between répartit aussi la dernière ligne.",
+                        "Les quatre alignements verticaux conservent l’ordre documentaire et le parcours clavier.",
+                        "Div, section, nav et ul gardent leur sémantique native ; une liste reste composée de li.",
+                        "Min-width et min-height protègent les groupes imbriqués dans les cadres contraints.",
+                        "La primitive reste un composant serveur sans surface, couleur ou JavaScript client.",
+                        "PixieCluster ne remplace ni Grid, ni Split, ni Switcher, ni Rail pour les compositions plus structurées.",
                     ].map((decision) => (
                         <li
                             key={decision}

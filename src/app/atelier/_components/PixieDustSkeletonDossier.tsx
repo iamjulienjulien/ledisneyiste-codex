@@ -3,7 +3,7 @@ import { AtelierFicheAccessoire } from "@/components/atelier/AtelierFicheAccesso
 import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
-import { PixieDustCluster } from "@/components/ui/PixieDustCluster";
+import { PixieCluster } from "@/components/ui/PixieCluster";
 import { PixiePanel } from "@/components/ui/PixiePanel";
 import {
     PixieDustSkeleton,
@@ -267,7 +267,7 @@ function OeuvreCardSkeleton() {
                     height="0.8rem"
                     lastLineWidth="58%"
                 />
-                <PixieDustCluster gap="sm">
+                <PixieCluster gap="sm">
                     <PixieDustSkeleton
                         width="5rem"
                         height="1.5rem"
@@ -278,7 +278,7 @@ function OeuvreCardSkeleton() {
                         height="1.5rem"
                         radius="full"
                     />
-                </PixieDustCluster>
+                </PixieCluster>
             </PixieStack>
         </div>
     );

@@ -6,7 +6,7 @@ import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import { PixieBadge } from "@/components/ui/PixieBadge";
 import { PixieCard } from "@/components/ui/PixieCard";
-import { PixieDustCluster } from "@/components/ui/PixieDustCluster";
+import { PixieCluster } from "@/components/ui/PixieCluster";
 import {
     PixieDustSection,
     type PixieDustSectionAlign,
@@ -89,7 +89,7 @@ ${labelledBy}>
         <h2 id="section-heading">Le mouvement rejoint la musique</h2>
     </header>
     <p>Une introduction éditoriale installe la séquence.</p>
-    <PixieDustCluster>{/* Métadonnées */}</PixieDustCluster>
+    <PixieCluster>{/* Métadonnées */}</PixieCluster>
     {/* Matière principale */}
 </PixieDustSection>`;
     const contentWidth = align === "stretch" ? "w-full" : "w-full max-w-2xl";
@@ -265,10 +265,7 @@ ${labelledBy}>
                                     rythme.
                                 </p>
 
-                                <PixieDustCluster
-                                    gap="xs"
-                                    className={contentWidth}
-                                >
+                                <PixieCluster gap="xs" className={contentWidth}>
                                     {[
                                         "Animation",
                                         "Musique",
@@ -283,7 +280,7 @@ ${labelledBy}>
                                             {label}
                                         </PixieBadge>
                                     ))}
-                                </PixieDustCluster>
+                                </PixieCluster>
 
                                 <PixieCard
                                     as="article"
