@@ -3,24 +3,24 @@ import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTa
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import {
-    PixieDustBackdrop,
-    type PixieDustBackdropBase,
-    type PixieDustBackdropDirection,
-    type PixieDustBackdropIntensity,
-    type PixieDustBackdropMotion,
-    type PixieDustBackdropPadding,
-    type PixieDustBackdropPosition,
-    type PixieDustBackdropRadius,
-    type PixieDustBackdropSpread,
-    type PixieDustBackdropTexture,
-    type PixieDustBackdropTextureIntensity,
-    type PixieDustBackdropVariant,
-} from "@/components/ui/PixieDustBackdrop";
+    PixieBackdrop,
+    type PixieBackdropBase,
+    type PixieBackdropDirection,
+    type PixieBackdropIntensity,
+    type PixieBackdropMotion,
+    type PixieBackdropPadding,
+    type PixieBackdropPosition,
+    type PixieBackdropRadius,
+    type PixieBackdropSpread,
+    type PixieBackdropTexture,
+    type PixieBackdropTextureIntensity,
+    type PixieBackdropVariant,
+} from "@/components/ui/PixieBackdrop";
 import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieFrame } from "@/components/ui/PixieFrame";
 import { PixieInset } from "@/components/ui/PixieInset";
 import { PixiePanel } from "@/components/ui/PixiePanel";
-import { PixieDustBackdropPlayground } from "./PixieDustBackdropPlayground";
+import { PixieBackdropPlayground } from "./PixieBackdropPlayground";
 
 const variants = [
     {
@@ -65,7 +65,7 @@ const variants = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustBackdropVariant;
+    value: PixieBackdropVariant;
     description: string;
 }>[];
 
@@ -75,7 +75,7 @@ const intensities = [
     { name: "Forte", value: "strong" as const, opacity: "100 %" },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustBackdropIntensity;
+    value: PixieBackdropIntensity;
     opacity: string;
 }>[];
 
@@ -91,7 +91,7 @@ const positions = [
     { name: "Bas · fin", value: "bottom-end" as const },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustBackdropPosition;
+    value: PixieBackdropPosition;
 }>[];
 
 const directions = [
@@ -101,7 +101,7 @@ const directions = [
     { name: "Diagonale descendante", value: "diagonal-down" as const },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustBackdropDirection;
+    value: PixieBackdropDirection;
 }>[];
 
 const spreads = [
@@ -110,7 +110,7 @@ const spreads = [
     { name: "Large", value: "wide" as const },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustBackdropSpread;
+    value: PixieBackdropSpread;
 }>[];
 
 const bases = [
@@ -120,7 +120,7 @@ const bases = [
     { name: "Surface atténuée", value: "muted" as const },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustBackdropBase;
+    value: PixieBackdropBase;
 }>[];
 
 const textures = [
@@ -146,7 +146,7 @@ const textures = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustBackdropTexture;
+    value: PixieBackdropTexture;
     description: string;
 }>[];
 
@@ -156,7 +156,7 @@ const textureIntensities = [
     { name: "Forte", value: "strong" as const },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustBackdropTextureIntensity;
+    value: PixieBackdropTextureIntensity;
 }>[];
 
 const motions = [
@@ -177,7 +177,7 @@ const motions = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustBackdropMotion;
+    value: PixieBackdropMotion;
     description: string;
 }>[];
 
@@ -189,7 +189,7 @@ const paddings = [
     { name: "Très grand", value: "xl" as const, token: "3 rem" },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustBackdropPadding;
+    value: PixieBackdropPadding;
     token: string;
 }>[];
 
@@ -200,93 +200,93 @@ const radii = [
     { name: "Grand", value: "large" as const },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustBackdropRadius;
+    value: PixieBackdropRadius;
 }>[];
 
 const properties = [
     {
         name: "as",
-        type: "PixieDustBackdropElement",
+        type: "PixieBackdropElement",
         defaultValue: '"div"',
         description: "Élément HTML porté par le fond de scène.",
     },
     {
         name: "variant",
-        type: "PixieDustBackdropVariant",
+        type: "PixieBackdropVariant",
         defaultValue: '"wash"',
         description: "Atmosphère projetée derrière la composition.",
     },
     {
         name: "intensity",
-        type: "PixieDustBackdropIntensity",
+        type: "PixieBackdropIntensity",
         defaultValue: '"medium"',
         description: "Présence visuelle de la couche atmosphérique.",
     },
     {
         name: "position",
-        type: "PixieDustBackdropPosition",
+        type: "PixieBackdropPosition",
         defaultValue: '"center"',
         description: "Origine du dégradé, du halo ou du faisceau.",
     },
     {
         name: "direction",
-        type: "PixieDustBackdropDirection",
+        type: "PixieBackdropDirection",
         defaultValue: '"horizontal"',
         description: "Axe suivi par les couches lumineuses.",
     },
     {
         name: "spread",
-        type: "PixieDustBackdropSpread",
+        type: "PixieBackdropSpread",
         defaultValue: '"medium"',
         description: "Étendue de la lumière dans le cadre.",
     },
     {
         name: "padding",
-        type: "PixieDustBackdropPadding",
+        type: "PixieBackdropPadding",
         defaultValue: '"lg"',
         description: "Espace réservé à la composition au premier plan.",
     },
     {
         name: "radius",
-        type: "PixieDustBackdropRadius",
+        type: "PixieBackdropRadius",
         defaultValue: '"none"',
         description: "Arrondi du fond lorsqu’il reste local.",
     },
     {
         name: "color",
-        type: "PixieDustBackdropColor",
+        type: "PixieBackdropColor",
         defaultValue: "false",
         description: "Couleur du registre ou accent courant du thème.",
     },
     {
         name: "secondaryColor",
-        type: "PixieDustBackdropColor",
+        type: "PixieBackdropColor",
         defaultValue: "false",
         description:
             "Seconde couleur, dérivée de la première lorsqu’elle est absente.",
     },
     {
         name: "base",
-        type: "PixieDustBackdropBase",
+        type: "PixieBackdropBase",
         defaultValue: '"surface"',
         description:
             "Surface neutre installée sous les couches atmosphériques.",
     },
     {
         name: "texture",
-        type: "PixieDustBackdropTexture",
+        type: "PixieBackdropTexture",
         defaultValue: '"none"',
         description: "Matière décorative superposée au fond.",
     },
     {
         name: "textureIntensity",
-        type: "PixieDustBackdropTextureIntensity",
+        type: "PixieBackdropTextureIntensity",
         defaultValue: '"medium"',
         description: "Présence de la matière sans modifier la lumière.",
     },
     {
         name: "motion",
-        type: "PixieDustBackdropMotion",
+        type: "PixieBackdropMotion",
         defaultValue: '"none"',
         description:
             "Animation atmosphérique facultative des couches décoratives.",
@@ -307,12 +307,12 @@ const properties = [
 
 const specificTypes = [
     {
-        name: "PixieDustBackdropElement",
+        name: "PixieBackdropElement",
         values: ['"div"', '"section"', '"header"', '"footer"'],
         description: "Structures de composition autorisées.",
     },
     {
-        name: "PixieDustBackdropVariant",
+        name: "PixieBackdropVariant",
         values: [
             '"wash"',
             '"gradient"',
@@ -326,12 +326,12 @@ const specificTypes = [
         description: "Atmosphères disponibles derrière le contenu.",
     },
     {
-        name: "PixieDustBackdropIntensity",
+        name: "PixieBackdropIntensity",
         values: ['"subtle"', '"medium"', '"strong"'],
         description: "Niveaux de présence de l’effet.",
     },
     {
-        name: "PixieDustBackdropPosition",
+        name: "PixieBackdropPosition",
         values: [
             '"top-start"',
             '"top"',
@@ -346,7 +346,7 @@ const specificTypes = [
         description: "Neuf origines possibles dans le cadre.",
     },
     {
-        name: "PixieDustBackdropDirection",
+        name: "PixieBackdropDirection",
         values: [
             '"horizontal"',
             '"vertical"',
@@ -356,42 +356,42 @@ const specificTypes = [
         description: "Axes de progression de l’atmosphère.",
     },
     {
-        name: "PixieDustBackdropSpread",
+        name: "PixieBackdropSpread",
         values: ['"narrow"', '"medium"', '"wide"'],
         description: "Largeurs relatives du foyer lumineux.",
     },
     {
-        name: "PixieDustBackdropPadding",
+        name: "PixieBackdropPadding",
         values: ['"none"', '"sm"', '"md"', '"lg"', '"xl"'],
         description: "Densités intérieures de la composition.",
     },
     {
-        name: "PixieDustBackdropRadius",
+        name: "PixieBackdropRadius",
         values: ['"none"', '"small"', '"medium"', '"large"'],
         description: "Rayons disponibles dans la Projection Originale.",
     },
     {
-        name: "PixieDustBackdropColor",
+        name: "PixieBackdropColor",
         values: ["AtelierAnimationColorSlug", "false"],
         description: "Couleur enregistrée ou accent courant du thème.",
     },
     {
-        name: "PixieDustBackdropBase",
+        name: "PixieBackdropBase",
         values: ['"transparent"', '"canvas"', '"surface"', '"muted"'],
         description: "Surfaces neutres sous la projection.",
     },
     {
-        name: "PixieDustBackdropTexture",
+        name: "PixieBackdropTexture",
         values: ['"none"', '"grain"', '"dust"', '"paper"'],
         description: "Matières décoratives disponibles.",
     },
     {
-        name: "PixieDustBackdropTextureIntensity",
+        name: "PixieBackdropTextureIntensity",
         values: ['"subtle"', '"medium"', '"strong"'],
         description: "Niveaux de présence de la matière.",
     },
     {
-        name: "PixieDustBackdropMotion",
+        name: "PixieBackdropMotion",
         values: ['"none"', '"drift"', '"breathe"'],
         description: "Mouvements facultatifs, neutralisés en mouvement réduit.",
     },
@@ -450,12 +450,12 @@ function ArchiveCard({
     );
 }
 
-export function PixieDustBackdropDossier() {
+export function PixieBackdropDossier() {
     return (
         <AtelierFicheAccessoire
-            id="pixie-dust-backdrop"
-            labelledBy="pixie-dust-backdrop-title"
-            nom="PixieDustBackdrop"
+            id="pixie-backdrop"
+            labelledBy="pixie-backdrop-title"
+            nom="PixieBackdrop"
             className="mt-16 scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
@@ -464,10 +464,10 @@ export function PixieDustBackdropDossier() {
                             Le clap · Décor 006
                         </p>
                         <h2
-                            id="pixie-dust-backdrop-title"
+                            id="pixie-backdrop-title"
                             className="mt-4 text-4xl text-ink sm:text-5xl"
                         >
-                            PixieDustBackdrop
+                            PixieBackdrop
                         </h2>
                         <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
                             Installer un fond de scène atmosphérique derrière
@@ -481,7 +481,7 @@ export function PixieDustBackdropDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.2.0
+                                1.0.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -489,7 +489,7 @@ export function PixieDustBackdropDossier() {
                                 État
                             </dt>
                             <dd className="mt-1 text-sm font-medium">
-                                <AtelierStatut statut="Esquisse" />
+                                <AtelierStatut statut="Prêt à projeter" />
                             </dd>
                         </div>
                     </dl>
@@ -553,7 +553,7 @@ export function PixieDustBackdropDossier() {
 
                 <div className="mt-7 grid border border-line xl:grid-cols-2">
                     <div className="bg-canvas p-8">
-                        <PixieDustBackdrop
+                        <PixieBackdrop
                             variant="cel"
                             intensity="strong"
                             position="top-start"
@@ -583,9 +583,9 @@ export function PixieDustBackdropDossier() {
                                     year="1927"
                                 />
                             </div>
-                        </PixieDustBackdrop>
+                        </PixieBackdrop>
                     </div>
-                    <CodeExample>{`<PixieDustBackdrop
+                    <CodeExample>{`<PixieBackdrop
     variant="cel"
     intensity="strong"
     position="top-start"
@@ -600,7 +600,7 @@ export function PixieDustBackdropDossier() {
     textureIntensity="subtle"
 >
     {/* Titre et surfaces au premier plan */}
-</PixieDustBackdrop>`}</CodeExample>
+</PixieBackdrop>`}</CodeExample>
                 </div>
             </section>
 
@@ -618,7 +618,7 @@ export function PixieDustBackdropDossier() {
 
                 <div className="mt-7 grid gap-6 bg-canvas p-6 lg:grid-cols-2">
                     {variants.map((variant) => (
-                        <PixieDustBackdrop
+                        <PixieBackdrop
                             key={variant.value}
                             variant={variant.value}
                             color="violet-ombre-portee"
@@ -635,7 +635,7 @@ export function PixieDustBackdropDossier() {
                             <p className="mt-4 max-w-md leading-7 text-ink-soft">
                                 {variant.description}
                             </p>
-                        </PixieDustBackdrop>
+                        </PixieBackdrop>
                     ))}
                 </div>
             </section>
@@ -650,7 +650,7 @@ export function PixieDustBackdropDossier() {
 
                 <div className="mt-7 grid gap-6 bg-canvas p-6 lg:grid-cols-3">
                     {intensities.map((intensity) => (
-                        <PixieDustBackdrop
+                        <PixieBackdrop
                             key={intensity.value}
                             variant="halo"
                             intensity={intensity.value}
@@ -668,7 +668,7 @@ export function PixieDustBackdropDossier() {
                             <p className="mt-3 text-sm text-ink-soft">
                                 Opacité de scène · {intensity.opacity}
                             </p>
-                        </PixieDustBackdrop>
+                        </PixieBackdrop>
                     ))}
                 </div>
             </section>
@@ -683,7 +683,7 @@ export function PixieDustBackdropDossier() {
 
                 <div className="mt-7 grid gap-6 bg-canvas p-6 sm:grid-cols-2 xl:grid-cols-3">
                     {positions.map((position) => (
-                        <PixieDustBackdrop
+                        <PixieBackdrop
                             key={position.value}
                             variant="projector"
                             position={position.value}
@@ -698,7 +698,7 @@ export function PixieDustBackdropDossier() {
                             <h4 className="mt-3 text-xl text-ink">
                                 {position.name}
                             </h4>
-                        </PixieDustBackdrop>
+                        </PixieBackdrop>
                     ))}
                 </div>
             </section>
@@ -714,7 +714,7 @@ export function PixieDustBackdropDossier() {
                 <div className="mt-7 grid gap-8 xl:grid-cols-[1.35fr_1fr]">
                     <div className="grid gap-5 bg-canvas p-6 sm:grid-cols-2">
                         {directions.map((direction) => (
-                            <PixieDustBackdrop
+                            <PixieBackdrop
                                 key={direction.value}
                                 variant="projector"
                                 direction={direction.value}
@@ -730,13 +730,13 @@ export function PixieDustBackdropDossier() {
                                 <h4 className="mt-3 text-xl text-ink">
                                     {direction.name}
                                 </h4>
-                            </PixieDustBackdrop>
+                            </PixieBackdrop>
                         ))}
                     </div>
 
                     <div className="grid gap-5 bg-canvas p-6">
                         {spreads.map((spread) => (
-                            <PixieDustBackdrop
+                            <PixieBackdrop
                                 key={spread.value}
                                 variant="horizon"
                                 spread={spread.value}
@@ -751,7 +751,7 @@ export function PixieDustBackdropDossier() {
                                 <h4 className="mt-2 text-lg text-ink">
                                     {spread.name}
                                 </h4>
-                            </PixieDustBackdrop>
+                            </PixieBackdrop>
                         ))}
                     </div>
                 </div>
@@ -767,7 +767,7 @@ export function PixieDustBackdropDossier() {
 
                 <div className="mt-7 grid gap-6 bg-canvas p-6 sm:grid-cols-2 xl:grid-cols-4">
                     {bases.map((base) => (
-                        <PixieDustBackdrop
+                        <PixieBackdrop
                             key={base.value}
                             variant="split"
                             color="corail-cel"
@@ -783,7 +783,7 @@ export function PixieDustBackdropDossier() {
                             <h4 className="mt-3 text-xl text-ink">
                                 {base.name}
                             </h4>
-                        </PixieDustBackdrop>
+                        </PixieBackdrop>
                     ))}
                 </div>
             </section>
@@ -798,7 +798,7 @@ export function PixieDustBackdropDossier() {
 
                 <div className="mt-7 grid gap-6 bg-canvas p-6 sm:grid-cols-2 xl:grid-cols-4">
                     {textures.map((texture, index) => (
-                        <PixieDustBackdrop
+                        <PixieBackdrop
                             key={texture.value}
                             variant="gradient"
                             color="vert-cellulo"
@@ -821,7 +821,7 @@ export function PixieDustBackdropDossier() {
                             <p className="mt-4 text-sm leading-6 text-ink-soft">
                                 {texture.description}
                             </p>
-                        </PixieDustBackdrop>
+                        </PixieBackdrop>
                     ))}
                 </div>
             </section>
@@ -836,7 +836,7 @@ export function PixieDustBackdropDossier() {
 
                 <div className="mt-7 grid gap-6 bg-canvas p-6 lg:grid-cols-3">
                     {motions.map((motion) => (
-                        <PixieDustBackdrop
+                        <PixieBackdrop
                             key={motion.value}
                             variant="cel"
                             color="ambre-projecteur"
@@ -857,7 +857,7 @@ export function PixieDustBackdropDossier() {
                             <p className="mt-3 text-sm leading-6 text-ink-soft">
                                 {motion.description}
                             </p>
-                        </PixieDustBackdrop>
+                        </PixieBackdrop>
                     ))}
                 </div>
             </section>
@@ -870,7 +870,7 @@ export function PixieDustBackdropDossier() {
                     description="Backdrop installe le climat général tandis que Card, Panel et Frame continuent de porter la matière visible."
                 />
 
-                <PixieDustBackdrop
+                <PixieBackdrop
                     variant="halo"
                     intensity="strong"
                     color="indigo-nuit-studio"
@@ -912,7 +912,7 @@ export function PixieDustBackdropDossier() {
                             </div>
                         </PixieFrame>
                     </div>
-                </PixieDustBackdrop>
+                </PixieBackdrop>
             </section>
 
             <section aria-labelledby="backdrop-scenarios" className="mt-16">
@@ -924,7 +924,7 @@ export function PixieDustBackdropDossier() {
                 />
 
                 <div className="mt-7 grid gap-8">
-                    <PixieDustBackdrop
+                    <PixieBackdrop
                         as="header"
                         variant="cel"
                         intensity="strong"
@@ -948,10 +948,10 @@ export function PixieDustBackdropDossier() {
                             Un héros ample conserve une base lisible pendant que
                             deux couleurs installent l’identité du récit.
                         </p>
-                    </PixieDustBackdrop>
+                    </PixieBackdrop>
 
                     <div className="grid gap-8 xl:grid-cols-2">
-                        <PixieDustBackdrop
+                        <PixieBackdrop
                             as="section"
                             aria-labelledby="backdrop-scenario-index"
                             variant="gradient"
@@ -975,9 +975,9 @@ export function PixieDustBackdropDossier() {
                                 Une seule couleur de famille suffit à donner le
                                 ton sans devenir une métadonnée.
                             </p>
-                        </PixieDustBackdrop>
+                        </PixieBackdrop>
 
-                        <PixieDustBackdrop
+                        <PixieBackdrop
                             as="section"
                             aria-labelledby="backdrop-scenario-epoch"
                             variant="horizon"
@@ -1001,10 +1001,10 @@ export function PixieDustBackdropDossier() {
                                 L’horizon marque une transition temporelle sans
                                 ajouter de séparateur structurel.
                             </p>
-                        </PixieDustBackdrop>
+                        </PixieBackdrop>
                     </div>
 
-                    <PixieDustBackdrop
+                    <PixieBackdrop
                         as="section"
                         aria-labelledby="backdrop-scenario-collection"
                         variant="projector"
@@ -1036,9 +1036,9 @@ export function PixieDustBackdropDossier() {
                                 year="1932"
                             />
                         </div>
-                    </PixieDustBackdrop>
+                    </PixieBackdrop>
 
-                    <PixieDustBackdrop
+                    <PixieBackdrop
                         variant="cel"
                         color="vert-cellulo"
                         secondaryColor="turquoise-acetate"
@@ -1082,10 +1082,10 @@ export function PixieDustBackdropDossier() {
                                 </p>
                             </PixieInset>
                         </div>
-                    </PixieDustBackdrop>
+                    </PixieBackdrop>
 
                     <div className="grid gap-8 xl:grid-cols-2">
-                        <PixieDustBackdrop
+                        <PixieBackdrop
                             as="section"
                             aria-labelledby="backdrop-scenario-empty"
                             variant="wash"
@@ -1108,9 +1108,9 @@ export function PixieDustBackdropDossier() {
                                 Le décor soutient l’état vide sans porter seul
                                 son sens.
                             </p>
-                        </PixieDustBackdrop>
+                        </PixieBackdrop>
 
-                        <PixieDustBackdrop
+                        <PixieBackdrop
                             as="footer"
                             variant="vignette"
                             color="indigo-nuit-studio"
@@ -1127,10 +1127,10 @@ export function PixieDustBackdropDossier() {
                             <p className="mt-4 leading-7 text-ink-soft">
                                 Une vignette referme calmement la séquence.
                             </p>
-                        </PixieDustBackdrop>
+                        </PixieBackdrop>
                     </div>
 
-                    <PixieDustBackdrop
+                    <PixieBackdrop
                         as="section"
                         aria-labelledby="backdrop-scenario-long"
                         variant="split"
@@ -1168,7 +1168,7 @@ export function PixieDustBackdropDossier() {
                         </div>
                         <div className="mt-7 flex flex-wrap gap-5">
                             <a
-                                href="#pixie-dust-backdrop-playground"
+                                href="#pixie-backdrop-playground"
                                 className="font-medium text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
                             >
                                 Ouvrir la régie
@@ -1180,7 +1180,7 @@ export function PixieDustBackdropDossier() {
                                 Lire les règles d’accessibilité
                             </a>
                         </div>
-                    </PixieDustBackdrop>
+                    </PixieBackdrop>
                 </div>
             </section>
 
@@ -1197,7 +1197,7 @@ export function PixieDustBackdropDossier() {
                         <h4 className="text-xl text-ink">Espacements</h4>
                         <div className="mt-4 grid gap-4 sm:grid-cols-2">
                             {paddings.map((padding) => (
-                                <PixieDustBackdrop
+                                <PixieBackdrop
                                     key={padding.value}
                                     variant="wash"
                                     color="corail-cel"
@@ -1210,7 +1210,7 @@ export function PixieDustBackdropDossier() {
                                             {padding.value} · {padding.token}
                                         </p>
                                     </div>
-                                </PixieDustBackdrop>
+                                </PixieBackdrop>
                             ))}
                         </div>
                     </div>
@@ -1219,7 +1219,7 @@ export function PixieDustBackdropDossier() {
                         <h4 className="text-xl text-ink">Rayons</h4>
                         <div className="mt-4 grid gap-4 sm:grid-cols-2">
                             {radii.map((radius) => (
-                                <PixieDustBackdrop
+                                <PixieBackdrop
                                     key={radius.value}
                                     variant="gradient"
                                     color="turquoise-acetate"
@@ -1233,7 +1233,7 @@ export function PixieDustBackdropDossier() {
                                     <p className="mt-3 text-sm text-ink-soft">
                                         {radius.name}
                                     </p>
-                                </PixieDustBackdrop>
+                                </PixieBackdrop>
                             ))}
                         </div>
                     </div>
@@ -1241,18 +1241,18 @@ export function PixieDustBackdropDossier() {
             </section>
 
             <section
-                id="pixie-dust-backdrop-playground"
+                id="pixie-backdrop-playground"
                 aria-labelledby="backdrop-playground-title"
                 className="mt-16 scroll-mt-8 border border-line-strong bg-surface-muted p-6 shadow-soft sm:p-8"
             >
                 <SequenceTitle
                     id="backdrop-playground-title"
                     eyebrow="Régie"
-                    title="Composer un PixieDustBackdrop"
+                    title="Composer un PixieBackdrop"
                     description="Réglez ses couches, leur trajectoire, leur matière et leur mouvement ; le code d’utilisation suit chaque changement."
                 />
                 <div className="mt-8">
-                    <PixieDustBackdropPlayground />
+                    <PixieBackdropPlayground />
                 </div>
             </section>
 
@@ -1315,8 +1315,8 @@ export function PixieDustBackdropDossier() {
                 <SequenceTitle
                     id="backdrop-technical"
                     eyebrow="Générique technique"
-                    title="API de l’esquisse"
-                    description="Les types spécifiques sont colocalisés dans PixieDustBackdrop.types.ts et les attributs HTML compatibles sont transmis à l’élément rendu."
+                    title="API du composant"
+                    description="Les types spécifiques sont colocalisés dans PixieBackdrop.types.ts et les attributs HTML compatibles sont transmis à l’élément rendu."
                 />
 
                 <div className="mt-7">
@@ -1334,20 +1334,20 @@ export function PixieDustBackdropDossier() {
             <section aria-labelledby="backdrop-journal" className="mt-16">
                 <SequenceTitle
                     id="backdrop-journal"
-                    eyebrow="Journal de production"
-                    title="Décisions avant la promotion"
-                    description="L’esquisse doit prouver qu’elle enrichit les compositions sans concurrencer les effets propres aux autres Décors."
+                    eyebrow="Contrat de projection"
+                    title="Les garanties de la version 1.0.0"
+                    description="PixieBackdrop est prêt à installer les atmosphères du Codex sans concurrencer les surfaces placées au premier plan."
                 />
 
                 <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
                     {[
-                        "Éprouver les huit atmosphères dans les deux Lumières et sur plusieurs largeurs.",
-                        "Comparer projector au halo interactif des Cards sans confondre leurs responsabilités.",
-                        "Vérifier que split et cel justifient réellement une seconde couleur.",
-                        "Vérifier les trois textures à 200 % de zoom et en contraste forcé.",
-                        "Tester les contenus longs et les contrôles focusables au-dessus des couches.",
-                        "Comparer dérive et respiration avec le composant Loader en mouvement réduit.",
-                        "Décider si les neuf positions restent toutes utiles après les scénarios métier.",
+                        "Les huit atmosphères restent lisibles dans les deux Lumières et sur toutes les largeurs.",
+                        "Projector installe une lumière de fond sans reprendre le comportement interactif des Cards.",
+                        "Split et cel réservent la seconde couleur aux compositions qui en ont réellement besoin.",
+                        "Les trois textures restent décoratives et disparaissent en contraste forcé comme à l’impression.",
+                        "Les contenus longs et les contrôles focusables demeurent au-dessus des couches atmosphériques.",
+                        "Dérive et respiration sont facultatives et neutralisées lorsque le mouvement réduit est demandé.",
+                        "Les neuf positions déplacent la lumière sans modifier l’ordre ni le sens du contenu.",
                     ].map((decision) => (
                         <li
                             key={decision}

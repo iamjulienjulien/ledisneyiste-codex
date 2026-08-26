@@ -3,7 +3,7 @@ import { AtelierFicheAccessoire } from "@/components/atelier/AtelierFicheAccesso
 import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
-import { PixieDustBackdrop } from "@/components/ui/PixieDustBackdrop";
+import { PixieBackdrop } from "@/components/ui/PixieBackdrop";
 import {
     PixieDustContainer,
     type PixieDustContainerGutter,
@@ -390,7 +390,7 @@ export function PixieDustContainerDossier() {
                     description="Backdrop occupe tout le plan disponible tandis que Container maintient les textes et les surfaces sur le même axe."
                 />
 
-                <PixieDustBackdrop
+                <PixieBackdrop
                     variant="projector"
                     intensity="strong"
                     position="start"
@@ -419,7 +419,7 @@ export function PixieDustContainerDossier() {
                             conserve son propre repère horizontal.
                         </p>
                     </PixieDustContainer>
-                </PixieDustBackdrop>
+                </PixieBackdrop>
             </section>
 
             <section aria-labelledby="container-boundaries" className="mt-16">

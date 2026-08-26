@@ -3,7 +3,7 @@ import { AtelierFicheAccessoire } from "@/components/atelier/AtelierFicheAccesso
 import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
-import { PixieDustBackdrop } from "@/components/ui/PixieDustBackdrop";
+import { PixieBackdrop } from "@/components/ui/PixieBackdrop";
 import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieDustContainer } from "@/components/ui/PixieDustContainer";
 import {
@@ -527,7 +527,7 @@ export function PixieDustStackDossier() {
                     description="Chaque primitive conserve une responsabilité lisible dans la composition finale."
                 />
 
-                <PixieDustBackdrop
+                <PixieBackdrop
                     variant="gradient"
                     intensity="strong"
                     position="start"
@@ -575,7 +575,7 @@ export function PixieDustStackDossier() {
                             </PixieDustStack>
                         </PixieDustStack>
                     </PixieDustContainer>
-                </PixieDustBackdrop>
+                </PixieBackdrop>
             </section>
 
             <section aria-labelledby="stack-boundaries" className="mt-16">

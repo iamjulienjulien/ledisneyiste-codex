@@ -4,7 +4,7 @@ import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
-import { PixieDustBackdrop } from "@/components/ui/PixieDustBackdrop";
+import { PixieBackdrop } from "@/components/ui/PixieBackdrop";
 import {
     PixieDustBleed,
     type PixieDustBleedElement,
@@ -64,11 +64,7 @@ type ContentMode = (typeof contentModes)[number]["value"];
 function BleedContent({ mode }: Readonly<{ mode: ContentMode }>) {
     if (mode === "surface") {
         return (
-            <PixieDustBackdrop
-                variant="projector"
-                intensity="medium"
-                padding="lg"
-            >
+            <PixieBackdrop variant="projector" intensity="medium" padding="lg">
                 <div className="mx-auto max-w-2xl py-6 text-center">
                     <p className="text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
                         Interlude
@@ -81,7 +77,7 @@ function BleedContent({ mode }: Readonly<{ mode: ContentMode }>) {
                         protégée par la gouttière.
                     </p>
                 </div>
-            </PixieDustBackdrop>
+            </PixieBackdrop>
         );
     }
 

@@ -3,7 +3,7 @@ import { AtelierFicheAccessoire } from "@/components/atelier/AtelierFicheAccesso
 import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
-import { PixieDustBackdrop } from "@/components/ui/PixieDustBackdrop";
+import { PixieBackdrop } from "@/components/ui/PixieBackdrop";
 import {
     PixieDustBleed,
     type PixieDustBleedExtent,
@@ -521,7 +521,7 @@ export function PixieDustBleedDossier() {
                     </ReadingFrame>
                     <ReadingFrame>
                         <PixieDustBleed extent="lg" gutter="md">
-                            <PixieDustBackdrop
+                            <PixieBackdrop
                                 variant="projector"
                                 intensity="medium"
                                 padding="lg"
@@ -535,7 +535,7 @@ export function PixieDustBleedDossier() {
                                         touche ses nouveaux bords.
                                     </p>
                                 </div>
-                            </PixieDustBackdrop>
+                            </PixieBackdrop>
                         </PixieDustBleed>
                     </ReadingFrame>
                 </div>

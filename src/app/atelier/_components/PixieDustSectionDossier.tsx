@@ -4,7 +4,7 @@ import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTa
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieBadge } from "@/components/ui/PixieBadge";
-import { PixieDustBackdrop } from "@/components/ui/PixieDustBackdrop";
+import { PixieBackdrop } from "@/components/ui/PixieBackdrop";
 import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieDustCluster } from "@/components/ui/PixieDustCluster";
 import {
@@ -650,7 +650,7 @@ export function PixieDustSectionDossier() {
                     description="Section orchestre le montage tandis que Backdrop et Card conservent la responsabilité de la matière visible."
                 />
 
-                <PixieDustBackdrop
+                <PixieBackdrop
                     variant="projector"
                     intensity="strong"
                     position="start"
@@ -710,7 +710,7 @@ export function PixieDustSectionDossier() {
                             )}
                         </div>
                     </PixieDustSection>
-                </PixieDustBackdrop>
+                </PixieBackdrop>
             </section>
 
             <section aria-labelledby="section-boundaries" className="mt-16">

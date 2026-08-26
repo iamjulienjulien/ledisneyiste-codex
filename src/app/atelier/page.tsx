@@ -8,7 +8,7 @@ import { PixiePanelDossier } from "./_components/PixiePanelDossier";
 import { PixieFrameDossier } from "./_components/PixieFrameDossier";
 import { PixieCalloutDossier } from "./_components/PixieCalloutDossier";
 import { PixieInsetDossier } from "./_components/PixieInsetDossier";
-import { PixieDustBackdropDossier } from "./_components/PixieDustBackdropDossier";
+import { PixieBackdropDossier } from "./_components/PixieBackdropDossier";
 import { PixieDustContainerDossier } from "./_components/PixieDustContainerDossier";
 import { PixieDustStackDossier } from "./_components/PixieDustStackDossier";
 import { PixieDustClusterDossier } from "./_components/PixieDustClusterDossier";
@@ -154,10 +154,10 @@ const decors = [
         href: "#pixie-inset",
     },
     {
-        nom: "PixieDustBackdrop",
+        nom: "PixieBackdrop",
         role: "Installer un fond de scène atmosphérique",
-        statut: "Esquisse",
-        href: "#pixie-dust-backdrop",
+        statut: "Prêt à projeter",
+        href: "#pixie-backdrop",
     },
 ] as const;
 
@@ -586,7 +586,7 @@ export default function AtelierPage() {
                         structure les sections. PixieFrame met les médias en
                         scène, PixieCallout éclaire les annotations éditoriales
                         et PixieInset place les informations secondaires en
-                        retrait. PixieDustBackdrop installe enfin une atmosphère
+                        retrait. PixieBackdrop installe enfin une atmosphère
                         derrière les compositions complètes.
                     </p>
                 </div>
@@ -646,7 +646,7 @@ export default function AtelierPage() {
                 <PixieFrameDossier />
                 <PixieCalloutDossier />
                 <PixieInsetDossier />
-                <PixieDustBackdropDossier />
+                <PixieBackdropDossier />
             </section>
 
             <section

@@ -5,21 +5,21 @@ import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import {
-    PixieDustBackdrop,
-    type PixieDustBackdropBase,
-    type PixieDustBackdropColor,
-    type PixieDustBackdropDirection,
-    type PixieDustBackdropElement,
-    type PixieDustBackdropIntensity,
-    type PixieDustBackdropMotion,
-    type PixieDustBackdropPadding,
-    type PixieDustBackdropPosition,
-    type PixieDustBackdropRadius,
-    type PixieDustBackdropSpread,
-    type PixieDustBackdropTexture,
-    type PixieDustBackdropTextureIntensity,
-    type PixieDustBackdropVariant,
-} from "@/components/ui/PixieDustBackdrop";
+    PixieBackdrop,
+    type PixieBackdropBase,
+    type PixieBackdropColor,
+    type PixieBackdropDirection,
+    type PixieBackdropElement,
+    type PixieBackdropIntensity,
+    type PixieBackdropMotion,
+    type PixieBackdropPadding,
+    type PixieBackdropPosition,
+    type PixieBackdropRadius,
+    type PixieBackdropSpread,
+    type PixieBackdropTexture,
+    type PixieBackdropTextureIntensity,
+    type PixieBackdropVariant,
+} from "@/components/ui/PixieBackdrop";
 import { PixieCard } from "@/components/ui/PixieCard";
 import {
     getAtelierAnimationColor,
@@ -81,27 +81,27 @@ const frameWidths = {
 const selectClassName =
     "mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink";
 
-export function PixieDustBackdropPlayground() {
-    const [element, setElement] = useState<PixieDustBackdropElement>("section");
-    const [variant, setVariant] = useState<PixieDustBackdropVariant>("cel");
+export function PixieBackdropPlayground() {
+    const [element, setElement] = useState<PixieBackdropElement>("section");
+    const [variant, setVariant] = useState<PixieBackdropVariant>("cel");
     const [intensity, setIntensity] =
-        useState<PixieDustBackdropIntensity>("strong");
+        useState<PixieBackdropIntensity>("strong");
     const [position, setPosition] =
-        useState<PixieDustBackdropPosition>("top-start");
+        useState<PixieBackdropPosition>("top-start");
     const [direction, setDirection] =
-        useState<PixieDustBackdropDirection>("diagonal-down");
-    const [spread, setSpread] = useState<PixieDustBackdropSpread>("wide");
-    const [padding, setPadding] = useState<PixieDustBackdropPadding>("xl");
-    const [radius, setRadius] = useState<PixieDustBackdropRadius>("large");
-    const [color, setColor] =
-        useState<PixieDustBackdropColor>("ambre-projecteur");
-    const [secondaryColor, setSecondaryColor] =
-        useState<PixieDustBackdropColor>("violet-ombre-portee");
-    const [base, setBase] = useState<PixieDustBackdropBase>("surface");
-    const [texture, setTexture] = useState<PixieDustBackdropTexture>("grain");
+        useState<PixieBackdropDirection>("diagonal-down");
+    const [spread, setSpread] = useState<PixieBackdropSpread>("wide");
+    const [padding, setPadding] = useState<PixieBackdropPadding>("xl");
+    const [radius, setRadius] = useState<PixieBackdropRadius>("large");
+    const [color, setColor] = useState<PixieBackdropColor>("ambre-projecteur");
+    const [secondaryColor, setSecondaryColor] = useState<PixieBackdropColor>(
+        "violet-ombre-portee",
+    );
+    const [base, setBase] = useState<PixieBackdropBase>("surface");
+    const [texture, setTexture] = useState<PixieBackdropTexture>("grain");
     const [textureIntensity, setTextureIntensity] =
-        useState<PixieDustBackdropTextureIntensity>("subtle");
-    const [motion, setMotion] = useState<PixieDustBackdropMotion>("none");
+        useState<PixieBackdropTextureIntensity>("subtle");
+    const [motion, setMotion] = useState<PixieBackdropMotion>("none");
     const [light, setLight] = useState<"sombre" | "claire">("sombre");
     const [frame, setFrame] = useState<"compact" | "moyen" | "large">("moyen");
 
@@ -125,11 +125,11 @@ export function PixieDustBackdropPlayground() {
         element === "section" ? '    aria-labelledby="backdrop-heading"' : null,
     ].filter((line): line is string => line !== null);
 
-    const code = `<PixieDustBackdrop\n${props.join("\n")}\n>\n    <h2 id="backdrop-heading">Les origines retrouvent leur lumière</h2>\n    {/* Composition au premier plan */}\n</PixieDustBackdrop>`;
+    const code = `<PixieBackdrop\n${props.join("\n")}\n>\n    <h2 id="backdrop-heading">Les origines retrouvent leur lumière</h2>\n    {/* Composition au premier plan */}\n</PixieBackdrop>`;
 
     function selectColor(
         value: string,
-        setter: (color: PixieDustBackdropColor) => void,
+        setter: (color: PixieBackdropColor) => void,
     ) {
         setter(
             value === "theme" ? false : (value as AtelierAnimationColorSlug),
@@ -156,7 +156,7 @@ export function PixieDustBackdropPlayground() {
                                 onChange={(event) =>
                                     setElement(
                                         event.target
-                                            .value as PixieDustBackdropElement,
+                                            .value as PixieBackdropElement,
                                     )
                                 }
                                 className={`${selectClassName} font-mono`}
@@ -216,7 +216,7 @@ export function PixieDustBackdropPlayground() {
                                 onChange={(event) =>
                                     setPosition(
                                         event.target
-                                            .value as PixieDustBackdropPosition,
+                                            .value as PixieBackdropPosition,
                                     )
                                 }
                                 className={selectClassName}
@@ -242,7 +242,7 @@ export function PixieDustBackdropPlayground() {
                                 onChange={(event) =>
                                     setDirection(
                                         event.target
-                                            .value as PixieDustBackdropDirection,
+                                            .value as PixieBackdropDirection,
                                     )
                                 }
                                 className={selectClassName}
@@ -268,7 +268,7 @@ export function PixieDustBackdropPlayground() {
                                 onChange={(event) =>
                                     setSpread(
                                         event.target
-                                            .value as PixieDustBackdropSpread,
+                                            .value as PixieBackdropSpread,
                                     )
                                 }
                                 className={selectClassName}
@@ -293,8 +293,7 @@ export function PixieDustBackdropPlayground() {
                                 value={base}
                                 onChange={(event) =>
                                     setBase(
-                                        event.target
-                                            .value as PixieDustBackdropBase,
+                                        event.target.value as PixieBackdropBase,
                                     )
                                 }
                                 className={selectClassName}
@@ -320,7 +319,7 @@ export function PixieDustBackdropPlayground() {
                                 onChange={(event) =>
                                     setPadding(
                                         event.target
-                                            .value as PixieDustBackdropPadding,
+                                            .value as PixieBackdropPadding,
                                     )
                                 }
                                 className={selectClassName}
@@ -346,7 +345,7 @@ export function PixieDustBackdropPlayground() {
                                 onChange={(event) =>
                                     setRadius(
                                         event.target
-                                            .value as PixieDustBackdropRadius,
+                                            .value as PixieBackdropRadius,
                                     )
                                 }
                                 className={selectClassName}
@@ -423,7 +422,7 @@ export function PixieDustBackdropPlayground() {
                                 onChange={(event) =>
                                     setTexture(
                                         event.target
-                                            .value as PixieDustBackdropTexture,
+                                            .value as PixieBackdropTexture,
                                     )
                                 }
                                 className={selectClassName}
@@ -449,7 +448,7 @@ export function PixieDustBackdropPlayground() {
                                 onChange={(event) =>
                                     setTextureIntensity(
                                         event.target
-                                            .value as PixieDustBackdropTextureIntensity,
+                                            .value as PixieBackdropTextureIntensity,
                                     )
                                 }
                                 disabled={texture === "none"}
@@ -476,7 +475,7 @@ export function PixieDustBackdropPlayground() {
                                 onChange={(event) =>
                                     setMotion(
                                         event.target
-                                            .value as PixieDustBackdropMotion,
+                                            .value as PixieBackdropMotion,
                                     )
                                 }
                                 className={selectClassName}
@@ -508,7 +507,7 @@ export function PixieDustBackdropPlayground() {
                         <div
                             className={`w-full transition-[max-width] ${frameWidths[frame]}`}
                         >
-                            <PixieDustBackdrop
+                            <PixieBackdrop
                                 as={element}
                                 variant={variant}
                                 intensity={intensity}
@@ -556,7 +555,7 @@ export function PixieDustBackdropPlayground() {
                                         Alice’s Wonderland · 1923
                                     </p>
                                 </PixieCard>
-                            </PixieDustBackdrop>
+                            </PixieBackdrop>
                         </div>
                     </div>
 
