@@ -5,6 +5,11 @@
         var(--inset-accent) 10%,
         transparent
     );
+    --inset-accent-medium: color-mix(
+        in srgb,
+        var(--inset-accent) 18%,
+        transparent
+    );
     --inset-accent-line: color-mix(
         in srgb,
         var(--inset-accent) 42%,
@@ -12,14 +17,49 @@
     );
     --inset-shadow-color: color-mix(in srgb, var(--color-ink) 18%, transparent);
     --inset-shadow: inset 0 0.125rem 0.35rem var(--inset-shadow-color);
+    --inset-texture-opacity: 0.13;
 
     position: relative;
+    isolation: isolate;
     min-width: 0;
+    border: 1px solid transparent;
     color: inherit;
 }
 
+.decoration {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    overflow: hidden;
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+.decoration::before,
+.decoration::after {
+    position: absolute;
+    content: "";
+    pointer-events: none;
+}
+
+.decoration::before {
+    z-index: 0;
+    inset: 0;
+    opacity: var(--inset-texture-opacity);
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+}
+
+.plain {
+    background: transparent;
+    box-shadow: var(--inset-shadow);
+}
+
 .subtle {
-    border: 1px solid transparent;
     background: color-mix(
         in srgb,
         var(--color-surface-muted) 76%,
@@ -29,15 +69,19 @@
 }
 
 .recessed {
-    border: 1px solid var(--color-line);
+    border-color: var(--color-line);
     background: var(--color-surface-muted);
     box-shadow: var(--inset-shadow);
 }
 
 .groove {
-    border: 1px solid var(--color-line);
-    border-top-color: var(--color-line-strong);
-    border-bottom-color: color-mix(in srgb, var(--color-line) 46%, transparent);
+    border-color: var(--color-line);
+    border-block-start-color: var(--color-line-strong);
+    border-block-end-color: color-mix(
+        in srgb,
+        var(--color-line) 46%,
+        transparent
+    );
     background:
         linear-gradient(
             180deg,
@@ -49,12 +93,28 @@
 }
 
 .accent {
-    border: 1px solid var(--inset-accent-line);
+    border-color: var(--inset-accent-line);
     background:
-        linear-gradient(90deg, var(--inset-accent) 0 0.1875rem, transparent 0),
         linear-gradient(var(--inset-accent-soft), var(--inset-accent-soft)),
         var(--color-surface-muted);
     box-shadow: var(--inset-shadow);
+}
+
+.accent .decoration::after {
+    z-index: 1;
+    background: var(--inset-accent);
+}
+
+.tinted {
+    border-color: var(--inset-accent-line);
+    background:
+        linear-gradient(var(--inset-accent-medium), var(--inset-accent-medium)),
+        var(--color-surface);
+    box-shadow: var(--inset-shadow);
+}
+
+.depthNone {
+    --inset-shadow: none;
 }
 
 .depthShallow {
@@ -85,6 +145,10 @@
     padding: 2rem;
 }
 
+.paddingExtraLarge {
+    padding: 2.5rem;
+}
+
 .radiusNone {
     border-radius: 0;
 }
@@ -101,13 +165,125 @@
     border-radius: var(--radius-large);
 }
 
+.accentTop .decoration::after {
+    inset-block-start: 0;
+    inset-inline: 0;
+    block-size: 0.1875rem;
+}
+
+.accentEnd .decoration::after {
+    inset-block: 0;
+    inset-inline-end: 0;
+    inline-size: 0.1875rem;
+}
+
+.accentBottom .decoration::after {
+    inset-block-end: 0;
+    inset-inline: 0;
+    block-size: 0.1875rem;
+}
+
+.accentStart .decoration::after {
+    inset-block: 0;
+    inset-inline-start: 0;
+    inline-size: 0.1875rem;
+}
+
+.textureNone .decoration::before {
+    display: none;
+}
+
+.textureGrain .decoration::before {
+    background-image:
+        radial-gradient(
+            circle at 12% 18%,
+            var(--inset-accent) 0 0.035rem,
+            transparent 0.045rem
+        ),
+        radial-gradient(
+            circle at 63% 37%,
+            var(--color-ink) 0 0.03rem,
+            transparent 0.04rem
+        ),
+        radial-gradient(
+            circle at 34% 78%,
+            var(--inset-accent) 0 0.025rem,
+            transparent 0.04rem
+        ),
+        radial-gradient(
+            circle at 87% 69%,
+            var(--color-ink) 0 0.035rem,
+            transparent 0.05rem
+        );
+    background-size:
+        1.1rem 1.1rem,
+        1.35rem 1.35rem,
+        0.9rem 0.9rem,
+        1.6rem 1.6rem;
+}
+
+.textureGrid .decoration::before {
+    background-image:
+        linear-gradient(var(--inset-accent-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--inset-accent-line) 1px, transparent 1px);
+    background-size: 1.25rem 1.25rem;
+}
+
+.textureCrosshatch .decoration::before {
+    background-image:
+        repeating-linear-gradient(
+            45deg,
+            transparent 0 0.45rem,
+            var(--inset-accent-line) 0.45rem 0.5rem
+        ),
+        repeating-linear-gradient(
+            -45deg,
+            transparent 0 0.45rem,
+            var(--inset-accent-line) 0.45rem 0.5rem
+        );
+}
+
+.textureIntensitySubtle {
+    --inset-texture-opacity: 0.07;
+}
+
+.textureIntensityMedium {
+    --inset-texture-opacity: 0.13;
+}
+
+.textureIntensityStrong {
+    --inset-texture-opacity: 0.22;
+}
+
 @media (forced-colors: active) {
+    .plain,
     .subtle,
     .recessed,
     .groove,
-    .accent {
+    .accent,
+    .tinted {
         border-color: CanvasText;
         background: Canvas;
         box-shadow: none;
+    }
+
+    .decoration::before {
+        display: none;
+    }
+
+    .accent .decoration::after {
+        background: CanvasText;
+    }
+}
+
+@media print {
+    .root {
+        border-color: currentcolor;
+        background: transparent;
+        box-shadow: none;
+    }
+
+    .decoration::before {
+        display: none;
     }
 }
