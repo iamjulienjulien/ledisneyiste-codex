@@ -17,10 +17,14 @@ import {
     PixieDustStickyRegion,
     type PixieDustStickyRegionEdge,
     type PixieDustStickyRegionElement,
+    type PixieDustStickyRegionLayer,
     type PixieDustStickyRegionOffset,
+    type PixieDustStickyRegionOffsetPreset,
+    type PixieDustStickyRegionOverflow,
+    type PixieDustStickyRegionWidth,
 } from "@/components/ui/PixieDustStickyRegion";
 
-const elements = ["div", "aside", "nav", "header"] as const;
+const elements = ["div", "aside", "nav", "header", "footer"] as const;
 
 const edges = [
     { value: "start", label: "Début" },
@@ -34,6 +38,22 @@ const offsets = [
     { value: "md", label: "Moyen · 1,5 rem" },
     { value: "lg", label: "Grand · 2 rem" },
     { value: "xl", label: "Très grand · 3 rem" },
+] as const;
+
+const widths = [
+    { value: "full", label: "Pleine largeur" },
+    { value: "fit", label: "Ajustée au contenu" },
+] as const;
+
+const overflows = [
+    { value: "visible", label: "Visible" },
+    { value: "auto", label: "Défilement interne" },
+] as const;
+
+const layers = [
+    { value: "auto", label: "Automatique" },
+    { value: "raised", label: "Surélevé" },
+    { value: "overlay", label: "Superposé" },
 ] as const;
 
 const materials = [
@@ -155,10 +175,24 @@ export function PixieDustStickyRegionPlayground() {
     const [element, setElement] =
         useState<PixieDustStickyRegionElement>("aside");
     const [edge, setEdge] = useState<PixieDustStickyRegionEdge>("start");
-    const [offset, setOffset] = useState<PixieDustStickyRegionOffset>("md");
+    const [offsetPreset, setOffsetPreset] = useState<
+        PixieDustStickyRegionOffsetPreset | "custom"
+    >("md");
+    const [customOffset, setCustomOffset] = useState(72);
+    const [width, setWidth] = useState<PixieDustStickyRegionWidth>("full");
+    const [overflow, setOverflow] =
+        useState<PixieDustStickyRegionOverflow>("visible");
+    const [safeArea, setSafeArea] = useState(false);
+    const [layer, setLayer] = useState<PixieDustStickyRegionLayer>("auto");
     const [material, setMaterial] = useState<Material>("summary");
     const [length, setLength] = useState(7);
     const { lumiere: light, cadre: frame } = useAtelierProjection();
+    const offset: PixieDustStickyRegionOffset =
+        offsetPreset === "custom" ? customOffset : offsetPreset;
+    const offsetAttribute =
+        typeof offset === "number"
+            ? `    offset={${offset}}\n`
+            : `    offset="${offset}"\n`;
 
     const labelLine =
         element === "nav"
@@ -169,7 +203,10 @@ export function PixieDustStickyRegionPlayground() {
     const code = `<PixieDustStickyRegion
     as="${element}"
     edge="${edge}"
-    offset="${offset}"
+${offsetAttribute}    width="${width}"
+    overflow="${overflow}"
+    safeArea={${safeArea}}
+    layer="${layer}"
 ${labelLine}>
     {/* ${materials.find(({ value }) => value === material)?.label} */}
 </PixieDustStickyRegion>`;
@@ -179,6 +216,10 @@ ${labelLine}>
             as={element}
             edge={edge}
             offset={offset}
+            width={width}
+            overflow={overflow}
+            safeArea={safeArea}
+            layer={layer}
             aria-label={
                 element === "nav"
                     ? "Dans cette fiche"
@@ -269,22 +310,129 @@ ${labelLine}>
                             </div>
                         </fieldset>
 
+                        <div>
+                            <label
+                                htmlFor="sticky-offset"
+                                className="text-sm font-medium text-ink"
+                            >
+                                Décalage
+                            </label>
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
+                                id="sticky-offset"
+                                value={offsetPreset}
+                                onChange={(event) =>
+                                    setOffsetPreset(
+                                        event.target.value as
+                                            | PixieDustStickyRegionOffsetPreset
+                                            | "custom",
+                                    )
+                                }
+                                className="mt-2"
+                            >
+                                {offsets.map((option) => (
+                                    <option
+                                        key={option.value}
+                                        value={option.value}
+                                    >
+                                        {option.label}
+                                    </option>
+                                ))}
+                                <option value="custom">Personnalisé</option>
+                            </PixieSelect>
+                            {offsetPreset === "custom" ? (
+                                <label className="mt-3 block text-xs text-muted">
+                                    Valeur en pixels
+                                    <input
+                                        type="number"
+                                        min={0}
+                                        max={240}
+                                        step={4}
+                                        value={customOffset}
+                                        onChange={(event) =>
+                                            setCustomOffset(
+                                                Math.max(
+                                                    0,
+                                                    Number(event.target.value),
+                                                ),
+                                            )
+                                        }
+                                        className="mt-2 w-full border border-line bg-canvas px-3 py-2 font-mono text-sm text-ink"
+                                    />
+                                </label>
+                            ) : null}
+                        </div>
+
                         <fieldset>
                             <legend className="text-sm font-medium text-ink">
-                                Décalage
+                                Largeur
                             </legend>
                             <div className="mt-3 space-y-2">
-                                {offsets.map((option) => (
+                                {widths.map((option) => (
                                     <AtelierOptionRadio
                                         key={option.value}
-                                        name="sticky-offset"
+                                        name="sticky-width"
                                         {...option}
-                                        selectedValue={offset}
-                                        onChange={setOffset}
+                                        selectedValue={width}
+                                        onChange={setWidth}
                                     />
                                 ))}
                             </div>
                         </fieldset>
+
+                        <fieldset>
+                            <legend className="text-sm font-medium text-ink">
+                                Débordement
+                            </legend>
+                            <div className="mt-3 space-y-2">
+                                {overflows.map((option) => (
+                                    <AtelierOptionRadio
+                                        key={option.value}
+                                        name="sticky-overflow"
+                                        {...option}
+                                        selectedValue={overflow}
+                                        onChange={setOverflow}
+                                    />
+                                ))}
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend className="text-sm font-medium text-ink">
+                                Superposition
+                            </legend>
+                            <div className="mt-3 space-y-2">
+                                {layers.map((option) => (
+                                    <AtelierOptionRadio
+                                        key={option.value}
+                                        name="sticky-layer"
+                                        {...option}
+                                        selectedValue={layer}
+                                        onChange={setLayer}
+                                    />
+                                ))}
+                            </div>
+                        </fieldset>
+
+                        <label className="flex items-start gap-3 text-sm text-ink">
+                            <input
+                                type="checkbox"
+                                checked={safeArea}
+                                onChange={(event) =>
+                                    setSafeArea(event.target.checked)
+                                }
+                                className="mt-1 accent-accent"
+                            />
+                            <span>
+                                Respecter la zone de sécurité
+                                <span className="mt-1 block text-xs leading-5 text-muted">
+                                    Ajoute l’encoche ou la barre système à
+                                    l’offset choisi.
+                                </span>
+                            </span>
+                        </label>
 
                         <div>
                             <label

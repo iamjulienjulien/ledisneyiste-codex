@@ -362,7 +362,7 @@ const montage = [
         nom: "PixieDustStickyRegion",
         role: "Maintenir une région visible pendant le défilement",
         statut: "Esquisse",
-        version: "0.1.0",
+        version: "0.2.0",
         href: "#pixie-dust-sticky-region",
     },
 ] as const;

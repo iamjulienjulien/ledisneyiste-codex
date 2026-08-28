@@ -11,7 +11,10 @@ import { PixieStack } from "@/components/ui/PixieStack";
 import {
     PixieDustStickyRegion,
     type PixieDustStickyRegionEdge,
+    type PixieDustStickyRegionLayer,
     type PixieDustStickyRegionOffset,
+    type PixieDustStickyRegionOverflow,
+    type PixieDustStickyRegionWidth,
 } from "@/components/ui/PixieDustStickyRegion";
 import { PixieDustStickyRegionPlayground } from "./PixieDustStickyRegionPlayground";
 
@@ -45,6 +48,50 @@ const offsets = [
     token: string;
 }>[];
 
+const widths = [
+    {
+        name: "Pleine largeur",
+        value: "full" as const,
+        role: "La région occupe toute la mesure offerte par son parent.",
+    },
+    {
+        name: "Ajustée",
+        value: "fit" as const,
+        role: "La région conserve uniquement la mesure nécessaire à son contenu.",
+    },
+] as const satisfies readonly Readonly<{
+    name: string;
+    value: PixieDustStickyRegionWidth;
+    role: string;
+}>[];
+
+const overflows = [
+    {
+        name: "Visible",
+        value: "visible" as const,
+        role: "Le contenu court conserve son écoulement naturel.",
+    },
+    {
+        name: "Automatique",
+        value: "auto" as const,
+        role: "Une région haute reste atteignable dans l’espace visible.",
+    },
+] as const satisfies readonly Readonly<{
+    name: string;
+    value: PixieDustStickyRegionOverflow;
+    role: string;
+}>[];
+
+const layers = [
+    { name: "Automatique", value: "auto" as const, token: "auto" },
+    { name: "Surélevé", value: "raised" as const, token: "1" },
+    { name: "Superposé", value: "overlay" as const, token: "10" },
+] as const satisfies readonly Readonly<{
+    name: string;
+    value: PixieDustStickyRegionLayer;
+    token: string;
+}>[];
+
 const properties = [
     {
         name: "as",
@@ -62,7 +109,31 @@ const properties = [
         name: "offset",
         type: "PixieDustStickyRegionOffset",
         defaultValue: '"md"',
-        description: "Distance conservée avec le bord choisi.",
+        description: "Preset ou distance en pixels conservée avec le bord.",
+    },
+    {
+        name: "width",
+        type: "PixieDustStickyRegionWidth",
+        defaultValue: '"full"',
+        description: "Mesure pleine ou ajustée au contenu.",
+    },
+    {
+        name: "overflow",
+        type: "PixieDustStickyRegionOverflow",
+        defaultValue: '"visible"',
+        description: "Traitement des régions plus hautes que le cadre visible.",
+    },
+    {
+        name: "safeArea",
+        type: "boolean",
+        defaultValue: "false",
+        description: "Ajoute la zone de sécurité système à l’offset.",
+    },
+    {
+        name: "layer",
+        type: "PixieDustStickyRegionLayer",
+        defaultValue: '"auto"',
+        description: "Niveau de superposition de la région maintenue.",
     },
     {
         name: "children",
@@ -81,7 +152,7 @@ const properties = [
 const specificTypes = [
     {
         name: "PixieDustStickyRegionElement",
-        values: ['"div"', '"aside"', '"nav"', '"header"'],
+        values: ['"div"', '"aside"', '"nav"', '"header"', '"footer"'],
         description: "Structures documentaires autorisées.",
     },
     {
@@ -90,9 +161,29 @@ const specificTypes = [
         description: "Bords logiques du maintien vertical.",
     },
     {
-        name: "PixieDustStickyRegionOffset",
+        name: "PixieDustStickyRegionOffsetPreset",
         values: ['"none"', '"xs"', '"sm"', '"md"', '"lg"', '"xl"'],
-        description: "Échelle des décalages du Montage.",
+        description: "Échelle éditoriale des distances au bord.",
+    },
+    {
+        name: "PixieDustStickyRegionOffset",
+        values: ['"none"', '"xs"', '"sm"', '"md"', '"lg"', '"xl"', "number"],
+        description: "Échelle du Montage ou valeur personnalisée en pixels.",
+    },
+    {
+        name: "PixieDustStickyRegionWidth",
+        values: ['"full"', '"fit"'],
+        description: "Mesures disponibles pour la racine.",
+    },
+    {
+        name: "PixieDustStickyRegionOverflow",
+        values: ['"visible"', '"auto"'],
+        description: "Comportement des contenus hauts.",
+    },
+    {
+        name: "PixieDustStickyRegionLayer",
+        values: ['"auto"', '"raised"', '"overlay"'],
+        description: "Niveaux locaux de superposition.",
     },
 ] as const;
 
@@ -243,7 +334,7 @@ export function PixieDustStickyRegionDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.1.0
+                                0.2.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -278,7 +369,7 @@ export function PixieDustStickyRegionDossier() {
                         ],
                         [
                             "Limite",
-                            "Ne gère ni surface, ni largeur, ni état de navigation.",
+                            "Ne gère ni surface, ni colonnes, ni état de navigation.",
                         ],
                         [
                             "Anatomie",
@@ -451,8 +542,8 @@ export function PixieDustStickyRegionDossier() {
                 <SequenceTitle
                     id="sticky-offsets"
                     eyebrow="Distance au bord"
-                    title="Six décalages règlent la ligne d’arrêt"
-                    description="L’offset doit tenir compte du cadre local et des éléments déjà présents au bord, sans tenter de deviner automatiquement la hauteur du header."
+                    title="Six décalages et une mesure libre règlent la ligne d’arrêt"
+                    description="L’offset suit l’échelle du Montage ou reçoit une valeur en pixels lorsque le cadre local doit s’accorder précisément à un header existant."
                 />
 
                 <div className="mt-7 grid gap-6 bg-canvas p-6 md:grid-cols-2 xl:grid-cols-3">
@@ -476,6 +567,94 @@ export function PixieDustStickyRegionDossier() {
                                     <Story count={4} />
                                 </div>
                             </ScrollStage>
+                        </Stage>
+                    ))}
+                    <Stage>
+                        <ScrollStage
+                            label="Décalage personnalisé de 72 pixels"
+                            height="h-72"
+                        >
+                            <PixieDustStickyRegion offset={72}>
+                                <PixieInset variant="recessed" padding="md">
+                                    <p className="font-mono text-xs text-accent">
+                                        offset=&#123;72&#125;
+                                    </p>
+                                    <p className="mt-3 text-sm text-ink-soft">
+                                        Mesure libre · 72 px
+                                    </p>
+                                </PixieInset>
+                            </PixieDustStickyRegion>
+                            <div className="mt-6">
+                                <Story count={4} />
+                            </div>
+                        </ScrollStage>
+                    </Stage>
+                </div>
+            </section>
+
+            <section aria-labelledby="sticky-width" className="mt-16">
+                <SequenceTitle
+                    id="sticky-width"
+                    eyebrow="Mesure de la région"
+                    title="Pleine largeur ou ajustée à sa matière"
+                    description="full accompagne une régie ou une barre complète ; fit conserve une étiquette, un compteur ou une commande compacte sans étirer sa surface."
+                />
+
+                <div className="mt-7 grid gap-6 bg-canvas p-6 lg:grid-cols-2">
+                    {widths.map((width) => (
+                        <Stage key={width.value}>
+                            <div className="min-h-52 p-5">
+                                <PixieDustStickyRegion
+                                    width={width.value}
+                                    offset="sm"
+                                >
+                                    <PixiePanel variant="accent" padding="sm">
+                                        <p className="text-sm text-ink">
+                                            {width.name}
+                                        </p>
+                                    </PixiePanel>
+                                </PixieDustStickyRegion>
+                            </div>
+                            <div className="border-t border-line bg-surface p-4">
+                                <code className="font-mono text-xs text-accent">
+                                    width=&quot;{width.value}&quot;
+                                </code>
+                                <p className="mt-3 text-sm leading-6 text-muted">
+                                    {width.role}
+                                </p>
+                            </div>
+                        </Stage>
+                    ))}
+                </div>
+            </section>
+
+            <section aria-labelledby="sticky-layer" className="mt-16">
+                <SequenceTitle
+                    id="sticky-layer"
+                    eyebrow="Profondeur du maintien"
+                    title="Trois niveaux protègent la région au croisement des plans"
+                    description="La surface reste confiée à Panel ou Inset ; layer ne règle que l’ordre local de superposition lorsque le contenu voisin passe sous la région."
+                />
+
+                <div className="mt-7 grid gap-6 bg-canvas p-6 md:grid-cols-3">
+                    {layers.map((layer) => (
+                        <Stage key={layer.value}>
+                            <div className="relative min-h-48 overflow-hidden p-5">
+                                <div className="absolute inset-x-12 top-16 h-24 rotate-3 border border-line-strong bg-surface-muted" />
+                                <PixieDustStickyRegion
+                                    width="fit"
+                                    layer={layer.value}
+                                >
+                                    <PixiePanel variant="accent" padding="sm">
+                                        <p className="font-mono text-xs text-accent">
+                                            z-index · {layer.token}
+                                        </p>
+                                    </PixiePanel>
+                                </PixieDustStickyRegion>
+                            </div>
+                            <p className="border-t border-line bg-surface p-4 font-mono text-xs text-accent">
+                                layer=&quot;{layer.value}&quot;
+                            </p>
                         </Stage>
                     ))}
                 </div>
@@ -599,24 +778,94 @@ export function PixieDustStickyRegionDossier() {
             <section aria-labelledby="sticky-tall" className="mt-16">
                 <SequenceTitle
                     id="sticky-tall"
-                    eyebrow="Limite de contenu"
-                    title="Une région trop haute ne doit pas devenir sticky"
-                    description="La première version ne crée aucun défilement interne. Si toute la région ne tient pas dans le cadre visible, elle doit être raccourcie ou rester dans le flux normal."
+                    eyebrow="Contenu de grande hauteur"
+                    title="Le défilement interne garde chaque commande atteignable"
+                    description="visible préserve le comportement naturel des régions courtes ; auto borne un inspecteur plus haut que la fenêtre et lui confie son propre défilement."
+                />
+
+                <div className="mt-7 grid gap-6 bg-canvas p-6 lg:grid-cols-2">
+                    {overflows.map((overflow) => (
+                        <Stage key={overflow.value}>
+                            <div className="h-80 overflow-y-auto p-5">
+                                <PixieDustStickyRegion
+                                    overflow={overflow.value}
+                                    offset="sm"
+                                    layer="raised"
+                                    className={
+                                        overflow.value === "auto"
+                                            ? "max-h-56"
+                                            : ""
+                                    }
+                                >
+                                    <PixiePanel variant="outline" padding="md">
+                                        <p className="text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
+                                            Inspecteur
+                                        </p>
+                                        <PixieStack gap="sm" className="mt-4">
+                                            {Array.from(
+                                                { length: 9 },
+                                                (_, index) => (
+                                                    <label
+                                                        key={index}
+                                                        className="flex items-center gap-3 border border-line bg-canvas px-3 py-2 text-sm text-ink-soft"
+                                                    >
+                                                        <input
+                                                            type="checkbox"
+                                                            defaultChecked={
+                                                                index < 2
+                                                            }
+                                                        />
+                                                        Repère {index + 1}
+                                                    </label>
+                                                ),
+                                            )}
+                                        </PixieStack>
+                                    </PixiePanel>
+                                </PixieDustStickyRegion>
+                                <div className="mt-6">
+                                    <Story count={4} />
+                                </div>
+                            </div>
+                            <div className="border-t border-line bg-surface p-4">
+                                <code className="font-mono text-xs text-accent">
+                                    overflow=&quot;{overflow.value}&quot;
+                                </code>
+                                <p className="mt-3 text-sm leading-6 text-muted">
+                                    {overflow.role}
+                                </p>
+                            </div>
+                        </Stage>
+                    ))}
+                </div>
+            </section>
+
+            <section aria-labelledby="sticky-safe-area" className="mt-16">
+                <SequenceTitle
+                    id="sticky-safe-area"
+                    eyebrow="Cadre système"
+                    title="La zone de sécurité complète l’offset choisi"
+                    description="safeArea ajoute l’encoche ou la barre système du bord actif sans remplacer la distance éditoriale définie par offset."
                 />
 
                 <div className="mt-7 grid gap-px border border-line bg-line md:grid-cols-2">
                     <article className="bg-surface p-6">
-                        <h4 className="text-xl text-ink">Région adaptée</h4>
+                        <h4 className="text-xl text-ink">Bord supérieur</h4>
+                        <code className="mt-4 block font-mono text-xs text-accent">
+                            edge=&quot;start&quot; safeArea
+                        </code>
                         <p className="mt-3 leading-7 text-ink-soft">
-                            Un titre et quelques repères restent entièrement
-                            atteignables.
+                            L’offset inclut safe-area-inset-top sur les écrans
+                            concernés.
                         </p>
                     </article>
                     <article className="bg-surface p-6">
-                        <h4 className="text-xl text-ink">Région excessive</h4>
+                        <h4 className="text-xl text-ink">Bord inférieur</h4>
+                        <code className="mt-4 block font-mono text-xs text-accent">
+                            edge=&quot;end&quot; safeArea
+                        </code>
                         <p className="mt-3 leading-7 text-ink-soft">
-                            Une longue liste de filtres ou un formulaire complet
-                            demande une autre composition.
+                            Une barre d’actions évite safe-area-inset-bottom
+                            sans calcul côté client.
                         </p>
                     </article>
                 </div>
@@ -646,7 +895,7 @@ export function PixieDustStickyRegionDossier() {
                         ],
                         [
                             "Superposition",
-                            "La surface et son éventuel z-index restent à composer.",
+                            "layer règle l’ordre local ; la surface reste à composer.",
                         ],
                     ].map(([title, description]) => (
                         <article key={title} className="bg-surface p-5">
@@ -667,7 +916,7 @@ export function PixieDustStickyRegionDossier() {
                     description="La position sticky n’ajoute aucun sens. Le choix de l’élément dépend toujours de la fonction réelle de la région."
                 />
 
-                <div className="mt-7 grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+                <div className="mt-7 grid gap-px border border-line sm:grid-cols-2 lg:grid-cols-5">
                     {[
                         ["div", "Raccord neutre déjà décrit par son contexte."],
                         [
@@ -681,6 +930,10 @@ export function PixieDustStickyRegionDossier() {
                         [
                             "header",
                             "En-tête propre à une séquence ou une table.",
+                        ],
+                        [
+                            "footer",
+                            "Actions ou conclusion attachées au bas d’une séquence.",
                         ],
                     ].map(([element, description]) => (
                         <article key={element} className="bg-surface p-5">
@@ -741,7 +994,7 @@ export function PixieDustStickyRegionDossier() {
                     id="sticky-playground-title"
                     eyebrow="Régie"
                     title="Composer un PixieDustStickyRegion"
-                    description="Réglez le bord, le décalage et la matière de la région, puis faites défiler le plateau pour observer son maintien et sa limite."
+                    description="Réglez le bord, l’offset, la largeur, le débordement et la profondeur, puis faites défiler le plateau pour observer le maintien et sa limite."
                 />
                 <div className="mt-8">
                     <PixieDustStickyRegionPlayground />
@@ -771,7 +1024,7 @@ export function PixieDustStickyRegionDossier() {
                         ],
                         [
                             "Focus préservé",
-                            "Les contrôles conservent leur ordre et leur halo visible.",
+                            "overflow auto rend la région défilable au clavier sans déplacer ses contrôles.",
                         ],
                         [
                             "Ancres visibles",
@@ -829,12 +1082,12 @@ export function PixieDustStickyRegionDossier() {
 
                 <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
                     {[
-                        "Tester sommaires, métadonnées, filtres et actions dans Sidebar.",
-                        "Éprouver les deux bords et les six décalages dans de longs parents.",
+                        "Tester sommaires, métadonnées, inspecteurs et actions dans PixieSidebar.",
+                        "Éprouver les deux bords, les presets et l’offset numérique dans de longs parents.",
                         "Vérifier les ancêtres portant overflow, transform ou une hauteur contrainte.",
-                        "Contrôler les régions proches de la hauteur visible et refuser les cas excessifs.",
-                        "Éprouver les deux Lumières, le mobile, le clavier et le zoom à 200 %.",
-                        "Décider si start et md restent les bons réglages par défaut.",
+                        "Contrôler overflow auto au clavier avec une région proche de la hauteur visible.",
+                        "Éprouver safeArea, les deux Lumières, le mobile et le zoom à 200 %.",
+                        "Valider start, md, full, visible et auto comme réglages par défaut.",
                     ].map((decision) => (
                         <li
                             key={decision}
