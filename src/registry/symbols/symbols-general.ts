@@ -321,4 +321,86 @@ export const symbolsGeneral = {
             accent: "var(--atelier-animation-papier-animation)",
         },
     },
+    temps: {
+        "horloge-studio": {
+            src: "/symbols/general/temps/horloge-studio.png",
+            label: "Horloge de studio",
+            accent: "var(--atelier-animation-graphite)",
+        },
+        "sablier-precision": {
+            src: "/symbols/general/temps/sablier-precision.png",
+            label: "Sablier de précision",
+            accent: "var(--atelier-animation-ambre-projecteur)",
+        },
+        "calendrier-perpetuel": {
+            src: "/symbols/general/temps/calendrier-perpetuel.png",
+            label: "Calendrier perpétuel",
+            accent: "var(--atelier-animation-rouge-crayon)",
+        },
+        "chronometre-production": {
+            src: "/symbols/general/temps/chronometre-production.png",
+            label: "Chronomètre de production",
+            accent: "var(--atelier-animation-bleu-reperage)",
+        },
+        "montre-poche": {
+            src: "/symbols/general/temps/montre-poche.png",
+            label: "Montre de poche",
+            accent: "var(--atelier-animation-sepia-storyboard)",
+        },
+        "horloge-clapets": {
+            src: "/symbols/general/temps/horloge-clapets.png",
+            label: "Horloge à clapets",
+            accent: "var(--atelier-animation-graphite)",
+        },
+        ephemeride: {
+            src: "/symbols/general/temps/ephemeride.png",
+            label: "Éphéméride",
+            accent: "var(--atelier-animation-papier-animation)",
+        },
+        "cadran-chronologique": {
+            src: "/symbols/general/temps/cadran-chronologique.png",
+            label: "Cadran chronologique",
+            accent: "var(--atelier-animation-indigo-nuit-studio)",
+        },
+        "compteur-dates": {
+            src: "/symbols/general/temps/compteur-dates.png",
+            label: "Compteur de dates",
+            accent: "var(--atelier-animation-rouge-crayon)",
+        },
+        "frise-mecanique": {
+            src: "/symbols/general/temps/frise-mecanique.png",
+            label: "Frise mécanique",
+            accent: "var(--atelier-animation-graphite)",
+        },
+        "ligne-temps-jalons": {
+            src: "/symbols/general/temps/ligne-temps-jalons.png",
+            label: "Ligne du temps à jalons",
+            accent: "var(--atelier-animation-bleu-reperage)",
+        },
+        "capsule-temporelle": {
+            src: "/symbols/general/temps/capsule-temporelle.png",
+            label: "Capsule temporelle",
+            accent: "var(--atelier-animation-sepia-storyboard)",
+        },
+        "roue-saisons": {
+            src: "/symbols/general/temps/roue-saisons.png",
+            label: "Roue des saisons",
+            accent: "var(--atelier-animation-turquoise-acetate)",
+        },
+        "pendule-precision": {
+            src: "/symbols/general/temps/pendule-precision.png",
+            label: "Pendule de précision",
+            accent: "var(--atelier-animation-ambre-projecteur)",
+        },
+        "selecteur-periode": {
+            src: "/symbols/general/temps/selecteur-periode.png",
+            label: "Sélecteur de période",
+            accent: "var(--atelier-animation-corail-cel)",
+        },
+        "ruban-chronologique": {
+            src: "/symbols/general/temps/ruban-chronologique.png",
+            label: "Ruban chronologique",
+            accent: "var(--atelier-animation-indigo-nuit-studio)",
+        },
+    },
 } as const satisfies Record<string, Record<string, SymbolDefinition>>;
