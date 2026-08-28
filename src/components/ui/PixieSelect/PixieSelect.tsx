@@ -14,17 +14,17 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 import { getAtelierAnimationColor } from "@/registry/colors";
-import styles from "./PixieDustSelect.module.css";
+import styles from "./PixieSelect.module.css";
 import type {
-    PixieDustSelectItem,
-    PixieDustSelectOption,
-    PixieDustSelectOptionGroup,
-    PixieDustSelectPortalStyle,
-    PixieDustSelectProps,
-    PixieDustSelectSize,
-    PixieDustSelectStyle,
-    PixieDustSelectVariant,
-} from "./PixieDustSelect.types";
+    PixieSelectItem,
+    PixieSelectOption,
+    PixieSelectOptionGroup,
+    PixieSelectPortalStyle,
+    PixieSelectProps,
+    PixieSelectSize,
+    PixieSelectStyle,
+    PixieSelectVariant,
+} from "./PixieSelect.types";
 import type {
     ChangeEvent,
     ComponentPropsWithoutRef,
@@ -38,13 +38,13 @@ const variantClasses = {
     outline: styles.outline,
     filled: styles.filled,
     underline: styles.underline,
-} as const satisfies Record<PixieDustSelectVariant, string>;
+} as const satisfies Record<PixieSelectVariant, string>;
 
 const sizeClasses = {
     sm: styles.small,
     md: styles.medium,
     lg: styles.large,
-} as const satisfies Record<PixieDustSelectSize, string>;
+} as const satisfies Record<PixieSelectSize, string>;
 
 const portalTokens = [
     "--color-canvas",
@@ -61,7 +61,7 @@ const portalTokens = [
     "--pixie-select-active-color",
 ] as const;
 
-function isAriaInvalid(value: PixieDustSelectProps["aria-invalid"]) {
+function isAriaInvalid(value: PixieSelectProps["aria-invalid"]) {
     return value !== undefined && value !== false && value !== "false";
 }
 
@@ -94,7 +94,7 @@ function createOption(
     props: ComponentPropsWithoutRef<"option">,
     index: number,
     inheritedDisabled = false,
-): PixieDustSelectOption {
+): PixieSelectOption {
     const label = props.label ?? getTextContent(props.children);
 
     return {
@@ -108,12 +108,12 @@ function createOption(
 }
 
 function readOptions(children: ReactNode, placeholder?: string) {
-    const items: PixieDustSelectItem[] = [];
-    const options: PixieDustSelectOption[] = [];
+    const items: PixieSelectItem[] = [];
+    const options: PixieSelectOption[] = [];
     let optionIndex = 0;
 
     if (placeholder) {
-        const placeholderOption: PixieDustSelectOption = {
+        const placeholderOption: PixieSelectOption = {
             kind: "option",
             value: "",
             label: placeholder,
@@ -131,7 +131,7 @@ function readOptions(children: ReactNode, placeholder?: string) {
         groupChildren: ReactNode,
         groupDisabled: boolean,
     ) {
-        const groupOptions: PixieDustSelectOption[] = [];
+        const groupOptions: PixieSelectOption[] = [];
 
         Children.forEach(groupChildren, (child) => {
             if (!isValidElement<{ children?: ReactNode }>(child)) {
@@ -187,7 +187,7 @@ function readOptions(children: ReactNode, placeholder?: string) {
             if (child.type === "optgroup") {
                 const groupProps =
                     child.props as ComponentPropsWithoutRef<"optgroup">;
-                const group: PixieDustSelectOptionGroup = {
+                const group: PixieSelectOptionGroup = {
                     kind: "group",
                     label: groupProps.label ?? "",
                     disabled: Boolean(groupProps.disabled),
@@ -225,7 +225,7 @@ function normalizeSearchText(value: string) {
 }
 
 function findEnabledOption(
-    options: readonly PixieDustSelectOption[],
+    options: readonly PixieSelectOption[],
     startIndex: number,
     direction: 1 | -1,
 ) {
@@ -257,7 +257,7 @@ function SelectChevron() {
     );
 }
 
-export function PixieDustSelect({
+export function PixieSelect({
     children,
     variant = "outline",
     size = "md",
@@ -286,7 +286,7 @@ export function PixieDustSelect({
     "aria-invalid": ariaInvalid,
     "aria-required": ariaRequired,
     ...selectProps
-}: PixieDustSelectProps) {
+}: PixieSelectProps) {
     const generatedId = useId();
     const rootRef = useRef<HTMLSpanElement>(null);
     const triggerRef = useRef<HTMLButtonElement>(null);
@@ -296,8 +296,7 @@ export function PixieDustSelect({
     const [open, setOpen] = useState(false);
     const [activeIndex, setActiveIndex] = useState(-1);
     const [nativeInvalid, setNativeInvalid] = useState(false);
-    const [portalStyle, setPortalStyle] =
-        useState<PixieDustSelectPortalStyle>();
+    const [portalStyle, setPortalStyle] = useState<PixieSelectPortalStyle>();
     const { items, options } = useMemo(
         () => readOptions(children, placeholder),
         [children, placeholder],
@@ -312,7 +311,7 @@ export function PixieDustSelect({
     );
     const isOpen = open && !disabled;
     const colorDefinition = color ? getAtelierAnimationColor(color) : null;
-    const rootStyle: PixieDustSelectStyle | undefined = colorDefinition
+    const rootStyle: PixieSelectStyle | undefined = colorDefinition
         ? { "--pixie-select-color": colorDefinition.cssValue }
         : undefined;
     const isInvalid = invalid || nativeInvalid || isAriaInvalid(ariaInvalid);
@@ -393,7 +392,7 @@ export function PixieDustSelect({
     );
 
     const selectOption = useCallback(
-        (option: PixieDustSelectOption) => {
+        (option: PixieSelectOption) => {
             if (option.disabled) {
                 return;
             }
@@ -562,7 +561,7 @@ export function PixieDustSelect({
             window.innerWidth - width - viewportGap,
         );
         const computedStyle = window.getComputedStyle(root);
-        const nextStyle: PixieDustSelectPortalStyle = {
+        const nextStyle: PixieSelectPortalStyle = {
             position: "fixed",
             left,
             width,
@@ -688,7 +687,7 @@ export function PixieDustSelect({
         return () => form.removeEventListener("reset", handleReset);
     }, [closePopover, controlledValue, initialValue]);
 
-    const renderOption = (option: PixieDustSelectOption) => {
+    const renderOption = (option: PixieSelectOption) => {
         const selected = option.value === selectedValue;
         const active = option.index === activeIndex;
 
