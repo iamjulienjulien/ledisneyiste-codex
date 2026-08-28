@@ -1,7 +1,7 @@
 import { CodexFicheSection } from "@/components/codex/CodexFicheSection";
 import { CodexReferenceLink } from "@/components/codex/CodexReferenceLink";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
-import type { CodexFicheFamily } from "@/types/codex-fiche";
+import type { CodexFamily } from "@/types/codex";
 import type { CodexRelationsProps } from "@/types/codex-relations";
 import type { TypeReferenceCodex } from "@/types/reference";
 import styles from "./CodexRelations.module.css";
@@ -11,14 +11,14 @@ const referenceFamilies = {
     contributeur: "createurs",
     oeuvre: "oeuvres",
     epoque: "epoques",
-} as const satisfies Record<TypeReferenceCodex, CodexFicheFamily>;
+} as const satisfies Record<TypeReferenceCodex, CodexFamily>;
 
 const familyOrder = {
     personnages: 0,
     createurs: 1,
     oeuvres: 2,
     epoques: 3,
-} as const satisfies Record<CodexFicheFamily, number>;
+} as const satisfies Record<CodexFamily, number>;
 
 export function CodexRelations({ groupes }: CodexRelationsProps) {
     const groupesVisibles = groupes.filter(

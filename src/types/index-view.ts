@@ -1,9 +1,7 @@
 import type { ReactNode } from "react";
+import type { CodexFamily } from "@/types/codex";
 
 export type CodexIndexView = "list" | "cards";
-
-export type CodexIndexFamily =
-    "personnages" | "createurs" | "oeuvres" | "epoques";
 
 export type CodexIndexViewSwitchProps = Readonly<{
     pathname: `/${string}`;
@@ -13,7 +11,7 @@ export type CodexIndexViewSwitchProps = Readonly<{
 export type CodexIndexListItemProps = Readonly<{
     href: `/${string}`;
     index: number;
-    famille: CodexIndexFamily;
+    famille: CodexFamily;
     titre: string;
     sousTitre: string;
     children?: ReactNode;

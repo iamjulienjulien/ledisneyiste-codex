@@ -1,8 +1,8 @@
 import type { ReferenceCodex } from "@/types/reference";
-import type { CodexFicheFamily } from "@/types/codex-fiche";
+import type { CodexFamily } from "@/types/codex";
 
 export type CodexRelationsGroup = Readonly<{
-    family: CodexFicheFamily;
+    family: CodexFamily;
     titre: string;
     references: ReferenceCodex[];
 }>;

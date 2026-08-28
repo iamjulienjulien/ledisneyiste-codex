@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import type { CodexIndexFamily } from "@/types/index-view";
+import type { CodexFamily } from "@/types/codex";
 
 export type CodexIndexPageCompteur = Readonly<{
     valeur: number;
@@ -8,7 +8,7 @@ export type CodexIndexPageCompteur = Readonly<{
 }>;
 
 export type CodexIndexPageProps = Readonly<{
-    famille: CodexIndexFamily;
+    famille: CodexFamily;
     eyebrow: string;
     titre: string;
     introduction: string;

@@ -1,10 +1,8 @@
 import { PixieLink } from "@/components/ui/PixieLink";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
+import type { CodexFamily } from "@/types/codex";
 import type { AtelierAnimationColorSlug } from "@/types/colors";
-import type {
-    CodexIndexFamily,
-    CodexIndexListItemProps,
-} from "@/types/index-view";
+import type { CodexIndexListItemProps } from "@/types/index-view";
 import styles from "./CodexIndexListItem.module.css";
 
 const symbolSlugs = {
@@ -12,14 +10,14 @@ const symbolSlugs = {
     createurs: "createurs",
     oeuvres: "oeuvres",
     epoques: "epoques",
-} as const satisfies Record<CodexIndexFamily, CodexIndexFamily>;
+} as const satisfies Record<CodexFamily, CodexFamily>;
 
 const colorSlugs = {
     personnages: "rouge-crayon",
     createurs: "jaune-lampe",
     oeuvres: "gouache",
     epoques: "vert-cellulo",
-} as const satisfies Record<CodexIndexFamily, AtelierAnimationColorSlug>;
+} as const satisfies Record<CodexFamily, AtelierAnimationColorSlug>;
 
 export function CodexIndexListItem({
     href,

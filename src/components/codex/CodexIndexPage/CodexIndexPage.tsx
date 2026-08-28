@@ -7,8 +7,8 @@ import { PixieSection } from "@/components/ui/PixieSection";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PixieStack } from "@/components/ui/PixieStack";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
+import type { CodexFamily } from "@/types/codex";
 import type { AtelierAnimationColorSlug } from "@/types/colors";
-import type { CodexIndexFamily } from "@/types/index-view";
 import styles from "./CodexIndexPage.module.css";
 import type { CodexIndexPageProps } from "./CodexIndexPage.types";
 
@@ -30,10 +30,10 @@ const familyThemes = {
         symbol: "epoques",
     },
 } as const satisfies Record<
-    CodexIndexFamily,
+    CodexFamily,
     Readonly<{
         color: AtelierAnimationColorSlug;
-        symbol: CodexIndexFamily;
+        symbol: CodexFamily;
     }>
 >;
 

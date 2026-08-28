@@ -1,15 +1,13 @@
 import type { ReactNode } from "react";
-
-export type CodexFicheFamily =
-    "personnages" | "createurs" | "oeuvres" | "epoques";
+import type { CodexFamily } from "@/types/codex";
 
 export type CodexFicheProps = Readonly<{
-    family: CodexFicheFamily;
+    family: CodexFamily;
     children: ReactNode;
 }>;
 
 export type CodexFicheHeaderProps = Readonly<{
-    family: CodexFicheFamily;
+    family: CodexFamily;
     eyebrow: string;
     titre: string;
     sousTitre?: string;
