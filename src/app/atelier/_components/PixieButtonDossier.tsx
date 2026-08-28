@@ -1,4 +1,5 @@
 import { AtelierFicheAccessoire } from "@/components/atelier/AtelierFicheAccessoire";
+import { AtelierCodeBlock } from "@/components/atelier/AtelierCodeBlock";
 import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
@@ -114,11 +115,7 @@ const typesSpecifiques = [
 ] as const;
 
 function CodeExemple({ children }: Readonly<{ children: string }>) {
-    return (
-        <pre className="overflow-x-auto border border-line bg-canvas p-5 font-mono text-sm leading-6 text-ink-soft">
-            <code>{children}</code>
-        </pre>
-    );
+    return <AtelierCodeBlock>{children}</AtelierCodeBlock>;
 }
 
 function TitreSequence({
