@@ -1,18 +1,30 @@
 .root {
     position: sticky;
-    min-width: 0;
-    width: 100%;
-    max-width: 100%;
+    min-inline-size: 0;
+    max-inline-size: 100%;
     align-self: flex-start;
+    --pixie-sticky-region-safe-area: 0px;
 }
 
 .edgeStart {
-    inset-block-start: var(--pixie-sticky-region-offset);
+    inset-block-start: calc(
+        var(--pixie-sticky-region-offset) + var(--pixie-sticky-region-safe-area)
+    );
 }
 
 .edgeEnd {
     align-self: flex-end;
-    inset-block-end: var(--pixie-sticky-region-offset);
+    inset-block-end: calc(
+        var(--pixie-sticky-region-offset) + var(--pixie-sticky-region-safe-area)
+    );
+}
+
+.edgeStart.safeArea {
+    --pixie-sticky-region-safe-area: env(safe-area-inset-top, 0px);
+}
+
+.edgeEnd.safeArea {
+    --pixie-sticky-region-safe-area: env(safe-area-inset-bottom, 0px);
 }
 
 .offsetNone {
@@ -37,4 +49,46 @@
 
 .offsetExtraLarge {
     --pixie-sticky-region-offset: 3rem;
+}
+
+.widthFull {
+    inline-size: 100%;
+}
+
+.widthFit {
+    inline-size: fit-content;
+}
+
+.overflowVisible {
+    overflow: visible;
+}
+
+.overflowAuto {
+    max-block-size: calc(
+        100vh - var(--pixie-sticky-region-offset) -
+            var(--pixie-sticky-region-offset) -
+            var(--pixie-sticky-region-safe-area) -
+            var(--pixie-sticky-region-safe-area)
+    );
+    max-block-size: calc(
+        100dvb - var(--pixie-sticky-region-offset) -
+            var(--pixie-sticky-region-offset) -
+            var(--pixie-sticky-region-safe-area) -
+            var(--pixie-sticky-region-safe-area)
+    );
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+}
+
+.layerAuto {
+    z-index: auto;
+}
+
+.layerRaised {
+    z-index: 1;
+}
+
+.layerOverlay {
+    z-index: 10;
 }
