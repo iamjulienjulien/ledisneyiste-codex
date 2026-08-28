@@ -40,7 +40,7 @@ export function CodexFicheSection({
                         <div className={styles.symbol}>{symbole}</div>
                     ) : null}
 
-                    <PixieStack gap="sm">
+                    <PixieStack gap={symbole ? "xs" : "sm"}>
                         {eyebrow ? (
                             <p className={styles.eyebrow}>{eyebrow}</p>
                         ) : null}
@@ -50,7 +50,9 @@ export function CodexFicheSection({
                         ) : null}
 
                         {description ? (
-                            <p className="leading-7 text-ink-soft">
+                            <p
+                                className={`${styles.description} leading-7 text-ink-soft`}
+                            >
                                 {description}
                             </p>
                         ) : null}

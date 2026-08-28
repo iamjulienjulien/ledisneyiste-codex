@@ -4,15 +4,27 @@
 
 .headerWithSymbol {
     display: grid;
-    grid-template-columns: 4rem minmax(0, 1fr);
+    grid-template-columns: max-content minmax(0, 1fr);
     align-items: end;
-    gap: 1rem;
-    max-width: 47.5rem;
+    gap: 2rem;
+    width: 100%;
 }
 
 .symbol {
     display: flex;
     align-items: flex-end;
+}
+
+.headerWithSymbol .description {
+    line-height: 1.5rem;
+}
+
+.headerWithSymbol .eyebrow {
+    line-height: 1.25;
+}
+
+.headerWithSymbol h2 {
+    line-height: 1.1;
 }
 
 .eyebrow {
@@ -26,6 +38,6 @@
 
 @media (min-width: 640px) {
     .headerWithSymbol {
-        gap: 1.5rem;
+        gap: 1rem;
     }
 }

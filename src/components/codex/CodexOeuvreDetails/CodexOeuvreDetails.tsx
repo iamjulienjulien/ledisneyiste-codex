@@ -2,6 +2,7 @@ import { CodexFicheSection } from "@/components/codex/CodexFicheSection";
 import { CodexReferenceLink } from "@/components/codex/CodexReferenceLink";
 import { CodexSourceCitations } from "@/components/codex/CodexSourceCitations";
 import { PixieCard } from "@/components/ui/PixieCard";
+import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { formatDateHistorique } from "@/lib/date";
 import type { PeriodeHistorique } from "@/types/date";
 import type {
@@ -109,6 +110,14 @@ export function CodexOeuvreDetails({
                     eyebrow="Production"
                     titre="Les repères de fabrication"
                     description="Les durées, titres et périodes restent attachés aux versions et aux sources qui les établissent."
+                    symbole={
+                        <PixieSymbol
+                            registry="techniques"
+                            collection="animation"
+                            slug="feuille-exposition"
+                            size={96}
+                        />
+                    }
                 >
                     <dl className={styles.facts}>
                         {fiche.titresAlternatifs?.map((title) => (
@@ -201,6 +210,14 @@ export function CodexOeuvreDetails({
                 <CodexFicheSection
                     eyebrow="Sorties"
                     titre="Le film rencontre ses premiers publics"
+                    symbole={
+                        <PixieSymbol
+                            registry="general"
+                            collection="evenements"
+                            slug="projecteur-premiere"
+                            size={96}
+                        />
+                    }
                 >
                     <ol className={styles.events}>
                         {fiche.sortie.evenements.map((event) => (
@@ -242,6 +259,14 @@ export function CodexOeuvreDetails({
                     eyebrow="Échelle"
                     titre="Mesurer le pari sans effacer les incertitudes"
                     description="Chaque chiffre conserve son territoire, sa période et son degré de certitude ; les estimations divergentes restent visibles."
+                    symbole={
+                        <PixieSymbol
+                            registry="general"
+                            collection="archives"
+                            slug="registre-relie"
+                            size={96}
+                        />
+                    }
                 >
                     <dl className={styles.economics}>
                         {fiche.donneesEconomiques.map((data, index) => (
@@ -283,6 +308,14 @@ export function CodexOeuvreDetails({
                 <CodexFicheSection
                     eyebrow="Filiation"
                     titre="Les œuvres qui entourent le récit"
+                    symbole={
+                        <PixieSymbol
+                            registry="general"
+                            collection="exploration"
+                            slug="carte-balises-reliees"
+                            size={96}
+                        />
+                    }
                 >
                     <ul className={styles.relations}>
                         {fiche.relationsOeuvres.map((relation) => (
@@ -343,6 +376,14 @@ export function CodexOeuvreDetails({
                     eyebrow="Générique"
                     titre="Les métiers qui construisent le film"
                     description="Les crédits sont regroupés par domaine sans créer artificiellement une fiche pour chaque nom cité."
+                    symbole={
+                        <PixieSymbol
+                            registry="general"
+                            collection="atelier"
+                            slug="boite-outils-ouverte"
+                            size={96}
+                        />
+                    }
                 >
                     <div className={styles.credits}>
                         {groupedCredits.map((group) => (

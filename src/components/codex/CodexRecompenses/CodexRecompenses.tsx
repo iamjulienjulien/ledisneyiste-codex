@@ -20,6 +20,14 @@ export function CodexRecompenses({
             eyebrow="Palmarès"
             titre="Récompenses"
             description="Les distinctions attribuées par une institution à cette œuvre ou à cette figure du Codex."
+            symbole={
+                <PixieSymbol
+                    registry="general"
+                    collection="evenements"
+                    slug="trophee-generique"
+                    size={96}
+                />
+            }
         >
             <ul className={styles.list}>
                 {recompenses.map((recompense) => (
