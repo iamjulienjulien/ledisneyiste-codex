@@ -12,9 +12,9 @@ Les entrées sont présentées de la plus récente à la plus ancienne.
 
 ## 🎞️ Acte V · Blanche-Neige ouvre le grand récit
 
-**Tag :** `acte-v` _(à venir)_\
+**Tag :** `acte-v`\
 **Ouverture :** `84213ca`\
-**Clôture :** _à venir_
+**Clôture :** `2f4aa81`
 
 ### La projection
 
@@ -164,12 +164,14 @@ _Blanche-Neige et les Sept Nains_ fait changer d’échelle aux archives : son r
 117. `0d971c3` — 🎨 Mise en scène > Les métiers du générique révèlent leurs outils > 🐭 Julien
 118. `abb8680` — 🧪 Répétition > Tous les registres de symboles passent au contrôle de projection > 🐭 Julien
 119. `1c889e0` — ✍️ Scénario > Le README raconte la projection achevée de l’Acte V > 🐭 Julien
+120. `4c4323c` — ✍️ Scénario > Le Journal retrouve l’Entracte IV et prépare le générique de l’Acte V > 🐭 Julien
+121. `2f4aa81` — 🎞️ Acte > Fin de l’Acte V · Blanche-Neige a ouvert le grand récit > 🐭 Julien
 
-### Image actuelle
+### Dernière image
 
 **Blanche-Neige a ouvert le grand récit.**
 
-La projection de l’Acte V reste ouverte jusqu’à son dernier contrôle et à son commit de clôture.
+Le Codex sait désormais accueillir les longs métrages, leurs mondes, leurs personnages et les nombreuses voix qui participent à leur fabrication. Les archives disposent d’un cadre commun pour les raconter, les relier et les projeter.
 
 ---
 
