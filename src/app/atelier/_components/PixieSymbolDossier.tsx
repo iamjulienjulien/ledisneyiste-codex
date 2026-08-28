@@ -13,6 +13,7 @@ const generalEcritureSymbolSlugs = getSymbolSlugs("general", "ecriture");
 const generalExplorationSymbolSlugs = getSymbolSlugs("general", "exploration");
 const generalTempsSymbolSlugs = getSymbolSlugs("general", "temps");
 const generalAtelierSymbolSlugs = getSymbolSlugs("general", "atelier");
+const generalEvenementsSymbolSlugs = getSymbolSlugs("general", "evenements");
 const animationTechniqueSymbolSlugs = getSymbolSlugs("techniques", "animation");
 const imageTechniqueSymbolSlugs = getSymbolSlugs("techniques", "images");
 const couleurTechniqueSymbolSlugs = getSymbolSlugs("techniques", "couleur");
@@ -116,6 +117,7 @@ const typesSpecifiques = [
             '"atelier"',
             '"cinema"',
             '"ecriture"',
+            '"evenements"',
             '"exploration"',
             '"logos"',
             '"temps"',
@@ -282,6 +284,30 @@ const typesSpecifiques = [
         ],
         description:
             "Outils transversaux de fabrication, dessin, découpe et organisation de l’atelier.",
+    },
+    {
+        name: 'SymbolSlug<"general", "evenements">',
+        values: [
+            '"invitation-gaufree"',
+            '"accreditation-evenement"',
+            '"programme-manifestation"',
+            '"corde-velours"',
+            '"billet-cinema"',
+            '"projecteur-premiere"',
+            '"trophee-generique"',
+            '"fanion-festival"',
+            '"pupitre"',
+            '"affiche-encadree"',
+            '"bracelet-acces"',
+            '"plaque-commemorative"',
+            '"tapis-premiere"',
+            '"ruban-inaugural-ciseaux"',
+            '"arche-entree"',
+            '"livre-or"',
+            '"urne-prix-public"',
+        ],
+        description:
+            "Objets d’accueil, de cérémonie, de festival, de première et de commémoration.",
     },
     {
         name: 'SymbolSlug<"techniques", "animation">',
@@ -547,7 +573,7 @@ export function PixieSymbolDossier() {
                         ["Mission", "Afficher un symbole typé."],
                         ["Sélection", "registry · collection · slug"],
                         ["Exemple", "codex.index.personnages"],
-                        ["Masters", "Dix-neuf séries originales · 1254 px."],
+                        ["Masters", "Vingt séries originales · 1254 px."],
                         ["Dérivés", "PNG transparent · 384 px."],
                         ["Accessibilité", "Décoratif par défaut."],
                     ].map(([terme, definition]) => (
@@ -874,6 +900,52 @@ export function PixieSymbolDossier() {
                                 <PixieSymbol
                                     registry="general"
                                     collection="atelier"
+                                    slug={slug}
+                                    size="xl"
+                                    className="mx-auto"
+                                />
+                                <h4 className="mt-5 text-xl text-ink">
+                                    {symbole.label}
+                                </h4>
+                                <p className="mt-2 font-mono text-xs text-muted">
+                                    {slug}
+                                </p>
+                            </article>
+                        );
+                    })}
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="pixie-symbol-general-evenements"
+                className="mt-16"
+            >
+                <TitreSequence
+                    id="pixie-symbol-general-evenements"
+                    surTitre="Distribution"
+                    titre="Le Codex entre en scène"
+                    description="Invitations, accréditations, programmes, cérémonies et objets de première composent un vocabulaire événementiel pour annoncer les sorties, accompagner les festivals et conserver la mémoire des célébrations."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+                    {generalEvenementsSymbolSlugs.map((slug) => {
+                        const symbole = getSymbol(
+                            "general",
+                            "evenements",
+                            slug,
+                        );
+
+                        return (
+                            <article
+                                key={slug}
+                                className="bg-surface p-6 text-center"
+                                style={{
+                                    borderTop: `4px solid ${symbole.accent}`,
+                                }}
+                            >
+                                <PixieSymbol
+                                    registry="general"
+                                    collection="evenements"
                                     slug={slug}
                                     size="xl"
                                     className="mx-auto"
