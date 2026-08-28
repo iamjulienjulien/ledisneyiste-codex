@@ -1,0 +1,15 @@
+.root {
+    min-width: 0;
+}
+
+@media (min-width: 64rem) {
+    .root {
+        position: sticky;
+        top: 0;
+        align-self: start;
+        max-height: 100vh;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        scrollbar-color: var(--color-line-strong) transparent;
+    }
+}
