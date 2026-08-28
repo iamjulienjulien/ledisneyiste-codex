@@ -85,4 +85,96 @@ export const symbolsGeneral = {
             accent: "var(--atelier-animation-sepia-storyboard)",
         },
     },
+    archives: {
+        "boite-archives": {
+            src: "/symbols/general/archives/boite-archives.png",
+            label: "Boîte d’archives",
+            accent: "var(--atelier-animation-graphite)",
+        },
+        "chemise-archives": {
+            src: "/symbols/general/archives/chemise-archives.png",
+            label: "Chemise d’archives",
+            accent: "var(--atelier-animation-bleu-reperage)",
+        },
+        "dossier-ficelle": {
+            src: "/symbols/general/archives/dossier-ficelle.png",
+            label: "Dossier à ficelle",
+            accent: "var(--atelier-animation-sepia-storyboard)",
+        },
+        "registre-relie": {
+            src: "/symbols/general/archives/registre-relie.png",
+            label: "Registre relié",
+            accent: "var(--atelier-animation-indigo-nuit-studio)",
+        },
+        "porte-fiches": {
+            src: "/symbols/general/archives/porte-fiches.png",
+            label: "Porte-fiches",
+            accent: "var(--atelier-animation-papier-animation)",
+        },
+        "fichier-bois": {
+            src: "/symbols/general/archives/fichier-bois.png",
+            label: "Fichier en bois",
+            accent: "var(--atelier-animation-sepia-storyboard)",
+        },
+        "classeur-anneaux": {
+            src: "/symbols/general/archives/classeur-anneaux.png",
+            label: "Classeur à anneaux",
+            accent: "var(--atelier-animation-rouge-crayon)",
+        },
+        "tube-plans": {
+            src: "/symbols/general/archives/tube-plans.png",
+            label: "Tube à plans",
+            accent: "var(--atelier-animation-graphite)",
+        },
+        "boite-photographies": {
+            src: "/symbols/general/archives/boite-photographies.png",
+            label: "Boîte de photographies",
+            accent: "var(--atelier-animation-bleu-reperage)",
+        },
+        "bobine-film-archive": {
+            src: "/symbols/general/archives/bobine-film-archive.png",
+            label: "Bobine de film d’archive",
+            accent: "var(--atelier-animation-ambre-projecteur)",
+        },
+        "lecteur-microfilm": {
+            src: "/symbols/general/archives/lecteur-microfilm.png",
+            label: "Lecteur de microfilm",
+            accent: "var(--atelier-animation-graphite)",
+        },
+        "tampon-dateur": {
+            src: "/symbols/general/archives/tampon-dateur.png",
+            label: "Tampon dateur",
+            accent: "var(--atelier-animation-rouge-crayon)",
+        },
+        "presse-a-sec": {
+            src: "/symbols/general/archives/presse-a-sec.png",
+            label: "Presse à sec",
+            accent: "var(--atelier-animation-graphite)",
+        },
+        "gants-conservation": {
+            src: "/symbols/general/archives/gants-conservation.png",
+            label: "Gants de conservation",
+            accent: "var(--atelier-animation-papier-animation)",
+        },
+        "loupe-archiviste": {
+            src: "/symbols/general/archives/loupe-archiviste.png",
+            label: "Loupe d’archiviste",
+            accent: "var(--atelier-animation-ambre-projecteur)",
+        },
+        "pinceau-depoussierage": {
+            src: "/symbols/general/archives/pinceau-depoussierage.png",
+            label: "Pinceau de dépoussiérage",
+            accent: "var(--atelier-animation-sepia-storyboard)",
+        },
+        "scanner-documents": {
+            src: "/symbols/general/archives/scanner-documents.png",
+            label: "Scanner de documents",
+            accent: "var(--atelier-animation-graphite)",
+        },
+        "thermo-hygrometre": {
+            src: "/symbols/general/archives/thermo-hygrometre.png",
+            label: "Thermo-hygromètre",
+            accent: "var(--atelier-animation-bleu-reperage)",
+        },
+    },
 } as const satisfies Record<string, Record<string, SymbolDefinition>>;
