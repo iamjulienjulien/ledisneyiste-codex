@@ -14,6 +14,7 @@ import { CodexBlocsEditoriaux } from "@/components/codex/CodexBlocsEditoriaux";
 import { PixieBadge } from "@/components/ui/PixieBadge";
 import { getEpoquePourDate } from "@/data/epoques/relations";
 import { formatDateHistorique } from "@/lib/date";
+import { getFicheSourceIds } from "@/lib/source";
 
 export const dynamicParams = false;
 
@@ -57,7 +58,7 @@ export default async function PersonnagePage({
         notFound();
     }
 
-    const sources = getSourcesByIds(fiche.sources);
+    const sources = getSourcesByIds(getFicheSourceIds(fiche));
     const oeuvres = getOeuvresAvecPersonnage(slug);
     const epoque = getEpoquePourDate(fiche.premiereApparition.date);
 
@@ -134,6 +135,7 @@ export default async function PersonnagePage({
             <CodexBlocsEditoriaux
                 collection="personnages"
                 blocs={fiche.blocsEditoriaux}
+                sources={sources}
             />
 
             <CodexRelations

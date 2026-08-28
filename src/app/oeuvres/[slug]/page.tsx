@@ -15,6 +15,7 @@ import { getFicheOeuvreBySlug } from "@/data/oeuvres";
 import { getRecompensesPourOeuvre } from "@/data/recompenses/relations";
 import { getSourcesByIds } from "@/data/sources";
 import { formatDateHistorique } from "@/lib/date";
+import { getFicheSourceIds } from "@/lib/source";
 
 export const dynamicParams = false;
 
@@ -61,7 +62,7 @@ export default async function OeuvrePage({
     const recompenses = getRecompensesPourOeuvre(slug);
     const sources = getSourcesByIds([
         ...new Set([
-            ...fiche.sources,
+            ...getFicheSourceIds(fiche),
             ...recompenses.flatMap((recompense) => recompense.sources),
         ]),
     ]);
@@ -181,6 +182,7 @@ export default async function OeuvrePage({
             <CodexBlocsEditoriaux
                 collection="oeuvres"
                 blocs={fiche.blocsEditoriaux}
+                sources={sources}
             />
 
             <CodexSources sources={sources} />

@@ -1,19 +1,13 @@
 import { CodexFicheSection } from "@/components/codex/CodexFicheSection";
+import { CodexSourceCitations } from "@/components/codex/CodexSourceCitations";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import type { SymbolCollectionName, SymbolSelection } from "@/registry/symbols";
-import type { BlocEditorialCodex } from "@/types/fiche";
+import type { CodexBlocsEditoriauxProps } from "./CodexBlocsEditoriaux.types";
 import styles from "./CodexBlocsEditoriaux.module.css";
-
-type CodexBlocsEditoriauxProps<
-    Collection extends SymbolCollectionName<"blocs">,
-> = {
-    collection: Collection;
-    blocs?: BlocEditorialCodex<Collection>[];
-};
 
 export function CodexBlocsEditoriaux<
     Collection extends SymbolCollectionName<"blocs">,
->({ collection, blocs }: CodexBlocsEditoriauxProps<Collection>) {
+>({ collection, blocs, sources }: CodexBlocsEditoriauxProps<Collection>) {
     if (!blocs?.length) {
         return null;
     }
@@ -41,6 +35,11 @@ export function CodexBlocsEditoriaux<
                             {paragraphe}
                         </p>
                     ))}
+
+                    <CodexSourceCitations
+                        sourceIds={bloc.sources}
+                        sources={sources}
+                    />
                 </div>
             </CodexFicheSection>
         );

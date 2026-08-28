@@ -18,6 +18,7 @@ import { getEpoquesPourContributeur } from "@/data/epoques/relations";
 import { getRecompensesPourContributeur } from "@/data/recompenses/relations";
 
 import { formatDateHistorique } from "@/lib/date";
+import { getFicheSourceIds } from "@/lib/source";
 
 export const dynamicParams = false;
 
@@ -64,7 +65,7 @@ export default async function ContributeurPage({
     const recompenses = getRecompensesPourContributeur(slug);
     const sources = getSourcesByIds([
         ...new Set([
-            ...fiche.sources,
+            ...getFicheSourceIds(fiche),
             ...recompenses.flatMap((recompense) => recompense.sources),
         ]),
     ]);
@@ -130,6 +131,7 @@ export default async function ContributeurPage({
             <CodexBlocsEditoriaux
                 collection="contributeurs"
                 blocs={fiche.blocsEditoriaux}
+                sources={sources}
             />
 
             <CodexRecompenses recompenses={recompenses} showWork />

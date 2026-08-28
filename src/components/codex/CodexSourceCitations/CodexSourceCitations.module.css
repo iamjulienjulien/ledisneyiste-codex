@@ -1,0 +1,77 @@
+.root {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-line);
+}
+
+.label {
+    color: var(--color-muted);
+    font-family: var(--projection-font-eyebrow);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.link {
+    display: grid;
+    width: 1.75rem;
+    height: 1.75rem;
+    place-items: center;
+    border: 1px solid
+        color-mix(
+            in srgb,
+            var(--codex-fiche-color, var(--color-accent)) 55%,
+            var(--color-line)
+        );
+    border-radius: 999px;
+    color: var(--codex-fiche-color, var(--color-accent));
+    font-family: var(--projection-font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition:
+        border-color 160ms ease,
+        background-color 160ms ease,
+        color 160ms ease;
+}
+
+.link:hover {
+    border-color: var(--codex-fiche-color, var(--color-accent));
+    background: color-mix(
+        in srgb,
+        var(--codex-fiche-color, var(--color-accent)) 12%,
+        transparent
+    );
+}
+
+.link:focus-visible {
+    outline: 2px solid var(--codex-fiche-color, var(--color-accent));
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .link {
+        transition: none;
+    }
+}
+
+@media (forced-colors: active) {
+    .link {
+        border-color: ButtonText;
+        color: LinkText;
+    }
+
+    .link:focus-visible {
+        outline-color: Highlight;
+    }
+}
