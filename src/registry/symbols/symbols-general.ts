@@ -177,4 +177,66 @@ export const symbolsGeneral = {
             accent: "var(--atelier-animation-bleu-reperage)",
         },
     },
+    ecriture: {
+        "carnet-travail": {
+            src: "/symbols/general/ecriture/carnet-travail.png",
+            label: "Carnet de travail",
+            accent: "var(--atelier-animation-indigo-nuit-studio)",
+        },
+        "crayon-bleu": {
+            src: "/symbols/general/ecriture/crayon-bleu.png",
+            label: "Crayon bleu",
+            accent: "var(--atelier-animation-bleu-reperage)",
+        },
+        "machine-a-ecrire": {
+            src: "/symbols/general/ecriture/machine-a-ecrire.png",
+            label: "Machine à écrire",
+            accent: "var(--atelier-animation-graphite)",
+        },
+        "manuscrit-corrige": {
+            src: "/symbols/general/ecriture/manuscrit-corrige.png",
+            label: "Manuscrit corrigé",
+            accent: "var(--atelier-animation-rouge-crayon)",
+        },
+        "plume-ecriture": {
+            src: "/symbols/general/ecriture/plume-ecriture.png",
+            label: "Plume d’écriture",
+            accent: "var(--atelier-animation-papier-animation)",
+        },
+        "stylo-plume": {
+            src: "/symbols/general/ecriture/stylo-plume.png",
+            label: "Stylo-plume",
+            accent: "var(--atelier-animation-encre)",
+        },
+        storyboard: {
+            src: "/symbols/general/ecriture/storyboard.png",
+            label: "Storyboard d’écriture",
+            accent: "var(--atelier-animation-sepia-storyboard)",
+        },
+        "bloc-notes": {
+            src: "/symbols/general/ecriture/bloc-notes.png",
+            label: "Bloc-notes",
+            accent: "var(--atelier-animation-bleu-reperage)",
+        },
+        "presse-typographique": {
+            src: "/symbols/general/ecriture/presse-typographique.png",
+            label: "Presse typographique",
+            accent: "var(--atelier-animation-graphite)",
+        },
+        "marque-page": {
+            src: "/symbols/general/ecriture/marque-page.png",
+            label: "Marque-page",
+            accent: "var(--atelier-animation-rouge-crayon)",
+        },
+        encrier: {
+            src: "/symbols/general/ecriture/encrier.png",
+            label: "Encrier",
+            accent: "var(--atelier-animation-encre)",
+        },
+        "pile-epreuves": {
+            src: "/symbols/general/ecriture/pile-epreuves.png",
+            label: "Pile d’épreuves",
+            accent: "var(--atelier-animation-papier-animation)",
+        },
+    },
 } as const satisfies Record<string, Record<string, SymbolDefinition>>;
