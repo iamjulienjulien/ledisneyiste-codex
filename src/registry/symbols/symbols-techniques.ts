@@ -421,4 +421,86 @@ export const symbolsTechniques = {
             accent: "var(--atelier-animation-indigo-nuit-studio)",
         },
     },
+    imagineering: {
+        "table-plans-techniques": {
+            src: "/symbols/techniques/imagineering/table-plans-techniques.png",
+            label: "Table de plans techniques",
+            accent: "var(--atelier-animation-bleu-reperage)",
+        },
+        "maquette-conceptuelle": {
+            src: "/symbols/techniques/imagineering/maquette-conceptuelle.png",
+            label: "Maquette conceptuelle",
+            accent: "var(--atelier-animation-sepia-storyboard)",
+        },
+        "audio-animatronic-generique": {
+            src: "/symbols/techniques/imagineering/audio-animatronic-generique.png",
+            label: "Audio-Animatronic générique",
+            accent: "var(--atelier-animation-graphite)",
+        },
+        "panneau-controle-attraction": {
+            src: "/symbols/techniques/imagineering/panneau-controle-attraction.png",
+            label: "Panneau de contrôle d’attraction",
+            accent: "var(--atelier-animation-turquoise-acetate)",
+        },
+        "vehicule-parcours-guide": {
+            src: "/symbols/techniques/imagineering/vehicule-parcours-guide.png",
+            label: "Véhicule de parcours guidé",
+            accent: "var(--atelier-animation-bleu-reperage)",
+        },
+        "module-rail-aiguillage": {
+            src: "/symbols/techniques/imagineering/module-rail-aiguillage.png",
+            label: "Module de rail et aiguillage",
+            accent: "var(--atelier-animation-graphite)",
+        },
+        "plateforme-mouvement": {
+            src: "/symbols/techniques/imagineering/plateforme-mouvement.png",
+            label: "Plateforme de mouvement",
+            accent: "var(--atelier-animation-framboise-encrage)",
+        },
+        "maquette-circulation-visiteurs": {
+            src: "/symbols/techniques/imagineering/maquette-circulation-visiteurs.png",
+            label: "Maquette de circulation des visiteurs",
+            accent: "var(--atelier-animation-cyan-effets-optiques)",
+        },
+        "facade-perspective-forcee": {
+            src: "/symbols/techniques/imagineering/facade-perspective-forcee.png",
+            label: "Façade en perspective forcée",
+            accent: "var(--atelier-animation-sepia-storyboard)",
+        },
+        "echantillon-roche-sculptee": {
+            src: "/symbols/techniques/imagineering/echantillon-roche-sculptee.png",
+            label: "Échantillon de roche sculptée",
+            accent: "var(--atelier-animation-graphite)",
+        },
+        "decor-escamotable": {
+            src: "/symbols/techniques/imagineering/decor-escamotable.png",
+            label: "Décor escamotable",
+            accent: "var(--atelier-animation-ambre-projecteur)",
+        },
+        "banc-illusion-optique": {
+            src: "/symbols/techniques/imagineering/banc-illusion-optique.png",
+            label: "Banc d’illusion optique",
+            accent: "var(--atelier-animation-cyan-effets-optiques)",
+        },
+        "console-programmation-spectacle": {
+            src: "/symbols/techniques/imagineering/console-programmation-spectacle.png",
+            label: "Console de programmation de spectacle",
+            accent: "var(--atelier-animation-bleu-reperage)",
+        },
+        "rack-show-control": {
+            src: "/symbols/techniques/imagineering/rack-show-control.png",
+            label: "Rack de show control",
+            accent: "var(--atelier-animation-turquoise-acetate)",
+        },
+        "banc-essai-animatronic": {
+            src: "/symbols/techniques/imagineering/banc-essai-animatronic.png",
+            label: "Banc d’essai animatronic",
+            accent: "var(--atelier-animation-corail-cel)",
+        },
+        "poste-diagnostic-maintenance": {
+            src: "/symbols/techniques/imagineering/poste-diagnostic-maintenance.png",
+            label: "Poste de diagnostic et maintenance",
+            accent: "var(--atelier-animation-jaune-lampe)",
+        },
+    },
 } as const satisfies Record<string, Record<string, SymbolDefinition>>;
