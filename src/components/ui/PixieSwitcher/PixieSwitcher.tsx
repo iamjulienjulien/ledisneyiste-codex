@@ -1,12 +1,12 @@
-import styles from "./PixieDustSwitcher.module.css";
+import styles from "./PixieSwitcher.module.css";
 import type {
-    PixieDustSwitcherAlign,
-    PixieDustSwitcherGap,
-    PixieDustSwitcherLimit,
-    PixieDustSwitcherLayout,
-    PixieDustSwitcherProps,
-    PixieDustSwitcherThreshold,
-} from "./PixieDustSwitcher.types";
+    PixieSwitcherAlign,
+    PixieSwitcherGap,
+    PixieSwitcherLimit,
+    PixieSwitcherLayout,
+    PixieSwitcherProps,
+    PixieSwitcherThreshold,
+} from "./PixieSwitcher.types";
 
 const thresholdClasses = {
     xs: styles.thresholdExtraSmall,
@@ -14,7 +14,7 @@ const thresholdClasses = {
     md: styles.thresholdMedium,
     lg: styles.thresholdLarge,
     xl: styles.thresholdExtraLarge,
-} as const satisfies Record<PixieDustSwitcherThreshold, string>;
+} as const satisfies Record<PixieSwitcherThreshold, string>;
 
 const limitClasses = {
     2: styles.limitTwo,
@@ -22,13 +22,13 @@ const limitClasses = {
     4: styles.limitFour,
     5: styles.limitFive,
     6: styles.limitSix,
-} as const satisfies Record<Exclude<PixieDustSwitcherLimit, false>, string>;
+} as const satisfies Record<Exclude<PixieSwitcherLimit, false>, string>;
 
 const layoutClasses = {
     auto: styles.layoutAuto,
     row: styles.layoutRow,
     stack: styles.layoutStack,
-} as const satisfies Record<PixieDustSwitcherLayout, string>;
+} as const satisfies Record<PixieSwitcherLayout, string>;
 
 const gapClasses = {
     none: styles.gapNone,
@@ -37,7 +37,7 @@ const gapClasses = {
     md: styles.gapMedium,
     lg: styles.gapLarge,
     xl: styles.gapExtraLarge,
-} as const satisfies Record<PixieDustSwitcherGap, string>;
+} as const satisfies Record<PixieSwitcherGap, string>;
 
 const rowGapClasses = {
     none: styles.rowGapNone,
@@ -46,7 +46,7 @@ const rowGapClasses = {
     md: styles.rowGapMedium,
     lg: styles.rowGapLarge,
     xl: styles.rowGapExtraLarge,
-} as const satisfies Record<PixieDustSwitcherGap, string>;
+} as const satisfies Record<PixieSwitcherGap, string>;
 
 const columnGapClasses = {
     none: styles.columnGapNone,
@@ -55,16 +55,16 @@ const columnGapClasses = {
     md: styles.columnGapMedium,
     lg: styles.columnGapLarge,
     xl: styles.columnGapExtraLarge,
-} as const satisfies Record<PixieDustSwitcherGap, string>;
+} as const satisfies Record<PixieSwitcherGap, string>;
 
 const alignClasses = {
     stretch: styles.alignStretch,
     start: styles.alignStart,
     center: styles.alignCenter,
     end: styles.alignEnd,
-} as const satisfies Record<PixieDustSwitcherAlign, string>;
+} as const satisfies Record<PixieSwitcherAlign, string>;
 
-export function PixieDustSwitcher({
+export function PixieSwitcher({
     as: Element = "div",
     layout = "auto",
     threshold = "md",
@@ -76,7 +76,7 @@ export function PixieDustSwitcher({
     className = "",
     children,
     ...elementProps
-}: PixieDustSwitcherProps) {
+}: PixieSwitcherProps) {
     return (
         <Element
             {...elementProps}
