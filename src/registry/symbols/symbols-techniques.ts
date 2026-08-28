@@ -175,4 +175,86 @@ export const symbolsTechniques = {
             accent: "var(--atelier-animation-bleu-reperage)",
         },
     },
+    couleur: {
+        "cercle-chromatique": {
+            src: "/symbols/techniques/couleur/cercle-chromatique.png",
+            label: "Cercle chromatique",
+            accent: "var(--atelier-animation-gouache)",
+        },
+        "nuancier-production": {
+            src: "/symbols/techniques/couleur/nuancier-production.png",
+            label: "Nuancier de production",
+            accent: "var(--atelier-animation-framboise-encrage)",
+        },
+        "palette-harmonique": {
+            src: "/symbols/techniques/couleur/palette-harmonique.png",
+            label: "Palette harmonique",
+            accent: "var(--atelier-animation-turquoise-acetate)",
+        },
+        "charte-colorimetrique": {
+            src: "/symbols/techniques/couleur/charte-colorimetrique.png",
+            label: "Charte colorimétrique",
+            accent: "var(--atelier-animation-bleu-reperage)",
+        },
+        "teintage-pellicule": {
+            src: "/symbols/techniques/couleur/teintage-pellicule.png",
+            label: "Teintage de pellicule",
+            accent: "var(--atelier-animation-ambre-projecteur)",
+        },
+        "virage-pellicule": {
+            src: "/symbols/techniques/couleur/virage-pellicule.png",
+            label: "Virage de pellicule",
+            accent: "var(--atelier-animation-cyan-effets-optiques)",
+        },
+        "colorisation-pochoir": {
+            src: "/symbols/techniques/couleur/colorisation-pochoir.png",
+            label: "Colorisation au pochoir",
+            accent: "var(--atelier-animation-framboise-encrage)",
+        },
+        "separation-trichrome": {
+            src: "/symbols/techniques/couleur/separation-trichrome.png",
+            label: "Séparation trichrome",
+            accent: "var(--atelier-animation-rouge-crayon)",
+        },
+        "prisme-trichrome": {
+            src: "/symbols/techniques/couleur/prisme-trichrome.png",
+            label: "Prisme trichrome",
+            accent: "var(--atelier-animation-cyan-effets-optiques)",
+        },
+        "camera-trois-bandes": {
+            src: "/symbols/techniques/couleur/camera-trois-bandes.png",
+            label: "Caméra trois bandes",
+            accent: "var(--atelier-animation-bleu-reperage)",
+        },
+        "matrices-colorants": {
+            src: "/symbols/techniques/couleur/matrices-colorants.png",
+            label: "Matrices de colorants",
+            accent: "var(--atelier-animation-gouache)",
+        },
+        "transfert-colorants": {
+            src: "/symbols/techniques/couleur/transfert-colorants.png",
+            label: "Transfert de colorants",
+            accent: "var(--atelier-animation-jaune-lampe)",
+        },
+        "color-script": {
+            src: "/symbols/techniques/couleur/color-script.png",
+            label: "Color script",
+            accent: "var(--atelier-animation-ambre-projecteur)",
+        },
+        "palette-personnage": {
+            src: "/symbols/techniques/couleur/palette-personnage.png",
+            label: "Palette de personnage",
+            accent: "var(--atelier-animation-corail-cel)",
+        },
+        densitometre: {
+            src: "/symbols/techniques/couleur/densitometre.png",
+            label: "Densitomètre",
+            accent: "var(--atelier-animation-graphite)",
+        },
+        "calibration-ecran": {
+            src: "/symbols/techniques/couleur/calibration-ecran.png",
+            label: "Calibration d’écran",
+            accent: "var(--atelier-animation-indigo-nuit-studio)",
+        },
+    },
 } as const satisfies Record<string, Record<string, SymbolDefinition>>;
