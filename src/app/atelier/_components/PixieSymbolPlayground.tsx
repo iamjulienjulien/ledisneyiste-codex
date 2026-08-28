@@ -38,6 +38,19 @@ const animationTechniqueSymbolOptions = getSymbolSlugs(
     definition: getSymbol("techniques", "animation", slug),
 }));
 
+const imageTechniqueSymbolOptions = getSymbolSlugs("techniques", "images").map(
+    (slug) => ({
+        key: `techniques.images.${slug}`,
+        group: "Techniques · Images" as const,
+        selection: {
+            registry: "techniques",
+            collection: "images",
+            slug,
+        } as const,
+        definition: getSymbol("techniques", "images", slug),
+    }),
+);
+
 const symbolOptions = [
     {
         key: "general.logos.le-codex-du-disneyiste",
@@ -269,6 +282,7 @@ const symbolOptions = [
         definition: getSymbol("blocs", "epoques", "tensions"),
     },
     ...animationTechniqueSymbolOptions,
+    ...imageTechniqueSymbolOptions,
 ] as const;
 
 const symbolGroups = [
@@ -277,6 +291,7 @@ const symbolGroups = [
     "Codex · Index",
     "Récompenses · Trophées",
     "Techniques · Animation",
+    "Techniques · Images",
     "Blocs · Personnages",
     "Blocs · Contributeurs",
     "Blocs · Œuvres",

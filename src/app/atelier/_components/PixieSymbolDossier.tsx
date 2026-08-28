@@ -9,6 +9,7 @@ import { PixieSymbolPlayground } from "./PixieSymbolPlayground";
 const generalLogoSymbolSlugs = getSymbolSlugs("general", "logos");
 const generalCinemaSymbolSlugs = getSymbolSlugs("general", "cinema");
 const animationTechniqueSymbolSlugs = getSymbolSlugs("techniques", "animation");
+const imageTechniqueSymbolSlugs = getSymbolSlugs("techniques", "images");
 const indexSymbolSlugs = getSymbolSlugs("codex", "index");
 const recompenseTrophySymbolSlugs = getSymbolSlugs("recompenses", "trophees");
 const contributeurBlockSymbolSlugs = getSymbolSlugs("blocs", "contributeurs");
@@ -108,7 +109,7 @@ const typesSpecifiques = [
     },
     {
         name: 'SymbolCollectionName<"techniques">',
-        values: ['"animation"'],
+        values: ['"animation"', '"images"'],
         description: "Collections exposées par le registre des Techniques.",
     },
     {
@@ -165,6 +166,28 @@ const typesSpecifiques = [
             '"xerographie"',
         ],
         description: "Outils et procédés de la chaîne de l’animation.",
+    },
+    {
+        name: 'SymbolSlug<"techniques", "images">',
+        values: [
+            '"objectif-iris"',
+            '"posemetre"',
+            '"filtres-optiques"',
+            '"viseur-composition"',
+            '"matte-painting"',
+            '"retroprojection"',
+            '"perspective-forcee"',
+            '"maquette-miniature"',
+            '"fond-bleu"',
+            '"incrustation-sodium"',
+            '"tireuse-optique"',
+            '"compositing-calques"',
+            '"cache-contre-cache"',
+            '"etalonnage"',
+            '"scanner-pellicule"',
+            '"restauration-image"',
+        ],
+        description: "Outils de prise de vues, compositing et restauration.",
     },
     {
         name: 'SymbolSlug<"recompenses", "trophees">',
@@ -292,7 +315,7 @@ export function PixieSymbolDossier() {
                         ["Mission", "Afficher un symbole typé."],
                         ["Sélection", "registry · collection · slug"],
                         ["Exemple", "codex.index.personnages"],
-                        ["Masters", "Neuf séries originales · 1254 px."],
+                        ["Masters", "Dix séries originales · 1254 px."],
                         ["Dérivés", "PNG transparent · 384 px."],
                         ["Accessibilité", "Décoratif par défaut."],
                     ].map(([terme, definition]) => (
@@ -536,6 +559,48 @@ export function PixieSymbolDossier() {
                                 <PixieSymbol
                                     registry="techniques"
                                     collection="animation"
+                                    slug={slug}
+                                    size="xl"
+                                    className="mx-auto"
+                                />
+                                <h4 className="mt-5 text-xl text-ink">
+                                    {symbole.label}
+                                </h4>
+                                <p className="mt-2 font-mono text-xs text-muted">
+                                    {slug}
+                                </p>
+                            </article>
+                        );
+                    })}
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="pixie-symbol-techniques-images"
+                className="mt-16"
+            >
+                <TitreSequence
+                    id="pixie-symbol-techniques-images"
+                    surTitre="Distribution"
+                    titre="La fabrique technique des images"
+                    description="Objectifs, filtres, décors optiques, incrustations, compositing et restauration décrivent la construction de l’image depuis la prise de vues jusqu’à sa remise en état."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+                    {imageTechniqueSymbolSlugs.map((slug) => {
+                        const symbole = getSymbol("techniques", "images", slug);
+
+                        return (
+                            <article
+                                key={slug}
+                                className="bg-surface p-6 text-center"
+                                style={{
+                                    borderTop: `4px solid ${symbole.accent}`,
+                                }}
+                            >
+                                <PixieSymbol
+                                    registry="techniques"
+                                    collection="images"
                                     slug={slug}
                                     size="xl"
                                     className="mx-auto"
