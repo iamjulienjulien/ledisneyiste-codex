@@ -14,6 +14,10 @@ const generalExplorationSymbolSlugs = getSymbolSlugs("general", "exploration");
 const generalTempsSymbolSlugs = getSymbolSlugs("general", "temps");
 const generalAtelierSymbolSlugs = getSymbolSlugs("general", "atelier");
 const generalEvenementsSymbolSlugs = getSymbolSlugs("general", "evenements");
+const generalCommunicationSymbolSlugs = getSymbolSlugs(
+    "general",
+    "communication",
+);
 const animationTechniqueSymbolSlugs = getSymbolSlugs("techniques", "animation");
 const imageTechniqueSymbolSlugs = getSymbolSlugs("techniques", "images");
 const couleurTechniqueSymbolSlugs = getSymbolSlugs("techniques", "couleur");
@@ -116,6 +120,7 @@ const typesSpecifiques = [
             '"archives"',
             '"atelier"',
             '"cinema"',
+            '"communication"',
             '"ecriture"',
             '"evenements"',
             '"exploration"',
@@ -308,6 +313,29 @@ const typesSpecifiques = [
         ],
         description:
             "Objets d’accueil, de cérémonie, de festival, de première et de commémoration.",
+    },
+    {
+        name: 'SymbolSlug<"general", "communication">',
+        values: [
+            '"enveloppe-correspondance"',
+            '"dossier-presse"',
+            '"megaphone-promotion"',
+            '"telephone-bureau"',
+            '"microphones-presse"',
+            '"communique-officiel"',
+            '"telegramme-plie"',
+            '"poste-radio"',
+            '"antenne-diffusion"',
+            '"carte-postale-illustree"',
+            '"tube-affiche"',
+            '"presentoir-brochures"',
+            '"boite-lettres"',
+            '"panneau-annonce"',
+            '"casier-correspondance"',
+            '"borne-information"',
+        ],
+        description:
+            "Objets de correspondance, presse, promotion, diffusion et information.",
     },
     {
         name: 'SymbolSlug<"techniques", "animation">',
@@ -573,7 +601,10 @@ export function PixieSymbolDossier() {
                         ["Mission", "Afficher un symbole typé."],
                         ["Sélection", "registry · collection · slug"],
                         ["Exemple", "codex.index.personnages"],
-                        ["Masters", "Vingt séries originales · 1254 px."],
+                        [
+                            "Masters",
+                            "Vingt et une séries originales · 1254 px.",
+                        ],
                         ["Dérivés", "PNG transparent · 384 px."],
                         ["Accessibilité", "Décoratif par défaut."],
                     ].map(([terme, definition]) => (
@@ -946,6 +977,52 @@ export function PixieSymbolDossier() {
                                 <PixieSymbol
                                     registry="general"
                                     collection="evenements"
+                                    slug={slug}
+                                    size="xl"
+                                    className="mx-auto"
+                                />
+                                <h4 className="mt-5 text-xl text-ink">
+                                    {symbole.label}
+                                </h4>
+                                <p className="mt-2 font-mono text-xs text-muted">
+                                    {slug}
+                                </p>
+                            </article>
+                        );
+                    })}
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="pixie-symbol-general-communication"
+                className="mt-16"
+            >
+                <TitreSequence
+                    id="pixie-symbol-general-communication"
+                    surTitre="Distribution"
+                    titre="Le Codex fait circuler les nouvelles"
+                    description="Correspondance, presse, promotion et diffusion composent un vocabulaire de communication neutre pour annoncer, documenter et transmettre les informations autour des œuvres et de leurs histoires."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+                    {generalCommunicationSymbolSlugs.map((slug) => {
+                        const symbole = getSymbol(
+                            "general",
+                            "communication",
+                            slug,
+                        );
+
+                        return (
+                            <article
+                                key={slug}
+                                className="bg-surface p-6 text-center"
+                                style={{
+                                    borderTop: `4px solid ${symbole.accent}`,
+                                }}
+                            >
+                                <PixieSymbol
+                                    registry="general"
+                                    collection="communication"
                                     slug={slug}
                                     size="xl"
                                     className="mx-auto"

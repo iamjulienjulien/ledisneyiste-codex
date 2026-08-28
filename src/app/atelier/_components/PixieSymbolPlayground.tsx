@@ -104,6 +104,20 @@ const generalEvenementsSymbolOptions = getSymbolSlugs(
     definition: getSymbol("general", "evenements", slug),
 }));
 
+const generalCommunicationSymbolOptions = getSymbolSlugs(
+    "general",
+    "communication",
+).map((slug) => ({
+    key: `general.communication.${slug}`,
+    group: "Général · Communication" as const,
+    selection: {
+        registry: "general",
+        collection: "communication",
+        slug,
+    } as const,
+    definition: getSymbol("general", "communication", slug),
+}));
+
 const animationTechniqueSymbolOptions = getSymbolSlugs(
     "techniques",
     "animation",
@@ -203,6 +217,7 @@ const symbolOptions = [
     ...generalTempsSymbolOptions,
     ...generalAtelierSymbolOptions,
     ...generalEvenementsSymbolOptions,
+    ...generalCommunicationSymbolOptions,
     {
         key: "codex.index.personnages",
         group: "Codex · Index",
@@ -438,6 +453,7 @@ const symbolGroups = [
     "Général · Temps",
     "Général · Atelier",
     "Général · Événements",
+    "Général · Communication",
     "Codex · Index",
     "Récompenses · Trophées",
     "Techniques · Animation",
