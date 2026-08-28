@@ -1,3 +1,5 @@
+import { PixieBackdrop } from "@/components/ui/PixieBackdrop";
+import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieLink } from "@/components/ui/PixieLink";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
@@ -11,26 +13,44 @@ import {
 export default function Home() {
     return (
         <main className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-24">
-            <header>
-                <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.24em] text-muted">
-                    Le Disneyiste
-                </p>
+            <PixieCard asChild variant="elevated" padding="none" radius="large">
+                <header className="overflow-hidden">
+                    <PixieBackdrop
+                        variant="projector"
+                        intensity="medium"
+                        position="top-end"
+                        direction="diagonal-down"
+                        spread="wide"
+                        padding="none"
+                        radius="large"
+                        base="surface"
+                        texture="grain"
+                        textureIntensity="subtle"
+                        motion="breathe"
+                    >
+                        <div className="px-6 py-10 sm:px-10 sm:py-14 lg:px-14 lg:py-16">
+                            <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.24em] text-muted">
+                                Le Disneyiste
+                            </p>
 
-                <h1 className="mt-4 font-brand text-5xl text-ink sm:text-7xl">
-                    Le Codex du Disneyiste
-                </h1>
+                            <h1 className="mt-4 font-brand text-5xl text-ink sm:text-7xl">
+                                Le Codex du Disneyiste
+                            </h1>
 
-                <p className="mt-6 font-display text-xl leading-9 text-ink-soft">
-                    Un atlas éditorial pour explorer, relier et raconter les
-                    imaginaires Disney.
-                </p>
+                            <p className="mt-6 font-display text-xl leading-9 text-ink-soft sm:text-2xl">
+                                Un atlas éditorial pour explorer, relier et
+                                raconter les imaginaires Disney.
+                            </p>
 
-                <p className="mt-8 max-w-2xl text-lg leading-8 text-ink-soft">
-                    Œuvres, personnages et créateurs se croisent ici pour
-                    documenter Disney comme phénomène culturel, mémoire
-                    collective et fabrique d’imaginaires.
-                </p>
-            </header>
+                            <p className="mt-8 max-w-3xl text-lg leading-8 text-ink-soft">
+                                Œuvres, personnages et créateurs se croisent ici
+                                pour documenter Disney comme phénomène culturel,
+                                mémoire collective et fabrique d’imaginaires.
+                            </p>
+                        </div>
+                    </PixieBackdrop>
+                </header>
+            </PixieCard>
 
             <section className="mt-20">
                 <PixieSeparator
