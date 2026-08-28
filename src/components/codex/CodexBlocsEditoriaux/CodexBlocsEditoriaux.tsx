@@ -1,6 +1,5 @@
 import { CodexFicheSection } from "@/components/codex/CodexFicheSection";
 import { CodexSourceCitations } from "@/components/codex/CodexSourceCitations";
-import { PixieContainer } from "@/components/ui/PixieContainer";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import type { SymbolCollectionName, SymbolSelection } from "@/registry/symbols";
 import type { CodexBlocsEditoriauxProps } from "./CodexBlocsEditoriaux.types";
@@ -21,30 +20,29 @@ export function CodexBlocsEditoriaux<
         } as SymbolSelection;
 
         return (
-            <PixieContainer key={bloc.titre} width="56" gutter="none">
-                <CodexFicheSection
-                    eyebrow={bloc.eyebrow}
-                    titre={bloc.titre}
-                    symbole={<PixieSymbol {...symbolSelection} size="lg" />}
-                >
-                    <div className={styles.body}>
-                        {bloc.paragraphes.map((paragraphe, index) => (
-                            <p
-                                key={index}
-                                className="text-lg leading-8 text-ink-soft"
-                            >
-                                {paragraphe}
-                            </p>
-                        ))}
+            <CodexFicheSection
+                key={bloc.titre}
+                eyebrow={bloc.eyebrow}
+                titre={bloc.titre}
+                symbole={<PixieSymbol {...symbolSelection} size="lg" />}
+            >
+                <div className={styles.body}>
+                    {bloc.paragraphes.map((paragraphe, index) => (
+                        <p
+                            key={index}
+                            className="text-lg leading-8 text-ink-soft"
+                        >
+                            {paragraphe}
+                        </p>
+                    ))}
 
-                        <CodexSourceCitations
-                            sourceIds={bloc.sources}
-                            sources={sources}
-                            label="Sources du chapitre"
-                        />
-                    </div>
-                </CodexFicheSection>
-            </PixieContainer>
+                    <CodexSourceCitations
+                        sourceIds={bloc.sources}
+                        sources={sources}
+                        label="Sources du chapitre"
+                    />
+                </div>
+            </CodexFicheSection>
         );
     });
 }
