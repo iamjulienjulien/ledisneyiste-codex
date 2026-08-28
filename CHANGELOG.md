@@ -10,6 +10,255 @@ Les entrées sont présentées de la plus récente à la plus ancienne.
 
 ---
 
+## 🎞️ Acte V · Blanche-Neige ouvre le grand récit
+
+**Tag :** `acte-v` _(à venir)_\
+**Ouverture :** `84213ca`\
+**Clôture :** _à venir_
+
+### La projection
+
+Le Codex franchit le seuil du premier long métrage d’animation Disney.
+
+_Blanche-Neige et les Sept Nains_ fait changer d’échelle aux archives : son royaume, ses artistes, ses voix, sa musique, ses techniques et ses distinctions rejoignent un cadre documentaire désormais capable d’accueillir un grand récit. Dans le même mouvement, les composants Pixie quittent l’Atelier pour structurer réellement les index, les fiches et leurs nombreuses séquences.
+
+### À l’écran
+
+- extension du modèle des Œuvres aux longs métrages et à leurs données structurées ;
+- documentation de _The Goddess of Spring_ comme laboratoire de l’animation humaine ;
+- entrée de _Blanche-Neige et les Sept Nains_ dans les archives ;
+- modélisation des changements de nom et de forme des personnages ;
+- création des fiches de Blanche-Neige, de la Reine, du Prince, du Chasseur et du Miroir magique ;
+- arrivée de Prof, Grincheux, Joyeux, Dormeur, Timide, Atchoum et Simplet ;
+- documentation des animateurs, artistes, musiciens, interprètes et techniciens du film ;
+- projection du générique, des filiations, des sorties, des repères et des distinctions du long métrage ;
+- promotion des six Décors : `PixieCard`, `PixiePanel`, `PixieFrame`, `PixieCallout`, `PixieInset` et `PixieBackdrop` ;
+- promotion de `PixieContainer`, `PixieStack`, `PixieCluster`, `PixieSection` et `PixieGrid` ;
+- création d’une ossature commune pour les quatre index et leurs collections ;
+- entrée des sources dans les chapitres et création d’un cadre commun pour les repères des fiches ;
+- unification du montage des sections, des relations, des récompenses et des sources ;
+- réunion des familles du Codex sous un même contrat de typage ;
+- enrichissement des registres avec les accessoires généraux et les techniques de l’image, de la couleur, du son, des effets et de l’Imagineering ;
+- refonte du grand carton de la home, de ses quatre portes, de ses génériques et de la recherche ;
+- déploiement des ouvertures, chapitres et repères sur un cadre de lecture plus ample ;
+- utilisation de `PixieCard` et des nouveaux symboles dans les détails et les métiers des fiches Œuvres.
+
+### Générique des commits
+
+1. `84213ca` — 🎞️ Acte > Acte V · Blanche-Neige ouvre le grand récit > 🐭 Julien
+2. `22b5a62` — ✍️ Scénario > Le long métrage élargit les archives des Œuvres > 🐭 Julien
+3. `d3633af` — 🗄️ Archives > The Goddess of Spring prépare le chemin du long métrage > 🐭 Julien
+4. `0dff3b5` — 🗄️ Archives > Blanche-Neige ouvre le grand récit du Codex > 🐭 Julien
+5. `f0bdc85` — ✍️ Scénario > Les personnages peuvent changer de nom et de forme > 🐭 Julien
+6. `7828d28` — 🗄️ Archives > Blanche-Neige et son royaume traversent le miroir du Codex > 🐭 Julien
+7. `563f3c3` — 🗄️ Archives > Les Sept Nains trouvent chacun leur place dans le Codex > 🐭 Julien
+8. `bafb5f5` — 🗄️ Archives > Les maîtres du mouvement donnent vie au premier long métrage > 🐭 Julien
+9. `c29dff1` — 🗄️ Archives > Les artistes de Blanche-Neige donnent forme au premier royaume > 🐭 Julien
+10. `ac5aaec` — 🗄️ Archives > La musique de Blanche-Neige accorde le premier grand récit > 🐭 Julien
+11. `9a443ce` — 🗄️ Archives > Les voix et les gestes donnent chair au royaume de Blanche-Neige > 🐭 Julien
+12. `fb08335` — 🗄️ Archives > Les honneurs de Blanche-Neige rejoignent le palmarès du Codex > 🐭 Julien
+13. `45421b9` — 🎬 Scène > Blanche-Neige prend place dans les index du Codex > 🐭 Julien
+14. `37df66d` — 🎨 Mise en scène > PixieDustCard enrichit ses surfaces en version 0.2.0 > 🐭 Julien
+15. `963c08c` — 🎨 Mise en scène > L’Atelier éprouve les nouveaux rôles de PixieDustCard > 🐭 Julien
+16. `4993ec6` — 🎬 Scène > PixieCard est prêt à composer les surfaces du Codex > 🐭 Julien
+17. `28f3f17` — 🩹 Raccord > L’Atelier rejoint PixieCard dans sa loge définitive > 🐭 Julien
+18. `aab261f` — ✍️ Scénario > Les conventions enregistrent la promotion de PixieCard > 🐭 Julien
+19. `24138a4` — 🎨 Mise en scène > PixieDustPanel structure ses surfaces en version 0.2.0 > 🐭 Julien
+20. `e1019dc` — 🎨 Mise en scène > L’Atelier éprouve les nouveaux rôles de PixieDustPanel > 🐭 Julien
+21. `ed00ee6` — 🎬 Scène > PixiePanel est prêt à structurer les surfaces du Codex > 🐭 Julien
+22. `5ee29d4` — 🩹 Raccord > L’Atelier rejoint PixiePanel dans sa loge définitive > 🐭 Julien
+23. `0873754` — ✍️ Scénario > Le README enregistre la promotion de PixiePanel > 🐭 Julien
+24. `f0866b6` — 🎨 Mise en scène > PixieDustFrame enrichit ses cadrages en version 0.2.0 > 🐭 Julien
+25. `e220e6a` — 🎨 Mise en scène > L’Atelier éprouve les nouvelles mises en scène de PixieDustFrame > 🐭 Julien
+26. `630b517` — 🎬 Scène > PixieFrame est prêt à mettre les médias en scène > 🐭 Julien
+27. `a4b35a3` — 🩹 Raccord > L’Atelier rejoint PixieFrame dans sa loge définitive > 🐭 Julien
+28. `ad84af2` — ✍️ Scénario > Le README enregistre la promotion de PixieFrame > 🐭 Julien
+29. `a6cb662` — 🎨 Mise en scène > PixieDustCallout affine la lumière de ses annotations > 🐭 Julien
+30. `7f76c1f` — 🎨 Mise en scène > L’Atelier éprouve les nouveaux plans de PixieDustCallout > 🐭 Julien
+31. `7969a94` — 🎬 Scène > PixieCallout est prêt à éclairer les annotations du Codex > 🐭 Julien
+32. `acb65b7` — 🩹 Raccord > L’Atelier rejoint PixieCallout dans sa loge définitive > 🐭 Julien
+33. `23ce702` — ✍️ Scénario > Le README enregistre la promotion de PixieCallout > 🐭 Julien
+34. `ef4e6aa` — 🎨 Mise en scène > PixieDustInset approfondit ses seconds plans en version 0.2.0 > 🐭 Julien
+35. `985f52e` — 🎨 Mise en scène > L’Atelier éprouve les nouvelles profondeurs de PixieDustInset > 🐭 Julien
+36. `f05f4f2` — 🎬 Scène > PixieInset est prêt à creuser les seconds plans du Codex > 🐭 Julien
+37. `45700e1` — 🩹 Raccord > L’Atelier rejoint PixieInset dans sa loge définitive > 🐭 Julien
+38. `e6267dc` — ✍️ Scénario > Le README enregistre la promotion de PixieInset > 🐭 Julien
+39. `7635e07` — 🎨 Mise en scène > PixieDustBackdrop enrichit ses atmosphères en version 0.2.0 > 🐭 Julien
+40. `44784a0` — 🎨 Mise en scène > L’Atelier éprouve les nouvelles atmosphères de PixieDustBackdrop > 🐭 Julien
+41. `480f195` — 🎬 Scène > PixieBackdrop est prêt à installer les atmosphères du Codex > 🐭 Julien
+42. `825e04c` — 🩹 Raccord > L’Atelier rejoint PixieBackdrop dans sa loge définitive > 🐭 Julien
+43. `2771645` — ✍️ Scénario > Le README enregistre la promotion de PixieBackdrop > 🐭 Julien
+44. `37c53a5` — 🎨 Mise en scène > PixieDustContainer fixe ses cadres de lecture en version 0.2.0 > 🐭 Julien
+45. `1d1cdcb` — 🎨 Mise en scène > L’Atelier éprouve les nouveaux cadres de PixieDustContainer > 🐭 Julien
+46. `00b8f19` — 🎬 Scène > PixieContainer est prêt à cadrer les séquences du Codex > 🐭 Julien
+47. `a2e7b99` — 🩹 Raccord > L’Atelier rejoint PixieContainer dans sa loge définitive > 🐭 Julien
+48. `3e15dad` — ✍️ Scénario > Le README enregistre la promotion de PixieContainer > 🐭 Julien
+49. `d51ba77` — 🎨 Mise en scène > PixieDustStack règle son rythme vertical en version 0.2.0 > 🐭 Julien
+50. `f7d63fa` — 🎨 Mise en scène > L’Atelier éprouve les nouvelles séquences de PixieDustStack > 🐭 Julien
+51. `521806c` — 🎬 Scène > PixieStack est prêt à rythmer les séquences du Codex > 🐭 Julien
+52. `95f77a3` — 🩹 Raccord > L’Atelier rejoint PixieStack dans sa loge définitive > 🐭 Julien
+53. `c6cce09` — ✍️ Scénario > Le README enregistre la promotion de PixieStack > 🐭 Julien
+54. `5453499` — 🎨 Mise en scène > PixieDustCluster distribue ses plans en version 0.2.0 > 🐭 Julien
+55. `e197795` — 🎨 Mise en scène > L’Atelier éprouve la distribution de PixieDustCluster > 🐭 Julien
+56. `b4e2532` — 🎬 Scène > PixieCluster est prêt à rassembler les plans du Codex > 🐭 Julien
+57. `b6af3bd` — 🩹 Raccord > L’Atelier rejoint PixieCluster dans sa loge définitive > 🐭 Julien
+58. `ea4dc35` — ✍️ Scénario > Le README enregistre la promotion de PixieCluster > 🐭 Julien
+59. `94e8894` — 🎨 Mise en scène > PixieDustSection règle ses raccords en version 0.2.0 > 🐭 Julien
+60. `eb2c55a` — 🎨 Mise en scène > L’Atelier éprouve les nouvelles séquences de PixieDustSection > 🐭 Julien
+61. `da654d0` — 🎬 Scène > PixieSection est prêt à composer les séquences du Codex > 🐭 Julien
+62. `ad1d8a4` — 🩹 Raccord > L’Atelier rejoint PixieSection dans sa loge définitive > 🐭 Julien
+63. `815b793` — ✍️ Scénario > Le README enregistre la promotion de PixieSection > 🐭 Julien
+64. `01661bd` — 🎨 Mise en scène > Les quatre index partagent leur cadre de projection > 🐭 Julien
+65. `e56c561` — 🎨 Mise en scène > Les cartes métier entrent dans les Décors de Pixie > 🐭 Julien
+66. `ea30abf` — 🎨 Mise en scène > PixieDustGrid affine la distribution de ses pistes > 🐭 Julien
+67. `f1284f9` — 🎬 Scène > PixieGrid est prêt à distribuer les collections du Codex > 🐭 Julien
+68. `7e58ce4` — 🩹 Raccord > L’Atelier rejoint PixieGrid dans sa loge définitive > 🐭 Julien
+69. `9c4ea62` — ✍️ Scénario > Le README enregistre la promotion de PixieGrid > 🐭 Julien
+70. `b3e15a4` — 🩹 Raccord > Les quatre index confient leurs cartes à PixieGrid > 🐭 Julien
+71. `6fb3684` — 🎬 Scène > Les sources entrent dans les chapitres du Codex > 🐭 Julien
+72. `26d5704` — 🎬 Scène > Les repères des œuvres retrouvent leurs sources > 🐭 Julien
+73. `c91e96a` — 🎨 Mise en scène > Les fiches Œuvres éprouvent leur nouveau carton de repères > 🐭 Julien
+74. `e123aa7` — 🩹 Raccord > Les quatre familles confient leurs repères au même cadre > 🐭 Julien
+75. `245decf` — 🎨 Mise en scène > Les sections des fiches adoptent le montage de Pixie > 🐭 Julien
+76. `4dc3770` — 🩹 Raccord > Relations, récompenses et sources partagent le même rythme > 🐭 Julien
+77. `373afdf` — 🧹 Coulisses > Les quatre familles partagent un même contrat de typage > 🐭 Julien
+78. `7f84211` — ✍️ Scénario > Le README raconte le montage commun des index et des fiches > 🐭 Julien
+79. `4396789` — 🎨 Mise en scène > La page d’accueil ouvre son grand carton de projection > 🐭 Julien
+80. `83d1386` — 🎨 Mise en scène > Les quatre portes composent un nouveau hall d’exploration > 🐭 Julien
+81. `53d987c` — 🎨 Mise en scène > Le générique de la home prolonge la projection > 🐭 Julien
+82. `a0d7546` — 🎨 Mise en scène > Un générique court accompagne les pages du Codex > 🐭 Julien
+83. `ff0e3ab` — 🎨 Mise en scène > La table de recherche éclaire mieux les archives > 🐭 Julien
+84. `1a8a6c8` — 🩹 Raccord > Laisser respirer le générique au bas des pages > 🐭 Julien
+85. `e02ad61` — 🎨 Mise en scène > Déployer les ouvertures des fiches sur tout l’écran > 🐭 Julien
+86. `dbdaa84` — 🎨 Mise en scène > Déployer les ouvertures des index sur tout l’écran > 🐭 Julien
+87. `9e4f649` — 🎨 Mise en scène > Étendre la table de recherche sur toute la largeur > 🐭 Julien
+88. `a95907a` — 🎨 Mise en scène > Donner plus d’ampleur aux chapitres du Codex > 🐭 Julien
+89. `0c1796f` — 🗄️ Archives > Les techniques de l’image rejoignent le registre des symboles > 🐭 Julien
+90. `ae88dbe` — 🎨 Mise en scène > PixieSymbol expose les techniques de l’image > 🐭 Julien
+91. `739edef` — 🗄️ Archives > Les techniques de la couleur rejoignent le registre des symboles > 🐭 Julien
+92. `c5d683d` — 🎨 Mise en scène > PixieSymbol expose les techniques de la couleur > 🐭 Julien
+93. `61335cd` — 🗄️ Archives > Les techniques du son rejoignent le registre des symboles > 🐭 Julien
+94. `cf014f4` — 🎨 Mise en scène > PixieSymbol expose les techniques du son > 🐭 Julien
+95. `f663d94` — 🗄️ Archives > Les techniques des effets rejoignent le registre des symboles > 🐭 Julien
+96. `db09695` — 🎨 Mise en scène > PixieSymbol expose les techniques des effets > 🐭 Julien
+97. `3c2f6f1` — 🗄️ Archives > Les techniques de l’Imagineering rejoignent le registre des symboles > 🐭 Julien
+98. `3866c49` — 🎨 Mise en scène > PixieSymbol expose les techniques de l’Imagineering > 🐭 Julien
+99. `71ee7e6` — 🗄️ Archives > Les accessoires d’archives rejoignent le registre des symboles > 🐭 Julien
+100. `86ca803` — 🎨 Mise en scène > PixieSymbol expose les accessoires d’archives > 🐭 Julien
+101. `ff06ab0` — 🗄️ Archives > Les accessoires d’écriture rejoignent le registre des symboles > 🐭 Julien
+102. `0010000` — 🎨 Mise en scène > PixieSymbol expose les accessoires d’écriture > 🐭 Julien
+103. `b2b2973` — 🗄️ Archives > Les accessoires d’exploration rejoignent le registre des symboles > 🐭 Julien
+104. `8d4962b` — 🎨 Mise en scène > PixieSymbol expose les accessoires d’exploration > 🐭 Julien
+105. `e475afe` — 🗄️ Archives > Les repères temporels rejoignent le registre des symboles > 🐭 Julien
+106. `64290ce` — 🎨 Mise en scène > PixieSymbol expose les repères temporels > 🐭 Julien
+107. `f6549d9` — 🗄️ Archives > Les outils de l’atelier rejoignent le registre des symboles > 🐭 Julien
+108. `43fefde` — 🎨 Mise en scène > PixieSymbol expose les outils de l’atelier > 🐭 Julien
+109. `9b203d7` — 🗄️ Archives > Les accessoires événementiels rejoignent le registre des symboles > 🐭 Julien
+110. `ae9696b` — 🎨 Mise en scène > PixieSymbol expose les accessoires événementiels > 🐭 Julien
+111. `b5e0006` — 🗄️ Archives > Les outils de communication rejoignent le registre des symboles > 🐭 Julien
+112. `089c7e4` — 🎨 Mise en scène > PixieSymbol expose les outils de communication > 🐭 Julien
+113. `2a80564` — 🩹 Raccord > Étendre tous les chapitres au cadre des fiches > 🐭 Julien
+114. `6f83756` — 🎨 Mise en scène > PixieCard compose les détails des œuvres > 🐭 Julien
+115. `1710b32` — 🎨 Mise en scène > Illustrer et déployer les repères des œuvres > 🐭 Julien
+116. `06d3b06` — ✍️ Scénario > Donner une voix aux sorties et filiations des œuvres > 🐭 Julien
+117. `0d971c3` — 🎨 Mise en scène > Les métiers du générique révèlent leurs outils > 🐭 Julien
+118. `abb8680` — 🧪 Répétition > Tous les registres de symboles passent au contrôle de projection > 🐭 Julien
+119. `1c889e0` — ✍️ Scénario > Le README raconte la projection achevée de l’Acte V > 🐭 Julien
+
+### Image actuelle
+
+**Blanche-Neige a ouvert le grand récit.**
+
+La projection de l’Acte V reste ouverte jusqu’à son dernier contrôle et à son commit de clôture.
+
+---
+
+## 🍿 Entracte IV · L’Atelier déploie ses plateaux et inspecte ses raccords
+
+**Tag :** `entracte-iv`\
+**Ouverture :** `0d333a1`\
+**Clôture :** `9ec3b77`\
+**Entre :** Acte IV et Acte V
+
+### Le raccord
+
+Le quatrième Entracte transforme l’Atelier en véritable plateau de fabrication.
+
+Les surfaces, les compositions, les dialogues et les effets y reçoivent leurs premières esquisses. Pendant que le langage Pixie s’élargit, le Codex affine son identité, éclaire ses cartes et consigne les règles qui permettront de retrouver chaque étape de sa projection.
+
+### Pendant l’Entracte
+
+- ajout du logo au registre général et au générique du Codex ;
+- resserrement du récit de la page d’accueil et réalignement de ses quatre portes ;
+- extension du halo de projecteur aux cartes métier ;
+- ouverture des plateaux Décors, Dialogues, Montage et Effets ;
+- adoption de cinq voix typographiques pour la marque, les titres, le texte, les repères et le code ;
+- création des six premières surfaces PixieDust ;
+- création des onze esquisses de composition du Montage ;
+- création des six premiers contrôles du plateau des Dialogues ;
+- création de Toast, Loader et Skeleton pour le plateau des Effets ;
+- ajout des collections de symboles consacrées au cinéma et aux techniques d’animation ;
+- formalisation des conventions de tags, de Releases et du Journal de projection ;
+- reconstitution des quatre premiers Actes et de leurs Entractes dans le CHANGELOG ;
+- actualisation du README avec les nouveaux plateaux de l’Atelier.
+
+### Générique des commits
+
+1. `0d333a1` — 🍿 Entracte > Le temps d’inspecter les raccords commence > 🐭 Julien
+2. `35b2575` — 🗄️ Archives > Le logo du Codex rejoint le registre général > 🐭 Julien
+3. `6e59ec2` — 🎨 Mise en scène > Le logo prend place au générique du Codex > 🐭 Julien
+4. `162bd89` — ✍️ Scénario > La page d’accueil resserre son récit > 🐭 Julien
+5. `6668d2a` — 🎨 Mise en scène > Les quatre portes retrouvent leur ligne > 🐭 Julien
+6. `4bb518c` — 🎨 Mise en scène > Le projecteur éclaire toutes les cartes du Codex > 🐭 Julien
+7. `14637e7` — 🏗️ Décor > L’Atelier ouvre son troisième plateau > 🐭 Julien
+8. `1baa75a` — 🏗️ Décor > L’Atelier ouvre le plateau des dialogues > 🐭 Julien
+9. `2fab29e` — 🏗️ Décor > L’Atelier ouvre le plateau du montage > 🐭 Julien
+10. `b776013` — 🏗️ Décor > L’Atelier ouvre le plateau des effets > 🐭 Julien
+11. `af0a224` — 🎨 Mise en scène > Le Codex trouve ses cinq voix > 🐭 Julien
+12. `eb0327e` — 🎨 Mise en scène > Le sous-titre prend toute la largeur > 🐭 Julien
+13. `1d4398d` — 🎨 Mise en scène > PixieDustCard installe ses premières surfaces > 🐭 Julien
+14. `a6378fd` — ✍️ Scénario > Les types de composants trouvent leur dossier > 🐭 Julien
+15. `9c27fe4` — 🎨 Mise en scène > PixieDustPanel structure les premières sections > 🐭 Julien
+16. `84d71c4` — 🎨 Mise en scène > Créateurs, Œuvres et Époques redessinent leurs symboles > 🐭 Julien
+17. `1f83ac2` — 🎨 Mise en scène > PixieDustFrame met les médias dans le cadre > 🐭 Julien
+18. `e6de7de` — 🎨 Mise en scène > PixieDustCallout éclaire les annotations du Codex > 🐭 Julien
+19. `9da63df` — 🎨 Mise en scène > PixieDustInset creuse ses premières zones secondaires > 🐭 Julien
+20. `3ba31bc` — 🎨 Mise en scène > PixieDustBackdrop installe ses premières atmosphères > 🐭 Julien
+21. `d858658` — 🎨 Mise en scène > PixieDustContainer cadre sa première séquence > 🐭 Julien
+22. `1d9e9c9` — 🎨 Mise en scène > PixieDustStack donne son rythme aux premières séquences > 🐭 Julien
+23. `832407f` — 🎨 Mise en scène > PixieDustCluster rassemble les plans sur plusieurs lignes > 🐭 Julien
+24. `2c9c1ab` — 🎨 Mise en scène > PixieDustSection compose ses premières séquences éditoriales > 🐭 Julien
+25. `2d88f36` — 🎨 Mise en scène > PixieDustGrid distribue les collections sur ses premières pistes > 🐭 Julien
+26. `62b8526` — 🎨 Mise en scène > PixieDustSplit compose son premier champ-contrechamp > 🐭 Julien
+27. `e49bcb9` — 🎨 Mise en scène > PixieDustSidebar installe sa première régie latérale > 🐭 Julien
+28. `01df9b3` — 🎨 Mise en scène > PixieDustSwitcher orchestre ses premiers changements de plan > 🐭 Julien
+29. `2429444` — 🎨 Mise en scène > PixieDustRail déroule ses premières archives en travelling > 🐭 Julien
+30. `be839db` — 🎨 Mise en scène > PixieDustBleed ouvre ses premières séquences au hors-champ > 🐭 Julien
+31. `6bea6f2` — 🎨 Mise en scène > PixieDustStickyRegion maintient ses premières régies dans le cadre > 🐭 Julien
+32. `435b357` — 🎨 Mise en scène > PixieDustField relie ses premiers contrôles à leurs indications > 🐭 Julien
+33. `c5e67ad` — 🎨 Mise en scène > PixieDustInput recueille ses premières lignes de dialogue > 🐭 Julien
+34. `5e27ef5` — 🎨 Mise en scène > PixieDustTextarea recueille ses premières réponses développées > 🐭 Julien
+35. `2f84096` — 🎨 Mise en scène > PixieDustSelect ouvre ses premières listes de choix > 🐭 Julien
+36. `dd9297a` — 🎨 Mise en scène > PixieDustSwitch actionne ses premières préférences > 🐭 Julien
+37. `0453d58` — 🎨 Mise en scène > PixieDustSearchField compose ses premières recherches > 🐭 Julien
+38. `b9dff21` — 🎨 Mise en scène > PixieDustToast signale les réactions du Codex > 🐭 Julien
+39. `dec6a68` — 🎨 Mise en scène > PixieDustLoader laisse voir la magie à l’œuvre > 🐭 Julien
+40. `111b1ef` — 🎨 Mise en scène > PixieDustSkeleton réserve la place de la prochaine image > 🐭 Julien
+41. `a894842` — 🗄️ Archives > Cinéma et techniques d’animation enrichissent le registre > 🐭 Julien
+42. `699b0fa` — 🎨 Mise en scène > PixieSymbol expose les collections Cinéma et Animation > 🐭 Julien
+43. `8fe3f73` — ✍️ Scénario > Les tags et le Journal fixent leurs règles de projection > 🐭 Julien
+44. `93f57c6` — ✍️ Scénario > Le Journal retrace les quatre premiers Actes et leurs raccords > 🐭 Julien
+45. `a9bb044` — ✍️ Scénario > Le README raconte les nouveaux plateaux de l’Atelier > 🐭 Julien
+46. `9ec3b77` — 🍿 Entracte > Les raccords sont inspectés, la projection peut reprendre > 🐭 Julien
+
+### Dernière image
+
+**Les raccords sont inspectés, la projection peut reprendre.**
+
+L’Atelier dispose désormais de six plateaux et d’un premier répertoire d’esquisses pour préparer l’entrée de Blanche-Neige dans le grand récit.
+
+---
+
 ## 🎞️ Acte IV · Les origines retrouvent leur lumière
 
 **Tag :** `acte-iv`\
