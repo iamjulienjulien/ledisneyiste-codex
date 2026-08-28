@@ -9,7 +9,7 @@
         "lint": "eslint",
         "format": "prettier . --write",
         "format:check": "prettier . --check",
-        "check:symbols": "node scripts/verifier-symboles-editoriaux.mjs",
+        "check:symbols": "node scripts/verifier-symboles.mjs",
         "check:metadata": "node scripts/verifier-metadonnees.mjs",
         "check:oeuvres": "node scripts/verifier-oeuvres.mjs",
         "check:personnages": "node scripts/verifier-personnages.mjs",
