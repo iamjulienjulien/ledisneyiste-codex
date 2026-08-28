@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { AtelierCodeBlock } from "@/components/atelier/AtelierCodeBlock";
 import styles from "./AtelierCodePanel.module.css";
 
 export function AtelierCodePanel({ code }: Readonly<{ code: string }>) {
@@ -31,16 +32,14 @@ export function AtelierCodePanel({ code }: Readonly<{ code: string }>) {
                     {copyState === "copied" ? "Copié ✓" : "Copier"}
                 </button>
             </div>
-            <pre className="overflow-x-auto p-5 font-mono text-sm leading-6 text-ink-soft">
-                <code>{code}</code>
-            </pre>
-            <p aria-live="polite" className="px-5 pb-4 text-xs text-muted">
-                {copyState === "error"
-                    ? "La copie automatique a échoué. Le code peut être sélectionné manuellement."
-                    : copyState === "copied"
-                      ? "Le code est dans le presse-papiers."
-                      : "Les réglages mettent cet exemple à jour en direct."}
-            </p>
+            <AtelierCodeBlock frame="bare">{code}</AtelierCodeBlock>
+            {copyState !== "idle" ? (
+                <p aria-live="polite" className="px-5 pb-4 text-xs text-muted">
+                    {copyState === "error"
+                        ? "La copie automatique a échoué. Le code peut être sélectionné manuellement."
+                        : "Le code est dans le presse-papiers."}
+                </p>
+            ) : null}
         </div>
     );
 }

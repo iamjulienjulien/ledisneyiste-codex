@@ -1,0 +1,112 @@
+.root {
+    --syntax-comment: color-mix(
+        in srgb,
+        var(--color-muted) 86%,
+        var(--color-ink)
+    );
+    --syntax-keyword: color-mix(
+        in srgb,
+        var(--atelier-animation-gouache) 72%,
+        var(--color-ink)
+    );
+    --syntax-tag: color-mix(
+        in srgb,
+        var(--atelier-animation-rouge-crayon) 70%,
+        var(--color-ink)
+    );
+    --syntax-attribute: color-mix(
+        in srgb,
+        var(--atelier-animation-cyan-effets-optiques) 68%,
+        var(--color-ink)
+    );
+    --syntax-string: color-mix(
+        in srgb,
+        var(--atelier-animation-vert-cellulo) 72%,
+        var(--color-ink)
+    );
+    --syntax-number: color-mix(
+        in srgb,
+        var(--atelier-animation-orange-banc-titre) 76%,
+        var(--color-ink)
+    );
+    --syntax-literal: color-mix(
+        in srgb,
+        var(--atelier-animation-rose-aerographe) 72%,
+        var(--color-ink)
+    );
+    --syntax-function: color-mix(
+        in srgb,
+        var(--atelier-animation-jaune-lampe) 70%,
+        var(--color-ink)
+    );
+    --syntax-property: color-mix(
+        in srgb,
+        var(--atelier-animation-turquoise-acetate) 66%,
+        var(--color-ink)
+    );
+
+    overflow-x: auto;
+    margin: 0;
+    border: 1px solid var(--color-line);
+    background: var(--color-canvas);
+    padding: 1.25rem;
+    color: var(--color-ink-soft);
+    font-family: var(--font-mono), monospace;
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    tab-size: 4;
+    scrollbar-color: var(--color-line-strong) transparent;
+}
+
+.bare {
+    border: 0;
+}
+
+.code {
+    color: inherit;
+    font: inherit;
+}
+
+.comment {
+    color: var(--syntax-comment);
+    font-style: italic;
+}
+
+.keyword {
+    color: var(--syntax-keyword);
+    font-weight: 600;
+}
+
+.tag {
+    color: var(--syntax-tag);
+}
+
+.attribute {
+    color: var(--syntax-attribute);
+}
+
+.string {
+    color: var(--syntax-string);
+}
+
+.number {
+    color: var(--syntax-number);
+}
+
+.literal {
+    color: var(--syntax-literal);
+    font-weight: 600;
+}
+
+.function {
+    color: var(--syntax-function);
+}
+
+.property {
+    color: var(--syntax-property);
+}
+
+.operator,
+.punctuation {
+    color: var(--color-muted);
+}
