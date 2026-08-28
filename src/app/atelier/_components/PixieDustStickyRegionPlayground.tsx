@@ -1,5 +1,7 @@
 "use client";
 
+import { PixieSelect } from "@/components/ui/PixieSelect";
+
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import {
@@ -228,7 +230,10 @@ ${labelLine}>
                             >
                                 Élément sémantique
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="sticky-element"
                                 value={element}
                                 onChange={(event) =>
@@ -237,14 +242,14 @@ ${labelLine}>
                                             .value as PixieDustStickyRegionElement,
                                     )
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink"
+                                className="mt-2 font-mono"
                             >
                                 {elements.map((value) => (
                                     <option key={value} value={value}>
                                         {value}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <fieldset>
@@ -288,13 +293,16 @@ ${labelLine}>
                             >
                                 Matière de la région
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="sticky-material"
                                 value={material}
                                 onChange={(event) =>
                                     setMaterial(event.target.value as Material)
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                className="mt-2"
                             >
                                 {materials.map((option) => (
                                     <option
@@ -304,7 +312,7 @@ ${labelLine}>
                                         {option.label}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <fieldset>

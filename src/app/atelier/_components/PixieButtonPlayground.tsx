@@ -1,5 +1,7 @@
 "use client";
 
+import { PixieSelect } from "@/components/ui/PixieSelect";
+
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import {
@@ -87,7 +89,7 @@ export function PixieButtonPlayground() {
                                 onChange={(event) =>
                                     setLabel(event.target.value)
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                className="mt-2"
                             />
                         </div>
 
@@ -132,13 +134,16 @@ export function PixieButtonPlayground() {
                             >
                                 Couleur
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="button-color"
                                 value={color || "theme"}
                                 onChange={(event) =>
                                     selectColor(event.target.value)
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                className="mt-2"
                             >
                                 <option value="theme">Thème</option>
                                 {colorSlugs.map((slug) => (
@@ -146,7 +151,7 @@ export function PixieButtonPlayground() {
                                         {getAtelierAnimationColor(slug).label}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div className="space-y-3">

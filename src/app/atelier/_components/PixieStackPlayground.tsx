@@ -1,5 +1,7 @@
 "use client";
 
+import { PixieSelect } from "@/components/ui/PixieSelect";
+
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import {
@@ -106,7 +108,10 @@ ${heading}${codeChildren}
                             >
                                 Élément sémantique
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="stack-element"
                                 value={element}
                                 onChange={(event) =>
@@ -114,14 +119,14 @@ ${heading}${codeChildren}
                                         event.target.value as PixieStackElement,
                                     )
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink"
+                                className="mt-2 font-mono"
                             >
                                 {elements.map((value) => (
                                     <option key={value} value={value}>
                                         {value}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                             <p className="mt-2 text-xs leading-5 text-muted">
                                 Les régions section, article et nav reçoivent un
                                 nom visible dans l’aperçu.

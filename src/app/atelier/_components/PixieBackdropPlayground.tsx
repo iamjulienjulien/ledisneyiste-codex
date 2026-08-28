@@ -1,5 +1,7 @@
 "use client";
 
+import { PixieSelect } from "@/components/ui/PixieSelect";
+
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import {
@@ -81,8 +83,7 @@ const frameWidths = {
     large: "max-w-none",
 } as const satisfies Record<"compact" | "moyen" | "large", string>;
 
-const selectClassName =
-    "mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink";
+const selectClassName = "mt-2";
 
 export function PixieBackdropPlayground() {
     const [element, setElement] = useState<PixieBackdropElement>("section");
@@ -152,7 +153,10 @@ export function PixieBackdropPlayground() {
                             >
                                 Élément sémantique
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="backdrop-element"
                                 value={element}
                                 onChange={(event) =>
@@ -168,7 +172,7 @@ export function PixieBackdropPlayground() {
                                         {value}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <fieldset>
@@ -212,7 +216,10 @@ export function PixieBackdropPlayground() {
                             >
                                 Position du foyer
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="backdrop-position"
                                 value={position}
                                 onChange={(event) =>
@@ -228,7 +235,7 @@ export function PixieBackdropPlayground() {
                                         {value}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div>
@@ -238,7 +245,10 @@ export function PixieBackdropPlayground() {
                             >
                                 Direction
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="backdrop-direction"
                                 value={direction}
                                 onChange={(event) =>
@@ -254,7 +264,7 @@ export function PixieBackdropPlayground() {
                                         {value}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div>
@@ -264,7 +274,10 @@ export function PixieBackdropPlayground() {
                             >
                                 Étendue
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="backdrop-spread"
                                 value={spread}
                                 onChange={(event) =>
@@ -280,7 +293,7 @@ export function PixieBackdropPlayground() {
                                         {value}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div>
@@ -290,7 +303,10 @@ export function PixieBackdropPlayground() {
                             >
                                 Surface de base
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="backdrop-base"
                                 value={base}
                                 onChange={(event) =>
@@ -305,7 +321,7 @@ export function PixieBackdropPlayground() {
                                         {value}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div>
@@ -315,7 +331,10 @@ export function PixieBackdropPlayground() {
                             >
                                 Espacement intérieur
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="backdrop-padding"
                                 value={padding}
                                 onChange={(event) =>
@@ -331,7 +350,7 @@ export function PixieBackdropPlayground() {
                                         {value}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div>
@@ -341,7 +360,10 @@ export function PixieBackdropPlayground() {
                             >
                                 Rayon
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="backdrop-radius"
                                 value={radius}
                                 onChange={(event) =>
@@ -357,7 +379,7 @@ export function PixieBackdropPlayground() {
                                         {value}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div>
@@ -367,7 +389,10 @@ export function PixieBackdropPlayground() {
                             >
                                 Couleur principale
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="backdrop-color"
                                 value={color || "theme"}
                                 onChange={(event) =>
@@ -381,7 +406,7 @@ export function PixieBackdropPlayground() {
                                         {getAtelierAnimationColor(slug).label}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div>
@@ -391,7 +416,10 @@ export function PixieBackdropPlayground() {
                             >
                                 Couleur secondaire
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="backdrop-secondary-color"
                                 value={secondaryColor || "theme"}
                                 onChange={(event) =>
@@ -408,7 +436,7 @@ export function PixieBackdropPlayground() {
                                         {getAtelierAnimationColor(slug).label}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div>
@@ -418,7 +446,10 @@ export function PixieBackdropPlayground() {
                             >
                                 Texture
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="backdrop-texture"
                                 value={texture}
                                 onChange={(event) =>
@@ -434,7 +465,7 @@ export function PixieBackdropPlayground() {
                                         {value}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div>
@@ -444,7 +475,10 @@ export function PixieBackdropPlayground() {
                             >
                                 Intensité de la texture
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="backdrop-texture-intensity"
                                 value={textureIntensity}
                                 onChange={(event) =>
@@ -461,7 +495,7 @@ export function PixieBackdropPlayground() {
                                         {value}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div>
@@ -471,7 +505,10 @@ export function PixieBackdropPlayground() {
                             >
                                 Mouvement
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="backdrop-motion"
                                 value={motion}
                                 onChange={(event) =>
@@ -487,7 +524,7 @@ export function PixieBackdropPlayground() {
                                         {value}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
                     </div>
                 </aside>

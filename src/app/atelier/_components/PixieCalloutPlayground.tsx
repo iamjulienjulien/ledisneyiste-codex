@@ -1,5 +1,7 @@
 "use client";
 
+import { PixieSelect } from "@/components/ui/PixieSelect";
+
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import {
@@ -69,8 +71,7 @@ const frameWidths = {
     large: "max-w-none",
 } as const satisfies Record<"compact" | "moyen" | "large", string>;
 
-const selectClassName =
-    "mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink";
+const selectClassName = "mt-2";
 
 export function PixieCalloutPlayground() {
     const [element, setElement] = useState<PixieCalloutElement>("aside");
@@ -156,7 +157,10 @@ export function PixieCalloutPlayground() {
                             >
                                 Élément sémantique
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="callout-element"
                                 value={element}
                                 onChange={(event) =>
@@ -172,7 +176,7 @@ export function PixieCalloutPlayground() {
                                         {value}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <fieldset>
@@ -212,7 +216,10 @@ export function PixieCalloutPlayground() {
                         <div className="grid grid-cols-2 gap-3">
                             <label className="text-sm font-medium text-ink">
                                 Espacement
-                                <select
+                                <PixieSelect
+                                    mode="popover"
+                                    portal
+                                    size="sm"
                                     value={padding}
                                     onChange={(event) =>
                                         setPadding(
@@ -225,11 +232,14 @@ export function PixieCalloutPlayground() {
                                     {paddings.map((value) => (
                                         <option key={value}>{value}</option>
                                     ))}
-                                </select>
+                                </PixieSelect>
                             </label>
                             <label className="text-sm font-medium text-ink">
                                 Rayon
-                                <select
+                                <PixieSelect
+                                    mode="popover"
+                                    portal
+                                    size="sm"
                                     value={radius}
                                     onChange={(event) =>
                                         setRadius(
@@ -242,7 +252,7 @@ export function PixieCalloutPlayground() {
                                     {radii.map((value) => (
                                         <option key={value}>{value}</option>
                                     ))}
-                                </select>
+                                </PixieSelect>
                             </label>
                         </div>
 
@@ -253,7 +263,10 @@ export function PixieCalloutPlayground() {
                             >
                                 Couleur
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="callout-color"
                                 value={color || "theme"}
                                 onChange={(event) =>
@@ -267,13 +280,16 @@ export function PixieCalloutPlayground() {
                                         {getAtelierAnimationColor(slug).label}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div className="grid grid-cols-2 gap-3">
                             <label className="text-sm font-medium text-ink">
                                 Position accent
-                                <select
+                                <PixieSelect
+                                    mode="popover"
+                                    portal
+                                    size="sm"
                                     value={accentPosition}
                                     onChange={(event) =>
                                         setAccentPosition(
@@ -286,11 +302,14 @@ export function PixieCalloutPlayground() {
                                     {accentPositions.map((value) => (
                                         <option key={value}>{value}</option>
                                     ))}
-                                </select>
+                                </PixieSelect>
                             </label>
                             <label className="text-sm font-medium text-ink">
                                 Élévation
-                                <select
+                                <PixieSelect
+                                    mode="popover"
+                                    portal
+                                    size="sm"
                                     value={elevation}
                                     onChange={(event) =>
                                         setElevation(
@@ -303,14 +322,17 @@ export function PixieCalloutPlayground() {
                                     {elevations.map((value) => (
                                         <option key={value}>{value}</option>
                                     ))}
-                                </select>
+                                </PixieSelect>
                             </label>
                         </div>
 
                         <div className="grid grid-cols-2 gap-3">
                             <label className="text-sm font-medium text-ink">
                                 Séparateurs
-                                <select
+                                <PixieSelect
+                                    mode="popover"
+                                    portal
+                                    size="sm"
                                     value={divider}
                                     onChange={(event) =>
                                         setDivider(
@@ -323,11 +345,14 @@ export function PixieCalloutPlayground() {
                                     {dividers.map((value) => (
                                         <option key={value}>{value}</option>
                                     ))}
-                                </select>
+                                </PixieSelect>
                             </label>
                             <label className="text-sm font-medium text-ink">
                                 Alignement footer
-                                <select
+                                <PixieSelect
+                                    mode="popover"
+                                    portal
+                                    size="sm"
                                     value={footerAlign}
                                     onChange={(event) =>
                                         setFooterAlign(
@@ -340,7 +365,7 @@ export function PixieCalloutPlayground() {
                                     {footerAlignments.map((value) => (
                                         <option key={value}>{value}</option>
                                     ))}
-                                </select>
+                                </PixieSelect>
                             </label>
                         </div>
 
@@ -364,7 +389,10 @@ export function PixieCalloutPlayground() {
                         <div className="grid grid-cols-2 gap-3">
                             <label className="text-sm font-medium text-ink">
                                 Intensité
-                                <select
+                                <PixieSelect
+                                    mode="popover"
+                                    portal
+                                    size="sm"
                                     value={effectIntensity}
                                     onChange={(event) =>
                                         setEffectIntensity(
@@ -377,11 +405,14 @@ export function PixieCalloutPlayground() {
                                     {effectIntensities.map((value) => (
                                         <option key={value}>{value}</option>
                                     ))}
-                                </select>
+                                </PixieSelect>
                             </label>
                             <label className="text-sm font-medium text-ink">
                                 Symbole
-                                <select
+                                <PixieSelect
+                                    mode="popover"
+                                    portal
+                                    size="sm"
                                     value={iconAlign}
                                     onChange={(event) =>
                                         setIconAlign(
@@ -394,7 +425,7 @@ export function PixieCalloutPlayground() {
                                     {iconAlignments.map((value) => (
                                         <option key={value}>{value}</option>
                                     ))}
-                                </select>
+                                </PixieSelect>
                             </label>
                         </div>
 

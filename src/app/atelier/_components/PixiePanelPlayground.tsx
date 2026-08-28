@@ -1,5 +1,7 @@
 "use client";
 
+import { PixieSelect } from "@/components/ui/PixieSelect";
+
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import {
@@ -151,7 +153,10 @@ export function PixiePanelPlayground() {
                             >
                                 Élément sémantique
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="panel-element"
                                 value={element}
                                 onChange={(event) =>
@@ -159,14 +164,14 @@ export function PixiePanelPlayground() {
                                         event.target.value as PixiePanelElement,
                                     )
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink"
+                                className="mt-2 font-mono"
                             >
                                 {elements.map((value) => (
                                     <option key={value} value={value}>
                                         {value}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <fieldset>
@@ -234,7 +239,10 @@ export function PixiePanelPlayground() {
                                         className="grid grid-cols-[4rem_1fr] items-center gap-3 text-sm text-ink-soft"
                                     >
                                         {control.label}
-                                        <select
+                                        <PixieSelect
+                                            mode="popover"
+                                            portal
+                                            size="sm"
                                             id={`panel-${control.id}`}
                                             value={control.value}
                                             onChange={(event) =>
@@ -253,7 +261,7 @@ export function PixiePanelPlayground() {
                                                     {option.label}
                                                 </option>
                                             ))}
-                                        </select>
+                                        </PixieSelect>
                                     </label>
                                 ))}
                             </div>
@@ -283,7 +291,10 @@ export function PixiePanelPlayground() {
                             >
                                 Position de l’accent
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="panel-accent-position"
                                 value={accentPosition}
                                 onChange={(event) =>
@@ -292,7 +303,7 @@ export function PixiePanelPlayground() {
                                             .value as PixiePanelAccentPosition,
                                     )
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                className="mt-2"
                             >
                                 {accentPositions.map((option) => (
                                     <option
@@ -302,7 +313,7 @@ export function PixiePanelPlayground() {
                                         {option.label}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div>
@@ -312,7 +323,10 @@ export function PixiePanelPlayground() {
                             >
                                 Élévation
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="panel-elevation"
                                 value={elevation}
                                 onChange={(event) =>
@@ -321,7 +335,7 @@ export function PixiePanelPlayground() {
                                             .value as PixiePanelElevation,
                                     )
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                className="mt-2"
                             >
                                 {elevations.map((option) => (
                                     <option
@@ -331,7 +345,7 @@ export function PixiePanelPlayground() {
                                         {option.label}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div>
@@ -341,7 +355,10 @@ export function PixiePanelPlayground() {
                             >
                                 Séparateurs
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="panel-dividers"
                                 value={dividers}
                                 onChange={(event) =>
@@ -350,7 +367,7 @@ export function PixiePanelPlayground() {
                                             .value as PixiePanelDividers,
                                     )
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                className="mt-2"
                             >
                                 {dividersOptions.map((option) => (
                                     <option
@@ -360,7 +377,7 @@ export function PixiePanelPlayground() {
                                         {option.label}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div>
@@ -370,7 +387,10 @@ export function PixiePanelPlayground() {
                             >
                                 Défilement
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="panel-scroll"
                                 value={scroll}
                                 onChange={(event) =>
@@ -378,7 +398,7 @@ export function PixiePanelPlayground() {
                                         event.target.value as PixiePanelScroll,
                                     )
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                className="mt-2"
                             >
                                 {scrollOptions.map((option) => (
                                     <option
@@ -388,7 +408,7 @@ export function PixiePanelPlayground() {
                                         {option.label}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div>
@@ -398,13 +418,16 @@ export function PixiePanelPlayground() {
                             >
                                 Couleur
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="panel-color"
                                 value={color || "theme"}
                                 onChange={(event) =>
                                     selectColor(event.target.value)
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                className="mt-2"
                             >
                                 <option value="theme">Accent du thème</option>
                                 {colorSlugs.map((slug) => (
@@ -412,7 +435,7 @@ export function PixiePanelPlayground() {
                                         {getAtelierAnimationColor(slug).label}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div className="space-y-3">

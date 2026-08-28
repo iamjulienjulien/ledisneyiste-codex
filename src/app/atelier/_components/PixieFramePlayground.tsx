@@ -1,5 +1,7 @@
 "use client";
 
+import { PixieSelect } from "@/components/ui/PixieSelect";
+
 import Image from "next/image";
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
@@ -93,7 +95,8 @@ const frameWidths = {
     large: "max-w-none",
 } as const satisfies Record<"compact" | "moyen" | "large", string>;
 
-const selectClassName =
+const selectClassName = "mt-2";
+const inputClassName =
     "mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink";
 
 export function PixieFramePlayground() {
@@ -191,7 +194,10 @@ export function PixieFramePlayground() {
                             >
                                 Élément sémantique
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="frame-element"
                                 value={element}
                                 onChange={(event) =>
@@ -204,7 +210,7 @@ export function PixieFramePlayground() {
                                 {elements.map((value) => (
                                     <option key={value}>{value}</option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <fieldset>
@@ -231,7 +237,10 @@ export function PixieFramePlayground() {
                             >
                                 Proportion
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="frame-aspect"
                                 value={aspect}
                                 disabled={useCustomAspect}
@@ -250,7 +259,7 @@ export function PixieFramePlayground() {
                                         {option.label}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                             <label className="mt-3 flex cursor-pointer items-center gap-2 text-sm text-ink-soft">
                                 <input
                                     type="checkbox"
@@ -269,7 +278,7 @@ export function PixieFramePlayground() {
                                     onChange={(event) =>
                                         setCustomAspect(event.target.value)
                                     }
-                                    className={selectClassName}
+                                    className={inputClassName}
                                 />
                             ) : null}
                         </div>
@@ -281,7 +290,10 @@ export function PixieFramePlayground() {
                             >
                                 Ajustement
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="frame-fit"
                                 value={fit}
                                 onChange={(event) =>
@@ -292,7 +304,7 @@ export function PixieFramePlayground() {
                                 {fits.map((value) => (
                                     <option key={value}>{value}</option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div>
@@ -302,7 +314,10 @@ export function PixieFramePlayground() {
                             >
                                 Position du média
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="frame-position"
                                 value={position}
                                 disabled={useFocalPoint}
@@ -317,7 +332,7 @@ export function PixieFramePlayground() {
                                 {positions.map((value) => (
                                     <option key={value}>{value}</option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                             <label className="mt-3 flex cursor-pointer items-center gap-2 text-sm text-ink-soft">
                                 <input
                                     type="checkbox"
@@ -368,7 +383,10 @@ export function PixieFramePlayground() {
                         <div className="grid grid-cols-2 gap-3">
                             <label className="text-sm font-medium text-ink">
                                 Marge
-                                <select
+                                <PixieSelect
+                                    mode="popover"
+                                    portal
+                                    size="sm"
                                     value={padding}
                                     onChange={(event) =>
                                         setPadding(
@@ -381,11 +399,14 @@ export function PixieFramePlayground() {
                                     {paddings.map((value) => (
                                         <option key={value}>{value}</option>
                                     ))}
-                                </select>
+                                </PixieSelect>
                             </label>
                             <label className="text-sm font-medium text-ink">
                                 Rayon cadre
-                                <select
+                                <PixieSelect
+                                    mode="popover"
+                                    portal
+                                    size="sm"
                                     value={radius}
                                     onChange={(event) =>
                                         setRadius(
@@ -398,7 +419,7 @@ export function PixieFramePlayground() {
                                     {radii.map((value) => (
                                         <option key={value}>{value}</option>
                                     ))}
-                                </select>
+                                </PixieSelect>
                             </label>
                         </div>
 
@@ -409,7 +430,10 @@ export function PixieFramePlayground() {
                             >
                                 Rayon du média
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="frame-media-radius"
                                 value={mediaRadius}
                                 onChange={(event) =>
@@ -426,7 +450,7 @@ export function PixieFramePlayground() {
                                 {radii.map((value) => (
                                     <option key={value}>{value}</option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div>
@@ -436,7 +460,10 @@ export function PixieFramePlayground() {
                             >
                                 Couleur
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="frame-color"
                                 value={color || "theme"}
                                 onChange={(event) =>
@@ -450,13 +477,16 @@ export function PixieFramePlayground() {
                                         {getAtelierAnimationColor(slug).label}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div className="grid grid-cols-2 gap-3">
                             <label className="text-sm font-medium text-ink">
                                 Élévation
-                                <select
+                                <PixieSelect
+                                    mode="popover"
+                                    portal
+                                    size="sm"
                                     value={elevation}
                                     onChange={(event) =>
                                         setElevation(
@@ -469,11 +499,14 @@ export function PixieFramePlayground() {
                                     {elevations.map((value) => (
                                         <option key={value}>{value}</option>
                                     ))}
-                                </select>
+                                </PixieSelect>
                             </label>
                             <label className="text-sm font-medium text-ink">
                                 Traitement
-                                <select
+                                <PixieSelect
+                                    mode="popover"
+                                    portal
+                                    size="sm"
                                     value={treatment}
                                     onChange={(event) =>
                                         setTreatment(
@@ -486,14 +519,17 @@ export function PixieFramePlayground() {
                                     {treatments.map((value) => (
                                         <option key={value}>{value}</option>
                                     ))}
-                                </select>
+                                </PixieSelect>
                             </label>
                         </div>
 
                         <div className="grid grid-cols-2 gap-3">
                             <label className="text-sm font-medium text-ink">
                                 Effet
-                                <select
+                                <PixieSelect
+                                    mode="popover"
+                                    portal
+                                    size="sm"
                                     value={effect}
                                     onChange={(event) =>
                                         setEffect(
@@ -506,11 +542,14 @@ export function PixieFramePlayground() {
                                     {effects.map((value) => (
                                         <option key={value}>{value}</option>
                                     ))}
-                                </select>
+                                </PixieSelect>
                             </label>
                             <label className="text-sm font-medium text-ink">
                                 Intensité
-                                <select
+                                <PixieSelect
+                                    mode="popover"
+                                    portal
+                                    size="sm"
                                     value={intensity}
                                     disabled={effect === "none"}
                                     onChange={(event) =>
@@ -524,7 +563,7 @@ export function PixieFramePlayground() {
                                     {intensities.map((value) => (
                                         <option key={value}>{value}</option>
                                     ))}
-                                </select>
+                                </PixieSelect>
                             </label>
                         </div>
 
@@ -540,7 +579,10 @@ export function PixieFramePlayground() {
                                 />
                                 Afficher une annotation
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 aria-label="Position de l’annotation"
                                 value={overlayPosition}
                                 disabled={!showOverlay}
@@ -555,7 +597,7 @@ export function PixieFramePlayground() {
                                 {overlayPositions.map((value) => (
                                     <option key={value}>{value}</option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div className="space-y-3">
@@ -571,7 +613,10 @@ export function PixieFramePlayground() {
                                 Afficher la légende
                             </label>
                             <div className="grid grid-cols-2 gap-3">
-                                <select
+                                <PixieSelect
+                                    mode="popover"
+                                    portal
+                                    size="sm"
                                     aria-label="Position de la légende"
                                     value={captionPosition}
                                     disabled={!showCaption}
@@ -585,8 +630,11 @@ export function PixieFramePlayground() {
                                 >
                                     <option value="outside">outside</option>
                                     <option value="overlay">overlay</option>
-                                </select>
-                                <select
+                                </PixieSelect>
+                                <PixieSelect
+                                    mode="popover"
+                                    portal
+                                    size="sm"
                                     aria-label="Alignement de la légende"
                                     value={captionAlign}
                                     disabled={!showCaption}
@@ -601,7 +649,7 @@ export function PixieFramePlayground() {
                                     {captionAlignments.map((value) => (
                                         <option key={value}>{value}</option>
                                     ))}
-                                </select>
+                                </PixieSelect>
                             </div>
                         </div>
                     </div>

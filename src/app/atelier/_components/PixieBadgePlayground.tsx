@@ -1,5 +1,7 @@
 "use client";
 
+import { PixieSelect } from "@/components/ui/PixieSelect";
+
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import {
@@ -196,13 +198,16 @@ export function PixieBadgePlayground() {
                                     >
                                         Registre
                                     </label>
-                                    <select
+                                    <PixieSelect
+                                        mode="popover"
+                                        portal
+                                        size="sm"
                                         id="badge-registry"
                                         value={metadataSelection.registry}
                                         onChange={(event) =>
                                             selectRegistry(event.target.value)
                                         }
-                                        className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                        className="mt-2"
                                     >
                                         {registries.map((registry) => (
                                             <option
@@ -212,7 +217,7 @@ export function PixieBadgePlayground() {
                                                 {registry}
                                             </option>
                                         ))}
-                                    </select>
+                                    </PixieSelect>
                                 </div>
                                 <div>
                                     <label
@@ -221,13 +226,16 @@ export function PixieBadgePlayground() {
                                     >
                                         Collection
                                     </label>
-                                    <select
+                                    <PixieSelect
+                                        mode="popover"
+                                        portal
+                                        size="sm"
                                         id="badge-collection"
                                         value={metadataSelection.collection}
                                         onChange={(event) =>
                                             selectCollection(event.target.value)
                                         }
-                                        className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                        className="mt-2"
                                     >
                                         {collections.map((collection) => (
                                             <option
@@ -237,7 +245,7 @@ export function PixieBadgePlayground() {
                                                 {collection}
                                             </option>
                                         ))}
-                                    </select>
+                                    </PixieSelect>
                                 </div>
                                 <div>
                                     <label
@@ -246,13 +254,16 @@ export function PixieBadgePlayground() {
                                     >
                                         Métadonnée
                                     </label>
-                                    <select
+                                    <PixieSelect
+                                        mode="popover"
+                                        portal
+                                        size="sm"
                                         id="badge-slug"
                                         value={metadataSelection.slug}
                                         onChange={(event) =>
                                             selectSlug(event.target.value)
                                         }
-                                        className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                        className="mt-2"
                                     >
                                         {slugs.map((selection) => (
                                             <option
@@ -262,7 +273,7 @@ export function PixieBadgePlayground() {
                                                 {getMetadata(selection).label}
                                             </option>
                                         ))}
-                                    </select>
+                                    </PixieSelect>
                                 </div>
                             </div>
                         ) : (
@@ -280,7 +291,7 @@ export function PixieBadgePlayground() {
                                         onChange={(event) =>
                                             setLabel(event.target.value)
                                         }
-                                        className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                        className="mt-2"
                                     />
                                 </div>
 
@@ -309,7 +320,10 @@ export function PixieBadgePlayground() {
                                         >
                                             Couleur du registre
                                         </label>
-                                        <select
+                                        <PixieSelect
+                                            mode="popover"
+                                            portal
+                                            size="sm"
                                             id="badge-color"
                                             value={color}
                                             onChange={(event) =>
@@ -318,7 +332,7 @@ export function PixieBadgePlayground() {
                                                         .value as AtelierAnimationColorSlug,
                                                 )
                                             }
-                                            className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                            className="mt-2"
                                         >
                                             {colorSlugs.map((slug) => (
                                                 <option key={slug} value={slug}>
@@ -329,7 +343,7 @@ export function PixieBadgePlayground() {
                                                     }
                                                 </option>
                                             ))}
-                                        </select>
+                                        </PixieSelect>
                                     </div>
                                 ) : null}
                             </div>

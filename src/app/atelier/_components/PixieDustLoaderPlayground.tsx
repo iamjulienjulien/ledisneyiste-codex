@@ -1,5 +1,7 @@
 "use client";
 
+import { PixieSelect } from "@/components/ui/PixieSelect";
+
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import {
@@ -139,7 +141,10 @@ export function PixieDustLoaderPlayground() {
                             >
                                 Taille
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="loader-size"
                                 value={size}
                                 onChange={(event) =>
@@ -148,7 +153,7 @@ export function PixieDustLoaderPlayground() {
                                             .value as PixieDustLoaderSize,
                                     )
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                className="mt-2"
                             >
                                 {sizes.map((option) => (
                                     <option
@@ -158,7 +163,7 @@ export function PixieDustLoaderPlayground() {
                                         {option.label}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <fieldset>
@@ -202,7 +207,10 @@ export function PixieDustLoaderPlayground() {
                             >
                                 Couleur du registre
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="loader-color"
                                 value={color}
                                 onChange={(event) =>
@@ -212,7 +220,7 @@ export function PixieDustLoaderPlayground() {
                                             | "inherit",
                                     )
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                className="mt-2"
                             >
                                 {colors.map((option) => (
                                     <option
@@ -222,7 +230,7 @@ export function PixieDustLoaderPlayground() {
                                         {option.label}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div>
@@ -232,19 +240,22 @@ export function PixieDustLoaderPlayground() {
                             >
                                 Délai d’apparition
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="loader-delay"
                                 value={delay}
                                 onChange={(event) =>
                                     setDelay(Number(event.target.value))
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                className="mt-2"
                             >
                                 <option value="0">Immédiat</option>
                                 <option value="300">300 ms</option>
                                 <option value="700">700 ms</option>
                                 <option value="1200">1 200 ms</option>
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div className="space-y-3 text-sm text-ink-soft">

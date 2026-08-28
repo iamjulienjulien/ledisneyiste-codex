@@ -219,7 +219,10 @@ ${grouped ? groupedOptionsCode : flatOptionsCode}
                             >
                                 Couleur du registre
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="select-color"
                                 value={color}
                                 onChange={(event) =>
@@ -229,7 +232,7 @@ ${grouped ? groupedOptionsCode : flatOptionsCode}
                                             | "inherit",
                                     )
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                className="mt-2"
                             >
                                 {colors.map((option) => (
                                     <option
@@ -239,7 +242,7 @@ ${grouped ? groupedOptionsCode : flatOptionsCode}
                                         {option.label}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div className="space-y-3 text-sm text-ink-soft">

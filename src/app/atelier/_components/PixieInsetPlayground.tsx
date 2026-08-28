@@ -1,5 +1,7 @@
 "use client";
 
+import { PixieSelect } from "@/components/ui/PixieSelect";
+
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import {
@@ -55,8 +57,7 @@ const frameWidths = {
     large: "max-w-none",
 } as const satisfies Record<"compact" | "moyen" | "large", string>;
 
-const selectClassName =
-    "mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink";
+const selectClassName = "mt-2";
 
 export function PixieInsetPlayground() {
     const [element, setElement] = useState<PixieInsetElement>("div");
@@ -109,7 +110,10 @@ export function PixieInsetPlayground() {
                             >
                                 Élément sémantique
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="inset-element"
                                 value={element}
                                 onChange={(event) =>
@@ -124,7 +128,7 @@ export function PixieInsetPlayground() {
                                         {value}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <fieldset>
@@ -168,7 +172,10 @@ export function PixieInsetPlayground() {
                             >
                                 Espacement intérieur
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="inset-padding"
                                 value={padding}
                                 onChange={(event) =>
@@ -183,7 +190,7 @@ export function PixieInsetPlayground() {
                                         {value}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div>
@@ -193,7 +200,10 @@ export function PixieInsetPlayground() {
                             >
                                 Rayon
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="inset-radius"
                                 value={radius}
                                 onChange={(event) =>
@@ -208,7 +218,7 @@ export function PixieInsetPlayground() {
                                         {value}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div>
@@ -218,7 +228,10 @@ export function PixieInsetPlayground() {
                             >
                                 Couleur
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="inset-color"
                                 value={color || "theme"}
                                 onChange={(event) =>
@@ -232,7 +245,7 @@ export function PixieInsetPlayground() {
                                         {getAtelierAnimationColor(slug).label}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div>
@@ -242,7 +255,10 @@ export function PixieInsetPlayground() {
                             >
                                 Position de l’accent
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="inset-accent-position"
                                 value={accentPosition}
                                 onChange={(event) =>
@@ -259,7 +275,7 @@ export function PixieInsetPlayground() {
                                         {value}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div>
@@ -269,7 +285,10 @@ export function PixieInsetPlayground() {
                             >
                                 Texture
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="inset-texture"
                                 value={texture}
                                 onChange={(event) =>
@@ -284,7 +303,7 @@ export function PixieInsetPlayground() {
                                         {value}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div>
@@ -294,7 +313,10 @@ export function PixieInsetPlayground() {
                             >
                                 Intensité de la texture
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="inset-texture-intensity"
                                 value={textureIntensity}
                                 onChange={(event) =>
@@ -311,7 +333,7 @@ export function PixieInsetPlayground() {
                                         {value}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
                     </div>
                 </aside>

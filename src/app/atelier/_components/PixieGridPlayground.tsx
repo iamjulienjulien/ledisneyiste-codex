@@ -1,5 +1,7 @@
 "use client";
 
+import { PixieSelect } from "@/components/ui/PixieSelect";
+
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import {
@@ -118,7 +120,10 @@ ${itemOpening}
                             >
                                 Élément sémantique
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="grid-element"
                                 value={element}
                                 onChange={(event) =>
@@ -126,14 +131,14 @@ ${itemOpening}
                                         event.target.value as PixieGridElement,
                                     )
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink"
+                                className="mt-2 font-mono"
                             >
                                 {elements.map((value) => (
                                     <option key={value} value={value}>
                                         {value}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div>
@@ -143,7 +148,10 @@ ${itemOpening}
                             >
                                 Colonnes maximales
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="grid-max-columns"
                                 value={maxColumns}
                                 onChange={(event) =>
@@ -153,14 +161,14 @@ ${itemOpening}
                                         ) as PixieGridMaxColumns,
                                     )
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink"
+                                className="mt-2 font-mono"
                             >
                                 {[1, 2, 3, 4, 5, 6].map((value) => (
                                     <option key={value} value={value}>
                                         {value}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <fieldset>
@@ -204,13 +212,16 @@ ${itemOpening}
                             >
                                 Intervalle des rangées
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="grid-row-gap"
                                 value={rowGap}
                                 onChange={(event) =>
                                     setRowGap(event.target.value as GapOverride)
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink"
+                                className="mt-2 font-mono"
                             >
                                 <option value="inherit">Hériter de gap</option>
                                 {gaps.map((option) => (
@@ -221,7 +232,7 @@ ${itemOpening}
                                         {option.label}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div>
@@ -231,7 +242,10 @@ ${itemOpening}
                             >
                                 Intervalle des colonnes
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="grid-column-gap"
                                 value={columnGap}
                                 onChange={(event) =>
@@ -239,7 +253,7 @@ ${itemOpening}
                                         event.target.value as GapOverride,
                                     )
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink"
+                                className="mt-2 font-mono"
                             >
                                 <option value="inherit">Hériter de gap</option>
                                 {gaps.map((option) => (
@@ -250,7 +264,7 @@ ${itemOpening}
                                         {option.label}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <fieldset>

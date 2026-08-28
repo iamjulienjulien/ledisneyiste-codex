@@ -1,5 +1,7 @@
 "use client";
 
+import { PixieSelect } from "@/components/ui/PixieSelect";
+
 import { useState, type Dispatch, type SetStateAction } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import {
@@ -163,7 +165,10 @@ export function PixieDustTextareaPlayground() {
                             >
                                 Redimensionnement
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="textarea-resize"
                                 value={resize}
                                 onChange={(event) =>
@@ -172,7 +177,7 @@ export function PixieDustTextareaPlayground() {
                                             .value as PixieDustTextareaResize,
                                     )
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                className="mt-2"
                             >
                                 {resizes.map((option) => (
                                     <option
@@ -182,7 +187,7 @@ export function PixieDustTextareaPlayground() {
                                         {option.label}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div>
@@ -192,20 +197,23 @@ export function PixieDustTextareaPlayground() {
                             >
                                 Lignes initiales
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="textarea-rows"
                                 value={rows}
                                 onChange={(event) =>
                                     setRows(Number(event.target.value))
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink"
+                                className="mt-2 font-mono"
                             >
                                 {rowOptions.map((option) => (
                                     <option key={option} value={option}>
                                         {option}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div>
@@ -215,7 +223,10 @@ export function PixieDustTextareaPlayground() {
                             >
                                 Couleur du registre
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="textarea-color"
                                 value={color}
                                 onChange={(event) =>
@@ -225,7 +236,7 @@ export function PixieDustTextareaPlayground() {
                                             | "inherit",
                                     )
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                className="mt-2"
                             >
                                 {colors.map((option) => (
                                     <option
@@ -235,7 +246,7 @@ export function PixieDustTextareaPlayground() {
                                         {option.label}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div className="space-y-3 text-sm text-ink-soft">

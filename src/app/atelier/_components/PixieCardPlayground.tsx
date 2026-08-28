@@ -1,5 +1,7 @@
 "use client";
 
+import { PixieSelect } from "@/components/ui/PixieSelect";
+
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import {
@@ -203,7 +205,10 @@ export function PixieCardPlayground() {
                             >
                                 Élément sémantique
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="card-element"
                                 value={element}
                                 disabled={asChild}
@@ -212,14 +217,14 @@ export function PixieCardPlayground() {
                                         event.target.value as PixieCardElement,
                                     )
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink disabled:cursor-not-allowed disabled:opacity-50"
+                                className="mt-2 font-mono"
                             >
                                 {elements.map((value) => (
                                     <option key={value} value={value}>
                                         {value}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <label className="flex cursor-pointer items-start gap-2 text-sm text-ink-soft">
@@ -263,7 +268,10 @@ export function PixieCardPlayground() {
                             >
                                 Longueur du contenu
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="card-content-length"
                                 value={contentLength}
                                 onChange={(event) =>
@@ -272,7 +280,7 @@ export function PixieCardPlayground() {
                                             "short" | "medium" | "long",
                                     )
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                className="mt-2"
                             >
                                 {contentLengths.map((option) => (
                                     <option
@@ -282,7 +290,7 @@ export function PixieCardPlayground() {
                                         {option.label}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <fieldset>
@@ -377,13 +385,16 @@ export function PixieCardPlayground() {
                             >
                                 Couleur
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="card-color"
                                 value={color || "theme"}
                                 onChange={(event) =>
                                     selectColor(event.target.value)
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                className="mt-2"
                             >
                                 <option value="theme">Accent du thème</option>
                                 {colorSlugs.map((slug) => (
@@ -391,7 +402,7 @@ export function PixieCardPlayground() {
                                         {getAtelierAnimationColor(slug).label}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <label className="flex cursor-pointer items-center gap-2 text-sm text-ink-soft">

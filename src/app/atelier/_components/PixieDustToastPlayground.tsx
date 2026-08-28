@@ -1,5 +1,7 @@
 "use client";
 
+import { PixieSelect } from "@/components/ui/PixieSelect";
+
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import {
@@ -115,7 +117,10 @@ export function PixieDustToastPlayground() {
                             >
                                 Durée
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="toast-duration"
                                 value={
                                     duration === false ? "persistent" : duration
@@ -127,13 +132,13 @@ export function PixieDustToastPlayground() {
                                             : Number(event.target.value),
                                     )
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                className="mt-2"
                             >
                                 <option value="3000">3 secondes</option>
                                 <option value="6000">6 secondes</option>
                                 <option value="10000">10 secondes</option>
                                 <option value="persistent">Persistante</option>
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div>
@@ -143,7 +148,10 @@ export function PixieDustToastPlayground() {
                             >
                                 Priorité d’annonce
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="toast-priority"
                                 value={priority}
                                 onChange={(event) =>
@@ -152,12 +160,12 @@ export function PixieDustToastPlayground() {
                                             PixieDustToastPriority | "auto",
                                     )
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                className="mt-2"
                             >
                                 <option value="auto">Automatique</option>
                                 <option value="polite">Polie</option>
                                 <option value="assertive">Prioritaire</option>
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div className="space-y-3 text-sm text-ink-soft">

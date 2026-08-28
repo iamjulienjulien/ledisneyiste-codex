@@ -1,5 +1,7 @@
 "use client";
 
+import { PixieSelect } from "@/components/ui/PixieSelect";
+
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import {
@@ -126,7 +128,10 @@ ${labelledBy}>
                             >
                                 Élément sémantique
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="section-element"
                                 value={element}
                                 onChange={(event) =>
@@ -135,14 +140,14 @@ ${labelledBy}>
                                             .value as PixieSectionElement,
                                     )
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink"
+                                className="mt-2 font-mono"
                             >
                                 {elements.map((value) => (
                                     <option key={value} value={value}>
                                         {value}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <fieldset>
@@ -204,7 +209,10 @@ ${labelledBy}>
                                 >
                                     Respiration d’ouverture
                                 </label>
-                                <select
+                                <PixieSelect
+                                    mode="popover"
+                                    portal
+                                    size="sm"
                                     id="section-spacing-start"
                                     value={spacingStart}
                                     onChange={(event) =>
@@ -213,7 +221,7 @@ ${labelledBy}>
                                                 .value as SpacingOverride,
                                         )
                                     }
-                                    className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                    className="mt-2"
                                 >
                                     {spacingOverrides.map((option) => (
                                         <option
@@ -223,7 +231,7 @@ ${labelledBy}>
                                             {option.label}
                                         </option>
                                     ))}
-                                </select>
+                                </PixieSelect>
                             </div>
 
                             <div>
@@ -233,7 +241,10 @@ ${labelledBy}>
                                 >
                                     Respiration de fermeture
                                 </label>
-                                <select
+                                <PixieSelect
+                                    mode="popover"
+                                    portal
+                                    size="sm"
                                     id="section-spacing-end"
                                     value={spacingEnd}
                                     onChange={(event) =>
@@ -242,7 +253,7 @@ ${labelledBy}>
                                                 .value as SpacingOverride,
                                         )
                                     }
-                                    className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                    className="mt-2"
                                 >
                                     {spacingOverrides.map((option) => (
                                         <option
@@ -252,7 +263,7 @@ ${labelledBy}>
                                             {option.label}
                                         </option>
                                     ))}
-                                </select>
+                                </PixieSelect>
                             </div>
                         </div>
 

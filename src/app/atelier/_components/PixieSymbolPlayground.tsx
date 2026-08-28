@@ -1,5 +1,7 @@
 "use client";
 
+import { PixieSelect } from "@/components/ui/PixieSelect";
+
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import {
@@ -527,13 +529,16 @@ export function PixieSymbolPlayground() {
                             >
                                 Symbole
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="pixie-symbol-selection"
                                 value={symbolKey}
                                 onChange={(event) =>
                                     setSymbolKey(event.target.value)
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                className="mt-2"
                             >
                                 {symbolGroups.map((group) => (
                                     <optgroup key={group} label={group}>
@@ -552,7 +557,7 @@ export function PixieSymbolPlayground() {
                                             ))}
                                     </optgroup>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <fieldset>

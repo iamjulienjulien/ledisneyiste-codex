@@ -1,5 +1,7 @@
 "use client";
 
+import { PixieSelect } from "@/components/ui/PixieSelect";
+
 import { useState, type Dispatch, type SetStateAction } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import {
@@ -134,7 +136,10 @@ export function PixieDustInputPlayground() {
                             >
                                 Type
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="input-type"
                                 value={type}
                                 onChange={(event) =>
@@ -143,14 +148,14 @@ export function PixieDustInputPlayground() {
                                             .value as PixieDustInputType,
                                     )
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink"
+                                className="mt-2 font-mono"
                             >
                                 {types.map((inputType) => (
                                     <option key={inputType} value={inputType}>
                                         {inputType}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <fieldset>
@@ -194,7 +199,10 @@ export function PixieDustInputPlayground() {
                             >
                                 Couleur du registre
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="input-color"
                                 value={color}
                                 onChange={(event) =>
@@ -204,7 +212,7 @@ export function PixieDustInputPlayground() {
                                             | "inherit",
                                     )
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                className="mt-2"
                             >
                                 {colors.map((option) => (
                                     <option
@@ -214,7 +222,7 @@ export function PixieDustInputPlayground() {
                                         {option.label}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div className="space-y-3 text-sm text-ink-soft">

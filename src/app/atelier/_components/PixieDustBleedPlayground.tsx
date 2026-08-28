@@ -1,5 +1,7 @@
 "use client";
 
+import { PixieSelect } from "@/components/ui/PixieSelect";
+
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import {
@@ -164,7 +166,10 @@ ${labelLine}>
                             >
                                 Élément sémantique
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="bleed-element"
                                 value={element}
                                 onChange={(event) =>
@@ -173,14 +178,14 @@ ${labelLine}>
                                             .value as PixieDustBleedElement,
                                     )
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink"
+                                className="mt-2 font-mono"
                             >
                                 {elements.map((value) => (
                                     <option key={value} value={value}>
                                         {value}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <fieldset>
@@ -241,7 +246,10 @@ ${labelLine}>
                             >
                                 Matière sur le plateau
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="bleed-content"
                                 value={contentMode}
                                 onChange={(event) =>
@@ -249,7 +257,7 @@ ${labelLine}>
                                         event.target.value as ContentMode,
                                     )
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                className="mt-2"
                             >
                                 {contentModes.map((option) => (
                                     <option
@@ -259,7 +267,7 @@ ${labelLine}>
                                         {option.label}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                             <p className="mt-2 text-xs leading-5 text-muted">
                                 Réglage propre au plateau, absent de l’API.
                             </p>

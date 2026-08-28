@@ -1,5 +1,7 @@
 "use client";
 
+import { PixieSelect } from "@/components/ui/PixieSelect";
+
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import {
@@ -151,7 +153,10 @@ ${childCode}
                             >
                                 Élément sémantique
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="rail-element"
                                 value={element}
                                 onChange={(event) =>
@@ -160,14 +165,14 @@ ${childCode}
                                             .value as PixieDustRailElement,
                                     )
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink"
+                                className="mt-2 font-mono"
                             >
                                 {elements.map((value) => (
                                     <option key={value} value={value}>
                                         {value}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <fieldset>
@@ -274,20 +279,23 @@ ${childCode}
                             >
                                 Éléments sur le plateau
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="rail-item-count"
                                 value={itemCount}
                                 onChange={(event) =>
                                     setItemCount(Number(event.target.value))
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink"
+                                className="mt-2 font-mono"
                             >
                                 {[2, 3, 4, 5, 6].map((value) => (
                                     <option key={value} value={value}>
                                         {value} éléments
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                             <p className="mt-2 text-xs leading-5 text-muted">
                                 Réglage propre au plateau, absent de l’API.
                             </p>

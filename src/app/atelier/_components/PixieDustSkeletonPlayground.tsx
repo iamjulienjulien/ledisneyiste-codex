@@ -1,5 +1,7 @@
 "use client";
 
+import { PixieSelect } from "@/components/ui/PixieSelect";
+
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import {
@@ -173,7 +175,7 @@ export function PixieDustSkeletonPlayground() {
                                     onChange={(event) =>
                                         setWidth(event.target.value)
                                     }
-                                    className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink"
+                                    className="mt-2 font-mono"
                                 />
                             </label>
                             <label className="text-sm font-medium text-ink">
@@ -184,7 +186,7 @@ export function PixieDustSkeletonPlayground() {
                                     onChange={(event) =>
                                         setHeight(event.target.value)
                                     }
-                                    className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink"
+                                    className="mt-2 font-mono"
                                 />
                             </label>
                         </div>
@@ -212,7 +214,7 @@ export function PixieDustSkeletonPlayground() {
                                         onChange={(event) =>
                                             setLastLineWidth(event.target.value)
                                         }
-                                        className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 font-mono text-sm text-ink"
+                                        className="mt-2 font-mono"
                                     />
                                 </label>
                                 <div>
@@ -222,7 +224,10 @@ export function PixieDustSkeletonPlayground() {
                                     >
                                         Espacement
                                     </label>
-                                    <select
+                                    <PixieSelect
+                                        mode="popover"
+                                        portal
+                                        size="sm"
                                         id="skeleton-gap"
                                         value={gap}
                                         onChange={(event) =>
@@ -231,7 +236,7 @@ export function PixieDustSkeletonPlayground() {
                                                     .value as PixieDustSkeletonGap,
                                             )
                                         }
-                                        className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                        className="mt-2"
                                     >
                                         {gaps.map((option) => (
                                             <option
@@ -241,7 +246,7 @@ export function PixieDustSkeletonPlayground() {
                                                 {option.label}
                                             </option>
                                         ))}
-                                    </select>
+                                    </PixieSelect>
                                 </div>
                             </div>
                         ) : null}
@@ -253,7 +258,10 @@ export function PixieDustSkeletonPlayground() {
                             >
                                 Arrondi
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="skeleton-radius"
                                 value={radius}
                                 disabled={variant === "circle"}
@@ -263,7 +271,7 @@ export function PixieDustSkeletonPlayground() {
                                             .value as PixieDustSkeletonRadius,
                                     )
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink disabled:opacity-50"
+                                className="mt-2"
                             >
                                 {radii.map((option) => (
                                     <option
@@ -273,7 +281,7 @@ export function PixieDustSkeletonPlayground() {
                                         {option.label}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div>
@@ -283,7 +291,10 @@ export function PixieDustSkeletonPlayground() {
                             >
                                 Couleur du registre
                             </label>
-                            <select
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
                                 id="skeleton-color"
                                 value={color}
                                 onChange={(event) =>
@@ -293,7 +304,7 @@ export function PixieDustSkeletonPlayground() {
                                             | "inherit",
                                     )
                                 }
-                                className="mt-2 w-full border border-line-strong bg-canvas px-3 py-2 text-sm text-ink"
+                                className="mt-2"
                             >
                                 {colors.map((option) => (
                                     <option
@@ -303,7 +314,7 @@ export function PixieDustSkeletonPlayground() {
                                         {option.label}
                                     </option>
                                 ))}
-                            </select>
+                            </PixieSelect>
                         </div>
 
                         <div className="space-y-3 text-sm text-ink-soft">

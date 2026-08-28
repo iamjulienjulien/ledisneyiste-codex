@@ -1,5 +1,7 @@
 "use client";
 
+import { PixieSelect } from "@/components/ui/PixieSelect";
+
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import {
@@ -45,7 +47,13 @@ function createPreviewControl(control: Control, required: boolean) {
 
     if (control === "select") {
         return (
-            <select className={className} required={required} defaultValue="">
+            <PixieSelect
+                mode="popover"
+                portal
+                size="sm"
+                required={required}
+                defaultValue=""
+            >
                 <option value="" disabled>
                     Choisir une famille
                 </option>
@@ -53,7 +61,7 @@ function createPreviewControl(control: Control, required: boolean) {
                 <option>Créateurs</option>
                 <option>Œuvres</option>
                 <option>Époques</option>
-            </select>
+            </PixieSelect>
         );
     }
 
