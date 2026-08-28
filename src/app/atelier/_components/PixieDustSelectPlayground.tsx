@@ -10,6 +10,7 @@ import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { PixieDustField } from "@/components/ui/PixieDustField";
 import {
     PixieDustSelect,
+    type PixieDustSelectMode,
     type PixieDustSelectSize,
     type PixieDustSelectVariant,
 } from "@/components/ui/PixieDustSelect";
@@ -34,6 +35,14 @@ const sizes = [
     { value: "lg", label: "Grande" },
 ] as const satisfies readonly Readonly<{
     value: PixieDustSelectSize;
+    label: string;
+}>[];
+
+const modes = [
+    { value: "native", label: "Menu natif" },
+    { value: "popover", label: "Popover Pixie" },
+] as const satisfies readonly Readonly<{
+    value: PixieDustSelectMode;
     label: string;
 }>[];
 
@@ -69,6 +78,8 @@ const groupedOptionsCode = `    <optgroup label="Premières fondations">
 export function PixieDustSelectPlayground() {
     const [variant, setVariant] = useState<PixieDustSelectVariant>("outline");
     const [size, setSize] = useState<PixieDustSelectSize>("md");
+    const [mode, setMode] = useState<PixieDustSelectMode>("native");
+    const [portal, setPortal] = useState(false);
     const [color, setColor] = useState<AtelierAnimationColorSlug | "inherit">(
         "inherit",
     );
@@ -84,13 +95,17 @@ export function PixieDustSelectPlayground() {
     const placeholderProp = placeholder
         ? '\n        placeholder="Choisir une période"'
         : "";
+    const modeProps =
+        mode === "popover"
+            ? `\n        mode="popover"${portal ? "\n        portal" : ""}`
+            : "";
     const code = `<PixieDustField
     controlId="archive-period"
     label="Période des archives"${invalid ? '\n    error="Choisissez une période avant de poursuivre."' : '\n    description="Une seule période peut être retenue."'}${required ? "\n    required" : ""}
 >
     <PixieDustSelect
         variant="${variant}"
-        size="${size}"${colorProp}${placeholderProp}${disabled ? "\n        disabled" : ""}${required ? "\n        required" : ""}
+        size="${size}"${modeProps}${colorProp}${placeholderProp}${disabled ? "\n        disabled" : ""}${required ? "\n        required" : ""}
     >
 ${grouped ? groupedOptionsCode : flatOptionsCode}
     </PixieDustSelect>
@@ -101,6 +116,7 @@ ${grouped ? groupedOptionsCode : flatOptionsCode}
     const booleanControls: readonly Readonly<{
         label: string;
         checked: boolean;
+        disabled?: boolean;
         onChange: (checked: boolean) => void;
     }>[] = [
         {
@@ -127,6 +143,12 @@ ${grouped ? groupedOptionsCode : flatOptionsCode}
                 );
             },
         },
+        {
+            label: "Portail vers document.body",
+            checked: portal,
+            disabled: mode === "native",
+            onChange: setPortal,
+        },
         { label: "Invalide", checked: invalid, onChange: setInvalid },
         { label: "Désactivé", checked: disabled, onChange: setDisabled },
         { label: "Obligatoire", checked: required, onChange: setRequired },
@@ -151,6 +173,23 @@ ${grouped ? groupedOptionsCode : flatOptionsCode}
                                         {...option}
                                         selectedValue={variant}
                                         onChange={setVariant}
+                                    />
+                                ))}
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend className="text-sm font-medium text-ink">
+                                Ouverture
+                            </legend>
+                            <div className="mt-3 space-y-2">
+                                {modes.map((option) => (
+                                    <AtelierOptionRadio
+                                        key={option.value}
+                                        name="select-mode"
+                                        {...option}
+                                        selectedValue={mode}
+                                        onChange={setMode}
                                     />
                                 ))}
                             </div>
@@ -207,11 +246,12 @@ ${grouped ? groupedOptionsCode : flatOptionsCode}
                             {booleanControls.map((control) => (
                                 <label
                                     key={control.label}
-                                    className="flex items-start gap-3"
+                                    className={`flex items-start gap-3 ${control.disabled ? "opacity-50" : ""}`.trim()}
                                 >
                                     <input
                                         type="checkbox"
                                         checked={control.checked}
+                                        disabled={control.disabled}
                                         onChange={(event) =>
                                             control.onChange(
                                                 event.target.checked,
@@ -252,6 +292,8 @@ ${grouped ? groupedOptionsCode : flatOptionsCode}
                                 <PixieDustSelect
                                     variant={variant}
                                     size={size}
+                                    mode={mode}
+                                    portal={mode === "popover" && portal}
                                     color={color === "inherit" ? false : color}
                                     placeholder={
                                         placeholder

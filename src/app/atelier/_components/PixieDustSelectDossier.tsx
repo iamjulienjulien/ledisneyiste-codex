@@ -82,6 +82,20 @@ const properties = [
         description: "Couleur du focus, héritée ou issue du registre.",
     },
     {
+        name: "mode",
+        type: "PixieDustSelectMode",
+        defaultValue: '"native"',
+        description:
+            "Conserve le menu du navigateur ou projette une listbox Pixie.",
+    },
+    {
+        name: "portal",
+        type: "boolean",
+        defaultValue: "false",
+        description:
+            "Déplace le popover dans document.body lorsque mode vaut popover.",
+    },
+    {
         name: "placeholder",
         type: "string",
         defaultValue: "—",
@@ -128,6 +142,11 @@ const specificTypes = [
         name: "PixieDustSelectColor",
         values: ["AtelierAnimationColorSlug", "false"],
         description: "Accent du registre ou couleur héritée.",
+    },
+    {
+        name: "PixieDustSelectMode",
+        values: ['"native"', '"popover"'],
+        description: "Deux conduites visuelles pour le même choix unique.",
     },
 ] as const;
 
@@ -198,8 +217,8 @@ export function PixieDustSelectDossier() {
                             PixieDustSelect
                         </h2>
                         <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
-                            Choisir une valeur dans une liste fermée en laissant
-                            au navigateur la conduite du dialogue.
+                            Choisir une valeur dans une liste fermée, avec la
+                            conduite native ou un popover Pixie maîtrisé.
                         </p>
                     </div>
 
@@ -209,7 +228,7 @@ export function PixieDustSelectDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.1.0
+                                0.2.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -230,7 +249,7 @@ export function PixieDustSelectDossier() {
                         id="select-identity-title"
                         eyebrow="Fiche de rôle"
                         title="Une liste courte garde la décision lisible"
-                        description="Select complète les premiers Dialogues avec un contrôle à choix unique. Son habillage est Pixie, mais son comportement reste celui du navigateur."
+                        description="Select complète les premiers Dialogues avec un contrôle à choix unique. Le menu natif reste la référence ; le popover Pixie devient une alternative explicite lorsque la mise en scène doit être maîtrisée."
                     />
                     <dl className="mt-8 grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
                         {[
@@ -244,11 +263,11 @@ export function PixieDustSelectDossier() {
                             ],
                             [
                                 "Matière",
-                                "Un véritable select, des option et des optgroup.",
+                                "Un véritable select, des option, des optgroup et une listbox dérivée.",
                             ],
                             [
                                 "Limite",
-                                "Aucune recherche, sélection multiple ou option riche.",
+                                "Aucun filtrage, sélection multiple ou contenu interactif dans une option.",
                             ],
                         ].map(([term, description]) => (
                             <div key={term} className="bg-surface-muted p-5">
@@ -294,6 +313,93 @@ export function PixieDustSelectDossier() {
     </PixieDustSelect>
 </PixieDustField>`}</CodeExample>
                         </div>
+                    </div>
+                </section>
+
+                <section aria-labelledby="select-modes-title">
+                    <SequenceTitle
+                        id="select-modes-title"
+                        eyebrow="Conduite de l’ouverture"
+                        title="Le navigateur ou le popover Pixie"
+                        description="Le mode natif reste le choix par défaut. Le mode popover reprend la même valeur et les mêmes options dans une listbox ; portal lui permet de sortir des cadres qui coupent ou empilent les surfaces."
+                    />
+                    <div className="mt-8 grid gap-5 lg:grid-cols-3">
+                        <Stage>
+                            <p className="font-mono text-xs text-accent">
+                                mode=&quot;native&quot;
+                            </p>
+                            <h4 className="mt-3 text-xl text-ink">
+                                Menu natif
+                            </h4>
+                            <p className="mt-2 min-h-18 text-sm leading-6 text-ink-soft">
+                                Le navigateur conserve intégralement l’ouverture
+                                et les interactions.
+                            </p>
+                            <div className="mt-6">
+                                <PixieDustField
+                                    controlId="select-mode-native"
+                                    label="Période"
+                                >
+                                    <PixieDustSelect
+                                        defaultValue="pionniers"
+                                        mode="native"
+                                    >
+                                        <PeriodOptions />
+                                    </PixieDustSelect>
+                                </PixieDustField>
+                            </div>
+                        </Stage>
+                        <Stage>
+                            <p className="font-mono text-xs text-accent">
+                                mode=&quot;popover&quot;
+                            </p>
+                            <h4 className="mt-3 text-xl text-ink">
+                                Popover dans le cadre
+                            </h4>
+                            <p className="mt-2 min-h-18 text-sm leading-6 text-ink-soft">
+                                La listbox reste attachée au contrôle et suit
+                                son contexte de composition.
+                            </p>
+                            <div className="mt-6">
+                                <PixieDustField
+                                    controlId="select-mode-popover"
+                                    label="Période"
+                                >
+                                    <PixieDustSelect
+                                        defaultValue="pionniers"
+                                        mode="popover"
+                                    >
+                                        <PeriodOptions />
+                                    </PixieDustSelect>
+                                </PixieDustField>
+                            </div>
+                        </Stage>
+                        <Stage>
+                            <p className="font-mono text-xs text-accent">
+                                mode=&quot;popover&quot; portal
+                            </p>
+                            <h4 className="mt-3 text-xl text-ink">
+                                Popover hors du cadre
+                            </h4>
+                            <p className="mt-2 min-h-18 text-sm leading-6 text-ink-soft">
+                                Le portail rejoint document.body tout en
+                                conservant la lumière et les tokens du contrôle.
+                            </p>
+                            <div className="mt-6">
+                                <PixieDustField
+                                    controlId="select-mode-portal"
+                                    label="Période"
+                                >
+                                    <PixieDustSelect
+                                        defaultValue="pionniers"
+                                        mode="popover"
+                                        portal
+                                    >
+                                        <PeriodOptions />
+                                    </PixieDustSelect>
+                                </PixieDustField>
+                            </div>
+                        </Stage>
                     </div>
                 </section>
 
@@ -486,7 +592,7 @@ export function PixieDustSelectDossier() {
                         id="select-playground-title"
                         eyebrow="Bac à sable interactif"
                         title="Régler la liste avant d’ouvrir le dialogue"
-                        description="La variante, la taille, la couleur, les groupes, les états et le code évoluent ensemble."
+                        description="Le mode d’ouverture, le portail, la variante, la taille, la couleur, les groupes, les états et le code évoluent ensemble."
                     />
                     <div className="mt-8">
                         <PixieDustSelectPlayground />
@@ -498,7 +604,7 @@ export function PixieDustSelectDossier() {
                         <SequenceTitle
                             id="select-accessibility-title"
                             eyebrow="Accessibilité"
-                            title="Le navigateur reste maître de la liste"
+                            title="Deux ouvertures, un même choix accessible"
                         />
                         <div className="mt-8 grid gap-5 md:grid-cols-2">
                             <PixiePanel variant="outline" padding="md">
@@ -522,6 +628,27 @@ export function PixieDustSelectDossier() {
                                     décoratif.
                                 </p>
                             </PixiePanel>
+                            <PixiePanel variant="outline" padding="md">
+                                <h4 className="text-xl text-ink">
+                                    Le popover reprend le contrat du select
+                                </h4>
+                                <p className="mt-3 text-sm leading-6 text-ink-soft">
+                                    Le déclencheur suit le modèle combobox :
+                                    flèches, début, fin, Entrée, Espace, Échap
+                                    et recherche par frappe. Le focus reste sur
+                                    le contrôle pendant l’exploration.
+                                </p>
+                            </PixiePanel>
+                            <PixiePanel variant="outline" padding="md">
+                                <h4 className="text-xl text-ink">
+                                    Le portail ne rompt pas la Projection
+                                </h4>
+                                <p className="mt-3 text-sm leading-6 text-ink-soft">
+                                    La liste déplacée conserve ses relations
+                                    ARIA, sa position et les variables visuelles
+                                    héritées du cadre d’origine.
+                                </p>
+                            </PixiePanel>
                         </div>
                     </div>
                 </section>
@@ -532,7 +659,7 @@ export function PixieDustSelectDossier() {
                             id="select-technical-title"
                             eyebrow="Générique technique"
                             title="API de l’esquisse"
-                            description="Value, defaultValue, onChange, name, required et les attributs ARIA sont transmis au véritable select."
+                            description="Value, defaultValue, onChange, name, required et les attributs de formulaire restent raccordés au véritable select dans les deux modes."
                         />
                         <div className="mt-8">
                             <AtelierPropertiesTable properties={properties} />
@@ -557,9 +684,10 @@ export function PixieDustSelectDossier() {
                     <PixieStack as="ul" gap="sm" className="mt-8">
                         {[
                             "Éprouver l’ouverture native dans Firefox, Safari et Chrome.",
-                            "Vérifier les listes longues, les optgroup et les libellés tronqués.",
-                            "Tester le clavier, les lecteurs d’écran et les sélecteurs tactiles.",
-                            "Confirmer que les besoins de recherche restent réservés au futur Combobox.",
+                            "Éprouver le popover avec VoiceOver, NVDA et les parcours clavier de la combobox.",
+                            "Vérifier le placement du portail dans les cadres scrollés, transformés et étroits.",
+                            "Vérifier les listes longues, les optgroup, les options désactivées et les libellés tronqués.",
+                            "Confirmer que le filtrage et les options riches restent hors du périmètre de Select.",
                         ].map((item) => (
                             <li
                                 key={item}

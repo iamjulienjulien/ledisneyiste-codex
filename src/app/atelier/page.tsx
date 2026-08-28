@@ -238,7 +238,7 @@ const dialogues = [
         nom: "PixieDustSelect",
         role: "Choisir une valeur dans une liste fermée",
         statut: "Esquisse",
-        version: "0.1.0",
+        version: "0.2.0",
         href: "#pixie-dust-select",
     },
     {
