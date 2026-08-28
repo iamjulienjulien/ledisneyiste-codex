@@ -1,5 +1,6 @@
 import { CodexFicheSection } from "@/components/codex/CodexFicheSection";
 import { CodexReferenceLink } from "@/components/codex/CodexReferenceLink";
+import { CodexSourceCitations } from "@/components/codex/CodexSourceCitations";
 import { formatDateHistorique } from "@/lib/date";
 import type { PeriodeHistorique } from "@/types/date";
 import type {
@@ -8,6 +9,7 @@ import type {
     DonneeEconomiqueOeuvre,
     NatureEvenementSortieOeuvre,
     NatureRelationOeuvre,
+    TitreAlternatifOeuvre,
 } from "@/types/oeuvre";
 import type { CodexOeuvreDetailsProps } from "./CodexOeuvreDetails.types";
 import styles from "./CodexOeuvreDetails.module.css";
@@ -16,6 +18,13 @@ const eventLabels: Record<NatureEvenementSortieOeuvre, string> = {
     "premiere-mondiale": "Première mondiale",
     "sortie-nationale": "Sortie nationale",
 };
+
+const alternativeTitleLabels: Record<TitreAlternatifOeuvre["nature"], string> =
+    {
+        original: "Titre original",
+        international: "Titre international",
+        "sortie-territoriale": "Titre de sortie territoriale",
+    };
 
 const economicLabels: Record<DonneeEconomiqueOeuvre["nature"], string> = {
     "cout-production": "Coût de production",
@@ -81,7 +90,10 @@ function groupCredits(contributions: ContributionOeuvre[]) {
         .filter((group) => group.contributions.length > 0);
 }
 
-export function CodexOeuvreDetails({ fiche }: CodexOeuvreDetailsProps) {
+export function CodexOeuvreDetails({
+    fiche,
+    sources,
+}: CodexOeuvreDetailsProps) {
     const groupedCredits = groupCredits(fiche.contributions);
     const hasProductionFacts = Boolean(
         fiche.titresAlternatifs?.length ||
@@ -101,7 +113,7 @@ export function CodexOeuvreDetails({ fiche }: CodexOeuvreDetailsProps) {
                         {fiche.titresAlternatifs?.map((title) => (
                             <div key={title.titre} className={styles.fact}>
                                 <dt className={styles.label}>
-                                    Titre alternatif
+                                    {alternativeTitleLabels[title.nature]}
                                 </dt>
                                 <dd className={styles.value}>{title.titre}</dd>
                                 {(title.territoire || title.langue) && (
@@ -111,6 +123,13 @@ export function CodexOeuvreDetails({ fiche }: CodexOeuvreDetailsProps) {
                                             .join(" · ")}
                                     </dd>
                                 )}
+                                <dd className={styles.citations}>
+                                    <CodexSourceCitations
+                                        sourceIds={title.sources}
+                                        sources={sources}
+                                        label="Sources du repère"
+                                    />
+                                </dd>
                             </div>
                         ))}
 
@@ -123,6 +142,13 @@ export function CodexOeuvreDetails({ fiche }: CodexOeuvreDetailsProps) {
                                 <dd className={styles.detail}>
                                     {duration.version}
                                 </dd>
+                                <dd className={styles.citations}>
+                                    <CodexSourceCitations
+                                        sourceIds={duration.sources}
+                                        sources={sources}
+                                        label="Sources du repère"
+                                    />
+                                </dd>
                             </div>
                         ))}
 
@@ -133,6 +159,13 @@ export function CodexOeuvreDetails({ fiche }: CodexOeuvreDetailsProps) {
                                 </dt>
                                 <dd className={styles.value}>
                                     {formatPeriod(fiche.production)}
+                                </dd>
+                                <dd className={styles.citations}>
+                                    <CodexSourceCitations
+                                        sourceIds={fiche.production.sources}
+                                        sources={sources}
+                                        label="Sources du repère"
+                                    />
                                 </dd>
                             </div>
                         )}
@@ -162,6 +195,13 @@ export function CodexOeuvreDetails({ fiche }: CodexOeuvreDetailsProps) {
                                         .filter(Boolean)
                                         .join(" · ")}
                                 </p>
+                                <div className={styles.citations}>
+                                    <CodexSourceCitations
+                                        sourceIds={event.sources}
+                                        sources={sources}
+                                        label="Sources de la sortie"
+                                    />
+                                </div>
                             </li>
                         ))}
                     </ol>
@@ -191,6 +231,13 @@ export function CodexOeuvreDetails({ fiche }: CodexOeuvreDetailsProps) {
                                     {formatPeriod(data.periode)}
                                     {" · "}
                                     {certaintyLabels[data.certitude]}
+                                </dd>
+                                <dd className={styles.citations}>
+                                    <CodexSourceCitations
+                                        sourceIds={data.sources}
+                                        sources={sources}
+                                        label="Sources du chiffre"
+                                    />
                                 </dd>
                             </div>
                         ))}
@@ -239,6 +286,13 @@ export function CodexOeuvreDetails({ fiche }: CodexOeuvreDetailsProps) {
                                                 .join(" · ")}
                                         </p>
                                     )}
+                                <div className={styles.citations}>
+                                    <CodexSourceCitations
+                                        sourceIds={relation.sources}
+                                        sources={sources}
+                                        label="Sources de la relation"
+                                    />
+                                </div>
                             </li>
                         ))}
                     </ul>

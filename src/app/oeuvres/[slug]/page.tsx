@@ -175,7 +175,7 @@ export default async function OeuvrePage({
                 <CodexEpoque epoque={epoque} />
             </dl>
 
-            <CodexOeuvreDetails fiche={fiche} />
+            <CodexOeuvreDetails fiche={fiche} sources={sources} />
 
             <CodexRecompenses recompenses={recompenses} />
 

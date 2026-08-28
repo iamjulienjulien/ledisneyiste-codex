@@ -25,6 +25,14 @@
     padding: 1.25rem;
 }
 
+.fact,
+.event,
+.economic,
+.relation {
+    display: flex;
+    flex-direction: column;
+}
+
 .label {
     color: var(--codex-fiche-color, var(--color-muted));
     font-family: var(--projection-font-eyebrow);
@@ -46,6 +54,11 @@
     color: var(--color-ink-soft);
     font-size: 0.875rem;
     line-height: 1.55;
+}
+
+.citations {
+    margin-top: auto;
+    padding-top: 1rem;
 }
 
 .credits {

@@ -5,6 +5,7 @@ import type { CodexSourceCitationsProps } from "./CodexSourceCitations.types";
 export function CodexSourceCitations({
     sourceIds,
     sources,
+    label = "Sources",
 }: CodexSourceCitationsProps) {
     if (!sourceIds?.length) {
         return null;
@@ -27,8 +28,8 @@ export function CodexSourceCitations({
     }
 
     return (
-        <aside className={styles.root} aria-label="Sources du chapitre">
-            <p className={styles.label}>Sources du chapitre</p>
+        <aside className={styles.root} aria-label={label}>
+            <p className={styles.label}>{label}</p>
 
             <ol className={styles.list}>
                 {citations.map(({ source, number }) => (

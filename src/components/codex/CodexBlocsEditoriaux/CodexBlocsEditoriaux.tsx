@@ -39,6 +39,7 @@ export function CodexBlocsEditoriaux<
                     <CodexSourceCitations
                         sourceIds={bloc.sources}
                         sources={sources}
+                        label="Sources du chapitre"
                     />
                 </div>
             </CodexFicheSection>
