@@ -6,7 +6,7 @@ import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieInset } from "@/components/ui/PixieInset";
 import { PixiePanel } from "@/components/ui/PixiePanel";
-import { PixieDustSidebar } from "@/components/ui/PixieDustSidebar";
+import { PixieSidebar } from "@/components/ui/PixieSidebar";
 import { PixieStack } from "@/components/ui/PixieStack";
 import {
     PixieDustStickyRegion,
@@ -318,7 +318,7 @@ export function PixieDustStickyRegionDossier() {
                         label="Anatomie défilable de StickyRegion"
                         height="h-96"
                     >
-                        <PixieDustSidebar
+                        <PixieSidebar
                             side="start"
                             sidebar={
                                 <PixieDustStickyRegion
@@ -335,7 +335,7 @@ export function PixieDustStickyRegionDossier() {
                             align="start"
                         >
                             <Story count={7} />
-                        </PixieDustSidebar>
+                        </PixieSidebar>
                     </ScrollStage>
                 </Stage>
             </section>
@@ -357,7 +357,7 @@ export function PixieDustStickyRegionDossier() {
                             label="Fiche avec sommaire maintenu"
                             height="h-[34rem]"
                         >
-                            <PixieDustSidebar
+                            <PixieSidebar
                                 side="start"
                                 sidebar={
                                     <PixieDustStickyRegion
@@ -375,10 +375,10 @@ export function PixieDustStickyRegionDossier() {
                                 align="start"
                             >
                                 <Story count={8} />
-                            </PixieDustSidebar>
+                            </PixieSidebar>
                         </ScrollStage>
                     </div>
-                    <CodeExample>{`<PixieDustSidebar
+                    <CodeExample>{`<PixieSidebar
     align="start"
     sidebar={
         <PixieDustStickyRegion
@@ -392,7 +392,7 @@ export function PixieDustStickyRegionDossier() {
     }
 >
     <PixieStack>{/* Long récit */}</PixieStack>
-</PixieDustSidebar>`}</CodeExample>
+</PixieSidebar>`}</CodeExample>
                 </div>
             </section>
 
@@ -559,7 +559,7 @@ export function PixieDustStickyRegionDossier() {
                             >
                                 Parent de la région
                             </h4>
-                            <PixieDustSidebar
+                            <PixieSidebar
                                 side="start"
                                 sidebar={
                                     <PixieDustStickyRegion offset="sm">
@@ -580,7 +580,7 @@ export function PixieDustStickyRegionDossier() {
                                 className="mt-5"
                             >
                                 <Story count={5} />
-                            </PixieDustSidebar>
+                            </PixieSidebar>
                         </section>
                         <section className="mt-8 border border-line bg-surface-muted p-6">
                             <h4 className="text-2xl text-ink">

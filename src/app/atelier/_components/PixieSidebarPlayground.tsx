@@ -12,14 +12,14 @@ import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieGrid } from "@/components/ui/PixieGrid";
 import {
-    PixieDustSidebar,
-    type PixieDustSidebarAlign,
-    type PixieDustSidebarContentMinWidth,
-    type PixieDustSidebarElement,
-    type PixieDustSidebarGap,
-    type PixieDustSidebarSide,
-    type PixieDustSidebarSideWidth,
-} from "@/components/ui/PixieDustSidebar";
+    PixieSidebar,
+    type PixieSidebarAlign,
+    type PixieSidebarContentMinWidth,
+    type PixieSidebarElement,
+    type PixieSidebarGap,
+    type PixieSidebarSide,
+    type PixieSidebarSideWidth,
+} from "@/components/ui/PixieSidebar";
 import { PixieStack } from "@/components/ui/PixieStack";
 
 const elements = ["div", "section", "article"] as const;
@@ -72,21 +72,21 @@ const archiveTitles = [
     "Three Little Pigs",
 ] as const;
 
-export function PixieDustSidebarPlayground() {
-    const [element, setElement] = useState<PixieDustSidebarElement>("section");
-    const [side, setSide] = useState<PixieDustSidebarSide>("start");
-    const [sideWidth, setSideWidth] = useState<PixieDustSidebarSideWidth>("md");
+export function PixieSidebarPlayground() {
+    const [element, setElement] = useState<PixieSidebarElement>("section");
+    const [side, setSide] = useState<PixieSidebarSide>("start");
+    const [sideWidth, setSideWidth] = useState<PixieSidebarSideWidth>("md");
     const [contentMinWidth, setContentMinWidth] =
-        useState<PixieDustSidebarContentMinWidth>("two-thirds");
-    const [gap, setGap] = useState<PixieDustSidebarGap>("lg");
-    const [rowGap, setRowGap] = useState<PixieDustSidebarGap>("xl");
-    const [columnGap, setColumnGap] = useState<PixieDustSidebarGap>("lg");
-    const [align, setAlign] = useState<PixieDustSidebarAlign>("start");
+        useState<PixieSidebarContentMinWidth>("two-thirds");
+    const [gap, setGap] = useState<PixieSidebarGap>("lg");
+    const [rowGap, setRowGap] = useState<PixieSidebarGap>("xl");
+    const [columnGap, setColumnGap] = useState<PixieSidebarGap>("lg");
+    const [align, setAlign] = useState<PixieSidebarAlign>("start");
     const { lumiere: light, cadre: frame } = useAtelierProjection();
 
     const labelledBy =
         element === "div" ? "" : '    aria-labelledby="sidebar-heading"\n';
-    const code = `<PixieDustSidebar
+    const code = `<PixieSidebar
     as="${element}"
     side="${side}"
     sidebar={<aside>{/* Régie latérale */}</aside>}
@@ -101,7 +101,7 @@ ${labelledBy}>
         <h2 id="sidebar-heading">Archives</h2>
         {/* Contenu principal */}
     </section>
-</PixieDustSidebar>`;
+</PixieSidebar>`;
 
     const sidebarPane = (
         <aside
@@ -192,7 +192,7 @@ ${labelledBy}>
                                 onChange={(event) =>
                                     setElement(
                                         event.target
-                                            .value as PixieDustSidebarElement,
+                                            .value as PixieSidebarElement,
                                     )
                                 }
                                 className="mt-2 font-mono"
@@ -335,7 +335,7 @@ ${labelledBy}>
                         <div
                             className={`w-full border border-dashed border-line-strong p-5 transition-[max-width] sm:p-7 ${frameWidths[frame]}`}
                         >
-                            <PixieDustSidebar
+                            <PixieSidebar
                                 as={element}
                                 side={side}
                                 sidebar={sidebarPane}
@@ -352,7 +352,7 @@ ${labelledBy}>
                                 }
                             >
                                 {contentPane}
-                            </PixieDustSidebar>
+                            </PixieSidebar>
                             {element === "div" ? null : (
                                 <span
                                     id="sidebar-preview-heading"

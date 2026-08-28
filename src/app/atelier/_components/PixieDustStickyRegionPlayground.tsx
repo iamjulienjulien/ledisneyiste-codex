@@ -11,7 +11,7 @@ import {
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { PixieInset } from "@/components/ui/PixieInset";
 import { PixiePanel } from "@/components/ui/PixiePanel";
-import { PixieDustSidebar } from "@/components/ui/PixieDustSidebar";
+import { PixieSidebar } from "@/components/ui/PixieSidebar";
 import { PixieStack } from "@/components/ui/PixieStack";
 import {
     PixieDustStickyRegion,
@@ -355,7 +355,7 @@ ${labelLine}>
                                 className="h-[36rem] overflow-y-auto p-5 sm:p-7"
                             >
                                 {edge === "start" ? (
-                                    <PixieDustSidebar
+                                    <PixieSidebar
                                         side="start"
                                         sidebar={stickyRegion}
                                         sideWidth="sm"
@@ -364,7 +364,7 @@ ${labelLine}>
                                         align="start"
                                     >
                                         {editorialContent}
-                                    </PixieDustSidebar>
+                                    </PixieSidebar>
                                 ) : (
                                     <PixieStack gap="xl">
                                         {editorialContent}

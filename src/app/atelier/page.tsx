@@ -15,7 +15,7 @@ import { PixieClusterDossier } from "./_components/PixieClusterDossier";
 import { PixieSectionDossier } from "./_components/PixieSectionDossier";
 import { PixieGridDossier } from "./_components/PixieGridDossier";
 import { PixieDustSplitDossier } from "./_components/PixieDustSplitDossier";
-import { PixieDustSidebarDossier } from "./_components/PixieDustSidebarDossier";
+import { PixieSidebarDossier } from "./_components/PixieSidebarDossier";
 import { PixieSwitcherDossier } from "./_components/PixieSwitcherDossier";
 import { PixieDustRailDossier } from "./_components/PixieDustRailDossier";
 import { PixieDustBleedDossier } from "./_components/PixieDustBleedDossier";
@@ -331,11 +331,11 @@ const montage = [
         href: "#pixie-dust-split",
     },
     {
-        nom: "PixieDustSidebar",
+        nom: "PixieSidebar",
         role: "Associer un contenu principal à une régie latérale",
-        statut: "Esquisse",
-        version: "0.2.0",
-        href: "#pixie-dust-sidebar",
+        statut: "Prêt à projeter",
+        version: "1.0.0",
+        href: "#pixie-sidebar",
     },
     {
         nom: "PixieSwitcher",
@@ -921,10 +921,12 @@ export default function AtelierPage() {
                         PixieCluster rassemble les groupes repliables et
                         PixieSection compose désormais les séquences éditoriales
                         complètes. PixieGrid distribue les collections sur des
-                        pistes responsives et PixieSwitcher choisit
-                        collectivement entre rangée et pile. Les cinq esquisses
-                        suivantes organiseront les autres distributions sans
-                        imposer de surface, de couleur ni d’interaction.
+                        pistes responsives, PixieSidebar associe une régie à un
+                        contenu prioritaire et PixieSwitcher choisit
+                        collectivement entre rangée et pile. Les quatre
+                        esquisses suivantes organiseront les autres
+                        distributions sans imposer de surface, de couleur ni
+                        d’interaction.
                     </p>
                 </div>
 
@@ -1002,7 +1004,7 @@ export default function AtelierPage() {
                 {raccordEntreFiches}
                 <PixieDustSplitDossier />
                 {raccordEntreFiches}
-                <PixieDustSidebarDossier />
+                <PixieSidebarDossier />
                 {raccordEntreFiches}
                 <PixieSwitcherDossier />
                 {raccordEntreFiches}
