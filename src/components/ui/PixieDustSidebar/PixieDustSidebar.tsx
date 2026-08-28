@@ -18,6 +18,7 @@ const sideWidthClasses = {
     sm: styles.sideWidthSmall,
     md: styles.sideWidthMedium,
     lg: styles.sideWidthLarge,
+    xl: styles.sideWidthExtraLarge,
 } as const satisfies Record<PixieDustSidebarSideWidth, string>;
 
 const contentMinWidthClasses = {
@@ -35,6 +36,24 @@ const gapClasses = {
     xl: styles.gapExtraLarge,
 } as const satisfies Record<PixieDustSidebarGap, string>;
 
+const rowGapClasses = {
+    none: styles.rowGapNone,
+    xs: styles.rowGapExtraSmall,
+    sm: styles.rowGapSmall,
+    md: styles.rowGapMedium,
+    lg: styles.rowGapLarge,
+    xl: styles.rowGapExtraLarge,
+} as const satisfies Record<PixieDustSidebarGap, string>;
+
+const columnGapClasses = {
+    none: styles.columnGapNone,
+    xs: styles.columnGapExtraSmall,
+    sm: styles.columnGapSmall,
+    md: styles.columnGapMedium,
+    lg: styles.columnGapLarge,
+    xl: styles.columnGapExtraLarge,
+} as const satisfies Record<PixieDustSidebarGap, string>;
+
 const alignClasses = {
     stretch: styles.alignStretch,
     start: styles.alignStart,
@@ -46,24 +65,30 @@ export function PixieDustSidebar({
     as: Element = "div",
     side = "start",
     sideWidth = "md",
-    contentMinWidth = "half",
+    contentMinWidth = "two-thirds",
     gap = "lg",
+    rowGap,
+    columnGap,
     align = "stretch",
     className = "",
+    sidebar,
     children,
     ...elementProps
 }: PixieDustSidebarProps) {
     return (
         <Element
             {...elementProps}
-            className={`${styles.root} ${sideClasses[side]} ${sideWidthClasses[sideWidth]} ${contentMinWidthClasses[contentMinWidth]} ${gapClasses[gap]} ${alignClasses[align]} ${className}`.trim()}
+            className={`${styles.root} ${sideClasses[side]} ${sideWidthClasses[sideWidth]} ${contentMinWidthClasses[contentMinWidth]} ${gapClasses[gap]} ${rowGap ? rowGapClasses[rowGap] : ""} ${columnGap ? columnGapClasses[columnGap] : ""} ${alignClasses[align]} ${className}`.trim()}
             data-pixie-sidebar-side={side}
             data-pixie-sidebar-side-width={sideWidth}
             data-pixie-sidebar-content-min-width={contentMinWidth}
             data-pixie-sidebar-gap={gap}
+            data-pixie-sidebar-row-gap={rowGap ?? gap}
+            data-pixie-sidebar-column-gap={columnGap ?? gap}
             data-pixie-sidebar-align={align}
         >
-            {children}
+            {side === "start" ? sidebar : children}
+            {side === "start" ? children : sidebar}
         </Element>
     );
 }
