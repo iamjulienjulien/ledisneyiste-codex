@@ -572,4 +572,86 @@ export const symbolsGeneral = {
             accent: "var(--atelier-animation-corail-cel)",
         },
     },
+    communication: {
+        "enveloppe-correspondance": {
+            src: "/symbols/general/communication/enveloppe-correspondance.png",
+            label: "Enveloppe de correspondance",
+            accent: "var(--atelier-animation-papier-animation)",
+        },
+        "dossier-presse": {
+            src: "/symbols/general/communication/dossier-presse.png",
+            label: "Dossier de presse",
+            accent: "var(--atelier-animation-bleu-reperage)",
+        },
+        "megaphone-promotion": {
+            src: "/symbols/general/communication/megaphone-promotion.png",
+            label: "Mégaphone de promotion",
+            accent: "var(--atelier-animation-rouge-crayon)",
+        },
+        "telephone-bureau": {
+            src: "/symbols/general/communication/telephone-bureau.png",
+            label: "Téléphone de bureau",
+            accent: "var(--atelier-animation-graphite)",
+        },
+        "microphones-presse": {
+            src: "/symbols/general/communication/microphones-presse.png",
+            label: "Microphones de presse",
+            accent: "var(--atelier-animation-graphite)",
+        },
+        "communique-officiel": {
+            src: "/symbols/general/communication/communique-officiel.png",
+            label: "Communiqué officiel",
+            accent: "var(--atelier-animation-indigo-nuit-studio)",
+        },
+        "telegramme-plie": {
+            src: "/symbols/general/communication/telegramme-plie.png",
+            label: "Télégramme plié",
+            accent: "var(--atelier-animation-sepia-storyboard)",
+        },
+        "poste-radio": {
+            src: "/symbols/general/communication/poste-radio.png",
+            label: "Poste de radio",
+            accent: "var(--atelier-animation-ambre-projecteur)",
+        },
+        "antenne-diffusion": {
+            src: "/symbols/general/communication/antenne-diffusion.png",
+            label: "Antenne de diffusion",
+            accent: "var(--atelier-animation-bleu-reperage)",
+        },
+        "carte-postale-illustree": {
+            src: "/symbols/general/communication/carte-postale-illustree.png",
+            label: "Carte postale illustrée",
+            accent: "var(--atelier-animation-corail-cel)",
+        },
+        "tube-affiche": {
+            src: "/symbols/general/communication/tube-affiche.png",
+            label: "Tube d’affiche",
+            accent: "var(--atelier-animation-sepia-storyboard)",
+        },
+        "presentoir-brochures": {
+            src: "/symbols/general/communication/presentoir-brochures.png",
+            label: "Présentoir à brochures",
+            accent: "var(--atelier-animation-papier-animation)",
+        },
+        "boite-lettres": {
+            src: "/symbols/general/communication/boite-lettres.png",
+            label: "Boîte aux lettres",
+            accent: "var(--atelier-animation-rouge-crayon)",
+        },
+        "panneau-annonce": {
+            src: "/symbols/general/communication/panneau-annonce.png",
+            label: "Panneau d’annonce",
+            accent: "var(--atelier-animation-bleu-reperage)",
+        },
+        "casier-correspondance": {
+            src: "/symbols/general/communication/casier-correspondance.png",
+            label: "Casier de correspondance",
+            accent: "var(--atelier-animation-graphite)",
+        },
+        "borne-information": {
+            src: "/symbols/general/communication/borne-information.png",
+            label: "Borne d’information",
+            accent: "var(--atelier-animation-turquoise-acetate)",
+        },
+    },
 } as const satisfies Record<string, Record<string, SymbolDefinition>>;
