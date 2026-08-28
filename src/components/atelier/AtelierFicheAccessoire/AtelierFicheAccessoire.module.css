@@ -1,6 +1,5 @@
 .root {
-    border-top: 1px solid var(--color-line-strong);
-    padding-top: 3rem;
+    position: relative;
 }
 
 .floatingControl {

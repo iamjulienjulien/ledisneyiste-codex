@@ -3,7 +3,7 @@
 }
 
 .root[data-statut="Esquisse"] {
-    color: var(--color-accent);
+    color: var(--atelier-animation-violet-ombre-portee);
 }
 
 .root[data-statut="Prêt à projeter"] {

@@ -1,7 +1,7 @@
 import styles from "./AtelierStatut.module.css";
 
 type AtelierStatutProps = Readonly<{
-    statut: "À inventorier" | "Esquisse" | "Prêt à projeter";
+    statut: "À inventorier" | "À esquisser" | "Esquisse" | "Prêt à projeter";
 }>;
 
 export function AtelierStatut({ statut }: AtelierStatutProps) {

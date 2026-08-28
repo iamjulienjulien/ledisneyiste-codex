@@ -31,8 +31,31 @@ import { PixieDustLoaderDossier } from "./_components/PixieDustLoaderDossier";
 import { PixieDustSkeletonDossier } from "./_components/PixieDustSkeletonDossier";
 import { AtelierSommaire } from "@/components/atelier/AtelierSommaire";
 import { AtelierProjectionProvider } from "@/components/atelier/AtelierPlaygroundProjection";
+import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PalettesPellicule } from "./_components/PalettesPellicule";
+
+const raccordEntreFiches = (
+    <PixieSeparator
+        variant="beam"
+        intensity="strong"
+        color="violet-ombre-portee"
+        width="full"
+        spacing="md"
+        decorative
+    />
+);
+
+const raccordAvantPremiereFiche = (
+    <PixieSeparator
+        variant="line"
+        intensity="strong"
+        color="violet-ombre-portee"
+        width="full"
+        spacing="lg"
+        decorative
+    />
+);
 
 const categories = [
     {
@@ -111,30 +134,35 @@ const accessoires = [
         nom: "PixieSymbol",
         role: "Projeter un symbole du registre",
         statut: "Prêt à projeter",
+        version: "1.0.0",
         href: "#pixie-symbol",
     },
     {
         nom: "PixieButton",
         role: "Déclencher une action",
         statut: "Prêt à projeter",
+        version: "1.0.0",
         href: "#bouton",
     },
     {
         nom: "PixieLink",
         role: "Conduire vers une autre scène",
         statut: "Prêt à projeter",
+        version: "1.0.0",
         href: "#lien",
     },
     {
         nom: "PixieBadge",
         role: "Qualifier une information brève",
         statut: "Prêt à projeter",
+        version: "1.0.0",
         href: "#cartouche",
     },
     {
         nom: "PixieSeparator",
         role: "Marquer un changement de séquence",
         statut: "Prêt à projeter",
+        version: "1.0.0",
         href: "#separateur",
     },
 ] as const;
@@ -144,36 +172,42 @@ const decors = [
         nom: "PixieCard",
         role: "Accueillir une unité de contenu répétable",
         statut: "Prêt à projeter",
+        version: "1.0.0",
         href: "#pixie-card",
     },
     {
         nom: "PixiePanel",
         role: "Regrouper une section dans une surface structurée",
         statut: "Prêt à projeter",
+        version: "1.0.0",
         href: "#pixie-panel",
     },
     {
         nom: "PixieFrame",
         role: "Encadrer un visuel ou un aperçu",
         statut: "Prêt à projeter",
+        version: "1.0.0",
         href: "#pixie-frame",
     },
     {
         nom: "PixieCallout",
         role: "Mettre en lumière une annotation éditoriale",
         statut: "Prêt à projeter",
+        version: "1.0.0",
         href: "#pixie-callout",
     },
     {
         nom: "PixieInset",
         role: "Creuser une zone d’information secondaire",
         statut: "Prêt à projeter",
+        version: "1.0.0",
         href: "#pixie-inset",
     },
     {
         nom: "PixieBackdrop",
         role: "Installer un fond de scène atmosphérique",
         statut: "Prêt à projeter",
+        version: "1.0.0",
         href: "#pixie-backdrop",
     },
 ] as const;
@@ -183,62 +217,73 @@ const dialogues = [
         nom: "PixieDustField",
         role: "Associer un contrôle à ses indications",
         statut: "Esquisse",
+        version: "0.1.0",
         href: "#pixie-dust-field",
     },
     {
         nom: "PixieDustInput",
         role: "Recueillir une saisie courte",
         statut: "Esquisse",
+        version: "0.1.0",
         href: "#pixie-dust-input",
     },
     {
         nom: "PixieDustTextarea",
         role: "Recueillir une réponse développée",
         statut: "Esquisse",
+        version: "0.1.0",
         href: "#pixie-dust-textarea",
     },
     {
         nom: "PixieDustSelect",
         role: "Choisir une valeur dans une liste fermée",
         statut: "Esquisse",
+        version: "0.1.0",
         href: "#pixie-dust-select",
     },
     {
         nom: "PixieDustCheckbox",
         role: "Marquer un choix indépendant",
         statut: "À esquisser",
+        version: "—",
     },
     {
         nom: "PixieDustRadioGroup",
         role: "Choisir une seule option parmi plusieurs",
         statut: "À esquisser",
+        version: "—",
     },
     {
         nom: "PixieDustSwitch",
         role: "Activer ou désactiver une préférence",
         statut: "Esquisse",
+        version: "0.1.0",
         href: "#pixie-dust-switch",
     },
     {
         nom: "PixieDustFilterChip",
         role: "Activer un filtre compact",
         statut: "À esquisser",
+        version: "—",
     },
     {
         nom: "PixieDustSearchField",
         role: "Composer une recherche complète",
         statut: "Esquisse",
+        version: "0.1.0",
         href: "#pixie-dust-search-field",
     },
     {
         nom: "PixieDustCombobox",
         role: "Saisir et choisir parmi des suggestions",
         statut: "À esquisser",
+        version: "—",
     },
     {
         nom: "PixieDustRange",
         role: "Définir une valeur ou une période",
         statut: "À esquisser",
+        version: "—",
     },
 ] as const;
 
@@ -247,66 +292,77 @@ const montage = [
         nom: "PixieContainer",
         role: "Centrer et contenir une séquence",
         statut: "Prêt à projeter",
+        version: "1.0.0",
         href: "#pixie-container",
     },
     {
         nom: "PixieStack",
         role: "Régler le rythme d’une séquence verticale",
         statut: "Prêt à projeter",
+        version: "1.0.0",
         href: "#pixie-stack",
     },
     {
         nom: "PixieCluster",
         role: "Rassembler des éléments avec retour à la ligne",
         statut: "Prêt à projeter",
+        version: "1.0.0",
         href: "#pixie-cluster",
     },
     {
         nom: "PixieSection",
         role: "Composer une séquence éditoriale complète",
         statut: "Prêt à projeter",
+        version: "1.0.0",
         href: "#pixie-section",
     },
     {
         nom: "PixieGrid",
         role: "Distribuer une collection sur une grille responsive",
         statut: "Prêt à projeter",
+        version: "1.0.0",
         href: "#pixie-grid",
     },
     {
         nom: "PixieDustSplit",
         role: "Répartir deux zones en champ et contrechamp",
         statut: "Esquisse",
+        version: "0.1.0",
         href: "#pixie-dust-split",
     },
     {
         nom: "PixieDustSidebar",
         role: "Associer un contenu principal à une régie latérale",
         statut: "Esquisse",
+        version: "0.1.0",
         href: "#pixie-dust-sidebar",
     },
     {
         nom: "PixieDustSwitcher",
         role: "Changer de disposition selon l’espace disponible",
         statut: "Esquisse",
+        version: "0.1.0",
         href: "#pixie-dust-switcher",
     },
     {
         nom: "PixieDustRail",
         role: "Dérouler une collection sur un travelling horizontal",
         statut: "Esquisse",
+        version: "0.1.0",
         href: "#pixie-dust-rail",
     },
     {
         nom: "PixieDustBleed",
         role: "Faire sortir une séquence de son cadre de lecture",
         statut: "Esquisse",
+        version: "0.1.0",
         href: "#pixie-dust-bleed",
     },
     {
         nom: "PixieDustStickyRegion",
         role: "Maintenir une région visible pendant le défilement",
         statut: "Esquisse",
+        version: "0.1.0",
         href: "#pixie-dust-sticky-region",
     },
 ] as const;
@@ -316,59 +372,70 @@ const effets = [
         nom: "PixieDustAlert",
         role: "Afficher un message persistant selon son niveau d’attention",
         statut: "À esquisser",
+        version: "—",
     },
     {
         nom: "PixieDustToast",
         role: "Signaler brièvement le résultat d’une action",
         statut: "Esquisse",
+        version: "0.1.0",
         href: "#pixie-dust-toast",
     },
     {
         nom: "PixieDustStatus",
         role: "Représenter un état système compact",
         statut: "À esquisser",
+        version: "—",
     },
     {
         nom: "PixieDustProgress",
         role: "Montrer l’avancement d’une opération",
         statut: "À esquisser",
+        version: "—",
     },
     {
         nom: "PixieDustLoader",
         role: "Matérialiser une attente de durée indéterminée",
         statut: "Esquisse",
+        version: "0.1.0",
         href: "#pixie-dust-loader",
     },
     {
         nom: "PixieDustSkeleton",
         role: "Préserver la structure pendant le chargement",
         statut: "Esquisse",
+        version: "0.1.0",
         href: "#pixie-dust-skeleton",
     },
     {
         nom: "PixieDustEmptyState",
         role: "Mettre en scène une collection vide et la prochaine action",
         statut: "À esquisser",
+        version: "—",
     },
     {
         nom: "PixieDustErrorSummary",
         role: "Rassembler les erreurs et guider leur correction",
         statut: "À esquisser",
+        version: "—",
     },
     {
         nom: "PixieDustLiveMessage",
         role: "Annoncer les changements dynamiques aux aides techniques",
         statut: "À esquisser",
+        version: "—",
     },
     {
         nom: "PixieDustPresence",
         role: "Orchestrer l’apparition et la disparition d’un élément",
         statut: "À esquisser",
+        version: "—",
     },
     {
         nom: "PixieDustHighlight",
         role: "Attirer temporairement l’attention sur un contenu actualisé",
         statut: "À esquisser",
+        version: "—",
     },
 ] as const;
 
@@ -402,12 +469,12 @@ export default function AtelierPage() {
 
                 <h1
                     id="atelier-introduction"
-                    className="mt-3 max-w-4xl text-4xl text-ink sm:text-6xl"
+                    className="mt-3 text-4xl text-ink sm:text-6xl"
                 >
                     Mettre chaque détail à l’épreuve avant la première
                 </h1>
 
-                <p className="mt-6 max-w-3xl text-lg leading-8 text-ink-soft">
+                <p className="mt-6 text-lg leading-8 text-ink-soft">
                     L’Atelier rassemble les fondations et les composants du
                     Codex dans un espace de répétition. Chaque élément y est
                     observé seul, essayé dans ses différents états puis
@@ -485,13 +552,13 @@ export default function AtelierPage() {
                 <PixieSeparator
                     variant="film"
                     intensity="strong"
-                    width="medium"
-                    align="start"
+                    color="violet-ombre-portee"
+                    width="full"
                     spacing="none"
                     decorative
                 />
 
-                <div className="mt-12 max-w-3xl">
+                <div className="mt-12">
                     <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.2em] text-accent">
                         01 · La Pellicule
                     </p>
@@ -517,13 +584,13 @@ export default function AtelierPage() {
                 <PixieSeparator
                     variant="film"
                     intensity="strong"
-                    width="medium"
-                    align="start"
+                    color="violet-ombre-portee"
+                    width="full"
                     spacing="none"
                     decorative
                 />
 
-                <div className="mt-12 max-w-3xl">
+                <div className="mt-12">
                     <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.2em] text-accent">
                         02 · Les Accessoires
                     </p>
@@ -560,6 +627,12 @@ export default function AtelierPage() {
                                     scope="col"
                                     className="px-5 py-4 font-medium"
                                 >
+                                    Version
+                                </th>
+                                <th
+                                    scope="col"
+                                    className="px-5 py-4 font-medium"
+                                >
                                     État
                                 </th>
                             </tr>
@@ -581,8 +654,13 @@ export default function AtelierPage() {
                                     <td className="px-5 py-4 text-ink-soft">
                                         {accessoire.role}
                                     </td>
-                                    <td className="px-5 py-4 text-sm text-muted">
-                                        {accessoire.statut}
+                                    <td className="px-5 py-4 font-mono text-xs text-muted">
+                                        {accessoire.version}
+                                    </td>
+                                    <td className="px-5 py-4 text-sm">
+                                        <AtelierStatut
+                                            statut={accessoire.statut}
+                                        />
                                     </td>
                                 </tr>
                             ))}
@@ -590,10 +668,15 @@ export default function AtelierPage() {
                     </table>
                 </div>
 
+                {raccordAvantPremiereFiche}
                 <PixieSymbolDossier />
+                {raccordEntreFiches}
                 <PixieButtonDossier />
+                {raccordEntreFiches}
                 <PixieLinkDossier />
+                {raccordEntreFiches}
                 <PixieBadgeDossier />
+                {raccordEntreFiches}
                 <PixieSeparatorDossier />
             </section>
 
@@ -605,13 +688,13 @@ export default function AtelierPage() {
                 <PixieSeparator
                     variant="film"
                     intensity="strong"
-                    width="medium"
-                    align="start"
+                    color="violet-ombre-portee"
+                    width="full"
                     spacing="none"
                     decorative
                 />
 
-                <div className="mt-12 max-w-3xl">
+                <div className="mt-12">
                     <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.2em] text-accent">
                         03 · Les Décors
                     </p>
@@ -648,6 +731,12 @@ export default function AtelierPage() {
                                     scope="col"
                                     className="px-5 py-4 font-medium"
                                 >
+                                    Version
+                                </th>
+                                <th
+                                    scope="col"
+                                    className="px-5 py-4 font-medium"
+                                >
                                     État
                                 </th>
                             </tr>
@@ -669,8 +758,11 @@ export default function AtelierPage() {
                                     <td className="px-5 py-4 text-ink-soft">
                                         {decor.role}
                                     </td>
-                                    <td className="px-5 py-4 text-sm text-muted">
-                                        {decor.statut}
+                                    <td className="px-5 py-4 font-mono text-xs text-muted">
+                                        {decor.version}
+                                    </td>
+                                    <td className="px-5 py-4 text-sm">
+                                        <AtelierStatut statut={decor.statut} />
                                     </td>
                                 </tr>
                             ))}
@@ -678,11 +770,17 @@ export default function AtelierPage() {
                     </table>
                 </div>
 
+                {raccordAvantPremiereFiche}
                 <PixieCardDossier />
+                {raccordEntreFiches}
                 <PixiePanelDossier />
+                {raccordEntreFiches}
                 <PixieFrameDossier />
+                {raccordEntreFiches}
                 <PixieCalloutDossier />
+                {raccordEntreFiches}
                 <PixieInsetDossier />
+                {raccordEntreFiches}
                 <PixieBackdropDossier />
             </section>
 
@@ -694,13 +792,13 @@ export default function AtelierPage() {
                 <PixieSeparator
                     variant="film"
                     intensity="strong"
-                    width="medium"
-                    align="start"
+                    color="violet-ombre-portee"
+                    width="full"
                     spacing="none"
                     decorative
                 />
 
-                <div className="mt-12 max-w-3xl">
+                <div className="mt-12">
                     <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.2em] text-accent">
                         04 · Les Dialogues
                     </p>
@@ -736,6 +834,12 @@ export default function AtelierPage() {
                                     scope="col"
                                     className="px-5 py-4 font-medium"
                                 >
+                                    Version
+                                </th>
+                                <th
+                                    scope="col"
+                                    className="px-5 py-4 font-medium"
+                                >
                                     État
                                 </th>
                             </tr>
@@ -761,8 +865,13 @@ export default function AtelierPage() {
                                     <td className="px-5 py-4 text-ink-soft">
                                         {dialogue.role}
                                     </td>
-                                    <td className="px-5 py-4 text-sm text-muted">
-                                        {dialogue.statut}
+                                    <td className="px-5 py-4 font-mono text-xs text-muted">
+                                        {dialogue.version}
+                                    </td>
+                                    <td className="px-5 py-4 text-sm">
+                                        <AtelierStatut
+                                            statut={dialogue.statut}
+                                        />
                                     </td>
                                 </tr>
                             ))}
@@ -770,11 +879,17 @@ export default function AtelierPage() {
                     </table>
                 </div>
 
+                {raccordAvantPremiereFiche}
                 <PixieDustFieldDossier />
+                {raccordEntreFiches}
                 <PixieDustInputDossier />
+                {raccordEntreFiches}
                 <PixieDustTextareaDossier />
+                {raccordEntreFiches}
                 <PixieDustSelectDossier />
+                {raccordEntreFiches}
                 <PixieDustSwitchDossier />
+                {raccordEntreFiches}
                 <PixieDustSearchFieldDossier />
             </section>
 
@@ -786,13 +901,13 @@ export default function AtelierPage() {
                 <PixieSeparator
                     variant="film"
                     intensity="strong"
-                    width="medium"
-                    align="start"
+                    color="violet-ombre-portee"
+                    width="full"
                     spacing="none"
                     decorative
                 />
 
-                <div className="mt-12 max-w-3xl">
+                <div className="mt-12">
                     <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.2em] text-accent">
                         05 · Le Montage
                     </p>
@@ -832,6 +947,12 @@ export default function AtelierPage() {
                                     scope="col"
                                     className="px-5 py-4 font-medium"
                                 >
+                                    Version
+                                </th>
+                                <th
+                                    scope="col"
+                                    className="px-5 py-4 font-medium"
+                                >
                                     État
                                 </th>
                             </tr>
@@ -853,8 +974,13 @@ export default function AtelierPage() {
                                     <td className="px-5 py-4 text-ink-soft">
                                         {element.role}
                                     </td>
-                                    <td className="px-5 py-4 text-sm text-muted">
-                                        {element.statut}
+                                    <td className="px-5 py-4 font-mono text-xs text-muted">
+                                        {element.version}
+                                    </td>
+                                    <td className="px-5 py-4 text-sm">
+                                        <AtelierStatut
+                                            statut={element.statut}
+                                        />
                                     </td>
                                 </tr>
                             ))}
@@ -862,16 +988,27 @@ export default function AtelierPage() {
                     </table>
                 </div>
 
+                {raccordAvantPremiereFiche}
                 <PixieContainerDossier />
+                {raccordEntreFiches}
                 <PixieStackDossier />
+                {raccordEntreFiches}
                 <PixieClusterDossier />
+                {raccordEntreFiches}
                 <PixieSectionDossier />
+                {raccordEntreFiches}
                 <PixieGridDossier />
+                {raccordEntreFiches}
                 <PixieDustSplitDossier />
+                {raccordEntreFiches}
                 <PixieDustSidebarDossier />
+                {raccordEntreFiches}
                 <PixieDustSwitcherDossier />
+                {raccordEntreFiches}
                 <PixieDustRailDossier />
+                {raccordEntreFiches}
                 <PixieDustBleedDossier />
+                {raccordEntreFiches}
                 <PixieDustStickyRegionDossier />
             </section>
 
@@ -883,13 +1020,13 @@ export default function AtelierPage() {
                 <PixieSeparator
                     variant="film"
                     intensity="strong"
-                    width="medium"
-                    align="start"
+                    color="violet-ombre-portee"
+                    width="full"
                     spacing="none"
                     decorative
                 />
 
-                <div className="mt-12 max-w-3xl">
+                <div className="mt-12">
                     <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.2em] text-accent">
                         06 · Les Effets
                     </p>
@@ -925,6 +1062,12 @@ export default function AtelierPage() {
                                     scope="col"
                                     className="px-5 py-4 font-medium"
                                 >
+                                    Version
+                                </th>
+                                <th
+                                    scope="col"
+                                    className="px-5 py-4 font-medium"
+                                >
                                     État
                                 </th>
                             </tr>
@@ -950,8 +1093,11 @@ export default function AtelierPage() {
                                     <td className="px-5 py-4 text-ink-soft">
                                         {effet.role}
                                     </td>
-                                    <td className="px-5 py-4 text-sm text-muted">
-                                        {effet.statut}
+                                    <td className="px-5 py-4 font-mono text-xs text-muted">
+                                        {effet.version}
+                                    </td>
+                                    <td className="px-5 py-4 text-sm">
+                                        <AtelierStatut statut={effet.statut} />
                                     </td>
                                 </tr>
                             ))}
@@ -959,8 +1105,11 @@ export default function AtelierPage() {
                     </table>
                 </div>
 
+                {raccordAvantPremiereFiche}
                 <PixieDustToastDossier />
+                {raccordEntreFiches}
                 <PixieDustLoaderDossier />
+                {raccordEntreFiches}
                 <PixieDustSkeletonDossier />
             </section>
         </AtelierProjectionProvider>

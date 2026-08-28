@@ -45,14 +45,6 @@ export default function AtelierLayout({
                             version projetable.
                         </p>
                     </div>
-
-                    <div className="flex items-center gap-3 self-start border border-line bg-surface px-4 py-3 text-sm text-ink-soft lg:self-auto">
-                        <span
-                            aria-hidden="true"
-                            className="size-2 rounded-full bg-accent"
-                        />
-                        Atelier local · Hors production
-                    </div>
                 </div>
 
                 <nav
