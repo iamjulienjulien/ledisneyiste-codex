@@ -320,18 +320,20 @@ export function PixieDustStickyRegionDossier() {
                     >
                         <PixieDustSidebar
                             side="start"
+                            sidebar={
+                                <PixieDustStickyRegion
+                                    as="nav"
+                                    offset="md"
+                                    aria-label="Sommaire de démonstration"
+                                >
+                                    <SummaryPanel />
+                                </PixieDustStickyRegion>
+                            }
                             sideWidth="sm"
                             contentMinWidth="half"
                             gap="lg"
                             align="start"
                         >
-                            <PixieDustStickyRegion
-                                as="nav"
-                                offset="md"
-                                aria-label="Sommaire de démonstration"
-                            >
-                                <SummaryPanel />
-                            </PixieDustStickyRegion>
                             <Story count={7} />
                         </PixieDustSidebar>
                     </ScrollStage>
@@ -357,33 +359,38 @@ export function PixieDustStickyRegionDossier() {
                         >
                             <PixieDustSidebar
                                 side="start"
+                                sidebar={
+                                    <PixieDustStickyRegion
+                                        as="nav"
+                                        edge="start"
+                                        offset="lg"
+                                        aria-label="Dans cette fiche"
+                                    >
+                                        <SummaryPanel />
+                                    </PixieDustStickyRegion>
+                                }
                                 sideWidth="sm"
                                 contentMinWidth="half"
                                 gap="lg"
                                 align="start"
                             >
-                                <PixieDustStickyRegion
-                                    as="nav"
-                                    edge="start"
-                                    offset="lg"
-                                    aria-label="Dans cette fiche"
-                                >
-                                    <SummaryPanel />
-                                </PixieDustStickyRegion>
                                 <Story count={8} />
                             </PixieDustSidebar>
                         </ScrollStage>
                     </div>
-                    <CodeExample>{`<PixieDustSidebar align="start">
-    <PixieDustStickyRegion
-        as="nav"
-        edge="start"
-        offset="lg"
-        aria-label="Dans cette fiche"
-    >
-        <PixiePanel>{/* Sommaire */}</PixiePanel>
-    </PixieDustStickyRegion>
-
+                    <CodeExample>{`<PixieDustSidebar
+    align="start"
+    sidebar={
+        <PixieDustStickyRegion
+            as="nav"
+            edge="start"
+            offset="lg"
+            aria-label="Dans cette fiche"
+        >
+            <PixiePanel>{/* Sommaire */}</PixiePanel>
+        </PixieDustStickyRegion>
+    }
+>
     <PixieStack>{/* Long récit */}</PixieStack>
 </PixieDustSidebar>`}</CodeExample>
                 </div>
@@ -554,19 +561,24 @@ export function PixieDustStickyRegionDossier() {
                             </h4>
                             <PixieDustSidebar
                                 side="start"
+                                sidebar={
+                                    <PixieDustStickyRegion offset="sm">
+                                        <PixiePanel
+                                            variant="accent"
+                                            padding="sm"
+                                        >
+                                            <p className="text-sm text-ink">
+                                                Repère limité
+                                            </p>
+                                        </PixiePanel>
+                                    </PixieDustStickyRegion>
+                                }
                                 sideWidth="xs"
                                 contentMinWidth="half"
                                 gap="md"
                                 align="start"
                                 className="mt-5"
                             >
-                                <PixieDustStickyRegion offset="sm">
-                                    <PixiePanel variant="accent" padding="sm">
-                                        <p className="text-sm text-ink">
-                                            Repère limité
-                                        </p>
-                                    </PixiePanel>
-                                </PixieDustStickyRegion>
                                 <Story count={5} />
                             </PixieDustSidebar>
                         </section>

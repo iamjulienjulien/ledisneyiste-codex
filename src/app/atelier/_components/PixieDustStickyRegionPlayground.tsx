@@ -357,12 +357,12 @@ ${labelLine}>
                                 {edge === "start" ? (
                                     <PixieDustSidebar
                                         side="start"
+                                        sidebar={stickyRegion}
                                         sideWidth="sm"
                                         contentMinWidth="half"
                                         gap="lg"
                                         align="start"
                                     >
-                                        {stickyRegion}
                                         {editorialContent}
                                     </PixieDustSidebar>
                                 ) : (

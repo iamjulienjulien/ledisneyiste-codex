@@ -34,6 +34,7 @@ const sideWidths = [
     { value: "sm", label: "Petite" },
     { value: "md", label: "Moyenne" },
     { value: "lg", label: "Grande" },
+    { value: "xl", label: "Très grande" },
 ] as const;
 
 const contentWidths = [
@@ -77,27 +78,29 @@ export function PixieDustSidebarPlayground() {
     const [sideWidth, setSideWidth] = useState<PixieDustSidebarSideWidth>("md");
     const [contentMinWidth, setContentMinWidth] =
         useState<PixieDustSidebarContentMinWidth>("two-thirds");
-    const [gap, setGap] = useState<PixieDustSidebarGap>("xl");
+    const [gap, setGap] = useState<PixieDustSidebarGap>("lg");
+    const [rowGap, setRowGap] = useState<PixieDustSidebarGap>("xl");
+    const [columnGap, setColumnGap] = useState<PixieDustSidebarGap>("lg");
     const [align, setAlign] = useState<PixieDustSidebarAlign>("start");
     const { lumiere: light, cadre: frame } = useAtelierProjection();
 
     const labelledBy =
         element === "div" ? "" : '    aria-labelledby="sidebar-heading"\n';
-    const panes =
-        side === "start"
-            ? `    <aside>{/* Régie latérale */}</aside>
-    <section>{/* Contenu principal */}</section>`
-            : `    <section>{/* Contenu principal */}</section>
-    <aside>{/* Régie latérale */}</aside>`;
     const code = `<PixieDustSidebar
     as="${element}"
     side="${side}"
+    sidebar={<aside>{/* Régie latérale */}</aside>}
     sideWidth="${sideWidth}"
     contentMinWidth="${contentMinWidth}"
     gap="${gap}"
+    rowGap="${rowGap}"
+    columnGap="${columnGap}"
     align="${align}"
 ${labelledBy}>
-${panes}
+    <section>
+        <h2 id="sidebar-heading">Archives</h2>
+        {/* Contenu principal */}
+    </section>
 </PixieDustSidebar>`;
 
     const sidebarPane = (
@@ -221,6 +224,40 @@ ${panes}
 
                         <fieldset>
                             <legend className="text-sm font-medium text-ink">
+                                Espacement en pile
+                            </legend>
+                            <div className="mt-3 space-y-2">
+                                {gaps.map((option) => (
+                                    <AtelierOptionRadio
+                                        key={option.value}
+                                        name="sidebar-row-gap"
+                                        {...option}
+                                        selectedValue={rowGap}
+                                        onChange={setRowGap}
+                                    />
+                                ))}
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend className="text-sm font-medium text-ink">
+                                Espacement côte à côte
+                            </legend>
+                            <div className="mt-3 space-y-2">
+                                {gaps.map((option) => (
+                                    <AtelierOptionRadio
+                                        key={option.value}
+                                        name="sidebar-column-gap"
+                                        {...option}
+                                        selectedValue={columnGap}
+                                        onChange={setColumnGap}
+                                    />
+                                ))}
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend className="text-sm font-medium text-ink">
                                 Largeur de la régie
                             </legend>
                             <div className="mt-3 space-y-2">
@@ -301,9 +338,12 @@ ${panes}
                             <PixieDustSidebar
                                 as={element}
                                 side={side}
+                                sidebar={sidebarPane}
                                 sideWidth={sideWidth}
                                 contentMinWidth={contentMinWidth}
                                 gap={gap}
+                                rowGap={rowGap}
+                                columnGap={columnGap}
                                 align={align}
                                 aria-labelledby={
                                     element === "div"
@@ -311,8 +351,7 @@ ${panes}
                                         : "sidebar-preview-heading"
                                 }
                             >
-                                {side === "start" ? sidebarPane : contentPane}
-                                {side === "start" ? contentPane : sidebarPane}
+                                {contentPane}
                             </PixieDustSidebar>
                             {element === "div" ? null : (
                                 <span

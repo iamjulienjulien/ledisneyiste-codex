@@ -62,6 +62,12 @@ const sideWidths = [
         token: "24 rem",
         role: "Documentation ou commandes plus riches.",
     },
+    {
+        name: "Très grande",
+        value: "xl" as const,
+        token: "30 rem",
+        role: "Inspecteur, aperçu ou documentation particulièrement dense.",
+    },
 ] as const satisfies readonly Readonly<{
     name: string;
     value: PixieDustSidebarSideWidth;
@@ -129,7 +135,7 @@ const properties = [
         name: "side",
         type: "PixieDustSidebarSide",
         defaultValue: '"start"',
-        description: "Enfant qui reçoit le rôle dimensionnel de régie.",
+        description: "Place logique de la régie dans la composition.",
     },
     {
         name: "sideWidth",
@@ -140,7 +146,7 @@ const properties = [
     {
         name: "contentMinWidth",
         type: "PixieDustSidebarContentMinWidth",
-        defaultValue: '"half"',
+        defaultValue: '"two-thirds"',
         description: "Part minimale réservée au contenu principal.",
     },
     {
@@ -150,16 +156,35 @@ const properties = [
         description: "Intervalle entre la régie et le contenu.",
     },
     {
+        name: "rowGap",
+        type: "PixieDustSidebarGap",
+        defaultValue: "gap",
+        description: "Surcharge de l’intervalle lorsque les zones s’empilent.",
+    },
+    {
+        name: "columnGap",
+        type: "PixieDustSidebarGap",
+        defaultValue: "gap",
+        description:
+            "Surcharge de l’intervalle lorsque les zones se partagent une ligne.",
+    },
+    {
         name: "align",
         type: "PixieDustSidebarAlign",
         defaultValue: '"stretch"',
         description: "Alignement vertical des deux zones.",
     },
     {
-        name: "children",
-        type: "PixieDustSidebarChildren",
+        name: "sidebar",
+        type: "ReactNode",
         defaultValue: "—",
-        description: "Tuple composé d’exactement deux enfants directs.",
+        description: "Régie latérale, identifiée sans dépendre de sa position.",
+    },
+    {
+        name: "children",
+        type: "ReactNode",
+        defaultValue: "—",
+        description: "Contenu principal qui reçoit l’espace disponible.",
     },
     {
         name: "className",
@@ -182,7 +207,7 @@ const specificTypes = [
     },
     {
         name: "PixieDustSidebarSideWidth",
-        values: ['"xs"', '"sm"', '"md"', '"lg"'],
+        values: ['"xs"', '"sm"', '"md"', '"lg"', '"xl"'],
         description: "Largeurs de référence de la régie.",
     },
     {
@@ -199,11 +224,6 @@ const specificTypes = [
         name: "PixieDustSidebarAlign",
         values: ['"stretch"', '"start"', '"center"', '"end"'],
         description: "Alignements verticaux des deux zones.",
-    },
-    {
-        name: "PixieDustSidebarChildren",
-        values: ["readonly [ReactNode, ReactNode]"],
-        description: "Contrat strict de deux enfants directs.",
     },
 ] as const;
 
@@ -325,7 +345,7 @@ export function PixieDustSidebarDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.1.0
+                                0.2.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -364,11 +384,11 @@ export function PixieDustSidebarDossier() {
                         ],
                         [
                             "Anatomie",
-                            "Une enveloppe flexible et exactement deux enfants directs.",
+                            "Une régie nommée et un contenu principal indépendant de leur position.",
                         ],
                         [
                             "Accessibilité",
-                            "La position choisie reste l’ordre réel du document.",
+                            "L’ordre visuel, documentaire et clavier reste concordant.",
                         ],
                         [
                             "Dépendances",
@@ -401,12 +421,12 @@ export function PixieDustSidebarDossier() {
                     </p>
                     <PixieDustSidebar
                         side="start"
+                        sidebar={<SidebarPane label="01 · Régie" />}
                         sideWidth="sm"
                         contentMinWidth="two-thirds"
                         gap="md"
                         className="mt-4"
                     >
-                        <SidebarPane label="01 · Régie" />
                         <ContentPane label="02 · Contenu prioritaire" />
                     </PixieDustSidebar>
                 </div>
@@ -427,36 +447,38 @@ export function PixieDustSidebarDossier() {
                     <div className="bg-canvas p-6 sm:p-8">
                         <PixieDustSidebar
                             side="start"
+                            sidebar={
+                                <aside
+                                    aria-labelledby="sidebar-master-filters"
+                                    className="border border-line bg-surface-muted p-5"
+                                >
+                                    <h4
+                                        id="sidebar-master-filters"
+                                        className="text-xl text-ink"
+                                    >
+                                        Régie des archives
+                                    </h4>
+                                    <PixieStack gap="xs" className="mt-5">
+                                        {[
+                                            "Mickey Mouse",
+                                            "Silly Symphonies",
+                                            "Oswald",
+                                        ].map((label) => (
+                                            <div
+                                                key={label}
+                                                className="border border-line bg-canvas px-3 py-2 text-sm text-ink-soft"
+                                            >
+                                                {label}
+                                            </div>
+                                        ))}
+                                    </PixieStack>
+                                </aside>
+                            }
                             sideWidth="sm"
                             contentMinWidth="two-thirds"
                             gap="xl"
                             align="start"
                         >
-                            <aside
-                                aria-labelledby="sidebar-master-filters"
-                                className="border border-line bg-surface-muted p-5"
-                            >
-                                <h4
-                                    id="sidebar-master-filters"
-                                    className="text-xl text-ink"
-                                >
-                                    Régie des archives
-                                </h4>
-                                <PixieStack gap="xs" className="mt-5">
-                                    {[
-                                        "Mickey Mouse",
-                                        "Silly Symphonies",
-                                        "Oswald",
-                                    ].map((label) => (
-                                        <div
-                                            key={label}
-                                            className="border border-line bg-canvas px-3 py-2 text-sm text-ink-soft"
-                                        >
-                                            {label}
-                                        </div>
-                                    ))}
-                                </PixieStack>
-                            </aside>
                             <section aria-labelledby="sidebar-master-results">
                                 <PixieStack gap="md">
                                     <div>
@@ -497,12 +519,12 @@ export function PixieDustSidebarDossier() {
                     </div>
                     <CodeExample>{`<PixieDustSidebar
     side="start"
+    sidebar={<aside>{/* Régie latérale */}</aside>}
     sideWidth="sm"
     contentMinWidth="two-thirds"
     gap="xl"
     align="start"
 >
-    <aside>{/* Régie latérale */}</aside>
     <section>{/* Contenu principal */}</section>
 </PixieDustSidebar>`}</CodeExample>
                 </div>
@@ -513,35 +535,22 @@ export function PixieDustSidebarDossier() {
                     id="sidebar-sides"
                     eyebrow="Position documentaire"
                     title="La régie ouvre ou referme la séquence"
-                    description="side désigne l’enfant dimensionné comme régie ; aucun ordre CSS ne déplace les zones après leur rendu."
+                    description="side place la régie nommée avant ou après le contenu et maintient automatiquement la concordance entre ordre visuel, document et clavier."
                 />
 
                 <div className="mt-7 grid gap-6 bg-canvas p-6 lg:grid-cols-2">
                     {sides.map((side) => (
                         <Stage key={side.value}>
-                            {side.value === "start" ? (
-                                <PixieDustSidebar
-                                    side="start"
-                                    sideWidth="xs"
-                                    contentMinWidth="half"
-                                    gap="sm"
-                                    className="p-4"
-                                >
-                                    <SidebarPane label="01 · Régie" />
-                                    <ContentPane label="02 · Contenu" />
-                                </PixieDustSidebar>
-                            ) : (
-                                <PixieDustSidebar
-                                    side="end"
-                                    sideWidth="xs"
-                                    contentMinWidth="half"
-                                    gap="sm"
-                                    className="p-4"
-                                >
-                                    <ContentPane label="01 · Contenu" />
-                                    <SidebarPane label="02 · Régie" />
-                                </PixieDustSidebar>
-                            )}
+                            <PixieDustSidebar
+                                side={side.value}
+                                sidebar={<SidebarPane label="Régie" />}
+                                sideWidth="xs"
+                                contentMinWidth="half"
+                                gap="sm"
+                                className="p-4"
+                            >
+                                <ContentPane label="Contenu" />
+                            </PixieDustSidebar>
                             <div className="border-t border-line bg-surface p-4">
                                 <h4 className="text-lg text-ink">
                                     {side.name}
@@ -559,7 +568,7 @@ export function PixieDustSidebarDossier() {
                 <SequenceTitle
                     id="sidebar-widths"
                     eyebrow="Mesure de la régie"
-                    title="Quatre largeurs cadrent les commandes"
+                    title="Cinq largeurs cadrent les commandes"
                     description="La mesure reste une base : sur une ligne, le contenu absorbe presque tout le surplus ; en pile, la régie retrouve toute la largeur."
                 />
 
@@ -568,12 +577,12 @@ export function PixieDustSidebarDossier() {
                         <Stage key={width.value}>
                             <PixieDustSidebar
                                 side="start"
+                                sidebar={<SidebarPane />}
                                 sideWidth={width.value}
                                 contentMinWidth="half"
                                 gap="sm"
                                 className="p-4"
                             >
-                                <SidebarPane />
                                 <ContentPane />
                             </PixieDustSidebar>
                             <div className="border-t border-line bg-surface p-4">
@@ -607,12 +616,12 @@ export function PixieDustSidebarDossier() {
                         <Stage key={width.value}>
                             <PixieDustSidebar
                                 side="start"
+                                sidebar={<SidebarPane />}
                                 sideWidth="sm"
                                 contentMinWidth={width.value}
                                 gap="md"
                                 className="p-4"
                             >
-                                <SidebarPane />
                                 <ContentPane />
                             </PixieDustSidebar>
                             <div className="border-t border-line bg-surface p-4">
@@ -653,11 +662,11 @@ export function PixieDustSidebarDossier() {
                             </p>
                             <PixieDustSidebar
                                 side="start"
+                                sidebar={<SidebarPane />}
                                 sideWidth="md"
                                 contentMinWidth="two-thirds"
                                 gap="md"
                             >
-                                <SidebarPane />
                                 <ContentPane />
                             </PixieDustSidebar>
                         </div>
@@ -665,12 +674,205 @@ export function PixieDustSidebarDossier() {
                 </div>
             </section>
 
+            <section aria-labelledby="sidebar-scenarios" className="mt-16">
+                <SequenceTitle
+                    id="sidebar-scenarios"
+                    eyebrow="Scénarios préparés"
+                    title="Quatre régies pour quatre rythmes documentaires"
+                    description="La même primitive accompagne une navigation, une identité, un complément de lecture ou un outil d’inspection sans imposer leur surface ni leur comportement."
+                />
+
+                <div className="mt-7 grid gap-6 bg-canvas p-6 xl:grid-cols-2">
+                    <Stage>
+                        <div className="p-5">
+                            <PixieDustSidebar
+                                as="section"
+                                side="start"
+                                sidebar={
+                                    <nav
+                                        aria-label="Dans ce chapitre"
+                                        className="border border-line bg-surface-muted p-4"
+                                    >
+                                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                                            Sommaire
+                                        </p>
+                                        <PixieStack gap="xs" className="mt-3">
+                                            {[
+                                                "Le départ",
+                                                "Le studio",
+                                                "La projection",
+                                            ].map((item) => (
+                                                <span
+                                                    key={item}
+                                                    className="text-sm text-ink-soft"
+                                                >
+                                                    {item}
+                                                </span>
+                                            ))}
+                                        </PixieStack>
+                                    </nav>
+                                }
+                                sideWidth="xs"
+                                contentMinWidth="half"
+                                gap="md"
+                                align="start"
+                            >
+                                <article>
+                                    <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                                        Navigation locale
+                                    </p>
+                                    <h4 className="mt-2 text-2xl text-ink">
+                                        Un sommaire accompagne le récit
+                                    </h4>
+                                    <p className="mt-3 leading-7 text-ink-soft">
+                                        La navigation ouvre la séquence sans
+                                        réduire le contenu à une colonne fixe.
+                                    </p>
+                                </article>
+                            </PixieDustSidebar>
+                        </div>
+                    </Stage>
+
+                    <Stage>
+                        <div className="p-5">
+                            <PixieDustSidebar
+                                as="section"
+                                side="start"
+                                sidebar={
+                                    <aside
+                                        aria-label="Fiche d’identité"
+                                        className="border border-line bg-surface-muted p-4"
+                                    >
+                                        <PixieStack gap="xs">
+                                            {["1937", "Couleur", "Sonore"].map(
+                                                (item) => (
+                                                    <PixieBadge
+                                                        key={item}
+                                                        variant="outline"
+                                                        size="sm"
+                                                        tone="inherit"
+                                                    >
+                                                        {item}
+                                                    </PixieBadge>
+                                                ),
+                                            )}
+                                        </PixieStack>
+                                    </aside>
+                                }
+                                sideWidth="xs"
+                                contentMinWidth="two-thirds"
+                                gap="lg"
+                                align="start"
+                            >
+                                <PixieCard
+                                    as="article"
+                                    variant="outline"
+                                    padding="md"
+                                >
+                                    <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                                        Identité et récit
+                                    </p>
+                                    <h4 className="mt-2 text-2xl text-ink">
+                                        Les repères restent distincts du texte
+                                    </h4>
+                                </PixieCard>
+                            </PixieDustSidebar>
+                        </div>
+                    </Stage>
+
+                    <Stage>
+                        <div className="p-5">
+                            <PixieDustSidebar
+                                as="section"
+                                side="end"
+                                sidebar={
+                                    <aside aria-label="Note de lecture">
+                                        <PixieCard
+                                            variant="accent"
+                                            padding="sm"
+                                        >
+                                            <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                                                Note
+                                            </p>
+                                            <p className="mt-2 text-sm leading-6 text-ink-soft">
+                                                Une précision complète la
+                                                lecture sans l’interrompre.
+                                            </p>
+                                        </PixieCard>
+                                    </aside>
+                                }
+                                sideWidth="sm"
+                                contentMinWidth="half"
+                                gap="lg"
+                                align="start"
+                            >
+                                <article>
+                                    <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                                        Complément en fin
+                                    </p>
+                                    <h4 className="mt-2 text-2xl text-ink">
+                                        Le récit garde la première place
+                                    </h4>
+                                    <p className="mt-3 leading-7 text-ink-soft">
+                                        Avec side=end, le contenu précède aussi
+                                        la note dans le document et au clavier.
+                                    </p>
+                                </article>
+                            </PixieDustSidebar>
+                        </div>
+                    </Stage>
+
+                    <Stage>
+                        <div className="p-5">
+                            <PixieDustSidebar
+                                as="section"
+                                side="end"
+                                sidebar={
+                                    <aside
+                                        aria-label="Inspecteur"
+                                        className="border border-line bg-surface-muted p-4"
+                                    >
+                                        <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                                            Inspecteur
+                                        </p>
+                                        <PixieStack gap="xs" className="mt-3">
+                                            {[
+                                                "Cadre",
+                                                "Lumière",
+                                                "Échelle",
+                                            ].map((item) => (
+                                                <div
+                                                    key={item}
+                                                    className="border border-line bg-canvas px-3 py-2 text-xs text-ink-soft"
+                                                >
+                                                    {item}
+                                                </div>
+                                            ))}
+                                        </PixieStack>
+                                    </aside>
+                                }
+                                sideWidth="sm"
+                                contentMinWidth="two-thirds"
+                                gap="md"
+                                align="stretch"
+                            >
+                                <div className="flex min-h-48 items-center justify-center border border-dashed border-line-strong bg-surface">
+                                    <p className="font-mono text-xs text-muted">
+                                        Aperçu du plan
+                                    </p>
+                                </div>
+                            </PixieDustSidebar>
+                        </div>
+                    </Stage>
+                </div>
+            </section>
+
             <section aria-labelledby="sidebar-gaps" className="mt-16">
                 <SequenceTitle
                     id="sidebar-gaps"
                     eyebrow="Intervalle de montage"
-                    title="Six respirations séparent commande et résultat"
-                    description="Le même intervalle reste visible entre les zones côte à côte ou superposées."
+                    title="Une respiration générale, deux axes ajustables"
+                    description="gap pose le rythme commun ; rowGap et columnGap peuvent ensuite distinguer la superposition du partage côte à côte."
                 />
 
                 <div className="mt-7 grid gap-6 bg-canvas p-6 md:grid-cols-2 xl:grid-cols-3">
@@ -678,12 +880,12 @@ export function PixieDustSidebarDossier() {
                         <Stage key={gap.value}>
                             <PixieDustSidebar
                                 side="start"
+                                sidebar={<SidebarPane />}
                                 sideWidth="xs"
                                 contentMinWidth="half"
                                 gap={gap.value}
                                 className="p-4"
                             >
-                                <SidebarPane />
                                 <ContentPane />
                             </PixieDustSidebar>
                             <p className="border-t border-line bg-surface p-4 font-mono text-xs text-accent">
@@ -691,6 +893,41 @@ export function PixieDustSidebarDossier() {
                             </p>
                         </Stage>
                     ))}
+                </div>
+
+                <div className="mt-6 grid gap-6 bg-canvas p-6 lg:grid-cols-2">
+                    <Stage>
+                        <div className="max-w-sm p-4">
+                            <PixieDustSidebar
+                                sidebar={<SidebarPane />}
+                                sideWidth="sm"
+                                contentMinWidth="three-quarters"
+                                gap="xs"
+                                rowGap="xl"
+                            >
+                                <ContentPane />
+                            </PixieDustSidebar>
+                        </div>
+                        <p className="border-t border-line bg-surface p-4 font-mono text-xs text-accent">
+                            gap=&quot;xs&quot; · rowGap=&quot;xl&quot;
+                        </p>
+                    </Stage>
+                    <Stage>
+                        <div className="p-4">
+                            <PixieDustSidebar
+                                sidebar={<SidebarPane />}
+                                sideWidth="xs"
+                                contentMinWidth="half"
+                                gap="xs"
+                                columnGap="xl"
+                            >
+                                <ContentPane />
+                            </PixieDustSidebar>
+                        </div>
+                        <p className="border-t border-line bg-surface p-4 font-mono text-xs text-accent">
+                            gap=&quot;xs&quot; · columnGap=&quot;xl&quot;
+                        </p>
+                    </Stage>
                 </div>
             </section>
 
@@ -707,13 +944,13 @@ export function PixieDustSidebarDossier() {
                         <Stage key={alignment.value}>
                             <PixieDustSidebar
                                 side="start"
+                                sidebar={<SidebarPane className="min-h-48" />}
                                 sideWidth="xs"
                                 contentMinWidth="half"
                                 gap="sm"
                                 align={alignment.value}
                                 className="min-h-64 p-4"
                             >
-                                <SidebarPane className="min-h-48" />
                                 <ContentPane className="min-h-28" />
                             </PixieDustSidebar>
                             <p className="border-t border-line bg-surface p-4 font-mono text-xs text-accent">
@@ -782,28 +1019,32 @@ export function PixieDustSidebarDossier() {
                         </PixieStack>
                         <PixieDustSidebar
                             side="start"
+                            sidebar={
+                                <aside
+                                    aria-label="Repères"
+                                    className="border border-line bg-surface-muted p-5"
+                                >
+                                    <PixieCluster gap="xs">
+                                        {["1928", "1929", "1932"].map(
+                                            (label) => (
+                                                <PixieBadge
+                                                    key={label}
+                                                    variant="outline"
+                                                    size="sm"
+                                                    tone="inherit"
+                                                >
+                                                    {label}
+                                                </PixieBadge>
+                                            ),
+                                        )}
+                                    </PixieCluster>
+                                </aside>
+                            }
                             sideWidth="sm"
                             contentMinWidth="two-thirds"
                             gap="lg"
                             align="start"
                         >
-                            <aside
-                                aria-label="Repères"
-                                className="border border-line bg-surface-muted p-5"
-                            >
-                                <PixieCluster gap="xs">
-                                    {["1928", "1929", "1932"].map((label) => (
-                                        <PixieBadge
-                                            key={label}
-                                            variant="outline"
-                                            size="sm"
-                                            tone="inherit"
-                                        >
-                                            {label}
-                                        </PixieBadge>
-                                    ))}
-                                </PixieCluster>
-                            </aside>
                             <PixieGrid
                                 maxColumns={3}
                                 minItemWidth="sm"
@@ -884,8 +1125,8 @@ export function PixieDustSidebarDossier() {
                 <SequenceTitle
                     id="sidebar-accessibility"
                     eyebrow="Accessibilité"
-                    title="La régie reste à sa place dans le document"
-                    description="Le composant ne réordonne jamais ses enfants. Le choix start ou end doit donc correspondre à l’ordre de lecture réellement souhaité."
+                    title="La position visuelle suit toujours le document"
+                    description="La prop sidebar identifie la régie ; side décide ensuite où le composant la rend réellement, sans recourir à CSS order."
                 />
 
                 <div className="mt-7 grid gap-px bg-line md:grid-cols-2">
@@ -895,12 +1136,12 @@ export function PixieDustSidebarDossier() {
                             "Donner à la régie un titre visible, aria-labelledby ou aria-label.",
                         ],
                         [
-                            "Deux enfants",
-                            "Le typage exige exactement une régie et un contenu directs.",
+                            "Deux rôles nommés",
+                            "sidebar porte la régie et children le contenu principal, sans ambiguïté de position.",
                         ],
                         [
-                            "Ordre naturel",
-                            "side désigne un enfant ; il ne modifie jamais CSS order.",
+                            "Ordre concordant",
+                            "side modifie ensemble l’ordre rendu, l’ordre visuel et le parcours clavier.",
                         ],
                         [
                             "Contrôles",
@@ -958,12 +1199,12 @@ export function PixieDustSidebarDossier() {
 
                 <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
                     {[
-                        "Tester les quatre largeurs avec filtres, sommaires et navigation locale.",
+                        "Tester les cinq largeurs avec filtres, sommaires, notes et inspecteurs.",
                         "Éprouver les trois protections du contenu dans les cadres compact et moyen.",
-                        "Vérifier les positions start et end avec des parcours clavier complets.",
+                        "Vérifier le contrat sidebar + children dans les positions start et end.",
                         "Contrôler les longues étiquettes et les contenus sans possibilité de césure.",
-                        "Tester le passage en pile sur mobile et à 200 % de zoom.",
-                        "Décider si start, md, half et lg restent les bons réglages par défaut.",
+                        "Tester rowGap et columnGap en pile, sur mobile et à 200 % de zoom.",
+                        "Valider start, md, two-thirds et lg comme réglages par défaut.",
                     ].map((decision) => (
                         <li
                             key={decision}
