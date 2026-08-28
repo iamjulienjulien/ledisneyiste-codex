@@ -12,6 +12,7 @@ const generalArchiveSymbolSlugs = getSymbolSlugs("general", "archives");
 const generalEcritureSymbolSlugs = getSymbolSlugs("general", "ecriture");
 const generalExplorationSymbolSlugs = getSymbolSlugs("general", "exploration");
 const generalTempsSymbolSlugs = getSymbolSlugs("general", "temps");
+const generalAtelierSymbolSlugs = getSymbolSlugs("general", "atelier");
 const animationTechniqueSymbolSlugs = getSymbolSlugs("techniques", "animation");
 const imageTechniqueSymbolSlugs = getSymbolSlugs("techniques", "images");
 const couleurTechniqueSymbolSlugs = getSymbolSlugs("techniques", "couleur");
@@ -112,6 +113,7 @@ const typesSpecifiques = [
         name: 'SymbolCollectionName<"general">',
         values: [
             '"archives"',
+            '"atelier"',
             '"cinema"',
             '"ecriture"',
             '"exploration"',
@@ -257,6 +259,29 @@ const typesSpecifiques = [
         ],
         description:
             "Repères chronologiques, instruments de mesure et objets de datation.",
+    },
+    {
+        name: 'SymbolSlug<"general", "atelier">',
+        values: [
+            '"boite-outils-ouverte"',
+            '"pot-outils-creatifs"',
+            '"palette-atelier"',
+            '"regle-t-equerre"',
+            '"compas-dessin"',
+            '"cutter-precision"',
+            '"rouleau-papier"',
+            '"planche-dessin-inclinee"',
+            '"lampe-atelier"',
+            '"nuancier-matieres"',
+            '"tablier-artiste"',
+            '"serre-joints"',
+            '"devidoir-ruban-masquage"',
+            '"plateau-fournitures"',
+            '"etau-precision"',
+            '"tiroir-atelier-ouvert"',
+        ],
+        description:
+            "Outils transversaux de fabrication, dessin, découpe et organisation de l’atelier.",
     },
     {
         name: 'SymbolSlug<"techniques", "animation">',
@@ -522,7 +547,7 @@ export function PixieSymbolDossier() {
                         ["Mission", "Afficher un symbole typé."],
                         ["Sélection", "registry · collection · slug"],
                         ["Exemple", "codex.index.personnages"],
-                        ["Masters", "Dix-huit séries originales · 1254 px."],
+                        ["Masters", "Dix-neuf séries originales · 1254 px."],
                         ["Dérivés", "PNG transparent · 384 px."],
                         ["Accessibilité", "Décoratif par défaut."],
                     ].map(([terme, definition]) => (
@@ -807,6 +832,48 @@ export function PixieSymbolDossier() {
                                 <PixieSymbol
                                     registry="general"
                                     collection="temps"
+                                    slug={slug}
+                                    size="xl"
+                                    className="mx-auto"
+                                />
+                                <h4 className="mt-5 text-xl text-ink">
+                                    {symbole.label}
+                                </h4>
+                                <p className="mt-2 font-mono text-xs text-muted">
+                                    {slug}
+                                </p>
+                            </article>
+                        );
+                    })}
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="pixie-symbol-general-atelier"
+                className="mt-16"
+            >
+                <TitreSequence
+                    id="pixie-symbol-general-atelier"
+                    surTitre="Distribution"
+                    titre="Le Codex ouvre son atelier"
+                    description="Boîte à outils, instruments de dessin, fournitures et équipements de travail forment un vocabulaire transversal pour évoquer la fabrication artistique sans se confondre avec les collections techniques."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+                    {generalAtelierSymbolSlugs.map((slug) => {
+                        const symbole = getSymbol("general", "atelier", slug);
+
+                        return (
+                            <article
+                                key={slug}
+                                className="bg-surface p-6 text-center"
+                                style={{
+                                    borderTop: `4px solid ${symbole.accent}`,
+                                }}
+                            >
+                                <PixieSymbol
+                                    registry="general"
+                                    collection="atelier"
                                     slug={slug}
                                     size="xl"
                                     className="mx-auto"
