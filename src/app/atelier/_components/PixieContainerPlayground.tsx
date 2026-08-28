@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
+import { AtelierPlaygroundProjection } from "@/components/atelier/AtelierPlaygroundProjection";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import {
@@ -58,7 +59,7 @@ ${labelledBy}>
 </PixieContainer>`;
 
     return (
-        <div className="overflow-hidden border border-line bg-surface">
+        <div className="overflow-clip border border-line bg-surface">
             <div className="grid lg:grid-cols-[18rem_1fr]">
                 <aside className="border-b border-line bg-surface-muted p-6 lg:border-r lg:border-b-0">
                     <h4 className="text-xl text-ink">Table de réglage</h4>
@@ -131,7 +132,7 @@ ${labelledBy}>
                     </div>
                 </aside>
 
-                <div className="min-w-0">
+                <AtelierPlaygroundProjection>
                     <AtelierRegiePlateau
                         namePrefix="container"
                         lumiere={light}
@@ -181,7 +182,7 @@ ${labelledBy}>
                     </div>
 
                     <AtelierCodePanel key={code} code={code} />
-                </div>
+                </AtelierPlaygroundProjection>
             </div>
         </div>
     );

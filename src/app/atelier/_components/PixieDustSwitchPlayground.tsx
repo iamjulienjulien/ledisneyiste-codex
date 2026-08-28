@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
+import { AtelierPlaygroundProjection } from "@/components/atelier/AtelierPlaygroundProjection";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import { PixieDustField } from "@/components/ui/PixieDustField";
@@ -91,7 +92,7 @@ export function PixieDustSwitchPlayground() {
     ];
 
     return (
-        <div className="overflow-hidden border border-line bg-surface">
+        <div className="overflow-clip border border-line bg-surface">
             <div className="grid lg:grid-cols-[18rem_1fr]">
                 <aside className="border-b border-line bg-surface-muted p-6 lg:border-r lg:border-b-0">
                     <h4 className="text-xl text-ink">Table de réglage</h4>
@@ -183,7 +184,7 @@ export function PixieDustSwitchPlayground() {
                     </div>
                 </aside>
 
-                <div className="min-w-0">
+                <AtelierPlaygroundProjection>
                     <AtelierRegiePlateau
                         namePrefix="switch"
                         lumiere={light}
@@ -231,7 +232,7 @@ export function PixieDustSwitchPlayground() {
                     </div>
 
                     <AtelierCodePanel key={code} code={code} />
-                </div>
+                </AtelierPlaygroundProjection>
             </div>
         </div>
     );
