@@ -257,4 +257,86 @@ export const symbolsTechniques = {
             accent: "var(--atelier-animation-indigo-nuit-studio)",
         },
     },
+    son: {
+        "microphone-ruban": {
+            src: "/symbols/techniques/son/microphone-ruban.png",
+            label: "Microphone à ruban",
+            accent: "var(--atelier-animation-graphite)",
+        },
+        "enregistreur-optique": {
+            src: "/symbols/techniques/son/enregistreur-optique.png",
+            label: "Enregistreur optique",
+            accent: "var(--atelier-animation-ambre-projecteur)",
+        },
+        "synchroniseur-image-son": {
+            src: "/symbols/techniques/son/synchroniseur-image-son.png",
+            label: "Synchroniseur image-son",
+            accent: "var(--atelier-animation-framboise-encrage)",
+        },
+        "console-mixage": {
+            src: "/symbols/techniques/son/console-mixage.png",
+            label: "Console de mixage",
+            accent: "var(--atelier-animation-bleu-reperage)",
+        },
+        "microphone-condensateur": {
+            src: "/symbols/techniques/son/microphone-condensateur.png",
+            label: "Microphone à condensateur",
+            accent: "var(--atelier-animation-graphite)",
+        },
+        "perche-studio": {
+            src: "/symbols/techniques/son/perche-studio.png",
+            label: "Perche de studio",
+            accent: "var(--atelier-animation-cyan-effets-optiques)",
+        },
+        "paravent-acoustique": {
+            src: "/symbols/techniques/son/paravent-acoustique.png",
+            label: "Paravent acoustique",
+            accent: "var(--atelier-animation-bleu-reperage)",
+        },
+        "graveur-disque": {
+            src: "/symbols/techniques/son/graveur-disque.png",
+            label: "Graveur de disque",
+            accent: "var(--atelier-animation-sepia-storyboard)",
+        },
+        "magnetophone-bande": {
+            src: "/symbols/techniques/son/magnetophone-bande.png",
+            label: "Magnétophone à bande",
+            accent: "var(--atelier-animation-rouge-crayon)",
+        },
+        "matrice-multicanale": {
+            src: "/symbols/techniques/son/matrice-multicanale.png",
+            label: "Matrice multicanale",
+            accent: "var(--atelier-animation-turquoise-acetate)",
+        },
+        "piste-densite-variable": {
+            src: "/symbols/techniques/son/piste-densite-variable.png",
+            label: "Piste à densité variable",
+            accent: "var(--atelier-animation-ambre-projecteur)",
+        },
+        "piste-surface-variable": {
+            src: "/symbols/techniques/son/piste-surface-variable.png",
+            label: "Piste à surface variable",
+            accent: "var(--atelier-animation-cyan-effets-optiques)",
+        },
+        "generateur-click-track": {
+            src: "/symbols/techniques/son/generateur-click-track.png",
+            label: "Générateur de click track",
+            accent: "var(--atelier-animation-jaune-lampe)",
+        },
+        "banc-montage-son": {
+            src: "/symbols/techniques/son/banc-montage-son.png",
+            label: "Banc de montage son",
+            accent: "var(--atelier-animation-framboise-encrage)",
+        },
+        "reverberation-plaque": {
+            src: "/symbols/techniques/son/reverberation-plaque.png",
+            label: "Réverbération à plaque",
+            accent: "var(--atelier-animation-graphite)",
+        },
+        "atelier-bruitage": {
+            src: "/symbols/techniques/son/atelier-bruitage.png",
+            label: "Atelier de bruitage",
+            accent: "var(--atelier-animation-sepia-storyboard)",
+        },
+    },
 } as const satisfies Record<string, Record<string, SymbolDefinition>>;
