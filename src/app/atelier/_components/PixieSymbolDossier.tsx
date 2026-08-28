@@ -11,6 +11,7 @@ const generalCinemaSymbolSlugs = getSymbolSlugs("general", "cinema");
 const generalArchiveSymbolSlugs = getSymbolSlugs("general", "archives");
 const generalEcritureSymbolSlugs = getSymbolSlugs("general", "ecriture");
 const generalExplorationSymbolSlugs = getSymbolSlugs("general", "exploration");
+const generalTempsSymbolSlugs = getSymbolSlugs("general", "temps");
 const animationTechniqueSymbolSlugs = getSymbolSlugs("techniques", "animation");
 const imageTechniqueSymbolSlugs = getSymbolSlugs("techniques", "images");
 const couleurTechniqueSymbolSlugs = getSymbolSlugs("techniques", "couleur");
@@ -115,6 +116,7 @@ const typesSpecifiques = [
             '"ecriture"',
             '"exploration"',
             '"logos"',
+            '"temps"',
         ],
         description: "Collections exposées par le registre Général.",
     },
@@ -232,6 +234,29 @@ const typesSpecifiques = [
         ],
         description:
             "Repères de découverte, orientation, parcours et mise en relation.",
+    },
+    {
+        name: 'SymbolSlug<"general", "temps">',
+        values: [
+            '"horloge-studio"',
+            '"sablier-precision"',
+            '"calendrier-perpetuel"',
+            '"chronometre-production"',
+            '"montre-poche"',
+            '"horloge-clapets"',
+            '"ephemeride"',
+            '"cadran-chronologique"',
+            '"compteur-dates"',
+            '"frise-mecanique"',
+            '"ligne-temps-jalons"',
+            '"capsule-temporelle"',
+            '"roue-saisons"',
+            '"pendule-precision"',
+            '"selecteur-periode"',
+            '"ruban-chronologique"',
+        ],
+        description:
+            "Repères chronologiques, instruments de mesure et objets de datation.",
     },
     {
         name: 'SymbolSlug<"techniques", "animation">',
@@ -497,7 +522,7 @@ export function PixieSymbolDossier() {
                         ["Mission", "Afficher un symbole typé."],
                         ["Sélection", "registry · collection · slug"],
                         ["Exemple", "codex.index.personnages"],
-                        ["Masters", "Dix-sept séries originales · 1254 px."],
+                        ["Masters", "Dix-huit séries originales · 1254 px."],
                         ["Dérivés", "PNG transparent · 384 px."],
                         ["Accessibilité", "Décoratif par défaut."],
                     ].map(([terme, definition]) => (
@@ -740,6 +765,48 @@ export function PixieSymbolDossier() {
                                 <PixieSymbol
                                     registry="general"
                                     collection="exploration"
+                                    slug={slug}
+                                    size="xl"
+                                    className="mx-auto"
+                                />
+                                <h4 className="mt-5 text-xl text-ink">
+                                    {symbole.label}
+                                </h4>
+                                <p className="mt-2 font-mono text-xs text-muted">
+                                    {slug}
+                                </p>
+                            </article>
+                        );
+                    })}
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="pixie-symbol-general-temps"
+                className="mt-16"
+            >
+                <TitreSequence
+                    id="pixie-symbol-general-temps"
+                    surTitre="Distribution"
+                    titre="Le Codex donne rendez-vous au temps"
+                    description="Horloges, calendriers, chronomètres, jalons et capsules composent un vocabulaire chronologique neutre pour dater les événements, parcourir les époques et rendre visibles les transformations."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+                    {generalTempsSymbolSlugs.map((slug) => {
+                        const symbole = getSymbol("general", "temps", slug);
+
+                        return (
+                            <article
+                                key={slug}
+                                className="bg-surface p-6 text-center"
+                                style={{
+                                    borderTop: `4px solid ${symbole.accent}`,
+                                }}
+                            >
+                                <PixieSymbol
+                                    registry="general"
+                                    collection="temps"
                                     slug={slug}
                                     size="xl"
                                     className="mx-auto"

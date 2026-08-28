@@ -64,6 +64,19 @@ const generalExplorationSymbolOptions = getSymbolSlugs(
     definition: getSymbol("general", "exploration", slug),
 }));
 
+const generalTempsSymbolOptions = getSymbolSlugs("general", "temps").map(
+    (slug) => ({
+        key: `general.temps.${slug}`,
+        group: "Général · Temps" as const,
+        selection: {
+            registry: "general",
+            collection: "temps",
+            slug,
+        } as const,
+        definition: getSymbol("general", "temps", slug),
+    }),
+);
+
 const animationTechniqueSymbolOptions = getSymbolSlugs(
     "techniques",
     "animation",
@@ -160,6 +173,7 @@ const symbolOptions = [
     ...generalArchiveSymbolOptions,
     ...generalEcritureSymbolOptions,
     ...generalExplorationSymbolOptions,
+    ...generalTempsSymbolOptions,
     {
         key: "codex.index.personnages",
         group: "Codex · Index",
@@ -392,6 +406,7 @@ const symbolGroups = [
     "Général · Archives",
     "Général · Écriture",
     "Général · Exploration",
+    "Général · Temps",
     "Codex · Index",
     "Récompenses · Trophées",
     "Techniques · Animation",
