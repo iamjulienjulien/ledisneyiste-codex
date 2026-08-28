@@ -14,15 +14,15 @@ import { PixiePanel } from "@/components/ui/PixiePanel";
 import { PixieSidebar } from "@/components/ui/PixieSidebar";
 import { PixieStack } from "@/components/ui/PixieStack";
 import {
-    PixieDustStickyRegion,
-    type PixieDustStickyRegionEdge,
-    type PixieDustStickyRegionElement,
-    type PixieDustStickyRegionLayer,
-    type PixieDustStickyRegionOffset,
-    type PixieDustStickyRegionOffsetPreset,
-    type PixieDustStickyRegionOverflow,
-    type PixieDustStickyRegionWidth,
-} from "@/components/ui/PixieDustStickyRegion";
+    PixieStickyRegion,
+    type PixieStickyRegionEdge,
+    type PixieStickyRegionElement,
+    type PixieStickyRegionLayer,
+    type PixieStickyRegionOffset,
+    type PixieStickyRegionOffsetPreset,
+    type PixieStickyRegionOverflow,
+    type PixieStickyRegionWidth,
+} from "@/components/ui/PixieStickyRegion";
 
 const elements = ["div", "aside", "nav", "header", "footer"] as const;
 
@@ -171,23 +171,22 @@ function RegionContent({ material }: Readonly<{ material: Material }>) {
     );
 }
 
-export function PixieDustStickyRegionPlayground() {
-    const [element, setElement] =
-        useState<PixieDustStickyRegionElement>("aside");
-    const [edge, setEdge] = useState<PixieDustStickyRegionEdge>("start");
+export function PixieStickyRegionPlayground() {
+    const [element, setElement] = useState<PixieStickyRegionElement>("aside");
+    const [edge, setEdge] = useState<PixieStickyRegionEdge>("start");
     const [offsetPreset, setOffsetPreset] = useState<
-        PixieDustStickyRegionOffsetPreset | "custom"
+        PixieStickyRegionOffsetPreset | "custom"
     >("md");
     const [customOffset, setCustomOffset] = useState(72);
-    const [width, setWidth] = useState<PixieDustStickyRegionWidth>("full");
+    const [width, setWidth] = useState<PixieStickyRegionWidth>("full");
     const [overflow, setOverflow] =
-        useState<PixieDustStickyRegionOverflow>("visible");
+        useState<PixieStickyRegionOverflow>("visible");
     const [safeArea, setSafeArea] = useState(false);
-    const [layer, setLayer] = useState<PixieDustStickyRegionLayer>("auto");
+    const [layer, setLayer] = useState<PixieStickyRegionLayer>("auto");
     const [material, setMaterial] = useState<Material>("summary");
     const [length, setLength] = useState(7);
     const { lumiere: light, cadre: frame } = useAtelierProjection();
-    const offset: PixieDustStickyRegionOffset =
+    const offset: PixieStickyRegionOffset =
         offsetPreset === "custom" ? customOffset : offsetPreset;
     const offsetAttribute =
         typeof offset === "number"
@@ -200,7 +199,7 @@ export function PixieDustStickyRegionPlayground() {
             : element === "aside"
               ? '    aria-label="Repères de la fiche"\n'
               : "";
-    const code = `<PixieDustStickyRegion
+    const code = `<PixieStickyRegion
     as="${element}"
     edge="${edge}"
 ${offsetAttribute}    width="${width}"
@@ -209,10 +208,10 @@ ${offsetAttribute}    width="${width}"
     layer="${layer}"
 ${labelLine}>
     {/* ${materials.find(({ value }) => value === material)?.label} */}
-</PixieDustStickyRegion>`;
+</PixieStickyRegion>`;
 
     const stickyRegion = (
-        <PixieDustStickyRegion
+        <PixieStickyRegion
             as={element}
             edge={edge}
             offset={offset}
@@ -229,7 +228,7 @@ ${labelLine}>
             }
         >
             <RegionContent material={material} />
-        </PixieDustStickyRegion>
+        </PixieStickyRegion>
     );
 
     const editorialContent = (
@@ -280,7 +279,7 @@ ${labelLine}>
                                 onChange={(event) =>
                                     setElement(
                                         event.target
-                                            .value as PixieDustStickyRegionElement,
+                                            .value as PixieStickyRegionElement,
                                     )
                                 }
                                 className="mt-2 font-mono"
@@ -326,7 +325,7 @@ ${labelLine}>
                                 onChange={(event) =>
                                     setOffsetPreset(
                                         event.target.value as
-                                            | PixieDustStickyRegionOffsetPreset
+                                            | PixieStickyRegionOffsetPreset
                                             | "custom",
                                     )
                                 }

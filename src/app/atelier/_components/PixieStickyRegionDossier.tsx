@@ -9,14 +9,14 @@ import { PixiePanel } from "@/components/ui/PixiePanel";
 import { PixieSidebar } from "@/components/ui/PixieSidebar";
 import { PixieStack } from "@/components/ui/PixieStack";
 import {
-    PixieDustStickyRegion,
-    type PixieDustStickyRegionEdge,
-    type PixieDustStickyRegionLayer,
-    type PixieDustStickyRegionOffset,
-    type PixieDustStickyRegionOverflow,
-    type PixieDustStickyRegionWidth,
-} from "@/components/ui/PixieDustStickyRegion";
-import { PixieDustStickyRegionPlayground } from "./PixieDustStickyRegionPlayground";
+    PixieStickyRegion,
+    type PixieStickyRegionEdge,
+    type PixieStickyRegionLayer,
+    type PixieStickyRegionOffset,
+    type PixieStickyRegionOverflow,
+    type PixieStickyRegionWidth,
+} from "@/components/ui/PixieStickyRegion";
+import { PixieStickyRegionPlayground } from "./PixieStickyRegionPlayground";
 
 const edges = [
     {
@@ -31,7 +31,7 @@ const edges = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustStickyRegionEdge;
+    value: PixieStickyRegionEdge;
     role: string;
 }>[];
 
@@ -44,7 +44,7 @@ const offsets = [
     { name: "Très grand", value: "xl" as const, token: "3 rem" },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustStickyRegionOffset;
+    value: PixieStickyRegionOffset;
     token: string;
 }>[];
 
@@ -61,7 +61,7 @@ const widths = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustStickyRegionWidth;
+    value: PixieStickyRegionWidth;
     role: string;
 }>[];
 
@@ -78,7 +78,7 @@ const overflows = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustStickyRegionOverflow;
+    value: PixieStickyRegionOverflow;
     role: string;
 }>[];
 
@@ -88,38 +88,38 @@ const layers = [
     { name: "Superposé", value: "overlay" as const, token: "10" },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustStickyRegionLayer;
+    value: PixieStickyRegionLayer;
     token: string;
 }>[];
 
 const properties = [
     {
         name: "as",
-        type: "PixieDustStickyRegionElement",
+        type: "PixieStickyRegionElement",
         defaultValue: '"div"',
         description: "Structure HTML de la région maintenue.",
     },
     {
         name: "edge",
-        type: "PixieDustStickyRegionEdge",
+        type: "PixieStickyRegionEdge",
         defaultValue: '"start"',
         description: "Bord logique auquel la région s’attache.",
     },
     {
         name: "offset",
-        type: "PixieDustStickyRegionOffset",
+        type: "PixieStickyRegionOffset",
         defaultValue: '"md"',
         description: "Preset ou distance en pixels conservée avec le bord.",
     },
     {
         name: "width",
-        type: "PixieDustStickyRegionWidth",
+        type: "PixieStickyRegionWidth",
         defaultValue: '"full"',
         description: "Mesure pleine ou ajustée au contenu.",
     },
     {
         name: "overflow",
-        type: "PixieDustStickyRegionOverflow",
+        type: "PixieStickyRegionOverflow",
         defaultValue: '"visible"',
         description: "Traitement des régions plus hautes que le cadre visible.",
     },
@@ -131,7 +131,7 @@ const properties = [
     },
     {
         name: "layer",
-        type: "PixieDustStickyRegionLayer",
+        type: "PixieStickyRegionLayer",
         defaultValue: '"auto"',
         description: "Niveau de superposition de la région maintenue.",
     },
@@ -151,37 +151,37 @@ const properties = [
 
 const specificTypes = [
     {
-        name: "PixieDustStickyRegionElement",
+        name: "PixieStickyRegionElement",
         values: ['"div"', '"aside"', '"nav"', '"header"', '"footer"'],
         description: "Structures documentaires autorisées.",
     },
     {
-        name: "PixieDustStickyRegionEdge",
+        name: "PixieStickyRegionEdge",
         values: ['"start"', '"end"'],
         description: "Bords logiques du maintien vertical.",
     },
     {
-        name: "PixieDustStickyRegionOffsetPreset",
+        name: "PixieStickyRegionOffsetPreset",
         values: ['"none"', '"xs"', '"sm"', '"md"', '"lg"', '"xl"'],
         description: "Échelle éditoriale des distances au bord.",
     },
     {
-        name: "PixieDustStickyRegionOffset",
+        name: "PixieStickyRegionOffset",
         values: ['"none"', '"xs"', '"sm"', '"md"', '"lg"', '"xl"', "number"],
         description: "Échelle du Montage ou valeur personnalisée en pixels.",
     },
     {
-        name: "PixieDustStickyRegionWidth",
+        name: "PixieStickyRegionWidth",
         values: ['"full"', '"fit"'],
         description: "Mesures disponibles pour la racine.",
     },
     {
-        name: "PixieDustStickyRegionOverflow",
+        name: "PixieStickyRegionOverflow",
         values: ['"visible"', '"auto"'],
         description: "Comportement des contenus hauts.",
     },
     {
-        name: "PixieDustStickyRegionLayer",
+        name: "PixieStickyRegionLayer",
         values: ['"auto"', '"raised"', '"overlay"'],
         description: "Niveaux locaux de superposition.",
     },
@@ -303,12 +303,12 @@ function Story({ count = 6 }: Readonly<{ count?: number }>) {
     );
 }
 
-export function PixieDustStickyRegionDossier() {
+export function PixieStickyRegionDossier() {
     return (
         <AtelierFicheAccessoire
-            id="pixie-dust-sticky-region"
-            labelledBy="pixie-dust-sticky-region-title"
-            nom="PixieDustStickyRegion"
+            id="pixie-sticky-region"
+            labelledBy="pixie-sticky-region-title"
+            nom="PixieStickyRegion"
             className="scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
@@ -317,10 +317,10 @@ export function PixieDustStickyRegionDossier() {
                             Le clap · Montage 011
                         </p>
                         <h2
-                            id="pixie-dust-sticky-region-title"
+                            id="pixie-sticky-region-title"
                             className="mt-4 text-4xl text-ink sm:text-5xl"
                         >
-                            PixieDustStickyRegion
+                            PixieStickyRegion
                         </h2>
                         <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
                             Maintenir une région visible pendant le défilement,
@@ -334,7 +334,7 @@ export function PixieDustStickyRegionDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.2.0
+                                1.0.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -342,7 +342,7 @@ export function PixieDustStickyRegionDossier() {
                                 État
                             </dt>
                             <dd className="mt-1 text-sm font-medium">
-                                <AtelierStatut statut="Esquisse" />
+                                <AtelierStatut statut="Prêt à projeter" />
                             </dd>
                         </div>
                     </dl>
@@ -412,13 +412,13 @@ export function PixieDustStickyRegionDossier() {
                         <PixieSidebar
                             side="start"
                             sidebar={
-                                <PixieDustStickyRegion
+                                <PixieStickyRegion
                                     as="nav"
                                     offset="md"
                                     aria-label="Sommaire de démonstration"
                                 >
                                     <SummaryPanel />
-                                </PixieDustStickyRegion>
+                                </PixieStickyRegion>
                             }
                             sideWidth="sm"
                             contentMinWidth="half"
@@ -451,14 +451,14 @@ export function PixieDustStickyRegionDossier() {
                             <PixieSidebar
                                 side="start"
                                 sidebar={
-                                    <PixieDustStickyRegion
+                                    <PixieStickyRegion
                                         as="nav"
                                         edge="start"
                                         offset="lg"
                                         aria-label="Dans cette fiche"
                                     >
                                         <SummaryPanel />
-                                    </PixieDustStickyRegion>
+                                    </PixieStickyRegion>
                                 }
                                 sideWidth="sm"
                                 contentMinWidth="half"
@@ -472,14 +472,14 @@ export function PixieDustStickyRegionDossier() {
                     <CodeExample>{`<PixieSidebar
     align="start"
     sidebar={
-        <PixieDustStickyRegion
+        <PixieStickyRegion
             as="nav"
             edge="start"
             offset="lg"
             aria-label="Dans cette fiche"
         >
             <PixiePanel>{/* Sommaire */}</PixiePanel>
-        </PixieDustStickyRegion>
+        </PixieStickyRegion>
     }
 >
     <PixieStack>{/* Long récit */}</PixieStack>
@@ -505,7 +505,7 @@ export function PixieDustStickyRegionDossier() {
                                     {edge.value === "end" ? (
                                         <Story count={2} />
                                     ) : null}
-                                    <PixieDustStickyRegion
+                                    <PixieStickyRegion
                                         edge={edge.value}
                                         offset="sm"
                                     >
@@ -521,7 +521,7 @@ export function PixieDustStickyRegionDossier() {
                                                 au cours du défilement.
                                             </p>
                                         </PixiePanel>
-                                    </PixieDustStickyRegion>
+                                    </PixieStickyRegion>
                                     <Story count={5} />
                                 </PixieStack>
                             </ScrollStage>
@@ -553,7 +553,7 @@ export function PixieDustStickyRegionDossier() {
                                 label={`Décalage ${offset.name}`}
                                 height="h-72"
                             >
-                                <PixieDustStickyRegion offset={offset.value}>
+                                <PixieStickyRegion offset={offset.value}>
                                     <PixieInset variant="recessed" padding="md">
                                         <p className="font-mono text-xs text-accent">
                                             offset=&quot;{offset.value}&quot;
@@ -562,7 +562,7 @@ export function PixieDustStickyRegionDossier() {
                                             Ligne d’arrêt · {offset.token}
                                         </p>
                                     </PixieInset>
-                                </PixieDustStickyRegion>
+                                </PixieStickyRegion>
                                 <div className="mt-6">
                                     <Story count={4} />
                                 </div>
@@ -574,7 +574,7 @@ export function PixieDustStickyRegionDossier() {
                             label="Décalage personnalisé de 72 pixels"
                             height="h-72"
                         >
-                            <PixieDustStickyRegion offset={72}>
+                            <PixieStickyRegion offset={72}>
                                 <PixieInset variant="recessed" padding="md">
                                     <p className="font-mono text-xs text-accent">
                                         offset=&#123;72&#125;
@@ -583,7 +583,7 @@ export function PixieDustStickyRegionDossier() {
                                         Mesure libre · 72 px
                                     </p>
                                 </PixieInset>
-                            </PixieDustStickyRegion>
+                            </PixieStickyRegion>
                             <div className="mt-6">
                                 <Story count={4} />
                             </div>
@@ -604,7 +604,7 @@ export function PixieDustStickyRegionDossier() {
                     {widths.map((width) => (
                         <Stage key={width.value}>
                             <div className="min-h-52 p-5">
-                                <PixieDustStickyRegion
+                                <PixieStickyRegion
                                     width={width.value}
                                     offset="sm"
                                 >
@@ -613,7 +613,7 @@ export function PixieDustStickyRegionDossier() {
                                             {width.name}
                                         </p>
                                     </PixiePanel>
-                                </PixieDustStickyRegion>
+                                </PixieStickyRegion>
                             </div>
                             <div className="border-t border-line bg-surface p-4">
                                 <code className="font-mono text-xs text-accent">
@@ -641,7 +641,7 @@ export function PixieDustStickyRegionDossier() {
                         <Stage key={layer.value}>
                             <div className="relative min-h-48 overflow-hidden p-5">
                                 <div className="absolute inset-x-12 top-16 h-24 rotate-3 border border-line-strong bg-surface-muted" />
-                                <PixieDustStickyRegion
+                                <PixieStickyRegion
                                     width="fit"
                                     layer={layer.value}
                                 >
@@ -650,7 +650,7 @@ export function PixieDustStickyRegionDossier() {
                                             z-index · {layer.token}
                                         </p>
                                     </PixiePanel>
-                                </PixieDustStickyRegion>
+                                </PixieStickyRegion>
                             </div>
                             <p className="border-t border-line bg-surface p-4 font-mono text-xs text-accent">
                                 layer=&quot;{layer.value}&quot;
@@ -741,7 +741,7 @@ export function PixieDustStickyRegionDossier() {
                             <PixieSidebar
                                 side="start"
                                 sidebar={
-                                    <PixieDustStickyRegion offset="sm">
+                                    <PixieStickyRegion offset="sm">
                                         <PixiePanel
                                             variant="accent"
                                             padding="sm"
@@ -750,7 +750,7 @@ export function PixieDustStickyRegionDossier() {
                                                 Repère limité
                                             </p>
                                         </PixiePanel>
-                                    </PixieDustStickyRegion>
+                                    </PixieStickyRegion>
                                 }
                                 sideWidth="xs"
                                 contentMinWidth="half"
@@ -787,7 +787,7 @@ export function PixieDustStickyRegionDossier() {
                     {overflows.map((overflow) => (
                         <Stage key={overflow.value}>
                             <div className="h-80 overflow-y-auto p-5">
-                                <PixieDustStickyRegion
+                                <PixieStickyRegion
                                     overflow={overflow.value}
                                     offset="sm"
                                     layer="raised"
@@ -821,7 +821,7 @@ export function PixieDustStickyRegionDossier() {
                                             )}
                                         </PixieStack>
                                     </PixiePanel>
-                                </PixieDustStickyRegion>
+                                </PixieStickyRegion>
                                 <div className="mt-6">
                                     <Story count={4} />
                                 </div>
@@ -986,18 +986,18 @@ export function PixieDustStickyRegionDossier() {
             </section>
 
             <section
-                id="pixie-dust-sticky-region-playground"
+                id="pixie-sticky-region-playground"
                 aria-labelledby="sticky-playground-title"
                 className="mt-16 scroll-mt-8 border border-line-strong bg-surface-muted p-6 shadow-soft sm:p-8"
             >
                 <SequenceTitle
                     id="sticky-playground-title"
                     eyebrow="Régie"
-                    title="Composer un PixieDustStickyRegion"
+                    title="Composer un PixieStickyRegion"
                     description="Réglez le bord, l’offset, la largeur, le débordement et la profondeur, puis faites défiler le plateau pour observer le maintien et sa limite."
                 />
                 <div className="mt-8">
-                    <PixieDustStickyRegionPlayground />
+                    <PixieStickyRegionPlayground />
                 </div>
             </section>
 
@@ -1056,8 +1056,8 @@ export function PixieDustStickyRegionDossier() {
                 <SequenceTitle
                     id="sticky-technical"
                     eyebrow="Générique technique"
-                    title="API de l’esquisse"
-                    description="Les types spécifiques restent colocalisés dans PixieDustStickyRegion.types.ts ; la primitive demeure statique et le playground porte seul l’état client."
+                    title="API du composant"
+                    description="Les types spécifiques restent colocalisés dans PixieStickyRegion.types.ts ; la primitive demeure statique et le playground porte seul l’état client."
                 />
 
                 <div className="mt-7">
@@ -1070,33 +1070,6 @@ export function PixieDustStickyRegionDossier() {
                         <AtelierTypesTable types={specificTypes} />
                     </div>
                 </div>
-            </section>
-
-            <section aria-labelledby="sticky-journal" className="mt-16">
-                <SequenceTitle
-                    id="sticky-journal"
-                    eyebrow="Journal de production"
-                    title="Décisions avant la promotion"
-                    description="Cette dernière esquisse du Montage devra être éprouvée sur les vraies fiches et les vrais index du Codex."
-                />
-
-                <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
-                    {[
-                        "Tester sommaires, métadonnées, inspecteurs et actions dans PixieSidebar.",
-                        "Éprouver les deux bords, les presets et l’offset numérique dans de longs parents.",
-                        "Vérifier les ancêtres portant overflow, transform ou une hauteur contrainte.",
-                        "Contrôler overflow auto au clavier avec une région proche de la hauteur visible.",
-                        "Éprouver safeArea, les deux Lumières, le mobile et le zoom à 200 %.",
-                        "Valider start, md, full, visible et auto comme réglages par défaut.",
-                    ].map((decision) => (
-                        <li
-                            key={decision}
-                            className="bg-surface p-5 leading-7 text-ink-soft"
-                        >
-                            {decision}
-                        </li>
-                    ))}
-                </ul>
             </section>
         </AtelierFicheAccessoire>
     );

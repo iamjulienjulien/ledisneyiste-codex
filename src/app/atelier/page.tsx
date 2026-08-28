@@ -19,7 +19,7 @@ import { PixieSidebarDossier } from "./_components/PixieSidebarDossier";
 import { PixieSwitcherDossier } from "./_components/PixieSwitcherDossier";
 import { PixieDustRailDossier } from "./_components/PixieDustRailDossier";
 import { PixieDustBleedDossier } from "./_components/PixieDustBleedDossier";
-import { PixieDustStickyRegionDossier } from "./_components/PixieDustStickyRegionDossier";
+import { PixieStickyRegionDossier } from "./_components/PixieStickyRegionDossier";
 import { PixieDustFieldDossier } from "./_components/PixieDustFieldDossier";
 import { PixieDustInputDossier } from "./_components/PixieDustInputDossier";
 import { PixieDustTextareaDossier } from "./_components/PixieDustTextareaDossier";
@@ -359,11 +359,11 @@ const montage = [
         href: "#pixie-dust-bleed",
     },
     {
-        nom: "PixieDustStickyRegion",
+        nom: "PixieStickyRegion",
         role: "Maintenir une région visible pendant le défilement",
-        statut: "Esquisse",
-        version: "0.2.0",
-        href: "#pixie-dust-sticky-region",
+        statut: "Prêt à projeter",
+        version: "1.0.0",
+        href: "#pixie-sticky-region",
     },
 ] as const;
 
@@ -922,9 +922,10 @@ export default function AtelierPage() {
                         PixieSection compose désormais les séquences éditoriales
                         complètes. PixieGrid distribue les collections sur des
                         pistes responsives, PixieSidebar associe une régie à un
-                        contenu prioritaire et PixieSwitcher choisit
-                        collectivement entre rangée et pile. Les quatre
-                        esquisses suivantes organiseront les autres
+                        contenu prioritaire, PixieSwitcher choisit
+                        collectivement entre rangée et pile et PixieStickyRegion
+                        maintient un repère dans les limites de sa séquence. Les
+                        trois esquisses suivantes organiseront les autres
                         distributions sans imposer de surface, de couleur ni
                         d’interaction.
                     </p>
@@ -1012,7 +1013,7 @@ export default function AtelierPage() {
                 {raccordEntreFiches}
                 <PixieDustBleedDossier />
                 {raccordEntreFiches}
-                <PixieDustStickyRegionDossier />
+                <PixieStickyRegionDossier />
             </section>
 
             <section
