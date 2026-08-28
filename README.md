@@ -23,18 +23,20 @@ dans le [`Journal de projection`](./CHANGELOG.md).
 Le Codex est développé progressivement à partir d’objets réels plutôt qu’à
 partir d’une architecture encyclopédique définie à l’avance.
 
-Le catalogue actuel réunit **49 fiches documentaires** réparties dans quatre
+Le catalogue actuel réunit **79 fiches documentaires** réparties dans quatre
 familles :
 
-- 10 Personnages, des précurseurs au cercle de Mickey ;
-- 16 Créateurs, des fondateurs aux Nine Old Men ;
-- 21 Œuvres qui racontent les origines du studio jusqu'aux portes de
+- 22 Personnages, des précurseurs au cercle de Mickey et aux figures de
   _Blanche-Neige et les Sept Nains_ ;
+- 32 Créateurs, des fondateurs aux artistes et techniciens du premier long
+  métrage ;
+- 23 Œuvres qui racontent les origines du studio, la fabrication de
+  _Blanche-Neige et les Sept Nains_ et ses premiers prolongements ;
 - 2 Époques qui couvrent les années 1923 à 1942.
 
 Ces fiches sont reliées entre elles, rattachées automatiquement à leur Époque
-et développées à partir de sources centralisées. Leurs 122 blocs éditoriaux
-emploient une première collection de symboles illustrés. Onze récompenses
+et développées à partir de sources centralisées. Leurs 176 blocs éditoriaux
+emploient une première collection de symboles illustrés. Quatorze récompenses
 documentent également les premières distinctions du studio.
 
 Les quatre index proposent une vue Cartes par défaut et une vue Liste
@@ -167,6 +169,63 @@ restent centralisées dans [`AGENTS.md`](./AGENTS.md).
 
 ---
 
+## Montage partagé des index et des fiches
+
+### Une même ossature pour les quatre index
+
+`CodexIndexPage` compose le cadre commun des index Personnages, Créateurs,
+Œuvres et Époques. À partir d'une famille issue du type global `CodexFamily`,
+il règle :
+
+- le fond de scène et le symbole de l'en-tête ;
+- la couleur d'identité de la famille ;
+- la largeur et le rythme vertical de la page ;
+- le compteur et l'emplacement des commandes de vue ;
+- la surface dans laquelle la collection est projetée.
+
+Chaque route reste responsable de ses données et de ses composants métier. Elle
+choisit entre `CodexIndexListItem` et sa Card spécialisée, mais ne reconstruit
+plus le décor qui les entoure :
+
+```tsx
+<CodexIndexPage famille="oeuvres" {...informationsIndex}>
+    {currentView === "cards" ? <PixieGrid>…</PixieGrid> : <ul>…</ul>}
+</CodexIndexPage>
+```
+
+### Un carton commun pour les repères
+
+`CodexFicheReperes` reçoit une liste de couples `label` / `value` et les
+projette dans une liste de description sémantique. Le composant fournit le
+carton, son accent et sa grille ; chaque famille choisit les repères qui ont un
+sens pour sa fiche :
+
+```tsx
+<CodexFicheReperes
+    reperes={[
+        { label: "Sortie", value: "21 décembre 1937" },
+        { label: "Format", value: "long métrage d'animation" },
+    ]}
+/>
+```
+
+Une valeur peut être du texte ou une composition React, et un repère peut
+occuper toute la largeur lorsque son contenu le demande. Le composant ne déduit
+jamais une information depuis le texte de la fiche.
+
+### Des chapitres montés au même rythme
+
+`CodexFicheSection` fournit le montage commun des sections : largeur, espaces,
+séparateur de séquence, en-tête optionnel, symbole, eyebrow, titre et
+description. Les blocs éditoriaux, les détails structurés des œuvres, les
+relations, les récompenses et les sources l'utilisent tous.
+
+Leur contenu intérieur reste spécialisé — paragraphes, listes, définitions,
+cartes de trophées ou références — tandis que la hiérarchie documentaire et le
+rythme visuel demeurent communs aux quatre familles.
+
+---
+
 ## Données
 
 Le contenu du Codex repose actuellement sur des fichiers JSON versionnés dans
@@ -199,6 +258,41 @@ src/data/personnages/
 ```
 
 Chaque famille possède son propre modèle métier.
+
+### Projection des données structurées
+
+La fiche de _Blanche-Neige et les Sept Nains_ constitue la première projection
+complète du modèle enrichi des Œuvres. Son JSON conserve séparément :
+
+```text
+titres alternatifs
+durées par version
+période de production
+événements de sortie
+données économiques et degré de certitude
+relations avec les œuvres sources ou préparatoires
+contributions regroupées par domaine
+```
+
+`CodexOeuvreDetails` transforme uniquement les groupes présents en chapitres de
+fiche. Les champs restent optionnels : les courts métrages plus simples ne sont
+pas contraints de simuler la richesse documentaire d'un long métrage.
+
+### Citations dans les chapitres et les repères
+
+Un bloc éditorial ou une donnée structurée peut porter sa propre liste
+`sources`. `getFicheSourceIds` parcourt la fiche, réunit ces identifiants avec
+les sources générales et les déduplique avant leur résolution dans le registre
+central.
+
+`CodexSourceCitations` projette ensuite les appels numérotés au plus près de ce
+qu'ils documentent : au bas d'un chapitre éditorial, d'un titre alternatif,
+d'une durée, d'une sortie, d'un chiffre ou d'une relation. Chaque numéro mène à
+l'ancre correspondante dans `CodexSources`, qui conserve le titre, l'auteur,
+l'éditeur, la date et le lien de consultation de la source.
+
+Ainsi, la bibliographie reste centralisée sans détacher la preuve du passage ou
+du repère auquel elle se rapporte.
 
 ### Sources
 
