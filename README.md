@@ -508,10 +508,10 @@ L'Atelier documente les palettes, les composants, leurs variantes, leur
 accessibilité et leur API. Ses cinq premiers accessoires — `PixieSymbol`,
 `PixieButton`, `PixieLink`, `PixieBadge` et `PixieSeparator` —, ses six Décors
 — `PixieCard`, `PixiePanel`, `PixieFrame`, `PixieCallout`, `PixieInset` et
-`PixieBackdrop` — et les cinq composants validés du Montage,
-`PixieContainer`, `PixieStack`, `PixieCluster`, `PixieSection` et
-`PixieGrid`, ainsi que le premier Dialogue `PixieSelect`, sont désormais prêts
-à projeter.
+`PixieBackdrop` — et les six composants validés du Montage,
+`PixieContainer`, `PixieStack`, `PixieCluster`, `PixieSection`, `PixieGrid` et
+`PixieSwitcher`, ainsi que le premier Dialogue `PixieSelect`, sont
+désormais prêts à projeter.
 
 Ses six plateaux de travail sont maintenant actifs :
 
@@ -523,8 +523,8 @@ Ses six plateaux de travail sont maintenant actifs :
 5. **Le Montage** règle la composition et le rythme des séquences ;
 6. **Les Effets** rendent visibles les attentes et les retours du système.
 
-L’Atelier documente actuellement **14 esquisses PixieDust**, auxquelles
-s’ajoutent les six Décors, les cinq composants du Montage et le premier
+L’Atelier documente actuellement **13 esquisses PixieDust**, auxquelles
+s’ajoutent les six Décors, les six composants du Montage et le premier
 Dialogue prêts à projeter :
 
 - **Décors — 6 composants validés :** `PixieCard`, `PixiePanel`, `PixieFrame`,
@@ -532,9 +532,9 @@ Dialogue prêts à projeter :
 - **Dialogues — 1 composant validé et 5 esquisses :** `PixieSelect`,
   `PixieDustField`, `PixieDustInput`, `PixieDustTextarea`, `PixieDustSwitch` et
   `PixieDustSearchField` ;
-- **Montage — 5 composants validés et 6 esquisses :** `PixieContainer`,
-  `PixieStack`, `PixieCluster`, `PixieSection`, `PixieGrid`, `PixieDustSplit`,
-  `PixieDustSidebar`, `PixieDustSwitcher`, `PixieDustRail`, `PixieDustBleed` et
+- **Montage — 6 composants validés et 5 esquisses :** `PixieContainer`,
+  `PixieStack`, `PixieCluster`, `PixieSection`, `PixieGrid`, `PixieSwitcher`,
+  `PixieDustSplit`, `PixieDustSidebar`, `PixieDustRail`, `PixieDustBleed` et
   `PixieDustStickyRegion` ;
 - **Effets — 3 :** `PixieDustToast`, `PixieDustLoader` et
   `PixieDustSkeleton`.
