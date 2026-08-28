@@ -210,6 +210,7 @@ export function CodexOeuvreDetails({
                 <CodexFicheSection
                     eyebrow="Sorties"
                     titre="Le film rencontre ses premiers publics"
+                    description="Chaque première conserve sa date, son lieu, son territoire et les sources qui permettent de la situer."
                     symbole={
                         <PixieSymbol
                             registry="general"
@@ -308,6 +309,7 @@ export function CodexOeuvreDetails({
                 <CodexFicheSection
                     eyebrow="Filiation"
                     titre="Les œuvres qui entourent le récit"
+                    description="Les œuvres sources, préparatoires, adaptées ou dérivées dessinent les héritages et les prolongements du film."
                     symbole={
                         <PixieSymbol
                             registry="general"
