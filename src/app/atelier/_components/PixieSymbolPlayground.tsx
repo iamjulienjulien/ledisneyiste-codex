@@ -91,6 +91,20 @@ const effetsTechniqueSymbolOptions = getSymbolSlugs("techniques", "effets").map(
     }),
 );
 
+const imagineeringTechniqueSymbolOptions = getSymbolSlugs(
+    "techniques",
+    "imagineering",
+).map((slug) => ({
+    key: `techniques.imagineering.${slug}`,
+    group: "Techniques · Imagineering" as const,
+    selection: {
+        registry: "techniques",
+        collection: "imagineering",
+        slug,
+    } as const,
+    definition: getSymbol("techniques", "imagineering", slug),
+}));
+
 const symbolOptions = [
     {
         key: "general.logos.le-codex-du-disneyiste",
@@ -326,6 +340,7 @@ const symbolOptions = [
     ...couleurTechniqueSymbolOptions,
     ...sonTechniqueSymbolOptions,
     ...effetsTechniqueSymbolOptions,
+    ...imagineeringTechniqueSymbolOptions,
 ] as const;
 
 const symbolGroups = [
@@ -338,6 +353,7 @@ const symbolGroups = [
     "Techniques · Couleur",
     "Techniques · Son",
     "Techniques · Effets",
+    "Techniques · Imagineering",
     "Blocs · Personnages",
     "Blocs · Contributeurs",
     "Blocs · Œuvres",

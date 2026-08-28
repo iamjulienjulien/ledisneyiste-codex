@@ -13,6 +13,10 @@ const imageTechniqueSymbolSlugs = getSymbolSlugs("techniques", "images");
 const couleurTechniqueSymbolSlugs = getSymbolSlugs("techniques", "couleur");
 const sonTechniqueSymbolSlugs = getSymbolSlugs("techniques", "son");
 const effetsTechniqueSymbolSlugs = getSymbolSlugs("techniques", "effets");
+const imagineeringTechniqueSymbolSlugs = getSymbolSlugs(
+    "techniques",
+    "imagineering",
+);
 const indexSymbolSlugs = getSymbolSlugs("codex", "index");
 const recompenseTrophySymbolSlugs = getSymbolSlugs("recompenses", "trophees");
 const contributeurBlockSymbolSlugs = getSymbolSlugs("blocs", "contributeurs");
@@ -112,7 +116,14 @@ const typesSpecifiques = [
     },
     {
         name: 'SymbolCollectionName<"techniques">',
-        values: ['"animation"', '"images"', '"couleur"', '"son"', '"effets"'],
+        values: [
+            '"animation"',
+            '"images"',
+            '"couleur"',
+            '"son"',
+            '"effets"',
+            '"imagineering"',
+        ],
         description: "Collections exposées par le registre des Techniques.",
     },
     {
@@ -262,6 +273,29 @@ const typesSpecifiques = [
             "Outils d’effets physiques, optiques et numériques de plateau.",
     },
     {
+        name: 'SymbolSlug<"techniques", "imagineering">',
+        values: [
+            '"table-plans-techniques"',
+            '"maquette-conceptuelle"',
+            '"audio-animatronic-generique"',
+            '"panneau-controle-attraction"',
+            '"vehicule-parcours-guide"',
+            '"module-rail-aiguillage"',
+            '"plateforme-mouvement"',
+            '"maquette-circulation-visiteurs"',
+            '"facade-perspective-forcee"',
+            '"echantillon-roche-sculptee"',
+            '"decor-escamotable"',
+            '"banc-illusion-optique"',
+            '"console-programmation-spectacle"',
+            '"rack-show-control"',
+            '"banc-essai-animatronic"',
+            '"poste-diagnostic-maintenance"',
+        ],
+        description:
+            "Outils de conception, programmation, illusion et maintenance des attractions.",
+    },
+    {
         name: 'SymbolSlug<"recompenses", "trophees">',
         values: [
             '"statuette-oscar"',
@@ -387,7 +421,7 @@ export function PixieSymbolDossier() {
                         ["Mission", "Afficher un symbole typé."],
                         ["Sélection", "registry · collection · slug"],
                         ["Exemple", "codex.index.personnages"],
-                        ["Masters", "Treize séries originales · 1254 px."],
+                        ["Masters", "Quatorze séries originales · 1254 px."],
                         ["Dérivés", "PNG transparent · 384 px."],
                         ["Accessibilité", "Décoratif par défaut."],
                     ].map(([terme, definition]) => (
@@ -803,6 +837,52 @@ export function PixieSymbolDossier() {
                                 <PixieSymbol
                                     registry="techniques"
                                     collection="effets"
+                                    slug={slug}
+                                    size="xl"
+                                    className="mx-auto"
+                                />
+                                <h4 className="mt-5 text-xl text-ink">
+                                    {symbole.label}
+                                </h4>
+                                <p className="mt-2 font-mono text-xs text-muted">
+                                    {slug}
+                                </p>
+                            </article>
+                        );
+                    })}
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="pixie-symbol-techniques-imagineering"
+                className="mt-16"
+            >
+                <TitreSequence
+                    id="pixie-symbol-techniques-imagineering"
+                    surTitre="Distribution"
+                    titre="L’imaginaire devient attraction"
+                    description="Plans, maquettes, véhicules, décors, illusions, Audio-Animatronics et systèmes de contrôle suivent la transformation d’une idée en expérience physique, programmable et maintenable."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+                    {imagineeringTechniqueSymbolSlugs.map((slug) => {
+                        const symbole = getSymbol(
+                            "techniques",
+                            "imagineering",
+                            slug,
+                        );
+
+                        return (
+                            <article
+                                key={slug}
+                                className="bg-surface p-6 text-center"
+                                style={{
+                                    borderTop: `4px solid ${symbole.accent}`,
+                                }}
+                            >
+                                <PixieSymbol
+                                    registry="techniques"
+                                    collection="imagineering"
                                     slug={slug}
                                     size="xl"
                                     className="mx-auto"
