@@ -508,9 +508,10 @@ L'Atelier documente les palettes, les composants, leurs variantes, leur
 accessibilité et leur API. Ses cinq premiers accessoires — `PixieSymbol`,
 `PixieButton`, `PixieLink`, `PixieBadge` et `PixieSeparator` —, ses six Décors
 — `PixieCard`, `PixiePanel`, `PixieFrame`, `PixieCallout`, `PixieInset` et
-`PixieBackdrop` — et les sept composants validés du Montage,
+`PixieBackdrop` — et les huit composants validés du Montage,
 `PixieContainer`, `PixieStack`, `PixieCluster`, `PixieSection`, `PixieGrid`,
-`PixieSidebar` et `PixieSwitcher`, ainsi que le premier Dialogue `PixieSelect`,
+`PixieSidebar`, `PixieSwitcher` et `PixieStickyRegion`, ainsi que le premier
+Dialogue `PixieSelect`,
 sont désormais prêts à projeter.
 
 Ses six plateaux de travail sont maintenant actifs :
@@ -523,8 +524,8 @@ Ses six plateaux de travail sont maintenant actifs :
 5. **Le Montage** règle la composition et le rythme des séquences ;
 6. **Les Effets** rendent visibles les attentes et les retours du système.
 
-L’Atelier documente actuellement **12 esquisses PixieDust**, auxquelles
-s’ajoutent les six Décors, les sept composants du Montage et le premier
+L’Atelier documente actuellement **11 esquisses PixieDust**, auxquelles
+s’ajoutent les six Décors, les huit composants du Montage et le premier
 Dialogue prêts à projeter :
 
 - **Décors — 6 composants validés :** `PixieCard`, `PixiePanel`, `PixieFrame`,
@@ -532,10 +533,10 @@ Dialogue prêts à projeter :
 - **Dialogues — 1 composant validé et 5 esquisses :** `PixieSelect`,
   `PixieDustField`, `PixieDustInput`, `PixieDustTextarea`, `PixieDustSwitch` et
   `PixieDustSearchField` ;
-- **Montage — 7 composants validés et 4 esquisses :** `PixieContainer`,
+- **Montage — 8 composants validés et 3 esquisses :** `PixieContainer`,
   `PixieStack`, `PixieCluster`, `PixieSection`, `PixieGrid`, `PixieSidebar`,
-  `PixieSwitcher`, `PixieDustSplit`, `PixieDustRail`, `PixieDustBleed` et
-  `PixieDustStickyRegion` ;
+  `PixieSwitcher`, `PixieStickyRegion`, `PixieDustSplit`, `PixieDustRail` et
+  `PixieDustBleed` ;
 - **Effets — 3 :** `PixieDustToast`, `PixieDustLoader` et
   `PixieDustSkeleton`.
 
