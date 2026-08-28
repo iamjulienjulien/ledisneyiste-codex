@@ -9,18 +9,18 @@ import {
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { PixieCard } from "@/components/ui/PixieCard";
 import {
-    PixieDustSwitcher,
-    type PixieDustSwitcherAlign,
-    type PixieDustSwitcherElement,
-    type PixieDustSwitcherGap,
-    type PixieDustSwitcherLayout,
-    type PixieDustSwitcherLimit,
-    type PixieDustSwitcherThreshold,
-} from "@/components/ui/PixieDustSwitcher";
+    PixieSwitcher,
+    type PixieSwitcherAlign,
+    type PixieSwitcherElement,
+    type PixieSwitcherGap,
+    type PixieSwitcherLayout,
+    type PixieSwitcherLimit,
+    type PixieSwitcherThreshold,
+} from "@/components/ui/PixieSwitcher";
 import { PixieSelect } from "@/components/ui/PixieSelect";
 
-type PixieDustSwitcherItemCount = Exclude<PixieDustSwitcherLimit, false>;
-type PixieDustSwitcherGapOverride = "inherit" | PixieDustSwitcherGap;
+type PixieSwitcherItemCount = Exclude<PixieSwitcherLimit, false>;
+type PixieSwitcherGapOverride = "inherit" | PixieSwitcherGap;
 
 const elements = ["div", "section", "nav", "ul", "ol"] as const;
 
@@ -87,19 +87,17 @@ function SwitcherItem({
     );
 }
 
-export function PixieDustSwitcherPlayground() {
-    const [element, setElement] = useState<PixieDustSwitcherElement>("div");
-    const [layout, setLayout] = useState<PixieDustSwitcherLayout>("auto");
-    const [threshold, setThreshold] =
-        useState<PixieDustSwitcherThreshold>("md");
-    const [limit, setLimit] = useState<PixieDustSwitcherLimit>(4);
-    const [gap, setGap] = useState<PixieDustSwitcherGap>("md");
-    const [rowGap, setRowGap] =
-        useState<PixieDustSwitcherGapOverride>("inherit");
+export function PixieSwitcherPlayground() {
+    const [element, setElement] = useState<PixieSwitcherElement>("div");
+    const [layout, setLayout] = useState<PixieSwitcherLayout>("auto");
+    const [threshold, setThreshold] = useState<PixieSwitcherThreshold>("md");
+    const [limit, setLimit] = useState<PixieSwitcherLimit>(4);
+    const [gap, setGap] = useState<PixieSwitcherGap>("md");
+    const [rowGap, setRowGap] = useState<PixieSwitcherGapOverride>("inherit");
     const [columnGap, setColumnGap] =
-        useState<PixieDustSwitcherGapOverride>("inherit");
-    const [align, setAlign] = useState<PixieDustSwitcherAlign>("stretch");
-    const [itemCount, setItemCount] = useState<PixieDustSwitcherItemCount>(4);
+        useState<PixieSwitcherGapOverride>("inherit");
+    const [align, setAlign] = useState<PixieSwitcherAlign>("stretch");
+    const [itemCount, setItemCount] = useState<PixieSwitcherItemCount>(4);
     const { lumiere: light, cadre: frame } = useAtelierProjection();
 
     const selectedItems = items.slice(0, itemCount);
@@ -126,7 +124,7 @@ export function PixieDustSwitcherPlayground() {
         `    align="${align}"`,
         ...(element === "nav" ? ['    aria-label="Explorer le Codex"'] : []),
     ].join("\n");
-    const code = `<PixieDustSwitcher\n${settings}\n>\n${childCode}\n</PixieDustSwitcher>`;
+    const code = `<PixieSwitcher\n${settings}\n>\n${childCode}\n</PixieSwitcher>`;
 
     const renderedItems = selectedItems.map(([title, description], index) => {
         const item = (
@@ -167,7 +165,7 @@ export function PixieDustSwitcherPlayground() {
                                 onChange={(event) =>
                                     setElement(
                                         event.target
-                                            .value as PixieDustSwitcherElement,
+                                            .value as PixieSwitcherElement,
                                     )
                                 }
                                 className="mt-2 font-mono"
@@ -196,7 +194,7 @@ export function PixieDustSwitcherPlayground() {
                                 onChange={(event) =>
                                     setLayout(
                                         event.target
-                                            .value as PixieDustSwitcherLayout,
+                                            .value as PixieSwitcherLayout,
                                     )
                                 }
                                 className="mt-2"
@@ -252,7 +250,7 @@ export function PixieDustSwitcherPlayground() {
                                             ? false
                                             : (Number(
                                                   event.target.value,
-                                              ) as PixieDustSwitcherItemCount),
+                                              ) as PixieSwitcherItemCount),
                                     )
                                 }
                                 className="mt-2 font-mono"
@@ -283,7 +281,7 @@ export function PixieDustSwitcherPlayground() {
                                     setItemCount(
                                         Number(
                                             event.target.value,
-                                        ) as PixieDustSwitcherItemCount,
+                                        ) as PixieSwitcherItemCount,
                                     )
                                 }
                                 className="mt-2 font-mono"
@@ -332,7 +330,7 @@ export function PixieDustSwitcherPlayground() {
                                 onChange={(event) =>
                                     setRowGap(
                                         event.target
-                                            .value as PixieDustSwitcherGapOverride,
+                                            .value as PixieSwitcherGapOverride,
                                     )
                                 }
                                 className="mt-2"
@@ -365,7 +363,7 @@ export function PixieDustSwitcherPlayground() {
                                 onChange={(event) =>
                                     setColumnGap(
                                         event.target
-                                            .value as PixieDustSwitcherGapOverride,
+                                            .value as PixieSwitcherGapOverride,
                                     )
                                 }
                                 className="mt-2"
@@ -410,7 +408,7 @@ export function PixieDustSwitcherPlayground() {
                         <div
                             className={`w-full border border-dashed border-line-strong p-5 transition-[max-width] sm:p-7 ${frameWidths[frame]}`}
                         >
-                            <PixieDustSwitcher
+                            <PixieSwitcher
                                 as={element}
                                 layout={layout}
                                 threshold={threshold}
@@ -433,7 +431,7 @@ export function PixieDustSwitcherPlayground() {
                                 className={listElement ? "list-none p-0" : ""}
                             >
                                 {renderedItems}
-                            </PixieDustSwitcher>
+                            </PixieSwitcher>
                         </div>
                     </div>
 

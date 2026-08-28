@@ -8,13 +8,13 @@ import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieSection } from "@/components/ui/PixieSection";
 import { PixieStack } from "@/components/ui/PixieStack";
 import {
-    PixieDustSwitcher,
-    type PixieDustSwitcherAlign,
-    type PixieDustSwitcherGap,
-    type PixieDustSwitcherLayout,
-    type PixieDustSwitcherThreshold,
-} from "@/components/ui/PixieDustSwitcher";
-import { PixieDustSwitcherPlayground } from "./PixieDustSwitcherPlayground";
+    PixieSwitcher,
+    type PixieSwitcherAlign,
+    type PixieSwitcherGap,
+    type PixieSwitcherLayout,
+    type PixieSwitcherThreshold,
+} from "@/components/ui/PixieSwitcher";
+import { PixieSwitcherPlayground } from "./PixieSwitcherPlayground";
 
 const thresholds = [
     {
@@ -49,7 +49,7 @@ const thresholds = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustSwitcherThreshold;
+    value: PixieSwitcherThreshold;
     token: string;
     role: string;
 }>[];
@@ -72,7 +72,7 @@ const layouts = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustSwitcherLayout;
+    value: PixieSwitcherLayout;
     role: string;
 }>[];
 
@@ -85,7 +85,7 @@ const gaps = [
     { name: "Très grand", value: "xl" as const, token: "3 rem" },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustSwitcherGap;
+    value: PixieSwitcherGap;
     token: string;
 }>[];
 
@@ -96,57 +96,57 @@ const alignments = [
     { name: "Fin", value: "end" as const },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustSwitcherAlign;
+    value: PixieSwitcherAlign;
 }>[];
 
 const properties = [
     {
         name: "as",
-        type: "PixieDustSwitcherElement",
+        type: "PixieSwitcherElement",
         defaultValue: '"div"',
         description: "Structure HTML qui porte la séquence.",
     },
     {
         name: "threshold",
-        type: "PixieDustSwitcherThreshold",
+        type: "PixieSwitcherThreshold",
         defaultValue: '"md"',
         description: "Largeur minimale requise pour conserver une rangée.",
     },
     {
         name: "layout",
-        type: "PixieDustSwitcherLayout",
+        type: "PixieSwitcherLayout",
         defaultValue: '"auto"',
         description:
             "Laisse le Switcher décider ou impose une rangée ou une pile.",
     },
     {
         name: "limit",
-        type: "PixieDustSwitcherLimit",
+        type: "PixieSwitcherLimit",
         defaultValue: "4",
         description:
             "Nombre maximal d’enfants sur une rangée ; false désactive ce garde-fou.",
     },
     {
         name: "gap",
-        type: "PixieDustSwitcherGap",
+        type: "PixieSwitcherGap",
         defaultValue: '"md"',
         description: "Intervalle entre les enfants dans les deux dispositions.",
     },
     {
         name: "rowGap",
-        type: "PixieDustSwitcherGap",
+        type: "PixieSwitcherGap",
         defaultValue: "gap",
         description: "Remplace l’intervalle vertical défini par gap.",
     },
     {
         name: "columnGap",
-        type: "PixieDustSwitcherGap",
+        type: "PixieSwitcherGap",
         defaultValue: "gap",
         description: "Remplace l’intervalle horizontal défini par gap.",
     },
     {
         name: "align",
-        type: "PixieDustSwitcherAlign",
+        type: "PixieSwitcherAlign",
         defaultValue: '"stretch"',
         description: "Alignement transversal des enfants.",
     },
@@ -166,32 +166,32 @@ const properties = [
 
 const specificTypes = [
     {
-        name: "PixieDustSwitcherElement",
+        name: "PixieSwitcherElement",
         values: ['"div"', '"section"', '"nav"', '"ul"', '"ol"'],
         description: "Structures neutres, éditoriales et listes autorisées.",
     },
     {
-        name: "PixieDustSwitcherLayout",
+        name: "PixieSwitcherLayout",
         values: ['"auto"', '"row"', '"stack"'],
         description: "Disposition intrinsèque ou volontairement imposée.",
     },
     {
-        name: "PixieDustSwitcherThreshold",
+        name: "PixieSwitcherThreshold",
         values: ['"xs"', '"sm"', '"md"', '"lg"', '"xl"'],
         description: "Seuils intrinsèques de passage en pile.",
     },
     {
-        name: "PixieDustSwitcherLimit",
+        name: "PixieSwitcherLimit",
         values: ["false", "2", "3", "4", "5", "6"],
         description: "Limites d’enfants admises sur une ligne.",
     },
     {
-        name: "PixieDustSwitcherGap",
+        name: "PixieSwitcherGap",
         values: ['"none"', '"xs"', '"sm"', '"md"', '"lg"', '"xl"'],
         description: "Échelle des intervalles du Montage.",
     },
     {
-        name: "PixieDustSwitcherAlign",
+        name: "PixieSwitcherAlign",
         values: ['"stretch"', '"start"', '"center"', '"end"'],
         description: "Alignements transversaux de la séquence.",
     },
@@ -264,12 +264,12 @@ function Plan({
     );
 }
 
-export function PixieDustSwitcherDossier() {
+export function PixieSwitcherDossier() {
     return (
         <AtelierFicheAccessoire
-            id="pixie-dust-switcher"
-            labelledBy="pixie-dust-switcher-title"
-            nom="PixieDustSwitcher"
+            id="pixie-switcher"
+            labelledBy="pixie-switcher-title"
+            nom="PixieSwitcher"
             className="scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
@@ -278,10 +278,10 @@ export function PixieDustSwitcherDossier() {
                             Le clap · Montage 008
                         </p>
                         <h2
-                            id="pixie-dust-switcher-title"
+                            id="pixie-switcher-title"
                             className="mt-4 text-4xl text-ink sm:text-5xl"
                         >
-                            PixieDustSwitcher
+                            PixieSwitcher
                         </h2>
                         <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
                             Changer toute une séquence de la rangée à la pile
@@ -295,7 +295,7 @@ export function PixieDustSwitcherDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.2.0
+                                1.0.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -303,7 +303,7 @@ export function PixieDustSwitcherDossier() {
                                 État
                             </dt>
                             <dd className="mt-1 text-sm font-medium">
-                                <AtelierStatut statut="Esquisse" />
+                                <AtelierStatut statut="Prêt à projeter" />
                             </dd>
                         </div>
                     </dl>
@@ -367,9 +367,9 @@ export function PixieDustSwitcherDossier() {
 
                 <div className="mt-7 border border-accent/60 bg-canvas p-4 sm:p-6">
                     <p className="font-mono text-xs text-accent">
-                        PixieDustSwitcher · layout + threshold + limit + gaps
+                        PixieSwitcher · layout + threshold + limit + gaps
                     </p>
-                    <PixieDustSwitcher
+                    <PixieSwitcher
                         threshold="sm"
                         limit={4}
                         gap="sm"
@@ -384,7 +384,7 @@ export function PixieDustSwitcherDossier() {
                                 />
                             </div>
                         ))}
-                    </PixieDustSwitcher>
+                    </PixieSwitcher>
                 </div>
             </section>
 
@@ -401,7 +401,7 @@ export function PixieDustSwitcherDossier() {
 
                 <div className="mt-7 grid border border-line xl:grid-cols-2">
                     <div className="bg-canvas p-6 sm:p-8">
-                        <PixieDustSwitcher threshold="md" limit={4} gap="md">
+                        <PixieSwitcher threshold="md" limit={4} gap="md">
                             {plans.map(([title, description]) => (
                                 <div key={title}>
                                     <Plan
@@ -410,9 +410,9 @@ export function PixieDustSwitcherDossier() {
                                     />
                                 </div>
                             ))}
-                        </PixieDustSwitcher>
+                        </PixieSwitcher>
                     </div>
-                    <CodeExample>{`<PixieDustSwitcher
+                    <CodeExample>{`<PixieSwitcher
     threshold="md"
     limit={4}
     gap="md"
@@ -422,7 +422,7 @@ export function PixieDustSwitcherDossier() {
     <Card>Créateurs</Card>
     <Card>Œuvres</Card>
     <Card>Époques</Card>
-</PixieDustSwitcher>`}</CodeExample>
+</PixieSwitcher>`}</CodeExample>
                 </div>
             </section>
 
@@ -437,7 +437,7 @@ export function PixieDustSwitcherDossier() {
                 <div className="mt-7 grid gap-6 bg-canvas p-6 lg:grid-cols-3">
                     {layouts.map((layout) => (
                         <Stage key={layout.value}>
-                            <PixieDustSwitcher
+                            <PixieSwitcher
                                 layout={layout.value}
                                 threshold="sm"
                                 limit={3}
@@ -449,7 +449,7 @@ export function PixieDustSwitcherDossier() {
                                         <Plan title={title} compact />
                                     </div>
                                 ))}
-                            </PixieDustSwitcher>
+                            </PixieSwitcher>
                             <div className="border-t border-line bg-surface p-4">
                                 <code className="font-mono text-xs text-accent">
                                     layout=&quot;{layout.value}&quot;
@@ -474,7 +474,7 @@ export function PixieDustSwitcherDossier() {
                 <div className="mt-7 grid gap-6 lg:grid-cols-2">
                     <Stage>
                         <div className="p-5">
-                            <PixieDustSwitcher layout="row" gap="sm">
+                            <PixieSwitcher layout="row" gap="sm">
                                 <button
                                     type="button"
                                     className="border border-accent bg-accent px-4 py-3 font-medium text-canvas"
@@ -487,7 +487,7 @@ export function PixieDustSwitcherDossier() {
                                 >
                                     Garder en brouillon
                                 </button>
-                            </PixieDustSwitcher>
+                            </PixieSwitcher>
                         </div>
                         <p className="border-t border-line bg-surface p-4 font-mono text-xs text-accent">
                             Deux actions · layout=&quot;row&quot;
@@ -495,7 +495,7 @@ export function PixieDustSwitcherDossier() {
                     </Stage>
 
                     <Stage>
-                        <PixieDustSwitcher
+                        <PixieSwitcher
                             threshold="xs"
                             limit={false}
                             gap="xs"
@@ -516,14 +516,14 @@ export function PixieDustSwitcherDossier() {
                                     {year}
                                 </span>
                             ))}
-                        </PixieDustSwitcher>
+                        </PixieSwitcher>
                         <p className="border-t border-line bg-surface p-4 font-mono text-xs text-accent">
                             Six repères · limit=&#123;false&#125;
                         </p>
                     </Stage>
 
                     <Stage>
-                        <PixieDustSwitcher
+                        <PixieSwitcher
                             as="nav"
                             aria-label="Familles du Codex"
                             threshold="sm"
@@ -534,20 +534,20 @@ export function PixieDustSwitcherDossier() {
                             {plans.map(([title]) => (
                                 <a
                                     key={title}
-                                    href="#pixie-dust-switcher"
+                                    href="#pixie-switcher"
                                     className="border border-line bg-surface px-4 py-3 text-center font-medium text-ink"
                                 >
                                     {title}
                                 </a>
                             ))}
-                        </PixieDustSwitcher>
+                        </PixieSwitcher>
                         <p className="border-t border-line bg-surface p-4 font-mono text-xs text-accent">
                             Navigation nommée · as=&quot;nav&quot;
                         </p>
                     </Stage>
 
                     <Stage>
-                        <PixieDustSwitcher
+                        <PixieSwitcher
                             as="ul"
                             threshold="sm"
                             limit={3}
@@ -559,14 +559,14 @@ export function PixieDustSwitcherDossier() {
                                     <Plan title={title} compact />
                                 </li>
                             ))}
-                        </PixieDustSwitcher>
+                        </PixieSwitcher>
                         <p className="border-t border-line bg-surface p-4 font-mono text-xs text-accent">
                             Collection sémantique · ul puis li
                         </p>
                     </Stage>
 
                     <Stage>
-                        <PixieDustSwitcher
+                        <PixieSwitcher
                             threshold="sm"
                             limit={3}
                             gap="sm"
@@ -586,7 +586,7 @@ export function PixieDustSwitcherDossier() {
                             <div>
                                 <Plan title="Dernier repère" compact />
                             </div>
-                        </PixieDustSwitcher>
+                        </PixieSwitcher>
                         <p className="border-t border-line bg-surface p-4 font-mono text-xs text-accent">
                             Contenus déséquilibrés · align=&quot;start&quot;
                         </p>
@@ -598,7 +598,7 @@ export function PixieDustSwitcherDossier() {
                                 <p className="mb-3 font-mono text-xs text-muted">
                                     Cadre compact
                                 </p>
-                                <PixieDustSwitcher
+                                <PixieSwitcher
                                     layout="stack"
                                     gap="md"
                                     rowGap="xl"
@@ -609,13 +609,13 @@ export function PixieDustSwitcherDossier() {
                                             <Plan title={title} compact />
                                         </div>
                                     ))}
-                                </PixieDustSwitcher>
+                                </PixieSwitcher>
                             </div>
                             <div>
                                 <p className="mb-3 font-mono text-xs text-muted">
                                     Cadre horizontal
                                 </p>
-                                <PixieDustSwitcher
+                                <PixieSwitcher
                                     layout="row"
                                     gap="md"
                                     rowGap="xl"
@@ -626,7 +626,7 @@ export function PixieDustSwitcherDossier() {
                                             <Plan title={title} compact />
                                         </div>
                                     ))}
-                                </PixieDustSwitcher>
+                                </PixieSwitcher>
                             </div>
                         </div>
                         <p className="border-t border-line bg-surface p-4 font-mono text-xs text-accent">
@@ -647,7 +647,7 @@ export function PixieDustSwitcherDossier() {
                 <div className="mt-7 grid gap-6 bg-canvas p-6 lg:grid-cols-2">
                     {thresholds.map((threshold) => (
                         <Stage key={threshold.value}>
-                            <PixieDustSwitcher
+                            <PixieSwitcher
                                 threshold={threshold.value}
                                 limit={3}
                                 gap="sm"
@@ -658,7 +658,7 @@ export function PixieDustSwitcherDossier() {
                                         <Plan title={title} compact />
                                     </div>
                                 ))}
-                            </PixieDustSwitcher>
+                            </PixieSwitcher>
                             <div className="border-t border-line bg-surface p-4">
                                 <div className="flex flex-wrap items-baseline justify-between gap-3">
                                     <h4 className="text-lg text-ink">
@@ -688,7 +688,7 @@ export function PixieDustSwitcherDossier() {
                 <div className="mt-7 grid gap-6 bg-canvas p-6 lg:grid-cols-2">
                     {([2, 3, 4, 5] as const).map((limit) => (
                         <Stage key={limit}>
-                            <PixieDustSwitcher
+                            <PixieSwitcher
                                 threshold="xs"
                                 limit={limit}
                                 gap="xs"
@@ -701,7 +701,7 @@ export function PixieDustSwitcherDossier() {
                                             <Plan title={title} compact />
                                         </div>
                                     ))}
-                            </PixieDustSwitcher>
+                            </PixieSwitcher>
                             <p className="border-t border-line bg-surface p-4 font-mono text-xs text-accent">
                                 limit={limit}
                             </p>
@@ -728,17 +728,13 @@ export function PixieDustSwitcherDossier() {
                             <p className="mb-3 font-mono text-xs text-accent">
                                 {label}
                             </p>
-                            <PixieDustSwitcher
-                                threshold="md"
-                                limit={4}
-                                gap="sm"
-                            >
+                            <PixieSwitcher threshold="md" limit={4} gap="sm">
                                 {plans.map(([title]) => (
                                     <div key={title}>
                                         <Plan title={title} compact />
                                     </div>
                                 ))}
-                            </PixieDustSwitcher>
+                            </PixieSwitcher>
                         </div>
                     ))}
                 </div>
@@ -755,7 +751,7 @@ export function PixieDustSwitcherDossier() {
                 <div className="mt-7 grid gap-6 bg-canvas p-6 md:grid-cols-2 xl:grid-cols-3">
                     {gaps.map((gap) => (
                         <Stage key={gap.value}>
-                            <PixieDustSwitcher
+                            <PixieSwitcher
                                 threshold="xs"
                                 limit={2}
                                 gap={gap.value}
@@ -766,7 +762,7 @@ export function PixieDustSwitcherDossier() {
                                         <Plan title={title} compact />
                                     </div>
                                 ))}
-                            </PixieDustSwitcher>
+                            </PixieSwitcher>
                             <p className="border-t border-line bg-surface p-4 font-mono text-xs text-accent">
                                 {gap.name} · {gap.value} · {gap.token}
                             </p>
@@ -786,7 +782,7 @@ export function PixieDustSwitcherDossier() {
                 <div className="mt-7 grid gap-6 bg-canvas p-6 lg:grid-cols-2">
                     {alignments.map((alignment) => (
                         <Stage key={alignment.value}>
-                            <PixieDustSwitcher
+                            <PixieSwitcher
                                 threshold="xs"
                                 limit={2}
                                 gap="sm"
@@ -803,7 +799,7 @@ export function PixieDustSwitcherDossier() {
                                         compact
                                     />
                                 </div>
-                            </PixieDustSwitcher>
+                            </PixieSwitcher>
                             <p className="border-t border-line bg-surface p-4 font-mono text-xs text-accent">
                                 align=&quot;{alignment.value}&quot;
                             </p>
@@ -873,7 +869,7 @@ export function PixieDustSwitcherDossier() {
                                 Explorer le Codex
                             </h4>
                         </PixieStack>
-                        <PixieDustSwitcher threshold="md" limit={4} gap="md">
+                        <PixieSwitcher threshold="md" limit={4} gap="md">
                             {plans.map(([title, description]) => (
                                 <div key={title}>
                                     <Plan
@@ -882,7 +878,7 @@ export function PixieDustSwitcherDossier() {
                                     />
                                 </div>
                             ))}
-                        </PixieDustSwitcher>
+                        </PixieSwitcher>
                     </PixieSection>
                 </div>
             </section>
@@ -922,18 +918,18 @@ export function PixieDustSwitcherDossier() {
             </section>
 
             <section
-                id="pixie-dust-switcher-playground"
+                id="pixie-switcher-playground"
                 aria-labelledby="switcher-playground-title"
                 className="mt-16 scroll-mt-8 border border-line-strong bg-surface-muted p-6 shadow-soft sm:p-8"
             >
                 <SequenceTitle
                     id="switcher-playground-title"
                     eyebrow="Régie"
-                    title="Composer un PixieDustSwitcher"
+                    title="Composer un PixieSwitcher"
                     description="Réglez la disposition, le seuil, la limite et les deux axes d’espacement ; les contrôles intrinsèques s’effacent lorsque le plan est imposé."
                 />
                 <div className="mt-8">
-                    <PixieDustSwitcherPlayground />
+                    <PixieSwitcherPlayground />
                 </div>
             </section>
 
@@ -992,8 +988,8 @@ export function PixieDustSwitcherDossier() {
                 <SequenceTitle
                     id="switcher-technical"
                     eyebrow="Générique technique"
-                    title="API de l’esquisse"
-                    description="Les types spécifiques restent colocalisés dans PixieDustSwitcher.types.ts ; le composant demeure statique et son playground porte seul l’état client."
+                    title="API du composant"
+                    description="Les types spécifiques restent colocalisés dans PixieSwitcher.types.ts ; le composant demeure statique et son playground porte seul l’état client."
                 />
 
                 <div className="mt-7">
@@ -1006,34 +1002,6 @@ export function PixieDustSwitcherDossier() {
                         <AtelierTypesTable types={specificTypes} />
                     </div>
                 </div>
-            </section>
-
-            <section aria-labelledby="switcher-journal" className="mt-16">
-                <SequenceTitle
-                    id="switcher-journal"
-                    eyebrow="Journal de production"
-                    title="Décisions avant la promotion"
-                    description="La version 0.2.0 rassemble le contrat candidat ; elle doit maintenant être éprouvée dans de vrais montages avant sa promotion."
-                />
-
-                <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
-                    {[
-                        "Éprouver les cinq seuils avec des cartes aux contenus très différents.",
-                        "Valider les limites de deux à six enfants et leur désactivation dans des cadres imbriqués.",
-                        "Confirmer que row et stack restent des choix explicites, jamais des correctifs responsive.",
-                        "Tester div, section, nav, ul et ol avec les outils d’accessibilité.",
-                        "Contrôler les deux Lumières, le mobile et le zoom à 200 %.",
-                        "Éprouver rowGap et columnGap avant de figer leurs noms.",
-                        "Décider si md, 4, md et stretch restent les bons réglages par défaut.",
-                    ].map((decision) => (
-                        <li
-                            key={decision}
-                            className="bg-surface p-5 leading-7 text-ink-soft"
-                        >
-                            {decision}
-                        </li>
-                    ))}
-                </ul>
             </section>
         </AtelierFicheAccessoire>
     );
