@@ -485,4 +485,91 @@ export const symbolsGeneral = {
             accent: "var(--atelier-animation-sepia-storyboard)",
         },
     },
+    evenements: {
+        "invitation-gaufree": {
+            src: "/symbols/general/evenements/invitation-gaufree.png",
+            label: "Invitation gaufrée",
+            accent: "var(--atelier-animation-papier-animation)",
+        },
+        "accreditation-evenement": {
+            src: "/symbols/general/evenements/accreditation-evenement.png",
+            label: "Accréditation d’événement",
+            accent: "var(--atelier-animation-bleu-reperage)",
+        },
+        "programme-manifestation": {
+            src: "/symbols/general/evenements/programme-manifestation.png",
+            label: "Programme de manifestation",
+            accent: "var(--atelier-animation-sepia-storyboard)",
+        },
+        "corde-velours": {
+            src: "/symbols/general/evenements/corde-velours.png",
+            label: "Corde de velours",
+            accent: "var(--atelier-animation-rouge-crayon)",
+        },
+        "billet-cinema": {
+            src: "/symbols/general/evenements/billet-cinema.png",
+            label: "Billet de cinéma",
+            accent: "var(--atelier-animation-ambre-projecteur)",
+        },
+        "projecteur-premiere": {
+            src: "/symbols/general/evenements/projecteur-premiere.png",
+            label: "Projecteur de première",
+            accent: "var(--atelier-animation-jaune-lampe)",
+        },
+        "trophee-generique": {
+            src: "/symbols/general/evenements/trophee-generique.png",
+            label: "Trophée générique",
+            accent: "var(--atelier-animation-ambre-projecteur)",
+        },
+        "fanion-festival": {
+            src: "/symbols/general/evenements/fanion-festival.png",
+            label: "Fanion de festival",
+            accent: "var(--atelier-animation-corail-cel)",
+        },
+        pupitre: {
+            src: "/symbols/general/evenements/pupitre.png",
+            label: "Pupitre",
+            accent: "var(--atelier-animation-graphite)",
+        },
+        "affiche-encadree": {
+            src: "/symbols/general/evenements/affiche-encadree.png",
+            label: "Affiche encadrée",
+            accent: "var(--atelier-animation-indigo-nuit-studio)",
+        },
+        "bracelet-acces": {
+            src: "/symbols/general/evenements/bracelet-acces.png",
+            label: "Bracelet d’accès",
+            accent: "var(--atelier-animation-turquoise-acetate)",
+        },
+        "plaque-commemorative": {
+            src: "/symbols/general/evenements/plaque-commemorative.png",
+            label: "Plaque commémorative",
+            accent: "var(--atelier-animation-ambre-projecteur)",
+        },
+        "tapis-premiere": {
+            src: "/symbols/general/evenements/tapis-premiere.png",
+            label: "Tapis de première",
+            accent: "var(--atelier-animation-rouge-crayon)",
+        },
+        "ruban-inaugural-ciseaux": {
+            src: "/symbols/general/evenements/ruban-inaugural-ciseaux.png",
+            label: "Ruban inaugural et ciseaux",
+            accent: "var(--atelier-animation-rouge-crayon)",
+        },
+        "arche-entree": {
+            src: "/symbols/general/evenements/arche-entree.png",
+            label: "Arche d’entrée",
+            accent: "var(--atelier-animation-bleu-reperage)",
+        },
+        "livre-or": {
+            src: "/symbols/general/evenements/livre-or.png",
+            label: "Livre d’or",
+            accent: "var(--atelier-animation-ambre-projecteur)",
+        },
+        "urne-prix-public": {
+            src: "/symbols/general/evenements/urne-prix-public.png",
+            label: "Urne du prix du public",
+            accent: "var(--atelier-animation-corail-cel)",
+        },
+    },
 } as const satisfies Record<string, Record<string, SymbolDefinition>>;
