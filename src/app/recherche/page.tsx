@@ -4,17 +4,26 @@ import { CodexCreateurCard } from "@/components/codex/CodexCreateurCard";
 import { CodexEpoqueCard } from "@/components/codex/CodexEpoqueCard";
 import { CodexOeuvreCard } from "@/components/codex/CodexOeuvreCard";
 import { CodexPersonnageCard } from "@/components/codex/CodexPersonnageCard";
+import { PixieBackdrop } from "@/components/ui/PixieBackdrop";
+import { PixieBadge } from "@/components/ui/PixieBadge";
 import { PixieButton } from "@/components/ui/PixieButton";
+import { PixieCallout } from "@/components/ui/PixieCallout";
+import { PixieCluster } from "@/components/ui/PixieCluster";
+import { PixieFrame } from "@/components/ui/PixieFrame";
+import { PixieGrid } from "@/components/ui/PixieGrid";
+import { PixiePanel } from "@/components/ui/PixiePanel";
+import { PixieSection } from "@/components/ui/PixieSection";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
+import { PixieStack } from "@/components/ui/PixieStack";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { getFicheContributeurBySlug } from "@/data/contributeurs";
+import { getFicheEpoqueBySlug } from "@/data/epoques";
 import {
     getContributeursDeLEpoque,
     getEpoquesPourContributeur,
     getOeuvresDeLEpoque,
     getPersonnagesDeLEpoque,
 } from "@/data/epoques/relations";
-import { getFicheEpoqueBySlug } from "@/data/epoques";
 import { getFicheOeuvreBySlug } from "@/data/oeuvres";
 import { getFichePersonnageBySlug } from "@/data/personnages";
 import {
@@ -22,6 +31,7 @@ import {
     getRecompensesPourOeuvre,
 } from "@/data/recompenses/relations";
 import { rechercherDansCatalogues } from "@/lib/recherche";
+import styles from "./RecherchePage.module.css";
 
 export const metadata: Metadata = {
     title: "Recherche",
@@ -38,318 +48,592 @@ export default async function RecherchePage({
     const rechercheLancee = requete.length > 0;
 
     return (
-        <main className="mx-auto min-h-screen w-full max-w-6xl px-6 py-16 sm:py-20">
-            <header className="max-w-3xl">
-                <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.2em] text-muted">
-                    Explorer toutes les archives
-                </p>
-
-                <h1 className="mt-3 text-5xl text-ink">Recherche</h1>
-
-                <p className="mt-6 max-w-2xl text-lg leading-8 text-ink-soft">
-                    Retrouver un nom, un titre, une catégorie, un rôle ou une
-                    collection parmi les quatre familles du Codex.
-                </p>
-            </header>
-
-            <form
-                action="/recherche"
-                method="get"
-                role="search"
-                className="mt-12 border border-line-strong bg-surface-muted p-5 shadow-soft sm:p-7"
+        <main className={styles.root}>
+            <PixieBackdrop
+                as="header"
+                variant="projector"
+                intensity="subtle"
+                position="top-end"
+                direction="diagonal-down"
+                spread="wide"
+                padding="none"
+                color="ambre-projecteur"
+                base="transparent"
+                texture="grain"
+                textureIntensity="subtle"
             >
-                <label
-                    htmlFor="recherche-q"
-                    className="text-sm font-medium text-ink"
+                <PixieSection
+                    as="div"
+                    width="72"
+                    gutter="md"
+                    spacingStart="lg"
+                    spacingEnd="md"
+                    gap="none"
                 >
-                    Que souhaitez-vous retrouver ?
-                </label>
+                    <PixieCluster
+                        gap="lg"
+                        align="center"
+                        className={styles.hero}
+                    >
+                        <PixieFrame
+                            as="div"
+                            variant="cel"
+                            aspect="square"
+                            padding="sm"
+                            radius="medium"
+                            color="ambre-projecteur"
+                            elevation="soft"
+                            effect="projector"
+                            intensity="subtle"
+                            className={styles.heroSymbol}
+                        >
+                            <PixieSymbol
+                                registry="general"
+                                collection="cinema"
+                                slug="projecteur-cinema"
+                                size="xl"
+                            />
+                        </PixieFrame>
 
-                <div className="mt-3 flex flex-col gap-3 sm:flex-row">
-                    <input
-                        id="recherche-q"
-                        name="q"
-                        type="search"
-                        defaultValue={requete}
-                        placeholder="Mickey, animateur, Silly Symphonies…"
-                        autoComplete="off"
-                        enterKeyHint="search"
-                        className="min-h-12 min-w-0 flex-1 rounded-small border border-line-strong bg-canvas px-4 text-base text-ink outline-none transition-[border-color,box-shadow] placeholder:text-muted focus:border-accent focus:shadow-[0_0_0_2px_var(--color-accent)]"
-                    />
+                        <PixieStack gap="sm" className={styles.heroHeading}>
+                            <p className={styles.eyebrow}>
+                                Explorer toutes les archives
+                            </p>
+                            <h1 className={styles.title}>Recherche</h1>
+                            <p className={styles.introduction}>
+                                Retrouvez un nom, un titre, une catégorie, un
+                                rôle ou une collection parmi les quatre familles
+                                du Codex.
+                            </p>
+                        </PixieStack>
+                    </PixieCluster>
+                </PixieSection>
+            </PixieBackdrop>
 
-                    <PixieButton type="submit" size="lg">
-                        Rechercher
-                    </PixieButton>
-                </div>
+            <PixieSection
+                as="div"
+                width="72"
+                gutter="md"
+                spacingStart="md"
+                spacingEnd="xl"
+                gap="xl"
+            >
+                <PixiePanel
+                    as="section"
+                    aria-labelledby="recherche-form-title"
+                    variant="tinted"
+                    padding="lg"
+                    radius="large"
+                    color="ambre-projecteur"
+                    elevation="soft"
+                    className={styles.searchPanel}
+                >
+                    <form action="/recherche" method="get" role="search">
+                        <PixieStack gap="md">
+                            <PixieStack gap="xs">
+                                <p className={styles.formEyebrow}>
+                                    Régie de recherche
+                                </p>
+                                <h2
+                                    id="recherche-form-title"
+                                    className={styles.formTitle}
+                                >
+                                    Quel sujet souhaitez-vous éclairer ?
+                                </h2>
+                            </PixieStack>
 
-                <p className="mt-3 text-sm leading-6 text-muted">
-                    La recherche ignore les accents et la casse. Tous les mots
-                    saisis doivent être présents dans la même archive.
-                </p>
-            </form>
+                            <label
+                                htmlFor="recherche-q"
+                                className={styles.label}
+                            >
+                                Mots-clés
+                            </label>
 
-            <div className="mt-12">
+                            <div className={styles.searchControls}>
+                                <input
+                                    id="recherche-q"
+                                    name="q"
+                                    type="search"
+                                    defaultValue={requete}
+                                    placeholder="Mickey, animateur, Silly Symphonies…"
+                                    autoComplete="off"
+                                    enterKeyHint="search"
+                                    aria-describedby="recherche-aide"
+                                    className={styles.input}
+                                />
+
+                                <PixieButton
+                                    type="submit"
+                                    size="lg"
+                                    color="ambre-projecteur"
+                                    className={styles.searchButton}
+                                >
+                                    Lancer la recherche
+                                </PixieButton>
+                            </div>
+
+                            <p id="recherche-aide" className={styles.helper}>
+                                Accents et majuscules sont ignorés. Tous les
+                                mots saisis doivent apparaître dans la même
+                                archive.
+                            </p>
+                        </PixieStack>
+                    </form>
+                </PixiePanel>
+
                 <PixieSeparator
-                    variant="film"
-                    intensity="subtle"
+                    variant="beam"
+                    intensity="strong"
+                    color="ambre-projecteur"
                     spacing="none"
                     decorative
                 />
-            </div>
 
-            {!rechercheLancee ? (
-                <section
-                    className="mt-10 max-w-2xl"
-                    aria-labelledby="attente-title"
-                >
-                    <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.18em] text-muted">
-                        La table attend son sujet
-                    </p>
-                    <h2 id="attente-title" className="mt-3 text-3xl text-ink">
-                        Lancez la première recherche
-                    </h2>
-                    <p className="mt-4 leading-7 text-ink-soft">
-                        Les résultats apparaîtront ici, regroupés entre
-                        Personnages, Créateurs, Œuvres et Époques.
-                    </p>
-                </section>
-            ) : resultats.total === 0 ? (
-                <section
-                    className="mt-10 max-w-2xl"
-                    aria-labelledby="vide-title"
-                >
-                    <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.18em] text-muted">
-                        Aucun raccord trouvé
-                    </p>
-                    <h2 id="vide-title" className="mt-3 text-3xl text-ink">
-                        Aucune archive pour « {requete} »
-                    </h2>
-                    <p className="mt-4 leading-7 text-ink-soft">
-                        Essayez un nom, un titre, une catégorie, un rôle ou une
-                        collection plus générale.
-                    </p>
-                </section>
-            ) : (
-                <div className="mt-10">
-                    <p className="text-sm text-muted" aria-live="polite">
-                        {resultats.total} résultat
-                        {resultats.total > 1 ? "s" : ""} pour « {requete} »
-                    </p>
-
-                    {resultats.personnages.length > 0 ? (
-                        <section
-                            className="mt-14"
-                            aria-labelledby="resultats-personnages"
+                {!rechercheLancee ? (
+                    <PixieCallout
+                        as="section"
+                        aria-labelledby="attente-title"
+                        variant="subtle"
+                        layout="inline"
+                        padding="lg"
+                        radius="large"
+                        color="ambre-projecteur"
+                        effect="halo"
+                        effectIntensity="subtle"
+                        icon={
+                            <PixieSymbol
+                                registry="general"
+                                collection="cinema"
+                                slug="bobine"
+                                size="lg"
+                            />
+                        }
+                        eyebrow="Table de recherche"
+                        heading={
+                            <h2 id="attente-title">
+                                Le projecteur attend son sujet
+                            </h2>
+                        }
+                        className={styles.state}
+                    >
+                        <p>
+                            Saisissez quelques mots pour faire apparaître les
+                            personnages, créateurs, œuvres et époques qui leur
+                            correspondent.
+                        </p>
+                    </PixieCallout>
+                ) : resultats.total === 0 ? (
+                    <PixieCallout
+                        as="section"
+                        aria-labelledby="vide-title"
+                        role="status"
+                        variant="tinted"
+                        layout="inline"
+                        padding="lg"
+                        radius="large"
+                        color="corail-cel"
+                        effect="grain"
+                        effectIntensity="subtle"
+                        icon={
+                            <PixieSymbol
+                                registry="general"
+                                collection="cinema"
+                                slug="clap"
+                                size="lg"
+                            />
+                        }
+                        eyebrow="Aucun raccord trouvé"
+                        heading={
+                            <h2 id="vide-title">
+                                Aucune archive pour « {requete} »
+                            </h2>
+                        }
+                        className={styles.state}
+                    >
+                        <p>
+                            Essayez un nom, un titre ou un terme plus général,
+                            puis relancez la recherche.
+                        </p>
+                    </PixieCallout>
+                ) : (
+                    <PixieStack gap="xl">
+                        <PixiePanel
+                            as="div"
+                            role="status"
+                            aria-live="polite"
+                            aria-atomic="true"
+                            variant="outline"
+                            padding="sm"
+                            radius="medium"
+                            color="ambre-projecteur"
                         >
-                            <div className="flex items-center gap-4">
-                                <PixieSymbol
-                                    registry="codex"
-                                    collection="index"
-                                    slug="personnages"
-                                    size="md"
-                                />
+                            <PixieCluster
+                                gap="sm"
+                                justify="between"
+                                align="center"
+                            >
                                 <div>
-                                    <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-famille-personnages">
-                                        {resultats.personnages.length} résultat
-                                        {resultats.personnages.length > 1
-                                            ? "s"
-                                            : ""}
+                                    <p className={styles.summaryEyebrow}>
+                                        Résultats projetés
                                     </p>
-                                    <h2
-                                        id="resultats-personnages"
-                                        className="mt-1 text-3xl text-ink"
-                                    >
-                                        Personnages
-                                    </h2>
-                                </div>
-                            </div>
-
-                            <ul className="mt-7 grid gap-6 lg:grid-cols-2">
-                                {resultats.personnages.map((personnage) => {
-                                    const fiche = getFichePersonnageBySlug(
-                                        personnage.slug,
-                                    );
-
-                                    return fiche ? (
-                                        <li key={personnage.slug}>
-                                            <CodexPersonnageCard
-                                                personnage={personnage}
-                                                fiche={fiche}
-                                            />
-                                        </li>
-                                    ) : null;
-                                })}
-                            </ul>
-                        </section>
-                    ) : null}
-
-                    {resultats.contributeurs.length > 0 ? (
-                        <section
-                            className="mt-14"
-                            aria-labelledby="resultats-createurs"
-                        >
-                            <div className="flex items-center gap-4">
-                                <PixieSymbol
-                                    registry="codex"
-                                    collection="index"
-                                    slug="createurs"
-                                    size="md"
-                                />
-                                <div>
-                                    <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-famille-createurs">
-                                        {resultats.contributeurs.length}{" "}
-                                        résultat
-                                        {resultats.contributeurs.length > 1
-                                            ? "s"
-                                            : ""}
+                                    <p className={styles.summaryQuery}>
+                                        « {requete} »
                                     </p>
-                                    <h2
-                                        id="resultats-createurs"
-                                        className="mt-1 text-3xl text-ink"
-                                    >
-                                        Créateurs
-                                    </h2>
                                 </div>
-                            </div>
 
-                            <ul className="mt-7 grid gap-6 lg:grid-cols-2">
-                                {resultats.contributeurs.map((contributeur) => {
-                                    const fiche = getFicheContributeurBySlug(
-                                        contributeur.slug,
-                                    );
+                                <PixieBadge
+                                    variant="soft"
+                                    size="sm"
+                                    shape="pill"
+                                    color="ambre-projecteur"
+                                >
+                                    {resultats.total} résultat
+                                    {resultats.total > 1 ? "s" : ""}
+                                </PixieBadge>
+                            </PixieCluster>
+                        </PixiePanel>
 
-                                    return fiche ? (
-                                        <li key={contributeur.slug}>
-                                            <CodexCreateurCard
-                                                contributeur={contributeur}
-                                                fiche={fiche}
-                                                epoques={getEpoquesPourContributeur(
-                                                    contributeur.slug,
-                                                )}
-                                                recompenses={getRecompensesPourContributeur(
-                                                    contributeur.slug,
-                                                )}
-                                            />
-                                        </li>
-                                    ) : null;
-                                })}
-                            </ul>
-                        </section>
-                    ) : null}
-
-                    {resultats.oeuvres.length > 0 ? (
-                        <section
-                            className="mt-14"
-                            aria-labelledby="resultats-oeuvres"
-                        >
-                            <div className="flex items-center gap-4">
-                                <PixieSymbol
-                                    registry="codex"
-                                    collection="index"
-                                    slug="oeuvres"
-                                    size="md"
-                                />
-                                <div>
-                                    <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-famille-oeuvres">
-                                        {resultats.oeuvres.length} résultat
-                                        {resultats.oeuvres.length > 1
-                                            ? "s"
-                                            : ""}
-                                    </p>
-                                    <h2
-                                        id="resultats-oeuvres"
-                                        className="mt-1 text-3xl text-ink"
+                        <div className={styles.resultGroups}>
+                            {resultats.personnages.length > 0 ? (
+                                <section
+                                    aria-labelledby="resultats-personnages"
+                                    className={styles.resultSection}
+                                    data-family="personnages"
+                                >
+                                    <PixieCluster
+                                        gap="md"
+                                        align="center"
+                                        className={styles.resultHeader}
                                     >
-                                        Œuvres
-                                    </h2>
-                                </div>
-                            </div>
-
-                            <ul className="mt-7 grid gap-6 lg:grid-cols-2">
-                                {resultats.oeuvres.map((oeuvre) => {
-                                    const fiche = getFicheOeuvreBySlug(
-                                        oeuvre.slug,
-                                    );
-
-                                    return fiche ? (
-                                        <li key={oeuvre.slug}>
-                                            <CodexOeuvreCard
-                                                oeuvre={oeuvre}
-                                                fiche={fiche}
-                                                recompenses={getRecompensesPourOeuvre(
-                                                    oeuvre.slug,
-                                                )}
+                                        <PixieFrame
+                                            as="div"
+                                            variant="cel"
+                                            aspect="square"
+                                            padding="xs"
+                                            radius="medium"
+                                            color="rouge-crayon"
+                                            className={styles.resultSymbol}
+                                        >
+                                            <PixieSymbol
+                                                registry="codex"
+                                                collection="index"
+                                                slug="personnages"
+                                                size="md"
                                             />
-                                        </li>
-                                    ) : null;
-                                })}
-                            </ul>
-                        </section>
-                    ) : null}
+                                        </PixieFrame>
 
-                    {resultats.epoques.length > 0 ? (
-                        <section
-                            className="mt-14"
-                            aria-labelledby="resultats-epoques"
-                        >
-                            <div className="flex items-center gap-4">
-                                <PixieSymbol
-                                    registry="codex"
-                                    collection="index"
-                                    slug="epoques"
-                                    size="md"
-                                />
-                                <div>
-                                    <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-famille-epoques">
-                                        {resultats.epoques.length} résultat
-                                        {resultats.epoques.length > 1
-                                            ? "s"
-                                            : ""}
-                                    </p>
-                                    <h2
-                                        id="resultats-epoques"
-                                        className="mt-1 text-3xl text-ink"
+                                        <PixieStack gap="xs">
+                                            <PixieBadge
+                                                variant="soft"
+                                                size="xs"
+                                                shape="pill"
+                                                color="rouge-crayon"
+                                            >
+                                                {resultats.personnages.length}{" "}
+                                                résultat
+                                                {resultats.personnages.length >
+                                                1
+                                                    ? "s"
+                                                    : ""}
+                                            </PixieBadge>
+                                            <h2
+                                                id="resultats-personnages"
+                                                className={styles.resultTitle}
+                                            >
+                                                Personnages
+                                            </h2>
+                                        </PixieStack>
+                                    </PixieCluster>
+
+                                    <PixieGrid
+                                        as="ul"
+                                        maxColumns={2}
+                                        minItemWidth="lg"
+                                        gap="lg"
+                                        className={styles.resultCards}
                                     >
-                                        Époques
-                                    </h2>
-                                </div>
-                            </div>
+                                        {resultats.personnages.map(
+                                            (personnage) => {
+                                                const fiche =
+                                                    getFichePersonnageBySlug(
+                                                        personnage.slug,
+                                                    );
 
-                            <ul className="mt-7 grid gap-6 lg:grid-cols-2">
-                                {resultats.epoques.map((epoque) => {
-                                    const fiche = getFicheEpoqueBySlug(
-                                        epoque.slug,
-                                    );
+                                                return fiche ? (
+                                                    <li key={personnage.slug}>
+                                                        <CodexPersonnageCard
+                                                            personnage={
+                                                                personnage
+                                                            }
+                                                            fiche={fiche}
+                                                        />
+                                                    </li>
+                                                ) : null;
+                                            },
+                                        )}
+                                    </PixieGrid>
+                                </section>
+                            ) : null}
 
-                                    return fiche ? (
-                                        <li key={epoque.slug}>
-                                            <CodexEpoqueCard
-                                                epoque={epoque}
-                                                fiche={fiche}
-                                                nombres={{
-                                                    oeuvres:
-                                                        getOeuvresDeLEpoque(
-                                                            epoque.slug,
-                                                        ).length,
-                                                    personnages:
-                                                        getPersonnagesDeLEpoque(
-                                                            epoque.slug,
-                                                        ).length,
-                                                    createurs:
-                                                        getContributeursDeLEpoque(
-                                                            epoque.slug,
-                                                        ).length,
-                                                }}
+                            {resultats.contributeurs.length > 0 ? (
+                                <section
+                                    aria-labelledby="resultats-createurs"
+                                    className={styles.resultSection}
+                                    data-family="createurs"
+                                >
+                                    <PixieCluster
+                                        gap="md"
+                                        align="center"
+                                        className={styles.resultHeader}
+                                    >
+                                        <PixieFrame
+                                            as="div"
+                                            variant="cel"
+                                            aspect="square"
+                                            padding="xs"
+                                            radius="medium"
+                                            color="jaune-lampe"
+                                            className={styles.resultSymbol}
+                                        >
+                                            <PixieSymbol
+                                                registry="codex"
+                                                collection="index"
+                                                slug="createurs"
+                                                size="md"
                                             />
-                                        </li>
-                                    ) : null;
-                                })}
-                            </ul>
-                        </section>
-                    ) : null}
-                </div>
-            )}
-            <CodexFooter className="mt-16 !px-0" />
+                                        </PixieFrame>
+
+                                        <PixieStack gap="xs">
+                                            <PixieBadge
+                                                variant="soft"
+                                                size="xs"
+                                                shape="pill"
+                                                color="jaune-lampe"
+                                            >
+                                                {resultats.contributeurs.length}{" "}
+                                                résultat
+                                                {resultats.contributeurs
+                                                    .length > 1
+                                                    ? "s"
+                                                    : ""}
+                                            </PixieBadge>
+                                            <h2
+                                                id="resultats-createurs"
+                                                className={styles.resultTitle}
+                                            >
+                                                Créateurs
+                                            </h2>
+                                        </PixieStack>
+                                    </PixieCluster>
+
+                                    <PixieGrid
+                                        as="ul"
+                                        maxColumns={2}
+                                        minItemWidth="lg"
+                                        gap="lg"
+                                        className={styles.resultCards}
+                                    >
+                                        {resultats.contributeurs.map(
+                                            (contributeur) => {
+                                                const fiche =
+                                                    getFicheContributeurBySlug(
+                                                        contributeur.slug,
+                                                    );
+
+                                                return fiche ? (
+                                                    <li key={contributeur.slug}>
+                                                        <CodexCreateurCard
+                                                            contributeur={
+                                                                contributeur
+                                                            }
+                                                            fiche={fiche}
+                                                            epoques={getEpoquesPourContributeur(
+                                                                contributeur.slug,
+                                                            )}
+                                                            recompenses={getRecompensesPourContributeur(
+                                                                contributeur.slug,
+                                                            )}
+                                                        />
+                                                    </li>
+                                                ) : null;
+                                            },
+                                        )}
+                                    </PixieGrid>
+                                </section>
+                            ) : null}
+
+                            {resultats.oeuvres.length > 0 ? (
+                                <section
+                                    aria-labelledby="resultats-oeuvres"
+                                    className={styles.resultSection}
+                                    data-family="oeuvres"
+                                >
+                                    <PixieCluster
+                                        gap="md"
+                                        align="center"
+                                        className={styles.resultHeader}
+                                    >
+                                        <PixieFrame
+                                            as="div"
+                                            variant="cel"
+                                            aspect="square"
+                                            padding="xs"
+                                            radius="medium"
+                                            color="gouache"
+                                            className={styles.resultSymbol}
+                                        >
+                                            <PixieSymbol
+                                                registry="codex"
+                                                collection="index"
+                                                slug="oeuvres"
+                                                size="md"
+                                            />
+                                        </PixieFrame>
+
+                                        <PixieStack gap="xs">
+                                            <PixieBadge
+                                                variant="soft"
+                                                size="xs"
+                                                shape="pill"
+                                                color="gouache"
+                                            >
+                                                {resultats.oeuvres.length}{" "}
+                                                résultat
+                                                {resultats.oeuvres.length > 1
+                                                    ? "s"
+                                                    : ""}
+                                            </PixieBadge>
+                                            <h2
+                                                id="resultats-oeuvres"
+                                                className={styles.resultTitle}
+                                            >
+                                                Œuvres
+                                            </h2>
+                                        </PixieStack>
+                                    </PixieCluster>
+
+                                    <PixieGrid
+                                        as="ul"
+                                        maxColumns={2}
+                                        minItemWidth="lg"
+                                        gap="lg"
+                                        className={styles.resultCards}
+                                    >
+                                        {resultats.oeuvres.map((oeuvre) => {
+                                            const fiche = getFicheOeuvreBySlug(
+                                                oeuvre.slug,
+                                            );
+
+                                            return fiche ? (
+                                                <li key={oeuvre.slug}>
+                                                    <CodexOeuvreCard
+                                                        oeuvre={oeuvre}
+                                                        fiche={fiche}
+                                                        recompenses={getRecompensesPourOeuvre(
+                                                            oeuvre.slug,
+                                                        )}
+                                                    />
+                                                </li>
+                                            ) : null;
+                                        })}
+                                    </PixieGrid>
+                                </section>
+                            ) : null}
+
+                            {resultats.epoques.length > 0 ? (
+                                <section
+                                    aria-labelledby="resultats-epoques"
+                                    className={styles.resultSection}
+                                    data-family="epoques"
+                                >
+                                    <PixieCluster
+                                        gap="md"
+                                        align="center"
+                                        className={styles.resultHeader}
+                                    >
+                                        <PixieFrame
+                                            as="div"
+                                            variant="cel"
+                                            aspect="square"
+                                            padding="xs"
+                                            radius="medium"
+                                            color="vert-cellulo"
+                                            className={styles.resultSymbol}
+                                        >
+                                            <PixieSymbol
+                                                registry="codex"
+                                                collection="index"
+                                                slug="epoques"
+                                                size="md"
+                                            />
+                                        </PixieFrame>
+
+                                        <PixieStack gap="xs">
+                                            <PixieBadge
+                                                variant="soft"
+                                                size="xs"
+                                                shape="pill"
+                                                color="vert-cellulo"
+                                            >
+                                                {resultats.epoques.length}{" "}
+                                                résultat
+                                                {resultats.epoques.length > 1
+                                                    ? "s"
+                                                    : ""}
+                                            </PixieBadge>
+                                            <h2
+                                                id="resultats-epoques"
+                                                className={styles.resultTitle}
+                                            >
+                                                Époques
+                                            </h2>
+                                        </PixieStack>
+                                    </PixieCluster>
+
+                                    <PixieGrid
+                                        as="ul"
+                                        maxColumns={2}
+                                        minItemWidth="lg"
+                                        gap="lg"
+                                        className={styles.resultCards}
+                                    >
+                                        {resultats.epoques.map((epoque) => {
+                                            const fiche = getFicheEpoqueBySlug(
+                                                epoque.slug,
+                                            );
+
+                                            return fiche ? (
+                                                <li key={epoque.slug}>
+                                                    <CodexEpoqueCard
+                                                        epoque={epoque}
+                                                        fiche={fiche}
+                                                        nombres={{
+                                                            oeuvres:
+                                                                getOeuvresDeLEpoque(
+                                                                    epoque.slug,
+                                                                ).length,
+                                                            personnages:
+                                                                getPersonnagesDeLEpoque(
+                                                                    epoque.slug,
+                                                                ).length,
+                                                            createurs:
+                                                                getContributeursDeLEpoque(
+                                                                    epoque.slug,
+                                                                ).length,
+                                                        }}
+                                                    />
+                                                </li>
+                                            ) : null;
+                                        })}
+                                    </PixieGrid>
+                                </section>
+                            ) : null}
+                        </div>
+                    </PixieStack>
+                )}
+            </PixieSection>
+
+            <CodexFooter />
         </main>
     );
 }
