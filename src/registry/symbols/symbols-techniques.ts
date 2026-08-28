@@ -339,4 +339,86 @@ export const symbolsTechniques = {
             accent: "var(--atelier-animation-sepia-storyboard)",
         },
     },
+    effets: {
+        "verre-matte-painting": {
+            src: "/symbols/techniques/effets/verre-matte-painting.png",
+            label: "Verre de matte painting",
+            accent: "var(--atelier-animation-sepia-storyboard)",
+        },
+        "cuve-effets-aquatiques": {
+            src: "/symbols/techniques/effets/cuve-effets-aquatiques.png",
+            label: "Cuve d’effets aquatiques",
+            accent: "var(--atelier-animation-turquoise-acetate)",
+        },
+        "canon-particules": {
+            src: "/symbols/techniques/effets/canon-particules.png",
+            label: "Canon à particules",
+            accent: "var(--atelier-animation-jaune-lampe)",
+        },
+        "machine-fumee": {
+            src: "/symbols/techniques/effets/machine-fumee.png",
+            label: "Machine à fumée",
+            accent: "var(--atelier-animation-graphite)",
+        },
+        "generateur-eclairs": {
+            src: "/symbols/techniques/effets/generateur-eclairs.png",
+            label: "Générateur d’éclairs",
+            accent: "var(--atelier-animation-cyan-effets-optiques)",
+        },
+        "rampe-pluie": {
+            src: "/symbols/techniques/effets/rampe-pluie.png",
+            label: "Rampe de pluie",
+            accent: "var(--atelier-animation-bleu-reperage)",
+        },
+        "soufflerie-plateau": {
+            src: "/symbols/techniques/effets/soufflerie-plateau.png",
+            label: "Soufflerie de plateau",
+            accent: "var(--atelier-animation-graphite)",
+        },
+        "projecteur-flammes": {
+            src: "/symbols/techniques/effets/projecteur-flammes.png",
+            label: "Projecteur de flammes",
+            accent: "var(--atelier-animation-rouge-crayon)",
+        },
+        "bassin-tempete-miniature": {
+            src: "/symbols/techniques/effets/bassin-tempete-miniature.png",
+            label: "Bassin de tempête miniature",
+            accent: "var(--atelier-animation-turquoise-acetate)",
+        },
+        "plateau-miniature": {
+            src: "/symbols/techniques/effets/plateau-miniature.png",
+            label: "Plateau miniature",
+            accent: "var(--atelier-animation-sepia-storyboard)",
+        },
+        "mecanisme-destruction-miniature": {
+            src: "/symbols/techniques/effets/mecanisme-destruction-miniature.png",
+            label: "Mécanisme de destruction miniature",
+            accent: "var(--atelier-animation-framboise-encrage)",
+        },
+        "tambour-nuages": {
+            src: "/symbols/techniques/effets/tambour-nuages.png",
+            label: "Tambour à nuages",
+            accent: "var(--atelier-animation-bleu-reperage)",
+        },
+        "disque-halo-lumineux": {
+            src: "/symbols/techniques/effets/disque-halo-lumineux.png",
+            label: "Disque de halo lumineux",
+            accent: "var(--atelier-animation-ambre-projecteur)",
+        },
+        "banc-surimpression": {
+            src: "/symbols/techniques/effets/banc-surimpression.png",
+            label: "Banc de surimpression",
+            accent: "var(--atelier-animation-framboise-encrage)",
+        },
+        "station-incrustation": {
+            src: "/symbols/techniques/effets/station-incrustation.png",
+            label: "Station d’incrustation",
+            accent: "var(--atelier-animation-bleu-reperage)",
+        },
+        "simulateur-particules-numeriques": {
+            src: "/symbols/techniques/effets/simulateur-particules-numeriques.png",
+            label: "Simulateur de particules numériques",
+            accent: "var(--atelier-animation-indigo-nuit-studio)",
+        },
+    },
 } as const satisfies Record<string, Record<string, SymbolDefinition>>;
