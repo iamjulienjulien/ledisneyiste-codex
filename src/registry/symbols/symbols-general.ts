@@ -239,4 +239,86 @@ export const symbolsGeneral = {
             accent: "var(--atelier-animation-papier-animation)",
         },
     },
+    exploration: {
+        "boussole-orientation": {
+            src: "/symbols/general/exploration/boussole-orientation.png",
+            label: "Boussole d’orientation",
+            accent: "var(--atelier-animation-rouge-crayon)",
+        },
+        "carte-depliee": {
+            src: "/symbols/general/exploration/carte-depliee.png",
+            label: "Carte dépliée",
+            accent: "var(--atelier-animation-bleu-reperage)",
+        },
+        "jumelles-observation": {
+            src: "/symbols/general/exploration/jumelles-observation.png",
+            label: "Jumelles d’observation",
+            accent: "var(--atelier-animation-graphite)",
+        },
+        "porte-entrouverte": {
+            src: "/symbols/general/exploration/porte-entrouverte.png",
+            label: "Porte entrouverte",
+            accent: "var(--atelier-animation-bleu-reperage)",
+        },
+        "longue-vue": {
+            src: "/symbols/general/exploration/longue-vue.png",
+            label: "Longue-vue",
+            accent: "var(--atelier-animation-graphite)",
+        },
+        "telescope-exploration": {
+            src: "/symbols/general/exploration/telescope-exploration.png",
+            label: "Télescope d’exploration",
+            accent: "var(--atelier-animation-indigo-nuit-studio)",
+        },
+        "lanterne-parcours": {
+            src: "/symbols/general/exploration/lanterne-parcours.png",
+            label: "Lanterne de parcours",
+            accent: "var(--atelier-animation-jaune-lampe)",
+        },
+        "cle-passage": {
+            src: "/symbols/general/exploration/cle-passage.png",
+            label: "Clé de passage",
+            accent: "var(--atelier-animation-ambre-projecteur)",
+        },
+        "panneau-indicateur": {
+            src: "/symbols/general/exploration/panneau-indicateur.png",
+            label: "Panneau indicateur",
+            accent: "var(--atelier-animation-corail-cel)",
+        },
+        "balise-cheminement": {
+            src: "/symbols/general/exploration/balise-cheminement.png",
+            label: "Balise de cheminement",
+            accent: "var(--atelier-animation-bleu-reperage)",
+        },
+        "sacoche-explorateur": {
+            src: "/symbols/general/exploration/sacoche-explorateur.png",
+            label: "Sacoche d’explorateur",
+            accent: "var(--atelier-animation-indigo-nuit-studio)",
+        },
+        "carnet-terrain": {
+            src: "/symbols/general/exploration/carnet-terrain.png",
+            label: "Carnet de terrain",
+            accent: "var(--atelier-animation-bleu-reperage)",
+        },
+        "cairn-reperage": {
+            src: "/symbols/general/exploration/cairn-reperage.png",
+            label: "Cairn de repérage",
+            accent: "var(--atelier-animation-sepia-storyboard)",
+        },
+        "carte-balises-reliees": {
+            src: "/symbols/general/exploration/carte-balises-reliees.png",
+            label: "Carte de balises reliées",
+            accent: "var(--atelier-animation-turquoise-acetate)",
+        },
+        "fanion-decouverte": {
+            src: "/symbols/general/exploration/fanion-decouverte.png",
+            label: "Fanion de découverte",
+            accent: "var(--atelier-animation-rouge-crayon)",
+        },
+        "passage-sous-arche": {
+            src: "/symbols/general/exploration/passage-sous-arche.png",
+            label: "Passage sous arche",
+            accent: "var(--atelier-animation-papier-animation)",
+        },
+    },
 } as const satisfies Record<string, Record<string, SymbolDefinition>>;
