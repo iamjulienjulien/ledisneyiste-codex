@@ -54,6 +54,12 @@
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
 }
 
+.creditHeading {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 .creditList {
     display: grid;
     gap: 0.9rem;

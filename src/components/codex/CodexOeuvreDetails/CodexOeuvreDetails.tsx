@@ -4,6 +4,7 @@ import { CodexSourceCitations } from "@/components/codex/CodexSourceCitations";
 import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { formatDateHistorique } from "@/lib/date";
+import type { SymbolSelection } from "@/registry/symbols";
 import type { PeriodeHistorique } from "@/types/date";
 import type {
     ContributionOeuvre,
@@ -64,6 +65,54 @@ const creditDomainLabels: Record<DomaineCreditOeuvre, string> = {
 const creditDomainOrder = Object.keys(
     creditDomainLabels,
 ) as DomaineCreditOeuvre[];
+
+const creditDomainSymbols = {
+    "production-direction": {
+        registry: "general",
+        collection: "cinema",
+        slug: "fauteuil-realisateur",
+    },
+    "histoire-adaptation": {
+        registry: "general",
+        collection: "cinema",
+        slug: "scenario",
+    },
+    "direction-artistique-conception": {
+        registry: "techniques",
+        collection: "couleur",
+        slug: "color-script",
+    },
+    "animation-personnages": {
+        registry: "techniques",
+        collection: "animation",
+        slug: "planche-modele",
+    },
+    "decors-effets-photographie": {
+        registry: "techniques",
+        collection: "images",
+        slug: "matte-painting",
+    },
+    "musique-chansons": {
+        registry: "techniques",
+        collection: "son",
+        slug: "generateur-click-track",
+    },
+    "interpretation-vocale": {
+        registry: "techniques",
+        collection: "son",
+        slug: "microphone-ruban",
+    },
+    "innovations-techniques": {
+        registry: "techniques",
+        collection: "animation",
+        slug: "camera-multiplane",
+    },
+    "reference-filmee": {
+        registry: "general",
+        collection: "cinema",
+        slug: "camera-cinema",
+    },
+} as const satisfies Record<DomaineCreditOeuvre, SymbolSelection>;
 
 function formatPeriod(period: PeriodeHistorique) {
     return `${formatDateHistorique(period.debut)}–${period.fin ? formatDateHistorique(period.fin) : "aujourd’hui"}`;
@@ -398,9 +447,16 @@ export function CodexOeuvreDetails({
                                 radius="medium"
                                 className={styles.creditGroup}
                             >
-                                <h3 className={styles.label}>
-                                    {creditDomainLabels[group.domain]}
-                                </h3>
+                                <div className={styles.creditHeading}>
+                                    <PixieSymbol
+                                        {...creditDomainSymbols[group.domain]}
+                                        size="lg"
+                                    />
+
+                                    <h3 className={styles.label}>
+                                        {creditDomainLabels[group.domain]}
+                                    </h3>
+                                </div>
                                 <ul className={styles.creditList}>
                                     {group.contributions.map((contribution) => (
                                         <li key={contribution.contributeur.nom}>
