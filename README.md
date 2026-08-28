@@ -36,7 +36,8 @@ familles :
 
 Ces fiches sont reliées entre elles, rattachées automatiquement à leur Époque
 et développées à partir de sources centralisées. Leurs 176 blocs éditoriaux
-emploient une première collection de symboles illustrés. Quatorze récompenses
+emploient une première collection de symboles illustrés. Le registre central
+réunit désormais 248 symboles dans 21 collections. Quatorze récompenses
 documentent également les premières distinctions du studio.
 
 Les quatre index proposent une vue Cartes par défaut et une vue Liste
@@ -111,17 +112,31 @@ public/
     ├── blocs/
     ├── codex/
     ├── general/
+    │   ├── archives/
+    │   ├── atelier/
     │   ├── cinema/
-    │   └── logos/
+    │   ├── communication/
+    │   ├── ecriture/
+    │   ├── evenements/
+    │   ├── exploration/
+    │   ├── logos/
+    │   └── temps/
     ├── recompenses/
     └── techniques/
-        └── animation/
+        ├── animation/
+        ├── couleur/
+        ├── effets/
+        ├── images/
+        ├── imagineering/
+        └── son/
 
 scripts/
 ├── verifier-metadonnees.mjs
+├── verifier-oeuvres.mjs
+├── verifier-personnages.mjs
 ├── verifier-recompenses.mjs
 ├── verifier-relations.mjs
-└── verifier-symboles-editoriaux.mjs
+└── verifier-symboles.mjs
 
 src/
 ├── app/
@@ -278,6 +293,11 @@ contributions regroupées par domaine
 fiche. Les champs restent optionnels : les courts métrages plus simples ne sont
 pas contraints de simuler la richesse documentaire d'un long métrage.
 
+Chaque groupe est projeté dans une `PixieCard` et reçoit un symbole choisi dans
+les registres généraux ou techniques. Les catégories du générique disposent
+elles aussi de leur propre outil illustré, sans faire descendre la connaissance
+des métiers dans les primitives Pixie.
+
 ### Citations dans les chapitres et les repères
 
 Un bloc éditorial ou une donnée structurée peut porter sa propre liste
@@ -415,11 +435,19 @@ League Spartan → eyebrows et repères de navigation
 IBM Plex Mono → code, types et tokens de l’Atelier
 ```
 
-La page d’accueil ouvre la projection avec un titre et un sous-titre en pleine
-largeur. Son récit se concentre sur les quatre portes du Codex : leurs cartes
-partagent une même hauteur, alignent leurs appels à l’action et font apparaître
-un halo de projecteur au survol. Le pied de page rassemble enfin la mention
-d’indépendance et la signature du projet.
+La page d’accueil ouvre la projection dans un grand carton composé par
+`PixieCard` et `PixieBackdrop`. Son récit se concentre ensuite sur les quatre
+portes du Codex : leurs cartes Pixie partagent une même hauteur, alignent leurs
+appels à l’action, affichent leur compteur dans un badge et font apparaître un
+halo de projecteur au survol.
+
+Son générique développé rassemble les chemins d’exploration, la mention
+d’indépendance et la signature du projet. Un `CodexFooter` plus court prolonge
+ce raccord sur les index, les fiches, la recherche et les pages égarées.
+
+La recherche reprend désormais le même cadre de projection : son ouverture et
+sa régie occupent toute la largeur disponible, tandis que ses résultats restent
+regroupés par famille et réemploient les cartes métier.
 
 ---
 
@@ -429,21 +457,34 @@ Les symboles illustrés sont résolus par un registre global composé de
 sous-registres et de collections :
 
 ```text
-general.logos
-general.cinema
-codex.index
 blocs.personnages
 blocs.contributeurs
 blocs.oeuvres
 blocs.epoques
+codex.index
+general.logos
+general.cinema
+general.archives
+general.ecriture
+general.exploration
+general.temps
+general.atelier
+general.evenements
+general.communication
 recompenses.trophees
 techniques.animation
+techniques.images
+techniques.couleur
+techniques.son
+techniques.effets
+techniques.imagineering
 ```
 
-`general.cinema` rassemble les notions transversales liées à la salle, à la
-pellicule et à la projection. `techniques.animation` identifie les procédés qui
-donnent mouvement et profondeur aux images. Ces collections complètent le logo,
-les quatre index, les blocs éditoriaux et les trophées déjà illustrés.
+Les collections `general` rassemblent le logo, la salle de cinéma, les
+archives, l’écriture, l’exploration, le temps, l’atelier, les événements et la
+communication. Les collections `techniques` couvrent l’animation, l’image, la
+couleur, le son, les effets et l’Imagineering. Elles complètent les quatre
+index, les blocs éditoriaux et les trophées déjà illustrés.
 
 `PixieSymbol` constitue la porte d’entrée unique vers ce registre. Son appel ne
 dépend pas du chemin d’une image, mais d’une sélection typée :
@@ -467,9 +508,9 @@ L'Atelier documente les palettes, les composants, leurs variantes, leur
 accessibilité et leur API. Ses cinq premiers accessoires — `PixieSymbol`,
 `PixieButton`, `PixieLink`, `PixieBadge` et `PixieSeparator` —, ses six Décors
 — `PixieCard`, `PixiePanel`, `PixieFrame`, `PixieCallout`, `PixieInset` et
-`PixieBackdrop` — et les quatre premiers composants du Montage,
-`PixieContainer`, `PixieStack`, `PixieCluster` et `PixieSection`, sont désormais
-prêts à projeter.
+`PixieBackdrop` — et les cinq composants validés du Montage,
+`PixieContainer`, `PixieStack`, `PixieCluster`, `PixieSection` et
+`PixieGrid`, sont désormais prêts à projeter.
 
 Ses six plateaux de travail sont maintenant actifs :
 
@@ -482,8 +523,7 @@ Ses six plateaux de travail sont maintenant actifs :
 6. **Les Effets** rendent visibles les attentes et les retours du système.
 
 L’Atelier documente actuellement **15 esquisses PixieDust**, auxquelles
-s’ajoutent les six Décors et les cinq premiers composants du Montage prêts à
-projeter :
+s’ajoutent les six Décors et les cinq composants du Montage prêts à projeter :
 
 - **Décors — 6 composants validés :** `PixieCard`, `PixiePanel`, `PixieFrame`,
   `PixieCallout`, `PixieInset` et `PixieBackdrop` ;
@@ -585,12 +625,15 @@ pnpm check:recompenses
 pnpm build
 ```
 
-`check:symbols` vérifie que chaque bloc éditorial possède un type présent dans
-la bonne collection du registre et que l'image correspondante existe dans
-`public`. Les contrôles suivants éprouvent les métadonnées des catalogues, le
-modèle des Œuvres et sa fixture de long métrage, les variantes de noms et les
-formes des Personnages, la cohérence des références et des relations, puis les
-récompenses, leurs bénéficiaires, leurs sources et leurs trophées illustrés.
+`check:symbols` parcourt les cinq sous-registres, valide leurs collections,
+leurs définitions et leurs chemins, vérifie que chaque image publique est
+enregistrée et que chaque symbole possède bien son fichier. Il conserve
+également le contrôle métier qui impose à chaque bloc éditorial un type présent
+dans la bonne collection. Les contrôles suivants éprouvent les métadonnées des
+catalogues, le modèle des Œuvres et sa fixture de long métrage, les variantes de
+noms et les formes des Personnages, la cohérence des références et des
+relations, puis les récompenses, leurs bénéficiaires, leurs sources et leurs
+trophées illustrés.
 
 ---
 
