@@ -1,4 +1,4 @@
-import { PixieSeparator } from "@/components/ui/PixieSeparator";
+import { CodexFicheSection } from "@/components/codex/CodexFicheSection";
 import type { CodexSourcesProps } from "@/types/source";
 import { formatDateISO } from "@/lib/date";
 import { getSourceAnchorId } from "@/lib/source";
@@ -10,19 +10,8 @@ export function CodexSources({ sources }: CodexSourcesProps) {
     }
 
     return (
-        <section className={styles.root}>
-            <PixieSeparator
-                variant="beam"
-                spacing="none"
-                style={{
-                    color: "var(--codex-fiche-color, var(--color-accent))",
-                }}
-                decorative
-            />
-
-            <h2 className={styles.title}>Sources et références</h2>
-
-            <ol className="mt-6 space-y-4">
+        <CodexFicheSection titre="Sources et références">
+            <ol className={styles.list}>
                 {sources.map((source, index) => (
                     <li
                         key={source.id}
@@ -61,6 +50,6 @@ export function CodexSources({ sources }: CodexSourcesProps) {
                     </li>
                 ))}
             </ol>
-        </section>
+        </CodexFicheSection>
     );
 }

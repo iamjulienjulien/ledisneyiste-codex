@@ -1,5 +1,5 @@
+import { CodexFicheSection } from "@/components/codex/CodexFicheSection";
 import { CodexReferenceLink } from "@/components/codex/CodexReferenceLink";
-import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import type { CodexFicheFamily } from "@/types/codex-fiche";
 import type { CodexRelationsProps } from "@/types/codex-relations";
@@ -35,26 +35,11 @@ export function CodexRelations({ groupes }: CodexRelationsProps) {
     }
 
     return (
-        <section className={styles.root}>
-            <PixieSeparator
-                variant="beam"
-                spacing="none"
-                style={{
-                    color: "var(--codex-fiche-color, var(--color-accent))",
-                }}
-                decorative
-            />
-
-            <header className="mt-8 max-w-2xl">
-                <p className={styles.eyebrow}>Relations</p>
-
-                <h2 className="mt-3 text-3xl text-ink">Dans le Codex</h2>
-
-                <p className="mt-3 leading-7 text-ink-soft">
-                    Les entrées du Codex directement liées à celle-ci.
-                </p>
-            </header>
-
+        <CodexFicheSection
+            eyebrow="Relations"
+            titre="Dans le Codex"
+            description="Les entrées du Codex directement liées à celle-ci."
+        >
             <div className={styles.groups}>
                 {groupesVisibles.map((groupe) => (
                     <section key={groupe.titre} className={styles.group}>
@@ -97,6 +82,6 @@ export function CodexRelations({ groupes }: CodexRelationsProps) {
                     </section>
                 ))}
             </div>
-        </section>
+        </CodexFicheSection>
     );
 }

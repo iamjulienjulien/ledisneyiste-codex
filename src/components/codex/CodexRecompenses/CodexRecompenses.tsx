@@ -1,3 +1,4 @@
+import { CodexFicheSection } from "@/components/codex/CodexFicheSection";
 import { CodexReferenceLink } from "@/components/codex/CodexReferenceLink";
 import { PixieBadge } from "@/components/ui/PixieBadge";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
@@ -15,27 +16,11 @@ export function CodexRecompenses({
     }
 
     return (
-        <section className={styles.root}>
-            <PixieSeparator
-                variant="beam"
-                spacing="none"
-                style={{
-                    color: "var(--codex-fiche-color, var(--color-accent))",
-                }}
-                decorative
-            />
-
-            <header className="mt-8 max-w-2xl">
-                <p className={styles.eyebrow}>Palmarès</p>
-
-                <h2 className="mt-3 text-3xl text-ink">Récompenses</h2>
-
-                <p className="mt-3 leading-7 text-ink-soft">
-                    Les distinctions attribuées par une institution à cette
-                    œuvre ou à cette figure du Codex.
-                </p>
-            </header>
-
+        <CodexFicheSection
+            eyebrow="Palmarès"
+            titre="Récompenses"
+            description="Les distinctions attribuées par une institution à cette œuvre ou à cette figure du Codex."
+        >
             <ul className={styles.list}>
                 {recompenses.map((recompense) => (
                     <li key={recompense.id} className={styles.item}>
@@ -131,6 +116,6 @@ export function CodexRecompenses({
                     </li>
                 ))}
             </ul>
-        </section>
+        </CodexFicheSection>
     );
 }
