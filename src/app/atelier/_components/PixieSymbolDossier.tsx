@@ -12,6 +12,7 @@ const animationTechniqueSymbolSlugs = getSymbolSlugs("techniques", "animation");
 const imageTechniqueSymbolSlugs = getSymbolSlugs("techniques", "images");
 const couleurTechniqueSymbolSlugs = getSymbolSlugs("techniques", "couleur");
 const sonTechniqueSymbolSlugs = getSymbolSlugs("techniques", "son");
+const effetsTechniqueSymbolSlugs = getSymbolSlugs("techniques", "effets");
 const indexSymbolSlugs = getSymbolSlugs("codex", "index");
 const recompenseTrophySymbolSlugs = getSymbolSlugs("recompenses", "trophees");
 const contributeurBlockSymbolSlugs = getSymbolSlugs("blocs", "contributeurs");
@@ -111,7 +112,7 @@ const typesSpecifiques = [
     },
     {
         name: 'SymbolCollectionName<"techniques">',
-        values: ['"animation"', '"images"', '"couleur"', '"son"'],
+        values: ['"animation"', '"images"', '"couleur"', '"son"', '"effets"'],
         description: "Collections exposées par le registre des Techniques.",
     },
     {
@@ -236,6 +237,29 @@ const typesSpecifiques = [
         ],
         description:
             "Outils d’enregistrement, synchronisation, montage et bruitage.",
+    },
+    {
+        name: 'SymbolSlug<"techniques", "effets">',
+        values: [
+            '"verre-matte-painting"',
+            '"cuve-effets-aquatiques"',
+            '"canon-particules"',
+            '"machine-fumee"',
+            '"generateur-eclairs"',
+            '"rampe-pluie"',
+            '"soufflerie-plateau"',
+            '"projecteur-flammes"',
+            '"bassin-tempete-miniature"',
+            '"plateau-miniature"',
+            '"mecanisme-destruction-miniature"',
+            '"tambour-nuages"',
+            '"disque-halo-lumineux"',
+            '"banc-surimpression"',
+            '"station-incrustation"',
+            '"simulateur-particules-numeriques"',
+        ],
+        description:
+            "Outils d’effets physiques, optiques et numériques de plateau.",
     },
     {
         name: 'SymbolSlug<"recompenses", "trophees">',
@@ -363,7 +387,7 @@ export function PixieSymbolDossier() {
                         ["Mission", "Afficher un symbole typé."],
                         ["Sélection", "registry · collection · slug"],
                         ["Exemple", "codex.index.personnages"],
-                        ["Masters", "Douze séries originales · 1254 px."],
+                        ["Masters", "Treize séries originales · 1254 px."],
                         ["Dérivés", "PNG transparent · 384 px."],
                         ["Accessibilité", "Décoratif par défaut."],
                     ].map(([terme, definition]) => (
@@ -737,6 +761,48 @@ export function PixieSymbolDossier() {
                                 <PixieSymbol
                                     registry="techniques"
                                     collection="son"
+                                    slug={slug}
+                                    size="xl"
+                                    className="mx-auto"
+                                />
+                                <h4 className="mt-5 text-xl text-ink">
+                                    {symbole.label}
+                                </h4>
+                                <p className="mt-2 font-mono text-xs text-muted">
+                                    {slug}
+                                </p>
+                            </article>
+                        );
+                    })}
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="pixie-symbol-techniques-effets"
+                className="mt-16"
+            >
+                <TitreSequence
+                    id="pixie-symbol-techniques-effets"
+                    surTitre="Distribution"
+                    titre="Les effets entrent en scène"
+                    description="Eau, fumée, pluie, vent, flammes, miniatures, surimpressions et particules réunissent les procédés physiques, optiques et numériques qui transforment le plateau et l’image."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+                    {effetsTechniqueSymbolSlugs.map((slug) => {
+                        const symbole = getSymbol("techniques", "effets", slug);
+
+                        return (
+                            <article
+                                key={slug}
+                                className="bg-surface p-6 text-center"
+                                style={{
+                                    borderTop: `4px solid ${symbole.accent}`,
+                                }}
+                            >
+                                <PixieSymbol
+                                    registry="techniques"
+                                    collection="effets"
                                     slug={slug}
                                     size="xl"
                                     className="mx-auto"

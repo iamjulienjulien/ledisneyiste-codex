@@ -78,6 +78,19 @@ const sonTechniqueSymbolOptions = getSymbolSlugs("techniques", "son").map(
     }),
 );
 
+const effetsTechniqueSymbolOptions = getSymbolSlugs("techniques", "effets").map(
+    (slug) => ({
+        key: `techniques.effets.${slug}`,
+        group: "Techniques · Effets" as const,
+        selection: {
+            registry: "techniques",
+            collection: "effets",
+            slug,
+        } as const,
+        definition: getSymbol("techniques", "effets", slug),
+    }),
+);
+
 const symbolOptions = [
     {
         key: "general.logos.le-codex-du-disneyiste",
@@ -312,6 +325,7 @@ const symbolOptions = [
     ...imageTechniqueSymbolOptions,
     ...couleurTechniqueSymbolOptions,
     ...sonTechniqueSymbolOptions,
+    ...effetsTechniqueSymbolOptions,
 ] as const;
 
 const symbolGroups = [
@@ -323,6 +337,7 @@ const symbolGroups = [
     "Techniques · Images",
     "Techniques · Couleur",
     "Techniques · Son",
+    "Techniques · Effets",
     "Blocs · Personnages",
     "Blocs · Contributeurs",
     "Blocs · Œuvres",
