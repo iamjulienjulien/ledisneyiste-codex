@@ -93,4 +93,86 @@ export const symbolsTechniques = {
             accent: "var(--atelier-animation-vert-cellulo)",
         },
     },
+    images: {
+        "objectif-iris": {
+            src: "/symbols/techniques/images/objectif-iris.png",
+            label: "Objectif à iris",
+            accent: "var(--atelier-animation-cyan-effets-optiques)",
+        },
+        posemetre: {
+            src: "/symbols/techniques/images/posemetre.png",
+            label: "Posemètre",
+            accent: "var(--atelier-animation-sepia-storyboard)",
+        },
+        "filtres-optiques": {
+            src: "/symbols/techniques/images/filtres-optiques.png",
+            label: "Filtres optiques",
+            accent: "var(--atelier-animation-turquoise-acetate)",
+        },
+        "viseur-composition": {
+            src: "/symbols/techniques/images/viseur-composition.png",
+            label: "Viseur de composition",
+            accent: "var(--atelier-animation-bleu-reperage)",
+        },
+        "matte-painting": {
+            src: "/symbols/techniques/images/matte-painting.png",
+            label: "Verre de matte painting",
+            accent: "var(--atelier-animation-gouache)",
+        },
+        retroprojection: {
+            src: "/symbols/techniques/images/retroprojection.png",
+            label: "Rétroprojection",
+            accent: "var(--atelier-animation-ambre-projecteur)",
+        },
+        "perspective-forcee": {
+            src: "/symbols/techniques/images/perspective-forcee.png",
+            label: "Décor en perspective forcée",
+            accent: "var(--atelier-animation-sepia-storyboard)",
+        },
+        "maquette-miniature": {
+            src: "/symbols/techniques/images/maquette-miniature.png",
+            label: "Maquette miniature",
+            accent: "var(--atelier-animation-olive-decor)",
+        },
+        "fond-bleu": {
+            src: "/symbols/techniques/images/fond-bleu.png",
+            label: "Fond bleu",
+            accent: "var(--atelier-animation-bleu-reperage)",
+        },
+        "incrustation-sodium": {
+            src: "/symbols/techniques/images/incrustation-sodium.png",
+            label: "Incrustation au sodium",
+            accent: "var(--atelier-animation-jaune-lampe)",
+        },
+        "tireuse-optique": {
+            src: "/symbols/techniques/images/tireuse-optique.png",
+            label: "Tireuse optique",
+            accent: "var(--atelier-animation-cyan-effets-optiques)",
+        },
+        "compositing-calques": {
+            src: "/symbols/techniques/images/compositing-calques.png",
+            label: "Compositing par calques",
+            accent: "var(--atelier-animation-turquoise-acetate)",
+        },
+        "cache-contre-cache": {
+            src: "/symbols/techniques/images/cache-contre-cache.png",
+            label: "Cache et contre-cache",
+            accent: "var(--atelier-animation-graphite)",
+        },
+        etalonnage: {
+            src: "/symbols/techniques/images/etalonnage.png",
+            label: "Station d’étalonnage",
+            accent: "var(--atelier-animation-gouache)",
+        },
+        "scanner-pellicule": {
+            src: "/symbols/techniques/images/scanner-pellicule.png",
+            label: "Scanner de pellicule",
+            accent: "var(--atelier-animation-indigo-nuit-studio)",
+        },
+        "restauration-image": {
+            src: "/symbols/techniques/images/restauration-image.png",
+            label: "Station de restauration d’image",
+            accent: "var(--atelier-animation-bleu-reperage)",
+        },
+    },
 } as const satisfies Record<string, Record<string, SymbolDefinition>>;
