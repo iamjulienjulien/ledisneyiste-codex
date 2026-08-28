@@ -37,6 +37,19 @@ const generalArchiveSymbolOptions = getSymbolSlugs("general", "archives").map(
     }),
 );
 
+const generalEcritureSymbolOptions = getSymbolSlugs("general", "ecriture").map(
+    (slug) => ({
+        key: `general.ecriture.${slug}`,
+        group: "Général · Écriture" as const,
+        selection: {
+            registry: "general",
+            collection: "ecriture",
+            slug,
+        } as const,
+        definition: getSymbol("general", "ecriture", slug),
+    }),
+);
+
 const animationTechniqueSymbolOptions = getSymbolSlugs(
     "techniques",
     "animation",
@@ -131,6 +144,7 @@ const symbolOptions = [
     },
     ...generalCinemaSymbolOptions,
     ...generalArchiveSymbolOptions,
+    ...generalEcritureSymbolOptions,
     {
         key: "codex.index.personnages",
         group: "Codex · Index",
@@ -361,6 +375,7 @@ const symbolGroups = [
     "Général · Logos",
     "Général · Cinéma",
     "Général · Archives",
+    "Général · Écriture",
     "Codex · Index",
     "Récompenses · Trophées",
     "Techniques · Animation",

@@ -9,6 +9,7 @@ import { PixieSymbolPlayground } from "./PixieSymbolPlayground";
 const generalLogoSymbolSlugs = getSymbolSlugs("general", "logos");
 const generalCinemaSymbolSlugs = getSymbolSlugs("general", "cinema");
 const generalArchiveSymbolSlugs = getSymbolSlugs("general", "archives");
+const generalEcritureSymbolSlugs = getSymbolSlugs("general", "ecriture");
 const animationTechniqueSymbolSlugs = getSymbolSlugs("techniques", "animation");
 const imageTechniqueSymbolSlugs = getSymbolSlugs("techniques", "images");
 const couleurTechniqueSymbolSlugs = getSymbolSlugs("techniques", "couleur");
@@ -107,7 +108,7 @@ const typesSpecifiques = [
     },
     {
         name: 'SymbolCollectionName<"general">',
-        values: ['"archives"', '"cinema"', '"logos"'],
+        values: ['"archives"', '"cinema"', '"ecriture"', '"logos"'],
         description: "Collections exposées par le registre Général.",
     },
     {
@@ -182,6 +183,25 @@ const typesSpecifiques = [
         ],
         description:
             "Objets de classement, consultation, datation et conservation des archives.",
+    },
+    {
+        name: 'SymbolSlug<"general", "ecriture">',
+        values: [
+            '"carnet-travail"',
+            '"crayon-bleu"',
+            '"machine-a-ecrire"',
+            '"manuscrit-corrige"',
+            '"plume-ecriture"',
+            '"stylo-plume"',
+            '"storyboard"',
+            '"bloc-notes"',
+            '"presse-typographique"',
+            '"marque-page"',
+            '"encrier"',
+            '"pile-epreuves"',
+        ],
+        description:
+            "Outils de conception, correction, mise en forme et transmission des idées.",
     },
     {
         name: 'SymbolSlug<"techniques", "animation">',
@@ -447,7 +467,7 @@ export function PixieSymbolDossier() {
                         ["Mission", "Afficher un symbole typé."],
                         ["Sélection", "registry · collection · slug"],
                         ["Exemple", "codex.index.personnages"],
-                        ["Masters", "Quinze séries originales · 1254 px."],
+                        ["Masters", "Seize séries originales · 1254 px."],
                         ["Dérivés", "PNG transparent · 384 px."],
                         ["Accessibilité", "Décoratif par défaut."],
                     ].map(([terme, definition]) => (
@@ -602,6 +622,48 @@ export function PixieSymbolDossier() {
                                 <PixieSymbol
                                     registry="general"
                                     collection="archives"
+                                    slug={slug}
+                                    size="xl"
+                                    className="mx-auto"
+                                />
+                                <h4 className="mt-5 text-xl text-ink">
+                                    {symbole.label}
+                                </h4>
+                                <p className="mt-2 font-mono text-xs text-muted">
+                                    {slug}
+                                </p>
+                            </article>
+                        );
+                    })}
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="pixie-symbol-general-ecriture"
+                className="mt-16"
+            >
+                <TitreSequence
+                    id="pixie-symbol-general-ecriture"
+                    surTitre="Distribution"
+                    titre="Les idées passent à l’écrit"
+                    description="Carnets, crayons, plumes, manuscrits, notes et outils d’impression accompagnent les idées depuis leur première formulation jusqu’à leur correction et leur transmission."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+                    {generalEcritureSymbolSlugs.map((slug) => {
+                        const symbole = getSymbol("general", "ecriture", slug);
+
+                        return (
+                            <article
+                                key={slug}
+                                className="bg-surface p-6 text-center"
+                                style={{
+                                    borderTop: `4px solid ${symbole.accent}`,
+                                }}
+                            >
+                                <PixieSymbol
+                                    registry="general"
+                                    collection="ecriture"
                                     slug={slug}
                                     size="xl"
                                     className="mx-auto"
