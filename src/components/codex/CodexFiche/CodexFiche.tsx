@@ -6,7 +6,7 @@ export function CodexFiche({ family, children }: CodexFicheProps) {
     return (
         <main className={styles.root} data-codex-family={family}>
             {children}
-            <CodexFooter className="mt-16 !px-0" />
+            <CodexFooter className="!px-0" />
         </main>
     );
 }
