@@ -8,6 +8,7 @@ import { PixieSymbolPlayground } from "./PixieSymbolPlayground";
 
 const generalLogoSymbolSlugs = getSymbolSlugs("general", "logos");
 const generalCinemaSymbolSlugs = getSymbolSlugs("general", "cinema");
+const generalArchiveSymbolSlugs = getSymbolSlugs("general", "archives");
 const animationTechniqueSymbolSlugs = getSymbolSlugs("techniques", "animation");
 const imageTechniqueSymbolSlugs = getSymbolSlugs("techniques", "images");
 const couleurTechniqueSymbolSlugs = getSymbolSlugs("techniques", "couleur");
@@ -106,7 +107,7 @@ const typesSpecifiques = [
     },
     {
         name: 'SymbolCollectionName<"general">',
-        values: ['"cinema"', '"logos"'],
+        values: ['"archives"', '"cinema"', '"logos"'],
         description: "Collections exposées par le registre Général.",
     },
     {
@@ -156,6 +157,31 @@ const typesSpecifiques = [
             '"ticket-cinema"',
         ],
         description: "Accessoires généraux du langage cinématographique.",
+    },
+    {
+        name: 'SymbolSlug<"general", "archives">',
+        values: [
+            '"boite-archives"',
+            '"chemise-archives"',
+            '"dossier-ficelle"',
+            '"registre-relie"',
+            '"porte-fiches"',
+            '"fichier-bois"',
+            '"classeur-anneaux"',
+            '"tube-plans"',
+            '"boite-photographies"',
+            '"bobine-film-archive"',
+            '"lecteur-microfilm"',
+            '"tampon-dateur"',
+            '"presse-a-sec"',
+            '"gants-conservation"',
+            '"loupe-archiviste"',
+            '"pinceau-depoussierage"',
+            '"scanner-documents"',
+            '"thermo-hygrometre"',
+        ],
+        description:
+            "Objets de classement, consultation, datation et conservation des archives.",
     },
     {
         name: 'SymbolSlug<"techniques", "animation">',
@@ -421,7 +447,7 @@ export function PixieSymbolDossier() {
                         ["Mission", "Afficher un symbole typé."],
                         ["Sélection", "registry · collection · slug"],
                         ["Exemple", "codex.index.personnages"],
-                        ["Masters", "Quatorze séries originales · 1254 px."],
+                        ["Masters", "Quinze séries originales · 1254 px."],
                         ["Dérivés", "PNG transparent · 384 px."],
                         ["Accessibilité", "Décoratif par défaut."],
                     ].map(([terme, definition]) => (
@@ -534,6 +560,48 @@ export function PixieSymbolDossier() {
                                 <PixieSymbol
                                     registry="general"
                                     collection="cinema"
+                                    slug={slug}
+                                    size="xl"
+                                    className="mx-auto"
+                                />
+                                <h4 className="mt-5 text-xl text-ink">
+                                    {symbole.label}
+                                </h4>
+                                <p className="mt-2 font-mono text-xs text-muted">
+                                    {slug}
+                                </p>
+                            </article>
+                        );
+                    })}
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="pixie-symbol-general-archives"
+                className="mt-16"
+            >
+                <TitreSequence
+                    id="pixie-symbol-general-archives"
+                    surTitre="Distribution"
+                    titre="Les archives prennent forme"
+                    description="Boîtes, dossiers, registres, supports de consultation et instruments de conservation forment un vocabulaire neutre pour classer, dater, examiner et préserver la mémoire du Codex."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-6">
+                    {generalArchiveSymbolSlugs.map((slug) => {
+                        const symbole = getSymbol("general", "archives", slug);
+
+                        return (
+                            <article
+                                key={slug}
+                                className="bg-surface p-6 text-center"
+                                style={{
+                                    borderTop: `4px solid ${symbole.accent}`,
+                                }}
+                            >
+                                <PixieSymbol
+                                    registry="general"
+                                    collection="archives"
                                     slug={slug}
                                     size="xl"
                                     className="mx-auto"

@@ -24,6 +24,19 @@ const generalCinemaSymbolOptions = getSymbolSlugs("general", "cinema").map(
     }),
 );
 
+const generalArchiveSymbolOptions = getSymbolSlugs("general", "archives").map(
+    (slug) => ({
+        key: `general.archives.${slug}`,
+        group: "Général · Archives" as const,
+        selection: {
+            registry: "general",
+            collection: "archives",
+            slug,
+        } as const,
+        definition: getSymbol("general", "archives", slug),
+    }),
+);
+
 const animationTechniqueSymbolOptions = getSymbolSlugs(
     "techniques",
     "animation",
@@ -117,6 +130,7 @@ const symbolOptions = [
         definition: getSymbol("general", "logos", "le-codex-du-disneyiste"),
     },
     ...generalCinemaSymbolOptions,
+    ...generalArchiveSymbolOptions,
     {
         key: "codex.index.personnages",
         group: "Codex · Index",
@@ -346,6 +360,7 @@ const symbolOptions = [
 const symbolGroups = [
     "Général · Logos",
     "Général · Cinéma",
+    "Général · Archives",
     "Codex · Index",
     "Récompenses · Trophées",
     "Techniques · Animation",
