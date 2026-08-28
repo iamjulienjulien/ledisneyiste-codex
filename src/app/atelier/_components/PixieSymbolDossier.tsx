@@ -10,6 +10,7 @@ const generalLogoSymbolSlugs = getSymbolSlugs("general", "logos");
 const generalCinemaSymbolSlugs = getSymbolSlugs("general", "cinema");
 const generalArchiveSymbolSlugs = getSymbolSlugs("general", "archives");
 const generalEcritureSymbolSlugs = getSymbolSlugs("general", "ecriture");
+const generalExplorationSymbolSlugs = getSymbolSlugs("general", "exploration");
 const animationTechniqueSymbolSlugs = getSymbolSlugs("techniques", "animation");
 const imageTechniqueSymbolSlugs = getSymbolSlugs("techniques", "images");
 const couleurTechniqueSymbolSlugs = getSymbolSlugs("techniques", "couleur");
@@ -108,7 +109,13 @@ const typesSpecifiques = [
     },
     {
         name: 'SymbolCollectionName<"general">',
-        values: ['"archives"', '"cinema"', '"ecriture"', '"logos"'],
+        values: [
+            '"archives"',
+            '"cinema"',
+            '"ecriture"',
+            '"exploration"',
+            '"logos"',
+        ],
         description: "Collections exposées par le registre Général.",
     },
     {
@@ -202,6 +209,29 @@ const typesSpecifiques = [
         ],
         description:
             "Outils de conception, correction, mise en forme et transmission des idées.",
+    },
+    {
+        name: 'SymbolSlug<"general", "exploration">',
+        values: [
+            '"boussole-orientation"',
+            '"carte-depliee"',
+            '"jumelles-observation"',
+            '"porte-entrouverte"',
+            '"longue-vue"',
+            '"telescope-exploration"',
+            '"lanterne-parcours"',
+            '"cle-passage"',
+            '"panneau-indicateur"',
+            '"balise-cheminement"',
+            '"sacoche-explorateur"',
+            '"carnet-terrain"',
+            '"cairn-reperage"',
+            '"carte-balises-reliees"',
+            '"fanion-decouverte"',
+            '"passage-sous-arche"',
+        ],
+        description:
+            "Repères de découverte, orientation, parcours et mise en relation.",
     },
     {
         name: 'SymbolSlug<"techniques", "animation">',
@@ -467,7 +497,7 @@ export function PixieSymbolDossier() {
                         ["Mission", "Afficher un symbole typé."],
                         ["Sélection", "registry · collection · slug"],
                         ["Exemple", "codex.index.personnages"],
-                        ["Masters", "Seize séries originales · 1254 px."],
+                        ["Masters", "Dix-sept séries originales · 1254 px."],
                         ["Dérivés", "PNG transparent · 384 px."],
                         ["Accessibilité", "Décoratif par défaut."],
                     ].map(([terme, definition]) => (
@@ -664,6 +694,52 @@ export function PixieSymbolDossier() {
                                 <PixieSymbol
                                     registry="general"
                                     collection="ecriture"
+                                    slug={slug}
+                                    size="xl"
+                                    className="mx-auto"
+                                />
+                                <h4 className="mt-5 text-xl text-ink">
+                                    {symbole.label}
+                                </h4>
+                                <p className="mt-2 font-mono text-xs text-muted">
+                                    {slug}
+                                </p>
+                            </article>
+                        );
+                    })}
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="pixie-symbol-general-exploration"
+                className="mt-16"
+            >
+                <TitreSequence
+                    id="pixie-symbol-general-exploration"
+                    surTitre="Distribution"
+                    titre="Le Codex ouvre ses chemins"
+                    description="Boussole, cartes, instruments d’observation, balises et passages composent un vocabulaire de découverte pour orienter les parcours, relier les contenus et signaler de nouveaux imaginaires."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+                    {generalExplorationSymbolSlugs.map((slug) => {
+                        const symbole = getSymbol(
+                            "general",
+                            "exploration",
+                            slug,
+                        );
+
+                        return (
+                            <article
+                                key={slug}
+                                className="bg-surface p-6 text-center"
+                                style={{
+                                    borderTop: `4px solid ${symbole.accent}`,
+                                }}
+                            >
+                                <PixieSymbol
+                                    registry="general"
+                                    collection="exploration"
                                     slug={slug}
                                     size="xl"
                                     className="mx-auto"

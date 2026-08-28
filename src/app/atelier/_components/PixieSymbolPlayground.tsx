@@ -50,6 +50,20 @@ const generalEcritureSymbolOptions = getSymbolSlugs("general", "ecriture").map(
     }),
 );
 
+const generalExplorationSymbolOptions = getSymbolSlugs(
+    "general",
+    "exploration",
+).map((slug) => ({
+    key: `general.exploration.${slug}`,
+    group: "Général · Exploration" as const,
+    selection: {
+        registry: "general",
+        collection: "exploration",
+        slug,
+    } as const,
+    definition: getSymbol("general", "exploration", slug),
+}));
+
 const animationTechniqueSymbolOptions = getSymbolSlugs(
     "techniques",
     "animation",
@@ -145,6 +159,7 @@ const symbolOptions = [
     ...generalCinemaSymbolOptions,
     ...generalArchiveSymbolOptions,
     ...generalEcritureSymbolOptions,
+    ...generalExplorationSymbolOptions,
     {
         key: "codex.index.personnages",
         group: "Codex · Index",
@@ -376,6 +391,7 @@ const symbolGroups = [
     "Général · Cinéma",
     "Général · Archives",
     "Général · Écriture",
+    "Général · Exploration",
     "Codex · Index",
     "Récompenses · Trophées",
     "Techniques · Animation",
