@@ -5,7 +5,7 @@
 }
 
 .hero {
-    max-width: 54rem;
+    width: 100%;
 }
 
 .heroSymbol {
@@ -21,7 +21,7 @@
 
 .heroHeading {
     min-width: 0;
-    max-width: 42rem;
+    flex: 1 1 28rem;
 }
 
 .eyebrow,
@@ -52,7 +52,6 @@
 
 .searchPanel {
     width: 100%;
-    max-width: 56rem;
 }
 
 .formEyebrow,
