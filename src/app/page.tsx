@@ -1,7 +1,12 @@
 import { PixieBackdrop } from "@/components/ui/PixieBackdrop";
+import { PixieBadge } from "@/components/ui/PixieBadge";
 import { PixieCard } from "@/components/ui/PixieCard";
+import { PixieCluster } from "@/components/ui/PixieCluster";
+import { PixieFrame } from "@/components/ui/PixieFrame";
+import { PixieGrid } from "@/components/ui/PixieGrid";
 import { PixieLink } from "@/components/ui/PixieLink";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
+import { PixieStack } from "@/components/ui/PixieStack";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import {
     contributeurs,
@@ -9,6 +14,57 @@ import {
     personnages,
     epoques,
 } from "@/data/catalogues";
+
+const codexDoors = [
+    {
+        href: "/personnages",
+        color: "rouge-crayon",
+        symbol: "personnages",
+        count: personnages.length,
+        singular: "personnage",
+        plural: "personnages",
+        title: "Personnages",
+        description:
+            "Les figures fictives qui peuplent les récits et les imaginaires Disney.",
+        action: "Explorer les personnages",
+    },
+    {
+        href: "/contributeurs",
+        color: "jaune-lampe",
+        symbol: "createurs",
+        count: contributeurs.length,
+        singular: "créateur",
+        plural: "créateurs",
+        title: "Créateurs",
+        description:
+            "Celles et ceux qui ont imaginé, construit et transformé Disney.",
+        action: "Explorer les créateurs",
+    },
+    {
+        href: "/oeuvres",
+        color: "gouache",
+        symbol: "oeuvres",
+        count: oeuvres.length,
+        singular: "œuvre",
+        plural: "œuvres",
+        title: "Œuvres",
+        description:
+            "Les films, courts métrages et créations où les imaginaires Disney prennent forme.",
+        action: "Explorer les œuvres",
+    },
+    {
+        href: "/epoques",
+        color: "vert-cellulo",
+        symbol: "epoques",
+        count: epoques.length,
+        singular: "époque",
+        plural: "époques",
+        title: "Époques",
+        description:
+            "Les grandes périodes qui permettent de suivre les transformations de Disney dans le temps.",
+        action: "Explorer les époques",
+    },
+] as const;
 
 export default function Home() {
     return (
@@ -52,171 +108,118 @@ export default function Home() {
                 </header>
             </PixieCard>
 
-            <section className="mt-20">
-                <PixieSeparator
-                    variant="beam"
-                    intensity="strong"
-                    width="medium"
-                    align="start"
-                    spacing="none"
-                    decorative
-                />
+            <PixieBackdrop
+                as="section"
+                aria-labelledby="explorer-title"
+                variant="gradient"
+                intensity="subtle"
+                position="center"
+                spread="wide"
+                padding="lg"
+                radius="large"
+                base="transparent"
+                className="mt-20"
+            >
+                <PixieStack gap="lg">
+                    <PixieStack gap="sm" className="max-w-3xl">
+                        <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.2em] text-muted">
+                            Explorer
+                        </p>
 
-                <div className="mt-12">
-                    <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.2em] text-muted">
-                        Explorer
-                    </p>
+                        <h2 id="explorer-title" className="text-3xl text-ink">
+                            Quatre portes vers le Codex
+                        </h2>
 
-                    <h2 className="mt-3 text-3xl text-ink">
-                        Quatre portes vers le Codex
-                    </h2>
+                        <p className="text-lg leading-8 text-ink-soft">
+                            Entrer par les figures de fiction, celles et ceux
+                            qui les ont façonnées, les œuvres où leurs histoires
+                            prennent vie, ou les époques qui les replacent dans
+                            le temps.
+                        </p>
+                    </PixieStack>
 
-                    <p className="mt-4 max-w-2xl leading-7 text-ink-soft">
-                        Entrer par les figures de fiction, celles et ceux qui
-                        les ont façonnées, les œuvres où leurs histoires
-                        prennent vie, ou les époques qui les replacent dans le
-                        temps.
-                    </p>
-                </div>
-
-                <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                    <PixieLink
-                        href="/personnages"
-                        variant="surface"
-                        color="rouge-crayon"
-                        data-famille="personnages"
-                        className="codex-projector codex-door group !flex h-full flex-col border border-line p-6"
+                    <PixieGrid
+                        as="ul"
+                        maxColumns={4}
+                        minItemWidth="sm"
+                        gap="md"
                     >
-                        <PixieSymbol
-                            registry="codex"
-                            collection="index"
-                            slug="personnages"
-                            size="lg"
-                            className="mb-5"
-                        />
-                        <p className="text-sm text-muted">
-                            {personnages.length}{" "}
-                            {personnages.length > 1
-                                ? "personnages"
-                                : "personnage"}
-                        </p>
+                        {codexDoors.map((door) => (
+                            <li key={door.href} className="h-full">
+                                <PixieCard
+                                    asChild
+                                    variant="accent"
+                                    color={door.color}
+                                    padding="md"
+                                    radius="large"
+                                    accentPosition="top"
+                                    effect="projector"
+                                    effectIntensity="medium"
+                                >
+                                    <PixieLink
+                                        href={door.href}
+                                        variant="surface"
+                                        color={door.color}
+                                        className="group !flex h-full flex-col"
+                                    >
+                                        <PixieStack gap="md" className="h-full">
+                                            <PixieCluster
+                                                gap="xs"
+                                                justify="between"
+                                                align="center"
+                                                className="!flex-nowrap"
+                                            >
+                                                <PixieFrame
+                                                    as="div"
+                                                    variant="cel"
+                                                    padding="xs"
+                                                    radius="medium"
+                                                    color={door.color}
+                                                    elevation="soft"
+                                                >
+                                                    <PixieSymbol
+                                                        registry="codex"
+                                                        collection="index"
+                                                        slug={door.symbol}
+                                                        size="lg"
+                                                    />
+                                                </PixieFrame>
 
-                        <h3 className="mt-3 text-2xl text-famille-personnages">
-                            Personnages
-                        </h3>
+                                                <PixieBadge
+                                                    variant="soft"
+                                                    size="xs"
+                                                    shape="pill"
+                                                    color={door.color}
+                                                    className="shrink-0 font-eyebrow uppercase tracking-[0.08em]"
+                                                >
+                                                    {door.count}{" "}
+                                                    {door.count > 1
+                                                        ? door.plural
+                                                        : door.singular}
+                                                </PixieBadge>
+                                            </PixieCluster>
 
-                        <p className="mt-3 leading-7 text-ink-soft">
-                            Les figures fictives qui peuplent les récits et les
-                            imaginaires Disney.
-                        </p>
+                                            <div>
+                                                <h3 className="text-2xl text-current transition-[filter] group-hover:brightness-125">
+                                                    {door.title}
+                                                </h3>
 
-                        <p className="mt-auto pt-6 font-medium text-famille-personnages transition-[filter] group-hover:brightness-125">
-                            Explorer les personnages →
-                        </p>
-                    </PixieLink>
+                                                <p className="mt-3 leading-7 text-ink-soft">
+                                                    {door.description}
+                                                </p>
+                                            </div>
 
-                    <PixieLink
-                        href="/contributeurs"
-                        variant="surface"
-                        color="jaune-lampe"
-                        data-famille="createurs"
-                        className="codex-projector codex-door group !flex h-full flex-col border border-line p-6"
-                    >
-                        <PixieSymbol
-                            registry="codex"
-                            collection="index"
-                            slug="createurs"
-                            size="lg"
-                            className="mb-5"
-                        />
-                        <p className="text-sm text-muted">
-                            {contributeurs.length}{" "}
-                            {contributeurs.length > 1
-                                ? "créateurs"
-                                : "créateur"}
-                        </p>
-
-                        <h3 className="mt-3 text-2xl text-famille-createurs">
-                            Créateurs
-                        </h3>
-
-                        <p className="mt-3 leading-7 text-ink-soft">
-                            Celles et ceux qui ont imaginé, construit et
-                            transformé Disney.
-                        </p>
-
-                        <p className="mt-auto pt-6 font-medium text-famille-createurs transition-[filter] group-hover:brightness-125">
-                            Explorer les créateurs →
-                        </p>
-                    </PixieLink>
-
-                    <PixieLink
-                        href="/oeuvres"
-                        variant="surface"
-                        color="gouache"
-                        data-famille="oeuvres"
-                        className="codex-projector codex-door group !flex h-full flex-col border border-line p-6"
-                    >
-                        <PixieSymbol
-                            registry="codex"
-                            collection="index"
-                            slug="oeuvres"
-                            size="lg"
-                            className="mb-5"
-                        />
-                        <p className="text-sm text-muted">
-                            {oeuvres.length}{" "}
-                            {oeuvres.length > 1 ? "œuvres" : "œuvre"}
-                        </p>
-
-                        <h3 className="mt-3 text-2xl text-famille-oeuvres">
-                            Œuvres
-                        </h3>
-
-                        <p className="mt-3 leading-7 text-ink-soft">
-                            Les films, courts métrages et créations où les
-                            imaginaires Disney prennent forme.
-                        </p>
-
-                        <p className="mt-auto pt-6 font-medium text-famille-oeuvres transition-[filter] group-hover:brightness-125">
-                            Explorer les œuvres →
-                        </p>
-                    </PixieLink>
-
-                    <PixieLink
-                        href="/epoques"
-                        variant="surface"
-                        color="vert-cellulo"
-                        data-famille="epoques"
-                        className="codex-projector codex-door group !flex h-full flex-col border border-line p-6"
-                    >
-                        <PixieSymbol
-                            registry="codex"
-                            collection="index"
-                            slug="epoques"
-                            size="lg"
-                            className="mb-5"
-                        />
-                        <p className="text-sm text-muted">
-                            {epoques.length}{" "}
-                            {epoques.length > 1 ? "époques" : "époque"}
-                        </p>
-
-                        <h3 className="mt-3 text-2xl text-famille-epoques">
-                            Époques
-                        </h3>
-
-                        <p className="mt-3 leading-7 text-ink-soft">
-                            Les grandes périodes qui permettent de suivre les
-                            transformations de Disney dans le temps.
-                        </p>
-
-                        <p className="mt-auto pt-6 font-medium text-famille-epoques transition-[filter] group-hover:brightness-125">
-                            Explorer les époques →
-                        </p>
-                    </PixieLink>
-                </div>
-            </section>
+                                            <p className="mt-auto pt-2 font-medium text-current transition-[filter] group-hover:brightness-125">
+                                                {door.action} →
+                                            </p>
+                                        </PixieStack>
+                                    </PixieLink>
+                                </PixieCard>
+                            </li>
+                        ))}
+                    </PixieGrid>
+                </PixieStack>
+            </PixieBackdrop>
 
             <footer className="mt-24">
                 <PixieSeparator spacing="none" decorative />
