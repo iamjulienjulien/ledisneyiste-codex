@@ -1,3 +1,4 @@
+import { CodexFooter } from "@/components/codex/CodexFooter";
 import { PixieBackdrop } from "@/components/ui/PixieBackdrop";
 import { PixieCluster } from "@/components/ui/PixieCluster";
 import { PixieFrame } from "@/components/ui/PixieFrame";
@@ -149,6 +150,7 @@ export function CodexIndexPage({
 
                 {children}
             </PixieSection>
+            <CodexFooter />
         </main>
     );
 }

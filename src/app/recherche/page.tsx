@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CodexFooter } from "@/components/codex/CodexFooter";
 import { CodexCreateurCard } from "@/components/codex/CodexCreateurCard";
 import { CodexEpoqueCard } from "@/components/codex/CodexEpoqueCard";
 import { CodexOeuvreCard } from "@/components/codex/CodexOeuvreCard";
@@ -348,6 +349,7 @@ export default async function RecherchePage({
                     ) : null}
                 </div>
             )}
+            <CodexFooter className="mt-16 !px-0" />
         </main>
     );
 }
