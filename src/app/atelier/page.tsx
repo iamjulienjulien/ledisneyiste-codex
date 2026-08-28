@@ -29,6 +29,7 @@ import { PixieDustSearchFieldDossier } from "./_components/PixieDustSearchFieldD
 import { PixieDustToastDossier } from "./_components/PixieDustToastDossier";
 import { PixieDustLoaderDossier } from "./_components/PixieDustLoaderDossier";
 import { PixieDustSkeletonDossier } from "./_components/PixieDustSkeletonDossier";
+import { AtelierSommaire } from "@/components/atelier/AtelierSommaire";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PalettesPellicule } from "./_components/PalettesPellicule";
 
@@ -86,6 +87,25 @@ const categories = [
             "États, alertes et transitions qui rendent visibles les réactions de l’interface.",
         statut: "En projection",
         href: "#effets",
+    },
+] as const;
+
+const pellicule = [
+    {
+        nom: "Typographie",
+        href: "#typographie-pellicule",
+    },
+    {
+        nom: "Projection Originale",
+        href: "#projection-originale-palette",
+    },
+    {
+        nom: "L’Atelier d’animation",
+        href: "#atelier-animation-palette",
+    },
+    {
+        nom: "Formes",
+        href: "#formes-pellicule",
     },
 ] as const;
 
@@ -355,9 +375,29 @@ const effets = [
     },
 ] as const;
 
+const itemsParPlateau = {
+    "#pellicule": pellicule,
+    "#accessoires": accessoires,
+    "#decors": decors,
+    "#dialogues": dialogues,
+    "#montage": montage,
+    "#effets": effets,
+} as const;
+
+const plateauxSommaire = categories.map((categorie) => ({
+    numero: categorie.numero,
+    nom: categorie.nom,
+    href: categorie.href,
+    items: itemsParPlateau[categorie.href].flatMap((item) =>
+        "href" in item ? [{ nom: item.nom, href: item.href }] : [],
+    ),
+}));
+
 export default function AtelierPage() {
     return (
         <div className="py-12 sm:py-16">
+            <AtelierSommaire plateaux={plateauxSommaire} />
+
             <section aria-labelledby="atelier-introduction">
                 <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.2em] text-muted">
                     Note d’intention
