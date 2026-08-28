@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CodexFiche } from "@/components/codex/CodexFiche";
 import { CodexFicheHeader } from "@/components/codex/CodexFicheHeader";
+import { CodexFicheReperes } from "@/components/codex/CodexFicheReperes";
 import { CodexFicheSection } from "@/components/codex/CodexFicheSection";
 import { CodexSources } from "@/components/codex/CodexSources";
 import { CodexRelations } from "@/components/codex/CodexRelations";
@@ -74,25 +75,24 @@ export default async function EpoquePage({
                 introduction={fiche.introduction}
             />
 
-            <dl className="mt-12 grid gap-8 sm:grid-cols-2">
-                <div>
-                    <dt className="text-sm text-muted">Début</dt>
-
-                    <dd className="mt-1 text-lg text-ink">
-                        {formatDateHistorique(fiche.periode.debut)}
-                    </dd>
-                </div>
-
-                {fiche.periode.fin && (
-                    <div>
-                        <dt className="text-sm text-muted">Fin</dt>
-
-                        <dd className="mt-1 text-lg text-ink">
-                            {formatDateHistorique(fiche.periode.fin)}
-                        </dd>
-                    </div>
-                )}
-            </dl>
+            <CodexFicheReperes
+                reperes={[
+                    {
+                        label: "Début",
+                        value: formatDateHistorique(fiche.periode.debut),
+                    },
+                    ...(fiche.periode.fin
+                        ? [
+                              {
+                                  label: "Fin",
+                                  value: formatDateHistorique(
+                                      fiche.periode.fin,
+                                  ),
+                              },
+                          ]
+                        : []),
+                ]}
+            />
 
             {fiche.description && (
                 <CodexFicheSection

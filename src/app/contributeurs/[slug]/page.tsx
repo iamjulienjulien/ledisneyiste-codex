@@ -9,6 +9,7 @@ import {
 } from "@/data/relations";
 import { CodexFiche } from "@/components/codex/CodexFiche";
 import { CodexFicheHeader } from "@/components/codex/CodexFicheHeader";
+import { CodexFicheReperes } from "@/components/codex/CodexFicheReperes";
 import { CodexSources } from "@/components/codex/CodexSources";
 import { CodexRelations } from "@/components/codex/CodexRelations";
 import { CodexBlocsEditoriaux } from "@/components/codex/CodexBlocsEditoriaux";
@@ -103,30 +104,27 @@ export default async function ContributeurPage({
                 }
             />
 
-            <dl className="mt-12 grid gap-8 sm:grid-cols-2">
-                <div>
-                    <dt className="text-sm text-muted">Naissance</dt>
-                    <dd className="mt-1 text-lg">
-                        {formatDateHistorique(fiche.naissance.date)}
-                        {fiche.naissance.lieu && ` · ${fiche.naissance.lieu}`}
-                    </dd>
-                </div>
-
-                {fiche.deces && (
-                    <div>
-                        <dt className="text-sm text-muted">Décès</dt>
-                        <dd className="mt-1 text-lg">
-                            {formatDateHistorique(fiche.deces.date)}
-                            {fiche.deces.lieu && ` · ${fiche.deces.lieu}`}
-                        </dd>
-                    </div>
-                )}
-
-                <div className="sm:col-span-2">
-                    <dt className="text-sm text-muted">Rôles</dt>
-                    <dd className="mt-1 text-lg">{fiche.roles.join(", ")}</dd>
-                </div>
-            </dl>
+            <CodexFicheReperes
+                reperes={[
+                    {
+                        label: "Naissance",
+                        value: `${formatDateHistorique(fiche.naissance.date)}${fiche.naissance.lieu ? ` · ${fiche.naissance.lieu}` : ""}`,
+                    },
+                    ...(fiche.deces
+                        ? [
+                              {
+                                  label: "Décès",
+                                  value: `${formatDateHistorique(fiche.deces.date)}${fiche.deces.lieu ? ` · ${fiche.deces.lieu}` : ""}`,
+                              },
+                          ]
+                        : []),
+                    {
+                        label: "Rôles",
+                        value: fiche.roles.join(", "),
+                        width: "full",
+                    },
+                ]}
+            />
 
             <CodexBlocsEditoriaux
                 collection="contributeurs"

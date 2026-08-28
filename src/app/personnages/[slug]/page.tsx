@@ -6,10 +6,10 @@ import { getSourcesByIds } from "@/data/sources";
 import { getOeuvresAvecPersonnage } from "@/data/relations";
 import { CodexFiche } from "@/components/codex/CodexFiche";
 import { CodexFicheHeader } from "@/components/codex/CodexFicheHeader";
+import { CodexFicheReperes } from "@/components/codex/CodexFicheReperes";
 import { CodexReferenceLink } from "@/components/codex/CodexReferenceLink";
 import { CodexSources } from "@/components/codex/CodexSources";
 import { CodexRelations } from "@/components/codex/CodexRelations";
-import { CodexEpoque } from "@/components/codex/CodexEpoque";
 import { CodexBlocsEditoriaux } from "@/components/codex/CodexBlocsEditoriaux";
 import { PixieBadge } from "@/components/ui/PixieBadge";
 import { getEpoquePourDate } from "@/data/epoques/relations";
@@ -90,47 +90,62 @@ export default async function PersonnagePage({
                 }
             />
 
-            <dl className="mt-12 grid gap-8 sm:grid-cols-2">
-                <div>
-                    <dt className="text-sm text-muted">Espèce</dt>
-                    <dd className="mt-1 text-lg">{fiche.espece}</dd>
-                </div>
-
-                <div>
-                    <dt className="text-sm text-muted">Création</dt>
-                    <dd className="mt-1 text-lg">
-                        {formatDateHistorique(fiche.creation.date)}
-                    </dd>
-                </div>
-
-                <div>
-                    <dt className="text-sm text-muted">Créateurs</dt>
-
-                    <dd className="mt-1 flex flex-wrap gap-x-2 text-lg text-ink">
-                        {fiche.creation.createurs.map((createur, index) => (
-                            <span key={createur.nom}>
-                                <CodexReferenceLink reference={createur} />
-                                {index < fiche.creation.createurs.length - 1 &&
-                                    ","}
+            <CodexFicheReperes
+                reperes={[
+                    {
+                        label: "Espèce",
+                        value: fiche.espece,
+                    },
+                    {
+                        label: "Création",
+                        value: formatDateHistorique(fiche.creation.date),
+                    },
+                    {
+                        label: "Créateurs",
+                        value: (
+                            <span className="flex flex-wrap gap-x-2">
+                                {fiche.creation.createurs.map(
+                                    (createur, index) => (
+                                        <span key={createur.nom}>
+                                            <CodexReferenceLink
+                                                reference={createur}
+                                            />
+                                            {index <
+                                                fiche.creation.createurs
+                                                    .length -
+                                                    1 && ","}
+                                        </span>
+                                    ),
+                                )}
                             </span>
-                        ))}
-                    </dd>
-                </div>
-
-                <div>
-                    <dt className="text-sm text-muted">Première apparition</dt>
-
-                    <dd className="mt-1 text-lg text-ink">
-                        <CodexReferenceLink
-                            reference={fiche.premiereApparition.oeuvre}
-                        />
-                        {" · "}
-                        {formatDateHistorique(fiche.premiereApparition.date)}
-                    </dd>
-                </div>
-
-                <CodexEpoque epoque={epoque} />
-            </dl>
+                        ),
+                    },
+                    {
+                        label: "Première apparition",
+                        value: (
+                            <>
+                                <CodexReferenceLink
+                                    reference={fiche.premiereApparition.oeuvre}
+                                />
+                                {" · "}
+                                {formatDateHistorique(
+                                    fiche.premiereApparition.date,
+                                )}
+                            </>
+                        ),
+                    },
+                    ...(epoque
+                        ? [
+                              {
+                                  label: "Époque",
+                                  value: (
+                                      <CodexReferenceLink reference={epoque} />
+                                  ),
+                              },
+                          ]
+                        : []),
+                ]}
+            />
 
             <CodexBlocsEditoriaux
                 collection="personnages"
