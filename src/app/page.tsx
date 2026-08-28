@@ -221,30 +221,128 @@ export default function Home() {
                 </PixieStack>
             </PixieBackdrop>
 
-            <footer className="mt-24">
-                <PixieSeparator spacing="none" decorative />
+            <footer className="mt-24" aria-labelledby="footer-title">
+                <PixieCard variant="outline" padding="none" radius="large">
+                    <PixieBackdrop
+                        variant="gradient"
+                        intensity="subtle"
+                        position="bottom-end"
+                        spread="wide"
+                        padding="lg"
+                        radius="large"
+                        color="graphite"
+                        base="muted"
+                        texture="grain"
+                        textureIntensity="subtle"
+                    >
+                        <PixieStack gap="lg">
+                            <PixieGrid
+                                maxColumns={2}
+                                minItemWidth="md"
+                                gap="xl"
+                            >
+                                <PixieStack gap="sm" className="max-w-xl">
+                                    <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.2em] text-muted">
+                                        Générique
+                                    </p>
 
-                <div className="mt-8 flex flex-col gap-4">
-                    <p className="max-w-2xl text-sm leading-6 text-muted">
-                        Le Disneyiste est un projet éditorial personnel,
-                        indépendant et non officiel. Il n’est affilié ni à The
-                        Walt Disney Company ni à ses filiales, et n’est ni
-                        approuvé ni sponsorisé par celles-ci.
-                    </p>
+                                    <h2
+                                        id="footer-title"
+                                        className="text-3xl text-ink"
+                                    >
+                                        Le Codex reste ouvert
+                                    </h2>
 
-                    <p className="text-sm font-medium text-ink-soft">
-                        Un projet de{" "}
-                        <a
-                            href="https://julienjulien.fr"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="text-accent underline underline-offset-4 hover:text-accent-hover"
-                        >
-                            Julien Julien
-                        </a>
-                        .
-                    </p>
-                </div>
+                                    <p className="text-base leading-7 text-ink-soft">
+                                        La projection se poursuit d’une archive
+                                        à l’autre. Explorez les quatre familles
+                                        du Codex ou retrouvez directement un
+                                        nom, un titre ou une époque.
+                                    </p>
+                                </PixieStack>
+
+                                <PixieStack
+                                    as="nav"
+                                    aria-label="Poursuivre l’exploration du Codex"
+                                    gap="sm"
+                                >
+                                    <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.16em] text-muted">
+                                        Poursuivre l’exploration
+                                    </p>
+
+                                    <PixieGrid
+                                        as="ul"
+                                        maxColumns={2}
+                                        minItemWidth="xs"
+                                        gap="sm"
+                                    >
+                                        {codexDoors.map((door) => (
+                                            <li key={door.href}>
+                                                <PixieLink
+                                                    href={door.href}
+                                                    variant="action"
+                                                    color={door.color}
+                                                    indicator="arrow"
+                                                >
+                                                    Explorer les{" "}
+                                                    {door.title.toLowerCase()}
+                                                </PixieLink>
+                                            </li>
+                                        ))}
+
+                                        <li>
+                                            <PixieLink
+                                                href="/recherche"
+                                                variant="action"
+                                                indicator="arrow"
+                                            >
+                                                Rechercher dans le Codex
+                                            </PixieLink>
+                                        </li>
+                                    </PixieGrid>
+                                </PixieStack>
+                            </PixieGrid>
+
+                            <PixieSeparator
+                                variant="fade"
+                                intensity="subtle"
+                                color="graphite"
+                                spacing="none"
+                                decorative
+                            />
+
+                            <PixieCluster
+                                gap="lg"
+                                justify="between"
+                                align="start"
+                            >
+                                <p className="max-w-2xl text-sm leading-6 text-muted">
+                                    Le Disneyiste est un projet éditorial
+                                    personnel, indépendant et non officiel. Il
+                                    n’est affilié ni à The Walt Disney Company
+                                    ni à ses filiales, et n’est ni approuvé ni
+                                    sponsorisé par celles-ci.
+                                </p>
+
+                                <PixieStack gap="xs" className="shrink-0">
+                                    <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.16em] text-muted">
+                                        Imaginé et façonné par
+                                    </p>
+
+                                    <PixieLink
+                                        href="https://julienjulien.fr"
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        variant="action"
+                                        indicator="external"
+                                    >
+                                        Julien Julien
+                                    </PixieLink>
+                                </PixieStack>
+                            </PixieCluster>
+                        </PixieStack>
+                    </PixieBackdrop>
+                </PixieCard>
             </footer>
         </main>
     );
