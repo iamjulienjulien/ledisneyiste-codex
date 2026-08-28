@@ -7,13 +7,12 @@ import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieDustField } from "@/components/ui/PixieDustField";
 import { PixiePanel } from "@/components/ui/PixiePanel";
 import {
-    PixieDustSelect,
-    type PixieDustSelectColor,
-    type PixieDustSelectSize,
-    type PixieDustSelectVariant,
-} from "@/components/ui/PixieDustSelect";
-import { PixieStack } from "@/components/ui/PixieStack";
-import { PixieDustSelectPlayground } from "./PixieDustSelectPlayground";
+    PixieSelect,
+    type PixieSelectColor,
+    type PixieSelectSize,
+    type PixieSelectVariant,
+} from "@/components/ui/PixieSelect";
+import { PixieSelectPlayground } from "./PixieSelectPlayground";
 
 const variants = [
     {
@@ -32,7 +31,7 @@ const variants = [
         role: "Un choix discret intégré à une composition éditoriale.",
     },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustSelectVariant;
+    value: PixieSelectVariant;
     name: string;
     role: string;
 }>[];
@@ -42,7 +41,7 @@ const sizes = [
     { value: "md" as const, name: "Moyenne", height: "44 px" },
     { value: "lg" as const, name: "Grande", height: "52 px" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustSelectSize;
+    value: PixieSelectSize;
     name: string;
     height: string;
 }>[];
@@ -52,7 +51,7 @@ const colorExamples = [
     { color: "rouge-crayon", label: "Rouge crayon" },
     { color: "bleu-reperage", label: "Bleu repérage" },
 ] as const satisfies readonly Readonly<{
-    color: PixieDustSelectColor;
+    color: PixieSelectColor;
     label: string;
 }>[];
 
@@ -65,25 +64,25 @@ const properties = [
     },
     {
         name: "variant",
-        type: "PixieDustSelectVariant",
+        type: "PixieSelectVariant",
         defaultValue: '"outline"',
         description: "Traitement visuel du contrôle.",
     },
     {
         name: "size",
-        type: "PixieDustSelectSize",
+        type: "PixieSelectSize",
         defaultValue: '"md"',
         description: "Hauteur, typographie et espaces internes.",
     },
     {
         name: "color",
-        type: "PixieDustSelectColor",
+        type: "PixieSelectColor",
         defaultValue: "false",
         description: "Couleur du focus, héritée ou issue du registre.",
     },
     {
         name: "mode",
-        type: "PixieDustSelectMode",
+        type: "PixieSelectMode",
         defaultValue: '"native"',
         description:
             "Conserve le menu du navigateur ou projette une listbox Pixie.",
@@ -129,22 +128,22 @@ const properties = [
 
 const specificTypes = [
     {
-        name: "PixieDustSelectVariant",
+        name: "PixieSelectVariant",
         values: variants.map(({ value }) => `"${value}"`),
         description: "Trois présences cohérentes avec Input et Textarea.",
     },
     {
-        name: "PixieDustSelectSize",
+        name: "PixieSelectSize",
         values: sizes.map(({ value }) => `"${value}"`),
         description: "Trois hauteurs communes aux contrôles courts.",
     },
     {
-        name: "PixieDustSelectColor",
+        name: "PixieSelectColor",
         values: ["AtelierAnimationColorSlug", "false"],
         description: "Accent du registre ou couleur héritée.",
     },
     {
-        name: "PixieDustSelectMode",
+        name: "PixieSelectMode",
         values: ['"native"', '"popover"'],
         description: "Deux conduites visuelles pour le même choix unique.",
     },
@@ -197,12 +196,12 @@ function PeriodOptions() {
     );
 }
 
-export function PixieDustSelectDossier() {
+export function PixieSelectDossier() {
     return (
         <AtelierFicheAccessoire
-            id="pixie-dust-select"
-            labelledBy="pixie-dust-select-title"
-            nom="PixieDustSelect"
+            id="pixie-select"
+            labelledBy="pixie-select-title"
+            nom="PixieSelect"
             className="scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
@@ -211,10 +210,10 @@ export function PixieDustSelectDossier() {
                             Le clap · Dialogue 004
                         </p>
                         <h2
-                            id="pixie-dust-select-title"
+                            id="pixie-select-title"
                             className="mt-4 text-4xl text-ink sm:text-5xl"
                         >
-                            PixieDustSelect
+                            PixieSelect
                         </h2>
                         <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
                             Choisir une valeur dans une liste fermée, avec la
@@ -228,7 +227,7 @@ export function PixieDustSelectDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.2.0
+                                1.0.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -236,7 +235,7 @@ export function PixieDustSelectDossier() {
                                 État
                             </dt>
                             <dd className="mt-1 text-sm font-medium">
-                                <AtelierStatut statut="Esquisse" />
+                                <AtelierStatut statut="Prêt à projeter" />
                             </dd>
                         </div>
                     </dl>
@@ -297,9 +296,9 @@ export function PixieDustSelectDossier() {
                                     label="Période des archives"
                                     description="Une seule période peut être retenue."
                                 >
-                                    <PixieDustSelect placeholder="Choisir une période">
+                                    <PixieSelect placeholder="Choisir une période">
                                         <PeriodOptions />
-                                    </PixieDustSelect>
+                                    </PixieSelect>
                                 </PixieDustField>
                             </Stage>
                             <CodeExample>{`<PixieDustField
@@ -307,10 +306,10 @@ export function PixieDustSelectDossier() {
     label="Période des archives"
     description="Une seule période peut être retenue."
 >
-    <PixieDustSelect placeholder="Choisir une période">
+    <PixieSelect placeholder="Choisir une période">
         <option value="pionniers">Le temps des pionniers</option>
         <option value="chefs-oeuvre">Le temps des chefs-d’œuvre</option>
-    </PixieDustSelect>
+    </PixieSelect>
 </PixieDustField>`}</CodeExample>
                         </div>
                     </div>
@@ -340,12 +339,12 @@ export function PixieDustSelectDossier() {
                                     controlId="select-mode-native"
                                     label="Période"
                                 >
-                                    <PixieDustSelect
+                                    <PixieSelect
                                         defaultValue="pionniers"
                                         mode="native"
                                     >
                                         <PeriodOptions />
-                                    </PixieDustSelect>
+                                    </PixieSelect>
                                 </PixieDustField>
                             </div>
                         </Stage>
@@ -365,12 +364,12 @@ export function PixieDustSelectDossier() {
                                     controlId="select-mode-popover"
                                     label="Période"
                                 >
-                                    <PixieDustSelect
+                                    <PixieSelect
                                         defaultValue="pionniers"
                                         mode="popover"
                                     >
                                         <PeriodOptions />
-                                    </PixieDustSelect>
+                                    </PixieSelect>
                                 </PixieDustField>
                             </div>
                         </Stage>
@@ -390,13 +389,13 @@ export function PixieDustSelectDossier() {
                                     controlId="select-mode-portal"
                                     label="Période"
                                 >
-                                    <PixieDustSelect
+                                    <PixieSelect
                                         defaultValue="pionniers"
                                         mode="popover"
                                         portal
                                     >
                                         <PeriodOptions />
-                                    </PixieDustSelect>
+                                    </PixieSelect>
                                 </PixieDustField>
                             </div>
                         </Stage>
@@ -423,14 +422,14 @@ export function PixieDustSelectDossier() {
                                     {variant.role}
                                 </p>
                                 <div className="mt-6">
-                                    <PixieDustSelect
+                                    <PixieSelect
                                         variant={variant.value}
                                         size="sm"
                                         aria-label={`Exemple ${variant.name}`}
                                         defaultValue="pionniers"
                                     >
                                         <PeriodOptions />
-                                    </PixieDustSelect>
+                                    </PixieSelect>
                                 </div>
                             </Stage>
                         ))}
@@ -459,13 +458,13 @@ export function PixieDustSelectDossier() {
                                     {size.name}
                                 </h4>
                                 <div className="mt-6">
-                                    <PixieDustSelect
+                                    <PixieSelect
                                         size={size.value}
                                         aria-label={`Taille ${size.name}`}
                                         defaultValue="chefs-oeuvre"
                                     >
                                         <PeriodOptions />
-                                    </PixieDustSelect>
+                                    </PixieSelect>
                                 </div>
                             </Stage>
                         ))}
@@ -486,13 +485,13 @@ export function PixieDustSelectDossier() {
                                     {label}
                                 </p>
                                 <div className="mt-5">
-                                    <PixieDustSelect
+                                    <PixieSelect
                                         color={color}
                                         aria-label={`Couleur ${label}`}
                                         defaultValue="pionniers"
                                     >
                                         <PeriodOptions />
-                                    </PixieDustSelect>
+                                    </PixieSelect>
                                 </div>
                             </Stage>
                         ))}
@@ -512,9 +511,9 @@ export function PixieDustSelectDossier() {
                                 controlId="select-flat"
                                 label="Époque"
                             >
-                                <PixieDustSelect defaultValue="pionniers">
+                                <PixieSelect defaultValue="pionniers">
                                     <PeriodOptions />
-                                </PixieDustSelect>
+                                </PixieSelect>
                             </PixieDustField>
                         </Stage>
                         <Stage>
@@ -522,7 +521,7 @@ export function PixieDustSelectDossier() {
                                 controlId="select-grouped"
                                 label="Série ou collection"
                             >
-                                <PixieDustSelect placeholder="Choisir une collection">
+                                <PixieSelect placeholder="Choisir une collection">
                                     <optgroup label="Premières fondations">
                                         <option value="alice-comedies">
                                             Alice Comedies
@@ -537,7 +536,7 @@ export function PixieDustSelectDossier() {
                                             Silly Symphonies
                                         </option>
                                     </optgroup>
-                                </PixieDustSelect>
+                                </PixieSelect>
                             </PixieDustField>
                         </Stage>
                     </div>
@@ -551,35 +550,35 @@ export function PixieDustSelectDossier() {
                     />
                     <div className="mt-8 grid gap-4 md:grid-cols-3">
                         <Stage>
-                            <PixieDustSelect
+                            <PixieSelect
                                 aria-label="Choix requis"
                                 placeholder="Choisir une période"
                                 required
                             >
                                 <PeriodOptions />
-                            </PixieDustSelect>
+                            </PixieSelect>
                             <p className="mt-4 text-sm text-ink-soft">Requis</p>
                         </Stage>
                         <Stage>
-                            <PixieDustSelect
+                            <PixieSelect
                                 aria-label="Choix invalide"
                                 placeholder="Choisir une période"
                                 invalid
                             >
                                 <PeriodOptions />
-                            </PixieDustSelect>
+                            </PixieSelect>
                             <p className="mt-4 text-sm text-ink-soft">
                                 Invalide
                             </p>
                         </Stage>
                         <Stage>
-                            <PixieDustSelect
+                            <PixieSelect
                                 aria-label="Choix désactivé"
                                 defaultValue="pionniers"
                                 disabled
                             >
                                 <PeriodOptions />
-                            </PixieDustSelect>
+                            </PixieSelect>
                             <p className="mt-4 text-sm text-ink-soft">
                                 Désactivé
                             </p>
@@ -595,7 +594,7 @@ export function PixieDustSelectDossier() {
                         description="Le mode d’ouverture, le portail, la variante, la taille, la couleur, les groupes, les états et le code évoluent ensemble."
                     />
                     <div className="mt-8">
-                        <PixieDustSelectPlayground />
+                        <PixieSelectPlayground />
                     </div>
                 </section>
 
@@ -658,7 +657,7 @@ export function PixieDustSelectDossier() {
                         <SequenceTitle
                             id="select-technical-title"
                             eyebrow="Générique technique"
-                            title="API de l’esquisse"
+                            title="API du composant"
                             description="Value, defaultValue, onChange, name, required et les attributs de formulaire restent raccordés au véritable select dans les deux modes."
                         />
                         <div className="mt-8">
@@ -673,30 +672,6 @@ export function PixieDustSelectDossier() {
                             </div>
                         </div>
                     </div>
-                </section>
-
-                <section aria-labelledby="select-journal-title">
-                    <SequenceTitle
-                        id="select-journal-title"
-                        eyebrow="Journal de production"
-                        title="Avant la version prête à projeter"
-                    />
-                    <PixieStack as="ul" gap="sm" className="mt-8">
-                        {[
-                            "Éprouver l’ouverture native dans Firefox, Safari et Chrome.",
-                            "Éprouver le popover avec VoiceOver, NVDA et les parcours clavier de la combobox.",
-                            "Vérifier le placement du portail dans les cadres scrollés, transformés et étroits.",
-                            "Vérifier les listes longues, les optgroup, les options désactivées et les libellés tronqués.",
-                            "Confirmer que le filtrage et les options riches restent hors du périmètre de Select.",
-                        ].map((item) => (
-                            <li
-                                key={item}
-                                className="border-l-2 border-accent bg-surface-muted px-5 py-4 text-sm leading-6 text-ink-soft"
-                            >
-                                {item}
-                            </li>
-                        ))}
-                    </PixieStack>
                 </section>
             </div>
         </AtelierFicheAccessoire>

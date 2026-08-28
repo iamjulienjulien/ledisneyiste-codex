@@ -23,7 +23,7 @@ import { PixieDustStickyRegionDossier } from "./_components/PixieDustStickyRegio
 import { PixieDustFieldDossier } from "./_components/PixieDustFieldDossier";
 import { PixieDustInputDossier } from "./_components/PixieDustInputDossier";
 import { PixieDustTextareaDossier } from "./_components/PixieDustTextareaDossier";
-import { PixieDustSelectDossier } from "./_components/PixieDustSelectDossier";
+import { PixieSelectDossier } from "./_components/PixieSelectDossier";
 import { PixieDustSwitchDossier } from "./_components/PixieDustSwitchDossier";
 import { PixieDustSearchFieldDossier } from "./_components/PixieDustSearchFieldDossier";
 import { PixieDustToastDossier } from "./_components/PixieDustToastDossier";
@@ -235,11 +235,11 @@ const dialogues = [
         href: "#pixie-dust-textarea",
     },
     {
-        nom: "PixieDustSelect",
+        nom: "PixieSelect",
         role: "Choisir une valeur dans une liste fermée",
-        statut: "Esquisse",
-        version: "0.2.0",
-        href: "#pixie-dust-select",
+        statut: "Prêt à projeter",
+        version: "1.0.0",
+        href: "#pixie-select",
     },
     {
         nom: "PixieDustCheckbox",
@@ -886,7 +886,7 @@ export default function AtelierPage() {
                 {raccordEntreFiches}
                 <PixieDustTextareaDossier />
                 {raccordEntreFiches}
-                <PixieDustSelectDossier />
+                <PixieSelectDossier />
                 {raccordEntreFiches}
                 <PixieDustSwitchDossier />
                 {raccordEntreFiches}

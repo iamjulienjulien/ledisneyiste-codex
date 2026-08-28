@@ -9,11 +9,11 @@ import {
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { PixieDustField } from "@/components/ui/PixieDustField";
 import {
-    PixieDustSelect,
-    type PixieDustSelectMode,
-    type PixieDustSelectSize,
-    type PixieDustSelectVariant,
-} from "@/components/ui/PixieDustSelect";
+    PixieSelect,
+    type PixieSelectMode,
+    type PixieSelectSize,
+    type PixieSelectVariant,
+} from "@/components/ui/PixieSelect";
 import {
     getAtelierAnimationColor,
     getAtelierAnimationColorSlugs,
@@ -25,7 +25,7 @@ const variants = [
     { value: "filled", label: "Surface" },
     { value: "underline", label: "Souligné" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustSelectVariant;
+    value: PixieSelectVariant;
     label: string;
 }>[];
 
@@ -34,7 +34,7 @@ const sizes = [
     { value: "md", label: "Moyenne" },
     { value: "lg", label: "Grande" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustSelectSize;
+    value: PixieSelectSize;
     label: string;
 }>[];
 
@@ -42,7 +42,7 @@ const modes = [
     { value: "native", label: "Menu natif" },
     { value: "popover", label: "Popover Pixie" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustSelectMode;
+    value: PixieSelectMode;
     label: string;
 }>[];
 
@@ -75,10 +75,10 @@ const groupedOptionsCode = `    <optgroup label="Premières fondations">
         <option value="silly-symphonies">Silly Symphonies</option>
     </optgroup>`;
 
-export function PixieDustSelectPlayground() {
-    const [variant, setVariant] = useState<PixieDustSelectVariant>("outline");
-    const [size, setSize] = useState<PixieDustSelectSize>("md");
-    const [mode, setMode] = useState<PixieDustSelectMode>("native");
+export function PixieSelectPlayground() {
+    const [variant, setVariant] = useState<PixieSelectVariant>("outline");
+    const [size, setSize] = useState<PixieSelectSize>("md");
+    const [mode, setMode] = useState<PixieSelectMode>("native");
     const [portal, setPortal] = useState(false);
     const [color, setColor] = useState<AtelierAnimationColorSlug | "inherit">(
         "inherit",
@@ -103,12 +103,12 @@ export function PixieDustSelectPlayground() {
     controlId="archive-period"
     label="Période des archives"${invalid ? '\n    error="Choisissez une période avant de poursuivre."' : '\n    description="Une seule période peut être retenue."'}${required ? "\n    required" : ""}
 >
-    <PixieDustSelect
+    <PixieSelect
         variant="${variant}"
         size="${size}"${modeProps}${colorProp}${placeholderProp}${disabled ? "\n        disabled" : ""}${required ? "\n        required" : ""}
     >
 ${grouped ? groupedOptionsCode : flatOptionsCode}
-    </PixieDustSelect>
+    </PixieSelect>
 </PixieDustField>`;
     const fieldRequirement = required
         ? ({ required: true } as const)
@@ -289,7 +289,7 @@ ${grouped ? groupedOptionsCode : flatOptionsCode}
                                 }
                                 {...fieldRequirement}
                             >
-                                <PixieDustSelect
+                                <PixieSelect
                                     variant={variant}
                                     size={size}
                                     mode={mode}
@@ -336,7 +336,7 @@ ${grouped ? groupedOptionsCode : flatOptionsCode}
                                             </option>
                                         </>
                                     )}
-                                </PixieDustSelect>
+                                </PixieSelect>
                             </PixieDustField>
                         </div>
                     </div>
