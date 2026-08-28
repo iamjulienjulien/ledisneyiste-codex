@@ -7,6 +7,7 @@ export type PixieDustFieldControlProps = Readonly<{
     "aria-describedby"?: AriaAttributes["aria-describedby"];
     "aria-errormessage"?: AriaAttributes["aria-errormessage"];
     "aria-invalid"?: AriaAttributes["aria-invalid"];
+    "aria-labelledby"?: AriaAttributes["aria-labelledby"];
     "aria-required"?: AriaAttributes["aria-required"];
 }>;
 

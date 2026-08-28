@@ -29,12 +29,14 @@ export function PixieDustField({
 }: PixieDustFieldProps) {
     const hasDescription = description !== undefined && description !== null;
     const hasError = error !== undefined && error !== null;
+    const labelId = `${controlId}-label`;
     const descriptionId = hasDescription
         ? `${controlId}-description`
         : undefined;
     const errorId = hasError ? `${controlId}-error` : undefined;
     const control = cloneElement(children, {
         id: controlId,
+        "aria-labelledby": joinIds(children.props["aria-labelledby"], labelId),
         "aria-describedby": joinIds(
             children.props["aria-describedby"],
             descriptionId,
@@ -58,7 +60,11 @@ export function PixieDustField({
                     labelHidden ? styles.visuallyHidden : styles.labelRow
                 }
             >
-                <label htmlFor={controlId} className={styles.label}>
+                <label
+                    id={labelId}
+                    htmlFor={controlId}
+                    className={styles.label}
+                >
                     {label}
                 </label>
                 {required || optional ? (
