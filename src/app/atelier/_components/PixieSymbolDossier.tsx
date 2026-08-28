@@ -10,6 +10,7 @@ const generalLogoSymbolSlugs = getSymbolSlugs("general", "logos");
 const generalCinemaSymbolSlugs = getSymbolSlugs("general", "cinema");
 const animationTechniqueSymbolSlugs = getSymbolSlugs("techniques", "animation");
 const imageTechniqueSymbolSlugs = getSymbolSlugs("techniques", "images");
+const couleurTechniqueSymbolSlugs = getSymbolSlugs("techniques", "couleur");
 const indexSymbolSlugs = getSymbolSlugs("codex", "index");
 const recompenseTrophySymbolSlugs = getSymbolSlugs("recompenses", "trophees");
 const contributeurBlockSymbolSlugs = getSymbolSlugs("blocs", "contributeurs");
@@ -109,7 +110,7 @@ const typesSpecifiques = [
     },
     {
         name: 'SymbolCollectionName<"techniques">',
-        values: ['"animation"', '"images"'],
+        values: ['"animation"', '"images"', '"couleur"'],
         description: "Collections exposées par le registre des Techniques.",
     },
     {
@@ -188,6 +189,29 @@ const typesSpecifiques = [
             '"restauration-image"',
         ],
         description: "Outils de prise de vues, compositing et restauration.",
+    },
+    {
+        name: 'SymbolSlug<"techniques", "couleur">',
+        values: [
+            '"cercle-chromatique"',
+            '"nuancier-production"',
+            '"palette-harmonique"',
+            '"charte-colorimetrique"',
+            '"teintage-pellicule"',
+            '"virage-pellicule"',
+            '"colorisation-pochoir"',
+            '"separation-trichrome"',
+            '"prisme-trichrome"',
+            '"camera-trois-bandes"',
+            '"matrices-colorants"',
+            '"transfert-colorants"',
+            '"color-script"',
+            '"palette-personnage"',
+            '"densitometre"',
+            '"calibration-ecran"',
+        ],
+        description:
+            "Outils de conception, production et contrôle des couleurs.",
     },
     {
         name: 'SymbolSlug<"recompenses", "trophees">',
@@ -315,7 +339,7 @@ export function PixieSymbolDossier() {
                         ["Mission", "Afficher un symbole typé."],
                         ["Sélection", "registry · collection · slug"],
                         ["Exemple", "codex.index.personnages"],
-                        ["Masters", "Dix séries originales · 1254 px."],
+                        ["Masters", "Onze séries originales · 1254 px."],
                         ["Dérivés", "PNG transparent · 384 px."],
                         ["Accessibilité", "Décoratif par défaut."],
                     ].map(([terme, definition]) => (
@@ -601,6 +625,52 @@ export function PixieSymbolDossier() {
                                 <PixieSymbol
                                     registry="techniques"
                                     collection="images"
+                                    slug={slug}
+                                    size="xl"
+                                    className="mx-auto"
+                                />
+                                <h4 className="mt-5 text-xl text-ink">
+                                    {symbole.label}
+                                </h4>
+                                <p className="mt-2 font-mono text-xs text-muted">
+                                    {slug}
+                                </p>
+                            </article>
+                        );
+                    })}
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="pixie-symbol-techniques-couleur"
+                className="mt-16"
+            >
+                <TitreSequence
+                    id="pixie-symbol-techniques-couleur"
+                    surTitre="Distribution"
+                    titre="La couleur entre en production"
+                    description="Nuanciers, palettes, procédés trichromes, transferts et instruments de contrôle racontent la couleur depuis sa conception artistique jusqu’à sa restitution à l’écran."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+                    {couleurTechniqueSymbolSlugs.map((slug) => {
+                        const symbole = getSymbol(
+                            "techniques",
+                            "couleur",
+                            slug,
+                        );
+
+                        return (
+                            <article
+                                key={slug}
+                                className="bg-surface p-6 text-center"
+                                style={{
+                                    borderTop: `4px solid ${symbole.accent}`,
+                                }}
+                            >
+                                <PixieSymbol
+                                    registry="techniques"
+                                    collection="couleur"
                                     slug={slug}
                                     size="xl"
                                     className="mx-auto"
