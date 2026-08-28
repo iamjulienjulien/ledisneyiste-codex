@@ -1,4 +1,6 @@
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
+import { PixieSection } from "@/components/ui/PixieSection";
+import { PixieStack } from "@/components/ui/PixieStack";
 import type { CodexFicheSectionProps } from "@/types/codex-fiche";
 import styles from "./CodexFicheSection.module.css";
 
@@ -12,7 +14,13 @@ export function CodexFicheSection({
     const hasHeader = Boolean(symbole || eyebrow || titre || description);
 
     return (
-        <section className={styles.root}>
+        <PixieSection
+            width="full"
+            gutter="none"
+            spacingStart="lg"
+            spacingEnd="none"
+            gap="lg"
+        >
             <PixieSeparator
                 variant="beam"
                 spacing="none"
@@ -22,39 +30,35 @@ export function CodexFicheSection({
                 decorative
             />
 
-            <div className={styles.content}>
-                {hasHeader && (
-                    <header
-                        className={
-                            symbole ? styles.headerWithSymbol : styles.header
-                        }
-                    >
-                        {symbole ? (
-                            <div className={styles.symbol}>{symbole}</div>
+            {hasHeader ? (
+                <header
+                    className={
+                        symbole ? styles.headerWithSymbol : styles.header
+                    }
+                >
+                    {symbole ? (
+                        <div className={styles.symbol}>{symbole}</div>
+                    ) : null}
+
+                    <PixieStack gap="sm">
+                        {eyebrow ? (
+                            <p className={styles.eyebrow}>{eyebrow}</p>
                         ) : null}
 
-                        <div>
-                            {eyebrow && (
-                                <p className={styles.eyebrow}>{eyebrow}</p>
-                            )}
+                        {titre ? (
+                            <h2 className="text-3xl text-ink">{titre}</h2>
+                        ) : null}
 
-                            {titre && (
-                                <h2 className="mt-3 text-3xl text-ink">
-                                    {titre}
-                                </h2>
-                            )}
+                        {description ? (
+                            <p className="leading-7 text-ink-soft">
+                                {description}
+                            </p>
+                        ) : null}
+                    </PixieStack>
+                </header>
+            ) : null}
 
-                            {description && (
-                                <p className="mt-3 leading-7 text-ink-soft">
-                                    {description}
-                                </p>
-                            )}
-                        </div>
-                    </header>
-                )}
-
-                <div className={hasHeader ? "mt-8" : ""}>{children}</div>
-            </div>
-        </section>
+            <div>{children}</div>
+        </PixieSection>
     );
 }
