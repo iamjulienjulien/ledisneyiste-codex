@@ -1,6 +1,7 @@
 import { CodexFicheSection } from "@/components/codex/CodexFicheSection";
 import { CodexReferenceLink } from "@/components/codex/CodexReferenceLink";
 import { CodexSourceCitations } from "@/components/codex/CodexSourceCitations";
+import { PixieCard } from "@/components/ui/PixieCard";
 import { formatDateHistorique } from "@/lib/date";
 import type { PeriodeHistorique } from "@/types/date";
 import type {
@@ -111,7 +112,15 @@ export function CodexOeuvreDetails({
                 >
                     <dl className={styles.facts}>
                         {fiche.titresAlternatifs?.map((title) => (
-                            <div key={title.titre} className={styles.fact}>
+                            <PixieCard
+                                key={title.titre}
+                                as="div"
+                                variant="accent"
+                                color="gouache"
+                                padding="md"
+                                radius="medium"
+                                className={styles.fact}
+                            >
                                 <dt className={styles.label}>
                                     {alternativeTitleLabels[title.nature]}
                                 </dt>
@@ -130,11 +139,19 @@ export function CodexOeuvreDetails({
                                         label="Sources du repère"
                                     />
                                 </dd>
-                            </div>
+                            </PixieCard>
                         ))}
 
                         {fiche.durees?.map((duration) => (
-                            <div key={duration.version} className={styles.fact}>
+                            <PixieCard
+                                key={duration.version}
+                                as="div"
+                                variant="accent"
+                                color="gouache"
+                                padding="md"
+                                radius="medium"
+                                className={styles.fact}
+                            >
                                 <dt className={styles.label}>Durée</dt>
                                 <dd className={styles.value}>
                                     {duration.valeur} minutes
@@ -149,11 +166,18 @@ export function CodexOeuvreDetails({
                                         label="Sources du repère"
                                     />
                                 </dd>
-                            </div>
+                            </PixieCard>
                         ))}
 
                         {fiche.production && (
-                            <div className={styles.fact}>
+                            <PixieCard
+                                as="div"
+                                variant="accent"
+                                color="gouache"
+                                padding="md"
+                                radius="medium"
+                                className={styles.fact}
+                            >
                                 <dt className={styles.label}>
                                     Période de production
                                 </dt>
@@ -167,7 +191,7 @@ export function CodexOeuvreDetails({
                                         label="Sources du repère"
                                     />
                                 </dd>
-                            </div>
+                            </PixieCard>
                         )}
                     </dl>
                 </CodexFicheSection>
@@ -180,8 +204,13 @@ export function CodexOeuvreDetails({
                 >
                     <ol className={styles.events}>
                         {fiche.sortie.evenements.map((event) => (
-                            <li
+                            <PixieCard
                                 key={`${event.nature}-${event.territoire}`}
+                                as="li"
+                                variant="accent"
+                                color="gouache"
+                                padding="md"
+                                radius="medium"
                                 className={styles.event}
                             >
                                 <p className={styles.label}>
@@ -202,7 +231,7 @@ export function CodexOeuvreDetails({
                                         label="Sources de la sortie"
                                     />
                                 </div>
-                            </li>
+                            </PixieCard>
                         ))}
                     </ol>
                 </CodexFicheSection>
@@ -216,8 +245,13 @@ export function CodexOeuvreDetails({
                 >
                     <dl className={styles.economics}>
                         {fiche.donneesEconomiques.map((data, index) => (
-                            <div
+                            <PixieCard
                                 key={`${data.nature}-${data.valeur}-${index}`}
+                                as="div"
+                                variant="accent"
+                                color="gouache"
+                                padding="md"
+                                radius="medium"
                                 className={styles.economic}
                             >
                                 <dt className={styles.label}>
@@ -239,7 +273,7 @@ export function CodexOeuvreDetails({
                                         label="Sources du chiffre"
                                     />
                                 </dd>
-                            </div>
+                            </PixieCard>
                         ))}
                     </dl>
                 </CodexFicheSection>
@@ -252,8 +286,13 @@ export function CodexOeuvreDetails({
                 >
                     <ul className={styles.relations}>
                         {fiche.relationsOeuvres.map((relation) => (
-                            <li
+                            <PixieCard
                                 key={`${relation.nature}-${relation.oeuvre.nom}`}
+                                as="li"
+                                variant="accent"
+                                color="gouache"
+                                padding="md"
+                                radius="medium"
                                 className={styles.relation}
                             >
                                 <p className={styles.label}>
@@ -293,7 +332,7 @@ export function CodexOeuvreDetails({
                                         label="Sources de la relation"
                                     />
                                 </div>
-                            </li>
+                            </PixieCard>
                         ))}
                     </ul>
                 </CodexFicheSection>
@@ -307,8 +346,13 @@ export function CodexOeuvreDetails({
                 >
                     <div className={styles.credits}>
                         {groupedCredits.map((group) => (
-                            <section
+                            <PixieCard
                                 key={group.domain}
+                                as="section"
+                                variant="accent"
+                                color="gouache"
+                                padding="md"
+                                radius="medium"
                                 className={styles.creditGroup}
                             >
                                 <h3 className={styles.label}>
@@ -330,7 +374,7 @@ export function CodexOeuvreDetails({
                                         </li>
                                     ))}
                                 </ul>
-                            </section>
+                            </PixieCard>
                         ))}
                     </div>
                 </CodexFicheSection>

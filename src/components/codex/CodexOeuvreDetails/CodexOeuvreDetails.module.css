@@ -17,17 +17,6 @@
 .fact,
 .event,
 .economic,
-.relation,
-.creditGroup {
-    border: 1px solid var(--color-line);
-    border-radius: var(--radius-medium);
-    background: color-mix(in srgb, var(--color-surface) 92%, transparent);
-    padding: 1.25rem;
-}
-
-.fact,
-.event,
-.economic,
 .relation {
     display: flex;
     flex-direction: column;
