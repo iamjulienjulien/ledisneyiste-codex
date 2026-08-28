@@ -11,6 +11,7 @@ const generalCinemaSymbolSlugs = getSymbolSlugs("general", "cinema");
 const animationTechniqueSymbolSlugs = getSymbolSlugs("techniques", "animation");
 const imageTechniqueSymbolSlugs = getSymbolSlugs("techniques", "images");
 const couleurTechniqueSymbolSlugs = getSymbolSlugs("techniques", "couleur");
+const sonTechniqueSymbolSlugs = getSymbolSlugs("techniques", "son");
 const indexSymbolSlugs = getSymbolSlugs("codex", "index");
 const recompenseTrophySymbolSlugs = getSymbolSlugs("recompenses", "trophees");
 const contributeurBlockSymbolSlugs = getSymbolSlugs("blocs", "contributeurs");
@@ -110,7 +111,7 @@ const typesSpecifiques = [
     },
     {
         name: 'SymbolCollectionName<"techniques">',
-        values: ['"animation"', '"images"', '"couleur"'],
+        values: ['"animation"', '"images"', '"couleur"', '"son"'],
         description: "Collections exposées par le registre des Techniques.",
     },
     {
@@ -212,6 +213,29 @@ const typesSpecifiques = [
         ],
         description:
             "Outils de conception, production et contrôle des couleurs.",
+    },
+    {
+        name: 'SymbolSlug<"techniques", "son">',
+        values: [
+            '"microphone-ruban"',
+            '"enregistreur-optique"',
+            '"synchroniseur-image-son"',
+            '"console-mixage"',
+            '"microphone-condensateur"',
+            '"perche-studio"',
+            '"paravent-acoustique"',
+            '"graveur-disque"',
+            '"magnetophone-bande"',
+            '"matrice-multicanale"',
+            '"piste-densite-variable"',
+            '"piste-surface-variable"',
+            '"generateur-click-track"',
+            '"banc-montage-son"',
+            '"reverberation-plaque"',
+            '"atelier-bruitage"',
+        ],
+        description:
+            "Outils d’enregistrement, synchronisation, montage et bruitage.",
     },
     {
         name: 'SymbolSlug<"recompenses", "trophees">',
@@ -339,7 +363,7 @@ export function PixieSymbolDossier() {
                         ["Mission", "Afficher un symbole typé."],
                         ["Sélection", "registry · collection · slug"],
                         ["Exemple", "codex.index.personnages"],
-                        ["Masters", "Onze séries originales · 1254 px."],
+                        ["Masters", "Douze séries originales · 1254 px."],
                         ["Dérivés", "PNG transparent · 384 px."],
                         ["Accessibilité", "Décoratif par défaut."],
                     ].map(([terme, definition]) => (
@@ -671,6 +695,48 @@ export function PixieSymbolDossier() {
                                 <PixieSymbol
                                     registry="techniques"
                                     collection="couleur"
+                                    slug={slug}
+                                    size="xl"
+                                    className="mx-auto"
+                                />
+                                <h4 className="mt-5 text-xl text-ink">
+                                    {symbole.label}
+                                </h4>
+                                <p className="mt-2 font-mono text-xs text-muted">
+                                    {slug}
+                                </p>
+                            </article>
+                        );
+                    })}
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="pixie-symbol-techniques-son"
+                className="mt-16"
+            >
+                <TitreSequence
+                    id="pixie-symbol-techniques-son"
+                    surTitre="Distribution"
+                    titre="Le son entre en studio"
+                    description="Microphones, enregistrement optique et magnétique, synchronisation, mixage, montage et bruitage suivent la fabrication du son depuis le plateau jusqu’à la piste finale."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+                    {sonTechniqueSymbolSlugs.map((slug) => {
+                        const symbole = getSymbol("techniques", "son", slug);
+
+                        return (
+                            <article
+                                key={slug}
+                                className="bg-surface p-6 text-center"
+                                style={{
+                                    borderTop: `4px solid ${symbole.accent}`,
+                                }}
+                            >
+                                <PixieSymbol
+                                    registry="techniques"
+                                    collection="son"
                                     slug={slug}
                                     size="xl"
                                     className="mx-auto"
