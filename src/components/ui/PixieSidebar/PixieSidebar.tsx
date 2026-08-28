@@ -1,17 +1,17 @@
-import styles from "./PixieDustSidebar.module.css";
+import styles from "./PixieSidebar.module.css";
 import type {
-    PixieDustSidebarAlign,
-    PixieDustSidebarContentMinWidth,
-    PixieDustSidebarGap,
-    PixieDustSidebarProps,
-    PixieDustSidebarSide,
-    PixieDustSidebarSideWidth,
-} from "./PixieDustSidebar.types";
+    PixieSidebarAlign,
+    PixieSidebarContentMinWidth,
+    PixieSidebarGap,
+    PixieSidebarProps,
+    PixieSidebarSide,
+    PixieSidebarSideWidth,
+} from "./PixieSidebar.types";
 
 const sideClasses = {
     start: styles.sideStart,
     end: styles.sideEnd,
-} as const satisfies Record<PixieDustSidebarSide, string>;
+} as const satisfies Record<PixieSidebarSide, string>;
 
 const sideWidthClasses = {
     xs: styles.sideWidthExtraSmall,
@@ -19,13 +19,13 @@ const sideWidthClasses = {
     md: styles.sideWidthMedium,
     lg: styles.sideWidthLarge,
     xl: styles.sideWidthExtraLarge,
-} as const satisfies Record<PixieDustSidebarSideWidth, string>;
+} as const satisfies Record<PixieSidebarSideWidth, string>;
 
 const contentMinWidthClasses = {
     half: styles.contentMinWidthHalf,
     "two-thirds": styles.contentMinWidthTwoThirds,
     "three-quarters": styles.contentMinWidthThreeQuarters,
-} as const satisfies Record<PixieDustSidebarContentMinWidth, string>;
+} as const satisfies Record<PixieSidebarContentMinWidth, string>;
 
 const gapClasses = {
     none: styles.gapNone,
@@ -34,7 +34,7 @@ const gapClasses = {
     md: styles.gapMedium,
     lg: styles.gapLarge,
     xl: styles.gapExtraLarge,
-} as const satisfies Record<PixieDustSidebarGap, string>;
+} as const satisfies Record<PixieSidebarGap, string>;
 
 const rowGapClasses = {
     none: styles.rowGapNone,
@@ -43,7 +43,7 @@ const rowGapClasses = {
     md: styles.rowGapMedium,
     lg: styles.rowGapLarge,
     xl: styles.rowGapExtraLarge,
-} as const satisfies Record<PixieDustSidebarGap, string>;
+} as const satisfies Record<PixieSidebarGap, string>;
 
 const columnGapClasses = {
     none: styles.columnGapNone,
@@ -52,16 +52,16 @@ const columnGapClasses = {
     md: styles.columnGapMedium,
     lg: styles.columnGapLarge,
     xl: styles.columnGapExtraLarge,
-} as const satisfies Record<PixieDustSidebarGap, string>;
+} as const satisfies Record<PixieSidebarGap, string>;
 
 const alignClasses = {
     stretch: styles.alignStretch,
     start: styles.alignStart,
     center: styles.alignCenter,
     end: styles.alignEnd,
-} as const satisfies Record<PixieDustSidebarAlign, string>;
+} as const satisfies Record<PixieSidebarAlign, string>;
 
-export function PixieDustSidebar({
+export function PixieSidebar({
     as: Element = "div",
     side = "start",
     sideWidth = "md",
@@ -74,7 +74,7 @@ export function PixieDustSidebar({
     sidebar,
     children,
     ...elementProps
-}: PixieDustSidebarProps) {
+}: PixieSidebarProps) {
     return (
         <Element
             {...elementProps}
