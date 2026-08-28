@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
-import { AtelierPlaygroundProjection } from "@/components/atelier/AtelierPlaygroundProjection";
+import {
+    AtelierPlaygroundProjection,
+    useAtelierProjection,
+} from "@/components/atelier/AtelierPlaygroundProjection";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
-import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieGrid } from "@/components/ui/PixieGrid";
 import {
@@ -57,7 +59,7 @@ const alignments = [
 const frameWidths = {
     compact: "max-w-sm",
     moyen: "max-w-3xl",
-    large: "max-w-6xl",
+    large: "max-w-none",
 } as const satisfies Record<"compact" | "moyen" | "large", string>;
 
 const archiveTitles = [
@@ -75,8 +77,7 @@ export function PixieDustSidebarPlayground() {
         useState<PixieDustSidebarContentMinWidth>("two-thirds");
     const [gap, setGap] = useState<PixieDustSidebarGap>("xl");
     const [align, setAlign] = useState<PixieDustSidebarAlign>("start");
-    const [light, setLight] = useState<"sombre" | "claire">("sombre");
-    const [frame, setFrame] = useState<"compact" | "moyen" | "large">("moyen");
+    const { lumiere: light, cadre: frame } = useAtelierProjection();
 
     const labelledBy =
         element === "div" ? "" : '    aria-labelledby="sidebar-heading"\n';
@@ -165,11 +166,11 @@ ${panes}
 
     return (
         <div className="overflow-clip border border-line bg-surface">
-            <div className="grid lg:grid-cols-[18rem_1fr]">
+            <div className="atelier-playground-grid grid lg:grid-cols-[18rem_1fr]">
                 <aside className="border-b border-line bg-surface-muted p-6 lg:border-r lg:border-b-0">
                     <h4 className="text-xl text-ink">Table de réglage</h4>
 
-                    <div className="mt-6 space-y-7">
+                    <div className="atelier-playground-controls mt-6 space-y-7">
                         <div>
                             <label
                                 htmlFor="sidebar-element"
@@ -284,14 +285,6 @@ ${panes}
                 </aside>
 
                 <AtelierPlaygroundProjection>
-                    <AtelierRegiePlateau
-                        namePrefix="sidebar"
-                        lumiere={light}
-                        onLumiereChange={setLight}
-                        cadre={frame}
-                        onCadreChange={setFrame}
-                    />
-
                     <div
                         data-projection="originale"
                         data-lumiere={light}

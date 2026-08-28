@@ -30,6 +30,7 @@ import { PixieDustToastDossier } from "./_components/PixieDustToastDossier";
 import { PixieDustLoaderDossier } from "./_components/PixieDustLoaderDossier";
 import { PixieDustSkeletonDossier } from "./_components/PixieDustSkeletonDossier";
 import { AtelierSommaire } from "@/components/atelier/AtelierSommaire";
+import { AtelierProjectionProvider } from "@/components/atelier/AtelierPlaygroundProjection";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PalettesPellicule } from "./_components/PalettesPellicule";
 
@@ -391,7 +392,7 @@ const plateauxSommaire = categories.map((categorie) => ({
 
 export default function AtelierPage() {
     return (
-        <div className="py-12 sm:py-16">
+        <AtelierProjectionProvider className="py-12 sm:py-16">
             <AtelierSommaire plateaux={plateauxSommaire} />
 
             <section aria-labelledby="atelier-introduction">
@@ -962,6 +963,6 @@ export default function AtelierPage() {
                 <PixieDustLoaderDossier />
                 <PixieDustSkeletonDossier />
             </section>
-        </div>
+        </AtelierProjectionProvider>
     );
 }

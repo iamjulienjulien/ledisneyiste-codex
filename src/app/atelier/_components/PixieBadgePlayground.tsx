@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
-import { AtelierPlaygroundProjection } from "@/components/atelier/AtelierPlaygroundProjection";
+import {
+    AtelierPlaygroundProjection,
+    useAtelierProjection,
+} from "@/components/atelier/AtelierPlaygroundProjection";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
-import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import {
     PixieBadge,
     type PixieBadgeShape,
@@ -75,8 +77,7 @@ export function PixieBadgePlayground() {
     const [withIcon, setWithIcon] = useState(false);
     const [color, setColor] =
         useState<AtelierAnimationColorSlug>("rouge-crayon");
-    const [light, setLight] = useState<"sombre" | "claire">("sombre");
-    const [frame, setFrame] = useState<"compact" | "moyen" | "large">("large");
+    const { lumiere: light, cadre: frame } = useAtelierProjection();
 
     const registries = Array.from(
         new Set(metadataSelections.map((selection) => selection.registry)),
@@ -159,11 +160,11 @@ export function PixieBadgePlayground() {
 
     return (
         <div className="relative z-[10000] overflow-clip border border-line bg-surface">
-            <div className="grid lg:grid-cols-[18rem_1fr]">
+            <div className="atelier-playground-grid grid lg:grid-cols-[18rem_1fr]">
                 <aside className="border-b border-line bg-surface-muted p-6 lg:border-r lg:border-b-0">
                     <h4 className="text-xl text-ink">Table de réglage</h4>
 
-                    <div className="mt-6 space-y-7">
+                    <div className="atelier-playground-controls mt-6 space-y-7">
                         <fieldset>
                             <legend className="text-sm font-medium text-ink">
                                 Source
@@ -400,14 +401,6 @@ export function PixieBadgePlayground() {
                 </aside>
 
                 <AtelierPlaygroundProjection>
-                    <AtelierRegiePlateau
-                        namePrefix="badge"
-                        lumiere={light}
-                        onLumiereChange={setLight}
-                        cadre={frame}
-                        onCadreChange={setFrame}
-                    />
-
                     <div
                         data-projection="originale"
                         data-lumiere={light}

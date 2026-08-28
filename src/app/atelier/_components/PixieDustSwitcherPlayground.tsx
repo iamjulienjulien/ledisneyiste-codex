@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
-import { AtelierPlaygroundProjection } from "@/components/atelier/AtelierPlaygroundProjection";
+import {
+    AtelierPlaygroundProjection,
+    useAtelierProjection,
+} from "@/components/atelier/AtelierPlaygroundProjection";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
-import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import { PixieCard } from "@/components/ui/PixieCard";
 import {
     PixieDustSwitcher,
@@ -43,7 +45,7 @@ const alignments = [
 const frameWidths = {
     compact: "max-w-sm",
     moyen: "max-w-3xl",
-    large: "max-w-6xl",
+    large: "max-w-none",
 } as const satisfies Record<"compact" | "moyen" | "large", string>;
 
 const items = [
@@ -81,8 +83,7 @@ export function PixieDustSwitcherPlayground() {
     const [gap, setGap] = useState<PixieDustSwitcherGap>("md");
     const [align, setAlign] = useState<PixieDustSwitcherAlign>("stretch");
     const [itemCount, setItemCount] = useState<PixieDustSwitcherLimit>(4);
-    const [light, setLight] = useState<"sombre" | "claire">("sombre");
-    const [frame, setFrame] = useState<"compact" | "moyen" | "large">("moyen");
+    const { lumiere: light, cadre: frame } = useAtelierProjection();
 
     const selectedItems = items.slice(0, itemCount);
     const childCode = selectedItems
@@ -120,11 +121,11 @@ ${childCode}
 
     return (
         <div className="overflow-clip border border-line bg-surface">
-            <div className="grid lg:grid-cols-[18rem_1fr]">
+            <div className="atelier-playground-grid grid lg:grid-cols-[18rem_1fr]">
                 <aside className="border-b border-line bg-surface-muted p-6 lg:border-r lg:border-b-0">
                     <h4 className="text-xl text-ink">Table de réglage</h4>
 
-                    <div className="mt-6 space-y-7">
+                    <div className="atelier-playground-controls mt-6 space-y-7">
                         <div>
                             <label
                                 htmlFor="switcher-element"
@@ -262,14 +263,6 @@ ${childCode}
                 </aside>
 
                 <AtelierPlaygroundProjection>
-                    <AtelierRegiePlateau
-                        namePrefix="switcher"
-                        lumiere={light}
-                        onLumiereChange={setLight}
-                        cadre={frame}
-                        onCadreChange={setFrame}
-                    />
-
                     <div
                         data-projection="originale"
                         data-lumiere={light}

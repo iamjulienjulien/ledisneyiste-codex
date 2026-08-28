@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
-import { AtelierPlaygroundProjection } from "@/components/atelier/AtelierPlaygroundProjection";
+import {
+    AtelierPlaygroundProjection,
+    useAtelierProjection,
+} from "@/components/atelier/AtelierPlaygroundProjection";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
-import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import {
     PixieCallout,
     type PixieCalloutAccentPosition,
@@ -64,7 +66,7 @@ const colorSlugs = getAtelierAnimationColorSlugs();
 const frameWidths = {
     compact: "max-w-sm",
     moyen: "max-w-xl",
-    large: "max-w-3xl",
+    large: "max-w-none",
 } as const satisfies Record<"compact" | "moyen" | "large", string>;
 
 const selectClassName =
@@ -91,8 +93,7 @@ export function PixieCalloutPlayground() {
     const [showEyebrow, setShowEyebrow] = useState(true);
     const [showHeading, setShowHeading] = useState(true);
     const [showFooter, setShowFooter] = useState(true);
-    const [light, setLight] = useState<"sombre" | "claire">("sombre");
-    const [frame, setFrame] = useState<"compact" | "moyen" | "large">("moyen");
+    const { lumiere: light, cadre: frame } = useAtelierProjection();
 
     const optionalProps = [
         color ? `    color="${color}"` : null,
@@ -143,11 +144,11 @@ export function PixieCalloutPlayground() {
 
     return (
         <div className="overflow-clip border border-line bg-surface">
-            <div className="grid lg:grid-cols-[19rem_1fr]">
+            <div className="atelier-playground-grid grid lg:grid-cols-[19rem_1fr]">
                 <aside className="border-b border-line bg-surface-muted p-6 lg:border-r lg:border-b-0">
                     <h4 className="text-xl text-ink">Table de réglage</h4>
 
-                    <div className="mt-6 space-y-7">
+                    <div className="atelier-playground-controls mt-6 space-y-7">
                         <div>
                             <label
                                 htmlFor="callout-element"
@@ -421,14 +422,6 @@ export function PixieCalloutPlayground() {
                 </aside>
 
                 <AtelierPlaygroundProjection>
-                    <AtelierRegiePlateau
-                        namePrefix="callout"
-                        lumiere={light}
-                        onLumiereChange={setLight}
-                        cadre={frame}
-                        onCadreChange={setFrame}
-                    />
-
                     <div
                         data-projection="originale"
                         data-lumiere={light}

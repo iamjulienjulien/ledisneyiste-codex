@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
-import { AtelierPlaygroundProjection } from "@/components/atelier/AtelierPlaygroundProjection";
+import {
+    AtelierPlaygroundProjection,
+    useAtelierProjection,
+} from "@/components/atelier/AtelierPlaygroundProjection";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
-import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import { PixieBadge, type PixieBadgeSize } from "@/components/ui/PixieBadge";
 import {
     PixieCluster,
@@ -42,7 +44,7 @@ const alignments = [
 const frameWidths = {
     compact: "max-w-xs",
     moyen: "max-w-xl",
-    large: "max-w-4xl",
+    large: "max-w-none",
 } as const satisfies Record<"compact" | "moyen" | "large", string>;
 
 const previewItems = [
@@ -72,8 +74,7 @@ export function PixieClusterPlayground() {
     const [gap, setGap] = useState<PixieClusterGap>("sm");
     const [justify, setJustify] = useState<PixieClusterJustify>("start");
     const [align, setAlign] = useState<PixieClusterAlign>("center");
-    const [light, setLight] = useState<"sombre" | "claire">("sombre");
-    const [frame, setFrame] = useState<"compact" | "moyen" | "large">("moyen");
+    const { lumiere: light, cadre: frame } = useAtelierProjection();
 
     const semanticProp =
         element === "section"
@@ -106,11 +107,11 @@ ${childrenCode}
 
     return (
         <div className="overflow-clip border border-line bg-surface">
-            <div className="grid lg:grid-cols-[18rem_1fr]">
+            <div className="atelier-playground-grid grid lg:grid-cols-[18rem_1fr]">
                 <aside className="border-b border-line bg-surface-muted p-6 lg:border-r lg:border-b-0">
                     <h4 className="text-xl text-ink">Table de réglage</h4>
 
-                    <div className="mt-6 space-y-7">
+                    <div className="atelier-playground-controls mt-6 space-y-7">
                         <div>
                             <label
                                 htmlFor="cluster-element"
@@ -191,14 +192,6 @@ ${childrenCode}
                 </aside>
 
                 <AtelierPlaygroundProjection>
-                    <AtelierRegiePlateau
-                        namePrefix="cluster"
-                        lumiere={light}
-                        onLumiereChange={setLight}
-                        cadre={frame}
-                        onCadreChange={setFrame}
-                    />
-
                     <div
                         data-projection="originale"
                         data-lumiere={light}

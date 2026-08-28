@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
+import { useAtelierProjection } from "@/components/atelier/AtelierPlaygroundProjection";
 import type { AtelierSommaireProps } from "./AtelierSommaire.types";
 import styles from "./AtelierSommaire.module.css";
 
@@ -9,6 +11,7 @@ function idDepuisHref(href: `#${string}`) {
 }
 
 export function AtelierSommaire({ plateaux }: AtelierSommaireProps) {
+    const { lumiere, setLumiere, cadre, setCadre } = useAtelierProjection();
     const liens = useMemo(
         () =>
             plateaux.flatMap((plateau) => [
@@ -172,6 +175,67 @@ export function AtelierSommaire({ plateaux }: AtelierSommaireProps) {
                         </span>
                     </div>
                 </header>
+
+                <section
+                    className={styles.settings}
+                    aria-labelledby="atelier-projection-settings"
+                >
+                    <h3
+                        id="atelier-projection-settings"
+                        className={styles.settingsTitle}
+                    >
+                        Projection globale
+                    </h3>
+
+                    <fieldset className={styles.settingsGroup}>
+                        <legend className={styles.settingsLegend}>
+                            Lumière
+                        </legend>
+                        <div className={styles.settingsOptions}>
+                            <AtelierOptionRadio
+                                name="atelier-lumiere"
+                                value="sombre"
+                                label="Sombre"
+                                selectedValue={lumiere}
+                                onChange={setLumiere}
+                            />
+                            <AtelierOptionRadio
+                                name="atelier-lumiere"
+                                value="claire"
+                                label="Claire"
+                                selectedValue={lumiere}
+                                onChange={setLumiere}
+                            />
+                        </div>
+                    </fieldset>
+
+                    <fieldset className={styles.settingsGroup}>
+                        <legend className={styles.settingsLegend}>Cadre</legend>
+                        <div className={styles.settingsOptions}>
+                            <AtelierOptionRadio
+                                name="atelier-cadre"
+                                value="compact"
+                                label="Compact"
+                                selectedValue={cadre}
+                                onChange={setCadre}
+                            />
+                            <AtelierOptionRadio
+                                name="atelier-cadre"
+                                value="moyen"
+                                label="Moyen"
+                                selectedValue={cadre}
+                                onChange={setCadre}
+                            />
+                            <AtelierOptionRadio
+                                name="atelier-cadre"
+                                value="large"
+                                label="Large"
+                                selectedValue={cadre}
+                                onChange={setCadre}
+                            />
+                        </div>
+                    </fieldset>
+                </section>
 
                 <nav
                     aria-label="Sommaire de l’Atelier"

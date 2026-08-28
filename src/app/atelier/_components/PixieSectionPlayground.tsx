@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
-import { AtelierPlaygroundProjection } from "@/components/atelier/AtelierPlaygroundProjection";
+import {
+    AtelierPlaygroundProjection,
+    useAtelierProjection,
+} from "@/components/atelier/AtelierPlaygroundProjection";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
-import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import { PixieBadge } from "@/components/ui/PixieBadge";
 import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieCluster } from "@/components/ui/PixieCluster";
@@ -69,7 +71,7 @@ const alignments = [
 const frameWidths = {
     compact: "max-w-sm",
     moyen: "max-w-2xl",
-    large: "max-w-5xl",
+    large: "max-w-none",
 } as const satisfies Record<"compact" | "moyen" | "large", string>;
 
 export function PixieSectionPlayground() {
@@ -82,8 +84,7 @@ export function PixieSectionPlayground() {
     const [spacingEnd, setSpacingEnd] = useState<SpacingOverride>("inherit");
     const [gap, setGap] = useState<PixieSectionGap>("lg");
     const [align, setAlign] = useState<PixieSectionAlign>("stretch");
-    const [light, setLight] = useState<"sombre" | "claire">("sombre");
-    const [frame, setFrame] = useState<"compact" | "moyen" | "large">("moyen");
+    const { lumiere: light, cadre: frame } = useAtelierProjection();
 
     const labelledBy =
         element === "div" ? "" : '    aria-labelledby="section-heading"\n';
@@ -113,11 +114,11 @@ ${labelledBy}>
 
     return (
         <div className="overflow-clip border border-line bg-surface">
-            <div className="grid lg:grid-cols-[18rem_1fr]">
+            <div className="atelier-playground-grid grid lg:grid-cols-[18rem_1fr]">
                 <aside className="border-b border-line bg-surface-muted p-6 lg:border-r lg:border-b-0">
                     <h4 className="text-xl text-ink">Table de réglage</h4>
 
-                    <div className="mt-6 space-y-7">
+                    <div className="atelier-playground-controls mt-6 space-y-7">
                         <div>
                             <label
                                 htmlFor="section-element"
@@ -292,14 +293,6 @@ ${labelledBy}>
                 </aside>
 
                 <AtelierPlaygroundProjection>
-                    <AtelierRegiePlateau
-                        namePrefix="section"
-                        lumiere={light}
-                        onLumiereChange={setLight}
-                        cadre={frame}
-                        onCadreChange={setFrame}
-                    />
-
                     <div
                         data-projection="originale"
                         data-lumiere={light}

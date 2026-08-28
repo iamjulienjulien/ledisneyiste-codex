@@ -2,14 +2,15 @@
 
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
-import { AtelierPlaygroundProjection } from "@/components/atelier/AtelierPlaygroundProjection";
+import {
+    type AtelierCadre,
+    AtelierPlaygroundProjection,
+    useAtelierProjection,
+} from "@/components/atelier/AtelierPlaygroundProjection";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
-import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import { PixieSymbol, type PixieSymbolSize } from "@/components/ui/PixieSymbol";
 import { getSymbol, getSymbolSlugs } from "@/registry/symbols";
 
-type Lumiere = "sombre" | "claire";
-type Cadre = "compact" | "moyen" | "large";
 type PixieSymbolPresetSize = Exclude<PixieSymbolSize, number>;
 
 const generalCinemaSymbolOptions = getSymbolSlugs("general", "cinema").map(
@@ -480,7 +481,7 @@ const tailles: ReadonlyArray<{
     { value: "xl", label: "Très grand" },
 ];
 
-const largeurParCadre: Record<Cadre, string> = {
+const largeurParCadre: Record<AtelierCadre, string> = {
     compact: "max-w-64",
     moyen: "max-w-md",
     large: "max-w-none",
@@ -489,8 +490,7 @@ const largeurParCadre: Record<Cadre, string> = {
 export function PixieSymbolPlayground() {
     const [symbolKey, setSymbolKey] = useState<string>(symbolOptions[0].key);
     const [size, setSize] = useState<PixieSymbolPresetSize>("xl");
-    const [lumiere, setLumiere] = useState<Lumiere>("sombre");
-    const [cadre, setCadre] = useState<Cadre>("large");
+    const { lumiere, cadre } = useAtelierProjection();
     const [informatif, setInformatif] = useState(false);
     const symbolOption =
         symbolOptions.find((option) => option.key === symbolKey) ??
@@ -515,11 +515,11 @@ export function PixieSymbolPlayground() {
 
     return (
         <div className="relative z-[10000] overflow-clip border border-line bg-surface">
-            <div className="grid lg:grid-cols-[18rem_1fr]">
+            <div className="atelier-playground-grid grid lg:grid-cols-[18rem_1fr]">
                 <aside className="border-b border-line bg-surface-muted p-6 lg:border-r lg:border-b-0">
                     <h4 className="text-xl text-ink">Table de réglage</h4>
 
-                    <div className="mt-6 space-y-7">
+                    <div className="atelier-playground-controls mt-6 space-y-7">
                         <div>
                             <label
                                 htmlFor="pixie-symbol-selection"
@@ -587,14 +587,6 @@ export function PixieSymbolPlayground() {
                 </aside>
 
                 <AtelierPlaygroundProjection>
-                    <AtelierRegiePlateau
-                        namePrefix="pixie-symbol"
-                        lumiere={lumiere}
-                        onLumiereChange={setLumiere}
-                        cadre={cadre}
-                        onCadreChange={setCadre}
-                    />
-
                     <div
                         data-projection="originale"
                         data-lumiere={lumiere}

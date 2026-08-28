@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
-import { AtelierPlaygroundProjection } from "@/components/atelier/AtelierPlaygroundProjection";
+import {
+    AtelierPlaygroundProjection,
+    useAtelierProjection,
+} from "@/components/atelier/AtelierPlaygroundProjection";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
-import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import {
     PixieDustSearchField,
     type PixieDustSearchFieldLayout,
@@ -60,7 +62,7 @@ const colors: readonly Readonly<{
 const frameWidths = {
     compact: "max-w-sm",
     moyen: "max-w-xl",
-    large: "max-w-3xl",
+    large: "max-w-none",
 } as const satisfies Record<"compact" | "moyen" | "large", string>;
 
 export function PixieDustSearchFieldPlayground() {
@@ -77,8 +79,7 @@ export function PixieDustSearchFieldPlayground() {
     const [invalid, setInvalid] = useState(false);
     const [disabled, setDisabled] = useState(false);
     const [required, setRequired] = useState(false);
-    const [light, setLight] = useState<"sombre" | "claire">("sombre");
-    const [frame, setFrame] = useState<"compact" | "moyen" | "large">("moyen");
+    const { lumiere: light, cadre: frame } = useAtelierProjection();
 
     const colorProp = color === "inherit" ? "" : `\n    color="${color}"`;
     const code = `<PixieDustSearchField
@@ -116,11 +117,11 @@ export function PixieDustSearchFieldPlayground() {
 
     return (
         <div className="overflow-clip border border-line bg-surface">
-            <div className="grid lg:grid-cols-[18rem_1fr]">
+            <div className="atelier-playground-grid grid lg:grid-cols-[18rem_1fr]">
                 <aside className="border-b border-line bg-surface-muted p-6 lg:border-r lg:border-b-0">
                     <h4 className="text-xl text-ink">Table de réglage</h4>
 
-                    <div className="mt-6 space-y-7">
+                    <div className="atelier-playground-controls mt-6 space-y-7">
                         <fieldset>
                             <legend className="text-sm font-medium text-ink">
                                 Variante
@@ -225,14 +226,6 @@ export function PixieDustSearchFieldPlayground() {
                 </aside>
 
                 <AtelierPlaygroundProjection>
-                    <AtelierRegiePlateau
-                        namePrefix="search-field"
-                        lumiere={light}
-                        onLumiereChange={setLight}
-                        cadre={frame}
-                        onCadreChange={setFrame}
-                    />
-
                     <div
                         data-projection="originale"
                         data-lumiere={light}

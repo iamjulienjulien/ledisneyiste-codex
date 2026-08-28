@@ -1,2 +1,12 @@
-export { AtelierPlaygroundProjection } from "./AtelierPlaygroundProjection";
-export type { AtelierPlaygroundProjectionProps } from "./AtelierPlaygroundProjection.types";
+export {
+    AtelierPlaygroundProjection,
+    AtelierProjectionProvider,
+    useAtelierProjection,
+} from "./AtelierPlaygroundProjection";
+export type {
+    AtelierCadre,
+    AtelierLumiere,
+    AtelierPlaygroundProjectionProps,
+    AtelierProjectionContextValue,
+    AtelierProjectionProviderProps,
+} from "./AtelierPlaygroundProjection.types";

@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
-import { AtelierPlaygroundProjection } from "@/components/atelier/AtelierPlaygroundProjection";
+import {
+    AtelierPlaygroundProjection,
+    useAtelierProjection,
+} from "@/components/atelier/AtelierPlaygroundProjection";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
-import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import { PixieButton } from "@/components/ui/PixieButton";
 import {
     PixieDustToast,
@@ -45,7 +47,7 @@ const sizes = [
 const frameWidths = {
     compact: "max-w-sm",
     moyen: "max-w-xl",
-    large: "max-w-3xl",
+    large: "max-w-none",
 } as const;
 
 export function PixieDustToastPlayground() {
@@ -61,8 +63,7 @@ export function PixieDustToastPlayground() {
     const [withTitle, setWithTitle] = useState(true);
     const [withAction, setWithAction] = useState(false);
     const [open, setOpen] = useState(true);
-    const [light, setLight] = useState<"sombre" | "claire">("sombre");
-    const [frame, setFrame] = useState<"compact" | "moyen" | "large">("moyen");
+    const { lumiere: light, cadre: frame } = useAtelierProjection();
 
     const code = `<PixieDustToast
     tone="${tone}"
@@ -74,10 +75,10 @@ export function PixieDustToastPlayground() {
 
     return (
         <div className="overflow-clip border border-line bg-surface">
-            <div className="grid lg:grid-cols-[18rem_1fr]">
+            <div className="atelier-playground-grid grid lg:grid-cols-[18rem_1fr]">
                 <aside className="border-b border-line bg-surface-muted p-6 lg:border-r lg:border-b-0">
                     <h4 className="text-xl text-ink">Table de réglage</h4>
-                    <div className="mt-6 space-y-7">
+                    <div className="atelier-playground-controls mt-6 space-y-7">
                         {[
                             ["Tonalité", "toast-tone", tones, tone, setTone],
                             [
@@ -193,13 +194,7 @@ export function PixieDustToastPlayground() {
                 </aside>
 
                 <AtelierPlaygroundProjection>
-                    <AtelierRegiePlateau
-                        namePrefix="toast"
-                        lumiere={light}
-                        onLumiereChange={setLight}
-                        cadre={frame}
-                        onCadreChange={setFrame}
-                    />
+                    {" "}
                     <div
                         data-projection="originale"
                         data-lumiere={light}

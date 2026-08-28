@@ -97,6 +97,39 @@
     padding: 1.25rem 1.25rem 1rem 1.5rem;
 }
 
+.settings {
+    display: grid;
+    gap: 1rem;
+    border-bottom: 1px solid var(--color-line);
+    background: var(--color-surface-muted);
+    padding: 1rem 1.25rem 1.1rem 1.5rem;
+}
+
+.settingsTitle,
+.settingsLegend {
+    color: var(--color-muted);
+    font-family: var(--font-eyebrow), sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.settingsGroup {
+    min-width: 0;
+}
+
+.settingsOptions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.settingsOptions label {
+    font-size: 0.75rem;
+}
+
 .eyebrow,
 .numero {
     font-family: var(--font-eyebrow), sans-serif;
@@ -132,7 +165,7 @@
 }
 
 .navigation {
-    max-height: calc(100vh - 7.5rem);
+    max-height: calc(100vh - 20rem);
     overflow-y: auto;
     overscroll-behavior: contain;
     padding: 0.75rem 0.75rem 1rem 1rem;
@@ -256,7 +289,7 @@
     }
 
     .navigation {
-        max-height: calc(100vh - 9.5rem);
+        max-height: calc(100vh - 22rem);
     }
 }
 

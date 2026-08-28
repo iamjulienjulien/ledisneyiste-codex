@@ -2,9 +2,12 @@
 
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
-import { AtelierPlaygroundProjection } from "@/components/atelier/AtelierPlaygroundProjection";
+import {
+    type AtelierCadre,
+    AtelierPlaygroundProjection,
+    useAtelierProjection,
+} from "@/components/atelier/AtelierPlaygroundProjection";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
-import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import {
     PixieLink,
     type PixieLinkIndicator,
@@ -15,9 +18,6 @@ import {
     getAtelierAnimationColorSlugs,
 } from "@/registry/colors";
 import type { AtelierAnimationColorSlug } from "@/types/colors";
-
-type Light = "sombre" | "claire";
-type Frame = "compact" | "moyen" | "large";
 
 const variants: ReadonlyArray<{
     value: PixieLinkVariant;
@@ -51,7 +51,7 @@ const indicators: ReadonlyArray<{
     { value: "anchor", label: "Ancre" },
 ];
 
-const frameWidths: Record<Frame, string> = {
+const frameWidths: Record<AtelierCadre, string> = {
     compact: "max-w-64",
     moyen: "max-w-md",
     large: "max-w-none",
@@ -67,8 +67,7 @@ export function PixieLinkPlayground() {
     const [indicator, setIndicator] = useState<PixieLinkIndicator>("arrow");
     const [focusPreview, setFocusPreview] = useState(false);
     const [currentPage, setCurrentPage] = useState(false);
-    const [light, setLight] = useState<Light>("sombre");
-    const [frame, setFrame] = useState<Frame>("large");
+    const { lumiere: light, cadre: frame } = useAtelierProjection();
 
     const safeLabel = label || "Lien";
     const safeHref = href || "/";
@@ -85,11 +84,11 @@ export function PixieLinkPlayground() {
 
     return (
         <div className="relative z-[10000] overflow-clip border border-line bg-surface">
-            <div className="grid lg:grid-cols-[18rem_1fr]">
+            <div className="atelier-playground-grid grid lg:grid-cols-[18rem_1fr]">
                 <aside className="border-b border-line bg-surface-muted p-6 lg:border-r lg:border-b-0">
                     <h4 className="text-xl text-ink">Table de réglage</h4>
 
-                    <div className="mt-6 space-y-7">
+                    <div className="atelier-playground-controls mt-6 space-y-7">
                         <div>
                             <label
                                 htmlFor="lien-label"
@@ -215,14 +214,6 @@ export function PixieLinkPlayground() {
                 </aside>
 
                 <AtelierPlaygroundProjection>
-                    <AtelierRegiePlateau
-                        namePrefix="lien"
-                        lumiere={light}
-                        onLumiereChange={setLight}
-                        cadre={frame}
-                        onCadreChange={setFrame}
-                    />
-
                     <div
                         data-projection="originale"
                         data-lumiere={light}

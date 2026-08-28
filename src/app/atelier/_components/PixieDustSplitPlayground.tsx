@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
-import { AtelierPlaygroundProjection } from "@/components/atelier/AtelierPlaygroundProjection";
+import {
+    AtelierPlaygroundProjection,
+    useAtelierProjection,
+} from "@/components/atelier/AtelierPlaygroundProjection";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
-import { AtelierRegiePlateau } from "@/components/atelier/AtelierRegiePlateau";
 import { PixieBadge } from "@/components/ui/PixieBadge";
 import { PixieCluster } from "@/components/ui/PixieCluster";
 import { PixieFrame } from "@/components/ui/PixieFrame";
@@ -52,7 +54,7 @@ const alignments = [
 const frameWidths = {
     compact: "max-w-sm",
     moyen: "max-w-3xl",
-    large: "max-w-6xl",
+    large: "max-w-none",
 } as const satisfies Record<"compact" | "moyen" | "large", string>;
 
 export function PixieDustSplitPlayground() {
@@ -62,8 +64,7 @@ export function PixieDustSplitPlayground() {
         useState<PixieDustSplitMinPaneWidth>("md");
     const [gap, setGap] = useState<PixieDustSplitGap>("xl");
     const [align, setAlign] = useState<PixieDustSplitAlign>("center");
-    const [light, setLight] = useState<"sombre" | "claire">("sombre");
-    const [frame, setFrame] = useState<"compact" | "moyen" | "large">("moyen");
+    const { lumiere: light, cadre: frame } = useAtelierProjection();
 
     const labelledBy =
         element === "div" ? "" : '    aria-labelledby="split-heading"\n';
@@ -80,11 +81,11 @@ ${labelledBy}>
 
     return (
         <div className="overflow-clip border border-line bg-surface">
-            <div className="grid lg:grid-cols-[18rem_1fr]">
+            <div className="atelier-playground-grid grid lg:grid-cols-[18rem_1fr]">
                 <aside className="border-b border-line bg-surface-muted p-6 lg:border-r lg:border-b-0">
                     <h4 className="text-xl text-ink">Table de réglage</h4>
 
-                    <div className="mt-6 space-y-7">
+                    <div className="atelier-playground-controls mt-6 space-y-7">
                         <div>
                             <label
                                 htmlFor="split-element"
@@ -182,14 +183,6 @@ ${labelledBy}>
                 </aside>
 
                 <AtelierPlaygroundProjection>
-                    <AtelierRegiePlateau
-                        namePrefix="split"
-                        lumiere={light}
-                        onLumiereChange={setLight}
-                        cadre={frame}
-                        onCadreChange={setFrame}
-                    />
-
                     <div
                         data-projection="originale"
                         data-lumiere={light}
