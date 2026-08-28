@@ -4,6 +4,7 @@ export type {
     PixieDustSwitcherElement,
     PixieDustSwitcherGap,
     PixieDustSwitcherLimit,
+    PixieDustSwitcherLayout,
     PixieDustSwitcherProps,
     PixieDustSwitcherThreshold,
 } from "./PixieDustSwitcher.types";

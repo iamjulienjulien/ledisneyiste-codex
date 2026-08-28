@@ -2,7 +2,8 @@
     display: flex;
     min-width: 0;
     flex-wrap: wrap;
-    gap: var(--pixie-switcher-gap);
+    row-gap: var(--pixie-switcher-row-gap, var(--pixie-switcher-gap));
+    column-gap: var(--pixie-switcher-column-gap, var(--pixie-switcher-gap));
 }
 
 .root > * {
@@ -27,17 +28,39 @@
     --pixie-switcher-threshold: 60rem;
 }
 
-.limitTwo > :nth-last-child(n + 3),
-.limitTwo > :nth-last-child(n + 3) ~ *,
-.limitThree > :nth-last-child(n + 4),
-.limitThree > :nth-last-child(n + 4) ~ *,
-.limitFour > :nth-last-child(n + 5),
-.limitFour > :nth-last-child(n + 5) ~ *,
-.limitFive > :nth-last-child(n + 6),
-.limitFive > :nth-last-child(n + 6) ~ *,
-.limitSix > :nth-last-child(n + 7),
-.limitSix > :nth-last-child(n + 7) ~ * {
+.thresholdExtraLarge {
+    --pixie-switcher-threshold: 72rem;
+}
+
+.layoutAuto.limitTwo > :nth-last-child(n + 3),
+.layoutAuto.limitTwo > :nth-last-child(n + 3) ~ *,
+.layoutAuto.limitThree > :nth-last-child(n + 4),
+.layoutAuto.limitThree > :nth-last-child(n + 4) ~ *,
+.layoutAuto.limitFour > :nth-last-child(n + 5),
+.layoutAuto.limitFour > :nth-last-child(n + 5) ~ *,
+.layoutAuto.limitFive > :nth-last-child(n + 6),
+.layoutAuto.limitFive > :nth-last-child(n + 6) ~ *,
+.layoutAuto.limitSix > :nth-last-child(n + 7),
+.layoutAuto.limitSix > :nth-last-child(n + 7) ~ * {
     flex-basis: 100%;
+}
+
+.layoutRow {
+    flex-wrap: nowrap;
+}
+
+.layoutRow > * {
+    flex-basis: 0;
+}
+
+.layoutStack {
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.layoutStack > * {
+    width: 100%;
+    flex-basis: auto;
 }
 
 .gapNone {
@@ -62,6 +85,54 @@
 
 .gapExtraLarge {
     --pixie-switcher-gap: 3rem;
+}
+
+.rowGapNone {
+    --pixie-switcher-row-gap: 0rem;
+}
+
+.rowGapExtraSmall {
+    --pixie-switcher-row-gap: 0.5rem;
+}
+
+.rowGapSmall {
+    --pixie-switcher-row-gap: 1rem;
+}
+
+.rowGapMedium {
+    --pixie-switcher-row-gap: 1.5rem;
+}
+
+.rowGapLarge {
+    --pixie-switcher-row-gap: 2rem;
+}
+
+.rowGapExtraLarge {
+    --pixie-switcher-row-gap: 3rem;
+}
+
+.columnGapNone {
+    --pixie-switcher-column-gap: 0rem;
+}
+
+.columnGapExtraSmall {
+    --pixie-switcher-column-gap: 0.5rem;
+}
+
+.columnGapSmall {
+    --pixie-switcher-column-gap: 1rem;
+}
+
+.columnGapMedium {
+    --pixie-switcher-column-gap: 1.5rem;
+}
+
+.columnGapLarge {
+    --pixie-switcher-column-gap: 2rem;
+}
+
+.columnGapExtraLarge {
+    --pixie-switcher-column-gap: 3rem;
 }
 
 .alignStretch {
