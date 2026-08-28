@@ -1,7 +1,5 @@
 "use client";
 
-import { PixieSelect } from "@/components/ui/PixieSelect";
-
 import { useState } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
 import {
@@ -15,17 +13,29 @@ import {
     type PixieDustSwitcherAlign,
     type PixieDustSwitcherElement,
     type PixieDustSwitcherGap,
+    type PixieDustSwitcherLayout,
     type PixieDustSwitcherLimit,
     type PixieDustSwitcherThreshold,
 } from "@/components/ui/PixieDustSwitcher";
+import { PixieSelect } from "@/components/ui/PixieSelect";
 
-const elements = ["div", "ul", "ol"] as const;
+type PixieDustSwitcherItemCount = Exclude<PixieDustSwitcherLimit, false>;
+type PixieDustSwitcherGapOverride = "inherit" | PixieDustSwitcherGap;
+
+const elements = ["div", "section", "nav", "ul", "ol"] as const;
+
+const layouts = [
+    { value: "auto", label: "Automatique" },
+    { value: "row", label: "Rangée imposée" },
+    { value: "stack", label: "Pile imposée" },
+] as const;
 
 const thresholds = [
     { value: "xs", label: "Très petit · 30 rem" },
     { value: "sm", label: "Petit · 40 rem" },
     { value: "md", label: "Moyen · 50 rem" },
     { value: "lg", label: "Grand · 60 rem" },
+    { value: "xl", label: "Très grand · 72 rem" },
 ] as const;
 
 const gaps = [
@@ -79,31 +89,44 @@ function SwitcherItem({
 
 export function PixieDustSwitcherPlayground() {
     const [element, setElement] = useState<PixieDustSwitcherElement>("div");
+    const [layout, setLayout] = useState<PixieDustSwitcherLayout>("auto");
     const [threshold, setThreshold] =
         useState<PixieDustSwitcherThreshold>("md");
     const [limit, setLimit] = useState<PixieDustSwitcherLimit>(4);
     const [gap, setGap] = useState<PixieDustSwitcherGap>("md");
+    const [rowGap, setRowGap] =
+        useState<PixieDustSwitcherGapOverride>("inherit");
+    const [columnGap, setColumnGap] =
+        useState<PixieDustSwitcherGapOverride>("inherit");
     const [align, setAlign] = useState<PixieDustSwitcherAlign>("stretch");
-    const [itemCount, setItemCount] = useState<PixieDustSwitcherLimit>(4);
+    const [itemCount, setItemCount] = useState<PixieDustSwitcherItemCount>(4);
     const { lumiere: light, cadre: frame } = useAtelierProjection();
 
     const selectedItems = items.slice(0, itemCount);
+    const listElement = element === "ul" || element === "ol";
     const childCode = selectedItems
         .map(([title]) =>
-            element === "div"
-                ? `    <Card>${title}</Card>`
-                : `    <li><Card>${title}</Card></li>`,
+            listElement
+                ? `    <li><Card>${title}</Card></li>`
+                : `    <Card>${title}</Card>`,
         )
         .join("\n");
-    const code = `<PixieDustSwitcher
-    as="${element}"
-    threshold="${threshold}"
-    limit={${limit}}
-    gap="${gap}"
-    align="${align}"
->
-${childCode}
-</PixieDustSwitcher>`;
+    const settings = [
+        `    as="${element}"`,
+        `    layout="${layout}"`,
+        ...(layout === "auto"
+            ? [
+                  `    threshold="${threshold}"`,
+                  `    limit={${limit === false ? "false" : limit}}`,
+              ]
+            : []),
+        `    gap="${gap}"`,
+        ...(rowGap === "inherit" ? [] : [`    rowGap="${rowGap}"`]),
+        ...(columnGap === "inherit" ? [] : [`    columnGap="${columnGap}"`]),
+        `    align="${align}"`,
+        ...(element === "nav" ? ['    aria-label="Explorer le Codex"'] : []),
+    ].join("\n");
+    const code = `<PixieDustSwitcher\n${settings}\n>\n${childCode}\n</PixieDustSwitcher>`;
 
     const renderedItems = selectedItems.map(([title, description], index) => {
         const item = (
@@ -114,10 +137,10 @@ ${childCode}
             />
         );
 
-        return element === "div" ? (
-            <div key={title}>{item}</div>
-        ) : (
+        return listElement ? (
             <li key={title}>{item}</li>
+        ) : (
+            <div key={title}>{item}</div>
         );
     });
 
@@ -157,7 +180,42 @@ ${childCode}
                             </PixieSelect>
                         </div>
 
-                        <fieldset>
+                        <div>
+                            <label
+                                htmlFor="switcher-layout"
+                                className="text-sm font-medium text-ink"
+                            >
+                                Disposition
+                            </label>
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
+                                id="switcher-layout"
+                                value={layout}
+                                onChange={(event) =>
+                                    setLayout(
+                                        event.target
+                                            .value as PixieDustSwitcherLayout,
+                                    )
+                                }
+                                className="mt-2"
+                            >
+                                {layouts.map((option) => (
+                                    <option
+                                        key={option.value}
+                                        value={option.value}
+                                    >
+                                        {option.label}
+                                    </option>
+                                ))}
+                            </PixieSelect>
+                        </div>
+
+                        <fieldset
+                            disabled={layout !== "auto"}
+                            className={layout === "auto" ? "" : "opacity-45"}
+                        >
                             <legend className="text-sm font-medium text-ink">
                                 Seuil de bascule
                             </legend>
@@ -174,7 +232,7 @@ ${childCode}
                             </div>
                         </fieldset>
 
-                        <div>
+                        <div className={layout === "auto" ? "" : "opacity-45"}>
                             <label
                                 htmlFor="switcher-limit"
                                 className="text-sm font-medium text-ink"
@@ -186,16 +244,20 @@ ${childCode}
                                 portal
                                 size="sm"
                                 id="switcher-limit"
-                                value={limit}
+                                value={limit === false ? "none" : String(limit)}
+                                disabled={layout !== "auto"}
                                 onChange={(event) =>
                                     setLimit(
-                                        Number(
-                                            event.target.value,
-                                        ) as PixieDustSwitcherLimit,
+                                        event.target.value === "none"
+                                            ? false
+                                            : (Number(
+                                                  event.target.value,
+                                              ) as PixieDustSwitcherItemCount),
                                     )
                                 }
                                 className="mt-2 font-mono"
                             >
+                                <option value="none">Sans limite</option>
                                 {[2, 3, 4, 5, 6].map((value) => (
                                     <option key={value} value={value}>
                                         {value} éléments
@@ -221,7 +283,7 @@ ${childCode}
                                     setItemCount(
                                         Number(
                                             event.target.value,
-                                        ) as PixieDustSwitcherLimit,
+                                        ) as PixieDustSwitcherItemCount,
                                     )
                                 }
                                 className="mt-2 font-mono"
@@ -239,7 +301,7 @@ ${childCode}
 
                         <fieldset>
                             <legend className="text-sm font-medium text-ink">
-                                Espacement
+                                Espacement commun
                             </legend>
                             <div className="mt-3 space-y-2">
                                 {gaps.map((option) => (
@@ -253,6 +315,72 @@ ${childCode}
                                 ))}
                             </div>
                         </fieldset>
+
+                        <div>
+                            <label
+                                htmlFor="switcher-row-gap"
+                                className="text-sm font-medium text-ink"
+                            >
+                                Espacement vertical
+                            </label>
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
+                                id="switcher-row-gap"
+                                value={rowGap}
+                                onChange={(event) =>
+                                    setRowGap(
+                                        event.target
+                                            .value as PixieDustSwitcherGapOverride,
+                                    )
+                                }
+                                className="mt-2"
+                            >
+                                <option value="inherit">Hériter de gap</option>
+                                {gaps.map((option) => (
+                                    <option
+                                        key={option.value}
+                                        value={option.value}
+                                    >
+                                        {option.label}
+                                    </option>
+                                ))}
+                            </PixieSelect>
+                        </div>
+
+                        <div>
+                            <label
+                                htmlFor="switcher-column-gap"
+                                className="text-sm font-medium text-ink"
+                            >
+                                Espacement horizontal
+                            </label>
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
+                                id="switcher-column-gap"
+                                value={columnGap}
+                                onChange={(event) =>
+                                    setColumnGap(
+                                        event.target
+                                            .value as PixieDustSwitcherGapOverride,
+                                    )
+                                }
+                                className="mt-2"
+                            >
+                                <option value="inherit">Hériter de gap</option>
+                                {gaps.map((option) => (
+                                    <option
+                                        key={option.value}
+                                        value={option.value}
+                                    >
+                                        {option.label}
+                                    </option>
+                                ))}
+                            </PixieSelect>
+                        </div>
 
                         <fieldset>
                             <legend className="text-sm font-medium text-ink">
@@ -284,13 +412,25 @@ ${childCode}
                         >
                             <PixieDustSwitcher
                                 as={element}
+                                layout={layout}
                                 threshold={threshold}
                                 limit={limit}
                                 gap={gap}
-                                align={align}
-                                className={
-                                    element === "div" ? "" : "list-none p-0"
+                                rowGap={
+                                    rowGap === "inherit" ? undefined : rowGap
                                 }
+                                columnGap={
+                                    columnGap === "inherit"
+                                        ? undefined
+                                        : columnGap
+                                }
+                                align={align}
+                                aria-label={
+                                    element === "nav"
+                                        ? "Explorer le Codex"
+                                        : undefined
+                                }
+                                className={listElement ? "list-none p-0" : ""}
                             >
                                 {renderedItems}
                             </PixieDustSwitcher>

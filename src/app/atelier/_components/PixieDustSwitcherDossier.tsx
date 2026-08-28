@@ -11,6 +11,7 @@ import {
     PixieDustSwitcher,
     type PixieDustSwitcherAlign,
     type PixieDustSwitcherGap,
+    type PixieDustSwitcherLayout,
     type PixieDustSwitcherThreshold,
 } from "@/components/ui/PixieDustSwitcher";
 import { PixieDustSwitcherPlayground } from "./PixieDustSwitcherPlayground";
@@ -40,10 +41,38 @@ const thresholds = [
         token: "60 rem",
         role: "Plans riches qui demandent davantage d’air.",
     },
+    {
+        name: "Très grand",
+        value: "xl" as const,
+        token: "72 rem",
+        role: "Plans très documentés ou cadres panoramiques.",
+    },
 ] as const satisfies readonly Readonly<{
     name: string;
     value: PixieDustSwitcherThreshold;
     token: string;
+    role: string;
+}>[];
+
+const layouts = [
+    {
+        name: "Automatique",
+        value: "auto" as const,
+        role: "L’espace et le nombre d’enfants décident ensemble.",
+    },
+    {
+        name: "Rangée",
+        value: "row" as const,
+        role: "Tous les plans restent volontairement côte à côte.",
+    },
+    {
+        name: "Pile",
+        value: "stack" as const,
+        role: "Chaque plan occupe toujours sa propre ligne.",
+    },
+] as const satisfies readonly Readonly<{
+    name: string;
+    value: PixieDustSwitcherLayout;
     role: string;
 }>[];
 
@@ -84,16 +113,36 @@ const properties = [
         description: "Largeur minimale requise pour conserver une rangée.",
     },
     {
+        name: "layout",
+        type: "PixieDustSwitcherLayout",
+        defaultValue: '"auto"',
+        description:
+            "Laisse le Switcher décider ou impose une rangée ou une pile.",
+    },
+    {
         name: "limit",
         type: "PixieDustSwitcherLimit",
         defaultValue: "4",
-        description: "Nombre maximal d’enfants autorisés sur une rangée.",
+        description:
+            "Nombre maximal d’enfants sur une rangée ; false désactive ce garde-fou.",
     },
     {
         name: "gap",
         type: "PixieDustSwitcherGap",
         defaultValue: '"md"',
         description: "Intervalle entre les enfants dans les deux dispositions.",
+    },
+    {
+        name: "rowGap",
+        type: "PixieDustSwitcherGap",
+        defaultValue: "gap",
+        description: "Remplace l’intervalle vertical défini par gap.",
+    },
+    {
+        name: "columnGap",
+        type: "PixieDustSwitcherGap",
+        defaultValue: "gap",
+        description: "Remplace l’intervalle horizontal défini par gap.",
     },
     {
         name: "align",
@@ -118,17 +167,22 @@ const properties = [
 const specificTypes = [
     {
         name: "PixieDustSwitcherElement",
-        values: ['"div"', '"ul"', '"ol"'],
-        description: "Structures neutre et listes autorisées.",
+        values: ['"div"', '"section"', '"nav"', '"ul"', '"ol"'],
+        description: "Structures neutres, éditoriales et listes autorisées.",
+    },
+    {
+        name: "PixieDustSwitcherLayout",
+        values: ['"auto"', '"row"', '"stack"'],
+        description: "Disposition intrinsèque ou volontairement imposée.",
     },
     {
         name: "PixieDustSwitcherThreshold",
-        values: ['"xs"', '"sm"', '"md"', '"lg"'],
+        values: ['"xs"', '"sm"', '"md"', '"lg"', '"xl"'],
         description: "Seuils intrinsèques de passage en pile.",
     },
     {
         name: "PixieDustSwitcherLimit",
-        values: ["2", "3", "4", "5", "6"],
+        values: ["false", "2", "3", "4", "5", "6"],
         description: "Limites d’enfants admises sur une ligne.",
     },
     {
@@ -241,7 +295,7 @@ export function PixieDustSwitcherDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.1.0
+                                0.2.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -261,7 +315,7 @@ export function PixieDustSwitcherDossier() {
                     id="switcher-identity"
                     eyebrow="Fiche de rôle"
                     title="Identité du composant"
-                    description="Switcher protège la cohérence d’un petit groupe : les plans restent tous côte à côte ou passent tous en pile, sans état intermédiaire sur plusieurs lignes."
+                    description="Switcher protège la cohérence d’un petit groupe : il choisit collectivement une rangée ou une pile, ou respecte une disposition volontairement imposée."
                 />
 
                 <dl className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
@@ -272,7 +326,7 @@ export function PixieDustSwitcherDossier() {
                         ],
                         [
                             "Usage",
-                            "Actions, cartes, indicateurs et petits groupes éditoriaux.",
+                            "Actions, navigations, cartes, indicateurs et petits groupes éditoriaux.",
                         ],
                         [
                             "Limite",
@@ -308,12 +362,12 @@ export function PixieDustSwitcherDossier() {
                     id="switcher-anatomy"
                     eyebrow="Anatomie du montage"
                     title="Un même casting, deux dispositions possibles"
-                    description="threshold établit la largeur attendue ; limit empêche une rangée de devenir trop dense, même lorsque le cadre serait assez large."
+                    description="layout fixe l’intention générale ; en mode auto, threshold établit la largeur attendue et limit empêche une rangée de devenir trop dense."
                 />
 
                 <div className="mt-7 border border-accent/60 bg-canvas p-4 sm:p-6">
                     <p className="font-mono text-xs text-accent">
-                        PixieDustSwitcher · threshold + limit + gap
+                        PixieDustSwitcher · layout + threshold + limit + gaps
                     </p>
                     <PixieDustSwitcher
                         threshold="sm"
@@ -372,11 +426,221 @@ export function PixieDustSwitcherDossier() {
                 </div>
             </section>
 
+            <section aria-labelledby="switcher-layouts" className="mt-16">
+                <SequenceTitle
+                    id="switcher-layouts"
+                    eyebrow="Choix du montage"
+                    title="Automatique, rangée ou pile"
+                    description="auto conserve la bascule intrinsèque ; row et stack assument une décision éditoriale stable et ignorent alors threshold et limit."
+                />
+
+                <div className="mt-7 grid gap-6 bg-canvas p-6 lg:grid-cols-3">
+                    {layouts.map((layout) => (
+                        <Stage key={layout.value}>
+                            <PixieDustSwitcher
+                                layout={layout.value}
+                                threshold="sm"
+                                limit={3}
+                                gap="sm"
+                                className="p-4"
+                            >
+                                {plans.slice(0, 3).map(([title]) => (
+                                    <div key={title}>
+                                        <Plan title={title} compact />
+                                    </div>
+                                ))}
+                            </PixieDustSwitcher>
+                            <div className="border-t border-line bg-surface p-4">
+                                <code className="font-mono text-xs text-accent">
+                                    layout=&quot;{layout.value}&quot;
+                                </code>
+                                <p className="mt-3 text-sm leading-6 text-muted">
+                                    {layout.role}
+                                </p>
+                            </div>
+                        </Stage>
+                    ))}
+                </div>
+            </section>
+
+            <section aria-labelledby="switcher-scenarios" className="mt-16">
+                <SequenceTitle
+                    id="switcher-scenarios"
+                    eyebrow="Scénarios préparés"
+                    title="Des plans courts aux distributions irrégulières"
+                    description="Ces compositions confrontent l’esquisse à ses usages futurs : actions, navigation, listes, séries denses et contenus de longueurs différentes."
+                />
+
+                <div className="mt-7 grid gap-6 lg:grid-cols-2">
+                    <Stage>
+                        <div className="p-5">
+                            <PixieDustSwitcher layout="row" gap="sm">
+                                <button
+                                    type="button"
+                                    className="border border-accent bg-accent px-4 py-3 font-medium text-canvas"
+                                >
+                                    Lancer la projection
+                                </button>
+                                <button
+                                    type="button"
+                                    className="border border-line-strong bg-surface px-4 py-3 font-medium text-ink"
+                                >
+                                    Garder en brouillon
+                                </button>
+                            </PixieDustSwitcher>
+                        </div>
+                        <p className="border-t border-line bg-surface p-4 font-mono text-xs text-accent">
+                            Deux actions · layout=&quot;row&quot;
+                        </p>
+                    </Stage>
+
+                    <Stage>
+                        <PixieDustSwitcher
+                            threshold="xs"
+                            limit={false}
+                            gap="xs"
+                            className="p-5"
+                        >
+                            {[
+                                "1923",
+                                "1928",
+                                "1932",
+                                "1934",
+                                "1937",
+                                "1940",
+                            ].map((year) => (
+                                <span
+                                    key={year}
+                                    className="border border-line bg-surface px-3 py-2 text-center font-mono text-xs text-ink"
+                                >
+                                    {year}
+                                </span>
+                            ))}
+                        </PixieDustSwitcher>
+                        <p className="border-t border-line bg-surface p-4 font-mono text-xs text-accent">
+                            Six repères · limit=&#123;false&#125;
+                        </p>
+                    </Stage>
+
+                    <Stage>
+                        <PixieDustSwitcher
+                            as="nav"
+                            aria-label="Familles du Codex"
+                            threshold="sm"
+                            limit={4}
+                            gap="sm"
+                            className="p-5"
+                        >
+                            {plans.map(([title]) => (
+                                <a
+                                    key={title}
+                                    href="#pixie-dust-switcher"
+                                    className="border border-line bg-surface px-4 py-3 text-center font-medium text-ink"
+                                >
+                                    {title}
+                                </a>
+                            ))}
+                        </PixieDustSwitcher>
+                        <p className="border-t border-line bg-surface p-4 font-mono text-xs text-accent">
+                            Navigation nommée · as=&quot;nav&quot;
+                        </p>
+                    </Stage>
+
+                    <Stage>
+                        <PixieDustSwitcher
+                            as="ul"
+                            threshold="sm"
+                            limit={3}
+                            gap="sm"
+                            className="list-none p-5"
+                        >
+                            {plans.slice(0, 3).map(([title]) => (
+                                <li key={title}>
+                                    <Plan title={title} compact />
+                                </li>
+                            ))}
+                        </PixieDustSwitcher>
+                        <p className="border-t border-line bg-surface p-4 font-mono text-xs text-accent">
+                            Collection sémantique · ul puis li
+                        </p>
+                    </Stage>
+
+                    <Stage>
+                        <PixieDustSwitcher
+                            threshold="sm"
+                            limit={3}
+                            gap="sm"
+                            align="start"
+                            className="p-5"
+                        >
+                            <div>
+                                <Plan title="Plan bref" compact />
+                            </div>
+                            <div>
+                                <Plan
+                                    title="Plan documenté"
+                                    description="Un contenu plus long vérifie que chaque surface garde sa hauteur propre sans rompre l’ordre de lecture."
+                                    compact
+                                />
+                            </div>
+                            <div>
+                                <Plan title="Dernier repère" compact />
+                            </div>
+                        </PixieDustSwitcher>
+                        <p className="border-t border-line bg-surface p-4 font-mono text-xs text-accent">
+                            Contenus déséquilibrés · align=&quot;start&quot;
+                        </p>
+                    </Stage>
+
+                    <Stage>
+                        <div className="grid gap-6 p-5 sm:grid-cols-2">
+                            <div>
+                                <p className="mb-3 font-mono text-xs text-muted">
+                                    Cadre compact
+                                </p>
+                                <PixieDustSwitcher
+                                    layout="stack"
+                                    gap="md"
+                                    rowGap="xl"
+                                    columnGap="xs"
+                                >
+                                    {plans.slice(0, 2).map(([title]) => (
+                                        <div key={title}>
+                                            <Plan title={title} compact />
+                                        </div>
+                                    ))}
+                                </PixieDustSwitcher>
+                            </div>
+                            <div>
+                                <p className="mb-3 font-mono text-xs text-muted">
+                                    Cadre horizontal
+                                </p>
+                                <PixieDustSwitcher
+                                    layout="row"
+                                    gap="md"
+                                    rowGap="xl"
+                                    columnGap="xs"
+                                >
+                                    {plans.slice(0, 2).map(([title]) => (
+                                        <div key={title}>
+                                            <Plan title={title} compact />
+                                        </div>
+                                    ))}
+                                </PixieDustSwitcher>
+                            </div>
+                        </div>
+                        <p className="border-t border-line bg-surface p-4 font-mono text-xs text-accent">
+                            rowGap=&quot;xl&quot; · columnGap=&quot;xs&quot;
+                        </p>
+                    </Stage>
+                </div>
+            </section>
+
             <section aria-labelledby="switcher-thresholds" className="mt-16">
                 <SequenceTitle
                     id="switcher-thresholds"
                     eyebrow="Seuil de bascule"
-                    title="Quatre mesures règlent le changement de plan"
+                    title="Cinq mesures règlent le changement de plan"
                     description="Plus le seuil est élevé, plus tôt la séquence abandonne la rangée pour préserver la lisibilité de chaque enfant."
                 />
 
@@ -418,7 +682,7 @@ export function PixieDustSwitcherDossier() {
                     id="switcher-limits"
                     eyebrow="Limite du casting"
                     title="Le nombre d’enfants peut imposer la pile"
-                    description="Dès que la distribution dépasse limit, tous les enfants prennent une ligne complète, quelle que soit la largeur du cadre."
+                    description="Dès que la distribution dépasse limit, tous les enfants prennent une ligne complète. false laisse la largeur locale décider seule."
                 />
 
                 <div className="mt-7 grid gap-6 bg-canvas p-6 lg:grid-cols-2">
@@ -485,7 +749,7 @@ export function PixieDustSwitcherDossier() {
                     id="switcher-gaps"
                     eyebrow="Intervalle de montage"
                     title="Six respirations suivent la rangée comme la pile"
-                    description="Le rythme reste cohérent avant et après la bascule, sans changer la relation entre les plans."
+                    description="gap pose le rythme commun ; rowGap et columnGap peuvent ensuite régler séparément la pile et la rangée."
                 />
 
                 <div className="mt-7 grid gap-6 bg-canvas p-6 md:grid-cols-2 xl:grid-cols-3">
@@ -553,12 +817,20 @@ export function PixieDustSwitcherDossier() {
                     id="switcher-semantics"
                     eyebrow="Structure documentaire"
                     title="La disposition ne remplace jamais la sémantique"
-                    description="div reste neutre ; ul et ol expriment une collection et attendent alors des li comme enfants directs."
+                    description="div reste neutre, section et nav donnent un rôle au groupe ; ul et ol expriment une collection et attendent des li comme enfants directs."
                 />
 
-                <div className="mt-7 grid gap-px border border-line bg-line lg:grid-cols-3">
+                <div className="mt-7 grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-5">
                     {[
                         ["div", "Groupe visuel déjà décrit par son contexte."],
+                        [
+                            "section",
+                            "Séquence éditoriale nommée par un titre associé.",
+                        ],
+                        [
+                            "nav",
+                            "Ensemble de passages identifié par un nom accessible.",
+                        ],
                         ["ul", "Collection sans ordre significatif."],
                         ["ol", "Séquence dont la progression porte du sens."],
                     ].map(([element, description]) => (
@@ -658,7 +930,7 @@ export function PixieDustSwitcherDossier() {
                     id="switcher-playground-title"
                     eyebrow="Régie"
                     title="Composer un PixieDustSwitcher"
-                    description="Réglez le seuil, la limite et le cadre ; le plateau permet d’observer séparément les bascules provoquées par l’espace et par le nombre d’enfants."
+                    description="Réglez la disposition, le seuil, la limite et les deux axes d’espacement ; les contrôles intrinsèques s’effacent lorsque le plan est imposé."
                 />
                 <div className="mt-8">
                     <PixieDustSwitcherPlayground />
@@ -741,16 +1013,17 @@ export function PixieDustSwitcherDossier() {
                     id="switcher-journal"
                     eyebrow="Journal de production"
                     title="Décisions avant la promotion"
-                    description="L’esquisse devra être confrontée à de vrais groupes du Codex avant de devenir une primitive stable."
+                    description="La version 0.2.0 rassemble le contrat candidat ; elle doit maintenant être éprouvée dans de vrais montages avant sa promotion."
                 />
 
                 <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
                     {[
-                        "Éprouver les quatre seuils avec des cartes aux contenus très différents.",
-                        "Valider les limites de deux à six enfants dans des cadres imbriqués.",
-                        "Tester div, ul et ol avec les outils d’accessibilité.",
+                        "Éprouver les cinq seuils avec des cartes aux contenus très différents.",
+                        "Valider les limites de deux à six enfants et leur désactivation dans des cadres imbriqués.",
+                        "Confirmer que row et stack restent des choix explicites, jamais des correctifs responsive.",
+                        "Tester div, section, nav, ul et ol avec les outils d’accessibilité.",
                         "Contrôler les deux Lumières, le mobile et le zoom à 200 %.",
-                        "Comparer le comportement avec Grid et Cluster sur les cas ambigus.",
+                        "Éprouver rowGap et columnGap avant de figer leurs noms.",
                         "Décider si md, 4, md et stretch restent les bons réglages par défaut.",
                     ].map((decision) => (
                         <li
