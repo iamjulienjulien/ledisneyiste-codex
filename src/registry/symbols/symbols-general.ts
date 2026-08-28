@@ -403,4 +403,86 @@ export const symbolsGeneral = {
             accent: "var(--atelier-animation-indigo-nuit-studio)",
         },
     },
+    atelier: {
+        "boite-outils-ouverte": {
+            src: "/symbols/general/atelier/boite-outils-ouverte.png",
+            label: "Boîte à outils ouverte",
+            accent: "var(--atelier-animation-rouge-crayon)",
+        },
+        "pot-outils-creatifs": {
+            src: "/symbols/general/atelier/pot-outils-creatifs.png",
+            label: "Pot d’outils créatifs",
+            accent: "var(--atelier-animation-bleu-reperage)",
+        },
+        "palette-atelier": {
+            src: "/symbols/general/atelier/palette-atelier.png",
+            label: "Palette d’atelier",
+            accent: "var(--atelier-animation-corail-cel)",
+        },
+        "regle-t-equerre": {
+            src: "/symbols/general/atelier/regle-t-equerre.png",
+            label: "Règle en T et équerre",
+            accent: "var(--atelier-animation-graphite)",
+        },
+        "compas-dessin": {
+            src: "/symbols/general/atelier/compas-dessin.png",
+            label: "Compas de dessin",
+            accent: "var(--atelier-animation-graphite)",
+        },
+        "cutter-precision": {
+            src: "/symbols/general/atelier/cutter-precision.png",
+            label: "Cutter de précision",
+            accent: "var(--atelier-animation-bleu-reperage)",
+        },
+        "rouleau-papier": {
+            src: "/symbols/general/atelier/rouleau-papier.png",
+            label: "Rouleau de papier",
+            accent: "var(--atelier-animation-papier-animation)",
+        },
+        "planche-dessin-inclinee": {
+            src: "/symbols/general/atelier/planche-dessin-inclinee.png",
+            label: "Planche à dessin inclinée",
+            accent: "var(--atelier-animation-sepia-storyboard)",
+        },
+        "lampe-atelier": {
+            src: "/symbols/general/atelier/lampe-atelier.png",
+            label: "Lampe d’atelier",
+            accent: "var(--atelier-animation-jaune-lampe)",
+        },
+        "nuancier-matieres": {
+            src: "/symbols/general/atelier/nuancier-matieres.png",
+            label: "Nuancier de matières",
+            accent: "var(--atelier-animation-turquoise-acetate)",
+        },
+        "tablier-artiste": {
+            src: "/symbols/general/atelier/tablier-artiste.png",
+            label: "Tablier d’artiste",
+            accent: "var(--atelier-animation-indigo-nuit-studio)",
+        },
+        "serre-joints": {
+            src: "/symbols/general/atelier/serre-joints.png",
+            label: "Serre-joints",
+            accent: "var(--atelier-animation-graphite)",
+        },
+        "devidoir-ruban-masquage": {
+            src: "/symbols/general/atelier/devidoir-ruban-masquage.png",
+            label: "Dévidoir de ruban de masquage",
+            accent: "var(--atelier-animation-ambre-projecteur)",
+        },
+        "plateau-fournitures": {
+            src: "/symbols/general/atelier/plateau-fournitures.png",
+            label: "Plateau de fournitures",
+            accent: "var(--atelier-animation-bleu-reperage)",
+        },
+        "etau-precision": {
+            src: "/symbols/general/atelier/etau-precision.png",
+            label: "Étau de précision",
+            accent: "var(--atelier-animation-graphite)",
+        },
+        "tiroir-atelier-ouvert": {
+            src: "/symbols/general/atelier/tiroir-atelier-ouvert.png",
+            label: "Tiroir d’atelier ouvert",
+            accent: "var(--atelier-animation-sepia-storyboard)",
+        },
+    },
 } as const satisfies Record<string, Record<string, SymbolDefinition>>;
