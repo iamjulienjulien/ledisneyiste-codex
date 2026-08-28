@@ -290,7 +290,7 @@ function SequenceTitle({
     description?: string;
 }>) {
     return (
-        <div className="max-w-3xl">
+        <div>
             <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-muted">
                 {eyebrow}
             </p>
@@ -329,7 +329,7 @@ export function PixieInsetDossier() {
             id="pixie-inset"
             labelledBy="pixie-inset-title"
             nom="PixieInset"
-            className="mt-16 scroll-mt-8"
+            className="scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
                     <div className="bg-surface p-6 sm:p-8">
@@ -1032,33 +1032,6 @@ export function PixieInsetDossier() {
                         <AtelierTypesTable types={specificTypes} />
                     </div>
                 </div>
-            </section>
-
-            <section aria-labelledby="inset-journal" className="mt-16">
-                <SequenceTitle
-                    id="inset-journal"
-                    eyebrow="Contrat de projection"
-                    title="Les garanties de la version 1.0.0"
-                    description="PixieInset est prêt à creuser les seconds plans du Codex sans détourner la lumière du contenu principal."
-                />
-
-                <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
-                    {[
-                        "Les six variants règlent la surface sans modifier la valeur documentaire du contenu.",
-                        "L’absence de profondeur et les trois niveaux creusés restent distincts dans les deux Lumières.",
-                        "Les textures sont décoratives et s’effacent à l’impression comme en contraste forcé.",
-                        "Div, section et aside conservent la responsabilité de leur nom et de leur rôle accessibles.",
-                        "Les contenus longs, les liens et les positions logiques restent utilisables à 200 % de zoom.",
-                        "PixieInset porte les informations secondaires ; PixiePanel et PixieCallout gardent leurs propres responsabilités.",
-                    ].map((decision) => (
-                        <li
-                            key={decision}
-                            className="bg-surface p-5 leading-7 text-ink-soft"
-                        >
-                            {decision}
-                        </li>
-                    ))}
-                </ul>
             </section>
         </AtelierFicheAccessoire>
     );

@@ -524,7 +524,7 @@ function TitreSequence({
     description?: string;
 }>) {
     return (
-        <div className="max-w-3xl">
+        <div>
             <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-muted">
                 {surTitre}
             </p>
@@ -1658,7 +1658,7 @@ export function PixieSymbolDossier() {
                 <TitreSequence
                     id="pixie-symbol-reference"
                     surTitre="Générique technique"
-                    titre="Types et propriétés du composant"
+                    titre="API du composant"
                 />
 
                 <div className="mt-7">

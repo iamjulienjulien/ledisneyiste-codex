@@ -194,7 +194,7 @@ function SequenceTitle({
     description?: string;
 }>) {
     return (
-        <div className="max-w-3xl">
+        <div>
             <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-muted">
                 {eyebrow}
             </p>
@@ -243,7 +243,7 @@ export function PixieDustSplitDossier() {
             id="pixie-dust-split"
             labelledBy="pixie-dust-split-title"
             nom="PixieDustSplit"
-            className="mt-16 scroll-mt-8"
+            className="scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
                     <div className="bg-surface p-6 sm:p-8">

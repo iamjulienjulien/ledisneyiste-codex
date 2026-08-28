@@ -360,7 +360,7 @@ function SequenceTitle({
     description?: string;
 }>) {
     return (
-        <div className="max-w-3xl">
+        <div>
             <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-muted">
                 {eyebrow}
             </p>
@@ -404,7 +404,7 @@ export function PixieFrameDossier() {
             id="pixie-frame"
             labelledBy="pixie-frame-title"
             nom="PixieFrame"
-            className="mt-16 scroll-mt-8"
+            className="scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
                     <div className="bg-surface p-6 sm:p-8">
@@ -1013,33 +1013,6 @@ export function PixieFrameDossier() {
                         <AtelierTypesTable types={specificTypes} />
                     </div>
                 </div>
-            </section>
-
-            <section aria-labelledby="frame-journal" className="mt-16">
-                <SequenceTitle
-                    id="frame-journal"
-                    eyebrow="Contrat de projection"
-                    title="Les garanties de la version 1.0.0"
-                    description="PixieFrame est prêt à mettre les médias du Codex en scène sans décider de leur contenu ni de leur signification."
-                />
-
-                <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
-                    {[
-                        "Les formats prédéfinis et libres réservent une fenêtre stable sans connaître le média.",
-                        "Le point focal protège le sujet pendant les recadrages responsives.",
-                        "Image, picture, video, svg et canvas conservent la responsabilité de leur propre accessibilité.",
-                        "Les légendes restent reliées à leur figure et les annotations demeurent facultatives.",
-                        "Film, slide, cel et les effets atmosphériques restent lisibles dans les deux Lumières.",
-                        "Grain, fuite lumineuse et projecteur respectent la préférence de mouvement réduit.",
-                    ].map((decision) => (
-                        <li
-                            key={decision}
-                            className="bg-surface p-5 leading-7 text-ink-soft"
-                        >
-                            {decision}
-                        </li>
-                    ))}
-                </ul>
             </section>
         </AtelierFicheAccessoire>
     );

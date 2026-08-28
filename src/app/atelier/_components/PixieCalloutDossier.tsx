@@ -435,7 +435,7 @@ function SequenceTitle({
     description?: string;
 }>) {
     return (
-        <div className="max-w-3xl">
+        <div>
             <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-muted">
                 {eyebrow}
             </p>
@@ -467,7 +467,7 @@ export function PixieCalloutDossier() {
             id="pixie-callout"
             labelledBy="pixie-callout-title"
             nom="PixieCallout"
-            className="mt-16 scroll-mt-8"
+            className="scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
                     <div className="bg-surface p-6 sm:p-8">
@@ -956,33 +956,6 @@ export function PixieCalloutDossier() {
                         <AtelierTypesTable types={specificTypes} />
                     </div>
                 </div>
-            </section>
-
-            <section aria-labelledby="callout-journal" className="mt-16">
-                <SequenceTitle
-                    id="callout-journal"
-                    eyebrow="Contrat de projection"
-                    title="Les garanties de la version 1.0.0"
-                    description="PixieCallout est prêt à mettre en lumière les annotations du Codex sans les transformer en alertes ni leur inventer une urgence."
-                />
-
-                <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
-                    {[
-                        "Les cinq variants règlent la présence visuelle sans modifier la priorité sémantique de l’annotation.",
-                        "Les trois layouts accueillent les symboles du registre sans déplacer l’ordre naturel de lecture.",
-                        "Grain, halo et projector restent décoratifs dans les deux Lumières, à l’impression et en contraste forcé.",
-                        "Aside, section et div conservent la responsabilité de leur nom et de leur rôle accessibles.",
-                        "Les contenus longs, les positions logiques et les liens restent utilisables à 200 % de zoom.",
-                        "PixieCallout porte les annotations éditoriales ; PixieInset et les retours système gardent leurs propres responsabilités.",
-                    ].map((decision) => (
-                        <li
-                            key={decision}
-                            className="bg-surface p-5 leading-7 text-ink-soft"
-                        >
-                            {decision}
-                        </li>
-                    ))}
-                </ul>
             </section>
         </AtelierFicheAccessoire>
     );

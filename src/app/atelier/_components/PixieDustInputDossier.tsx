@@ -155,7 +155,7 @@ function SequenceTitle({
     description?: string;
 }>) {
     return (
-        <div className="max-w-3xl">
+        <div>
             <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-muted">
                 {eyebrow}
             </p>
@@ -187,7 +187,7 @@ export function PixieDustInputDossier() {
             id="pixie-dust-input"
             labelledBy="pixie-dust-input-title"
             nom="PixieDustInput"
-            className="mt-16 scroll-mt-8"
+            className="scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
                     <div className="bg-surface p-6 sm:p-8">
@@ -529,8 +529,13 @@ export function PixieDustInputDossier() {
                         <div className="mt-8">
                             <AtelierPropertiesTable properties={properties} />
                         </div>
-                        <div className="mt-6">
-                            <AtelierTypesTable types={specificTypes} />
+                        <div className="mt-10">
+                            <h4 className="text-2xl text-ink">
+                                Types spécifiques
+                            </h4>
+                            <div className="mt-5">
+                                <AtelierTypesTable types={specificTypes} />
+                            </div>
                         </div>
                     </div>
                 </section>

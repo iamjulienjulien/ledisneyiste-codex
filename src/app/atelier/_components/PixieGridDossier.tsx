@@ -237,7 +237,7 @@ function SequenceTitle({
     description?: string;
 }>) {
     return (
-        <div className="max-w-3xl">
+        <div>
             <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-muted">
                 {eyebrow}
             </p>
@@ -286,7 +286,7 @@ export function PixieGridDossier() {
             id="pixie-grid"
             labelledBy="pixie-grid-title"
             nom="PixieGrid"
-            className="mt-16 scroll-mt-8"
+            className="scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
                     <div className="bg-surface p-6 sm:p-8">
@@ -1008,33 +1008,6 @@ export function PixieGridDossier() {
                         <AtelierTypesTable types={specificTypes} />
                     </div>
                 </div>
-            </section>
-
-            <section aria-labelledby="grid-journal" className="mt-16">
-                <SequenceTitle
-                    id="grid-journal"
-                    eyebrow="Journal de production"
-                    title="Décisions de projection"
-                    description="La version stable fixe un contrat de distribution générique avant son entrée progressive dans les collections du Codex."
-                />
-
-                <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
-                    {[
-                        "maxColumns reste un plafond et ne force jamais une largeur illisible.",
-                        "fit demeure la distribution par défaut des collections courantes.",
-                        "rowGap et columnGap ne surchargent gap qu’en cas de besoin éditorial.",
-                        "Les listes ul et ol conservent leurs éléments li et leur ordre source.",
-                        "Aucun mode dense ne peut réordonner visuellement la collection.",
-                        "Le composant reste serveur et ne dessine aucune surface métier.",
-                    ].map((decision) => (
-                        <li
-                            key={decision}
-                            className="bg-surface p-5 leading-7 text-ink-soft"
-                        >
-                            {decision}
-                        </li>
-                    ))}
-                </ul>
             </section>
         </AtelierFicheAccessoire>
     );

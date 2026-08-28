@@ -152,7 +152,7 @@ function SequenceTitle({
     description?: string;
 }>) {
     return (
-        <div className="max-w-3xl">
+        <div>
             <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-muted">
                 {eyebrow}
             </p>
@@ -193,7 +193,7 @@ export function PixieStackDossier() {
             id="pixie-stack"
             labelledBy="pixie-stack-title"
             nom="PixieStack"
-            className="mt-16 scroll-mt-8"
+            className="scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
                     <div className="bg-surface p-6 sm:p-8">
@@ -798,34 +798,6 @@ export function PixieStackDossier() {
                         <AtelierTypesTable types={specificTypes} />
                     </div>
                 </div>
-            </section>
-
-            <section aria-labelledby="stack-journal" className="mt-16">
-                <SequenceTitle
-                    id="stack-journal"
-                    eyebrow="Contrat de projection"
-                    title="Les garanties de la version 1.0.0"
-                    description="PixieStack est prêt à rythmer les futures compositions du Codex sans prendre en charge leur cadre, leur surface ou leur distribution."
-                />
-
-                <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
-                    {[
-                        "Les six rythmes s’appliquent uniquement entre les enfants directs avec un row-gap explicite.",
-                        "Les quatre alignements agissent sur l’axe horizontal sans modifier l’ordre documentaire.",
-                        "Div, section, article, nav, ul et ol conservent leur sémantique native.",
-                        "Les listes restent composées de li et les régions significatives reçoivent un nom perceptible.",
-                        "Les marges externes des enfants restent additives et ne sont jamais neutralisées par la primitive.",
-                        "Min-width et min-height protègent les compositions imbriquées dans les cadres contraints.",
-                        "La primitive reste un composant serveur sans surface, séparation, inversion ou JavaScript client.",
-                    ].map((decision) => (
-                        <li
-                            key={decision}
-                            className="bg-surface p-5 leading-7 text-ink-soft"
-                        >
-                            {decision}
-                        </li>
-                    ))}
-                </ul>
             </section>
         </AtelierFicheAccessoire>
     );

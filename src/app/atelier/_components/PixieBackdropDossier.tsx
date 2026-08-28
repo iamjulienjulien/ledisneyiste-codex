@@ -414,7 +414,7 @@ function SequenceTitle({
     description?: string;
 }>) {
     return (
-        <div className="max-w-3xl">
+        <div>
             <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-muted">
                 {eyebrow}
             </p>
@@ -453,7 +453,7 @@ export function PixieBackdropDossier() {
             id="pixie-backdrop"
             labelledBy="pixie-backdrop-title"
             nom="PixieBackdrop"
-            className="mt-16 scroll-mt-8"
+            className="scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
                     <div className="bg-surface p-6 sm:p-8">
@@ -1326,34 +1326,6 @@ export function PixieBackdropDossier() {
                         <AtelierTypesTable types={specificTypes} />
                     </div>
                 </div>
-            </section>
-
-            <section aria-labelledby="backdrop-journal" className="mt-16">
-                <SequenceTitle
-                    id="backdrop-journal"
-                    eyebrow="Contrat de projection"
-                    title="Les garanties de la version 1.0.0"
-                    description="PixieBackdrop est prêt à installer les atmosphères du Codex sans concurrencer les surfaces placées au premier plan."
-                />
-
-                <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
-                    {[
-                        "Les huit atmosphères restent lisibles dans les deux Lumières et sur toutes les largeurs.",
-                        "Projector installe une lumière de fond sans reprendre le comportement interactif des Cards.",
-                        "Split et cel réservent la seconde couleur aux compositions qui en ont réellement besoin.",
-                        "Les trois textures restent décoratives et disparaissent en contraste forcé comme à l’impression.",
-                        "Les contenus longs et les contrôles focusables demeurent au-dessus des couches atmosphériques.",
-                        "Dérive et respiration sont facultatives et neutralisées lorsque le mouvement réduit est demandé.",
-                        "Les neuf positions déplacent la lumière sans modifier l’ordre ni le sens du contenu.",
-                    ].map((decision) => (
-                        <li
-                            key={decision}
-                            className="bg-surface p-5 leading-7 text-ink-soft"
-                        >
-                            {decision}
-                        </li>
-                    ))}
-                </ul>
             </section>
         </AtelierFicheAccessoire>
     );

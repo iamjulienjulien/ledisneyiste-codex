@@ -200,7 +200,7 @@ function SequenceTitle({
     description?: string;
 }>) {
     return (
-        <div className="max-w-3xl">
+        <div>
             <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-muted">
                 {eyebrow}
             </p>
@@ -241,7 +241,7 @@ export function PixieClusterDossier() {
             id="pixie-cluster"
             labelledBy="pixie-cluster-title"
             nom="PixieCluster"
-            className="mt-16 scroll-mt-8"
+            className="scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
                     <div className="bg-surface p-6 sm:p-8">
@@ -847,34 +847,6 @@ export function PixieClusterDossier() {
                         <AtelierTypesTable types={specificTypes} />
                     </div>
                 </div>
-            </section>
-
-            <section aria-labelledby="cluster-journal" className="mt-16">
-                <SequenceTitle
-                    id="cluster-journal"
-                    eyebrow="Contrat de projection"
-                    title="Les garanties de la version 1.0.0"
-                    description="PixieCluster est prêt à rassembler les futurs groupes du Codex sans prendre en charge leur surface, leur grille ou leurs régions de composition."
-                />
-
-                <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
-                    {[
-                        "Les six gaps séparent les enfants directs dans les deux directions lorsque le groupe se replie.",
-                        "Les quatre distributions horizontales s’appliquent à chaque ligne ; between répartit aussi la dernière ligne.",
-                        "Les quatre alignements verticaux conservent l’ordre documentaire et le parcours clavier.",
-                        "Div, section, nav et ul gardent leur sémantique native ; une liste reste composée de li.",
-                        "Min-width et min-height protègent les groupes imbriqués dans les cadres contraints.",
-                        "La primitive reste un composant serveur sans surface, couleur ou JavaScript client.",
-                        "PixieCluster ne remplace ni Grid, ni Split, ni Switcher, ni Rail pour les compositions plus structurées.",
-                    ].map((decision) => (
-                        <li
-                            key={decision}
-                            className="bg-surface p-5 leading-7 text-ink-soft"
-                        >
-                            {decision}
-                        </li>
-                    ))}
-                </ul>
             </section>
         </AtelierFicheAccessoire>
     );

@@ -273,7 +273,7 @@ function SequenceTitle({
     description?: string;
 }>) {
     return (
-        <div className="max-w-3xl">
+        <div>
             <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-muted">
                 {eyebrow}
             </p>
@@ -310,7 +310,7 @@ export function PixieCardDossier() {
             id="pixie-card"
             labelledBy="pixie-card-title"
             nom="PixieCard"
-            className="mt-16 scroll-mt-8"
+            className="scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
                     <div className="bg-surface p-6 sm:p-8">
@@ -877,7 +877,7 @@ export function PixieCardDossier() {
                 <SequenceTitle
                     id="card-technical"
                     eyebrow="Générique technique"
-                    title="API de l’esquisse"
+                    title="API du composant"
                     description="Les types propres à la Card vivent dans son dossier ; les attributs HTML compatibles sont transmis à sa racine réelle."
                 />
 
@@ -891,33 +891,6 @@ export function PixieCardDossier() {
                         <AtelierTypesTable types={specificTypes} />
                     </div>
                 </div>
-            </section>
-
-            <section aria-labelledby="card-journal" className="mt-16">
-                <SequenceTitle
-                    id="card-journal"
-                    eyebrow="Journal de production"
-                    title="Décisions de la version stable"
-                    description="Les cinq scénarios de répétition ont validé une API capable de rester neutre ou de porter les effets les plus expressifs du Codex."
-                />
-
-                <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
-                    {[
-                        "Six variantes couvrent les surfaces neutres, secondaires, élevées et colorées.",
-                        "asChild transmet le décor à PixieLink sans ajouter de racine au DOM.",
-                        "Les effets restent facultatifs et indépendants de la nature de la surface.",
-                        "Les deux Lumières conservent leurs contrastes et leurs contours structurels.",
-                        "Mouvement réduit et couleurs forcées neutralisent les artifices sans masquer l’état.",
-                        "Les cartes métier et les portes pourront désormais adopter PixieCard progressivement.",
-                    ].map((decision) => (
-                        <li
-                            key={decision}
-                            className="bg-surface p-5 leading-7 text-ink-soft"
-                        >
-                            {decision}
-                        </li>
-                    ))}
-                </ul>
             </section>
         </AtelierFicheAccessoire>
     );

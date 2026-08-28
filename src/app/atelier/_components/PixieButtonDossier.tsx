@@ -130,7 +130,7 @@ function TitreSequence({
     description?: string;
 }>) {
     return (
-        <div className="max-w-3xl">
+        <div>
             <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-muted">
                 {surTitre}
             </p>
@@ -150,7 +150,7 @@ export function PixieButtonDossier() {
             id="bouton"
             labelledBy="bouton-title"
             nom="PixieButton"
-            className="mt-16 scroll-mt-8"
+            className="scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
                     <div className="bg-surface p-6 sm:p-8">
@@ -482,7 +482,7 @@ export function PixieButtonDossier() {
                 <TitreSequence
                     id="bouton-generique"
                     surTitre="Générique technique"
-                    titre="Types et propriétés du composant"
+                    titre="API du composant"
                 />
 
                 <div className="mt-7">

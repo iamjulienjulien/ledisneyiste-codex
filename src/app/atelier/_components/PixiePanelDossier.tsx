@@ -247,7 +247,7 @@ function SequenceTitle({
     description?: string;
 }>) {
     return (
-        <div className="max-w-3xl">
+        <div>
             <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-muted">
                 {eyebrow}
             </p>
@@ -306,7 +306,7 @@ export function PixiePanelDossier() {
             id="pixie-panel"
             labelledBy="pixie-panel-title"
             nom="PixiePanel"
-            className="mt-16 scroll-mt-8"
+            className="scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
                     <div className="bg-surface p-6 sm:p-8">
@@ -903,33 +903,6 @@ export function PixiePanelDossier() {
                         <AtelierTypesTable types={specificTypes} />
                     </div>
                 </div>
-            </section>
-
-            <section aria-labelledby="panel-journal" className="mt-16">
-                <SequenceTitle
-                    id="panel-journal"
-                    eyebrow="Contrat de projection"
-                    title="Les garanties de la version 1.0.0"
-                    description="PixiePanel est prêt à structurer les régions durables du Codex sans empiéter sur les responsabilités des autres Décors."
-                />
-
-                <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
-                    {[
-                        "PixieCard porte les unités répétables ; PixiePanel structure les régions durables.",
-                        "Header, corps et footer couvrent les compositions sans multiplier les slots spécialisés.",
-                        "PixieInset peut être composé dans le panneau tout en gardant son rôle secondaire.",
-                        "Les cinq densités restent lisibles sur mobile et à 200 % de zoom.",
-                        "Section, aside et article conservent leur sémantique et leur nom accessible.",
-                        "Le corps défilable préserve ses repères et reste utilisable uniquement au clavier.",
-                    ].map((decision) => (
-                        <li
-                            key={decision}
-                            className="bg-surface p-5 leading-7 text-ink-soft"
-                        >
-                            {decision}
-                        </li>
-                    ))}
-                </ul>
             </section>
         </AtelierFicheAccessoire>
     );

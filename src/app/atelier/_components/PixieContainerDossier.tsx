@@ -126,7 +126,7 @@ function SequenceTitle({
     description?: string;
 }>) {
     return (
-        <div className="max-w-3xl">
+        <div>
             <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-muted">
                 {eyebrow}
             </p>
@@ -154,7 +154,7 @@ export function PixieContainerDossier() {
             id="pixie-container"
             labelledBy="pixie-container-title"
             nom="PixieContainer"
-            className="mt-16 scroll-mt-8"
+            className="scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
                     <div className="bg-surface p-6 sm:p-8">
@@ -635,34 +635,6 @@ export function PixieContainerDossier() {
                         <AtelierTypesTable types={specificTypes} />
                     </div>
                 </div>
-            </section>
-
-            <section aria-labelledby="container-journal" className="mt-16">
-                <SequenceTitle
-                    id="container-journal"
-                    eyebrow="Contrat de projection"
-                    title="Les garanties de la version 1.0.0"
-                    description="PixieContainer est prêt à cadrer les futures compositions du Codex sans prendre en charge leur surface ni leur rythme."
-                />
-
-                <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
-                    {[
-                        "Les cadres 42, 56 et 72 annoncent explicitement leur largeur maximale en rem.",
-                        "Full remplit son parent sans devenir un raccourci pour les sorties de cadre.",
-                        "Les quatre gouttières protègent la lecture sans imposer de padding aux surfaces contenues.",
-                        "Le centrage reste automatique et le cadre se contracte avec son parent sur petit écran.",
-                        "PixieBackdrop peut déborder visuellement tandis que PixieContainer maintient l’axe du récit.",
-                        "La sémantique choisie avec as ne modifie ni l’ordre du contenu ni le parcours du clavier.",
-                        "La primitive n’ajoute ni surface, ni couleur, ni ombre, ni rythme vertical.",
-                    ].map((decision) => (
-                        <li
-                            key={decision}
-                            className="bg-surface p-5 leading-7 text-ink-soft"
-                        >
-                            {decision}
-                        </li>
-                    ))}
-                </ul>
             </section>
         </AtelierFicheAccessoire>
     );

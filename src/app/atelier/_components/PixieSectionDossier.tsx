@@ -223,7 +223,7 @@ function SequenceTitle({
     description?: string;
 }>) {
     return (
-        <div className="max-w-3xl">
+        <div>
             <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-muted">
                 {eyebrow}
             </p>
@@ -264,7 +264,7 @@ export function PixieSectionDossier() {
             id="pixie-section"
             labelledBy="pixie-section-title"
             nom="PixieSection"
-            className="mt-16 scroll-mt-8"
+            className="scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
                     <div className="bg-surface p-6 sm:p-8">
@@ -1033,7 +1033,7 @@ export function PixieSectionDossier() {
                 <SequenceTitle
                     id="section-technical"
                     eyebrow="Générique technique"
-                    title="API du composant 1.0.0"
+                    title="API du composant"
                     description="Les types spécifiques sont colocalisés dans PixieSection.types.ts ; les contrats horizontaux et verticaux sont des alias de Container et Stack."
                 />
 
@@ -1047,35 +1047,6 @@ export function PixieSectionDossier() {
                         <AtelierTypesTable types={specificTypes} />
                     </div>
                 </div>
-            </section>
-
-            <section aria-labelledby="section-journal" className="mt-16">
-                <SequenceTitle
-                    id="section-journal"
-                    eyebrow="Journal de production"
-                    title="Décisions après la promotion"
-                    description="PixieSection peut désormais remplacer les assemblages répétitifs sans devenir le nouveau cadre obligatoire de toutes les pages."
-                />
-
-                <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
-                    {[
-                        "Recenser les répétitions réelles de Container + Stack dans le Codex.",
-                        "Éprouver les cinq respirations à 200 % de zoom et sur mobile.",
-                        "Comparer section, article et div dans les structures existantes.",
-                        "Tester les contenus courts, longs, interactifs et fortement imbriqués.",
-                        "Vérifier qu’aucune surface ou typographie ne fuit dans le contrat.",
-                        "Décider si spacing lg reste le bon défaut après plusieurs migrations réelles.",
-                        "Éprouver les surcharges start et end entre plusieurs séquences consécutives.",
-                        "Confirmer que les respirations asymétriques ne remplacent ni Separator ni Bleed.",
-                    ].map((decision) => (
-                        <li
-                            key={decision}
-                            className="bg-surface p-5 leading-7 text-ink-soft"
-                        >
-                            {decision}
-                        </li>
-                    ))}
-                </ul>
             </section>
         </AtelierFicheAccessoire>
     );
