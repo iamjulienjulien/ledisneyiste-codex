@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CodexFiche } from "@/components/codex/CodexFiche";
 import { CodexFicheHeader } from "@/components/codex/CodexFicheHeader";
+import { CodexFicheReperes } from "@/components/codex/CodexFicheReperes";
 import { CodexReferenceLink } from "@/components/codex/CodexReferenceLink";
 import { CodexSources } from "@/components/codex/CodexSources";
-import { CodexEpoque } from "@/components/codex/CodexEpoque";
 import { CodexBlocsEditoriaux } from "@/components/codex/CodexBlocsEditoriaux";
 import { CodexRecompenses } from "@/components/codex/CodexRecompenses";
 import { CodexOeuvreDetails } from "@/components/codex/CodexOeuvreDetails";
@@ -124,56 +124,77 @@ export default async function OeuvrePage({
                 }
             />
 
-            <dl className="mt-12 grid gap-8 sm:grid-cols-2">
-                <div>
-                    <dt className="text-sm text-muted">Sortie</dt>
+            <CodexFicheReperes
+                reperes={[
+                    {
+                        label: "Sortie",
+                        value: formatDateHistorique(fiche.sortie.date),
+                    },
+                    {
+                        label: "Format",
+                        value: fiche.format,
+                    },
+                    ...(!hasGroupedCredits
+                        ? [
+                              {
+                                  label: "Contributions",
+                                  value: (
+                                      <div className="space-y-3">
+                                          {fiche.contributions.map(
+                                              (contribution) => (
+                                                  <div
+                                                      key={
+                                                          contribution
+                                                              .contributeur.nom
+                                                      }
+                                                  >
+                                                      <CodexReferenceLink
+                                                          reference={
+                                                              contribution.contributeur
+                                                          }
+                                                      />
 
-                    <dd className="mt-1 text-lg text-ink">
-                        {formatDateHistorique(fiche.sortie.date)}
-                    </dd>
-                </div>
-
-                <div>
-                    <dt className="text-sm text-muted">Format</dt>
-
-                    <dd className="mt-1 text-lg text-ink">{fiche.format}</dd>
-                </div>
-
-                {!hasGroupedCredits && (
-                    <div>
-                        <dt className="text-sm text-muted">Contributions</dt>
-
-                        <dd className="mt-1 space-y-3 text-lg text-ink">
-                            {fiche.contributions.map((contribution) => (
-                                <div key={contribution.contributeur.nom}>
-                                    <CodexReferenceLink
-                                        reference={contribution.contributeur}
-                                    />
-
-                                    <p className="mt-1 text-sm text-muted">
-                                        {contribution.roles.join(", ")}
-                                    </p>
-                                </div>
-                            ))}
-                        </dd>
-                    </div>
-                )}
-
-                <div>
-                    <dt className="text-sm text-muted">Personnages</dt>
-
-                    <dd className="mt-1 flex flex-wrap gap-x-2 text-lg text-ink">
-                        {fiche.personnages.map((personnage, index) => (
-                            <span key={personnage.nom}>
-                                <CodexReferenceLink reference={personnage} />
-                                {index < fiche.personnages.length - 1 && ","}
+                                                      <p className="mt-1 text-sm text-muted">
+                                                          {contribution.roles.join(
+                                                              ", ",
+                                                          )}
+                                                      </p>
+                                                  </div>
+                                              ),
+                                          )}
+                                      </div>
+                                  ),
+                              },
+                          ]
+                        : []),
+                    {
+                        label: "Personnages",
+                        value: (
+                            <span className="flex flex-wrap gap-x-2">
+                                {fiche.personnages.map((personnage, index) => (
+                                    <span key={personnage.nom}>
+                                        <CodexReferenceLink
+                                            reference={personnage}
+                                        />
+                                        {index < fiche.personnages.length - 1 &&
+                                            ","}
+                                    </span>
+                                ))}
                             </span>
-                        ))}
-                    </dd>
-                </div>
-
-                <CodexEpoque epoque={epoque} />
-            </dl>
+                        ),
+                    },
+                    ...(epoque
+                        ? [
+                              {
+                                  label: "Époque",
+                                  value: (
+                                      <CodexReferenceLink reference={epoque} />
+                                  ),
+                              },
+                          ]
+                        : []),
+                ]}
+            />
 
             <CodexOeuvreDetails fiche={fiche} sources={sources} />
 
