@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useAtelierProjection } from "@/components/atelier/AtelierPlaygroundProjection";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { colorsAtelierAnimation } from "@/registry/colors";
 import type { CouleurReference } from "@/types/colors";
@@ -169,19 +170,77 @@ const atelierAnimation = Object.values(colorsAtelierAnimation).map((color) => ({
 })) satisfies readonly CouleurReference[];
 
 const rolesSemantiques = [
-    ["Canvas", "bg-canvas", "bg-canvas", "Fond général"],
-    ["Surface", "bg-surface", "bg-surface", "Premier niveau"],
-    ["Surface muted", "bg-surface-muted", "bg-surface-muted", "Second niveau"],
-    ["Ink", "text-ink", "bg-ink", "Texte principal"],
-    ["Ink soft", "text-ink-soft", "bg-ink-soft", "Texte courant"],
-    ["Muted", "text-muted", "bg-muted", "Information discrète"],
-    ["Accent", "text-accent", "bg-accent", "Action et repère"],
-    ["Line", "border-line", "bg-line", "Séparation"],
+    ["Canvas", "--color-canvas", "bg-canvas", "Fond général"],
+    ["Surface", "--color-surface", "bg-surface", "Premier niveau"],
+    [
+        "Surface muted",
+        "--color-surface-muted",
+        "bg-surface-muted",
+        "Second niveau",
+    ],
+    ["Ink", "--color-ink", "bg-ink", "Texte principal"],
+    ["Ink soft", "--color-ink-soft", "bg-ink-soft", "Texte courant"],
+    ["Muted", "--color-muted", "bg-muted", "Information discrète"],
+    ["Accent", "--color-accent", "bg-accent", "Action et repère"],
+    ["Line", "--color-line", "bg-line", "Séparation"],
 ] as const;
 
-function Nuancier({ couleurs }: { couleurs: readonly CouleurReference[] }) {
+function VariableCopiable({
+    token,
+    className,
+}: Readonly<{
+    token: string;
+    className?: string;
+}>) {
+    const [etatCopie, setEtatCopie] = useState<"idle" | "copied" | "error">(
+        "idle",
+    );
+
+    async function copierVariable() {
+        try {
+            await navigator.clipboard.writeText(token);
+            setEtatCopie("copied");
+        } catch {
+            setEtatCopie("error");
+        }
+    }
+
     return (
-        <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className={className}>
+            <button
+                type="button"
+                onClick={copierVariable}
+                className="cursor-copy bg-transparent p-0 text-left font-mono text-xs underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+                style={{
+                    color: "var(--projection-originale-lueur-technicolor)",
+                }}
+                aria-label={`Copier la variable ${token}`}
+                title={`Copier ${token}`}
+            >
+                {token.slice(2)}
+            </button>
+            <span aria-live="polite" className="sr-only">
+                {etatCopie === "copied"
+                    ? `${token} est dans le presse-papiers.`
+                    : etatCopie === "error"
+                      ? `La copie de ${token} a échoué.`
+                      : null}
+            </span>
+        </div>
+    );
+}
+
+function Nuancier({
+    couleurs,
+    className = "mt-5",
+}: {
+    couleurs: readonly CouleurReference[];
+    className?: string;
+}) {
+    return (
+        <div
+            className={`${className} grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4`}
+        >
             {couleurs.map((couleur) => (
                 <article
                     key={couleur.token}
@@ -204,9 +263,10 @@ function Nuancier({ couleurs }: { couleurs: readonly CouleurReference[] }) {
                             {couleur.valeur}
                         </p>
                     </div>
-                    <p className="overflow-x-auto px-4 py-3 font-mono text-[0.6875rem] text-muted">
-                        {couleur.token}
-                    </p>
+                    <VariableCopiable
+                        token={couleur.token}
+                        className="overflow-x-auto px-4 py-3"
+                    />
                 </article>
             ))}
         </div>
@@ -214,12 +274,12 @@ function Nuancier({ couleurs }: { couleurs: readonly CouleurReference[] }) {
 }
 
 export function PalettesPellicule() {
-    const [lumiere, setLumiere] = useState<"sombre" | "claire">("sombre");
+    const { lumiere } = useAtelierProjection();
 
     return (
         <div className="mt-12 space-y-16">
             <section aria-labelledby="typographie-pellicule">
-                <div className="max-w-3xl">
+                <div>
                     <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-accent">
                         Fondation typographique
                     </p>
@@ -305,14 +365,15 @@ export function PalettesPellicule() {
 
             <PixieSeparator
                 variant="beam"
-                width="medium"
-                align="start"
+                intensity="strong"
+                color="violet-ombre-portee"
+                width="full"
                 spacing="none"
                 decorative
             />
 
             <div className="mt-12 space-y-16">
-                <div className="max-w-3xl">
+                <div>
                     <h3 className="text-4xl text-ink">
                         Les couleurs de la salle et de ce qu’elle projette
                     </h3>
@@ -325,74 +386,34 @@ export function PalettesPellicule() {
                 </div>
 
                 <section aria-labelledby="projection-originale-palette">
-                    <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
-                        <div className="max-w-3xl">
-                            <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-accent">
-                                Palette d’interface
-                            </p>
-                            <h3
-                                id="projection-originale-palette"
-                                className="mt-3 text-3xl text-ink"
-                            >
-                                Projection Originale
-                            </h3>
-                            <p className="mt-4 leading-7 text-ink-soft">
-                                Elle construit la salle : surfaces, encres,
-                                lignes, accents et lumières. Ses références
-                                alimentent les rôles sémantiques sans entrer
-                                directement dans les composants.
-                            </p>
-                        </div>
-                        <p className="font-mono text-xs text-muted">
-                            25 références · 2 lumières
+                    <div>
+                        <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-accent">
+                            Palette d’interface
+                        </p>
+                        <h3
+                            id="projection-originale-palette"
+                            className="mt-3 text-3xl text-ink"
+                        >
+                            Projection Originale
+                        </h3>
+                        <p className="mt-4 leading-7 text-ink-soft">
+                            Elle construit la salle : surfaces, encres, lignes,
+                            accents et lumières. Ses références alimentent les
+                            rôles sémantiques sans entrer directement dans les
+                            composants.
                         </p>
                     </div>
 
                     <div className="mt-12">
-                        <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
-                            <div>
-                                <h4 className="text-xl text-ink">
-                                    Le contrat de projection
-                                </h4>
-                                <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
-                                    Ces rôles restent les seuls points d’entrée
-                                    des composants. La palette peut évoluer sans
-                                    réécrire leurs styles.
-                                </p>
-                            </div>
-
-                            <div>
-                                <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.16em] text-muted">
-                                    Lumière
-                                </p>
-                                <div
-                                    role="group"
-                                    aria-label="Lumière du contrat de projection"
-                                    className="mt-2 inline-flex border border-line bg-surface p-1"
-                                >
-                                    {(["sombre", "claire"] as const).map(
-                                        (option) => (
-                                            <button
-                                                key={option}
-                                                type="button"
-                                                aria-pressed={
-                                                    lumiere === option
-                                                }
-                                                onClick={() =>
-                                                    setLumiere(option)
-                                                }
-                                                className={`px-3 py-2 text-sm font-medium capitalize transition-colors ${
-                                                    lumiere === option
-                                                        ? "bg-accent text-accent-contrast"
-                                                        : "text-ink-soft hover:bg-surface-muted hover:text-ink"
-                                                }`}
-                                            >
-                                                {option}
-                                            </button>
-                                        ),
-                                    )}
-                                </div>
-                            </div>
+                        <div className="max-w-2xl">
+                            <h4 className="text-xl text-ink">
+                                Le contrat de projection
+                            </h4>
+                            <p className="mt-2 text-sm leading-6 text-muted">
+                                Ces rôles restent les seuls points d’entrée des
+                                composants. La palette peut évoluer sans
+                                réécrire leurs styles.
+                            </p>
                         </div>
 
                         <div
@@ -414,9 +435,10 @@ export function PalettesPellicule() {
                                             <h5 className="mt-4 font-sans text-lg font-medium tracking-normal text-ink">
                                                 {nom}
                                             </h5>
-                                            <p className="mt-1 font-mono text-xs text-accent">
-                                                {token}
-                                            </p>
+                                            <VariableCopiable
+                                                token={token}
+                                                className="mt-1"
+                                            />
                                             <p className="mt-3 text-sm text-muted">
                                                 {usage}
                                             </p>
@@ -424,38 +446,49 @@ export function PalettesPellicule() {
                                     ),
                                 )}
                             </div>
+                            <p className="mt-5 border-t border-line pt-4 text-right font-mono text-xs text-muted">
+                                {rolesSemantiques.length} rôles sémantiques
+                            </p>
                         </div>
                     </div>
 
-                    <div className="mt-8">
-                        <h4 className="text-xl text-ink">Lumière sombre</h4>
-                        <p className="mt-2 text-sm text-muted">
-                            La salle s’efface pour laisser le contenu devenir la
-                            lumière.
-                        </p>
-                        <Nuancier couleurs={projectionSombre} />
-                    </div>
+                    <div className="mt-8 border border-line bg-canvas p-5 sm:p-6">
+                        <div>
+                            <h4 className="text-xl text-ink">Lumière sombre</h4>
+                            <p className="mt-2 text-sm text-muted">
+                                La salle s’efface pour laisser le contenu
+                                devenir la lumière.
+                            </p>
+                            <Nuancier couleurs={projectionSombre} />
+                        </div>
 
-                    <div className="mt-10">
-                        <h4 className="text-xl text-ink">Lumière claire</h4>
-                        <p className="mt-2 text-sm text-muted">
-                            Le même langage posé sur le papier, la toile et les
-                            encres d’un dossier de projection.
+                        <div className="mt-10">
+                            <h4 className="text-xl text-ink">Lumière claire</h4>
+                            <p className="mt-2 text-sm text-muted">
+                                Le même langage posé sur le papier, la toile et
+                                les encres d’un dossier de projection.
+                            </p>
+                            <Nuancier couleurs={projectionClaire} />
+                        </div>
+
+                        <p className="mt-6 border-t border-line pt-4 text-right font-mono text-xs text-muted">
+                            25 références · 2 lumières
                         </p>
-                        <Nuancier couleurs={projectionClaire} />
                     </div>
                 </section>
 
                 <section aria-labelledby="atelier-animation-palette">
                     <PixieSeparator
-                        variant="fade"
-                        position="start"
+                        variant="beam"
+                        intensity="strong"
+                        color="violet-ombre-portee"
+                        width="full"
                         spacing="none"
                         decorative
                     />
 
-                    <div className="mt-12 grid gap-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
-                        <div className="max-w-3xl">
+                    <div className="mt-12">
+                        <div>
                             <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-accent">
                                 Palette éditoriale
                             </p>
@@ -471,12 +504,17 @@ export function PalettesPellicule() {
                                 apporte des repères sans repeindre la salle.
                             </p>
                         </div>
-                        <p className="font-mono text-xs text-muted">
+                    </div>
+
+                    <div className="mt-8 border border-line bg-canvas p-5 sm:p-6">
+                        <Nuancier
+                            couleurs={atelierAnimation}
+                            className="mt-0"
+                        />
+                        <p className="mt-6 border-t border-line pt-4 text-right font-mono text-xs text-muted">
                             20 références éditoriales
                         </p>
                     </div>
-
-                    <Nuancier couleurs={atelierAnimation} />
                 </section>
             </div>
         </div>
