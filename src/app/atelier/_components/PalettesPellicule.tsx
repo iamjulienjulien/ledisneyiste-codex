@@ -479,52 +479,6 @@ export function PalettesPellicule() {
                     <Nuancier couleurs={atelierAnimation} />
                 </section>
             </div>
-
-            <section aria-labelledby="formes-pellicule">
-                <PixieSeparator
-                    variant="splice"
-                    position="start"
-                    spacing="none"
-                    decorative
-                />
-
-                <div className="mt-12 max-w-3xl">
-                    <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-accent">
-                        Fondation géométrique
-                    </p>
-                    <h3
-                        id="formes-pellicule"
-                        className="mt-3 text-3xl text-ink"
-                    >
-                        Formes
-                    </h3>
-                    <p className="mt-4 leading-7 text-ink-soft">
-                        Trois rayons règlent la douceur des cadres, des surfaces
-                        et des composants sans effacer leur construction
-                        graphique.
-                    </p>
-                </div>
-
-                <div className="mt-8 grid gap-6 sm:grid-cols-3">
-                    {[
-                        ["Petit", "rounded-small"],
-                        ["Moyen", "rounded-medium"],
-                        ["Grand", "rounded-large"],
-                    ].map(([nom, classe]) => (
-                        <article
-                            key={nom}
-                            className={`border border-line bg-surface-muted p-6 ${classe}`}
-                        >
-                            <p className="text-lg font-medium text-ink">
-                                {nom}
-                            </p>
-                            <p className="mt-2 font-mono text-xs text-accent">
-                                {classe}
-                            </p>
-                        </article>
-                    ))}
-                </div>
-            </section>
         </div>
     );
 }

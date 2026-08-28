@@ -103,10 +103,6 @@ const pellicule = [
         nom: "L’Atelier d’animation",
         href: "#atelier-animation-palette",
     },
-    {
-        nom: "Formes",
-        href: "#formes-pellicule",
-    },
 ] as const;
 
 const accessoires = [
