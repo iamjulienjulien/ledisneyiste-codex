@@ -1,18 +1,18 @@
-import styles from "./PixieDustStickyRegion.module.css";
+import styles from "./PixieStickyRegion.module.css";
 import type { CSSProperties } from "react";
 import type {
-    PixieDustStickyRegionEdge,
-    PixieDustStickyRegionLayer,
-    PixieDustStickyRegionOffsetPreset,
-    PixieDustStickyRegionOverflow,
-    PixieDustStickyRegionProps,
-    PixieDustStickyRegionWidth,
-} from "./PixieDustStickyRegion.types";
+    PixieStickyRegionEdge,
+    PixieStickyRegionLayer,
+    PixieStickyRegionOffsetPreset,
+    PixieStickyRegionOverflow,
+    PixieStickyRegionProps,
+    PixieStickyRegionWidth,
+} from "./PixieStickyRegion.types";
 
 const edgeClasses = {
     start: styles.edgeStart,
     end: styles.edgeEnd,
-} as const satisfies Record<PixieDustStickyRegionEdge, string>;
+} as const satisfies Record<PixieStickyRegionEdge, string>;
 
 const offsetClasses = {
     none: styles.offsetNone,
@@ -21,25 +21,25 @@ const offsetClasses = {
     md: styles.offsetMedium,
     lg: styles.offsetLarge,
     xl: styles.offsetExtraLarge,
-} as const satisfies Record<PixieDustStickyRegionOffsetPreset, string>;
+} as const satisfies Record<PixieStickyRegionOffsetPreset, string>;
 
 const widthClasses = {
     full: styles.widthFull,
     fit: styles.widthFit,
-} as const satisfies Record<PixieDustStickyRegionWidth, string>;
+} as const satisfies Record<PixieStickyRegionWidth, string>;
 
 const overflowClasses = {
     visible: styles.overflowVisible,
     auto: styles.overflowAuto,
-} as const satisfies Record<PixieDustStickyRegionOverflow, string>;
+} as const satisfies Record<PixieStickyRegionOverflow, string>;
 
 const layerClasses = {
     auto: styles.layerAuto,
     raised: styles.layerRaised,
     overlay: styles.layerOverlay,
-} as const satisfies Record<PixieDustStickyRegionLayer, string>;
+} as const satisfies Record<PixieStickyRegionLayer, string>;
 
-export function PixieDustStickyRegion({
+export function PixieStickyRegion({
     as: Element = "div",
     edge = "start",
     offset = "md",
@@ -52,7 +52,7 @@ export function PixieDustStickyRegion({
     tabIndex,
     children,
     ...elementProps
-}: PixieDustStickyRegionProps) {
+}: PixieStickyRegionProps) {
     const customOffset =
         typeof offset === "number"
             ? ({
