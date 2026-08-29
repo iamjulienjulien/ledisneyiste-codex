@@ -24,12 +24,18 @@ import type {
     AtelierTravellingMatterKey,
     AtelierTravellingProjection,
 } from "@/components/atelier/AtelierTravellingDocumentairePrototype";
+import { AtelierTableLumineusePrototype } from "@/components/atelier/AtelierTableLumineusePrototype";
+import type {
+    AtelierTableLumineuseMatterKey,
+    AtelierTableLumineuseProjection,
+} from "@/components/atelier/AtelierTableLumineusePrototype";
 import { bobinesTemoins } from "@/fixtures/plans";
 import {
     codexPlanArchives,
     deriveGeneriqueVivant,
     deriveMontageDuTemps,
     derivePlanDEnsemble,
+    deriveTableLumineuse,
     deriveTravellingDocumentaire,
 } from "@/lib/plans";
 import { getCodexPlan, getCodexPlans, isCodexPlanSlug } from "@/registry/plans";
@@ -93,6 +99,21 @@ const generiqueMatterOptions = [
     ["grand-generique", "Bobine · Grand générique"],
 ] as const satisfies readonly (readonly [
     AtelierGeneriqueVivantMatterKey,
+    string,
+])[];
+
+const tableLumineuseMatterOptions = [
+    ["archives", "Archives publiées"],
+    ["corpus-vide", "Bobine · Corpus vide"],
+    ["corpus-reduit", "Bobine · Corpus réduit"],
+    ["preuves-contrastees", "Bobine · Preuves contrastées"],
+    [
+        "dates-partielles-et-contradictoires",
+        "Bobine · Dates partielles et contradictoires",
+    ],
+    ["accessibilite-sous-contrainte", "Bobine · Accessibilité sous contrainte"],
+] as const satisfies readonly (readonly [
+    AtelierTableLumineuseMatterKey,
     string,
 ])[];
 
@@ -277,6 +298,46 @@ function createGeneriqueProjections() {
     });
 }
 
+function createTableLumineuseProjections() {
+    return tableLumineuseMatterOptions.map(([matterKey, matterLabel]) => {
+        const configuration: CodexPlanConfiguration = {
+            plan: "table-lumineuse",
+            subject: {
+                family: "oeuvres",
+                slug: "snow-white-and-the-seven-dwarfs",
+            },
+            angle: "provenance",
+            objective: "verify",
+            frame: {
+                label: "Les preuves documentaires de Blanche-Neige",
+                description:
+                    "Vérifier les affirmations, leurs sources et leurs incertitudes sans fabriquer de score.",
+            },
+            matter:
+                matterKey === "archives"
+                    ? { kind: "archives" }
+                    : { kind: "bobine-temoin", fixture: matterKey },
+        };
+        const model =
+            matterKey === "archives"
+                ? deriveTableLumineuse(configuration, {
+                      kind: "archives",
+                      archives: codexPlanArchives,
+                  })
+                : deriveTableLumineuse(configuration, {
+                      kind: "bobine-temoin",
+                      archives: codexPlanArchives,
+                      bobine: bobinesTemoins[matterKey],
+                  });
+
+        return {
+            matterKey,
+            matterLabel,
+            model,
+        } satisfies AtelierTableLumineuseProjection;
+    });
+}
+
 export function generateStaticParams() {
     return getCodexPlans().map(({ slug }) => ({ slug }));
 }
@@ -383,6 +444,25 @@ export default async function AtelierPlanPage({
                 prototype={
                     <AtelierGeneriqueVivantPrototype
                         projections={createGeneriqueProjections()}
+                    />
+                }
+            />
+        );
+    }
+
+    if (slug === "table-lumineuse") {
+        return (
+            <AtelierPlanDossier
+                slug={slug}
+                plan={plan}
+                status="Esquisse"
+                program="P0 · Cinquième prototype"
+                version="v0.1.0"
+                prototypeTitle="Blanche-Neige place ses preuves sous la lumière"
+                prototypeDescription="Le prototype transforme les affirmations documentées en registre inspectable, préserve les classifications absentes et éprouve une Bobine de preuves réellement contrastées."
+                prototype={
+                    <AtelierTableLumineusePrototype
+                        projections={createTableLumineuseProjections()}
                     />
                 }
             />
