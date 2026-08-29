@@ -4,28 +4,36 @@ import { useState } from "react";
 import { PixieButton } from "@/components/ui/PixieButton";
 import { PixieDustToast } from "@/components/ui/PixieDustToast";
 
-export function PixieDustToastMasterDemo() {
-    const [open, setOpen] = useState(false);
+export function PixieDustToastProgressDemo() {
+    const [open, setOpen] = useState(true);
+
+    function replay() {
+        setOpen(false);
+        window.requestAnimationFrame(() => setOpen(true));
+    }
 
     return (
-        <div className="grid min-h-52 content-between gap-8">
+        <div className="grid w-full gap-5">
             <PixieButton
                 type="button"
+                size="xs"
+                variant="outline"
                 color="vert-cellulo"
-                onClick={() => setOpen(true)}
+                onClick={replay}
             >
-                Enregistrer la fiche
+                Relancer le compte à rebours
             </PixieButton>
 
             <PixieDustToast
                 open={open}
                 onOpenChange={setOpen}
                 tone="success"
+                progress="bar"
+                duration={10000}
+                pauseOnInteraction
                 title="Fiche enregistrée"
-                motion="dust"
-                progress="rail"
             >
-                Les modifications rejoignent les archives du Codex.
+                La barre se suspend au survol et au focus.
             </PixieDustToast>
         </div>
     );

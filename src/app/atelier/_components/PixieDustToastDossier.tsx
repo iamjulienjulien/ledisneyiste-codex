@@ -4,17 +4,22 @@ import { AtelierCodeBlock } from "@/components/atelier/AtelierCodeBlock";
 import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
+import { PixieBackdrop } from "@/components/ui/PixieBackdrop";
 import { PixiePanel } from "@/components/ui/PixiePanel";
 import { PixieStack } from "@/components/ui/PixieStack";
 import {
     PixieDustToast,
+    type PixieDustToastMotion,
     type PixieDustToastSize,
     type PixieDustToastTone,
     type PixieDustToastVariant,
 } from "@/components/ui/PixieDustToast";
 import { PixieDustToastActionDemo } from "./PixieDustToastActionDemo";
+import { PixieDustToastLongActionDemo } from "./PixieDustToastLongActionDemo";
 import { PixieDustToastMasterDemo } from "./PixieDustToastMasterDemo";
 import { PixieDustToastPlayground } from "./PixieDustToastPlayground";
+import { PixieDustToastProgressDemo } from "./PixieDustToastProgressDemo";
+import { PixieDustToastSwipeDemo } from "./PixieDustToastSwipeDemo";
 
 const tones = [
     { value: "neutral", name: "Neutre", example: "La vue a été actualisée." },
@@ -45,19 +50,38 @@ const tones = [
 }>[];
 
 const variants = [
-    { value: "surface", name: "Surface" },
-    { value: "solid", name: "Plein" },
-    { value: "outline", name: "Contour" },
+    { value: "surface", name: "Surface", description: "Équilibrée" },
+    { value: "solid", name: "Plein", description: "Signal fort" },
+    { value: "outline", name: "Contour", description: "Présence légère" },
+    { value: "glass", name: "Verre", description: "Fond atmosphérique" },
+    {
+        value: "spotlight",
+        name: "Projecteur",
+        description: "Halo directionnel",
+    },
 ] as const satisfies readonly Readonly<{
     value: PixieDustToastVariant;
     name: string;
+    description: string;
 }>[];
 
 const sizes = [
     { value: "sm", name: "Petite" },
     { value: "md", name: "Moyenne" },
+    { value: "lg", name: "Grande" },
 ] as const satisfies readonly Readonly<{
     value: PixieDustToastSize;
+    name: string;
+}>[];
+
+const motions = [
+    { value: "slide", name: "Glissement" },
+    { value: "fade", name: "Fondu" },
+    { value: "pop", name: "Mise au point" },
+    { value: "dust", name: "Poussière Pixie" },
+    { value: "none", name: "Aucun" },
+] as const satisfies readonly Readonly<{
+    value: PixieDustToastMotion;
     name: string;
 }>[];
 
@@ -93,6 +117,30 @@ const properties = [
         description: "Densité de la notification.",
     },
     {
+        name: "layout",
+        type: "PixieDustToastLayout",
+        defaultValue: '"auto"',
+        description: "Disposition responsive ou explicite de l’action.",
+    },
+    {
+        name: "width",
+        type: "PixieDustToastWidth",
+        defaultValue: '"md"',
+        description: "Largeur maximale de la notification.",
+    },
+    {
+        name: "motion",
+        type: "PixieDustToastMotion",
+        defaultValue: '"slide"',
+        description: "Mouvement d’entrée et de sortie.",
+    },
+    {
+        name: "progress",
+        type: "PixieDustToastProgress",
+        defaultValue: '"none"',
+        description: "Repère visuel facultatif du temps restant.",
+    },
+    {
         name: "open",
         type: "boolean",
         defaultValue: "—",
@@ -111,6 +159,12 @@ const properties = [
         description: "Signale une ouverture ou une fermeture demandée.",
     },
     {
+        name: "onDismiss",
+        type: "(reason: PixieDustToastDismissReason) => void",
+        defaultValue: "—",
+        description: "Expose la raison exacte de la disparition.",
+    },
+    {
         name: "duration",
         type: "number | false",
         defaultValue: "6000",
@@ -121,6 +175,12 @@ const properties = [
         type: "boolean",
         defaultValue: "true",
         description: "Suspend le délai au survol et au focus.",
+    },
+    {
+        name: "pauseOnPageHidden",
+        type: "boolean",
+        defaultValue: "true",
+        description: "Suspend le délai lorsque la page est masquée.",
     },
     {
         name: "dismissible",
@@ -135,6 +195,18 @@ const properties = [
         description: "Nom accessible de la fermeture.",
     },
     {
+        name: "closeOnEscape",
+        type: "boolean",
+        defaultValue: "true",
+        description: "Autorise Échap lorsque le Toast contient le focus.",
+    },
+    {
+        name: "swipeDirection",
+        type: "PixieDustToastSwipeDirection",
+        defaultValue: "false",
+        description: "Active une fermeture gestuelle logique ou verticale.",
+    },
+    {
         name: "actionLabel",
         type: "string",
         defaultValue: "—",
@@ -147,9 +219,15 @@ const properties = [
         description: "Réagit à l’action facultative.",
     },
     {
+        name: "closeOnAction",
+        type: "boolean",
+        defaultValue: "true",
+        description: "Referme la notification après son action.",
+    },
+    {
         name: "priority",
         type: "PixieDustToastPriority",
-        defaultValue: "automatique",
+        defaultValue: '"auto"',
         description: "Politesse de l’annonce dynamique.",
     },
     {
@@ -176,17 +254,47 @@ const specificTypes = [
     {
         name: "PixieDustToastVariant",
         values: variants.map(({ value }) => `"${value}"`),
-        description: "Trois niveaux de présence visuelle.",
+        description: "Cinq niveaux de présence visuelle.",
     },
     {
         name: "PixieDustToastSize",
         values: sizes.map(({ value }) => `"${value}"`),
-        description: "Deux densités adaptées aux messages courts.",
+        description: "Trois densités adaptées aux messages brefs ou longs.",
+    },
+    {
+        name: "PixieDustToastLayout",
+        values: ['"auto"', '"inline"', '"stacked"'],
+        description: "Trois compositions possibles pour l’action.",
+    },
+    {
+        name: "PixieDustToastWidth",
+        values: ['"fit"', '"sm"', '"md"', '"lg"', '"full"'],
+        description: "Cinq limites de largeur explicites.",
+    },
+    {
+        name: "PixieDustToastMotion",
+        values: motions.map(({ value }) => `"${value}"`),
+        description: "Cinq cycles d’entrée et de sortie.",
+    },
+    {
+        name: "PixieDustToastProgress",
+        values: ['"none"', '"rail"', '"bar"'],
+        description: "Trois traitements du temps restant.",
     },
     {
         name: "PixieDustToastPriority",
-        values: ['"polite"', '"assertive"'],
-        description: "Deux niveaux d’annonce pour les aides techniques.",
+        values: ['"auto"', '"polite"', '"assertive"'],
+        description: "Un calcul sémantique ou deux niveaux explicites.",
+    },
+    {
+        name: "PixieDustToastSwipeDirection",
+        values: ['"start"', '"end"', '"up"', '"down"', "false"],
+        description: "Quatre directions de balayage ou aucune.",
+    },
+    {
+        name: "PixieDustToastDismissReason",
+        values: ['"timeout"', '"dismiss"', '"action"', '"escape"', '"swipe"'],
+        description: "La cause exacte d’une fermeture demandée.",
     },
 ] as const;
 
@@ -258,7 +366,7 @@ export function PixieDustToastDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.1.0
+                                0.2.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -289,11 +397,11 @@ export function PixieDustToastDossier() {
                             ],
                             [
                                 "Durée",
-                                "Six secondes, suspendues pendant l’interaction.",
+                                "Six secondes, suspendues pendant l’interaction ou hors page.",
                             ],
                             [
                                 "Annonce",
-                                "Polie ou prioritaire selon la tonalité.",
+                                "Polie par défaut, prioritaire pour un danger.",
                             ],
                             [
                                 "Limite",
@@ -327,8 +435,10 @@ export function PixieDustToastDossier() {
                             <CodeExample>{`<PixieDustToast
     open={open}
     onOpenChange={setOpen}
-    tone="success"
-    title="Fiche enregistrée"
+                            tone="success"
+                            title="Fiche enregistrée"
+                            motion="dust"
+                            progress="rail"
 >
     Les modifications rejoignent les archives du Codex.
 </PixieDustToast>`}</CodeExample>
@@ -361,12 +471,23 @@ export function PixieDustToastDossier() {
                     <SequenceTitle
                         id="toast-variants-title"
                         eyebrow="Variantes"
-                        title="Trois présences pour une même information"
+                        title="Cinq présences pour une même information"
+                        description="Surface, contour et plein cadrent les usages courants ; verre et projecteur installent une présence plus atmosphérique."
                     />
-                    <div className="mt-8 grid gap-5 lg:grid-cols-3">
+                    <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
                         {variants.map((variant) => (
                             <Stage key={variant.value}>
-                                <div className="w-full">
+                                <PixieBackdrop
+                                    variant={
+                                        variant.value === "glass"
+                                            ? "projector"
+                                            : "wash"
+                                    }
+                                    color="violet-ombre-portee"
+                                    intensity="subtle"
+                                    padding="sm"
+                                    className="w-full"
+                                >
                                     <p className="mb-4 font-mono text-xs text-accent">
                                         variant=&quot;{variant.value}&quot;
                                     </p>
@@ -376,9 +497,10 @@ export function PixieDustToastDossier() {
                                         title={variant.name}
                                         duration={false}
                                     >
-                                        La projection est prête.
+                                        {variant.description} pour la
+                                        notification.
                                     </PixieDustToast>
-                                </div>
+                                </PixieBackdrop>
                             </Stage>
                         ))}
                     </div>
@@ -388,9 +510,9 @@ export function PixieDustToastDossier() {
                     <SequenceTitle
                         id="toast-sizes-title"
                         eyebrow="Dimensions"
-                        title="Deux densités pour les messages brefs"
+                        title="Trois densités sans devenir un panneau"
                     />
-                    <div className="mt-8 grid gap-5 md:grid-cols-2">
+                    <div className="mt-8 grid gap-5 lg:grid-cols-3">
                         {sizes.map((size) => (
                             <Stage key={size.value}>
                                 <div className="w-full">
@@ -403,6 +525,35 @@ export function PixieDustToastDossier() {
                                         duration={false}
                                     >
                                         Le raccord est terminé.
+                                    </PixieDustToast>
+                                </div>
+                            </Stage>
+                        ))}
+                    </div>
+                </section>
+
+                <section aria-labelledby="toast-motions-title">
+                    <SequenceTitle
+                        id="toast-motions-title"
+                        eyebrow="Mouvements"
+                        title="Du simple fondu à la poussière Pixie"
+                        description="Chaque cycle possède une entrée et une sortie cohérentes. Le mouvement réduit les ramène à un fondu presque immédiat."
+                    />
+                    <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+                        {motions.map((motion) => (
+                            <Stage key={motion.value}>
+                                <div className="w-full">
+                                    <p className="mb-4 font-mono text-xs text-accent">
+                                        motion=&quot;{motion.value}&quot;
+                                    </p>
+                                    <PixieDustToast
+                                        tone="success"
+                                        variant="spotlight"
+                                        motion={motion.value}
+                                        title={motion.name}
+                                        duration={false}
+                                    >
+                                        Le raccord rejoint la projection.
                                     </PixieDustToast>
                                 </div>
                             </Stage>
@@ -434,12 +585,54 @@ export function PixieDustToastDossier() {
                     </div>
                 </section>
 
+                <section aria-labelledby="toast-scenarios-title">
+                    <SequenceTitle
+                        id="toast-scenarios-title"
+                        eyebrow="Scénarios préparés"
+                        title="Éprouver le Toast dans des situations contrastées"
+                        description="Les messages longs, les fonds atmosphériques, la progression et le geste mobile restent lisibles sans transformer la notification en surface éditoriale."
+                    />
+                    <div className="mt-8 grid gap-5 lg:grid-cols-2">
+                        <Stage>
+                            <PixieDustToastLongActionDemo />
+                        </Stage>
+                        <Stage>
+                            <PixieBackdrop
+                                variant="projector"
+                                color="bleu-reperage"
+                                intensity="strong"
+                                texture="dust"
+                                padding="md"
+                                className="w-full"
+                            >
+                                <PixieDustToast
+                                    tone="info"
+                                    variant="glass"
+                                    motion="dust"
+                                    width="full"
+                                    title="Projection synchronisée"
+                                    duration={false}
+                                >
+                                    Le verre conserve le décor sans perdre le
+                                    contraste du message.
+                                </PixieDustToast>
+                            </PixieBackdrop>
+                        </Stage>
+                        <Stage>
+                            <PixieDustToastProgressDemo />
+                        </Stage>
+                        <Stage>
+                            <PixieDustToastSwipeDemo />
+                        </Stage>
+                    </div>
+                </section>
+
                 <section aria-labelledby="toast-playground-title">
                     <SequenceTitle
                         id="toast-playground-title"
                         eyebrow="Bac à sable interactif"
                         title="Régler la notification et relancer son passage"
-                        description="Le faux viewport permet d’éprouver ouverture, fermeture automatique, pause, action et deux Lumières."
+                        description="Le faux viewport permet d’éprouver variantes, dimensions, mouvements, progression, motifs de fermeture et deux Lumières."
                     />
                     <div className="mt-8">
                         <PixieDustToastPlayground />
@@ -459,9 +652,9 @@ export function PixieDustToastDossier() {
                                     Une annonce proportionnée
                                 </h4>
                                 <p className="mt-3 text-sm leading-6 text-ink-soft">
-                                    Neutral, success et info utilisent status.
-                                    Warning et danger utilisent alert, sauf
-                                    priorité explicitement choisie.
+                                    Neutral, success, info et warning utilisent
+                                    status. Seul danger devient alert en mode
+                                    automatique, sauf priorité explicite.
                                 </p>
                             </PixiePanel>
                             <PixiePanel variant="outline" padding="md">
@@ -472,6 +665,8 @@ export function PixieDustToastDossier() {
                                     L’apparition ne déplace jamais le focus. Le
                                     délai se suspend au survol et lorsque
                                     l’action ou la fermeture reçoit le clavier.
+                                    Les commandes restent hors de la région
+                                    vivante annoncée.
                                 </p>
                             </PixiePanel>
                         </div>
@@ -484,7 +679,7 @@ export function PixieDustToastDossier() {
                             id="toast-technical-title"
                             eyebrow="Générique technique"
                             title="API de l’esquisse"
-                            description="Le composant accepte un cycle contrôlé ou autonome. Les couleurs restent fixées par la sémantique des tonalités."
+                            description="Le composant accepte un cycle contrôlé ou autonome, expose chaque motif de fermeture et conserve la couleur sous la responsabilité de la tonalité."
                         />
                         <div className="mt-8">
                             <AtelierPropertiesTable properties={properties} />
@@ -509,8 +704,9 @@ export function PixieDustToastDossier() {
                     <PixieStack as="ul" gap="sm" className="mt-8">
                         {[
                             "Éprouver les annonces status et alert avec plusieurs lecteurs d’écran.",
-                            "Confirmer le calcul du temps restant après survol et navigation clavier.",
-                            "Tester les contrastes des trois variantes dans les deux Lumières.",
+                            "Confirmer le calcul du temps restant après survol, navigation clavier et changement d’onglet.",
+                            "Tester les contrastes des cinq variantes dans les deux Lumières.",
+                            "Valider le seuil de balayage sur plusieurs appareils tactiles.",
                             "Concevoir séparément la régie globale, le portail et la file d’attente.",
                         ].map((item) => (
                             <li

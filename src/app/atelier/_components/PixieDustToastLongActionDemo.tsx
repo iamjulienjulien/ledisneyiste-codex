@@ -4,33 +4,38 @@ import { useState } from "react";
 import { PixieButton } from "@/components/ui/PixieButton";
 import { PixieDustToast } from "@/components/ui/PixieDustToast";
 
-export function PixieDustToastActionDemo() {
+export function PixieDustToastLongActionDemo() {
     const [open, setOpen] = useState(true);
 
     return (
-        <div className="grid w-full gap-6">
+        <div className="grid w-full gap-5">
             {!open ? (
                 <PixieButton
                     type="button"
-                    size="sm"
+                    size="xs"
                     variant="outline"
-                    color="vert-cellulo"
+                    color="ambre-projecteur"
                     onClick={() => setOpen(true)}
                 >
-                    Rejouer le déplacement
+                    Rejouer l’avertissement
                 </PixieButton>
             ) : null}
 
             <PixieDustToast
                 open={open}
                 onOpenChange={setOpen}
-                tone="success"
-                title="Fiche déplacée"
-                actionLabel="Annuler"
+                tone="warning"
+                variant="spotlight"
+                size="lg"
+                layout="stacked"
+                width="full"
+                title="Plusieurs sources demandent une relecture"
+                actionLabel="Ouvrir les sources"
                 onAction={() => undefined}
                 duration={false}
             >
-                La fiche rejoint Le temps des pionniers.
+                Trois références possèdent encore une date partielle. Le message
+                reste disponible tant que la décision n’est pas prise.
             </PixieDustToast>
         </div>
     );
