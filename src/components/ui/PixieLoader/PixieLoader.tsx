@@ -1,18 +1,18 @@
 import { getAtelierAnimationColor } from "@/registry/colors";
-import styles from "./PixieDustLoader.module.css";
+import styles from "./PixieLoader.module.css";
 import type {
-    PixieDustLoaderDirection,
-    PixieDustLoaderIntensity,
-    PixieDustLoaderLabelPosition,
-    PixieDustLoaderLayout,
-    PixieDustLoaderMotion,
-    PixieDustLoaderParticleStyle,
-    PixieDustLoaderProps,
-    PixieDustLoaderSize,
-    PixieDustLoaderSpeed,
-    PixieDustLoaderStyle,
-    PixieDustLoaderVariant,
-} from "./PixieDustLoader.types";
+    PixieLoaderDirection,
+    PixieLoaderIntensity,
+    PixieLoaderLabelPosition,
+    PixieLoaderLayout,
+    PixieLoaderMotion,
+    PixieLoaderParticleStyle,
+    PixieLoaderProps,
+    PixieLoaderSize,
+    PixieLoaderSpeed,
+    PixieLoaderStyle,
+    PixieLoaderVariant,
+} from "./PixieLoader.types";
 
 const variantClasses = {
     sparkle: styles.sparkle,
@@ -24,7 +24,7 @@ const variantClasses = {
     filmstrip: styles.filmstrip,
     orbit: styles.orbitVariant,
     dots: styles.dotsVariant,
-} as const satisfies Record<PixieDustLoaderVariant, string>;
+} as const satisfies Record<PixieLoaderVariant, string>;
 
 const sizeClasses = {
     xs: styles.xs,
@@ -32,44 +32,44 @@ const sizeClasses = {
     md: styles.md,
     lg: styles.lg,
     xl: styles.xl,
-} as const satisfies Record<PixieDustLoaderSize, string>;
+} as const satisfies Record<PixieLoaderSize, string>;
 
 const speedClasses = {
     slow: styles.slow,
     normal: styles.normal,
     fast: styles.fast,
-} as const satisfies Record<PixieDustLoaderSpeed, string>;
+} as const satisfies Record<PixieLoaderSpeed, string>;
 
 const layoutClasses = {
     inline: styles.inline,
     stacked: styles.stacked,
-} as const satisfies Record<PixieDustLoaderLayout, string>;
+} as const satisfies Record<PixieLoaderLayout, string>;
 
 const labelPositionClasses = {
     before: styles.labelBefore,
     after: styles.labelAfter,
-} as const satisfies Record<PixieDustLoaderLabelPosition, string>;
+} as const satisfies Record<PixieLoaderLabelPosition, string>;
 
 const intensityClasses = {
     subtle: styles.subtle,
     normal: styles.normalIntensity,
     strong: styles.strong,
-} as const satisfies Record<PixieDustLoaderIntensity, string>;
+} as const satisfies Record<PixieLoaderIntensity, string>;
 
 const motionClasses = {
     expressive: "",
     gentle: styles.gentle,
     static: styles.static,
-} as const satisfies Record<PixieDustLoaderMotion, string>;
+} as const satisfies Record<PixieLoaderMotion, string>;
 
 const directionClasses = {
     forward: styles.forward,
     reverse: styles.reverse,
-} as const satisfies Record<PixieDustLoaderDirection, string>;
+} as const satisfies Record<PixieLoaderDirection, string>;
 
 const FAIRY_DUST_COUNT = 16;
 
-function getParticleStyle(index: number): PixieDustLoaderParticleStyle {
+function getParticleStyle(index: number): PixieLoaderParticleStyle {
     const distance = 0.26 + (index % 4) * 0.055;
     const size = 0.026 + (index % 3) * 0.018;
 
@@ -81,7 +81,7 @@ function getParticleStyle(index: number): PixieDustLoaderParticleStyle {
     };
 }
 
-function resolveColor(color: PixieDustLoaderProps["color"], fallback: string) {
+function resolveColor(color: PixieLoaderProps["color"], fallback: string) {
     return color ? getAtelierAnimationColor(color).cssValue : fallback;
 }
 
@@ -141,7 +141,7 @@ function Dots() {
     );
 }
 
-export function PixieDustLoader({
+export function PixieLoader({
     label = "Chargement en cours",
     description,
     labelHidden = false,
@@ -164,12 +164,12 @@ export function PixieDustLoader({
     ariaAtomic = true,
     ariaControls,
     className = "",
-}: PixieDustLoaderProps) {
+}: PixieLoaderProps) {
     if (!active && !reserveSpace) {
         return null;
     }
 
-    const loaderStyle: PixieDustLoaderStyle = {
+    const loaderStyle: PixieLoaderStyle = {
         "--pixie-loader-color": resolveColor(color, "currentColor"),
         "--pixie-loader-secondary-color": resolveColor(
             secondaryColor,
