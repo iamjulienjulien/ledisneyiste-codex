@@ -23,10 +23,15 @@ const layoutClasses = {
 } as const satisfies Record<PixieDustSearchFieldLayout, string>;
 
 const buttonSizes = {
+    xs: "xs",
     sm: "xs",
     md: "md",
     lg: "lg",
-} as const satisfies Record<"sm" | "md" | "lg", PixieButtonSize>;
+    xl: "xl",
+} as const satisfies Record<
+    NonNullable<PixieDustSearchFieldProps["size"]>,
+    PixieButtonSize
+>;
 
 type SearchControlProps = Readonly<{
     id?: string;
