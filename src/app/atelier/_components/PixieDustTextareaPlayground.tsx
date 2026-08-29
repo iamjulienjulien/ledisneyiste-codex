@@ -1,19 +1,22 @@
 "use client";
 
-import { PixieSelect } from "@/components/ui/PixieSelect";
-
 import { useState, type Dispatch, type SetStateAction } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
+import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import {
     AtelierPlaygroundProjection,
     useAtelierProjection,
 } from "@/components/atelier/AtelierPlaygroundProjection";
-import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { PixieField } from "@/components/ui/PixieField";
+import { PixieSelect } from "@/components/ui/PixieSelect";
 import {
     PixieDustTextarea,
+    type PixieDustTextareaEffect,
+    type PixieDustTextareaFont,
     type PixieDustTextareaResize,
+    type PixieDustTextareaShape,
     type PixieDustTextareaSize,
+    type PixieDustTextareaTone,
     type PixieDustTextareaVariant,
 } from "@/components/ui/PixieDustTextarea";
 import {
@@ -26,6 +29,8 @@ const variants = [
     { value: "outline", label: "Contour" },
     { value: "filled", label: "Surface" },
     { value: "underline", label: "Souligné" },
+    { value: "ghost", label: "Fantôme" },
+    { value: "manuscript", label: "Manuscrit" },
 ] as const satisfies readonly Readonly<{
     value: PixieDustTextareaVariant;
     label: string;
@@ -37,6 +42,41 @@ const sizes = [
     { value: "lg", label: "Grande" },
 ] as const satisfies readonly Readonly<{
     value: PixieDustTextareaSize;
+    label: string;
+}>[];
+
+const shapes = [
+    { value: "square", label: "Carrée" },
+    { value: "rounded", label: "Arrondie" },
+] as const satisfies readonly Readonly<{
+    value: PixieDustTextareaShape;
+    label: string;
+}>[];
+
+const fonts = [
+    { value: "body", label: "Texte" },
+    { value: "mono", label: "Monospace" },
+] as const satisfies readonly Readonly<{
+    value: PixieDustTextareaFont;
+    label: string;
+}>[];
+
+const tones = [
+    { value: "neutral", label: "Neutre" },
+    { value: "success", label: "Succès" },
+    { value: "warning", label: "Avertissement" },
+] as const satisfies readonly Readonly<{
+    value: PixieDustTextareaTone;
+    label: string;
+}>[];
+
+const effects = [
+    { value: "none", label: "Aucun" },
+    { value: "ring", label: "Anneau" },
+    { value: "glow", label: "Halo" },
+    { value: "dust", label: "Poussière Pixie" },
+] as const satisfies readonly Readonly<{
+    value: PixieDustTextareaEffect;
     label: string;
 }>[];
 
@@ -61,7 +101,8 @@ const colors: readonly Readonly<{
     })),
 ];
 
-const rowOptions = [3, 5, 7, 10] as const;
+const rowOptions = [2, 3, 5, 7, 10, 12] as const;
+const maxLengthOptions = [120, 240, 480, 960] as const;
 
 const frameWidths = {
     compact: "max-w-sm",
@@ -73,30 +114,72 @@ const initialValue =
     "Cette séquence marque le moment où le mouvement, la musique et le caractère commencent à parler d’une même voix.";
 
 export function PixieDustTextareaPlayground() {
-    const [variant, setVariant] = useState<PixieDustTextareaVariant>("outline");
+    const [variant, setVariant] =
+        useState<PixieDustTextareaVariant>("manuscript");
     const [size, setSize] = useState<PixieDustTextareaSize>("md");
+    const [shape, setShape] = useState<PixieDustTextareaShape>("rounded");
+    const [font, setFont] = useState<PixieDustTextareaFont>("body");
+    const [tone, setTone] = useState<PixieDustTextareaTone>("neutral");
+    const [effect, setEffect] = useState<PixieDustTextareaEffect>("dust");
     const [resize, setResize] = useState<PixieDustTextareaResize>("vertical");
     const [color, setColor] = useState<AtelierAnimationColorSlug | "inherit">(
-        "inherit",
+        "violet-ombre-portee",
     );
-    const [rows, setRows] = useState<number>(5);
+    const [rows, setRows] = useState(5);
+    const [minRows, setMinRows] = useState(3);
+    const [maxRows, setMaxRows] = useState(10);
+    const [maxLength, setMaxLength] = useState(240);
     const [value, setValue] = useState(initialValue);
+    const [autoGrow, setAutoGrow] = useState(true);
+    const [showCount, setShowCount] = useState(true);
+    const [adornments, setAdornments] = useState(true);
+    const [footer, setFooter] = useState(true);
     const [invalid, setInvalid] = useState(false);
+    const [busy, setBusy] = useState(false);
     const [disabled, setDisabled] = useState(false);
     const [readOnly, setReadOnly] = useState(false);
     const [required, setRequired] = useState(false);
     const { lumiere: light, cadre: frame } = useAtelierProjection();
 
     const colorProp = color === "inherit" ? "" : `\n        color="${color}"`;
+    const toneProp = tone === "neutral" ? "" : `\n        tone="${tone}"`;
+    const growProps = autoGrow
+        ? `\n        autoGrow\n        minRows={${minRows}}\n        maxRows={${maxRows}}`
+        : `\n        resize="${resize}"\n        rows={${rows}}`;
+    const fieldFeedback = invalid
+        ? ({ error: "La note doit préciser le raccord à conserver." } as const)
+        : tone === "success"
+          ? ({
+                feedback: "La note peut rejoindre les archives.",
+                feedbackTone: "success",
+            } as const)
+          : tone === "warning"
+            ? ({
+                  feedback: "Cette note mérite une relecture.",
+                  feedbackTone: "warning",
+              } as const)
+            : ({
+                  description:
+                      "Décrivez le raccord à conserver dans les archives.",
+              } as const);
+    const fieldMessage = invalid
+        ? '\n    error="La note doit préciser le raccord à conserver."'
+        : tone === "success"
+          ? '\n    feedback="La note peut rejoindre les archives."\n    feedbackTone="success"'
+          : tone === "warning"
+            ? '\n    feedback="Cette note mérite une relecture."\n    feedbackTone="warning"'
+            : '\n    description="Décrivez le raccord à conserver dans les archives."';
     const code = `<PixieField
     controlId="projection-note"
-    label="Note de projection"${invalid ? '\n    error="La note doit préciser le raccord à conserver."' : '\n    description="Décrivez le raccord à conserver dans les archives."'}${required ? "\n    required" : ""}
+    label="Note de projection"${fieldMessage}${required ? "\n    required" : ""}
 >
     <PixieDustTextarea
         variant="${variant}"
         size="${size}"
-        resize="${resize}"
-        rows={${rows}}${colorProp}${disabled ? "\n        disabled" : ""}${readOnly ? "\n        readOnly" : ""}${required ? "\n        required" : ""}
+        shape="${shape}"
+        font="${font}"
+        effect="${effect}"${toneProp}${colorProp}${growProps}
+        maxLength={${maxLength}}${showCount ? "\n        showCount" : ""}${adornments ? '\n        startAdornment="✦"\n        endAdornment="Brouillon"' : ""}${footer ? '\n        footerStart="Sauvegarde locale"' : ""}${busy ? "\n        busy" : ""}${invalid ? "\n        invalid" : ""}${disabled ? "\n        disabled" : ""}${readOnly ? "\n        readOnly" : ""}${required ? "\n        required" : ""}
     />
 </PixieField>`;
     const fieldRequirement = required
@@ -107,13 +190,18 @@ export function PixieDustTextareaPlayground() {
         checked: boolean;
         onChange: Dispatch<SetStateAction<boolean>>;
     }>[] = [
+        {
+            label: "Croissance automatique",
+            checked: autoGrow,
+            onChange: setAutoGrow,
+        },
+        { label: "Compteur", checked: showCount, onChange: setShowCount },
+        { label: "Ornements", checked: adornments, onChange: setAdornments },
+        { label: "Pied de régie", checked: footer, onChange: setFooter },
+        { label: "En attente", checked: busy, onChange: setBusy },
         { label: "Invalide", checked: invalid, onChange: setInvalid },
         { label: "Désactivé", checked: disabled, onChange: setDisabled },
-        {
-            label: "Lecture seule",
-            checked: readOnly,
-            onChange: setReadOnly,
-        },
+        { label: "Lecture seule", checked: readOnly, onChange: setReadOnly },
         { label: "Obligatoire", checked: required, onChange: setRequired },
     ];
 
@@ -158,96 +246,112 @@ export function PixieDustTextareaPlayground() {
                             </div>
                         </fieldset>
 
-                        <div>
-                            <label
-                                htmlFor="textarea-resize"
-                                className="text-sm font-medium text-ink"
-                            >
-                                Redimensionnement
-                            </label>
-                            <PixieSelect
-                                mode="popover"
-                                portal
-                                size="sm"
-                                id="textarea-resize"
-                                value={resize}
-                                onChange={(event) =>
-                                    setResize(
-                                        event.target
-                                            .value as PixieDustTextareaResize,
-                                    )
-                                }
-                                className="mt-2"
-                            >
-                                {resizes.map((option) => (
-                                    <option
-                                        key={option.value}
-                                        value={option.value}
-                                    >
-                                        {option.label}
-                                    </option>
-                                ))}
-                            </PixieSelect>
-                        </div>
+                        <SelectControl
+                            id="textarea-shape"
+                            label="Forme"
+                            value={shape}
+                            options={shapes}
+                            onChange={(nextValue) =>
+                                setShape(nextValue as PixieDustTextareaShape)
+                            }
+                        />
+                        <SelectControl
+                            id="textarea-font"
+                            label="Typographie"
+                            value={font}
+                            options={fonts}
+                            onChange={(nextValue) =>
+                                setFont(nextValue as PixieDustTextareaFont)
+                            }
+                        />
+                        <SelectControl
+                            id="textarea-tone"
+                            label="Ton"
+                            value={tone}
+                            options={tones}
+                            onChange={(nextValue) =>
+                                setTone(nextValue as PixieDustTextareaTone)
+                            }
+                        />
+                        <SelectControl
+                            id="textarea-effect"
+                            label="Effet de focus"
+                            value={effect}
+                            options={effects}
+                            onChange={(nextValue) =>
+                                setEffect(nextValue as PixieDustTextareaEffect)
+                            }
+                        />
+                        <SelectControl
+                            id="textarea-color"
+                            label="Couleur du registre"
+                            value={color}
+                            options={colors}
+                            onChange={(nextValue) =>
+                                setColor(
+                                    nextValue as
+                                        AtelierAnimationColorSlug | "inherit",
+                                )
+                            }
+                        />
 
-                        <div>
-                            <label
-                                htmlFor="textarea-rows"
-                                className="text-sm font-medium text-ink"
-                            >
-                                Lignes initiales
-                            </label>
-                            <PixieSelect
-                                mode="popover"
-                                portal
-                                size="sm"
-                                id="textarea-rows"
-                                value={rows}
-                                onChange={(event) =>
-                                    setRows(Number(event.target.value))
-                                }
-                                className="mt-2 font-mono"
-                            >
-                                {rowOptions.map((option) => (
-                                    <option key={option} value={option}>
-                                        {option}
-                                    </option>
-                                ))}
-                            </PixieSelect>
-                        </div>
+                        {autoGrow ? (
+                            <div className="grid grid-cols-2 gap-3">
+                                <NumberControl
+                                    id="textarea-min-rows"
+                                    label="Lignes min."
+                                    value={minRows}
+                                    options={rowOptions}
+                                    onChange={(nextValue) => {
+                                        setMinRows(nextValue);
+                                        setMaxRows((currentValue) =>
+                                            Math.max(currentValue, nextValue),
+                                        );
+                                    }}
+                                />
+                                <NumberControl
+                                    id="textarea-max-rows"
+                                    label="Lignes max."
+                                    value={maxRows}
+                                    options={rowOptions}
+                                    onChange={(nextValue) => {
+                                        setMaxRows(nextValue);
+                                        setMinRows((currentValue) =>
+                                            Math.min(currentValue, nextValue),
+                                        );
+                                    }}
+                                />
+                            </div>
+                        ) : (
+                            <>
+                                <SelectControl
+                                    id="textarea-resize"
+                                    label="Redimensionnement"
+                                    value={resize}
+                                    options={resizes}
+                                    onChange={(nextValue) =>
+                                        setResize(
+                                            nextValue as PixieDustTextareaResize,
+                                        )
+                                    }
+                                />
+                                <NumberControl
+                                    id="textarea-rows"
+                                    label="Lignes initiales"
+                                    value={rows}
+                                    options={rowOptions}
+                                    onChange={setRows}
+                                />
+                            </>
+                        )}
 
-                        <div>
-                            <label
-                                htmlFor="textarea-color"
-                                className="text-sm font-medium text-ink"
-                            >
-                                Couleur du registre
-                            </label>
-                            <PixieSelect
-                                mode="popover"
-                                portal
-                                size="sm"
-                                id="textarea-color"
-                                value={color}
-                                onChange={(event) =>
-                                    setColor(
-                                        event.target.value as
-                                            | AtelierAnimationColorSlug
-                                            | "inherit",
-                                    )
-                                }
-                                className="mt-2"
-                            >
-                                {colors.map((option) => (
-                                    <option
-                                        key={option.value}
-                                        value={option.value}
-                                    >
-                                        {option.label}
-                                    </option>
-                                ))}
-                            </PixieSelect>
-                        </div>
+                        <NumberControl
+                            id="textarea-max-length"
+                            label="Limite de caractères"
+                            value={maxLength}
+                            options={maxLengthOptions}
+                            onChange={setMaxLength}
+                        />
 
                         <div className="space-y-3 text-sm text-ink-soft">
                             {booleanControls.map((control) => (
@@ -275,7 +379,7 @@ export function PixieDustTextareaPlayground() {
                     <div
                         data-projection="originale"
                         data-lumiere={light}
-                        className="flex min-h-[32rem] items-center justify-center overflow-auto bg-canvas p-6 sm:p-8"
+                        className="flex min-h-[34rem] items-center justify-center overflow-auto bg-canvas p-6 sm:p-8"
                     >
                         <div
                             className={`w-full border border-line bg-surface p-6 sm:p-8 ${frameWidths[frame]}`}
@@ -283,32 +387,43 @@ export function PixieDustTextareaPlayground() {
                             <PixieField
                                 controlId="textarea-preview"
                                 label="Note de projection"
-                                description={
-                                    invalid
-                                        ? undefined
-                                        : "Décrivez le raccord à conserver dans les archives."
-                                }
-                                error={
-                                    invalid
-                                        ? "La note doit préciser le raccord à conserver."
-                                        : undefined
-                                }
+                                {...fieldFeedback}
                                 {...fieldRequirement}
                             >
                                 <PixieDustTextarea
+                                    id="textarea-preview"
                                     variant={variant}
                                     size={size}
+                                    shape={shape}
+                                    font={font}
+                                    tone={tone}
+                                    effect={effect}
+                                    color={color === "inherit" ? false : color}
                                     resize={resize}
                                     rows={rows}
-                                    color={color === "inherit" ? false : color}
+                                    autoGrow={autoGrow}
+                                    minRows={minRows}
+                                    maxRows={maxRows}
+                                    maxLength={maxLength}
+                                    showCount={showCount}
+                                    startAdornment={
+                                        adornments ? "✦" : undefined
+                                    }
+                                    endAdornment={
+                                        adornments ? "Brouillon" : undefined
+                                    }
+                                    footerStart={
+                                        footer ? "Sauvegarde locale" : undefined
+                                    }
                                     value={value}
                                     onChange={(event) =>
                                         setValue(event.target.value)
                                     }
+                                    busy={busy}
+                                    invalid={invalid}
                                     disabled={disabled}
                                     readOnly={readOnly}
                                     required={required}
-                                    maxLength={480}
                                     placeholder="Cette séquence marque…"
                                 />
                             </PixieField>
@@ -318,6 +433,80 @@ export function PixieDustTextareaPlayground() {
                     <AtelierCodePanel key={code} code={code} />
                 </AtelierPlaygroundProjection>
             </div>
+        </div>
+    );
+}
+
+function SelectControl({
+    id,
+    label,
+    value,
+    options,
+    onChange,
+}: Readonly<{
+    id: string;
+    label: string;
+    value: string;
+    options: readonly Readonly<{ value: string; label: string }>[];
+    onChange: (value: string) => void;
+}>) {
+    return (
+        <div>
+            <label htmlFor={id} className="text-sm font-medium text-ink">
+                {label}
+            </label>
+            <PixieSelect
+                id={id}
+                className="mt-2"
+                mode="popover"
+                portal
+                size="sm"
+                value={value}
+                onChange={(event) => onChange(event.target.value)}
+            >
+                {options.map((option) => (
+                    <option key={option.value} value={option.value}>
+                        {option.label}
+                    </option>
+                ))}
+            </PixieSelect>
+        </div>
+    );
+}
+
+function NumberControl({
+    id,
+    label,
+    value,
+    options,
+    onChange,
+}: Readonly<{
+    id: string;
+    label: string;
+    value: number;
+    options: readonly number[];
+    onChange: (value: number) => void;
+}>) {
+    return (
+        <div>
+            <label htmlFor={id} className="text-sm font-medium text-ink">
+                {label}
+            </label>
+            <PixieSelect
+                id={id}
+                className="mt-2 font-mono"
+                mode="popover"
+                portal
+                size="sm"
+                value={value}
+                onChange={(event) => onChange(Number(event.target.value))}
+            >
+                {options.map((option) => (
+                    <option key={option} value={option}>
+                        {option}
+                    </option>
+                ))}
+            </PixieSelect>
         </div>
     );
 }
