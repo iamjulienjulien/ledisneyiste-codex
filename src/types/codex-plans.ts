@@ -410,6 +410,8 @@ export type CodexPlanDEnsembleRelation = Readonly<{
     label: string;
     direction: Exclude<CodexPlanDEnsembleDirection, "all">;
     relativeToId: string;
+    from: CodexPlanEntityReference;
+    to: CodexPlanEntityReference;
     fromId: string;
     toId: string;
     depth: number;

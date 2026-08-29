@@ -486,6 +486,8 @@ function relationRelativeTo(
         label: link.label,
         direction: link.from.id === relativeToId ? "outgoing" : "incoming",
         relativeToId,
+        from: link.from,
+        to: link.to,
         fromId: link.from.id,
         toId: link.to.id,
         depth: Math.max(
