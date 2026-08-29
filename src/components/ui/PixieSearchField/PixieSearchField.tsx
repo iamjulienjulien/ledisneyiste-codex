@@ -16,24 +16,24 @@ import {
 } from "@/components/ui/PixieButton";
 import { PixieField } from "@/components/ui/PixieField";
 import { PixieInput } from "@/components/ui/PixieInput";
-import styles from "./PixieDustSearchField.module.css";
+import styles from "./PixieSearchField.module.css";
 import type {
-    PixieDustSearchFieldComposition,
-    PixieDustSearchFieldLayout,
-    PixieDustSearchFieldProps,
-} from "./PixieDustSearchField.types";
+    PixieSearchFieldComposition,
+    PixieSearchFieldLayout,
+    PixieSearchFieldProps,
+} from "./PixieSearchField.types";
 
 const layoutClasses = {
     inline: styles.inline,
     stacked: styles.stacked,
     responsive: styles.responsive,
-} as const satisfies Record<PixieDustSearchFieldLayout, string>;
+} as const satisfies Record<PixieSearchFieldLayout, string>;
 
 const compositionClasses = {
     separate: styles.separate,
     joined: styles.joined,
     embedded: styles.embedded,
-} as const satisfies Record<PixieDustSearchFieldComposition, string>;
+} as const satisfies Record<PixieSearchFieldComposition, string>;
 
 const buttonSizes = {
     xs: "xs",
@@ -42,7 +42,7 @@ const buttonSizes = {
     lg: "lg",
     xl: "xl",
 } as const satisfies Record<
-    NonNullable<PixieDustSearchFieldProps["size"]>,
+    NonNullable<PixieSearchFieldProps["size"]>,
     PixieButtonSize
 >;
 
@@ -79,13 +79,13 @@ type SearchControlProps = Readonly<{
     onClear: () => void;
     onKeyDown: (event: KeyboardEvent<HTMLInputElement>) => void;
     placeholder?: string;
-    variant: NonNullable<PixieDustSearchFieldProps["variant"]>;
-    size: NonNullable<PixieDustSearchFieldProps["size"]>;
-    shape: NonNullable<PixieDustSearchFieldProps["shape"]>;
-    tone: NonNullable<PixieDustSearchFieldProps["tone"]>;
-    color: NonNullable<PixieDustSearchFieldProps["color"]>;
-    composition: PixieDustSearchFieldComposition;
-    layout: PixieDustSearchFieldLayout;
+    variant: NonNullable<PixieSearchFieldProps["variant"]>;
+    size: NonNullable<PixieSearchFieldProps["size"]>;
+    shape: NonNullable<PixieSearchFieldProps["shape"]>;
+    tone: NonNullable<PixieSearchFieldProps["tone"]>;
+    color: NonNullable<PixieSearchFieldProps["color"]>;
+    composition: PixieSearchFieldComposition;
+    layout: PixieSearchFieldLayout;
     submitVariant: PixieButtonVariant;
     submitLabel: string;
     submitIcon?: ReactNode;
@@ -240,7 +240,7 @@ function SearchControl({
     );
 }
 
-export function PixieDustSearchField({
+export function PixieSearchField({
     label,
     id,
     name = "q",
@@ -285,7 +285,7 @@ export function PixieDustSearchField({
     className = "",
     formClassName = "",
     inputClassName = "",
-}: PixieDustSearchFieldProps) {
+}: PixieSearchFieldProps) {
     const generatedId = useId();
     const inputId = id ?? `pixie-search-${generatedId.replaceAll(":", "")}`;
     const inputRef = useRef<HTMLInputElement>(null);

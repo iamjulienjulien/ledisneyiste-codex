@@ -9,16 +9,15 @@ import type {
 } from "@/components/ui/PixieInput";
 import type { AtelierAnimationColorSlug } from "@/types/colors";
 
-export type PixieDustSearchFieldComposition =
-    "separate" | "joined" | "embedded";
+export type PixieSearchFieldComposition = "separate" | "joined" | "embedded";
 
-export type PixieDustSearchFieldLayout = "inline" | "stacked" | "responsive";
+export type PixieSearchFieldLayout = "inline" | "stacked" | "responsive";
 
-export type PixieDustSearchFieldMethod = "get" | "post";
+export type PixieSearchFieldMethod = "get" | "post";
 
-export type PixieDustSearchFieldColor = AtelierAnimationColorSlug | false;
+export type PixieSearchFieldColor = AtelierAnimationColorSlug | false;
 
-export type PixieDustSearchFieldFeedback =
+export type PixieSearchFieldFeedback =
     | Readonly<{
           error: ReactNode;
           feedback?: never;
@@ -35,12 +34,12 @@ export type PixieDustSearchFieldFeedback =
           feedbackTone?: never;
       }>;
 
-type PixieDustSearchFieldBaseProps = Readonly<{
+type PixieSearchFieldBaseProps = Readonly<{
     label: ReactNode;
     id?: string;
     name?: string;
     action?: string;
-    method?: PixieDustSearchFieldMethod;
+    method?: PixieSearchFieldMethod;
     value?: string;
     defaultValue?: string;
     onChange?: ChangeEventHandler<HTMLInputElement>;
@@ -53,9 +52,9 @@ type PixieDustSearchFieldBaseProps = Readonly<{
     size?: PixieInputSize;
     shape?: PixieInputShape;
     tone?: PixieInputTone;
-    color?: PixieDustSearchFieldColor;
-    composition?: PixieDustSearchFieldComposition;
-    layout?: PixieDustSearchFieldLayout;
+    color?: PixieSearchFieldColor;
+    composition?: PixieSearchFieldComposition;
+    layout?: PixieSearchFieldLayout;
     submitVariant?: PixieButtonVariant;
     submitLabel?: string;
     submitIcon?: ReactNode;
@@ -79,5 +78,5 @@ type PixieDustSearchFieldBaseProps = Readonly<{
     inputClassName?: string;
 }>;
 
-export type PixieDustSearchFieldProps = PixieDustSearchFieldBaseProps &
-    PixieDustSearchFieldFeedback;
+export type PixieSearchFieldProps = PixieSearchFieldBaseProps &
+    PixieSearchFieldFeedback;
