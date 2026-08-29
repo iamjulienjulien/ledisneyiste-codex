@@ -6,20 +6,20 @@ import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieCard } from "@/components/ui/PixieCard";
 import {
-    PixieDustRail,
-    type PixieDustRailAlign,
-    type PixieDustRailGap,
-    type PixieDustRailGutter,
-    type PixieDustRailItemWidth,
-    type PixieDustRailOverscroll,
-    type PixieDustRailPeek,
-    type PixieDustRailScrollbar,
-    type PixieDustRailSnap,
-    type PixieDustRailSnapAlign,
-} from "@/components/ui/PixieDustRail";
+    PixieRail,
+    type PixieRailAlign,
+    type PixieRailGap,
+    type PixieRailGutter,
+    type PixieRailItemWidth,
+    type PixieRailOverscroll,
+    type PixieRailPeek,
+    type PixieRailScrollbar,
+    type PixieRailSnap,
+    type PixieRailSnapAlign,
+} from "@/components/ui/PixieRail";
 import { PixieSection } from "@/components/ui/PixieSection";
 import { PixieStack } from "@/components/ui/PixieStack";
-import { PixieDustRailPlayground } from "./PixieDustRailPlayground";
+import { PixieRailPlayground } from "./PixieRailPlayground";
 
 const itemWidths = [
     {
@@ -60,7 +60,7 @@ const itemWidths = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustRailItemWidth;
+    value: PixieRailItemWidth;
     token: string;
     role: string;
 }>[];
@@ -74,7 +74,7 @@ const gaps = [
     { name: "Très grand", value: "xl" as const, token: "3 rem" },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustRailGap;
+    value: PixieRailGap;
     token: string;
 }>[];
 
@@ -85,7 +85,7 @@ const gutters = [
     { name: "Grande", value: "lg" as const, token: "2 rem" },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustRailGutter;
+    value: PixieRailGutter;
     token: string;
 }>[];
 
@@ -107,7 +107,7 @@ const snaps = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustRailSnap;
+    value: PixieRailSnap;
     role: string;
 }>[];
 
@@ -117,7 +117,7 @@ const snapAlignments = [
     { name: "Fin", value: "end" as const },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustRailSnapAlign;
+    value: PixieRailSnapAlign;
 }>[];
 
 const peeks = [
@@ -141,7 +141,7 @@ const peeks = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustRailPeek;
+    value: PixieRailPeek;
     token: string;
     role: string;
 }>[];
@@ -164,7 +164,7 @@ const scrollbars = [
     },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustRailScrollbar;
+    value: PixieRailScrollbar;
     role: string;
 }>[];
 
@@ -175,74 +175,74 @@ const alignments = [
     { name: "Fin", value: "end" as const },
 ] as const satisfies readonly Readonly<{
     name: string;
-    value: PixieDustRailAlign;
+    value: PixieRailAlign;
 }>[];
 
 const properties = [
     {
         name: "as",
-        type: "PixieDustRailElement",
+        type: "PixieRailElement",
         defaultValue: '"div"',
         description: "Structure HTML qui porte la collection.",
     },
     {
         name: "itemWidth",
-        type: "PixieDustRailItemWidth",
+        type: "PixieRailItemWidth",
         defaultValue: '"md"',
         description: "Largeur de référence de chaque enfant direct.",
     },
     {
         name: "gap",
-        type: "PixieDustRailGap",
+        type: "PixieRailGap",
         defaultValue: '"md"',
         description: "Intervalle entre les plans successifs.",
     },
     {
         name: "gutter",
-        type: "PixieDustRailGutter",
+        type: "PixieRailGutter",
         defaultValue: '"none"',
         description: "Marge intérieure au début et à la fin de la piste.",
     },
     {
         name: "peek",
-        type: "PixieDustRailPeek",
+        type: "PixieRailPeek",
         defaultValue: '"subtle"',
         description: "Part maximale du cadre qu’un plan peut occuper.",
     },
     {
         name: "snap",
-        type: "PixieDustRailSnap",
+        type: "PixieRailSnap",
         defaultValue: '"proximity"',
         description: "Force du magnétisme appliqué à la piste.",
     },
     {
         name: "snapAlign",
-        type: "PixieDustRailSnapAlign",
+        type: "PixieRailSnapAlign",
         defaultValue: '"start"',
         description: "Bord de chaque plan rejoint par le point d’arrêt.",
     },
     {
         name: "snapStop",
-        type: "PixieDustRailSnapStop",
+        type: "PixieRailSnapStop",
         defaultValue: '"normal"',
         description:
             "Autorise ou interdit de franchir plusieurs plans d’un geste.",
     },
     {
         name: "align",
-        type: "PixieDustRailAlign",
+        type: "PixieRailAlign",
         defaultValue: '"stretch"',
         description: "Alignement transversal des enfants.",
     },
     {
         name: "scrollbar",
-        type: "PixieDustRailScrollbar",
+        type: "PixieRailScrollbar",
         defaultValue: '"auto"',
         description: "Présence visuelle de la barre de défilement native.",
     },
     {
         name: "overscroll",
-        type: "PixieDustRailOverscroll",
+        type: "PixieRailOverscroll",
         defaultValue: '"contain"',
         description: "Transmission du geste horizontal au cadre parent.",
     },
@@ -262,57 +262,57 @@ const properties = [
 
 const specificTypes = [
     {
-        name: "PixieDustRailElement",
+        name: "PixieRailElement",
         values: ['"div"', '"ul"', '"ol"'],
         description: "Structures neutre et listes autorisées.",
     },
     {
-        name: "PixieDustRailItemWidth",
+        name: "PixieRailItemWidth",
         values: ['"auto"', '"xs"', '"sm"', '"md"', '"lg"', '"xl"', "number"],
         description: "Mesures naturelles, prédéfinies ou libres des plans.",
     },
     {
-        name: "PixieDustRailGap",
+        name: "PixieRailGap",
         values: ['"none"', '"xs"', '"sm"', '"md"', '"lg"', '"xl"', "number"],
         description: "Échelle des intervalles du Montage.",
     },
     {
-        name: "PixieDustRailGutter",
+        name: "PixieRailGutter",
         values: ['"none"', '"sm"', '"md"', '"lg"', "number"],
         description: "Marges intérieures de la piste.",
     },
     {
-        name: "PixieDustRailPeek",
+        name: "PixieRailPeek",
         values: ['"none"', '"subtle"', '"strong"'],
         description: "Degrés d’amorce du prochain plan.",
     },
     {
-        name: "PixieDustRailSnap",
+        name: "PixieRailSnap",
         values: ['"none"', '"proximity"', '"mandatory"'],
         description: "Forces du magnétisme horizontal.",
     },
     {
-        name: "PixieDustRailSnapAlign",
+        name: "PixieRailSnapAlign",
         values: ['"start"', '"center"', '"end"'],
         description: "Points d’alignement des plans.",
     },
     {
-        name: "PixieDustRailSnapStop",
+        name: "PixieRailSnapStop",
         values: ['"normal"', '"always"'],
         description: "Franchissement des points d’arrêt.",
     },
     {
-        name: "PixieDustRailAlign",
+        name: "PixieRailAlign",
         values: ['"stretch"', '"start"', '"center"', '"end"'],
         description: "Alignements transversaux des plans.",
     },
     {
-        name: "PixieDustRailScrollbar",
+        name: "PixieRailScrollbar",
         values: ['"auto"', '"thin"', '"hidden"'],
         description: "Présences possibles du témoin de défilement.",
     },
     {
-        name: "PixieDustRailOverscroll",
+        name: "PixieRailOverscroll",
         values: ['"auto"', '"contain"'],
         description: "Propagation du geste au cadre parent.",
     },
@@ -398,12 +398,12 @@ function FilmCard({
     );
 }
 
-export function PixieDustRailDossier() {
+export function PixieRailDossier() {
     return (
         <AtelierFicheAccessoire
-            id="pixie-dust-rail"
-            labelledBy="pixie-dust-rail-title"
-            nom="PixieDustRail"
+            id="pixie-rail"
+            labelledBy="pixie-rail-title"
+            nom="PixieRail"
             className="scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
@@ -412,10 +412,10 @@ export function PixieDustRailDossier() {
                             Le clap · Montage 009
                         </p>
                         <h2
-                            id="pixie-dust-rail-title"
+                            id="pixie-rail-title"
                             className="mt-4 text-4xl text-ink sm:text-5xl"
                         >
-                            PixieDustRail
+                            PixieRail
                         </h2>
                         <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
                             Dérouler une collection sur un travelling horizontal
@@ -429,7 +429,7 @@ export function PixieDustRailDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.2.0
+                                1.0.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -437,7 +437,7 @@ export function PixieDustRailDossier() {
                                 État
                             </dt>
                             <dd className="mt-1 text-sm font-medium">
-                                <AtelierStatut statut="Esquisse" />
+                                <AtelierStatut statut="Prêt à projeter" />
                             </dd>
                         </div>
                     </dl>
@@ -501,9 +501,9 @@ export function PixieDustRailDossier() {
 
                 <div className="mt-7 border border-accent/60 bg-canvas py-6">
                     <p className="px-6 font-mono text-xs text-accent">
-                        PixieDustRail · itemWidth + gap + gutter + peek
+                        PixieRail · itemWidth + gap + gutter + peek
                     </p>
-                    <PixieDustRail
+                    <PixieRail
                         itemWidth="sm"
                         gap="sm"
                         gutter="md"
@@ -515,7 +515,7 @@ export function PixieDustRailDossier() {
                                 <FilmCard year={year} title={title} compact />
                             </div>
                         ))}
-                    </PixieDustRail>
+                    </PixieRail>
                 </div>
             </section>
 
@@ -532,7 +532,7 @@ export function PixieDustRailDossier() {
 
                 <div className="mt-7 grid min-w-0 border border-line xl:grid-cols-2">
                     <div className="min-w-0 bg-canvas py-8">
-                        <PixieDustRail
+                        <PixieRail
                             as="ul"
                             itemWidth="md"
                             gap="md"
@@ -551,9 +551,9 @@ export function PixieDustRailDossier() {
                                     />
                                 </li>
                             ))}
-                        </PixieDustRail>
+                        </PixieRail>
                     </div>
-                    <CodeExample>{`<PixieDustRail
+                    <CodeExample>{`<PixieRail
     as="ul"
     itemWidth="md"
     gap="md"
@@ -564,7 +564,7 @@ export function PixieDustRailDossier() {
     <li><OeuvreCard /></li>
     <li><OeuvreCard /></li>
     <li><OeuvreCard /></li>
-</PixieDustRail>`}</CodeExample>
+</PixieRail>`}</CodeExample>
                 </div>
             </section>
 
@@ -579,7 +579,7 @@ export function PixieDustRailDossier() {
                 <div className="mt-7 grid gap-6 bg-canvas p-6 lg:grid-cols-2">
                     {itemWidths.map((width) => (
                         <Stage key={width.value}>
-                            <PixieDustRail
+                            <PixieRail
                                 itemWidth={width.value}
                                 gap="sm"
                                 gutter="sm"
@@ -595,7 +595,7 @@ export function PixieDustRailDossier() {
                                         />
                                     </div>
                                 ))}
-                            </PixieDustRail>
+                            </PixieRail>
                             <div className="border-t border-line bg-surface p-4">
                                 <div className="flex flex-wrap items-baseline justify-between gap-3">
                                     <h4 className="text-lg text-ink">
@@ -626,7 +626,7 @@ export function PixieDustRailDossier() {
                     {peeks.map((peek) => (
                         <Stage key={peek.value}>
                             <div className="max-w-sm py-5">
-                                <PixieDustRail
+                                <PixieRail
                                     itemWidth="lg"
                                     gap="sm"
                                     gutter="sm"
@@ -643,7 +643,7 @@ export function PixieDustRailDossier() {
                                             />
                                         </div>
                                     ))}
-                                </PixieDustRail>
+                                </PixieRail>
                             </div>
                             <div className="border-t border-line bg-surface p-4">
                                 <code className="font-mono text-xs text-accent">
@@ -669,7 +669,7 @@ export function PixieDustRailDossier() {
                 <div className="mt-7 grid gap-6 bg-canvas p-6 lg:grid-cols-3">
                     {snaps.map((snap) => (
                         <Stage key={snap.value}>
-                            <PixieDustRail
+                            <PixieRail
                                 itemWidth="sm"
                                 gap="sm"
                                 gutter="md"
@@ -687,7 +687,7 @@ export function PixieDustRailDossier() {
                                         />
                                     </div>
                                 ))}
-                            </PixieDustRail>
+                            </PixieRail>
                             <div className="border-t border-line bg-surface p-4">
                                 <code className="font-mono text-xs text-accent">
                                     snap=&quot;{snap.value}&quot;
@@ -703,7 +703,7 @@ export function PixieDustRailDossier() {
                 <div className="mt-6 grid gap-6 bg-canvas p-6 lg:grid-cols-3">
                     {snapAlignments.map((alignment) => (
                         <Stage key={alignment.value}>
-                            <PixieDustRail
+                            <PixieRail
                                 itemWidth="sm"
                                 gap="sm"
                                 gutter="md"
@@ -722,7 +722,7 @@ export function PixieDustRailDossier() {
                                         />
                                     </div>
                                 ))}
-                            </PixieDustRail>
+                            </PixieRail>
                             <p className="border-t border-line bg-surface p-4 font-mono text-xs text-accent">
                                 snapAlign=&quot;{alignment.value}&quot;
                             </p>
@@ -742,7 +742,7 @@ export function PixieDustRailDossier() {
                 <div className="mt-7 grid gap-6 bg-canvas p-6 lg:grid-cols-2">
                     {gutters.map((gutter) => (
                         <Stage key={gutter.value}>
-                            <PixieDustRail
+                            <PixieRail
                                 itemWidth="sm"
                                 gap="sm"
                                 gutter={gutter.value}
@@ -758,7 +758,7 @@ export function PixieDustRailDossier() {
                                         />
                                     </div>
                                 ))}
-                            </PixieDustRail>
+                            </PixieRail>
                             <p className="border-t border-line bg-surface p-4 font-mono text-xs text-accent">
                                 {gutter.name} · {gutter.value} · {gutter.token}
                             </p>
@@ -778,7 +778,7 @@ export function PixieDustRailDossier() {
                 <div className="mt-7 grid gap-6 bg-canvas p-6 md:grid-cols-2 xl:grid-cols-3">
                     {gaps.map((gap) => (
                         <Stage key={gap.value}>
-                            <PixieDustRail
+                            <PixieRail
                                 itemWidth="xs"
                                 gap={gap.value}
                                 gutter="sm"
@@ -794,7 +794,7 @@ export function PixieDustRailDossier() {
                                         />
                                     </div>
                                 ))}
-                            </PixieDustRail>
+                            </PixieRail>
                             <p className="border-t border-line bg-surface p-4 font-mono text-xs text-accent">
                                 {gap.name} · {gap.value} · {gap.token}
                             </p>
@@ -813,7 +813,7 @@ export function PixieDustRailDossier() {
 
                 <div className="mt-7 grid min-w-0 border border-line lg:grid-cols-2">
                     <div className="min-w-0 bg-canvas py-6">
-                        <PixieDustRail
+                        <PixieRail
                             itemWidth={272}
                             gap={18}
                             gutter={24}
@@ -830,16 +830,16 @@ export function PixieDustRailDossier() {
                                     />
                                 </div>
                             ))}
-                        </PixieDustRail>
+                        </PixieRail>
                     </div>
-                    <CodeExample>{`<PixieDustRail
+                    <CodeExample>{`<PixieRail
     itemWidth={272}
     gap={18}
     gutter={24}
     peek="subtle"
 >
     {/* Plans */}
-</PixieDustRail>`}</CodeExample>
+</PixieRail>`}</CodeExample>
                 </div>
             </section>
 
@@ -854,7 +854,7 @@ export function PixieDustRailDossier() {
                 <div className="mt-7 grid gap-6 bg-canvas p-6 lg:grid-cols-2">
                     {alignments.map((alignment) => (
                         <Stage key={alignment.value}>
-                            <PixieDustRail
+                            <PixieRail
                                 itemWidth="sm"
                                 gap="sm"
                                 gutter="sm"
@@ -884,7 +884,7 @@ export function PixieDustRailDossier() {
                                         compact
                                     />
                                 </div>
-                            </PixieDustRail>
+                            </PixieRail>
                             <p className="border-t border-line bg-surface p-4 font-mono text-xs text-accent">
                                 align=&quot;{alignment.value}&quot;
                             </p>
@@ -904,7 +904,7 @@ export function PixieDustRailDossier() {
                 <div className="mt-7 grid gap-6 bg-canvas p-6 lg:grid-cols-3">
                     {scrollbars.map((scrollbar) => (
                         <Stage key={scrollbar.value}>
-                            <PixieDustRail
+                            <PixieRail
                                 itemWidth="sm"
                                 gap="sm"
                                 gutter="sm"
@@ -923,7 +923,7 @@ export function PixieDustRailDossier() {
                                         />
                                     </div>
                                 ))}
-                            </PixieDustRail>
+                            </PixieRail>
                             <div className="border-t border-line bg-surface p-4">
                                 <code className="font-mono text-xs text-accent">
                                     scrollbar=&quot;{scrollbar.value}&quot;
@@ -939,11 +939,11 @@ export function PixieDustRailDossier() {
                 <div className="mt-6 grid gap-px border border-line bg-line sm:grid-cols-2">
                     {[
                         [
-                            "auto" as PixieDustRailOverscroll,
+                            "auto" as PixieRailOverscroll,
                             "Le geste peut poursuivre son trajet dans le cadre parent.",
                         ],
                         [
-                            "contain" as PixieDustRailOverscroll,
+                            "contain" as PixieRailOverscroll,
                             "Le geste horizontal reste contenu dans la piste.",
                         ],
                     ].map(([value, description]) => (
@@ -977,7 +977,7 @@ export function PixieDustRailDossier() {
                             <p className="mb-3 font-mono text-xs text-accent">
                                 {label}
                             </p>
-                            <PixieDustRail
+                            <PixieRail
                                 itemWidth="md"
                                 gap="md"
                                 gutter="sm"
@@ -993,7 +993,7 @@ export function PixieDustRailDossier() {
                                         />
                                     </div>
                                 ))}
-                            </PixieDustRail>
+                            </PixieRail>
                         </div>
                     ))}
                 </div>
@@ -1013,7 +1013,7 @@ export function PixieDustRailDossier() {
                             <p className="mb-4 text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
                                 Archives à découvrir
                             </p>
-                            <PixieDustRail
+                            <PixieRail
                                 itemWidth="sm"
                                 gap="md"
                                 peek="subtle"
@@ -1029,7 +1029,7 @@ export function PixieDustRailDossier() {
                                         />
                                     </div>
                                 ))}
-                            </PixieDustRail>
+                            </PixieRail>
                         </div>
                     </Stage>
 
@@ -1038,7 +1038,7 @@ export function PixieDustRailDossier() {
                             <p className="mb-4 text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
                                 Chronologie ordonnée
                             </p>
-                            <PixieDustRail
+                            <PixieRail
                                 as="ol"
                                 itemWidth="xs"
                                 gap="sm"
@@ -1056,7 +1056,7 @@ export function PixieDustRailDossier() {
                                         />
                                     </li>
                                 ))}
-                            </PixieDustRail>
+                            </PixieRail>
                         </div>
                     </Stage>
 
@@ -1065,7 +1065,7 @@ export function PixieDustRailDossier() {
                             <p className="mb-4 text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
                                 Repères de largeur naturelle
                             </p>
-                            <PixieDustRail
+                            <PixieRail
                                 itemWidth="auto"
                                 gap="xs"
                                 peek="none"
@@ -1087,7 +1087,7 @@ export function PixieDustRailDossier() {
                                         {label}
                                     </div>
                                 ))}
-                            </PixieDustRail>
+                            </PixieRail>
                         </div>
                     </Stage>
 
@@ -1096,7 +1096,7 @@ export function PixieDustRailDossier() {
                             <p className="mb-4 text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
                                 Galerie centrée
                             </p>
-                            <PixieDustRail
+                            <PixieRail
                                 itemWidth="md"
                                 gap="md"
                                 gutter="lg"
@@ -1117,7 +1117,7 @@ export function PixieDustRailDossier() {
                                         />
                                     </div>
                                 ))}
-                            </PixieDustRail>
+                            </PixieRail>
                         </div>
                     </Stage>
                 </div>
@@ -1182,7 +1182,7 @@ export function PixieDustRailDossier() {
                                 Le dessin animé trouve son langage
                             </h4>
                         </PixieStack>
-                        <PixieDustRail
+                        <PixieRail
                             as="ol"
                             itemWidth="md"
                             gap="md"
@@ -1200,7 +1200,7 @@ export function PixieDustRailDossier() {
                                     />
                                 </li>
                             ))}
-                        </PixieDustRail>
+                        </PixieRail>
                     </PixieSection>
                 </div>
             </section>
@@ -1243,18 +1243,18 @@ export function PixieDustRailDossier() {
             </section>
 
             <section
-                id="pixie-dust-rail-playground"
+                id="pixie-rail-playground"
                 aria-labelledby="rail-playground-title"
                 className="mt-16 scroll-mt-8 border border-line-strong bg-surface-muted p-6 shadow-soft sm:p-8"
             >
                 <SequenceTitle
                     id="rail-playground-title"
                     eyebrow="Régie"
-                    title="Composer un PixieDustRail"
+                    title="Composer un PixieRail"
                     description="Réglez la mesure des plans, leur rythme et leur point d’arrêt, puis éprouvez le travelling dans les trois cadres du plateau."
                 />
                 <div className="mt-8">
-                    <PixieDustRailPlayground />
+                    <PixieRailPlayground />
                 </div>
             </section>
 
@@ -1321,8 +1321,8 @@ export function PixieDustRailDossier() {
                 <SequenceTitle
                     id="rail-technical"
                     eyebrow="Générique technique"
-                    title="API de l’esquisse"
-                    description="Les types spécifiques restent colocalisés dans PixieDustRail.types.ts ; la primitive demeure statique et le playground porte seul l’état client."
+                    title="API du composant"
+                    description="Les types spécifiques restent colocalisés dans PixieRail.types.ts ; la primitive demeure statique et le playground porte seul l’état client."
                 />
 
                 <div className="mt-7">
@@ -1335,33 +1335,6 @@ export function PixieDustRailDossier() {
                         <AtelierTypesTable types={specificTypes} />
                     </div>
                 </div>
-            </section>
-
-            <section aria-labelledby="rail-journal" className="mt-16">
-                <SequenceTitle
-                    id="rail-journal"
-                    eyebrow="Journal de production"
-                    title="Décisions avant la promotion"
-                    description="L’esquisse devra être confrontée aux vraies collections du Codex avant de devenir une primitive stable."
-                />
-
-                <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
-                    {[
-                        "Éprouver les largeurs naturelles, prédéfinies et numériques avec les cartes métier.",
-                        "Vérifier le travelling au clavier, au trackpad, à la molette et au toucher.",
-                        "Tester les trois forces et les trois alignements du snap dans des cadres imbriqués.",
-                        "Contrôler ul et ol avec les outils d’accessibilité.",
-                        "Éprouver les scrollbars, le RTL, les deux Lumières, le mobile et le zoom à 200 %.",
-                        "Valider md, md, none, subtle, proximity et contain comme réglages par défaut.",
-                    ].map((decision) => (
-                        <li
-                            key={decision}
-                            className="bg-surface p-5 leading-7 text-ink-soft"
-                        >
-                            {decision}
-                        </li>
-                    ))}
-                </ul>
             </section>
         </AtelierFicheAccessoire>
     );

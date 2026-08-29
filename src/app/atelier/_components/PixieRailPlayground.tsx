@@ -10,21 +10,21 @@ import {
 } from "@/components/atelier/AtelierPlaygroundProjection";
 import { PixieCard } from "@/components/ui/PixieCard";
 import {
-    PixieDustRail,
-    type PixieDustRailAlign,
-    type PixieDustRailElement,
-    type PixieDustRailGap,
-    type PixieDustRailGapPreset,
-    type PixieDustRailGutterPreset,
-    type PixieDustRailItemWidth,
-    type PixieDustRailItemWidthPreset,
-    type PixieDustRailOverscroll,
-    type PixieDustRailPeek,
-    type PixieDustRailScrollbar,
-    type PixieDustRailSnap,
-    type PixieDustRailSnapAlign,
-    type PixieDustRailSnapStop,
-} from "@/components/ui/PixieDustRail";
+    PixieRail,
+    type PixieRailAlign,
+    type PixieRailElement,
+    type PixieRailGap,
+    type PixieRailGapPreset,
+    type PixieRailGutterPreset,
+    type PixieRailItemWidth,
+    type PixieRailItemWidthPreset,
+    type PixieRailOverscroll,
+    type PixieRailPeek,
+    type PixieRailScrollbar,
+    type PixieRailSnap,
+    type PixieRailSnapAlign,
+    type PixieRailSnapStop,
+} from "@/components/ui/PixieRail";
 
 const elements = ["div", "ul", "ol"] as const;
 
@@ -160,34 +160,32 @@ function RailCard({
     );
 }
 
-export function PixieDustRailPlayground() {
-    const [element, setElement] = useState<PixieDustRailElement>("ul");
+export function PixieRailPlayground() {
+    const [element, setElement] = useState<PixieRailElement>("ul");
     const [itemWidthMode, setItemWidthMode] = useState<
-        PixieDustRailItemWidthPreset | "custom"
+        PixieRailItemWidthPreset | "custom"
     >("md");
     const [customItemWidth, setCustomItemWidth] = useState(280);
-    const [gapMode, setGapMode] = useState<PixieDustRailGapPreset | "custom">(
-        "md",
-    );
+    const [gapMode, setGapMode] = useState<PixieRailGapPreset | "custom">("md");
     const [customGap, setCustomGap] = useState(18);
     const [gutterMode, setGutterMode] = useState<
-        PixieDustRailGutterPreset | "custom"
+        PixieRailGutterPreset | "custom"
     >("md");
     const [customGutter, setCustomGutter] = useState(24);
-    const [peek, setPeek] = useState<PixieDustRailPeek>("subtle");
-    const [snap, setSnap] = useState<PixieDustRailSnap>("proximity");
-    const [snapAlign, setSnapAlign] = useState<PixieDustRailSnapAlign>("start");
-    const [snapStop, setSnapStop] = useState<PixieDustRailSnapStop>("normal");
-    const [align, setAlign] = useState<PixieDustRailAlign>("stretch");
-    const [scrollbar, setScrollbar] = useState<PixieDustRailScrollbar>("auto");
+    const [peek, setPeek] = useState<PixieRailPeek>("subtle");
+    const [snap, setSnap] = useState<PixieRailSnap>("proximity");
+    const [snapAlign, setSnapAlign] = useState<PixieRailSnapAlign>("start");
+    const [snapStop, setSnapStop] = useState<PixieRailSnapStop>("normal");
+    const [align, setAlign] = useState<PixieRailAlign>("stretch");
+    const [scrollbar, setScrollbar] = useState<PixieRailScrollbar>("auto");
     const [overscroll, setOverscroll] =
-        useState<PixieDustRailOverscroll>("contain");
+        useState<PixieRailOverscroll>("contain");
     const [itemCount, setItemCount] = useState(6);
     const { lumiere: light, cadre: frame } = useAtelierProjection();
 
-    const itemWidth: PixieDustRailItemWidth =
+    const itemWidth: PixieRailItemWidth =
         itemWidthMode === "custom" ? customItemWidth : itemWidthMode;
-    const gap: PixieDustRailGap = gapMode === "custom" ? customGap : gapMode;
+    const gap: PixieRailGap = gapMode === "custom" ? customGap : gapMode;
     const gutter = gutterMode === "custom" ? customGutter : gutterMode;
 
     const selectedFilms = films.slice(0, itemCount);
@@ -198,7 +196,7 @@ export function PixieDustRailPlayground() {
                 : `    <li><Card>${title}</Card></li>`,
         )
         .join("\n");
-    const code = `<PixieDustRail
+    const code = `<PixieRail
     as="${element}"
     itemWidth=${formatValue(itemWidth)}
     gap=${formatValue(gap)}
@@ -213,7 +211,7 @@ export function PixieDustRailPlayground() {
     aria-label="Œuvres à découvrir"
 >
 ${childCode}
-</PixieDustRail>`;
+</PixieRail>`;
 
     const renderedItems = selectedFilms.map(([year, title, description]) => {
         const card = (
@@ -249,8 +247,7 @@ ${childCode}
                                 value={element}
                                 onChange={(event) =>
                                     setElement(
-                                        event.target
-                                            .value as PixieDustRailElement,
+                                        event.target.value as PixieRailElement,
                                     )
                                 }
                                 className="mt-2 font-mono"
@@ -272,8 +269,7 @@ ${childCode}
                                 onChange: (value: string) =>
                                     setItemWidthMode(
                                         value as
-                                            | PixieDustRailItemWidthPreset
-                                            | "custom",
+                                            PixieRailItemWidthPreset | "custom",
                                     ),
                             },
                             {
@@ -283,8 +279,7 @@ ${childCode}
                                 options: gaps,
                                 onChange: (value: string) =>
                                     setGapMode(
-                                        value as
-                                            PixieDustRailGapPreset | "custom",
+                                        value as PixieRailGapPreset | "custom",
                                     ),
                             },
                             {
@@ -295,8 +290,7 @@ ${childCode}
                                 onChange: (value: string) =>
                                     setGutterMode(
                                         value as
-                                            | PixieDustRailGutterPreset
-                                            | "custom",
+                                            PixieRailGutterPreset | "custom",
                                     ),
                             },
                             {
@@ -305,7 +299,7 @@ ${childCode}
                                 value: peek,
                                 options: peeks,
                                 onChange: (value: string) =>
-                                    setPeek(value as PixieDustRailPeek),
+                                    setPeek(value as PixieRailPeek),
                             },
                             {
                                 id: "rail-snap",
@@ -313,7 +307,7 @@ ${childCode}
                                 value: snap,
                                 options: snaps,
                                 onChange: (value: string) =>
-                                    setSnap(value as PixieDustRailSnap),
+                                    setSnap(value as PixieRailSnap),
                             },
                             {
                                 id: "rail-snap-align",
@@ -321,9 +315,7 @@ ${childCode}
                                 value: snapAlign,
                                 options: snapAlignments,
                                 onChange: (value: string) =>
-                                    setSnapAlign(
-                                        value as PixieDustRailSnapAlign,
-                                    ),
+                                    setSnapAlign(value as PixieRailSnapAlign),
                             },
                             {
                                 id: "rail-align",
@@ -331,7 +323,7 @@ ${childCode}
                                 value: align,
                                 options: alignments,
                                 onChange: (value: string) =>
-                                    setAlign(value as PixieDustRailAlign),
+                                    setAlign(value as PixieRailAlign),
                             },
                             {
                                 id: "rail-scrollbar",
@@ -339,9 +331,7 @@ ${childCode}
                                 value: scrollbar,
                                 options: scrollbars,
                                 onChange: (value: string) =>
-                                    setScrollbar(
-                                        value as PixieDustRailScrollbar,
-                                    ),
+                                    setScrollbar(value as PixieRailScrollbar),
                             },
                         ].map((control) => (
                             <div key={control.id}>
@@ -477,7 +467,7 @@ ${childCode}
                         <div
                             className={`w-full min-w-0 border border-dashed border-line-strong py-6 transition-[max-width] ${frameWidths[frame]}`}
                         >
-                            <PixieDustRail
+                            <PixieRail
                                 as={element}
                                 itemWidth={itemWidth}
                                 gap={gap}
@@ -495,7 +485,7 @@ ${childCode}
                                 }
                             >
                                 {renderedItems}
-                            </PixieDustRail>
+                            </PixieRail>
                         </div>
                     </div>
 

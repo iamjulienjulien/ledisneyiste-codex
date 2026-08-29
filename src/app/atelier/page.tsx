@@ -17,7 +17,7 @@ import { PixieGridDossier } from "./_components/PixieGridDossier";
 import { PixieDustSplitDossier } from "./_components/PixieDustSplitDossier";
 import { PixieSidebarDossier } from "./_components/PixieSidebarDossier";
 import { PixieSwitcherDossier } from "./_components/PixieSwitcherDossier";
-import { PixieDustRailDossier } from "./_components/PixieDustRailDossier";
+import { PixieRailDossier } from "./_components/PixieRailDossier";
 import { PixieDustBleedDossier } from "./_components/PixieDustBleedDossier";
 import { PixieStickyRegionDossier } from "./_components/PixieStickyRegionDossier";
 import { PixieDustFieldDossier } from "./_components/PixieDustFieldDossier";
@@ -345,11 +345,11 @@ const montage = [
         href: "#pixie-switcher",
     },
     {
-        nom: "PixieDustRail",
+        nom: "PixieRail",
         role: "Dérouler une collection sur un travelling horizontal",
-        statut: "Esquisse",
-        version: "0.2.0",
-        href: "#pixie-dust-rail",
+        statut: "Prêt à projeter",
+        version: "1.0.0",
+        href: "#pixie-rail",
     },
     {
         nom: "PixieDustBleed",
@@ -923,9 +923,10 @@ export default function AtelierPage() {
                         complètes. PixieGrid distribue les collections sur des
                         pistes responsives, PixieSidebar associe une régie à un
                         contenu prioritaire, PixieSwitcher choisit
-                        collectivement entre rangée et pile et PixieStickyRegion
+                        collectivement entre rangée et pile, PixieRail déroule
+                        les collections en travelling et PixieStickyRegion
                         maintient un repère dans les limites de sa séquence. Les
-                        trois esquisses suivantes organiseront les autres
+                        deux esquisses suivantes organiseront les autres
                         distributions sans imposer de surface, de couleur ni
                         d’interaction.
                     </p>
@@ -1009,7 +1010,7 @@ export default function AtelierPage() {
                 {raccordEntreFiches}
                 <PixieSwitcherDossier />
                 {raccordEntreFiches}
-                <PixieDustRailDossier />
+                <PixieRailDossier />
                 {raccordEntreFiches}
                 <PixieDustBleedDossier />
                 {raccordEntreFiches}

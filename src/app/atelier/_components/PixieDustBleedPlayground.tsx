@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/PixieDustBleed";
 import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieFrame } from "@/components/ui/PixieFrame";
-import { PixieDustRail } from "@/components/ui/PixieDustRail";
+import { PixieRail } from "@/components/ui/PixieRail";
 import { PixieStack } from "@/components/ui/PixieStack";
 
 const elements = ["div", "figure", "section"] as const;
@@ -88,7 +88,7 @@ function BleedContent({ mode }: Readonly<{ mode: ContentMode }>) {
 
     if (mode === "rail") {
         return (
-            <PixieDustRail
+            <PixieRail
                 itemWidth="sm"
                 gap="sm"
                 gutter="sm"
@@ -110,7 +110,7 @@ function BleedContent({ mode }: Readonly<{ mode: ContentMode }>) {
                         </PixieCard>
                     </div>
                 ))}
-            </PixieDustRail>
+            </PixieRail>
         );
     }
 

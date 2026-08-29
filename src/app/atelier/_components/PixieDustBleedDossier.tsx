@@ -14,7 +14,7 @@ import {
 import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieContainer } from "@/components/ui/PixieContainer";
 import { PixieFrame } from "@/components/ui/PixieFrame";
-import { PixieDustRail } from "@/components/ui/PixieDustRail";
+import { PixieRail } from "@/components/ui/PixieRail";
 import { PixieSection } from "@/components/ui/PixieSection";
 import { PixieStack } from "@/components/ui/PixieStack";
 import { PixieDustBleedPlayground } from "./PixieDustBleedPlayground";
@@ -566,7 +566,7 @@ export function PixieDustBleedDossier() {
                             </h4>
                         </div>
                         <PixieDustBleed extent="xl" gutter="sm">
-                            <PixieDustRail
+                            <PixieRail
                                 as="ul"
                                 itemWidth="sm"
                                 gap="sm"
@@ -590,7 +590,7 @@ export function PixieDustBleedDossier() {
                                         </PixieCard>
                                     </li>
                                 ))}
-                            </PixieDustRail>
+                            </PixieRail>
                         </PixieDustBleed>
                     </PixieSection>
                 </div>
