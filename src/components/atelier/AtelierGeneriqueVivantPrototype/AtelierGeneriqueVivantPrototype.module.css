@@ -1,0 +1,373 @@
+.projection {
+    --color-canvas: var(--projection-canvas);
+    --color-surface: var(--projection-surface);
+    --color-surface-muted: var(--projection-surface-muted);
+    --color-ink: var(--projection-ink);
+    --color-ink-soft: var(--projection-ink-soft);
+    --color-muted: var(--projection-muted);
+    --color-line: var(--projection-line);
+    --color-line-strong: var(--projection-line-strong);
+    --color-accent: var(--projection-accent);
+    --color-focus: var(--projection-focus);
+    --shadow-soft: var(--projection-shadow-soft);
+
+    display: grid;
+    min-width: 0;
+    gap: 1.5rem;
+    border: 1px solid var(--color-line-strong);
+    border-radius: var(--radius-large);
+    padding: clamp(1rem, 3vw, 2rem);
+    overflow: hidden;
+    color: var(--color-ink);
+    background:
+        radial-gradient(
+            circle at 50% 0,
+            color-mix(
+                in srgb,
+                var(--atelier-animation-violet-ombre-portee) 17%,
+                transparent
+            ),
+            transparent 34rem
+        ),
+        var(--color-canvas);
+    box-shadow: var(--shadow-soft);
+}
+
+.prototypeHeader,
+.masterHeader,
+.panelHeader,
+.groupHeader {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.eyebrow,
+.creditStatus,
+.groupHeader p,
+.setting > span {
+    font-family: var(--font-eyebrow);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+}
+
+.prototypeTitle {
+    margin-top: 0.65rem;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    line-height: 1.03;
+}
+
+.prototypeDescription,
+.masterHeader p {
+    max-width: 55rem;
+    margin-top: 0.7rem;
+    line-height: 1.65;
+    color: var(--color-ink-soft);
+}
+
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.controlPanel {
+    display: grid;
+    gap: 1.25rem;
+}
+
+.panelHeader h4 {
+    margin-top: 0.35rem;
+    font-size: 1.35rem;
+}
+
+.liveCount {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--color-muted);
+}
+
+.settings {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 10.5rem), 1fr));
+    gap: 1rem;
+}
+
+.setting {
+    display: grid;
+    align-content: start;
+    gap: 0.45rem;
+    min-width: 0;
+}
+
+.setting small {
+    font-size: 0.72rem;
+    line-height: 1.4;
+    color: var(--color-muted);
+}
+
+.stage {
+    display: grid;
+    min-width: 0;
+    gap: clamp(1.25rem, 3vw, 2rem);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-large);
+    padding: clamp(1rem, 3vw, 2rem);
+    background:
+        linear-gradient(
+            145deg,
+            color-mix(in srgb, var(--color-accent) 5%, transparent),
+            transparent 42%
+        ),
+        var(--color-surface);
+}
+
+.masterTitle {
+    margin-top: 0.45rem;
+    font-size: clamp(1.7rem, 4vw, 2.6rem);
+    line-height: 1.05;
+}
+
+.creditLayout {
+    display: grid;
+    min-width: 0;
+    gap: 1.25rem;
+}
+
+.creditStage {
+    display: grid;
+    min-width: 0;
+    gap: 1.25rem;
+}
+
+.group {
+    --group-color: var(--color-accent);
+
+    display: grid;
+    min-width: 0;
+    gap: 1rem;
+    border-top: 2px solid
+        color-mix(in srgb, var(--group-color) 72%, var(--color-line));
+    padding-top: 1rem;
+}
+
+.groupIdentity {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    min-width: 0;
+}
+
+.groupIdentity p {
+    color: var(--group-color);
+}
+
+.groupIdentity h5 {
+    margin-top: 0.2rem;
+    font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+    line-height: 1.15;
+}
+
+.groupCue {
+    width: 2.5rem;
+    height: 0.25rem;
+    border-radius: 999px;
+    background: var(--group-color);
+}
+
+.creditGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 13.5rem), 1fr));
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.creditGrid > li {
+    min-width: 0;
+}
+
+.creditButton {
+    display: grid;
+    width: 100%;
+    min-height: 100%;
+    gap: 0.55rem;
+    border: 0;
+    padding: 1rem;
+    text-align: start;
+    color: inherit;
+    background: transparent;
+    cursor: pointer;
+}
+
+.creditButton:focus-visible {
+    border-radius: var(--radius-medium);
+    outline: 2px solid var(--color-focus);
+    outline-offset: 3px;
+}
+
+.creditButton strong {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    line-height: 1.12;
+}
+
+.roleList {
+    line-height: 1.45;
+    color: var(--color-ink-soft);
+}
+
+.creditButton small {
+    padding-top: 0.45rem;
+    border-top: 1px solid var(--color-line);
+    line-height: 1.4;
+    color: var(--color-muted);
+}
+
+.projection[data-density="compact"] .creditGrid {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 11rem), 1fr));
+    gap: 0.5rem;
+}
+
+.projection[data-density="compact"] .creditButton {
+    gap: 0.35rem;
+    padding: 0.7rem;
+}
+
+.moreButton {
+    justify-self: center;
+    border: 1px solid var(--color-line-strong);
+    border-radius: 999px;
+    padding: 0.75rem 1rem;
+    font: inherit;
+    font-weight: 600;
+    color: var(--color-ink);
+    background: var(--color-surface-muted);
+    cursor: pointer;
+}
+
+.moreButton:hover {
+    border-color: var(--color-accent);
+}
+
+.inspector {
+    display: grid;
+    align-content: start;
+    gap: 1rem;
+    min-width: 0;
+    border: 1px solid var(--color-line-strong);
+    border-radius: var(--radius-large);
+    padding: 1.15rem;
+    background: var(--color-surface-muted);
+}
+
+.inspector h5 {
+    font-size: clamp(1.45rem, 3vw, 2rem);
+    line-height: 1.05;
+}
+
+.inspectorDomain,
+.unresolved {
+    line-height: 1.5;
+    color: var(--color-ink-soft);
+}
+
+.inspector dl {
+    display: grid;
+    gap: 0.8rem;
+    margin: 0;
+}
+
+.inspector dl > div {
+    display: grid;
+    gap: 0.2rem;
+    border-top: 1px solid var(--color-line);
+    padding-top: 0.7rem;
+}
+
+.inspector dt {
+    font-family: var(--font-eyebrow);
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+}
+
+.inspector dd {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.countershot {
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-large);
+    background: var(--color-surface);
+}
+
+.countershot summary {
+    padding: 1rem 1.2rem;
+    font-family: var(--font-eyebrow);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.countershot > div {
+    display: grid;
+    gap: 1.5rem;
+    border-top: 1px solid var(--color-line);
+    padding: 1.2rem;
+}
+
+.countershot h5 {
+    font-size: 1.15rem;
+}
+
+.countershot ul {
+    display: grid;
+    gap: 0.55rem;
+    margin: 0.65rem 0 0;
+    padding-inline-start: 1.2rem;
+    line-height: 1.55;
+    color: var(--color-ink-soft);
+}
+
+@media (min-width: 70rem) {
+    .creditLayout {
+        grid-template-columns: minmax(0, 1fr) minmax(15rem, 20rem);
+        align-items: start;
+    }
+
+    .inspector {
+        position: sticky;
+        top: 1.5rem;
+    }
+}
+
+@media (max-width: 30rem) {
+    .projection,
+    .stage {
+        border-radius: var(--radius-medium);
+    }
+
+    .groupIdentity {
+        align-items: flex-start;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .projection * {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}

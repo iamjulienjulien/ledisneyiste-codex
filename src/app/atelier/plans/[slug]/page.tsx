@@ -6,6 +6,11 @@ import type {
     AtelierMontageDuTempsMatterKey,
     AtelierMontageDuTempsProjection,
 } from "@/components/atelier/AtelierMontageDuTempsPrototype";
+import { AtelierGeneriqueVivantPrototype } from "@/components/atelier/AtelierGeneriqueVivantPrototype";
+import type {
+    AtelierGeneriqueVivantMatterKey,
+    AtelierGeneriqueVivantProjection,
+} from "@/components/atelier/AtelierGeneriqueVivantPrototype";
 import { AtelierPlanDEnsemblePrototype } from "@/components/atelier/AtelierPlanDEnsemblePrototype";
 import type {
     AtelierPlanDEnsembleDepth,
@@ -22,6 +27,7 @@ import type {
 import { bobinesTemoins } from "@/fixtures/plans";
 import {
     codexPlanArchives,
+    deriveGeneriqueVivant,
     deriveMontageDuTemps,
     derivePlanDEnsemble,
     deriveTravellingDocumentaire,
@@ -77,6 +83,16 @@ const montageMatterOptions = [
     ],
 ] as const satisfies readonly (readonly [
     AtelierMontageDuTempsMatterKey,
+    string,
+])[];
+
+const generiqueMatterOptions = [
+    ["archives", "Archives publiées"],
+    ["corpus-vide", "Bobine · Corpus vide"],
+    ["corpus-reduit", "Bobine · Corpus réduit"],
+    ["grand-generique", "Bobine · Grand générique"],
+] as const satisfies readonly (readonly [
+    AtelierGeneriqueVivantMatterKey,
     string,
 ])[];
 
@@ -221,6 +237,46 @@ function createMontageProjections() {
     });
 }
 
+function createGeneriqueProjections() {
+    return generiqueMatterOptions.map(([matterKey, matterLabel]) => {
+        const configuration: CodexPlanConfiguration = {
+            plan: "generique-vivant",
+            subject: {
+                family: "oeuvres",
+                slug: "snow-white-and-the-seven-dwarfs",
+            },
+            angle: "departments",
+            objective: "understand",
+            frame: {
+                label: "Le générique humain de Blanche-Neige",
+                description:
+                    "Explorer les contributions sans leur attribuer de hiérarchie ni de valeur.",
+            },
+            matter:
+                matterKey === "archives"
+                    ? { kind: "archives" }
+                    : { kind: "bobine-temoin", fixture: matterKey },
+        };
+        const model =
+            matterKey === "archives"
+                ? deriveGeneriqueVivant(configuration, {
+                      kind: "archives",
+                      archives: codexPlanArchives,
+                  })
+                : deriveGeneriqueVivant(configuration, {
+                      kind: "bobine-temoin",
+                      archives: codexPlanArchives,
+                      bobine: bobinesTemoins[matterKey],
+                  });
+
+        return {
+            matterKey,
+            matterLabel,
+            model,
+        } satisfies AtelierGeneriqueVivantProjection;
+    });
+}
+
 export function generateStaticParams() {
     return getCodexPlans().map(({ slug }) => ({ slug }));
 }
@@ -308,6 +364,25 @@ export default async function AtelierPlanPage({
                 prototype={
                     <AtelierMontageDuTempsPrototype
                         projections={createMontageProjections()}
+                    />
+                }
+            />
+        );
+    }
+
+    if (slug === "generique-vivant") {
+        return (
+            <AtelierPlanDossier
+                slug={slug}
+                plan={plan}
+                status="Esquisse"
+                program="P0 · Quatrième prototype"
+                version="v0.1.0"
+                prototypeTitle="Blanche-Neige déroule un générique à hauteur humaine"
+                prototypeDescription="Le prototype regroupe les contributions par domaines et rôles, permet de retrouver une personne et éprouve les références non résolues comme le grand générique de 240 crédits."
+                prototype={
+                    <AtelierGeneriqueVivantPrototype
+                        projections={createGeneriqueProjections()}
                     />
                 }
             />
