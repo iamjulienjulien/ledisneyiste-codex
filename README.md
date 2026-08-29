@@ -525,9 +525,9 @@ Ses six plateaux de travail sont maintenant actifs :
 5. **Le Montage** règle la composition et le rythme des séquences ;
 6. **Les Effets** rendent visibles les attentes et les retours du système.
 
-L’Atelier documente actuellement **6 esquisses PixieDust**, auxquelles
+L’Atelier documente actuellement **5 esquisses PixieDust**, auxquelles
 s’ajoutent les six Décors, les neuf composants du Montage, les quatre premiers
-Dialogues et le premier Effet prêts à projeter :
+Dialogues et les deux premiers Effets prêts à projeter :
 
 - **Décors — 6 composants validés :** `PixieCard`, `PixiePanel`, `PixieFrame`,
   `PixieCallout`, `PixieInset` et `PixieBackdrop` ;
@@ -538,8 +538,8 @@ Dialogues et le premier Effet prêts à projeter :
   `PixieStack`, `PixieCluster`, `PixieSection`, `PixieGrid`, `PixieSidebar`,
   `PixieSwitcher`, `PixieRail`, `PixieStickyRegion`, `PixieDustSplit` et
   `PixieDustBleed` ;
-- **Effets — 1 composant validé et 2 esquisses :** `PixieLoader`,
-  `PixieDustToast` et `PixieDustSkeleton`.
+- **Effets — 2 composants validés et 1 esquisse :** `PixieLoader`,
+  `PixieSkeleton` et `PixieDustToast`.
 
 Il est accessible uniquement en développement :
 
