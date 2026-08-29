@@ -1,0 +1,214 @@
+.root {
+    margin-top: 3rem;
+}
+
+.opening {
+    overflow: hidden;
+    border: 1px solid var(--color-line);
+}
+
+.openingContent {
+    display: grid;
+    gap: 2rem;
+}
+
+.openingTitle {
+    max-width: 17ch;
+    font-size: clamp(2.75rem, 7vw, 5.75rem);
+    line-height: 0.94;
+    letter-spacing: -0.045em;
+}
+
+.openingDescription {
+    max-width: 52rem;
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    line-height: 1.75;
+}
+
+.clap {
+    display: grid;
+    gap: 1px;
+    border: 1px solid var(--color-line);
+    background: var(--color-line);
+}
+
+.clapCell {
+    min-width: 0;
+    background: var(--color-surface);
+    padding: 1rem 1.125rem;
+}
+
+.clapLabel,
+.sectionIndex {
+    font-family: var(--font-eyebrow);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+}
+
+.clapValue {
+    margin-top: 0.35rem;
+    color: var(--color-ink);
+}
+
+.sequence {
+    margin-top: 4.5rem;
+}
+
+.sectionHeader {
+    display: grid;
+    gap: 0.65rem;
+    margin-bottom: 1.5rem;
+}
+
+.sectionTitle {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    line-height: 1.08;
+    color: var(--color-ink);
+}
+
+.sectionDescription {
+    max-width: 52rem;
+    line-height: 1.75;
+    color: var(--color-ink-soft);
+}
+
+.question {
+    max-width: 24ch;
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 4vw, 3rem);
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--color-ink);
+}
+
+.questionLabel {
+    margin-bottom: 0.75rem;
+    font-family: var(--font-eyebrow);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+}
+
+.gridTwo,
+.gridThree {
+    display: grid;
+    gap: 1rem;
+}
+
+.cardTitle {
+    font-size: 1.35rem;
+    line-height: 1.2;
+    color: var(--color-ink);
+}
+
+.cardText {
+    margin-top: 0.75rem;
+    line-height: 1.7;
+    color: var(--color-ink-soft);
+}
+
+.list {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    padding: 0;
+    list-style: none;
+}
+
+.listItem {
+    position: relative;
+    padding-left: 1.25rem;
+    line-height: 1.65;
+    color: var(--color-ink-soft);
+}
+
+.listItem::before {
+    position: absolute;
+    top: 0.68em;
+    left: 0;
+    width: 0.35rem;
+    height: 0.35rem;
+    border-radius: 999px;
+    background: var(--color-accent);
+    content: "";
+}
+
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.technicalTable {
+    width: 100%;
+    min-width: 44rem;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.technicalTable th,
+.technicalTable td {
+    border-bottom: 1px solid var(--color-line);
+    padding: 1rem 1.125rem;
+    vertical-align: top;
+}
+
+.technicalTable thead {
+    background: var(--color-surface-muted);
+    font-family: var(--font-eyebrow);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+}
+
+.technicalTable tbody th {
+    width: 9rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--color-accent);
+}
+
+.technicalTable tbody td {
+    line-height: 1.6;
+    color: var(--color-ink-soft);
+}
+
+.tableFrame {
+    overflow-x: auto;
+    border: 1px solid var(--color-line);
+}
+
+.lastImage {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--color-ink);
+}
+
+@media (min-width: 40rem) {
+    .openingContent {
+        gap: 3rem;
+    }
+
+    .clap {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 48rem) {
+    .gridTwo {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .gridThree {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
