@@ -1,17 +1,17 @@
 import { getAtelierAnimationColor } from "@/registry/colors";
-import styles from "./PixieDustSkeleton.module.css";
+import styles from "./PixieSkeleton.module.css";
 import type {
-    PixieDustSkeletonAnimation,
-    PixieDustSkeletonDimension,
-    PixieDustSkeletonIntensity,
-    PixieDustSkeletonLineStyle,
-    PixieDustSkeletonProps,
-    PixieDustSkeletonRadius,
-    PixieDustSkeletonSize,
-    PixieDustSkeletonSpeed,
-    PixieDustSkeletonStyle,
-    PixieDustSkeletonVariant,
-} from "./PixieDustSkeleton.types";
+    PixieSkeletonAnimation,
+    PixieSkeletonDimension,
+    PixieSkeletonIntensity,
+    PixieSkeletonLineStyle,
+    PixieSkeletonProps,
+    PixieSkeletonRadius,
+    PixieSkeletonSize,
+    PixieSkeletonSpeed,
+    PixieSkeletonStyle,
+    PixieSkeletonVariant,
+} from "./PixieSkeleton.types";
 
 const variantClasses = {
     text: styles.text,
@@ -20,7 +20,7 @@ const variantClasses = {
     media: styles.media,
     control: styles.control,
     pill: styles.pill,
-} as const satisfies Record<PixieDustSkeletonVariant, string>;
+} as const satisfies Record<PixieSkeletonVariant, string>;
 
 const animationClasses = {
     shimmer: styles.shimmer,
@@ -29,7 +29,7 @@ const animationClasses = {
     develop: styles.develop,
     grain: styles.grain,
     none: styles.still,
-} as const satisfies Record<PixieDustSkeletonAnimation, string>;
+} as const satisfies Record<PixieSkeletonAnimation, string>;
 
 const radiusClasses = {
     none: styles.radiusNone,
@@ -37,19 +37,19 @@ const radiusClasses = {
     md: styles.radiusMd,
     lg: styles.radiusLg,
     full: styles.radiusFull,
-} as const satisfies Record<PixieDustSkeletonRadius, string>;
+} as const satisfies Record<PixieSkeletonRadius, string>;
 
 const intensityClasses = {
     subtle: styles.intensitySubtle,
     normal: styles.intensityNormal,
     strong: styles.intensityStrong,
-} as const satisfies Record<PixieDustSkeletonIntensity, string>;
+} as const satisfies Record<PixieSkeletonIntensity, string>;
 
 const speedDurations = {
     slow: 2800,
     normal: 1900,
     fast: 1100,
-} as const satisfies Record<PixieDustSkeletonSpeed, number>;
+} as const satisfies Record<PixieSkeletonSpeed, number>;
 
 const sizeHeights = {
     xs: "0.5rem",
@@ -57,7 +57,7 @@ const sizeHeights = {
     md: "0.875rem",
     lg: "1.125rem",
     xl: "1.5rem",
-} as const satisfies Record<PixieDustSkeletonSize, string>;
+} as const satisfies Record<PixieSkeletonSize, string>;
 
 const circleSizes = {
     xs: "1.5rem",
@@ -65,7 +65,7 @@ const circleSizes = {
     md: "3rem",
     lg: "4rem",
     xl: "6rem",
-} as const satisfies Record<PixieDustSkeletonSize, string>;
+} as const satisfies Record<PixieSkeletonSize, string>;
 
 const controlHeights = {
     xs: "2rem",
@@ -73,19 +73,19 @@ const controlHeights = {
     md: "2.75rem",
     lg: "3.25rem",
     xl: "3.75rem",
-} as const satisfies Record<PixieDustSkeletonSize, string>;
+} as const satisfies Record<PixieSkeletonSize, string>;
 
-function toCssDimension(value: PixieDustSkeletonDimension) {
+function toCssDimension(value: PixieSkeletonDimension) {
     return typeof value === "number" ? `${value}px` : value;
 }
 
-function toCssRatio(value: PixieDustSkeletonDimension) {
+function toCssRatio(value: PixieSkeletonDimension) {
     return String(value);
 }
 
 function resolveDefaultWidth(
-    variant: PixieDustSkeletonVariant,
-    size: PixieDustSkeletonSize,
+    variant: PixieSkeletonVariant,
+    size: PixieSkeletonSize,
 ) {
     if (variant === "circle") return circleSizes[size];
     if (variant === "pill") return size === "xl" ? "8rem" : "5rem";
@@ -93,9 +93,9 @@ function resolveDefaultWidth(
 }
 
 function resolveDefaultHeight(
-    variant: PixieDustSkeletonVariant,
-    size: PixieDustSkeletonSize,
-    width: PixieDustSkeletonDimension,
+    variant: PixieSkeletonVariant,
+    size: PixieSkeletonSize,
+    width: PixieSkeletonDimension,
 ) {
     if (variant === "circle") return width;
     if (variant === "block") return "8rem";
@@ -106,7 +106,7 @@ function resolveDefaultHeight(
     return sizeHeights[size];
 }
 
-export function PixieDustSkeleton({
+export function PixieSkeleton({
     variant = "text",
     animation = "shimmer",
     size = "md",
@@ -133,7 +133,7 @@ export function PixieDustSkeleton({
     ariaLive = "polite",
     ariaControls,
     className = "",
-}: PixieDustSkeletonProps) {
+}: PixieSkeletonProps) {
     if (!active && !reserveSpace) return null;
 
     const resolvedWidth = width ?? resolveDefaultWidth(variant, size);
@@ -146,7 +146,7 @@ export function PixieDustSkeleton({
         ? resolvedLineWidths.length
         : Math.max(1, Math.floor(lines));
     const informative = active && !decorative;
-    const skeletonStyle: PixieDustSkeletonStyle = {
+    const skeletonStyle: PixieSkeletonStyle = {
         "--pixie-skeleton-color": color
             ? getAtelierAnimationColor(color).cssValue
             : "currentColor",
@@ -182,7 +182,7 @@ export function PixieDustSkeleton({
                         (index === lineCount - 1 && lineCount > 1
                             ? lastLineWidth
                             : "100%");
-                    const lineStyle: PixieDustSkeletonLineStyle = {
+                    const lineStyle: PixieSkeletonLineStyle = {
                         "--pixie-skeleton-line-width":
                             toCssDimension(lineWidth),
                     };
