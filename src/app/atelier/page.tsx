@@ -404,7 +404,7 @@ const effets = [
         nom: "PixieDustSkeleton",
         role: "Préserver la structure pendant le chargement",
         statut: "Esquisse",
-        version: "0.1.0",
+        version: "0.2.0",
         href: "#pixie-dust-skeleton",
     },
     {

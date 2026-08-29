@@ -10,7 +10,10 @@ import {
     PixieDustSkeleton,
     type PixieDustSkeletonAnimation,
     type PixieDustSkeletonGap,
+    type PixieDustSkeletonIntensity,
     type PixieDustSkeletonRadius,
+    type PixieDustSkeletonSize,
+    type PixieDustSkeletonSpeed,
     type PixieDustSkeletonVariant,
 } from "@/components/ui/PixieDustSkeleton";
 import { PixieStack } from "@/components/ui/PixieStack";
@@ -33,6 +36,21 @@ const variants = [
         name: "Cercle",
         role: "Annonce la place d’un portrait, d’un symbole ou d’un avatar.",
     },
+    {
+        value: "media",
+        name: "Média",
+        role: "Réserve une affiche ou une image selon un ratio stable.",
+    },
+    {
+        value: "control",
+        name: "Contrôle",
+        role: "Préserve la hauteur d’un champ ou d’une commande.",
+    },
+    {
+        value: "pill",
+        name: "Pilule",
+        role: "Dessine l’attente d’un badge ou d’une métadonnée compacte.",
+    },
 ] as const satisfies readonly Readonly<{
     value: PixieDustSkeletonVariant;
     name: string;
@@ -51,6 +69,21 @@ const animations = [
         role: "La surface varie légèrement sans déplacement latéral.",
     },
     {
+        value: "beam",
+        name: "Faisceau",
+        role: "Une lumière plus étroite balaie la forme comme un projecteur.",
+    },
+    {
+        value: "develop",
+        name: "Développement",
+        role: "Une image lumineuse semble émerger doucement de la matière.",
+    },
+    {
+        value: "grain",
+        name: "Grain",
+        role: "Une texture cellulo discrète anime la surface par petites poses.",
+    },
+    {
         value: "none",
         name: "Fixe",
         role: "L’empreinte reste immobile dans les contextes les plus calmes.",
@@ -65,10 +98,40 @@ const gaps = [
     { value: "xs", name: "Très petit", dimension: "4 px" },
     { value: "sm", name: "Petit", dimension: "8 px" },
     { value: "md", name: "Moyen", dimension: "12 px" },
+    { value: "lg", name: "Grand", dimension: "16 px" },
 ] as const satisfies readonly Readonly<{
     value: PixieDustSkeletonGap;
     name: string;
     dimension: string;
+}>[];
+
+const sizes = [
+    { value: "xs", name: "Très petite" },
+    { value: "sm", name: "Petite" },
+    { value: "md", name: "Moyenne" },
+    { value: "lg", name: "Grande" },
+    { value: "xl", name: "Très grande" },
+] as const satisfies readonly Readonly<{
+    value: PixieDustSkeletonSize;
+    name: string;
+}>[];
+
+const intensities = [
+    { value: "subtle", name: "Discrète" },
+    { value: "normal", name: "Présente" },
+    { value: "strong", name: "Appuyée" },
+] as const satisfies readonly Readonly<{
+    value: PixieDustSkeletonIntensity;
+    name: string;
+}>[];
+
+const speeds = [
+    { value: "slow", name: "Lente" },
+    { value: "normal", name: "Normale" },
+    { value: "fast", name: "Rapide" },
+] as const satisfies readonly Readonly<{
+    value: PixieDustSkeletonSpeed;
+    name: string;
 }>[];
 
 const radii = [
@@ -106,6 +169,12 @@ const properties = [
         description: "Traitement animé ou statique de la matière.",
     },
     {
+        name: "size",
+        type: "PixieDustSkeletonSize",
+        defaultValue: '"md"',
+        description: "Échelle prédéfinie de la silhouette.",
+    },
+    {
         name: "width",
         type: "PixieDustSkeletonDimension",
         defaultValue: "selon forme",
@@ -118,6 +187,12 @@ const properties = [
         description: "Hauteur du bloc, du cercle ou de chaque ligne.",
     },
     {
+        name: "aspectRatio",
+        type: "PixieDustSkeletonDimension",
+        defaultValue: '"16 / 9"',
+        description: "Ratio réservé par la forme media.",
+    },
+    {
         name: "lines",
         type: "number",
         defaultValue: "1",
@@ -128,6 +203,18 @@ const properties = [
         type: "PixieDustSkeletonDimension",
         defaultValue: '"62%"',
         description: "Largeur de la dernière ligne d’un texte multiligne.",
+    },
+    {
+        name: "lineWidths",
+        type: "readonly PixieDustSkeletonDimension[]",
+        defaultValue: "—",
+        description: "Largeur explicite et déterministe de chaque ligne.",
+    },
+    {
+        name: "lineHeight",
+        type: "PixieDustSkeletonDimension",
+        defaultValue: "selon size",
+        description: "Hauteur commune des lignes, prioritaire sur height.",
     },
     {
         name: "gap",
@@ -148,10 +235,52 @@ const properties = [
         description: "Couleur du registre ou couleur héritée.",
     },
     {
+        name: "highlightColor",
+        type: "PixieDustSkeletonColor",
+        defaultValue: "false",
+        description: "Seconde lumière utilisée par les effets animés.",
+    },
+    {
+        name: "intensity",
+        type: "PixieDustSkeletonIntensity",
+        defaultValue: '"normal"',
+        description: "Présence de la matière et de sa lumière.",
+    },
+    {
+        name: "speed",
+        type: "PixieDustSkeletonSpeed",
+        defaultValue: '"normal"',
+        description: "Cadence prédéfinie de l’animation.",
+    },
+    {
+        name: "duration",
+        type: "number",
+        defaultValue: "selon speed",
+        description: "Durée personnalisée d’un cycle, en millisecondes.",
+    },
+    {
+        name: "delay",
+        type: "number",
+        defaultValue: "0",
+        description: "Décalage visuel du mouvement, en millisecondes.",
+    },
+    {
+        name: "direction",
+        type: "PixieDustSkeletonDirection",
+        defaultValue: '"forward"',
+        description: "Sens de lecture de l’animation.",
+    },
+    {
         name: "active",
         type: "boolean",
         defaultValue: "true",
-        description: "Retire entièrement l’empreinte lorsqu’il vaut false.",
+        description: "Signale si l’empreinte est actuellement visible.",
+    },
+    {
+        name: "reserveSpace",
+        type: "boolean",
+        defaultValue: "false",
+        description: "Conserve silencieusement la géométrie quand inactive.",
     },
     {
         name: "decorative",
@@ -166,6 +295,18 @@ const properties = [
         description: "Annonce du Skeleton lorsqu’il est informatif.",
     },
     {
+        name: "ariaLive",
+        type: "PixieDustSkeletonLive",
+        defaultValue: '"polite"',
+        description: "Priorité de l’annonce informative.",
+    },
+    {
+        name: "ariaControls",
+        type: "string",
+        defaultValue: "—",
+        description: "Identifie la région réelle dont le contenu est attendu.",
+    },
+    {
         name: "className",
         type: "string",
         defaultValue: '""',
@@ -177,17 +318,22 @@ const specificTypes = [
     {
         name: "PixieDustSkeletonVariant",
         values: variants.map(({ value }) => `"${value}"`),
-        description: "Trois géométries élémentaires du contenu attendu.",
+        description: "Six géométries élémentaires du contenu attendu.",
     },
     {
         name: "PixieDustSkeletonAnimation",
         values: animations.map(({ value }) => `"${value}"`),
-        description: "Deux mouvements et une matière fixe.",
+        description: "Cinq traitements de matière et une pose fixe.",
+    },
+    {
+        name: "PixieDustSkeletonSize",
+        values: sizes.map(({ value }) => `"${value}"`),
+        description: "Cinq échelles cohérentes pour les formes prédéfinies.",
     },
     {
         name: "PixieDustSkeletonGap",
         values: gaps.map(({ value }) => `"${value}"`),
-        description: "Trois rythmes entre les lignes de texte.",
+        description: "Quatre rythmes ou une mesure numérique personnalisée.",
     },
     {
         name: "PixieDustSkeletonRadius",
@@ -198,6 +344,26 @@ const specificTypes = [
         name: "PixieDustSkeletonColor",
         values: ["AtelierAnimationColorSlug", "false"],
         description: "Couleur du registre ou héritée du contexte.",
+    },
+    {
+        name: "PixieDustSkeletonIntensity",
+        values: intensities.map(({ value }) => `"${value}"`),
+        description: "Trois niveaux de présence de la matière.",
+    },
+    {
+        name: "PixieDustSkeletonSpeed",
+        values: speeds.map(({ value }) => `"${value}"`),
+        description: "Trois cadences prédéfinies de mouvement.",
+    },
+    {
+        name: "PixieDustSkeletonDirection",
+        values: ['"forward"', '"reverse"'],
+        description: "Deux sens de lecture de l’effet.",
+    },
+    {
+        name: "PixieDustSkeletonLive",
+        values: ['"off"', '"polite"', '"assertive"'],
+        description: "Priorité de l’unique annonce informative.",
     },
     {
         name: "PixieDustSkeletonDimension",
@@ -252,7 +418,13 @@ function OeuvreCardSkeleton() {
             aria-label="Chargement d’une œuvre"
         >
             <PixieStack gap="md">
-                <PixieDustSkeleton variant="block" height="10rem" radius="md" />
+                <PixieDustSkeleton
+                    variant="media"
+                    aspectRatio="3 / 2"
+                    radius="md"
+                    animation="develop"
+                    highlightColor="ambre-projecteur"
+                />
                 <PixieDustSkeleton width="42%" height="0.65rem" />
                 <PixieDustSkeleton
                     lines={2}
@@ -265,19 +437,25 @@ function OeuvreCardSkeleton() {
                     lastLineWidth="58%"
                 />
                 <PixieCluster gap="sm">
-                    <PixieDustSkeleton
-                        width="5rem"
-                        height="1.5rem"
-                        radius="full"
-                    />
-                    <PixieDustSkeleton
-                        width="7rem"
-                        height="1.5rem"
-                        radius="full"
-                    />
+                    <PixieDustSkeleton variant="pill" width="5rem" size="xs" />
+                    <PixieDustSkeleton variant="pill" width="7rem" size="xs" />
                 </PixieCluster>
             </PixieStack>
         </div>
+    );
+}
+
+function Scenario({
+    title,
+    children,
+}: Readonly<{ title: string; children: ReactNode }>) {
+    return (
+        <Stage>
+            <p className="mb-5 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                {title}
+            </p>
+            {children}
+        </Stage>
     );
 }
 
@@ -311,7 +489,7 @@ export function PixieDustSkeletonDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.1.0
+                                0.2.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -379,8 +557,9 @@ export function PixieDustSkeletonDossier() {
                             </Stage>
                             <CodeExample>{`<PixieStack gap="md">
     <PixieDustSkeleton
-        variant="block"
-        height="10rem"
+        variant="media"
+        aspectRatio="3 / 2"
+        animation="develop"
     />
     <PixieDustSkeleton
         lines={2}
@@ -399,9 +578,9 @@ export function PixieDustSkeletonDossier() {
                     <SequenceTitle
                         id="skeleton-variants-title"
                         eyebrow="Formes"
-                        title="Trois géométries suffisent à reconstruire une scène"
+                        title="Six silhouettes préservent la structure attendue"
                     />
-                    <div className="mt-8 grid gap-5 lg:grid-cols-3">
+                    <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
                         {variants.map((variant) => (
                             <Stage key={variant.value}>
                                 <div className="grid min-h-52 content-between gap-6">
@@ -418,8 +597,13 @@ export function PixieDustSkeletonDossier() {
                                                     ? "7rem"
                                                     : variant.value === "circle"
                                                       ? "5rem"
-                                                      : "1em"
+                                                      : variant.value ===
+                                                          "media"
+                                                        ? "auto"
+                                                        : undefined
                                             }
+                                            aspectRatio="16 / 9"
+                                            size="lg"
                                             lines={
                                                 variant.value === "text" ? 3 : 1
                                             }
@@ -446,10 +630,10 @@ export function PixieDustSkeletonDossier() {
                     <SequenceTitle
                         id="skeleton-animations-title"
                         eyebrow="Mouvement"
-                        title="Le banc-titre peut glisser, respirer ou rester fixe"
+                        title="La matière traverse six états de projection"
                         description="Aucun traitement ne suggère un pourcentage ni une fin imminente."
                     />
-                    <div className="mt-8 grid gap-5 lg:grid-cols-3">
+                    <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
                         {animations.map((animation) => (
                             <Stage key={animation.value}>
                                 <PixieDustSkeleton
@@ -457,6 +641,7 @@ export function PixieDustSkeletonDossier() {
                                     variant="block"
                                     height="7rem"
                                     radius="md"
+                                    highlightColor="ambre-projecteur"
                                 />
                                 <p className="mt-5 font-mono text-xs text-accent">
                                     animation=&quot;{animation.value}&quot;
@@ -472,6 +657,55 @@ export function PixieDustSkeletonDossier() {
                     </div>
                 </section>
 
+                <section aria-labelledby="skeleton-sizes-title">
+                    <SequenceTitle
+                        id="skeleton-sizes-title"
+                        eyebrow="Dimensions"
+                        title="Les tailles et ratios stabilisent la future scène"
+                        description="Les presets règlent les silhouettes courantes ; width, height et aspectRatio prennent ensuite le relais lorsque le contenu réel impose sa mesure."
+                    />
+                    <div className="mt-8 grid gap-5 lg:grid-cols-[1fr_1.4fr]">
+                        <Stage>
+                            <PixieCluster gap="md" align="end">
+                                {sizes.map((size) => (
+                                    <div
+                                        key={size.value}
+                                        className="grid justify-items-center gap-3"
+                                    >
+                                        <PixieDustSkeleton
+                                            variant="circle"
+                                            size={size.value}
+                                            animation="beam"
+                                            highlightColor="ambre-projecteur"
+                                        />
+                                        <span className="font-mono text-xs text-muted">
+                                            {size.value}
+                                        </span>
+                                    </div>
+                                ))}
+                            </PixieCluster>
+                        </Stage>
+                        <Stage>
+                            <div className="grid grid-cols-3 items-end gap-4">
+                                {["1 / 1", "4 / 3", "16 / 9"].map((ratio) => (
+                                    <div key={ratio}>
+                                        <PixieDustSkeleton
+                                            variant="media"
+                                            aspectRatio={ratio}
+                                            animation="develop"
+                                            highlightColor="bleu-reperage"
+                                            radius="md"
+                                        />
+                                        <p className="mt-3 text-center font-mono text-xs text-muted">
+                                            {ratio}
+                                        </p>
+                                    </div>
+                                ))}
+                            </div>
+                        </Stage>
+                    </div>
+                </section>
+
                 <section aria-labelledby="skeleton-text-title">
                     <SequenceTitle
                         id="skeleton-text-title"
@@ -482,7 +716,7 @@ export function PixieDustSkeletonDossier() {
                         {gaps.map((gap, index) => (
                             <Stage key={gap.value}>
                                 <PixieDustSkeleton
-                                    lines={index + 3}
+                                    lines={index + 2}
                                     gap={gap.value}
                                     lastLineWidth={`${48 + index * 14}%`}
                                 />
@@ -496,6 +730,20 @@ export function PixieDustSkeletonDossier() {
                                 </div>
                             </Stage>
                         ))}
+                    </div>
+                    <div className="mt-5">
+                        <Stage>
+                            <PixieDustSkeleton
+                                lineWidths={["100%", "91%", "73%", "44%"]}
+                                lineHeight="0.75rem"
+                                gap="sm"
+                                animation="grain"
+                                highlightColor="papier-animation"
+                            />
+                            <p className="mt-5 font-mono text-xs text-accent">
+                                lineWidths=[100%, 91%, 73%, 44%]
+                            </p>
+                        </Stage>
                     </div>
                 </section>
 
@@ -547,31 +795,124 @@ export function PixieDustSkeletonDossier() {
                 <section aria-labelledby="skeleton-compositions-title">
                     <SequenceTitle
                         id="skeleton-compositions-title"
-                        eyebrow="Montage"
-                        title="La primitive reconstruit des structures sans connaître leur métier"
+                        eyebrow="Scénarios préparés"
+                        title="Huit scènes reconnaissables avant l’arrivée des archives"
+                        description="Chaque composition reste un assemblage explicite de primitives Pixie : Skeleton ne connaît ni les Cards métier, ni les fiches, ni la recherche."
                     />
                     <div className="mt-8 grid gap-5 md:grid-cols-2">
-                        <Stage>
+                        <Scenario title="Card Personnage · portrait">
                             <div
                                 className="flex items-center gap-5"
                                 aria-busy="true"
-                                aria-label="Chargement d’une relation"
+                                aria-label="Chargement d’un personnage"
                             >
                                 <PixieDustSkeleton
                                     variant="circle"
-                                    width="4rem"
+                                    size="xl"
+                                    animation="develop"
+                                    highlightColor="rouge-crayon"
                                 />
                                 <div className="min-w-0 flex-1">
                                     <PixieDustSkeleton
-                                        lines={2}
-                                        lastLineWidth="44%"
+                                        lineWidths={["38%", "72%", "54%"]}
                                     />
                                 </div>
                             </div>
-                        </Stage>
-                        <Stage>
+                        </Scenario>
+                        <Scenario title="Card Œuvre · affiche">
                             <OeuvreCardSkeleton />
-                        </Stage>
+                        </Scenario>
+                        <Scenario title="Recherche · résultat compact">
+                            <PixieStack gap="sm">
+                                <PixieDustSkeleton
+                                    variant="pill"
+                                    size="xs"
+                                    width="6rem"
+                                />
+                                <PixieDustSkeleton
+                                    lineWidths={["58%", "92%", "68%"]}
+                                    animation="beam"
+                                    highlightColor="gouache"
+                                />
+                            </PixieStack>
+                        </Scenario>
+                        <Scenario title="Fiche · en-tête documentaire">
+                            <div className="grid grid-cols-[4rem_1fr] gap-5">
+                                <PixieDustSkeleton
+                                    variant="block"
+                                    width="4rem"
+                                    height="4rem"
+                                    radius="md"
+                                    animation="develop"
+                                    highlightColor="ambre-projecteur"
+                                />
+                                <PixieDustSkeleton
+                                    lineWidths={["24%", "78%", "100%", "86%"]}
+                                    gap="sm"
+                                />
+                            </div>
+                        </Scenario>
+                        <Scenario title="Métadonnées · badges">
+                            <PixieCluster gap="sm">
+                                {["4rem", "6rem", "5rem", "7rem"].map(
+                                    (width, index) => (
+                                        <PixieDustSkeleton
+                                            key={width}
+                                            variant="pill"
+                                            size="xs"
+                                            width={width}
+                                            delay={index * 120}
+                                            color="violet-ombre-portee"
+                                        />
+                                    ),
+                                )}
+                            </PixieCluster>
+                        </Scenario>
+                        <Scenario title="Relations · grille">
+                            <div className="grid grid-cols-3 gap-3">
+                                {[0, 1, 2].map((index) => (
+                                    <PixieStack key={index} gap="sm">
+                                        <PixieDustSkeleton
+                                            variant="media"
+                                            aspectRatio="4 / 3"
+                                            animation="grain"
+                                            delay={index * 160}
+                                        />
+                                        <PixieDustSkeleton
+                                            lineWidths={["90%", "54%"]}
+                                            size="sm"
+                                        />
+                                    </PixieStack>
+                                ))}
+                            </div>
+                        </Scenario>
+                        <Scenario title="Panneau · séquence complète">
+                            <PixiePanel variant="outline" padding="md">
+                                <PixieStack gap="md">
+                                    <PixieDustSkeleton width="36%" size="lg" />
+                                    <PixieDustSkeleton
+                                        lineWidths={["100%", "94%", "71%"]}
+                                    />
+                                    <PixieDustSkeleton
+                                        variant="media"
+                                        aspectRatio="16 / 6"
+                                        animation="develop"
+                                    />
+                                </PixieStack>
+                            </PixiePanel>
+                        </Scenario>
+                        <Scenario title="Formulaire · contrôle compact">
+                            <PixieStack gap="sm">
+                                <PixieDustSkeleton width="28%" size="xs" />
+                                <PixieDustSkeleton
+                                    variant="control"
+                                    size="md"
+                                    animation="beam"
+                                    highlightColor="bleu-reperage"
+                                />
+                                <PixieDustSkeleton width="46%" size="xs" />
+                            </PixieStack>
+                        </Scenario>
                     </div>
                 </section>
 
@@ -611,8 +952,9 @@ export function PixieDustSkeletonDossier() {
                                 </h4>
                                 <p className="mt-3 text-sm leading-6 text-ink-soft">
                                     Le parent décrit le contenu attendu et porte
-                                    aria-busy jusqu’à son remplacement par la
-                                    scène réelle.
+                                    aria-busy jusqu’à son remplacement. Une
+                                    unique empreinte peut recevoir role=status,
+                                    aria-live et aria-controls si nécessaire.
                                 </p>
                             </PixiePanel>
                             <PixiePanel variant="outline" padding="md">
@@ -620,9 +962,9 @@ export function PixieDustSkeletonDossier() {
                                     Mouvement réduit
                                 </h4>
                                 <p className="mt-3 text-sm leading-6 text-ink-soft">
-                                    Reflet et respiration deviennent fixes sans
-                                    modifier la géométrie ni masquer
-                                    l’empreinte.
+                                    Reflet, faisceau, développement, grain et
+                                    respiration deviennent fixes sans modifier
+                                    la géométrie.
                                 </p>
                             </PixiePanel>
                         </div>
@@ -645,7 +987,7 @@ export function PixieDustSkeletonDossier() {
                             id="skeleton-technical-title"
                             eyebrow="Générique technique"
                             title="API de l’esquisse"
-                            description="Les nombres deviennent des pixels ; les chaînes conservent leurs unités CSS. Les propriétés textuelles restent sans effet sur block et circle."
+                            description="Les nombres de dimension deviennent des pixels ; les chaînes conservent leurs unités CSS. lineWidths fixe explicitement le rythme du texte et reserveSpace préserve une géométrie inactive sans l’annoncer."
                         />
                         <div className="mt-8">
                             <AtelierPropertiesTable properties={properties} />
@@ -669,11 +1011,11 @@ export function PixieDustSkeletonDossier() {
                     />
                     <PixieStack as="ul" gap="sm" className="mt-8">
                         {[
-                            "Comparer les empreintes aux dimensions réelles des quatre Cards métier.",
-                            "Vérifier le reflet, la respiration et les teintes dans les deux Lumières.",
+                            "Comparer les six silhouettes aux dimensions réelles des Cards, fiches et formulaires.",
+                            "Vérifier les six matières, leurs cadences et leurs doubles teintes dans les deux Lumières.",
                             "Éprouver le remplacement par le contenu réel sans déplacement de mise en page.",
-                            "Contrôler aria-busy, les compositions décoratives et l’unique annonce informative.",
-                            "Confirmer le rendu entièrement fixe avec le mouvement réduit.",
+                            "Contrôler aria-busy, aria-live, aria-controls et l’unique annonce informative.",
+                            "Confirmer le rendu fixe et lisible avec le mouvement réduit.",
                         ].map((item) => (
                             <li
                                 key={item}
