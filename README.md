@@ -538,9 +538,9 @@ Les Plans partagent une grammaire centrale dans `src/registry/plans` et
 catalogues Personnages, Créateurs, Œuvres ou Époques ; les bobines témoins et les
 verdicts expérimentaux restent explicitement séparés des Archives.
 
-L’Atelier documente actuellement **5 esquisses PixieDust**, auxquelles
+L’Atelier documente actuellement **4 esquisses PixieDust**, auxquelles
 s’ajoutent les six Décors, les neuf composants du Montage, les quatre premiers
-Dialogues et les deux premiers Effets prêts à projeter :
+Dialogues et les trois premiers Effets prêts à projeter :
 
 - **Décors — 6 composants validés :** `PixieCard`, `PixiePanel`, `PixieFrame`,
   `PixieCallout`, `PixieInset` et `PixieBackdrop` ;
@@ -551,8 +551,8 @@ Dialogues et les deux premiers Effets prêts à projeter :
   `PixieStack`, `PixieCluster`, `PixieSection`, `PixieGrid`, `PixieSidebar`,
   `PixieSwitcher`, `PixieRail`, `PixieStickyRegion`, `PixieDustSplit` et
   `PixieDustBleed` ;
-- **Effets — 2 composants validés et 1 esquisse :** `PixieLoader`,
-  `PixieSkeleton` et `PixieDustToast`.
+- **Effets — 3 composants validés :** `PixieLoader`, `PixieSkeleton` et
+  `PixieToast`.
 
 Il est accessible uniquement en développement :
 
