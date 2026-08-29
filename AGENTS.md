@@ -300,8 +300,8 @@ l'état, le dossier, les exemples, les imports et l'entrée d'inventaire.
    registre par `src/app/atelier/plans/[slug]/page.tsx`, et le modèle partagé
    `AtelierPlanDossier`.
 7. Lorsqu'un prototype nécessite une matière absente des Archives, employer
-   une bobine témoin explicitement typée `test-reel`. Elle ne doit jamais être
-   présentée comme une donnée publiée.
+   une bobine témoin explicitement typée `bobine-temoin`. Elle ne doit jamais
+   être présentée comme une donnée publiée.
 8. Une implémentation destinée au Codex appartient à `src/components/codex`,
    commence par `Codex` et ne peut être intégrée aux pages publiques qu'après
    validation de son dossier. Une esquisse de Plan n'est jamais projetée dans
