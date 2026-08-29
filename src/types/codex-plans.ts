@@ -608,6 +608,77 @@ export type CodexGeneriqueVivantMatterSource =
           bobine: CodexPlanBobineTemoin;
       }>;
 
+export type CodexTableLumineuseAngle = Extract<
+    CodexPlanAngleSlug,
+    "provenance" | "reception" | "contradiction" | "geography" | "uncertainty"
+>;
+
+export type CodexTableLumineuseFact = Readonly<{
+    label: string;
+    value: string;
+    numericValue?: number;
+    unit?: string;
+}>;
+
+export type CodexTableLumineuseSource = Readonly<{
+    id: string;
+    label: string;
+    author?: string;
+    publisher?: string;
+    url?: string;
+    publicationDate?: string;
+    consultationDate?: string;
+    resolved: boolean;
+    position: CodexPlanEvidencePosition;
+    classification: CodexPlanSourceClassification;
+}>;
+
+export type CodexTableLumineuseItem = Readonly<{
+    id: string;
+    owner: CodexPlanEntityReference;
+    scope: CodexPlanEvidenceScope;
+    label: string;
+    status: CodexPlanEvidenceStatus;
+    position: CodexPlanEvidencePosition;
+    sourceClassification: CodexPlanSourceClassification;
+    sources: readonly CodexTableLumineuseSource[];
+    unresolvedSourceIds: readonly string[];
+    facts: readonly CodexTableLumineuseFact[];
+    searchKey: string;
+    provenance: readonly CodexPlanProvenance[];
+}>;
+
+export type CodexTableLumineuseModel = Readonly<{
+    configuration: CodexPlanConfiguration;
+    subject: CodexPlanEntityReference;
+    matter: CodexPlanMatter;
+    runtimeState: CodexPlanRuntimeState;
+    items: readonly CodexTableLumineuseItem[];
+    selection: CodexPlanDerivationSelection;
+    notices: readonly CodexPlanDerivationNotice[];
+    stats: Readonly<{
+        items: number;
+        sources: number;
+        attachments: number;
+        documented: number;
+        partiallyResolved: number;
+        undocumented: number;
+        unclassifiedPositions: number;
+        unclassifiedSources: number;
+    }>;
+}>;
+
+export type CodexTableLumineuseMatterSource =
+    | Readonly<{
+          kind: "archives";
+          archives: CodexPlanArchives;
+      }>
+    | Readonly<{
+          kind: "bobine-temoin";
+          archives: CodexPlanArchives;
+          bobine: CodexPlanBobineTemoin;
+      }>;
+
 export type CodexPlanVocabularyDefinition = Readonly<{
     label: string;
     description: string;

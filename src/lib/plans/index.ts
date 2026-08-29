@@ -7,6 +7,7 @@ export { derivePlanLinks } from "@/lib/plans/links";
 export { derivePlanNodes } from "@/lib/plans/nodes";
 export { deriveMontageDuTemps } from "@/lib/plans/montage-du-temps";
 export { derivePlanDEnsemble } from "@/lib/plans/plan-d-ensemble";
+export { deriveTableLumineuse } from "@/lib/plans/table-lumineuse";
 export { deriveTravellingDocumentaire } from "@/lib/plans/travelling-documentaire";
 
 export type {
@@ -56,6 +57,12 @@ export type {
     CodexPlanNode,
     CodexPlanNodeMetadataValue,
     CodexPlanSourceClassification,
+    CodexTableLumineuseAngle,
+    CodexTableLumineuseFact,
+    CodexTableLumineuseItem,
+    CodexTableLumineuseMatterSource,
+    CodexTableLumineuseModel,
+    CodexTableLumineuseSource,
     CodexTravellingDocumentaireConnection,
     CodexTravellingDocumentaireEvidence,
     CodexTravellingDocumentaireMatterSource,
