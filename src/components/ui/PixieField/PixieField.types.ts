@@ -1,14 +1,14 @@
 import type { AriaAttributes, ReactElement, ReactNode } from "react";
 
-export type PixieDustFieldSpacing = "xs" | "sm" | "md" | "lg" | "xl";
+export type PixieFieldSpacing = "xs" | "sm" | "md" | "lg" | "xl";
 
-export type PixieDustFieldLayout = "stacked" | "side";
+export type PixieFieldLayout = "stacked" | "side";
 
-export type PixieDustFieldRequirementDisplay = "text" | "mark" | "hidden";
+export type PixieFieldRequirementDisplay = "text" | "mark" | "hidden";
 
-export type PixieDustFieldFeedbackTone = "success" | "warning";
+export type PixieFieldFeedbackTone = "success" | "warning";
 
-export type PixieDustFieldControlProps = Readonly<{
+export type PixieFieldControlProps = Readonly<{
     id?: string;
     "aria-describedby"?: AriaAttributes["aria-describedby"];
     "aria-errormessage"?: AriaAttributes["aria-errormessage"];
@@ -19,12 +19,12 @@ export type PixieDustFieldControlProps = Readonly<{
     readOnly?: boolean;
 }>;
 
-export type PixieDustFieldRequirement =
+export type PixieFieldRequirement =
     | Readonly<{ required: true; optional?: never }>
     | Readonly<{ optional: true; required?: never }>
     | Readonly<{ required?: false; optional?: false }>;
 
-export type PixieDustFieldFeedback =
+export type PixieFieldFeedback =
     | Readonly<{
           error: ReactNode;
           feedback?: never;
@@ -33,7 +33,7 @@ export type PixieDustFieldFeedback =
     | Readonly<{
           error?: never;
           feedback: ReactNode;
-          feedbackTone?: PixieDustFieldFeedbackTone;
+          feedbackTone?: PixieFieldFeedbackTone;
       }>
     | Readonly<{
           error?: never;
@@ -41,21 +41,21 @@ export type PixieDustFieldFeedback =
           feedbackTone?: never;
       }>;
 
-type PixieDustFieldBaseProps = Readonly<{
+type PixieFieldBaseProps = Readonly<{
     controlId?: string;
     label: ReactNode;
-    children: ReactElement<PixieDustFieldControlProps>;
+    children: ReactElement<PixieFieldControlProps>;
     description?: ReactNode;
     meta?: ReactNode;
     labelHidden?: boolean;
-    layout?: PixieDustFieldLayout;
-    spacing?: PixieDustFieldSpacing;
-    requirementDisplay?: PixieDustFieldRequirementDisplay;
+    layout?: PixieFieldLayout;
+    spacing?: PixieFieldSpacing;
+    requirementDisplay?: PixieFieldRequirementDisplay;
     requiredLabel?: ReactNode;
     optionalLabel?: ReactNode;
     className?: string;
 }>;
 
-export type PixieDustFieldProps = PixieDustFieldBaseProps &
-    PixieDustFieldRequirement &
-    PixieDustFieldFeedback;
+export type PixieFieldProps = PixieFieldBaseProps &
+    PixieFieldRequirement &
+    PixieFieldFeedback;

@@ -1,12 +1,12 @@
 import { cloneElement, useId } from "react";
-import styles from "./PixieDustField.module.css";
+import styles from "./PixieField.module.css";
 import type {
-    PixieDustFieldControlProps,
-    PixieDustFieldFeedbackTone,
-    PixieDustFieldLayout,
-    PixieDustFieldProps,
-    PixieDustFieldSpacing,
-} from "./PixieDustField.types";
+    PixieFieldControlProps,
+    PixieFieldFeedbackTone,
+    PixieFieldLayout,
+    PixieFieldProps,
+    PixieFieldSpacing,
+} from "./PixieField.types";
 
 const spacingClasses = {
     xs: styles.spacingExtraSmall,
@@ -14,17 +14,17 @@ const spacingClasses = {
     md: styles.spacingMedium,
     lg: styles.spacingLarge,
     xl: styles.spacingExtraLarge,
-} as const satisfies Record<PixieDustFieldSpacing, string>;
+} as const satisfies Record<PixieFieldSpacing, string>;
 
 const layoutClasses = {
     stacked: styles.layoutStacked,
     side: styles.layoutSide,
-} as const satisfies Record<PixieDustFieldLayout, string>;
+} as const satisfies Record<PixieFieldLayout, string>;
 
 const feedbackClasses = {
     success: styles.feedbackSuccess,
     warning: styles.feedbackWarning,
-} as const satisfies Record<PixieDustFieldFeedbackTone, string>;
+} as const satisfies Record<PixieFieldFeedbackTone, string>;
 
 function joinIds(...values: (string | undefined)[]) {
     const ids = values.flatMap(
@@ -34,11 +34,11 @@ function joinIds(...values: (string | undefined)[]) {
     return [...new Set(ids)].join(" ") || undefined;
 }
 
-function isAriaInvalid(value: PixieDustFieldControlProps["aria-invalid"]) {
+function isAriaInvalid(value: PixieFieldControlProps["aria-invalid"]) {
     return value !== undefined && value !== false && value !== "false";
 }
 
-export function PixieDustField({
+export function PixieField({
     controlId,
     label,
     children,
@@ -56,7 +56,7 @@ export function PixieDustField({
     requiredLabel = "Obligatoire",
     optionalLabel = "Facultatif",
     className = "",
-}: PixieDustFieldProps) {
+}: PixieFieldProps) {
     const generatedId = useId();
     const hasDescription = description !== undefined && description !== null;
     const hasError = error !== undefined && error !== null;
