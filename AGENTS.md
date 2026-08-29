@@ -204,6 +204,11 @@ src/components/ui/
   plusieurs dossiers.
 - `src/components/ui` contient les primitives réellement destinées à
   l'interface du Codex et suit la convention `PixieDust` ou `Pixie`.
+- `src/app/atelier/plans/[slug]` projette les dossiers préparatoires des Plans à
+  partir du registre central ; ces routes ne sont ni des playgrounds Pixie ni
+  des pages publiques du Codex.
+- `src/registry/plans` porte la définition neutre des Plans, des Angles et des
+  Objectifs ; leurs types métier partagés restent dans `src/types/codex-plans.ts`.
 - Les types spécifiques de chaque composant restent dans son dossier sous le
   nom `<NomComposant>.types.ts` ; seuls les types globaux, métier ou partagés
   restent centralisés dans `src/types`.
@@ -212,20 +217,27 @@ Les fichiers existants qui ne suivent pas encore cette arborescence canonique
 seront migrés dans un chantier dédié. Toute nouvelle création doit en revanche
 la respecter immédiatement.
 
-## Les six plateaux
+## Les sept plateaux
 
-| Numéro | Catégorie         | Domaine         | Contenu                                                                 |
-| ------ | ----------------- | --------------- | ----------------------------------------------------------------------- |
-| `01`   | `La Pellicule`    | Fondations      | Couleurs, typographies, formes, rayons, rythmes et autres design tokens |
-| `02`   | `Les Accessoires` | Primitives      | Éléments simples et réutilisables de l'interface                        |
-| `03`   | `Les Décors`      | Surfaces        | Cartes, panneaux, cadres et conteneurs éditoriaux                       |
-| `04`   | `Les Dialogues`   | Formulaires     | Champs, choix, contrôles et interactions de saisie                      |
-| `05`   | `Le Montage`      | Composition     | Assemblages, séquences et rythmes de mise en page                       |
-| `06`   | `Les Effets`      | Retours système | États, alertes, transitions et réactions visibles de l'interface        |
+| Numéro | Catégorie         | Domaine                    | Contenu                                                                 |
+| ------ | ----------------- | -------------------------- | ----------------------------------------------------------------------- |
+| `01`   | `La Pellicule`    | Fondations                 | Couleurs, typographies, formes, rayons, rythmes et autres design tokens |
+| `02`   | `Les Accessoires` | Primitives                 | Éléments simples et réutilisables de l'interface                        |
+| `03`   | `Les Décors`      | Surfaces                   | Cartes, panneaux, cadres et conteneurs éditoriaux                       |
+| `04`   | `Les Dialogues`   | Formulaires                | Champs, choix, contrôles et interactions de saisie                      |
+| `05`   | `Le Montage`      | Composition                | Assemblages, séquences et rythmes de mise en page                       |
+| `06`   | `Les Effets`      | Retours système            | États, alertes, transitions et réactions visibles de l'interface        |
+| `07`   | `Les Plans`       | Explorations documentaires | Compositions métier qui donnent de nouvelles lectures aux Archives      |
 
-Ne pas créer une septième catégorie pour une nuance mineure. Choisir le
+Ne pas créer une huitième catégorie pour une nuance mineure. Choisir le
 plateau qui décrit la responsabilité principale de l'item. Toute modification
 de cette taxonomie demande un accord explicite.
+
+`Les Plans` constituent une exception volontaire à la taxonomie des composants
+UI. Un Plan est une composition métier du Codex : il part d'un Sujet publié,
+choisit un Angle et un Objectif, fixe un Cadre, puis projette une Matière
+documentaire. Il ne reçoit jamais de préfixe `PixieDust` ou `Pixie` et ne doit
+pas être rangé dans `Le Montage`.
 
 Les catégories utilisent trois états :
 
@@ -248,7 +260,8 @@ l'état, le dossier, les exemples, les imports et l'entrée d'inventaire.
 
 ## Ajouter un item dans l'Atelier
 
-1. Choisir l'un des six plateaux selon la responsabilité principale de l'item.
+1. Choisir l'un des sept plateaux selon la responsabilité principale de
+   l'item. Pour un Plan, appliquer le parcours spécifique décrit ci-dessous.
 2. Ajouter l'item à l'inventaire de la catégorie dans `page.tsx` avec un nom,
    un rôle, un état et un `href` lorsque son dossier existe.
 3. Créer ou déplacer l'implémentation réelle dans la famille appropriée de
@@ -269,6 +282,52 @@ l'état, le dossier, les exemples, les imports et l'entrée d'inventaire.
 8. Mettre à jour le nombre de plateaux ouverts et la navigation de l'Atelier si
    une catégorie jusque-là hors champ devient accessible.
 9. Vérifier le dossier dans l'Atelier local, puis lancer `pnpm check`.
+
+## Ajouter ou faire évoluer un Plan
+
+1. Définir d'abord la question documentaire, l'action de lecture et le
+   contrechamp textuel du Plan.
+2. Ajouter son slug et ses types partagés dans `src/types/codex-plans.ts`, puis
+   sa définition neutre dans `src/registry/plans/plans.ts`.
+3. Limiter le `Sujet` à une entrée publiée dans les catalogues `personnages`,
+   `contributeurs`, `oeuvres` ou `epoques`. Ne pas accepter un objet libre ou
+   une référence uniquement inventée par le prototype.
+4. Déclarer explicitement les Angles et Objectifs admis. La proximité visuelle
+   ne doit jamais créer à elle seule une relation documentaire.
+5. Conserver les verdicts `pursue`, `transform`, `defer` et `abandon` dans le
+   journal d'essai : ils ne doivent jamais entrer dans le registre neutre.
+6. Utiliser la route canonique `/atelier/plans/<slug>`, générée depuis le
+   registre par `src/app/atelier/plans/[slug]/page.tsx`, et le modèle partagé
+   `AtelierPlanDossier`.
+7. Lorsqu'un prototype nécessite une matière absente des Archives, employer
+   une bobine témoin explicitement typée `test-reel`. Elle ne doit jamais être
+   présentée comme une donnée publiée.
+8. Une implémentation destinée au Codex appartient à `src/components/codex`,
+   commence par `Codex` et ne peut être intégrée aux pages publiques qu'après
+   validation de son dossier. Une esquisse de Plan n'est jamais projetée dans
+   le Codex.
+9. Vérifier les cinq routes, les états de matière, le clavier, le focus, le
+   mouvement réduit, les deux Lumières et l'alternative textuelle, puis lancer
+   `pnpm check`.
+
+## Contenu obligatoire d'un dossier de Plan
+
+Le dossier d'un Plan suit un modèle distinct de celui des composants Pixie :
+
+1. un carton d'ouverture avec nom, identifiant, état et programme ;
+2. le contrat de lecture : question, action et contrechamp textuel ;
+3. le Plan maître qui expose la promesse documentaire ;
+4. le champ, qui décrit le Cadre et la Matière effectivement montrés ;
+5. le hors-champ, qui nomme ce que le Plan refuse d'inventer ;
+6. la Régie : Sujet, Angle, Objectif et limites du Cadre ;
+7. le contrechamp textuel équivalent à la composition visuelle ;
+8. les Plans de coupe pour les états vides, légers, denses, incomplets et en
+   erreur ;
+9. la bobine témoin lorsqu'une matière d'essai est nécessaire ;
+10. les garanties d'accessibilité et de continuité ;
+11. le générique technique de la configuration partagée ;
+12. le journal d'essai et la dernière image, dont le verdict reste extérieur
+    au registre.
 
 ## Contenu obligatoire d'un dossier
 
@@ -302,6 +361,9 @@ Les dossiers et playgrounds doivent réutiliser les composants de
   résultat aux technologies d'assistance ;
 - `AtelierPropertiesTable` pour la table canonique dont les colonnes sont
   toujours `Propriété`, `Type`, `Défaut` et `Rôle`.
+- `AtelierPlanDossier` pour le montage documentaire commun des cinq Plans ; ses
+  sections peuvent évoluer ensemble, sans dupliquer leur structure dans les
+  pages de route.
 
 Un nouveau composant partagé de l'Atelier ne doit être créé que lorsqu'au moins
 deux dossiers ont réellement besoin du même motif. Il suit la convention de

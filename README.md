@@ -515,7 +515,7 @@ les quatre premiers Dialogues `PixieField`, `PixieInput`, `PixieSelect` et
 `PixieSearchField`, ainsi que `PixieLoader`, premier Effet validé, sont
 désormais prêts à projeter.
 
-Ses six plateaux de travail sont maintenant actifs :
+Ses sept plateaux de travail sont maintenant actifs :
 
 1. **La Pellicule** réunit les typographies, les palettes et les formes ;
 2. **Les Accessoires** éprouvent les primitives avant leur entrée dans le
@@ -523,7 +523,20 @@ Ses six plateaux de travail sont maintenant actifs :
 3. **Les Décors** façonnent les surfaces et leurs profondeurs ;
 4. **Les Dialogues** composent les champs et contrôles de formulaire ;
 5. **Le Montage** règle la composition et le rythme des séquences ;
-6. **Les Effets** rendent visibles les attentes et les retours du système.
+6. **Les Effets** rendent visibles les attentes et les retours du système ;
+7. **Les Plans** composent de nouvelles lectures métier à partir des Archives.
+
+Le septième plateau prépare cinq explorations documentaires : le
+**Travelling documentaire**, le **Plan d’ensemble**, le **Montage du temps**,
+le **Générique vivant** et la **Table lumineuse**. Chaque Plan possède un
+dossier privé distinct des fiches Pixie. Il annonce sa question, son action de
+lecture, son Cadre, sa Matière et son contrechamp textuel avant que le premier
+prototype ne soit projeté.
+
+Les Plans partagent une grammaire centrale dans `src/registry/plans` et
+`src/types/codex-plans.ts`. Leur Sujet est toujours une entrée publiée dans les
+catalogues Personnages, Créateurs, Œuvres ou Époques ; les bobines témoins et les
+verdicts expérimentaux restent explicitement séparés des Archives.
 
 L’Atelier documente actuellement **5 esquisses PixieDust**, auxquelles
 s’ajoutent les six Décors, les neuf composants du Montage, les quatre premiers
@@ -548,7 +561,7 @@ http://ledisneyiste-codex.test/atelier
 ```
 
 La route appelle `notFound()` en production et ses métadonnées interdisent son
-indexation. Sa structure, ses six plateaux et son parcours d’ajout sont décrits
+indexation. Sa structure, ses sept plateaux et ses parcours d’ajout sont décrits
 dans [`AGENTS.md`](./AGENTS.md#latelier).
 
 ---
