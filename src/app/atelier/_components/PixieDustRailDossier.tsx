@@ -11,13 +11,23 @@ import {
     type PixieDustRailGap,
     type PixieDustRailGutter,
     type PixieDustRailItemWidth,
+    type PixieDustRailOverscroll,
+    type PixieDustRailPeek,
+    type PixieDustRailScrollbar,
     type PixieDustRailSnap,
+    type PixieDustRailSnapAlign,
 } from "@/components/ui/PixieDustRail";
 import { PixieSection } from "@/components/ui/PixieSection";
 import { PixieStack } from "@/components/ui/PixieStack";
 import { PixieDustRailPlayground } from "./PixieDustRailPlayground";
 
 const itemWidths = [
+    {
+        name: "Naturelle",
+        value: "auto" as const,
+        token: "max-content",
+        role: "Repères, badges et contenus dont la matière dicte la mesure.",
+    },
     {
         name: "Très petite",
         value: "xs" as const,
@@ -86,18 +96,75 @@ const snaps = [
         role: "Le travelling s’arrête exactement où le geste le laisse.",
     },
     {
-        name: "Début",
-        value: "start" as const,
-        role: "Le bord initial de chaque plan rejoint celui de la piste.",
+        name: "Proximité",
+        value: "proximity" as const,
+        role: "Le plan rejoint son point d’arrêt seulement lorsqu’il s’en approche.",
     },
     {
-        name: "Centre",
-        value: "center" as const,
-        role: "Chaque plan peut retrouver doucement le centre du cadre.",
+        name: "Obligatoire",
+        value: "mandatory" as const,
+        role: "La piste termine toujours son geste sur un point d’arrêt.",
     },
 ] as const satisfies readonly Readonly<{
     name: string;
     value: PixieDustRailSnap;
+    role: string;
+}>[];
+
+const snapAlignments = [
+    { name: "Début", value: "start" as const },
+    { name: "Centre", value: "center" as const },
+    { name: "Fin", value: "end" as const },
+] as const satisfies readonly Readonly<{
+    name: string;
+    value: PixieDustRailSnapAlign;
+}>[];
+
+const peeks = [
+    {
+        name: "Aucun",
+        value: "none" as const,
+        token: "100 %",
+        role: "Un plan peut occuper toute la largeur disponible.",
+    },
+    {
+        name: "Subtil",
+        value: "subtle" as const,
+        token: "92 %",
+        role: "Une amorce discrète annonce la continuité de la piste.",
+    },
+    {
+        name: "Marqué",
+        value: "strong" as const,
+        token: "80 %",
+        role: "Le hors-champ devient un signal évident du travelling.",
+    },
+] as const satisfies readonly Readonly<{
+    name: string;
+    value: PixieDustRailPeek;
+    token: string;
+    role: string;
+}>[];
+
+const scrollbars = [
+    {
+        name: "Native",
+        value: "auto" as const,
+        role: "Conserve le témoin fourni par la plateforme.",
+    },
+    {
+        name: "Fine",
+        value: "thin" as const,
+        role: "Réduit sa présence sans retirer l’indication de défilement.",
+    },
+    {
+        name: "Masquée",
+        value: "hidden" as const,
+        role: "Réservée aux pistes dont le hors-champ est déjà explicite.",
+    },
+] as const satisfies readonly Readonly<{
+    name: string;
+    value: PixieDustRailScrollbar;
     role: string;
 }>[];
 
@@ -137,10 +204,29 @@ const properties = [
         description: "Marge intérieure au début et à la fin de la piste.",
     },
     {
+        name: "peek",
+        type: "PixieDustRailPeek",
+        defaultValue: '"subtle"',
+        description: "Part maximale du cadre qu’un plan peut occuper.",
+    },
+    {
         name: "snap",
         type: "PixieDustRailSnap",
+        defaultValue: '"proximity"',
+        description: "Force du magnétisme appliqué à la piste.",
+    },
+    {
+        name: "snapAlign",
+        type: "PixieDustRailSnapAlign",
         defaultValue: '"start"',
-        description: "Point d’arrêt doux proposé après le défilement.",
+        description: "Bord de chaque plan rejoint par le point d’arrêt.",
+    },
+    {
+        name: "snapStop",
+        type: "PixieDustRailSnapStop",
+        defaultValue: '"normal"',
+        description:
+            "Autorise ou interdit de franchir plusieurs plans d’un geste.",
     },
     {
         name: "align",
@@ -149,10 +235,16 @@ const properties = [
         description: "Alignement transversal des enfants.",
     },
     {
-        name: "peek",
-        type: "boolean",
-        defaultValue: "true",
-        description: "Laisse entrevoir le plan suivant sur cadre étroit.",
+        name: "scrollbar",
+        type: "PixieDustRailScrollbar",
+        defaultValue: '"auto"',
+        description: "Présence visuelle de la barre de défilement native.",
+    },
+    {
+        name: "overscroll",
+        type: "PixieDustRailOverscroll",
+        defaultValue: '"contain"',
+        description: "Transmission du geste horizontal au cadre parent.",
     },
     {
         name: "children",
@@ -176,28 +268,53 @@ const specificTypes = [
     },
     {
         name: "PixieDustRailItemWidth",
-        values: ['"xs"', '"sm"', '"md"', '"lg"', '"xl"'],
-        description: "Mesures de référence des plans.",
+        values: ['"auto"', '"xs"', '"sm"', '"md"', '"lg"', '"xl"', "number"],
+        description: "Mesures naturelles, prédéfinies ou libres des plans.",
     },
     {
         name: "PixieDustRailGap",
-        values: ['"none"', '"xs"', '"sm"', '"md"', '"lg"', '"xl"'],
+        values: ['"none"', '"xs"', '"sm"', '"md"', '"lg"', '"xl"', "number"],
         description: "Échelle des intervalles du Montage.",
     },
     {
         name: "PixieDustRailGutter",
-        values: ['"none"', '"sm"', '"md"', '"lg"'],
+        values: ['"none"', '"sm"', '"md"', '"lg"', "number"],
         description: "Marges intérieures de la piste.",
     },
     {
+        name: "PixieDustRailPeek",
+        values: ['"none"', '"subtle"', '"strong"'],
+        description: "Degrés d’amorce du prochain plan.",
+    },
+    {
         name: "PixieDustRailSnap",
-        values: ['"none"', '"start"', '"center"'],
-        description: "Points d’arrêt doux du travelling.",
+        values: ['"none"', '"proximity"', '"mandatory"'],
+        description: "Forces du magnétisme horizontal.",
+    },
+    {
+        name: "PixieDustRailSnapAlign",
+        values: ['"start"', '"center"', '"end"'],
+        description: "Points d’alignement des plans.",
+    },
+    {
+        name: "PixieDustRailSnapStop",
+        values: ['"normal"', '"always"'],
+        description: "Franchissement des points d’arrêt.",
     },
     {
         name: "PixieDustRailAlign",
         values: ['"stretch"', '"start"', '"center"', '"end"'],
         description: "Alignements transversaux des plans.",
+    },
+    {
+        name: "PixieDustRailScrollbar",
+        values: ['"auto"', '"thin"', '"hidden"'],
+        description: "Présences possibles du témoin de défilement.",
+    },
+    {
+        name: "PixieDustRailOverscroll",
+        values: ['"auto"', '"contain"'],
+        description: "Propagation du geste au cadre parent.",
     },
 ] as const;
 
@@ -312,7 +429,7 @@ export function PixieDustRailDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.1.0
+                                0.2.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -420,7 +537,8 @@ export function PixieDustRailDossier() {
                             itemWidth="md"
                             gap="md"
                             gutter="lg"
-                            snap="start"
+                            snap="proximity"
+                            snapAlign="start"
                             aria-label="Œuvres charnières"
                             className="m-0 list-none pb-3"
                         >
@@ -440,7 +558,7 @@ export function PixieDustRailDossier() {
     itemWidth="md"
     gap="md"
     gutter="lg"
-    snap="start"
+    snap="proximity" snapAlign="start"
     aria-label="Œuvres charnières"
 >
     <li><OeuvreCard /></li>
@@ -500,22 +618,20 @@ export function PixieDustRailDossier() {
                 <SequenceTitle
                     id="rail-peek"
                     eyebrow="Hors-champ"
-                    title="Le plan suivant annonce la continuité"
-                    description="peek réduit seulement la largeur maximale sur petit cadre. La collection, son ordre et son point d’arrêt restent inchangés."
+                    title="Trois amorces annoncent la continuité"
+                    description="peek limite la part maximale du cadre occupée par un plan. La collection, son ordre et son point d’arrêt restent inchangés."
                 />
 
-                <div className="mt-7 grid gap-6 bg-canvas p-6 lg:grid-cols-2">
-                    {[true, false].map((peek) => (
-                        <Stage key={String(peek)}>
+                <div className="mt-7 grid gap-6 bg-canvas p-6 lg:grid-cols-3">
+                    {peeks.map((peek) => (
+                        <Stage key={peek.value}>
                             <div className="max-w-sm py-5">
                                 <PixieDustRail
                                     itemWidth="lg"
                                     gap="sm"
                                     gutter="sm"
-                                    peek={peek}
-                                    aria-label={
-                                        peek ? "Avec aperçu" : "Sans aperçu"
-                                    }
+                                    peek={peek.value}
+                                    aria-label={`Aperçu ${peek.name}`}
                                     className="pb-3"
                                 >
                                     {films.slice(0, 3).map(([year, title]) => (
@@ -529,9 +645,14 @@ export function PixieDustRailDossier() {
                                     ))}
                                 </PixieDustRail>
                             </div>
-                            <p className="border-t border-line bg-surface p-4 font-mono text-xs text-accent">
-                                peek={`{${peek}}`}
-                            </p>
+                            <div className="border-t border-line bg-surface p-4">
+                                <code className="font-mono text-xs text-accent">
+                                    peek=&quot;{peek.value}&quot; · {peek.token}
+                                </code>
+                                <p className="mt-3 text-sm leading-6 text-muted">
+                                    {peek.role}
+                                </p>
+                            </div>
                         </Stage>
                     ))}
                 </div>
@@ -541,8 +662,8 @@ export function PixieDustRailDossier() {
                 <SequenceTitle
                     id="rail-snaps"
                     eyebrow="Arrêt du travelling"
-                    title="Trois façons de laisser reposer la piste"
-                    description="Le magnétisme reste volontairement doux : il accompagne le geste sans empêcher un arrêt intermédiaire ni forcer une navigation par écran."
+                    title="La force et le point d’arrêt se règlent séparément"
+                    description="snap décide si la piste reste libre, attirée ou contrainte ; snapAlign choisit ensuite le bord de chaque plan qui rejoint le cadre."
                 />
 
                 <div className="mt-7 grid gap-6 bg-canvas p-6 lg:grid-cols-3">
@@ -553,6 +674,7 @@ export function PixieDustRailDossier() {
                                 gap="sm"
                                 gutter="md"
                                 snap={snap.value}
+                                snapAlign="start"
                                 aria-label={`Arrêt ${snap.name}`}
                                 className="py-5 pb-7"
                             >
@@ -574,6 +696,36 @@ export function PixieDustRailDossier() {
                                     {snap.role}
                                 </p>
                             </div>
+                        </Stage>
+                    ))}
+                </div>
+
+                <div className="mt-6 grid gap-6 bg-canvas p-6 lg:grid-cols-3">
+                    {snapAlignments.map((alignment) => (
+                        <Stage key={alignment.value}>
+                            <PixieDustRail
+                                itemWidth="sm"
+                                gap="sm"
+                                gutter="md"
+                                snap="mandatory"
+                                snapAlign={alignment.value}
+                                snapStop="always"
+                                aria-label={`Alignement ${alignment.name}`}
+                                className="py-5 pb-7"
+                            >
+                                {films.slice(0, 4).map(([year, title]) => (
+                                    <div key={title}>
+                                        <FilmCard
+                                            year={year}
+                                            title={title}
+                                            compact
+                                        />
+                                    </div>
+                                ))}
+                            </PixieDustRail>
+                            <p className="border-t border-line bg-surface p-4 font-mono text-xs text-accent">
+                                snapAlign=&quot;{alignment.value}&quot;
+                            </p>
                         </Stage>
                     ))}
                 </div>
@@ -651,6 +803,46 @@ export function PixieDustRailDossier() {
                 </div>
             </section>
 
+            <section aria-labelledby="rail-custom" className="mt-16">
+                <SequenceTitle
+                    id="rail-custom"
+                    eyebrow="Mesures libres"
+                    title="Trois nombres raccordent la piste à un cadre particulier"
+                    description="Les presets restent la règle commune ; les valeurs numériques permettent d’accorder ponctuellement la largeur, l’intervalle et la gouttière à une composition existante."
+                />
+
+                <div className="mt-7 grid min-w-0 border border-line lg:grid-cols-2">
+                    <div className="min-w-0 bg-canvas py-6">
+                        <PixieDustRail
+                            itemWidth={272}
+                            gap={18}
+                            gutter={24}
+                            peek="subtle"
+                            aria-label="Piste aux mesures personnalisées"
+                            className="pb-3"
+                        >
+                            {films.slice(0, 4).map(([year, title]) => (
+                                <div key={title}>
+                                    <FilmCard
+                                        year={year}
+                                        title={title}
+                                        compact
+                                    />
+                                </div>
+                            ))}
+                        </PixieDustRail>
+                    </div>
+                    <CodeExample>{`<PixieDustRail
+    itemWidth={272}
+    gap={18}
+    gutter={24}
+    peek="subtle"
+>
+    {/* Plans */}
+</PixieDustRail>`}</CodeExample>
+                </div>
+            </section>
+
             <section aria-labelledby="rail-align" className="mt-16">
                 <SequenceTitle
                     id="rail-align"
@@ -701,6 +893,72 @@ export function PixieDustRailDossier() {
                 </div>
             </section>
 
+            <section aria-labelledby="rail-scrollbars" className="mt-16">
+                <SequenceTitle
+                    id="rail-scrollbars"
+                    eyebrow="Témoin du travelling"
+                    title="Trois présences pour la barre native"
+                    description="La barre reste le signal le plus explicite. Elle ne doit être masquée que lorsque le hors-champ, le contexte et le geste attendu sont déjà évidents."
+                />
+
+                <div className="mt-7 grid gap-6 bg-canvas p-6 lg:grid-cols-3">
+                    {scrollbars.map((scrollbar) => (
+                        <Stage key={scrollbar.value}>
+                            <PixieDustRail
+                                itemWidth="sm"
+                                gap="sm"
+                                gutter="sm"
+                                peek="strong"
+                                scrollbar={scrollbar.value}
+                                overscroll="contain"
+                                aria-label={`Barre ${scrollbar.name}`}
+                                className="py-5 pb-7"
+                            >
+                                {films.slice(0, 4).map(([year, title]) => (
+                                    <div key={title}>
+                                        <FilmCard
+                                            year={year}
+                                            title={title}
+                                            compact
+                                        />
+                                    </div>
+                                ))}
+                            </PixieDustRail>
+                            <div className="border-t border-line bg-surface p-4">
+                                <code className="font-mono text-xs text-accent">
+                                    scrollbar=&quot;{scrollbar.value}&quot;
+                                </code>
+                                <p className="mt-3 text-sm leading-6 text-muted">
+                                    {scrollbar.role}
+                                </p>
+                            </div>
+                        </Stage>
+                    ))}
+                </div>
+
+                <div className="mt-6 grid gap-px border border-line bg-line sm:grid-cols-2">
+                    {[
+                        [
+                            "auto" as PixieDustRailOverscroll,
+                            "Le geste peut poursuivre son trajet dans le cadre parent.",
+                        ],
+                        [
+                            "contain" as PixieDustRailOverscroll,
+                            "Le geste horizontal reste contenu dans la piste.",
+                        ],
+                    ].map(([value, description]) => (
+                        <article key={value} className="bg-surface p-5">
+                            <code className="font-mono text-xs text-accent">
+                                overscroll=&quot;{value}&quot;
+                            </code>
+                            <p className="mt-3 text-sm leading-6 text-ink-soft">
+                                {description}
+                            </p>
+                        </article>
+                    ))}
+                </div>
+            </section>
+
             <section aria-labelledby="rail-responsive" className="mt-16">
                 <SequenceTitle
                     id="rail-responsive"
@@ -738,6 +996,130 @@ export function PixieDustRailDossier() {
                             </PixieDustRail>
                         </div>
                     ))}
+                </div>
+            </section>
+
+            <section aria-labelledby="rail-scenarios" className="mt-16">
+                <SequenceTitle
+                    id="rail-scenarios"
+                    eyebrow="Scénarios préparés"
+                    title="Quatre travelling pour quatre collections"
+                    description="Les réglages composent des cartes d’archives, une chronologie, des repères compacts ou une galerie centrée sans introduire de navigation artificielle."
+                />
+
+                <div className="mt-7 grid gap-6 bg-canvas p-6 xl:grid-cols-2">
+                    <Stage>
+                        <div className="p-5">
+                            <p className="mb-4 text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
+                                Archives à découvrir
+                            </p>
+                            <PixieDustRail
+                                itemWidth="sm"
+                                gap="md"
+                                peek="subtle"
+                                aria-label="Archives à découvrir"
+                                className="pb-3"
+                            >
+                                {films.slice(0, 4).map(([year, title]) => (
+                                    <div key={title}>
+                                        <FilmCard
+                                            year={year}
+                                            title={title}
+                                            compact
+                                        />
+                                    </div>
+                                ))}
+                            </PixieDustRail>
+                        </div>
+                    </Stage>
+
+                    <Stage>
+                        <div className="p-5">
+                            <p className="mb-4 text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
+                                Chronologie ordonnée
+                            </p>
+                            <PixieDustRail
+                                as="ol"
+                                itemWidth="xs"
+                                gap="sm"
+                                snap="mandatory"
+                                snapAlign="start"
+                                aria-label="Chronologie des œuvres"
+                                className="m-0 list-none pb-3"
+                            >
+                                {films.slice(0, 5).map(([year, title]) => (
+                                    <li key={title}>
+                                        <FilmCard
+                                            year={year}
+                                            title={title}
+                                            compact
+                                        />
+                                    </li>
+                                ))}
+                            </PixieDustRail>
+                        </div>
+                    </Stage>
+
+                    <Stage>
+                        <div className="p-5">
+                            <p className="mb-4 text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
+                                Repères de largeur naturelle
+                            </p>
+                            <PixieDustRail
+                                itemWidth="auto"
+                                gap="xs"
+                                peek="none"
+                                snap="none"
+                                aria-label="Repères de production"
+                                className="pb-3"
+                            >
+                                {[
+                                    "Muet",
+                                    "Noir et blanc",
+                                    "Technicolor",
+                                    "Multiplane",
+                                    "Oscar",
+                                ].map((label) => (
+                                    <div
+                                        key={label}
+                                        className="border border-line-strong bg-surface-muted px-4 py-3 text-sm text-ink"
+                                    >
+                                        {label}
+                                    </div>
+                                ))}
+                            </PixieDustRail>
+                        </div>
+                    </Stage>
+
+                    <Stage>
+                        <div className="p-5">
+                            <p className="mb-4 text-xs font-eyebrow uppercase tracking-[0.18em] text-muted">
+                                Galerie centrée
+                            </p>
+                            <PixieDustRail
+                                itemWidth="md"
+                                gap="md"
+                                gutter="lg"
+                                peek="strong"
+                                snap="mandatory"
+                                snapAlign="center"
+                                snapStop="always"
+                                scrollbar="thin"
+                                aria-label="Galerie centrée"
+                                className="pb-3"
+                            >
+                                {films.slice(0, 4).map(([year, title]) => (
+                                    <div key={title}>
+                                        <FilmCard
+                                            year={year}
+                                            title={title}
+                                            compact
+                                        />
+                                    </div>
+                                ))}
+                            </PixieDustRail>
+                        </div>
+                    </Stage>
                 </div>
             </section>
 
@@ -804,7 +1186,8 @@ export function PixieDustRailDossier() {
                             as="ol"
                             itemWidth="md"
                             gap="md"
-                            snap="start"
+                            snap="proximity"
+                            snapAlign="start"
                             aria-label="Œuvres dans l’ordre chronologique"
                             className="m-0 list-none pb-3"
                         >
@@ -883,7 +1266,7 @@ export function PixieDustRailDossier() {
                     id="rail-accessibility"
                     eyebrow="Accessibilité"
                     title="Le hors-champ reste atteignable"
-                    description="La racine reçoit un point de focus par défaut afin que le défilement horizontal reste disponible sans souris ni geste tactile."
+                    description="La racine reçoit un point de focus par défaut afin que le défilement horizontal reste disponible sans souris ni geste tactile, quelle que soit la présentation du témoin natif."
                 />
 
                 <div className="mt-7 grid gap-px bg-line md:grid-cols-2">
@@ -897,8 +1280,8 @@ export function PixieDustRailDossier() {
                             "Le Rail hérite du halo global lorsqu’il reçoit le focus clavier.",
                         ],
                         [
-                            "Barre conservée",
-                            "Le témoin natif du débordement n’est jamais masqué.",
+                            "Barre explicite",
+                            "Ne masquer le témoin natif que si le hors-champ reste évident autrement.",
                         ],
                         [
                             "Listes valides",
@@ -911,6 +1294,14 @@ export function PixieDustRailDossier() {
                         [
                             "Zoom à 200 %",
                             "Les plans se réduisent sans disparaître ni revenir à la ligne.",
+                        ],
+                        [
+                            "Écriture logique",
+                            "Les propriétés inline conservent le travelling dans les interfaces RTL.",
+                        ],
+                        [
+                            "Mouvement réduit",
+                            "Aucun défilement automatique ou animé n’est imposé par le Rail.",
                         ],
                     ].map(([title, description]) => (
                         <article key={title} className="bg-surface p-6">
@@ -956,12 +1347,12 @@ export function PixieDustRailDossier() {
 
                 <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
                     {[
-                        "Éprouver les cinq largeurs avec les quatre familles de cartes métier.",
+                        "Éprouver les largeurs naturelles, prédéfinies et numériques avec les cartes métier.",
                         "Vérifier le travelling au clavier, au trackpad, à la molette et au toucher.",
-                        "Tester les points d’arrêt start et center dans des cadres imbriqués.",
+                        "Tester les trois forces et les trois alignements du snap dans des cadres imbriqués.",
                         "Contrôler ul et ol avec les outils d’accessibilité.",
-                        "Éprouver les deux Lumières, le mobile et le zoom à 200 %.",
-                        "Décider si md, md, none, start, stretch et peek restent les bons défauts.",
+                        "Éprouver les scrollbars, le RTL, les deux Lumières, le mobile et le zoom à 200 %.",
+                        "Valider md, md, none, subtle, proximity et contain comme réglages par défaut.",
                     ].map((decision) => (
                         <li
                             key={decision}

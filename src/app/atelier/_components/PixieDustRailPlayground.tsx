@@ -8,26 +8,34 @@ import {
     AtelierPlaygroundProjection,
     useAtelierProjection,
 } from "@/components/atelier/AtelierPlaygroundProjection";
-import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { PixieCard } from "@/components/ui/PixieCard";
 import {
     PixieDustRail,
     type PixieDustRailAlign,
     type PixieDustRailElement,
     type PixieDustRailGap,
-    type PixieDustRailGutter,
+    type PixieDustRailGapPreset,
+    type PixieDustRailGutterPreset,
     type PixieDustRailItemWidth,
+    type PixieDustRailItemWidthPreset,
+    type PixieDustRailOverscroll,
+    type PixieDustRailPeek,
+    type PixieDustRailScrollbar,
     type PixieDustRailSnap,
+    type PixieDustRailSnapAlign,
+    type PixieDustRailSnapStop,
 } from "@/components/ui/PixieDustRail";
 
 const elements = ["div", "ul", "ol"] as const;
 
 const itemWidths = [
+    { value: "auto", label: "Naturelle" },
     { value: "xs", label: "Très petite · 12 rem" },
     { value: "sm", label: "Petite · 16 rem" },
     { value: "md", label: "Moyenne · 20 rem" },
     { value: "lg", label: "Grande · 24 rem" },
     { value: "xl", label: "Très grande · 30 rem" },
+    { value: "custom", label: "Mesure libre" },
 ] as const;
 
 const gaps = [
@@ -37,6 +45,7 @@ const gaps = [
     { value: "md", label: "Moyen" },
     { value: "lg", label: "Grand" },
     { value: "xl", label: "Très grand" },
+    { value: "custom", label: "Mesure libre" },
 ] as const;
 
 const gutters = [
@@ -44,12 +53,31 @@ const gutters = [
     { value: "sm", label: "Petite" },
     { value: "md", label: "Moyenne" },
     { value: "lg", label: "Grande" },
+    { value: "custom", label: "Mesure libre" },
 ] as const;
 
 const snaps = [
     { value: "none", label: "Libre" },
+    { value: "proximity", label: "Proximité" },
+    { value: "mandatory", label: "Obligatoire" },
+] as const;
+
+const snapAlignments = [
     { value: "start", label: "Début" },
     { value: "center", label: "Centre" },
+    { value: "end", label: "Fin" },
+] as const;
+
+const peeks = [
+    { value: "none", label: "Aucun" },
+    { value: "subtle", label: "Subtil" },
+    { value: "strong", label: "Marqué" },
+] as const;
+
+const scrollbars = [
+    { value: "auto", label: "Native" },
+    { value: "thin", label: "Fine" },
+    { value: "hidden", label: "Masquée" },
 ] as const;
 
 const alignments = [
@@ -58,6 +86,10 @@ const alignments = [
     { value: "center", label: "Centre" },
     { value: "end", label: "Fin" },
 ] as const;
+
+function formatValue(value: string | number) {
+    return typeof value === "number" ? `{${value}}` : `"${value}"`;
+}
 
 const frameWidths = {
     compact: "max-w-sm",
@@ -73,6 +105,39 @@ const films = [
     ["1935", "The Band Concert", "Mickey dirige son premier film en couleurs."],
     ["1937", "The Old Mill", "La caméra multiplane révèle sa profondeur."],
 ] as const;
+
+function NumberControl({
+    id,
+    label,
+    value,
+    min,
+    max,
+    onChange,
+}: Readonly<{
+    id: string;
+    label: string;
+    value: number;
+    min: number;
+    max: number;
+    onChange: (value: number) => void;
+}>) {
+    return (
+        <div>
+            <label htmlFor={id} className="text-sm font-medium text-ink">
+                {label}
+            </label>
+            <input
+                id={id}
+                type="number"
+                min={min}
+                max={max}
+                value={value}
+                onChange={(event) => onChange(Number(event.target.value))}
+                className="mt-2 w-full border border-line-strong bg-surface px-3 py-2 font-mono text-sm text-ink outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            />
+        </div>
+    );
+}
 
 function RailCard({
     year,
@@ -97,14 +162,33 @@ function RailCard({
 
 export function PixieDustRailPlayground() {
     const [element, setElement] = useState<PixieDustRailElement>("ul");
-    const [itemWidth, setItemWidth] = useState<PixieDustRailItemWidth>("md");
-    const [gap, setGap] = useState<PixieDustRailGap>("md");
-    const [gutter, setGutter] = useState<PixieDustRailGutter>("md");
-    const [snap, setSnap] = useState<PixieDustRailSnap>("start");
+    const [itemWidthMode, setItemWidthMode] = useState<
+        PixieDustRailItemWidthPreset | "custom"
+    >("md");
+    const [customItemWidth, setCustomItemWidth] = useState(280);
+    const [gapMode, setGapMode] = useState<PixieDustRailGapPreset | "custom">(
+        "md",
+    );
+    const [customGap, setCustomGap] = useState(18);
+    const [gutterMode, setGutterMode] = useState<
+        PixieDustRailGutterPreset | "custom"
+    >("md");
+    const [customGutter, setCustomGutter] = useState(24);
+    const [peek, setPeek] = useState<PixieDustRailPeek>("subtle");
+    const [snap, setSnap] = useState<PixieDustRailSnap>("proximity");
+    const [snapAlign, setSnapAlign] = useState<PixieDustRailSnapAlign>("start");
+    const [snapStop, setSnapStop] = useState<PixieDustRailSnapStop>("normal");
     const [align, setAlign] = useState<PixieDustRailAlign>("stretch");
-    const [peek, setPeek] = useState(true);
+    const [scrollbar, setScrollbar] = useState<PixieDustRailScrollbar>("auto");
+    const [overscroll, setOverscroll] =
+        useState<PixieDustRailOverscroll>("contain");
     const [itemCount, setItemCount] = useState(6);
     const { lumiere: light, cadre: frame } = useAtelierProjection();
+
+    const itemWidth: PixieDustRailItemWidth =
+        itemWidthMode === "custom" ? customItemWidth : itemWidthMode;
+    const gap: PixieDustRailGap = gapMode === "custom" ? customGap : gapMode;
+    const gutter = gutterMode === "custom" ? customGutter : gutterMode;
 
     const selectedFilms = films.slice(0, itemCount);
     const childCode = selectedFilms
@@ -116,12 +200,16 @@ export function PixieDustRailPlayground() {
         .join("\n");
     const code = `<PixieDustRail
     as="${element}"
-    itemWidth="${itemWidth}"
-    gap="${gap}"
-    gutter="${gutter}"
+    itemWidth=${formatValue(itemWidth)}
+    gap=${formatValue(gap)}
+    gutter=${formatValue(gutter)}
+    peek="${peek}"
     snap="${snap}"
+    snapAlign="${snapAlign}"
+    snapStop="${snapStop}"
     align="${align}"
-    peek={${peek}}
+    scrollbar="${scrollbar}"
+    overscroll="${overscroll}"
     aria-label="Œuvres à découvrir"
 >
 ${childCode}
@@ -175,101 +263,178 @@ ${childCode}
                             </PixieSelect>
                         </div>
 
-                        <fieldset>
-                            <legend className="text-sm font-medium text-ink">
-                                Largeur des plans
-                            </legend>
-                            <div className="mt-3 space-y-2">
-                                {itemWidths.map((option) => (
-                                    <AtelierOptionRadio
-                                        key={option.value}
-                                        name="rail-item-width"
-                                        {...option}
-                                        selectedValue={itemWidth}
-                                        onChange={setItemWidth}
-                                    />
-                                ))}
+                        {[
+                            {
+                                id: "rail-item-width",
+                                label: "Largeur des plans",
+                                value: itemWidthMode,
+                                options: itemWidths,
+                                onChange: (value: string) =>
+                                    setItemWidthMode(
+                                        value as
+                                            | PixieDustRailItemWidthPreset
+                                            | "custom",
+                                    ),
+                            },
+                            {
+                                id: "rail-gap",
+                                label: "Espacement",
+                                value: gapMode,
+                                options: gaps,
+                                onChange: (value: string) =>
+                                    setGapMode(
+                                        value as
+                                            PixieDustRailGapPreset | "custom",
+                                    ),
+                            },
+                            {
+                                id: "rail-gutter",
+                                label: "Gouttière",
+                                value: gutterMode,
+                                options: gutters,
+                                onChange: (value: string) =>
+                                    setGutterMode(
+                                        value as
+                                            | PixieDustRailGutterPreset
+                                            | "custom",
+                                    ),
+                            },
+                            {
+                                id: "rail-peek",
+                                label: "Hors-champ visible",
+                                value: peek,
+                                options: peeks,
+                                onChange: (value: string) =>
+                                    setPeek(value as PixieDustRailPeek),
+                            },
+                            {
+                                id: "rail-snap",
+                                label: "Force du point d’arrêt",
+                                value: snap,
+                                options: snaps,
+                                onChange: (value: string) =>
+                                    setSnap(value as PixieDustRailSnap),
+                            },
+                            {
+                                id: "rail-snap-align",
+                                label: "Alignement du point d’arrêt",
+                                value: snapAlign,
+                                options: snapAlignments,
+                                onChange: (value: string) =>
+                                    setSnapAlign(
+                                        value as PixieDustRailSnapAlign,
+                                    ),
+                            },
+                            {
+                                id: "rail-align",
+                                label: "Alignement transversal",
+                                value: align,
+                                options: alignments,
+                                onChange: (value: string) =>
+                                    setAlign(value as PixieDustRailAlign),
+                            },
+                            {
+                                id: "rail-scrollbar",
+                                label: "Barre de défilement",
+                                value: scrollbar,
+                                options: scrollbars,
+                                onChange: (value: string) =>
+                                    setScrollbar(
+                                        value as PixieDustRailScrollbar,
+                                    ),
+                            },
+                        ].map((control) => (
+                            <div key={control.id}>
+                                <label
+                                    htmlFor={control.id}
+                                    className="text-sm font-medium text-ink"
+                                >
+                                    {control.label}
+                                </label>
+                                <PixieSelect
+                                    mode="popover"
+                                    portal
+                                    size="sm"
+                                    id={control.id}
+                                    value={control.value}
+                                    onChange={(event) =>
+                                        control.onChange(event.target.value)
+                                    }
+                                    className="mt-2"
+                                >
+                                    {control.options.map((option) => (
+                                        <option
+                                            key={option.value}
+                                            value={option.value}
+                                        >
+                                            {option.label}
+                                        </option>
+                                    ))}
+                                </PixieSelect>
                             </div>
-                        </fieldset>
+                        ))}
 
-                        <fieldset>
-                            <legend className="text-sm font-medium text-ink">
-                                Espacement
-                            </legend>
-                            <div className="mt-3 space-y-2">
-                                {gaps.map((option) => (
-                                    <AtelierOptionRadio
-                                        key={option.value}
-                                        name="rail-gap"
-                                        {...option}
-                                        selectedValue={gap}
-                                        onChange={setGap}
-                                    />
-                                ))}
-                            </div>
-                        </fieldset>
-
-                        <fieldset>
-                            <legend className="text-sm font-medium text-ink">
-                                Gouttière
-                            </legend>
-                            <div className="mt-3 space-y-2">
-                                {gutters.map((option) => (
-                                    <AtelierOptionRadio
-                                        key={option.value}
-                                        name="rail-gutter"
-                                        {...option}
-                                        selectedValue={gutter}
-                                        onChange={setGutter}
-                                    />
-                                ))}
-                            </div>
-                        </fieldset>
-
-                        <fieldset>
-                            <legend className="text-sm font-medium text-ink">
-                                Point d’arrêt
-                            </legend>
-                            <div className="mt-3 space-y-2">
-                                {snaps.map((option) => (
-                                    <AtelierOptionRadio
-                                        key={option.value}
-                                        name="rail-snap"
-                                        {...option}
-                                        selectedValue={snap}
-                                        onChange={setSnap}
-                                    />
-                                ))}
-                            </div>
-                        </fieldset>
-
-                        <fieldset>
-                            <legend className="text-sm font-medium text-ink">
-                                Alignement transversal
-                            </legend>
-                            <div className="mt-3 space-y-2">
-                                {alignments.map((option) => (
-                                    <AtelierOptionRadio
-                                        key={option.value}
-                                        name="rail-align"
-                                        {...option}
-                                        selectedValue={align}
-                                        onChange={setAlign}
-                                    />
-                                ))}
-                            </div>
-                        </fieldset>
+                        {itemWidthMode === "custom" ? (
+                            <NumberControl
+                                id="rail-item-width-custom"
+                                label="Largeur libre en pixels"
+                                value={customItemWidth}
+                                min={120}
+                                max={640}
+                                onChange={setCustomItemWidth}
+                            />
+                        ) : null}
+                        {gapMode === "custom" ? (
+                            <NumberControl
+                                id="rail-gap-custom"
+                                label="Espacement libre en pixels"
+                                value={customGap}
+                                min={0}
+                                max={96}
+                                onChange={setCustomGap}
+                            />
+                        ) : null}
+                        {gutterMode === "custom" ? (
+                            <NumberControl
+                                id="rail-gutter-custom"
+                                label="Gouttière libre en pixels"
+                                value={customGutter}
+                                min={0}
+                                max={128}
+                                onChange={setCustomGutter}
+                            />
+                        ) : null}
 
                         <label className="flex items-start gap-3 text-sm text-ink-soft">
                             <input
                                 type="checkbox"
-                                checked={peek}
+                                checked={snapStop === "always"}
                                 onChange={(event) =>
-                                    setPeek(event.target.checked)
+                                    setSnapStop(
+                                        event.target.checked
+                                            ? "always"
+                                            : "normal",
+                                    )
                                 }
                                 className="mt-1 accent-accent"
                             />
-                            Entrevoir le plan suivant
+                            Arrêter le geste sur chaque plan
+                        </label>
+
+                        <label className="flex items-start gap-3 text-sm text-ink-soft">
+                            <input
+                                type="checkbox"
+                                checked={overscroll === "contain"}
+                                onChange={(event) =>
+                                    setOverscroll(
+                                        event.target.checked
+                                            ? "contain"
+                                            : "auto",
+                                    )
+                                }
+                                className="mt-1 accent-accent"
+                            />
+                            Contenir le geste dans la piste
                         </label>
 
                         <div>
@@ -318,8 +483,12 @@ ${childCode}
                                 gap={gap}
                                 gutter={gutter}
                                 snap={snap}
+                                snapAlign={snapAlign}
+                                snapStop={snapStop}
                                 align={align}
                                 peek={peek}
+                                scrollbar={scrollbar}
+                                overscroll={overscroll}
                                 aria-label="Œuvres à découvrir"
                                 className={
                                     element === "div" ? "" : "m-0 list-none"

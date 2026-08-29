@@ -348,7 +348,7 @@ const montage = [
         nom: "PixieDustRail",
         role: "Dérouler une collection sur un travelling horizontal",
         statut: "Esquisse",
-        version: "0.1.0",
+        version: "0.2.0",
         href: "#pixie-dust-rail",
     },
     {
