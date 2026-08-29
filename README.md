@@ -511,8 +511,8 @@ accessibilité et leur API. Ses cinq premiers accessoires — `PixieSymbol`,
 `PixieBackdrop` — et les neuf composants validés du Montage,
 `PixieContainer`, `PixieStack`, `PixieCluster`, `PixieSection`, `PixieGrid`,
 `PixieSidebar`, `PixieSwitcher`, `PixieRail` et `PixieStickyRegion`, ainsi que
-les cinq premiers Dialogues `PixieField`, `PixieInput`, `PixieSelect`,
-`PixieSwitch` et `PixieSearchField`, ainsi que `PixieLoader`, premier Effet
+les six Dialogues `PixieField`, `PixieInput`, `PixieSelect`,
+`PixieSwitch`, `PixieSearchField` et `PixieTextarea`, ainsi que `PixieLoader`, premier Effet
 validé, sont
 désormais prêts à projeter.
 
@@ -539,15 +539,15 @@ Les Plans partagent une grammaire centrale dans `src/registry/plans` et
 catalogues Personnages, Créateurs, Œuvres ou Époques ; les bobines témoins et les
 verdicts expérimentaux restent explicitement séparés des Archives.
 
-L’Atelier documente actuellement **3 esquisses PixieDust**, auxquelles
-s’ajoutent les six Décors, les neuf composants du Montage, les cinq premiers
+L’Atelier documente actuellement **2 esquisses PixieDust**, auxquelles
+s’ajoutent les six Décors, les neuf composants du Montage, les six
 Dialogues et les trois premiers Effets prêts à projeter :
 
 - **Décors — 6 composants validés :** `PixieCard`, `PixiePanel`, `PixieFrame`,
   `PixieCallout`, `PixieInset` et `PixieBackdrop` ;
-- **Dialogues — 5 composants validés et 1 esquisse :** `PixieField`,
+- **Dialogues — 6 composants validés :** `PixieField`,
   `PixieInput`, `PixieSelect`, `PixieSwitch`, `PixieSearchField` et
-  `PixieDustTextarea` ;
+  `PixieTextarea` ;
 - **Montage — 9 composants validés et 2 esquisses :** `PixieContainer`,
   `PixieStack`, `PixieCluster`, `PixieSection`, `PixieGrid`, `PixieSidebar`,
   `PixieSwitcher`, `PixieRail`, `PixieStickyRegion`, `PixieDustSplit` et
