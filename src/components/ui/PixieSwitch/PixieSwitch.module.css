@@ -1,0 +1,393 @@
+.root {
+    --pixie-switch-active-color: var(--pixie-switch-color, var(--color-accent));
+    --pixie-switch-width: 2.75rem;
+    --pixie-switch-height: 1.5rem;
+    --pixie-switch-thumb: 1.125rem;
+    --pixie-switch-inset: 0.1875rem;
+    --pixie-switch-travel: calc(
+        var(--pixie-switch-width) - var(--pixie-switch-thumb) -
+            var(--pixie-switch-inset) - var(--pixie-switch-inset)
+    );
+
+    position: relative;
+    display: inline-flex;
+    flex: none;
+    width: max(var(--pixie-switch-width), 2.75rem);
+    height: max(var(--pixie-switch-height), 2.75rem);
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+}
+
+.small {
+    --pixie-switch-width: 2.25rem;
+    --pixie-switch-height: 1.25rem;
+    --pixie-switch-thumb: 0.875rem;
+}
+
+.large {
+    --pixie-switch-width: 3.25rem;
+    --pixie-switch-height: 1.75rem;
+    --pixie-switch-thumb: 1.375rem;
+}
+
+.input {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.track {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    box-sizing: border-box;
+    width: var(--pixie-switch-width);
+    height: var(--pixie-switch-height);
+    overflow: hidden;
+    border: 1px solid var(--color-line-strong);
+    border-radius: 999px;
+    background: var(--color-surface-muted);
+    box-shadow: inset 0 1px 0
+        color-mix(in srgb, var(--color-ink) 7%, transparent);
+    transform: translate(-50%, -50%);
+    transition:
+        border-color 160ms ease,
+        background-color 160ms ease,
+        box-shadow 160ms ease,
+        opacity 160ms ease;
+}
+
+.thumb {
+    position: absolute;
+    top: 50%;
+    left: var(--pixie-switch-inset);
+    box-sizing: border-box;
+    width: var(--pixie-switch-thumb);
+    height: var(--pixie-switch-thumb);
+    border: 1px solid color-mix(in srgb, var(--color-ink) 18%, transparent);
+    border-radius: 50%;
+    background: var(--color-canvas);
+    box-shadow: 0 0.125rem 0.25rem
+        color-mix(in srgb, var(--color-ink) 24%, transparent);
+    transform: translateY(-50%);
+    transition:
+        transform 180ms cubic-bezier(0.2, 0.8, 0.2, 1),
+        border-color 160ms ease,
+        background-color 160ms ease,
+        box-shadow 160ms ease;
+}
+
+.checkedIcon,
+.uncheckedIcon {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-ink);
+    font-size: 0.625rem;
+    line-height: 1;
+}
+
+.checkedIcon {
+    display: none;
+}
+
+.input:checked + .track .checkedIcon {
+    display: flex;
+}
+
+.input:checked + .track .uncheckedIcon {
+    display: none;
+}
+
+.pendingIndicator {
+    position: absolute;
+    inset: 18%;
+    display: none;
+    border: 1px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: pixie-switch-pending 720ms linear infinite;
+}
+
+.input:checked + .track .thumb {
+    transform: translate(var(--pixie-switch-travel), -50%);
+}
+
+.solid .input:checked + .track {
+    border-color: var(--pixie-switch-active-color);
+    background: var(--pixie-switch-active-color);
+}
+
+.soft .input:checked + .track {
+    border-color: color-mix(
+        in srgb,
+        var(--pixie-switch-active-color) 62%,
+        var(--color-line-strong)
+    );
+    background: color-mix(
+        in srgb,
+        var(--pixie-switch-active-color) 24%,
+        var(--color-surface-muted)
+    );
+}
+
+.soft,
+.outline {
+    --pixie-switch-inset: 0.25rem;
+}
+
+.soft .input:checked + .track .thumb,
+.outline .input:checked + .track .thumb {
+    border-color: var(--pixie-switch-active-color);
+    background: var(--pixie-switch-active-color);
+}
+
+.outline .track {
+    background: transparent;
+    box-shadow: none;
+}
+
+.outline .input:checked + .track {
+    border-color: var(--pixie-switch-active-color);
+    background: transparent;
+}
+
+.glass .track {
+    border-color: color-mix(in srgb, var(--color-line-strong) 72%, transparent);
+    background: color-mix(in srgb, var(--color-surface-muted) 64%, transparent);
+    box-shadow:
+        inset 0 1px 0 color-mix(in srgb, white 18%, transparent),
+        0 0.25rem 1rem color-mix(in srgb, var(--color-ink) 8%, transparent);
+    backdrop-filter: blur(0.625rem);
+}
+
+.glass .input:checked + .track {
+    border-color: color-mix(
+        in srgb,
+        var(--pixie-switch-active-color) 72%,
+        transparent
+    );
+    background: color-mix(
+        in srgb,
+        var(--pixie-switch-active-color) 38%,
+        transparent
+    );
+}
+
+.projector .track {
+    background: color-mix(
+        in srgb,
+        var(--color-surface-muted) 88%,
+        var(--pixie-switch-active-color)
+    );
+}
+
+.projector .input:checked + .track {
+    border-color: var(--pixie-switch-active-color);
+    background: color-mix(
+        in srgb,
+        var(--pixie-switch-active-color) 74%,
+        var(--color-surface)
+    );
+    box-shadow:
+        inset 0 1px 0 color-mix(in srgb, white 28%, transparent),
+        0 0 0.75rem
+            color-mix(
+                in srgb,
+                var(--pixie-switch-active-color) 46%,
+                transparent
+            ),
+        0 0 1.75rem
+            color-mix(
+                in srgb,
+                var(--pixie-switch-active-color) 24%,
+                transparent
+            );
+}
+
+.input:hover:not(:disabled) + .track {
+    border-color: color-mix(
+        in srgb,
+        var(--pixie-switch-active-color) 55%,
+        var(--color-line-strong)
+    );
+}
+
+.input:focus-visible + .track {
+    border-color: var(--pixie-switch-active-color);
+    box-shadow: 0 0 0 0.1875rem
+        color-mix(in srgb, var(--pixie-switch-active-color) 28%, transparent);
+}
+
+.root[data-invalid="true"] {
+    --pixie-switch-active-color: var(--atelier-animation-rouge-crayon);
+}
+
+.root[data-invalid="true"] .track {
+    border-color: var(--atelier-animation-rouge-crayon);
+}
+
+.root[data-disabled="true"] {
+    opacity: 0.48;
+}
+
+.root[data-readonly="true"] .input,
+.root[data-pending="true"] .input {
+    cursor: wait;
+}
+
+.root[data-readonly="true"] .input {
+    cursor: default;
+}
+
+.root[data-pending="true"] .checkedIcon,
+.root[data-pending="true"] .uncheckedIcon {
+    display: none;
+}
+
+.root[data-pending="true"] .pendingIndicator {
+    display: block;
+}
+
+.root[data-pending="true"] .track {
+    opacity: 0.78;
+}
+
+.input:disabled {
+    cursor: not-allowed;
+}
+
+.motionSnap .thumb {
+    transition-duration: 90ms;
+    transition-timing-function: steps(2, jump-none);
+}
+
+.motionSpring .thumb {
+    transition-duration: 360ms;
+    transition-timing-function: cubic-bezier(0.18, 1.45, 0.42, 1);
+}
+
+.motionNone .thumb,
+.motionNone .track {
+    transition: none;
+}
+
+.effectGlow .input:checked + .track .thumb {
+    box-shadow:
+        0 0.125rem 0.25rem color-mix(in srgb, var(--color-ink) 18%, transparent),
+        0 0 0.625rem
+            color-mix(
+                in srgb,
+                var(--pixie-switch-active-color) 62%,
+                transparent
+            );
+}
+
+.dust {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    width: var(--pixie-switch-width);
+    height: var(--pixie-switch-height);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+}
+
+.dust span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.1875rem;
+    height: 0.1875rem;
+    border-radius: 50%;
+    background: var(--pixie-switch-active-color);
+    opacity: 0;
+}
+
+.effectDust .input:checked ~ .dust span {
+    animation: pixie-switch-dust 440ms ease-out both;
+}
+
+.dust span:nth-child(1) {
+    --pixie-dust-x: -1.25rem;
+    --pixie-dust-y: -0.75rem;
+}
+
+.dust span:nth-child(2) {
+    --pixie-dust-x: -0.45rem;
+    --pixie-dust-y: -1.05rem;
+    animation-delay: 35ms;
+}
+
+.dust span:nth-child(3) {
+    --pixie-dust-x: 0.55rem;
+    --pixie-dust-y: -1rem;
+    animation-delay: 70ms;
+}
+
+.dust span:nth-child(4) {
+    --pixie-dust-x: 1.25rem;
+    --pixie-dust-y: -0.45rem;
+    animation-delay: 105ms;
+}
+
+.dust span:nth-child(5) {
+    --pixie-dust-x: 0.9rem;
+    --pixie-dust-y: 0.75rem;
+    animation-delay: 140ms;
+}
+
+.root:dir(rtl) .thumb {
+    right: var(--pixie-switch-inset);
+    left: auto;
+}
+
+.root:dir(rtl) .input:checked + .track .thumb {
+    transform: translate(calc(var(--pixie-switch-travel) * -1), -50%);
+}
+
+@keyframes pixie-switch-pending {
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+@keyframes pixie-switch-dust {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.35);
+    }
+
+    35% {
+        opacity: 0.9;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(
+                calc(-50% + var(--pixie-dust-x)),
+                calc(-50% + var(--pixie-dust-y))
+            )
+            scale(1.15);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .track,
+    .thumb,
+    .pendingIndicator,
+    .dust span {
+        transition: none;
+        animation: none;
+    }
+}
