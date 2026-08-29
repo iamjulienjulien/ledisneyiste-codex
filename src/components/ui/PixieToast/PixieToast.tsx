@@ -16,20 +16,20 @@ import type {
     AtelierAnimationColorSlug,
     ColorForeground,
 } from "@/types/colors";
-import styles from "./PixieDustToast.module.css";
+import styles from "./PixieToast.module.css";
 import type {
-    PixieDustToastDismissReason,
-    PixieDustToastLayout,
-    PixieDustToastMotion,
-    PixieDustToastPriority,
-    PixieDustToastProps,
-    PixieDustToastSize,
-    PixieDustToastStyle,
-    PixieDustToastSwipeDirection,
-    PixieDustToastTone,
-    PixieDustToastVariant,
-    PixieDustToastWidth,
-} from "./PixieDustToast.types";
+    PixieToastDismissReason,
+    PixieToastLayout,
+    PixieToastMotion,
+    PixieToastPriority,
+    PixieToastProps,
+    PixieToastSize,
+    PixieToastStyle,
+    PixieToastSwipeDirection,
+    PixieToastTone,
+    PixieToastVariant,
+    PixieToastWidth,
+} from "./PixieToast.types";
 
 const toneColors = {
     neutral: "graphite",
@@ -37,7 +37,7 @@ const toneColors = {
     info: "bleu-reperage",
     warning: "ambre-projecteur",
     danger: "rouge-crayon",
-} as const satisfies Record<PixieDustToastTone, AtelierAnimationColorSlug>;
+} as const satisfies Record<PixieToastTone, AtelierAnimationColorSlug>;
 
 const toneIcons = {
     neutral: "•",
@@ -45,7 +45,7 @@ const toneIcons = {
     info: "i",
     warning: "!",
     danger: "×",
-} as const satisfies Record<PixieDustToastTone, string>;
+} as const satisfies Record<PixieToastTone, string>;
 
 const variantClasses = {
     surface: styles.surface,
@@ -53,19 +53,19 @@ const variantClasses = {
     outline: styles.outline,
     glass: styles.glass,
     spotlight: styles.spotlight,
-} as const satisfies Record<PixieDustToastVariant, string>;
+} as const satisfies Record<PixieToastVariant, string>;
 
 const sizeClasses = {
     sm: styles.sm,
     md: styles.md,
     lg: styles.lg,
-} as const satisfies Record<PixieDustToastSize, string>;
+} as const satisfies Record<PixieToastSize, string>;
 
 const layoutClasses = {
     auto: styles.layoutAuto,
     inline: styles.layoutInline,
     stacked: styles.layoutStacked,
-} as const satisfies Record<PixieDustToastLayout, string>;
+} as const satisfies Record<PixieToastLayout, string>;
 
 const widthClasses = {
     fit: styles.widthFit,
@@ -73,7 +73,7 @@ const widthClasses = {
     md: styles.widthMd,
     lg: styles.widthLg,
     full: styles.widthFull,
-} as const satisfies Record<PixieDustToastWidth, string>;
+} as const satisfies Record<PixieToastWidth, string>;
 
 const motionClasses = {
     slide: styles.motionSlide,
@@ -81,13 +81,13 @@ const motionClasses = {
     pop: styles.motionPop,
     dust: styles.motionDust,
     none: styles.motionNone,
-} as const satisfies Record<PixieDustToastMotion, string>;
+} as const satisfies Record<PixieToastMotion, string>;
 
 const priorityRoles = {
     polite: "status",
     assertive: "alert",
 } as const satisfies Record<
-    Exclude<PixieDustToastPriority, "auto">,
+    Exclude<PixieToastPriority, "auto">,
     "status" | "alert"
 >;
 
@@ -109,7 +109,7 @@ function getForegroundColor(foreground: ColorForeground) {
 }
 
 function getLogicalSwipeSign(
-    direction: PixieDustToastSwipeDirection,
+    direction: PixieToastSwipeDirection,
     writingDirection: string,
 ) {
     if (direction === "up") {
@@ -124,7 +124,7 @@ function getLogicalSwipeSign(
     return direction === "start" ? -inlineEndSign : inlineEndSign;
 }
 
-export function PixieDustToast({
+export function PixieToast({
     children,
     title,
     tone = "neutral",
@@ -151,7 +151,7 @@ export function PixieDustToast({
     priority = "auto",
     icon,
     className = "",
-}: PixieDustToastProps) {
+}: PixieToastProps) {
     const isControlled = open !== undefined;
     const initialOpen = isControlled ? open : defaultOpen;
     const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen);
@@ -216,7 +216,7 @@ export function PixieDustToast({
     );
 
     const requestDismiss = useCallback(
-        (reason: PixieDustToastDismissReason) => {
+        (reason: PixieToastDismissReason) => {
             if (dismissRequested.current) {
                 return;
             }
@@ -283,7 +283,7 @@ export function PixieDustToast({
         return null;
     }
 
-    const toastStyle: PixieDustToastStyle = {
+    const toastStyle: PixieToastStyle = {
         "--pixie-toast-color": color.cssValue,
         "--pixie-toast-foreground": getForegroundColor(color.foreground),
         "--pixie-toast-duration":
