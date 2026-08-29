@@ -90,7 +90,20 @@ function PlanSection({
     );
 }
 
-export function AtelierPlanDossier({ slug, plan }: AtelierPlanDossierProps) {
+export function AtelierPlanDossier({
+    slug,
+    plan,
+    status = "À inventorier",
+    program = "P0 · Grammaire commune",
+    version = "P0",
+    prototype,
+    prototypeTitle = "La première forme entre sur le plateau",
+    prototypeDescription = "Le prototype confronte la grammaire du Plan à une matière réelle et aux Bobines témoins prioritaires.",
+}: AtelierPlanDossierProps) {
+    const sectionOffset = prototype ? 1 : 0;
+    const sectionIndex = (index: number) =>
+        String(index + sectionOffset).padStart(2, "0");
+
     return (
         <article className={styles.root}>
             <PixieBackdrop
@@ -133,12 +146,18 @@ export function AtelierPlanDossier({ slug, plan }: AtelierPlanDossierProps) {
                     <div className={styles.clap} aria-label="Identité du Plan">
                         <div className={styles.clapCell}>
                             <p className={styles.clapLabel}>État</p>
-                            <p className={styles.clapValue}>À inventorier</p>
+                            <p className={styles.clapValue}>{status}</p>
                         </div>
                         <div className={styles.clapCell}>
                             <p className={styles.clapLabel}>Programme</p>
-                            <p className={styles.clapValue}>
-                                P0 · Grammaire commune
+                            <p className={styles.clapValue}>{program}</p>
+                        </div>
+                        <div className={styles.clapCell}>
+                            <p className={styles.clapLabel}>Version</p>
+                            <p
+                                className={`${styles.clapValue} font-mono text-sm`}
+                            >
+                                {version}
                             </p>
                         </div>
                         <div className={styles.clapCell}>
@@ -201,8 +220,19 @@ export function AtelierPlanDossier({ slug, plan }: AtelierPlanDossierProps) {
                 </PixiePanel>
             </PlanSection>
 
+            {prototype ? (
+                <PlanSection
+                    index="03"
+                    eyebrow="Prototype"
+                    title={prototypeTitle}
+                    description={prototypeDescription}
+                >
+                    {prototype}
+                </PlanSection>
+            ) : null}
+
             <PlanSection
-                index="03"
+                index={sectionIndex(3)}
                 eyebrow="Champ"
                 title="Ce que le Plan montre"
                 description="Le Plan ne projette que les éléments qui peuvent être rattachés à une matière, une relation ou une règle explicite."
@@ -224,7 +254,7 @@ export function AtelierPlanDossier({ slug, plan }: AtelierPlanDossierProps) {
             </PlanSection>
 
             <PlanSection
-                index="04"
+                index={sectionIndex(4)}
                 eyebrow="Hors-champ"
                 title="Ce que le Plan refuse d’inventer"
             >
@@ -257,7 +287,7 @@ export function AtelierPlanDossier({ slug, plan }: AtelierPlanDossierProps) {
             </PlanSection>
 
             <PlanSection
-                index="05"
+                index={sectionIndex(5)}
                 eyebrow="Régie"
                 title="Choisir le Sujet, l’Angle et l’Objectif"
                 description="La future régie ne pourra sélectionner qu’un Sujet publié dans les quatre catalogues actuellement ouverts."
@@ -314,7 +344,7 @@ export function AtelierPlanDossier({ slug, plan }: AtelierPlanDossierProps) {
             </PlanSection>
 
             <PlanSection
-                index="06"
+                index={sectionIndex(6)}
                 eyebrow="Contrechamp textuel"
                 title="La même lecture sans dépendre de l’image"
             >
@@ -338,7 +368,7 @@ export function AtelierPlanDossier({ slug, plan }: AtelierPlanDossierProps) {
             </PlanSection>
 
             <PlanSection
-                index="07"
+                index={sectionIndex(7)}
                 eyebrow="Plans de coupe"
                 title="Prévoir tous les états avant la projection"
                 description="Les états décrivent la disponibilité et la densité de la matière ; ils ne jugent jamais la valeur du Sujet."
@@ -358,7 +388,7 @@ export function AtelierPlanDossier({ slug, plan }: AtelierPlanDossierProps) {
             </PlanSection>
 
             <PlanSection
-                index="08"
+                index={sectionIndex(8)}
                 eyebrow="Bobine témoin"
                 title="Essayer la forme sans falsifier les Archives"
             >
@@ -369,16 +399,15 @@ export function AtelierPlanDossier({ slug, plan }: AtelierPlanDossierProps) {
                     padding="lg"
                 >
                     <p className="leading-7 text-ink-soft">
-                        Aucun Sujet n’est encore assigné à ce dossier. Les
-                        premiers prototypes pourront employer une bobine témoin
-                        explicitement marquée, distincte de la matière publiée
-                        et impossible à confondre avec une archive réelle.
+                        {prototype
+                            ? "Le prototype peut quitter les Archives pour éprouver ses limites sur une Bobine témoin explicitement marquée, toujours distincte de la matière publiée."
+                            : "Aucun Sujet n’est encore assigné à ce dossier. Les premiers prototypes pourront employer une bobine témoin explicitement marquée, distincte de la matière publiée et impossible à confondre avec une archive réelle."}
                     </p>
                 </PixieInset>
             </PlanSection>
 
             <PlanSection
-                index="09"
+                index={sectionIndex(9)}
                 eyebrow="Accessibilité et continuité"
                 title="Conserver le fil, quelle que soit la manière de regarder"
             >
@@ -420,7 +449,7 @@ export function AtelierPlanDossier({ slug, plan }: AtelierPlanDossierProps) {
             </PlanSection>
 
             <PlanSection
-                index="10"
+                index={sectionIndex(10)}
                 eyebrow="Générique technique"
                 title="Contrat commun de configuration"
                 description="Les prototypes pourront enrichir leur rendu, mais tous partiront de cette même grammaire typée."
@@ -450,7 +479,7 @@ export function AtelierPlanDossier({ slug, plan }: AtelierPlanDossierProps) {
             </PlanSection>
 
             <PlanSection
-                index="11"
+                index={sectionIndex(11)}
                 eyebrow="Journal d’essai"
                 title="Les décisions resteront hors du registre"
             >
@@ -474,10 +503,13 @@ export function AtelierPlanDossier({ slug, plan }: AtelierPlanDossierProps) {
             />
 
             <footer>
-                <p className={styles.sectionIndex}>12 · Dernière image</p>
+                <p className={styles.sectionIndex}>
+                    {sectionIndex(12)} · Dernière image
+                </p>
                 <p className={`${styles.lastImage} mt-3`}>
-                    Le cadre est posé. La première bobine peut maintenant être
-                    choisie.
+                    {prototype
+                        ? "La première bobine tourne. Le regard peut maintenant être éprouvé."
+                        : "Le cadre est posé. La première bobine peut maintenant être choisie."}
                 </p>
             </footer>
         </article>

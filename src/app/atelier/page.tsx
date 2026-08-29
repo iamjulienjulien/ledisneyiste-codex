@@ -454,8 +454,11 @@ const plans = getCodexPlans().map((plan) => ({
     ...plan,
     nom: plan.label,
     role: plan.description,
-    statut: "À inventorier" as const,
-    version: "P0",
+    statut:
+        plan.slug === "travelling-documentaire"
+            ? ("Esquisse" as const)
+            : ("À inventorier" as const),
+    version: plan.slug === "travelling-documentaire" ? "v0.1.0" : "P0",
     href: `#plan-${plan.slug}` as `#${string}`,
     dossierHref: `/atelier/plans/${plan.slug}`,
 }));

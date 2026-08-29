@@ -1,7 +1,17 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { AtelierPlanDossier } from "@/components/atelier/AtelierPlanDossier";
+import { AtelierTravellingDocumentairePrototype } from "@/components/atelier/AtelierTravellingDocumentairePrototype";
+import type {
+    AtelierTravellingDepth,
+    AtelierTravellingLimit,
+    AtelierTravellingMatterKey,
+    AtelierTravellingProjection,
+} from "@/components/atelier/AtelierTravellingDocumentairePrototype";
+import { bobinesTemoins } from "@/fixtures/plans";
+import { codexPlanArchives, deriveTravellingDocumentaire } from "@/lib/plans";
 import { getCodexPlan, getCodexPlans, isCodexPlanSlug } from "@/registry/plans";
+import type { CodexPlanConfiguration } from "@/types/codex-plans";
 
 type AtelierPlanPageProps = Readonly<{
     params: Promise<{
@@ -10,6 +20,73 @@ type AtelierPlanPageProps = Readonly<{
 }>;
 
 export const dynamicParams = false;
+
+const travellingMatterOptions = [
+    ["archives", "Archives publiées"],
+    ["corpus-vide", "Bobine · Corpus vide"],
+    ["corpus-reduit", "Bobine · Corpus réduit"],
+    ["corpus-dense", "Bobine · Corpus dense"],
+    ["cycles-et-orphelins", "Bobine · Cycles et orphelins"],
+] as const satisfies readonly (readonly [AtelierTravellingMatterKey, string])[];
+
+const travellingDepths = [
+    1, 2,
+] as const satisfies readonly AtelierTravellingDepth[];
+const travellingLimits = [
+    4, 8,
+] as const satisfies readonly AtelierTravellingLimit[];
+
+function createTravellingProjections() {
+    const projections: AtelierTravellingProjection[] = [];
+
+    for (const [matterKey, matterLabel] of travellingMatterOptions) {
+        for (const depth of travellingDepths) {
+            for (const limit of travellingLimits) {
+                const configuration: CodexPlanConfiguration = {
+                    plan: "travelling-documentaire",
+                    subject: {
+                        family: "oeuvres",
+                        slug: "snow-white-and-the-seven-dwarfs",
+                    },
+                    angle: "filiation",
+                    objective: "follow",
+                    frame: {
+                        label: "Des laboratoires au premier long métrage",
+                        description:
+                            "Suivre les œuvres et la source qui convergent vers Blanche-Neige.",
+                        depth,
+                        limit,
+                    },
+                    matter:
+                        matterKey === "archives"
+                            ? { kind: "archives" }
+                            : { kind: "bobine-temoin", fixture: matterKey },
+                };
+                const model =
+                    matterKey === "archives"
+                        ? deriveTravellingDocumentaire(configuration, {
+                              kind: "archives",
+                              archives: codexPlanArchives,
+                          })
+                        : deriveTravellingDocumentaire(configuration, {
+                              kind: "bobine-temoin",
+                              archives: codexPlanArchives,
+                              bobine: bobinesTemoins[matterKey],
+                          });
+
+                projections.push({
+                    matterKey,
+                    matterLabel,
+                    depth,
+                    limit,
+                    model,
+                });
+            }
+        }
+    }
+
+    return projections;
+}
 
 export function generateStaticParams() {
     return getCodexPlans().map(({ slug }) => ({ slug }));
@@ -45,5 +122,26 @@ export default async function AtelierPlanPage({
         notFound();
     }
 
-    return <AtelierPlanDossier slug={slug} plan={getCodexPlan(slug)} />;
+    const plan = getCodexPlan(slug);
+
+    if (slug === "travelling-documentaire") {
+        return (
+            <AtelierPlanDossier
+                slug={slug}
+                plan={plan}
+                status="Esquisse"
+                program="P0 · Premier prototype"
+                version="v0.1.0"
+                prototypeTitle="Blanche-Neige révèle le premier Travelling"
+                prototypeDescription="Le prototype suit une source et deux laboratoires jusqu’au premier long métrage, puis éprouve la même forme sur quatre Bobines témoins prioritaires."
+                prototype={
+                    <AtelierTravellingDocumentairePrototype
+                        projections={createTravellingProjections()}
+                    />
+                }
+            />
+        );
+    }
+
+    return <AtelierPlanDossier slug={slug} plan={plan} />;
 }
