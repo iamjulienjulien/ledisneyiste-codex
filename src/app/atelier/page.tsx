@@ -32,7 +32,9 @@ import { PixieSkeletonDossier } from "./_components/PixieSkeletonDossier";
 import { AtelierSommaire } from "@/components/atelier/AtelierSommaire";
 import { AtelierProjectionProvider } from "@/components/atelier/AtelierPlaygroundProjection";
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
+import { PixieLink } from "@/components/ui/PixieLink";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
+import { getCodexPlans } from "@/registry/plans";
 import { PalettesPellicule } from "./_components/PalettesPellicule";
 
 const raccordEntreFiches = (
@@ -111,6 +113,15 @@ const categories = [
             "États, alertes et transitions qui rendent visibles les réactions de l’interface.",
         statut: "En projection",
         href: "#effets",
+    },
+    {
+        numero: "07",
+        nom: "Les Plans",
+        domaine: "Explorations documentaires",
+        description:
+            "Des compositions métier qui donnent aux archives de nouvelles manières d’être regardées.",
+        statut: "Plateau prêt",
+        href: "#plans",
     },
 ] as const;
 
@@ -439,6 +450,16 @@ const effets = [
     },
 ] as const;
 
+const plans = getCodexPlans().map((plan) => ({
+    ...plan,
+    nom: plan.label,
+    role: plan.description,
+    statut: "À inventorier" as const,
+    version: "P0",
+    href: `#plan-${plan.slug}` as `#${string}`,
+    dossierHref: `/atelier/plans/${plan.slug}`,
+}));
+
 const itemsParPlateau = {
     "#pellicule": pellicule,
     "#accessoires": accessoires,
@@ -446,6 +467,7 @@ const itemsParPlateau = {
     "#dialogues": dialogues,
     "#montage": montage,
     "#effets": effets,
+    "#plans": plans,
 } as const;
 
 const plateauxSommaire = categories.map((categorie) => ({
@@ -496,14 +518,14 @@ export default function AtelierPage() {
                             id="programme-title"
                             className="mt-3 text-3xl text-ink"
                         >
-                            Les six plateaux de travail
+                            Les sept plateaux de travail
                         </h2>
                     </div>
 
-                    <p className="text-sm text-muted">6 plateaux ouverts</p>
+                    <p className="text-sm text-muted">7 plateaux ouverts</p>
                 </div>
 
-                <div className="mt-8 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-2 xl:grid-cols-3">
+                <div className="mt-8 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-2 xl:grid-cols-4">
                     {categories.map((categorie) => {
                         const contenu = (
                             <>
@@ -1116,6 +1138,108 @@ export default function AtelierPage() {
                 <PixieLoaderDossier />
                 {raccordEntreFiches}
                 <PixieSkeletonDossier />
+            </section>
+
+            <section
+                id="plans"
+                aria-labelledby="plans-title"
+                className="mt-24 scroll-mt-8"
+            >
+                <PixieSeparator
+                    variant="film"
+                    intensity="strong"
+                    color="violet-ombre-portee"
+                    width="full"
+                    spacing="none"
+                    decorative
+                />
+
+                <div className="mt-12">
+                    <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.2em] text-accent">
+                        07 · Les Plans
+                    </p>
+                    <h2 id="plans-title" className="mt-3 text-4xl text-ink">
+                        Le Codex compose de nouvelles manières de regarder
+                    </h2>
+                    <p className="mt-5 leading-7 text-ink-soft">
+                        Les Plans ne sont ni des primitives Pixie ni de simples
+                        mises en page. Chacun pose une question documentaire,
+                        cadre une matière issue des quatre catalogues publiés et
+                        propose une action de lecture accompagnée de son
+                        contrechamp textuel. Leurs dossiers préparatoires fixent
+                        désormais cette grammaire avant l’arrivée des premières
+                        bobines témoins.
+                    </p>
+                </div>
+
+                <div className="mt-10 overflow-x-auto border border-line">
+                    <table className="w-full min-w-4xl border-collapse text-left">
+                        <thead className="bg-surface-muted text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            <tr>
+                                <th
+                                    scope="col"
+                                    className="px-5 py-4 font-medium"
+                                >
+                                    Plan
+                                </th>
+                                <th
+                                    scope="col"
+                                    className="px-5 py-4 font-medium"
+                                >
+                                    Question documentaire
+                                </th>
+                                <th
+                                    scope="col"
+                                    className="px-5 py-4 font-medium"
+                                >
+                                    Action
+                                </th>
+                                <th
+                                    scope="col"
+                                    className="px-5 py-4 font-medium"
+                                >
+                                    Programme
+                                </th>
+                                <th
+                                    scope="col"
+                                    className="px-5 py-4 font-medium"
+                                >
+                                    État
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody className="divide-y divide-line bg-surface">
+                            {plans.map((plan) => (
+                                <tr key={plan.slug} id={plan.href.slice(1)}>
+                                    <th
+                                        scope="row"
+                                        className="px-5 py-4 font-medium text-ink"
+                                    >
+                                        <PixieLink
+                                            href={plan.dossierHref}
+                                            color="violet-ombre-portee"
+                                            indicator="arrow"
+                                        >
+                                            {plan.nom}
+                                        </PixieLink>
+                                    </th>
+                                    <td className="px-5 py-4 leading-7 text-ink-soft">
+                                        {plan.question}
+                                    </td>
+                                    <td className="px-5 py-4 text-ink-soft">
+                                        {plan.actionLabel}
+                                    </td>
+                                    <td className="px-5 py-4 font-mono text-xs text-muted">
+                                        {plan.version}
+                                    </td>
+                                    <td className="px-5 py-4 text-sm">
+                                        <AtelierStatut statut={plan.statut} />
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             </section>
         </AtelierProjectionProvider>
     );

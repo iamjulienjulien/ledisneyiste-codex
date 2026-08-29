@@ -51,48 +51,54 @@ export default function AtelierLayout({
                     aria-label="Navigation de l’Atelier"
                     className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm"
                 >
-                    <a
-                        href="#programme"
+                    <Link
+                        href="/atelier#programme"
                         className="font-medium text-ink-soft underline-offset-4 hover:text-accent hover:underline"
                     >
                         Programme
-                    </a>
-                    <a
-                        href="#pellicule"
+                    </Link>
+                    <Link
+                        href="/atelier#pellicule"
                         className="font-medium text-ink-soft underline-offset-4 hover:text-accent hover:underline"
                     >
                         La Pellicule
-                    </a>
-                    <a
-                        href="#accessoires"
+                    </Link>
+                    <Link
+                        href="/atelier#accessoires"
                         className="font-medium text-ink-soft underline-offset-4 hover:text-accent hover:underline"
                     >
                         Les Accessoires
-                    </a>
-                    <a
-                        href="#decors"
+                    </Link>
+                    <Link
+                        href="/atelier#decors"
                         className="font-medium text-ink-soft underline-offset-4 hover:text-accent hover:underline"
                     >
                         Les Décors
-                    </a>
-                    <a
-                        href="#dialogues"
+                    </Link>
+                    <Link
+                        href="/atelier#dialogues"
                         className="font-medium text-ink-soft underline-offset-4 hover:text-accent hover:underline"
                     >
                         Les Dialogues
-                    </a>
-                    <a
-                        href="#montage"
+                    </Link>
+                    <Link
+                        href="/atelier#montage"
                         className="font-medium text-ink-soft underline-offset-4 hover:text-accent hover:underline"
                     >
                         Le Montage
-                    </a>
-                    <a
-                        href="#effets"
+                    </Link>
+                    <Link
+                        href="/atelier#effets"
                         className="font-medium text-ink-soft underline-offset-4 hover:text-accent hover:underline"
                     >
                         Les Effets
-                    </a>
+                    </Link>
+                    <Link
+                        href="/atelier#plans"
+                        className="font-medium text-ink-soft underline-offset-4 hover:text-accent hover:underline"
+                    >
+                        Les Plans
+                    </Link>
                 </nav>
             </header>
 
