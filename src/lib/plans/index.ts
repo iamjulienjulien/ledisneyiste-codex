@@ -4,6 +4,7 @@ export { derivePlanEvents } from "@/lib/plans/events";
 export { derivePlanEvidence } from "@/lib/plans/evidence";
 export { derivePlanLinks } from "@/lib/plans/links";
 export { derivePlanNodes } from "@/lib/plans/nodes";
+export { deriveTravellingDocumentaire } from "@/lib/plans/travelling-documentaire";
 
 export type {
     CodexPlanArchives,
@@ -26,4 +27,10 @@ export type {
     CodexPlanNode,
     CodexPlanNodeMetadataValue,
     CodexPlanSourceClassification,
+    CodexTravellingDocumentaireConnection,
+    CodexTravellingDocumentaireEvidence,
+    CodexTravellingDocumentaireMatterSource,
+    CodexTravellingDocumentaireModel,
+    CodexTravellingDocumentaireStage,
+    CodexTravellingDocumentaireZone,
 } from "@/types/codex-plans";

@@ -284,7 +284,10 @@ export type CodexPlanDerivationNoticeCode =
     | "unresolved-reference"
     | "unresolved-source"
     | "missing-sources"
-    | "source-classification-unavailable";
+    | "source-classification-unavailable"
+    | "cycle-detected"
+    | "orphan-node"
+    | "bobine-temoin-active";
 
 export type CodexPlanDerivationNotice = Readonly<{
     code: CodexPlanDerivationNoticeCode;
@@ -335,6 +338,60 @@ export type CodexPlanConfiguration = Readonly<{
     frame: CodexPlanFrame;
     matter: CodexPlanMatter;
 }>;
+
+export type CodexTravellingDocumentaireZone =
+    "origin" | "laboratory" | "destination";
+
+export type CodexTravellingDocumentaireEvidence = Readonly<{
+    id: string;
+    label: string;
+    url?: string;
+}>;
+
+export type CodexTravellingDocumentaireStage = Readonly<{
+    id: string;
+    order: number;
+    zone: CodexTravellingDocumentaireZone;
+    node: CodexPlanEntityReference;
+    isSubject: boolean;
+    date?: DateHistorique;
+    href?: string;
+    relationLabel?: string;
+    evidence: readonly CodexTravellingDocumentaireEvidence[];
+}>;
+
+export type CodexTravellingDocumentaireConnection = Readonly<{
+    id: string;
+    fromId: string;
+    toId: string;
+    label: string;
+    evidence: readonly CodexTravellingDocumentaireEvidence[];
+    provenance: readonly CodexPlanProvenance[];
+}>;
+
+export type CodexTravellingDocumentaireModel = Readonly<{
+    configuration: CodexPlanConfiguration;
+    subject: CodexPlanEntityReference;
+    matter: CodexPlanMatter;
+    runtimeState: CodexPlanRuntimeState;
+    stages: readonly CodexTravellingDocumentaireStage[];
+    connections: readonly CodexTravellingDocumentaireConnection[];
+    selection: CodexPlanDerivationSelection;
+    notices: readonly CodexPlanDerivationNotice[];
+    cycleDetected: boolean;
+    orphanNodeIds: readonly string[];
+}>;
+
+export type CodexTravellingDocumentaireMatterSource =
+    | Readonly<{
+          kind: "archives";
+          archives: CodexPlanArchives;
+      }>
+    | Readonly<{
+          kind: "bobine-temoin";
+          archives: CodexPlanArchives;
+          bobine: CodexPlanBobineTemoin;
+      }>;
 
 export type CodexPlanVocabularyDefinition = Readonly<{
     label: string;

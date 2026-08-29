@@ -318,6 +318,172 @@ function verifierBobinesTemoins(
     return bobines;
 }
 
+function verifierTravellingDocumentaire({
+    archives,
+    bobinesTemoins,
+    deriveTravellingDocumentaire,
+}) {
+    const configuration = {
+        plan: "travelling-documentaire",
+        subject: {
+            family: "oeuvres",
+            slug: "snow-white-and-the-seven-dwarfs",
+        },
+        angle: "filiation",
+        objective: "follow",
+        frame: {
+            label: "Des laboratoires au premier long métrage",
+            description:
+                "Suivre les œuvres et les sources qui convergent vers Blanche-Neige.",
+            depth: 2,
+            limit: 8,
+        },
+        matter: { kind: "archives" },
+    };
+    const archivesAvant = JSON.stringify(archives);
+    const projection = deriveTravellingDocumentaire(configuration, {
+        kind: "archives",
+        archives,
+    });
+
+    assert.equal(
+        projection.subject.id,
+        "oeuvre:snow-white-and-the-seven-dwarfs",
+    );
+    assert.equal(projection.subject.label, "Snow White and the Seven Dwarfs");
+    assert.equal(projection.subject.resolved, true);
+    assert.equal(projection.matter.kind, "archives");
+    assert.equal(projection.runtimeState, "ready");
+    assert.deepEqual(
+        projection.stages.map((stage) => stage.node.label),
+        [
+            "Schneewittchen",
+            "The Goddess of Spring",
+            "The Old Mill",
+            "Snow White and the Seven Dwarfs",
+        ],
+    );
+    assert.deepEqual(
+        projection.stages.map((stage) => stage.zone),
+        ["origin", "laboratory", "laboratory", "destination"],
+    );
+    assert.deepEqual(
+        projection.stages.map((stage) => stage.date?.valeur),
+        ["1812", "1934-11-03", "1937-11-05", "1937-12-21"],
+    );
+    assert.equal(projection.stages.at(-1)?.isSubject, true);
+    assert.equal(projection.connections.length, 3);
+    assert.ok(
+        projection.connections.every(
+            (connection) => connection.toId === projection.subject.id,
+        ),
+        "Le Travelling documentaire doit montrer une convergence vers le Sujet",
+    );
+    assert.ok(
+        projection.connections.every(
+            (connection) => connection.evidence.length > 0,
+        ),
+        "Chaque raccord documentaire doit conserver ses sources",
+    );
+    assert.ok(
+        !projection.connections.some(
+            (connection) =>
+                connection.fromId === "oeuvre:the-goddess-of-spring" &&
+                connection.toId === "oeuvre:the-old-mill",
+        ),
+        "Le prototype ne doit pas inventer de causalité entre les laboratoires",
+    );
+    assert.deepEqual(
+        projection.connections.map((connection) => connection.label),
+        ["est une source de", "prépare", "prépare"],
+    );
+    assert.equal(projection.selection.total, 3);
+    assert.equal(projection.selection.returned, 3);
+    assert.equal(projection.selection.truncated, false);
+    assert.equal(projection.cycleDetected, false);
+    assert.deepEqual(projection.orphanNodeIds, []);
+    assert.deepEqual(
+        deriveTravellingDocumentaire(configuration, {
+            kind: "archives",
+            archives,
+        }),
+        projection,
+        "Le Travelling documentaire doit rester déterministe",
+    );
+
+    const projectionLimitee = deriveTravellingDocumentaire(
+        {
+            ...configuration,
+            frame: { ...configuration.frame, limit: 1 },
+        },
+        { kind: "archives", archives },
+    );
+    assert.equal(projectionLimitee.stages.length, 2);
+    assert.equal(projectionLimitee.stages.at(-1)?.isSubject, true);
+    assert.equal(projectionLimitee.selection.total, 3);
+    assert.equal(projectionLimitee.selection.returned, 1);
+    assert.equal(projectionLimitee.selection.truncated, true);
+    assert.ok(
+        projectionLimitee.notices.some(
+            (notice) => notice.code === "limit-applied",
+        ),
+    );
+
+    const projeterBobine = (slug) =>
+        deriveTravellingDocumentaire(
+            {
+                ...configuration,
+                matter: { kind: "bobine-temoin", fixture: slug },
+            },
+            {
+                kind: "bobine-temoin",
+                archives,
+                bobine: bobinesTemoins[slug],
+            },
+        );
+    const vide = projeterBobine("corpus-vide");
+    const reduit = projeterBobine("corpus-reduit");
+    const dense = projeterBobine("corpus-dense");
+    const cycles = projeterBobine("cycles-et-orphelins");
+
+    assert.equal(vide.runtimeState, "empty");
+    assert.equal(vide.stages.length, 0);
+    assert.equal(reduit.runtimeState, "sparse");
+    assert.equal(reduit.stages.length, 2);
+    assert.equal(reduit.orphanNodeIds.length, 1);
+    assert.ok(reduit.notices.some((notice) => notice.code === "orphan-node"));
+    assert.equal(dense.runtimeState, "dense");
+    assert.equal(dense.selection.returned, 8);
+    assert.equal(dense.selection.truncated, true);
+    assert.equal(dense.cycleDetected, true);
+    assert.equal(cycles.runtimeState, "incomplete");
+    assert.equal(cycles.stages.length, 3);
+    assert.equal(new Set(cycles.stages.map((stage) => stage.id)).size, 3);
+    assert.equal(cycles.cycleDetected, true);
+    assert.deepEqual(cycles.orphanNodeIds, ["personnage:noeud-orphelin"]);
+    assert.ok(
+        cycles.notices.some((notice) => notice.code === "cycle-detected") &&
+            cycles.notices.some((notice) => notice.code === "orphan-node"),
+    );
+
+    for (const resultat of [vide, reduit, dense, cycles]) {
+        assert.equal(resultat.matter.kind, "bobine-temoin");
+        assert.equal(resultat.subject.resolved, true);
+        assert.ok(
+            resultat.notices.some(
+                (notice) => notice.code === "bobine-temoin-active",
+            ),
+        );
+    }
+    assert.equal(
+        JSON.stringify(archives),
+        archivesAvant,
+        "Le Travelling documentaire a modifié les Archives qu’il devait seulement lire",
+    );
+
+    return [projection, vide, reduit, dense, cycles];
+}
+
 function verifier() {
     const {
         codexPlanArchives,
@@ -326,6 +492,7 @@ function verifier() {
         derivePlanEvidence,
         derivePlanLinks,
         derivePlanNodes,
+        deriveTravellingDocumentaire,
         bobinesTemoins,
         CODEX_PLAN_BOBINE_TEMOIN_SLUGS,
         codexPlans,
@@ -510,9 +677,14 @@ function verifier() {
         CODEX_PLAN_BOBINE_TEMOIN_SLUGS,
         codexPlans,
     );
+    const projections = verifierTravellingDocumentaire({
+        archives: codexPlanArchives,
+        bobinesTemoins,
+        deriveTravellingDocumentaire,
+    });
 
     console.log(
-        `Matière des Plans vérifiée : ${nodes.items.length} nœuds, ${links.items.length} liens, ${events.items.length} événements, ${credits.items.length} crédits, ${evidence.items.length} preuves et ${bobines.length} Bobines témoins.`,
+        `Matière des Plans vérifiée : ${nodes.items.length} nœuds, ${links.items.length} liens, ${events.items.length} événements, ${credits.items.length} crédits, ${evidence.items.length} preuves, ${bobines.length} Bobines témoins et ${projections.length} projections du Travelling documentaire.`,
     );
 }
 
