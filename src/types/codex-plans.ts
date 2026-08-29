@@ -58,7 +58,21 @@ export type CodexPlanObjectiveSlug =
     | "find"
     | "verify";
 
-export type CodexPlanMatterKind = "archives" | "test-reel";
+export const CODEX_PLAN_BOBINE_TEMOIN_SLUGS = [
+    "corpus-vide",
+    "corpus-reduit",
+    "corpus-dense",
+    "cycles-et-orphelins",
+    "dates-partielles-et-contradictoires",
+    "grand-generique",
+    "preuves-contrastees",
+    "accessibilite-sous-contrainte",
+] as const;
+
+export type CodexPlanBobineTemoinSlug =
+    (typeof CODEX_PLAN_BOBINE_TEMOIN_SLUGS)[number];
+
+export type CodexPlanMatterKind = "archives" | "bobine-temoin";
 
 export type CodexPlanRuntimeState =
     | "idle"
@@ -77,7 +91,7 @@ export type CodexPlanProvenanceKind =
     | "editorial-relation"
     | "derived-aggregation"
     | "uncertainty"
-    | "test-reel";
+    | "bobine-temoin";
 
 export type CodexPlanSubject = Readonly<{
     family: CodexFamily;
@@ -96,8 +110,8 @@ export type CodexPlanMatter =
           kind: "archives";
       }>
     | Readonly<{
-          kind: "test-reel";
-          fixture: string;
+          kind: "bobine-temoin";
+          fixture: CodexPlanBobineTemoinSlug;
       }>;
 
 export type CodexPlanProvenance = Readonly<{
@@ -205,6 +219,16 @@ export type CodexPlanEvidenceScope =
 export type CodexPlanEvidenceStatus =
     "documented" | "partially-resolved" | "undocumented";
 
+export type CodexPlanEvidencePosition =
+    "supports" | "nuances" | "contradicts" | "inconclusive" | "unclassified";
+
+export type CodexPlanSourceClassification =
+    | "primary"
+    | "secondary"
+    | "database"
+    | "editorial-interpretation"
+    | "unclassified";
+
 export type CodexPlanEvidence = Readonly<{
     id: string;
     owner: CodexPlanEntityReference;
@@ -214,8 +238,45 @@ export type CodexPlanEvidence = Readonly<{
     sources: readonly CodexPlanEntityReference[];
     unresolvedSourceIds: readonly string[];
     status: CodexPlanEvidenceStatus;
-    sourceClassification: "unclassified";
+    position: CodexPlanEvidencePosition;
+    sourceClassification: CodexPlanSourceClassification;
     provenance: readonly CodexPlanProvenance[];
+}>;
+
+export type CodexPlanBobineTemoinStress =
+    | "empty-corpus"
+    | "reduced-corpus"
+    | "dense-corpus"
+    | "relational-cycle"
+    | "orphan-node"
+    | "partial-date"
+    | "contradictory-date"
+    | "large-credits"
+    | "long-label"
+    | "convergent-evidence"
+    | "divergent-evidence"
+    | "missing-evidence"
+    | "keyboard"
+    | "reduced-motion"
+    | "small-screen"
+    | "performance";
+
+export type CodexPlanBobineTemoin = Readonly<{
+    slug: CodexPlanBobineTemoinSlug;
+    label: string;
+    description: string;
+    matter: Readonly<{
+        kind: "bobine-temoin";
+        fixture: CodexPlanBobineTemoinSlug;
+    }>;
+    plans: readonly CodexPlanSlug[];
+    runtimeState: CodexPlanRuntimeState;
+    stresses: readonly CodexPlanBobineTemoinStress[];
+    nodes: readonly CodexPlanNode[];
+    links: readonly CodexPlanLink[];
+    events: readonly CodexPlanEvent[];
+    credits: readonly CodexPlanCredit[];
+    evidence: readonly CodexPlanEvidence[];
 }>;
 
 export type CodexPlanDerivationNoticeCode =

@@ -53,6 +53,7 @@ function createEvidence(
         sources,
         unresolvedSourceIds,
         status,
+        position: "unclassified",
         sourceClassification: "unclassified",
         provenance: [
             sourcedProvenance(
