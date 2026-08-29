@@ -11,6 +11,9 @@ import {
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import {
     PixieDustField,
+    type PixieDustFieldFeedbackTone,
+    type PixieDustFieldLayout,
+    type PixieDustFieldRequirementDisplay,
     type PixieDustFieldSpacing,
 } from "@/components/ui/PixieDustField";
 
@@ -21,9 +24,29 @@ const controls = [
 ] as const;
 
 const spacings = [
+    { value: "xs", label: "Très petit" },
     { value: "sm", label: "Petit" },
     { value: "md", label: "Moyen" },
     { value: "lg", label: "Grand" },
+    { value: "xl", label: "Très grand" },
+] as const;
+
+const layouts = [
+    { value: "stacked", label: "Empilé" },
+    { value: "side", label: "Latéral" },
+] as const;
+
+const requirementDisplays = [
+    { value: "text", label: "Texte" },
+    { value: "mark", label: "Marque" },
+    { value: "hidden", label: "Masqué" },
+] as const;
+
+const feedbacks = [
+    { value: "none", label: "Aucun" },
+    { value: "success", label: "Confirmation" },
+    { value: "warning", label: "Avertissement" },
+    { value: "error", label: "Erreur" },
 ] as const;
 
 const requirements = [
@@ -40,8 +63,19 @@ const frameWidths = {
 
 type Control = (typeof controls)[number]["value"];
 type Requirement = (typeof requirements)[number]["value"];
+type Feedback = (typeof feedbacks)[number]["value"];
 
-function createPreviewControl(control: Control, required: boolean) {
+function createPreviewControl({
+    control,
+    disabled,
+    readOnly,
+    required,
+}: Readonly<{
+    control: Control;
+    disabled: boolean;
+    readOnly: boolean;
+    required: boolean;
+}>) {
     const className =
         "w-full border border-line-strong bg-canvas px-3 py-2.5 text-ink outline-none transition focus:border-accent focus:ring-2 focus:ring-focus";
 
@@ -51,6 +85,7 @@ function createPreviewControl(control: Control, required: boolean) {
                 mode="popover"
                 portal
                 size="sm"
+                disabled={disabled}
                 required={required}
                 defaultValue=""
             >
@@ -69,6 +104,8 @@ function createPreviewControl(control: Control, required: boolean) {
         return (
             <textarea
                 className={`${className} min-h-28 resize-y`}
+                disabled={disabled}
+                readOnly={readOnly}
                 required={required}
                 placeholder="Décrire le raccord à conserver…"
             />
@@ -79,6 +116,8 @@ function createPreviewControl(control: Control, required: boolean) {
         <input
             type="search"
             className={className}
+            disabled={disabled}
+            readOnly={readOnly}
             required={required}
             placeholder="Mickey, Oswald, Silly Symphonies…"
         />
@@ -87,11 +126,17 @@ function createPreviewControl(control: Control, required: boolean) {
 
 export function PixieDustFieldPlayground() {
     const [control, setControl] = useState<Control>("input");
+    const [layout, setLayout] = useState<PixieDustFieldLayout>("stacked");
     const [spacing, setSpacing] = useState<PixieDustFieldSpacing>("md");
     const [requirement, setRequirement] = useState<Requirement>("none");
+    const [requirementDisplay, setRequirementDisplay] =
+        useState<PixieDustFieldRequirementDisplay>("text");
+    const [feedback, setFeedback] = useState<Feedback>("none");
     const [description, setDescription] = useState(true);
-    const [error, setError] = useState(false);
+    const [meta, setMeta] = useState(false);
     const [labelHidden, setLabelHidden] = useState(false);
+    const [disabled, setDisabled] = useState(false);
+    const [readOnly, setReadOnly] = useState(false);
     const { lumiere: light, cadre: frame } = useAtelierProjection();
 
     const requirementProps =
@@ -100,18 +145,42 @@ export function PixieDustFieldPlayground() {
             : requirement === "optional"
               ? ({ optional: true } as const)
               : ({} as const);
+    const feedbackProps =
+        feedback === "error"
+            ? ({
+                  error: "Aucune archive ne correspond à cette saisie.",
+              } as const)
+            : feedback === "success"
+              ? ({
+                    feedback: "La formulation peut être conservée.",
+                    feedbackTone: "success" as PixieDustFieldFeedbackTone,
+                } as const)
+              : feedback === "warning"
+                ? ({
+                      feedback: "Cette formulation mérite une vérification.",
+                      feedbackTone: "warning" as PixieDustFieldFeedbackTone,
+                  } as const)
+                : ({} as const);
     const controlName =
         control === "input"
             ? "input"
             : control === "select"
               ? "select"
               : "textarea";
+    const feedbackCode =
+        feedback === "error"
+            ? '\n    error="Aucune archive ne correspond à cette saisie."'
+            : feedback === "success"
+              ? '\n    feedback="La formulation peut être conservée."\n    feedbackTone="success"'
+              : feedback === "warning"
+                ? '\n    feedback="Cette formulation mérite une vérification."\n    feedbackTone="warning"'
+                : "";
     const code = `<PixieDustField
-    controlId="archive-search"
-    label="Rechercher dans les archives"${description ? '\n    description="Noms, titres, catégories ou collections."' : ""}${error ? '\n    error="Aucune archive ne correspond à cette saisie."' : ""}${requirement === "required" ? "\n    required" : ""}${requirement === "optional" ? "\n    optional" : ""}${labelHidden ? "\n    labelHidden" : ""}
+    label="Rechercher dans les archives"${description ? '\n    description="Noms, titres, catégories ou collections."' : ""}${feedbackCode}${meta ? '\n    meta="24 caractères"' : ""}${requirement === "required" ? "\n    required" : ""}${requirement === "optional" ? "\n    optional" : ""}${requirement !== "none" && requirementDisplay !== "text" ? `\n    requirementDisplay="${requirementDisplay}"` : ""}${labelHidden ? "\n    labelHidden" : ""}
+    layout="${layout}"
     spacing="${spacing}"
 >
-    <${controlName}${control === "input" ? ' type="search"' : ""} />
+    <${controlName}${control === "input" ? ' type="search"' : ""}${disabled ? " disabled" : ""}${readOnly && control !== "select" ? " readOnly" : ""} />
 </PixieDustField>`;
 
     return (
@@ -140,20 +209,52 @@ export function PixieDustFieldPlayground() {
 
                         <fieldset>
                             <legend className="text-sm font-medium text-ink">
-                                Rythme
+                                Disposition
                             </legend>
                             <div className="mt-3 space-y-2">
-                                {spacings.map((option) => (
+                                {layouts.map((option) => (
                                     <AtelierOptionRadio
                                         key={option.value}
-                                        name="field-spacing"
+                                        name="field-layout"
                                         {...option}
-                                        selectedValue={spacing}
-                                        onChange={setSpacing}
+                                        selectedValue={layout}
+                                        onChange={setLayout}
                                     />
                                 ))}
                             </div>
                         </fieldset>
+
+                        <div>
+                            <label
+                                htmlFor="field-spacing"
+                                className="text-sm font-medium text-ink"
+                            >
+                                Rythme
+                            </label>
+                            <PixieSelect
+                                id="field-spacing"
+                                className="mt-3 w-full"
+                                mode="popover"
+                                portal
+                                size="sm"
+                                value={spacing}
+                                onChange={(event) =>
+                                    setSpacing(
+                                        event.target
+                                            .value as PixieDustFieldSpacing,
+                                    )
+                                }
+                            >
+                                {spacings.map((option) => (
+                                    <option
+                                        key={option.value}
+                                        value={option.value}
+                                    >
+                                        {option.label}
+                                    </option>
+                                ))}
+                            </PixieSelect>
+                        </div>
 
                         <fieldset>
                             <legend className="text-sm font-medium text-ink">
@@ -172,6 +273,69 @@ export function PixieDustFieldPlayground() {
                             </div>
                         </fieldset>
 
+                        {requirement !== "none" ? (
+                            <div>
+                                <label
+                                    htmlFor="field-requirement-display"
+                                    className="text-sm font-medium text-ink"
+                                >
+                                    Présentation de l’indication
+                                </label>
+                                <PixieSelect
+                                    id="field-requirement-display"
+                                    className="mt-3 w-full"
+                                    mode="popover"
+                                    portal
+                                    size="sm"
+                                    value={requirementDisplay}
+                                    onChange={(event) =>
+                                        setRequirementDisplay(
+                                            event.target
+                                                .value as PixieDustFieldRequirementDisplay,
+                                        )
+                                    }
+                                >
+                                    {requirementDisplays.map((option) => (
+                                        <option
+                                            key={option.value}
+                                            value={option.value}
+                                        >
+                                            {option.label}
+                                        </option>
+                                    ))}
+                                </PixieSelect>
+                            </div>
+                        ) : null}
+
+                        <div>
+                            <label
+                                htmlFor="field-feedback"
+                                className="text-sm font-medium text-ink"
+                            >
+                                Retour associé
+                            </label>
+                            <PixieSelect
+                                id="field-feedback"
+                                className="mt-3 w-full"
+                                mode="popover"
+                                portal
+                                size="sm"
+                                value={feedback}
+                                onChange={(event) =>
+                                    setFeedback(event.target.value as Feedback)
+                                }
+                            >
+                                {feedbacks.map((option) => (
+                                    <option
+                                        key={option.value}
+                                        value={option.value}
+                                    >
+                                        {option.label}
+                                    </option>
+                                ))}
+                            </PixieSelect>
+                        </div>
+
                         <div className="space-y-3 text-sm text-ink-soft">
                             <label className="flex items-start gap-3">
                                 <input
@@ -186,12 +350,12 @@ export function PixieDustFieldPlayground() {
                             <label className="flex items-start gap-3">
                                 <input
                                     type="checkbox"
-                                    checked={error}
+                                    checked={meta}
                                     onChange={(event) =>
-                                        setError(event.target.checked)
+                                        setMeta(event.target.checked)
                                     }
                                 />
-                                Afficher une erreur
+                                Afficher une métadonnée
                             </label>
                             <label className="flex items-start gap-3">
                                 <input
@@ -202,6 +366,27 @@ export function PixieDustFieldPlayground() {
                                     }
                                 />
                                 Masquer visuellement le libellé
+                            </label>
+                            <label className="flex items-start gap-3">
+                                <input
+                                    type="checkbox"
+                                    checked={disabled}
+                                    onChange={(event) =>
+                                        setDisabled(event.target.checked)
+                                    }
+                                />
+                                Désactiver le contrôle
+                            </label>
+                            <label className="flex items-start gap-3">
+                                <input
+                                    type="checkbox"
+                                    checked={readOnly}
+                                    disabled={control === "select"}
+                                    onChange={(event) =>
+                                        setReadOnly(event.target.checked)
+                                    }
+                                />
+                                Passer en lecture seule
                             </label>
                         </div>
                     </div>
@@ -221,19 +406,20 @@ export function PixieDustFieldPlayground() {
                                         ? "Noms, titres, catégories ou collections."
                                         : undefined
                                 }
-                                error={
-                                    error
-                                        ? "Aucune archive ne correspond à cette saisie."
-                                        : undefined
-                                }
+                                meta={meta ? "24 caractères" : undefined}
                                 labelHidden={labelHidden}
+                                layout={layout}
                                 spacing={spacing}
+                                requirementDisplay={requirementDisplay}
                                 {...requirementProps}
+                                {...feedbackProps}
                             >
-                                {createPreviewControl(
+                                {createPreviewControl({
                                     control,
-                                    requirement === "required",
-                                )}
+                                    disabled,
+                                    readOnly,
+                                    required: requirement === "required",
+                                })}
                             </PixieDustField>
                         </div>
                     </div>

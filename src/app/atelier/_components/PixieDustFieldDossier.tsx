@@ -5,7 +5,9 @@ import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTa
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieDustField } from "@/components/ui/PixieDustField";
+import { PixieDustSwitch } from "@/components/ui/PixieDustSwitch";
 import { PixiePanel } from "@/components/ui/PixiePanel";
+import { PixieSelect } from "@/components/ui/PixieSelect";
 import { PixieStack } from "@/components/ui/PixieStack";
 import { PixieDustFieldPlayground } from "./PixieDustFieldPlayground";
 
@@ -16,8 +18,9 @@ const properties = [
     {
         name: "controlId",
         type: "string",
-        defaultValue: "—",
-        description: "Identifiant partagé entre le libellé et le contrôle.",
+        defaultValue: "auto",
+        description:
+            "Identifiant explicite ; sinon celui du contrôle ou un identifiant stable est utilisé.",
     },
     {
         name: "label",
@@ -38,10 +41,28 @@ const properties = [
         description: "Indication persistante associée au contrôle.",
     },
     {
+        name: "meta",
+        type: "ReactNode",
+        defaultValue: "—",
+        description: "Unité, compteur ou indication courte près du libellé.",
+    },
+    {
         name: "error",
         type: "ReactNode",
         defaultValue: "—",
         description: "Erreur visible et annoncée par les aides techniques.",
+    },
+    {
+        name: "feedback",
+        type: "ReactNode",
+        defaultValue: "—",
+        description: "Confirmation ou avertissement non bloquant.",
+    },
+    {
+        name: "feedbackTone",
+        type: "PixieDustFieldFeedbackTone",
+        defaultValue: '"success"',
+        description: "Nature sémantique du feedback non bloquant.",
     },
     {
         name: "required",
@@ -62,10 +83,35 @@ const properties = [
         description: "Masque le libellé visuellement, sans le désassocier.",
     },
     {
+        name: "layout",
+        type: "PixieDustFieldLayout",
+        defaultValue: '"stacked"',
+        description: "Place le libellé au-dessus ou à côté du contrôle.",
+    },
+    {
         name: "spacing",
         type: "PixieDustFieldSpacing",
         defaultValue: '"md"',
         description: "Rythme vertical entre les parties du Field.",
+    },
+    {
+        name: "requirementDisplay",
+        type: "PixieDustFieldRequirementDisplay",
+        defaultValue: '"text"',
+        description:
+            "Affichage textuel, symbolique ou masqué du caractère requis.",
+    },
+    {
+        name: "requiredLabel",
+        type: "ReactNode",
+        defaultValue: '"Obligatoire"',
+        description: "Libellé personnalisé de l’état obligatoire.",
+    },
+    {
+        name: "optionalLabel",
+        type: "ReactNode",
+        defaultValue: '"Facultatif"',
+        description: "Libellé personnalisé de l’état facultatif.",
     },
     {
         name: "className",
@@ -78,8 +124,29 @@ const properties = [
 const specificTypes = [
     {
         name: "PixieDustFieldSpacing",
-        values: ['"sm"', '"md"', '"lg"'],
-        description: "Trois rythmes pour rapprocher ou aérer les indications.",
+        values: ['"xs"', '"sm"', '"md"', '"lg"', '"xl"'],
+        description: "Cinq rythmes pour rapprocher ou aérer les indications.",
+    },
+    {
+        name: "PixieDustFieldLayout",
+        values: ['"stacked"', '"side"'],
+        description: "Empile le dialogue ou place son libellé en regard.",
+    },
+    {
+        name: "PixieDustFieldRequirementDisplay",
+        values: ['"text"', '"mark"', '"hidden"'],
+        description: "Forme visuelle de la mention obligatoire ou facultative.",
+    },
+    {
+        name: "PixieDustFieldFeedbackTone",
+        values: ['"success"', '"warning"'],
+        description: "Deux retours non bloquants, distincts de l’erreur.",
+    },
+    {
+        name: "PixieDustFieldFeedback",
+        values: ["error", "feedback", "none"],
+        description:
+            "Contrat exclusif : une erreur et un feedback positif ne coexistent pas.",
     },
     {
         name: "PixieDustFieldRequirement",
@@ -158,7 +225,7 @@ export function PixieDustFieldDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.1.0
+                                0.2.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -225,9 +292,9 @@ export function PixieDustFieldDossier() {
                         <div className="mt-8 grid gap-4 lg:grid-cols-2">
                             <Stage>
                                 <PixieDustField
-                                    controlId="master-search"
                                     label="Rechercher dans les archives"
                                     description="Noms, titres, catégories ou collections."
+                                    meta="23 œuvres"
                                     required
                                 >
                                     <input
@@ -239,9 +306,9 @@ export function PixieDustFieldDossier() {
                                 </PixieDustField>
                             </Stage>
                             <CodeExample>{`<PixieDustField
-    controlId="archive-search"
     label="Rechercher dans les archives"
     description="Noms, titres, catégories ou collections."
+    meta="23 œuvres"
     required
 >
     <input type="search" required />
@@ -254,10 +321,10 @@ export function PixieDustFieldDossier() {
                     <SequenceTitle
                         id="field-anatomy-title"
                         eyebrow="Anatomie"
-                        title="Cinq répliques, un seul dialogue"
+                        title="Sept répliques, un seul dialogue"
                         description="Le libellé précède toujours le contrôle. Description et erreur peuvent coexister afin que le conseil ne disparaisse pas au moment où il devient utile."
                     />
-                    <div className="mt-8 grid gap-px bg-line md:grid-cols-5">
+                    <div className="mt-8 grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7">
                         {[
                             ["01", "Libellé", "Nomme la réponse attendue."],
                             [
@@ -265,13 +332,23 @@ export function PixieDustFieldDossier() {
                                 "Indicateur",
                                 "Précise le caractère requis.",
                             ],
-                            ["03", "Contrôle", "Reçoit réellement la réponse."],
                             [
-                                "04",
+                                "03",
+                                "Métadonnée",
+                                "Donne une unité ou un compteur.",
+                            ],
+                            ["04", "Contrôle", "Reçoit réellement la réponse."],
+                            [
+                                "05",
                                 "Description",
                                 "Apporte une aide persistante.",
                             ],
-                            ["05", "Erreur", "Explique comment corriger."],
+                            [
+                                "06",
+                                "Feedback",
+                                "Confirme ou invite à vérifier.",
+                            ],
+                            ["07", "Erreur", "Explique comment corriger."],
                         ].map(([number, title, description]) => (
                             <div key={number} className="bg-surface p-5">
                                 <p className="font-mono text-xs text-accent">
@@ -294,7 +371,7 @@ export function PixieDustFieldDossier() {
                         eyebrow="Prises d’essai"
                         title="Les indications changent, le contrat demeure"
                     />
-                    <div className="mt-8 grid gap-5 md:grid-cols-2">
+                    <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
                         <Stage>
                             <PixieDustField
                                 controlId="field-optional"
@@ -303,11 +380,20 @@ export function PixieDustFieldDossier() {
                                 optional
                                 spacing="sm"
                             >
-                                <select className={controlClassName}>
-                                    <option>Toutes les collections</option>
-                                    <option>Mickey Mouse</option>
-                                    <option>Silly Symphonies</option>
-                                </select>
+                                <PixieSelect
+                                    mode="popover"
+                                    portal
+                                    size="sm"
+                                    defaultValue="all"
+                                >
+                                    <option value="all">
+                                        Toutes les collections
+                                    </option>
+                                    <option value="mickey">Mickey Mouse</option>
+                                    <option value="silly">
+                                        Silly Symphonies
+                                    </option>
+                                </PixieSelect>
                             </PixieDustField>
                         </Stage>
                         <Stage>
@@ -326,6 +412,87 @@ export function PixieDustFieldDossier() {
                                 />
                             </PixieDustField>
                         </Stage>
+                        <Stage>
+                            <PixieDustField
+                                controlId="field-success"
+                                label="Titre original"
+                                description="Conservez la graphie de la sortie."
+                                feedback="La formulation peut être conservée."
+                                feedbackTone="success"
+                            >
+                                <input
+                                    className={controlClassName}
+                                    defaultValue="The Old Mill"
+                                />
+                            </PixieDustField>
+                        </Stage>
+                        <Stage>
+                            <PixieDustField
+                                controlId="field-warning"
+                                label="Date de sortie"
+                                description="La première diffusion doit être vérifiée."
+                                feedback="Deux dates sont citées dans les archives."
+                                feedbackTone="warning"
+                                meta="année"
+                            >
+                                <input
+                                    className={controlClassName}
+                                    defaultValue="1937"
+                                />
+                            </PixieDustField>
+                        </Stage>
+                    </div>
+                </section>
+
+                <section aria-labelledby="field-layout-title">
+                    <SequenceTitle
+                        id="field-layout-title"
+                        eyebrow="Champ et contrechamp"
+                        title="Le dialogue s’empile ou se place en regard"
+                        description="La disposition latérale conserve une lecture verticale lorsque le cadre devient trop étroit."
+                    />
+                    <div className="mt-8 grid gap-5 xl:grid-cols-2">
+                        <Stage>
+                            <p className="mb-5 font-mono text-xs uppercase text-accent">
+                                layout=&quot;stacked&quot;
+                            </p>
+                            <PixieDustField
+                                label="Nom du personnage"
+                                description="Utilisez le nom visible à l’écran."
+                                layout="stacked"
+                                optional
+                            >
+                                <input
+                                    className={controlClassName}
+                                    defaultValue="Mickey Mouse"
+                                />
+                            </PixieDustField>
+                        </Stage>
+                        <Stage>
+                            <p className="mb-5 font-mono text-xs uppercase text-accent">
+                                layout=&quot;side&quot;
+                            </p>
+                            <PixieDustField
+                                label="Collection éditoriale"
+                                description="Le libellé revient au-dessus du contrôle lorsque le cadre se resserre."
+                                layout="side"
+                                required
+                                requirementDisplay="mark"
+                            >
+                                <PixieSelect
+                                    mode="popover"
+                                    portal
+                                    size="sm"
+                                    defaultValue="mickey"
+                                >
+                                    <option value="mickey">Mickey Mouse</option>
+                                    <option value="silly">
+                                        Silly Symphonies
+                                    </option>
+                                    <option value="donald">Donald Duck</option>
+                                </PixieSelect>
+                            </PixieDustField>
+                        </Stage>
                     </div>
                 </section>
 
@@ -333,28 +500,125 @@ export function PixieDustFieldDossier() {
                     <SequenceTitle
                         id="field-spacing-title"
                         eyebrow="Rythme"
-                        title="Trois distances, aucune nouvelle hiérarchie"
+                        title="Cinq distances, aucune nouvelle hiérarchie"
                         description="Le rythme rapproche ou aère les parties sans modifier leur ordre ni leur importance."
                     />
-                    <div className="mt-8 grid gap-5 lg:grid-cols-3">
-                        {(["sm", "md", "lg"] as const).map((spacing) => (
-                            <Stage key={spacing}>
-                                <p className="mb-5 font-mono text-xs uppercase text-accent">
-                                    spacing=&quot;{spacing}&quot;
-                                </p>
-                                <PixieDustField
-                                    controlId={`field-${spacing}`}
-                                    label="Titre original"
-                                    description="Conservez la graphie de la sortie."
-                                    spacing={spacing}
-                                >
-                                    <input
-                                        className={controlClassName}
-                                        defaultValue="The Old Mill"
-                                    />
-                                </PixieDustField>
-                            </Stage>
-                        ))}
+                    <div className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-5">
+                        {(["xs", "sm", "md", "lg", "xl"] as const).map(
+                            (spacing) => (
+                                <Stage key={spacing}>
+                                    <p className="mb-5 font-mono text-xs uppercase text-accent">
+                                        spacing=&quot;{spacing}&quot;
+                                    </p>
+                                    <PixieDustField
+                                        controlId={`field-${spacing}`}
+                                        label="Titre original"
+                                        description="Conservez la graphie de la sortie."
+                                        spacing={spacing}
+                                    >
+                                        <input
+                                            className={controlClassName}
+                                            defaultValue="The Old Mill"
+                                        />
+                                    </PixieDustField>
+                                </Stage>
+                            ),
+                        )}
+                    </div>
+                </section>
+
+                <section aria-labelledby="field-scenarios-title">
+                    <SequenceTitle
+                        id="field-scenarios-title"
+                        eyebrow="Scénarios de plateau"
+                        title="Le même contrat traverse plusieurs situations"
+                        description="Field observe l’état du contrôle et garde les indications lisibles sans prendre en charge sa logique métier."
+                    />
+                    <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+                        <Stage>
+                            <PixieDustField
+                                label="Durée estimée"
+                                meta="minutes"
+                                optional
+                                optionalLabel="Si connue"
+                            >
+                                <input
+                                    type="number"
+                                    className={controlClassName}
+                                    defaultValue="7"
+                                />
+                            </PixieDustField>
+                        </Stage>
+                        <Stage>
+                            <PixieDustField
+                                label="Note de recherche"
+                                description="Cette donnée a déjà été publiée."
+                            >
+                                <input
+                                    className={controlClassName}
+                                    defaultValue="Première apparition sonore"
+                                    readOnly
+                                />
+                            </PixieDustField>
+                        </Stage>
+                        <Stage>
+                            <PixieDustField
+                                label="Récompense indisponible"
+                                description="Ce choix sera ouvert dans un prochain acte."
+                            >
+                                <input
+                                    className={controlClassName}
+                                    defaultValue="Oscar d’honneur"
+                                    disabled
+                                />
+                            </PixieDustField>
+                        </Stage>
+                        <Stage>
+                            <PixieDustField
+                                label="Rechercher dans le générique"
+                                labelHidden
+                            >
+                                <input
+                                    type="search"
+                                    className={controlClassName}
+                                    placeholder="Nom ou métier…"
+                                />
+                            </PixieDustField>
+                        </Stage>
+                        <Stage>
+                            <PixieDustField
+                                label="Mention éditoriale exceptionnellement longue pour éprouver le retour à la ligne"
+                                description="Le libellé et sa métadonnée restent lisibles sans comprimer le contrôle."
+                                meta="120 caractères max."
+                                required
+                            >
+                                <textarea
+                                    className={`${controlClassName} min-h-24 resize-y`}
+                                />
+                            </PixieDustField>
+                        </Stage>
+                        <Stage>
+                            <PixieDustField
+                                label="Titre français"
+                                description="La mention peut être adaptée au contexte éditorial."
+                                required
+                                requiredLabel="À renseigner"
+                            >
+                                <input
+                                    className={controlClassName}
+                                    defaultValue="Blanche-Neige et les Sept Nains"
+                                />
+                            </PixieDustField>
+                        </Stage>
+                        <Stage>
+                            <PixieDustField
+                                label="Afficher les références détaillées"
+                                description="La préférence reste modifiable à tout moment."
+                                optional
+                            >
+                                <PixieDustSwitch color="violet-ombre-portee" />
+                            </PixieDustField>
+                        </Stage>
                     </div>
                 </section>
 
@@ -377,16 +641,28 @@ export function PixieDustFieldDossier() {
                             eyebrow="Accessibilité"
                             title="Le sens ne quitte jamais le contrôle"
                         />
-                        <div className="mt-8 grid gap-5 md:grid-cols-2">
+                        <div className="mt-8 grid gap-5 md:grid-cols-3">
                             <PixiePanel variant="outline" padding="md">
                                 <h4 className="text-xl text-ink">
                                     Relations automatiques
                                 </h4>
                                 <p className="mt-3 text-sm leading-6 text-ink-soft">
-                                    Le libellé cible le contrôle. La description
-                                    et l’erreur complètent son nom accessible,
-                                    tandis que l’erreur active aussi les états
-                                    invalid et errormessage.
+                                    Le libellé cible le contrôle. La
+                                    description, le feedback et l’erreur
+                                    complètent son nom accessible, tandis que
+                                    l’erreur active aussi les états invalid et
+                                    errormessage.
+                                </p>
+                            </PixiePanel>
+                            <PixiePanel variant="outline" padding="md">
+                                <h4 className="text-xl text-ink">
+                                    Identifiant stable
+                                </h4>
+                                <p className="mt-3 text-sm leading-6 text-ink-soft">
+                                    Field respecte l’identifiant explicite du
+                                    contrôle ou en génère un automatiquement.
+                                    Les relations ARIA déjà présentes sont
+                                    fusionnées sans doublon.
                                 </p>
                             </PixiePanel>
                             <PixiePanel variant="outline" padding="md">
@@ -434,10 +710,10 @@ export function PixieDustFieldDossier() {
                     />
                     <PixieStack as="ul" gap="sm" className="mt-8">
                         {[
-                            "Éprouver l’association avec les futurs Input, Select et Textarea.",
-                            "Valider le comportement des erreurs ajoutées après interaction.",
-                            "Contrôler les libellés longs et les traductions des indicateurs.",
-                            "Tester la restitution avec plusieurs lecteurs d’écran.",
+                            "Éprouver les identifiants automatiques dans les formulaires répétés.",
+                            "Valider les annonces dynamiques de confirmation, d’avertissement et d’erreur.",
+                            "Contrôler le mode latéral avec les contrôles métier du Codex.",
+                            "Tester la restitution des métadonnées et des mentions personnalisées avec plusieurs lecteurs d’écran.",
                         ].map((item) => (
                             <li
                                 key={item}
