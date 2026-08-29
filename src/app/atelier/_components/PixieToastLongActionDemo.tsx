@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { PixieButton } from "@/components/ui/PixieButton";
-import { PixieDustToast } from "@/components/ui/PixieDustToast";
+import { PixieToast } from "@/components/ui/PixieToast";
 
-export function PixieDustToastLongActionDemo() {
+export function PixieToastLongActionDemo() {
     const [open, setOpen] = useState(true);
 
     return (
@@ -21,7 +21,7 @@ export function PixieDustToastLongActionDemo() {
                 </PixieButton>
             ) : null}
 
-            <PixieDustToast
+            <PixieToast
                 open={open}
                 onOpenChange={setOpen}
                 tone="warning"
@@ -36,7 +36,7 @@ export function PixieDustToastLongActionDemo() {
             >
                 Trois références possèdent encore une date partielle. Le message
                 reste disponible tant que la décision n’est pas prise.
-            </PixieDustToast>
+            </PixieToast>
         </div>
     );
 }

@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { PixieButton } from "@/components/ui/PixieButton";
-import { PixieDustToast } from "@/components/ui/PixieDustToast";
+import { PixieToast } from "@/components/ui/PixieToast";
 
-export function PixieDustToastProgressDemo() {
+export function PixieToastProgressDemo() {
     const [open, setOpen] = useState(true);
 
     function replay() {
@@ -24,7 +24,7 @@ export function PixieDustToastProgressDemo() {
                 Relancer le compte à rebours
             </PixieButton>
 
-            <PixieDustToast
+            <PixieToast
                 open={open}
                 onOpenChange={setOpen}
                 tone="success"
@@ -34,7 +34,7 @@ export function PixieDustToastProgressDemo() {
                 title="Fiche enregistrée"
             >
                 La barre se suspend au survol et au focus.
-            </PixieDustToast>
+            </PixieToast>
         </div>
     );
 }

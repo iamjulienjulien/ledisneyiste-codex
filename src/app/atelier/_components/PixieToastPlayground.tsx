@@ -10,18 +10,18 @@ import {
 import { PixieButton } from "@/components/ui/PixieButton";
 import { PixieSelect } from "@/components/ui/PixieSelect";
 import {
-    PixieDustToast,
-    type PixieDustToastDismissReason,
-    type PixieDustToastLayout,
-    type PixieDustToastMotion,
-    type PixieDustToastPriority,
-    type PixieDustToastProgress,
-    type PixieDustToastSize,
-    type PixieDustToastSwipeDirection,
-    type PixieDustToastTone,
-    type PixieDustToastVariant,
-    type PixieDustToastWidth,
-} from "@/components/ui/PixieDustToast";
+    PixieToast,
+    type PixieToastDismissReason,
+    type PixieToastLayout,
+    type PixieToastMotion,
+    type PixieToastPriority,
+    type PixieToastProgress,
+    type PixieToastSize,
+    type PixieToastSwipeDirection,
+    type PixieToastTone,
+    type PixieToastVariant,
+    type PixieToastWidth,
+} from "@/components/ui/PixieToast";
 
 const tones = [
     { value: "neutral", label: "Neutre" },
@@ -30,7 +30,7 @@ const tones = [
     { value: "warning", label: "Attention" },
     { value: "danger", label: "Danger" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustToastTone;
+    value: PixieToastTone;
     label: string;
 }>[];
 
@@ -39,7 +39,7 @@ const sizes = [
     { value: "md", label: "Moyenne" },
     { value: "lg", label: "Grande" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustToastSize;
+    value: PixieToastSize;
     label: string;
 }>[];
 
@@ -49,7 +49,7 @@ const variants = [
     ["outline", "Contour"],
     ["glass", "Verre"],
     ["spotlight", "Projecteur"],
-] as const satisfies readonly (readonly [PixieDustToastVariant, string])[];
+] as const satisfies readonly (readonly [PixieToastVariant, string])[];
 
 const motions = [
     ["slide", "Glissement"],
@@ -57,7 +57,7 @@ const motions = [
     ["pop", "Mise au point"],
     ["dust", "Poussière Pixie"],
     ["none", "Aucun"],
-] as const satisfies readonly (readonly [PixieDustToastMotion, string])[];
+] as const satisfies readonly (readonly [PixieToastMotion, string])[];
 
 const frameWidths = {
     compact: "max-w-sm",
@@ -71,19 +71,19 @@ const dismissLabels = {
     action: "Action exécutée",
     escape: "Touche Échap",
     swipe: "Balayage",
-} as const satisfies Record<PixieDustToastDismissReason, string>;
+} as const satisfies Record<PixieToastDismissReason, string>;
 
-export function PixieDustToastPlayground() {
-    const [tone, setTone] = useState<PixieDustToastTone>("success");
-    const [variant, setVariant] = useState<PixieDustToastVariant>("surface");
-    const [size, setSize] = useState<PixieDustToastSize>("md");
-    const [layout, setLayout] = useState<PixieDustToastLayout>("auto");
-    const [width, setWidth] = useState<PixieDustToastWidth>("md");
-    const [motion, setMotion] = useState<PixieDustToastMotion>("dust");
-    const [progress, setProgress] = useState<PixieDustToastProgress>("rail");
-    const [priority, setPriority] = useState<PixieDustToastPriority>("auto");
+export function PixieToastPlayground() {
+    const [tone, setTone] = useState<PixieToastTone>("success");
+    const [variant, setVariant] = useState<PixieToastVariant>("surface");
+    const [size, setSize] = useState<PixieToastSize>("md");
+    const [layout, setLayout] = useState<PixieToastLayout>("auto");
+    const [width, setWidth] = useState<PixieToastWidth>("md");
+    const [motion, setMotion] = useState<PixieToastMotion>("dust");
+    const [progress, setProgress] = useState<PixieToastProgress>("rail");
+    const [priority, setPriority] = useState<PixieToastPriority>("auto");
     const [swipeDirection, setSwipeDirection] =
-        useState<PixieDustToastSwipeDirection>(false);
+        useState<PixieToastSwipeDirection>(false);
     const [duration, setDuration] = useState<number | false>(6000);
     const [dismissible, setDismissible] = useState(true);
     const [pauseOnInteraction, setPauseOnInteraction] = useState(true);
@@ -94,10 +94,10 @@ export function PixieDustToastPlayground() {
     const [withAction, setWithAction] = useState(false);
     const [open, setOpen] = useState(true);
     const [lastDismiss, setLastDismiss] =
-        useState<PixieDustToastDismissReason | null>(null);
+        useState<PixieToastDismissReason | null>(null);
     const { lumiere: light, cadre: frame } = useAtelierProjection();
 
-    const code = `<PixieDustToast
+    const code = `<PixieToast
     tone="${tone}"
     variant="${variant}"
     size="${size}"
@@ -107,7 +107,7 @@ export function PixieDustToastPlayground() {
     progress="${progress}"${withTitle ? '\n    title="Fiche enregistrée"' : ""}${priority === "auto" ? "" : `\n    priority="${priority}"`}${duration === false ? "\n    duration={false}" : `\n    duration={${duration}}`}${pauseOnInteraction ? "" : "\n    pauseOnInteraction={false}"}${pauseOnPageHidden ? "" : "\n    pauseOnPageHidden={false}"}${dismissible ? "" : "\n    dismissible={false}"}${closeOnEscape ? "" : "\n    closeOnEscape={false}"}${swipeDirection === false ? "" : `\n    swipeDirection="${swipeDirection}"`}${withAction ? '\n    actionLabel="Annuler"\n    onAction={handleUndo}' : ""}${withAction && !closeOnAction ? "\n    closeOnAction={false}" : ""}
 >
     Les modifications rejoignent les archives du Codex.
-</PixieDustToast>`;
+</PixieToast>`;
 
     function relaunchToast() {
         setLastDismiss(null);
@@ -161,7 +161,7 @@ export function PixieDustToastPlayground() {
                             value={variant}
                             options={variants}
                             onChange={(value) =>
-                                setVariant(value as PixieDustToastVariant)
+                                setVariant(value as PixieToastVariant)
                             }
                         />
                         <SelectControl
@@ -170,7 +170,7 @@ export function PixieDustToastPlayground() {
                             value={motion}
                             options={motions}
                             onChange={(value) =>
-                                setMotion(value as PixieDustToastMotion)
+                                setMotion(value as PixieToastMotion)
                             }
                         />
 
@@ -185,7 +185,7 @@ export function PixieDustToastPlayground() {
                                     ["stacked", "Empilée"],
                                 ]}
                                 onChange={(value) =>
-                                    setLayout(value as PixieDustToastLayout)
+                                    setLayout(value as PixieToastLayout)
                                 }
                             />
                             <SelectControl
@@ -200,7 +200,7 @@ export function PixieDustToastPlayground() {
                                     ["full", "Pleine"],
                                 ]}
                                 onChange={(value) =>
-                                    setWidth(value as PixieDustToastWidth)
+                                    setWidth(value as PixieToastWidth)
                                 }
                             />
                         </div>
@@ -233,7 +233,7 @@ export function PixieDustToastPlayground() {
                                 ["bar", "Barre basse"],
                             ]}
                             onChange={(value) =>
-                                setProgress(value as PixieDustToastProgress)
+                                setProgress(value as PixieToastProgress)
                             }
                         />
                         <SelectControl
@@ -246,7 +246,7 @@ export function PixieDustToastPlayground() {
                                 ["assertive", "Prioritaire"],
                             ]}
                             onChange={(value) =>
-                                setPriority(value as PixieDustToastPriority)
+                                setPriority(value as PixieToastPriority)
                             }
                         />
                         <SelectControl
@@ -265,7 +265,7 @@ export function PixieDustToastPlayground() {
                                     value === "false"
                                         ? false
                                         : (value as Exclude<
-                                              PixieDustToastSwipeDirection,
+                                              PixieToastSwipeDirection,
                                               false
                                           >),
                                 )
@@ -347,7 +347,7 @@ export function PixieDustToastPlayground() {
                                 </p>
                             </div>
 
-                            <PixieDustToast
+                            <PixieToast
                                 open={open}
                                 onOpenChange={setOpen}
                                 onDismiss={setLastDismiss}
@@ -378,7 +378,7 @@ export function PixieDustToastPlayground() {
                             >
                                 Les modifications rejoignent les archives du
                                 Codex.
-                            </PixieDustToast>
+                            </PixieToast>
                         </div>
                     </div>
                     <AtelierCodePanel key={code} code={code} />

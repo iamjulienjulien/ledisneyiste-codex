@@ -8,18 +8,18 @@ import { PixieBackdrop } from "@/components/ui/PixieBackdrop";
 import { PixiePanel } from "@/components/ui/PixiePanel";
 import { PixieStack } from "@/components/ui/PixieStack";
 import {
-    PixieDustToast,
-    type PixieDustToastMotion,
-    type PixieDustToastSize,
-    type PixieDustToastTone,
-    type PixieDustToastVariant,
-} from "@/components/ui/PixieDustToast";
-import { PixieDustToastActionDemo } from "./PixieDustToastActionDemo";
-import { PixieDustToastLongActionDemo } from "./PixieDustToastLongActionDemo";
-import { PixieDustToastMasterDemo } from "./PixieDustToastMasterDemo";
-import { PixieDustToastPlayground } from "./PixieDustToastPlayground";
-import { PixieDustToastProgressDemo } from "./PixieDustToastProgressDemo";
-import { PixieDustToastSwipeDemo } from "./PixieDustToastSwipeDemo";
+    PixieToast,
+    type PixieToastMotion,
+    type PixieToastSize,
+    type PixieToastTone,
+    type PixieToastVariant,
+} from "@/components/ui/PixieToast";
+import { PixieToastActionDemo } from "./PixieToastActionDemo";
+import { PixieToastLongActionDemo } from "./PixieToastLongActionDemo";
+import { PixieToastMasterDemo } from "./PixieToastMasterDemo";
+import { PixieToastPlayground } from "./PixieToastPlayground";
+import { PixieToastProgressDemo } from "./PixieToastProgressDemo";
+import { PixieToastSwipeDemo } from "./PixieToastSwipeDemo";
 
 const tones = [
     { value: "neutral", name: "Neutre", example: "La vue a été actualisée." },
@@ -44,7 +44,7 @@ const tones = [
         example: "La modification n’a pas été enregistrée.",
     },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustToastTone;
+    value: PixieToastTone;
     name: string;
     example: string;
 }>[];
@@ -60,7 +60,7 @@ const variants = [
         description: "Halo directionnel",
     },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustToastVariant;
+    value: PixieToastVariant;
     name: string;
     description: string;
 }>[];
@@ -70,7 +70,7 @@ const sizes = [
     { value: "md", name: "Moyenne" },
     { value: "lg", name: "Grande" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustToastSize;
+    value: PixieToastSize;
     name: string;
 }>[];
 
@@ -81,7 +81,7 @@ const motions = [
     { value: "dust", name: "Poussière Pixie" },
     { value: "none", name: "Aucun" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustToastMotion;
+    value: PixieToastMotion;
     name: string;
 }>[];
 
@@ -100,43 +100,43 @@ const properties = [
     },
     {
         name: "tone",
-        type: "PixieDustToastTone",
+        type: "PixieToastTone",
         defaultValue: '"neutral"',
         description: "Niveau sémantique et couleur associée.",
     },
     {
         name: "variant",
-        type: "PixieDustToastVariant",
+        type: "PixieToastVariant",
         defaultValue: '"surface"',
         description: "Traitement visuel de la surface.",
     },
     {
         name: "size",
-        type: "PixieDustToastSize",
+        type: "PixieToastSize",
         defaultValue: '"md"',
         description: "Densité de la notification.",
     },
     {
         name: "layout",
-        type: "PixieDustToastLayout",
+        type: "PixieToastLayout",
         defaultValue: '"auto"',
         description: "Disposition responsive ou explicite de l’action.",
     },
     {
         name: "width",
-        type: "PixieDustToastWidth",
+        type: "PixieToastWidth",
         defaultValue: '"md"',
         description: "Largeur maximale de la notification.",
     },
     {
         name: "motion",
-        type: "PixieDustToastMotion",
+        type: "PixieToastMotion",
         defaultValue: '"slide"',
         description: "Mouvement d’entrée et de sortie.",
     },
     {
         name: "progress",
-        type: "PixieDustToastProgress",
+        type: "PixieToastProgress",
         defaultValue: '"none"',
         description: "Repère visuel facultatif du temps restant.",
     },
@@ -160,7 +160,7 @@ const properties = [
     },
     {
         name: "onDismiss",
-        type: "(reason: PixieDustToastDismissReason) => void",
+        type: "(reason: PixieToastDismissReason) => void",
         defaultValue: "—",
         description: "Expose la raison exacte de la disparition.",
     },
@@ -202,7 +202,7 @@ const properties = [
     },
     {
         name: "swipeDirection",
-        type: "PixieDustToastSwipeDirection",
+        type: "PixieToastSwipeDirection",
         defaultValue: "false",
         description: "Active une fermeture gestuelle logique ou verticale.",
     },
@@ -226,7 +226,7 @@ const properties = [
     },
     {
         name: "priority",
-        type: "PixieDustToastPriority",
+        type: "PixieToastPriority",
         defaultValue: '"auto"',
         description: "Politesse de l’annonce dynamique.",
     },
@@ -246,53 +246,53 @@ const properties = [
 
 const specificTypes = [
     {
-        name: "PixieDustToastTone",
+        name: "PixieToastTone",
         values: tones.map(({ value }) => `"${value}"`),
         description:
             "Cinq intentions sémantiques reliées au registre chromatique.",
     },
     {
-        name: "PixieDustToastVariant",
+        name: "PixieToastVariant",
         values: variants.map(({ value }) => `"${value}"`),
         description: "Cinq niveaux de présence visuelle.",
     },
     {
-        name: "PixieDustToastSize",
+        name: "PixieToastSize",
         values: sizes.map(({ value }) => `"${value}"`),
         description: "Trois densités adaptées aux messages brefs ou longs.",
     },
     {
-        name: "PixieDustToastLayout",
+        name: "PixieToastLayout",
         values: ['"auto"', '"inline"', '"stacked"'],
         description: "Trois compositions possibles pour l’action.",
     },
     {
-        name: "PixieDustToastWidth",
+        name: "PixieToastWidth",
         values: ['"fit"', '"sm"', '"md"', '"lg"', '"full"'],
         description: "Cinq limites de largeur explicites.",
     },
     {
-        name: "PixieDustToastMotion",
+        name: "PixieToastMotion",
         values: motions.map(({ value }) => `"${value}"`),
         description: "Cinq cycles d’entrée et de sortie.",
     },
     {
-        name: "PixieDustToastProgress",
+        name: "PixieToastProgress",
         values: ['"none"', '"rail"', '"bar"'],
         description: "Trois traitements du temps restant.",
     },
     {
-        name: "PixieDustToastPriority",
+        name: "PixieToastPriority",
         values: ['"auto"', '"polite"', '"assertive"'],
         description: "Un calcul sémantique ou deux niveaux explicites.",
     },
     {
-        name: "PixieDustToastSwipeDirection",
+        name: "PixieToastSwipeDirection",
         values: ['"start"', '"end"', '"up"', '"down"', "false"],
         description: "Quatre directions de balayage ou aucune.",
     },
     {
-        name: "PixieDustToastDismissReason",
+        name: "PixieToastDismissReason",
         values: ['"timeout"', '"dismiss"', '"action"', '"escape"', '"swipe"'],
         description: "La cause exacte d’une fermeture demandée.",
     },
@@ -336,12 +336,12 @@ function Stage({ children }: Readonly<{ children: ReactNode }>) {
     );
 }
 
-export function PixieDustToastDossier() {
+export function PixieToastDossier() {
     return (
         <AtelierFicheAccessoire
-            id="pixie-dust-toast"
-            labelledBy="pixie-dust-toast-title"
-            nom="PixieDustToast"
+            id="pixie-toast"
+            labelledBy="pixie-toast-title"
+            nom="PixieToast"
             className="scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
@@ -350,10 +350,10 @@ export function PixieDustToastDossier() {
                             Le clap · Effet 001
                         </p>
                         <h2
-                            id="pixie-dust-toast-title"
+                            id="pixie-toast-title"
                             className="mt-4 text-4xl text-ink sm:text-5xl"
                         >
-                            PixieDustToast
+                            PixieToast
                         </h2>
                         <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
                             Signaler brièvement le résultat d’une action sans
@@ -366,7 +366,7 @@ export function PixieDustToastDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.2.0
+                                1.0.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -374,7 +374,7 @@ export function PixieDustToastDossier() {
                                 État
                             </dt>
                             <dd className="mt-1 text-sm font-medium">
-                                <AtelierStatut statut="Esquisse" />
+                                <AtelierStatut statut="Prêt à projeter" />
                             </dd>
                         </div>
                     </dl>
@@ -430,9 +430,9 @@ export function PixieDustToastDossier() {
                         />
                         <div className="mt-8 grid gap-4 lg:grid-cols-2">
                             <Stage>
-                                <PixieDustToastMasterDemo />
+                                <PixieToastMasterDemo />
                             </Stage>
-                            <CodeExample>{`<PixieDustToast
+                            <CodeExample>{`<PixieToast
     open={open}
     onOpenChange={setOpen}
                             tone="success"
@@ -441,7 +441,7 @@ export function PixieDustToastDossier() {
                             progress="rail"
 >
     Les modifications rejoignent les archives du Codex.
-</PixieDustToast>`}</CodeExample>
+</PixieToast>`}</CodeExample>
                         </div>
                     </div>
                 </section>
@@ -455,14 +455,14 @@ export function PixieDustToastDossier() {
                     />
                     <PixieStack gap="sm" className="mt-8">
                         {tones.map((tone) => (
-                            <PixieDustToast
+                            <PixieToast
                                 key={tone.value}
                                 tone={tone.value}
                                 title={tone.name}
                                 duration={false}
                             >
                                 {tone.example}
-                            </PixieDustToast>
+                            </PixieToast>
                         ))}
                     </PixieStack>
                 </section>
@@ -491,7 +491,7 @@ export function PixieDustToastDossier() {
                                     <p className="mb-4 font-mono text-xs text-accent">
                                         variant=&quot;{variant.value}&quot;
                                     </p>
-                                    <PixieDustToast
+                                    <PixieToast
                                         variant={variant.value}
                                         tone="info"
                                         title={variant.name}
@@ -499,7 +499,7 @@ export function PixieDustToastDossier() {
                                     >
                                         {variant.description} pour la
                                         notification.
-                                    </PixieDustToast>
+                                    </PixieToast>
                                 </PixieBackdrop>
                             </Stage>
                         ))}
@@ -519,13 +519,13 @@ export function PixieDustToastDossier() {
                                     <p className="mb-4 font-mono text-xs text-accent">
                                         size=&quot;{size.value}&quot;
                                     </p>
-                                    <PixieDustToast
+                                    <PixieToast
                                         size={size.value}
                                         title={size.name}
                                         duration={false}
                                     >
                                         Le raccord est terminé.
-                                    </PixieDustToast>
+                                    </PixieToast>
                                 </div>
                             </Stage>
                         ))}
@@ -546,7 +546,7 @@ export function PixieDustToastDossier() {
                                     <p className="mb-4 font-mono text-xs text-accent">
                                         motion=&quot;{motion.value}&quot;
                                     </p>
-                                    <PixieDustToast
+                                    <PixieToast
                                         tone="success"
                                         variant="spotlight"
                                         motion={motion.value}
@@ -554,7 +554,7 @@ export function PixieDustToastDossier() {
                                         duration={false}
                                     >
                                         Le raccord rejoint la projection.
-                                    </PixieDustToast>
+                                    </PixieToast>
                                 </div>
                             </Stage>
                         ))}
@@ -570,17 +570,17 @@ export function PixieDustToastDossier() {
                     />
                     <div className="mt-8 grid gap-5 md:grid-cols-2">
                         <Stage>
-                            <PixieDustToastActionDemo />
+                            <PixieToastActionDemo />
                         </Stage>
                         <Stage>
-                            <PixieDustToast
+                            <PixieToast
                                 tone="warning"
                                 title="Source à relire"
                                 duration={false}
                             >
                                 Cette notification persiste jusqu’à sa
                                 fermeture.
-                            </PixieDustToast>
+                            </PixieToast>
                         </Stage>
                     </div>
                 </section>
@@ -594,7 +594,7 @@ export function PixieDustToastDossier() {
                     />
                     <div className="mt-8 grid gap-5 lg:grid-cols-2">
                         <Stage>
-                            <PixieDustToastLongActionDemo />
+                            <PixieToastLongActionDemo />
                         </Stage>
                         <Stage>
                             <PixieBackdrop
@@ -605,7 +605,7 @@ export function PixieDustToastDossier() {
                                 padding="md"
                                 className="w-full"
                             >
-                                <PixieDustToast
+                                <PixieToast
                                     tone="info"
                                     variant="glass"
                                     motion="dust"
@@ -615,14 +615,14 @@ export function PixieDustToastDossier() {
                                 >
                                     Le verre conserve le décor sans perdre le
                                     contraste du message.
-                                </PixieDustToast>
+                                </PixieToast>
                             </PixieBackdrop>
                         </Stage>
                         <Stage>
-                            <PixieDustToastProgressDemo />
+                            <PixieToastProgressDemo />
                         </Stage>
                         <Stage>
-                            <PixieDustToastSwipeDemo />
+                            <PixieToastSwipeDemo />
                         </Stage>
                     </div>
                 </section>
@@ -635,7 +635,7 @@ export function PixieDustToastDossier() {
                         description="Le faux viewport permet d’éprouver variantes, dimensions, mouvements, progression, motifs de fermeture et deux Lumières."
                     />
                     <div className="mt-8">
-                        <PixieDustToastPlayground />
+                        <PixieToastPlayground />
                     </div>
                 </section>
 
@@ -678,7 +678,7 @@ export function PixieDustToastDossier() {
                         <SequenceTitle
                             id="toast-technical-title"
                             eyebrow="Générique technique"
-                            title="API de l’esquisse"
+                            title="API du composant"
                             description="Le composant accepte un cycle contrôlé ou autonome, expose chaque motif de fermeture et conserve la couleur sous la responsabilité de la tonalité."
                         />
                         <div className="mt-8">
@@ -693,30 +693,6 @@ export function PixieDustToastDossier() {
                             </div>
                         </div>
                     </div>
-                </section>
-
-                <section aria-labelledby="toast-journal-title">
-                    <SequenceTitle
-                        id="toast-journal-title"
-                        eyebrow="Journal de production"
-                        title="Avant la version prête à projeter"
-                    />
-                    <PixieStack as="ul" gap="sm" className="mt-8">
-                        {[
-                            "Éprouver les annonces status et alert avec plusieurs lecteurs d’écran.",
-                            "Confirmer le calcul du temps restant après survol, navigation clavier et changement d’onglet.",
-                            "Tester les contrastes des cinq variantes dans les deux Lumières.",
-                            "Valider le seuil de balayage sur plusieurs appareils tactiles.",
-                            "Concevoir séparément la régie globale, le portail et la file d’attente.",
-                        ].map((item) => (
-                            <li
-                                key={item}
-                                className="border-l-2 border-accent bg-surface-muted px-5 py-4 text-sm leading-6 text-ink-soft"
-                            >
-                                {item}
-                            </li>
-                        ))}
-                    </PixieStack>
                 </section>
             </div>
         </AtelierFicheAccessoire>

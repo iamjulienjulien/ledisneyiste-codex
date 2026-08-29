@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { PixieButton } from "@/components/ui/PixieButton";
-import { PixieDustToast } from "@/components/ui/PixieDustToast";
+import { PixieToast } from "@/components/ui/PixieToast";
 
-export function PixieDustToastActionDemo() {
+export function PixieToastActionDemo() {
     const [open, setOpen] = useState(true);
 
     return (
@@ -21,7 +21,7 @@ export function PixieDustToastActionDemo() {
                 </PixieButton>
             ) : null}
 
-            <PixieDustToast
+            <PixieToast
                 open={open}
                 onOpenChange={setOpen}
                 tone="success"
@@ -31,7 +31,7 @@ export function PixieDustToastActionDemo() {
                 duration={false}
             >
                 La fiche rejoint Le temps des pionniers.
-            </PixieDustToast>
+            </PixieToast>
         </div>
     );
 }

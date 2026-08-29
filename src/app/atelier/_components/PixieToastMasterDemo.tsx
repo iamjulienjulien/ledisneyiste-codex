@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { PixieButton } from "@/components/ui/PixieButton";
-import { PixieDustToast } from "@/components/ui/PixieDustToast";
+import { PixieToast } from "@/components/ui/PixieToast";
 
-export function PixieDustToastMasterDemo() {
+export function PixieToastMasterDemo() {
     const [open, setOpen] = useState(false);
 
     return (
@@ -17,7 +17,7 @@ export function PixieDustToastMasterDemo() {
                 Enregistrer la fiche
             </PixieButton>
 
-            <PixieDustToast
+            <PixieToast
                 open={open}
                 onOpenChange={setOpen}
                 tone="success"
@@ -26,7 +26,7 @@ export function PixieDustToastMasterDemo() {
                 progress="rail"
             >
                 Les modifications rejoignent les archives du Codex.
-            </PixieDustToast>
+            </PixieToast>
         </div>
     );
 }

@@ -3,9 +3,9 @@
 import { useState } from "react";
 import { PixieButton } from "@/components/ui/PixieButton";
 import {
-    PixieDustToast,
-    type PixieDustToastDismissReason,
-} from "@/components/ui/PixieDustToast";
+    PixieToast,
+    type PixieToastDismissReason,
+} from "@/components/ui/PixieToast";
 
 const reasonLabels = {
     timeout: "Le délai est terminé.",
@@ -13,13 +13,11 @@ const reasonLabels = {
     action: "L’action a été exécutée.",
     escape: "La touche Échap a fermé le message.",
     swipe: "Le balayage a fermé le message.",
-} as const satisfies Record<PixieDustToastDismissReason, string>;
+} as const satisfies Record<PixieToastDismissReason, string>;
 
-export function PixieDustToastSwipeDemo() {
+export function PixieToastSwipeDemo() {
     const [open, setOpen] = useState(true);
-    const [reason, setReason] = useState<PixieDustToastDismissReason | null>(
-        null,
-    );
+    const [reason, setReason] = useState<PixieToastDismissReason | null>(null);
 
     function replay() {
         setReason(null);
@@ -45,7 +43,7 @@ export function PixieDustToastSwipeDemo() {
                 ) : null}
             </div>
 
-            <PixieDustToast
+            <PixieToast
                 open={open}
                 onOpenChange={setOpen}
                 onDismiss={setReason}
@@ -58,7 +56,7 @@ export function PixieDustToastSwipeDemo() {
                 title="Raccord mobile"
             >
                 Le geste reste facultatif et possède une commande équivalente.
-            </PixieDustToast>
+            </PixieToast>
 
             <p
                 aria-live="polite"
