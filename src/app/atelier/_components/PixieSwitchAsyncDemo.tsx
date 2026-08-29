@@ -2,9 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 import { PixieField } from "@/components/ui/PixieField";
-import { PixieDustSwitch } from "@/components/ui/PixieDustSwitch";
+import { PixieSwitch } from "@/components/ui/PixieSwitch";
 
-export function PixieDustSwitchAsyncDemo() {
+export function PixieSwitchAsyncDemo() {
     const [checked, setChecked] = useState(false);
     const [pending, setPending] = useState(false);
     const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -38,7 +38,7 @@ export function PixieDustSwitchAsyncDemo() {
                       : "La synchronisation automatique est inactive."
             }
         >
-            <PixieDustSwitch
+            <PixieSwitch
                 id="switch-async"
                 checked={checked}
                 onCheckedChange={applyPreference}

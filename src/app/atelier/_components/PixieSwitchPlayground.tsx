@@ -10,12 +10,12 @@ import {
 import { PixieField } from "@/components/ui/PixieField";
 import { PixieSelect } from "@/components/ui/PixieSelect";
 import {
-    PixieDustSwitch,
-    type PixieDustSwitchEffect,
-    type PixieDustSwitchMotion,
-    type PixieDustSwitchSize,
-    type PixieDustSwitchVariant,
-} from "@/components/ui/PixieDustSwitch";
+    PixieSwitch,
+    type PixieSwitchEffect,
+    type PixieSwitchMotion,
+    type PixieSwitchSize,
+    type PixieSwitchVariant,
+} from "@/components/ui/PixieSwitch";
 import {
     getAtelierAnimationColor,
     getAtelierAnimationColorSlugs,
@@ -29,7 +29,7 @@ const variants = [
     { value: "glass", label: "Verre" },
     { value: "projector", label: "Projecteur" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustSwitchVariant;
+    value: PixieSwitchVariant;
     label: string;
 }>[];
 
@@ -38,7 +38,7 @@ const sizes = [
     { value: "md", label: "Moyenne" },
     { value: "lg", label: "Grande" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustSwitchSize;
+    value: PixieSwitchSize;
     label: string;
 }>[];
 
@@ -48,7 +48,7 @@ const motions = [
     { value: "spring", label: "Rebond" },
     { value: "none", label: "Aucun" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustSwitchMotion;
+    value: PixieSwitchMotion;
     label: string;
 }>[];
 
@@ -57,7 +57,7 @@ const effects = [
     { value: "glow", label: "Halo" },
     { value: "dust", label: "Poussière Pixie" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustSwitchEffect;
+    value: PixieSwitchEffect;
     label: string;
 }>[];
 
@@ -78,11 +78,11 @@ const frameWidths = {
     large: "max-w-none",
 } as const satisfies Record<"compact" | "moyen" | "large", string>;
 
-export function PixieDustSwitchPlayground() {
-    const [variant, setVariant] = useState<PixieDustSwitchVariant>("projector");
-    const [size, setSize] = useState<PixieDustSwitchSize>("md");
-    const [motion, setMotion] = useState<PixieDustSwitchMotion>("spring");
-    const [effect, setEffect] = useState<PixieDustSwitchEffect>("dust");
+export function PixieSwitchPlayground() {
+    const [variant, setVariant] = useState<PixieSwitchVariant>("projector");
+    const [size, setSize] = useState<PixieSwitchSize>("md");
+    const [motion, setMotion] = useState<PixieSwitchMotion>("spring");
+    const [effect, setEffect] = useState<PixieSwitchEffect>("dust");
     const [color, setColor] = useState<AtelierAnimationColorSlug | "inherit">(
         "ambre-projecteur",
     );
@@ -100,7 +100,7 @@ export function PixieDustSwitchPlayground() {
     controlId="projection-grain"
     label="Grain de projection"${invalid ? '\n    error="Cette préférence doit être vérifiée."' : `\n    description="Le grain est actuellement ${checked ? "actif" : "inactif"}."`}${required ? "\n    required" : ""}
 >
-    <PixieDustSwitch
+    <PixieSwitch
         id="projection-grain"
         variant="${variant}"
         size="${size}"
@@ -183,8 +183,7 @@ export function PixieDustSwitchPlayground() {
                                 value={motion}
                                 onChange={(event) =>
                                     setMotion(
-                                        event.target
-                                            .value as PixieDustSwitchMotion,
+                                        event.target.value as PixieSwitchMotion,
                                     )
                                 }
                                 className="mt-2"
@@ -215,8 +214,7 @@ export function PixieDustSwitchPlayground() {
                                 value={effect}
                                 onChange={(event) =>
                                     setEffect(
-                                        event.target
-                                            .value as PixieDustSwitchEffect,
+                                        event.target.value as PixieSwitchEffect,
                                     )
                                 }
                                 className="mt-2"
@@ -313,7 +311,7 @@ export function PixieDustSwitchPlayground() {
                                 }
                                 {...fieldRequirement}
                             >
-                                <PixieDustSwitch
+                                <PixieSwitch
                                     id="switch-preview"
                                     variant={variant}
                                     size={size}

@@ -5,7 +5,7 @@ import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTa
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieField } from "@/components/ui/PixieField";
-import { PixieDustSwitch } from "@/components/ui/PixieDustSwitch";
+import { PixieSwitch } from "@/components/ui/PixieSwitch";
 import { PixiePanel } from "@/components/ui/PixiePanel";
 import { PixieSelect } from "@/components/ui/PixieSelect";
 import { PixieFieldPlayground } from "./PixieFieldPlayground";
@@ -615,7 +615,7 @@ export function PixieFieldDossier() {
                                 description="La préférence reste modifiable à tout moment."
                                 optional
                             >
-                                <PixieDustSwitch color="violet-ombre-portee" />
+                                <PixieSwitch color="violet-ombre-portee" />
                             </PixieField>
                         </Stage>
                     </div>

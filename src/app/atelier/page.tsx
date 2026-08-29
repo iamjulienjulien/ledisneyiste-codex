@@ -24,7 +24,7 @@ import { PixieFieldDossier } from "./_components/PixieFieldDossier";
 import { PixieInputDossier } from "./_components/PixieInputDossier";
 import { PixieDustTextareaDossier } from "./_components/PixieDustTextareaDossier";
 import { PixieSelectDossier } from "./_components/PixieSelectDossier";
-import { PixieDustSwitchDossier } from "./_components/PixieDustSwitchDossier";
+import { PixieSwitchDossier } from "./_components/PixieSwitchDossier";
 import { PixieSearchFieldDossier } from "./_components/PixieSearchFieldDossier";
 import { PixieToastDossier } from "./_components/PixieToastDossier";
 import { PixieLoaderDossier } from "./_components/PixieLoaderDossier";
@@ -265,11 +265,11 @@ const dialogues = [
         version: "—",
     },
     {
-        nom: "PixieDustSwitch",
+        nom: "PixieSwitch",
         role: "Activer ou désactiver une préférence",
-        statut: "Esquisse",
-        version: "0.2.0",
-        href: "#pixie-dust-switch",
+        statut: "Prêt à projeter",
+        version: "1.0.0",
+        href: "#pixie-switch",
     },
     {
         nom: "PixieDustFilterChip",
@@ -918,7 +918,7 @@ export default function AtelierPage() {
                 {raccordEntreFiches}
                 <PixieSelectDossier />
                 {raccordEntreFiches}
-                <PixieDustSwitchDossier />
+                <PixieSwitchDossier />
                 {raccordEntreFiches}
                 <PixieSearchFieldDossier />
             </section>
