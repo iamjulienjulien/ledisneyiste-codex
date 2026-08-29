@@ -10,16 +10,16 @@ import {
 } from "@/components/atelier/AtelierPlaygroundProjection";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import {
-    PixieDustSkeleton,
-    type PixieDustSkeletonAnimation,
-    type PixieDustSkeletonDirection,
-    type PixieDustSkeletonGap,
-    type PixieDustSkeletonIntensity,
-    type PixieDustSkeletonRadius,
-    type PixieDustSkeletonSize,
-    type PixieDustSkeletonSpeed,
-    type PixieDustSkeletonVariant,
-} from "@/components/ui/PixieDustSkeleton";
+    PixieSkeleton,
+    type PixieSkeletonAnimation,
+    type PixieSkeletonDirection,
+    type PixieSkeletonGap,
+    type PixieSkeletonIntensity,
+    type PixieSkeletonRadius,
+    type PixieSkeletonSize,
+    type PixieSkeletonSpeed,
+    type PixieSkeletonVariant,
+} from "@/components/ui/PixieSkeleton";
 import {
     getAtelierAnimationColor,
     getAtelierAnimationColorSlugs,
@@ -34,7 +34,7 @@ const variants = [
     { value: "control", label: "Contrôle" },
     { value: "pill", label: "Pilule" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustSkeletonVariant;
+    value: PixieSkeletonVariant;
     label: string;
 }>[];
 
@@ -46,7 +46,7 @@ const animations = [
     { value: "grain", label: "Grain" },
     { value: "none", label: "Fixe" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustSkeletonAnimation;
+    value: PixieSkeletonAnimation;
     label: string;
 }>[];
 
@@ -56,7 +56,7 @@ const gaps = [
     { value: "md", label: "Moyen" },
     { value: "lg", label: "Grand" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustSkeletonGap;
+    value: PixieSkeletonGap;
     label: string;
 }>[];
 
@@ -67,7 +67,7 @@ const sizes = [
     { value: "lg", label: "Grande" },
     { value: "xl", label: "Très grande" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustSkeletonSize;
+    value: PixieSkeletonSize;
     label: string;
 }>[];
 
@@ -76,7 +76,7 @@ const speeds = [
     { value: "normal", label: "Normale" },
     { value: "fast", label: "Rapide" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustSkeletonSpeed;
+    value: PixieSkeletonSpeed;
     label: string;
 }>[];
 
@@ -85,7 +85,7 @@ const intensities = [
     { value: "normal", label: "Présente" },
     { value: "strong", label: "Appuyée" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustSkeletonIntensity;
+    value: PixieSkeletonIntensity;
     label: string;
 }>[];
 
@@ -96,7 +96,7 @@ const radii = [
     { value: "lg", label: "Grand" },
     { value: "full", label: "Complet" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustSkeletonRadius;
+    value: PixieSkeletonRadius;
     label: string;
 }>[];
 
@@ -117,19 +117,19 @@ const frameWidths = {
     large: "max-w-none",
 } as const;
 
-export function PixieDustSkeletonPlayground() {
-    const [variant, setVariant] = useState<PixieDustSkeletonVariant>("text");
+export function PixieSkeletonPlayground() {
+    const [variant, setVariant] = useState<PixieSkeletonVariant>("text");
     const [animation, setAnimation] =
-        useState<PixieDustSkeletonAnimation>("shimmer");
-    const [size, setSize] = useState<PixieDustSkeletonSize>("md");
+        useState<PixieSkeletonAnimation>("shimmer");
+    const [size, setSize] = useState<PixieSkeletonSize>("md");
     const [width, setWidth] = useState("100%");
     const [height, setHeight] = useState("1em");
     const [aspectRatio, setAspectRatio] = useState("16 / 9");
     const [lines, setLines] = useState(3);
     const [lastLineWidth, setLastLineWidth] = useState("62%");
     const [customLineWidths, setCustomLineWidths] = useState(false);
-    const [gap, setGap] = useState<PixieDustSkeletonGap>("sm");
-    const [radius, setRadius] = useState<PixieDustSkeletonRadius>("sm");
+    const [gap, setGap] = useState<PixieSkeletonGap>("sm");
+    const [radius, setRadius] = useState<PixieSkeletonRadius>("sm");
     const [color, setColor] = useState<AtelierAnimationColorSlug | "inherit">(
         "graphite",
     );
@@ -137,10 +137,10 @@ export function PixieDustSkeletonPlayground() {
         AtelierAnimationColorSlug | "inherit"
     >("ambre-projecteur");
     const [intensity, setIntensity] =
-        useState<PixieDustSkeletonIntensity>("normal");
-    const [speed, setSpeed] = useState<PixieDustSkeletonSpeed>("normal");
+        useState<PixieSkeletonIntensity>("normal");
+    const [speed, setSpeed] = useState<PixieSkeletonSpeed>("normal");
     const [direction, setDirection] =
-        useState<PixieDustSkeletonDirection>("forward");
+        useState<PixieSkeletonDirection>("forward");
     const [delay, setDelay] = useState(0);
     const [active, setActive] = useState(true);
     const [reserveSpace, setReserveSpace] = useState(false);
@@ -163,7 +163,7 @@ export function PixieDustSkeletonPlayground() {
                 ? '\n    lineWidths={["100%", "84%", "58%"]}'
                 : `\n    lines={${lines}}\n    lastLineWidth="${lastLineWidth}"\n    gap="${gap}"`
             : "";
-    const code = `<PixieDustSkeleton
+    const code = `<PixieSkeleton
     variant="${variant}"
     animation="${animation}"
     size="${size}"
@@ -175,7 +175,7 @@ export function PixieDustSkeletonPlayground() {
     direction="${direction}"${colorProp}${highlightColorProp}${delay ? `\n    delay={${delay}}` : ""}${active ? "" : "\n    active={false}"}${reserveSpace ? "\n    reserveSpace" : ""}${decorative ? "" : '\n    decorative={false}\n    label="Chargement de la fiche"'}
 />`;
 
-    function handleVariantChange(nextVariant: PixieDustSkeletonVariant) {
+    function handleVariantChange(nextVariant: PixieSkeletonVariant) {
         setVariant(nextVariant);
         if (nextVariant === "text") {
             setWidth("100%");
@@ -253,8 +253,7 @@ export function PixieDustSkeletonPlayground() {
                                 value={size}
                                 onChange={(event) =>
                                     setSize(
-                                        event.target
-                                            .value as PixieDustSkeletonSize,
+                                        event.target.value as PixieSkeletonSize,
                                     )
                                 }
                                 className="mt-2"
@@ -363,7 +362,7 @@ export function PixieDustSkeletonPlayground() {
                                         onChange={(event) =>
                                             setGap(
                                                 event.target
-                                                    .value as PixieDustSkeletonGap,
+                                                    .value as PixieSkeletonGap,
                                             )
                                         }
                                         className="mt-2"
@@ -398,7 +397,7 @@ export function PixieDustSkeletonPlayground() {
                                 onChange={(event) =>
                                     setRadius(
                                         event.target
-                                            .value as PixieDustSkeletonRadius,
+                                            .value as PixieSkeletonRadius,
                                     )
                                 }
                                 className="mt-2"
@@ -531,7 +530,7 @@ export function PixieDustSkeletonPlayground() {
                                     onChange={(event) =>
                                         setDirection(
                                             event.target
-                                                .value as PixieDustSkeletonDirection,
+                                                .value as PixieSkeletonDirection,
                                         )
                                     }
                                     className="mt-2"
@@ -612,7 +611,7 @@ export function PixieDustSkeletonPlayground() {
                             aria-busy={active}
                             aria-label="Aperçu du contenu en chargement"
                         >
-                            <PixieDustSkeleton
+                            <PixieSkeleton
                                 variant={variant}
                                 animation={animation}
                                 size={size}
