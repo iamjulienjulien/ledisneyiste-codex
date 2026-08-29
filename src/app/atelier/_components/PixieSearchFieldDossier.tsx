@@ -6,16 +6,16 @@ import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixiePanel } from "@/components/ui/PixiePanel";
 import {
-    PixieDustSearchField,
-    type PixieDustSearchFieldComposition,
-    type PixieDustSearchFieldLayout,
-} from "@/components/ui/PixieDustSearchField";
+    PixieSearchField,
+    type PixieSearchFieldComposition,
+    type PixieSearchFieldLayout,
+} from "@/components/ui/PixieSearchField";
 import { PixieStack } from "@/components/ui/PixieStack";
 import type {
     PixieInputSize,
     PixieInputVariant,
 } from "@/components/ui/PixieInput";
-import { PixieDustSearchFieldPlayground } from "./PixieDustSearchFieldPlayground";
+import { PixieSearchFieldPlayground } from "./PixieSearchFieldPlayground";
 
 const variants = [
     {
@@ -73,7 +73,7 @@ const compositions = [
         role: "Les deux commandes rejoignent l’intérieur du champ.",
     },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustSearchFieldComposition;
+    value: PixieSearchFieldComposition;
     name: string;
     role: string;
 }>[];
@@ -95,7 +95,7 @@ const layouts = [
         role: "La composition passe automatiquement d’une pile à une ligne.",
     },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustSearchFieldLayout;
+    value: PixieSearchFieldLayout;
     name: string;
     role: string;
 }>[];
@@ -127,7 +127,7 @@ const properties = [
     },
     {
         name: "method",
-        type: "PixieDustSearchFieldMethod",
+        type: "PixieSearchFieldMethod",
         defaultValue: '"get"',
         description: "Méthode native du formulaire de recherche.",
     },
@@ -223,19 +223,19 @@ const properties = [
     },
     {
         name: "color",
-        type: "PixieDustSearchFieldColor",
+        type: "PixieSearchFieldColor",
         defaultValue: "false",
         description: "Couleur des focus et des commandes.",
     },
     {
         name: "composition",
-        type: "PixieDustSearchFieldComposition",
+        type: "PixieSearchFieldComposition",
         defaultValue: '"separate"',
         description: "Sépare, joint ou intègre les commandes au champ.",
     },
     {
         name: "layout",
-        type: "PixieDustSearchFieldLayout",
+        type: "PixieSearchFieldLayout",
         defaultValue: '"responsive"',
         description:
             "Disposition de separate et joined ; embedded reste sur une ligne.",
@@ -364,22 +364,22 @@ const properties = [
 
 const specificTypes = [
     {
-        name: "PixieDustSearchFieldComposition",
+        name: "PixieSearchFieldComposition",
         values: compositions.map(({ value }) => `"${value}"`),
         description: "Proximité visuelle entre le champ et ses commandes.",
     },
     {
-        name: "PixieDustSearchFieldLayout",
+        name: "PixieSearchFieldLayout",
         values: layouts.map(({ value }) => `"${value}"`),
         description: "Distribution responsive du champ et de ses commandes.",
     },
     {
-        name: "PixieDustSearchFieldMethod",
+        name: "PixieSearchFieldMethod",
         values: ['"get"', '"post"'],
         description: "Méthodes natives acceptées par le formulaire.",
     },
     {
-        name: "PixieDustSearchFieldColor",
+        name: "PixieSearchFieldColor",
         values: ["AtelierAnimationColorSlug", "false"],
         description: "Accent du registre ou couleur héritée.",
     },
@@ -453,12 +453,12 @@ function Stage({ children }: Readonly<{ children: ReactNode }>) {
     );
 }
 
-export function PixieDustSearchFieldDossier() {
+export function PixieSearchFieldDossier() {
     return (
         <AtelierFicheAccessoire
-            id="pixie-dust-search-field"
-            labelledBy="pixie-dust-search-field-title"
-            nom="PixieDustSearchField"
+            id="pixie-search-field"
+            labelledBy="pixie-search-field-title"
+            nom="PixieSearchField"
             className="scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
@@ -467,10 +467,10 @@ export function PixieDustSearchFieldDossier() {
                             Le clap · Dialogue 009
                         </p>
                         <h2
-                            id="pixie-dust-search-field-title"
+                            id="pixie-search-field-title"
                             className="mt-4 text-4xl text-ink sm:text-5xl"
                         >
-                            PixieDustSearchField
+                            PixieSearchField
                         </h2>
                         <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
                             Composer une recherche complète, de la première
@@ -484,7 +484,7 @@ export function PixieDustSearchFieldDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.2.0
+                                1.0.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -492,7 +492,7 @@ export function PixieDustSearchFieldDossier() {
                                 État
                             </dt>
                             <dd className="mt-1 text-sm font-medium">
-                                <AtelierStatut statut="Esquisse" />
+                                <AtelierStatut statut="Prêt à projeter" />
                             </dd>
                         </div>
                     </dl>
@@ -545,7 +545,7 @@ export function PixieDustSearchFieldDossier() {
                         />
                         <div className="mt-8 grid gap-4 lg:grid-cols-2">
                             <Stage>
-                                <PixieDustSearchField
+                                <PixieSearchField
                                     label="Rechercher dans le Codex"
                                     name="q"
                                     action="/recherche"
@@ -555,7 +555,7 @@ export function PixieDustSearchFieldDossier() {
                                     description="Noms, titres, catégories ou collections."
                                 />
                             </Stage>
-                            <CodeExample>{`<PixieDustSearchField
+                            <CodeExample>{`<PixieSearchField
     label="Rechercher dans le Codex"
     name="q"
     action="/recherche"
@@ -588,7 +588,7 @@ export function PixieDustSearchFieldDossier() {
                                     {variant.role}
                                 </p>
                                 <div className="mt-6">
-                                    <PixieDustSearchField
+                                    <PixieSearchField
                                         label={`Recherche ${variant.name}`}
                                         labelHidden
                                         action="/recherche"
@@ -624,7 +624,7 @@ export function PixieDustSearchFieldDossier() {
                                     {size.name}
                                 </h4>
                                 <div className="mt-6">
-                                    <PixieDustSearchField
+                                    <PixieSearchField
                                         label={`Recherche ${size.name}`}
                                         labelHidden
                                         action="/recherche"
@@ -658,7 +658,7 @@ export function PixieDustSearchFieldDossier() {
                                     {composition.role}
                                 </p>
                                 <div className="mt-6">
-                                    <PixieDustSearchField
+                                    <PixieSearchField
                                         label={`Recherche ${composition.name}`}
                                         labelHidden
                                         action="/recherche"
@@ -697,7 +697,7 @@ export function PixieDustSearchFieldDossier() {
                                             {layout.role}
                                         </p>
                                     </div>
-                                    <PixieDustSearchField
+                                    <PixieSearchField
                                         label={`Disposition ${layout.name}`}
                                         labelHidden
                                         action="/recherche"
@@ -718,7 +718,7 @@ export function PixieDustSearchFieldDossier() {
                     />
                     <div className="mt-8 grid gap-5 md:grid-cols-2">
                         <Stage>
-                            <PixieDustSearchField
+                            <PixieSearchField
                                 label="Recherche vide"
                                 action="/recherche"
                                 layout="stacked"
@@ -726,7 +726,7 @@ export function PixieDustSearchFieldDossier() {
                             />
                         </Stage>
                         <Stage>
-                            <PixieDustSearchField
+                            <PixieSearchField
                                 label="Recherche renseignée"
                                 action="/recherche"
                                 layout="stacked"
@@ -735,7 +735,7 @@ export function PixieDustSearchFieldDossier() {
                             />
                         </Stage>
                         <Stage>
-                            <PixieDustSearchField
+                            <PixieSearchField
                                 label="Recherche invalide"
                                 action="/recherche"
                                 layout="stacked"
@@ -744,7 +744,7 @@ export function PixieDustSearchFieldDossier() {
                             />
                         </Stage>
                         <Stage>
-                            <PixieDustSearchField
+                            <PixieSearchField
                                 label="Recherche fructueuse"
                                 action="/recherche"
                                 composition="joined"
@@ -755,7 +755,7 @@ export function PixieDustSearchFieldDossier() {
                             />
                         </Stage>
                         <Stage>
-                            <PixieDustSearchField
+                            <PixieSearchField
                                 label="Recherche en cours"
                                 action="/recherche"
                                 composition="embedded"
@@ -765,7 +765,7 @@ export function PixieDustSearchFieldDossier() {
                             />
                         </Stage>
                         <Stage>
-                            <PixieDustSearchField
+                            <PixieSearchField
                                 label="Recherche désactivée"
                                 action="/recherche"
                                 layout="stacked"
@@ -789,7 +789,7 @@ export function PixieDustSearchFieldDossier() {
                                 Recherche globale
                             </p>
                             <div className="mt-5">
-                                <PixieDustSearchField
+                                <PixieSearchField
                                     label="Explorer toutes les archives"
                                     action="/recherche"
                                     composition="joined"
@@ -805,7 +805,7 @@ export function PixieDustSearchFieldDossier() {
                                 Header compact
                             </p>
                             <div className="mt-5">
-                                <PixieDustSearchField
+                                <PixieSearchField
                                     label="Rechercher dans le Codex"
                                     labelHidden
                                     action="/recherche"
@@ -822,7 +822,7 @@ export function PixieDustSearchFieldDossier() {
                                 Régie latérale
                             </p>
                             <div className="mt-5 max-w-sm">
-                                <PixieDustSearchField
+                                <PixieSearchField
                                     label="Filtrer le registre"
                                     action="/recherche"
                                     composition="separate"
@@ -837,7 +837,7 @@ export function PixieDustSearchFieldDossier() {
                                 Retour de projection
                             </p>
                             <div className="mt-5">
-                                <PixieDustSearchField
+                                <PixieSearchField
                                     label="Rechercher une archive"
                                     action="/recherche"
                                     composition="joined"
@@ -853,7 +853,7 @@ export function PixieDustSearchFieldDossier() {
                                 Attente
                             </p>
                             <div className="mt-5">
-                                <PixieDustSearchField
+                                <PixieSearchField
                                     label="Recherche en cours"
                                     action="/recherche"
                                     composition="embedded"
@@ -868,7 +868,7 @@ export function PixieDustSearchFieldDossier() {
                                 Validation native
                             </p>
                             <div className="mt-5">
-                                <PixieDustSearchField
+                                <PixieSearchField
                                     label="Requête obligatoire"
                                     action="/recherche"
                                     composition="joined"
@@ -916,7 +916,7 @@ export function PixieDustSearchFieldDossier() {
                         description="La requête, l’effacement, les états, la composition et le code évoluent ensemble."
                     />
                     <div className="mt-8">
-                        <PixieDustSearchFieldPlayground />
+                        <PixieSearchFieldPlayground />
                     </div>
                 </section>
 
@@ -969,7 +969,7 @@ export function PixieDustSearchFieldDossier() {
                         <SequenceTitle
                             id="search-field-technical-title"
                             eyebrow="Générique technique"
-                            title="API de l’esquisse"
+                            title="API du composant"
                             description="SearchField peut rester non contrôlé pour une soumission native ou devenir contrôlé lorsque son parent orchestre la requête."
                         />
                         <div className="mt-8">
@@ -984,30 +984,6 @@ export function PixieDustSearchFieldDossier() {
                             </div>
                         </div>
                     </div>
-                </section>
-
-                <section aria-labelledby="search-field-journal-title">
-                    <SequenceTitle
-                        id="search-field-journal-title"
-                        eyebrow="Journal de production"
-                        title="Avant la version prête à projeter"
-                    />
-                    <PixieStack as="ul" gap="sm" className="mt-8">
-                        {[
-                            "Éprouver la soumission GET réelle vers /recherche.",
-                            "Vérifier l’effacement en modes contrôlé et non contrôlé.",
-                            "Tester separate, joined et embedded dans les cadres étroits et larges.",
-                            "Contrôler Échap, l’attente, les labels et l’ordre clavier avec les lecteurs d’écran.",
-                            "Confirmer que suggestions et autocomplétion restent réservées au Combobox.",
-                        ].map((item) => (
-                            <li
-                                key={item}
-                                className="border-l-2 border-accent bg-surface-muted px-5 py-4 text-sm leading-6 text-ink-soft"
-                            >
-                                {item}
-                            </li>
-                        ))}
-                    </PixieStack>
                 </section>
             </div>
         </AtelierFicheAccessoire>

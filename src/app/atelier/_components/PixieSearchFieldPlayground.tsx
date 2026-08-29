@@ -11,10 +11,10 @@ import {
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import type { PixieButtonVariant } from "@/components/ui/PixieButton";
 import {
-    PixieDustSearchField,
-    type PixieDustSearchFieldComposition,
-    type PixieDustSearchFieldLayout,
-} from "@/components/ui/PixieDustSearchField";
+    PixieSearchField,
+    type PixieSearchFieldComposition,
+    type PixieSearchFieldLayout,
+} from "@/components/ui/PixieSearchField";
 import type {
     PixieInputShape,
     PixieInputSize,
@@ -53,7 +53,7 @@ const compositions = [
     { value: "joined", label: "Jointe" },
     { value: "embedded", label: "Intégrée" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustSearchFieldComposition;
+    value: PixieSearchFieldComposition;
     label: string;
 }>[];
 
@@ -90,7 +90,7 @@ const layouts = [
     { value: "stacked", label: "Empilée" },
     { value: "responsive", label: "Responsive" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustSearchFieldLayout;
+    value: PixieSearchFieldLayout;
     label: string;
 }>[];
 
@@ -111,15 +111,14 @@ const frameWidths = {
     large: "max-w-none",
 } as const satisfies Record<"compact" | "moyen" | "large", string>;
 
-export function PixieDustSearchFieldPlayground() {
+export function PixieSearchFieldPlayground() {
     const [variant, setVariant] = useState<PixieInputVariant>("outline");
     const [size, setSize] = useState<PixieInputSize>("md");
     const [shape, setShape] = useState<PixieInputShape>("rounded");
     const [tone, setTone] = useState<PixieInputTone>("neutral");
     const [composition, setComposition] =
-        useState<PixieDustSearchFieldComposition>("joined");
-    const [layout, setLayout] =
-        useState<PixieDustSearchFieldLayout>("responsive");
+        useState<PixieSearchFieldComposition>("joined");
+    const [layout, setLayout] = useState<PixieSearchFieldLayout>("responsive");
     const [submitVariant, setSubmitVariant] =
         useState<PixieButtonVariant>("solid");
     const [color, setColor] = useState<AtelierAnimationColorSlug | "inherit">(
@@ -138,7 +137,7 @@ export function PixieDustSearchFieldPlayground() {
     const { lumiere: light, cadre: frame } = useAtelierProjection();
 
     const colorProp = color === "inherit" ? "" : `\n    color="${color}"`;
-    const code = `<PixieDustSearchField
+    const code = `<PixieSearchField
     label="Rechercher dans le Codex"
     name="q"
     action="/recherche"
@@ -231,7 +230,7 @@ export function PixieDustSearchFieldPlayground() {
                                 onChange={(event) =>
                                     setComposition(
                                         event.target
-                                            .value as PixieDustSearchFieldComposition,
+                                            .value as PixieSearchFieldComposition,
                                     )
                                 }
                                 className="mt-2"
@@ -439,7 +438,7 @@ export function PixieDustSearchFieldPlayground() {
                         <div
                             className={`w-full border border-line bg-surface p-6 sm:p-8 ${frameWidths[frame]}`}
                         >
-                            <PixieDustSearchField
+                            <PixieSearchField
                                 label="Rechercher dans le Codex"
                                 name="q"
                                 action="/recherche"
