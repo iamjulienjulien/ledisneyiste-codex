@@ -9,7 +9,7 @@ import {
     useAtelierProjection,
 } from "@/components/atelier/AtelierPlaygroundProjection";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
-import { PixieDustField } from "@/components/ui/PixieDustField";
+import { PixieField } from "@/components/ui/PixieField";
 import {
     PixieDustTextarea,
     type PixieDustTextareaResize,
@@ -88,7 +88,7 @@ export function PixieDustTextareaPlayground() {
     const { lumiere: light, cadre: frame } = useAtelierProjection();
 
     const colorProp = color === "inherit" ? "" : `\n        color="${color}"`;
-    const code = `<PixieDustField
+    const code = `<PixieField
     controlId="projection-note"
     label="Note de projection"${invalid ? '\n    error="La note doit préciser le raccord à conserver."' : '\n    description="Décrivez le raccord à conserver dans les archives."'}${required ? "\n    required" : ""}
 >
@@ -98,7 +98,7 @@ export function PixieDustTextareaPlayground() {
         resize="${resize}"
         rows={${rows}}${colorProp}${disabled ? "\n        disabled" : ""}${readOnly ? "\n        readOnly" : ""}${required ? "\n        required" : ""}
     />
-</PixieDustField>`;
+</PixieField>`;
     const fieldRequirement = required
         ? ({ required: true } as const)
         : ({} as const);
@@ -280,7 +280,7 @@ export function PixieDustTextareaPlayground() {
                         <div
                             className={`w-full border border-line bg-surface p-6 sm:p-8 ${frameWidths[frame]}`}
                         >
-                            <PixieDustField
+                            <PixieField
                                 controlId="textarea-preview"
                                 label="Note de projection"
                                 description={
@@ -311,7 +311,7 @@ export function PixieDustTextareaPlayground() {
                                     maxLength={480}
                                     placeholder="Cette séquence marque…"
                                 />
-                            </PixieDustField>
+                            </PixieField>
                         </div>
                     </div>
 

@@ -4,7 +4,7 @@ import { AtelierCodeBlock } from "@/components/atelier/AtelierCodeBlock";
 import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
-import { PixieDustField } from "@/components/ui/PixieDustField";
+import { PixieField } from "@/components/ui/PixieField";
 import { PixiePanel } from "@/components/ui/PixiePanel";
 import {
     PixieSelect,
@@ -258,7 +258,7 @@ export function PixieSelectDossier() {
                             ],
                             [
                                 "Partenaire",
-                                "PixieDustField pour nommer et expliquer.",
+                                "PixieField pour nommer et expliquer.",
                             ],
                             [
                                 "Matière",
@@ -291,7 +291,7 @@ export function PixieSelectDossier() {
                         />
                         <div className="mt-8 grid gap-4 lg:grid-cols-2">
                             <Stage>
-                                <PixieDustField
+                                <PixieField
                                     controlId="select-master"
                                     label="Période des archives"
                                     description="Une seule période peut être retenue."
@@ -299,9 +299,9 @@ export function PixieSelectDossier() {
                                     <PixieSelect placeholder="Choisir une période">
                                         <PeriodOptions />
                                     </PixieSelect>
-                                </PixieDustField>
+                                </PixieField>
                             </Stage>
-                            <CodeExample>{`<PixieDustField
+                            <CodeExample>{`<PixieField
     controlId="archive-period"
     label="Période des archives"
     description="Une seule période peut être retenue."
@@ -310,7 +310,7 @@ export function PixieSelectDossier() {
         <option value="pionniers">Le temps des pionniers</option>
         <option value="chefs-oeuvre">Le temps des chefs-d’œuvre</option>
     </PixieSelect>
-</PixieDustField>`}</CodeExample>
+</PixieField>`}</CodeExample>
                         </div>
                     </div>
                 </section>
@@ -335,7 +335,7 @@ export function PixieSelectDossier() {
                                 et les interactions.
                             </p>
                             <div className="mt-6">
-                                <PixieDustField
+                                <PixieField
                                     controlId="select-mode-native"
                                     label="Période"
                                 >
@@ -345,7 +345,7 @@ export function PixieSelectDossier() {
                                     >
                                         <PeriodOptions />
                                     </PixieSelect>
-                                </PixieDustField>
+                                </PixieField>
                             </div>
                         </Stage>
                         <Stage>
@@ -360,7 +360,7 @@ export function PixieSelectDossier() {
                                 son contexte de composition.
                             </p>
                             <div className="mt-6">
-                                <PixieDustField
+                                <PixieField
                                     controlId="select-mode-popover"
                                     label="Période"
                                 >
@@ -370,7 +370,7 @@ export function PixieSelectDossier() {
                                     >
                                         <PeriodOptions />
                                     </PixieSelect>
-                                </PixieDustField>
+                                </PixieField>
                             </div>
                         </Stage>
                         <Stage>
@@ -385,7 +385,7 @@ export function PixieSelectDossier() {
                                 conservant la lumière et les tokens du contrôle.
                             </p>
                             <div className="mt-6">
-                                <PixieDustField
+                                <PixieField
                                     controlId="select-mode-portal"
                                     label="Période"
                                 >
@@ -396,7 +396,7 @@ export function PixieSelectDossier() {
                                     >
                                         <PeriodOptions />
                                     </PixieSelect>
-                                </PixieDustField>
+                                </PixieField>
                             </div>
                         </Stage>
                     </div>
@@ -507,17 +507,14 @@ export function PixieSelectDossier() {
                     />
                     <div className="mt-8 grid gap-5 md:grid-cols-2">
                         <Stage>
-                            <PixieDustField
-                                controlId="select-flat"
-                                label="Époque"
-                            >
+                            <PixieField controlId="select-flat" label="Époque">
                                 <PixieSelect defaultValue="pionniers">
                                     <PeriodOptions />
                                 </PixieSelect>
-                            </PixieDustField>
+                            </PixieField>
                         </Stage>
                         <Stage>
-                            <PixieDustField
+                            <PixieField
                                 controlId="select-grouped"
                                 label="Série ou collection"
                             >
@@ -537,7 +534,7 @@ export function PixieSelectDossier() {
                                         </option>
                                     </optgroup>
                                 </PixieSelect>
-                            </PixieDustField>
+                            </PixieField>
                         </Stage>
                     </div>
                 </section>

@@ -10,12 +10,12 @@ import {
 } from "@/components/atelier/AtelierPlaygroundProjection";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import {
-    PixieDustField,
-    type PixieDustFieldFeedbackTone,
-    type PixieDustFieldLayout,
-    type PixieDustFieldRequirementDisplay,
-    type PixieDustFieldSpacing,
-} from "@/components/ui/PixieDustField";
+    PixieField,
+    type PixieFieldFeedbackTone,
+    type PixieFieldLayout,
+    type PixieFieldRequirementDisplay,
+    type PixieFieldSpacing,
+} from "@/components/ui/PixieField";
 
 const controls = [
     { value: "input", label: "Input" },
@@ -124,13 +124,13 @@ function createPreviewControl({
     );
 }
 
-export function PixieDustFieldPlayground() {
+export function PixieFieldPlayground() {
     const [control, setControl] = useState<Control>("input");
-    const [layout, setLayout] = useState<PixieDustFieldLayout>("stacked");
-    const [spacing, setSpacing] = useState<PixieDustFieldSpacing>("md");
+    const [layout, setLayout] = useState<PixieFieldLayout>("stacked");
+    const [spacing, setSpacing] = useState<PixieFieldSpacing>("md");
     const [requirement, setRequirement] = useState<Requirement>("none");
     const [requirementDisplay, setRequirementDisplay] =
-        useState<PixieDustFieldRequirementDisplay>("text");
+        useState<PixieFieldRequirementDisplay>("text");
     const [feedback, setFeedback] = useState<Feedback>("none");
     const [description, setDescription] = useState(true);
     const [meta, setMeta] = useState(false);
@@ -153,12 +153,12 @@ export function PixieDustFieldPlayground() {
             : feedback === "success"
               ? ({
                     feedback: "La formulation peut être conservée.",
-                    feedbackTone: "success" as PixieDustFieldFeedbackTone,
+                    feedbackTone: "success" as PixieFieldFeedbackTone,
                 } as const)
               : feedback === "warning"
                 ? ({
                       feedback: "Cette formulation mérite une vérification.",
-                      feedbackTone: "warning" as PixieDustFieldFeedbackTone,
+                      feedbackTone: "warning" as PixieFieldFeedbackTone,
                   } as const)
                 : ({} as const);
     const controlName =
@@ -175,13 +175,13 @@ export function PixieDustFieldPlayground() {
               : feedback === "warning"
                 ? '\n    feedback="Cette formulation mérite une vérification."\n    feedbackTone="warning"'
                 : "";
-    const code = `<PixieDustField
+    const code = `<PixieField
     label="Rechercher dans les archives"${description ? '\n    description="Noms, titres, catégories ou collections."' : ""}${feedbackCode}${meta ? '\n    meta="24 caractères"' : ""}${requirement === "required" ? "\n    required" : ""}${requirement === "optional" ? "\n    optional" : ""}${requirement !== "none" && requirementDisplay !== "text" ? `\n    requirementDisplay="${requirementDisplay}"` : ""}${labelHidden ? "\n    labelHidden" : ""}
     layout="${layout}"
     spacing="${spacing}"
 >
     <${controlName}${control === "input" ? ' type="search"' : ""}${disabled ? " disabled" : ""}${readOnly && control !== "select" ? " readOnly" : ""} />
-</PixieDustField>`;
+</PixieField>`;
 
     return (
         <div className="overflow-clip border border-line bg-surface">
@@ -240,8 +240,7 @@ export function PixieDustFieldPlayground() {
                                 value={spacing}
                                 onChange={(event) =>
                                     setSpacing(
-                                        event.target
-                                            .value as PixieDustFieldSpacing,
+                                        event.target.value as PixieFieldSpacing,
                                     )
                                 }
                             >
@@ -291,7 +290,7 @@ export function PixieDustFieldPlayground() {
                                     onChange={(event) =>
                                         setRequirementDisplay(
                                             event.target
-                                                .value as PixieDustFieldRequirementDisplay,
+                                                .value as PixieFieldRequirementDisplay,
                                         )
                                     }
                                 >
@@ -398,7 +397,7 @@ export function PixieDustFieldPlayground() {
                         className="mt-6 min-h-80 bg-canvas p-5 sm:p-8"
                     >
                         <div className={`mx-auto ${frameWidths[frame]}`}>
-                            <PixieDustField
+                            <PixieField
                                 controlId="field-preview"
                                 label="Rechercher dans les archives"
                                 description={
@@ -420,7 +419,7 @@ export function PixieDustFieldPlayground() {
                                     readOnly,
                                     required: requirement === "required",
                                 })}
-                            </PixieDustField>
+                            </PixieField>
                         </div>
                     </div>
 

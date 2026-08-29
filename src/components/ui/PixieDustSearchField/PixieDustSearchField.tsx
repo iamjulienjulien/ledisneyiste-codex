@@ -8,7 +8,7 @@ import {
     type ChangeEvent,
 } from "react";
 import { PixieButton, type PixieButtonSize } from "@/components/ui/PixieButton";
-import { PixieDustField } from "@/components/ui/PixieDustField";
+import { PixieField } from "@/components/ui/PixieField";
 import { PixieDustInput } from "@/components/ui/PixieDustInput";
 import styles from "./PixieDustSearchField.module.css";
 import type {
@@ -196,7 +196,7 @@ export function PixieDustSearchField({
                 onSubmit={onSubmit}
                 className={`${styles.form} ${formClassName}`.trim()}
             >
-                <PixieDustField
+                <PixieField
                     controlId={inputId}
                     label={label}
                     description={description}
@@ -222,7 +222,7 @@ export function PixieDustSearchField({
                         inputClassName={inputClassName}
                         inputRef={inputRef}
                     />
-                </PixieDustField>
+                </PixieField>
             </form>
         </div>
     );

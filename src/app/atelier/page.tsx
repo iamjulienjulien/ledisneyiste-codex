@@ -20,7 +20,7 @@ import { PixieSwitcherDossier } from "./_components/PixieSwitcherDossier";
 import { PixieRailDossier } from "./_components/PixieRailDossier";
 import { PixieDustBleedDossier } from "./_components/PixieDustBleedDossier";
 import { PixieStickyRegionDossier } from "./_components/PixieStickyRegionDossier";
-import { PixieDustFieldDossier } from "./_components/PixieDustFieldDossier";
+import { PixieFieldDossier } from "./_components/PixieFieldDossier";
 import { PixieDustInputDossier } from "./_components/PixieDustInputDossier";
 import { PixieDustTextareaDossier } from "./_components/PixieDustTextareaDossier";
 import { PixieSelectDossier } from "./_components/PixieSelectDossier";
@@ -214,11 +214,11 @@ const decors = [
 
 const dialogues = [
     {
-        nom: "PixieDustField",
+        nom: "PixieField",
         role: "Associer un contrôle à ses indications",
-        statut: "Esquisse",
-        version: "0.2.0",
-        href: "#pixie-dust-field",
+        statut: "Prêt à projeter",
+        version: "1.0.0",
+        href: "#pixie-field",
     },
     {
         nom: "PixieDustInput",
@@ -880,7 +880,7 @@ export default function AtelierPage() {
                 </div>
 
                 {raccordAvantPremiereFiche}
-                <PixieDustFieldDossier />
+                <PixieFieldDossier />
                 {raccordEntreFiches}
                 <PixieDustInputDossier />
                 {raccordEntreFiches}

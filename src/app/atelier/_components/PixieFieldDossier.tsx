@@ -4,12 +4,11 @@ import { AtelierCodeBlock } from "@/components/atelier/AtelierCodeBlock";
 import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
-import { PixieDustField } from "@/components/ui/PixieDustField";
+import { PixieField } from "@/components/ui/PixieField";
 import { PixieDustSwitch } from "@/components/ui/PixieDustSwitch";
 import { PixiePanel } from "@/components/ui/PixiePanel";
 import { PixieSelect } from "@/components/ui/PixieSelect";
-import { PixieStack } from "@/components/ui/PixieStack";
-import { PixieDustFieldPlayground } from "./PixieDustFieldPlayground";
+import { PixieFieldPlayground } from "./PixieFieldPlayground";
 
 const controlClassName =
     "w-full border border-line-strong bg-canvas px-3 py-2.5 text-ink outline-none transition focus:border-accent focus:ring-2 focus:ring-focus";
@@ -60,7 +59,7 @@ const properties = [
     },
     {
         name: "feedbackTone",
-        type: "PixieDustFieldFeedbackTone",
+        type: "PixieFieldFeedbackTone",
         defaultValue: '"success"',
         description: "Nature sémantique du feedback non bloquant.",
     },
@@ -84,19 +83,19 @@ const properties = [
     },
     {
         name: "layout",
-        type: "PixieDustFieldLayout",
+        type: "PixieFieldLayout",
         defaultValue: '"stacked"',
         description: "Place le libellé au-dessus ou à côté du contrôle.",
     },
     {
         name: "spacing",
-        type: "PixieDustFieldSpacing",
+        type: "PixieFieldSpacing",
         defaultValue: '"md"',
         description: "Rythme vertical entre les parties du Field.",
     },
     {
         name: "requirementDisplay",
-        type: "PixieDustFieldRequirementDisplay",
+        type: "PixieFieldRequirementDisplay",
         defaultValue: '"text"',
         description:
             "Affichage textuel, symbolique ou masqué du caractère requis.",
@@ -123,33 +122,33 @@ const properties = [
 
 const specificTypes = [
     {
-        name: "PixieDustFieldSpacing",
+        name: "PixieFieldSpacing",
         values: ['"xs"', '"sm"', '"md"', '"lg"', '"xl"'],
         description: "Cinq rythmes pour rapprocher ou aérer les indications.",
     },
     {
-        name: "PixieDustFieldLayout",
+        name: "PixieFieldLayout",
         values: ['"stacked"', '"side"'],
         description: "Empile le dialogue ou place son libellé en regard.",
     },
     {
-        name: "PixieDustFieldRequirementDisplay",
+        name: "PixieFieldRequirementDisplay",
         values: ['"text"', '"mark"', '"hidden"'],
         description: "Forme visuelle de la mention obligatoire ou facultative.",
     },
     {
-        name: "PixieDustFieldFeedbackTone",
+        name: "PixieFieldFeedbackTone",
         values: ['"success"', '"warning"'],
         description: "Deux retours non bloquants, distincts de l’erreur.",
     },
     {
-        name: "PixieDustFieldFeedback",
+        name: "PixieFieldFeedback",
         values: ["error", "feedback", "none"],
         description:
             "Contrat exclusif : une erreur et un feedback positif ne coexistent pas.",
     },
     {
-        name: "PixieDustFieldRequirement",
+        name: "PixieFieldRequirement",
         values: ["required", "optional", "none"],
         description:
             "Contrat exclusif : un Field ne peut pas être obligatoire et facultatif à la fois.",
@@ -194,12 +193,12 @@ function Stage({ children }: Readonly<{ children: ReactNode }>) {
     );
 }
 
-export function PixieDustFieldDossier() {
+export function PixieFieldDossier() {
     return (
         <AtelierFicheAccessoire
-            id="pixie-dust-field"
-            labelledBy="pixie-dust-field-title"
-            nom="PixieDustField"
+            id="pixie-field"
+            labelledBy="pixie-field-title"
+            nom="PixieField"
             className="scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
@@ -208,10 +207,10 @@ export function PixieDustFieldDossier() {
                             Le clap · Dialogue 001
                         </p>
                         <h2
-                            id="pixie-dust-field-title"
+                            id="pixie-field-title"
                             className="mt-4 text-4xl text-ink sm:text-5xl"
                         >
-                            PixieDustField
+                            PixieField
                         </h2>
                         <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
                             Associer un contrôle à son libellé, ses indications
@@ -225,7 +224,7 @@ export function PixieDustFieldDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.2.0
+                                1.0.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -233,7 +232,7 @@ export function PixieDustFieldDossier() {
                                 État
                             </dt>
                             <dd className="mt-1 text-sm font-medium">
-                                <AtelierStatut statut="Esquisse" />
+                                <AtelierStatut statut="Prêt à projeter" />
                             </dd>
                         </div>
                     </dl>
@@ -291,7 +290,7 @@ export function PixieDustFieldDossier() {
 
                         <div className="mt-8 grid gap-4 lg:grid-cols-2">
                             <Stage>
-                                <PixieDustField
+                                <PixieField
                                     label="Rechercher dans les archives"
                                     description="Noms, titres, catégories ou collections."
                                     meta="23 œuvres"
@@ -303,16 +302,16 @@ export function PixieDustFieldDossier() {
                                         className={controlClassName}
                                         placeholder="Mickey Mouse"
                                     />
-                                </PixieDustField>
+                                </PixieField>
                             </Stage>
-                            <CodeExample>{`<PixieDustField
+                            <CodeExample>{`<PixieField
     label="Rechercher dans les archives"
     description="Noms, titres, catégories ou collections."
     meta="23 œuvres"
     required
 >
     <input type="search" required />
-</PixieDustField>`}</CodeExample>
+</PixieField>`}</CodeExample>
                         </div>
                     </div>
                 </section>
@@ -373,7 +372,7 @@ export function PixieDustFieldDossier() {
                     />
                     <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
                         <Stage>
-                            <PixieDustField
+                            <PixieField
                                 controlId="field-optional"
                                 label="Collection"
                                 description="Affinez la recherche si nécessaire."
@@ -394,10 +393,10 @@ export function PixieDustFieldDossier() {
                                         Silly Symphonies
                                     </option>
                                 </PixieSelect>
-                            </PixieDustField>
+                            </PixieField>
                         </Stage>
                         <Stage>
-                            <PixieDustField
+                            <PixieField
                                 controlId="field-error"
                                 label="Commentaire de projection"
                                 description="Décrivez le raccord en une phrase."
@@ -410,10 +409,10 @@ export function PixieDustFieldDossier() {
                                     defaultValue="Trop court"
                                     className={`${controlClassName} min-h-28 resize-y`}
                                 />
-                            </PixieDustField>
+                            </PixieField>
                         </Stage>
                         <Stage>
-                            <PixieDustField
+                            <PixieField
                                 controlId="field-success"
                                 label="Titre original"
                                 description="Conservez la graphie de la sortie."
@@ -424,10 +423,10 @@ export function PixieDustFieldDossier() {
                                     className={controlClassName}
                                     defaultValue="The Old Mill"
                                 />
-                            </PixieDustField>
+                            </PixieField>
                         </Stage>
                         <Stage>
-                            <PixieDustField
+                            <PixieField
                                 controlId="field-warning"
                                 label="Date de sortie"
                                 description="La première diffusion doit être vérifiée."
@@ -439,7 +438,7 @@ export function PixieDustFieldDossier() {
                                     className={controlClassName}
                                     defaultValue="1937"
                                 />
-                            </PixieDustField>
+                            </PixieField>
                         </Stage>
                     </div>
                 </section>
@@ -456,7 +455,7 @@ export function PixieDustFieldDossier() {
                             <p className="mb-5 font-mono text-xs uppercase text-accent">
                                 layout=&quot;stacked&quot;
                             </p>
-                            <PixieDustField
+                            <PixieField
                                 label="Nom du personnage"
                                 description="Utilisez le nom visible à l’écran."
                                 layout="stacked"
@@ -466,13 +465,13 @@ export function PixieDustFieldDossier() {
                                     className={controlClassName}
                                     defaultValue="Mickey Mouse"
                                 />
-                            </PixieDustField>
+                            </PixieField>
                         </Stage>
                         <Stage>
                             <p className="mb-5 font-mono text-xs uppercase text-accent">
                                 layout=&quot;side&quot;
                             </p>
-                            <PixieDustField
+                            <PixieField
                                 label="Collection éditoriale"
                                 description="Le libellé revient au-dessus du contrôle lorsque le cadre se resserre."
                                 layout="side"
@@ -491,7 +490,7 @@ export function PixieDustFieldDossier() {
                                     </option>
                                     <option value="donald">Donald Duck</option>
                                 </PixieSelect>
-                            </PixieDustField>
+                            </PixieField>
                         </Stage>
                     </div>
                 </section>
@@ -510,7 +509,7 @@ export function PixieDustFieldDossier() {
                                     <p className="mb-5 font-mono text-xs uppercase text-accent">
                                         spacing=&quot;{spacing}&quot;
                                     </p>
-                                    <PixieDustField
+                                    <PixieField
                                         controlId={`field-${spacing}`}
                                         label="Titre original"
                                         description="Conservez la graphie de la sortie."
@@ -520,7 +519,7 @@ export function PixieDustFieldDossier() {
                                             className={controlClassName}
                                             defaultValue="The Old Mill"
                                         />
-                                    </PixieDustField>
+                                    </PixieField>
                                 </Stage>
                             ),
                         )}
@@ -536,7 +535,7 @@ export function PixieDustFieldDossier() {
                     />
                     <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
                         <Stage>
-                            <PixieDustField
+                            <PixieField
                                 label="Durée estimée"
                                 meta="minutes"
                                 optional
@@ -547,10 +546,10 @@ export function PixieDustFieldDossier() {
                                     className={controlClassName}
                                     defaultValue="7"
                                 />
-                            </PixieDustField>
+                            </PixieField>
                         </Stage>
                         <Stage>
-                            <PixieDustField
+                            <PixieField
                                 label="Note de recherche"
                                 description="Cette donnée a déjà été publiée."
                             >
@@ -559,10 +558,10 @@ export function PixieDustFieldDossier() {
                                     defaultValue="Première apparition sonore"
                                     readOnly
                                 />
-                            </PixieDustField>
+                            </PixieField>
                         </Stage>
                         <Stage>
-                            <PixieDustField
+                            <PixieField
                                 label="Récompense indisponible"
                                 description="Ce choix sera ouvert dans un prochain acte."
                             >
@@ -571,10 +570,10 @@ export function PixieDustFieldDossier() {
                                     defaultValue="Oscar d’honneur"
                                     disabled
                                 />
-                            </PixieDustField>
+                            </PixieField>
                         </Stage>
                         <Stage>
-                            <PixieDustField
+                            <PixieField
                                 label="Rechercher dans le générique"
                                 labelHidden
                             >
@@ -583,10 +582,10 @@ export function PixieDustFieldDossier() {
                                     className={controlClassName}
                                     placeholder="Nom ou métier…"
                                 />
-                            </PixieDustField>
+                            </PixieField>
                         </Stage>
                         <Stage>
-                            <PixieDustField
+                            <PixieField
                                 label="Mention éditoriale exceptionnellement longue pour éprouver le retour à la ligne"
                                 description="Le libellé et sa métadonnée restent lisibles sans comprimer le contrôle."
                                 meta="120 caractères max."
@@ -595,10 +594,10 @@ export function PixieDustFieldDossier() {
                                 <textarea
                                     className={`${controlClassName} min-h-24 resize-y`}
                                 />
-                            </PixieDustField>
+                            </PixieField>
                         </Stage>
                         <Stage>
-                            <PixieDustField
+                            <PixieField
                                 label="Titre français"
                                 description="La mention peut être adaptée au contexte éditorial."
                                 required
@@ -608,16 +607,16 @@ export function PixieDustFieldDossier() {
                                     className={controlClassName}
                                     defaultValue="Blanche-Neige et les Sept Nains"
                                 />
-                            </PixieDustField>
+                            </PixieField>
                         </Stage>
                         <Stage>
-                            <PixieDustField
+                            <PixieField
                                 label="Afficher les références détaillées"
                                 description="La préférence reste modifiable à tout moment."
                                 optional
                             >
                                 <PixieDustSwitch color="violet-ombre-portee" />
-                            </PixieDustField>
+                            </PixieField>
                         </Stage>
                     </div>
                 </section>
@@ -630,7 +629,7 @@ export function PixieDustFieldDossier() {
                         description="Le code et les associations accessibles suivent chaque réglage."
                     />
                     <div className="mt-8">
-                        <PixieDustFieldPlayground />
+                        <PixieFieldPlayground />
                     </div>
                 </section>
 
@@ -685,7 +684,7 @@ export function PixieDustFieldDossier() {
                         <SequenceTitle
                             id="field-technical-title"
                             eyebrow="Générique technique"
-                            title="API de l’esquisse"
+                            title="API du composant"
                             description="Les types required et optional sont exclusifs dès la compilation."
                         />
                         <div className="mt-8">
@@ -700,29 +699,6 @@ export function PixieDustFieldDossier() {
                             </div>
                         </div>
                     </div>
-                </section>
-
-                <section aria-labelledby="field-journal-title">
-                    <SequenceTitle
-                        id="field-journal-title"
-                        eyebrow="Journal de production"
-                        title="Avant la version prête à projeter"
-                    />
-                    <PixieStack as="ul" gap="sm" className="mt-8">
-                        {[
-                            "Éprouver les identifiants automatiques dans les formulaires répétés.",
-                            "Valider les annonces dynamiques de confirmation, d’avertissement et d’erreur.",
-                            "Contrôler le mode latéral avec les contrôles métier du Codex.",
-                            "Tester la restitution des métadonnées et des mentions personnalisées avec plusieurs lecteurs d’écran.",
-                        ].map((item) => (
-                            <li
-                                key={item}
-                                className="border-l-2 border-accent bg-surface-muted px-5 py-4 text-sm leading-6 text-ink-soft"
-                            >
-                                {item}
-                            </li>
-                        ))}
-                    </PixieStack>
                 </section>
             </div>
         </AtelierFicheAccessoire>

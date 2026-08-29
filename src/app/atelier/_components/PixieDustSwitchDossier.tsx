@@ -4,7 +4,7 @@ import { AtelierCodeBlock } from "@/components/atelier/AtelierCodeBlock";
 import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
-import { PixieDustField } from "@/components/ui/PixieDustField";
+import { PixieField } from "@/components/ui/PixieField";
 import { PixiePanel } from "@/components/ui/PixiePanel";
 import { PixieStack } from "@/components/ui/PixieStack";
 import {
@@ -219,7 +219,7 @@ export function PixieDustSwitchDossier() {
                             ],
                             [
                                 "Partenaire",
-                                "PixieDustField pour nommer et expliquer.",
+                                "PixieField pour nommer et expliquer.",
                             ],
                             [
                                 "Matière",
@@ -252,7 +252,7 @@ export function PixieDustSwitchDossier() {
                         />
                         <div className="mt-8 grid gap-4 lg:grid-cols-2">
                             <Stage>
-                                <PixieDustField
+                                <PixieField
                                     controlId="switch-master"
                                     label="Grain de projection"
                                     description="Ajoute une texture légère à l’image."
@@ -261,9 +261,9 @@ export function PixieDustSwitchDossier() {
                                         color="ambre-projecteur"
                                         defaultChecked
                                     />
-                                </PixieDustField>
+                                </PixieField>
                             </Stage>
-                            <CodeExample>{`<PixieDustField
+                            <CodeExample>{`<PixieField
     controlId="projection-grain"
     label="Grain de projection"
     description="Ajoute une texture légère à l’image."
@@ -273,7 +273,7 @@ export function PixieDustSwitchDossier() {
         checked={grainEnabled}
         onChange={(event) => setGrainEnabled(event.target.checked)}
     />
-</PixieDustField>`}</CodeExample>
+</PixieField>`}</CodeExample>
                         </div>
                     </div>
                 </section>
@@ -452,7 +452,7 @@ export function PixieDustSwitchDossier() {
                                     key={preference.id}
                                     className="bg-surface-muted p-5"
                                 >
-                                    <PixieDustField
+                                    <PixieField
                                         controlId={preference.id}
                                         label={preference.label}
                                         description={preference.description}
@@ -462,7 +462,7 @@ export function PixieDustSwitchDossier() {
                                             color={preference.color}
                                             defaultChecked={preference.checked}
                                         />
-                                    </PixieDustField>
+                                    </PixieField>
                                 </div>
                             ))}
                         </div>

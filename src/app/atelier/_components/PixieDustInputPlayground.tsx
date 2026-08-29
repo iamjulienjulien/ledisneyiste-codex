@@ -9,7 +9,7 @@ import {
     useAtelierProjection,
 } from "@/components/atelier/AtelierPlaygroundProjection";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
-import { PixieDustField } from "@/components/ui/PixieDustField";
+import { PixieField } from "@/components/ui/PixieField";
 import {
     PixieDustInput,
     type PixieDustInputSize,
@@ -84,7 +84,7 @@ export function PixieDustInputPlayground() {
     const { lumiere: light, cadre: frame } = useAtelierProjection();
 
     const colorProp = color === "inherit" ? "" : `\n        color="${color}"`;
-    const code = `<PixieDustField
+    const code = `<PixieField
     controlId="archive-search"
     label="Rechercher dans les archives"${invalid ? '\n    error="Aucune archive ne correspond à cette saisie."' : '\n    description="Noms, titres, catégories ou collections."'}${required ? "\n    required" : ""}
 >
@@ -93,7 +93,7 @@ export function PixieDustInputPlayground() {
         variant="${variant}"
         size="${size}"${colorProp}${startAdornment ? '\n        startAdornment="⌕"' : ""}${endAdornment ? '\n        endAdornment="⌘ K"' : ""}${disabled ? "\n        disabled" : ""}${readOnly ? "\n        readOnly" : ""}${required ? "\n        required" : ""}
     />
-</PixieDustField>`;
+</PixieField>`;
     const fieldRequirement = required
         ? ({ required: true } as const)
         : ({} as const);
@@ -256,7 +256,7 @@ export function PixieDustInputPlayground() {
                         <div
                             className={`w-full border border-line bg-surface p-6 sm:p-8 ${frameWidths[frame]}`}
                         >
-                            <PixieDustField
+                            <PixieField
                                 controlId="input-preview"
                                 label="Rechercher dans les archives"
                                 description={
@@ -291,7 +291,7 @@ export function PixieDustInputPlayground() {
                                     required={required}
                                     placeholder="Mickey, Oswald, Silly Symphonies…"
                                 />
-                            </PixieDustField>
+                            </PixieField>
                         </div>
                     </div>
 

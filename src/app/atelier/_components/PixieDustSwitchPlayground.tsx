@@ -9,7 +9,7 @@ import {
     useAtelierProjection,
 } from "@/components/atelier/AtelierPlaygroundProjection";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
-import { PixieDustField } from "@/components/ui/PixieDustField";
+import { PixieField } from "@/components/ui/PixieField";
 import {
     PixieDustSwitch,
     type PixieDustSwitchSize,
@@ -69,7 +69,7 @@ export function PixieDustSwitchPlayground() {
     const { lumiere: light, cadre: frame } = useAtelierProjection();
 
     const colorProp = color === "inherit" ? "" : `\n        color="${color}"`;
-    const code = `<PixieDustField
+    const code = `<PixieField
     controlId="projection-grain"
     label="Grain de projection"${invalid ? '\n    error="Cette préférence doit être vérifiée."' : `\n    description="Le grain est actuellement ${checked ? "actif" : "inactif"}."`}${required ? "\n    required" : ""}
 >
@@ -79,7 +79,7 @@ export function PixieDustSwitchPlayground() {
         checked={grainEnabled}
         onChange={(event) => setGrainEnabled(event.target.checked)}${disabled ? "\n        disabled" : ""}${required ? "\n        required" : ""}
     />
-</PixieDustField>`;
+</PixieField>`;
     const fieldRequirement = required
         ? ({ required: true } as const)
         : ({} as const);
@@ -199,7 +199,7 @@ export function PixieDustSwitchPlayground() {
                         <div
                             className={`w-full border border-line bg-surface p-6 sm:p-8 ${frameWidths[frame]}`}
                         >
-                            <PixieDustField
+                            <PixieField
                                 controlId="switch-preview"
                                 label="Grain de projection"
                                 description={
@@ -225,7 +225,7 @@ export function PixieDustSwitchPlayground() {
                                     disabled={disabled}
                                     required={required}
                                 />
-                            </PixieDustField>
+                            </PixieField>
                         </div>
                     </div>
 

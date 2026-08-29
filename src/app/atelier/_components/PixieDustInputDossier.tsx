@@ -4,7 +4,7 @@ import { AtelierCodeBlock } from "@/components/atelier/AtelierCodeBlock";
 import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
-import { PixieDustField } from "@/components/ui/PixieDustField";
+import { PixieField } from "@/components/ui/PixieField";
 import {
     PixieDustInput,
     type PixieDustInputSize,
@@ -240,7 +240,7 @@ export function PixieDustInputDossier() {
                             ["Mission", "Recueillir une valeur courte."],
                             [
                                 "Partenaire",
-                                "PixieDustField pour nommer et expliquer.",
+                                "PixieField pour nommer et expliquer.",
                             ],
                             [
                                 "Matière",
@@ -273,7 +273,7 @@ export function PixieDustInputDossier() {
                         />
                         <div className="mt-8 grid gap-4 lg:grid-cols-2">
                             <Stage>
-                                <PixieDustField
+                                <PixieField
                                     controlId="input-master"
                                     label="Rechercher dans les archives"
                                     description="Noms, titres, catégories ou collections."
@@ -284,9 +284,9 @@ export function PixieDustInputDossier() {
                                         endAdornment="⌘ K"
                                         placeholder="Mickey Mouse"
                                     />
-                                </PixieDustField>
+                                </PixieField>
                             </Stage>
-                            <CodeExample>{`<PixieDustField
+                            <CodeExample>{`<PixieField
     controlId="archive-search"
     label="Rechercher dans les archives"
     description="Noms, titres, catégories ou collections."
@@ -296,7 +296,7 @@ export function PixieDustInputDossier() {
         startAdornment="⌕"
         endAdornment="⌘ K"
     />
-</PixieDustField>`}</CodeExample>
+</PixieField>`}</CodeExample>
                         </div>
                     </div>
                 </section>
@@ -404,7 +404,7 @@ export function PixieDustInputDossier() {
                     />
                     <div className="mt-8 grid gap-5 md:grid-cols-2">
                         <Stage>
-                            <PixieDustField
+                            <PixieField
                                 controlId="input-prefix"
                                 label="Recherche"
                             >
@@ -414,10 +414,10 @@ export function PixieDustInputDossier() {
                                     placeholder="Titre ou personnage…"
                                     color="bleu-reperage"
                                 />
-                            </PixieDustField>
+                            </PixieField>
                         </Stage>
                         <Stage>
-                            <PixieDustField
+                            <PixieField
                                 controlId="input-suffix"
                                 label="Année de sortie"
                                 description="Indiquez une année sur quatre chiffres."
@@ -428,7 +428,7 @@ export function PixieDustInputDossier() {
                                     placeholder="1928"
                                     color="jaune-lampe"
                                 />
-                            </PixieDustField>
+                            </PixieField>
                         </Stage>
                     </div>
                 </section>

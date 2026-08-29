@@ -4,7 +4,7 @@ import { AtelierCodeBlock } from "@/components/atelier/AtelierCodeBlock";
 import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
-import { PixieDustField } from "@/components/ui/PixieDustField";
+import { PixieField } from "@/components/ui/PixieField";
 import { PixiePanel } from "@/components/ui/PixiePanel";
 import { PixieStack } from "@/components/ui/PixieStack";
 import {
@@ -248,7 +248,7 @@ export function PixieDustTextareaDossier() {
                             ["Mission", "Recueillir une réponse développée."],
                             [
                                 "Partenaire",
-                                "PixieDustField pour nommer et expliquer.",
+                                "PixieField pour nommer et expliquer.",
                             ],
                             [
                                 "Matière",
@@ -281,7 +281,7 @@ export function PixieDustTextareaDossier() {
                         />
                         <div className="mt-8 grid gap-4 lg:grid-cols-2">
                             <Stage>
-                                <PixieDustField
+                                <PixieField
                                     controlId="textarea-master"
                                     label="Note de projection"
                                     description="Décrivez le raccord à conserver dans les archives."
@@ -290,9 +290,9 @@ export function PixieDustTextareaDossier() {
                                         rows={6}
                                         placeholder="Cette séquence marque…"
                                     />
-                                </PixieDustField>
+                                </PixieField>
                             </Stage>
-                            <CodeExample>{`<PixieDustField
+                            <CodeExample>{`<PixieField
     controlId="projection-note"
     label="Note de projection"
     description="Décrivez le raccord à conserver dans les archives."
@@ -301,7 +301,7 @@ export function PixieDustTextareaDossier() {
         rows={6}
         placeholder="Cette séquence marque…"
     />
-</PixieDustField>`}</CodeExample>
+</PixieField>`}</CodeExample>
                         </div>
                     </div>
                 </section>
@@ -382,7 +382,7 @@ export function PixieDustTextareaDossier() {
                     />
                     <div className="mt-8 grid gap-5 md:grid-cols-2">
                         <Stage>
-                            <PixieDustField
+                            <PixieField
                                 controlId="textarea-short"
                                 label="Commentaire bref"
                                 optional
@@ -392,10 +392,10 @@ export function PixieDustTextareaDossier() {
                                     resize="vertical"
                                     defaultValue="Le raccord musical mérite une source complémentaire."
                                 />
-                            </PixieDustField>
+                            </PixieField>
                         </Stage>
                         <Stage>
-                            <PixieDustField
+                            <PixieField
                                 controlId="textarea-developed"
                                 label="Analyse de la séquence"
                                 description="Deux paragraphes maximum pour cette première lecture."
@@ -407,7 +407,7 @@ export function PixieDustTextareaDossier() {
                                     defaultValue={developedAnswer}
                                     color="bleu-reperage"
                                 />
-                            </PixieDustField>
+                            </PixieField>
                         </Stage>
                     </div>
                 </section>

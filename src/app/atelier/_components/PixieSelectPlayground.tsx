@@ -7,7 +7,7 @@ import {
     useAtelierProjection,
 } from "@/components/atelier/AtelierPlaygroundProjection";
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
-import { PixieDustField } from "@/components/ui/PixieDustField";
+import { PixieField } from "@/components/ui/PixieField";
 import {
     PixieSelect,
     type PixieSelectMode,
@@ -99,7 +99,7 @@ export function PixieSelectPlayground() {
         mode === "popover"
             ? `\n        mode="popover"${portal ? "\n        portal" : ""}`
             : "";
-    const code = `<PixieDustField
+    const code = `<PixieField
     controlId="archive-period"
     label="Période des archives"${invalid ? '\n    error="Choisissez une période avant de poursuivre."' : '\n    description="Une seule période peut être retenue."'}${required ? "\n    required" : ""}
 >
@@ -109,7 +109,7 @@ export function PixieSelectPlayground() {
     >
 ${grouped ? groupedOptionsCode : flatOptionsCode}
     </PixieSelect>
-</PixieDustField>`;
+</PixieField>`;
     const fieldRequirement = required
         ? ({ required: true } as const)
         : ({} as const);
@@ -277,7 +277,7 @@ ${grouped ? groupedOptionsCode : flatOptionsCode}
                         <div
                             className={`w-full border border-line bg-surface p-6 sm:p-8 ${frameWidths[frame]}`}
                         >
-                            <PixieDustField
+                            <PixieField
                                 controlId="select-preview"
                                 label="Période des archives"
                                 description={
@@ -340,7 +340,7 @@ ${grouped ? groupedOptionsCode : flatOptionsCode}
                                         </>
                                     )}
                                 </PixieSelect>
-                            </PixieDustField>
+                            </PixieField>
                         </div>
                     </div>
 
