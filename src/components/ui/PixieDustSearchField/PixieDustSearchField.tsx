@@ -9,7 +9,7 @@ import {
 } from "react";
 import { PixieButton, type PixieButtonSize } from "@/components/ui/PixieButton";
 import { PixieField } from "@/components/ui/PixieField";
-import { PixieDustInput } from "@/components/ui/PixieDustInput";
+import { PixieInput } from "@/components/ui/PixieInput";
 import styles from "./PixieDustSearchField.module.css";
 import type {
     PixieDustSearchFieldLayout,
@@ -84,7 +84,7 @@ function SearchControl({
 
     return (
         <div className={`${styles.controls} ${layoutClasses[layout]}`}>
-            <PixieDustInput
+            <PixieInput
                 ref={inputRef}
                 id={id}
                 type="search"

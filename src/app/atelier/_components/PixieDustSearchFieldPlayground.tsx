@@ -14,9 +14,9 @@ import {
     type PixieDustSearchFieldLayout,
 } from "@/components/ui/PixieDustSearchField";
 import type {
-    PixieDustInputSize,
-    PixieDustInputVariant,
-} from "@/components/ui/PixieDustInput";
+    PixieInputSize,
+    PixieInputVariant,
+} from "@/components/ui/PixieInput";
 import {
     getAtelierAnimationColor,
     getAtelierAnimationColorSlugs,
@@ -28,7 +28,7 @@ const variants = [
     { value: "filled", label: "Surface" },
     { value: "underline", label: "Souligné" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustInputVariant;
+    value: PixieInputVariant;
     label: string;
 }>[];
 
@@ -37,7 +37,7 @@ const sizes = [
     { value: "md", label: "Moyenne" },
     { value: "lg", label: "Grande" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustInputSize;
+    value: PixieInputSize;
     label: string;
 }>[];
 
@@ -68,8 +68,8 @@ const frameWidths = {
 } as const satisfies Record<"compact" | "moyen" | "large", string>;
 
 export function PixieDustSearchFieldPlayground() {
-    const [variant, setVariant] = useState<PixieDustInputVariant>("outline");
-    const [size, setSize] = useState<PixieDustInputSize>("md");
+    const [variant, setVariant] = useState<PixieInputVariant>("outline");
+    const [size, setSize] = useState<PixieInputSize>("md");
     const [layout, setLayout] =
         useState<PixieDustSearchFieldLayout>("responsive");
     const [color, setColor] = useState<AtelierAnimationColorSlug | "inherit">(

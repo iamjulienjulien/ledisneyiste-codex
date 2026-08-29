@@ -6,18 +6,17 @@ import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieField } from "@/components/ui/PixieField";
 import {
-    PixieDustInput,
-    type PixieDustInputAlign,
-    type PixieDustInputFont,
-    type PixieDustInputShape,
-    type PixieDustInputSize,
-    type PixieDustInputTone,
-    type PixieDustInputType,
-    type PixieDustInputVariant,
-} from "@/components/ui/PixieDustInput";
+    PixieInput,
+    type PixieInputAlign,
+    type PixieInputFont,
+    type PixieInputShape,
+    type PixieInputSize,
+    type PixieInputTone,
+    type PixieInputType,
+    type PixieInputVariant,
+} from "@/components/ui/PixieInput";
 import { PixiePanel } from "@/components/ui/PixiePanel";
-import { PixieStack } from "@/components/ui/PixieStack";
-import { PixieDustInputPlayground } from "./PixieDustInputPlayground";
+import { PixieInputPlayground } from "./PixieInputPlayground";
 
 const variants = [
     {
@@ -41,7 +40,7 @@ const variants = [
         role: "Une présence minimale qui révèle son cadre pendant l’interaction.",
     },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustInputVariant;
+    value: PixieInputVariant;
     name: string;
     role: string;
 }>[];
@@ -53,7 +52,7 @@ const sizes = [
     { value: "lg" as const, name: "Grande", height: "52 px" },
     { value: "xl" as const, name: "Très grande", height: "60 px" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustInputSize;
+    value: PixieInputSize;
     name: string;
     height: string;
 }>[];
@@ -71,14 +70,14 @@ const inputTypes = [
     "datetime-local",
     "month",
     "week",
-] as const satisfies readonly PixieDustInputType[];
+] as const satisfies readonly PixieInputType[];
 
 const shapes = [
     { value: "square" as const, name: "Carrée" },
     { value: "rounded" as const, name: "Arrondie" },
     { value: "pill" as const, name: "Pilule" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustInputShape;
+    value: PixieInputShape;
     name: string;
 }>[];
 
@@ -87,7 +86,7 @@ const alignments = [
     { value: "center" as const, name: "Centre" },
     { value: "end" as const, name: "Fin" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustInputAlign;
+    value: PixieInputAlign;
     name: string;
 }>[];
 
@@ -95,7 +94,7 @@ const fonts = [
     { value: "body" as const, name: "Texte" },
     { value: "mono" as const, name: "Monospace" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustInputFont;
+    value: PixieInputFont;
     name: string;
 }>[];
 
@@ -104,56 +103,56 @@ const tones = [
     { value: "success" as const, name: "Succès" },
     { value: "warning" as const, name: "Avertissement" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustInputTone;
+    value: PixieInputTone;
     name: string;
 }>[];
 
 const properties = [
     {
         name: "type",
-        type: "PixieDustInputType",
+        type: "PixieInputType",
         defaultValue: '"text"',
         description: "Nature de la saisie courte attendue.",
     },
     {
         name: "variant",
-        type: "PixieDustInputVariant",
+        type: "PixieInputVariant",
         defaultValue: '"outline"',
         description: "Traitement visuel du contrôle.",
     },
     {
         name: "size",
-        type: "PixieDustInputSize",
+        type: "PixieInputSize",
         defaultValue: '"md"',
         description: "Hauteur et espaces internes du contrôle.",
     },
     {
         name: "shape",
-        type: "PixieDustInputShape",
+        type: "PixieInputShape",
         defaultValue: '"rounded"',
         description: "Forme du cadre, sauf pour la variante underline.",
     },
     {
         name: "align",
-        type: "PixieDustInputAlign",
+        type: "PixieInputAlign",
         defaultValue: '"start"',
         description: "Alignement horizontal de la valeur.",
     },
     {
         name: "font",
-        type: "PixieDustInputFont",
+        type: "PixieInputFont",
         defaultValue: '"body"',
         description: "Typographie de lecture ou de donnée structurée.",
     },
     {
         name: "tone",
-        type: "PixieDustInputTone",
+        type: "PixieInputTone",
         defaultValue: '"neutral"',
         description: "État neutre, positif ou à vérifier.",
     },
     {
         name: "color",
-        type: "PixieDustInputColor",
+        type: "PixieInputColor",
         defaultValue: "false",
         description: "Couleur du focus, héritée ou issue du registre.",
     },
@@ -215,42 +214,42 @@ const properties = [
 
 const specificTypes = [
     {
-        name: "PixieDustInputType",
+        name: "PixieInputType",
         values: inputTypes.map((value) => `"${value}"`),
         description: "Types natifs adaptés à une saisie courte.",
     },
     {
-        name: "PixieDustInputVariant",
+        name: "PixieInputVariant",
         values: variants.map(({ value }) => `"${value}"`),
         description: "Trois présences visuelles dans la composition.",
     },
     {
-        name: "PixieDustInputSize",
+        name: "PixieInputSize",
         values: sizes.map(({ value }) => `"${value}"`),
         description: "Échelle de hauteur des champs.",
     },
     {
-        name: "PixieDustInputShape",
+        name: "PixieInputShape",
         values: shapes.map(({ value }) => `"${value}"`),
         description: "Trois géométries pour le cadre du contrôle.",
     },
     {
-        name: "PixieDustInputAlign",
+        name: "PixieInputAlign",
         values: alignments.map(({ value }) => `"${value}"`),
         description: "Position horizontale du texte saisi.",
     },
     {
-        name: "PixieDustInputFont",
+        name: "PixieInputFont",
         values: fonts.map(({ value }) => `"${value}"`),
         description: "Texte courant ou données à chasse fixe.",
     },
     {
-        name: "PixieDustInputTone",
+        name: "PixieInputTone",
         values: tones.map(({ value }) => `"${value}"`),
         description: "Retours non bloquants ; invalid reste prioritaire.",
     },
     {
-        name: "PixieDustInputColor",
+        name: "PixieInputColor",
         values: ["AtelierAnimationColorSlug", "false"],
         description: "Accent du registre ou couleur héritée.",
     },
@@ -294,12 +293,12 @@ function Stage({ children }: Readonly<{ children: ReactNode }>) {
     );
 }
 
-export function PixieDustInputDossier() {
+export function PixieInputDossier() {
     return (
         <AtelierFicheAccessoire
-            id="pixie-dust-input"
-            labelledBy="pixie-dust-input-title"
-            nom="PixieDustInput"
+            id="pixie-input"
+            labelledBy="pixie-input-title"
+            nom="PixieInput"
             className="scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
@@ -308,10 +307,10 @@ export function PixieDustInputDossier() {
                             Le clap · Dialogue 002
                         </p>
                         <h2
-                            id="pixie-dust-input-title"
+                            id="pixie-input-title"
                             className="mt-4 text-4xl text-ink sm:text-5xl"
                         >
-                            PixieDustInput
+                            PixieInput
                         </h2>
                         <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
                             Recueillir une saisie courte dans un contrôle natif
@@ -325,7 +324,7 @@ export function PixieDustInputDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.2.0
+                                1.0.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -333,7 +332,7 @@ export function PixieDustInputDossier() {
                                 État
                             </dt>
                             <dd className="mt-1 text-sm font-medium">
-                                <AtelierStatut statut="Esquisse" />
+                                <AtelierStatut statut="Prêt à projeter" />
                             </dd>
                         </div>
                     </dl>
@@ -391,7 +390,7 @@ export function PixieDustInputDossier() {
                                     label="Rechercher dans les archives"
                                     description="Noms, titres, catégories ou collections."
                                 >
-                                    <PixieDustInput
+                                    <PixieInput
                                         type="search"
                                         startAdornment="⌕"
                                         endAdornment="⌘ K"
@@ -404,7 +403,7 @@ export function PixieDustInputDossier() {
     label="Rechercher dans les archives"
     description="Noms, titres, catégories ou collections."
 >
-    <PixieDustInput
+    <PixieInput
         type="search"
         startAdornment="⌕"
         endAdornment="⌘ K"
@@ -434,7 +433,7 @@ export function PixieDustInputDossier() {
                                     {variant.role}
                                 </p>
                                 <div className="mt-6">
-                                    <PixieDustInput
+                                    <PixieInput
                                         variant={variant.value}
                                         aria-label={`Exemple ${variant.name}`}
                                         placeholder="Saisir un titre…"
@@ -466,7 +465,7 @@ export function PixieDustInputDossier() {
                                     {size.name}
                                 </h4>
                                 <div className="mt-6">
-                                    <PixieDustInput
+                                    <PixieInput
                                         size={size.value}
                                         aria-label={`Taille ${size.name}`}
                                         defaultValue="Steamboat Willie"
@@ -494,7 +493,7 @@ export function PixieDustInputDossier() {
                                     {shape.name}
                                 </h4>
                                 <div className="mt-6">
-                                    <PixieDustInput
+                                    <PixieInput
                                         shape={shape.value}
                                         aria-label={`Forme ${shape.name}`}
                                         defaultValue="Plane Crazy"
@@ -519,7 +518,7 @@ export function PixieDustInputDossier() {
                                     type=&quot;{type}&quot;
                                 </p>
                                 <div className="mt-5">
-                                    <PixieDustInput
+                                    <PixieInput
                                         type={type}
                                         aria-label={`Saisie ${type}`}
                                         placeholder={
@@ -550,7 +549,7 @@ export function PixieDustInputDossier() {
                                     align=&quot;{alignment.value}&quot;
                                 </p>
                                 <div className="mt-5">
-                                    <PixieDustInput
+                                    <PixieInput
                                         align={alignment.value}
                                         font="mono"
                                         aria-label={`Alignement ${alignment.name}`}
@@ -565,7 +564,7 @@ export function PixieDustInputDossier() {
                                     font=&quot;{font.value}&quot;
                                 </p>
                                 <div className="mt-5">
-                                    <PixieDustInput
+                                    <PixieInput
                                         font={font.value}
                                         aria-label={`Typographie ${font.name}`}
                                         defaultValue="SW-1937-12-21"
@@ -589,7 +588,7 @@ export function PixieDustInputDossier() {
                                 controlId="input-prefix"
                                 label="Recherche"
                             >
-                                <PixieDustInput
+                                <PixieInput
                                     type="search"
                                     startAdornment="⌕"
                                     placeholder="Titre ou personnage…"
@@ -603,7 +602,7 @@ export function PixieDustInputDossier() {
                                 label="Année de sortie"
                                 description="Indiquez une année sur quatre chiffres."
                             >
-                                <PixieDustInput
+                                <PixieInput
                                     type="number"
                                     endAdornment="année"
                                     placeholder="1928"
@@ -617,7 +616,7 @@ export function PixieDustInputDossier() {
                                 label="Collection"
                                 description="L’action ouvre un sélecteur indépendant."
                             >
-                                <PixieDustInput
+                                <PixieInput
                                     startAction={
                                         <button
                                             type="button"
@@ -637,7 +636,7 @@ export function PixieDustInputDossier() {
                                 label="Mot de passe"
                                 description="La visibilité reste pilotée par le parent."
                             >
-                                <PixieDustInput
+                                <PixieInput
                                     type="password"
                                     defaultValue="faire-un-voeu"
                                     endAction={
@@ -669,7 +668,7 @@ export function PixieDustInputDossier() {
                                 feedback="La formulation peut être conservée."
                                 feedbackTone="success"
                             >
-                                <PixieDustInput
+                                <PixieInput
                                     defaultValue="The Old Mill"
                                     tone="success"
                                 />
@@ -681,7 +680,7 @@ export function PixieDustInputDossier() {
                                 feedback="Cette date demande une seconde source."
                                 feedbackTone="warning"
                             >
-                                <PixieDustInput
+                                <PixieInput
                                     type="number"
                                     defaultValue="1937"
                                     tone="warning"
@@ -694,7 +693,7 @@ export function PixieDustInputDossier() {
                                 label="Titre à rapprocher"
                                 description="La recherche reste utilisable pendant la vérification."
                             >
-                                <PixieDustInput
+                                <PixieInput
                                     type="search"
                                     defaultValue="Mickey"
                                     busy
@@ -706,14 +705,11 @@ export function PixieDustInputDossier() {
                                 label="Titre français"
                                 error="Aucune archive ne porte ce titre."
                             >
-                                <PixieDustInput
-                                    defaultValue="Inconnu"
-                                    invalid
-                                />
+                                <PixieInput defaultValue="Inconnu" invalid />
                             </PixieField>
                         </Stage>
                         <Stage>
-                            <PixieDustInput
+                            <PixieInput
                                 aria-label="Champ désactivé"
                                 defaultValue="Projection interrompue"
                                 disabled
@@ -723,7 +719,7 @@ export function PixieDustInputDossier() {
                             </p>
                         </Stage>
                         <Stage>
-                            <PixieDustInput
+                            <PixieInput
                                 aria-label="Champ en lecture seule"
                                 defaultValue="9 juin 1934"
                                 readOnly
@@ -745,7 +741,7 @@ export function PixieDustInputDossier() {
                     <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
                         <Stage>
                             <PixieField label="Recherche rapide" labelHidden>
-                                <PixieDustInput
+                                <PixieInput
                                     type="search"
                                     shape="pill"
                                     startAdornment="⌕"
@@ -759,7 +755,7 @@ export function PixieDustInputDossier() {
                                 label="Adresse de la source"
                                 description="Le protocole reste visible hors de la valeur."
                             >
-                                <PixieDustInput
+                                <PixieInput
                                     type="url"
                                     startAdornment="https://"
                                     defaultValue="d23.com/a-to-z/"
@@ -773,7 +769,7 @@ export function PixieDustInputDossier() {
                                 label="Code d’inventaire"
                                 meta="8 caractères"
                             >
-                                <PixieDustInput
+                                <PixieInput
                                     defaultValue="SW-1937"
                                     align="center"
                                     font="mono"
@@ -784,7 +780,7 @@ export function PixieDustInputDossier() {
                         </Stage>
                         <Stage>
                             <PixieField label="Première projection">
-                                <PixieDustInput
+                                <PixieInput
                                     type="date"
                                     defaultValue="1937-12-21"
                                     font="mono"
@@ -796,7 +792,7 @@ export function PixieDustInputDossier() {
                                 label="Accès aux archives"
                                 description="L’action de révélation appartient au parent."
                             >
-                                <PixieDustInput
+                                <PixieInput
                                     type="password"
                                     defaultValue="faire-un-voeu"
                                     endAction={
@@ -817,7 +813,7 @@ export function PixieDustInputDossier() {
                                 feedback="La valeur correspond à la première de Los Angeles."
                                 feedbackTone="success"
                             >
-                                <PixieDustInput
+                                <PixieInput
                                     type="number"
                                     defaultValue="1937"
                                     endAdornment="année"
@@ -838,7 +834,7 @@ export function PixieDustInputDossier() {
                         description="Le rendu et le code suivent les types, variantes, couleurs et états choisis."
                     />
                     <div className="mt-8">
-                        <PixieDustInputPlayground />
+                        <PixieInputPlayground />
                     </div>
                 </section>
 
@@ -891,7 +887,7 @@ export function PixieDustInputDossier() {
                         <SequenceTitle
                             id="input-technical-title"
                             eyebrow="Générique technique"
-                            title="API de l’esquisse"
+                            title="API du composant"
                             description="Les attributs natifs non remplacés sont transmis directement à l’input."
                         />
                         <div className="mt-8">
@@ -906,29 +902,6 @@ export function PixieDustInputDossier() {
                             </div>
                         </div>
                     </div>
-                </section>
-
-                <section aria-labelledby="input-journal-title">
-                    <SequenceTitle
-                        id="input-journal-title"
-                        eyebrow="Journal de production"
-                        title="Avant la version prête à projeter"
-                    />
-                    <PixieStack as="ul" gap="sm" className="mt-8">
-                        {[
-                            "Éprouver les nouveaux types temporels sur les navigateurs cibles.",
-                            "Valider l’ordre de tabulation des actions initiales et finales.",
-                            "Contrôler les tons et l’attente avec les annonces de PixieField.",
-                            "Tester les cinq tailles, les formes et l’autofill dans les deux Lumières.",
-                        ].map((item) => (
-                            <li
-                                key={item}
-                                className="border-l-2 border-accent bg-surface-muted px-5 py-4 text-sm leading-6 text-ink-soft"
-                            >
-                                {item}
-                            </li>
-                        ))}
-                    </PixieStack>
                 </section>
             </div>
         </AtelierFicheAccessoire>

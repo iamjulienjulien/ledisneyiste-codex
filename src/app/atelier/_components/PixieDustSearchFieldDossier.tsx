@@ -11,9 +11,9 @@ import {
 } from "@/components/ui/PixieDustSearchField";
 import { PixieStack } from "@/components/ui/PixieStack";
 import type {
-    PixieDustInputSize,
-    PixieDustInputVariant,
-} from "@/components/ui/PixieDustInput";
+    PixieInputSize,
+    PixieInputVariant,
+} from "@/components/ui/PixieInput";
 import { PixieDustSearchFieldPlayground } from "./PixieDustSearchFieldPlayground";
 
 const variants = [
@@ -33,7 +33,7 @@ const variants = [
         role: "Une recherche discrète intégrée à une composition éditoriale.",
     },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustInputVariant;
+    value: PixieInputVariant;
     name: string;
     role: string;
 }>[];
@@ -43,7 +43,7 @@ const sizes = [
     { value: "md" as const, name: "Moyenne", inputHeight: "44 px" },
     { value: "lg" as const, name: "Grande", inputHeight: "52 px" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustInputSize;
+    value: PixieInputSize;
     name: string;
     inputHeight: string;
 }>[];
@@ -151,13 +151,13 @@ const properties = [
     },
     {
         name: "variant",
-        type: "PixieDustInputVariant",
+        type: "PixieInputVariant",
         defaultValue: '"outline"',
         description: "Traitement visuel du champ de requête.",
     },
     {
         name: "size",
-        type: "PixieDustInputSize",
+        type: "PixieInputSize",
         defaultValue: '"md"',
         description: "Dimensions du champ et des commandes.",
     },
@@ -246,12 +246,12 @@ const specificTypes = [
         description: "Accent du registre ou couleur héritée.",
     },
     {
-        name: "PixieDustInputVariant",
+        name: "PixieInputVariant",
         values: variants.map(({ value }) => `"${value}"`),
-        description: "Traitement visuel transmis à PixieDustInput.",
+        description: "Traitement visuel transmis à PixieInput.",
     },
     {
-        name: "PixieDustInputSize",
+        name: "PixieInputSize",
         values: sizes.map(({ value }) => `"${value}"`),
         description: "Échelle commune au champ et aux boutons.",
     },
@@ -413,7 +413,7 @@ export function PixieDustSearchFieldDossier() {
                         id="search-field-variants-title"
                         eyebrow="Variantes"
                         title="Le champ conserve le langage des premiers Dialogues"
-                        description="SearchField transmet outline, filled et underline à PixieDustInput sans modifier les commandes."
+                        description="SearchField transmet outline, filled et underline à PixieInput sans modifier les commandes."
                     />
                     <div className="mt-8 grid gap-5 lg:grid-cols-3">
                         {variants.map((variant) => (

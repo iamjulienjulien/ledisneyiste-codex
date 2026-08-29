@@ -1,8 +1,8 @@
 import type { ChangeEventHandler, FormEventHandler, ReactNode } from "react";
 import type {
-    PixieDustInputSize,
-    PixieDustInputVariant,
-} from "@/components/ui/PixieDustInput";
+    PixieInputSize,
+    PixieInputVariant,
+} from "@/components/ui/PixieInput";
 import type { AtelierAnimationColorSlug } from "@/types/colors";
 
 export type PixieDustSearchFieldLayout = "inline" | "stacked" | "responsive";
@@ -25,8 +25,8 @@ export type PixieDustSearchFieldProps = Readonly<{
     placeholder?: string;
     description?: ReactNode;
     error?: ReactNode;
-    variant?: PixieDustInputVariant;
-    size?: PixieDustInputSize;
+    variant?: PixieInputVariant;
+    size?: PixieInputSize;
     color?: PixieDustSearchFieldColor;
     layout?: PixieDustSearchFieldLayout;
     submitLabel?: string;

@@ -11,22 +11,22 @@ import {
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { PixieField } from "@/components/ui/PixieField";
 import {
-    PixieDustInput,
-    type PixieDustInputAlign,
-    type PixieDustInputFont,
-    type PixieDustInputShape,
-    type PixieDustInputSize,
-    type PixieDustInputTone,
-    type PixieDustInputType,
-    type PixieDustInputVariant,
-} from "@/components/ui/PixieDustInput";
+    PixieInput,
+    type PixieInputAlign,
+    type PixieInputFont,
+    type PixieInputShape,
+    type PixieInputSize,
+    type PixieInputTone,
+    type PixieInputType,
+    type PixieInputVariant,
+} from "@/components/ui/PixieInput";
 import {
     getAtelierAnimationColor,
     getAtelierAnimationColorSlugs,
 } from "@/registry/colors";
 import type { AtelierAnimationColorSlug } from "@/types/colors";
 
-const types: readonly PixieDustInputType[] = [
+const types: readonly PixieInputType[] = [
     "text",
     "search",
     "email",
@@ -47,7 +47,7 @@ const variants = [
     { value: "underline", label: "Souligné" },
     { value: "ghost", label: "Fantôme" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustInputVariant;
+    value: PixieInputVariant;
     label: string;
 }>[];
 
@@ -58,7 +58,7 @@ const sizes = [
     { value: "lg", label: "Grande" },
     { value: "xl", label: "Très grande" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustInputSize;
+    value: PixieInputSize;
     label: string;
 }>[];
 
@@ -67,7 +67,7 @@ const shapes = [
     { value: "rounded", label: "Arrondie" },
     { value: "pill", label: "Pilule" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustInputShape;
+    value: PixieInputShape;
     label: string;
 }>[];
 
@@ -76,7 +76,7 @@ const alignments = [
     { value: "center", label: "Centre" },
     { value: "end", label: "Fin" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustInputAlign;
+    value: PixieInputAlign;
     label: string;
 }>[];
 
@@ -84,7 +84,7 @@ const fonts = [
     { value: "body", label: "Texte" },
     { value: "mono", label: "Monospace" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustInputFont;
+    value: PixieInputFont;
     label: string;
 }>[];
 
@@ -93,7 +93,7 @@ const tones = [
     { value: "success", label: "Succès" },
     { value: "warning", label: "Avertissement" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustInputTone;
+    value: PixieInputTone;
     label: string;
 }>[];
 
@@ -114,14 +114,14 @@ const frameWidths = {
     large: "max-w-none",
 } as const satisfies Record<"compact" | "moyen" | "large", string>;
 
-export function PixieDustInputPlayground() {
-    const [type, setType] = useState<PixieDustInputType>("search");
-    const [variant, setVariant] = useState<PixieDustInputVariant>("outline");
-    const [size, setSize] = useState<PixieDustInputSize>("md");
-    const [shape, setShape] = useState<PixieDustInputShape>("rounded");
-    const [align, setAlign] = useState<PixieDustInputAlign>("start");
-    const [font, setFont] = useState<PixieDustInputFont>("body");
-    const [tone, setTone] = useState<PixieDustInputTone>("neutral");
+export function PixieInputPlayground() {
+    const [type, setType] = useState<PixieInputType>("search");
+    const [variant, setVariant] = useState<PixieInputVariant>("outline");
+    const [size, setSize] = useState<PixieInputSize>("md");
+    const [shape, setShape] = useState<PixieInputShape>("rounded");
+    const [align, setAlign] = useState<PixieInputAlign>("start");
+    const [font, setFont] = useState<PixieInputFont>("body");
+    const [tone, setTone] = useState<PixieInputTone>("neutral");
     const [color, setColor] = useState<AtelierAnimationColorSlug | "inherit">(
         "inherit",
     );
@@ -164,7 +164,7 @@ export function PixieDustInputPlayground() {
     controlId="archive-search"
     label="Rechercher dans les archives"${fieldMessage}${required ? "\n    required" : ""}
 >
-    <PixieDustInput
+    <PixieInput
         type="${type}"
         variant="${variant}"
         size="${size}"
@@ -229,8 +229,7 @@ export function PixieDustInputPlayground() {
                                 value={type}
                                 onChange={(event) =>
                                     setType(
-                                        event.target
-                                            .value as PixieDustInputType,
+                                        event.target.value as PixieInputType,
                                     )
                                 }
                                 className="mt-2 font-mono"
@@ -293,8 +292,7 @@ export function PixieDustInputPlayground() {
                                 value={shape}
                                 onChange={(event) =>
                                     setShape(
-                                        event.target
-                                            .value as PixieDustInputShape,
+                                        event.target.value as PixieInputShape,
                                     )
                                 }
                             >
@@ -325,8 +323,7 @@ export function PixieDustInputPlayground() {
                                 value={align}
                                 onChange={(event) =>
                                     setAlign(
-                                        event.target
-                                            .value as PixieDustInputAlign,
+                                        event.target.value as PixieInputAlign,
                                     )
                                 }
                             >
@@ -357,8 +354,7 @@ export function PixieDustInputPlayground() {
                                 value={font}
                                 onChange={(event) =>
                                     setFont(
-                                        event.target
-                                            .value as PixieDustInputFont,
+                                        event.target.value as PixieInputFont,
                                     )
                                 }
                             >
@@ -389,8 +385,7 @@ export function PixieDustInputPlayground() {
                                 value={tone}
                                 onChange={(event) =>
                                     setTone(
-                                        event.target
-                                            .value as PixieDustInputTone,
+                                        event.target.value as PixieInputTone,
                                     )
                                 }
                             >
@@ -480,7 +475,7 @@ export function PixieDustInputPlayground() {
                                 {...fieldRequirement}
                                 {...fieldFeedback}
                             >
-                                <PixieDustInput
+                                <PixieInput
                                     type={type}
                                     variant={variant}
                                     size={size}

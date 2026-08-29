@@ -441,7 +441,7 @@ export function PixieSelectDossier() {
                         id="select-sizes-title"
                         eyebrow="Dimensions"
                         title="Trois hauteurs dans le rythme des Dialogues"
-                        description="Les dimensions correspondent à celles de PixieDustInput pour aligner les contrôles sur une même ligne."
+                        description="Les dimensions correspondent à celles de PixieInput pour aligner les contrôles sur une même ligne."
                     />
                     <div className="mt-8 grid gap-5 lg:grid-cols-3">
                         {sizes.map((size) => (

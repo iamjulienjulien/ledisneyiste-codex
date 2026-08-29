@@ -129,7 +129,7 @@ const specificTypes = [
     {
         name: "PixieDustTextareaVariant",
         values: variants.map(({ value }) => `"${value}"`),
-        description: "Trois présences cohérentes avec PixieDustInput.",
+        description: "Trois présences cohérentes avec PixieInput.",
     },
     {
         name: "PixieDustTextareaSize",
@@ -311,7 +311,7 @@ export function PixieDustTextareaDossier() {
                         id="textarea-variants-title"
                         eyebrow="Variantes"
                         title="La même grammaire sur une scène plus longue"
-                        description="Outline, filled et underline conservent les mêmes intentions que dans PixieDustInput."
+                        description="Outline, filled et underline conservent les mêmes intentions que dans PixieInput."
                     />
                     <div className="mt-8 grid gap-5 lg:grid-cols-3">
                         {variants.map((variant) => (
