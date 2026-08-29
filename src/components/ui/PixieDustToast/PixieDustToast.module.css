@@ -4,12 +4,35 @@
     grid-template-columns: auto minmax(0, 1fr) auto auto;
     align-items: start;
     width: 100%;
-    max-width: 30rem;
     overflow: hidden;
     border: 1px solid var(--color-line);
     color: var(--color-ink);
     box-shadow: 0 1rem 2.5rem rgb(0 0 0 / 18%);
-    animation: toast-enter 180ms ease-out both;
+    translate: var(--pixie-toast-swipe-x) var(--pixie-toast-swipe-y);
+    transition:
+        translate 160ms ease-out,
+        box-shadow 160ms ease-out;
+    isolation: isolate;
+}
+
+.root[data-swiping="true"] {
+    box-shadow: 0 0.6rem 1.5rem rgb(0 0 0 / 14%);
+    transition: none;
+}
+
+.root[data-swipe-direction="start"],
+.root[data-swipe-direction="end"] {
+    touch-action: pan-y;
+}
+
+.root[data-swipe-direction="up"],
+.root[data-swipe-direction="down"] {
+    touch-action: pan-x;
+}
+
+.root > * {
+    position: relative;
+    z-index: 1;
 }
 
 .surface {
@@ -25,12 +48,79 @@
 .outline {
     border-color: var(--pixie-toast-color);
     background: var(--color-canvas);
+    box-shadow: 0 0.75rem 2rem rgb(0 0 0 / 10%);
 }
 
 .solid {
     border-color: var(--pixie-toast-color);
     background: var(--pixie-toast-color);
     color: var(--pixie-toast-foreground);
+}
+
+.glass {
+    border-color: color-mix(
+        in srgb,
+        var(--pixie-toast-color) 48%,
+        var(--color-line)
+    );
+    background:
+        linear-gradient(
+            115deg,
+            color-mix(in srgb, var(--pixie-toast-color) 16%, transparent),
+            transparent 52%
+        ),
+        color-mix(in srgb, var(--color-surface) 76%, transparent);
+    box-shadow:
+        inset 0 1px rgb(255 255 255 / 10%),
+        0 1.25rem 3rem rgb(0 0 0 / 22%);
+    backdrop-filter: blur(1rem) saturate(1.15);
+}
+
+.spotlight {
+    border-color: color-mix(
+        in srgb,
+        var(--pixie-toast-color) 58%,
+        var(--color-line)
+    );
+    background: var(--color-surface);
+    box-shadow:
+        0 0 0 1px color-mix(in srgb, var(--pixie-toast-color) 10%, transparent),
+        0 1.25rem 3rem rgb(0 0 0 / 22%);
+}
+
+.spotlight::before {
+    position: absolute;
+    z-index: 0;
+    inset: -70% 25% -70% -20%;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        color-mix(in srgb, var(--pixie-toast-color) 26%, transparent),
+        transparent 70%
+    );
+    content: "";
+    pointer-events: none;
+}
+
+.widthFit {
+    width: fit-content;
+    max-width: 100%;
+}
+
+.widthSm {
+    max-width: 22rem;
+}
+
+.widthMd {
+    max-width: 30rem;
+}
+
+.widthLg {
+    max-width: 40rem;
+}
+
+.widthFull {
+    max-width: none;
 }
 
 .sm {
@@ -45,8 +135,15 @@
     font-size: 0.9375rem;
 }
 
+.lg {
+    gap: 1rem;
+    padding: 1.25rem 1.25rem 1.25rem 1.5rem;
+    font-size: 1rem;
+}
+
 .rail {
     position: absolute;
+    z-index: 2;
     inset-block: 0;
     inset-inline-start: 0;
     width: 0.25rem;
@@ -56,6 +153,37 @@
 .solid .rail {
     background: currentcolor;
     opacity: 0.55;
+}
+
+.progress {
+    position: absolute;
+    z-index: 3;
+    background: var(--pixie-toast-color);
+    animation: toast-progress var(--pixie-toast-duration) linear forwards;
+    pointer-events: none;
+}
+
+.solid .progress {
+    background: currentcolor;
+}
+
+.root[data-paused="true"] .progress {
+    animation-play-state: paused;
+}
+
+.progressRail {
+    inset-block: 0;
+    inset-inline-start: 0;
+    width: 0.25rem;
+    transform-origin: center bottom;
+}
+
+.progressBar {
+    inset-inline: 0;
+    inset-block-end: 0;
+    height: 0.2rem;
+    transform-origin: left center;
+    animation-name: toast-progress-bar;
 }
 
 .icon {
@@ -72,6 +200,12 @@
     font-size: 0.75rem;
     font-weight: 700;
     line-height: 1;
+}
+
+.lg .icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    font-size: 0.8125rem;
 }
 
 .solid .icon {
@@ -147,32 +281,234 @@
     outline-color: currentcolor;
 }
 
-@keyframes toast-enter {
+.layoutAuto,
+.layoutInline {
+    grid-template-columns: auto minmax(0, 1fr) auto auto;
+}
+
+.layoutStacked {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+}
+
+.layoutStacked .action {
+    grid-column: 2;
+    justify-self: start;
+    padding-inline: 0;
+}
+
+.layoutStacked .dismiss {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.dust {
+    position: absolute;
+    z-index: 4;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.dust span {
+    position: absolute;
+    inset-inline-start: 8%;
+    inset-block-end: 18%;
+    width: 0.2rem;
+    height: 0.2rem;
+    border-radius: 50%;
+    background: var(--pixie-toast-color);
+    box-shadow: 0 0 0.45rem var(--pixie-toast-color);
+    opacity: 0;
+    animation: toast-dust 560ms ease-out both;
+}
+
+.dust span:nth-child(2) {
+    inset-inline-start: 16%;
+    inset-block-end: 72%;
+    animation-delay: 45ms;
+}
+
+.dust span:nth-child(3) {
+    inset-inline-start: 31%;
+    inset-block-end: 36%;
+    animation-delay: 90ms;
+}
+
+.dust span:nth-child(4) {
+    inset-inline-start: 48%;
+    inset-block-end: 78%;
+    animation-delay: 125ms;
+}
+
+.dust span:nth-child(5) {
+    inset-inline-start: 64%;
+    inset-block-end: 24%;
+    animation-delay: 160ms;
+}
+
+.dust span:nth-child(6) {
+    inset-inline-start: 78%;
+    inset-block-end: 64%;
+    animation-delay: 200ms;
+}
+
+.dust span:nth-child(7) {
+    inset-inline-start: 91%;
+    inset-block-end: 42%;
+    animation-delay: 235ms;
+}
+
+.motionSlide[data-state="opening"] {
+    animation: toast-slide-in 200ms ease-out both;
+}
+
+.motionSlide[data-state="closing"] {
+    animation: toast-slide-out 160ms ease-in both;
+}
+
+.motionFade[data-state="opening"] {
+    animation: toast-fade-in 180ms ease-out both;
+}
+
+.motionFade[data-state="closing"] {
+    animation: toast-fade-out 140ms ease-in both;
+}
+
+.motionPop[data-state="opening"] {
+    animation: toast-pop-in 220ms cubic-bezier(0.2, 0.85, 0.3, 1.2) both;
+}
+
+.motionPop[data-state="closing"] {
+    animation: toast-pop-out 150ms ease-in both;
+}
+
+.motionDust[data-state="opening"] {
+    animation: toast-dust-in 240ms ease-out both;
+}
+
+.motionDust[data-state="closing"] {
+    animation: toast-fade-out 160ms ease-in both;
+}
+
+.motionNone[data-state="opening"],
+.motionNone[data-state="closing"] {
+    animation: toast-none 1ms linear both;
+}
+
+@keyframes toast-slide-in {
     from {
         opacity: 0;
-        transform: translateY(0.5rem) scale(0.985);
+        transform: translateY(0.65rem);
+    }
+}
+
+@keyframes toast-slide-out {
+    to {
+        opacity: 0;
+        transform: translateY(0.4rem);
+    }
+}
+
+@keyframes toast-fade-in {
+    from {
+        opacity: 0;
+    }
+}
+
+@keyframes toast-fade-out {
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes toast-pop-in {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+}
+
+@keyframes toast-pop-out {
+    to {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+}
+
+@keyframes toast-dust-in {
+    from {
+        opacity: 0;
+        filter: brightness(1.45);
+        transform: translateY(0.35rem) scale(0.985);
+    }
+}
+
+@keyframes toast-dust {
+    0% {
+        opacity: 0;
+        transform: translateY(0.5rem) scale(0.6);
+    }
+
+    35% {
+        opacity: 0.9;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-1.15rem) scale(1.15);
+    }
+}
+
+@keyframes toast-progress {
+    to {
+        transform: scaleY(0);
+    }
+}
+
+@keyframes toast-progress-bar {
+    to {
+        transform: scaleX(0);
+    }
+}
+
+@keyframes toast-none {
+    from {
+        opacity: 0.999;
     }
 }
 
 @media (max-width: 32rem) {
-    .root {
+    .layoutAuto {
         grid-template-columns: auto minmax(0, 1fr) auto;
     }
 
-    .action {
+    .layoutAuto .action {
         grid-column: 2;
         justify-self: start;
         padding-inline: 0;
     }
 
-    .dismiss {
+    .layoutAuto .dismiss {
         grid-column: 3;
         grid-row: 1;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .root {
-        animation-duration: 1ms;
+    .root[data-state="opening"],
+    .root[data-state="closing"] {
+        animation: toast-fade-in 1ms linear both;
+    }
+
+    .root[data-state="closing"] {
+        animation-name: toast-fade-out;
+    }
+
+    .dust {
+        display: none;
+    }
+
+    .progress {
+        animation: none;
     }
 }
