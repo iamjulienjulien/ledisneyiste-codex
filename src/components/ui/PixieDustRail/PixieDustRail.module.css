@@ -7,13 +7,20 @@
     gap: var(--pixie-rail-gap);
     padding-inline: var(--pixie-rail-gutter);
     scroll-padding-inline: var(--pixie-rail-gutter);
-    overscroll-behavior-inline: contain;
     -webkit-overflow-scrolling: touch;
 }
 
 .root > * {
     min-width: 0;
     flex: 0 0 min(var(--pixie-rail-item-width), var(--pixie-rail-item-maximum));
+    scroll-snap-align: var(--pixie-rail-snap-align);
+    scroll-snap-stop: var(--pixie-rail-snap-stop);
+}
+
+.itemWidthAuto > * {
+    flex-basis: auto;
+    inline-size: max-content;
+    max-inline-size: var(--pixie-rail-item-maximum);
 }
 
 .itemWidthExtraSmall {
@@ -36,12 +43,20 @@
     --pixie-rail-item-width: 30rem;
 }
 
-.peek {
-    --pixie-rail-item-maximum: 85%;
+.itemWidthCustom {
+    --pixie-rail-item-width: 20rem;
 }
 
-.noPeek {
+.peekNone {
     --pixie-rail-item-maximum: 100%;
+}
+
+.peekSubtle {
+    --pixie-rail-item-maximum: 92%;
+}
+
+.peekStrong {
+    --pixie-rail-item-maximum: 80%;
 }
 
 .gapNone {
@@ -68,6 +83,10 @@
     --pixie-rail-gap: 3rem;
 }
 
+.gapCustom {
+    --pixie-rail-gap: 1.5rem;
+}
+
 .gutterNone {
     --pixie-rail-gutter: 0rem;
 }
@@ -84,21 +103,40 @@
     --pixie-rail-gutter: 2rem;
 }
 
+.gutterCustom {
+    --pixie-rail-gutter: 0rem;
+}
+
 .snapNone {
     scroll-snap-type: none;
 }
 
-.snapStart,
-.snapCenter {
+.snapProximity {
     scroll-snap-type: inline proximity;
 }
 
-.snapStart > * {
-    scroll-snap-align: start;
+.snapMandatory {
+    scroll-snap-type: inline mandatory;
 }
 
-.snapCenter > * {
-    scroll-snap-align: center;
+.snapAlignStart {
+    --pixie-rail-snap-align: start;
+}
+
+.snapAlignCenter {
+    --pixie-rail-snap-align: center;
+}
+
+.snapAlignEnd {
+    --pixie-rail-snap-align: end;
+}
+
+.snapStopNormal {
+    --pixie-rail-snap-stop: normal;
+}
+
+.snapStopAlways {
+    --pixie-rail-snap-stop: always;
 }
 
 .alignStretch {
@@ -115,4 +153,28 @@
 
 .alignEnd {
     align-items: flex-end;
+}
+
+.scrollbarAuto {
+    scrollbar-width: auto;
+}
+
+.scrollbarThin {
+    scrollbar-width: thin;
+}
+
+.scrollbarHidden {
+    scrollbar-width: none;
+}
+
+.scrollbarHidden::-webkit-scrollbar {
+    display: none;
+}
+
+.overscrollAuto {
+    overscroll-behavior-inline: auto;
+}
+
+.overscrollContain {
+    overscroll-behavior-inline: contain;
 }
