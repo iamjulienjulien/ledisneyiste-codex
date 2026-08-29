@@ -855,6 +855,135 @@ function verifierMontageDuTemps({
     return [projection, vide, reduit, dates];
 }
 
+function verifierGeneriqueVivant({
+    archives,
+    bobinesTemoins,
+    deriveGeneriqueVivant,
+}) {
+    const configuration = {
+        plan: "generique-vivant",
+        subject: {
+            family: "oeuvres",
+            slug: "snow-white-and-the-seven-dwarfs",
+        },
+        angle: "departments",
+        objective: "understand",
+        frame: {
+            label: "Le générique humain de Blanche-Neige",
+            description:
+                "Explorer les contributions sans leur attribuer de hiérarchie ni de valeur.",
+        },
+        matter: { kind: "archives" },
+    };
+    const archivesAvant = JSON.stringify(archives);
+    const projection = deriveGeneriqueVivant(configuration, {
+        kind: "archives",
+        archives,
+    });
+
+    assert.equal(projection.subject.label, "Snow White and the Seven Dwarfs");
+    assert.equal(projection.matter.kind, "archives");
+    assert.equal(projection.runtimeState, "incomplete");
+    assert.deepEqual(projection.stats, {
+        contributions: 33,
+        domains: 6,
+        multiRole: 10,
+        resolved: 25,
+        unresolved: 8,
+    });
+    assert.deepEqual(
+        Object.fromEntries(
+            projection.groups.map((group) => [
+                group.id,
+                group.contributionIds.length,
+            ]),
+        ),
+        {
+            "production-direction": 3,
+            "direction-artistique-conception": 5,
+            "animation-personnages": 11,
+            "musique-chansons": 4,
+            "interpretation-vocale": 9,
+            "reference-filmee": 1,
+        },
+    );
+    assert.ok(
+        projection.contributions.every(
+            (item) =>
+                item.roles.length > 0 &&
+                item.provenance.length > 0 &&
+                item.searchKey.length > 0,
+        ),
+        "Chaque contribution doit conserver rôle, provenance et clé de recherche",
+    );
+    assert.equal(
+        projection.notices.filter(
+            (notice) => notice.code === "unresolved-reference",
+        ).length,
+        8,
+    );
+    assert.deepEqual(
+        deriveGeneriqueVivant(configuration, {
+            kind: "archives",
+            archives,
+        }),
+        projection,
+        "Le Générique vivant doit rester déterministe",
+    );
+
+    const projeterBobine = (slug) =>
+        deriveGeneriqueVivant(
+            {
+                ...configuration,
+                matter: { kind: "bobine-temoin", fixture: slug },
+            },
+            {
+                kind: "bobine-temoin",
+                archives,
+                bobine: bobinesTemoins[slug],
+            },
+        );
+    const vide = projeterBobine("corpus-vide");
+    const reduit = projeterBobine("corpus-reduit");
+    const grand = projeterBobine("grand-generique");
+
+    assert.equal(vide.runtimeState, "empty");
+    assert.equal(vide.contributions.length, 0);
+    assert.equal(reduit.runtimeState, "sparse");
+    assert.equal(reduit.contributions.length, 1);
+    assert.equal(grand.runtimeState, "dense");
+    assert.equal(grand.contributions.length, 240);
+    assert.equal(grand.groups.length, 9);
+    assert.equal(
+        new Set(grand.contributions.flatMap((item) => item.roles)).size,
+        18,
+    );
+    assert.ok(
+        grand.contributions.some(
+            (item) =>
+                item.contributor.label.length > 100 ||
+                item.roles.some((role) => role.length > 100),
+        ),
+        "Le Générique vivant doit conserver les libellés extrêmes de la Bobine",
+    );
+
+    for (const resultat of [vide, reduit, grand]) {
+        assert.equal(resultat.matter.kind, "bobine-temoin");
+        assert.ok(
+            resultat.notices.some(
+                (notice) => notice.code === "bobine-temoin-active",
+            ),
+        );
+    }
+    assert.equal(
+        JSON.stringify(archives),
+        archivesAvant,
+        "Le Générique vivant a modifié les Archives qu’il devait seulement lire",
+    );
+
+    return [projection, vide, reduit, grand];
+}
+
 function verifier() {
     const {
         codexPlanArchives,
@@ -864,6 +993,7 @@ function verifier() {
         derivePlanLinks,
         derivePlanNodes,
         derivePlanDEnsemble,
+        deriveGeneriqueVivant,
         deriveMontageDuTemps,
         deriveTravellingDocumentaire,
         bobinesTemoins,
@@ -1065,9 +1195,14 @@ function verifier() {
         bobinesTemoins,
         deriveMontageDuTemps,
     });
+    const projectionsGenerique = verifierGeneriqueVivant({
+        archives: codexPlanArchives,
+        bobinesTemoins,
+        deriveGeneriqueVivant,
+    });
 
     console.log(
-        `Matière des Plans vérifiée : ${nodes.items.length} nœuds, ${links.items.length} liens, ${events.items.length} événements, ${credits.items.length} crédits, ${evidence.items.length} preuves, ${bobines.length} Bobines témoins, ${projections.length} projections du Travelling documentaire, ${projectionsEnsemble.length} projections du Plan d’ensemble et ${projectionsMontage.length} projections du Montage du temps.`,
+        `Matière des Plans vérifiée : ${nodes.items.length} nœuds, ${links.items.length} liens, ${events.items.length} événements, ${credits.items.length} crédits, ${evidence.items.length} preuves, ${bobines.length} Bobines témoins, ${projections.length} projections du Travelling documentaire, ${projectionsEnsemble.length} projections du Plan d’ensemble, ${projectionsMontage.length} projections du Montage du temps et ${projectionsGenerique.length} projections du Générique vivant.`,
     );
 }
 
