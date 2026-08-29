@@ -393,6 +393,77 @@ export type CodexTravellingDocumentaireMatterSource =
           bobine: CodexPlanBobineTemoin;
       }>;
 
+export type CodexPlanDEnsembleDirection = "all" | "incoming" | "outgoing";
+
+export type CodexPlanDEnsembleGroupSlug =
+    "characters" | "people" | "works" | "epochs" | "rewards" | "sources";
+
+export type CodexPlanDEnsembleEvidence = Readonly<{
+    id: string;
+    label: string;
+    url?: string;
+}>;
+
+export type CodexPlanDEnsembleRelation = Readonly<{
+    id: string;
+    kind: CodexPlanLinkKind | "evidence-of";
+    label: string;
+    direction: Exclude<CodexPlanDEnsembleDirection, "all">;
+    relativeToId: string;
+    fromId: string;
+    toId: string;
+    depth: number;
+    evidence: readonly CodexPlanDEnsembleEvidence[];
+    provenance: readonly CodexPlanProvenance[];
+}>;
+
+export type CodexPlanDEnsembleItem = Readonly<{
+    id: string;
+    node: CodexPlanNode;
+    depth: number;
+    resolved: boolean;
+    href?: string;
+    relations: readonly CodexPlanDEnsembleRelation[];
+    evidence: readonly CodexPlanDEnsembleEvidence[];
+}>;
+
+export type CodexPlanDEnsembleGroup = Readonly<{
+    id: CodexPlanDEnsembleGroupSlug;
+    label: string;
+    items: readonly CodexPlanDEnsembleItem[];
+    selection: CodexPlanDerivationSelection;
+}>;
+
+export type CodexPlanDEnsembleModel = Readonly<{
+    configuration: CodexPlanConfiguration;
+    subject: CodexPlanNode;
+    focus: CodexPlanNode;
+    matter: CodexPlanMatter;
+    direction: CodexPlanDEnsembleDirection;
+    runtimeState: CodexPlanRuntimeState;
+    groups: readonly CodexPlanDEnsembleGroup[];
+    relations: readonly CodexPlanDEnsembleRelation[];
+    selection: CodexPlanDerivationSelection;
+    notices: readonly CodexPlanDerivationNotice[];
+    cycleDetected: boolean;
+    orphanNodeIds: readonly string[];
+}>;
+
+export type CodexPlanDEnsembleMatterSource =
+    | Readonly<{
+          kind: "archives";
+          archives: CodexPlanArchives;
+      }>
+    | Readonly<{
+          kind: "bobine-temoin";
+          archives: CodexPlanArchives;
+          bobine: CodexPlanBobineTemoin;
+      }>;
+
+export type CodexPlanDEnsembleOptions = Readonly<{
+    direction?: CodexPlanDEnsembleDirection;
+}>;
+
 export type CodexPlanVocabularyDefinition = Readonly<{
     label: string;
     description: string;

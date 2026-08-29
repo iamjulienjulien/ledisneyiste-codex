@@ -4,6 +4,7 @@ export { derivePlanEvents } from "@/lib/plans/events";
 export { derivePlanEvidence } from "@/lib/plans/evidence";
 export { derivePlanLinks } from "@/lib/plans/links";
 export { derivePlanNodes } from "@/lib/plans/nodes";
+export { derivePlanDEnsemble } from "@/lib/plans/plan-d-ensemble";
 export { deriveTravellingDocumentaire } from "@/lib/plans/travelling-documentaire";
 
 export type {
@@ -22,6 +23,15 @@ export type {
     CodexPlanEvidencePosition,
     CodexPlanEvidenceScope,
     CodexPlanEvidenceStatus,
+    CodexPlanDEnsembleDirection,
+    CodexPlanDEnsembleEvidence,
+    CodexPlanDEnsembleGroup,
+    CodexPlanDEnsembleGroupSlug,
+    CodexPlanDEnsembleItem,
+    CodexPlanDEnsembleMatterSource,
+    CodexPlanDEnsembleModel,
+    CodexPlanDEnsembleOptions,
+    CodexPlanDEnsembleRelation,
     CodexPlanLink,
     CodexPlanLinkKind,
     CodexPlanNode,

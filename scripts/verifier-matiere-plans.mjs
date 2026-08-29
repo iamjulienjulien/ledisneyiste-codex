@@ -500,6 +500,214 @@ function verifierTravellingDocumentaire({
     return [projection, vide, reduit, dense, cycles];
 }
 
+function verifierPlanDEnsemble({
+    archives,
+    bobinesTemoins,
+    derivePlanDEnsemble,
+}) {
+    const configuration = {
+        plan: "plan-d-ensemble",
+        subject: {
+            family: "oeuvres",
+            slug: "snow-white-and-the-seven-dwarfs",
+        },
+        angle: "relations",
+        objective: "situate",
+        frame: {
+            label: "Le voisinage documentaire de Blanche-Neige",
+            description:
+                "Situer le premier long métrage dans ses relations publiées.",
+            depth: 1,
+            limit: 24,
+        },
+        matter: { kind: "archives" },
+    };
+    const archivesAvant = JSON.stringify(archives);
+    const projeterArchives = (configurationCourante, options = {}) =>
+        derivePlanDEnsemble(
+            configurationCourante,
+            { kind: "archives", archives },
+            options,
+        );
+    const projection = projeterArchives(configuration);
+    const groupesAttendus = [
+        "characters",
+        "people",
+        "works",
+        "epochs",
+        "rewards",
+        "sources",
+    ];
+
+    assert.equal(
+        projection.subject.id,
+        "oeuvre:snow-white-and-the-seven-dwarfs",
+    );
+    assert.equal(projection.focus.id, projection.subject.id);
+    assert.equal(projection.subject.label, "Snow White and the Seven Dwarfs");
+    assert.equal(projection.subject.resolved, true);
+    assert.equal(projection.matter.kind, "archives");
+    assert.deepEqual(
+        projection.groups.map((group) => group.id),
+        groupesAttendus,
+        "Le voisinage doit conserver l’ordre canonique de ses familles",
+    );
+    assert.ok(projection.groups.every((group) => group.items.length > 0));
+    assert.ok(
+        projection.groups
+            .flatMap((group) => group.items)
+            .every((item) => item.relations.length > 0),
+        "Chaque voisin visible doit conserver au moins un raccord explicite",
+    );
+    assert.ok(
+        projection.relations.some((relation) => relation.evidence.length > 0),
+        "Les raccords documentés doivent conserver leurs sources",
+    );
+    verifierIdentifiantsUniques(
+        projection.groups.flatMap((group) => group.items),
+        "Plan d’ensemble · voisins",
+    );
+    verifierIdentifiantsUniques(
+        projection.relations,
+        "Plan d’ensemble · relations",
+    );
+    assert.deepEqual(
+        projeterArchives(configuration),
+        projection,
+        "Le Plan d’ensemble doit rester déterministe",
+    );
+
+    const entrant = projeterArchives(configuration, { direction: "incoming" });
+    const sortant = projeterArchives(configuration, { direction: "outgoing" });
+    const idsVisibles = (resultat) =>
+        resultat.groups
+            .flatMap((group) => group.items)
+            .map((item) => item.node.id)
+            .sort();
+
+    assert.notDeepEqual(
+        idsVisibles(entrant),
+        idsVisibles(sortant),
+        "Les voisinages entrants et sortants doivent produire deux lectures distinctes",
+    );
+    assert.ok(
+        entrant.groups.some((group) => group.id === "people") &&
+            sortant.groups.some((group) => group.id === "characters"),
+        "La direction doit distinguer l’équipe reçue de la distribution projetée",
+    );
+
+    const profondeurDeux = projeterArchives({
+        ...configuration,
+        frame: { ...configuration.frame, depth: 2, limit: 48 },
+    });
+    assert.ok(
+        profondeurDeux.selection.total > projection.selection.total,
+        "La profondeur 2 doit révéler un voisinage plus large que la profondeur 1",
+    );
+
+    const limite = projeterArchives({
+        ...configuration,
+        frame: { ...configuration.frame, limit: 4 },
+    });
+    assert.equal(limite.selection.returned, 4);
+    assert.equal(limite.selection.truncated, true);
+    assert.equal(
+        limite.groups.filter((group) => group.items.length > 0).length,
+        4,
+        "La limite doit préserver autant de familles distinctes que le Cadre le permet",
+    );
+    assert.ok(limite.notices.some((notice) => notice.code === "limit-applied"));
+
+    const sources = projeterArchives({
+        ...configuration,
+        angle: "sources",
+    });
+    assert.deepEqual(
+        sources.groups.map((group) => group.id),
+        ["sources"],
+    );
+    assert.ok(
+        sources.groups[0].items.every((item) => item.node.kind === "source"),
+    );
+
+    const projeterBobine = (slug, frame = configuration.frame) =>
+        derivePlanDEnsemble(
+            {
+                ...configuration,
+                frame,
+                matter: { kind: "bobine-temoin", fixture: slug },
+            },
+            {
+                kind: "bobine-temoin",
+                archives,
+                bobine: bobinesTemoins[slug],
+            },
+        );
+    const vide = projeterBobine("corpus-vide");
+    const reduit = projeterBobine("corpus-reduit");
+    const dense = projeterBobine("corpus-dense");
+    const cycles = projeterBobine("cycles-et-orphelins", {
+        ...configuration.frame,
+        depth: 2,
+    });
+    const accessibilite = projeterBobine("accessibilite-sous-contrainte", {
+        ...configuration.frame,
+        depth: 4,
+    });
+
+    assert.equal(vide.runtimeState, "empty");
+    assert.equal(vide.groups.length, 0);
+    assert.equal(reduit.runtimeState, "sparse");
+    assert.equal(reduit.focus.id, "oeuvre:oeuvre-reduite");
+    assert.notEqual(
+        reduit.focus.id,
+        reduit.subject.id,
+        "Le foyer synthétique d’une Bobine ne doit pas devenir un Sujet publié",
+    );
+    assert.equal(dense.runtimeState, "dense");
+    assert.equal(dense.selection.returned, configuration.frame.limit);
+    assert.equal(dense.selection.truncated, true);
+    assert.equal(cycles.runtimeState, "incomplete");
+    assert.equal(cycles.cycleDetected, true);
+    assert.deepEqual(cycles.orphanNodeIds, ["personnage:noeud-orphelin"]);
+    assert.ok(
+        cycles.notices.some((notice) => notice.code === "cycle-detected") &&
+            cycles.notices.some((notice) => notice.code === "orphan-node"),
+    );
+    assert.ok(accessibilite.selection.returned > 0);
+    assert.ok(
+        accessibilite.groups
+            .flatMap((group) => group.items)
+            .every((item) => item.node.label.length > 0),
+    );
+
+    for (const resultat of [vide, reduit, dense, cycles, accessibilite]) {
+        assert.equal(resultat.matter.kind, "bobine-temoin");
+        assert.ok(
+            resultat.notices.some(
+                (notice) => notice.code === "bobine-temoin-active",
+            ),
+        );
+    }
+    assert.equal(
+        JSON.stringify(archives),
+        archivesAvant,
+        "Le Plan d’ensemble a modifié les Archives qu’il devait seulement lire",
+    );
+
+    return [
+        projection,
+        entrant,
+        sortant,
+        profondeurDeux,
+        vide,
+        reduit,
+        dense,
+        cycles,
+        accessibilite,
+    ];
+}
+
 function verifier() {
     const {
         codexPlanArchives,
@@ -508,6 +716,7 @@ function verifier() {
         derivePlanEvidence,
         derivePlanLinks,
         derivePlanNodes,
+        derivePlanDEnsemble,
         deriveTravellingDocumentaire,
         bobinesTemoins,
         CODEX_PLAN_BOBINE_TEMOIN_SLUGS,
@@ -698,9 +907,14 @@ function verifier() {
         bobinesTemoins,
         deriveTravellingDocumentaire,
     });
+    const projectionsEnsemble = verifierPlanDEnsemble({
+        archives: codexPlanArchives,
+        bobinesTemoins,
+        derivePlanDEnsemble,
+    });
 
     console.log(
-        `Matière des Plans vérifiée : ${nodes.items.length} nœuds, ${links.items.length} liens, ${events.items.length} événements, ${credits.items.length} crédits, ${evidence.items.length} preuves, ${bobines.length} Bobines témoins et ${projections.length} projections du Travelling documentaire.`,
+        `Matière des Plans vérifiée : ${nodes.items.length} nœuds, ${links.items.length} liens, ${events.items.length} événements, ${credits.items.length} crédits, ${evidence.items.length} preuves, ${bobines.length} Bobines témoins, ${projections.length} projections du Travelling documentaire et ${projectionsEnsemble.length} projections du Plan d’ensemble.`,
     );
 }
 
