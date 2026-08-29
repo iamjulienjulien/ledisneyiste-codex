@@ -8,18 +8,18 @@ import {
     type ChangeEvent,
 } from "react";
 import { getAtelierAnimationColor } from "@/registry/colors";
-import styles from "./PixieDustTextarea.module.css";
+import styles from "./PixieTextarea.module.css";
 import type {
-    PixieDustTextareaEffect,
-    PixieDustTextareaFont,
-    PixieDustTextareaProps,
-    PixieDustTextareaResize,
-    PixieDustTextareaShape,
-    PixieDustTextareaSize,
-    PixieDustTextareaStyle,
-    PixieDustTextareaTone,
-    PixieDustTextareaVariant,
-} from "./PixieDustTextarea.types";
+    PixieTextareaEffect,
+    PixieTextareaFont,
+    PixieTextareaProps,
+    PixieTextareaResize,
+    PixieTextareaShape,
+    PixieTextareaSize,
+    PixieTextareaStyle,
+    PixieTextareaTone,
+    PixieTextareaVariant,
+} from "./PixieTextarea.types";
 
 const variantClasses = {
     outline: styles.outline,
@@ -27,45 +27,45 @@ const variantClasses = {
     underline: styles.underline,
     ghost: styles.ghost,
     manuscript: styles.manuscript,
-} as const satisfies Record<PixieDustTextareaVariant, string>;
+} as const satisfies Record<PixieTextareaVariant, string>;
 
 const sizeClasses = {
     sm: styles.small,
     md: styles.medium,
     lg: styles.large,
-} as const satisfies Record<PixieDustTextareaSize, string>;
+} as const satisfies Record<PixieTextareaSize, string>;
 
 const shapeClasses = {
     square: styles.square,
     rounded: styles.rounded,
-} as const satisfies Record<PixieDustTextareaShape, string>;
+} as const satisfies Record<PixieTextareaShape, string>;
 
 const fontClasses = {
     body: styles.fontBody,
     mono: styles.fontMono,
-} as const satisfies Record<PixieDustTextareaFont, string>;
+} as const satisfies Record<PixieTextareaFont, string>;
 
 const toneClasses = {
     neutral: styles.toneNeutral,
     success: styles.toneSuccess,
     warning: styles.toneWarning,
-} as const satisfies Record<PixieDustTextareaTone, string>;
+} as const satisfies Record<PixieTextareaTone, string>;
 
 const effectClasses = {
     none: styles.effectNone,
     ring: styles.effectRing,
     glow: styles.effectGlow,
     dust: styles.effectDust,
-} as const satisfies Record<PixieDustTextareaEffect, string>;
+} as const satisfies Record<PixieTextareaEffect, string>;
 
 const resizeClasses = {
     none: styles.resizeNone,
     vertical: styles.resizeVertical,
     horizontal: styles.resizeHorizontal,
     both: styles.resizeBoth,
-} as const satisfies Record<PixieDustTextareaResize, string>;
+} as const satisfies Record<PixieTextareaResize, string>;
 
-function isAriaInvalid(value: PixieDustTextareaProps["aria-invalid"]) {
+function isAriaInvalid(value: PixieTextareaProps["aria-invalid"]) {
     return value !== undefined && value !== false && value !== "false";
 }
 
@@ -75,7 +75,7 @@ function getValueLength(value: unknown) {
         : 0;
 }
 
-export function PixieDustTextarea({
+export function PixieTextarea({
     variant = "outline",
     size = "md",
     shape = "rounded",
@@ -111,13 +111,13 @@ export function PixieDustTextarea({
     "aria-invalid": ariaInvalid,
     "aria-busy": ariaBusy,
     ...textareaProps
-}: PixieDustTextareaProps) {
+}: PixieTextareaProps) {
     const textareaRef = useRef<HTMLTextAreaElement | null>(null);
     const [uncontrolledLength, setUncontrolledLength] = useState(() =>
         getValueLength(defaultValue),
     );
     const colorDefinition = color ? getAtelierAnimationColor(color) : null;
-    const rootStyle: PixieDustTextareaStyle | undefined = colorDefinition
+    const rootStyle: PixieTextareaStyle | undefined = colorDefinition
         ? { "--pixie-textarea-color": colorDefinition.cssValue }
         : undefined;
     const isInvalid = invalid || isAriaInvalid(ariaInvalid);
