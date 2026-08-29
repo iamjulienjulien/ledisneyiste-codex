@@ -40,7 +40,7 @@ export default function RootLayout({
             data-lumiere="sombre"
             className={`${fontBrand.variable} ${fontDisplay.variable} ${fontBody.variable} ${fontEyebrow.variable} ${fontMono.variable}`}
         >
-            <body className="grid grid-rows-[auto_1fr]">
+            <body className="grid grid-cols-[minmax(0,1fr)] grid-rows-[auto_1fr]">
                 <header className="border-b border-line">
                     <div className="mx-auto flex w-full max-w-6xl flex-col gap-5 px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
                         <Link
