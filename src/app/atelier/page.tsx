@@ -22,7 +22,7 @@ import { PixieDustBleedDossier } from "./_components/PixieDustBleedDossier";
 import { PixieStickyRegionDossier } from "./_components/PixieStickyRegionDossier";
 import { PixieFieldDossier } from "./_components/PixieFieldDossier";
 import { PixieInputDossier } from "./_components/PixieInputDossier";
-import { PixieDustTextareaDossier } from "./_components/PixieDustTextareaDossier";
+import { PixieTextareaDossier } from "./_components/PixieTextareaDossier";
 import { PixieSelectDossier } from "./_components/PixieSelectDossier";
 import { PixieSwitchDossier } from "./_components/PixieSwitchDossier";
 import { PixieSearchFieldDossier } from "./_components/PixieSearchFieldDossier";
@@ -239,11 +239,11 @@ const dialogues = [
         href: "#pixie-input",
     },
     {
-        nom: "PixieDustTextarea",
+        nom: "PixieTextarea",
         role: "Recueillir une réponse développée",
-        statut: "Esquisse",
-        version: "0.2.0",
-        href: "#pixie-dust-textarea",
+        statut: "Prêt à projeter",
+        version: "1.0.0",
+        href: "#pixie-textarea",
     },
     {
         nom: "PixieSelect",
@@ -914,7 +914,7 @@ export default function AtelierPage() {
                 {raccordEntreFiches}
                 <PixieInputDossier />
                 {raccordEntreFiches}
-                <PixieDustTextareaDossier />
+                <PixieTextareaDossier />
                 {raccordEntreFiches}
                 <PixieSelectDossier />
                 {raccordEntreFiches}

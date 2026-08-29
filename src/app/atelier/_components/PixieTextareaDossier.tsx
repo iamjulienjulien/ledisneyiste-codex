@@ -6,18 +6,17 @@ import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieField } from "@/components/ui/PixieField";
 import { PixiePanel } from "@/components/ui/PixiePanel";
-import { PixieStack } from "@/components/ui/PixieStack";
 import {
-    PixieDustTextarea,
-    type PixieDustTextareaEffect,
-    type PixieDustTextareaFont,
-    type PixieDustTextareaResize,
-    type PixieDustTextareaShape,
-    type PixieDustTextareaSize,
-    type PixieDustTextareaTone,
-    type PixieDustTextareaVariant,
-} from "@/components/ui/PixieDustTextarea";
-import { PixieDustTextareaPlayground } from "./PixieDustTextareaPlayground";
+    PixieTextarea,
+    type PixieTextareaEffect,
+    type PixieTextareaFont,
+    type PixieTextareaResize,
+    type PixieTextareaShape,
+    type PixieTextareaSize,
+    type PixieTextareaTone,
+    type PixieTextareaVariant,
+} from "@/components/ui/PixieTextarea";
+import { PixieTextareaPlayground } from "./PixieTextareaPlayground";
 
 const variants = [
     {
@@ -46,7 +45,7 @@ const variants = [
         role: "Une feuille de scénario dont les lignes accompagnent le récit.",
     },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustTextareaVariant;
+    value: PixieTextareaVariant;
     name: string;
     role: string;
 }>[];
@@ -56,7 +55,7 @@ const sizes = [
     { value: "md" as const, name: "Moyenne", height: "120 px" },
     { value: "lg" as const, name: "Grande", height: "176 px" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustTextareaSize;
+    value: PixieTextareaSize;
     name: string;
     height: string;
 }>[];
@@ -83,7 +82,7 @@ const resizes = [
         role: "Liberté complète, à réserver aux plateaux très permissifs.",
     },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustTextareaResize;
+    value: PixieTextareaResize;
     name: string;
     role: string;
 }>[];
@@ -91,63 +90,60 @@ const resizes = [
 const shapes = [
     "square",
     "rounded",
-] as const satisfies readonly PixieDustTextareaShape[];
-const fonts = [
-    "body",
-    "mono",
-] as const satisfies readonly PixieDustTextareaFont[];
+] as const satisfies readonly PixieTextareaShape[];
+const fonts = ["body", "mono"] as const satisfies readonly PixieTextareaFont[];
 const tones = [
     "neutral",
     "success",
     "warning",
-] as const satisfies readonly PixieDustTextareaTone[];
+] as const satisfies readonly PixieTextareaTone[];
 const effects = [
     "none",
     "ring",
     "glow",
     "dust",
-] as const satisfies readonly PixieDustTextareaEffect[];
+] as const satisfies readonly PixieTextareaEffect[];
 
 const properties = [
     {
         name: "variant",
-        type: "PixieDustTextareaVariant",
+        type: "PixieTextareaVariant",
         defaultValue: '"outline"',
         description: "Traitement visuel de la zone de réponse.",
     },
     {
         name: "size",
-        type: "PixieDustTextareaSize",
+        type: "PixieTextareaSize",
         defaultValue: '"md"',
         description: "Typographie, espaces et hauteur minimale.",
     },
     {
         name: "shape",
-        type: "PixieDustTextareaShape",
+        type: "PixieTextareaShape",
         defaultValue: '"rounded"',
         description: "Géométrie carrée ou arrondie de la surface.",
     },
     {
         name: "font",
-        type: "PixieDustTextareaFont",
+        type: "PixieTextareaFont",
         defaultValue: '"body"',
         description: "Typographie éditoriale ou monospace.",
     },
     {
         name: "tone",
-        type: "PixieDustTextareaTone",
+        type: "PixieTextareaTone",
         defaultValue: '"neutral"',
         description: "Intention neutre, positive ou d’avertissement.",
     },
     {
         name: "effect",
-        type: "PixieDustTextareaEffect",
+        type: "PixieTextareaEffect",
         defaultValue: '"ring"',
         description: "Présence visuelle donnée au focus.",
     },
     {
         name: "color",
-        type: "PixieDustTextareaColor",
+        type: "PixieTextareaColor",
         defaultValue: "false",
         description: "Couleur du focus, héritée ou issue du registre.",
     },
@@ -165,7 +161,7 @@ const properties = [
     },
     {
         name: "resize",
-        type: "PixieDustTextareaResize",
+        type: "PixieTextareaResize",
         defaultValue: '"vertical"',
         description: "Axes de redimensionnement laissés au public.",
     },
@@ -233,43 +229,43 @@ const properties = [
 
 const specificTypes = [
     {
-        name: "PixieDustTextareaVariant",
+        name: "PixieTextareaVariant",
         values: variants.map(({ value }) => `"${value}"`),
         description:
             "Cinq présences, dont une feuille de scénario propre au composant.",
     },
     {
-        name: "PixieDustTextareaSize",
+        name: "PixieTextareaSize",
         values: sizes.map(({ value }) => `"${value}"`),
         description: "Trois hauteurs minimales pour les réponses développées.",
     },
     {
-        name: "PixieDustTextareaShape",
+        name: "PixieTextareaShape",
         values: shapes.map((value) => `"${value}"`),
         description: "Deux géométries adaptées à une surface multiligne.",
     },
     {
-        name: "PixieDustTextareaFont",
+        name: "PixieTextareaFont",
         values: fonts.map((value) => `"${value}"`),
         description: "Voix éditoriale ou matière technique.",
     },
     {
-        name: "PixieDustTextareaTone",
+        name: "PixieTextareaTone",
         values: tones.map((value) => `"${value}"`),
         description: "Intentions sémantiques hors état invalide.",
     },
     {
-        name: "PixieDustTextareaEffect",
+        name: "PixieTextareaEffect",
         values: effects.map((value) => `"${value}"`),
         description: "Quatre intensités de présence au focus.",
     },
     {
-        name: "PixieDustTextareaResize",
+        name: "PixieTextareaResize",
         values: resizes.map(({ value }) => `"${value}"`),
         description: "Axes natifs de redimensionnement.",
     },
     {
-        name: "PixieDustTextareaColor",
+        name: "PixieTextareaColor",
         values: ["AtelierAnimationColorSlug", "false"],
         description: "Accent du registre ou couleur héritée.",
     },
@@ -316,12 +312,12 @@ function Stage({ children }: Readonly<{ children: ReactNode }>) {
     );
 }
 
-export function PixieDustTextareaDossier() {
+export function PixieTextareaDossier() {
     return (
         <AtelierFicheAccessoire
-            id="pixie-dust-textarea"
-            labelledBy="pixie-dust-textarea-title"
-            nom="PixieDustTextarea"
+            id="pixie-textarea"
+            labelledBy="pixie-textarea-title"
+            nom="PixieTextarea"
             className="scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
@@ -330,10 +326,10 @@ export function PixieDustTextareaDossier() {
                             Le clap · Dialogue 003
                         </p>
                         <h2
-                            id="pixie-dust-textarea-title"
+                            id="pixie-textarea-title"
                             className="mt-4 text-4xl text-ink sm:text-5xl"
                         >
-                            PixieDustTextarea
+                            PixieTextarea
                         </h2>
                         <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
                             Recueillir une réponse développée sans perdre le
@@ -347,7 +343,7 @@ export function PixieDustTextareaDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.2.0
+                                1.0.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -355,7 +351,7 @@ export function PixieDustTextareaDossier() {
                                 État
                             </dt>
                             <dd className="mt-1 text-sm font-medium">
-                                <AtelierStatut statut="Esquisse" />
+                                <AtelierStatut statut="Prêt à projeter" />
                             </dd>
                         </div>
                     </dl>
@@ -413,7 +409,7 @@ export function PixieDustTextareaDossier() {
                                     label="Note de projection"
                                     description="Décrivez le raccord à conserver dans les archives."
                                 >
-                                    <PixieDustTextarea
+                                    <PixieTextarea
                                         autoGrow
                                         minRows={4}
                                         maxRows={10}
@@ -431,7 +427,7 @@ export function PixieDustTextareaDossier() {
     label="Note de projection"
     description="Décrivez le raccord à conserver dans les archives."
 >
-    <PixieDustTextarea
+    <PixieTextarea
         autoGrow
         minRows={4}
         maxRows={10}
@@ -467,7 +463,7 @@ export function PixieDustTextareaDossier() {
                                     {variant.role}
                                 </p>
                                 <div className="mt-6">
-                                    <PixieDustTextarea
+                                    <PixieTextarea
                                         variant={variant.value}
                                         size="sm"
                                         resize="none"
@@ -507,7 +503,7 @@ export function PixieDustTextareaDossier() {
                                     {size.name}
                                 </h4>
                                 <div className="mt-6">
-                                    <PixieDustTextarea
+                                    <PixieTextarea
                                         size={size.value}
                                         resize="none"
                                         aria-label={`Taille ${size.name}`}
@@ -533,7 +529,7 @@ export function PixieDustTextareaDossier() {
                                 label="Commentaire bref"
                                 optional
                             >
-                                <PixieDustTextarea
+                                <PixieTextarea
                                     size="sm"
                                     resize="vertical"
                                     defaultValue="Le raccord musical mérite une source complémentaire."
@@ -546,7 +542,7 @@ export function PixieDustTextareaDossier() {
                                 label="Analyse de la séquence"
                                 description="Deux paragraphes maximum pour cette première lecture."
                             >
-                                <PixieDustTextarea
+                                <PixieTextarea
                                     size="md"
                                     rows={8}
                                     resize="vertical"
@@ -572,7 +568,7 @@ export function PixieDustTextareaDossier() {
                                 label="Journal de projection"
                                 description="La surface grandit de trois à huit lignes."
                             >
-                                <PixieDustTextarea
+                                <PixieTextarea
                                     autoGrow
                                     minRows={3}
                                     maxRows={8}
@@ -587,7 +583,7 @@ export function PixieDustTextareaDossier() {
                                 label="Résumé documentaire"
                                 description="240 caractères maximum."
                             >
-                                <PixieDustTextarea
+                                <PixieTextarea
                                     maxLength={240}
                                     showCount
                                     resize="none"
@@ -608,7 +604,7 @@ export function PixieDustTextareaDossier() {
                     />
                     <div className="mt-8 grid gap-5 lg:grid-cols-3">
                         <Stage>
-                            <PixieDustTextarea
+                            <PixieTextarea
                                 startAdornment="✦"
                                 endAdornment="Brouillon"
                                 footerStart="Sauvegarde locale"
@@ -619,7 +615,7 @@ export function PixieDustTextareaDossier() {
                             />
                         </Stage>
                         <Stage>
-                            <PixieDustTextarea
+                            <PixieTextarea
                                 font="mono"
                                 variant="filled"
                                 startAdornment="Donnée structurée"
@@ -631,7 +627,7 @@ export function PixieDustTextareaDossier() {
                             />
                         </Stage>
                         <Stage>
-                            <PixieDustTextarea
+                            <PixieTextarea
                                 variant="manuscript"
                                 effect="dust"
                                 color="violet-ombre-portee"
@@ -665,7 +661,7 @@ export function PixieDustTextareaDossier() {
                                     {resize.role}
                                 </p>
                                 <div className="mt-5">
-                                    <PixieDustTextarea
+                                    <PixieTextarea
                                         resize={resize.value}
                                         size="sm"
                                         aria-label={`Redimensionnement ${resize.name}`}
@@ -685,7 +681,7 @@ export function PixieDustTextareaDossier() {
                     />
                     <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
                         <Stage>
-                            <PixieDustTextarea
+                            <PixieTextarea
                                 aria-label="Réponse invalide"
                                 defaultValue="Trop vague."
                                 invalid
@@ -697,7 +693,7 @@ export function PixieDustTextareaDossier() {
                             </p>
                         </Stage>
                         <Stage>
-                            <PixieDustTextarea
+                            <PixieTextarea
                                 aria-label="Réponse validée"
                                 defaultValue="La note peut rejoindre les archives."
                                 tone="success"
@@ -707,7 +703,7 @@ export function PixieDustTextareaDossier() {
                             <p className="mt-4 text-sm text-ink-soft">Succès</p>
                         </Stage>
                         <Stage>
-                            <PixieDustTextarea
+                            <PixieTextarea
                                 aria-label="Réponse à vérifier"
                                 defaultValue="Une source complémentaire reste à ouvrir."
                                 tone="warning"
@@ -719,7 +715,7 @@ export function PixieDustTextareaDossier() {
                             </p>
                         </Stage>
                         <Stage>
-                            <PixieDustTextarea
+                            <PixieTextarea
                                 aria-label="Réponse en cours de sauvegarde"
                                 defaultValue="La note rejoint la régie."
                                 busy
@@ -730,7 +726,7 @@ export function PixieDustTextareaDossier() {
                             <p className="mt-4 text-sm text-ink-soft">Occupé</p>
                         </Stage>
                         <Stage>
-                            <PixieDustTextarea
+                            <PixieTextarea
                                 aria-label="Réponse désactivée"
                                 defaultValue="La projection est interrompue."
                                 disabled
@@ -741,7 +737,7 @@ export function PixieDustTextareaDossier() {
                             </p>
                         </Stage>
                         <Stage>
-                            <PixieDustTextarea
+                            <PixieTextarea
                                 aria-label="Réponse en lecture seule"
                                 defaultValue="Cette note est conservée comme trace de projection."
                                 readOnly
@@ -762,7 +758,7 @@ export function PixieDustTextareaDossier() {
                         description="Le contenu, la hauteur, le redimensionnement, les états et le code évoluent ensemble."
                     />
                     <div className="mt-8">
-                        <PixieDustTextareaPlayground />
+                        <PixieTextareaPlayground />
                     </div>
                 </section>
 
@@ -816,7 +812,7 @@ export function PixieDustTextareaDossier() {
                         <SequenceTitle
                             id="textarea-technical-title"
                             eyebrow="Générique technique"
-                            title="API de l’esquisse"
+                            title="API du composant"
                             description="La croissance, le compteur et la régie périphérique enrichissent le contrôle sans interrompre la transmission de ses attributs natifs."
                         />
                         <div className="mt-8">
@@ -831,30 +827,6 @@ export function PixieDustTextareaDossier() {
                             </div>
                         </div>
                     </div>
-                </section>
-
-                <section aria-labelledby="textarea-journal-title">
-                    <SequenceTitle
-                        id="textarea-journal-title"
-                        eyebrow="Journal de production"
-                        title="Avant la version prête à projeter"
-                    />
-                    <PixieStack as="ul" gap="sm" className="mt-8">
-                        {[
-                            "Éprouver les poignées natives dans les principaux navigateurs.",
-                            "Valider AutoGrow avec les valeurs contrôlées et non contrôlées.",
-                            "Tester les bornes, les contenus très longs et le défilement interne.",
-                            "Contrôler la saisie mobile, le zoom à 200 % et le mouvement réduit.",
-                            "Éprouver le compteur sans rendre les technologies d’assistance bavardes.",
-                        ].map((item) => (
-                            <li
-                                key={item}
-                                className="border-l-2 border-accent bg-surface-muted px-5 py-4 text-sm leading-6 text-ink-soft"
-                            >
-                                {item}
-                            </li>
-                        ))}
-                    </PixieStack>
                 </section>
             </div>
         </AtelierFicheAccessoire>

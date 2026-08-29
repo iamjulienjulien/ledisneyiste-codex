@@ -10,15 +10,15 @@ import {
 import { PixieField } from "@/components/ui/PixieField";
 import { PixieSelect } from "@/components/ui/PixieSelect";
 import {
-    PixieDustTextarea,
-    type PixieDustTextareaEffect,
-    type PixieDustTextareaFont,
-    type PixieDustTextareaResize,
-    type PixieDustTextareaShape,
-    type PixieDustTextareaSize,
-    type PixieDustTextareaTone,
-    type PixieDustTextareaVariant,
-} from "@/components/ui/PixieDustTextarea";
+    PixieTextarea,
+    type PixieTextareaEffect,
+    type PixieTextareaFont,
+    type PixieTextareaResize,
+    type PixieTextareaShape,
+    type PixieTextareaSize,
+    type PixieTextareaTone,
+    type PixieTextareaVariant,
+} from "@/components/ui/PixieTextarea";
 import {
     getAtelierAnimationColor,
     getAtelierAnimationColorSlugs,
@@ -32,7 +32,7 @@ const variants = [
     { value: "ghost", label: "Fantôme" },
     { value: "manuscript", label: "Manuscrit" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustTextareaVariant;
+    value: PixieTextareaVariant;
     label: string;
 }>[];
 
@@ -41,7 +41,7 @@ const sizes = [
     { value: "md", label: "Moyenne" },
     { value: "lg", label: "Grande" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustTextareaSize;
+    value: PixieTextareaSize;
     label: string;
 }>[];
 
@@ -49,7 +49,7 @@ const shapes = [
     { value: "square", label: "Carrée" },
     { value: "rounded", label: "Arrondie" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustTextareaShape;
+    value: PixieTextareaShape;
     label: string;
 }>[];
 
@@ -57,7 +57,7 @@ const fonts = [
     { value: "body", label: "Texte" },
     { value: "mono", label: "Monospace" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustTextareaFont;
+    value: PixieTextareaFont;
     label: string;
 }>[];
 
@@ -66,7 +66,7 @@ const tones = [
     { value: "success", label: "Succès" },
     { value: "warning", label: "Avertissement" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustTextareaTone;
+    value: PixieTextareaTone;
     label: string;
 }>[];
 
@@ -76,7 +76,7 @@ const effects = [
     { value: "glow", label: "Halo" },
     { value: "dust", label: "Poussière Pixie" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustTextareaEffect;
+    value: PixieTextareaEffect;
     label: string;
 }>[];
 
@@ -86,7 +86,7 @@ const resizes = [
     { value: "horizontal", label: "Horizontal" },
     { value: "both", label: "Les deux axes" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustTextareaResize;
+    value: PixieTextareaResize;
     label: string;
 }>[];
 
@@ -113,15 +113,14 @@ const frameWidths = {
 const initialValue =
     "Cette séquence marque le moment où le mouvement, la musique et le caractère commencent à parler d’une même voix.";
 
-export function PixieDustTextareaPlayground() {
-    const [variant, setVariant] =
-        useState<PixieDustTextareaVariant>("manuscript");
-    const [size, setSize] = useState<PixieDustTextareaSize>("md");
-    const [shape, setShape] = useState<PixieDustTextareaShape>("rounded");
-    const [font, setFont] = useState<PixieDustTextareaFont>("body");
-    const [tone, setTone] = useState<PixieDustTextareaTone>("neutral");
-    const [effect, setEffect] = useState<PixieDustTextareaEffect>("dust");
-    const [resize, setResize] = useState<PixieDustTextareaResize>("vertical");
+export function PixieTextareaPlayground() {
+    const [variant, setVariant] = useState<PixieTextareaVariant>("manuscript");
+    const [size, setSize] = useState<PixieTextareaSize>("md");
+    const [shape, setShape] = useState<PixieTextareaShape>("rounded");
+    const [font, setFont] = useState<PixieTextareaFont>("body");
+    const [tone, setTone] = useState<PixieTextareaTone>("neutral");
+    const [effect, setEffect] = useState<PixieTextareaEffect>("dust");
+    const [resize, setResize] = useState<PixieTextareaResize>("vertical");
     const [color, setColor] = useState<AtelierAnimationColorSlug | "inherit">(
         "violet-ombre-portee",
     );
@@ -173,7 +172,7 @@ export function PixieDustTextareaPlayground() {
     controlId="projection-note"
     label="Note de projection"${fieldMessage}${required ? "\n    required" : ""}
 >
-    <PixieDustTextarea
+    <PixieTextarea
         variant="${variant}"
         size="${size}"
         shape="${shape}"
@@ -252,7 +251,7 @@ export function PixieDustTextareaPlayground() {
                             value={shape}
                             options={shapes}
                             onChange={(nextValue) =>
-                                setShape(nextValue as PixieDustTextareaShape)
+                                setShape(nextValue as PixieTextareaShape)
                             }
                         />
                         <SelectControl
@@ -261,7 +260,7 @@ export function PixieDustTextareaPlayground() {
                             value={font}
                             options={fonts}
                             onChange={(nextValue) =>
-                                setFont(nextValue as PixieDustTextareaFont)
+                                setFont(nextValue as PixieTextareaFont)
                             }
                         />
                         <SelectControl
@@ -270,7 +269,7 @@ export function PixieDustTextareaPlayground() {
                             value={tone}
                             options={tones}
                             onChange={(nextValue) =>
-                                setTone(nextValue as PixieDustTextareaTone)
+                                setTone(nextValue as PixieTextareaTone)
                             }
                         />
                         <SelectControl
@@ -279,7 +278,7 @@ export function PixieDustTextareaPlayground() {
                             value={effect}
                             options={effects}
                             onChange={(nextValue) =>
-                                setEffect(nextValue as PixieDustTextareaEffect)
+                                setEffect(nextValue as PixieTextareaEffect)
                             }
                         />
                         <SelectControl
@@ -331,7 +330,7 @@ export function PixieDustTextareaPlayground() {
                                     options={resizes}
                                     onChange={(nextValue) =>
                                         setResize(
-                                            nextValue as PixieDustTextareaResize,
+                                            nextValue as PixieTextareaResize,
                                         )
                                     }
                                 />
@@ -390,7 +389,7 @@ export function PixieDustTextareaPlayground() {
                                 {...fieldFeedback}
                                 {...fieldRequirement}
                             >
-                                <PixieDustTextarea
+                                <PixieTextarea
                                     id="textarea-preview"
                                     variant={variant}
                                     size={size}
