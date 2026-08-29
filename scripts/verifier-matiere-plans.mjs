@@ -708,6 +708,153 @@ function verifierPlanDEnsemble({
     ];
 }
 
+function verifierMontageDuTemps({
+    archives,
+    bobinesTemoins,
+    deriveMontageDuTemps,
+}) {
+    const configuration = {
+        plan: "montage-du-temps",
+        subject: {
+            family: "oeuvres",
+            slug: "snow-white-and-the-seven-dwarfs",
+        },
+        angle: "production",
+        objective: "compare",
+        frame: {
+            label: "De la mise en chantier aux honneurs de l’Academy",
+            description:
+                "Comparer fabrication, diffusion et reconnaissance sur une règle temporelle commune.",
+        },
+        matter: { kind: "archives" },
+    };
+    const archivesAvant = JSON.stringify(archives);
+    const projection = deriveMontageDuTemps(configuration, {
+        kind: "archives",
+        archives,
+    });
+
+    assert.equal(
+        projection.subject.id,
+        "oeuvre:snow-white-and-the-seven-dwarfs",
+    );
+    assert.equal(projection.focus.id, projection.subject.id);
+    assert.equal(projection.matter.kind, "archives");
+    assert.equal(projection.runtimeState, "ready");
+    assert.equal(projection.events.length, 7);
+    assert.deepEqual(
+        projection.tracks.map((track) => [track.id, track.events.length]),
+        [
+            ["production", 1],
+            ["distribution", 3],
+            ["reception", 3],
+            ["legacy", 0],
+            ["transformation", 0],
+        ],
+    );
+    assert.deepEqual(projection.bounds, {
+        start: "1934-01-01",
+        end: "1939-02-23",
+    });
+    assert.ok(
+        projection.events.every(
+            (event) =>
+                event.subject.id === projection.subject.id &&
+                event.provenance.length > 0,
+        ),
+        "Tous les repères doivent rester explicitement rattachés à Blanche-Neige",
+    );
+    assert.ok(
+        projection.events.every((event) => event.evidence.length > 0),
+        "Chaque repère des Archives doit conserver ses sources",
+    );
+    assert.ok(
+        !projection.events.some((event) => event.start.valeur === "1812"),
+        "La source littéraire de 1812 appartient au Travelling, pas au Montage",
+    );
+
+    const production = projection.events.find(
+        (event) => event.track === "production",
+    );
+    assert.equal(production?.start.valeur, "1934");
+    assert.equal(production?.end?.valeur, "1937");
+    assert.equal(production?.documentaryState, "partial");
+    assert.deepEqual(
+        projection.tracks
+            .find((track) => track.id === "distribution")
+            ?.events.map((event) => event.start.valeur),
+        ["1937-12-21", "1938-02-04", "1938-05-06"],
+    );
+    assert.deepEqual(
+        projection.tracks
+            .find((track) => track.id === "reception")
+            ?.events.map((event) => event.start.valeur),
+        ["1938", "1939-01-08", "1939-02-23"],
+    );
+    assert.deepEqual(
+        deriveMontageDuTemps(configuration, {
+            kind: "archives",
+            archives,
+        }),
+        projection,
+        "Le Montage du temps doit rester déterministe",
+    );
+
+    const projeterBobine = (slug) =>
+        deriveMontageDuTemps(
+            {
+                ...configuration,
+                matter: { kind: "bobine-temoin", fixture: slug },
+            },
+            {
+                kind: "bobine-temoin",
+                archives,
+                bobine: bobinesTemoins[slug],
+            },
+        );
+    const vide = projeterBobine("corpus-vide");
+    const reduit = projeterBobine("corpus-reduit");
+    const dates = projeterBobine("dates-partielles-et-contradictoires");
+
+    assert.equal(vide.runtimeState, "empty");
+    assert.equal(vide.events.length, 0);
+    assert.equal(reduit.runtimeState, "sparse");
+    assert.equal(reduit.events.length, 1);
+    assert.equal(dates.runtimeState, "incomplete");
+    assert.deepEqual(
+        [...new Set(dates.events.map((event) => event.start.precision))].sort(),
+        ["annee", "jour", "mois"],
+    );
+    assert.equal(dates.contradictions.length, 1);
+    assert.equal(dates.contradictions[0].eventIds.length, 2);
+    assert.equal(
+        dates.events.filter(
+            (event) => event.documentaryState === "contradictory",
+        ).length,
+        2,
+    );
+    assert.ok(
+        dates.notices.some((notice) => notice.code === "date-conflict"),
+        "La contradiction de dates doit rester explicitement signalée",
+    );
+
+    for (const resultat of [vide, reduit, dates]) {
+        assert.equal(resultat.matter.kind, "bobine-temoin");
+        assert.ok(
+            resultat.notices.some(
+                (notice) => notice.code === "bobine-temoin-active",
+            ),
+        );
+    }
+    assert.equal(
+        JSON.stringify(archives),
+        archivesAvant,
+        "Le Montage du temps a modifié les Archives qu’il devait seulement lire",
+    );
+
+    return [projection, vide, reduit, dates];
+}
+
 function verifier() {
     const {
         codexPlanArchives,
@@ -717,6 +864,7 @@ function verifier() {
         derivePlanLinks,
         derivePlanNodes,
         derivePlanDEnsemble,
+        deriveMontageDuTemps,
         deriveTravellingDocumentaire,
         bobinesTemoins,
         CODEX_PLAN_BOBINE_TEMOIN_SLUGS,
@@ -912,9 +1060,14 @@ function verifier() {
         bobinesTemoins,
         derivePlanDEnsemble,
     });
+    const projectionsMontage = verifierMontageDuTemps({
+        archives: codexPlanArchives,
+        bobinesTemoins,
+        deriveMontageDuTemps,
+    });
 
     console.log(
-        `Matière des Plans vérifiée : ${nodes.items.length} nœuds, ${links.items.length} liens, ${events.items.length} événements, ${credits.items.length} crédits, ${evidence.items.length} preuves, ${bobines.length} Bobines témoins, ${projections.length} projections du Travelling documentaire et ${projectionsEnsemble.length} projections du Plan d’ensemble.`,
+        `Matière des Plans vérifiée : ${nodes.items.length} nœuds, ${links.items.length} liens, ${events.items.length} événements, ${credits.items.length} crédits, ${evidence.items.length} preuves, ${bobines.length} Bobines témoins, ${projections.length} projections du Travelling documentaire, ${projectionsEnsemble.length} projections du Plan d’ensemble et ${projectionsMontage.length} projections du Montage du temps.`,
     );
 }
 

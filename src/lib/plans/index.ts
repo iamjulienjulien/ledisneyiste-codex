@@ -4,6 +4,7 @@ export { derivePlanEvents } from "@/lib/plans/events";
 export { derivePlanEvidence } from "@/lib/plans/evidence";
 export { derivePlanLinks } from "@/lib/plans/links";
 export { derivePlanNodes } from "@/lib/plans/nodes";
+export { deriveMontageDuTemps } from "@/lib/plans/montage-du-temps";
 export { derivePlanDEnsemble } from "@/lib/plans/plan-d-ensemble";
 export { deriveTravellingDocumentaire } from "@/lib/plans/travelling-documentaire";
 
@@ -32,6 +33,18 @@ export type {
     CodexPlanDEnsembleModel,
     CodexPlanDEnsembleOptions,
     CodexPlanDEnsembleRelation,
+    CodexMontageDuTempsBounds,
+    CodexMontageDuTempsContradiction,
+    CodexMontageDuTempsDocumentaryState,
+    CodexMontageDuTempsEvent,
+    CodexMontageDuTempsEvidence,
+    CodexMontageDuTempsGranularity,
+    CodexMontageDuTempsMatterSource,
+    CodexMontageDuTempsModel,
+    CodexMontageDuTempsTerritory,
+    CodexMontageDuTempsTrack,
+    CodexMontageDuTempsTrackSlug,
+    CodexMontageDuTempsWindowSlug,
     CodexPlanLink,
     CodexPlanLinkKind,
     CodexPlanNode,

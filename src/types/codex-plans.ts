@@ -287,6 +287,7 @@ export type CodexPlanDerivationNoticeCode =
     | "source-classification-unavailable"
     | "cycle-detected"
     | "orphan-node"
+    | "date-conflict"
     | "bobine-temoin-active";
 
 export type CodexPlanDerivationNotice = Readonly<{
@@ -465,6 +466,89 @@ export type CodexPlanDEnsembleMatterSource =
 export type CodexPlanDEnsembleOptions = Readonly<{
     direction?: CodexPlanDEnsembleDirection;
 }>;
+
+export type CodexMontageDuTempsTrackSlug =
+    "production" | "distribution" | "reception" | "legacy" | "transformation";
+
+export type CodexMontageDuTempsWindowSlug =
+    "full" | "production" | "release" | "recognition";
+
+export type CodexMontageDuTempsGranularity = "adaptive" | "year" | "month";
+
+export type CodexMontageDuTempsTerritory =
+    "all" | "us" | "france" | "international";
+
+export type CodexMontageDuTempsDocumentaryState =
+    "documented" | "partial" | "contradictory";
+
+export type CodexMontageDuTempsEvidence = Readonly<{
+    id: string;
+    label: string;
+    url?: string;
+}>;
+
+export type CodexMontageDuTempsEvent = Readonly<{
+    id: string;
+    kind: CodexPlanEventKind;
+    track: CodexMontageDuTempsTrackSlug;
+    label: string;
+    subject: CodexPlanEntityReference;
+    start: DateHistorique;
+    end?: DateHistorique;
+    endExclusive?: boolean;
+    territory?: string;
+    place?: string;
+    href?: string;
+    evidence: readonly CodexMontageDuTempsEvidence[];
+    provenance: readonly CodexPlanProvenance[];
+    documentaryState: CodexMontageDuTempsDocumentaryState;
+    conflictGroupId?: string;
+}>;
+
+export type CodexMontageDuTempsTrack = Readonly<{
+    id: CodexMontageDuTempsTrackSlug;
+    label: string;
+    actionLabel: string;
+    description: string;
+    events: readonly CodexMontageDuTempsEvent[];
+}>;
+
+export type CodexMontageDuTempsBounds = Readonly<{
+    start: string;
+    end: string;
+}>;
+
+export type CodexMontageDuTempsContradiction = Readonly<{
+    id: string;
+    eventIds: readonly string[];
+    message: string;
+}>;
+
+export type CodexMontageDuTempsModel = Readonly<{
+    configuration: CodexPlanConfiguration;
+    subject: CodexPlanEntityReference;
+    focus: CodexPlanEntityReference;
+    matter: CodexPlanMatter;
+    runtimeState: CodexPlanRuntimeState;
+    bounds?: CodexMontageDuTempsBounds;
+    tracks: readonly CodexMontageDuTempsTrack[];
+    events: readonly CodexMontageDuTempsEvent[];
+    excludedEvents: readonly CodexMontageDuTempsEvent[];
+    selection: CodexPlanDerivationSelection;
+    notices: readonly CodexPlanDerivationNotice[];
+    contradictions: readonly CodexMontageDuTempsContradiction[];
+}>;
+
+export type CodexMontageDuTempsMatterSource =
+    | Readonly<{
+          kind: "archives";
+          archives: CodexPlanArchives;
+      }>
+    | Readonly<{
+          kind: "bobine-temoin";
+          archives: CodexPlanArchives;
+          bobine: CodexPlanBobineTemoin;
+      }>;
 
 export type CodexPlanVocabularyDefinition = Readonly<{
     label: string;
