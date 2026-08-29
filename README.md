@@ -511,7 +511,7 @@ accessibilité et leur API. Ses cinq premiers accessoires — `PixieSymbol`,
 `PixieBackdrop` — et les neuf composants validés du Montage,
 `PixieContainer`, `PixieStack`, `PixieCluster`, `PixieSection`, `PixieGrid`,
 `PixieSidebar`, `PixieSwitcher`, `PixieRail` et `PixieStickyRegion`, ainsi que
-les deux premiers Dialogues `PixieField` et `PixieSelect`,
+les trois premiers Dialogues `PixieField`, `PixieInput` et `PixieSelect`,
 sont désormais prêts à projeter.
 
 Ses six plateaux de travail sont maintenant actifs :
@@ -524,14 +524,14 @@ Ses six plateaux de travail sont maintenant actifs :
 5. **Le Montage** règle la composition et le rythme des séquences ;
 6. **Les Effets** rendent visibles les attentes et les retours du système.
 
-L’Atelier documente actuellement **9 esquisses PixieDust**, auxquelles
-s’ajoutent les six Décors, les neuf composants du Montage et les deux premiers
+L’Atelier documente actuellement **8 esquisses PixieDust**, auxquelles
+s’ajoutent les six Décors, les neuf composants du Montage et les trois premiers
 Dialogues prêts à projeter :
 
 - **Décors — 6 composants validés :** `PixieCard`, `PixiePanel`, `PixieFrame`,
   `PixieCallout`, `PixieInset` et `PixieBackdrop` ;
-- **Dialogues — 2 composants validés et 4 esquisses :** `PixieField`,
-  `PixieSelect`, `PixieDustInput`, `PixieDustTextarea`, `PixieDustSwitch` et
+- **Dialogues — 3 composants validés et 3 esquisses :** `PixieField`,
+  `PixieInput`, `PixieSelect`, `PixieDustTextarea`, `PixieDustSwitch` et
   `PixieDustSearchField` ;
 - **Montage — 9 composants validés et 2 esquisses :** `PixieContainer`,
   `PixieStack`, `PixieCluster`, `PixieSection`, `PixieGrid`, `PixieSidebar`,
