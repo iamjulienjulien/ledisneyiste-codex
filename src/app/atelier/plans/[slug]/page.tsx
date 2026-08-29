@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { AtelierPlanDossier } from "@/components/atelier/AtelierPlanDossier";
+import { AtelierPlanDEnsemblePrototype } from "@/components/atelier/AtelierPlanDEnsemblePrototype";
+import type {
+    AtelierPlanDEnsembleDepth,
+    AtelierPlanDEnsembleMatterKey,
+    AtelierPlanDEnsembleProjection,
+} from "@/components/atelier/AtelierPlanDEnsemblePrototype";
 import { AtelierTravellingDocumentairePrototype } from "@/components/atelier/AtelierTravellingDocumentairePrototype";
 import type {
     AtelierTravellingDepth,
@@ -9,7 +15,11 @@ import type {
     AtelierTravellingProjection,
 } from "@/components/atelier/AtelierTravellingDocumentairePrototype";
 import { bobinesTemoins } from "@/fixtures/plans";
-import { codexPlanArchives, deriveTravellingDocumentaire } from "@/lib/plans";
+import {
+    codexPlanArchives,
+    derivePlanDEnsemble,
+    deriveTravellingDocumentaire,
+} from "@/lib/plans";
 import { getCodexPlan, getCodexPlans, isCodexPlanSlug } from "@/registry/plans";
 import type { CodexPlanConfiguration } from "@/types/codex-plans";
 
@@ -35,6 +45,21 @@ const travellingDepths = [
 const travellingLimits = [
     4, 8,
 ] as const satisfies readonly AtelierTravellingLimit[];
+
+const ensembleMatterOptions = [
+    ["archives", "Archives publiées"],
+    ["corpus-vide", "Bobine · Corpus vide"],
+    ["corpus-reduit", "Bobine · Corpus réduit"],
+    ["corpus-dense", "Bobine · Corpus dense"],
+    ["cycles-et-orphelins", "Bobine · Cycles et orphelins"],
+] as const satisfies readonly (readonly [
+    AtelierPlanDEnsembleMatterKey,
+    string,
+])[];
+
+const ensembleDepths = [
+    1, 2,
+] as const satisfies readonly AtelierPlanDEnsembleDepth[];
 
 function createTravellingProjections() {
     const projections: AtelierTravellingProjection[] = [];
@@ -82,6 +107,55 @@ function createTravellingProjections() {
                     model,
                 });
             }
+        }
+    }
+
+    return projections;
+}
+
+function createEnsembleProjections() {
+    const projections: AtelierPlanDEnsembleProjection[] = [];
+
+    for (const [matterKey, matterLabel] of ensembleMatterOptions) {
+        for (const depth of ensembleDepths) {
+            const configuration: CodexPlanConfiguration = {
+                plan: "plan-d-ensemble",
+                subject: {
+                    family: "oeuvres",
+                    slug: "snow-white-and-the-seven-dwarfs",
+                },
+                angle: "relations",
+                objective: "situate",
+                frame: {
+                    label: "Le voisinage documentaire de Blanche-Neige",
+                    description:
+                        "Situer le premier long métrage dans ses relations publiées.",
+                    depth,
+                    limit: 24,
+                },
+                matter:
+                    matterKey === "archives"
+                        ? { kind: "archives" }
+                        : { kind: "bobine-temoin", fixture: matterKey },
+            };
+            const model =
+                matterKey === "archives"
+                    ? derivePlanDEnsemble(configuration, {
+                          kind: "archives",
+                          archives: codexPlanArchives,
+                      })
+                    : derivePlanDEnsemble(configuration, {
+                          kind: "bobine-temoin",
+                          archives: codexPlanArchives,
+                          bobine: bobinesTemoins[matterKey],
+                      });
+
+            projections.push({
+                matterKey,
+                matterLabel,
+                depth,
+                model,
+            });
         }
     }
 
@@ -137,6 +211,25 @@ export default async function AtelierPlanPage({
                 prototype={
                     <AtelierTravellingDocumentairePrototype
                         projections={createTravellingProjections()}
+                    />
+                }
+            />
+        );
+    }
+
+    if (slug === "plan-d-ensemble") {
+        return (
+            <AtelierPlanDossier
+                slug={slug}
+                plan={plan}
+                status="Esquisse"
+                program="P0 · Deuxième prototype"
+                version="v0.1.0"
+                prototypeTitle="Blanche-Neige révèle son voisinage documentaire"
+                prototypeDescription="Le prototype maintient le Sujet au centre, répartit ses voisins par familles et éprouve la direction, la profondeur, la densité et les limites du Cadre."
+                prototype={
+                    <AtelierPlanDEnsemblePrototype
+                        projections={createEnsembleProjections()}
                     />
                 }
             />
