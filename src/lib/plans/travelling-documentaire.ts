@@ -189,11 +189,18 @@ function zoneForRelation(label: string): CodexTravellingDocumentaireZone {
     return label === "source" ? "origin" : "laboratory";
 }
 
-function createAdjacency(links: readonly CodexPlanLink[]) {
+function createAdjacency(
+    links: readonly CodexPlanLink[],
+    traversal: "both" | "forward",
+) {
     const adjacency = new Map<string, CodexPlanLink[]>();
 
     for (const link of links) {
-        for (const nodeId of [link.from.id, link.to.id]) {
+        const nodeIds =
+            traversal === "forward"
+                ? [link.from.id]
+                : [link.from.id, link.to.id];
+        for (const nodeId of nodeIds) {
             const neighbours = adjacency.get(nodeId) ?? [];
             neighbours.push(link);
             adjacency.set(nodeId, neighbours);
@@ -207,8 +214,9 @@ function collectNeighbourhood(
     anchorId: string,
     links: readonly CodexPlanLink[],
     depth: number,
+    traversal: "both" | "forward" = "both",
 ): Neighbourhood {
-    const adjacency = createAdjacency(links);
+    const adjacency = createAdjacency(links, traversal);
     const visited = new Set([anchorId]);
     const orderedNodeIds: string[] = [];
     const queue = [{ id: anchorId, depth: 0 }];
@@ -221,7 +229,11 @@ function collectNeighbourhood(
 
         for (const link of adjacency.get(current.id) ?? []) {
             const neighbourId =
-                link.from.id === current.id ? link.to.id : link.from.id;
+                traversal === "forward"
+                    ? link.to.id
+                    : link.from.id === current.id
+                      ? link.to.id
+                      : link.from.id;
             if (visited.has(neighbourId)) {
                 continue;
             }
@@ -453,12 +465,12 @@ function deriveFromBobine(
     const orphanNodeIds = bobine.nodes
         .filter((node) => !connectedIds.has(node.id))
         .map((node) => node.id);
+    const anchorId = bobine.links[0]?.from.id;
     const anchor =
-        bobine.nodes.find((node) => connectedIds.has(node.id)) ??
-        bobine.nodes[0];
+        bobine.nodes.find((node) => node.id === anchorId) ?? bobine.nodes[0];
     const depth = Math.max(1, Math.floor(configuration.frame.depth ?? 1));
     const neighbourhood = anchor
-        ? collectNeighbourhood(anchor.id, bobine.links, depth)
+        ? collectNeighbourhood(anchor.id, bobine.links, depth, "forward")
         : { orderedNodeIds: [], links: [] };
     const allNodeIds = anchor
         ? [anchor.id, ...neighbourhood.orderedNodeIds]

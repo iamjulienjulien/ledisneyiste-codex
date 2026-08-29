@@ -445,6 +445,21 @@ function verifierTravellingDocumentaire({
     const reduit = projeterBobine("corpus-reduit");
     const dense = projeterBobine("corpus-dense");
     const cycles = projeterBobine("cycles-et-orphelins");
+    const cyclesProfondeurUn = deriveTravellingDocumentaire(
+        {
+            ...configuration,
+            frame: { ...configuration.frame, depth: 1 },
+            matter: {
+                kind: "bobine-temoin",
+                fixture: "cycles-et-orphelins",
+            },
+        },
+        {
+            kind: "bobine-temoin",
+            archives,
+            bobine: bobinesTemoins["cycles-et-orphelins"],
+        },
+    );
 
     assert.equal(vide.runtimeState, "empty");
     assert.equal(vide.stages.length, 0);
@@ -458,6 +473,7 @@ function verifierTravellingDocumentaire({
     assert.equal(dense.cycleDetected, true);
     assert.equal(cycles.runtimeState, "incomplete");
     assert.equal(cycles.stages.length, 3);
+    assert.equal(cyclesProfondeurUn.stages.length, 2);
     assert.equal(new Set(cycles.stages.map((stage) => stage.id)).size, 3);
     assert.equal(cycles.cycleDetected, true);
     assert.deepEqual(cycles.orphanNodeIds, ["personnage:noeud-orphelin"]);
