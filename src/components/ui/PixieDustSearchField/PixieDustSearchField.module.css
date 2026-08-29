@@ -8,50 +8,154 @@
     display: grid;
     width: 100%;
     min-width: 0;
-    gap: 0.625rem;
-}
-
-.inline {
-    grid-template-columns: minmax(0, 1fr) auto auto;
     align-items: start;
 }
 
-.stacked {
+.separate {
+    gap: 0.625rem;
+}
+
+.inline.separate {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+}
+
+.stacked.separate,
+.responsive.separate {
     grid-template-columns: minmax(0, 1fr);
 }
 
-.stacked .clearButton,
-.stacked .submitButton {
+.stacked.separate .clearButton,
+.stacked.separate .submitButton,
+.responsive.separate .clearButton,
+.responsive.separate .submitButton {
     width: 100%;
 }
 
-.responsive {
+.joined {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+}
+
+.joinedInput {
+    --pixie-search-radius: var(--radius-small);
+
+    border-radius: var(--pixie-search-radius) var(--pixie-search-radius) 0 0 !important;
+}
+
+.joinedInput[data-pixie-input-shape="square"] {
+    --pixie-search-radius: 0;
+}
+
+.joinedInput[data-pixie-input-shape="pill"] {
+    --pixie-search-radius: 999px;
+}
+
+.joined .submitButton {
+    width: 100%;
+    margin-top: -1px;
+    border-radius: 0 0 var(--radius-small) var(--radius-small);
+}
+
+.joined[data-shape="square"] .submitButton {
+    border-radius: 0;
+}
+
+.joined[data-shape="pill"] .submitButton {
+    border-radius: 0 0 999px 999px;
+}
+
+.embedded {
     grid-template-columns: minmax(0, 1fr);
 }
 
-.responsive .clearButton,
-.responsive .submitButton {
-    width: 100%;
+.embeddedCommands {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.125rem;
+}
+
+.embeddedCommands .clearButton,
+.embeddedCommands .submitButton,
+.joinedInput .clearButton {
+    min-width: 1.875rem;
+    min-height: 1.875rem;
+    padding: 0.25rem;
+    border-radius: var(--radius-small);
+    font-size: 0.875em;
 }
 
 .clearButton {
     min-width: 2.25rem;
     padding-inline: 0.625rem;
-    font-size: 1.25em;
+}
+
+.iconButton {
+    min-width: 2.25rem;
+    padding-inline: 0.625rem;
+}
+
+.commandIcon {
+    display: inline-grid;
+    place-items: center;
+    line-height: 1;
+}
+
+.submitButton :global(span) {
+    gap: 0.4em;
 }
 
 .searchInput::-webkit-search-cancel-button {
     appearance: none;
 }
 
+.visuallyHidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    border: 0;
+    white-space: nowrap;
+}
+
 @media (min-width: 36rem) {
-    .responsive {
+    .responsive.separate {
         grid-template-columns: minmax(0, 1fr) auto auto;
-        align-items: start;
     }
 
-    .responsive .clearButton,
-    .responsive .submitButton {
+    .responsive.separate .clearButton,
+    .responsive.separate .submitButton {
         width: auto;
+    }
+
+    .inline.joined,
+    .responsive.joined {
+        grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    .inline.joined .joinedInput,
+    .responsive.joined .joinedInput {
+        border-radius: var(--pixie-search-radius) 0 0 var(--pixie-search-radius) !important;
+    }
+
+    .inline.joined .submitButton,
+    .responsive.joined .submitButton {
+        width: auto;
+        height: 100%;
+        margin-top: 0;
+        margin-left: -1px;
+        border-radius: 0 var(--radius-small) var(--radius-small) 0;
+    }
+
+    .inline.joined[data-shape="square"] .submitButton,
+    .responsive.joined[data-shape="square"] .submitButton {
+        border-radius: 0;
+    }
+
+    .inline.joined[data-shape="pill"] .submitButton,
+    .responsive.joined[data-shape="pill"] .submitButton {
+        border-radius: 0 999px 999px 0;
     }
 }
