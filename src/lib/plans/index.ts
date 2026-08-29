@@ -2,6 +2,7 @@ export { codexPlanArchives } from "@/lib/plans/archives";
 export { derivePlanCredits } from "@/lib/plans/credits";
 export { derivePlanEvents } from "@/lib/plans/events";
 export { derivePlanEvidence } from "@/lib/plans/evidence";
+export { deriveGeneriqueVivant } from "@/lib/plans/generique-vivant";
 export { derivePlanLinks } from "@/lib/plans/links";
 export { derivePlanNodes } from "@/lib/plans/nodes";
 export { deriveMontageDuTemps } from "@/lib/plans/montage-du-temps";
@@ -45,6 +46,11 @@ export type {
     CodexMontageDuTempsTrack,
     CodexMontageDuTempsTrackSlug,
     CodexMontageDuTempsWindowSlug,
+    CodexGeneriqueVivantAngle,
+    CodexGeneriqueVivantContribution,
+    CodexGeneriqueVivantGroup,
+    CodexGeneriqueVivantMatterSource,
+    CodexGeneriqueVivantModel,
     CodexPlanLink,
     CodexPlanLinkKind,
     CodexPlanNode,

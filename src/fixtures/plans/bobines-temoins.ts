@@ -232,16 +232,17 @@ const creditsContributors = Array.from({ length: 240 }, (_, index) =>
             : `Collaborateur témoin ${String(index + 1).padStart(3, "0")}`,
     ),
 );
+const largeCreditRoles = Array.from({ length: 18 }, (_, index) =>
+    index === 0
+        ? "responsabilité synthétique au libellé volontairement très long afin d’éprouver la recherche, le regroupement et la restitution textuelle sans troncature silencieuse"
+        : `rôle témoin ${String(index + 1).padStart(2, "0")}`,
+);
 const largeCredits: readonly CodexPlanCredit[] = creditsContributors.map(
     (contributor, index) => ({
         id: `credit:grand-generique:${index + 1}`,
         work: creditsWork,
         contributor,
-        roles: [
-            index === 0
-                ? "responsabilité synthétique au libellé volontairement très long afin d’éprouver la recherche, le regroupement et la restitution textuelle sans troncature silencieuse"
-                : `rôle témoin ${String((index % 18) + 1).padStart(2, "0")}`,
-        ],
+        roles: [largeCreditRoles[index % largeCreditRoles.length]],
         domain: `departement-temoin-${(index % 9) + 1}`,
         provenance: provenance(
             "Crédit synthétique réservé aux essais de densité de la Bobine témoin.",

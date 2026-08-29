@@ -550,6 +550,64 @@ export type CodexMontageDuTempsMatterSource =
           bobine: CodexPlanBobineTemoin;
       }>;
 
+export type CodexGeneriqueVivantAngle = Extract<
+    CodexPlanAngleSlug,
+    | "roles"
+    | "departments"
+    | "responsibilities"
+    | "collaborations"
+    | "recurrences"
+>;
+
+export type CodexGeneriqueVivantContribution = Readonly<{
+    id: string;
+    contributor: CodexPlanEntityReference;
+    work: CodexPlanEntityReference;
+    roles: readonly string[];
+    domain: string;
+    domainLabel: string;
+    actionLabel: string;
+    searchKey: string;
+    recurrenceWorkLabels: readonly string[];
+    provenance: readonly CodexPlanProvenance[];
+}>;
+
+export type CodexGeneriqueVivantGroup = Readonly<{
+    id: string;
+    label: string;
+    actionLabel: string;
+    contributionIds: readonly string[];
+}>;
+
+export type CodexGeneriqueVivantModel = Readonly<{
+    configuration: CodexPlanConfiguration;
+    subject: CodexPlanEntityReference;
+    matter: CodexPlanMatter;
+    runtimeState: CodexPlanRuntimeState;
+    contributions: readonly CodexGeneriqueVivantContribution[];
+    groups: readonly CodexGeneriqueVivantGroup[];
+    selection: CodexPlanDerivationSelection;
+    notices: readonly CodexPlanDerivationNotice[];
+    stats: Readonly<{
+        contributions: number;
+        domains: number;
+        multiRole: number;
+        resolved: number;
+        unresolved: number;
+    }>;
+}>;
+
+export type CodexGeneriqueVivantMatterSource =
+    | Readonly<{
+          kind: "archives";
+          archives: CodexPlanArchives;
+      }>
+    | Readonly<{
+          kind: "bobine-temoin";
+          archives: CodexPlanArchives;
+          bobine: CodexPlanBobineTemoin;
+      }>;
+
 export type CodexPlanVocabularyDefinition = Readonly<{
     label: string;
     description: string;
