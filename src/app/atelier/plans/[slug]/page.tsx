@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { AtelierPlanDossier } from "@/components/atelier/AtelierPlanDossier";
+import { AtelierMontageDuTempsPrototype } from "@/components/atelier/AtelierMontageDuTempsPrototype";
+import type {
+    AtelierMontageDuTempsMatterKey,
+    AtelierMontageDuTempsProjection,
+} from "@/components/atelier/AtelierMontageDuTempsPrototype";
 import { AtelierPlanDEnsemblePrototype } from "@/components/atelier/AtelierPlanDEnsemblePrototype";
 import type {
     AtelierPlanDEnsembleDepth,
@@ -17,6 +22,7 @@ import type {
 import { bobinesTemoins } from "@/fixtures/plans";
 import {
     codexPlanArchives,
+    deriveMontageDuTemps,
     derivePlanDEnsemble,
     deriveTravellingDocumentaire,
 } from "@/lib/plans";
@@ -60,6 +66,19 @@ const ensembleMatterOptions = [
 const ensembleDepths = [
     1, 2,
 ] as const satisfies readonly AtelierPlanDEnsembleDepth[];
+
+const montageMatterOptions = [
+    ["archives", "Archives publiées"],
+    ["corpus-vide", "Bobine · Corpus vide"],
+    ["corpus-reduit", "Bobine · Corpus réduit"],
+    [
+        "dates-partielles-et-contradictoires",
+        "Bobine · Dates partielles et contradictoires",
+    ],
+] as const satisfies readonly (readonly [
+    AtelierMontageDuTempsMatterKey,
+    string,
+])[];
 
 function createTravellingProjections() {
     const projections: AtelierTravellingProjection[] = [];
@@ -162,6 +181,46 @@ function createEnsembleProjections() {
     return projections;
 }
 
+function createMontageProjections() {
+    return montageMatterOptions.map(([matterKey, matterLabel]) => {
+        const configuration: CodexPlanConfiguration = {
+            plan: "montage-du-temps",
+            subject: {
+                family: "oeuvres",
+                slug: "snow-white-and-the-seven-dwarfs",
+            },
+            angle: "production",
+            objective: "compare",
+            frame: {
+                label: "De la mise en chantier aux honneurs de l’Academy",
+                description:
+                    "Comparer fabrication, diffusion et reconnaissance sur une règle temporelle commune.",
+            },
+            matter:
+                matterKey === "archives"
+                    ? { kind: "archives" }
+                    : { kind: "bobine-temoin", fixture: matterKey },
+        };
+        const model =
+            matterKey === "archives"
+                ? deriveMontageDuTemps(configuration, {
+                      kind: "archives",
+                      archives: codexPlanArchives,
+                  })
+                : deriveMontageDuTemps(configuration, {
+                      kind: "bobine-temoin",
+                      archives: codexPlanArchives,
+                      bobine: bobinesTemoins[matterKey],
+                  });
+
+        return {
+            matterKey,
+            matterLabel,
+            model,
+        } satisfies AtelierMontageDuTempsProjection;
+    });
+}
+
 export function generateStaticParams() {
     return getCodexPlans().map(({ slug }) => ({ slug }));
 }
@@ -230,6 +289,25 @@ export default async function AtelierPlanPage({
                 prototype={
                     <AtelierPlanDEnsemblePrototype
                         projections={createEnsembleProjections()}
+                    />
+                }
+            />
+        );
+    }
+
+    if (slug === "montage-du-temps") {
+        return (
+            <AtelierPlanDossier
+                slug={slug}
+                plan={plan}
+                status="Esquisse"
+                program="P0 · Troisième prototype"
+                version="v0.1.0"
+                prototypeTitle="Blanche-Neige fait apparaître plusieurs temps sur une même bobine"
+                prototypeDescription="Le prototype compare la fabrication, la diffusion et la reconnaissance sur une règle commune, tout en conservant la précision réelle, les territoires, les preuves et les contradictions éventuelles."
+                prototype={
+                    <AtelierMontageDuTempsPrototype
+                        projections={createMontageProjections()}
                     />
                 }
             />
