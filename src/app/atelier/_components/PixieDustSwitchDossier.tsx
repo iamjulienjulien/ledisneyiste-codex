@@ -10,9 +10,12 @@ import { PixieStack } from "@/components/ui/PixieStack";
 import {
     PixieDustSwitch,
     type PixieDustSwitchColor,
+    type PixieDustSwitchEffect,
+    type PixieDustSwitchMotion,
     type PixieDustSwitchSize,
     type PixieDustSwitchVariant,
 } from "@/components/ui/PixieDustSwitch";
+import { PixieDustSwitchAsyncDemo } from "./PixieDustSwitchAsyncDemo";
 import { PixieDustSwitchPlayground } from "./PixieDustSwitchPlayground";
 
 const variants = [
@@ -31,10 +34,39 @@ const variants = [
         name: "Contour",
         role: "Le mouvement reste visible dans une présence minimale.",
     },
+    {
+        value: "glass" as const,
+        name: "Verre",
+        role: "La piste conserve le décor sous une matière translucide.",
+    },
+    {
+        value: "projector" as const,
+        name: "Projecteur",
+        role: "Un halo contenu donne plus de présence à la préférence active.",
+    },
 ] as const satisfies readonly Readonly<{
     value: PixieDustSwitchVariant;
     name: string;
     role: string;
+}>[];
+
+const motions = [
+    { value: "slide" as const, name: "Glissement" },
+    { value: "snap" as const, name: "Déclic" },
+    { value: "spring" as const, name: "Rebond" },
+    { value: "none" as const, name: "Aucun" },
+] as const satisfies readonly Readonly<{
+    value: PixieDustSwitchMotion;
+    name: string;
+}>[];
+
+const effects = [
+    { value: "none" as const, name: "Aucun" },
+    { value: "glow" as const, name: "Halo" },
+    { value: "dust" as const, name: "Poussière Pixie" },
+] as const satisfies readonly Readonly<{
+    value: PixieDustSwitchEffect;
+    name: string;
 }>[];
 
 const sizes = [
@@ -76,10 +108,53 @@ const properties = [
         description: "Couleur active, héritée ou issue du registre.",
     },
     {
+        name: "motion",
+        type: "PixieDustSwitchMotion",
+        defaultValue: '"slide"',
+        description: "Rythme de traversée du bouton dans la piste.",
+    },
+    {
+        name: "effect",
+        type: "PixieDustSwitchEffect",
+        defaultValue: '"none"',
+        description: "Halo ou poussière qui accompagne l’activation.",
+    },
+    {
         name: "invalid",
         type: "boolean",
         defaultValue: "false",
         description: "Active l’état invalide visuel et accessible.",
+    },
+    {
+        name: "pending",
+        type: "boolean",
+        defaultValue: "false",
+        description: "Verrouille temporairement la bascule avec aria-busy.",
+    },
+    {
+        name: "readOnly",
+        type: "boolean",
+        defaultValue: "false",
+        description:
+            "Conserve le contrôle focalisable sans autoriser sa modification.",
+    },
+    {
+        name: "checkedIcon",
+        type: "ReactNode",
+        defaultValue: "—",
+        description: "Symbole décoratif affiché dans le bouton actif.",
+    },
+    {
+        name: "uncheckedIcon",
+        type: "ReactNode",
+        defaultValue: "—",
+        description: "Symbole décoratif affiché dans le bouton inactif.",
+    },
+    {
+        name: "onCheckedChange",
+        type: "(checked: boolean) => void",
+        defaultValue: "—",
+        description: "Retour direct déclenché après une bascule autorisée.",
     },
     {
         name: "className",
@@ -94,6 +169,18 @@ const properties = [
         description: "Classes ajoutées au véritable input.",
     },
     {
+        name: "trackClassName",
+        type: "string",
+        defaultValue: '""',
+        description: "Classes ajoutées à la piste visuelle.",
+    },
+    {
+        name: "thumbClassName",
+        type: "string",
+        defaultValue: '""',
+        description: "Classes ajoutées au bouton mobile.",
+    },
+    {
         name: "ref",
         type: "Ref<HTMLInputElement>",
         defaultValue: "—",
@@ -105,7 +192,7 @@ const specificTypes = [
     {
         name: "PixieDustSwitchVariant",
         values: variants.map(({ value }) => `"${value}"`),
-        description: "Trois traitements de la piste active.",
+        description: "Cinq traitements de la piste active.",
     },
     {
         name: "PixieDustSwitchSize",
@@ -116,6 +203,16 @@ const specificTypes = [
         name: "PixieDustSwitchColor",
         values: ["AtelierAnimationColorSlug", "false"],
         description: "Accent du registre ou couleur héritée.",
+    },
+    {
+        name: "PixieDustSwitchMotion",
+        values: motions.map(({ value }) => `"${value}"`),
+        description: "Quatre rythmes de déplacement du bouton.",
+    },
+    {
+        name: "PixieDustSwitchEffect",
+        values: effects.map(({ value }) => `"${value}"`),
+        description: "Trois niveaux de mise en lumière de la bascule.",
     },
 ] as const;
 
@@ -188,7 +285,7 @@ export function PixieDustSwitchDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.1.0
+                                0.2.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -227,7 +324,7 @@ export function PixieDustSwitchDossier() {
                             ],
                             [
                                 "Limite",
-                                "Aucun état intermédiaire, chargement ou confirmation.",
+                                "Aucun état indéterminé, groupe exclusif ou stockage automatique.",
                             ],
                         ].map(([term, description]) => (
                             <div key={term} className="bg-surface-muted p-5">
@@ -258,7 +355,9 @@ export function PixieDustSwitchDossier() {
                                     description="Ajoute une texture légère à l’image."
                                 >
                                     <PixieDustSwitch
+                                        id="switch-master"
                                         color="ambre-projecteur"
+                                        effect="dust"
                                         defaultChecked
                                     />
                                 </PixieField>
@@ -269,9 +368,11 @@ export function PixieDustSwitchDossier() {
     description="Ajoute une texture légère à l’image."
 >
     <PixieDustSwitch
+        id="projection-grain"
         color="ambre-projecteur"
+        effect="dust"
         checked={grainEnabled}
-        onChange={(event) => setGrainEnabled(event.target.checked)}
+        onCheckedChange={setGrainEnabled}
     />
 </PixieField>`}</CodeExample>
                         </div>
@@ -282,10 +383,10 @@ export function PixieDustSwitchDossier() {
                     <SequenceTitle
                         id="switch-variants-title"
                         eyebrow="Variantes"
-                        title="Trois traitements pour rendre l’état actif visible"
+                        title="Cinq traitements pour rendre l’état actif visible"
                         description="La position du bouton reste identique ; seule la présence de la piste change."
                     />
-                    <div className="mt-8 grid gap-5 lg:grid-cols-3">
+                    <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
                         {variants.map((variant) => (
                             <Stage key={variant.value}>
                                 <p className="font-mono text-xs text-accent">
@@ -346,6 +447,62 @@ export function PixieDustSwitchDossier() {
                     </div>
                 </section>
 
+                <section aria-labelledby="switch-motion-title">
+                    <SequenceTitle
+                        id="switch-motion-title"
+                        eyebrow="Mouvement et magie"
+                        title="Quatre rythmes, trois intensités de lumière"
+                        description="Le déplacement reste fonctionnel ; halo et poussière Pixie l’accompagnent sans remplacer la position du bouton."
+                    />
+                    <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+                        {motions.map((motion) => (
+                            <Stage key={motion.value}>
+                                <p className="font-mono text-xs text-accent">
+                                    motion=&quot;{motion.value}&quot;
+                                </p>
+                                <h4 className="mt-3 text-xl text-ink">
+                                    {motion.name}
+                                </h4>
+                                <div className="mt-5">
+                                    <PixieDustSwitch
+                                        aria-label={`Mouvement ${motion.name}`}
+                                        motion={motion.value}
+                                        effect={
+                                            motion.value === "none"
+                                                ? "none"
+                                                : "glow"
+                                        }
+                                        color="violet-ombre-portee"
+                                        defaultChecked
+                                    />
+                                </div>
+                            </Stage>
+                        ))}
+                    </div>
+                    <div className="mt-5 grid gap-5 md:grid-cols-3">
+                        {effects.map((effect) => (
+                            <Stage key={effect.value}>
+                                <p className="font-mono text-xs text-accent">
+                                    effect=&quot;{effect.value}&quot;
+                                </p>
+                                <h4 className="mt-3 text-xl text-ink">
+                                    {effect.name}
+                                </h4>
+                                <div className="mt-5">
+                                    <PixieDustSwitch
+                                        aria-label={`Effet ${effect.name}`}
+                                        variant="projector"
+                                        motion="spring"
+                                        effect={effect.value}
+                                        color="ambre-projecteur"
+                                        defaultChecked
+                                    />
+                                </div>
+                            </Stage>
+                        ))}
+                    </div>
+                </section>
+
                 <section aria-labelledby="switch-colors-title">
                     <SequenceTitle
                         id="switch-colors-title"
@@ -377,7 +534,7 @@ export function PixieDustSwitchDossier() {
                         eyebrow="États"
                         title="L’interrupteur raconte toujours sa situation"
                     />
-                    <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                         <Stage>
                             <PixieDustSwitch aria-label="Préférence inactive" />
                             <p className="mt-4 text-sm text-ink-soft">
@@ -410,6 +567,49 @@ export function PixieDustSwitchDossier() {
                                 Désactivé
                             </p>
                         </Stage>
+                        <Stage>
+                            <PixieDustSwitch
+                                aria-label="Préférence en lecture seule"
+                                defaultChecked
+                                readOnly
+                            />
+                            <p className="mt-4 text-sm text-ink-soft">
+                                Lecture seule
+                            </p>
+                        </Stage>
+                        <Stage>
+                            <PixieDustSwitch
+                                aria-label="Préférence en attente"
+                                defaultChecked
+                                pending
+                                variant="projector"
+                            />
+                            <p className="mt-4 text-sm text-ink-soft">
+                                En attente
+                            </p>
+                        </Stage>
+                    </div>
+                </section>
+
+                <section aria-labelledby="switch-async-title">
+                    <SequenceTitle
+                        id="switch-async-title"
+                        eyebrow="Scénario asynchrone"
+                        title="La préférence attend son raccord sans perdre son état"
+                        description="Pending maintient la valeur enregistrée, annonce l’attente et bloque une seconde bascule jusqu’au retour de la régie."
+                    />
+                    <div className="mt-8 grid gap-5 lg:grid-cols-2">
+                        <Stage>
+                            <PixieDustSwitchAsyncDemo />
+                        </Stage>
+                        <CodeExample>{`<PixieDustSwitch
+    checked={synchronizationEnabled}
+    onCheckedChange={applySynchronization}
+    pending={isSaving}
+    variant="projector"
+    motion="spring"
+    effect="dust"
+/>`}</CodeExample>
                     </div>
                 </section>
 
@@ -459,7 +659,13 @@ export function PixieDustSwitchDossier() {
                                         spacing="sm"
                                     >
                                         <PixieDustSwitch
+                                            id={preference.id}
                                             color={preference.color}
+                                            effect={
+                                                preference.checked
+                                                    ? "glow"
+                                                    : "none"
+                                            }
                                             defaultChecked={preference.checked}
                                         />
                                     </PixieField>
@@ -467,6 +673,49 @@ export function PixieDustSwitchDossier() {
                             ))}
                         </div>
                     </Stage>
+                </section>
+
+                <section aria-labelledby="switch-indicators-title">
+                    <SequenceTitle
+                        id="switch-indicators-title"
+                        eyebrow="Indicateurs complémentaires"
+                        title="Le bouton peut porter un repère sans lui confier le sens"
+                        description="Les symboles restent décoratifs. Le rôle switch et la valeur checked demeurent la seule annonce de l’état."
+                    />
+                    <div className="mt-8 grid gap-5 md:grid-cols-2">
+                        <Stage>
+                            <PixieField
+                                controlId="switch-symbols"
+                                label="Repères dans le bouton"
+                                description="Le signe accompagne la position et la couleur."
+                            >
+                                <PixieDustSwitch
+                                    id="switch-symbols"
+                                    checkedIcon="✓"
+                                    uncheckedIcon="–"
+                                    variant="soft"
+                                    effect="glow"
+                                    defaultChecked
+                                />
+                            </PixieField>
+                        </Stage>
+                        <Stage>
+                            <div dir="rtl">
+                                <PixieField
+                                    controlId="switch-rtl"
+                                    label="واجهة من اليمين إلى اليسار"
+                                    description="La piste inverse logiquement sa direction."
+                                >
+                                    <PixieDustSwitch
+                                        id="switch-rtl"
+                                        color="bleu-reperage"
+                                        motion="spring"
+                                        defaultChecked
+                                    />
+                                </PixieField>
+                            </div>
+                        </Stage>
+                    </div>
                 </section>
 
                 <section aria-labelledby="switch-choice-title">
@@ -534,6 +783,27 @@ export function PixieDustSwitchDossier() {
                                     position du bouton complète la couleur.
                                 </p>
                             </PixiePanel>
+                            <PixiePanel variant="outline" padding="md">
+                                <h4 className="text-xl text-ink">
+                                    Une attente qui ne ment pas
+                                </h4>
+                                <p className="mt-3 text-sm leading-6 text-ink-soft">
+                                    Pending conserve la valeur enregistrée,
+                                    expose aria-busy et empêche une nouvelle
+                                    bascule sans retirer le contrôle du
+                                    parcours.
+                                </p>
+                            </PixiePanel>
+                            <PixiePanel variant="outline" padding="md">
+                                <h4 className="text-xl text-ink">
+                                    Une magie toujours facultative
+                                </h4>
+                                <p className="mt-3 text-sm leading-6 text-ink-soft">
+                                    Halo et poussière complètent la position du
+                                    bouton. Le mouvement réduit les retire sans
+                                    masquer l’état actif.
+                                </p>
+                            </PixiePanel>
                         </div>
                     </div>
                 </section>
@@ -544,7 +814,7 @@ export function PixieDustSwitchDossier() {
                             id="switch-technical-title"
                             eyebrow="Générique technique"
                             title="API de l’esquisse"
-                            description="Checked, defaultChecked, onChange, disabled, required, name, value et les attributs ARIA sont transmis à l’input natif."
+                            description="Checked, defaultChecked, onChange, disabled, required, name, value et les attributs ARIA restent transmis à l’input natif ; onCheckedChange simplifie les usages contrôlés."
                         />
                         <div className="mt-8">
                             <AtelierPropertiesTable properties={properties} />
@@ -568,9 +838,11 @@ export function PixieDustSwitchDossier() {
                     />
                     <PixieStack as="ul" gap="sm" className="mt-8">
                         {[
-                            "Éprouver le mouvement et le contraste dans les deux Lumières.",
-                            "Vérifier la cible tactile et les trois dimensions sur mobile.",
-                            "Tester l’annonce du rôle et de l’état avec les lecteurs d’écran.",
+                            "Éprouver les cinq variantes et les couleurs dans les deux Lumières.",
+                            "Vérifier la cible tactile de 44 px et les trois dimensions sur mobile.",
+                            "Tester role switch, aria-busy, aria-readonly et aria-invalid avec les lecteurs d’écran.",
+                            "Confirmer le verrouillage pendant pending, readOnly et disabled.",
+                            "Vérifier le mouvement réduit pour spring, glow et dust.",
                             "Confirmer la frontière d’usage avec Checkbox et les actions différées.",
                         ].map((item) => (
                             <li

@@ -1,17 +1,18 @@
 "use client";
 
-import { PixieSelect } from "@/components/ui/PixieSelect";
-
-import { useState } from "react";
+import { useState, type Dispatch, type SetStateAction } from "react";
 import { AtelierCodePanel } from "@/components/atelier/AtelierCodePanel";
+import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import {
     AtelierPlaygroundProjection,
     useAtelierProjection,
 } from "@/components/atelier/AtelierPlaygroundProjection";
-import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { PixieField } from "@/components/ui/PixieField";
+import { PixieSelect } from "@/components/ui/PixieSelect";
 import {
     PixieDustSwitch,
+    type PixieDustSwitchEffect,
+    type PixieDustSwitchMotion,
     type PixieDustSwitchSize,
     type PixieDustSwitchVariant,
 } from "@/components/ui/PixieDustSwitch";
@@ -25,6 +26,8 @@ const variants = [
     { value: "solid", label: "Plein" },
     { value: "soft", label: "Léger" },
     { value: "outline", label: "Contour" },
+    { value: "glass", label: "Verre" },
+    { value: "projector", label: "Projecteur" },
 ] as const satisfies readonly Readonly<{
     value: PixieDustSwitchVariant;
     label: string;
@@ -36,6 +39,25 @@ const sizes = [
     { value: "lg", label: "Grande" },
 ] as const satisfies readonly Readonly<{
     value: PixieDustSwitchSize;
+    label: string;
+}>[];
+
+const motions = [
+    { value: "slide", label: "Glissement" },
+    { value: "snap", label: "Déclic" },
+    { value: "spring", label: "Rebond" },
+    { value: "none", label: "Aucun" },
+] as const satisfies readonly Readonly<{
+    value: PixieDustSwitchMotion;
+    label: string;
+}>[];
+
+const effects = [
+    { value: "none", label: "Aucun" },
+    { value: "glow", label: "Halo" },
+    { value: "dust", label: "Poussière Pixie" },
+] as const satisfies readonly Readonly<{
+    value: PixieDustSwitchEffect;
     label: string;
 }>[];
 
@@ -57,15 +79,20 @@ const frameWidths = {
 } as const satisfies Record<"compact" | "moyen" | "large", string>;
 
 export function PixieDustSwitchPlayground() {
-    const [variant, setVariant] = useState<PixieDustSwitchVariant>("solid");
+    const [variant, setVariant] = useState<PixieDustSwitchVariant>("projector");
     const [size, setSize] = useState<PixieDustSwitchSize>("md");
+    const [motion, setMotion] = useState<PixieDustSwitchMotion>("spring");
+    const [effect, setEffect] = useState<PixieDustSwitchEffect>("dust");
     const [color, setColor] = useState<AtelierAnimationColorSlug | "inherit">(
         "ambre-projecteur",
     );
     const [checked, setChecked] = useState(true);
     const [invalid, setInvalid] = useState(false);
+    const [pending, setPending] = useState(false);
     const [disabled, setDisabled] = useState(false);
+    const [readOnly, setReadOnly] = useState(false);
     const [required, setRequired] = useState(false);
+    const [icons, setIcons] = useState(true);
     const { lumiere: light, cadre: frame } = useAtelierProjection();
 
     const colorProp = color === "inherit" ? "" : `\n        color="${color}"`;
@@ -74,10 +101,13 @@ export function PixieDustSwitchPlayground() {
     label="Grain de projection"${invalid ? '\n    error="Cette préférence doit être vérifiée."' : `\n    description="Le grain est actuellement ${checked ? "actif" : "inactif"}."`}${required ? "\n    required" : ""}
 >
     <PixieDustSwitch
+        id="projection-grain"
         variant="${variant}"
-        size="${size}"${colorProp}
+        size="${size}"
+        motion="${motion}"
+        effect="${effect}"${colorProp}
         checked={grainEnabled}
-        onChange={(event) => setGrainEnabled(event.target.checked)}${disabled ? "\n        disabled" : ""}${required ? "\n        required" : ""}
+        onCheckedChange={setGrainEnabled}${icons ? '\n        checkedIcon="✓"\n        uncheckedIcon="–"' : ""}${pending ? "\n        pending" : ""}${invalid ? "\n        invalid" : ""}${disabled ? "\n        disabled" : ""}${readOnly ? "\n        readOnly" : ""}${required ? "\n        required" : ""}
     />
 </PixieField>`;
     const fieldRequirement = required
@@ -86,11 +116,14 @@ export function PixieDustSwitchPlayground() {
     const booleanControls: readonly Readonly<{
         label: string;
         checked: boolean;
-        onChange: (checked: boolean) => void;
+        onChange: Dispatch<SetStateAction<boolean>>;
     }>[] = [
         { label: "Préférence active", checked, onChange: setChecked },
+        { label: "Symboles d’état", checked: icons, onChange: setIcons },
+        { label: "En attente", checked: pending, onChange: setPending },
         { label: "Invalide", checked: invalid, onChange: setInvalid },
         { label: "Désactivé", checked: disabled, onChange: setDisabled },
+        { label: "Lecture seule", checked: readOnly, onChange: setReadOnly },
         { label: "Obligatoire", checked: required, onChange: setRequired },
     ];
 
@@ -134,6 +167,70 @@ export function PixieDustSwitchPlayground() {
                                 ))}
                             </div>
                         </fieldset>
+
+                        <div>
+                            <label
+                                htmlFor="switch-motion"
+                                className="text-sm font-medium text-ink"
+                            >
+                                Mouvement
+                            </label>
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
+                                id="switch-motion"
+                                value={motion}
+                                onChange={(event) =>
+                                    setMotion(
+                                        event.target
+                                            .value as PixieDustSwitchMotion,
+                                    )
+                                }
+                                className="mt-2"
+                            >
+                                {motions.map((option) => (
+                                    <option
+                                        key={option.value}
+                                        value={option.value}
+                                    >
+                                        {option.label}
+                                    </option>
+                                ))}
+                            </PixieSelect>
+                        </div>
+
+                        <div>
+                            <label
+                                htmlFor="switch-effect"
+                                className="text-sm font-medium text-ink"
+                            >
+                                Effet
+                            </label>
+                            <PixieSelect
+                                mode="popover"
+                                portal
+                                size="sm"
+                                id="switch-effect"
+                                value={effect}
+                                onChange={(event) =>
+                                    setEffect(
+                                        event.target
+                                            .value as PixieDustSwitchEffect,
+                                    )
+                                }
+                                className="mt-2"
+                            >
+                                {effects.map((option) => (
+                                    <option
+                                        key={option.value}
+                                        value={option.value}
+                                    >
+                                        {option.label}
+                                    </option>
+                                ))}
+                            </PixieSelect>
+                        </div>
 
                         <div>
                             <label
@@ -205,7 +302,9 @@ export function PixieDustSwitchPlayground() {
                                 description={
                                     invalid
                                         ? undefined
-                                        : `Le grain est actuellement ${checked ? "actif" : "inactif"}.`
+                                        : pending
+                                          ? "La préférence rejoint la régie…"
+                                          : `Le grain est actuellement ${checked ? "actif" : "inactif"}.`
                                 }
                                 error={
                                     invalid
@@ -215,14 +314,20 @@ export function PixieDustSwitchPlayground() {
                                 {...fieldRequirement}
                             >
                                 <PixieDustSwitch
+                                    id="switch-preview"
                                     variant={variant}
                                     size={size}
+                                    motion={motion}
+                                    effect={effect}
                                     color={color === "inherit" ? false : color}
                                     checked={checked}
-                                    onChange={(event) =>
-                                        setChecked(event.target.checked)
-                                    }
+                                    onCheckedChange={setChecked}
+                                    checkedIcon={icons ? "✓" : undefined}
+                                    uncheckedIcon={icons ? "–" : undefined}
+                                    pending={pending}
+                                    invalid={invalid}
                                     disabled={disabled}
+                                    readOnly={readOnly}
                                     required={required}
                                 />
                             </PixieField>
