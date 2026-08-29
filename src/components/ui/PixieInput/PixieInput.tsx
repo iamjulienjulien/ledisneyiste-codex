@@ -1,22 +1,22 @@
 import { getAtelierAnimationColor } from "@/registry/colors";
-import styles from "./PixieDustInput.module.css";
+import styles from "./PixieInput.module.css";
 import type {
-    PixieDustInputAlign,
-    PixieDustInputFont,
-    PixieDustInputProps,
-    PixieDustInputShape,
-    PixieDustInputSize,
-    PixieDustInputStyle,
-    PixieDustInputTone,
-    PixieDustInputVariant,
-} from "./PixieDustInput.types";
+    PixieInputAlign,
+    PixieInputFont,
+    PixieInputProps,
+    PixieInputShape,
+    PixieInputSize,
+    PixieInputStyle,
+    PixieInputTone,
+    PixieInputVariant,
+} from "./PixieInput.types";
 
 const variantClasses = {
     outline: styles.outline,
     filled: styles.filled,
     underline: styles.underline,
     ghost: styles.ghost,
-} as const satisfies Record<PixieDustInputVariant, string>;
+} as const satisfies Record<PixieInputVariant, string>;
 
 const sizeClasses = {
     xs: styles.extraSmall,
@@ -24,36 +24,36 @@ const sizeClasses = {
     md: styles.medium,
     lg: styles.large,
     xl: styles.extraLarge,
-} as const satisfies Record<PixieDustInputSize, string>;
+} as const satisfies Record<PixieInputSize, string>;
 
 const shapeClasses = {
     square: styles.square,
     rounded: styles.rounded,
     pill: styles.pill,
-} as const satisfies Record<PixieDustInputShape, string>;
+} as const satisfies Record<PixieInputShape, string>;
 
 const alignClasses = {
     start: styles.alignStart,
     center: styles.alignCenter,
     end: styles.alignEnd,
-} as const satisfies Record<PixieDustInputAlign, string>;
+} as const satisfies Record<PixieInputAlign, string>;
 
 const fontClasses = {
     body: styles.fontBody,
     mono: styles.fontMono,
-} as const satisfies Record<PixieDustInputFont, string>;
+} as const satisfies Record<PixieInputFont, string>;
 
 const toneClasses = {
     neutral: styles.toneNeutral,
     success: styles.toneSuccess,
     warning: styles.toneWarning,
-} as const satisfies Record<PixieDustInputTone, string>;
+} as const satisfies Record<PixieInputTone, string>;
 
-function isAriaInvalid(value: PixieDustInputProps["aria-invalid"]) {
+function isAriaInvalid(value: PixieInputProps["aria-invalid"]) {
     return value !== undefined && value !== false && value !== "false";
 }
 
-export function PixieDustInput({
+export function PixieInput({
     type = "text",
     variant = "outline",
     size = "md",
@@ -76,9 +76,9 @@ export function PixieDustInput({
     "aria-invalid": ariaInvalid,
     "aria-busy": ariaBusy,
     ...inputProps
-}: PixieDustInputProps) {
+}: PixieInputProps) {
     const colorDefinition = color ? getAtelierAnimationColor(color) : null;
-    const inputStyle: PixieDustInputStyle | undefined = colorDefinition
+    const inputStyle: PixieInputStyle | undefined = colorDefinition
         ? { "--pixie-input-color": colorDefinition.cssValue }
         : undefined;
     const isInvalid = invalid || isAriaInvalid(ariaInvalid);
