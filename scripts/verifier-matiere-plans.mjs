@@ -984,6 +984,148 @@ function verifierGeneriqueVivant({
     return [projection, vide, reduit, grand];
 }
 
+function verifierTableLumineuse({
+    archives,
+    bobinesTemoins,
+    deriveTableLumineuse,
+}) {
+    const configuration = {
+        plan: "table-lumineuse",
+        subject: {
+            family: "oeuvres",
+            slug: "snow-white-and-the-seven-dwarfs",
+        },
+        angle: "provenance",
+        objective: "verify",
+        frame: {
+            label: "Les preuves documentaires de Blanche-Neige",
+            description:
+                "Vérifier les affirmations et leurs sources sans fabriquer de score.",
+        },
+        matter: { kind: "archives" },
+    };
+    const archivesAvant = JSON.stringify(archives);
+    const projection = deriveTableLumineuse(configuration, {
+        kind: "archives",
+        archives,
+    });
+
+    assert.equal(
+        projection.subject.id,
+        "oeuvre:snow-white-and-the-seven-dwarfs",
+    );
+    assert.equal(projection.subject.resolved, true);
+    assert.equal(projection.matter.kind, "archives");
+    assert.equal(projection.runtimeState, "ready");
+    assert.deepEqual(projection.stats, {
+        items: 17,
+        sources: 8,
+        attachments: 36,
+        documented: 17,
+        partiallyResolved: 0,
+        undocumented: 0,
+        unclassifiedPositions: 17,
+        unclassifiedSources: 17,
+    });
+    assert.ok(
+        projection.items.every(
+            (item) =>
+                item.position === "unclassified" &&
+                item.sourceClassification === "unclassified",
+        ),
+        "La Table lumineuse ne doit pas inventer la position ou la nature des sources",
+    );
+    assert.ok(
+        projection.items.every((item) => item.searchKey.length > 0),
+        "Chaque affirmation doit pouvoir être retrouvée dans la Régie",
+    );
+    const economicValues = projection.items
+        .filter((item) => item.scope === "economic-data")
+        .flatMap((item) => item.facts)
+        .map((fact) => fact.numericValue)
+        .filter((value) => value !== undefined);
+    assert.ok(economicValues.includes(1_400_000));
+    assert.ok(economicValues.includes(1_488_423));
+    assert.deepEqual(
+        deriveTableLumineuse(configuration, {
+            kind: "archives",
+            archives,
+        }),
+        projection,
+        "La Table lumineuse doit rester déterministe",
+    );
+
+    const projeterBobine = (slug) =>
+        deriveTableLumineuse(
+            {
+                ...configuration,
+                matter: { kind: "bobine-temoin", fixture: slug },
+            },
+            {
+                kind: "bobine-temoin",
+                archives,
+                bobine: bobinesTemoins[slug],
+            },
+        );
+    const vide = projeterBobine("corpus-vide");
+    const reduit = projeterBobine("corpus-reduit");
+    const contraste = projeterBobine("preuves-contrastees");
+    const dates = projeterBobine("dates-partielles-et-contradictoires");
+    const accessibilite = projeterBobine("accessibilite-sous-contrainte");
+
+    assert.equal(vide.runtimeState, "empty");
+    assert.equal(reduit.runtimeState, "sparse");
+    assert.equal(reduit.items.length, 1);
+    assert.equal(dates.runtimeState, "empty");
+    assert.equal(accessibilite.runtimeState, "empty");
+    assert.equal(contraste.items.length, 5);
+    assert.deepEqual(
+        contraste.items.reduce((positions, item) => {
+            positions[item.position] = (positions[item.position] ?? 0) + 1;
+            return positions;
+        }, {}),
+        {
+            supports: 2,
+            nuances: 1,
+            contradicts: 1,
+            inconclusive: 1,
+        },
+    );
+    assert.equal(contraste.stats.undocumented, 1);
+    assert.ok(
+        contraste.items.some(
+            (item) => item.sourceClassification === "primary",
+        ) &&
+            contraste.items.some(
+                (item) => item.sourceClassification === "secondary",
+            ) &&
+            contraste.items.some(
+                (item) => item.sourceClassification === "database",
+            ) &&
+            contraste.items.some(
+                (item) =>
+                    item.sourceClassification === "editorial-interpretation",
+            ),
+        "La Bobine contrastée doit éprouver plusieurs natures de sources",
+    );
+
+    for (const resultat of [vide, reduit, contraste, dates, accessibilite]) {
+        assert.equal(resultat.matter.kind, "bobine-temoin");
+        assert.ok(
+            resultat.notices.some(
+                (notice) => notice.code === "bobine-temoin-active",
+            ),
+        );
+    }
+    assert.equal(
+        JSON.stringify(archives),
+        archivesAvant,
+        "La Table lumineuse a modifié les Archives qu’elle devait seulement lire",
+    );
+
+    return [projection, vide, reduit, contraste, dates, accessibilite];
+}
+
 function verifier() {
     const {
         codexPlanArchives,
@@ -995,6 +1137,7 @@ function verifier() {
         derivePlanDEnsemble,
         deriveGeneriqueVivant,
         deriveMontageDuTemps,
+        deriveTableLumineuse,
         deriveTravellingDocumentaire,
         bobinesTemoins,
         CODEX_PLAN_BOBINE_TEMOIN_SLUGS,
@@ -1200,9 +1343,14 @@ function verifier() {
         bobinesTemoins,
         deriveGeneriqueVivant,
     });
+    const projectionsTableLumineuse = verifierTableLumineuse({
+        archives: codexPlanArchives,
+        bobinesTemoins,
+        deriveTableLumineuse,
+    });
 
     console.log(
-        `Matière des Plans vérifiée : ${nodes.items.length} nœuds, ${links.items.length} liens, ${events.items.length} événements, ${credits.items.length} crédits, ${evidence.items.length} preuves, ${bobines.length} Bobines témoins, ${projections.length} projections du Travelling documentaire, ${projectionsEnsemble.length} projections du Plan d’ensemble, ${projectionsMontage.length} projections du Montage du temps et ${projectionsGenerique.length} projections du Générique vivant.`,
+        `Matière des Plans vérifiée : ${nodes.items.length} nœuds, ${links.items.length} liens, ${events.items.length} événements, ${credits.items.length} crédits, ${evidence.items.length} preuves, ${bobines.length} Bobines témoins, ${projections.length} projections du Travelling documentaire, ${projectionsEnsemble.length} projections du Plan d’ensemble, ${projectionsMontage.length} projections du Montage du temps, ${projectionsGenerique.length} projections du Générique vivant et ${projectionsTableLumineuse.length} projections de la Table lumineuse.`,
     );
 }
 
