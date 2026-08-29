@@ -6,20 +6,19 @@ import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieButton } from "@/components/ui/PixieButton";
 import { PixiePanel } from "@/components/ui/PixiePanel";
-import { PixieStack } from "@/components/ui/PixieStack";
 import {
-    PixieDustLoader,
-    type PixieDustLoaderDirection,
-    type PixieDustLoaderIntensity,
-    type PixieDustLoaderLabelPosition,
-    type PixieDustLoaderLayout,
-    type PixieDustLoaderMotion,
-    type PixieDustLoaderSize,
-    type PixieDustLoaderSpeed,
-    type PixieDustLoaderVariant,
-} from "@/components/ui/PixieDustLoader";
+    PixieLoader,
+    type PixieLoaderDirection,
+    type PixieLoaderIntensity,
+    type PixieLoaderLabelPosition,
+    type PixieLoaderLayout,
+    type PixieLoaderMotion,
+    type PixieLoaderSize,
+    type PixieLoaderSpeed,
+    type PixieLoaderVariant,
+} from "@/components/ui/PixieLoader";
 import type { AtelierAnimationColorSlug } from "@/types/colors";
-import { PixieDustLoaderPlayground } from "./PixieDustLoaderPlayground";
+import { PixieLoaderPlayground } from "./PixieLoaderPlayground";
 
 const variants = [
     {
@@ -68,7 +67,7 @@ const variants = [
         role: "Une attente compacte pensée pour les boutons et les champs.",
     },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustLoaderVariant;
+    value: PixieLoaderVariant;
     name: string;
     role: string;
 }>[];
@@ -80,7 +79,7 @@ const sizes = [
     { value: "lg", name: "Grande", dimension: "56 px" },
     { value: "xl", name: "Très grande", dimension: "80 px" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustLoaderSize;
+    value: PixieLoaderSize;
     name: string;
     dimension: string;
 }>[];
@@ -90,7 +89,7 @@ const speeds = [
     { value: "normal", name: "Normale", duration: "1,8 s" },
     { value: "fast", name: "Rapide", duration: "1,1 s" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustLoaderSpeed;
+    value: PixieLoaderSpeed;
     name: string;
     duration: string;
 }>[];
@@ -107,7 +106,7 @@ const layouts = [
         role: "Le message se place sous le centre de la projection.",
     },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustLoaderLayout;
+    value: PixieLoaderLayout;
     name: string;
     role: string;
 }>[];
@@ -129,7 +128,7 @@ const intensities = [
         role: "Les seize poussières traversent pleinement la scène.",
     },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustLoaderIntensity;
+    value: PixieLoaderIntensity;
     name: string;
     role: string;
 }>[];
@@ -151,7 +150,7 @@ const motions = [
         role: "L’emblème conserve sa forme sans aucune animation.",
     },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustLoaderMotion;
+    value: PixieLoaderMotion;
     name: string;
     role: string;
 }>[];
@@ -159,12 +158,12 @@ const motions = [
 const directions = [
     "forward",
     "reverse",
-] as const satisfies readonly PixieDustLoaderDirection[];
+] as const satisfies readonly PixieLoaderDirection[];
 
 const labelPositions = [
     "before",
     "after",
-] as const satisfies readonly PixieDustLoaderLabelPosition[];
+] as const satisfies readonly PixieLoaderLabelPosition[];
 
 const colors = [
     { value: "ambre-projecteur", label: "Projecteur" },
@@ -198,19 +197,19 @@ const properties = [
     },
     {
         name: "variant",
-        type: "PixieDustLoaderVariant",
+        type: "PixieLoaderVariant",
         defaultValue: '"sparkle"',
         description: "Chorégraphie magique de l’attente.",
     },
     {
         name: "size",
-        type: "PixieDustLoaderSize | number",
+        type: "PixieLoaderSize | number",
         defaultValue: '"md"',
         description: "Dimension extérieure du signe animé.",
     },
     {
         name: "speed",
-        type: "PixieDustLoaderSpeed",
+        type: "PixieLoaderSpeed",
         defaultValue: '"normal"',
         description: "Cadence de la chorégraphie.",
     },
@@ -222,43 +221,43 @@ const properties = [
     },
     {
         name: "layout",
-        type: "PixieDustLoaderLayout",
+        type: "PixieLoaderLayout",
         defaultValue: '"stacked"',
         description: "Position du label autour du signe.",
     },
     {
         name: "labelPosition",
-        type: "PixieDustLoaderLabelPosition",
+        type: "PixieLoaderLabelPosition",
         defaultValue: '"after"',
         description: "Place le texte avant ou après le signe animé.",
     },
     {
         name: "intensity",
-        type: "PixieDustLoaderIntensity",
+        type: "PixieLoaderIntensity",
         defaultValue: '"normal"',
         description: "Règle la lumière et la quantité de poussière de fée.",
     },
     {
         name: "motion",
-        type: "PixieDustLoaderMotion",
+        type: "PixieLoaderMotion",
         defaultValue: '"expressive"',
         description: "Choisit une chorégraphie complète, douce ou fixe.",
     },
     {
         name: "direction",
-        type: "PixieDustLoaderDirection",
+        type: "PixieLoaderDirection",
         defaultValue: '"forward"',
         description: "Lit la chorégraphie en avant ou en sens inverse.",
     },
     {
         name: "color",
-        type: "PixieDustLoaderColor",
+        type: "PixieLoaderColor",
         defaultValue: '"ambre-projecteur"',
         description: "Couleur du registre ou couleur héritée.",
     },
     {
         name: "secondaryColor",
-        type: "PixieDustLoaderColor",
+        type: "PixieLoaderColor",
         defaultValue: "false",
         description:
             "Seconde lumière employée par les détails et les poussières.",
@@ -290,7 +289,7 @@ const properties = [
     },
     {
         name: "ariaLive",
-        type: "PixieDustLoaderAriaLive",
+        type: "PixieLoaderAriaLive",
         defaultValue: '"polite"',
         description: "Règle la priorité d’annonce de la région status.",
     },
@@ -318,52 +317,52 @@ const properties = [
 
 const specificTypes = [
     {
-        name: "PixieDustLoaderVariant",
+        name: "PixieLoaderVariant",
         values: variants.map(({ value }) => `"${value}"`),
         description: "Neuf métaphores de l’attente indéterminée.",
     },
     {
-        name: "PixieDustLoaderSize",
+        name: "PixieLoaderSize",
         values: sizes.map(({ value }) => `"${value}"`),
         description: "Cinq dimensions du signe animé.",
     },
     {
-        name: "PixieDustLoaderSpeed",
+        name: "PixieLoaderSpeed",
         values: speeds.map(({ value }) => `"${value}"`),
         description: "Trois cadences de projection.",
     },
     {
-        name: "PixieDustLoaderLayout",
+        name: "PixieLoaderLayout",
         values: layouts.map(({ value }) => `"${value}"`),
         description: "Deux compositions du signe et de son label.",
     },
     {
-        name: "PixieDustLoaderLabelPosition",
+        name: "PixieLoaderLabelPosition",
         values: labelPositions.map((value) => `"${value}"`),
         description: "Deux ordres possibles entre le signe et son message.",
     },
     {
-        name: "PixieDustLoaderIntensity",
+        name: "PixieLoaderIntensity",
         values: intensities.map(({ value }) => `"${value}"`),
         description: "Trois densités de lumière et de poussière.",
     },
     {
-        name: "PixieDustLoaderMotion",
+        name: "PixieLoaderMotion",
         values: motions.map(({ value }) => `"${value}"`),
         description: "Trois amplitudes de mouvement intentionnelles.",
     },
     {
-        name: "PixieDustLoaderDirection",
+        name: "PixieLoaderDirection",
         values: directions.map((value) => `"${value}"`),
         description: "Deux sens de lecture de la chorégraphie.",
     },
     {
-        name: "PixieDustLoaderAriaLive",
+        name: "PixieLoaderAriaLive",
         values: ['"polite"', '"assertive"', '"off"'],
         description: "Trois priorités d’annonce du statut.",
     },
     {
-        name: "PixieDustLoaderColor",
+        name: "PixieLoaderColor",
         values: ["AtelierAnimationColorSlug", "false"],
         description: "Couleur du registre ou héritée du contexte.",
     },
@@ -407,12 +406,12 @@ function Stage({ children }: Readonly<{ children: ReactNode }>) {
     );
 }
 
-export function PixieDustLoaderDossier() {
+export function PixieLoaderDossier() {
     return (
         <AtelierFicheAccessoire
-            id="pixie-dust-loader"
-            labelledBy="pixie-dust-loader-title"
-            nom="PixieDustLoader"
+            id="pixie-loader"
+            labelledBy="pixie-loader-title"
+            nom="PixieLoader"
             className="scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
@@ -421,10 +420,10 @@ export function PixieDustLoaderDossier() {
                             Le clap · Effet 002
                         </p>
                         <h2
-                            id="pixie-dust-loader-title"
+                            id="pixie-loader-title"
                             className="mt-4 text-4xl text-ink sm:text-5xl"
                         >
-                            PixieDustLoader
+                            PixieLoader
                         </h2>
                         <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
                             Matérialiser une attente de durée indéterminée en
@@ -437,7 +436,7 @@ export function PixieDustLoaderDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.2.0
+                                1.0.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -445,7 +444,7 @@ export function PixieDustLoaderDossier() {
                                 État
                             </dt>
                             <dd className="mt-1 text-sm font-medium">
-                                <AtelierStatut statut="Esquisse" />
+                                <AtelierStatut statut="Prêt à projeter" />
                             </dd>
                         </div>
                     </dl>
@@ -501,7 +500,7 @@ export function PixieDustLoaderDossier() {
                         />
                         <div className="mt-8 grid gap-4 lg:grid-cols-2">
                             <Stage>
-                                <PixieDustLoader
+                                <PixieLoader
                                     variant="sparkle"
                                     size="lg"
                                     intensity="strong"
@@ -510,7 +509,7 @@ export function PixieDustLoaderDossier() {
                                     description="La poussière de fée rassemble la prochaine scène."
                                 />
                             </Stage>
-                            <CodeExample>{`<PixieDustLoader
+                            <CodeExample>{`<PixieLoader
     variant="sparkle"
     size="lg"
     intensity="strong"
@@ -533,7 +532,7 @@ export function PixieDustLoaderDossier() {
                         {variants.map((variant) => (
                             <Stage key={variant.value}>
                                 <div className="grid justify-items-center text-center">
-                                    <PixieDustLoader
+                                    <PixieLoader
                                         variant={variant.value}
                                         size="lg"
                                         labelHidden
@@ -566,7 +565,7 @@ export function PixieDustLoaderDossier() {
                                 key={size.value}
                                 className="grid min-w-20 justify-items-center gap-4"
                             >
-                                <PixieDustLoader
+                                <PixieLoader
                                     size={size.value}
                                     label={`${size.name} — ${size.dimension}`}
                                     labelHidden
@@ -582,7 +581,7 @@ export function PixieDustLoaderDossier() {
                             </div>
                         ))}
                         <div className="grid min-w-20 justify-items-center gap-4">
-                            <PixieDustLoader
+                            <PixieLoader
                                 size={68}
                                 variant="iris"
                                 label="Taille personnalisée — 68 px"
@@ -610,7 +609,7 @@ export function PixieDustLoaderDossier() {
                         {speeds.map((speed) => (
                             <Stage key={speed.value}>
                                 <div className="grid justify-items-center text-center">
-                                    <PixieDustLoader
+                                    <PixieLoader
                                         speed={speed.value}
                                         variant="beam"
                                         label={`${speed.name} — ${speed.duration}`}
@@ -626,7 +625,7 @@ export function PixieDustLoaderDossier() {
                         {layouts.map((layout) => (
                             <Stage key={layout.value}>
                                 <div>
-                                    <PixieDustLoader
+                                    <PixieLoader
                                         layout={layout.value}
                                         variant="reel"
                                         label={layout.role}
@@ -648,7 +647,7 @@ export function PixieDustLoaderDossier() {
                         {intensities.map((intensity) => (
                             <Stage key={intensity.value}>
                                 <div className="grid justify-items-center text-center">
-                                    <PixieDustLoader
+                                    <PixieLoader
                                         variant="orbit"
                                         size="lg"
                                         intensity={intensity.value}
@@ -673,7 +672,7 @@ export function PixieDustLoaderDossier() {
                         {motions.map((motion) => (
                             <Stage key={motion.value}>
                                 <div className="grid justify-items-center text-center">
-                                    <PixieDustLoader
+                                    <PixieLoader
                                         variant="cel"
                                         size="lg"
                                         motion={motion.value}
@@ -702,7 +701,7 @@ export function PixieDustLoaderDossier() {
                     <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
                         {colors.map((color) => (
                             <Stage key={color.value}>
-                                <PixieDustLoader
+                                <PixieLoader
                                     color={color.value}
                                     secondaryColor="violet-ombre-portee"
                                     variant="iris"
@@ -728,7 +727,7 @@ export function PixieDustLoaderDossier() {
                                     Commande compacte
                                 </p>
                                 <PixieButton type="button" size="sm" disabled>
-                                    <PixieDustLoader
+                                    <PixieLoader
                                         variant="dots"
                                         size="xs"
                                         layout="inline"
@@ -740,7 +739,7 @@ export function PixieDustLoaderDossier() {
                             </div>
                         </Stage>
                         <Stage>
-                            <PixieDustLoader
+                            <PixieLoader
                                 variant="filmstrip"
                                 size="md"
                                 layout="inline"
@@ -752,7 +751,7 @@ export function PixieDustLoaderDossier() {
                             />
                         </Stage>
                         <Stage>
-                            <PixieDustLoader
+                            <PixieLoader
                                 variant="cel"
                                 size="lg"
                                 intensity="subtle"
@@ -763,7 +762,7 @@ export function PixieDustLoaderDossier() {
                             />
                         </Stage>
                         <Stage>
-                            <PixieDustLoader
+                            <PixieLoader
                                 variant="beam"
                                 size="xl"
                                 intensity="strong"
@@ -776,7 +775,7 @@ export function PixieDustLoaderDossier() {
                         </Stage>
                         <Stage>
                             <div className="grid justify-items-center gap-4 text-center">
-                                <PixieDustLoader
+                                <PixieLoader
                                     variant="orbit"
                                     size={68}
                                     intensity="strong"
@@ -794,7 +793,7 @@ export function PixieDustLoaderDossier() {
                         <Stage>
                             <div className="grid justify-items-center gap-4 text-center">
                                 <div className="border border-dashed border-line-strong p-4">
-                                    <PixieDustLoader
+                                    <PixieLoader
                                         variant="iris"
                                         size="lg"
                                         active={false}
@@ -819,7 +818,7 @@ export function PixieDustLoaderDossier() {
                         description="Le plateau éprouve la chorégraphie, la taille, la cadence, le délai, le label et les deux Lumières."
                     />
                     <div className="mt-8">
-                        <PixieDustLoaderPlayground />
+                        <PixieLoaderPlayground />
                     </div>
                 </section>
 
@@ -872,7 +871,7 @@ export function PixieDustLoaderDossier() {
                         <SequenceTitle
                             id="loader-technical-title"
                             eyebrow="Générique technique"
-                            title="API de l’esquisse"
+                            title="API du composant"
                             description="Le composant reste déclaratif et sans état client : ses chorégraphies, son délai et sa réduction de mouvement sont entièrement portés par CSS."
                         />
                         <div className="mt-8">
@@ -887,31 +886,6 @@ export function PixieDustLoaderDossier() {
                             </div>
                         </div>
                     </div>
-                </section>
-
-                <section aria-labelledby="loader-journal-title">
-                    <SequenceTitle
-                        id="loader-journal-title"
-                        eyebrow="Journal de production"
-                        title="Avant la version prête à projeter"
-                    />
-                    <PixieStack as="ul" gap="sm" className="mt-8">
-                        {[
-                            "Éprouver les neuf chorégraphies dans les deux Lumières et à 200 %.",
-                            "Contrôler les seize poussières de fée sans bruit visuel dans les tailles compactes.",
-                            "Contrôler le délai sur des attentes très brèves et confirmer que l’annonce reste immédiate.",
-                            "Vérifier les annonces status, les labels masqués et le mode décoratif avec les lecteurs d’écran.",
-                            "Confirmer que gentle, static et le mouvement réduit restent lisibles dans chaque variante.",
-                            "Tester reserveSpace et les tailles xs et sm à l’intérieur des futurs boutons et champs.",
-                        ].map((item) => (
-                            <li
-                                key={item}
-                                className="border-l-2 border-accent bg-surface-muted px-5 py-4 text-sm leading-6 text-ink-soft"
-                            >
-                                {item}
-                            </li>
-                        ))}
-                    </PixieStack>
                 </section>
             </div>
         </AtelierFicheAccessoire>

@@ -9,17 +9,17 @@ import {
 import { AtelierOptionRadio } from "@/components/atelier/AtelierOptionRadio";
 import { PixieButton } from "@/components/ui/PixieButton";
 import {
-    PixieDustLoader,
-    type PixieDustLoaderAriaLive,
-    type PixieDustLoaderDirection,
-    type PixieDustLoaderIntensity,
-    type PixieDustLoaderLabelPosition,
-    type PixieDustLoaderLayout,
-    type PixieDustLoaderMotion,
-    type PixieDustLoaderSize,
-    type PixieDustLoaderSpeed,
-    type PixieDustLoaderVariant,
-} from "@/components/ui/PixieDustLoader";
+    PixieLoader,
+    type PixieLoaderAriaLive,
+    type PixieLoaderDirection,
+    type PixieLoaderIntensity,
+    type PixieLoaderLabelPosition,
+    type PixieLoaderLayout,
+    type PixieLoaderMotion,
+    type PixieLoaderSize,
+    type PixieLoaderSpeed,
+    type PixieLoaderVariant,
+} from "@/components/ui/PixieLoader";
 import { PixieSelect } from "@/components/ui/PixieSelect";
 import {
     getAtelierAnimationColor,
@@ -38,7 +38,7 @@ const variants = [
     { value: "orbit", label: "Orbite" },
     { value: "dots", label: "Trois points" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustLoaderVariant;
+    value: PixieLoaderVariant;
     label: string;
 }>[];
 
@@ -49,7 +49,7 @@ const sizes = [
     { value: "lg", label: "Grande" },
     { value: "xl", label: "Très grande" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustLoaderSize;
+    value: PixieLoaderSize;
     label: string;
 }>[];
 
@@ -58,7 +58,7 @@ const speeds = [
     { value: "normal", label: "Normale" },
     { value: "fast", label: "Rapide" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustLoaderSpeed;
+    value: PixieLoaderSpeed;
     label: string;
 }>[];
 
@@ -66,7 +66,7 @@ const layouts = [
     { value: "inline", label: "En ligne" },
     { value: "stacked", label: "Empilée" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustLoaderLayout;
+    value: PixieLoaderLayout;
     label: string;
 }>[];
 
@@ -75,7 +75,7 @@ const intensities = [
     { value: "normal", label: "Présente" },
     { value: "strong", label: "Féérique" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustLoaderIntensity;
+    value: PixieLoaderIntensity;
     label: string;
 }>[];
 
@@ -84,7 +84,7 @@ const motions = [
     { value: "gentle", label: "Doux" },
     { value: "static", label: "Fixe" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustLoaderMotion;
+    value: PixieLoaderMotion;
     label: string;
 }>[];
 
@@ -92,7 +92,7 @@ const directions = [
     { value: "forward", label: "Avant" },
     { value: "reverse", label: "Inverse" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustLoaderDirection;
+    value: PixieLoaderDirection;
     label: string;
 }>[];
 
@@ -100,7 +100,7 @@ const labelPositions = [
     { value: "before", label: "Avant le signe" },
     { value: "after", label: "Après le signe" },
 ] as const satisfies readonly Readonly<{
-    value: PixieDustLoaderLabelPosition;
+    value: PixieLoaderLabelPosition;
     label: string;
 }>[];
 
@@ -121,19 +121,17 @@ const frameWidths = {
     large: "max-w-none",
 } as const;
 
-export function PixieDustLoaderPlayground() {
-    const [variant, setVariant] = useState<PixieDustLoaderVariant>("sparkle");
-    const [size, setSize] = useState<PixieDustLoaderSize>("md");
-    const [speed, setSpeed] = useState<PixieDustLoaderSpeed>("normal");
+export function PixieLoaderPlayground() {
+    const [variant, setVariant] = useState<PixieLoaderVariant>("sparkle");
+    const [size, setSize] = useState<PixieLoaderSize>("md");
+    const [speed, setSpeed] = useState<PixieLoaderSpeed>("normal");
     const [duration, setDuration] = useState(0);
-    const [layout, setLayout] = useState<PixieDustLoaderLayout>("stacked");
+    const [layout, setLayout] = useState<PixieLoaderLayout>("stacked");
     const [labelPosition, setLabelPosition] =
-        useState<PixieDustLoaderLabelPosition>("after");
-    const [intensity, setIntensity] =
-        useState<PixieDustLoaderIntensity>("normal");
-    const [motion, setMotion] = useState<PixieDustLoaderMotion>("expressive");
-    const [direction, setDirection] =
-        useState<PixieDustLoaderDirection>("forward");
+        useState<PixieLoaderLabelPosition>("after");
+    const [intensity, setIntensity] = useState<PixieLoaderIntensity>("normal");
+    const [motion, setMotion] = useState<PixieLoaderMotion>("expressive");
+    const [direction, setDirection] = useState<PixieLoaderDirection>("forward");
     const [color, setColor] = useState<AtelierAnimationColorSlug | "inherit">(
         "ambre-projecteur",
     );
@@ -146,7 +144,7 @@ export function PixieDustLoaderPlayground() {
     const [decorative, setDecorative] = useState(false);
     const [active, setActive] = useState(true);
     const [reserveSpace, setReserveSpace] = useState(false);
-    const [ariaLive, setAriaLive] = useState<PixieDustLoaderAriaLive>("polite");
+    const [ariaLive, setAriaLive] = useState<PixieLoaderAriaLive>("polite");
     const [cycle, setCycle] = useState(0);
     const { lumiere: light, cadre: frame } = useAtelierProjection();
 
@@ -163,7 +161,7 @@ export function PixieDustLoaderPlayground() {
     const descriptionProp = withDescription
         ? '\n    description="Les poussières de fée préparent la prochaine scène."'
         : "";
-    const code = `<PixieDustLoader
+    const code = `<PixieLoader
     variant="${variant}"
     size="${size}"
     speed="${speed}"
@@ -202,7 +200,7 @@ export function PixieDustLoaderPlayground() {
                                 onChange={(event) =>
                                     setVariant(
                                         event.target
-                                            .value as PixieDustLoaderVariant,
+                                            .value as PixieLoaderVariant,
                                     )
                                 }
                                 className="mt-2"
@@ -233,8 +231,7 @@ export function PixieDustLoaderPlayground() {
                                 value={size}
                                 onChange={(event) =>
                                     setSize(
-                                        event.target
-                                            .value as PixieDustLoaderSize,
+                                        event.target.value as PixieLoaderSize,
                                     )
                                 }
                                 className="mt-2"
@@ -326,7 +323,7 @@ export function PixieDustLoaderPlayground() {
                                 onChange={(event) =>
                                     setLabelPosition(
                                         event.target
-                                            .value as PixieDustLoaderLabelPosition,
+                                            .value as PixieLoaderLabelPosition,
                                     )
                                 }
                                 className="mt-2"
@@ -374,8 +371,7 @@ export function PixieDustLoaderPlayground() {
                                 value={motion}
                                 onChange={(event) =>
                                     setMotion(
-                                        event.target
-                                            .value as PixieDustLoaderMotion,
+                                        event.target.value as PixieLoaderMotion,
                                     )
                                 }
                                 className="mt-2"
@@ -407,7 +403,7 @@ export function PixieDustLoaderPlayground() {
                                 onChange={(event) =>
                                     setDirection(
                                         event.target
-                                            .value as PixieDustLoaderDirection,
+                                            .value as PixieLoaderDirection,
                                     )
                                 }
                                 className="mt-2"
@@ -531,7 +527,7 @@ export function PixieDustLoaderPlayground() {
                                 onChange={(event) =>
                                     setAriaLive(
                                         event.target
-                                            .value as PixieDustLoaderAriaLive,
+                                            .value as PixieLoaderAriaLive,
                                     )
                                 }
                                 className="mt-2"
@@ -617,7 +613,7 @@ export function PixieDustLoaderPlayground() {
                             >
                                 Rejouer l’apparition
                             </PixieButton>
-                            <PixieDustLoader
+                            <PixieLoader
                                 key={cycle}
                                 variant={variant}
                                 size={size}

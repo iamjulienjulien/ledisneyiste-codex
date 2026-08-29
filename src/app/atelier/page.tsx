@@ -27,7 +27,7 @@ import { PixieSelectDossier } from "./_components/PixieSelectDossier";
 import { PixieDustSwitchDossier } from "./_components/PixieDustSwitchDossier";
 import { PixieSearchFieldDossier } from "./_components/PixieSearchFieldDossier";
 import { PixieDustToastDossier } from "./_components/PixieDustToastDossier";
-import { PixieDustLoaderDossier } from "./_components/PixieDustLoaderDossier";
+import { PixieLoaderDossier } from "./_components/PixieLoaderDossier";
 import { PixieDustSkeletonDossier } from "./_components/PixieDustSkeletonDossier";
 import { AtelierSommaire } from "@/components/atelier/AtelierSommaire";
 import { AtelierProjectionProvider } from "@/components/atelier/AtelierPlaygroundProjection";
@@ -394,11 +394,11 @@ const effets = [
         version: "—",
     },
     {
-        nom: "PixieDustLoader",
+        nom: "PixieLoader",
         role: "Matérialiser une attente de durée indéterminée",
-        statut: "Esquisse",
-        version: "0.2.0",
-        href: "#pixie-dust-loader",
+        statut: "Prêt à projeter",
+        version: "1.0.0",
+        href: "#pixie-loader",
     },
     {
         nom: "PixieDustSkeleton",
@@ -1113,7 +1113,7 @@ export default function AtelierPage() {
                 {raccordAvantPremiereFiche}
                 <PixieDustToastDossier />
                 {raccordEntreFiches}
-                <PixieDustLoaderDossier />
+                <PixieLoaderDossier />
                 {raccordEntreFiches}
                 <PixieDustSkeletonDossier />
             </section>
