@@ -450,15 +450,20 @@ const effets = [
     },
 ] as const;
 
+const programmesPlans = {
+    "travelling-documentaire": "P0 · Premier prototype",
+    "plan-d-ensemble": "P0 · Deuxième prototype",
+    "montage-du-temps": "P0 · Troisième prototype",
+    "generique-vivant": "P0 · Quatrième prototype",
+    "table-lumineuse": "P0 · Cinquième prototype",
+} as const;
+
 const plans = getCodexPlans().map((plan) => ({
     ...plan,
     nom: plan.label,
     role: plan.description,
-    statut:
-        plan.slug === "travelling-documentaire"
-            ? ("Esquisse" as const)
-            : ("À inventorier" as const),
-    version: plan.slug === "travelling-documentaire" ? "v0.1.0" : "P0",
+    statut: "Esquisse" as const,
+    programme: programmesPlans[plan.slug],
     href: `#plan-${plan.slug}` as `#${string}`,
     dossierHref: `/atelier/plans/${plan.slug}`,
 }));
@@ -1169,9 +1174,9 @@ export default function AtelierPage() {
                         mises en page. Chacun pose une question documentaire,
                         cadre une matière issue des quatre catalogues publiés et
                         propose une action de lecture accompagnée de son
-                        contrechamp textuel. Leurs dossiers préparatoires fixent
-                        désormais cette grammaire avant l’arrivée des premières
-                        bobines témoins.
+                        contrechamp textuel. Leurs cinq prototypes v0.1.0
+                        éprouvent désormais cette grammaire sur les Archives et
+                        les Bobines témoins.
                     </p>
                 </div>
 
@@ -1233,7 +1238,7 @@ export default function AtelierPage() {
                                         {plan.actionLabel}
                                     </td>
                                     <td className="px-5 py-4 font-mono text-xs text-muted">
-                                        {plan.version}
+                                        {plan.programme}
                                     </td>
                                     <td className="px-5 py-4 text-sm">
                                         <AtelierStatut statut={plan.statut} />
