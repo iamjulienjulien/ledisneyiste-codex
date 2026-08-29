@@ -7,6 +7,7 @@ import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixiePanel } from "@/components/ui/PixiePanel";
 import {
     PixieDustSearchField,
+    type PixieDustSearchFieldComposition,
     type PixieDustSearchFieldLayout,
 } from "@/components/ui/PixieDustSearchField";
 import { PixieStack } from "@/components/ui/PixieStack";
@@ -32,6 +33,11 @@ const variants = [
         name: "Souligné",
         role: "Une recherche discrète intégrée à une composition éditoriale.",
     },
+    {
+        value: "ghost" as const,
+        name: "Fantôme",
+        role: "Une commande légère posée sur un décor déjà structuré.",
+    },
 ] as const satisfies readonly Readonly<{
     value: PixieInputVariant;
     name: string;
@@ -39,13 +45,37 @@ const variants = [
 }>[];
 
 const sizes = [
+    { value: "xs" as const, name: "Très petite", inputHeight: "32 px" },
     { value: "sm" as const, name: "Petite", inputHeight: "36 px" },
     { value: "md" as const, name: "Moyenne", inputHeight: "44 px" },
     { value: "lg" as const, name: "Grande", inputHeight: "52 px" },
+    { value: "xl" as const, name: "Très grande", inputHeight: "60 px" },
 ] as const satisfies readonly Readonly<{
     value: PixieInputSize;
     name: string;
     inputHeight: string;
+}>[];
+
+const compositions = [
+    {
+        value: "separate" as const,
+        name: "Séparée",
+        role: "Champ, effacement et soumission conservent leurs cadres propres.",
+    },
+    {
+        value: "joined" as const,
+        name: "Jointe",
+        role: "Le champ et la soumission forment une barre continue.",
+    },
+    {
+        value: "embedded" as const,
+        name: "Intégrée",
+        role: "Les deux commandes rejoignent l’intérieur du champ.",
+    },
+] as const satisfies readonly Readonly<{
+    value: PixieDustSearchFieldComposition;
+    name: string;
+    role: string;
 }>[];
 
 const layouts = [
@@ -150,6 +180,24 @@ const properties = [
         description: "Message d’erreur relié au champ.",
     },
     {
+        name: "feedback",
+        type: "ReactNode",
+        defaultValue: "—",
+        description: "Retour positif ou avertissement transmis à PixieField.",
+    },
+    {
+        name: "feedbackTone",
+        type: "PixieFieldFeedbackTone",
+        defaultValue: '"success"',
+        description: "Nature du retour non bloquant.",
+    },
+    {
+        name: "meta",
+        type: "ReactNode",
+        defaultValue: "—",
+        description: "Compteur ou indication courte près du libellé.",
+    },
+    {
         name: "variant",
         type: "PixieInputVariant",
         defaultValue: '"outline"',
@@ -162,22 +210,71 @@ const properties = [
         description: "Dimensions du champ et des commandes.",
     },
     {
+        name: "shape",
+        type: "PixieInputShape",
+        defaultValue: '"rounded"',
+        description: "Forme du champ et de la composition jointe.",
+    },
+    {
+        name: "tone",
+        type: "PixieInputTone",
+        defaultValue: '"neutral"',
+        description: "Ton sémantique du champ hors erreur.",
+    },
+    {
         name: "color",
         type: "PixieDustSearchFieldColor",
         defaultValue: "false",
         description: "Couleur des focus et des commandes.",
     },
     {
+        name: "composition",
+        type: "PixieDustSearchFieldComposition",
+        defaultValue: '"separate"',
+        description: "Sépare, joint ou intègre les commandes au champ.",
+    },
+    {
         name: "layout",
         type: "PixieDustSearchFieldLayout",
         defaultValue: '"responsive"',
-        description: "Disposition du champ et des commandes.",
+        description:
+            "Disposition de separate et joined ; embedded reste sur une ligne.",
+    },
+    {
+        name: "submitVariant",
+        type: "PixieButtonVariant",
+        defaultValue: '"solid"',
+        description: "Traitement du bouton de soumission extérieur.",
     },
     {
         name: "submitLabel",
         type: "string",
         defaultValue: '"Rechercher"',
         description: "Libellé visible de la soumission.",
+    },
+    {
+        name: "submitIcon",
+        type: "ReactNode",
+        defaultValue: "—",
+        description: "Icône décorative précédant le libellé de soumission.",
+    },
+    {
+        name: "submitLabelHidden",
+        type: "boolean",
+        defaultValue: "false",
+        description: "Masque le texte visible tout en conservant son nom.",
+    },
+    {
+        name: "searchIcon",
+        type: "ReactNode",
+        defaultValue: '"⌕"',
+        description: "Repère décoratif placé au début du champ.",
+    },
+    {
+        name: "clearIcon",
+        type: "ReactNode",
+        defaultValue: '"×"',
+        description: "Repère décoratif de la commande d’effacement.",
     },
     {
         name: "clearLabel",
@@ -192,10 +289,22 @@ const properties = [
         description: "Autorise l’apparition de la commande d’effacement.",
     },
     {
+        name: "clearOnEscape",
+        type: "boolean",
+        defaultValue: "true",
+        description: "Efface une requête non vide avec la touche Échap.",
+    },
+    {
         name: "labelHidden",
         type: "boolean",
         defaultValue: "false",
         description: "Masque visuellement le label sans le retirer.",
+    },
+    {
+        name: "busy",
+        type: "boolean",
+        defaultValue: "false",
+        description: "Annonce et matérialise une recherche en cours.",
     },
     {
         name: "disabled",
@@ -208,6 +317,30 @@ const properties = [
         type: "boolean",
         defaultValue: "false",
         description: "Rend la requête obligatoire avant soumission.",
+    },
+    {
+        name: "autoComplete",
+        type: "string",
+        defaultValue: "—",
+        description: "Politique native d’autocomplétion du navigateur.",
+    },
+    {
+        name: "autoFocus",
+        type: "boolean",
+        defaultValue: "false",
+        description: "Demande le focus initial lorsque le contexte l’autorise.",
+    },
+    {
+        name: "minLength / maxLength",
+        type: "number",
+        defaultValue: "—",
+        description: "Bornes natives de longueur de la requête.",
+    },
+    {
+        name: "spellCheck",
+        type: "boolean",
+        defaultValue: "—",
+        description: "Active ou désactive la correction orthographique native.",
     },
     {
         name: "className",
@@ -231,9 +364,14 @@ const properties = [
 
 const specificTypes = [
     {
+        name: "PixieDustSearchFieldComposition",
+        values: compositions.map(({ value }) => `"${value}"`),
+        description: "Proximité visuelle entre le champ et ses commandes.",
+    },
+    {
         name: "PixieDustSearchFieldLayout",
         values: layouts.map(({ value }) => `"${value}"`),
-        description: "Trois compositions du champ et de ses commandes.",
+        description: "Distribution responsive du champ et de ses commandes.",
     },
     {
         name: "PixieDustSearchFieldMethod",
@@ -254,6 +392,26 @@ const specificTypes = [
         name: "PixieInputSize",
         values: sizes.map(({ value }) => `"${value}"`),
         description: "Échelle commune au champ et aux boutons.",
+    },
+    {
+        name: "PixieInputShape",
+        values: ['"square"', '"rounded"', '"pill"'],
+        description: "Silhouette du champ de recherche.",
+    },
+    {
+        name: "PixieInputTone",
+        values: ['"neutral"', '"success"', '"warning"'],
+        description: "Ton sémantique transmis au champ.",
+    },
+    {
+        name: "PixieButtonVariant",
+        values: ['"solid"', '"soft"', '"outline"', '"ghost"'],
+        description: "Présence du bouton de soumission extérieur.",
+    },
+    {
+        name: "PixieFieldFeedbackTone",
+        values: ['"success"', '"warning"'],
+        description: "Nature d’un retour non bloquant.",
     },
 ] as const;
 
@@ -326,7 +484,7 @@ export function PixieDustSearchFieldDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                0.1.0
+                                0.2.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -392,6 +550,7 @@ export function PixieDustSearchFieldDossier() {
                                     name="q"
                                     action="/recherche"
                                     defaultValue="mickey"
+                                    composition="joined"
                                     placeholder="Personnage, créateur, œuvre…"
                                     description="Noms, titres, catégories ou collections."
                                 />
@@ -401,6 +560,7 @@ export function PixieDustSearchFieldDossier() {
     name="q"
     action="/recherche"
     defaultValue="mickey"
+    composition="joined"
     placeholder="Personnage, créateur, œuvre…"
     description="Noms, titres, catégories ou collections."
 />`}</CodeExample>
@@ -413,9 +573,9 @@ export function PixieDustSearchFieldDossier() {
                         id="search-field-variants-title"
                         eyebrow="Variantes"
                         title="Le champ conserve le langage des premiers Dialogues"
-                        description="SearchField transmet outline, filled et underline à PixieInput sans modifier les commandes."
+                        description="SearchField transmet les quatre variantes de PixieInput sans modifier le sens de ses commandes."
                     />
-                    <div className="mt-8 grid gap-5 lg:grid-cols-3">
+                    <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
                         {variants.map((variant) => (
                             <Stage key={variant.value}>
                                 <p className="font-mono text-xs text-accent">
@@ -447,9 +607,9 @@ export function PixieDustSearchFieldDossier() {
                     <SequenceTitle
                         id="search-field-sizes-title"
                         eyebrow="Dimensions"
-                        title="Trois hauteurs accordent le champ et ses commandes"
+                        title="Cinq hauteurs accordent le champ et ses commandes"
                     />
-                    <div className="mt-8 grid gap-5 lg:grid-cols-3">
+                    <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-5">
                         {sizes.map((size) => (
                             <Stage key={size.value}>
                                 <div className="flex items-baseline justify-between gap-4">
@@ -478,10 +638,47 @@ export function PixieDustSearchFieldDossier() {
                     </div>
                 </section>
 
+                <section aria-labelledby="search-field-compositions-title">
+                    <SequenceTitle
+                        id="search-field-compositions-title"
+                        eyebrow="Assemblage"
+                        title="Trois façons d’installer la régie de recherche"
+                        description="La requête et les commandes restent identiques ; seule leur proximité visuelle change selon le contexte."
+                    />
+                    <div className="mt-8 grid gap-5 lg:grid-cols-3">
+                        {compositions.map((composition) => (
+                            <Stage key={composition.value}>
+                                <p className="font-mono text-xs text-accent">
+                                    composition=&quot;{composition.value}&quot;
+                                </p>
+                                <h4 className="mt-3 text-xl text-ink">
+                                    {composition.name}
+                                </h4>
+                                <p className="mt-2 min-h-12 text-sm leading-6 text-ink-soft">
+                                    {composition.role}
+                                </p>
+                                <div className="mt-6">
+                                    <PixieDustSearchField
+                                        label={`Recherche ${composition.name}`}
+                                        labelHidden
+                                        action="/recherche"
+                                        composition={composition.value}
+                                        layout="responsive"
+                                        submitLabelHidden={
+                                            composition.value === "embedded"
+                                        }
+                                        defaultValue="mickey"
+                                    />
+                                </div>
+                            </Stage>
+                        ))}
+                    </div>
+                </section>
+
                 <section aria-labelledby="search-field-layouts-title">
                     <SequenceTitle
                         id="search-field-layouts-title"
-                        eyebrow="Composition"
+                        eyebrow="Disposition"
                         title="La régie s’adapte au cadre disponible"
                         description="L’ordre reste toujours champ, effacement, puis soumission ; seule leur distribution visuelle change."
                     />
@@ -548,12 +745,138 @@ export function PixieDustSearchFieldDossier() {
                         </Stage>
                         <Stage>
                             <PixieDustSearchField
+                                label="Recherche fructueuse"
+                                action="/recherche"
+                                composition="joined"
+                                defaultValue="Blanche-Neige"
+                                meta="23 résultats"
+                                feedback="23 archives trouvées."
+                                tone="success"
+                            />
+                        </Stage>
+                        <Stage>
+                            <PixieDustSearchField
+                                label="Recherche en cours"
+                                action="/recherche"
+                                composition="embedded"
+                                submitLabelHidden
+                                defaultValue="Nine Old Men"
+                                busy
+                            />
+                        </Stage>
+                        <Stage>
+                            <PixieDustSearchField
                                 label="Recherche désactivée"
                                 action="/recherche"
                                 layout="stacked"
                                 defaultValue="Projection interrompue"
                                 disabled
                             />
+                        </Stage>
+                    </div>
+                </section>
+
+                <section aria-labelledby="search-field-scenarios-title">
+                    <SequenceTitle
+                        id="search-field-scenarios-title"
+                        eyebrow="Scénarios préparés"
+                        title="La même recherche change de place, jamais de rôle"
+                        description="Ces compositions couvrent le hall, le header, une régie latérale, les résultats et les états de transmission."
+                    />
+                    <div className="mt-8 grid gap-5 lg:grid-cols-2">
+                        <Stage>
+                            <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                                Recherche globale
+                            </p>
+                            <div className="mt-5">
+                                <PixieDustSearchField
+                                    label="Explorer toutes les archives"
+                                    action="/recherche"
+                                    composition="joined"
+                                    shape="rounded"
+                                    size="lg"
+                                    placeholder="Personnage, créateur, œuvre…"
+                                    description="La recherche principale conserve un libellé visible."
+                                />
+                            </div>
+                        </Stage>
+                        <Stage>
+                            <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                                Header compact
+                            </p>
+                            <div className="mt-5">
+                                <PixieDustSearchField
+                                    label="Rechercher dans le Codex"
+                                    labelHidden
+                                    action="/recherche"
+                                    composition="embedded"
+                                    submitLabelHidden
+                                    shape="pill"
+                                    size="sm"
+                                    placeholder="Rechercher…"
+                                />
+                            </div>
+                        </Stage>
+                        <Stage>
+                            <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                                Régie latérale
+                            </p>
+                            <div className="mt-5 max-w-sm">
+                                <PixieDustSearchField
+                                    label="Filtrer le registre"
+                                    action="/recherche"
+                                    composition="separate"
+                                    layout="stacked"
+                                    submitVariant="soft"
+                                    defaultValue="Oswald"
+                                />
+                            </div>
+                        </Stage>
+                        <Stage>
+                            <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                                Retour de projection
+                            </p>
+                            <div className="mt-5">
+                                <PixieDustSearchField
+                                    label="Rechercher une archive"
+                                    action="/recherche"
+                                    composition="joined"
+                                    defaultValue="Mickey"
+                                    meta="18 résultats"
+                                    feedback="18 archives correspondent à la requête."
+                                    tone="success"
+                                />
+                            </div>
+                        </Stage>
+                        <Stage>
+                            <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                                Attente
+                            </p>
+                            <div className="mt-5">
+                                <PixieDustSearchField
+                                    label="Recherche en cours"
+                                    action="/recherche"
+                                    composition="embedded"
+                                    submitLabelHidden
+                                    defaultValue="Silly Symphonies"
+                                    busy
+                                />
+                            </div>
+                        </Stage>
+                        <Stage>
+                            <p className="text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                                Validation native
+                            </p>
+                            <div className="mt-5">
+                                <PixieDustSearchField
+                                    label="Requête obligatoire"
+                                    action="/recherche"
+                                    composition="joined"
+                                    minLength={2}
+                                    required
+                                    error="Saisissez au moins deux caractères."
+                                />
+                            </div>
                         </Stage>
                     </div>
                 </section>
@@ -604,7 +927,7 @@ export function PixieDustSearchFieldDossier() {
                             eyebrow="Accessibilité"
                             title="Chaque commande annonce précisément son rôle"
                         />
-                        <div className="mt-8 grid gap-5 md:grid-cols-2">
+                        <div className="mt-8 grid gap-5 md:grid-cols-3">
                             <PixiePanel variant="outline" padding="md">
                                 <h4 className="text-xl text-ink">
                                     Une région et un champ nommés
@@ -624,6 +947,17 @@ export function PixieDustSearchFieldDossier() {
                                     annoncée comme « Effacer la recherche »,
                                     remet le focus dans le champ et ne soumet
                                     jamais le formulaire.
+                                </p>
+                            </PixiePanel>
+                            <PixiePanel variant="outline" padding="md">
+                                <h4 className="text-xl text-ink">
+                                    Échap, attente et focus
+                                </h4>
+                                <p className="mt-3 text-sm leading-6 text-ink-soft">
+                                    Échap efface la requête sans déplacer le
+                                    focus. L’attente est annoncée sur la région
+                                    search et les commandes réduites à une icône
+                                    conservent leur nom accessible.
                                 </p>
                             </PixiePanel>
                         </div>
@@ -662,8 +996,8 @@ export function PixieDustSearchFieldDossier() {
                         {[
                             "Éprouver la soumission GET réelle vers /recherche.",
                             "Vérifier l’effacement en modes contrôlé et non contrôlé.",
-                            "Tester les trois compositions dans les cadres étroits et larges.",
-                            "Contrôler la région search, les labels et l’ordre clavier avec les lecteurs d’écran.",
+                            "Tester separate, joined et embedded dans les cadres étroits et larges.",
+                            "Contrôler Échap, l’attente, les labels et l’ordre clavier avec les lecteurs d’écran.",
                             "Confirmer que suggestions et autocomplétion restent réservées au Combobox.",
                         ].map((item) => (
                             <li
