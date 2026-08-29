@@ -1,18 +1,18 @@
-import styles from "./PixieDustRail.module.css";
+import styles from "./PixieRail.module.css";
 import type { CSSProperties } from "react";
 import type {
-    PixieDustRailAlign,
-    PixieDustRailGapPreset,
-    PixieDustRailGutterPreset,
-    PixieDustRailItemWidthPreset,
-    PixieDustRailOverscroll,
-    PixieDustRailPeek,
-    PixieDustRailProps,
-    PixieDustRailScrollbar,
-    PixieDustRailSnap,
-    PixieDustRailSnapAlign,
-    PixieDustRailSnapStop,
-} from "./PixieDustRail.types";
+    PixieRailAlign,
+    PixieRailGapPreset,
+    PixieRailGutterPreset,
+    PixieRailItemWidthPreset,
+    PixieRailOverscroll,
+    PixieRailPeek,
+    PixieRailProps,
+    PixieRailScrollbar,
+    PixieRailSnap,
+    PixieRailSnapAlign,
+    PixieRailSnapStop,
+} from "./PixieRail.types";
 
 const itemWidthClasses = {
     auto: styles.itemWidthAuto,
@@ -21,7 +21,7 @@ const itemWidthClasses = {
     md: styles.itemWidthMedium,
     lg: styles.itemWidthLarge,
     xl: styles.itemWidthExtraLarge,
-} as const satisfies Record<PixieDustRailItemWidthPreset, string>;
+} as const satisfies Record<PixieRailItemWidthPreset, string>;
 
 const gapClasses = {
     none: styles.gapNone,
@@ -30,57 +30,57 @@ const gapClasses = {
     md: styles.gapMedium,
     lg: styles.gapLarge,
     xl: styles.gapExtraLarge,
-} as const satisfies Record<PixieDustRailGapPreset, string>;
+} as const satisfies Record<PixieRailGapPreset, string>;
 
 const gutterClasses = {
     none: styles.gutterNone,
     sm: styles.gutterSmall,
     md: styles.gutterMedium,
     lg: styles.gutterLarge,
-} as const satisfies Record<PixieDustRailGutterPreset, string>;
+} as const satisfies Record<PixieRailGutterPreset, string>;
 
 const peekClasses = {
     none: styles.peekNone,
     subtle: styles.peekSubtle,
     strong: styles.peekStrong,
-} as const satisfies Record<PixieDustRailPeek, string>;
+} as const satisfies Record<PixieRailPeek, string>;
 
 const snapClasses = {
     none: styles.snapNone,
     proximity: styles.snapProximity,
     mandatory: styles.snapMandatory,
-} as const satisfies Record<PixieDustRailSnap, string>;
+} as const satisfies Record<PixieRailSnap, string>;
 
 const snapAlignClasses = {
     start: styles.snapAlignStart,
     center: styles.snapAlignCenter,
     end: styles.snapAlignEnd,
-} as const satisfies Record<PixieDustRailSnapAlign, string>;
+} as const satisfies Record<PixieRailSnapAlign, string>;
 
 const snapStopClasses = {
     normal: styles.snapStopNormal,
     always: styles.snapStopAlways,
-} as const satisfies Record<PixieDustRailSnapStop, string>;
+} as const satisfies Record<PixieRailSnapStop, string>;
 
 const alignClasses = {
     stretch: styles.alignStretch,
     start: styles.alignStart,
     center: styles.alignCenter,
     end: styles.alignEnd,
-} as const satisfies Record<PixieDustRailAlign, string>;
+} as const satisfies Record<PixieRailAlign, string>;
 
 const scrollbarClasses = {
     auto: styles.scrollbarAuto,
     thin: styles.scrollbarThin,
     hidden: styles.scrollbarHidden,
-} as const satisfies Record<PixieDustRailScrollbar, string>;
+} as const satisfies Record<PixieRailScrollbar, string>;
 
 const overscrollClasses = {
     auto: styles.overscrollAuto,
     contain: styles.overscrollContain,
-} as const satisfies Record<PixieDustRailOverscroll, string>;
+} as const satisfies Record<PixieRailOverscroll, string>;
 
-export function PixieDustRail({
+export function PixieRail({
     as: Element = "div",
     itemWidth = "md",
     gap = "md",
@@ -97,7 +97,7 @@ export function PixieDustRail({
     style,
     children,
     ...elementProps
-}: PixieDustRailProps) {
+}: PixieRailProps) {
     const customStyles = {
         ...style,
         ...(typeof itemWidth === "number"
