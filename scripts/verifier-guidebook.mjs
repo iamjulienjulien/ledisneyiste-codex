@@ -26,13 +26,47 @@ async function loadTypeScriptModule(relativePath) {
         },
         fileName: filePath,
     });
-    const executableSource = outputText.replace(
+    let executableSource = outputText.replace(
         /^import\s+["']server-only["'];?\s*$/gm,
         "",
     );
+
+    for (const dependency of ["remark-gfm", "remark-parse", "unified"]) {
+        executableSource = executableSource.replace(
+            new RegExp(`from\\s+["']${dependency}["']`, "g"),
+            `from ${JSON.stringify(import.meta.resolve(dependency))}`,
+        );
+    }
+
     const moduleUrl = `data:text/javascript;base64,${Buffer.from(executableSource).toString("base64")}`;
 
     return import(moduleUrl);
+}
+
+function flattenTableOfContents(items) {
+    return items.flatMap((item) => [
+        item,
+        ...flattenTableOfContents(item.children ?? []),
+    ]);
+}
+
+function collectListItemBlocks(item) {
+    return [
+        ...item.blocks.flatMap(collectBlocks),
+        ...item.children.flatMap(collectBlocks),
+    ];
+}
+
+function collectBlocks(block) {
+    if (block.kind === "blockquote") {
+        return [block, ...block.blocks.flatMap(collectBlocks)];
+    }
+
+    if (block.kind === "list") {
+        return [block, ...block.items.flatMap(collectListItemBlocks)];
+    }
+
+    return [block];
 }
 
 function flattenNavigation(nodes) {
@@ -232,13 +266,237 @@ async function verifyNotionAuthorization(errors) {
     }
 }
 
+async function verifyMarkdownAnalysis(errors) {
+    const [{ analyzeGuidebookMarkdown }, { resolveGuidebookLink }] =
+        await Promise.all([
+            loadTypeScriptModule("src/lib/guidebook/analyze-markdown.ts"),
+            loadTypeScriptModule("src/lib/guidebook/resolve-link.ts"),
+        ]);
+    const { localGuidebookManifest } = await loadTypeScriptModule(
+        "src/lib/guidebook/server/local-manifest.ts",
+    );
+    const fixtureEntries = [
+        { slug: "fixture", relativePath: "fixture.md" },
+        { slug: "cible", relativePath: "cible.md" },
+    ];
+    const fixture = await readFile(
+        path.join(
+            repositoryRoot,
+            "scripts/fixtures/guidebook/markdown-analysis.fixture.md",
+        ),
+        "utf8",
+    );
+    const fixtureAnalysis = analyzeGuidebookMarkdown({
+        slug: "fixture",
+        markdown: fixture,
+        resolveLink: (slug, label, rawHref) =>
+            resolveGuidebookLink(fixtureEntries, slug, label, rawHref),
+    });
+    const fixtureBlocks = fixtureAnalysis.blocks.flatMap(collectBlocks);
+    const fixtureBlockKinds = new Set(fixtureBlocks.map((block) => block.kind));
+    const expectedBlockKinds = [
+        "heading",
+        "paragraph",
+        "blockquote",
+        "list",
+        "table",
+        "thematic-break",
+        "code",
+        "unsupported",
+    ];
+
+    for (const kind of expectedBlockKinds) {
+        if (!fixtureBlockKinds.has(kind)) {
+            errors.push(`La fixture Markdown ne produit aucun bloc ${kind}`);
+        }
+    }
+
+    if (
+        !fixtureBlocks.some(
+            (block) => block.kind === "code" && block.presentation === "ascii",
+        )
+    ) {
+        errors.push("La carte témoin n’est pas reconnue comme ASCII");
+    }
+
+    if (
+        !fixtureBlocks.some(
+            (block) => block.kind === "code" && block.presentation === "code",
+        )
+    ) {
+        errors.push(
+            "Le code TypeScript témoin est confondu avec une carte ASCII",
+        );
+    }
+
+    if (
+        !fixtureBlocks.some(
+            (block) =>
+                block.kind === "list" &&
+                block.items.some((item) =>
+                    item.children.some((child) => child.ordered),
+                ),
+        )
+    ) {
+        errors.push("La liste ordonnée imbriquée perd sa propre sémantique");
+    }
+
+    if (
+        !fixtureAnalysis.headings.some((heading) => heading.id === "raccord-2")
+    ) {
+        errors.push(
+            "Les ancres de titres dupliqués ne sont pas désambiguïsées",
+        );
+    }
+
+    const fixtureLinkStates = new Set(
+        fixtureAnalysis.links.map((link) => link.state),
+    );
+    for (const state of [
+        "anchor",
+        "internal",
+        "external",
+        "restricted",
+        "invalid",
+    ]) {
+        if (!fixtureLinkStates.has(state)) {
+            errors.push(`La fixture Markdown n’éprouve aucun lien ${state}`);
+        }
+    }
+
+    if (
+        !fixtureAnalysis.links.some(
+            (link) =>
+                link.label === "ancre absente" &&
+                link.state === "invalid" &&
+                link.href === null,
+        )
+    ) {
+        errors.push("Une ancre absente n’est pas neutralisée");
+    }
+
+    if (
+        !fixtureBlocks.some(
+            (block) =>
+                block.kind === "paragraph" &&
+                block.content.some((inline) => inline.kind === "break"),
+        )
+    ) {
+        errors.push("Le saut de ligne HTML autorisé n’est pas normalisé");
+    }
+
+    const resolvedRoot = await realpath(
+        path.join(repositoryRoot, localGuidebookManifest.rootDirectory),
+    );
+    const realStatistics = {
+        blocks: 0,
+        headings: 0,
+        links: 0,
+        ascii: 0,
+        restricted: 0,
+    };
+
+    for (const entry of localGuidebookManifest.entries) {
+        const markdown = await readFile(
+            path.join(resolvedRoot, entry.relativePath),
+            "utf8",
+        );
+        const analysis = analyzeGuidebookMarkdown({
+            slug: entry.slug,
+            markdown,
+            resolveLink: (slug, label, rawHref) =>
+                resolveGuidebookLink(
+                    localGuidebookManifest.entries,
+                    slug,
+                    label,
+                    rawHref,
+                ),
+        });
+        const blocks = analysis.blocks.flatMap(collectBlocks);
+        const blockIds = blocks.map((block) => block.id);
+        const headingIds = analysis.headings.map((heading) => heading.id);
+        const tableOfContentsItems = flattenTableOfContents(
+            analysis.tableOfContents,
+        );
+        const serializedAnalysis = JSON.stringify(analysis);
+
+        if (analysis.blocks.length === 0 || analysis.headings.length === 0) {
+            errors.push(`${entry.slug} ne produit aucune matière lisible`);
+        }
+
+        if (new Set(blockIds).size !== blockIds.length) {
+            errors.push(
+                `${entry.slug} produit des identifiants de blocs dupliqués`,
+            );
+        }
+
+        if (new Set(headingIds).size !== headingIds.length) {
+            errors.push(
+                `${entry.slug} produit des ancres de titres dupliquées`,
+            );
+        }
+
+        if (tableOfContentsItems.length !== analysis.headings.length) {
+            errors.push(`${entry.slug} perd des titres dans son sommaire`);
+        }
+
+        if (blocks.some((block) => block.kind === "unsupported")) {
+            errors.push(
+                `${entry.slug} contient un bloc réel non pris en charge`,
+            );
+        }
+
+        if (
+            serializedAnalysis.includes('"position"') ||
+            serializedAnalysis.includes('"relativePath"') ||
+            serializedAnalysis.includes('"filePath"')
+        ) {
+            errors.push(
+                `${entry.slug} expose des détails techniques de l’AST ou du dépôt`,
+            );
+        }
+
+        if (
+            analysis.links.some(
+                (link) => link.state === "restricted" && link.href !== null,
+            )
+        ) {
+            errors.push(`${entry.slug} rend navigable un lien restreint`);
+        }
+
+        realStatistics.blocks += blocks.length;
+        realStatistics.headings += analysis.headings.length;
+        realStatistics.links += analysis.links.length;
+        realStatistics.ascii += blocks.filter(
+            (block) => block.kind === "code" && block.presentation === "ascii",
+        ).length;
+        realStatistics.restricted += analysis.links.filter(
+            (link) => link.state === "restricted",
+        ).length;
+    }
+
+    if (realStatistics.ascii === 0) {
+        errors.push(
+            "Aucune carte ASCII réelle n’est reconnue dans le Guidebook",
+        );
+    }
+
+    if (realStatistics.restricted === 0) {
+        errors.push("Aucun lien privé réel n’est neutralisé dans le Guidebook");
+    }
+
+    return realStatistics;
+}
+
 async function verify() {
     const errors = [];
     let localDocumentCount = 0;
+    let markdownStatistics = null;
 
     try {
         localDocumentCount = await verifyLocalLibrary(errors);
         await verifyNotionAuthorization(errors);
+        markdownStatistics = await verifyMarkdownAnalysis(errors);
     } catch (error) {
         errors.push(
             error instanceof Error
@@ -257,7 +515,7 @@ async function verify() {
     }
 
     console.log(
-        `Guidebook vérifié : ${localDocumentCount} documents locaux, frontière studio fermée et double autorisation Notion éprouvée.`,
+        `Guidebook vérifié : ${localDocumentCount} documents locaux, ${markdownStatistics.blocks} blocs, ${markdownStatistics.headings} titres, ${markdownStatistics.links} liens et ${markdownStatistics.ascii} compositions ASCII ; frontière studio fermée et double autorisation Notion éprouvée.`,
     );
 }
 
