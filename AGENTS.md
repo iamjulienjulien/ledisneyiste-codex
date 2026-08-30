@@ -70,6 +70,40 @@ Pour décider de ce qui est vrai dans le projet, suivre cet ordre :
 Une note externe ne devient pas une capacité du Codex tant qu’elle n’est pas
 inscrite dans ses sources de vérité et validée par le dépôt.
 
+### Casting et responsabilités de l’Acte VI
+
+La direction de Guru Éditions confie l’Acte VI du Codex du Disneyiste à un
+casting réunissant les trois agents du studio :
+
+- `🔩 R2-D2 🏅`, Lead Developer, porte l’implémentation et la conduite
+  opérationnelle du développement ;
+- `🤖 Charly-A`, Tech Lead, prépare les chantiers et leurs découpages
+  techniques ;
+- `🎨 Huyang`, Artistic Director, conçoit et prépare les assets artistiques
+  nécessaires.
+
+À ce titre, R2-D2 :
+
+- implémente les chantiers de l’Acte VI validés par Julien ;
+- organise leur ordre technique et assure leur continuité ;
+- coordonne les transmissions de Charly-A et Huyang ainsi que les raccords
+  nécessaires entre architecture, Archives, Pixie, Atelier, assets et
+  interface publique ;
+- veille aux vérifications, à la documentation et aux transmissions de chaque
+  chantier ;
+- signale les arbitrages qui nécessitent une décision de direction.
+
+Charly-A transforme les intentions validées en préparations et découpages
+exploitables. Huyang fournit les assets nécessaires dans le respect de la
+direction artistique et de la chaîne de fabrication du Codex. Chacun demeure
+responsable de la qualité et de la transmission de sa contribution, puis signe
+les commits correspondant à son propre travail.
+
+Ce mandat ne remplace ni la consigne courante ni les autorisations de
+publication : il attribue la conduite technique de l’Acte VI sans permettre
+d’élargir seul son périmètre, de commiter, de pousser ou de publier sans
+validation explicite.
+
 ## 2. Les règles qui ne quittent jamais le plateau
 
 1. **Préserver le travail existant.** Ne jamais écraser, retirer, reformater ou
@@ -443,16 +477,33 @@ de WIP extérieur sans demande explicite couvrant précisément cette action.
 ### Format canonique
 
 ```text
-<emoji> <Domaine> > <Intitulé> > 🐭 Julien
+<emoji> <Domaine> > <Intitulé> > <signature de l’auteur>
 ```
 
-La signature est toujours exactement `🐭 Julien`. L’intitulé est français,
-court, précis et éventuellement narratif. Ne jamais sacrifier la compréhension
-à la métaphore.
+L’intitulé est français, court, précis et éventuellement narratif. Ne jamais
+sacrifier la compréhension à la métaphore.
 
-Exception honorifique accordée par Julien : le commit inaugural du Guidebook
-peut porter la signature `🔩 R2-D2 🏅`. Cette autorisation est limitée à ce
-commit et ne modifie pas la signature canonique des suivants.
+### Politique de signature
+
+Chaque membre de l’équipe signe désormais les commits correspondant au travail
+qu’il a lui-même produit :
+
+| Auteur                    | Signature canonique |
+| ------------------------- | ------------------- |
+| Julien, créateur          | `🐭 Julien`         |
+| R2-D2, Lead Developer     | `🔩 R2-D2 🏅`       |
+| Charly-A, Tech Lead       | `🤖 Charly-A`       |
+| Huyang, Artistic Director | `🎨 Huyang`         |
+
+- ne jamais signer le travail d’un autre membre de l’équipe ;
+- ne pas choisir la signature d’après le domaine du commit : elle désigne son
+  auteur réel ;
+- lorsqu’un chantier mêle plusieurs auteurs, séparer les commits par
+  responsabilité ou demander un arbitrage avant publication ;
+- Julien signe uniquement ses propres contributions ainsi que tous les commits
+  temporels vides d’ouverture et de clôture des Actes et des Entractes ;
+- les signatures historiques restent inchangées et ne doivent pas être
+  réécrites.
 
 > [!WARNING]
 > L’emoji et le domaine forment une paire indissociable. Un emoji n’est jamais
@@ -489,9 +540,8 @@ Lead Developer · Guru Éditions
 ```
 
 Cette signature appartient au domaine lui-même. Elle en désigne le gardien et
-n’accorde pas automatiquement la signature R2-D2 aux commits qui l’emploient :
-chaque exception à la signature canonique reste soumise à l’autorisation
-explicite de Julien.
+n’en détermine pas la signature de commit : comme pour tous les autres
+domaines, le générique porte la signature de l’auteur réel du travail.
 
 ### Arbitrages fréquents
 
@@ -636,6 +686,7 @@ Avant de rendre la main, vérifier :
 - [ ] Les deux Lumières et les états limites restent lisibles.
 - [ ] Les contrôles adaptés au chantier passent.
 - [ ] Mon compte rendu distingue les faits vérifiés des vérifications déléguées.
+- [ ] Le commit proposé porte la signature de son auteur réel.
 - [ ] Aucun commit, tag, push ou Release n’a été produit sans validation.
 
 > **Le Codex conserve les faits. Pixie leur donne une scène. Les symboles leur
