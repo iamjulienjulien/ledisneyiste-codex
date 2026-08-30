@@ -10,11 +10,31 @@ Les entrées sont présentées de la plus récente à la plus ancienne.
 
 ---
 
+## 🎞️ Acte VI · Pinocchio révèle la vie publique des œuvres
+
+**Tag :** `acte-vi` (à venir)\
+**Ouverture :** `f784e96`\
+**Clôture :**
+
+### La projection
+
+Le rideau se lève sur un nouvel Acte du Codex du Disneyiste.
+
+Avec _Pinocchio_, les œuvres s’apprêtent à quitter le seul cadre de leur fabrication pour révéler leur vie publique : leurs projections, leurs circulations, leurs supports, leurs restaurations et les traces laissées auprès du public. Avant cette traversée, le Guidebook doit rejoindre son propre espace de projection dans les coulisses du Codex.
+
+Cette section sera complétée au fil de l’Acte.
+
+### Générique des commits
+
+1. `f784e96` — 🎞️ Acte > Acte VI · Pinocchio ouvre les œuvres sur leur vie publique > 🐭 Julien
+
+---
+
 ## 🍿 Entracte V · Le Codex invente ses Plans
 
-**Tag :** `entracte-v` (à venir)\
+**Tag :** `entracte-v`\
 **Ouverture :** `337ec88`\
-**Clôture :**\
+**Clôture :** `a369381`\
 **Entre :** Acte V et Acte VI
 
 ### Le raccord
@@ -172,6 +192,8 @@ L’Atelier devient un véritable studio d’expérimentation : son Conducteur r
 126. `fbf5f49` — 🏢 Production > Charly-A entre au registre d’équipe de Guru Éditions > 🤖 Charly-A
 127. `b7770da` — 🏢 Production > Huyang entre au registre d’équipe de Guru Éditions > 🎨 Huyang
 128. `5f2b203` — ✍️ Scénario > Le README raconte les Plans et les nouveaux registres du studio > 🐭 Julien
+129. `e1e5989` — ✍️ Scénario > Le Journal raconte comment le Codex a inventé ses Plans > 🐭 Julien
+130. `a369381` — 🍿 Entracte > Le Codex a inventé sa grammaire du regard > 🐭 Julien
 
 ### Dernière image
 
