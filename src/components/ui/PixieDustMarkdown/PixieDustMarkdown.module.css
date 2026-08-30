@@ -1,4 +1,5 @@
 .root {
+    --pixie-markdown-accent: var(--pixie-markdown-color, var(--color-accent));
     --pixie-markdown-reading-measure: 44rem;
     --pixie-markdown-wide-measure: 64rem;
     --pixie-markdown-flow: 1.35rem;
@@ -149,6 +150,11 @@
     transition: opacity 150ms ease;
 }
 
+.headingAnchor:hover,
+.headingAnchor:focus-visible {
+    color: var(--pixie-markdown-accent);
+}
+
 .heading:hover .headingAnchor,
 .heading:focus-within .headingAnchor {
     opacity: 1;
@@ -190,10 +196,28 @@
 }
 
 .blockquote {
-    border-left: 0.25rem solid var(--color-accent);
-    background: color-mix(in srgb, var(--color-surface-muted) 72%, transparent);
-    padding: 1.25rem clamp(1rem, 4vw, 1.75rem);
+    position: relative;
+    border-left: 0.25rem solid var(--pixie-markdown-accent);
+    background: color-mix(
+        in srgb,
+        var(--pixie-markdown-accent) 7%,
+        var(--color-surface-muted)
+    );
+    padding: 1.25rem clamp(1rem, 4vw, 1.75rem) 1.25rem
+        clamp(2.5rem, 5vw, 3.25rem);
     color: var(--color-ink-soft);
+}
+
+.blockquote::before {
+    position: absolute;
+    top: 0.35rem;
+    left: 0.65rem;
+    color: color-mix(in srgb, var(--pixie-markdown-accent) 55%, transparent);
+    content: "“";
+    font-family: var(--font-display), serif;
+    font-size: 2rem;
+    line-height: 1;
+    pointer-events: none;
 }
 
 .blockquote > [data-markdown-block] + [data-markdown-block],
@@ -218,7 +242,7 @@
 }
 
 .listItem::marker {
-    color: var(--color-accent);
+    color: var(--pixie-markdown-accent);
     font-family: var(--font-mono), monospace;
     font-weight: 700;
 }
@@ -246,9 +270,13 @@
 }
 
 .listItem[data-task-state="checked"] .taskStatus {
-    border-color: var(--color-accent);
-    background: var(--color-accent-soft);
-    color: var(--color-accent);
+    border-color: var(--pixie-markdown-accent);
+    background: color-mix(
+        in srgb,
+        var(--pixie-markdown-accent) 13%,
+        transparent
+    );
+    color: var(--pixie-markdown-accent);
 }
 
 .listItemContent {
@@ -282,6 +310,16 @@
     min-width: 36rem;
     border-collapse: collapse;
     text-align: left;
+}
+
+.tableFixed {
+    min-width: 100%;
+    table-layout: fixed;
+}
+
+.tableFixed th,
+.tableFixed td {
+    overflow-wrap: anywhere;
 }
 
 .table th,
@@ -336,7 +374,6 @@
 }
 
 .codeViewport {
-    overflow-x: auto;
     margin: 0;
     padding: clamp(1rem, 4vw, 1.4rem);
     color: var(--color-ink-soft);
@@ -346,9 +383,55 @@
     tab-size: 4;
 }
 
+.codeScroll {
+    overflow-x: auto;
+}
+
+.codeWrap {
+    overflow-x: hidden;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
 .code {
     color: inherit;
     font: inherit;
+}
+
+.codeWithLineNumbers {
+    display: grid;
+}
+
+.codeLine {
+    display: grid;
+    grid-template-columns: 2.5rem minmax(max-content, 1fr);
+    min-width: max-content;
+}
+
+.codeLineNumber {
+    margin-right: 1rem;
+    border-right: 1px solid var(--color-line);
+    padding-right: 0.75rem;
+    color: var(--color-muted);
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    user-select: none;
+}
+
+.codeLineContent {
+    min-width: 0;
+}
+
+.codeWrap .codeLine {
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    min-width: 0;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.codeWrap .codeLineContent {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
 }
 
 .comment {
@@ -407,6 +490,17 @@
     color: var(--color-ink);
 }
 
+.unsupportedType {
+    display: block;
+    margin-bottom: 0.55rem;
+    color: var(--pixie-markdown-accent);
+    font-family: var(--font-mono), monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    overflow-wrap: anywhere;
+    text-transform: uppercase;
+}
+
 .unsupported p {
     margin: 0.45rem 0 0;
 }
@@ -444,6 +538,20 @@
     .table {
         min-width: 30rem;
     }
+
+    .tableFixed {
+        min-width: 100%;
+    }
+
+    .codeLine,
+    .codeWrap .codeLine {
+        grid-template-columns: 2rem minmax(0, 1fr);
+    }
+
+    .codeLineNumber {
+        margin-right: 0.7rem;
+        padding-right: 0.55rem;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -460,6 +568,10 @@
     .empty,
     .taskStatus {
         border-color: CanvasText;
+    }
+
+    .blockquote::before {
+        color: CanvasText;
     }
 
     .headingAnchor {
@@ -484,6 +596,12 @@
     }
 
     .codeViewport {
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+    }
+
+    .codeLine {
+        min-width: 0;
         white-space: pre-wrap;
         overflow-wrap: anywhere;
     }

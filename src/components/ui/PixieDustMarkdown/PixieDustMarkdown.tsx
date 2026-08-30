@@ -1,5 +1,6 @@
 import type { ElementType, ReactNode } from "react";
-import { tokenizeCode } from "@/lib/code-tokens";
+import { tokenizeCode, type CodeToken } from "@/lib/code-tokens";
+import { getAtelierAnimationColor } from "@/registry/colors";
 import type {
     GuidebookBlock,
     GuidebookInline,
@@ -13,14 +14,19 @@ import { PixieLink } from "@/components/ui/PixieLink";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import styles from "./PixieDustMarkdown.module.css";
 import type {
+    PixieDustMarkdownCodeOverflow,
     PixieDustMarkdownDensity,
+    PixieDustMarkdownHeadingScale,
     PixieDustMarkdownMeasure,
     PixieDustMarkdownProps,
+    PixieDustMarkdownStyle,
+    PixieDustMarkdownTableLayout,
+    PixieDustMarkdownWideBlocks,
 } from "./PixieDustMarkdown.types";
 
 const densityClasses = {
     compact: styles.densityCompact,
-    comfortable: styles.densityComfortable,
+    comfortable: "",
     airy: styles.densityAiry,
 } as const satisfies Record<PixieDustMarkdownDensity, string>;
 
@@ -29,6 +35,28 @@ const measureClasses = {
     wide: styles.measureWide,
     full: styles.measureFull,
 } as const satisfies Record<PixieDustMarkdownMeasure, string>;
+
+const codeOverflowClasses = {
+    scroll: styles.codeScroll,
+    wrap: styles.codeWrap,
+} as const satisfies Record<PixieDustMarkdownCodeOverflow, string>;
+
+const tableLayoutClasses = {
+    auto: "",
+    fixed: styles.tableFixed,
+} as const satisfies Record<PixieDustMarkdownTableLayout, string>;
+
+type RenderContext = {
+    anchorPrefix: string;
+    headingOffset: number;
+    headingScale: PixieDustMarkdownHeadingScale;
+    wideBlocks: PixieDustMarkdownWideBlocks;
+    codeOverflow: PixieDustMarkdownCodeOverflow;
+    codeLineNumbers: boolean;
+    tableLayout: PixieDustMarkdownTableLayout;
+    asciiCopyable: boolean;
+    color: PixieDustMarkdownProps["color"];
+};
 
 function normalizeAnchorPrefix(prefix: string): string {
     return prefix
@@ -140,7 +168,7 @@ function renderInlines(
 
 function renderListItem(
     item: GuidebookListItem,
-    anchorPrefix: string,
+    context: RenderContext,
 ): ReactNode {
     return (
         <li
@@ -166,12 +194,8 @@ function renderListItem(
             ) : null}
 
             <div className={styles.listItemContent}>
-                {item.blocks.map((block) =>
-                    renderBlock(block, anchorPrefix, 0, false),
-                )}
-                {item.children.map((list) =>
-                    renderList(list, anchorPrefix, false),
-                )}
+                {item.blocks.map((block) => renderBlock(block, context, false))}
+                {item.children.map((list) => renderList(list, context, false))}
             </div>
         </li>
     );
@@ -179,7 +203,7 @@ function renderListItem(
 
 function renderList(
     block: GuidebookListBlock,
-    anchorPrefix: string,
+    context: RenderContext,
     isRootBlock: boolean,
 ): ReactNode {
     const ListTag = block.ordered ? "ol" : "ul";
@@ -191,14 +215,60 @@ function renderList(
             data-markdown-block={isRootBlock || undefined}
             key={block.id}
         >
-            {block.items.map((item) => renderListItem(item, anchorPrefix))}
+            {block.items.map((item) => renderListItem(item, context))}
         </ListTag>
+    );
+}
+
+function getWideBlockClass(context: RenderContext): string {
+    return context.wideBlocks === "measure" ? styles.block : styles.wideBlock;
+}
+
+function getVisualHeadingLevel(
+    sourceDepth: number,
+    scale: PixieDustMarkdownHeadingScale,
+): number {
+    const shift = scale === "display" ? 0 : scale === "reading" ? 1 : 2;
+    return Math.min(6, sourceDepth + shift);
+}
+
+function splitCodeTokensByLine(tokens: readonly CodeToken[]): CodeToken[][] {
+    const lines: CodeToken[][] = [[]];
+
+    for (const token of tokens) {
+        const parts = token.value.split("\n");
+
+        parts.forEach((part, index) => {
+            if (part) {
+                lines[lines.length - 1].push(
+                    token.kind
+                        ? { value: part, kind: token.kind }
+                        : { value: part },
+                );
+            }
+
+            if (index < parts.length - 1) {
+                lines.push([]);
+            }
+        });
+    }
+
+    return lines;
+}
+
+function renderCodeToken(token: CodeToken, key: string): ReactNode {
+    return token.kind ? (
+        <span className={styles[token.kind]} key={key}>
+            {token.value}
+        </span>
+    ) : (
+        token.value
     );
 }
 
 function renderTable(
     block: GuidebookTableBlock,
-    anchorPrefix: string,
+    context: RenderContext,
 ): ReactNode {
     const [header, ...body] = block.rows;
 
@@ -219,14 +289,16 @@ function renderTable(
 
     return (
         <div
-            className={`${styles.tableViewport} ${styles.wideBlock}`}
+            className={`${styles.tableViewport} ${getWideBlockClass(context)}`}
             role="region"
             aria-label="Tableau documentaire"
             tabIndex={0}
             data-markdown-block
             key={block.id}
         >
-            <table className={styles.table}>
+            <table
+                className={`${styles.table} ${tableLayoutClasses[context.tableLayout]}`.trim()}
+            >
                 <thead>
                     <tr>
                         {header.map((cell, index) => (
@@ -238,7 +310,7 @@ function renderTable(
                                 {renderInlines(
                                     cell,
                                     `${block.id}-head-${index}`,
-                                    anchorPrefix,
+                                    context.anchorPrefix,
                                 )}
                             </th>
                         ))}
@@ -255,7 +327,7 @@ function renderTable(
                                     {renderInlines(
                                         cell,
                                         `${block.id}-cell-${rowIndex}-${cellIndex}`,
-                                        anchorPrefix,
+                                        context.anchorPrefix,
                                     )}
                                 </td>
                             ))}
@@ -269,20 +341,29 @@ function renderTable(
 
 function renderBlock(
     block: GuidebookBlock,
-    anchorPrefix: string,
-    headingOffset: number,
+    context: RenderContext,
     isRootBlock = true,
 ): ReactNode {
     switch (block.kind) {
         case "heading": {
-            const level = Math.min(6, block.heading.depth + headingOffset);
+            const level = Math.min(
+                6,
+                block.heading.depth + context.headingOffset,
+            );
+            const visualLevel = getVisualHeadingLevel(
+                block.heading.depth,
+                context.headingScale,
+            );
             const HeadingTag = `h${level}` as ElementType;
-            const headingId = resolveAnchor(block.heading.id, anchorPrefix);
+            const headingId = resolveAnchor(
+                block.heading.id,
+                context.anchorPrefix,
+            );
 
             return (
                 <HeadingTag
                     id={headingId}
-                    className={`${styles.heading} ${styles[`heading${level}`]} ${isRootBlock ? styles.block : ""}`.trim()}
+                    className={`${styles.heading} ${styles[`heading${visualLevel}`]} ${isRootBlock ? styles.block : ""}`.trim()}
                     data-markdown-block={isRootBlock || undefined}
                     data-source-heading-depth={block.heading.depth}
                     key={block.id}
@@ -307,7 +388,11 @@ function renderBlock(
                     data-markdown-block={isRootBlock || undefined}
                     key={block.id}
                 >
-                    {renderInlines(block.content, block.id, anchorPrefix)}
+                    {renderInlines(
+                        block.content,
+                        block.id,
+                        context.anchorPrefix,
+                    )}
                 </p>
             );
         case "blockquote":
@@ -318,12 +403,12 @@ function renderBlock(
                     key={block.id}
                 >
                     {block.blocks.map((child) =>
-                        renderBlock(child, anchorPrefix, headingOffset, false),
+                        renderBlock(child, context, false),
                     )}
                 </blockquote>
             );
         case "list":
-            return renderList(block, anchorPrefix, isRootBlock);
+            return renderList(block, context, isRootBlock);
         case "code":
             if (block.presentation === "ascii") {
                 return (
@@ -331,14 +416,14 @@ function renderBlock(
                         label="Composition ASCII du document"
                         alternative={block.alternative}
                         variant="surface"
-                        color={false}
+                        color={context.color}
                         size="sm"
                         density="compact"
                         padding="md"
                         overflow="auto"
                         width="full"
-                        copyable
-                        className={styles.wideBlock}
+                        copyable={context.asciiCopyable}
+                        className={getWideBlockClass(context)}
                         data-markdown-block
                         key={block.id}
                     >
@@ -347,9 +432,14 @@ function renderBlock(
                 );
             }
 
+            const codeTokens = tokenizeCode(block.code);
+            const codeLines = context.codeLineNumbers
+                ? splitCodeTokensByLine(codeTokens)
+                : [];
+
             return (
                 <figure
-                    className={`${styles.codeFigure} ${styles.wideBlock}`}
+                    className={`${styles.codeFigure} ${getWideBlockClass(context)}`}
                     data-markdown-block
                     key={block.id}
                 >
@@ -357,34 +447,58 @@ function renderBlock(
                         {block.language || "texte"}
                     </figcaption>
                     <pre
-                        className={styles.codeViewport}
+                        className={`${styles.codeViewport} ${codeOverflowClasses[context.codeOverflow]}`}
                         tabIndex={0}
                         aria-label={`Extrait de code${block.language ? ` en ${block.language}` : ""}`}
                     >
-                        <code className={styles.code}>
-                            {tokenizeCode(block.code).map((token, index) =>
-                                token.kind ? (
-                                    <span
-                                        className={styles[token.kind]}
-                                        key={index}
-                                    >
-                                        {token.value}
-                                    </span>
-                                ) : (
-                                    token.value
-                                ),
-                            )}
+                        <code
+                            className={`${styles.code} ${context.codeLineNumbers ? styles.codeWithLineNumbers : ""}`.trim()}
+                        >
+                            {context.codeLineNumbers
+                                ? codeLines.map((line, lineIndex) => (
+                                      <span
+                                          className={styles.codeLine}
+                                          key={`${block.id}-line-${lineIndex}`}
+                                      >
+                                          <span
+                                              className={styles.codeLineNumber}
+                                              aria-hidden="true"
+                                          >
+                                              {lineIndex + 1}
+                                          </span>
+                                          <span
+                                              className={styles.codeLineContent}
+                                          >
+                                              {line.length > 0
+                                                  ? line.map(
+                                                        (token, tokenIndex) =>
+                                                            renderCodeToken(
+                                                                token,
+                                                                `${block.id}-line-${lineIndex}-token-${tokenIndex}`,
+                                                            ),
+                                                    )
+                                                  : " "}
+                                          </span>
+                                      </span>
+                                  ))
+                                : codeTokens.map((token, index) =>
+                                      renderCodeToken(
+                                          token,
+                                          `${block.id}-token-${index}`,
+                                      ),
+                                  )}
                         </code>
                     </pre>
                 </figure>
             );
         case "table":
-            return renderTable(block, anchorPrefix);
+            return renderTable(block, context);
         case "thematic-break":
             return (
                 <PixieSeparator
                     variant="line"
                     intensity="subtle"
+                    color={context.color}
                     width="full"
                     spacing="sm"
                     className={styles.wideBlock}
@@ -398,6 +512,9 @@ function renderBlock(
                     data-markdown-block
                     key={block.id}
                 >
+                    <span className={styles.unsupportedType}>
+                        {block.sourceType}
+                    </span>
                     <strong>Contenu conservé sans mise en forme</strong>
                     {block.plainText ? <p>{block.plainText}</p> : null}
                 </aside>
@@ -410,26 +527,59 @@ export function PixieDustMarkdown({
     as: RootTag = "article",
     density = "comfortable",
     measure = "reading",
+    color = false,
     headingOffset = 0,
+    headingScale = "display",
     headingAnchors = true,
     anchorPrefix = "",
+    wideBlocks = "frame",
+    codeOverflow = "scroll",
+    codeLineNumbers = false,
+    tableLayout = "auto",
+    asciiCopyable = true,
     emptyMessage = "Aucune matière à projeter.",
     className = "",
+    style,
     ...elementProps
 }: PixieDustMarkdownProps) {
     const normalizedPrefix = normalizeAnchorPrefix(anchorPrefix);
+    const colorDefinition = color ? getAtelierAnimationColor(color) : null;
+    const markdownStyle: PixieDustMarkdownStyle = {
+        ...style,
+        ...(colorDefinition
+            ? { "--pixie-markdown-color": colorDefinition.cssValue }
+            : {}),
+    };
+    const renderContext: RenderContext = {
+        anchorPrefix: normalizedPrefix,
+        headingOffset,
+        headingScale,
+        wideBlocks,
+        codeOverflow,
+        codeLineNumbers,
+        tableLayout,
+        asciiCopyable,
+        color,
+    };
 
     return (
         <RootTag
             {...elementProps}
-            className={`${styles.root} ${densityClasses[density]} ${measureClasses[measure]} ${headingAnchors ? styles.withHeadingAnchors : styles.withoutHeadingAnchors} ${className}`.trim()}
+            className={`${styles.root} ${densityClasses[density]} ${measureClasses[measure]} ${headingAnchors ? "" : styles.withoutHeadingAnchors} ${className}`.trim()}
+            style={markdownStyle}
             data-pixie-markdown-density={density}
             data-pixie-markdown-measure={measure}
+            data-pixie-markdown-color={color || "theme"}
+            data-pixie-markdown-heading-scale={headingScale}
+            data-pixie-markdown-heading-anchors={headingAnchors}
+            data-pixie-markdown-wide-blocks={wideBlocks}
+            data-pixie-markdown-code-overflow={codeOverflow}
+            data-pixie-markdown-code-line-numbers={codeLineNumbers || undefined}
+            data-pixie-markdown-table-layout={tableLayout}
+            data-pixie-markdown-ascii-copyable={asciiCopyable}
         >
             {blocks.length > 0 ? (
-                blocks.map((block) =>
-                    renderBlock(block, normalizedPrefix, headingOffset),
-                )
+                blocks.map((block) => renderBlock(block, renderContext))
             ) : (
                 <p className={styles.empty}>{emptyMessage}</p>
             )}
