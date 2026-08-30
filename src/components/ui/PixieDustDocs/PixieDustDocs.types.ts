@@ -25,6 +25,8 @@ export type PixieDustDocsDensity = "compact" | "comfortable" | "airy";
 
 export type PixieDustDocsNavigationWidth = "sm" | "md" | "lg";
 
+export type PixieDustDocsNavigationMode = "inline" | "floating";
+
 export type PixieDustDocsTocMode = "visible" | "collapsible" | "hidden";
 
 export type PixieDustDocsHeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
@@ -50,6 +52,7 @@ export type PixieDustDocsProps = Readonly<{
     next?: PixieDustDocsDestination | null;
     density?: PixieDustDocsDensity;
     navigationWidth?: PixieDustDocsNavigationWidth;
+    navigationMode?: PixieDustDocsNavigationMode;
     toc?: PixieDustDocsTocMode;
     sticky?: boolean;
     filterable?: boolean;

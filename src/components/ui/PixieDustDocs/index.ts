@@ -4,6 +4,7 @@ export type {
     PixieDustDocsDestination,
     PixieDustDocsHeadingLevel,
     PixieDustDocsNavigationItem,
+    PixieDustDocsNavigationMode,
     PixieDustDocsNavigationState,
     PixieDustDocsNavigationWidth,
     PixieDustDocsProps,

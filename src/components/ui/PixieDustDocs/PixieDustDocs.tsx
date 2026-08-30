@@ -12,6 +12,7 @@ import {
 import { PixieBadge } from "@/components/ui/PixieBadge";
 import { PixieInput } from "@/components/ui/PixieInput";
 import { PixieLink } from "@/components/ui/PixieLink";
+import { PixiePanel } from "@/components/ui/PixiePanel";
 import type {
     GuidebookDocumentState,
     GuidebookTableOfContentsItem,
@@ -365,6 +366,7 @@ export function PixieDustDocs({
     next,
     density = "comfortable",
     navigationWidth = "md",
+    navigationMode = "inline",
     toc = "visible",
     sticky = true,
     filterable = true,
@@ -379,9 +381,14 @@ export function PixieDustDocs({
 }: PixieDustDocsProps) {
     const [query, setQuery] = useState("");
     const [observedHeadingId, setObservedHeadingId] = useState("");
+    const [floatingLibraryOpen, setFloatingLibraryOpen] = useState(false);
+    const rootRef = useRef<HTMLElement>(null);
+    const floatingLibraryRef = useRef<HTMLElement>(null);
     const titleRef = useRef<HTMLHeadingElement>(null);
+    const floatingLibraryTriggerRef = useRef<HTMLButtonElement>(null);
     const previousSlugRef = useRef(activeSlug);
     const navigationDetailsId = useId();
+    const floatingLibraryId = useId();
     const tocDetailsId = useId();
     const flatTableOfContents = useMemo(
         () => flattenTableOfContents(tableOfContents),
@@ -401,9 +408,109 @@ export function PixieDustDocs({
     const controlledNavigate = onNavigate
         ? (slug: string) => {
               setQuery("");
+              setFloatingLibraryOpen(false);
               onNavigate(slug);
           }
         : undefined;
+
+    useEffect(() => {
+        if (navigationMode !== "floating") {
+            return;
+        }
+
+        const root = rootRef.current;
+        const floatingLibrary = floatingLibraryRef.current;
+
+        if (!root || !floatingLibrary) {
+            return;
+        }
+
+        let animationFrame = 0;
+        const updateFloatingPosition = () => {
+            animationFrame = 0;
+            const rootRect = root.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
+            const boundaryInset = 24;
+            const availableHeight = Math.max(
+                1,
+                rootRect.height - boundaryInset * 2,
+            );
+
+            root.style.setProperty(
+                "--pixie-docs-floating-left",
+                `${rootRect.left}px`,
+            );
+            root.style.setProperty(
+                "--pixie-docs-floating-max-height",
+                `${availableHeight}px`,
+            );
+
+            const floatingHeight = floatingLibrary.offsetHeight;
+            const preferredTop = (viewportHeight - floatingHeight) / 2;
+            const componentTop = rootRect.top + boundaryInset;
+            const componentBottom = rootRect.bottom - boundaryInset;
+            const minimumTop = Math.max(boundaryInset, componentTop);
+            const maximumTop = Math.min(
+                viewportHeight - boundaryInset - floatingHeight,
+                componentBottom - floatingHeight,
+            );
+            let floatingTop: number;
+
+            if (maximumTop >= minimumTop) {
+                floatingTop = Math.min(
+                    Math.max(preferredTop, minimumTop),
+                    maximumTop,
+                );
+            } else if (componentBottom <= boundaryInset) {
+                floatingTop = componentBottom - floatingHeight;
+            } else {
+                floatingTop = componentTop;
+            }
+
+            root.style.setProperty(
+                "--pixie-docs-floating-top",
+                `${floatingTop}px`,
+            );
+        };
+        const scheduleFloatingPositionUpdate = () => {
+            if (animationFrame !== 0) {
+                return;
+            }
+
+            animationFrame = window.requestAnimationFrame(
+                updateFloatingPosition,
+            );
+        };
+        const resizeObserver = new ResizeObserver(
+            scheduleFloatingPositionUpdate,
+        );
+
+        updateFloatingPosition();
+        resizeObserver.observe(root);
+        resizeObserver.observe(floatingLibrary);
+        window.addEventListener("resize", scheduleFloatingPositionUpdate);
+        window.addEventListener("scroll", scheduleFloatingPositionUpdate, {
+            capture: true,
+            passive: true,
+        });
+
+        return () => {
+            resizeObserver.disconnect();
+            window.removeEventListener(
+                "resize",
+                scheduleFloatingPositionUpdate,
+            );
+            window.removeEventListener(
+                "scroll",
+                scheduleFloatingPositionUpdate,
+                true,
+            );
+            window.cancelAnimationFrame(animationFrame);
+            root.style.removeProperty("--pixie-docs-floating-left");
+            root.style.removeProperty("--pixie-docs-floating-max-height");
+            root.style.removeProperty("--pixie-docs-floating-top");
+        };
+    }, [navigationMode]);
 
     useEffect(() => {
         if (previousSlugRef.current === activeSlug) {
@@ -476,109 +583,194 @@ export function PixieDustDocs({
 
     return (
         <section
+            ref={rootRef}
             className={`${styles.root} ${densityClasses[density]} ${navigationWidthClasses[navigationWidth]} ${className}`.trim()}
             style={style}
             data-pixie-docs-density={density}
             data-pixie-docs-navigation-width={navigationWidth}
+            data-pixie-docs-navigation-mode={navigationMode}
             data-pixie-docs-sticky={sticky || undefined}
             data-pixie-docs-toc={toc}
+            data-pixie-docs-has-toc={tableOfContentsContent ? true : undefined}
             aria-label={title}
         >
-            <details className={styles.mobileLibrary} id={navigationDetailsId}>
-                <summary>{navigationLabel}</summary>
-                {library}
-            </details>
+            <div className={styles.layout}>
+                <details
+                    className={styles.mobileLibrary}
+                    id={navigationDetailsId}
+                >
+                    <summary>{navigationLabel}</summary>
+                    {library}
+                </details>
 
-            <aside
-                className={styles.desktopLibrary}
-                aria-label={navigationLabel}
-            >
-                <div className={styles.stickyRegion}>{library}</div>
-            </aside>
+                <aside
+                    className={styles.desktopLibrary}
+                    aria-label={navigationLabel}
+                >
+                    <div className={styles.stickyRegion}>{library}</div>
+                </aside>
 
-            <article className={styles.documentColumn}>
-                <header className={styles.documentHeader}>
-                    <div className={styles.documentHeadingRow}>
-                        <div className={styles.documentHeading}>
-                            <p className={styles.eyebrow}>{documentEyebrow}</p>
-                            <Heading
-                                ref={titleRef}
-                                tabIndex={-1}
-                                className={styles.documentTitle}
-                            >
-                                {documentTitle}
-                            </Heading>
-                        </div>
-                        <PixieBadge variant="outline" size="sm" tone="neutral">
-                            {stateLabels[documentState]}
-                        </PixieBadge>
-                    </div>
-                    {documentSummary ? (
-                        <div className={styles.documentSummary}>
-                            {documentSummary}
-                        </div>
-                    ) : null}
-                    {documentMeta ? (
-                        <div className={styles.documentMeta}>
-                            {documentMeta}
-                        </div>
-                    ) : null}
-                </header>
-
-                {toc !== "hidden" && tableOfContentsContent ? (
-                    <details className={styles.inlineToc} id={tocDetailsId}>
-                        <summary>{tableOfContentsLabel}</summary>
-                        {tableOfContentsContent}
-                    </details>
-                ) : null}
-
-                {resolvedStateMessage && documentState !== "ready" ? (
-                    <div
-                        className={styles.stateMessage}
-                        data-state={documentState}
-                        role={
-                            documentState === "unavailable"
-                                ? "status"
-                                : undefined
+                <aside
+                    ref={floatingLibraryRef}
+                    className={styles.floatingLibrary}
+                    data-open={floatingLibraryOpen || undefined}
+                    aria-label={navigationLabel}
+                    onPointerEnter={() => setFloatingLibraryOpen(true)}
+                    onPointerLeave={(event) => {
+                        if (
+                            !event.currentTarget.contains(
+                                document.activeElement,
+                            )
+                        ) {
+                            setFloatingLibraryOpen(false);
                         }
-                    >
-                        <p className={styles.stateTitle}>
-                            {stateLabels[documentState]}
-                        </p>
-                        <div>{resolvedStateMessage}</div>
-                    </div>
-                ) : null}
-
-                <div className={styles.documentViewport}>
-                    {displaysDocument ? documentContent : null}
-                </div>
-
-                <footer className={styles.documentFooter}>
-                    <DocumentDestination
-                        destination={previous}
-                        direction="previous"
-                        onNavigate={controlledNavigate}
-                    />
-                    <DocumentDestination
-                        destination={next}
-                        direction="next"
-                        onNavigate={controlledNavigate}
-                    />
-                </footer>
-            </article>
-
-            {toc !== "hidden" && tableOfContentsContent ? (
-                <aside className={styles.desktopToc}>
-                    <div className={styles.stickyRegion}>
-                        {tableOfContentsContent}
+                    }}
+                    onBlur={(event) => {
+                        if (
+                            !event.currentTarget.contains(
+                                event.relatedTarget as Node | null,
+                            )
+                        ) {
+                            setFloatingLibraryOpen(false);
+                        }
+                    }}
+                    onKeyDown={(event) => {
+                        if (event.key === "Escape") {
+                            event.preventDefault();
+                            setFloatingLibraryOpen(false);
+                            floatingLibraryTriggerRef.current?.focus();
+                        }
+                    }}
+                >
+                    <div className={styles.floatingLibraryPanel}>
+                        <button
+                            ref={floatingLibraryTriggerRef}
+                            type="button"
+                            className={styles.floatingLibraryTrigger}
+                            aria-controls={floatingLibraryId}
+                            aria-expanded={floatingLibraryOpen}
+                            onClick={() =>
+                                setFloatingLibraryOpen((open) => !open)
+                            }
+                        >
+                            <span aria-hidden="true">
+                                {floatingLibraryOpen ? "‹" : "›"}
+                            </span>
+                            <span className={styles.visuallyHidden}>
+                                {floatingLibraryOpen
+                                    ? "Fermer la bibliothèque"
+                                    : navigationLabel}
+                            </span>
+                        </button>
+                        <PixiePanel
+                            as="div"
+                            variant="accent"
+                            padding="none"
+                            radius="large"
+                            color="violet-ombre-portee"
+                            accentPosition="end"
+                            elevation="strong"
+                            scroll="body"
+                            id={floatingLibraryId}
+                            className={styles.floatingLibraryViewport}
+                            aria-hidden={!floatingLibraryOpen}
+                            inert={floatingLibraryOpen ? undefined : true}
+                        >
+                            {library}
+                        </PixiePanel>
                     </div>
                 </aside>
-            ) : null}
 
-            <p className={styles.visuallyHidden} aria-live="polite">
-                Document affiché : {documentTitle}. État :{" "}
-                {stateLabels[documentState]}.
-            </p>
+                <article className={styles.documentColumn}>
+                    <header className={styles.documentHeader}>
+                        <div className={styles.documentHeadingRow}>
+                            <div className={styles.documentHeading}>
+                                <p className={styles.eyebrow}>
+                                    {documentEyebrow}
+                                </p>
+                                <Heading
+                                    ref={titleRef}
+                                    tabIndex={-1}
+                                    className={styles.documentTitle}
+                                >
+                                    {documentTitle}
+                                </Heading>
+                            </div>
+                            <PixieBadge
+                                variant="outline"
+                                size="sm"
+                                tone="neutral"
+                            >
+                                {stateLabels[documentState]}
+                            </PixieBadge>
+                        </div>
+                        {documentSummary ? (
+                            <div className={styles.documentSummary}>
+                                {documentSummary}
+                            </div>
+                        ) : null}
+                        {documentMeta ? (
+                            <div className={styles.documentMeta}>
+                                {documentMeta}
+                            </div>
+                        ) : null}
+                    </header>
+
+                    {toc !== "hidden" && tableOfContentsContent ? (
+                        <details className={styles.inlineToc} id={tocDetailsId}>
+                            <summary>{tableOfContentsLabel}</summary>
+                            {tableOfContentsContent}
+                        </details>
+                    ) : null}
+
+                    {resolvedStateMessage && documentState !== "ready" ? (
+                        <div
+                            className={styles.stateMessage}
+                            data-state={documentState}
+                            role={
+                                documentState === "unavailable"
+                                    ? "status"
+                                    : undefined
+                            }
+                        >
+                            <p className={styles.stateTitle}>
+                                {stateLabels[documentState]}
+                            </p>
+                            <div>{resolvedStateMessage}</div>
+                        </div>
+                    ) : null}
+
+                    <div className={styles.documentViewport}>
+                        {displaysDocument ? documentContent : null}
+                    </div>
+
+                    <footer className={styles.documentFooter}>
+                        <DocumentDestination
+                            destination={previous}
+                            direction="previous"
+                            onNavigate={controlledNavigate}
+                        />
+                        <DocumentDestination
+                            destination={next}
+                            direction="next"
+                            onNavigate={controlledNavigate}
+                        />
+                    </footer>
+                </article>
+
+                {toc !== "hidden" && tableOfContentsContent ? (
+                    <aside className={styles.desktopToc}>
+                        <div className={styles.stickyRegion}>
+                            {tableOfContentsContent}
+                        </div>
+                    </aside>
+                ) : null}
+
+                <p className={styles.visuallyHidden} aria-live="polite">
+                    Document affiché : {documentTitle}. État :{" "}
+                    {stateLabels[documentState]}.
+                </p>
+            </div>
         </section>
     );
 }

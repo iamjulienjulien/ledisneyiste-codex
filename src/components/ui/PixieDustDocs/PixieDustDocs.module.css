@@ -1,11 +1,15 @@
 .root {
     container-type: inline-size;
-    display: grid;
     min-inline-size: 0;
-    gap: var(--pixie-docs-gap);
     --pixie-docs-gap: 1.25rem;
     --pixie-docs-navigation-width: 15rem;
     --pixie-docs-toc-width: 13rem;
+}
+
+.layout {
+    display: grid;
+    min-inline-size: 0;
+    gap: var(--pixie-docs-gap);
 }
 
 .densityCompact {
@@ -33,9 +37,102 @@
 }
 
 .desktopLibrary,
+.floatingLibrary,
 .desktopToc {
     display: none;
     min-inline-size: 0;
+}
+
+.floatingLibrary {
+    position: fixed;
+    z-index: 60;
+    inset-block-start: var(--pixie-docs-floating-top, 1.5rem);
+    inset-inline-start: var(--pixie-docs-floating-left, 0px);
+    inline-size: calc(var(--pixie-docs-navigation-width) + 2rem);
+    block-size: min(
+        42rem,
+        calc(100dvb - 3rem),
+        var(--pixie-docs-floating-max-height, 42rem)
+    );
+    pointer-events: none;
+}
+
+.floatingLibraryPanel {
+    display: grid;
+    min-block-size: 0;
+    grid-template-columns: minmax(0, var(--pixie-docs-navigation-width)) 2rem;
+    align-items: center;
+    block-size: 100%;
+    pointer-events: none;
+    transform: translateX(calc(-1 * var(--pixie-docs-navigation-width)));
+    transition: transform 180ms ease;
+}
+
+.floatingLibrary[data-open] .floatingLibraryPanel {
+    transform: translateX(0);
+}
+
+.floatingLibraryViewport {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: stretch;
+    min-block-size: 0;
+    block-size: 100%;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition:
+        opacity 120ms ease,
+        visibility 0s linear 180ms;
+    scrollbar-gutter: stable;
+}
+
+.floatingLibrary[data-open] .floatingLibraryViewport {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    transition-delay: 0s;
+}
+
+.floatingLibraryViewport > [data-pixie-panel-slot="body"] {
+    min-block-size: 0;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+}
+
+.floatingLibraryViewport .libraryPanel {
+    min-block-size: 100%;
+    border: 0;
+}
+
+.floatingLibraryTrigger {
+    display: grid;
+    grid-column: 2;
+    grid-row: 1;
+    place-items: center;
+    inline-size: 2rem;
+    block-size: 5.5rem;
+    border: 1px solid var(--color-line-strong);
+    border-inline-start: 0;
+    border-radius: 0 0.45rem 0.45rem 0;
+    background: var(--color-surface-muted);
+    color: var(--color-accent);
+    box-shadow: var(--shadow-soft);
+    cursor: pointer;
+    pointer-events: auto;
+    font-family: var(--font-display), serif;
+    font-size: 1.4rem;
+}
+
+.floatingLibraryTrigger:hover,
+.floatingLibraryTrigger:focus-visible {
+    background: var(--color-accent-soft);
+    color: var(--color-accent-hover);
+}
+
+.floatingLibraryTrigger:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 0.2rem;
 }
 
 .stickyRegion {
@@ -407,7 +504,7 @@
 }
 
 @container (min-width: 50rem) {
-    .root {
+    .root[data-pixie-docs-navigation-mode="inline"] .layout {
         grid-template-columns:
             minmax(0, var(--pixie-docs-navigation-width))
             minmax(0, 1fr);
@@ -418,12 +515,26 @@
         display: none;
     }
 
-    .desktopLibrary {
+    .root[data-pixie-docs-navigation-mode="inline"] .desktopLibrary {
         display: block;
     }
 
-    .documentColumn {
+    .root[data-pixie-docs-navigation-mode="inline"] .documentColumn {
         grid-column: 2;
+    }
+
+    .root[data-pixie-docs-navigation-mode="floating"] .floatingLibrary {
+        display: block;
+    }
+
+    .root[data-pixie-docs-navigation-mode="floating"] .documentColumn {
+        grid-column: 1;
+    }
+
+    .root[data-pixie-docs-navigation-mode="floating"]
+        .documentViewport
+        [data-pixie-markdown-measure] {
+        --pixie-markdown-measure: 100%;
     }
 
     .inlineToc {
@@ -432,23 +543,27 @@
 }
 
 @container (min-width: 72rem) {
-    .root {
+    .root[data-pixie-docs-navigation-mode="inline"][data-pixie-docs-has-toc][data-pixie-docs-toc="visible"]
+        .layout {
         grid-template-columns:
             minmax(0, var(--pixie-docs-navigation-width))
             minmax(0, 1fr) minmax(0, var(--pixie-docs-toc-width));
     }
 
-    .desktopToc {
+    .root[data-pixie-docs-navigation-mode="inline"][data-pixie-docs-toc="visible"]
+        .desktopToc {
         display: block;
         grid-column: 3;
     }
 
-    .inlineToc {
+    .root[data-pixie-docs-navigation-mode="inline"] .inlineToc {
         display: none;
     }
 
-    .root[data-pixie-docs-toc="collapsible"],
-    .root[data-pixie-docs-toc="hidden"] {
+    .root[data-pixie-docs-navigation-mode="inline"][data-pixie-docs-toc="collapsible"]
+        .layout,
+    .root[data-pixie-docs-navigation-mode="inline"][data-pixie-docs-toc="hidden"]
+        .layout {
         grid-template-columns:
             minmax(0, var(--pixie-docs-navigation-width))
             minmax(0, 1fr);
@@ -466,7 +581,9 @@
 @media (prefers-reduced-motion: reduce) {
     .navigationLink,
     .tocLink,
-    .destination {
+    .destination,
+    .floatingLibraryPanel,
+    .floatingLibraryViewport {
         transition: none;
     }
 }
@@ -474,6 +591,8 @@
 @media (forced-colors: active) {
     .documentHeader,
     .libraryPanel,
+    .floatingLibraryTrigger,
+    .floatingLibraryViewport,
     .tocPanel,
     .documentColumn,
     .stateMessage {
