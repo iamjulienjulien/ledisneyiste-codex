@@ -50,9 +50,9 @@ export function CodexPersonnageCard({
                     </div>
 
                     <PixieSymbol
-                        registry="codex"
-                        collection="index"
-                        slug="personnages"
+                        registry="index"
+                        collection="personnages"
+                        slug="principal"
                         size="lg"
                     />
                 </div>

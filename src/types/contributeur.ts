@@ -15,7 +15,7 @@ export type PeriodeActiviteDisney = {
     fin?: DateHistorique;
 };
 
-export type FicheContributeurDisney = FicheCodexBase<"contributeurs"> & {
+export type FicheContributeurDisney = FicheCodexBase<"createurs"> & {
     type: "contributeur";
 
     naissance: {

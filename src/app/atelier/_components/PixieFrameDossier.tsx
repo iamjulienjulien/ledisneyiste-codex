@@ -377,7 +377,7 @@ function SequenceTitle({
 function OeuvresImage({ alt = "" }: Readonly<{ alt?: string }>) {
     return (
         <Image
-            src="/symbols/codex/index/oeuvres.png"
+            src="/symbols/index/oeuvres/principal.png"
             alt={alt}
             width={1024}
             height={1024}
@@ -389,7 +389,7 @@ function OeuvresImage({ alt = "" }: Readonly<{ alt?: string }>) {
 function PersonnagesImage({ alt = "" }: Readonly<{ alt?: string }>) {
     return (
         <Image
-            src="/symbols/codex/index/personnages.png"
+            src="/symbols/index/personnages/principal.png"
             alt={alt}
             width={1024}
             height={1024}
@@ -522,7 +522,7 @@ export function PixieFrameDossier() {
     caption="Symbole des Œuvres · Table lumineuse"
 >
     <Image
-        src="/symbols/codex/index/oeuvres.png"
+        src="/symbols/index/oeuvres/principal.png"
         alt="Symbole illustré des Œuvres"
     />
 </PixieFrame>`}</CodeExample>

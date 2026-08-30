@@ -127,7 +127,7 @@ export default async function ContributeurPage({
             />
 
             <CodexBlocsEditoriaux
-                collection="contributeurs"
+                collection="createurs"
                 blocs={fiche.blocsEditoriaux}
                 sources={sources}
             />

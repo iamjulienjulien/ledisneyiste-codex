@@ -315,9 +315,9 @@ export default async function RecherchePage({
                                             className={styles.resultSymbol}
                                         >
                                             <PixieSymbol
-                                                registry="codex"
-                                                collection="index"
-                                                slug="personnages"
+                                                registry="index"
+                                                collection="personnages"
+                                                slug="principal"
                                                 size="md"
                                             />
                                         </PixieFrame>
@@ -396,9 +396,9 @@ export default async function RecherchePage({
                                             className={styles.resultSymbol}
                                         >
                                             <PixieSymbol
-                                                registry="codex"
-                                                collection="index"
-                                                slug="createurs"
+                                                registry="index"
+                                                collection="createurs"
+                                                slug="principal"
                                                 size="md"
                                             />
                                         </PixieFrame>
@@ -483,9 +483,9 @@ export default async function RecherchePage({
                                             className={styles.resultSymbol}
                                         >
                                             <PixieSymbol
-                                                registry="codex"
-                                                collection="index"
-                                                slug="oeuvres"
+                                                registry="index"
+                                                collection="oeuvres"
+                                                slug="principal"
                                                 size="md"
                                             />
                                         </PixieFrame>
@@ -561,9 +561,9 @@ export default async function RecherchePage({
                                             className={styles.resultSymbol}
                                         >
                                             <PixieSymbol
-                                                registry="codex"
-                                                collection="index"
-                                                slug="epoques"
+                                                registry="index"
+                                                collection="epoques"
+                                                slug="principal"
                                                 size="md"
                                             />
                                         </PixieFrame>

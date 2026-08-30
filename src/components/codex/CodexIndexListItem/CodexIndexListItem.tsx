@@ -5,13 +5,6 @@ import type { AtelierAnimationColorSlug } from "@/types/colors";
 import type { CodexIndexListItemProps } from "@/types/index-view";
 import styles from "./CodexIndexListItem.module.css";
 
-const symbolSlugs = {
-    personnages: "personnages",
-    createurs: "createurs",
-    oeuvres: "oeuvres",
-    epoques: "epoques",
-} as const satisfies Record<CodexFamily, CodexFamily>;
-
 const colorSlugs = {
     personnages: "rouge-crayon",
     createurs: "jaune-lampe",
@@ -63,9 +56,9 @@ export function CodexIndexListItem({
 
                 <span aria-hidden="true" className={styles.symbol}>
                     <PixieSymbol
-                        registry="codex"
-                        collection="index"
-                        slug={symbolSlugs[famille]}
+                        registry="index"
+                        collection={famille}
+                        slug="principal"
                         size="md"
                     />
                 </span>

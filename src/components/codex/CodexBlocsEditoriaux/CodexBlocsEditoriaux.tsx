@@ -6,7 +6,7 @@ import type { CodexBlocsEditoriauxProps } from "./CodexBlocsEditoriaux.types";
 import styles from "./CodexBlocsEditoriaux.module.css";
 
 export function CodexBlocsEditoriaux<
-    Collection extends SymbolCollectionName<"blocs">,
+    Collection extends SymbolCollectionName<"index">,
 >({ collection, blocs, sources }: CodexBlocsEditoriauxProps<Collection>) {
     if (!blocs?.length) {
         return null;
@@ -14,7 +14,7 @@ export function CodexBlocsEditoriaux<
 
     return blocs.map((bloc) => {
         const symbolSelection = {
-            registry: "blocs",
+            registry: "index",
             collection,
             slug: bloc.type,
         } as SymbolSelection;

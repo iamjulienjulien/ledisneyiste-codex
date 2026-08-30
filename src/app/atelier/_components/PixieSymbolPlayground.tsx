@@ -203,6 +203,71 @@ const imagineeringTechniqueSymbolOptions = getSymbolSlugs(
     definition: getSymbol("techniques", "imagineering", slug),
 }));
 
+const personnageIndexSymbolOptions = getSymbolSlugs("index", "personnages").map(
+    (slug) => ({
+        key: `index.personnages.${slug}`,
+        group: "Index · Personnages" as const,
+        selection: {
+            registry: "index",
+            collection: "personnages",
+            slug,
+        } as const,
+        definition: getSymbol("index", "personnages", slug),
+    }),
+);
+
+const oeuvreIndexSymbolOptions = getSymbolSlugs("index", "oeuvres").map(
+    (slug) => ({
+        key: `index.oeuvres.${slug}`,
+        group: "Index · Œuvres" as const,
+        selection: {
+            registry: "index",
+            collection: "oeuvres",
+            slug,
+        } as const,
+        definition: getSymbol("index", "oeuvres", slug),
+    }),
+);
+
+const createurIndexSymbolOptions = getSymbolSlugs("index", "createurs").map(
+    (slug) => ({
+        key: `index.createurs.${slug}`,
+        group: "Index · Créateurs" as const,
+        selection: {
+            registry: "index",
+            collection: "createurs",
+            slug,
+        } as const,
+        definition: getSymbol("index", "createurs", slug),
+    }),
+);
+
+const epoqueIndexSymbolOptions = getSymbolSlugs("index", "epoques").map(
+    (slug) => ({
+        key: `index.epoques.${slug}`,
+        group: "Index · Époques" as const,
+        selection: {
+            registry: "index",
+            collection: "epoques",
+            slug,
+        } as const,
+        definition: getSymbol("index", "epoques", slug),
+    }),
+);
+
+const chansonIndexSymbolOptions = getSymbolSlugs("index", "chansons").map(
+    (slug) => ({
+        key: `index.chansons.${slug}`,
+        group: "Index · Chansons" as const,
+        selection: {
+            registry: "index",
+            collection: "chansons",
+            slug,
+        } as const,
+        definition: getSymbol("index", "chansons", slug),
+    }),
+);
+
 const symbolOptions = [
     {
         key: "general.logos.le-codex-du-disneyiste",
@@ -222,46 +287,11 @@ const symbolOptions = [
     ...generalAtelierSymbolOptions,
     ...generalEvenementsSymbolOptions,
     ...generalCommunicationSymbolOptions,
-    {
-        key: "codex.index.personnages",
-        group: "Codex · Index",
-        selection: {
-            registry: "codex",
-            collection: "index",
-            slug: "personnages",
-        },
-        definition: getSymbol("codex", "index", "personnages"),
-    },
-    {
-        key: "codex.index.createurs",
-        group: "Codex · Index",
-        selection: {
-            registry: "codex",
-            collection: "index",
-            slug: "createurs",
-        },
-        definition: getSymbol("codex", "index", "createurs"),
-    },
-    {
-        key: "codex.index.oeuvres",
-        group: "Codex · Index",
-        selection: {
-            registry: "codex",
-            collection: "index",
-            slug: "oeuvres",
-        },
-        definition: getSymbol("codex", "index", "oeuvres"),
-    },
-    {
-        key: "codex.index.epoques",
-        group: "Codex · Index",
-        selection: {
-            registry: "codex",
-            collection: "index",
-            slug: "epoques",
-        },
-        definition: getSymbol("codex", "index", "epoques"),
-    },
+    ...personnageIndexSymbolOptions,
+    ...oeuvreIndexSymbolOptions,
+    ...createurIndexSymbolOptions,
+    ...epoqueIndexSymbolOptions,
+    ...chansonIndexSymbolOptions,
     {
         key: "recompenses.trophees.statuette-oscar",
         group: "Récompenses · Trophées",
@@ -310,136 +340,6 @@ const symbolOptions = [
         },
         definition: getSymbol("recompenses", "trophees", "medaille-or-venise"),
     },
-    {
-        key: "blocs.personnages.genese",
-        group: "Blocs · Personnages",
-        selection: {
-            registry: "blocs",
-            collection: "personnages",
-            slug: "genese",
-        },
-        definition: getSymbol("blocs", "personnages", "genese"),
-    },
-    {
-        key: "blocs.personnages.caractere",
-        group: "Blocs · Personnages",
-        selection: {
-            registry: "blocs",
-            collection: "personnages",
-            slug: "caractere",
-        },
-        definition: getSymbol("blocs", "personnages", "caractere"),
-    },
-    {
-        key: "blocs.personnages.trajectoire",
-        group: "Blocs · Personnages",
-        selection: {
-            registry: "blocs",
-            collection: "personnages",
-            slug: "trajectoire",
-        },
-        definition: getSymbol("blocs", "personnages", "trajectoire"),
-    },
-    {
-        key: "blocs.contributeurs.debuts",
-        group: "Blocs · Contributeurs",
-        selection: {
-            registry: "blocs",
-            collection: "contributeurs",
-            slug: "debuts",
-        },
-        definition: getSymbol("blocs", "contributeurs", "debuts"),
-    },
-    {
-        key: "blocs.contributeurs.signature",
-        group: "Blocs · Contributeurs",
-        selection: {
-            registry: "blocs",
-            collection: "contributeurs",
-            slug: "signature",
-        },
-        definition: getSymbol("blocs", "contributeurs", "signature"),
-    },
-    {
-        key: "blocs.contributeurs.trajectoire",
-        group: "Blocs · Contributeurs",
-        selection: {
-            registry: "blocs",
-            collection: "contributeurs",
-            slug: "trajectoire",
-        },
-        definition: getSymbol("blocs", "contributeurs", "trajectoire"),
-    },
-    {
-        key: "blocs.contributeurs.transmission",
-        group: "Blocs · Contributeurs",
-        selection: {
-            registry: "blocs",
-            collection: "contributeurs",
-            slug: "transmission",
-        },
-        definition: getSymbol("blocs", "contributeurs", "transmission"),
-    },
-    {
-        key: "blocs.oeuvres.repere",
-        group: "Blocs · Œuvres",
-        selection: {
-            registry: "blocs",
-            collection: "oeuvres",
-            slug: "repere",
-        },
-        definition: getSymbol("blocs", "oeuvres", "repere"),
-    },
-    {
-        key: "blocs.oeuvres.langage",
-        group: "Blocs · Œuvres",
-        selection: {
-            registry: "blocs",
-            collection: "oeuvres",
-            slug: "langage",
-        },
-        definition: getSymbol("blocs", "oeuvres", "langage"),
-    },
-    {
-        key: "blocs.oeuvres.relations",
-        group: "Blocs · Œuvres",
-        selection: {
-            registry: "blocs",
-            collection: "oeuvres",
-            slug: "relations",
-        },
-        definition: getSymbol("blocs", "oeuvres", "relations"),
-    },
-    {
-        key: "blocs.epoques.fondations",
-        group: "Blocs · Époques",
-        selection: {
-            registry: "blocs",
-            collection: "epoques",
-            slug: "fondations",
-        },
-        definition: getSymbol("blocs", "epoques", "fondations"),
-    },
-    {
-        key: "blocs.epoques.mutations",
-        group: "Blocs · Époques",
-        selection: {
-            registry: "blocs",
-            collection: "epoques",
-            slug: "mutations",
-        },
-        definition: getSymbol("blocs", "epoques", "mutations"),
-    },
-    {
-        key: "blocs.epoques.tensions",
-        group: "Blocs · Époques",
-        selection: {
-            registry: "blocs",
-            collection: "epoques",
-            slug: "tensions",
-        },
-        definition: getSymbol("blocs", "epoques", "tensions"),
-    },
     ...animationTechniqueSymbolOptions,
     ...imageTechniqueSymbolOptions,
     ...couleurTechniqueSymbolOptions,
@@ -458,7 +358,11 @@ const symbolGroups = [
     "Général · Atelier",
     "Général · Événements",
     "Général · Communication",
-    "Codex · Index",
+    "Index · Personnages",
+    "Index · Œuvres",
+    "Index · Créateurs",
+    "Index · Époques",
+    "Index · Chansons",
     "Récompenses · Trophées",
     "Techniques · Animation",
     "Techniques · Images",
@@ -466,10 +370,6 @@ const symbolGroups = [
     "Techniques · Son",
     "Techniques · Effets",
     "Techniques · Imagineering",
-    "Blocs · Personnages",
-    "Blocs · Contributeurs",
-    "Blocs · Œuvres",
-    "Blocs · Époques",
 ] as const;
 
 const tailles: ReadonlyArray<{

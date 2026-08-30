@@ -167,7 +167,7 @@ export function PixieFramePlayground() {
     radius="${radius}"${optionalProps.length > 0 ? `\n${optionalProps.join("\n")}` : ""}
 >
     <Image
-        src="/symbols/codex/index/oeuvres.png"
+        src="/symbols/index/oeuvres/principal.png"
         alt="Symbole illustré des Œuvres"
         width={1024}
         height={1024}
@@ -703,7 +703,7 @@ export function PixieFramePlayground() {
                                 captionAlign={captionAlign}
                             >
                                 <Image
-                                    src="/symbols/codex/index/oeuvres.png"
+                                    src="/symbols/index/oeuvres/principal.png"
                                     alt="Symbole illustré des Œuvres"
                                     width={1024}
                                     height={1024}

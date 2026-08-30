@@ -178,9 +178,9 @@ export default function Home() {
                                                     elevation="soft"
                                                 >
                                                     <PixieSymbol
-                                                        registry="codex"
-                                                        collection="index"
-                                                        slug={door.symbol}
+                                                        registry="index"
+                                                        collection={door.symbol}
+                                                        slug="principal"
                                                         size="lg"
                                                     />
                                                 </PixieFrame>

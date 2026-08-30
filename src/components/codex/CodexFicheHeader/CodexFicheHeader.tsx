@@ -15,9 +15,9 @@ export function CodexFicheHeader({
             <div className={styles.heading}>
                 <div className={styles.symbol}>
                     <PixieSymbol
-                        registry="codex"
-                        collection="index"
-                        slug={family}
+                        registry="index"
+                        collection={family}
+                        slug="principal"
                         size={72}
                     />
                 </div>

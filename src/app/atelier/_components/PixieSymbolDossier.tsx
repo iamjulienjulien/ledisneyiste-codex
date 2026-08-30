@@ -28,12 +28,19 @@ const imagineeringTechniqueSymbolSlugs = getSymbolSlugs(
     "techniques",
     "imagineering",
 );
-const indexSymbolSlugs = getSymbolSlugs("codex", "index");
 const recompenseTrophySymbolSlugs = getSymbolSlugs("recompenses", "trophees");
-const contributeurBlockSymbolSlugs = getSymbolSlugs("blocs", "contributeurs");
-const epoqueBlockSymbolSlugs = getSymbolSlugs("blocs", "epoques");
-const oeuvreBlockSymbolSlugs = getSymbolSlugs("blocs", "oeuvres");
-const personnageBlockSymbolSlugs = getSymbolSlugs("blocs", "personnages");
+const personnageIndexSymbolSlugs = getSymbolSlugs("index", "personnages");
+const createurIndexSymbolSlugs = getSymbolSlugs("index", "createurs");
+const oeuvreIndexSymbolSlugs = getSymbolSlugs("index", "oeuvres");
+const epoqueIndexSymbolSlugs = getSymbolSlugs("index", "epoques");
+const chansonIndexSymbolSlugs = getSymbolSlugs("index", "chansons");
+const indexCollections = [
+    "personnages",
+    "createurs",
+    "oeuvres",
+    "epoques",
+    "chansons",
+] as const;
 
 const dimensions = [
     ["xs", "24 px"],
@@ -96,24 +103,20 @@ const typesSpecifiques = [
     },
     {
         name: "SymbolRegistryName",
-        values: [
-            '"blocs"',
-            '"codex"',
-            '"general"',
-            '"recompenses"',
-            '"techniques"',
-        ],
+        values: ['"general"', '"index"', '"recompenses"', '"techniques"'],
         description: "Registres de symboles actuellement disponibles.",
     },
     {
-        name: 'SymbolCollectionName<"blocs">',
-        values: ['"contributeurs"', '"epoques"', '"oeuvres"', '"personnages"'],
-        description: "Collections exposées par le registre des blocs.",
-    },
-    {
-        name: 'SymbolCollectionName<"codex">',
-        values: ['"index"'],
-        description: "Collections exposées par le registre Codex.",
+        name: 'SymbolCollectionName<"index">',
+        values: [
+            '"personnages"',
+            '"createurs"',
+            '"oeuvres"',
+            '"epoques"',
+            '"chansons"',
+        ],
+        description:
+            "Collections qui réunissent le symbole principal et les blocs de chaque index.",
     },
     {
         name: 'SymbolCollectionName<"general">',
@@ -148,9 +151,19 @@ const typesSpecifiques = [
         description: "Collections exposées par le registre des Techniques.",
     },
     {
-        name: 'SymbolSlug<"codex", "index">',
-        values: ['"personnages"', '"createurs"', '"oeuvres"', '"epoques"'],
-        description: "Symboles disponibles dans la collection des index.",
+        name: 'SymbolSlug<"index", "chansons">',
+        values: [
+            '"principal"',
+            '"genese"',
+            '"paroles"',
+            '"melodie"',
+            '"arrangement"',
+            '"interpretation"',
+            '"fonction-narrative"',
+            '"reprises"',
+            '"heritage"',
+        ],
+        description: "Symboles principaux et éditoriaux de l’Index Chansons.",
     },
     {
         name: 'SymbolSlug<"general", "logos">',
@@ -487,24 +500,65 @@ const typesSpecifiques = [
         description: "Symboles des trophées présents dans les archives.",
     },
     {
-        name: 'SymbolSlug<"blocs", "contributeurs">',
-        values: ['"debuts"', '"signature"', '"trajectoire"', '"transmission"'],
-        description: "Symboles des blocs éditoriaux des Contributeurs.",
+        name: 'SymbolSlug<"index", "createurs">',
+        values: [
+            '"principal"',
+            '"origines"',
+            '"formation"',
+            '"debuts"',
+            '"pratique"',
+            '"signature"',
+            '"collaborations"',
+            '"trajectoire"',
+            '"transmission"',
+        ],
+        description: "Symboles principaux et éditoriaux de l’Index Créateurs.",
     },
     {
-        name: 'SymbolSlug<"blocs", "epoques">',
-        values: ['"fondations"', '"mutations"', '"tensions"'],
-        description: "Symboles des blocs éditoriaux des Époques.",
+        name: 'SymbolSlug<"index", "epoques">',
+        values: [
+            '"principal"',
+            '"fondations"',
+            '"transitions"',
+            '"mutations"',
+            '"tensions"',
+            '"ruptures"',
+            '"innovations"',
+            '"reperes"',
+            '"heritage"',
+        ],
+        description: "Symboles principaux et éditoriaux de l’Index Époques.",
     },
     {
-        name: 'SymbolSlug<"blocs", "oeuvres">',
-        values: ['"repere"', '"langage"', '"relations"'],
-        description: "Symboles des blocs éditoriaux des Œuvres.",
+        name: 'SymbolSlug<"index", "oeuvres">',
+        values: [
+            '"principal"',
+            '"genese"',
+            '"fabrication"',
+            '"repere"',
+            '"langage"',
+            '"relations"',
+            '"diffusion"',
+            '"reception"',
+            '"heritage"',
+        ],
+        description: "Symboles principaux et éditoriaux de l’Index Œuvres.",
     },
     {
-        name: 'SymbolSlug<"blocs", "personnages">',
-        values: ['"genese"', '"caractere"', '"trajectoire"'],
-        description: "Symboles des blocs éditoriaux des Personnages.",
+        name: 'SymbolSlug<"index", "personnages">',
+        values: [
+            '"principal"',
+            '"genese"',
+            '"apparence"',
+            '"caractere"',
+            '"gestuelle"',
+            '"voix"',
+            '"relations"',
+            '"trajectoire"',
+            '"heritage"',
+        ],
+        description:
+            "Symboles principaux et éditoriaux de l’Index Personnages.",
     },
 ] as const;
 
@@ -597,7 +651,7 @@ export function PixieSymbolDossier() {
                     {[
                         ["Mission", "Afficher un symbole typé."],
                         ["Sélection", "registry · collection · slug"],
-                        ["Exemple", "codex.index.personnages"],
+                        ["Exemple", "index.personnages.principal"],
                         [
                             "Masters",
                             "Vingt et une séries originales · 1254 px.",
@@ -631,16 +685,16 @@ export function PixieSymbolDossier() {
                 <div className="mt-7 grid border border-line lg:grid-cols-2">
                     <div className="flex min-h-72 items-center justify-center bg-surface p-8">
                         <PixieSymbol
-                            registry="codex"
-                            collection="index"
-                            slug="personnages"
+                            registry="index"
+                            collection="personnages"
+                            slug="principal"
                             size="xl"
                         />
                     </div>
                     <CodeExemple>{`<PixieSymbol
-    registry="codex"
-    collection="index"
-    slug="personnages"
+    registry="index"
+    collection="personnages"
+    slug="principal"
     size="xl"
 />`}</CodeExemple>
                 </div>
@@ -1040,26 +1094,30 @@ export function PixieSymbolDossier() {
                 <TitreSequence
                     id="pixie-symbol-serie"
                     surTitre="Distribution"
-                    titre="Les quatre index de la Table lumineuse"
-                    description="Une même matière, un même angle et quatre couleurs éditoriales rendent la série reconnaissable sans uniformiser ses sujets."
+                    titre="Cinq index, cinq directions artistiques"
+                    description="Chaque collection réunit désormais son symbole principal et ses huit déclinaisons éditoriales. La couleur de famille assure la continuité tandis que la matière raconte le sujet propre à chaque index."
                 />
 
-                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
-                    {indexSymbolSlugs.map((slug) => {
-                        const symbole = getSymbol("codex", "index", slug);
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-5">
+                    {indexCollections.map((collection) => {
+                        const symbole = getSymbol(
+                            "index",
+                            collection,
+                            "principal",
+                        );
 
                         return (
                             <article
-                                key={slug}
+                                key={collection}
                                 className="bg-surface p-6 text-center"
                                 style={{
                                     borderTop: `4px solid ${symbole.accent}`,
                                 }}
                             >
                                 <PixieSymbol
-                                    registry="codex"
-                                    collection="index"
-                                    slug={slug}
+                                    registry="index"
+                                    collection={collection}
+                                    slug="principal"
                                     size="xl"
                                     className="mx-auto"
                                 />
@@ -1067,7 +1125,7 @@ export function PixieSymbolDossier() {
                                     {symbole.label}
                                 </h4>
                                 <p className="mt-2 font-mono text-xs text-muted">
-                                    {slug}
+                                    {collection}.principal
                                 </p>
                             </article>
                         );
@@ -1386,19 +1444,19 @@ export function PixieSymbolDossier() {
             </section>
 
             <section
-                aria-labelledby="pixie-symbol-blocs-personnages"
+                aria-labelledby="pixie-symbol-index-personnages"
                 className="mt-16"
             >
                 <TitreSequence
-                    id="pixie-symbol-blocs-personnages"
+                    id="pixie-symbol-index-personnages"
                     surTitre="Distribution"
-                    titre="Les trois blocs de la Table d’animation"
-                    description="Construction, interprétation et transformation donnent aux blocs éditoriaux des Personnages trois repères distincts dans une même matière d’atelier."
+                    titre="Les neuf scènes des Personnages"
+                    description="Le symbole principal et huit lectures éditoriales suivent la naissance, l’apparence, le caractère, la gestuelle, la voix, les relations, la trajectoire et l’héritage d’un personnage."
                 />
 
                 <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-3">
-                    {personnageBlockSymbolSlugs.map((slug) => {
-                        const symbole = getSymbol("blocs", "personnages", slug);
+                    {personnageIndexSymbolSlugs.map((slug) => {
+                        const symbole = getSymbol("index", "personnages", slug);
 
                         return (
                             <article
@@ -1409,7 +1467,7 @@ export function PixieSymbolDossier() {
                                 }}
                             >
                                 <PixieSymbol
-                                    registry="blocs"
+                                    registry="index"
                                     collection="personnages"
                                     slug={slug}
                                     size="xl"
@@ -1428,23 +1486,19 @@ export function PixieSymbolDossier() {
             </section>
 
             <section
-                aria-labelledby="pixie-symbol-blocs-contributeurs"
+                aria-labelledby="pixie-symbol-index-createurs"
                 className="mt-16"
             >
                 <TitreSequence
-                    id="pixie-symbol-blocs-contributeurs"
+                    id="pixie-symbol-index-createurs"
                     surTitre="Distribution"
-                    titre="Les quatre outils du créateur"
-                    description="Taille-crayon, empreinte, folio et boîte à outils racontent les débuts, la signature, la trajectoire et la transmission des Contributeurs sans reprendre la feuille d’animation des Personnages."
+                    titre="Les neuf gestes des Créateurs"
+                    description="La lumière du geste relie le symbole principal aux origines, à la formation, aux débuts, à la pratique, à la signature, aux collaborations, à la trajectoire et à la transmission."
                 />
 
                 <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
-                    {contributeurBlockSymbolSlugs.map((slug) => {
-                        const symbole = getSymbol(
-                            "blocs",
-                            "contributeurs",
-                            slug,
-                        );
+                    {createurIndexSymbolSlugs.map((slug) => {
+                        const symbole = getSymbol("index", "createurs", slug);
 
                         return (
                             <article
@@ -1455,8 +1509,8 @@ export function PixieSymbolDossier() {
                                 }}
                             >
                                 <PixieSymbol
-                                    registry="blocs"
-                                    collection="contributeurs"
+                                    registry="index"
+                                    collection="createurs"
                                     slug={slug}
                                     size="xl"
                                     className="mx-auto"
@@ -1474,19 +1528,19 @@ export function PixieSymbolDossier() {
             </section>
 
             <section
-                aria-labelledby="pixie-symbol-blocs-oeuvres"
+                aria-labelledby="pixie-symbol-index-oeuvres"
                 className="mt-16"
             >
                 <TitreSequence
-                    id="pixie-symbol-blocs-oeuvres"
+                    id="pixie-symbol-index-oeuvres"
                     surTitre="Distribution"
-                    titre="Les trois plans de La pellicule prend vie"
-                    description="Bobine témoin, prisme de projection et photogramme partagé situent l’Œuvre, révèlent son langage puis mettent en jeu les relations de ses personnages."
+                    titre="Les neuf plans des Œuvres"
+                    description="La bobine des imaginaires relie le symbole principal à la genèse, la fabrication, au repère, au langage, aux relations, à la diffusion, à la réception et à l’héritage."
                 />
 
                 <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-3">
-                    {oeuvreBlockSymbolSlugs.map((slug) => {
-                        const symbole = getSymbol("blocs", "oeuvres", slug);
+                    {oeuvreIndexSymbolSlugs.map((slug) => {
+                        const symbole = getSymbol("index", "oeuvres", slug);
 
                         return (
                             <article
@@ -1497,7 +1551,7 @@ export function PixieSymbolDossier() {
                                 }}
                             >
                                 <PixieSymbol
-                                    registry="blocs"
+                                    registry="index"
                                     collection="oeuvres"
                                     slug={slug}
                                     size="xl"
@@ -1516,19 +1570,19 @@ export function PixieSymbolDossier() {
             </section>
 
             <section
-                aria-labelledby="pixie-symbol-blocs-epoques"
+                aria-labelledby="pixie-symbol-index-epoques"
                 className="mt-16"
             >
                 <TitreSequence
-                    id="pixie-symbol-blocs-epoques"
+                    id="pixie-symbol-index-epoques"
                     surTitre="Distribution"
-                    titre="Le studio se construit en trois temps"
-                    description="Pierre inaugurale, plateau transformable et charpente sous tension racontent les fondations, les mutations et les tensions qui structurent les Époques."
+                    titre="Les neuf vitrines des Époques"
+                    description="Le musée des objets rend visible la progression du temps, des fondations aux transitions, mutations, tensions, ruptures, innovations, repères et héritages."
                 />
 
                 <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-3">
-                    {epoqueBlockSymbolSlugs.map((slug) => {
-                        const symbole = getSymbol("blocs", "epoques", slug);
+                    {epoqueIndexSymbolSlugs.map((slug) => {
+                        const symbole = getSymbol("index", "epoques", slug);
 
                         return (
                             <article
@@ -1539,8 +1593,50 @@ export function PixieSymbolDossier() {
                                 }}
                             >
                                 <PixieSymbol
-                                    registry="blocs"
+                                    registry="index"
                                     collection="epoques"
+                                    slug={slug}
+                                    size="xl"
+                                    className="mx-auto"
+                                />
+                                <h4 className="mt-5 text-xl text-ink">
+                                    {symbole.label}
+                                </h4>
+                                <p className="mt-2 font-mono text-xs text-muted">
+                                    {slug}
+                                </p>
+                            </article>
+                        );
+                    })}
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="pixie-symbol-index-chansons"
+                className="mt-16"
+            >
+                <TitreSequence
+                    id="pixie-symbol-index-chansons"
+                    surTitre="Distribution"
+                    titre="Les neuf mouvements des Chansons"
+                    description="La chanson prend vie entre écriture, mélodie, arrangement, interprétation et fonction narrative, puis se prolonge par ses reprises et son héritage."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-3">
+                    {chansonIndexSymbolSlugs.map((slug) => {
+                        const symbole = getSymbol("index", "chansons", slug);
+
+                        return (
+                            <article
+                                key={slug}
+                                className="bg-surface p-6 text-center"
+                                style={{
+                                    borderTop: `4px solid ${symbole.accent}`,
+                                }}
+                            >
+                                <PixieSymbol
+                                    registry="index"
+                                    collection="chansons"
                                     slug={slug}
                                     size="xl"
                                     className="mx-auto"
@@ -1576,9 +1672,9 @@ export function PixieSymbolDossier() {
                         >
                             <div className="flex flex-1 items-center">
                                 <PixieSymbol
-                                    registry="codex"
-                                    collection="index"
-                                    slug="oeuvres"
+                                    registry="index"
+                                    collection="oeuvres"
+                                    slug="principal"
                                     size={size}
                                 />
                             </div>
@@ -1609,9 +1705,9 @@ export function PixieSymbolDossier() {
                         </p>
                         <div className="mt-6 flex items-center gap-5">
                             <PixieSymbol
-                                registry="codex"
-                                collection="index"
-                                slug="createurs"
+                                registry="index"
+                                collection="createurs"
+                                slug="principal"
                                 size="lg"
                             />
                             <p className="text-xl text-ink">Créateurs</p>
@@ -1623,9 +1719,9 @@ export function PixieSymbolDossier() {
                         </p>
                         <div className="mt-6">
                             <PixieSymbol
-                                registry="codex"
-                                collection="index"
-                                slug="createurs"
+                                registry="index"
+                                collection="createurs"
+                                slug="principal"
                                 size="lg"
                                 decorative={false}
                                 label="Index des Créateurs"

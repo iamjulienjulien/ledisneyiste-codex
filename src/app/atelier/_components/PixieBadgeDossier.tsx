@@ -520,9 +520,9 @@ export function PixieBadgeDossier() {
                             <PixieBadge
                                 icon={
                                     <PixieSymbol
-                                        registry="codex"
-                                        collection="index"
-                                        slug="oeuvres"
+                                        registry="index"
+                                        collection="oeuvres"
+                                        slug="principal"
                                         size={14}
                                     />
                                 }

@@ -104,7 +104,7 @@ export function PixieCalloutPlayground() {
               ? '    aria-label="Note de production"'
               : null,
         showIcon
-            ? '    icon={<PixieSymbol registry="blocs" collection="oeuvres" slug="repere" />}'
+            ? '    icon={<PixieSymbol registry="index" collection="oeuvres" slug="repere" />}'
             : null,
         showEyebrow ? '    eyebrow="Note de production"' : null,
         showHeading
@@ -488,7 +488,7 @@ export function PixieCalloutPlayground() {
                                 icon={
                                     showIcon ? (
                                         <PixieSymbol
-                                            registry="blocs"
+                                            registry="index"
                                             collection="oeuvres"
                                             slug="repere"
                                             size="lg"

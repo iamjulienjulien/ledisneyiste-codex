@@ -38,9 +38,9 @@ const sousRegistres = [
     },
 ];
 
-const famillesBlocs = [
+const famillesIndex = [
     { collection: "personnages", dossier: "src/data/personnages" },
-    { collection: "contributeurs", dossier: "src/data/contributeurs" },
+    { collection: "createurs", dossier: "src/data/contributeurs" },
     { collection: "oeuvres", dossier: "src/data/oeuvres" },
     { collection: "epoques", dossier: "src/data/epoques" },
 ];
@@ -210,17 +210,17 @@ async function verifierTousLesRegistres(registres, erreurs) {
     };
 }
 
-async function verifierBlocsEditoriaux(registreBlocs, erreurs) {
+async function verifierBlocsEditoriaux(registreIndex, erreurs) {
     const typesReferencies = new Set();
     let blocsVerifies = 0;
     let fichesVerifiees = 0;
 
-    for (const { collection, dossier } of famillesBlocs) {
-        const symboles = registreBlocs[collection];
+    for (const { collection, dossier } of famillesIndex) {
+        const symboles = registreIndex[collection];
 
         if (!symboles) {
             erreurs.push(
-                "Registre · collection de blocs « " + collection + " » absente",
+                "Registre · collection d’index « " + collection + " » absente",
             );
             continue;
         }
@@ -274,7 +274,7 @@ async function verifier() {
     const registres = await chargerRegistres();
     const erreurs = [];
     const bilanRegistres = await verifierTousLesRegistres(registres, erreurs);
-    const bilanBlocs = await verifierBlocsEditoriaux(registres.blocs, erreurs);
+    const bilanBlocs = await verifierBlocsEditoriaux(registres.index, erreurs);
 
     if (erreurs.length > 0) {
         console.error("Échec de la vérification des symboles :");

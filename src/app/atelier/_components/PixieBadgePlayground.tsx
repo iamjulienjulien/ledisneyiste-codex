@@ -101,7 +101,7 @@ export function PixieBadgePlayground() {
     );
     const safeLabel = label || "Cartouche";
     const iconCode = withIcon
-        ? `\n    icon={\n        <PixieSymbol\n            registry="codex"\n            collection="index"\n            slug="oeuvres"\n            size={14}\n        />\n    }`
+        ? `\n    icon={\n        <PixieSymbol\n            registry="index"\n            collection="oeuvres"\n            slug="principal"\n            size={14}\n        />\n    }`
         : "";
     const code =
         mode === "registry"
@@ -123,9 +123,9 @@ export function PixieBadgePlayground() {
 </PixieBadge>`;
     const icon = withIcon ? (
         <PixieSymbol
-            registry="codex"
-            collection="index"
-            slug="oeuvres"
+            registry="index"
+            collection="oeuvres"
+            slug="principal"
             size={14}
         />
     ) : undefined;

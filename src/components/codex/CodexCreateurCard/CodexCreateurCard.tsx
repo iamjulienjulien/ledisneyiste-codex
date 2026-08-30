@@ -54,9 +54,9 @@ export function CodexCreateurCard({
                     </div>
 
                     <PixieSymbol
-                        registry="codex"
-                        collection="index"
-                        slug="createurs"
+                        registry="index"
+                        collection="createurs"
+                        slug="principal"
                         size="lg"
                     />
                 </div>

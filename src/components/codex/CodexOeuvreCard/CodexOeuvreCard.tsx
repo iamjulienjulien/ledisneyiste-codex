@@ -42,9 +42,9 @@ export function CodexOeuvreCard({
                     </div>
 
                     <PixieSymbol
-                        registry="codex"
-                        collection="index"
-                        slug="oeuvres"
+                        registry="index"
+                        collection="oeuvres"
+                        slug="principal"
                         size="lg"
                     />
                 </div>

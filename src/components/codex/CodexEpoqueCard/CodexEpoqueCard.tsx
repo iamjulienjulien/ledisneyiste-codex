@@ -44,9 +44,9 @@ export function CodexEpoqueCard({
                     </div>
 
                     <PixieSymbol
-                        registry="codex"
-                        collection="index"
-                        slug="epoques"
+                        registry="index"
+                        collection="epoques"
+                        slug="principal"
                         size="lg"
                     />
                 </div>

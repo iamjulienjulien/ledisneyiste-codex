@@ -452,7 +452,7 @@ function SequenceTitle({
 function RepereSymbol() {
     return (
         <PixieSymbol
-            registry="blocs"
+            registry="index"
             collection="oeuvres"
             slug="repere"
             size="lg"

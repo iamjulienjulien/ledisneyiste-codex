@@ -63,9 +63,9 @@ export function CodexRelations({ groupes }: CodexRelationsProps) {
                                     >
                                         {family ? (
                                             <PixieSymbol
-                                                registry="codex"
-                                                collection="index"
-                                                slug={family}
+                                                registry="index"
+                                                collection={family}
+                                                slug="principal"
                                                 size="sm"
                                             />
                                         ) : null}

@@ -89,9 +89,9 @@ export function CodexIndexPage({
                             className={styles.symbolFrame}
                         >
                             <PixieSymbol
-                                registry="codex"
-                                collection="index"
-                                slug={theme.symbol}
+                                registry="index"
+                                collection={theme.symbol}
+                                slug="principal"
                                 size="xl"
                             />
                         </PixieFrame>
