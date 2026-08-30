@@ -13,6 +13,7 @@ export type PixieDustDocsFixture = Readonly<{
     slug: string;
     title: string;
     summary: string;
+    sourceLabel: string;
     state: GuidebookDocumentState;
     updatedAt?: string;
     document: ReactNode;
@@ -191,6 +192,7 @@ export async function getPixieDustDocsFixtures(
                 summary:
                     summaries[node.slug as keyof typeof summaries] ??
                     "Un chapitre transmissible du Guidebook.",
+                sourceLabel: "docs/agents",
                 state: document.state,
                 updatedAt: document.updatedAt,
                 document: (

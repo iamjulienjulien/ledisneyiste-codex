@@ -12,6 +12,11 @@ import {
     getPixieDustDocsFixtures,
     getPixieDustDocsNavigation,
 } from "./PixieDustDocs.fixtures.server";
+import {
+    getPixieDustDocsNotionConnectionState,
+    getPixieDustDocsNotionFixtures,
+    getPixieDustDocsNotionNavigation,
+} from "./PixieDustDocs.notion-fixtures.server";
 import { PixieDustDocsPlayground } from "./PixieDustDocsPlayground";
 
 const properties = [
@@ -88,7 +93,15 @@ const properties = [
         name: "navigationWidth",
         type: "PixieDustDocsNavigationWidth",
         defaultValue: '"md"',
-        description: "Largeur de la bibliothèque lorsque le cadre le permet.",
+        description:
+            "Largeur réelle de la colonne ou du panneau flottant lorsque le cadre le permet.",
+    },
+    {
+        name: "navigationMode",
+        type: "PixieDustDocsNavigationMode",
+        defaultValue: '"inline"',
+        description:
+            "Réserve une colonne dans le cadre ou libère le document derrière un panneau flottant.",
     },
     {
         name: "toc",
@@ -128,6 +141,12 @@ const specificTypes = [
         name: "PixieDustDocsNavigationWidth",
         values: ['"sm"', '"md"', '"lg"'],
         description: "Trois largeurs bornées de navigation.",
+    },
+    {
+        name: "PixieDustDocsNavigationMode",
+        values: ['"inline"', '"floating"'],
+        description:
+            "Bibliothèque inscrite dans la grille ou projetée dans un PixiePanel fixe, escamoté derrière sa languette droite.",
     },
     {
         name: "PixieDustDocsTocMode",
@@ -214,9 +233,15 @@ const states = [
 
 export async function PixieDustDocsDossier() {
     const masterAnchor = "docs-master";
+    const notionAnchor = "docs-notion";
     const playgroundAnchor = "docs-playground";
-    const masterFixtures = await getPixieDustDocsFixtures(masterAnchor);
-    const playgroundFixtures = await getPixieDustDocsFixtures(playgroundAnchor);
+    const [masterFixtures, notionFixtures, playgroundFixtures] =
+        await Promise.all([
+            getPixieDustDocsFixtures(masterAnchor),
+            getPixieDustDocsNotionFixtures(notionAnchor),
+            getPixieDustDocsFixtures(playgroundAnchor),
+        ]);
+    const notionConnectionState = getPixieDustDocsNotionConnectionState();
 
     return (
         <AtelierFicheAccessoire
@@ -228,7 +253,7 @@ export async function PixieDustDocsDossier() {
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
                     <div className="bg-surface p-6 sm:p-8">
                         <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.2em] text-accent">
-                            Le clap · Montage 012
+                            Le clap · Écran 003
                         </p>
                         <h2
                             id="pixie-dust-docs-title"
@@ -257,7 +282,7 @@ export async function PixieDustDocsDossier() {
                                 Version
                             </dt>
                             <dd className="mt-2 font-mono text-sm text-ink">
-                                0.1.0
+                                0.2.0
                             </dd>
                         </div>
                     </dl>
@@ -307,8 +332,8 @@ export async function PixieDustDocsDossier() {
                     <SequenceTitle
                         id="docs-master"
                         eyebrow="Plan maître"
-                        title="Le Guidebook ouvre ses sept chapitres autorisés"
-                        description="Le vrai registre local devient une bibliothèque navigable. Les coulisses privées apparaissent comme une limite honnête, jamais comme une route cachée."
+                        title="Deux bibliothèques, un même contrat de lecture"
+                        description="Le registre local demeure la projection de référence. La source Notion rejoint ensuite les mêmes blocs neutres sans transmettre ses identifiants ni sa mécanique au composant."
                     />
                 </div>
                 <div className="mt-7">
@@ -377,7 +402,7 @@ export async function PixieDustDocsDossier() {
                     {[
                         [
                             "Grand cadre",
-                            "Bibliothèque sticky · document · sommaire sticky.",
+                            "Bibliothèque sticky ou flottante · document élargi · sommaire sticky.",
                         ],
                         [
                             "Cadre moyen",
@@ -421,6 +446,80 @@ export async function PixieDustDocsDossier() {
                             texte : aucun href, aucune route, aucune tabulation.
                         </p>
                     </Stage>
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="docs-notion"
+                className="mt-16 border border-line-strong bg-surface-muted p-3 shadow-soft sm:p-6"
+            >
+                <div className="flex flex-wrap items-start justify-between gap-5 p-3 sm:p-2">
+                    <SequenceTitle
+                        id="docs-notion"
+                        eyebrow="Passerelle Notion"
+                        title="La bobine distante perd son décor propriétaire, pas son sens"
+                        description="La home, le portail Vision & Doctrine et ses neuf sous-pages éprouvent les mentions, colonnes, callouts, tableaux, détails et blocs inconnus. Avec la clé serveur, la home sert de lecture réelle témoin ; les dix autres pages restent des bobines légères dans l’Atelier afin de ne pas précharger toute la bibliothèque avant sa future route."
+                    />
+                    <PixieBadge
+                        variant="outline"
+                        size="sm"
+                        tone="color"
+                        color="violet-ombre-portee"
+                    >
+                        {notionConnectionState === "configured"
+                            ? "Connexion serveur configurée"
+                            : "Essai réel différé"}
+                    </PixieBadge>
+                </div>
+
+                <div className="mt-7">
+                    <PixieDustDocsPlayground
+                        fixtures={notionFixtures}
+                        navigation={getPixieDustDocsNotionNavigation(
+                            notionAnchor,
+                        )}
+                        anchor={notionAnchor}
+                        controls={false}
+                        libraryTitle="Les dossiers du Disneyiste"
+                        documentEyebrow="Bobine Notion déclarée"
+                        authorizedLabel="11 pages déclarées"
+                    />
+                </div>
+
+                <div className="mt-7 grid gap-5 lg:grid-cols-2">
+                    <Stage>
+                        <h4 className="text-xl text-ink">
+                            Double autorisation
+                        </h4>
+                        <p className="mt-3 leading-7 text-ink-soft">
+                            Le manifeste serveur connaît la racine et les
+                            identifiants. L’arborescence de projection ne
+                            transmet que titres, slugs, ordre et parenté.
+                            L’ascendance réelle doit confirmer les deux.
+                        </p>
+                    </Stage>
+                    <Stage>
+                        <h4 className="text-xl text-ink">
+                            Dégradation explicite
+                        </h4>
+                        <p className="mt-3 leading-7 text-ink-soft">
+                            Une extension inconnue devient un contrechamp neutre
+                            et place le document en état partiel. Une page non
+                            déclarée reste du texte sans href ni route.
+                        </p>
+                    </Stage>
+                </div>
+
+                <div className="mt-7">
+                    <AtelierCodeBlock>{`manifeste serveur + arbre déclaré + ascendance réelle
+    → page autorisée
+    → Markdown Notion normalisé
+    → analyse Guidebook commune
+    → PixieDustDocs
+
+identifiant absent ou page hors arbre
+    → restricted
+    → aucun href transmis au navigateur`}</AtelierCodeBlock>
                 </div>
             </section>
 
@@ -473,7 +572,7 @@ export async function PixieDustDocsDossier() {
                     id="docs-extremes"
                     eyebrow="Bobines témoins"
                     title="La bibliothèque résiste aux arbres difficiles"
-                    description="La v0.1.0 réserve ses limites avant que les dossiers réels ne les rencontrent."
+                    description="La v0.2.0 réserve ses limites avant que les dossiers réels ne les rencontrent."
                 />
                 <div className="mt-8 grid gap-5 lg:grid-cols-3">
                     {[
@@ -516,6 +615,7 @@ export async function PixieDustDocsDossier() {
                         "aria-current distingue document et titre de section actifs.",
                         "Le filtre possède un libellé et annonce un résultat vide.",
                         "Les régions sticky restent bornées et défilables au clavier.",
+                        "La bibliothèque flottante reste horizontalement ancrée au bord gauche du composant dans un PixiePanel fixe et ne franchit jamais ses limites haute ou basse. Seule sa languette droite demeure visible au repos ; le clic, le clavier et Échap conservent une conduite complète.",
                         "Le changement contrôlé replace le focus sur le titre.",
                         "Le mouvement réduit ne retire aucune information.",
                     ].map((item) => (
@@ -585,17 +685,17 @@ export async function PixieDustDocsDossier() {
                 <SequenceTitle
                     id="docs-journal"
                     eyebrow="Journal de production"
-                    title="Décisions avant l’adaptateur Notion"
-                    description="La bibliothèque locale doit être éprouvée avant qu’une seconde source ne rejoigne le contrat."
+                    title="Verdict de la seconde bobine"
+                    description="L’adaptateur est implémenté et vérifiable hors ligne. Sa première lecture réelle demeure un raccord différé, sans bloquer la promotion future des composants."
                 />
                 <ul className="mt-7 grid gap-px bg-line md:grid-cols-2">
                     {[
-                        "Éprouver les sept documents réels dans les deux Lumières.",
-                        "Vérifier le rail de sommaire sur un chapitre très long.",
-                        "Confirmer les changements de focus avec VoiceOver.",
-                        "Tester qu’une destination privée ne produit aucun href.",
-                        "Mesurer le coût client du filtre et de l’observateur.",
-                        "Conserver la route /guidebook hors de ce train.",
+                        "Le Markdown local et Notion rejoint une analyse serveur unique.",
+                        "Le manifeste et l’arbre Notion sont vérifiés séparément.",
+                        "L’ascendance réelle est bornée avant toute lecture du document.",
+                        "Les extensions propriétaires sont normalisées ou signalées.",
+                        "Les pages hors projection ne produisent aucun href.",
+                        "La route /guidebook reste volontairement hors de ce train.",
                     ].map((item) => (
                         <li
                             key={item}
@@ -620,7 +720,7 @@ export async function PixieDustDocsDossier() {
                 <SequenceTitle
                     id="docs-last-image"
                     eyebrow="Dernière image"
-                    title="La bibliothèque tient le cadre. Une seconde source peut bientôt entrer en scène."
+                    title="La seconde bobine tient le cadre. Le Guidebook peut préparer sa salle."
                 />
                 <div className="mt-8">
                     <PixieSeparator

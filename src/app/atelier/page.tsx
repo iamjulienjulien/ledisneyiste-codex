@@ -205,6 +205,13 @@ const ecrans = [
         version: "0.1.0",
         href: "#pixie-dust-markdown",
     },
+    {
+        nom: "PixieDustDocs",
+        role: "Parcourir une bibliothèque documentaire résolue",
+        statut: "Esquisse",
+        version: "0.2.0",
+        href: "#pixie-dust-docs",
+    },
 ] as const;
 
 const decors = [
@@ -404,13 +411,6 @@ const montage = [
         statut: "Prêt à projeter",
         version: "1.0.0",
         href: "#pixie-sticky-region",
-    },
-    {
-        nom: "PixieDustDocs",
-        role: "Parcourir une bibliothèque documentaire résolue",
-        statut: "Esquisse",
-        version: "0.1.0",
-        href: "#pixie-dust-docs",
     },
 ] as const;
 
@@ -944,6 +944,8 @@ export default function AtelierPage() {
                 <PixieDustAsciiDossier />
                 {raccordEntreFiches}
                 <PixieDustMarkdownDossier />
+                {raccordEntreFiches}
+                <PixieDustDocsDossier />
             </section>
 
             <section
@@ -1088,9 +1090,7 @@ export default function AtelierPage() {
                         collectivement entre rangée et pile, PixieRail déroule
                         les collections en travelling et PixieStickyRegion
                         maintient un repère dans les limites de sa séquence.
-                        PixieDustDocs assemble maintenant navigation, document
-                        et sommaire pour parcourir une bibliothèque déjà
-                        résolue. Deux autres esquisses restent consacrées aux
+                        Deux autres esquisses restent consacrées aux
                         distributions sans surface ni interaction imposées.
                     </p>
                 </div>
@@ -1178,8 +1178,6 @@ export default function AtelierPage() {
                 <PixieDustBleedDossier />
                 {raccordEntreFiches}
                 <PixieStickyRegionDossier />
-                {raccordEntreFiches}
-                <PixieDustDocsDossier />
             </section>
 
             <section

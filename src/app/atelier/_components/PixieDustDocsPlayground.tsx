@@ -10,6 +10,7 @@ import {
     PixieDustDocs,
     type PixieDustDocsDensity,
     type PixieDustDocsNavigationItem,
+    type PixieDustDocsNavigationMode,
     type PixieDustDocsNavigationWidth,
     type PixieDustDocsTocMode,
 } from "@/components/ui/PixieDustDocs";
@@ -29,6 +30,11 @@ const navigationWidths = [
     ["md", "Moyenne"],
     ["lg", "Large"],
 ] as const satisfies readonly [PixieDustDocsNavigationWidth, string][];
+
+const navigationModes = [
+    ["inline", "Dans le cadre"],
+    ["floating", "Flottante"],
+] as const satisfies readonly [PixieDustDocsNavigationMode, string][];
 
 const tocModes = [
     ["visible", "Visible"],
@@ -109,21 +115,30 @@ export function PixieDustDocsPlayground({
     denseNavigation,
     anchor,
     controls = true,
+    libraryTitle = "Le Codex du Disneyiste pour les Nuls",
+    documentEyebrow = "Édition pour agent IA",
+    authorizedLabel,
 }: Readonly<{
     fixtures: readonly PixieDustDocsFixture[];
     navigation: readonly PixieDustDocsNavigationItem[];
     denseNavigation?: readonly PixieDustDocsNavigationItem[];
     anchor: string;
     controls?: boolean;
+    libraryTitle?: string;
+    documentEyebrow?: string;
+    authorizedLabel?: string;
 }>) {
     const [activeSlug, setActiveSlug] = useState(
         fixtures[0]?.slug ?? "bienvenue",
     );
-    const [documentState, setDocumentState] =
-        useState<GuidebookDocumentState>("ready");
+    const [documentState, setDocumentState] = useState<GuidebookDocumentState>(
+        fixtures[0]?.state ?? "ready",
+    );
     const [density, setDensity] = useState<PixieDustDocsDensity>("comfortable");
     const [navigationWidth, setNavigationWidth] =
         useState<PixieDustDocsNavigationWidth>("md");
+    const [navigationMode, setNavigationMode] =
+        useState<PixieDustDocsNavigationMode>("inline");
     const [toc, setToc] = useState<PixieDustDocsTocMode>("visible");
     const [sticky, setSticky] = useState(true);
     const [filterable, setFilterable] = useState(true);
@@ -144,7 +159,7 @@ export function PixieDustDocsPlayground({
             ? denseNavigation
             : navigation;
     const code = `<PixieDustDocs
-    title="Le Codex du Disneyiste pour les Nuls"
+    title="${libraryTitle}"
     navigation={navigation}
     activeSlug="${current?.slug ?? "bienvenue"}"
     documentTitle="${current?.title ?? "Salle de briefing"}"
@@ -153,6 +168,7 @@ export function PixieDustDocsPlayground({
     documentState="${state}"
     density="${density}"
     navigationWidth="${navigationWidth}"
+    navigationMode="${navigationMode}"
     toc="${toc}"${sticky ? "\n    sticky" : ""}${filterable ? "\n    filterable" : ""}
 />`;
 
@@ -170,16 +186,19 @@ export function PixieDustDocsPlayground({
                 className={`mx-auto w-full min-w-0 transition-[max-width] ${frameWidths[cadre]}`}
             >
                 <PixieDustDocs
-                    title="Le Codex du Disneyiste pour les Nuls"
+                    title={libraryTitle}
                     navigation={projectedNavigation}
                     activeSlug={current.slug}
                     documentTitle={current.title}
-                    documentEyebrow="Édition pour agent IA"
+                    documentEyebrow={documentEyebrow}
                     documentSummary={current.summary}
                     documentMeta={
                         <>
-                            <span>docs/agents</span>
-                            <span>{fixtures.length} documents autorisés</span>
+                            <span>{current.sourceLabel}</span>
+                            <span>
+                                {authorizedLabel ??
+                                    `${fixtures.length} documents autorisés`}
+                            </span>
                             {current.updatedAt ? (
                                 <span>Source synchronisée</span>
                             ) : null}
@@ -190,6 +209,7 @@ export function PixieDustDocsPlayground({
                     documentState={state}
                     density={density}
                     navigationWidth={navigationWidth}
+                    navigationMode={navigationMode}
                     toc={toc}
                     sticky={sticky}
                     filterable={filterable}
@@ -271,6 +291,17 @@ export function PixieDustDocsPlayground({
                             onChange={(value) =>
                                 setNavigationWidth(
                                     value as PixieDustDocsNavigationWidth,
+                                )
+                            }
+                        />
+                        <ControlSelect
+                            id="docs-navigation-mode"
+                            label="Présence de la bibliothèque"
+                            value={navigationMode}
+                            options={navigationModes}
+                            onChange={(value) =>
+                                setNavigationMode(
+                                    value as PixieDustDocsNavigationMode,
                                 )
                             }
                         />
