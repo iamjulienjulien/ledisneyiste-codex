@@ -5,6 +5,7 @@ import { PixieSeparatorDossier } from "./_components/PixieSeparatorDossier";
 import { PixieSymbolDossier } from "./_components/PixieSymbolDossier";
 import { PixieDustAsciiDossier } from "./_components/PixieDustAsciiDossier";
 import { PixieDustMarkdownDossier } from "./_components/PixieDustMarkdownDossier";
+import { PixieDustDocsDossier } from "./_components/PixieDustDocsDossier";
 import { PixieCardDossier } from "./_components/PixieCardDossier";
 import { PixiePanelDossier } from "./_components/PixiePanelDossier";
 import { PixieFrameDossier } from "./_components/PixieFrameDossier";
@@ -403,6 +404,13 @@ const montage = [
         statut: "Prêt à projeter",
         version: "1.0.0",
         href: "#pixie-sticky-region",
+    },
+    {
+        nom: "PixieDustDocs",
+        role: "Parcourir une bibliothèque documentaire résolue",
+        statut: "Esquisse",
+        version: "0.1.0",
+        href: "#pixie-dust-docs",
     },
 ] as const;
 
@@ -1079,10 +1087,11 @@ export default function AtelierPage() {
                         contenu prioritaire, PixieSwitcher choisit
                         collectivement entre rangée et pile, PixieRail déroule
                         les collections en travelling et PixieStickyRegion
-                        maintient un repère dans les limites de sa séquence. Les
-                        deux esquisses suivantes organiseront les autres
-                        distributions sans imposer de surface, de couleur ni
-                        d’interaction.
+                        maintient un repère dans les limites de sa séquence.
+                        PixieDustDocs assemble maintenant navigation, document
+                        et sommaire pour parcourir une bibliothèque déjà
+                        résolue. Deux autres esquisses restent consacrées aux
+                        distributions sans surface ni interaction imposées.
                     </p>
                 </div>
 
@@ -1169,6 +1178,8 @@ export default function AtelierPage() {
                 <PixieDustBleedDossier />
                 {raccordEntreFiches}
                 <PixieStickyRegionDossier />
+                {raccordEntreFiches}
+                <PixieDustDocsDossier />
             </section>
 
             <section
