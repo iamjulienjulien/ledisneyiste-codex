@@ -190,6 +190,59 @@ const diffusionSceneEtParcsSymbolOptions = getSymbolSlugs(
     definition: getSymbol("diffusion", "scene-et-parcs", slug),
 }));
 
+const sourceSupportsSymbolOptions = getSymbolSlugs("sources", "supports").map(
+    (slug) => ({
+        key: `sources.supports.${slug}`,
+        group: "Sources · Supports" as const,
+        selection: {
+            registry: "sources",
+            collection: "supports",
+            slug,
+        } as const,
+        definition: getSymbol("sources", "supports", slug),
+    }),
+);
+
+const sourceDocumentsSymbolOptions = getSymbolSlugs("sources", "documents").map(
+    (slug) => ({
+        key: `sources.documents.${slug}`,
+        group: "Sources · Documents" as const,
+        selection: {
+            registry: "sources",
+            collection: "documents",
+            slug,
+        } as const,
+        definition: getSymbol("sources", "documents", slug),
+    }),
+);
+
+const sourceArchivesSymbolOptions = getSymbolSlugs("sources", "archives").map(
+    (slug) => ({
+        key: `sources.archives.${slug}`,
+        group: "Sources · Archives" as const,
+        selection: {
+            registry: "sources",
+            collection: "archives",
+            slug,
+        } as const,
+        definition: getSymbol("sources", "archives", slug),
+    }),
+);
+
+const sourceConservationSymbolOptions = getSymbolSlugs(
+    "sources",
+    "conservation",
+).map((slug) => ({
+    key: `sources.conservation.${slug}`,
+    group: "Sources · Conservation" as const,
+    selection: {
+        registry: "sources",
+        collection: "conservation",
+        slug,
+    } as const,
+    definition: getSymbol("sources", "conservation", slug),
+}));
+
 const animationTechniqueSymbolOptions = getSymbolSlugs(
     "techniques",
     "animation",
@@ -360,6 +413,10 @@ const symbolOptions = [
     ...diffusionVideoSymbolOptions,
     ...diffusionNumeriqueSymbolOptions,
     ...diffusionSceneEtParcsSymbolOptions,
+    ...sourceSupportsSymbolOptions,
+    ...sourceDocumentsSymbolOptions,
+    ...sourceArchivesSymbolOptions,
+    ...sourceConservationSymbolOptions,
     ...personnageIndexSymbolOptions,
     ...oeuvreIndexSymbolOptions,
     ...createurIndexSymbolOptions,

@@ -30,6 +30,10 @@ const diffusionSceneEtParcsSymbolSlugs = getSymbolSlugs(
     "diffusion",
     "scene-et-parcs",
 );
+const sourceSupportsSymbolSlugs = getSymbolSlugs("sources", "supports");
+const sourceDocumentsSymbolSlugs = getSymbolSlugs("sources", "documents");
+const sourceArchivesSymbolSlugs = getSymbolSlugs("sources", "archives");
+const sourceConservationSymbolSlugs = getSymbolSlugs("sources", "conservation");
 const animationTechniqueSymbolSlugs = getSymbolSlugs("techniques", "animation");
 const imageTechniqueSymbolSlugs = getSymbolSlugs("techniques", "images");
 const couleurTechniqueSymbolSlugs = getSymbolSlugs("techniques", "couleur");
@@ -119,6 +123,7 @@ const typesSpecifiques = [
             '"general"',
             '"index"',
             '"recompenses"',
+            '"sources"',
             '"techniques"',
         ],
         description: "Registres de symboles actuellement disponibles.",
@@ -167,6 +172,11 @@ const typesSpecifiques = [
         description: "Collections exposées par le registre des Récompenses.",
     },
     {
+        name: 'SymbolCollectionName<"sources">',
+        values: ['"supports"', '"documents"', '"archives"', '"conservation"'],
+        description: "Collections exposées par le registre des Sources.",
+    },
+    {
         name: 'SymbolCollectionName<"techniques">',
         values: [
             '"animation"',
@@ -205,6 +215,27 @@ const typesSpecifiques = [
         name: 'SymbolSlug<"diffusion", "scene-et-parcs">',
         values: diffusionSceneEtParcsSymbolSlugs.map((slug) => `"${slug}"`),
         description: "Symboles des spectacles, attractions et expositions.",
+    },
+    {
+        name: 'SymbolSlug<"sources", "supports">',
+        values: sourceSupportsSymbolSlugs.map((slug) => `"${slug}"`),
+        description: "Symboles des supports physiques et numériques.",
+    },
+    {
+        name: 'SymbolSlug<"sources", "documents">',
+        values: sourceDocumentsSymbolSlugs.map((slug) => `"${slug}"`),
+        description: "Symboles des documents qui portent une preuve.",
+    },
+    {
+        name: 'SymbolSlug<"sources", "archives">',
+        values: sourceArchivesSymbolSlugs.map((slug) => `"${slug}"`),
+        description:
+            "Symboles du classement et de la provenance archivistique.",
+    },
+    {
+        name: 'SymbolSlug<"sources", "conservation">',
+        values: sourceConservationSymbolSlugs.map((slug) => `"${slug}"`),
+        description: "Symboles des gestes et conditions de conservation.",
     },
     {
         name: 'SymbolSlug<"index", "chansons">',
@@ -1395,6 +1426,178 @@ export function PixieSymbolDossier() {
                                 <PixieSymbol
                                     registry="diffusion"
                                     collection="scene-et-parcs"
+                                    slug={slug}
+                                    size="xl"
+                                    className="mx-auto"
+                                />
+                                <h4 className="mt-5 text-xl text-ink">
+                                    {symbole.label}
+                                </h4>
+                                <p className="mt-2 font-mono text-xs text-muted">
+                                    {slug}
+                                </p>
+                            </article>
+                        );
+                    })}
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="pixie-symbol-sources-supports"
+                className="mt-16"
+            >
+                <TitreSequence
+                    id="pixie-symbol-sources-supports"
+                    surTitre="Sources"
+                    titre="Les seize supports de la matière documentaire"
+                    description="Livre, presse, pellicule, bande et fichier numérique identifient la forme matérielle ou technique sous laquelle une source nous parvient."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+                    {sourceSupportsSymbolSlugs.map((slug) => {
+                        const symbole = getSymbol("sources", "supports", slug);
+
+                        return (
+                            <article
+                                key={slug}
+                                className="bg-surface p-6 text-center"
+                                style={{
+                                    borderTop: `4px solid ${symbole.accent}`,
+                                }}
+                            >
+                                <PixieSymbol
+                                    registry="sources"
+                                    collection="supports"
+                                    slug={slug}
+                                    size="xl"
+                                    className="mx-auto"
+                                />
+                                <h4 className="mt-5 text-xl text-ink">
+                                    {symbole.label}
+                                </h4>
+                                <p className="mt-2 font-mono text-xs text-muted">
+                                    {slug}
+                                </p>
+                            </article>
+                        );
+                    })}
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="pixie-symbol-sources-documents"
+                className="mt-16"
+            >
+                <TitreSequence
+                    id="pixie-symbol-sources-documents"
+                    surTitre="Sources"
+                    titre="Les seize documents qui portent la preuve"
+                    description="Correspondance, contrats, scénarios, documents de production et recherches distinguent la nature précise de chaque témoignage conservé par le Codex."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+                    {sourceDocumentsSymbolSlugs.map((slug) => {
+                        const symbole = getSymbol("sources", "documents", slug);
+
+                        return (
+                            <article
+                                key={slug}
+                                className="bg-surface p-6 text-center"
+                                style={{
+                                    borderTop: `4px solid ${symbole.accent}`,
+                                }}
+                            >
+                                <PixieSymbol
+                                    registry="sources"
+                                    collection="documents"
+                                    slug={slug}
+                                    size="xl"
+                                    className="mx-auto"
+                                />
+                                <h4 className="mt-5 text-xl text-ink">
+                                    {symbole.label}
+                                </h4>
+                                <p className="mt-2 font-mono text-xs text-muted">
+                                    {slug}
+                                </p>
+                            </article>
+                        );
+                    })}
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="pixie-symbol-sources-archives"
+                className="mt-16"
+            >
+                <TitreSequence
+                    id="pixie-symbol-sources-archives"
+                    surTitre="Sources"
+                    titre="Les seize repères du classement archivistique"
+                    description="Cotes, inventaires, contenants et instruments de consultation rendent visibles la provenance et la localisation documentaire d’une source."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+                    {sourceArchivesSymbolSlugs.map((slug) => {
+                        const symbole = getSymbol("sources", "archives", slug);
+
+                        return (
+                            <article
+                                key={slug}
+                                className="bg-surface p-6 text-center"
+                                style={{
+                                    borderTop: `4px solid ${symbole.accent}`,
+                                }}
+                            >
+                                <PixieSymbol
+                                    registry="sources"
+                                    collection="archives"
+                                    slug={slug}
+                                    size="xl"
+                                    className="mx-auto"
+                                />
+                                <h4 className="mt-5 text-xl text-ink">
+                                    {symbole.label}
+                                </h4>
+                                <p className="mt-2 font-mono text-xs text-muted">
+                                    {slug}
+                                </p>
+                            </article>
+                        );
+                    })}
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="pixie-symbol-sources-conservation"
+                className="mt-16"
+            >
+                <TitreSequence
+                    id="pixie-symbol-sources-conservation"
+                    surTitre="Sources"
+                    titre="Les seize gestes de la conservation"
+                    description="Manipulation, protection, nettoyage, numérisation et contrôle climatique composent le vocabulaire précis de la préservation des sources."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+                    {sourceConservationSymbolSlugs.map((slug) => {
+                        const symbole = getSymbol(
+                            "sources",
+                            "conservation",
+                            slug,
+                        );
+
+                        return (
+                            <article
+                                key={slug}
+                                className="bg-surface p-6 text-center"
+                                style={{
+                                    borderTop: `4px solid ${symbole.accent}`,
+                                }}
+                            >
+                                <PixieSymbol
+                                    registry="sources"
+                                    collection="conservation"
                                     slug={slug}
                                     size="xl"
                                     className="mx-auto"
