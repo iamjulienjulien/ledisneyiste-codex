@@ -82,7 +82,7 @@ export type GuidebookListItem = {
     id: string;
     checked?: boolean;
     blocks: GuidebookBlock[];
-    children: GuidebookListItem[];
+    children: GuidebookListBlock[];
 };
 
 export type GuidebookListBlock = GuidebookBlockBase & {
