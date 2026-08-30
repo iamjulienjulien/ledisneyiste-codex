@@ -557,14 +557,14 @@ contradictoires, les grands génériques, les preuves contrastées et les
 contraintes d’accessibilité. Elles ne modifient jamais les Archives et restent
 signalées comme matière de démonstration dans l’Atelier.
 
-L’Atelier documente actuellement **29 composants validés** et **3 esquisses
+L’Atelier documente actuellement **29 composants validés** et **4 esquisses
 PixieDust** :
 
 - **Accessoires — 5 composants validés :** `PixieSymbol`, `PixieButton`,
   `PixieLink`, `PixieBadge` et `PixieSeparator` ;
 - **Décors — 6 composants validés :** `PixieCard`, `PixiePanel`, `PixieFrame`,
   `PixieCallout`, `PixieInset` et `PixieBackdrop` ;
-- **Écrans — 1 esquisse :** `PixieDustAscii` ;
+- **Écrans — 2 esquisses :** `PixieDustAscii` et `PixieDustMarkdown` ;
 - **Dialogues — 6 composants validés :** `PixieField`, `PixieInput`,
   `PixieSelect`, `PixieSwitch`, `PixieSearchField` et `PixieTextarea` ;
 - **Montage — 9 composants validés et 2 esquisses :** `PixieContainer`,

@@ -475,15 +475,16 @@ expressif dominant : accent, halo, grain, projecteur ou élévation.
 
 ---
 
-## Les Écrans · 1 esquisse
+## Les Écrans · 2 esquisses
 
 Les Écrans restituent une matière déjà préparée. Ils peuvent la cadrer, la
 faire défiler ou lui donner une alternative accessible, mais ils ne la
 réécrivent pas et ne décident pas de sa provenance.
 
-| Composant        | Mission                              | Fichiers de référence                                                                                                  |
-| ---------------- | ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
-| `PixieDustAscii` | Préserver une composition monospacée | [UI](../../src/components/ui/PixieDustAscii/) · [Dossier](../../src/app/atelier/_components/PixieDustAsciiDossier.tsx) |
+| Composant           | Mission                              | Fichiers de référence                                                                                                        |
+| ------------------- | ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
+| `PixieDustAscii`    | Préserver une composition monospacée | [UI](../../src/components/ui/PixieDustAscii/) · [Dossier](../../src/app/atelier/_components/PixieDustAsciiDossier.tsx)       |
+| `PixieDustMarkdown` | Restituer un document déjà analysé   | [UI](../../src/components/ui/PixieDustMarkdown/) · [Dossier](../../src/app/atelier/_components/PixieDustMarkdownDossier.tsx) |
 
 ### `PixieDustAscii` · esquisse `0.1.0`
 
@@ -491,12 +492,30 @@ Cette primitive reçoit uniquement une chaîne déjà autorisée. Elle préserve
 espaces, tabulations et retours à la ligne, maîtrise ses débordements et exige
 une alternative accessible lorsque la composition informe. Elle ne lit aucun
 fichier et ne connaît ni Markdown, ni Notion : ces responsabilités
-appartiendront au futur domaine `Guidebook*` côté serveur.
+appartiennent au domaine `Guidebook*` côté serveur.
 
 La grille ASCII utilise une pile dédiée — Menlo, Monaco, Cascadia Mono,
 DejaVu Sans Mono puis Courier New — distincte d’IBM Plex Mono. Les cartes
 doivent malgré tout employer une largeur de ligne constante et considérer les
 emojis comme des glyphes potentiellement larges.
+
+### `PixieDustMarkdown` · esquisse `0.1.0`
+
+Cet Écran reçoit uniquement des `GuidebookBlock` déjà analysés, autorisés et
+résolus côté serveur. Il restitue titres, paragraphes, citations, listes,
+tâches, tableaux, code et séparateurs sans rouvrir la chaîne Markdown ni
+injecter de HTML brut. Les compositions reconnues comme ASCII sont confiées à
+`PixieDustAscii` avec l’alternative textuelle préparée par l’analyseur.
+
+La mesure (`reading`, `wide`, `full`) et la densité (`compact`, `comfortable`,
+`airy`) constituent ses deux seuls axes visuels. `headingOffset` adapte la
+hiérarchie au contexte d’insertion, tandis que `anchorPrefix` évite les
+collisions lorsque plusieurs extraits partagent une page. Un lien restreint ou
+invalide reste lisible, mais ne devient jamais une cible interactive.
+
+`PixieDustMarkdown` reste un composant serveur. Il ne connaît ni fichier, ni
+Notion, ni arborescence, ni sommaire global, ni route : la bibliothèque et ses
+contrôles appartiendront à `PixieDustDocs`.
 
 ---
 
