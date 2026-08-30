@@ -18,7 +18,19 @@ export type TropheeRecompenseDisney =
     | "medaille-societe-des-nations"
     | "medaille-or-venise"
     | "grand-trophee-art-venise"
-    | "rouleau-nyfcc";
+    | "rouleau-nyfcc"
+    | "globe-dore"
+    | "gramophone-grammy"
+    | "grand-prix-animation-cannes"
+    | "masque-bafta"
+    | "medaille-peabody"
+    | "medaillon-tony"
+    | "oscar-honorifique-blanche-neige"
+    | "ours-or-berlin"
+    | "statuette-disney-legends"
+    | "statuette-emmy"
+    | "trophee-annie"
+    | "trophee-thea";
 
 type QualificationRecompenseDisney =
     | {
