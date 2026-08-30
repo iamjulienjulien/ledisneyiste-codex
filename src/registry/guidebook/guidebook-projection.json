@@ -1,0 +1,48 @@
+{
+    "version": 1,
+    "title": "Le Codex du Disneyiste pour les Nuls",
+    "nodes": [
+        {
+            "slug": "bienvenue",
+            "title": "Salle de briefing",
+            "order": 0,
+            "children": []
+        },
+        {
+            "slug": "esprit-du-projet",
+            "title": "L’esprit du projet",
+            "order": 1,
+            "children": []
+        },
+        {
+            "slug": "architecture-du-codex",
+            "title": "Les coulisses de la machine à raconter",
+            "order": 2,
+            "children": []
+        },
+        {
+            "slug": "direction-artistique-et-ui",
+            "title": "La salle, la lumière et la voix",
+            "order": 3,
+            "children": []
+        },
+        {
+            "slug": "design-system-pixie",
+            "title": "Pixie, ou l’art de rendre la poussière projetable",
+            "order": 4,
+            "children": []
+        },
+        {
+            "slug": "symboles-registres-et-collections",
+            "title": "Le grand registre des signes originaux",
+            "order": 5,
+            "children": []
+        },
+        {
+            "slug": "plans-et-lectures-derivees",
+            "title": "Les Plans, ou l’art de regarder les Archives autrement",
+            "order": 6,
+            "children": []
+        }
+    ]
+}
