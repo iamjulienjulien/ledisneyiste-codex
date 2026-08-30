@@ -195,7 +195,7 @@ const ecrans = [
         nom: "PixieDustAscii",
         role: "Préserver une composition monospacée",
         statut: "Esquisse",
-        version: "0.1.0",
+        version: "0.2.0",
         href: "#pixie-dust-ascii",
     },
     {

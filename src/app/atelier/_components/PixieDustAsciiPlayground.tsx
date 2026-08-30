@@ -9,6 +9,7 @@ import {
 import {
     PixieDustAscii,
     type PixieDustAsciiAlign,
+    type PixieDustAsciiCopyState,
     type PixieDustAsciiDensity,
     type PixieDustAsciiMaxHeight,
     type PixieDustAsciiOverflow,
@@ -155,7 +156,9 @@ export function PixieDustAsciiPlayground() {
     );
     const [tabSize, setTabSize] = useState<2 | 4 | 8>(4);
     const [copyable, setCopyable] = useState(true);
+    const [scrollHint, setScrollHint] = useState(true);
     const [decorative, setDecorative] = useState(false);
+    const [copyState, setCopyState] = useState<PixieDustAsciiCopyState>("idle");
     const { lumiere, cadre } = useAtelierProjection();
     const fixture = asciiFixtures[fixtureSlug];
     const selectedColor = color === "theme" ? false : color;
@@ -169,6 +172,7 @@ export function PixieDustAsciiPlayground() {
     width="${width}"
     align="${align}"
     overflow="${overflow}"
+    scrollHint={${scrollHint}}
     maxHeight="${maxHeight}"
     tabSize={${tabSize}}
     texture="${texture}"${selectedColor ? `\n    color="${selectedColor}"` : ""}
@@ -177,6 +181,7 @@ export function PixieDustAsciiPlayground() {
 </PixieDustAscii>`
         : `<PixieDustAscii
     label="${fixture.label}"
+    alternative={alternative}
     variant="${variant}"
     size="${size}"
     density="${density}"
@@ -184,6 +189,7 @@ export function PixieDustAsciiPlayground() {
     width="${width}"
     align="${align}"
     overflow="${overflow}"
+    scrollHint={${scrollHint}}
     maxHeight="${maxHeight}"
     tabSize={${tabSize}}
     texture="${texture}"${selectedColor ? `\n    color="${selectedColor}"` : ""}${copyable ? "\n    copyable" : ""}
@@ -194,9 +200,13 @@ export function PixieDustAsciiPlayground() {
     const selectFixture = (value: string) => {
         const nextFixture = value as PixieDustAsciiFixtureSlug;
         setFixtureSlug(nextFixture);
+        setCopyState("idle");
 
-        if (nextFixture === "tall") {
+        if (nextFixture === "tall" || nextFixture === "matrix") {
             setMaxHeight("sm");
+            if (nextFixture === "matrix") {
+                setOverflow("auto");
+            }
         } else if (nextFixture === "wide") {
             setMaxHeight("none");
             setOverflow("auto");
@@ -332,6 +342,19 @@ export function PixieDustAsciiPlayground() {
                         />
 
                         <label className="flex items-center justify-between gap-4 text-sm font-medium text-ink">
+                            Indices de débordement
+                            <PixieSwitch
+                                size="sm"
+                                variant="soft"
+                                color="violet-ombre-portee"
+                                checked={scrollHint}
+                                disabled={overflow === "clip"}
+                                onCheckedChange={setScrollHint}
+                                aria-label="Afficher les indices de débordement"
+                            />
+                        </label>
+
+                        <label className="flex items-center justify-between gap-4 text-sm font-medium text-ink">
                             Copie disponible
                             <PixieSwitch
                                 size="sm"
@@ -378,6 +401,7 @@ export function PixieDustAsciiPlayground() {
                                     width={width}
                                     align={align}
                                     overflow={overflow}
+                                    scrollHint={scrollHint}
                                     maxHeight={maxHeight}
                                     tabSize={tabSize}
                                     texture={texture}
@@ -387,6 +411,7 @@ export function PixieDustAsciiPlayground() {
                             ) : (
                                 <PixieDustAscii
                                     label={fixture.label}
+                                    alternative={fixture.alternative}
                                     variant={variant}
                                     color={selectedColor}
                                     size={size}
@@ -395,11 +420,14 @@ export function PixieDustAsciiPlayground() {
                                     width={width}
                                     align={align}
                                     overflow={overflow}
+                                    scrollHint={scrollHint}
                                     maxHeight={maxHeight}
                                     tabSize={tabSize}
                                     texture={texture}
                                     copyable={copyable}
-                                    caption="Fixture de projection · le contenu demeure une simple chaîne autorisée."
+                                    onCopyStateChange={setCopyState}
+                                    emptyLabel="La bobine ne contient aucun caractère."
+                                    caption={`Fixture de projection · le contenu demeure une simple chaîne autorisée · copie : ${copyState}.`}
                                 >
                                     {fixture.content}
                                 </PixieDustAscii>

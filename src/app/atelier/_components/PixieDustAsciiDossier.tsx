@@ -14,6 +14,7 @@ import {
     guidebookTree,
     r2d2ServiceCard,
     tallRegister,
+    twoDimensionalRegister,
     unicodeCard,
     wideProjection,
 } from "./PixieDustAscii.fixtures";
@@ -30,8 +31,14 @@ const properties = [
         name: "label",
         type: "string",
         defaultValue: "—",
+        description: "Nom accessible court de la composition informative.",
+    },
+    {
+        name: "alternative",
+        type: "string",
+        defaultValue: "—",
         description:
-            "Alternative accessible obligatoire lorsque la composition informe.",
+            "Description détaillée reliée à la composition sans faire épeler sa grille.",
     },
     {
         name: "decorative",
@@ -95,6 +102,13 @@ const properties = [
         description: "Défilement contenu ou rognage volontaire.",
     },
     {
+        name: "scrollHint",
+        type: "boolean",
+        defaultValue: "true",
+        description:
+            "Matérialise les directions où une partie de la composition reste hors champ.",
+    },
+    {
         name: "maxHeight",
         type: "PixieDustAsciiMaxHeight",
         defaultValue: '"none"',
@@ -111,6 +125,12 @@ const properties = [
         type: "PixieDustAsciiTexture",
         defaultValue: '"none"',
         description: "Grain ou lignes de régie derrière les glyphes.",
+    },
+    {
+        name: "emptyLabel",
+        type: "string",
+        defaultValue: '"Aucune composition à afficher."',
+        description: "Message visible lorsque la chaîne est vide.",
     },
     {
         name: "copyable",
@@ -135,6 +155,13 @@ const properties = [
         type: "string",
         defaultValue: '"La copie a échoué"',
         description: "Retour visible lorsque le presse-papiers refuse l’accès.",
+    },
+    {
+        name: "onCopyStateChange",
+        type: "(state: PixieDustAsciiCopyState) => void",
+        defaultValue: "—",
+        description:
+            "Transmet les états idle, copied et error à la régie qui orchestre la copie.",
     },
     {
         name: "className",
@@ -326,7 +353,7 @@ export function PixieDustAsciiDossier() {
                                 Version
                             </dt>
                             <dd className="mt-2 font-mono text-sm text-ink">
-                                0.1.0
+                                0.2.0
                             </dd>
                         </div>
                     </dl>
@@ -347,6 +374,7 @@ export function PixieDustAsciiDossier() {
                 <div className="mt-8">
                     <PixieDustAscii
                         label="Carte de service de R2-D2"
+                        alternative="Carte de service de R2-D2, Lead Developer de l’unité Guidebook chez Guru Éditions. Mission : relier le prompt à la magie."
                         variant="projector"
                         color="violet-ombre-portee"
                         padding="lg"
@@ -362,6 +390,7 @@ export function PixieDustAsciiDossier() {
                 <div className="mt-7">
                     <AtelierCodeBlock>{`<PixieDustAscii
     label="Carte de service de R2-D2"
+    alternative={alternativeTextuelle}
     variant="projector"
     color="violet-ombre-portee"
     padding="lg"
@@ -400,6 +429,7 @@ export function PixieDustAsciiDossier() {
                             <div className="mt-5">
                                 <PixieDustAscii
                                     label={`Arborescence du Guidebook · variante ${scenario.title}`}
+                                    alternative="Le dossier docs/agents contient un README et six chapitres numérotés."
                                     variant={scenario.variant}
                                     color={scenario.color}
                                     size="sm"
@@ -443,6 +473,7 @@ export function PixieDustAsciiDossier() {
                                 </p>
                                 <PixieDustAscii
                                     label={`Composition Unicode en ${title.toLowerCase()}`}
+                                    alternative="Poussière prête, lumière allumée. Signal reçu par R2-D2."
                                     variant="surface"
                                     color="ambre-projecteur"
                                     size="sm"
@@ -471,6 +502,7 @@ export function PixieDustAsciiDossier() {
                         </p>
                         <PixieDustAscii
                             label="Chaîne de projection très large"
+                            alternative="La source locale traverse l’analyse Markdown, les blocs normalisés et la projection du Guidebook."
                             variant="outline"
                             color="bleu-reperage"
                             size="sm"
@@ -487,6 +519,7 @@ export function PixieDustAsciiDossier() {
                         </p>
                         <PixieDustAscii
                             label="Registre vertical de vingt-quatre bobines"
+                            alternative="Registre de vingt-quatre bobines, alternativement prêtes ou en repérage."
                             variant="slate"
                             color="ambre-projecteur"
                             size="sm"
@@ -500,11 +533,32 @@ export function PixieDustAsciiDossier() {
 
                     <Stage>
                         <p className="mb-4 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            Très large et très haute · quatre hors-champs
+                        </p>
+                        <PixieDustAscii
+                            label="Registre débordant dans les deux directions"
+                            alternative="Dix-huit entrées du Guidebook traversent une source autorisée, une analyse unique, une alternative conservée et une projection prête."
+                            variant="projector"
+                            color="violet-ombre-portee"
+                            size="sm"
+                            density="compact"
+                            overflow="auto"
+                            maxHeight="sm"
+                            texture="grain"
+                        >
+                            {twoDimensionalRegister}
+                        </PixieDustAscii>
+                    </Stage>
+
+                    <Stage>
+                        <p className="mb-4 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Vide · action neutralisée
                         </p>
                         <PixieDustAscii
                             label="Composition vide"
+                            alternative="Aucune composition n’est disponible."
                             variant="surface"
+                            emptyLabel="La bobine est vide."
                             copyable
                         >
                             {""}
@@ -559,7 +613,7 @@ export function PixieDustAsciiDossier() {
                     {[
                         [
                             "Alternative obligatoire",
-                            "Le mode informatif exige un label qui décrit la composition.",
+                            "Le mode informatif sépare un nom court d’une description détaillée facultative.",
                         ],
                         [
                             "ASCII visuel",
@@ -567,7 +621,11 @@ export function PixieDustAsciiDossier() {
                         ],
                         [
                             "Viewport au clavier",
-                            "Une composition défilable peut recevoir le focus et conserver un contour visible.",
+                            "Seule une composition réellement débordante rejoint le parcours clavier et conserve un focus visible.",
+                        ],
+                        [
+                            "Hors-champ visible",
+                            "Quatre indices s’effacent au fil du défilement et rendent les directions restantes perceptibles.",
                         ],
                         [
                             "Copie annoncée",
@@ -580,6 +638,10 @@ export function PixieDustAsciiDossier() {
                         [
                             "Contraste renforcé",
                             "Les textures et halos disparaissent lorsque le système impose ses couleurs.",
+                        ],
+                        [
+                            "Impression complète",
+                            "Contrôles, textures et bornes disparaissent sur papier pour restituer toute la grille.",
                         ],
                     ].map(([title, description]) => (
                         <article key={title} className="bg-surface p-6">
@@ -620,17 +682,17 @@ export function PixieDustAsciiDossier() {
                     id="ascii-journal"
                     eyebrow="Journal de production"
                     title="Décisions avant la promotion"
-                    description="La version 0.1.0 doit maintenant être éprouvée visuellement avant d’entrer dans le lecteur Markdown."
+                    description="La version 0.2.0 fixe le contrat de l’esquisse avant sa future promotion."
                 />
 
                 <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
                     {[
-                        "Vérifier la fidélité des cartes de service dans les deux Lumières.",
-                        "Contrôler les très longues lignes au clavier, au toucher et à 200 %.",
-                        "Éprouver la hauteur bornée avec un registre beaucoup plus dense.",
-                        "Confirmer que slate reste suffisamment lisible en Lumière claire.",
-                        "Confronter les trois textures au contraste renforcé et à l’impression.",
-                        "Décider si la détection future des cartes ASCII appartient à l’analyse Markdown.",
+                        "La pile typographique ASCII reste distincte de la police de code de l’Atelier.",
+                        "Le viewport ne rejoint le clavier que lorsque ses mesures révèlent un débordement réel.",
+                        "Quatre lueurs discrètes signalent le hors-champ sans modifier la grille.",
+                        "Le label nomme la carte ; l’alternative en transmet le sens détaillé.",
+                        "PixieButton copie la chaîne exacte et transmet son état à la régie.",
+                        "L’impression retire la scène et restitue la composition complète.",
                     ].map((decision) => (
                         <li
                             key={decision}
