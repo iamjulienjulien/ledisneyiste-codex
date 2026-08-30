@@ -402,7 +402,7 @@ export async function PixieDustDocsDossier() {
                     {[
                         [
                             "Grand cadre",
-                            "Bibliothèque sticky ou flottante · document élargi · sommaire sticky.",
+                            "Bibliothèque intégrée flottante au scroll dans la hauteur du document, ou panneau flottant escamotable · document élargi · sommaire sticky.",
                         ],
                         [
                             "Cadre moyen",
@@ -614,7 +614,7 @@ identifiant absent ou page hors arbre
                         "Listes imbriquées plutôt qu’un faux widget tree.",
                         "aria-current distingue document et titre de section actifs.",
                         "Le filtre possède un libellé et annonce un résultat vide.",
-                        "Les régions sticky restent bornées et défilables au clavier.",
+                        "En navigation intégrée, la bibliothèque et le sommaire flottent au scroll dans les limites du document ; leur hauteur disponible reste défilable au clavier.",
                         "La bibliothèque flottante reste horizontalement ancrée au bord gauche du composant dans un PixiePanel fixe et ne franchit jamais ses limites haute ou basse. Seule sa languette droite demeure visible au repos ; le clic, le clavier et Échap conservent une conduite complète.",
                         "Le changement contrôlé replace le focus sur le titre.",
                         "Le mouvement réduit ne retire aucune information.",

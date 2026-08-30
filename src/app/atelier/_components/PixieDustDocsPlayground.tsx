@@ -180,7 +180,7 @@ export function PixieDustDocsPlayground({
         <div
             data-projection="originale"
             data-lumiere={lumiere}
-            className="min-h-[36rem] overflow-hidden bg-canvas p-3 sm:p-6"
+            className="min-h-[36rem] overflow-clip bg-canvas p-3 sm:p-6"
         >
             <div
                 className={`mx-auto w-full min-w-0 transition-[max-width] ${frameWidths[cadre]}`}
