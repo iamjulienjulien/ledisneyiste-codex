@@ -1,0 +1,12 @@
+{
+    "version": 1,
+    "title": "Projection Notion témoin",
+    "nodes": [
+        {
+            "slug": "page-autorisee",
+            "title": "Page autorisée",
+            "order": 1,
+            "children": []
+        }
+    ]
+}

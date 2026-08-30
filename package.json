@@ -13,12 +13,13 @@
         "check:metadata": "node scripts/verifier-metadonnees.mjs",
         "check:plans": "node scripts/verifier-plans.mjs",
         "check:plan-matter": "node scripts/verifier-matiere-plans.mjs",
+        "check:guidebook": "node scripts/verifier-guidebook.mjs",
         "check:oeuvres": "node scripts/verifier-oeuvres.mjs",
         "check:personnages": "node scripts/verifier-personnages.mjs",
         "check:relations": "node scripts/verifier-relations.mjs",
         "check:recompenses": "node scripts/verifier-recompenses.mjs",
-        "check": "pnpm format && pnpm format:check && pnpm lint && pnpm check:symbols && pnpm check:metadata && pnpm check:plans && pnpm check:plan-matter && pnpm check:oeuvres && pnpm check:personnages && pnpm check:relations && pnpm check:recompenses && pnpm build",
-        "check:ci": "pnpm format:check && pnpm lint && pnpm check:symbols && pnpm check:metadata && pnpm check:plans && pnpm check:plan-matter && pnpm check:oeuvres && pnpm check:personnages && pnpm check:relations && pnpm check:recompenses && pnpm build"
+        "check": "pnpm format && pnpm format:check && pnpm lint && pnpm check:symbols && pnpm check:metadata && pnpm check:plans && pnpm check:plan-matter && pnpm check:guidebook && pnpm check:oeuvres && pnpm check:personnages && pnpm check:relations && pnpm check:recompenses && pnpm build",
+        "check:ci": "pnpm format:check && pnpm lint && pnpm check:symbols && pnpm check:metadata && pnpm check:plans && pnpm check:plan-matter && pnpm check:guidebook && pnpm check:oeuvres && pnpm check:personnages && pnpm check:relations && pnpm check:recompenses && pnpm build"
     },
     "dependencies": {
         "next": "16.3.1",

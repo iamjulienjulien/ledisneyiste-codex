@@ -1,0 +1,13 @@
+{
+    "authorizedRootPageId": "root-le-disneyiste",
+    "entries": [
+        {
+            "slug": "page-autorisee",
+            "pageId": "notion-page-autorisee"
+        },
+        {
+            "slug": "page-non-declaree",
+            "pageId": "notion-page-non-declaree"
+        }
+    ]
+}
