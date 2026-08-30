@@ -10,6 +10,177 @@ Les entrées sont présentées de la plus récente à la plus ancienne.
 
 ---
 
+## 🍿 Entracte V · Le Codex invente ses Plans
+
+**Tag :** `entracte-v` (à venir)\
+**Ouverture :** `337ec88`\
+**Clôture :**\
+**Entre :** Acte V et Acte VI
+
+### Le raccord
+
+Le cinquième Entracte donne au Codex une nouvelle grammaire du regard.
+
+L’Atelier devient un véritable studio d’expérimentation : son Conducteur rassemble les réglages, ses dossiers gagnent une navigation continue et treize esquisses Pixie atteignent leur version prête à projeter. À partir des mêmes Archives, cinq Plans apprennent ensuite à suivre un parcours, situer un voisinage, monter le temps, lire un générique et examiner les preuves sans altérer leur matière documentaire.
+
+### Pendant l’Entracte
+
+- refonte de la navigation de l’Atelier avec fiches repliables, languette de fermeture, retour au bon repère et sommaire latéral sticky ;
+- réunion des réglages dans un Conducteur commun capable de piloter les playgrounds, leurs Lumières et leur cadre de projection ;
+- amélioration des régies larges, des séparateurs, des tableaux techniques, des statuts, des versions et de la coloration syntaxique ;
+- promotion de `PixieSelect`, `PixieField`, `PixieInput`, `PixieSearchField`, `PixieSwitch` et `PixieTextarea` pour composer les Dialogues ;
+- promotion de `PixieSwitcher`, `PixieSidebar`, `PixieStickyRegion` et `PixieRail` pour compléter les Montages ;
+- promotion de `PixieLoader`, `PixieSkeleton` et `PixieToast` pour matérialiser les attentes et les retours du système ;
+- ouverture du septième plateau de l’Atelier et formalisation d’une grammaire commune aux cinq Plans ;
+- création d’une matière dérivée pure pour les nœuds, liens, événements, crédits et preuves, sans modifier les Archives ;
+- ajout de huit Bobines témoins destinées à éprouver les cas vides, denses, incomplets, contradictoires et accessibles ;
+- projection du Travelling documentaire, du Plan d’ensemble, du Montage du temps, du Générique vivant et de la Table lumineuse autour de _Blanche-Neige et les Sept Nains_ ;
+- création du registre `index`, retrait des anciens registres `blocs` et `codex.index`, puis renouvellement de l’iconographie des index ;
+- ajout de douze trophées et ouverture des registres consacrés à la diffusion et aux supports documentaires ;
+- consolidation de 432 symboles dans 6 registres et 30 collections vérifiées ;
+- création du Guidebook destiné aux agents IA, avec ses chapitres sur l’esprit du projet, l’architecture, l’UI, Pixie, les symboles et les Plans ;
+- ouverture du registre d’équipe de Guru Éditions et accueil de R2-D2, Charly-A et Huyang dans le studio ;
+- actualisation du README avec les nouveaux Plans, composants, registres, contrôles et documents de transmission.
+
+### Générique des commits
+
+1. `337ec88` — 🍿 Entracte > Le Codex invente une grammaire du regard > 🐭 Julien
+2. `58e6a9c` — 🩹 Raccord > Le Journal referme le grand récit de Blanche-Neige > 🐭 Julien
+3. `5ec45fe` — 🎨 Mise en scène > Les fiches de l’Atelier se replient sans perdre leur place > 🐭 Julien
+4. `0a2a00f` — 🎨 Mise en scène > Le conducteur suit la traversée des plateaux de l’Atelier > 🐭 Julien
+5. `7560e9f` — 🩹 Raccord > Les plateaux confient leurs repères au conducteur > 🐭 Julien
+6. `3477bbc` — 🩹 Raccord > La Pellicule resserre ses fondations visibles > 🐭 Julien
+7. `239897c` — 🎨 Mise en scène > L’Atelier colore le langage de ses extraits de code > 🐭 Julien
+8. `3febdb9` — 🩹 Raccord > Les dossiers partagent la même lumière syntaxique > 🐭 Julien
+9. `46daade` — 🎨 Mise en scène > La régie reste visible pendant les réglages du plateau > 🐭 Julien
+10. `1f7ad23` — 🩹 Raccord > Les playgrounds laissent défiler leurs contrôles sous la régie > 🐭 Julien
+11. `065e1fd` — 🎨 Mise en scène > Le conducteur règle tous les plateaux de l’Atelier > 🐭 Julien
+12. `620b9ff` — 🩹 Raccord > Le cadre large déroule aperçu, réglages et code > 🐭 Julien
+13. `15bb2b0` — 🩹 Raccord > Le Conducteur ouvre chaque fiche au bon repère > 🐭 Julien
+14. `fab7617` — 🎨 Mise en scène > La Pellicule confie ses lumières au Conducteur > 🐭 Julien
+15. `bec6a3b` — 🎨 Mise en scène > Les six plateaux trouvent un même rythme de projection > 🐭 Julien
+16. `fa3e122` — 🩹 Raccord > Les fiches de l’Atelier accordent leur générique technique > 🐭 Julien
+17. `f255822` — 🩹 Raccord > PixieDustField relie explicitement ses libellés aux contrôles > 🐭 Julien
+18. `388e3e2` — 🎨 Mise en scène > PixieDustSelect ouvre son popover en version 0.2.0 > 🐭 Julien
+19. `a8a3de2` — 🎨 Mise en scène > L’Atelier éprouve les deux ouvertures de PixieDustSelect > 🐭 Julien
+20. `093e4d3` — 🎨 Mise en scène > PixieSelect est prêt à conduire les choix du Codex > 🐭 Julien
+21. `12cee70` — 🩹 Raccord > L’Atelier rejoint PixieSelect dans sa loge définitive > 🐭 Julien
+22. `9895703` — ✍️ Scénario > Le README enregistre la promotion de PixieSelect > 🐭 Julien
+23. `dfe8911` — 🩹 Raccord > Les régies de l’Atelier confient leurs choix à PixieSelect > 🐭 Julien
+24. `4f300e7` — 🎨 Mise en scène > PixieDustSwitcher affine ses changements de plan > 🐭 Julien
+25. `725f2b1` — 🎨 Mise en scène > L’Atelier éprouve la version 0.2.0 de PixieDustSwitcher > 🐭 Julien
+26. `63e7b95` — 🎨 Mise en scène > PixieSwitcher est prêt à changer les plans du Codex > 🐭 Julien
+27. `9029ad5` — 🩹 Raccord > L’Atelier rejoint PixieSwitcher dans sa loge définitive > 🐭 Julien
+28. `618854f` — ✍️ Scénario > Le README accueille PixieSwitcher parmi les montages validés > 🐭 Julien
+29. `b85769d` — 🎨 Mise en scène > PixieDustSidebar ordonne ses régies et ses contenus > 🐭 Julien
+30. `7ee5068` — 🎨 Mise en scène > L’Atelier éprouve la version 0.2.0 de PixieDustSidebar > 🐭 Julien
+31. `9837a50` — 🎨 Mise en scène > PixieSidebar est prêt à accompagner les régies du Codex > 🐭 Julien
+32. `7cebe5f` — 🩹 Raccord > L’Atelier rejoint PixieSidebar dans sa loge définitive > 🐭 Julien
+33. `f32d9e7` — ✍️ Scénario > Le README accueille PixieSidebar parmi les montages validés > 🐭 Julien
+34. `2c5bf66` — 🎨 Mise en scène > PixieDustStickyRegion maîtrise les limites de son cadre > 🐭 Julien
+35. `5c0c8af` — 🎨 Mise en scène > L’Atelier éprouve la version 0.2.0 de PixieDustStickyRegion > 🐭 Julien
+36. `77102ba` — 🎨 Mise en scène > PixieStickyRegion est prêt à maintenir les régies du Codex > 🐭 Julien
+37. `cc67292` — 🩹 Raccord > L’Atelier rejoint PixieStickyRegion dans sa loge définitive > 🐭 Julien
+38. `df7d5af` — ✍️ Scénario > Le README accueille PixieStickyRegion parmi les montages validés > 🐭 Julien
+39. `7d2479e` — 🎨 Mise en scène > PixieDustRail affine le travelling de ses collections > 🐭 Julien
+40. `5cbcc17` — 🎨 Mise en scène > L’Atelier éprouve la version 0.2.0 de PixieDustRail > 🐭 Julien
+41. `e3154f4` — 🎨 Mise en scène > PixieRail est prêt à dérouler les collections du Codex > 🐭 Julien
+42. `3303a0a` — 🩹 Raccord > L’Atelier rejoint PixieRail dans sa loge définitive > 🐭 Julien
+43. `0029f00` — ✍️ Scénario > Le README accueille PixieRail parmi les montages validés > 🐭 Julien
+44. `fed6e89` — 🎨 Mise en scène > PixieDustField orchestre tous les états du dialogue > 🐭 Julien
+45. `9a82627` — 🎨 Mise en scène > L’Atelier éprouve la version 0.2.0 de PixieDustField > 🐭 Julien
+46. `bc9f41f` — 🎨 Mise en scène > PixieField est prêt à guider les dialogues du Codex > 🐭 Julien
+47. `7b4e9e2` — 🩹 Raccord > L’Atelier rejoint PixieField dans sa loge définitive > 🐭 Julien
+48. `ec22c74` — ✍️ Scénario > Le README accueille PixieField parmi les dialogues validés > 🐭 Julien
+49. `f2c7b03` — 🎨 Mise en scène > PixieDustInput enrichit les premières lignes de dialogue > 🐭 Julien
+50. `3358897` — 🩹 Raccord > PixieDustSearchField suit la nouvelle échelle de saisie > 🐭 Julien
+51. `097219f` — 🎨 Mise en scène > L’Atelier éprouve la version 0.2.0 de PixieDustInput > 🐭 Julien
+52. `bb722d1` — 🎨 Mise en scène > PixieInput est prêt à recueillir les dialogues du Codex > 🐭 Julien
+53. `5eb3599` — 🩹 Raccord > L’Atelier rejoint PixieInput dans sa loge définitive > 🐭 Julien
+54. `e772f84` — ✍️ Scénario > Le README accueille PixieInput parmi les dialogues validés > 🐭 Julien
+55. `7e651fc` — 🎨 Mise en scène > PixieDustSearchField rassemble les commandes de la recherche > 🐭 Julien
+56. `be58f44` — 🎨 Mise en scène > L’Atelier éprouve la version 0.2.0 de PixieDustSearchField > 🐭 Julien
+57. `322b529` — 🎨 Mise en scène > PixieSearchField est prêt à guider les recherches du Codex > 🐭 Julien
+58. `2ef3c9f` — 🩹 Raccord > L’Atelier rejoint PixieSearchField dans sa loge définitive > 🐭 Julien
+59. `c50d949` — ✍️ Scénario > Le README accueille PixieSearchField parmi les dialogues validés > 🐭 Julien
+60. `b02545b` — 🎨 Mise en scène > PixieDustLoader déploie ses nouvelles poussières de fée > 🐭 Julien
+61. `93c30ef` — 🎨 Mise en scène > L’Atelier éprouve la version 0.2.0 de PixieDustLoader > 🐭 Julien
+62. `5597434` — 🎨 Mise en scène > PixieLoader est prêt à faire patienter le Codex > 🐭 Julien
+63. `60b0459` — 🩹 Raccord > L’Atelier rejoint PixieLoader dans sa loge définitive > 🐭 Julien
+64. `10e8cd9` — ✍️ Scénario > Le README accueille PixieLoader parmi les Effets validés > 🐭 Julien
+65. `01d0ee7` — 🎨 Mise en scène > PixieDustSkeleton préserve les formes avant leur apparition > 🐭 Julien
+66. `f1cba7d` — 🎨 Mise en scène > L’Atelier éprouve PixieDustSkeleton en version 0.2.0 > 🐭 Julien
+67. `2c7bc1a` — 🎨 Mise en scène > PixieSkeleton est prêt à préserver les scènes du Codex > 🐭 Julien
+68. `b77f278` — 🩹 Raccord > L’Atelier rejoint PixieSkeleton dans sa loge définitive > 🐭 Julien
+69. `d19a038` — ✍️ Scénario > Le README accueille PixieSkeleton parmi les Effets validés > 🐭 Julien
+70. `880fe1c` — ✨ Étincelle > Les Plans donnent au Codex une nouvelle grammaire du regard > 🐭 Julien
+71. `aedbb97` — 🧪 Répétition > Vérifier que les Plans parlent une grammaire complète > 🐭 Julien
+72. `7d63510` — 🏗️ Décor > Ouvrir les dossiers préparatoires des cinq Plans > 🐭 Julien
+73. `7aadd52` — 🎨 Mise en scène > Les Plans ouvrent leur septième plateau dans l’Atelier > 🐭 Julien
+74. `b060fdc` — ✍️ Scénario > Graver le protocole du septième plateau > 🐭 Julien
+75. `feb9126` — 🧹 Coulisses > Préparer la matière que regarderont les cinq Plans > 🐭 Julien
+76. `537cc4d` — 🧪 Répétition > Éprouver la matière dérivée des cinq Plans > 🐭 Julien
+77. `f6b8a05` — 🧪 Répétition > Les Bobines témoins éprouvent les limites des cinq Plans > 🐭 Julien
+78. `4c26146` — ✍️ Scénario > Nommer sans ambiguïté la matière des Bobines témoins > 🐭 Julien
+79. `3119a2e` — 🗄️ Archives > Le Travelling documentaire ordonne ses premiers raccords > 🐭 Julien
+80. `a056600` — 🩹 Raccord > Donner une vraie profondeur aux Bobines du Travelling > 🐭 Julien
+81. `6c40fc2` — 🎨 Mise en scène > Blanche-Neige ouvre le premier Travelling documentaire > 🐭 Julien
+82. `c4ec044` — 🗄️ Archives > Le Plan d’ensemble ordonne le voisinage de Blanche-Neige > 🐭 Julien
+83. `c5d3e4e` — 🩹 Raccord > Libérer les Plans de la largeur minimale du plateau > 🐭 Julien
+84. `6aa5b9d` — 🩹 Raccord > Donner aux relations du Plan d’ensemble leurs deux extrémités > 🐭 Julien
+85. `26a6d04` — 🎨 Mise en scène > Blanche-Neige déploie ses constellations dans le Plan d’ensemble > 🐭 Julien
+86. `d145928` — 🗄️ Archives > Le Montage du temps ordonne les temporalités de Blanche-Neige > 🐭 Julien
+87. `7d5e2ae` — 🎨 Mise en scène > Blanche-Neige déroule ses temporalités sur une même bobine > 🐭 Julien
+88. `ed1240a` — 🗄️ Archives > Le Générique vivant rassemble les métiers de Blanche-Neige > 🐭 Julien
+89. `ddb4e4f` — 🎨 Mise en scène > Le Générique vivant déroule sa première distribution > 🐭 Julien
+90. `dfcf671` — 🧪 Répétition > Éprouver le Générique vivant jusque dans la foule > 🐭 Julien
+91. `cd5b996` — 🗄️ Archives > La Table lumineuse ordonne les preuves de Blanche-Neige > 🐭 Julien
+92. `0e0d216` — 🎨 Mise en scène > Blanche-Neige place ses preuves sous la lumière > 🐭 Julien
+93. `e12ad0f` — 🧪 Répétition > Éprouver la Table lumineuse face aux preuves contrastées > 🐭 Julien
+94. `d411767` — 🩹 Raccord > Le tableau de l’Atelier rejoint les cinq Plans projetés > 🐭 Julien
+95. `a5606c2` — 🎨 Mise en scène > PixieDustToast donne du mouvement aux retours du Codex > 🐭 Julien
+96. `6786ee0` — 🎨 Mise en scène > L’Atelier éprouve PixieDustToast en version 0.2.0 > 🐭 Julien
+97. `3bc6fc0` — 🎨 Mise en scène > PixieToast est prêt à signaler les retours du Codex > 🐭 Julien
+98. `f175890` — 🩹 Raccord > L’Atelier rejoint PixieToast dans sa loge définitive > 🐭 Julien
+99. `79369c1` — ✍️ Scénario > Le README accueille PixieToast parmi les Effets validés > 🐭 Julien
+100. `06ab2a7` — 🎨 Mise en scène > PixieDustSwitch fait basculer les préférences sous une nouvelle lumière > 🐭 Julien
+101. `3100d94` — 🎨 Mise en scène > L’Atelier éprouve PixieDustSwitch en version 0.2.0 > 🐭 Julien
+102. `7646e48` — 🎨 Mise en scène > PixieSwitch est prêt à éclairer les préférences du Codex > 🐭 Julien
+103. `2b59ccc` — 🩹 Raccord > L’Atelier rejoint PixieSwitch dans sa loge définitive > 🐭 Julien
+104. `c10d065` — ✍️ Scénario > Le README accueille PixieSwitch parmi les Dialogues validés > 🐭 Julien
+105. `95c9ed4` — 🎨 Mise en scène > PixieDustTextarea donne de l’espace aux réponses du Codex > 🐭 Julien
+106. `f79c6e9` — 🎨 Mise en scène > L’Atelier éprouve PixieDustTextarea en version 0.2.0 > 🐭 Julien
+107. `21bfe11` — 🎨 Mise en scène > PixieTextarea est prêt à recueillir les récits du Codex > 🐭 Julien
+108. `564a79f` — 🩹 Raccord > L’Atelier ouvre sa régie à PixieTextarea > 🐭 Julien
+109. `b20acef` — ✍️ Scénario > Le README accueille PixieTextarea parmi les Dialogues validés > 🐭 Julien
+110. `9e0f9d5` — 🗄️ Archives > Le registre Index réunit ses cinq collections > 🐭 Julien
+111. `f53c1f6` — 🎨 Mise en scène > Le Codex donne à ses cinq index leur nouvelle iconographie > 🐭 Julien
+112. `e17e6ff` — 🧹 Coulisses > Retirer les anciens registres Bloc et Codex.Index > 🐭 Julien
+113. `c732f09` — 🗄️ Archives > Douze nouveaux trophées rejoignent le registre des récompenses > 🐭 Julien
+114. `dc8323b` — 📡 Transmission > Le Guidebook transmet la magie maintenable du Codex aux agents du studio > 🔩 R2-D2 🏅
+115. `e298e54` — 🗄️ Archives > Les cinq vies de la diffusion rejoignent le registre des symboles > 🐭 Julien
+116. `f363f86` — 🎨 Mise en scène > PixieSymbol déroule les cinq voies de la diffusion > 🐭 Julien
+117. `4b56ba5` — ✍️ Scénario > Le domaine Production rejoint les conventions du studio > 🐭 Julien
+118. `fddb638` — 🏢 Production > Le studio prépare l’arrivée de ses futurs employés > 🐭 Julien
+119. `1ba1e3b` — 🏢 Production > R2-D2 entre au registre d’équipe de Guru Éditions > 🔩 R2-D2 🏅
+120. `feec02a` — 🗄️ Archives > Les quatre matières des sources rejoignent le registre des symboles > 🐭 Julien
+121. `ce502d6` — 🎨 Mise en scène > PixieSymbol projette les quatre familles de sources > 🐭 Julien
+122. `1175007` — 📡 Transmission > Le Guidebook recense six registres de symboles projetables > 🐭 Julien
+123. `dc72274` — 🩹 Raccord > Charly-A retrouve son nom officiel dans les registres du studio > 🐭 Julien
+124. `c3b36fd` — 🏢 Production > Le studio prépare l’arrivée de Charly-A > 🐭 Julien
+125. `8b4454d` — 🏢 Production > Le studio prépare l’arrivée de Huyang > 🐭 Julien
+126. `fbf5f49` — 🏢 Production > Charly-A entre au registre d’équipe de Guru Éditions > 🤖 Charly-A
+127. `b7770da` — 🏢 Production > Huyang entre au registre d’équipe de Guru Éditions > 🎨 Huyang
+128. `5f2b203` — ✍️ Scénario > Le README raconte les Plans et les nouveaux registres du studio > 🐭 Julien
+
+### Dernière image
+
+**Le Codex a inventé ses Plans.**
+
+Les Archives peuvent désormais être suivies, situées, montées dans le temps, relues par leurs génériques et examinées à la lumière de leurs preuves. L’Atelier possède le langage, les composants et la mémoire nécessaires pour préparer le prochain Acte.
+
+---
+
 ## 🎞️ Acte V · Blanche-Neige ouvre le grand récit
 
 **Tag :** `acte-v`\
