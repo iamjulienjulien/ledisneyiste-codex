@@ -97,6 +97,7 @@ export type GuidebookCodeBlock = GuidebookBlockBase & {
     code: string;
     language?: string;
     presentation: "code" | "ascii";
+    alternative?: string;
 };
 
 export type GuidebookTableBlock = GuidebookBlockBase & {

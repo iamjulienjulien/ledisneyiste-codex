@@ -58,6 +58,7 @@ type AnalysisContext = {
 const boxDrawingPattern = /[┌┐└┘├┤┬┴┼│─╔╗╚╝╠╣╦╩╬║═]/gu;
 const frameStartPattern = /^\s*[┌└╔╚]/u;
 const treeBranchPattern = /^\s*[│├└](?:──|─)/u;
+const asciiDecorationPattern = /[┌┐└┘├┤┬┴┼│─╔╗╚╝╠╣╦╩╬║═]/gu;
 
 function nextBlockId(context: AnalysisContext, kind: string): string {
     context.blockIndex += 1;
@@ -262,17 +263,34 @@ export function isGuidebookAsciiComposition(
     );
 }
 
+export function createGuidebookAsciiAlternative(code: string): string {
+    return code
+        .split("\n")
+        .map((line) =>
+            line
+                .replace(asciiDecorationPattern, " ")
+                .replace(/\s+/gu, " ")
+                .trim(),
+        )
+        .filter(Boolean)
+        .join(" · ");
+}
+
 function convertCode(node: Code, context: AnalysisContext): GuidebookBlock {
     const language = node.lang?.trim() || undefined;
+    const presentation = isGuidebookAsciiComposition(node.value, language)
+        ? "ascii"
+        : "code";
 
     return {
         id: nextBlockId(context, "code"),
         kind: "code",
         code: node.value,
         ...(language ? { language } : {}),
-        presentation: isGuidebookAsciiComposition(node.value, language)
-            ? "ascii"
-            : "code",
+        presentation,
+        ...(presentation === "ascii"
+            ? { alternative: createGuidebookAsciiAlternative(node.value) }
+            : {}),
     };
 }
 
