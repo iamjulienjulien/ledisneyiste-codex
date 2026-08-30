@@ -506,6 +506,9 @@ projeter. Ses cinq premiers accessoires — `PixieSymbol`,
 les six Dialogues `PixieField`, `PixieInput`, `PixieSelect`, `PixieSwitch`,
 `PixieSearchField` et `PixieTextarea`, ainsi que les trois premiers Effets
 `PixieLoader`, `PixieSkeleton` et `PixieToast`, sont désormais prêts à projeter.
+La nouvelle esquisse `PixieDustDocs` assemble de son côté une arborescence
+autorisée, un document rendu côté serveur et son sommaire sans connaître leurs
+sources.
 
 Ses huit plateaux de travail sont maintenant actifs :
 
@@ -557,7 +560,7 @@ contradictoires, les grands génériques, les preuves contrastées et les
 contraintes d’accessibilité. Elles ne modifient jamais les Archives et restent
 signalées comme matière de démonstration dans l’Atelier.
 
-L’Atelier documente actuellement **29 composants validés** et **4 esquisses
+L’Atelier documente actuellement **29 composants validés** et **5 esquisses
 PixieDust** :
 
 - **Accessoires — 5 composants validés :** `PixieSymbol`, `PixieButton`,
@@ -567,10 +570,11 @@ PixieDust** :
 - **Écrans — 2 esquisses :** `PixieDustAscii` et `PixieDustMarkdown` ;
 - **Dialogues — 6 composants validés :** `PixieField`, `PixieInput`,
   `PixieSelect`, `PixieSwitch`, `PixieSearchField` et `PixieTextarea` ;
-- **Montage — 9 composants validés et 2 esquisses :** `PixieContainer`,
+- **Montage — 9 composants validés et 3 esquisses :** `PixieContainer`,
   `PixieStack`, `PixieCluster`, `PixieSection`, `PixieGrid`, `PixieSidebar`,
   `PixieSwitcher`, `PixieRail`, `PixieStickyRegion`, `PixieDustSplit` et
-  `PixieDustBleed` ;
+  `PixieDustBleed`, ainsi que `PixieDustDocs` pour parcourir une bibliothèque
+  documentaire déjà résolue ;
 - **Effets — 3 composants validés :** `PixieLoader`, `PixieSkeleton` et
   `PixieToast`.
 

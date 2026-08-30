@@ -515,7 +515,7 @@ invalide reste lisible, mais ne devient jamais une cible interactive.
 
 `PixieDustMarkdown` reste un composant serveur. Il ne connaît ni fichier, ni
 Notion, ni arborescence, ni sommaire global, ni route : la bibliothèque et ses
-contrôles appartiendront à `PixieDustDocs`.
+contrôles appartiennent à `PixieDustDocs`.
 
 ---
 
@@ -584,7 +584,7 @@ ne doivent être activées que lorsqu’elles servent le scénario de saisie.
 
 ---
 
-## Le Montage · 9 composants prêts
+## Le Montage · 9 composants prêts et 3 esquisses
 
 Le Montage détermine comment les éléments se rencontrent. Il doit régler le
 cadre avant que les composants métier n’inventent leurs propres marges.
@@ -600,6 +600,13 @@ cadre avant que les composants métier n’inventent leurs propres marges.
 | `PixieSwitcher`     | Changer de disposition selon l’espace disponible     | [UI](../../src/components/ui/PixieSwitcher/) · [Dossier](../../src/app/atelier/_components/PixieSwitcherDossier.tsx)         |
 | `PixieRail`         | Dérouler une collection sur un travelling horizontal | [UI](../../src/components/ui/PixieRail/) · [Dossier](../../src/app/atelier/_components/PixieRailDossier.tsx)                 |
 | `PixieStickyRegion` | Maintenir une région visible pendant le défilement   | [UI](../../src/components/ui/PixieStickyRegion/) · [Dossier](../../src/app/atelier/_components/PixieStickyRegionDossier.tsx) |
+
+`PixieDustDocs` compose ces primitives autour d’une bibliothèque documentaire
+déjà autorisée. Sa v0.1.0 reçoit une arborescence résolue, un document rendu
+côté serveur et un sommaire dérivé de la même analyse. Elle ajoute un filtre de
+titres, les états de disponibilité et les raccords précédent/suivant sans lire
+de fichier, connaître Notion ou créer une route. Sa matière centrale peut donc
+rester un Server Component transmis comme plan à une fine couche interactive.
 
 ### La matrice du Montage
 
@@ -684,10 +691,11 @@ pages publiques.
 
 ### Esquisses actives · version `0.1.0`
 
-| Esquisse         | Mission                                           | Fichiers                                                                                                               |
-| ---------------- | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `PixieDustSplit` | Répartir deux zones en champ et contrechamp       | [UI](../../src/components/ui/PixieDustSplit/) · [Dossier](../../src/app/atelier/_components/PixieDustSplitDossier.tsx) |
-| `PixieDustBleed` | Faire sortir une séquence de son cadre de lecture | [UI](../../src/components/ui/PixieDustBleed/) · [Dossier](../../src/app/atelier/_components/PixieDustBleedDossier.tsx) |
+| Esquisse         | Mission                                              | Fichiers                                                                                                               |
+| ---------------- | ---------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `PixieDustSplit` | Répartir deux zones en champ et contrechamp          | [UI](../../src/components/ui/PixieDustSplit/) · [Dossier](../../src/app/atelier/_components/PixieDustSplitDossier.tsx) |
+| `PixieDustBleed` | Faire sortir une séquence de son cadre de lecture    | [UI](../../src/components/ui/PixieDustBleed/) · [Dossier](../../src/app/atelier/_components/PixieDustBleedDossier.tsx) |
+| `PixieDustDocs`  | Parcourir une bibliothèque documentaire déjà résolue | [UI](../../src/components/ui/PixieDustDocs/) · [Dossier](../../src/app/atelier/_components/PixieDustDocsDossier.tsx)   |
 
 Ces composants peuvent être étudiés, modifiés et comparés. Ils ne doivent pas
 être projetés dans le Codex tant que leur promotion n’a pas été validée.
