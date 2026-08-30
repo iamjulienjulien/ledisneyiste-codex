@@ -204,6 +204,93 @@ async function verifyLocalLibrary(errors) {
 }
 
 async function verifyNotionAuthorization(errors) {
+    const { notionGuidebookManifest } = await loadTypeScriptModule(
+        "src/lib/guidebook/server/notion-manifest.ts",
+    );
+    const notionProjection = JSON.parse(
+        await readFile(
+            path.join(
+                repositoryRoot,
+                "src/registry/guidebook/notion-projection.json",
+            ),
+            "utf8",
+        ),
+    );
+    const notionProjectionNodes = flattenNavigation(notionProjection.nodes);
+    const manifestSlugs = notionGuidebookManifest.entries.map(
+        (entry) => entry.slug,
+    );
+    const projectionSlugs = notionProjectionNodes.map((node) => node.slug);
+    const manifestPageIds = notionGuidebookManifest.entries.map((entry) =>
+        entry.pageId.replaceAll("-", "").toLowerCase(),
+    );
+
+    for (const error of collectForbiddenKeys(
+        notionProjection,
+        "notionProjection",
+    )) {
+        errors.push(error);
+    }
+
+    if (notionGuidebookManifest.apiVersion !== "2026-03-11") {
+        errors.push("Le manifeste Notion n’utilise pas la version API arrêtée");
+    }
+
+    if (
+        !Number.isInteger(notionGuidebookManifest.maxAncestorDepth) ||
+        notionGuidebookManifest.maxAncestorDepth < 1 ||
+        notionGuidebookManifest.maxAncestorDepth > 24
+    ) {
+        errors.push(
+            "La traversée des ancêtres Notion n’est pas correctement bornée",
+        );
+    }
+
+    if (new Set(manifestSlugs).size !== manifestSlugs.length) {
+        errors.push("Le manifeste Notion contient des slugs dupliqués");
+    }
+
+    if (new Set(manifestPageIds).size !== manifestPageIds.length) {
+        errors.push("Le manifeste Notion contient des identifiants dupliqués");
+    }
+
+    if (
+        manifestSlugs.length !== projectionSlugs.length ||
+        manifestSlugs.some((slug) => !projectionSlugs.includes(slug))
+    ) {
+        errors.push(
+            "Le manifeste serveur et l’arborescence Notion ne déclarent pas les mêmes pages",
+        );
+    }
+
+    if (
+        !manifestPageIds.every((pageId) => /^[0-9a-f]{32}$/u.test(pageId)) ||
+        !/^[0-9a-f]{32}$/u.test(
+            notionGuidebookManifest.authorizedRootPageId
+                .replaceAll("-", "")
+                .toLowerCase(),
+        )
+    ) {
+        errors.push(
+            "Le manifeste Notion contient un identifiant de page invalide",
+        );
+    }
+
+    const rootEntry = notionGuidebookManifest.entries.find(
+        (entry) => entry.slug === notionProjection.nodes[0]?.slug,
+    );
+    if (
+        !rootEntry ||
+        rootEntry.pageId.replaceAll("-", "").toLowerCase() !==
+            notionGuidebookManifest.authorizedRootPageId
+                .replaceAll("-", "")
+                .toLowerCase()
+    ) {
+        errors.push(
+            "La racine Notion autorisée n’ouvre pas l’arborescence déclarée",
+        );
+    }
+
     const { isNotionGuidebookPageAuthorized } = await loadTypeScriptModule(
         "src/lib/guidebook/server/authorize-notion-page.ts",
     );
@@ -264,6 +351,115 @@ async function verifyNotionAuthorization(errors) {
     for (const error of collectForbiddenKeys(projection, "fixtureNotion")) {
         errors.push(error);
     }
+
+    return notionGuidebookManifest.entries.length;
+}
+
+async function verifyNotionNormalization(errors) {
+    const [
+        { normalizeNotionMarkdown, extractNotionPageId },
+        { analyzeGuidebookMarkdown },
+    ] = await Promise.all([
+        loadTypeScriptModule(
+            "src/lib/guidebook/server/normalize-notion-markdown.ts",
+        ),
+        loadTypeScriptModule("src/lib/guidebook/analyze-markdown.ts"),
+    ]);
+    const markdown = await readFile(
+        path.join(
+            repositoryRoot,
+            "scripts/fixtures/guidebook/notion-markdown.fixture.md",
+        ),
+        "utf8",
+    );
+    const declaredPages = new Map([
+        ["343092fa3223806ea370cfe30eab948a", "le-disneyiste"],
+        ["3bd092fa3223811fa7caf8e745a6914a", "vision-doctrine"],
+        ["3bd092fa3223810fbf7ac5ef4b2ad9db", "manifeste"],
+    ]);
+    const normalized = normalizeNotionMarkdown(markdown, {
+        pageTitlesById: {
+            "343092fa3223806ea370cfe30eab948a": "Le Disneyiste",
+            "3bd092fa3223811fa7caf8e745a6914a": "01 · Vision & Doctrine",
+            "3bd092fa3223810fbf7ac5ef4b2ad9db": "Manifeste",
+        },
+    });
+    const analysis = analyzeGuidebookMarkdown({
+        slug: "fixture-notion",
+        markdown: normalized.markdown,
+        resolveLink: (_slug, label, rawHref) => {
+            const targetPageId = extractNotionPageId(rawHref);
+            const targetSlug = targetPageId
+                ? declaredPages.get(targetPageId)
+                : undefined;
+
+            if (targetSlug) {
+                return {
+                    label,
+                    href: `/guidebook/notion/${targetSlug}`,
+                    state: "internal",
+                    targetSlug,
+                };
+            }
+
+            return { label, href: null, state: "restricted" };
+        },
+    });
+    const blocks = analysis.blocks.flatMap(collectBlocks);
+    const serializedAnalysis = JSON.stringify(analysis);
+
+    if (
+        /<\/?(?:callout|columns?|table|tr|td|details|summary|mention-page|page|table_of_contents|unknown)\b/iu.test(
+            normalized.markdown,
+        )
+    ) {
+        errors.push(
+            "La normalisation Notion laisse passer une extension propriétaire",
+        );
+    }
+
+    if (!normalized.warnings.includes("Bloc Notion inconnu ou inaccessible")) {
+        errors.push("Le bloc Notion inconnu n’est pas signalé");
+    }
+
+    for (const kind of ["heading", "blockquote", "table"]) {
+        if (!blocks.some((block) => block.kind === kind)) {
+            errors.push(`La bobine Notion ne produit aucun bloc ${kind}`);
+        }
+    }
+
+    if (
+        !analysis.links.some(
+            (link) =>
+                link.state === "internal" &&
+                link.targetSlug === "vision-doctrine",
+        )
+    ) {
+        errors.push("Une page Notion déclarée ne produit pas de lien interne");
+    }
+
+    if (
+        !analysis.links.some(
+            (link) => link.state === "restricted" && link.href === null,
+        )
+    ) {
+        errors.push("Une page Notion hors projection n’est pas neutralisée");
+    }
+
+    if (
+        [...declaredPages.keys(), "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"].some(
+            (pageId) => serializedAnalysis.includes(pageId),
+        )
+    ) {
+        errors.push(
+            "L’analyse Notion transmet encore un identifiant technique",
+        );
+    }
+
+    return {
+        blocks: blocks.length,
+        warnings: normalized.warnings.length,
+    };
 }
 
 async function verifyMarkdownAnalysis(errors) {
@@ -515,11 +711,14 @@ async function verifyMarkdownAnalysis(errors) {
 async function verify() {
     const errors = [];
     let localDocumentCount = 0;
+    let notionDocumentCount = 0;
+    let notionStatistics = null;
     let markdownStatistics = null;
 
     try {
         localDocumentCount = await verifyLocalLibrary(errors);
-        await verifyNotionAuthorization(errors);
+        notionDocumentCount = await verifyNotionAuthorization(errors);
+        notionStatistics = await verifyNotionNormalization(errors);
         markdownStatistics = await verifyMarkdownAnalysis(errors);
     } catch (error) {
         errors.push(
@@ -539,7 +738,7 @@ async function verify() {
     }
 
     console.log(
-        `Guidebook vérifié : ${localDocumentCount} documents locaux, ${markdownStatistics.blocks} blocs, ${markdownStatistics.headings} titres, ${markdownStatistics.links} liens et ${markdownStatistics.ascii} compositions ASCII ; frontière studio fermée et double autorisation Notion éprouvée.`,
+        `Guidebook vérifié : ${localDocumentCount} documents locaux, ${notionDocumentCount} pages Notion déclarées, ${markdownStatistics.blocks} blocs locaux, ${notionStatistics.blocks} blocs Notion normalisés, ${markdownStatistics.headings} titres, ${markdownStatistics.links} liens et ${markdownStatistics.ascii} compositions ASCII ; frontière studio fermée, extensions propriétaires neutralisées et double autorisation Notion éprouvée.`,
     );
 }
 

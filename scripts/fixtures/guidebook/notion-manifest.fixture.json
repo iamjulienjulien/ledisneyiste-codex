@@ -1,5 +1,7 @@
 {
     "authorizedRootPageId": "root-le-disneyiste",
+    "apiVersion": "2026-03-11",
+    "maxAncestorDepth": 12,
     "entries": [
         {
             "slug": "page-autorisee",
