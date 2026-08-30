@@ -22,6 +22,11 @@ const sousRegistres = [
         exportName: "symbolsGeneral",
     },
     {
+        registry: "index",
+        fichier: "symbols-index.ts",
+        exportName: "symbolsIndex",
+    },
+    {
         registry: "recompenses",
         fichier: "symbols-recompenses.ts",
         exportName: "symbolsRecompenses",

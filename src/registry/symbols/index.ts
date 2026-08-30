@@ -1,6 +1,7 @@
 import { symbolsBlocs } from "./symbols-blocs";
 import { symbolsCodex } from "./symbols-codex";
 import { symbolsGeneral } from "./symbols-general";
+import { symbolsIndex } from "./symbols-index";
 import { symbolsRecompenses } from "./symbols-recompenses";
 import { symbolsTechniques } from "./symbols-techniques";
 import type { SymbolDefinition } from "@/types/symbols";
@@ -9,6 +10,7 @@ export const symbolsRegistry = {
     blocs: symbolsBlocs,
     codex: symbolsCodex,
     general: symbolsGeneral,
+    index: symbolsIndex,
     recompenses: symbolsRecompenses,
     techniques: symbolsTechniques,
 } as const;
