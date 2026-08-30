@@ -1,3 +1,4 @@
+import { symbolsDiffusion } from "./symbols-diffusion";
 import { symbolsGeneral } from "./symbols-general";
 import { symbolsIndex } from "./symbols-index";
 import { symbolsRecompenses } from "./symbols-recompenses";
@@ -5,6 +6,7 @@ import { symbolsTechniques } from "./symbols-techniques";
 import type { SymbolDefinition } from "@/types/symbols";
 
 export const symbolsRegistry = {
+    diffusion: symbolsDiffusion,
     general: symbolsGeneral,
     index: symbolsIndex,
     recompenses: symbolsRecompenses,

@@ -7,6 +7,11 @@ const racine = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
 const sousRegistres = [
     {
+        registry: "diffusion",
+        fichier: "symbols-diffusion.ts",
+        exportName: "symbolsDiffusion",
+    },
+    {
         registry: "general",
         fichier: "symbols-general.ts",
         exportName: "symbolsGeneral",
