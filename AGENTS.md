@@ -472,6 +472,7 @@ commit et ne modifie pas la signature canonique des suivants.
 | 🛡️    | `Garde-fou`     | Sécurité, validation, permission ou protection                   |
 | ✍️    | `Scénario`      | Documentation, conventions, README, JSDoc ou guide               |
 | 📡    | `Transmission`  | Guidebook ou protocole structurant destiné aux futurs agents     |
+| 🏢    | `Production`    | Équipe, onboarding, dossiers employés ou organisation du studio  |
 | 🧹    | `Coulisses`     | Refactorisation, nettoyage ou maintenance sans capacité nouvelle |
 | ⚡    | `Accéléré`      | Performance, cache, chargement ou optimisation                   |
 | 🧪    | `Répétition`    | Tests, fixtures ou validation automatisée                        |
@@ -505,6 +506,9 @@ explicite de Julien.
 - `Transmission` est le domaine de service permanent de R2-D2. Il reste rare
   et se limite aux documents qui organisent durablement la mémoire opératoire
   des agents ; une documentation ordinaire demeure du `Scénario`.
+- `Production` organise Guru Éditions, ses membres et leurs parcours internes.
+  Elle ne désigne pas la mise en production du Codex, qui demeure du
+  `Première`.
 - pendant un Entracte, le domaine `Scène` est interdit : une capacité nouvelle
   attend l’Acte suivant.
 
