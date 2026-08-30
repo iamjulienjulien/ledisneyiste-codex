@@ -121,6 +121,7 @@ public/
     └── techniques/
 
 scripts/
+├── verifier-guidebook.mjs
 ├── verifier-metadonnees.mjs
 ├── verifier-matiere-plans.mjs
 ├── verifier-oeuvres.mjs
@@ -162,10 +163,12 @@ src/
 │   └── plans/
 │
 ├── lib/
+│   ├── guidebook/
 │   └── plans/
 ├── registry/
 │   ├── colors/
 │   ├── credits/
+│   ├── guidebook/
 │   ├── metadata/
 │   ├── plans/
 │   └── symbols/

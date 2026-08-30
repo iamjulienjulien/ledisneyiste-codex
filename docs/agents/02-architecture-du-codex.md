@@ -526,6 +526,52 @@ pas modifier les Archives avec des sources et une validation appropriées.
 
 ---
 
+## Le Guidebook : analyser une fois, projeter sans privilège
+
+Le Guidebook possède son propre domaine neutre dans
+[`src/types/guidebook.ts`](../../src/types/guidebook.ts). Il ne confond ni la
+matière documentaire avec un composant Pixie, ni un fichier du dépôt avec une
+route publique.
+
+Sa chaîne locale suit une frontière stricte :
+
+```text
+manifeste serveur fermé
+→ résolveur de fichier sous docs/agents/
+→ analyse Markdown unique
+→ blocs + ancres + sommaire + liens résolus
+→ document Guidebook sérialisable
+→ future projection Pixie
+```
+
+[`analyze-markdown.ts`](../../src/lib/guidebook/analyze-markdown.ts) parcourt
+un seul arbre `mdast`, produit tous les blocs de lecture et dérive le sommaire
+des mêmes titres. Il prend en charge les titres, paragraphes, emphases,
+citations, listes imbriquées et listes de tâches, code, compositions ASCII,
+tableaux GFM et séparateurs. Un nœud inconnu devient `unsupported` ; il n’est
+jamais injecté comme HTML brut.
+
+L’analyseur reste pur : il ne lit aucun fichier et ne connaît aucun secret.
+L’adaptateur serveur
+[`load-local-document.ts`](../../src/lib/guidebook/server/load-local-document.ts)
+lui remet une chaîne déjà autorisée et un résolveur de liens. Ce dernier ne
+rend navigables que :
+
+- une ancre réellement produite par le document courant ;
+- un document local explicitement inscrit au manifeste ;
+- une destination externe en `http`, `https` ou `mailto`.
+
+Les chemins privés, les fichiers de code hors bibliothèque et les protocoles
+inconnus restent lisibles comme texte, mais perdent leur `href`. Aucun chemin
+réel du dépôt ni identifiant Notion ne rejoint le contrat transmis à
+l’interface.
+
+La présence de ces fondations ne rend pas le Guidebook public. Tant que sa
+route privée n’existe pas, aucune matière n’est projetée ; lorsqu’elle sera
+ouverte, elle reprendra la frontière de production de l’Atelier.
+
+---
+
 ## Choisir la source de vérité
 
 | Je veux modifier…                          | Je commence par…                                   |
@@ -623,6 +669,7 @@ plus utiles sont :
 | `pnpm check:recompenses` | Distinctions, bénéficiaires, sources et trophées                    |
 | `pnpm check:plans`       | Grammaire commune des cinq Plans                                    |
 | `pnpm check:plan-matter` | Dérivations, Bobines témoins et projections des Plans               |
+| `pnpm check:guidebook`   | Manifestes, frontières privées et analyse Markdown du Guidebook     |
 | `pnpm build`             | Assemblage statique et contrats TypeScript                          |
 
 Un contrôle vert signifie que les invariants connus tiennent. Il ne prouve
@@ -695,6 +742,7 @@ réellement la phrase écrite. Cette vérification reste éditoriale.
 | Comprendre une fiche publique   | la route `[slug]` de sa famille puis [`src/components/codex`](../../src/components/codex/)                                         |
 | Comprendre une relation dérivée | [`src/data/relations.ts`](../../src/data/relations.ts) et les résolveurs spécialisés                                               |
 | Comprendre la matière des Plans | [`src/lib/plans/archives.ts`](../../src/lib/plans/archives.ts) puis [`src/lib/plans`](../../src/lib/plans/)                        |
+| Comprendre le Guidebook         | [`src/types/guidebook.ts`](../../src/types/guidebook.ts) puis [`src/lib/guidebook`](../../src/lib/guidebook/)                      |
 | Comprendre les garde-fous       | [`package.json`](../../package.json) et [`scripts`](../../scripts/)                                                                |
 
 Ce chapitre décrit les responsabilités. Les règles impératives demeurent dans
