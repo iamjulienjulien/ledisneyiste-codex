@@ -236,8 +236,8 @@ index.oeuvres.reception
 Le registre répond à la question : **de quel territoire de sens ce signe
 relève-t-il ?**
 
-`general`, `index`, `techniques` et `recompenses` sont les registres
-actuellement matérialisés dans l’architecture cible du dépôt.
+`diffusion`, `general`, `index`, `recompenses`, `sources` et `techniques` sont
+les registres actuellement matérialisés dans l’architecture cible du dépôt.
 
 ### `collection`
 
@@ -357,7 +357,7 @@ Le registre `index` devient la seule racine canonique des familles
 documentaires.
 
 Ce raccord est désormais achevé dans le dépôt : `symbols-index.ts` porte les
-cinq collections, le registre central n’expose plus que les quatre registres
+cinq collections, le registre central expose les six registres
 publiés et les anciennes arborescences publiques `codex` et `blocs` ont été
 retirées.
 
@@ -373,17 +373,19 @@ Conséquence pour un agent :
 
 ## État réel des registres publiés
 
-Les quatre sous-registres publiés dans le dépôt décrivent actuellement
-**276 définitions**. Ce nombre mesure les entrées de registre, pas la totalité
+Les six sous-registres publiés dans le dépôt décrivent actuellement
+**432 définitions**. Ce nombre mesure les entrées de registre, pas la totalité
 des dessins envisagés dans le studio.
 
-| Registre         | Collections dans le dépôt | Définitions | État documentaire                                          |
-| ---------------- | ------------------------- | ----------: | ---------------------------------------------------------- |
-| `general`        | 9                         |         127 | publié et projetable                                       |
-| `index`          | 5                         |          45 | publié et projetable                                       |
-| `recompenses`    | 1                         |           6 | six trophées publiés ; d’autres dessins existent au studio |
-| `techniques`     | 6                         |          98 | publié et projetable                                       |
-| **Total publié** | **21**                    |     **276** | total des quatre sous-registres réellement projetables     |
+| Registre         | Collections dans le dépôt | Définitions | État documentaire                                   |
+| ---------------- | ------------------------- | ----------: | --------------------------------------------------- |
+| `diffusion`      | 5                         |          80 | publié et projetable                                |
+| `general`        | 9                         |         127 | publié et projetable                                |
+| `index`          | 5                         |          45 | publié et projetable                                |
+| `recompenses`    | 1                         |          18 | publié et raccordé au registre des récompenses      |
+| `sources`        | 4                         |          64 | publié et projetable                                |
+| `techniques`     | 6                         |          98 | publié et projetable                                |
+| **Total publié** | **30**                    |     **432** | total des six sous-registres réellement projetables |
 
 ### `general` · le vocabulaire transversal
 
@@ -448,65 +450,57 @@ correctement, `techniques` est souvent le bon territoire.
 
 ### `recompenses` · les distinctions projetables
 
-Le registre public contient actuellement six trophées :
-
-- `statuette-oscar` ;
-- `plaque-technique-multiplane` ;
-- `medaille-societe-des-nations` ;
-- `medaille-or-venise` ;
-- `grand-trophee-art-venise` ;
-- `rouleau-nyfcc`.
+Le registre public contient actuellement dix-huit trophées, des distinctions
+historiques déjà documentées aux grandes familles de prix du cinéma, de la
+télévision, de la musique, du théâtre, de l’animation et des parcs.
 
 Le type métier `TropheeRecompenseDisney` contraint les slugs disponibles. La
 collection n’est donc pas seulement une galerie : elle reste raccordée au
 registre documentaire des récompenses.
 
-Le dossier du studio recense davantage de trophées visuellement finalisés que
-le dépôt n’en publie aujourd’hui. Tant qu’un trophée n’a pas parcouru toute la
-chaîne de publication, il ne doit pas être invoqué depuis l’application.
+Tant qu’un trophée n’a pas parcouru toute la chaîne de publication, il ne doit
+pas être invoqué depuis l’application.
+
+### `sources` · la nature des preuves
+
+| Collection     | Entrées | Champ couvert                                        |
+| -------------- | ------: | ---------------------------------------------------- |
+| `supports`     |      16 | formes physiques et numériques des sources           |
+| `documents`    |      16 | nature précise des documents et témoignages          |
+| `archives`     |      16 | classement, provenance et localisation archivistique |
+| `conservation` |      16 | manipulation, protection et préservation matérielle  |
+
+Le registre répond à la question : **de quelle matière documentaire
+disposons-nous ?** Il conserve une frontière précise avec `general.archives`,
+qui reste un vocabulaire transversal de classement et de consultation.
+
+### `diffusion` · les vies publiques des œuvres
+
+| Collection       | Entrées | Champ couvert                                 |
+| ---------------- | ------: | --------------------------------------------- |
+| `salles`         |      16 | exploitation et projection cinématographiques |
+| `television`     |      16 | programmation et réception télévisées         |
+| `video`          |      16 | éditions physiques et visionnage domestique   |
+| `numerique`      |      16 | accès dématérialisé et diffusion en ligne     |
+| `scene-et-parcs` |      16 | spectacles, attractions et expositions        |
+
+Le registre répond à la question : **par quel mode cette matière devient-elle
+accessible ou publique ?**
 
 ---
 
 ## Les registres en préparation
 
-La documentation du studio distingue plusieurs ensembles dont la production
-visuelle est avancée, mais dont la publication web et le typage ne sont pas
-encore complets.
+La documentation du studio distingue encore deux ensembles dont la production
+visuelle et la publication web ne sont pas complètes.
 
-| Registre        | Collections prévues | Situation au 30 août 2026                                   |
-| --------------- | ------------------- | ----------------------------------------------------------- |
-| `sources`       | 4                   | 64 signes visuellement finalisés ; publication à construire |
-| `diffusion`     | 5                   | 80 signes visuellement finalisés ; publication à construire |
-| `lieux`         | 5                   | 80 propositions préparées ; production à poursuivre         |
-| `organisations` | 5                   | direction future à structurer                               |
+| Registre        | Collections prévues | Situation au 30 août 2026                           |
+| --------------- | ------------------- | --------------------------------------------------- |
+| `lieux`         | 5                   | 80 propositions préparées ; production à poursuivre |
+| `organisations` | 5                   | direction future à structurer                       |
 
 Ces nombres appartiennent au suivi de production du studio. Ils ne doivent
 pas être additionnés au nombre de symboles projetables du dépôt.
-
-### `sources`
-
-Ce registre décrira la nature, le support et la conservation d’une preuve :
-
-- `supports` ;
-- `documents` ;
-- `archives` ;
-- `conservation`.
-
-Il répond à la question : **de quelle matière documentaire disposons-nous ?**
-
-### `diffusion`
-
-Ce registre décrira les chemins par lesquels une œuvre, un programme ou une
-expérience rejoint son public :
-
-- `salles` ;
-- `television` ;
-- `video` ;
-- `numerique` ;
-- `scene-et-parcs`.
-
-Il répond à la question : **par quel mode cette matière devient-elle
-accessible ou publique ?**
 
 ### `lieux`
 
@@ -556,10 +550,10 @@ Représente-t-il une distinction ou la forme matérielle d’un trophée ?
     └── oui → recompenses
 
 Représente-t-il la nature ou le support d’une preuve ?
-    └── oui → sources, seulement après publication de ce registre
+    └── oui → sources
 
 Représente-t-il un mode d’accès ou de diffusion au public ?
-    └── oui → diffusion, seulement après publication de ce registre
+    └── oui → diffusion
 
 Représente-t-il une catégorie d’espace ?
     └── oui → lieux, seulement après publication de ce registre
@@ -1291,8 +1285,8 @@ Une clé dont le PNG manque est une promesse cassée.
 
 ### Utiliser un registre futur comme s’il existait
 
-Les registres `sources`, `diffusion`, `lieux` et `organisations` sont une cible
-documentée. Ils ne deviennent consommables qu’après leur publication complète.
+Les registres `lieux` et `organisations` sont une cible documentée. Ils ne
+deviennent consommables qu’après leur publication complète.
 
 ### Créer une collection par page
 
@@ -1440,7 +1434,7 @@ la collection. Puis laisse `PixieSymbol` allumer le projecteur.**
 ║  MISSION      Donner une adresse aux signes du Disneyiste    ║
 ║  ACCÈS        MASTERS · REGISTRES · PIXIESYMBOL · ATELIER    ║
 ║  PROTOCOLE    SENS · SILHOUETTE · TYPAGE · PROJECTION        ║
-║  STATUT       🪄 276 SIGNES PUBLIÉS AU REGISTRE              ║
+║  STATUT       🪄 432 SIGNES PUBLIÉS AU REGISTRE              ║
 ╠══════════════════════════════════════════════════════════════╣
 ║  « Le numérique au service du réel. »                        ║
 ║  Aucun symbole sans sens. Aucun sens sans vérification.       ║
