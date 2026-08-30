@@ -504,18 +504,20 @@ les six Dialogues `PixieField`, `PixieInput`, `PixieSelect`, `PixieSwitch`,
 `PixieSearchField` et `PixieTextarea`, ainsi que les trois premiers Effets
 `PixieLoader`, `PixieSkeleton` et `PixieToast`, sont désormais prêts à projeter.
 
-Ses sept plateaux de travail sont maintenant actifs :
+Ses huit plateaux de travail sont maintenant actifs :
 
 1. **La Pellicule** réunit les typographies et les palettes ;
 2. **Les Accessoires** éprouvent les primitives avant leur entrée dans le
    Codex ;
 3. **Les Décors** façonnent les surfaces et leurs profondeurs ;
-4. **Les Dialogues** composent les champs et contrôles de formulaire ;
-5. **Le Montage** règle la composition et le rythme des séquences ;
-6. **Les Effets** rendent visibles les attentes et les retours du système ;
-7. **Les Plans** composent de nouvelles lectures métier à partir des Archives.
+4. **Les Écrans** restituent les documents et compositions spécialisées sans
+   les modifier ;
+5. **Les Dialogues** composent les champs et contrôles de formulaire ;
+6. **Le Montage** règle la composition et le rythme des séquences ;
+7. **Les Effets** rendent visibles les attentes et les retours du système ;
+8. **Les Plans** composent de nouvelles lectures métier à partir des Archives.
 
-Le septième plateau projette cinq explorations documentaires en version
+Le huitième plateau projette cinq explorations documentaires en version
 `v0.1.0` : le
 **Travelling documentaire**, le **Plan d’ensemble**, le **Montage du temps**,
 le **Générique vivant** et la **Table lumineuse**. Chaque Plan possède un
@@ -552,12 +554,14 @@ contradictoires, les grands génériques, les preuves contrastées et les
 contraintes d’accessibilité. Elles ne modifient jamais les Archives et restent
 signalées comme matière de démonstration dans l’Atelier.
 
-L’Atelier documente actuellement **2 esquisses PixieDust**, auxquelles
-s’ajoutent les six Décors, les neuf composants du Montage, les six
-Dialogues et les trois premiers Effets prêts à projeter :
+L’Atelier documente actuellement **29 composants validés** et **3 esquisses
+PixieDust** :
 
+- **Accessoires — 5 composants validés :** `PixieSymbol`, `PixieButton`,
+  `PixieLink`, `PixieBadge` et `PixieSeparator` ;
 - **Décors — 6 composants validés :** `PixieCard`, `PixiePanel`, `PixieFrame`,
   `PixieCallout`, `PixieInset` et `PixieBackdrop` ;
+- **Écrans — 1 esquisse :** `PixieDustAscii` ;
 - **Dialogues — 6 composants validés :** `PixieField`, `PixieInput`,
   `PixieSelect`, `PixieSwitch`, `PixieSearchField` et `PixieTextarea` ;
 - **Montage — 9 composants validés et 2 esquisses :** `PixieContainer`,
@@ -574,7 +578,7 @@ http://ledisneyiste-codex.test/atelier
 ```
 
 La route appelle `notFound()` en production et ses métadonnées interdisent son
-indexation. Sa structure, ses sept plateaux et ses parcours d’ajout sont décrits
+indexation. Sa structure, ses huit plateaux et ses parcours d’ajout sont décrits
 dans [`AGENTS.md`](./AGENTS.md#latelier).
 
 ---

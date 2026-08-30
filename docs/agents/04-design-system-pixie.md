@@ -341,13 +341,14 @@ import { PixieCard } from "@/components/ui/PixieCard/PixieCard";
 
 ## Les plateaux du système
 
-L’Atelier possède sept plateaux. Cinq accueillent directement les composants
+L’Atelier possède huit plateaux. Six accueillent directement les composants
 Pixie stables.
 
 | Plateau         | Responsabilité Pixie                          |
 | --------------- | --------------------------------------------- |
 | Les Accessoires | primitives simples, actions et repères        |
 | Les Décors      | surfaces, cadres et atmosphères               |
+| Les Écrans      | restitution, lecture et visionnage            |
 | Les Dialogues   | saisie, choix et interaction avec la personne |
 | Le Montage      | disposition, rythme et comportement spatial   |
 | Les Effets      | attente, chargement et retour du système      |
@@ -471,6 +472,31 @@ leur rôle, des variantes, intensités, textures ou effets.
 
 Commence toujours par le rendu sans effet. Ajoute ensuite un seul signal
 expressif dominant : accent, halo, grain, projecteur ou élévation.
+
+---
+
+## Les Écrans · 1 esquisse
+
+Les Écrans restituent une matière déjà préparée. Ils peuvent la cadrer, la
+faire défiler ou lui donner une alternative accessible, mais ils ne la
+réécrivent pas et ne décident pas de sa provenance.
+
+| Composant        | Mission                              | Fichiers de référence                                                                                                  |
+| ---------------- | ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| `PixieDustAscii` | Préserver une composition monospacée | [UI](../../src/components/ui/PixieDustAscii/) · [Dossier](../../src/app/atelier/_components/PixieDustAsciiDossier.tsx) |
+
+### `PixieDustAscii` · esquisse `0.1.0`
+
+Cette primitive reçoit uniquement une chaîne déjà autorisée. Elle préserve ses
+espaces, tabulations et retours à la ligne, maîtrise ses débordements et exige
+une alternative accessible lorsque la composition informe. Elle ne lit aucun
+fichier et ne connaît ni Markdown, ni Notion : ces responsabilités
+appartiendront au futur domaine `Guidebook*` côté serveur.
+
+La grille ASCII utilise une pile dédiée — Menlo, Monaco, Cascadia Mono,
+DejaVu Sans Mono puis Courier New — distincte d’IBM Plex Mono. Les cartes
+doivent malgré tout employer une largeur de ligne constante et considérer les
+emojis comme des glyphes potentiellement larges.
 
 ---
 

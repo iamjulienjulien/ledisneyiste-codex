@@ -11,7 +11,7 @@
 > combien de temps regarder et ce qu’il faut laisser hors champ. Il ne change
 > jamais ce qui se trouvait devant l’objectif._
 
-Ce chapitre documente le septième plateau de l’Atelier : **Les Plans**.
+Ce chapitre documente le huitième plateau de l’Atelier : **Les Plans**.
 
 Un Plan est une lecture métier dérivée des Archives. Il reçoit un Sujet
 publié, choisit un Angle et un Objectif, limite son Cadre, transforme une

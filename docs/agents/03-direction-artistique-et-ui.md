@@ -357,6 +357,20 @@ IBM Plex Mono rend les réglages et les références techniques immédiatement
 identifiables. Elle ne doit pas être utilisée pour donner artificiellement un
 air « système » à une métadonnée éditoriale ordinaire.
 
+### La pile ASCII — la grille stricte
+
+```text
+Variable   --projection-font-ascii
+Pile       Menlo · Monaco · Cascadia Mono · DejaVu Sans Mono · Courier New
+Rôle       cartes de service, arborescences et dessins en caractères
+```
+
+Cette pile est réservée aux compositions dont l’alignement des colonnes fait
+partie du dessin. Elle passe avant IBM Plex Mono pour privilégier des polices
+système éprouvées sur les caractères de cadre. Elle ne corrige pas une source
+mal rembourrée : toutes les lignes d’un cadre doivent conserver la même largeur
+visuelle et les emojis doivent être vérifiés séparément.
+
 ### La hiérarchie éditoriale recommandée
 
 ```text

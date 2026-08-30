@@ -349,20 +349,24 @@ L’Atelier est le studio local de conception, d’essai et de documentation. Il
 est accessible sous `/atelier`, appelle `notFound()` en production et interdit
 son indexation. Ne jamais l’exposer en production sans demande explicite.
 
-### Les sept plateaux
+### Les huit plateaux
 
 | N°   | Plateau         | Responsabilité                  |
 | ---- | --------------- | ------------------------------- |
 | `01` | La Pellicule    | Fondations et tokens            |
 | `02` | Les Accessoires | Primitives simples              |
 | `03` | Les Décors      | Surfaces                        |
-| `04` | Les Dialogues   | Formulaires et saisies          |
-| `05` | Le Montage      | Composition et mise en page     |
-| `06` | Les Effets      | Retours système et transitions  |
-| `07` | Les Plans       | Lectures documentaires dérivées |
+| `04` | Les Écrans      | Restitution et lecture          |
+| `05` | Les Dialogues   | Formulaires et saisies          |
+| `06` | Le Montage      | Composition et mise en page     |
+| `07` | Les Effets      | Retours système et transitions  |
+| `08` | Les Plans       | Lectures documentaires dérivées |
 
-Ne pas créer un huitième plateau pour une nuance mineure. Les Plans ne sont
-pas des composants de Montage et ne reçoivent aucun préfixe `Pixie`.
+Les Écrans accueillent les composants spécialisés qui restituent une matière
+sans la modifier : lecteurs, visionneuses et compositions d’affichage. Ils ne
+sont ni des Décors génériques, ni des Dialogues. Ne pas créer un nouveau
+plateau pour une nuance mineure sans décision explicite du projet. Les Plans
+ne sont pas des composants de Montage et ne reçoivent aucun préfixe `Pixie`.
 
 ### États des items
 
