@@ -1,6 +1,6 @@
 import "server-only";
 import type { ReactNode } from "react";
-import type { PixieDustDocsNavigationItem } from "@/components/ui/PixieDustDocs";
+import type { PixieDocsNavigationItem } from "@/components/ui/PixieDocs";
 import { PixieMarkdown } from "@/components/ui/PixieMarkdown";
 import { loadLocalGuidebookDocument } from "@/lib/guidebook/server/load-local-document";
 import { guidebookProjection } from "@/registry/guidebook";
@@ -9,7 +9,7 @@ import type {
     GuidebookTableOfContentsItem,
 } from "@/types/guidebook";
 
-export type PixieDustDocsFixture = Readonly<{
+export type PixieDocsFixture = Readonly<{
     slug: string;
     title: string;
     summary: string;
@@ -73,9 +73,9 @@ function hrefFor(slug: string, anchor: string) {
     return `#${anchor}-${slug}`;
 }
 
-export function getPixieDustDocsNavigation(
+export function getPixieDocsNavigation(
     anchor: string,
-): readonly PixieDustDocsNavigationItem[] {
+): readonly PixieDocsNavigationItem[] {
     const document = (slug: keyof typeof summaries) => {
         const node = guidebookProjection.nodes.find(
             (candidate) => candidate.slug === slug,
@@ -85,7 +85,7 @@ export function getPixieDustDocsNavigation(
             slug,
             title: node?.title ?? slug,
             href: hrefFor(slug, anchor),
-        } satisfies PixieDustDocsNavigationItem;
+        } satisfies PixieDocsNavigationItem;
     };
 
     return [
@@ -125,9 +125,9 @@ export function getPixieDustDocsNavigation(
     ];
 }
 
-export function getPixieDustDocsDenseNavigation(
+export function getPixieDocsDenseNavigation(
     anchor: string,
-): readonly PixieDustDocsNavigationItem[] {
+): readonly PixieDocsNavigationItem[] {
     const published = guidebookProjection.nodes.map((node) => ({
         slug: node.slug,
         title: node.title,
@@ -171,9 +171,9 @@ export function getPixieDustDocsDenseNavigation(
     }));
 }
 
-export async function getPixieDustDocsFixtures(
+export async function getPixieDocsFixtures(
     anchor: string,
-): Promise<readonly PixieDustDocsFixture[]> {
+): Promise<readonly PixieDocsFixture[]> {
     return Promise.all(
         guidebookProjection.nodes.map(async (node) => {
             const document = await loadLocalGuidebookDocument(node.slug);

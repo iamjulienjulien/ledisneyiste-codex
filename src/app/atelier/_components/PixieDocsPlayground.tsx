@@ -7,40 +7,40 @@ import {
     useAtelierProjection,
 } from "@/components/atelier/AtelierPlaygroundProjection";
 import {
-    PixieDustDocs,
-    type PixieDustDocsDensity,
-    type PixieDustDocsNavigationItem,
-    type PixieDustDocsNavigationMode,
-    type PixieDustDocsNavigationWidth,
-    type PixieDustDocsTocMode,
-} from "@/components/ui/PixieDustDocs";
+    PixieDocs,
+    type PixieDocsDensity,
+    type PixieDocsNavigationItem,
+    type PixieDocsNavigationMode,
+    type PixieDocsNavigationWidth,
+    type PixieDocsTocMode,
+} from "@/components/ui/PixieDocs";
 import { PixieSelect } from "@/components/ui/PixieSelect";
 import { PixieSwitch } from "@/components/ui/PixieSwitch";
 import type { GuidebookDocumentState } from "@/types/guidebook";
-import type { PixieDustDocsFixture } from "./PixieDustDocs.fixtures.server";
+import type { PixieDocsFixture } from "./PixieDocs.fixtures.server";
 
 const densities = [
     ["compact", "Compacte"],
     ["comfortable", "Confortable"],
     ["airy", "Aérée"],
-] as const satisfies readonly [PixieDustDocsDensity, string][];
+] as const satisfies readonly [PixieDocsDensity, string][];
 
 const navigationWidths = [
     ["sm", "Étroite"],
     ["md", "Moyenne"],
     ["lg", "Large"],
-] as const satisfies readonly [PixieDustDocsNavigationWidth, string][];
+] as const satisfies readonly [PixieDocsNavigationWidth, string][];
 
 const navigationModes = [
     ["inline", "Dans le cadre"],
     ["floating", "Flottante"],
-] as const satisfies readonly [PixieDustDocsNavigationMode, string][];
+] as const satisfies readonly [PixieDocsNavigationMode, string][];
 
 const tocModes = [
     ["visible", "Visible"],
     ["collapsible", "Repliable"],
     ["hidden", "Masqué"],
-] as const satisfies readonly [PixieDustDocsTocMode, string][];
+] as const satisfies readonly [PixieDocsTocMode, string][];
 
 const documentStates = [
     ["ready", "Prêt à lire"],
@@ -60,7 +60,7 @@ const frameWidths = {
 } as const;
 
 function createDestination(
-    fixture: PixieDustDocsFixture | undefined,
+    fixture: PixieDocsFixture | undefined,
     anchor: string,
 ) {
     return fixture
@@ -109,7 +109,7 @@ function ControlSelect({
     );
 }
 
-export function PixieDustDocsPlayground({
+export function PixieDocsPlayground({
     fixtures,
     navigation,
     denseNavigation,
@@ -119,9 +119,9 @@ export function PixieDustDocsPlayground({
     documentEyebrow = "Édition pour agent IA",
     authorizedLabel,
 }: Readonly<{
-    fixtures: readonly PixieDustDocsFixture[];
-    navigation: readonly PixieDustDocsNavigationItem[];
-    denseNavigation?: readonly PixieDustDocsNavigationItem[];
+    fixtures: readonly PixieDocsFixture[];
+    navigation: readonly PixieDocsNavigationItem[];
+    denseNavigation?: readonly PixieDocsNavigationItem[];
     anchor: string;
     controls?: boolean;
     libraryTitle?: string;
@@ -134,12 +134,12 @@ export function PixieDustDocsPlayground({
     const [documentState, setDocumentState] = useState<GuidebookDocumentState>(
         fixtures[0]?.state ?? "ready",
     );
-    const [density, setDensity] = useState<PixieDustDocsDensity>("comfortable");
+    const [density, setDensity] = useState<PixieDocsDensity>("comfortable");
     const [navigationWidth, setNavigationWidth] =
-        useState<PixieDustDocsNavigationWidth>("md");
+        useState<PixieDocsNavigationWidth>("md");
     const [navigationMode, setNavigationMode] =
-        useState<PixieDustDocsNavigationMode>("inline");
-    const [toc, setToc] = useState<PixieDustDocsTocMode>("visible");
+        useState<PixieDocsNavigationMode>("inline");
+    const [toc, setToc] = useState<PixieDocsTocMode>("visible");
     const [sticky, setSticky] = useState(true);
     const [filterable, setFilterable] = useState(true);
     const [navigationFixture, setNavigationFixture] = useState<
@@ -158,7 +158,7 @@ export function PixieDustDocsPlayground({
         navigationFixture === "dense" && denseNavigation
             ? denseNavigation
             : navigation;
-    const code = `<PixieDustDocs
+    const code = `<PixieDocs
     title="${libraryTitle}"
     navigation={navigation}
     activeSlug="${current?.slug ?? "bienvenue"}"
@@ -185,7 +185,7 @@ export function PixieDustDocsPlayground({
             <div
                 className={`mx-auto w-full min-w-0 transition-[max-width] ${frameWidths[cadre]}`}
             >
-                <PixieDustDocs
+                <PixieDocs
                     title={libraryTitle}
                     navigation={projectedNavigation}
                     activeSlug={current.slug}
@@ -280,7 +280,7 @@ export function PixieDustDocsPlayground({
                             value={density}
                             options={densities}
                             onChange={(value) =>
-                                setDensity(value as PixieDustDocsDensity)
+                                setDensity(value as PixieDocsDensity)
                             }
                         />
                         <ControlSelect
@@ -290,7 +290,7 @@ export function PixieDustDocsPlayground({
                             options={navigationWidths}
                             onChange={(value) =>
                                 setNavigationWidth(
-                                    value as PixieDustDocsNavigationWidth,
+                                    value as PixieDocsNavigationWidth,
                                 )
                             }
                         />
@@ -301,7 +301,7 @@ export function PixieDustDocsPlayground({
                             options={navigationModes}
                             onChange={(value) =>
                                 setNavigationMode(
-                                    value as PixieDustDocsNavigationMode,
+                                    value as PixieDocsNavigationMode,
                                 )
                             }
                         />
@@ -311,7 +311,7 @@ export function PixieDustDocsPlayground({
                             value={toc}
                             options={tocModes}
                             onChange={(value) =>
-                                setToc(value as PixieDustDocsTocMode)
+                                setToc(value as PixieDocsTocMode)
                             }
                         />
 

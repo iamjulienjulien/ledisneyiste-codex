@@ -6,18 +6,17 @@ import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieBadge } from "@/components/ui/PixieBadge";
 import { PixiePanel } from "@/components/ui/PixiePanel";
-import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import {
-    getPixieDustDocsDenseNavigation,
-    getPixieDustDocsFixtures,
-    getPixieDustDocsNavigation,
-} from "./PixieDustDocs.fixtures.server";
+    getPixieDocsDenseNavigation,
+    getPixieDocsFixtures,
+    getPixieDocsNavigation,
+} from "./PixieDocs.fixtures.server";
 import {
-    getPixieDustDocsNotionConnectionState,
-    getPixieDustDocsNotionFixtures,
-    getPixieDustDocsNotionNavigation,
-} from "./PixieDustDocs.notion-fixtures.server";
-import { PixieDustDocsPlayground } from "./PixieDustDocsPlayground";
+    getPixieDocsNotionConnectionState,
+    getPixieDocsNotionFixtures,
+    getPixieDocsNotionNavigation,
+} from "./PixieDocs.notion-fixtures.server";
+import { PixieDocsPlayground } from "./PixieDocsPlayground";
 
 const properties = [
     {
@@ -28,7 +27,7 @@ const properties = [
     },
     {
         name: "navigation",
-        type: "readonly PixieDustDocsNavigationItem[]",
+        type: "readonly PixieDocsNavigationItem[]",
         defaultValue: "—",
         description:
             "Arborescence déjà ordonnée, autorisée et munie de destinations résolues.",
@@ -66,10 +65,22 @@ const properties = [
         description: "Disponibilité réelle de la matière projetée.",
     },
     {
-        name: "documentEyebrow / documentSummary / documentMeta",
+        name: "documentEyebrow",
+        type: "ReactNode",
+        defaultValue: '"Guidebook"',
+        description: "Repère éditorial placé au-dessus du titre courant.",
+    },
+    {
+        name: "documentSummary",
         type: "ReactNode",
         defaultValue: "—",
-        description: "Repères éditoriaux placés avant la lecture.",
+        description: "Résumé visible placé avant la lecture.",
+    },
+    {
+        name: "documentMeta",
+        type: "ReactNode",
+        defaultValue: "—",
+        description: "Métadonnées déjà préparées pour le document courant.",
     },
     {
         name: "stateMessage",
@@ -78,43 +89,85 @@ const properties = [
         description: "Contrechamp explicite propre au contexte de source.",
     },
     {
-        name: "previous / next",
-        type: "PixieDustDocsDestination | null",
+        name: "previous",
+        type: "PixieDocsDestination | null",
         defaultValue: "—",
-        description: "Raccords déjà résolus vers les documents voisins.",
+        description: "Raccord déjà résolu vers le document précédent.",
+    },
+    {
+        name: "next",
+        type: "PixieDocsDestination | null",
+        defaultValue: "—",
+        description: "Raccord déjà résolu vers le document suivant.",
     },
     {
         name: "density",
-        type: "PixieDustDocsDensity",
+        type: "PixieDocsDensity",
         defaultValue: '"comfortable"',
         description: "Respiration générale des trois zones.",
     },
     {
         name: "navigationWidth",
-        type: "PixieDustDocsNavigationWidth",
+        type: "PixieDocsNavigationWidth",
         defaultValue: '"md"',
         description:
             "Largeur réelle de la colonne ou du panneau flottant lorsque le cadre le permet.",
     },
     {
         name: "navigationMode",
-        type: "PixieDustDocsNavigationMode",
+        type: "PixieDocsNavigationMode",
         defaultValue: '"inline"',
         description:
             "Réserve une colonne dans le cadre ou libère le document derrière un panneau flottant.",
     },
     {
         name: "toc",
-        type: "PixieDustDocsTocMode",
+        type: "PixieDocsTocMode",
         defaultValue: '"visible"',
         description: "Présence du sommaire dans le cadre courant.",
     },
     {
-        name: "sticky / filterable",
+        name: "sticky",
         type: "boolean",
         defaultValue: "true",
         description:
-            "Maintien des repères latéraux et filtre léger sur les titres.",
+            "Maintient les repères latéraux dans les limites de la bibliothèque.",
+    },
+    {
+        name: "filterable",
+        type: "boolean",
+        defaultValue: "true",
+        description: "Expose le filtre léger appliqué aux titres transmis.",
+    },
+    {
+        name: "filterLabel",
+        type: "string",
+        defaultValue: '"Filtrer les titres"',
+        description: "Nom visible et accessible du filtre.",
+    },
+    {
+        name: "filterPlaceholder",
+        type: "string",
+        defaultValue: '"Nom d’un chapitre…"',
+        description: "Exemple de recherche affiché dans le filtre.",
+    },
+    {
+        name: "navigationLabel",
+        type: "string",
+        defaultValue: '"Parcourir la bibliothèque"',
+        description: "Nom des régions de navigation responsive.",
+    },
+    {
+        name: "tableOfContentsLabel",
+        type: "string",
+        defaultValue: '"Dans ce document"',
+        description: "Nom visible et accessible du sommaire.",
+    },
+    {
+        name: "headingLevel",
+        type: "PixieDocsHeadingLevel",
+        defaultValue: "1",
+        description: "Niveau du titre principal dans son contexte d’insertion.",
     },
     {
         name: "onNavigate",
@@ -123,35 +176,71 @@ const properties = [
         description:
             "Navigation contrôlée optionnelle ; sans elle, les liens restent natifs.",
     },
+    {
+        name: "className",
+        type: "string",
+        defaultValue: '""',
+        description: "Classes complémentaires appliquées à la racine.",
+    },
+    {
+        name: "style",
+        type: "PixieDocsStyle",
+        defaultValue: "—",
+        description: "Styles et largeurs CSS explicitement transmis.",
+    },
 ] as const;
 
 const specificTypes = [
     {
-        name: "PixieDustDocsNavigationState",
+        name: "PixieDocsNavigationState",
         values: ['"available"', '"restricted"', '"unavailable"'],
         description:
             "Disponibilité d’une destination sans transformer une absence en lien.",
     },
     {
-        name: "PixieDustDocsDensity",
+        name: "PixieDocsNavigationItem",
+        values: ["slug", "title", "href", "state?", "children?"],
+        description: "Nœud récursif déjà ordonné et résolu de la bibliothèque.",
+    },
+    {
+        name: "PixieDocsDestination",
+        values: ["slug", "title", "href"],
+        description: "Destination précédente ou suivante déjà résolue.",
+    },
+    {
+        name: "PixieDocsDensity",
         values: ['"compact"', '"comfortable"', '"airy"'],
         description: "Trois rythmes de bibliothèque documentaire.",
     },
     {
-        name: "PixieDustDocsNavigationWidth",
+        name: "PixieDocsNavigationWidth",
         values: ['"sm"', '"md"', '"lg"'],
         description: "Trois largeurs bornées de navigation.",
     },
     {
-        name: "PixieDustDocsNavigationMode",
+        name: "PixieDocsNavigationMode",
         values: ['"inline"', '"floating"'],
         description:
             "Bibliothèque inscrite dans la grille ou projetée dans un PixiePanel fixe, escamoté derrière sa languette droite.",
     },
     {
-        name: "PixieDustDocsTocMode",
+        name: "PixieDocsTocMode",
         values: ['"visible"', '"collapsible"', '"hidden"'],
         description: "Sommaire latéral, repliable ou volontairement absent.",
+    },
+    {
+        name: "PixieDocsHeadingLevel",
+        values: ["1", "2", "3", "4", "5", "6"],
+        description: "Niveau sémantique borné du titre principal.",
+    },
+    {
+        name: "PixieDocsStyle",
+        values: [
+            "CSSProperties",
+            '"--pixie-docs-navigation-width"',
+            '"--pixie-docs-toc-width"',
+        ],
+        description: "Styles natifs et deux largeurs de composition publiques.",
     },
     {
         name: "GuidebookDocumentState",
@@ -231,23 +320,23 @@ const states = [
     ],
 ] as const;
 
-export async function PixieDustDocsDossier() {
+export async function PixieDocsDossier() {
     const masterAnchor = "docs-master";
     const notionAnchor = "docs-notion";
     const playgroundAnchor = "docs-playground";
     const [masterFixtures, notionFixtures, playgroundFixtures] =
         await Promise.all([
-            getPixieDustDocsFixtures(masterAnchor),
-            getPixieDustDocsNotionFixtures(notionAnchor),
-            getPixieDustDocsFixtures(playgroundAnchor),
+            getPixieDocsFixtures(masterAnchor),
+            getPixieDocsNotionFixtures(notionAnchor),
+            getPixieDocsFixtures(playgroundAnchor),
         ]);
-    const notionConnectionState = getPixieDustDocsNotionConnectionState();
+    const notionConnectionState = getPixieDocsNotionConnectionState();
 
     return (
         <AtelierFicheAccessoire
-            id="pixie-dust-docs"
-            labelledBy="pixie-dust-docs-title"
-            nom="PixieDustDocs"
+            id="pixie-docs"
+            labelledBy="pixie-docs-title"
+            nom="PixieDocs"
             className="scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
@@ -256,10 +345,10 @@ export async function PixieDustDocsDossier() {
                             Le clap · Écran 003
                         </p>
                         <h2
-                            id="pixie-dust-docs-title"
+                            id="pixie-docs-title"
                             className="mt-4 text-4xl text-ink sm:text-5xl"
                         >
-                            PixieDustDocs
+                            PixieDocs
                         </h2>
                         <p className="mt-4 text-lg leading-8 text-ink-soft">
                             Parcourir une bibliothèque documentaire déjà
@@ -274,7 +363,7 @@ export async function PixieDustDocsDossier() {
                                 État
                             </dt>
                             <dd className="mt-2">
-                                <AtelierStatut statut="Esquisse" />
+                                <AtelierStatut statut="Prêt à projeter" />
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -282,7 +371,7 @@ export async function PixieDustDocsDossier() {
                                 Version
                             </dt>
                             <dd className="mt-2 font-mono text-sm text-ink">
-                                0.2.0
+                                1.0.0
                             </dd>
                         </div>
                     </dl>
@@ -337,9 +426,9 @@ export async function PixieDustDocsDossier() {
                     />
                 </div>
                 <div className="mt-7">
-                    <PixieDustDocsPlayground
+                    <PixieDocsPlayground
                         fixtures={masterFixtures}
-                        navigation={getPixieDustDocsNavigation(masterAnchor)}
+                        navigation={getPixieDocsNavigation(masterAnchor)}
                         anchor={masterAnchor}
                         controls={false}
                     />
@@ -473,11 +562,9 @@ export async function PixieDustDocsDossier() {
                 </div>
 
                 <div className="mt-7">
-                    <PixieDustDocsPlayground
+                    <PixieDocsPlayground
                         fixtures={notionFixtures}
-                        navigation={getPixieDustDocsNotionNavigation(
-                            notionAnchor,
-                        )}
+                        navigation={getPixieDocsNotionNavigation(notionAnchor)}
                         anchor={notionAnchor}
                         controls={false}
                         libraryTitle="Les dossiers du Disneyiste"
@@ -515,7 +602,7 @@ export async function PixieDustDocsDossier() {
     → page autorisée
     → Markdown Notion normalisé
     → analyse Guidebook commune
-    → PixieDustDocs
+    → PixieDocs
 
 identifiant absent ou page hors arbre
     → restricted
@@ -572,7 +659,7 @@ identifiant absent ou page hors arbre
                     id="docs-extremes"
                     eyebrow="Bobines témoins"
                     title="La bibliothèque résiste aux arbres difficiles"
-                    description="La v0.2.0 réserve ses limites avant que les dossiers réels ne les rencontrent."
+                    description="Le contrat stable réserve ses limites avant que les dossiers réels ne les rencontrent."
                 />
                 <div className="mt-8 grid gap-5 lg:grid-cols-3">
                     {[
@@ -636,7 +723,7 @@ identifiant absent ou page hors arbre
             </section>
 
             <section
-                id="pixie-dust-docs-playground"
+                id="pixie-docs-playground"
                 aria-labelledby="docs-playground-title"
                 className="mt-16 scroll-mt-8 border border-line-strong bg-surface-muted p-6 shadow-soft sm:p-8"
             >
@@ -647,12 +734,10 @@ identifiant absent ou page hors arbre
                     description="Les sept vrais chapitres changent de cadre, de rythme et d’état sans recharger ni réanalyser leur source."
                 />
                 <div className="mt-8">
-                    <PixieDustDocsPlayground
+                    <PixieDocsPlayground
                         fixtures={playgroundFixtures}
-                        navigation={getPixieDustDocsNavigation(
-                            playgroundAnchor,
-                        )}
-                        denseNavigation={getPixieDustDocsDenseNavigation(
+                        navigation={getPixieDocsNavigation(playgroundAnchor)}
+                        denseNavigation={getPixieDocsDenseNavigation(
                             playgroundAnchor,
                         )}
                         anchor={playgroundAnchor}
@@ -667,7 +752,7 @@ identifiant absent ou page hors arbre
                 <SequenceTitle
                     id="docs-technical"
                     eyebrow="Générique technique"
-                    title="API de l’esquisse"
+                    title="API du composant"
                     description="L’assemblage reçoit une navigation résolue et un document déjà projeté. Il ne lit aucun fichier, ne connaît aucune racine Notion et ne crée aucune route."
                 />
                 <div className="mt-7">
@@ -678,59 +763,6 @@ identifiant absent ou page hors arbre
                     <div className="mt-5">
                         <AtelierTypesTable types={specificTypes} />
                     </div>
-                </div>
-            </section>
-
-            <section aria-labelledby="docs-journal" className="mt-16">
-                <SequenceTitle
-                    id="docs-journal"
-                    eyebrow="Journal de production"
-                    title="Verdict de la seconde bobine"
-                    description="L’adaptateur est implémenté et vérifiable hors ligne. Sa première lecture réelle demeure un raccord différé, sans bloquer la promotion future des composants."
-                />
-                <ul className="mt-7 grid gap-px bg-line md:grid-cols-2">
-                    {[
-                        "Le Markdown local et Notion rejoint une analyse serveur unique.",
-                        "Le manifeste et l’arbre Notion sont vérifiés séparément.",
-                        "L’ascendance réelle est bornée avant toute lecture du document.",
-                        "Les extensions propriétaires sont normalisées ou signalées.",
-                        "Les pages hors projection ne produisent aucun href.",
-                        "La route /guidebook reste volontairement hors de ce train.",
-                    ].map((item) => (
-                        <li
-                            key={item}
-                            className="list-none bg-surface p-5 text-ink-soft"
-                        >
-                            <span
-                                className="mr-3 text-accent"
-                                aria-hidden="true"
-                            >
-                                ◇
-                            </span>
-                            {item}
-                        </li>
-                    ))}
-                </ul>
-            </section>
-
-            <section
-                aria-labelledby="docs-last-image"
-                className="mt-16 border-t border-line pt-10"
-            >
-                <SequenceTitle
-                    id="docs-last-image"
-                    eyebrow="Dernière image"
-                    title="La seconde bobine tient le cadre. Le Guidebook peut préparer sa salle."
-                />
-                <div className="mt-8">
-                    <PixieSeparator
-                        variant="beam"
-                        intensity="strong"
-                        color="violet-ombre-portee"
-                        width="full"
-                        spacing="none"
-                        decorative
-                    />
                 </div>
             </section>
         </AtelierFicheAccessoire>

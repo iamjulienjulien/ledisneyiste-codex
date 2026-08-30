@@ -1,7 +1,7 @@
 import "server-only";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import type { PixieDustDocsNavigationItem } from "@/components/ui/PixieDustDocs";
+import type { PixieDocsNavigationItem } from "@/components/ui/PixieDocs";
 import { PixieMarkdown } from "@/components/ui/PixieMarkdown";
 import { analyzeGuidebookMarkdown } from "@/lib/guidebook/analyze-markdown";
 import { loadNotionGuidebookDocument } from "@/lib/guidebook/server/load-notion-document";
@@ -18,7 +18,7 @@ import type {
     GuidebookDocument,
     GuidebookTableOfContentsItem,
 } from "@/types/guidebook";
-import type { PixieDustDocsFixture } from "./PixieDustDocs.fixtures.server";
+import type { PixieDocsFixture } from "./PixieDocs.fixtures.server";
 
 const summaries = {
     "le-disneyiste":
@@ -96,7 +96,7 @@ function pageTitlesById(): Readonly<Record<string, string>> {
 function navigationItems(
     anchor: string,
     nodes = notionGuidebookProjection.nodes,
-): readonly PixieDustDocsNavigationItem[] {
+): readonly PixieDocsNavigationItem[] {
     return nodes.map((node) => ({
         slug: node.slug,
         title: node.title,
@@ -105,19 +105,19 @@ function navigationItems(
     }));
 }
 
-export function getPixieDustDocsNotionNavigation(
+export function getPixieDocsNotionNavigation(
     anchor: string,
-): readonly PixieDustDocsNavigationItem[] {
+): readonly PixieDocsNavigationItem[] {
     return navigationItems(anchor);
 }
 
-export function getPixieDustDocsNotionConnectionState() {
+export function getPixieDocsNotionConnectionState() {
     return isNotionGuidebookConfigured() ? "configured" : "deferred";
 }
 
-export async function getPixieDustDocsNotionFixtures(
+export async function getPixieDocsNotionFixtures(
     anchor: string,
-): Promise<readonly PixieDustDocsFixture[]> {
+): Promise<readonly PixieDocsFixture[]> {
     const nodes = flattenGuidebookNavigation(notionGuidebookProjection.nodes);
     const resolveFixtureLink = (
         slug: string,
@@ -191,6 +191,6 @@ export async function getPixieDustDocsNotionFixtures(
                 withoutDocumentTitleInToc(tableOfContents),
                 anchorPrefix,
             ),
-        } satisfies PixieDustDocsFixture;
+        } satisfies PixieDocsFixture;
     });
 }
