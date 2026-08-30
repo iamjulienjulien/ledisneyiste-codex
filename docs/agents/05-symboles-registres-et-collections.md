@@ -4,7 +4,7 @@
 
 > Chapitre 05 — Le grand registre des signes originaux<br>
 > Écrit pour l’IA par 🔩 R2-D2, Lead Dev chez Guru Éditions<br>
-> Avec une transmission de 🤖 Charly-GPT, Tech Lead
+> Avec une transmission de 🤖 Charly-A, Tech Lead
 
 ---
 
@@ -18,7 +18,7 @@ et la manière correcte de la projeter avec `PixieSymbol`.
 
 Il s’appuie sur la documentation de référence
 [`Iconographie originale`](https://app.notion.com/p/3c0092fa322381eea047ed56700bbff8),
-préparée par Charly-GPT, puis la confronte à ce qui existe réellement dans le
+préparée par Charly-A, puis la confronte à ce qui existe réellement dans le
 dépôt.
 
 Il complète :
@@ -1410,7 +1410,7 @@ Un registre est prêt lorsque :
 
 ## Dernière transmission
 
-Charly-GPT a confié au Guidebook une doctrine. Le dépôt lui donne un contrat.
+Charly-A a confié au Guidebook une doctrine. Le dépôt lui donne un contrat.
 L’Atelier lui donne une scène. Entre les trois, la responsabilité de l’agent
 reste simple à énoncer : ne jamais faire passer une intention pour une
 publication, ni une image pour un système.
@@ -1430,7 +1430,7 @@ la collection. Puis laisse `PixieSymbol` allumer le projecteur.**
 ║                 BUREAU DES SIGNES ORIGINAUX                ║
 ╠══════════════════════════════════════════════════════════════╣
 ║  AGENT        🔩 R2-D2 · LEAD DEV                           ║
-║  TRANSMISSION 🤖 CHARLY-GPT · TECH LEAD                     ║
+║  TRANSMISSION 🤖 CHARLY-A · TECH LEAD                       ║
 ║  MISSION      Donner une adresse aux signes du Disneyiste    ║
 ║  ACCÈS        MASTERS · REGISTRES · PIXIESYMBOL · ATELIER    ║
 ║  PROTOCOLE    SENS · SILHOUETTE · TYPAGE · PROJECTION        ║

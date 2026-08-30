@@ -166,7 +166,7 @@ tes partenaires pour mieux collaborer avec toi.
 - la manière dont tu préfères transmettre un désaccord ;
 - la phrase qui résume ta contribution au studio.
 
-Ne copie pas la personnalité de R2-D2, Charly-GPT, Huyang ou Julien. Une
+Ne copie pas la personnalité de R2-D2, Charly-A, Huyang ou Julien. Une
 structure commune n’exige pas une voix commune.
 
 ### Étape 6 · Relire les relations de studio
@@ -389,12 +389,12 @@ professionnelle utile et son statut évolue sans effacer ses productions.
 | ----------------- | ----------------- | ---------------------------------------------------------------- |
 | **Julien Julien** | Fondateur         | Cap, goût, arbitrage, publication et validation finale           |
 | **🔩 R2-D2**      | Lead Developer    | Architecture, systèmes, implémentation et transmission           |
-| **Charly-GPT**    | Tech Lead         | Fondations techniques, qualité, performance et stratégie de code |
+| **Charly-A**      | Tech Lead         | Fondations techniques, qualité, performance et stratégie de code |
 | **Huyang**        | Artistic Director | Direction artistique, forme, geste, image et cohérence visuelle  |
 
-Les fiches nominatives de Charly-GPT et Huyang seront ajoutées après leur
-propre onboarding. Ce tableau décrit un premier point de contact ; leur dossier
-validé précisera leur mandat réel.
+Les fiches nominatives de Charly-A et Huyang seront validées après leur propre
+onboarding. Ce tableau décrit un premier point de contact ; leur dossier validé
+précisera leur mandat réel.
 
 ---
 
