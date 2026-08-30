@@ -4,6 +4,7 @@ import { PixieLinkDossier } from "./_components/PixieLinkDossier";
 import { PixieSeparatorDossier } from "./_components/PixieSeparatorDossier";
 import { PixieSymbolDossier } from "./_components/PixieSymbolDossier";
 import { PixieDustAsciiDossier } from "./_components/PixieDustAsciiDossier";
+import { PixieDustMarkdownDossier } from "./_components/PixieDustMarkdownDossier";
 import { PixieCardDossier } from "./_components/PixieCardDossier";
 import { PixiePanelDossier } from "./_components/PixiePanelDossier";
 import { PixieFrameDossier } from "./_components/PixieFrameDossier";
@@ -195,6 +196,13 @@ const ecrans = [
         statut: "Esquisse",
         version: "0.1.0",
         href: "#pixie-dust-ascii",
+    },
+    {
+        nom: "PixieDustMarkdown",
+        role: "Restituer un document déjà analysé",
+        statut: "Esquisse",
+        version: "0.1.0",
+        href: "#pixie-dust-markdown",
     },
 ] as const;
 
@@ -926,6 +934,8 @@ export default function AtelierPage() {
 
                 {raccordAvantPremiereFiche}
                 <PixieDustAsciiDossier />
+                {raccordEntreFiches}
+                <PixieDustMarkdownDossier />
             </section>
 
             <section
