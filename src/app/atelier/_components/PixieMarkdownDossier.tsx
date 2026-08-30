@@ -4,9 +4,9 @@ import { AtelierFicheAccessoire } from "@/components/atelier/AtelierFicheAccesso
 import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
-import { PixieDustMarkdown } from "@/components/ui/PixieDustMarkdown";
-import { getPixieDustMarkdownFixtures } from "./PixieDustMarkdown.fixtures.server";
-import { PixieDustMarkdownPlayground } from "./PixieDustMarkdownPlayground";
+import { PixieMarkdown } from "@/components/ui/PixieMarkdown";
+import { getPixieMarkdownFixtures } from "./PixieMarkdown.fixtures.server";
+import { PixieMarkdownPlayground } from "./PixieMarkdownPlayground";
 
 const properties = [
     {
@@ -18,40 +18,40 @@ const properties = [
     },
     {
         name: "as",
-        type: "PixieDustMarkdownElement",
+        type: "PixieMarkdownElement",
         defaultValue: '"article"',
         description: "Élément sémantique qui accueille le document.",
     },
     {
         name: "density",
-        type: "PixieDustMarkdownDensity",
+        type: "PixieMarkdownDensity",
         defaultValue: '"comfortable"',
         description: "Rythme vertical général de la lecture.",
     },
     {
         name: "measure",
-        type: "PixieDustMarkdownMeasure",
+        type: "PixieMarkdownMeasure",
         defaultValue: '"reading"',
         description:
             "Mesure du texte courant ; code, tableaux et ASCII conservent le cadre disponible.",
     },
     {
         name: "color",
-        type: "PixieDustMarkdownColor",
+        type: "PixieMarkdownColor",
         defaultValue: "false",
         description:
             "Accent éditorial transmis aux citations, listes, tâches, séparateurs et compositions ASCII.",
     },
     {
         name: "headingOffset",
-        type: "PixieDustMarkdownHeadingOffset",
+        type: "PixieMarkdownHeadingOffset",
         defaultValue: "0",
         description:
             "Décale la hiérarchie des titres sans dépasser le niveau h6.",
     },
     {
         name: "headingScale",
-        type: "PixieDustMarkdownHeadingScale",
+        type: "PixieMarkdownHeadingScale",
         defaultValue: '"display"',
         description:
             "Règle la présence visuelle des titres sans modifier leur niveau HTML.",
@@ -71,14 +71,14 @@ const properties = [
     },
     {
         name: "wideBlocks",
-        type: "PixieDustMarkdownWideBlocks",
+        type: "PixieMarkdownWideBlocks",
         defaultValue: '"frame"',
         description:
             "Étend code, tableaux et ASCII au cadre ou les maintient dans la mesure éditoriale.",
     },
     {
         name: "codeOverflow",
-        type: "PixieDustMarkdownCodeOverflow",
+        type: "PixieMarkdownCodeOverflow",
         defaultValue: '"scroll"',
         description:
             "Conserve les lignes de code ou autorise leur repli dans les cadres étroits.",
@@ -92,7 +92,7 @@ const properties = [
     },
     {
         name: "tableLayout",
-        type: "PixieDustMarkdownTableLayout",
+        type: "PixieMarkdownTableLayout",
         defaultValue: '"auto"',
         description:
             "Laisse les colonnes suivre leur matière ou leur impose un partage fixe du cadre.",
@@ -118,7 +118,7 @@ const properties = [
     },
     {
         name: "style",
-        type: "PixieDustMarkdownStyle",
+        type: "PixieMarkdownStyle",
         defaultValue: "—",
         description: "Styles et mesure CSS explicitement transmis.",
     },
@@ -126,52 +126,52 @@ const properties = [
 
 const specificTypes = [
     {
-        name: "PixieDustMarkdownElement",
+        name: "PixieMarkdownElement",
         values: ['"article"', '"section"', '"div"'],
         description: "Trois contextes sémantiques de restitution.",
     },
     {
-        name: "PixieDustMarkdownDensity",
+        name: "PixieMarkdownDensity",
         values: ['"compact"', '"comfortable"', '"airy"'],
         description: "Trois rythmes de lecture indépendants de la largeur.",
     },
     {
-        name: "PixieDustMarkdownMeasure",
+        name: "PixieMarkdownMeasure",
         values: ['"reading"', '"wide"', '"full"'],
         description:
             "Mesure éditoriale, technique ou contrainte par le parent.",
     },
     {
-        name: "PixieDustMarkdownHeadingOffset",
+        name: "PixieMarkdownHeadingOffset",
         values: ["0", "1", "2", "3"],
         description: "Décalage borné de la hiérarchie documentaire.",
     },
     {
-        name: "PixieDustMarkdownHeadingScale",
+        name: "PixieMarkdownHeadingScale",
         values: ['"display"', '"reading"', '"compact"'],
         description:
             "Trois échelles visuelles indépendantes de la sémantique des titres.",
     },
     {
-        name: "PixieDustMarkdownWideBlocks",
+        name: "PixieMarkdownWideBlocks",
         values: ['"frame"', '"measure"'],
         description:
             "Occupation du cadre par les blocs techniques et monospacés.",
     },
     {
-        name: "PixieDustMarkdownCodeOverflow",
+        name: "PixieMarkdownCodeOverflow",
         values: ['"scroll"', '"wrap"'],
         description:
             "Défilement fidèle ou repli assumé des longues lignes de code.",
     },
     {
-        name: "PixieDustMarkdownTableLayout",
+        name: "PixieMarkdownTableLayout",
         values: ['"auto"', '"fixed"'],
         description:
             "Largeur naturelle des colonnes ou partage fixe de l’espace.",
     },
     {
-        name: "PixieDustMarkdownColor",
+        name: "PixieMarkdownColor",
         values: ["AtelierAnimationColorSlug", "false"],
         description:
             "Accent du registre éditorial ou héritage de la Lumière courante.",
@@ -212,8 +212,8 @@ function Stage({ children }: Readonly<{ children: ReactNode }>) {
     );
 }
 
-export async function PixieDustMarkdownDossier() {
-    const fixtures = await getPixieDustMarkdownFixtures();
+export async function PixieMarkdownDossier() {
+    const fixtures = await getPixieMarkdownFixtures();
     const guidebook = fixtures.find((fixture) => fixture.slug === "guidebook")!;
     const rich = fixtures.find((fixture) => fixture.slug === "rich")!;
     const partial = fixtures.find((fixture) => fixture.slug === "partial")!;
@@ -236,9 +236,9 @@ export async function PixieDustMarkdownDossier() {
 
     return (
         <AtelierFicheAccessoire
-            id="pixie-dust-markdown"
-            labelledBy="pixie-dust-markdown-title"
-            nom="PixieDustMarkdown"
+            id="pixie-markdown"
+            labelledBy="pixie-markdown-title"
+            nom="PixieMarkdown"
             className="scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
@@ -247,10 +247,10 @@ export async function PixieDustMarkdownDossier() {
                             Le clap · Écran 002
                         </p>
                         <h2
-                            id="pixie-dust-markdown-title"
+                            id="pixie-markdown-title"
                             className="mt-4 text-4xl text-ink sm:text-5xl"
                         >
-                            PixieDustMarkdown
+                            PixieMarkdown
                         </h2>
                         <p className="mt-4 text-lg leading-8 text-ink-soft">
                             Restituer un document déjà analysé sans rouvrir sa
@@ -264,7 +264,7 @@ export async function PixieDustMarkdownDossier() {
                                 État
                             </dt>
                             <dd className="mt-2">
-                                <AtelierStatut statut="Esquisse" />
+                                <AtelierStatut statut="Prêt à projeter" />
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -272,7 +272,7 @@ export async function PixieDustMarkdownDossier() {
                                 Version
                             </dt>
                             <dd className="mt-2 font-mono text-sm text-ink">
-                                0.2.0
+                                1.0.0
                             </dd>
                         </div>
                     </dl>
@@ -291,7 +291,7 @@ export async function PixieDustMarkdownDossier() {
                 />
 
                 <div className="mt-8 max-h-[42rem] overflow-y-auto border border-line bg-surface p-5 sm:p-8">
-                    <PixieDustMarkdown
+                    <PixieMarkdown
                         blocks={guidebook.blocks.slice(0, 20)}
                         headingOffset={1}
                         headingScale="reading"
@@ -304,7 +304,7 @@ export async function PixieDustMarkdownDossier() {
                 <div className="mt-7">
                     <AtelierCodeBlock>{`const document = await loadLocalGuidebookDocument("bienvenue");
 
-<PixieDustMarkdown
+<PixieMarkdown
     blocks={document.analysis?.blocks ?? []}
     headingOffset={1}
     headingScale="reading"
@@ -322,7 +322,7 @@ export async function PixieDustMarkdownDossier() {
                 />
 
                 <div className="mt-8 border border-line bg-surface p-5 sm:p-8">
-                    <PixieDustMarkdown
+                    <PixieMarkdown
                         blocks={rich.blocks}
                         headingOffset={1}
                         anchorPrefix="markdown-rich"
@@ -366,7 +366,7 @@ export async function PixieDustMarkdownDossier() {
                             <p className="mb-5 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                                 headingScale=&quot;{scale}&quot;
                             </p>
-                            <PixieDustMarkdown
+                            <PixieMarkdown
                                 blocks={headingBlocks.slice(0, 4)}
                                 as="section"
                                 headingOffset={2}
@@ -401,7 +401,7 @@ export async function PixieDustMarkdownDossier() {
                         <p className="mb-5 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Fidélité · défilement · lignes repérées
                         </p>
-                        <PixieDustMarkdown
+                        <PixieMarkdown
                             blocks={technicalBlocks}
                             as="section"
                             headingScale="compact"
@@ -413,7 +413,7 @@ export async function PixieDustMarkdownDossier() {
                         <p className="mb-5 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Continuité · repli · colonnes fixes
                         </p>
-                        <PixieDustMarkdown
+                        <PixieMarkdown
                             blocks={technicalBlocks}
                             as="section"
                             headingScale="compact"
@@ -444,7 +444,7 @@ export async function PixieDustMarkdownDossier() {
                             <p className="mb-5 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                                 {label} · {color}
                             </p>
-                            <PixieDustMarkdown
+                            <PixieMarkdown
                                 blocks={accentBlocks}
                                 as="section"
                                 color={
@@ -475,7 +475,7 @@ export async function PixieDustMarkdownDossier() {
                         <p className="mb-5 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Partiel · HTML neutralisé
                         </p>
-                        <PixieDustMarkdown
+                        <PixieMarkdown
                             blocks={partial.blocks}
                             headingOffset={2}
                             anchorPrefix="markdown-partial"
@@ -486,7 +486,7 @@ export async function PixieDustMarkdownDossier() {
                         <p className="mb-5 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Vide · contrechamp explicite
                         </p>
-                        <PixieDustMarkdown
+                        <PixieMarkdown
                             blocks={[]}
                             emptyMessage="Cette bobine ne contient encore aucune matière transmissible."
                         />
@@ -495,7 +495,7 @@ export async function PixieDustMarkdownDossier() {
             </section>
 
             <section
-                id="pixie-dust-markdown-playground"
+                id="pixie-markdown-playground"
                 aria-labelledby="markdown-playground-title"
                 className="mt-16 scroll-mt-8 border border-line-strong bg-surface-muted p-6 shadow-soft sm:p-8"
             >
@@ -506,9 +506,7 @@ export async function PixieDustMarkdownDossier() {
                     description="La régie agit seulement sur la mesure, le rythme et l’insertion sémantique de blocs déjà résolus."
                 />
                 <div className="mt-8">
-                    <PixieDustMarkdownPlayground
-                        fixtures={playgroundFixtures}
-                    />
+                    <PixieMarkdownPlayground fixtures={playgroundFixtures} />
                 </div>
             </section>
 
@@ -567,8 +565,8 @@ export async function PixieDustMarkdownDossier() {
                 <SequenceTitle
                     id="markdown-technical"
                     eyebrow="Générique technique"
-                    title="API de l’esquisse"
-                    description="L’Écran reçoit uniquement des blocs Guidebook déjà autorisés. Sa seconde itération sépare la sémantique, la présence visuelle et le comportement des blocs techniques sans connaître leur source."
+                    title="API du composant"
+                    description="L’Écran reçoit uniquement des blocs Guidebook déjà autorisés. Son contrat stable sépare la sémantique, la présence visuelle et le comportement des blocs techniques sans connaître leur source."
                 />
 
                 <div className="mt-7">
@@ -581,50 +579,6 @@ export async function PixieDustMarkdownDossier() {
                         <AtelierTypesTable types={specificTypes} />
                     </div>
                 </div>
-            </section>
-
-            <section aria-labelledby="markdown-journal" className="mt-16">
-                <SequenceTitle
-                    id="markdown-journal"
-                    eyebrow="Journal de production"
-                    title="Décisions avant la promotion"
-                    description="La seconde itération possède désormais les réglages nécessaires pour éprouver une lecture entière avant de stabiliser son contrat."
-                />
-
-                <ul className="mt-7 grid gap-px bg-line md:grid-cols-2">
-                    {[
-                        "Éprouver le chapitre le plus long dans les trois échelles de titres à 200 % de zoom.",
-                        "Confirmer que les accents restent des repères et ne portent jamais seuls le sens.",
-                        "Tester défilement, repli, numéros de ligne et colonnes fixes sur mobile et au clavier.",
-                        "Relire les alternatives et la copie des compositions réellement confiées à PixieAscii.",
-                        "Réserver la copie du code à une future primitive dédiée afin de garder cet Écran serveur.",
-                        "Conserver sommaire, bibliothèque, source et navigation hors de cet Écran.",
-                    ].map((item) => (
-                        <li
-                            key={item}
-                            className="list-none bg-surface p-5 text-ink-soft"
-                        >
-                            <span
-                                className="mr-3 text-accent"
-                                aria-hidden="true"
-                            >
-                                ◇
-                            </span>
-                            {item}
-                        </li>
-                    ))}
-                </ul>
-            </section>
-
-            <section
-                aria-labelledby="markdown-last-image"
-                className="mt-16 border-t border-line pt-10"
-            >
-                <SequenceTitle
-                    id="markdown-last-image"
-                    eyebrow="Dernière image"
-                    title="Le document a trouvé sa voix. Il peut maintenant traverser toute la bibliothèque."
-                />
             </section>
         </AtelierFicheAccessoire>
     );

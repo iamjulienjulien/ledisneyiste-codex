@@ -50,7 +50,7 @@ const properties = [
         type: "ReactNode",
         defaultValue: "—",
         description:
-            "Plan déjà rendu côté serveur, généralement par PixieDustMarkdown.",
+            "Plan déjà rendu côté serveur, généralement par PixieMarkdown.",
     },
     {
         name: "tableOfContents",

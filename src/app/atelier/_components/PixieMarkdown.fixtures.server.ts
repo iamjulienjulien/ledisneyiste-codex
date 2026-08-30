@@ -4,7 +4,7 @@ import { resolveGuidebookLink } from "@/lib/guidebook/resolve-link";
 import { loadLocalGuidebookDocument } from "@/lib/guidebook/server/load-local-document";
 import type { GuidebookBlock } from "@/types/guidebook";
 
-export type PixieDustMarkdownFixture = {
+export type PixieMarkdownFixture = {
     slug: string;
     label: string;
     description: string;
@@ -40,7 +40,7 @@ Le **Guidebook** transmet les décisions du studio avec de l’_emphase_, du
 \`\`\`tsx
 const document = await loadLocalGuidebookDocument("bienvenue");
 const blocks = document.analysis?.blocks ?? [];
-return <PixieDustMarkdown blocks={blocks} headingScale="reading" codeLineNumbers color="violet-ombre-portee" />;
+return <PixieMarkdown blocks={blocks} headingScale="reading" codeLineNumbers color="violet-ombre-portee" />;
 \`\`\`
 
 \`\`\`text
@@ -73,8 +73,8 @@ function analyzeFixture(slug: string, markdown: string): GuidebookBlock[] {
     }).blocks;
 }
 
-export async function getPixieDustMarkdownFixtures(): Promise<
-    PixieDustMarkdownFixture[]
+export async function getPixieMarkdownFixtures(): Promise<
+    PixieMarkdownFixture[]
 > {
     const guidebook = await loadLocalGuidebookDocument("bienvenue");
 

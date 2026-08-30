@@ -7,21 +7,21 @@ import {
     useAtelierProjection,
 } from "@/components/atelier/AtelierPlaygroundProjection";
 import {
-    PixieDustMarkdown,
-    type PixieDustMarkdownCodeOverflow,
-    type PixieDustMarkdownColor,
-    type PixieDustMarkdownDensity,
-    type PixieDustMarkdownHeadingOffset,
-    type PixieDustMarkdownHeadingScale,
-    type PixieDustMarkdownMeasure,
-    type PixieDustMarkdownTableLayout,
-    type PixieDustMarkdownWideBlocks,
-} from "@/components/ui/PixieDustMarkdown";
+    PixieMarkdown,
+    type PixieMarkdownCodeOverflow,
+    type PixieMarkdownColor,
+    type PixieMarkdownDensity,
+    type PixieMarkdownHeadingOffset,
+    type PixieMarkdownHeadingScale,
+    type PixieMarkdownMeasure,
+    type PixieMarkdownTableLayout,
+    type PixieMarkdownWideBlocks,
+} from "@/components/ui/PixieMarkdown";
 import { PixieSelect } from "@/components/ui/PixieSelect";
 import { PixieSwitch } from "@/components/ui/PixieSwitch";
 import type { GuidebookBlock } from "@/types/guidebook";
 
-type PixieDustMarkdownFixture = {
+type PixieMarkdownFixture = {
     slug: string;
     label: string;
     description: string;
@@ -32,34 +32,34 @@ const densities = [
     ["compact", "Compacte"],
     ["comfortable", "Confortable"],
     ["airy", "Aérée"],
-] as const satisfies readonly [PixieDustMarkdownDensity, string][];
+] as const satisfies readonly [PixieMarkdownDensity, string][];
 
 const measures = [
     ["reading", "Lecture"],
     ["wide", "Large"],
     ["full", "Pleine largeur"],
-] as const satisfies readonly [PixieDustMarkdownMeasure, string][];
+] as const satisfies readonly [PixieMarkdownMeasure, string][];
 
 const headingScales = [
     ["display", "Affiche"],
     ["reading", "Lecture"],
     ["compact", "Compacte"],
-] as const satisfies readonly [PixieDustMarkdownHeadingScale, string][];
+] as const satisfies readonly [PixieMarkdownHeadingScale, string][];
 
 const wideBlockModes = [
     ["frame", "Cadre disponible"],
     ["measure", "Mesure du texte"],
-] as const satisfies readonly [PixieDustMarkdownWideBlocks, string][];
+] as const satisfies readonly [PixieMarkdownWideBlocks, string][];
 
 const codeOverflowModes = [
     ["scroll", "Défilement"],
     ["wrap", "Retour à la ligne"],
-] as const satisfies readonly [PixieDustMarkdownCodeOverflow, string][];
+] as const satisfies readonly [PixieMarkdownCodeOverflow, string][];
 
 const tableLayouts = [
     ["auto", "Naturelle"],
     ["fixed", "Colonnes fixes"],
-] as const satisfies readonly [PixieDustMarkdownTableLayout, string][];
+] as const satisfies readonly [PixieMarkdownTableLayout, string][];
 
 const colors = [
     ["theme", "Lumière du thème"],
@@ -111,32 +111,31 @@ function ControlSelect({
     );
 }
 
-export function PixieDustMarkdownPlayground({
+export function PixieMarkdownPlayground({
     fixtures,
-}: Readonly<{ fixtures: readonly PixieDustMarkdownFixture[] }>) {
+}: Readonly<{ fixtures: readonly PixieMarkdownFixture[] }>) {
     const [fixtureSlug, setFixtureSlug] = useState("rich");
-    const [density, setDensity] =
-        useState<PixieDustMarkdownDensity>("comfortable");
-    const [measure, setMeasure] = useState<PixieDustMarkdownMeasure>("reading");
-    const [color, setColor] = useState<PixieDustMarkdownColor>(false);
+    const [density, setDensity] = useState<PixieMarkdownDensity>("comfortable");
+    const [measure, setMeasure] = useState<PixieMarkdownMeasure>("reading");
+    const [color, setColor] = useState<PixieMarkdownColor>(false);
     const [headingOffset, setHeadingOffset] =
-        useState<PixieDustMarkdownHeadingOffset>(1);
+        useState<PixieMarkdownHeadingOffset>(1);
     const [headingScale, setHeadingScale] =
-        useState<PixieDustMarkdownHeadingScale>("reading");
+        useState<PixieMarkdownHeadingScale>("reading");
     const [headingAnchors, setHeadingAnchors] = useState(true);
     const [wideBlocks, setWideBlocks] =
-        useState<PixieDustMarkdownWideBlocks>("frame");
+        useState<PixieMarkdownWideBlocks>("frame");
     const [codeOverflow, setCodeOverflow] =
-        useState<PixieDustMarkdownCodeOverflow>("scroll");
+        useState<PixieMarkdownCodeOverflow>("scroll");
     const [codeLineNumbers, setCodeLineNumbers] = useState(true);
     const [tableLayout, setTableLayout] =
-        useState<PixieDustMarkdownTableLayout>("auto");
+        useState<PixieMarkdownTableLayout>("auto");
     const [asciiCopyable, setAsciiCopyable] = useState(true);
     const { lumiere, cadre } = useAtelierProjection();
     const fixture =
         fixtures.find((candidate) => candidate.slug === fixtureSlug) ??
         fixtures[0];
-    const code = `<PixieDustMarkdown
+    const code = `<PixieMarkdown
     blocks={document.analysis.blocks}
     density="${density}"
     measure="${measure}"
@@ -175,7 +174,7 @@ export function PixieDustMarkdownPlayground({
                             value={density}
                             options={densities}
                             onChange={(value) =>
-                                setDensity(value as PixieDustMarkdownDensity)
+                                setDensity(value as PixieMarkdownDensity)
                             }
                         />
                         <ControlSelect
@@ -184,7 +183,7 @@ export function PixieDustMarkdownPlayground({
                             value={measure}
                             options={measures}
                             onChange={(value) =>
-                                setMeasure(value as PixieDustMarkdownMeasure)
+                                setMeasure(value as PixieMarkdownMeasure)
                             }
                         />
                         <ControlSelect
@@ -196,7 +195,7 @@ export function PixieDustMarkdownPlayground({
                                 setColor(
                                     value === "theme"
                                         ? false
-                                        : (value as PixieDustMarkdownColor),
+                                        : (value as PixieMarkdownColor),
                                 )
                             }
                         />
@@ -212,9 +211,7 @@ export function PixieDustMarkdownPlayground({
                             ]}
                             onChange={(value) =>
                                 setHeadingOffset(
-                                    Number(
-                                        value,
-                                    ) as PixieDustMarkdownHeadingOffset,
+                                    Number(value) as PixieMarkdownHeadingOffset,
                                 )
                             }
                         />
@@ -225,7 +222,7 @@ export function PixieDustMarkdownPlayground({
                             options={headingScales}
                             onChange={(value) =>
                                 setHeadingScale(
-                                    value as PixieDustMarkdownHeadingScale,
+                                    value as PixieMarkdownHeadingScale,
                                 )
                             }
                         />
@@ -235,9 +232,7 @@ export function PixieDustMarkdownPlayground({
                             value={wideBlocks}
                             options={wideBlockModes}
                             onChange={(value) =>
-                                setWideBlocks(
-                                    value as PixieDustMarkdownWideBlocks,
-                                )
+                                setWideBlocks(value as PixieMarkdownWideBlocks)
                             }
                         />
                         <ControlSelect
@@ -247,7 +242,7 @@ export function PixieDustMarkdownPlayground({
                             options={codeOverflowModes}
                             onChange={(value) =>
                                 setCodeOverflow(
-                                    value as PixieDustMarkdownCodeOverflow,
+                                    value as PixieMarkdownCodeOverflow,
                                 )
                             }
                         />
@@ -258,7 +253,7 @@ export function PixieDustMarkdownPlayground({
                             options={tableLayouts}
                             onChange={(value) =>
                                 setTableLayout(
-                                    value as PixieDustMarkdownTableLayout,
+                                    value as PixieMarkdownTableLayout,
                                 )
                             }
                         />
@@ -316,7 +311,7 @@ export function PixieDustMarkdownPlayground({
                                 tabIndex={0}
                                 aria-label={`Aperçu : ${fixture.label}`}
                             >
-                                <PixieDustMarkdown
+                                <PixieMarkdown
                                     blocks={fixture.blocks}
                                     density={density}
                                     measure={measure}
