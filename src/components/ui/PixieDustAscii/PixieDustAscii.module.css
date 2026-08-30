@@ -1,0 +1,335 @@
+.root {
+    --pixie-ascii-accent: var(--pixie-ascii-color, var(--color-accent));
+    --pixie-ascii-padding: 1rem;
+    --pixie-ascii-font-size: 0.8125rem;
+    --pixie-ascii-line-height: 1.55;
+    --pixie-ascii-max-height: none;
+
+    min-width: 0;
+    margin: 0;
+    color: var(--color-ink);
+}
+
+.widthFit {
+    width: fit-content;
+    max-width: 100%;
+}
+
+.widthFull {
+    width: 100%;
+}
+
+.frame {
+    position: relative;
+    isolation: isolate;
+    min-width: 0;
+    overflow: hidden;
+    border-radius: var(--radius-medium);
+}
+
+.plain .frame {
+    border-radius: 0;
+    background: transparent;
+}
+
+.surface .frame {
+    border: 1px solid var(--color-line);
+    background:
+        linear-gradient(
+            145deg,
+            color-mix(in srgb, var(--pixie-ascii-accent) 5%, transparent),
+            transparent 48%
+        ),
+        var(--color-surface-muted);
+}
+
+.outline .frame {
+    border: 1px solid
+        color-mix(in srgb, var(--pixie-ascii-accent) 52%, var(--color-line));
+    background: transparent;
+}
+
+.slate .frame {
+    border: 1px solid
+        color-mix(in srgb, var(--pixie-ascii-accent) 62%, transparent);
+    color: var(--atelier-animation-papier-animation);
+    background:
+        linear-gradient(
+            135deg,
+            color-mix(in srgb, var(--pixie-ascii-accent) 12%, transparent),
+            transparent 55%
+        ),
+        var(--atelier-animation-table-lumineuse);
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 4%);
+}
+
+.projector .frame {
+    border: 1px solid
+        color-mix(in srgb, var(--pixie-ascii-accent) 58%, var(--color-line));
+    background:
+        radial-gradient(
+            circle at 50% 18%,
+            color-mix(in srgb, var(--pixie-ascii-accent) 18%, transparent),
+            transparent 56%
+        ),
+        var(--color-surface);
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 5%),
+        0 1rem 3rem
+            color-mix(in srgb, var(--pixie-ascii-accent) 10%, transparent);
+}
+
+.projector .frame::after {
+    position: absolute;
+    z-index: 0;
+    top: -30%;
+    left: 50%;
+    width: 58%;
+    height: 70%;
+    border-radius: 50%;
+    background: var(--pixie-ascii-accent);
+    content: "";
+    filter: blur(4rem);
+    opacity: 0.08;
+    pointer-events: none;
+    transform: translateX(-50%);
+}
+
+.toolbar {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    justify-content: flex-end;
+    border-bottom: 1px solid color-mix(in srgb, currentcolor 14%, transparent);
+    padding: 0.625rem 0.75rem;
+}
+
+.plain .toolbar {
+    border: 1px solid var(--color-line);
+    border-bottom: 0;
+    background: var(--color-surface-muted);
+}
+
+.copyButton {
+    min-width: 11rem;
+    border: 0;
+    border-radius: var(--radius-small);
+    background: transparent;
+    padding: 0.25rem 0.5rem;
+    color: var(--pixie-ascii-accent);
+    font-family: var(--font-eyebrow);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    transition:
+        color 150ms ease,
+        background-color 150ms ease;
+}
+
+.copyButton:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--pixie-ascii-accent) 12%, transparent);
+    color: var(--color-accent-hover);
+}
+
+.slate .copyButton:hover:not(:disabled) {
+    color: var(--atelier-animation-papier-animation);
+}
+
+.copyButton:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+}
+
+.copyButton[data-copy-state="copied"] {
+    color: var(--atelier-animation-vert-cellulo);
+}
+
+.copyButton[data-copy-state="error"] {
+    color: var(--atelier-animation-rouge-crayon);
+}
+
+.viewport {
+    position: relative;
+    z-index: 2;
+    max-height: var(--pixie-ascii-max-height);
+    padding: var(--pixie-ascii-padding);
+    scrollbar-gutter: stable;
+}
+
+.viewport:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: -4px;
+}
+
+.overflowAuto .viewport {
+    overflow: auto;
+    overscroll-behavior: contain;
+}
+
+.overflowClip .viewport {
+    overflow: clip;
+}
+
+.pre {
+    width: max-content;
+    min-width: max-content;
+    margin: 0;
+    color: inherit;
+    font-family: var(--projection-font-ascii);
+    font-size: var(--pixie-ascii-font-size);
+    font-variant-ligatures: none;
+    line-height: var(--pixie-ascii-line-height);
+    tab-size: var(--pixie-ascii-tab-size);
+    text-align: start;
+    white-space: pre;
+}
+
+.alignStart .pre {
+    margin-inline: 0;
+}
+
+.alignCenter .pre {
+    margin-inline: auto;
+}
+
+.empty {
+    margin: 0;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: var(--pixie-ascii-font-size);
+    font-style: italic;
+    line-height: var(--pixie-ascii-line-height);
+}
+
+.slate .empty {
+    color: color-mix(
+        in srgb,
+        var(--atelier-animation-papier-animation) 68%,
+        transparent
+    );
+}
+
+.caption {
+    margin-top: 0.75rem;
+    color: var(--color-ink-soft);
+    font-size: 0.875rem;
+    line-height: 1.55;
+}
+
+.sizeSmall {
+    --pixie-ascii-font-size: 0.6875rem;
+}
+
+.sizeMedium {
+    --pixie-ascii-font-size: 0.8125rem;
+}
+
+.sizeLarge {
+    --pixie-ascii-font-size: 0.9375rem;
+}
+
+.densityCompact {
+    --pixie-ascii-line-height: 1.3;
+}
+
+.densityComfortable {
+    --pixie-ascii-line-height: 1.55;
+}
+
+.densityAiry {
+    --pixie-ascii-line-height: 1.8;
+}
+
+.paddingNone {
+    --pixie-ascii-padding: 0;
+}
+
+.paddingSmall {
+    --pixie-ascii-padding: 0.75rem;
+}
+
+.paddingMedium {
+    --pixie-ascii-padding: 1rem;
+}
+
+.paddingLarge {
+    --pixie-ascii-padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.maxHeightNone {
+    --pixie-ascii-max-height: none;
+}
+
+.maxHeightSmall {
+    --pixie-ascii-max-height: 10rem;
+}
+
+.maxHeightMedium {
+    --pixie-ascii-max-height: 18rem;
+}
+
+.maxHeightLarge {
+    --pixie-ascii-max-height: 28rem;
+}
+
+.textureGrain .frame::before,
+.textureScanlines .frame::before {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    content: "";
+    pointer-events: none;
+}
+
+.textureGrain .frame::before {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+    background-size: 140px 140px;
+    mix-blend-mode: soft-light;
+    opacity: 0.16;
+}
+
+.textureScanlines .frame::before {
+    background: repeating-linear-gradient(
+        180deg,
+        transparent 0 3px,
+        color-mix(in srgb, var(--pixie-ascii-accent) 12%, transparent) 3px 4px
+    );
+    opacity: 0.55;
+}
+
+.visuallyHidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+@media (forced-colors: active) {
+    .frame,
+    .plain .toolbar {
+        border: 1px solid CanvasText;
+        background: Canvas;
+        color: CanvasText;
+        box-shadow: none;
+    }
+
+    .frame::before,
+    .frame::after {
+        display: none;
+    }
+
+    .copyButton {
+        color: LinkText;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .copyButton {
+        transition: none;
+    }
+}

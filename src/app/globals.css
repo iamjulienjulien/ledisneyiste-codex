@@ -42,6 +42,9 @@
     --projection-font-mono:
         var(--font-ibm-plex-mono), ui-monospace, SFMono-Regular, Consolas,
         monospace;
+    --projection-font-ascii:
+        Menlo, Monaco, "Cascadia Mono", "DejaVu Sans Mono", "Courier New",
+        monospace;
 
     --projection-font-brand-weight: 600;
     --projection-font-body-weight: 400;
