@@ -508,7 +508,7 @@ conserve la chaîne exacte et peut transmettre son état à la régie. À
 l’impression, les contrôles et textures disparaissent afin que la grille soit
 restituée sans bornes artificielles.
 
-### `PixieDustMarkdown` · esquisse `0.1.0`
+### `PixieDustMarkdown` · esquisse `0.2.0`
 
 Cet Écran reçoit uniquement des `GuidebookBlock` déjà analysés, autorisés et
 résolus côté serveur. Il restitue titres, paragraphes, citations, listes,
@@ -517,10 +517,20 @@ injecter de HTML brut. Les compositions reconnues comme ASCII sont confiées à
 `PixieAscii` avec l’alternative textuelle préparée par l’analyseur.
 
 La mesure (`reading`, `wide`, `full`) et la densité (`compact`, `comfortable`,
-`airy`) constituent ses deux seuls axes visuels. `headingOffset` adapte la
-hiérarchie au contexte d’insertion, tandis que `anchorPrefix` évite les
-collisions lorsque plusieurs extraits partagent une page. Un lien restreint ou
-invalide reste lisible, mais ne devient jamais une cible interactive.
+`airy`) règlent son rythme général. La seconde itération sépare désormais
+`headingOffset`, qui adapte la hiérarchie HTML au contexte d’insertion, de
+`headingScale`, qui choisit seulement la présence visuelle `display`,
+`reading` ou `compact`. Un chapitre enchâssé peut ainsi rester sémantiquement
+juste sans réduire tous ses intertitres à des repères minuscules.
+
+Les blocs techniques peuvent occuper tout le cadre ou rejoindre la mesure du
+texte. Le code choisit entre défilement fidèle et repli, avec des numéros de
+ligne purement visuels ; les tableaux conservent leur largeur naturelle ou
+partagent le cadre en colonnes fixes. L’accent du registre éditorial traverse
+citations, listes, tâches, séparateurs et `PixieAscii` sans porter seul le
+sens. `anchorPrefix` évite les collisions lorsque plusieurs extraits partagent
+une page. Un lien restreint ou invalide reste lisible, mais ne devient jamais
+une cible interactive.
 
 `PixieDustMarkdown` reste un composant serveur. Il ne connaît ni fichier, ni
 Notion, ni arborescence, ni sommaire global, ni route : la bibliothèque et ses
@@ -717,7 +727,7 @@ pages publiques.
 
 | Esquisse            | Version | Mission                                              | Fichiers                                                                                                                     |
 | ------------------- | ------- | ---------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `PixieDustMarkdown` | `0.1.0` | Restituer un document déjà analysé                   | [UI](../../src/components/ui/PixieDustMarkdown/) · [Dossier](../../src/app/atelier/_components/PixieDustMarkdownDossier.tsx) |
+| `PixieDustMarkdown` | `0.2.0` | Restituer un document déjà analysé                   | [UI](../../src/components/ui/PixieDustMarkdown/) · [Dossier](../../src/app/atelier/_components/PixieDustMarkdownDossier.tsx) |
 | `PixieDustDocs`     | `0.2.0` | Parcourir une bibliothèque documentaire déjà résolue | [UI](../../src/components/ui/PixieDustDocs/) · [Dossier](../../src/app/atelier/_components/PixieDustDocsDossier.tsx)         |
 | `PixieDustSplit`    | `0.1.0` | Répartir deux zones en champ et contrechamp          | [UI](../../src/components/ui/PixieDustSplit/) · [Dossier](../../src/app/atelier/_components/PixieDustSplitDossier.tsx)       |
 | `PixieDustBleed`    | `0.1.0` | Faire sortir une séquence de son cadre de lecture    | [UI](../../src/components/ui/PixieDustBleed/) · [Dossier](../../src/app/atelier/_components/PixieDustBleedDossier.tsx)       |
