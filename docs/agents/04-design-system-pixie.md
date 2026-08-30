@@ -359,7 +359,7 @@ Les deux autres jouent un rôle différent :
 - **Les Plans** accueillent des compositions documentaires métier qui ne
   prennent jamais les préfixes `PixieDust` ou `Pixie`.
 
-Au moment de cette édition, l’inventaire de l’Atelier déclare **31 composants
+Au moment de cette édition, l’inventaire de l’Atelier déclare **32 composants
 Pixie en version `1.0.0` prêts à projeter**.
 
 Ce nombre est un instantané documentaire. Lorsqu’un composant est promu ou
@@ -475,7 +475,7 @@ expressif dominant : accent, halo, grain, projecteur ou élévation.
 
 ---
 
-## Les Écrans · 2 composants prêts et 1 esquisse
+## Les Écrans · 3 composants prêts
 
 Les Écrans restituent une matière déjà préparée. Ils peuvent la cadrer, la
 faire défiler ou lui donner une alternative accessible, mais ils ne la
@@ -485,7 +485,7 @@ réécrivent pas et ne décident pas de sa provenance.
 | --------------- | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------- |
 | `PixieAscii`    | Préserver une composition monospacée | [UI](../../src/components/ui/PixieAscii/) · [Dossier](../../src/app/atelier/_components/PixieAsciiDossier.tsx)       |
 | `PixieMarkdown` | Restituer un document déjà analysé   | [UI](../../src/components/ui/PixieMarkdown/) · [Dossier](../../src/app/atelier/_components/PixieMarkdownDossier.tsx) |
-| `PixieDustDocs` | Parcourir une bibliothèque résolue   | [UI](../../src/components/ui/PixieDustDocs/) · [Dossier](../../src/app/atelier/_components/PixieDustDocsDossier.tsx) |
+| `PixieDocs`     | Parcourir une bibliothèque résolue   | [UI](../../src/components/ui/PixieDocs/) · [Dossier](../../src/app/atelier/_components/PixieDocsDossier.tsx)         |
 
 ### `PixieAscii` · composant `1.0.0`
 
@@ -534,9 +534,9 @@ une cible interactive.
 
 `PixieMarkdown` reste un composant serveur. Il ne connaît ni fichier, ni
 Notion, ni arborescence, ni sommaire global, ni route : la bibliothèque et ses
-contrôles appartiennent à `PixieDustDocs`.
+contrôles appartiennent à `PixieDocs`.
 
-### `PixieDustDocs` · esquisse `0.2.0`
+### `PixieDocs` · composant `1.0.0`
 
 Cet Écran compose une navigation hiérarchique, un document déjà rendu et le
 sommaire issu de la même analyse. Son filtre ne porte que sur les titres déjà
@@ -544,18 +544,18 @@ transmis ; ses états, raccords précédent/suivant et régions sticky ne lui
 donnent aucun accès aux sources.
 
 La bibliothèque peut rester `inline` dans la grille ou devenir `floating` :
-une languette ancrée au bord gauche du conteneur `PixieDustDocs` révèle alors
+une languette ancrée au bord gauche du conteneur `PixieDocs` révèle alors
 un `PixiePanel` fixe au pointeur et au clavier, tandis que le document récupère
 la largeur qu’occupait sa colonne. Au repos, le panneau est entièrement
 escamoté et seule sa languette droite demeure visible. Son déplacement reste
 borné par les bords supérieur et inférieur du composant. `navigationWidth`
 règle réellement les trois largeurs bornées dans les deux modes.
 
-La v0.2.0 éprouve le même contrat sur `docs/agents/` et sur onze pages Notion
+Le contrat stable est éprouvé sur `docs/agents/` et sur onze pages Notion
 déclarées : la home du Disneyiste, le portail Vision & Doctrine et ses neuf
 sous-pages. Les deux adaptateurs restent entièrement côté serveur : ils
 autorisent, lisent, normalisent et résolvent avant de transmettre à Pixie une
-navigation sans chemin local, identifiant Notion ni secret. `PixieDustDocs` ne
+navigation sans chemin local, identifiant Notion ni secret. `PixieDocs` ne
 devient donc ni lecteur de fichier, ni client Notion, ni routeur Next.js.
 
 ---
@@ -725,11 +725,10 @@ pages publiques.
 
 ### Esquisses actives
 
-| Esquisse         | Version | Mission                                              | Fichiers                                                                                                               |
-| ---------------- | ------- | ---------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `PixieDustDocs`  | `0.2.0` | Parcourir une bibliothèque documentaire déjà résolue | [UI](../../src/components/ui/PixieDustDocs/) · [Dossier](../../src/app/atelier/_components/PixieDustDocsDossier.tsx)   |
-| `PixieDustSplit` | `0.1.0` | Répartir deux zones en champ et contrechamp          | [UI](../../src/components/ui/PixieDustSplit/) · [Dossier](../../src/app/atelier/_components/PixieDustSplitDossier.tsx) |
-| `PixieDustBleed` | `0.1.0` | Faire sortir une séquence de son cadre de lecture    | [UI](../../src/components/ui/PixieDustBleed/) · [Dossier](../../src/app/atelier/_components/PixieDustBleedDossier.tsx) |
+| Esquisse         | Version | Mission                                           | Fichiers                                                                                                               |
+| ---------------- | ------- | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `PixieDustSplit` | `0.1.0` | Répartir deux zones en champ et contrechamp       | [UI](../../src/components/ui/PixieDustSplit/) · [Dossier](../../src/app/atelier/_components/PixieDustSplitDossier.tsx) |
+| `PixieDustBleed` | `0.1.0` | Faire sortir une séquence de son cadre de lecture | [UI](../../src/components/ui/PixieDustBleed/) · [Dossier](../../src/app/atelier/_components/PixieDustBleedDossier.tsx) |
 
 Ces composants peuvent être étudiés, modifiés et comparés. Ils ne doivent pas
 être projetés dans le Codex tant que leur promotion n’a pas été validée.
