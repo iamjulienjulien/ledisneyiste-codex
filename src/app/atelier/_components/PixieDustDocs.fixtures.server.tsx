@@ -1,7 +1,7 @@
 import "server-only";
 import type { ReactNode } from "react";
 import type { PixieDustDocsNavigationItem } from "@/components/ui/PixieDustDocs";
-import { PixieDustMarkdown } from "@/components/ui/PixieDustMarkdown";
+import { PixieMarkdown } from "@/components/ui/PixieMarkdown";
 import { loadLocalGuidebookDocument } from "@/lib/guidebook/server/load-local-document";
 import { guidebookProjection } from "@/registry/guidebook";
 import type {
@@ -196,7 +196,7 @@ export async function getPixieDustDocsFixtures(
                 state: document.state,
                 updatedAt: document.updatedAt,
                 document: (
-                    <PixieDustMarkdown
+                    <PixieMarkdown
                         blocks={blocks}
                         headingOffset={3}
                         headingScale="reading"

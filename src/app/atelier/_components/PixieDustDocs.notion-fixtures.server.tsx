@@ -2,7 +2,7 @@ import "server-only";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import type { PixieDustDocsNavigationItem } from "@/components/ui/PixieDustDocs";
-import { PixieDustMarkdown } from "@/components/ui/PixieDustMarkdown";
+import { PixieMarkdown } from "@/components/ui/PixieMarkdown";
 import { analyzeGuidebookMarkdown } from "@/lib/guidebook/analyze-markdown";
 import { loadNotionGuidebookDocument } from "@/lib/guidebook/server/load-notion-document";
 import { normalizeNotionMarkdown } from "@/lib/guidebook/server/normalize-notion-markdown";
@@ -179,7 +179,7 @@ export async function getPixieDustDocsNotionFixtures(
                 ? { updatedAt: currentLiveDocument.updatedAt }
                 : {}),
             document: (
-                <PixieDustMarkdown
+                <PixieMarkdown
                     blocks={withoutDocumentTitle(blocks)}
                     headingOffset={3}
                     headingScale="reading"

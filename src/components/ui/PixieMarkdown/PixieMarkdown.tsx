@@ -12,50 +12,50 @@ import type {
 import { PixieAscii } from "@/components/ui/PixieAscii";
 import { PixieLink } from "@/components/ui/PixieLink";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
-import styles from "./PixieDustMarkdown.module.css";
+import styles from "./PixieMarkdown.module.css";
 import type {
-    PixieDustMarkdownCodeOverflow,
-    PixieDustMarkdownDensity,
-    PixieDustMarkdownHeadingScale,
-    PixieDustMarkdownMeasure,
-    PixieDustMarkdownProps,
-    PixieDustMarkdownStyle,
-    PixieDustMarkdownTableLayout,
-    PixieDustMarkdownWideBlocks,
-} from "./PixieDustMarkdown.types";
+    PixieMarkdownCodeOverflow,
+    PixieMarkdownDensity,
+    PixieMarkdownHeadingScale,
+    PixieMarkdownMeasure,
+    PixieMarkdownProps,
+    PixieMarkdownStyle,
+    PixieMarkdownTableLayout,
+    PixieMarkdownWideBlocks,
+} from "./PixieMarkdown.types";
 
 const densityClasses = {
     compact: styles.densityCompact,
     comfortable: "",
     airy: styles.densityAiry,
-} as const satisfies Record<PixieDustMarkdownDensity, string>;
+} as const satisfies Record<PixieMarkdownDensity, string>;
 
 const measureClasses = {
     reading: styles.measureReading,
     wide: styles.measureWide,
     full: styles.measureFull,
-} as const satisfies Record<PixieDustMarkdownMeasure, string>;
+} as const satisfies Record<PixieMarkdownMeasure, string>;
 
 const codeOverflowClasses = {
     scroll: styles.codeScroll,
     wrap: styles.codeWrap,
-} as const satisfies Record<PixieDustMarkdownCodeOverflow, string>;
+} as const satisfies Record<PixieMarkdownCodeOverflow, string>;
 
 const tableLayoutClasses = {
     auto: "",
     fixed: styles.tableFixed,
-} as const satisfies Record<PixieDustMarkdownTableLayout, string>;
+} as const satisfies Record<PixieMarkdownTableLayout, string>;
 
 type RenderContext = {
     anchorPrefix: string;
     headingOffset: number;
-    headingScale: PixieDustMarkdownHeadingScale;
-    wideBlocks: PixieDustMarkdownWideBlocks;
-    codeOverflow: PixieDustMarkdownCodeOverflow;
+    headingScale: PixieMarkdownHeadingScale;
+    wideBlocks: PixieMarkdownWideBlocks;
+    codeOverflow: PixieMarkdownCodeOverflow;
     codeLineNumbers: boolean;
-    tableLayout: PixieDustMarkdownTableLayout;
+    tableLayout: PixieMarkdownTableLayout;
     asciiCopyable: boolean;
-    color: PixieDustMarkdownProps["color"];
+    color: PixieMarkdownProps["color"];
 };
 
 function normalizeAnchorPrefix(prefix: string): string {
@@ -226,7 +226,7 @@ function getWideBlockClass(context: RenderContext): string {
 
 function getVisualHeadingLevel(
     sourceDepth: number,
-    scale: PixieDustMarkdownHeadingScale,
+    scale: PixieMarkdownHeadingScale,
 ): number {
     const shift = scale === "display" ? 0 : scale === "reading" ? 1 : 2;
     return Math.min(6, sourceDepth + shift);
@@ -522,7 +522,7 @@ function renderBlock(
     }
 }
 
-export function PixieDustMarkdown({
+export function PixieMarkdown({
     blocks,
     as: RootTag = "article",
     density = "comfortable",
@@ -541,10 +541,10 @@ export function PixieDustMarkdown({
     className = "",
     style,
     ...elementProps
-}: PixieDustMarkdownProps) {
+}: PixieMarkdownProps) {
     const normalizedPrefix = normalizeAnchorPrefix(anchorPrefix);
     const colorDefinition = color ? getAtelierAnimationColor(color) : null;
-    const markdownStyle: PixieDustMarkdownStyle = {
+    const markdownStyle: PixieMarkdownStyle = {
         ...style,
         ...(colorDefinition
             ? { "--pixie-markdown-color": colorDefinition.cssValue }
