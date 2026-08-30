@@ -3,21 +3,21 @@
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { PixieButton } from "@/components/ui/PixieButton";
 import { getAtelierAnimationColor } from "@/registry/colors";
-import styles from "./PixieDustAscii.module.css";
+import styles from "./PixieAscii.module.css";
 import type {
-    PixieDustAsciiAlign,
-    PixieDustAsciiCopyState,
-    PixieDustAsciiDensity,
-    PixieDustAsciiMaxHeight,
-    PixieDustAsciiOverflow,
-    PixieDustAsciiPadding,
-    PixieDustAsciiProps,
-    PixieDustAsciiSize,
-    PixieDustAsciiStyle,
-    PixieDustAsciiTexture,
-    PixieDustAsciiVariant,
-    PixieDustAsciiWidth,
-} from "./PixieDustAscii.types";
+    PixieAsciiAlign,
+    PixieAsciiCopyState,
+    PixieAsciiDensity,
+    PixieAsciiMaxHeight,
+    PixieAsciiOverflow,
+    PixieAsciiPadding,
+    PixieAsciiProps,
+    PixieAsciiSize,
+    PixieAsciiStyle,
+    PixieAsciiTexture,
+    PixieAsciiVariant,
+    PixieAsciiWidth,
+} from "./PixieAscii.types";
 
 const variantClasses = {
     plain: styles.plain,
@@ -25,54 +25,54 @@ const variantClasses = {
     outline: styles.outline,
     slate: styles.slate,
     projector: styles.projector,
-} as const satisfies Record<PixieDustAsciiVariant, string>;
+} as const satisfies Record<PixieAsciiVariant, string>;
 
 const sizeClasses = {
     sm: styles.sizeSmall,
     md: styles.sizeMedium,
     lg: styles.sizeLarge,
-} as const satisfies Record<PixieDustAsciiSize, string>;
+} as const satisfies Record<PixieAsciiSize, string>;
 
 const densityClasses = {
     compact: styles.densityCompact,
     comfortable: styles.densityComfortable,
     airy: styles.densityAiry,
-} as const satisfies Record<PixieDustAsciiDensity, string>;
+} as const satisfies Record<PixieAsciiDensity, string>;
 
 const paddingClasses = {
     none: styles.paddingNone,
     sm: styles.paddingSmall,
     md: styles.paddingMedium,
     lg: styles.paddingLarge,
-} as const satisfies Record<PixieDustAsciiPadding, string>;
+} as const satisfies Record<PixieAsciiPadding, string>;
 
 const widthClasses = {
     fit: styles.widthFit,
     full: styles.widthFull,
-} as const satisfies Record<PixieDustAsciiWidth, string>;
+} as const satisfies Record<PixieAsciiWidth, string>;
 
 const alignClasses = {
     start: styles.alignStart,
     center: styles.alignCenter,
-} as const satisfies Record<PixieDustAsciiAlign, string>;
+} as const satisfies Record<PixieAsciiAlign, string>;
 
 const overflowClasses = {
     auto: styles.overflowAuto,
     clip: styles.overflowClip,
-} as const satisfies Record<PixieDustAsciiOverflow, string>;
+} as const satisfies Record<PixieAsciiOverflow, string>;
 
 const maxHeightClasses = {
     none: styles.maxHeightNone,
     sm: styles.maxHeightSmall,
     md: styles.maxHeightMedium,
     lg: styles.maxHeightLarge,
-} as const satisfies Record<PixieDustAsciiMaxHeight, string>;
+} as const satisfies Record<PixieAsciiMaxHeight, string>;
 
 const textureClasses = {
     none: "",
     grain: styles.textureGrain,
     scanlines: styles.textureScanlines,
-} as const satisfies Record<PixieDustAsciiTexture, string>;
+} as const satisfies Record<PixieAsciiTexture, string>;
 
 type ScrollState = Readonly<{
     horizontal: boolean;
@@ -103,7 +103,7 @@ function areScrollStatesEqual(first: ScrollState, second: ScrollState) {
     );
 }
 
-export function PixieDustAscii({
+export function PixieAscii({
     children,
     caption,
     variant = "surface",
@@ -130,8 +130,8 @@ export function PixieDustAscii({
     className = "",
     style,
     ...elementProps
-}: PixieDustAsciiProps) {
-    const [copyState, setCopyState] = useState<PixieDustAsciiCopyState>("idle");
+}: PixieAsciiProps) {
+    const [copyState, setCopyState] = useState<PixieAsciiCopyState>("idle");
     const [scrollState, setScrollState] =
         useState<ScrollState>(initialScrollState);
     const resetTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -151,7 +151,7 @@ export function PixieDustAscii({
         .filter(Boolean)
         .join(" ");
     const colorDefinition = color ? getAtelierAnimationColor(color) : null;
-    const asciiStyle: PixieDustAsciiStyle = {
+    const asciiStyle: PixieAsciiStyle = {
         ...style,
         "--pixie-ascii-tab-size": tabSize,
         ...(colorDefinition

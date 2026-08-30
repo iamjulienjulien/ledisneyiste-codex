@@ -8,7 +8,7 @@ import type {
     GuidebookListItem,
     GuidebookTableBlock,
 } from "@/types/guidebook";
-import { PixieDustAscii } from "@/components/ui/PixieDustAscii";
+import { PixieAscii } from "@/components/ui/PixieAscii";
 import { PixieLink } from "@/components/ui/PixieLink";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import styles from "./PixieDustMarkdown.module.css";
@@ -327,7 +327,7 @@ function renderBlock(
         case "code":
             if (block.presentation === "ascii") {
                 return (
-                    <PixieDustAscii
+                    <PixieAscii
                         label="Composition ASCII du document"
                         alternative={block.alternative}
                         variant="surface"
@@ -343,7 +343,7 @@ function renderBlock(
                         key={block.id}
                     >
                         {block.code}
-                    </PixieDustAscii>
+                    </PixieAscii>
                 );
             }
 
