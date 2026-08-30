@@ -359,7 +359,7 @@ Les deux autres jouent un rôle différent :
 - **Les Plans** accueillent des compositions documentaires métier qui ne
   prennent jamais les préfixes `PixieDust` ou `Pixie`.
 
-Au moment de cette édition, l’inventaire de l’Atelier déclare **29 composants
+Au moment de cette édition, l’inventaire de l’Atelier déclare **30 composants
 Pixie en version `1.0.0` prêts à projeter**.
 
 Ce nombre est un instantané documentaire. Lorsqu’un composant est promu ou
@@ -475,7 +475,7 @@ expressif dominant : accent, halo, grain, projecteur ou élévation.
 
 ---
 
-## Les Écrans · 3 esquisses
+## Les Écrans · 1 composant prêt et 2 esquisses
 
 Les Écrans restituent une matière déjà préparée. Ils peuvent la cadrer, la
 faire défiler ou lui donner une alternative accessible, mais ils ne la
@@ -483,24 +483,25 @@ réécrivent pas et ne décident pas de sa provenance.
 
 | Composant           | Mission                              | Fichiers de référence                                                                                                        |
 | ------------------- | ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
-| `PixieDustAscii`    | Préserver une composition monospacée | [UI](../../src/components/ui/PixieDustAscii/) · [Dossier](../../src/app/atelier/_components/PixieDustAsciiDossier.tsx)       |
+| `PixieAscii`        | Préserver une composition monospacée | [UI](../../src/components/ui/PixieAscii/) · [Dossier](../../src/app/atelier/_components/PixieAsciiDossier.tsx)               |
 | `PixieDustMarkdown` | Restituer un document déjà analysé   | [UI](../../src/components/ui/PixieDustMarkdown/) · [Dossier](../../src/app/atelier/_components/PixieDustMarkdownDossier.tsx) |
 | `PixieDustDocs`     | Parcourir une bibliothèque résolue   | [UI](../../src/components/ui/PixieDustDocs/) · [Dossier](../../src/app/atelier/_components/PixieDustDocsDossier.tsx)         |
 
-### `PixieDustAscii` · esquisse `0.2.0`
+### `PixieAscii` · composant `1.0.0`
 
 Cette primitive reçoit uniquement une chaîne déjà autorisée. Elle préserve ses
 espaces, tabulations et retours à la ligne, maîtrise ses débordements et exige
-une alternative accessible lorsque la composition informe. Elle ne lit aucun
-fichier et ne connaît ni Markdown, ni Notion : ces responsabilités
-appartiennent au domaine `Guidebook*` côté serveur.
+un nom accessible lorsque la composition informe. Une alternative détaillée
+peut compléter ce nom sans faire épeler la grille. Elle ne lit aucun fichier
+et ne connaît ni Markdown, ni Notion : ces responsabilités appartiennent au
+domaine `Guidebook*` côté serveur.
 
 La grille ASCII utilise une pile dédiée — Menlo, Monaco, Cascadia Mono,
 DejaVu Sans Mono puis Courier New — distincte d’IBM Plex Mono. Les cartes
 doivent malgré tout employer une largeur de ligne constante et considérer les
 emojis comme des glyphes potentiellement larges.
 
-La v0.2.0 distingue le `label` court de l’`alternative` détaillée, mesure le
+Le contrat stable distingue le `label` court de l’`alternative` détaillée, mesure le
 débordement réel avant d’ajouter le viewport au parcours clavier et indique les
 directions qui demeurent hors champ. L’action de copie passe par `PixieButton`,
 conserve la chaîne exacte et peut transmettre son état à la régie. À
@@ -513,7 +514,7 @@ Cet Écran reçoit uniquement des `GuidebookBlock` déjà analysés, autorisés 
 résolus côté serveur. Il restitue titres, paragraphes, citations, listes,
 tâches, tableaux, code et séparateurs sans rouvrir la chaîne Markdown ni
 injecter de HTML brut. Les compositions reconnues comme ASCII sont confiées à
-`PixieDustAscii` avec l’alternative textuelle préparée par l’analyseur.
+`PixieAscii` avec l’alternative textuelle préparée par l’analyseur.
 
 La mesure (`reading`, `wide`, `full`) et la densité (`compact`, `comfortable`,
 `airy`) constituent ses deux seuls axes visuels. `headingOffset` adapte la
@@ -716,7 +717,6 @@ pages publiques.
 
 | Esquisse            | Version | Mission                                              | Fichiers                                                                                                                     |
 | ------------------- | ------- | ---------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `PixieDustAscii`    | `0.2.0` | Préserver une composition monospacée                 | [UI](../../src/components/ui/PixieDustAscii/) · [Dossier](../../src/app/atelier/_components/PixieDustAsciiDossier.tsx)       |
 | `PixieDustMarkdown` | `0.1.0` | Restituer un document déjà analysé                   | [UI](../../src/components/ui/PixieDustMarkdown/) · [Dossier](../../src/app/atelier/_components/PixieDustMarkdownDossier.tsx) |
 | `PixieDustDocs`     | `0.2.0` | Parcourir une bibliothèque documentaire déjà résolue | [UI](../../src/components/ui/PixieDustDocs/) · [Dossier](../../src/app/atelier/_components/PixieDustDocsDossier.tsx)         |
 | `PixieDustSplit`    | `0.1.0` | Répartir deux zones en champ et contrechamp          | [UI](../../src/components/ui/PixieDustSplit/) · [Dossier](../../src/app/atelier/_components/PixieDustSplitDossier.tsx)       |
@@ -847,10 +847,11 @@ lus pour reconstruire l’état applicatif.
 ## Frontière serveur et îlots interactifs
 
 La plupart des primitives peuvent être rendues depuis un composant serveur.
-Au moment de cette édition, cinq implémentations Pixie déclarent directement
+Au moment de cette édition, six implémentations Pixie déclarent directement
 `"use client"` :
 
 - `PixieSearchField` ;
+- `PixieAscii` ;
 - `PixieSelect` ;
 - `PixieSwitch` ;
 - `PixieTextarea` ;

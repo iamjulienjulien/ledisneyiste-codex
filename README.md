@@ -496,7 +496,7 @@ Pixie…     → composant validé et prêt à projeter
 ## L’Atelier
 
 L'Atelier documente les palettes, les composants, leurs variantes, leur
-accessibilité et leur API. **29 composants Pixie** sont désormais prêts à
+accessibilité et leur API. **30 composants Pixie** sont désormais prêts à
 projeter. Ses cinq premiers accessoires — `PixieSymbol`,
 `PixieButton`, `PixieLink`, `PixieBadge` et `PixieSeparator` —, ses six Décors
 — `PixieCard`, `PixiePanel`, `PixieFrame`, `PixieCallout`, `PixieInset` et
@@ -504,7 +504,7 @@ projeter. Ses cinq premiers accessoires — `PixieSymbol`,
 `PixieContainer`, `PixieStack`, `PixieCluster`, `PixieSection`, `PixieGrid`,
 `PixieSidebar`, `PixieSwitcher`, `PixieRail` et `PixieStickyRegion`, ainsi que
 les six Dialogues `PixieField`, `PixieInput`, `PixieSelect`, `PixieSwitch`,
-`PixieSearchField` et `PixieTextarea`, ainsi que les trois premiers Effets
+`PixieSearchField` et `PixieTextarea`, le premier Écran `PixieAscii`, ainsi que les trois premiers Effets
 `PixieLoader`, `PixieSkeleton` et `PixieToast`, sont désormais prêts à projeter.
 La nouvelle esquisse `PixieDustDocs` assemble de son côté une arborescence
 autorisée, un document rendu côté serveur et son sommaire sans connaître leurs
@@ -563,15 +563,15 @@ contradictoires, les grands génériques, les preuves contrastées et les
 contraintes d’accessibilité. Elles ne modifient jamais les Archives et restent
 signalées comme matière de démonstration dans l’Atelier.
 
-L’Atelier documente actuellement **29 composants validés** et **5 esquisses
+L’Atelier documente actuellement **30 composants validés** et **4 esquisses
 PixieDust** :
 
 - **Accessoires — 5 composants validés :** `PixieSymbol`, `PixieButton`,
   `PixieLink`, `PixieBadge` et `PixieSeparator` ;
 - **Décors — 6 composants validés :** `PixieCard`, `PixiePanel`, `PixieFrame`,
   `PixieCallout`, `PixieInset` et `PixieBackdrop` ;
-- **Écrans — 3 esquisses :** `PixieDustAscii`, `PixieDustMarkdown` et
-  `PixieDustDocs` ;
+- **Écrans — 1 composant validé et 2 esquisses :** `PixieAscii`,
+  `PixieDustMarkdown` et `PixieDustDocs` ;
 - **Dialogues — 6 composants validés :** `PixieField`, `PixieInput`,
   `PixieSelect`, `PixieSwitch`, `PixieSearchField` et `PixieTextarea` ;
 - **Montage — 9 composants validés et 2 esquisses :** `PixieContainer`,

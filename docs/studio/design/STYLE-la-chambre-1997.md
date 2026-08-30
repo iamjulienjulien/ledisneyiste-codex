@@ -489,7 +489,7 @@ définitive.
 | Le Disneyiste          | C · Le cellulo vivant         | L’imaginaire apparaît dans la matière.           |
 | Le Codex du Disneyiste | A · La table de passage       | Les Archives deviennent chemins de lecture.      |
 | Guidebook              | B · La régie nocturne         | Les règles et la fabrication restent visibles.   |
-| PixieDustAscii         | E · Le signal cathodique      | Une grille de glyphes abstraits devient lumière. |
+| PixieAscii             | E · Le signal cathodique      | Une grille de glyphes abstraits devient lumière. |
 | PixieDustMarkdown      | A · La table de passage       | Une matière écrite traverse plusieurs formes.    |
 | PixieDustDocs          | D · Les archives en mouvement | Les documents rejoignent une projection commune. |
 
