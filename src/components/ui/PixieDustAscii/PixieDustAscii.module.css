@@ -158,6 +158,11 @@
     scrollbar-gutter: stable;
 }
 
+.viewportFrame {
+    position: relative;
+    min-width: 0;
+}
+
 .viewport:focus-visible {
     outline: 2px solid var(--color-focus);
     outline-offset: -4px;
@@ -170,6 +175,72 @@
 
 .overflowClip .viewport {
     overflow: clip;
+}
+
+.scrollHints {
+    position: absolute;
+    z-index: 3;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.scrollHint {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 150ms ease;
+}
+
+.scrollHint[data-visible] {
+    opacity: 1;
+}
+
+.scrollHintInlineStart,
+.scrollHintInlineEnd {
+    inset-block: 0;
+    inline-size: 1.75rem;
+}
+
+.scrollHintInlineStart {
+    inset-inline-start: 0;
+    background: linear-gradient(
+        to right,
+        color-mix(in srgb, var(--pixie-ascii-accent) 20%, transparent),
+        transparent
+    );
+}
+
+.scrollHintInlineEnd {
+    inset-inline-end: 0;
+    background: linear-gradient(
+        to left,
+        color-mix(in srgb, var(--pixie-ascii-accent) 20%, transparent),
+        transparent
+    );
+}
+
+.scrollHintBlockStart,
+.scrollHintBlockEnd {
+    inset-inline: 0;
+    block-size: 1.5rem;
+}
+
+.scrollHintBlockStart {
+    inset-block-start: 0;
+    background: linear-gradient(
+        to bottom,
+        color-mix(in srgb, var(--pixie-ascii-accent) 18%, transparent),
+        transparent
+    );
+}
+
+.scrollHintBlockEnd {
+    inset-block-end: 0;
+    background: linear-gradient(
+        to top,
+        color-mix(in srgb, var(--pixie-ascii-accent) 18%, transparent),
+        transparent
+    );
 }
 
 .pre {
@@ -329,7 +400,32 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .copyButton {
+    .copyButton,
+    .scrollHint {
         transition: none;
+    }
+}
+
+@media print {
+    .root,
+    .frame,
+    .viewport,
+    .pre {
+        overflow: visible;
+        max-height: none;
+        break-inside: avoid;
+    }
+
+    .frame {
+        border-color: currentcolor;
+        background: transparent;
+        box-shadow: none;
+    }
+
+    .frame::before,
+    .frame::after,
+    .toolbar,
+    .scrollHints {
+        display: none;
     }
 }

@@ -328,9 +328,8 @@ function renderBlock(
             if (block.presentation === "ascii") {
                 return (
                     <PixieDustAscii
-                        label={
-                            block.alternative || "Composition ASCII du document"
-                        }
+                        label="Composition ASCII du document"
+                        alternative={block.alternative}
                         variant="surface"
                         color={false}
                         size="sm"

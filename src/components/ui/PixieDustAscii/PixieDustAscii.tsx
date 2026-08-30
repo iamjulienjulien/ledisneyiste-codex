@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
+import { useCallback, useEffect, useId, useRef, useState } from "react";
+import { PixieButton } from "@/components/ui/PixieButton";
 import { getAtelierAnimationColor } from "@/registry/colors";
 import styles from "./PixieDustAscii.module.css";
 import type {
@@ -73,10 +74,34 @@ const textureClasses = {
     scanlines: styles.textureScanlines,
 } as const satisfies Record<PixieDustAsciiTexture, string>;
 
-const copyStateLabels = {
-    copied: "La composition est dans le presse-papiers.",
-    error: "La copie automatique a échoué. La composition reste sélectionnable.",
-} as const satisfies Record<Exclude<PixieDustAsciiCopyState, "idle">, string>;
+type ScrollState = Readonly<{
+    horizontal: boolean;
+    vertical: boolean;
+    inlineStart: boolean;
+    inlineEnd: boolean;
+    blockStart: boolean;
+    blockEnd: boolean;
+}>;
+
+const initialScrollState: ScrollState = {
+    horizontal: false,
+    vertical: false,
+    inlineStart: true,
+    inlineEnd: true,
+    blockStart: true,
+    blockEnd: true,
+};
+
+function areScrollStatesEqual(first: ScrollState, second: ScrollState) {
+    return (
+        first.horizontal === second.horizontal &&
+        first.vertical === second.vertical &&
+        first.inlineStart === second.inlineStart &&
+        first.inlineEnd === second.inlineEnd &&
+        first.blockStart === second.blockStart &&
+        first.blockEnd === second.blockEnd
+    );
+}
 
 export function PixieDustAscii({
     children,
@@ -89,25 +114,42 @@ export function PixieDustAscii({
     width = "full",
     align = "start",
     overflow = "auto",
+    scrollHint = true,
     maxHeight = "none",
     tabSize = 4,
     texture = "none",
+    emptyLabel = "Aucune composition à afficher.",
     decorative = false,
     label,
+    alternative,
     copyable = false,
     copyLabel = "Copier la composition",
     copiedLabel = "Composition copiée",
     copyErrorLabel = "La copie a échoué",
+    onCopyStateChange,
     className = "",
     style,
     ...elementProps
 }: PixieDustAsciiProps) {
     const [copyState, setCopyState] = useState<PixieDustAsciiCopyState>("idle");
+    const [scrollState, setScrollState] =
+        useState<ScrollState>(initialScrollState);
     const resetTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+    const viewportRef = useRef<HTMLDivElement>(null);
+    const preRef = useRef<HTMLPreElement>(null);
     const captionId = useId();
+    const alternativeId = useId();
     const isEmpty = children.length === 0;
     const canCopy = !decorative && copyable;
     const isScrollable = overflow === "auto";
+    const canScroll =
+        isScrollable && (scrollState.horizontal || scrollState.vertical);
+    const describedBy = [
+        alternative ? alternativeId : null,
+        caption ? captionId : null,
+    ]
+        .filter(Boolean)
+        .join(" ");
     const colorDefinition = color ? getAtelierAnimationColor(color) : null;
     const asciiStyle: PixieDustAsciiStyle = {
         ...style,
@@ -126,6 +168,67 @@ export function PixieDustAscii({
         [],
     );
 
+    const updateScrollState = useCallback(() => {
+        const viewport = viewportRef.current;
+
+        if (!viewport) {
+            return;
+        }
+
+        const tolerance = 1;
+        const horizontal =
+            isScrollable &&
+            viewport.scrollWidth - viewport.clientWidth > tolerance;
+        const vertical =
+            isScrollable &&
+            viewport.scrollHeight - viewport.clientHeight > tolerance;
+        const nextState: ScrollState = {
+            horizontal,
+            vertical,
+            inlineStart: !horizontal || viewport.scrollLeft <= tolerance,
+            inlineEnd:
+                !horizontal ||
+                viewport.scrollLeft + viewport.clientWidth >=
+                    viewport.scrollWidth - tolerance,
+            blockStart: !vertical || viewport.scrollTop <= tolerance,
+            blockEnd:
+                !vertical ||
+                viewport.scrollTop + viewport.clientHeight >=
+                    viewport.scrollHeight - tolerance,
+        };
+
+        setScrollState((currentState) =>
+            areScrollStatesEqual(currentState, nextState)
+                ? currentState
+                : nextState,
+        );
+    }, [isScrollable]);
+
+    useEffect(() => {
+        const viewport = viewportRef.current;
+
+        if (!viewport) {
+            return;
+        }
+
+        const animationFrame = window.requestAnimationFrame(updateScrollState);
+        const resizeObserver = new ResizeObserver(updateScrollState);
+
+        resizeObserver.observe(viewport);
+        if (preRef.current) {
+            resizeObserver.observe(preRef.current);
+        }
+        viewport.addEventListener("scroll", updateScrollState, {
+            passive: true,
+        });
+
+        return () => {
+            window.cancelAnimationFrame(animationFrame);
+            resizeObserver.disconnect();
+            viewport.removeEventListener("scroll", updateScrollState);
+        };
+    }, [children, updateScrollState]);
+
     if (decorative && isEmpty) {
         return null;
     }
@@ -135,7 +238,10 @@ export function PixieDustAscii({
             clearTimeout(resetTimer.current);
         }
 
-        resetTimer.current = setTimeout(() => setCopyState("idle"), 2200);
+        resetTimer.current = setTimeout(() => {
+            setCopyState("idle");
+            onCopyStateChange?.("idle");
+        }, 2200);
     };
 
     const copyContent = async () => {
@@ -150,8 +256,10 @@ export function PixieDustAscii({
 
             await navigator.clipboard.writeText(children);
             setCopyState("copied");
+            onCopyStateChange?.("copied");
         } catch {
             setCopyState("error");
+            onCopyStateChange?.("error");
         }
 
         scheduleCopyReset();
@@ -176,40 +284,100 @@ export function PixieDustAscii({
             <div className={styles.frame}>
                 {canCopy ? (
                     <div className={styles.toolbar}>
-                        <button
-                            type="button"
+                        <PixieButton
                             disabled={isEmpty}
                             onClick={copyContent}
+                            variant="ghost"
+                            size="xs"
+                            color={color}
                             className={styles.copyButton}
                             data-copy-state={copyState}
                         >
                             {copyButtonLabel}
-                        </button>
+                        </PixieButton>
                     </div>
                 ) : null}
 
-                <div
-                    className={styles.viewport}
-                    role={decorative ? undefined : "img"}
-                    aria-label={decorative ? undefined : label}
-                    aria-describedby={caption ? captionId : undefined}
-                    aria-hidden={decorative || undefined}
-                    tabIndex={!decorative && isScrollable ? 0 : undefined}
-                >
-                    {isEmpty ? (
-                        <p className={styles.empty}>
-                            Aucune composition à afficher.
-                        </p>
-                    ) : (
-                        <pre className={styles.pre} aria-hidden="true">
-                            {children}
-                        </pre>
-                    )}
+                <div className={styles.viewportFrame}>
+                    <div
+                        ref={viewportRef}
+                        className={styles.viewport}
+                        role={decorative ? undefined : "img"}
+                        aria-label={decorative ? undefined : label}
+                        aria-describedby={
+                            !decorative && describedBy ? describedBy : undefined
+                        }
+                        aria-hidden={decorative || undefined}
+                        tabIndex={!decorative && canScroll ? 0 : undefined}
+                        data-overflow-inline={
+                            scrollState.horizontal || undefined
+                        }
+                        data-overflow-block={scrollState.vertical || undefined}
+                    >
+                        {isEmpty ? (
+                            <p className={styles.empty}>{emptyLabel}</p>
+                        ) : (
+                            <pre
+                                ref={preRef}
+                                className={styles.pre}
+                                aria-hidden="true"
+                            >
+                                {children}
+                            </pre>
+                        )}
+                    </div>
+
+                    {scrollHint && isScrollable ? (
+                        <div className={styles.scrollHints} aria-hidden="true">
+                            <span
+                                className={`${styles.scrollHint} ${styles.scrollHintInlineStart}`}
+                                data-visible={
+                                    scrollState.horizontal &&
+                                    !scrollState.inlineStart
+                                        ? true
+                                        : undefined
+                                }
+                            />
+                            <span
+                                className={`${styles.scrollHint} ${styles.scrollHintInlineEnd}`}
+                                data-visible={
+                                    scrollState.horizontal &&
+                                    !scrollState.inlineEnd
+                                        ? true
+                                        : undefined
+                                }
+                            />
+                            <span
+                                className={`${styles.scrollHint} ${styles.scrollHintBlockStart}`}
+                                data-visible={
+                                    scrollState.vertical &&
+                                    !scrollState.blockStart
+                                        ? true
+                                        : undefined
+                                }
+                            />
+                            <span
+                                className={`${styles.scrollHint} ${styles.scrollHintBlockEnd}`}
+                                data-visible={
+                                    scrollState.vertical &&
+                                    !scrollState.blockEnd
+                                        ? true
+                                        : undefined
+                                }
+                            />
+                        </div>
+                    ) : null}
                 </div>
+
+                {!decorative && alternative ? (
+                    <span id={alternativeId} className={styles.visuallyHidden}>
+                        {alternative}
+                    </span>
+                ) : null}
 
                 {canCopy ? (
                     <span className={styles.visuallyHidden} aria-live="polite">
-                        {copyState === "idle" ? "" : copyStateLabels[copyState]}
+                        {copyState === "idle" ? "" : copyButtonLabel}
                     </span>
                 ) : null}
             </div>

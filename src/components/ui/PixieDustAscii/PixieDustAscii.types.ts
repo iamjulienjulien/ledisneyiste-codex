@@ -43,28 +43,34 @@ type PixieDustAsciiCommonProps = Omit<
     width?: PixieDustAsciiWidth;
     align?: PixieDustAsciiAlign;
     overflow?: PixieDustAsciiOverflow;
+    scrollHint?: boolean;
     maxHeight?: PixieDustAsciiMaxHeight;
     tabSize?: 2 | 4 | 8;
     texture?: PixieDustAsciiTexture;
+    emptyLabel?: string;
     style?: PixieDustAsciiStyle;
 };
 
 type PixieDustAsciiInformativeProps = {
     decorative?: false;
     label: string;
+    alternative?: string;
     copyable?: boolean;
     copyLabel?: string;
     copiedLabel?: string;
     copyErrorLabel?: string;
+    onCopyStateChange?: (state: PixieDustAsciiCopyState) => void;
 };
 
 type PixieDustAsciiDecorativeProps = {
     decorative: true;
     label?: never;
+    alternative?: never;
     copyable?: false;
     copyLabel?: never;
     copiedLabel?: never;
     copyErrorLabel?: never;
+    onCopyStateChange?: never;
 };
 
 export type PixieDustAsciiProps = Readonly<
