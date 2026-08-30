@@ -3,6 +3,7 @@ import { PixieBadgeDossier } from "./_components/PixieBadgeDossier";
 import { PixieLinkDossier } from "./_components/PixieLinkDossier";
 import { PixieSeparatorDossier } from "./_components/PixieSeparatorDossier";
 import { PixieSymbolDossier } from "./_components/PixieSymbolDossier";
+import { PixieDustAsciiDossier } from "./_components/PixieDustAsciiDossier";
 import { PixieCardDossier } from "./_components/PixieCardDossier";
 import { PixiePanelDossier } from "./_components/PixiePanelDossier";
 import { PixieFrameDossier } from "./_components/PixieFrameDossier";
@@ -89,6 +90,15 @@ const categories = [
     },
     {
         numero: "04",
+        nom: "Les Écrans",
+        domaine: "Restitution",
+        description:
+            "Lecteurs, visionneuses et surfaces spécialisées qui rendent une matière consultable sans la modifier.",
+        statut: "En répétition",
+        href: "#ecrans",
+    },
+    {
+        numero: "05",
         nom: "Les Dialogues",
         domaine: "Formulaires",
         description:
@@ -97,7 +107,7 @@ const categories = [
         href: "#dialogues",
     },
     {
-        numero: "05",
+        numero: "06",
         nom: "Le Montage",
         domaine: "Composition",
         description:
@@ -106,7 +116,7 @@ const categories = [
         href: "#montage",
     },
     {
-        numero: "06",
+        numero: "07",
         nom: "Les Effets",
         domaine: "Retours système",
         description:
@@ -115,7 +125,7 @@ const categories = [
         href: "#effets",
     },
     {
-        numero: "07",
+        numero: "08",
         nom: "Les Plans",
         domaine: "Explorations documentaires",
         description:
@@ -175,6 +185,16 @@ const accessoires = [
         statut: "Prêt à projeter",
         version: "1.0.0",
         href: "#separateur",
+    },
+] as const;
+
+const ecrans = [
+    {
+        nom: "PixieDustAscii",
+        role: "Préserver une composition monospacée",
+        statut: "Esquisse",
+        version: "0.1.0",
+        href: "#pixie-dust-ascii",
     },
 ] as const;
 
@@ -472,6 +492,7 @@ const itemsParPlateau = {
     "#pellicule": pellicule,
     "#accessoires": accessoires,
     "#decors": decors,
+    "#ecrans": ecrans,
     "#dialogues": dialogues,
     "#montage": montage,
     "#effets": effets,
@@ -526,11 +547,11 @@ export default function AtelierPage() {
                             id="programme-title"
                             className="mt-3 text-3xl text-ink"
                         >
-                            Les sept plateaux de travail
+                            Les huit plateaux de travail
                         </h2>
                     </div>
 
-                    <p className="text-sm text-muted">7 plateaux ouverts</p>
+                    <p className="text-sm text-muted">8 plateaux ouverts</p>
                 </div>
 
                 <div className="mt-8 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-2 xl:grid-cols-4">
@@ -815,6 +836,99 @@ export default function AtelierPage() {
             </section>
 
             <section
+                id="ecrans"
+                aria-labelledby="ecrans-title"
+                className="mt-24 scroll-mt-8"
+            >
+                <PixieSeparator
+                    variant="film"
+                    intensity="strong"
+                    color="violet-ombre-portee"
+                    width="full"
+                    spacing="none"
+                    decorative
+                />
+
+                <div className="mt-12">
+                    <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.2em] text-accent">
+                        04 · Les Écrans
+                    </p>
+                    <h2 id="ecrans-title" className="mt-3 text-4xl text-ink">
+                        La matière trouve sa surface de lecture
+                    </h2>
+                    <p className="mt-5 leading-7 text-ink-soft">
+                        Les Écrans rendent une matière consultable sans la
+                        transformer. Ils accueillent les lecteurs, visionneuses
+                        et compositions spécialisées du futur Guidebook, à
+                        distance des actions élémentaires et des contrôles de
+                        saisie.
+                    </p>
+                </div>
+
+                <div className="mt-10 overflow-x-auto border border-line">
+                    <table className="w-full min-w-xl border-collapse text-left">
+                        <thead className="bg-surface-muted text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            <tr>
+                                <th
+                                    scope="col"
+                                    className="px-5 py-4 font-medium"
+                                >
+                                    Écran
+                                </th>
+                                <th
+                                    scope="col"
+                                    className="px-5 py-4 font-medium"
+                                >
+                                    Rôle
+                                </th>
+                                <th
+                                    scope="col"
+                                    className="px-5 py-4 font-medium"
+                                >
+                                    Version
+                                </th>
+                                <th
+                                    scope="col"
+                                    className="px-5 py-4 font-medium"
+                                >
+                                    État
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody className="divide-y divide-line bg-surface">
+                            {ecrans.map((ecran) => (
+                                <tr key={ecran.nom}>
+                                    <th
+                                        scope="row"
+                                        className="px-5 py-4 font-medium text-ink"
+                                    >
+                                        <a
+                                            href={ecran.href}
+                                            className="text-accent underline underline-offset-4 hover:text-accent-hover"
+                                        >
+                                            {ecran.nom} →
+                                        </a>
+                                    </th>
+                                    <td className="px-5 py-4 text-ink-soft">
+                                        {ecran.role}
+                                    </td>
+                                    <td className="px-5 py-4 font-mono text-xs text-muted">
+                                        {ecran.version}
+                                    </td>
+                                    <td className="px-5 py-4 text-sm">
+                                        <AtelierStatut statut={ecran.statut} />
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+
+                {raccordAvantPremiereFiche}
+                <PixieDustAsciiDossier />
+            </section>
+
+            <section
                 id="dialogues"
                 aria-labelledby="dialogues-title"
                 className="mt-24 scroll-mt-8"
@@ -830,7 +944,7 @@ export default function AtelierPage() {
 
                 <div className="mt-12">
                     <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.2em] text-accent">
-                        04 · Les Dialogues
+                        05 · Les Dialogues
                     </p>
                     <h2 id="dialogues-title" className="mt-3 text-4xl text-ink">
                         Le public entre dans la conversation
@@ -939,7 +1053,7 @@ export default function AtelierPage() {
 
                 <div className="mt-12">
                     <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.2em] text-accent">
-                        05 · Le Montage
+                        06 · Le Montage
                     </p>
                     <h2 id="montage-title" className="mt-3 text-4xl text-ink">
                         Les plans trouvent leur rythme
@@ -1063,7 +1177,7 @@ export default function AtelierPage() {
 
                 <div className="mt-12">
                     <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.2em] text-accent">
-                        06 · Les Effets
+                        07 · Les Effets
                     </p>
                     <h2 id="effets-title" className="mt-3 text-4xl text-ink">
                         L’interface accuse réception
@@ -1164,7 +1278,7 @@ export default function AtelierPage() {
 
                 <div className="mt-12">
                     <p className="text-sm font-medium font-eyebrow uppercase tracking-[0.2em] text-accent">
-                        07 · Les Plans
+                        08 · Les Plans
                     </p>
                     <h2 id="plans-title" className="mt-3 text-4xl text-ink">
                         Le Codex compose de nouvelles manières de regarder
