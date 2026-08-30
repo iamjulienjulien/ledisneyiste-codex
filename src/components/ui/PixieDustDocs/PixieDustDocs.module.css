@@ -43,6 +43,11 @@
     min-inline-size: 0;
 }
 
+.desktopLibrary,
+.desktopToc {
+    align-self: stretch;
+}
+
 .floatingLibrary {
     position: fixed;
     z-index: 60;
@@ -137,6 +142,7 @@
 
 .stickyRegion {
     min-inline-size: 0;
+    block-size: fit-content;
 }
 
 .root[data-pixie-docs-sticky] .stickyRegion {
