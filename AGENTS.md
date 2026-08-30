@@ -53,7 +53,7 @@ Avant toute intervention :
 | Concevoir une lecture dérivée ou un prototype de Plan        | [06 · Les Plans et les lectures dérivées](./docs/agents/06-plans-et-lectures-derivees.md)            |
 
 Ressource commune :
-[Carte de studio Guru Éditions](./docs/agents/snippets/carte-de-studio-guru-editions.md).
+[Carte de studio Guru Éditions](./docs/studio/snippets/carte-de-studio-guru-editions.md).
 
 ### Hiérarchie des sources
 

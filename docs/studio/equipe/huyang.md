@@ -89,7 +89,7 @@ lisible et transmissible, sans laisser l’effet prendre la place du sens.
 ```
 
 La carte suit le
-[modèle officiel du studio](../../agents/snippets/carte-de-studio-guru-editions.md).
+[modèle officiel du studio](../snippets/carte-de-studio-guru-editions.md).
 Elle formalise l’affectation actuelle, la mission et les territoires de
 service de Huyang.
 

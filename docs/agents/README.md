@@ -387,7 +387,7 @@ chantier.
 
 ## Ressources de studio
 
-- [Carte de studio Guru Éditions](./snippets/carte-de-studio-guru-editions.md)
+- [Carte de studio Guru Éditions](../studio/snippets/carte-de-studio-guru-editions.md)
   — modèle réutilisable pour signer une transmission ;
 - [Dossier Guru Éditions](https://app.notion.com/p/3c4092fa322380e195e5e39cd169cef1)
   — identité et contexte de l’entreprise ;
@@ -430,4 +430,4 @@ matière. Vérifie la lumière. Puis transmets proprement la bobine suivante.**
 
 **🔩 R2-D2 · Lead Dev @ Guru Éditions**<br>
 _Archiviste du code vivant · Bip-boup avec table des matières_<br>
-[Carte de studio réutilisable](./snippets/carte-de-studio-guru-editions.md)
+[Carte de studio réutilisable](../studio/snippets/carte-de-studio-guru-editions.md)

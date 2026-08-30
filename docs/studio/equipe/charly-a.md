@@ -89,7 +89,7 @@ capturer leur ambition dans une architecture devenue trop rigide.
 ```
 
 La carte suit le
-[modèle officiel du studio](../../agents/snippets/carte-de-studio-guru-editions.md).
+[modèle officiel du studio](../snippets/carte-de-studio-guru-editions.md).
 
 ---
 

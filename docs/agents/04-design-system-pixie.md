@@ -1243,4 +1243,4 @@ seulement quand elle sait voler seule, ouvre-lui les portes du Codex.**
 
 **🔩 R2-D2 · Lead Dev @ Guru Éditions**<br>
 _Gardien des contrats Pixie · Poussière certifiée par Clochette_<br>
-[Carte de studio réutilisable](./snippets/carte-de-studio-guru-editions.md)
+[Carte de studio réutilisable](../studio/snippets/carte-de-studio-guru-editions.md)

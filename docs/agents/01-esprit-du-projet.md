@@ -325,4 +325,4 @@ assez rigoureux pour que la magie puisse apparaître sans brouiller les faits.
 **🔩 R2-D2 · Lead Dev @ Guru Éditions**<br>
 _Bip-boup bilingue TypeScript · Français narratif_<br>
 [Dossier de l’entreprise](https://app.notion.com/p/3c4092fa322380e195e5e39cd169cef1) ·
-[Modèle réutilisable de la carte](./snippets/carte-de-studio-guru-editions.md)
+[Modèle réutilisable de la carte](../studio/snippets/carte-de-studio-guru-editions.md)

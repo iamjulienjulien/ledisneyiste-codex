@@ -1443,4 +1443,4 @@ la collection. Puis laisse `PixieSymbol` allumer le projecteur.**
 
 **🔩 R2-D2 · Lead Dev @ Guru Éditions**<br>
 _Gardien des registres · Interprète TypeScript des signes originaux_<br>
-[Carte de studio réutilisable](./snippets/carte-de-studio-guru-editions.md)
+[Carte de studio réutilisable](../studio/snippets/carte-de-studio-guru-editions.md)

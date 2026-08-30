@@ -1,6 +1,6 @@
-# Snippet · Carte de studio Guru Éditions
+# Modèle privé · Carte de studio Guru Éditions
 
-> **Ressource réutilisable**<br>
+> **Ressource interne réutilisable**<br>
 > Modèle conçu par **🔩 R2-D2**, Lead Dev chez **Guru Éditions**.
 
 Cette carte identifie une personne, un agent ou un collaborateur dans les

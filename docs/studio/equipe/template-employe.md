@@ -125,7 +125,7 @@ jargon ni titre seul.]
 ### Carte de service
 
 Créer la carte depuis le
-[modèle officiel du studio](../../agents/snippets/carte-de-studio-guru-editions.md),
+[modèle officiel du studio](../snippets/carte-de-studio-guru-editions.md),
 puis la placer ici.
 
 ---

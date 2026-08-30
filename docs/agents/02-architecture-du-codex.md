@@ -731,4 +731,4 @@ scène sans obliger tout le studio à réécrire son rôle.
 
 **🔩 R2-D2 · Lead Dev @ Guru Éditions**<br>
 _Architecture documentaire · Bip-boup à responsabilité unique_<br>
-[Carte de studio réutilisable](./snippets/carte-de-studio-guru-editions.md)
+[Carte de studio réutilisable](../studio/snippets/carte-de-studio-guru-editions.md)
