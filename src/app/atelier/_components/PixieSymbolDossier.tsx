@@ -19,6 +19,17 @@ const generalCommunicationSymbolSlugs = getSymbolSlugs(
     "general",
     "communication",
 );
+const diffusionSallesSymbolSlugs = getSymbolSlugs("diffusion", "salles");
+const diffusionTelevisionSymbolSlugs = getSymbolSlugs(
+    "diffusion",
+    "television",
+);
+const diffusionVideoSymbolSlugs = getSymbolSlugs("diffusion", "video");
+const diffusionNumeriqueSymbolSlugs = getSymbolSlugs("diffusion", "numerique");
+const diffusionSceneEtParcsSymbolSlugs = getSymbolSlugs(
+    "diffusion",
+    "scene-et-parcs",
+);
 const animationTechniqueSymbolSlugs = getSymbolSlugs("techniques", "animation");
 const imageTechniqueSymbolSlugs = getSymbolSlugs("techniques", "images");
 const couleurTechniqueSymbolSlugs = getSymbolSlugs("techniques", "couleur");
@@ -103,8 +114,25 @@ const typesSpecifiques = [
     },
     {
         name: "SymbolRegistryName",
-        values: ['"general"', '"index"', '"recompenses"', '"techniques"'],
+        values: [
+            '"diffusion"',
+            '"general"',
+            '"index"',
+            '"recompenses"',
+            '"techniques"',
+        ],
         description: "Registres de symboles actuellement disponibles.",
+    },
+    {
+        name: 'SymbolCollectionName<"diffusion">',
+        values: [
+            '"salles"',
+            '"television"',
+            '"video"',
+            '"numerique"',
+            '"scene-et-parcs"',
+        ],
+        description: "Collections exposées par le registre Diffusion.",
     },
     {
         name: 'SymbolCollectionName<"index">',
@@ -149,6 +177,34 @@ const typesSpecifiques = [
             '"imagineering"',
         ],
         description: "Collections exposées par le registre des Techniques.",
+    },
+    {
+        name: 'SymbolSlug<"diffusion", "salles">',
+        values: diffusionSallesSymbolSlugs.map((slug) => `"${slug}"`),
+        description: "Symboles de l’exploitation en salles de cinéma.",
+    },
+    {
+        name: 'SymbolSlug<"diffusion", "television">',
+        values: diffusionTelevisionSymbolSlugs.map((slug) => `"${slug}"`),
+        description:
+            "Symboles de la programmation et de la réception télévisées.",
+    },
+    {
+        name: 'SymbolSlug<"diffusion", "video">',
+        values: diffusionVideoSymbolSlugs.map((slug) => `"${slug}"`),
+        description:
+            "Symboles des éditions physiques et du visionnage domestique.",
+    },
+    {
+        name: 'SymbolSlug<"diffusion", "numerique">',
+        values: diffusionNumeriqueSymbolSlugs.map((slug) => `"${slug}"`),
+        description:
+            "Symboles de l’accès dématérialisé et de la diffusion en ligne.",
+    },
+    {
+        name: 'SymbolSlug<"diffusion", "scene-et-parcs">',
+        values: diffusionSceneEtParcsSymbolSlugs.map((slug) => `"${slug}"`),
+        description: "Symboles des spectacles, attractions et expositions.",
     },
     {
         name: 'SymbolSlug<"index", "chansons">',
@@ -1126,6 +1182,228 @@ export function PixieSymbolDossier() {
                                 </h4>
                                 <p className="mt-2 font-mono text-xs text-muted">
                                     {collection}.principal
+                                </p>
+                            </article>
+                        );
+                    })}
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="pixie-symbol-diffusion-salles"
+                className="mt-16"
+            >
+                <TitreSequence
+                    id="pixie-symbol-diffusion-salles"
+                    surTitre="Diffusion"
+                    titre="Les seize étapes de l’exploitation en salles"
+                    description="De la façade au drive-in, la collection décrit les lieux, les équipements et les signes qui accompagnent une projection publique."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+                    {diffusionSallesSymbolSlugs.map((slug) => {
+                        const symbole = getSymbol("diffusion", "salles", slug);
+
+                        return (
+                            <article
+                                key={slug}
+                                className="bg-surface p-6 text-center"
+                                style={{
+                                    borderTop: `4px solid ${symbole.accent}`,
+                                }}
+                            >
+                                <PixieSymbol
+                                    registry="diffusion"
+                                    collection="salles"
+                                    slug={slug}
+                                    size="xl"
+                                    className="mx-auto"
+                                />
+                                <h4 className="mt-5 text-xl text-ink">
+                                    {symbole.label}
+                                </h4>
+                                <p className="mt-2 font-mono text-xs text-muted">
+                                    {slug}
+                                </p>
+                            </article>
+                        );
+                    })}
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="pixie-symbol-diffusion-television"
+                className="mt-16"
+            >
+                <TitreSequence
+                    id="pixie-symbol-diffusion-television"
+                    surTitre="Diffusion"
+                    titre="Les seize formes de la diffusion télévisée"
+                    description="Postes, antennes, régies et programmes composent le parcours d’une œuvre depuis l’émission jusqu’à sa réception domestique."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+                    {diffusionTelevisionSymbolSlugs.map((slug) => {
+                        const symbole = getSymbol(
+                            "diffusion",
+                            "television",
+                            slug,
+                        );
+
+                        return (
+                            <article
+                                key={slug}
+                                className="bg-surface p-6 text-center"
+                                style={{
+                                    borderTop: `4px solid ${symbole.accent}`,
+                                }}
+                            >
+                                <PixieSymbol
+                                    registry="diffusion"
+                                    collection="television"
+                                    slug={slug}
+                                    size="xl"
+                                    className="mx-auto"
+                                />
+                                <h4 className="mt-5 text-xl text-ink">
+                                    {symbole.label}
+                                </h4>
+                                <p className="mt-2 font-mono text-xs text-muted">
+                                    {slug}
+                                </p>
+                            </article>
+                        );
+                    })}
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="pixie-symbol-diffusion-video"
+                className="mt-16"
+            >
+                <TitreSequence
+                    id="pixie-symbol-diffusion-video"
+                    surTitre="Diffusion"
+                    titre="Les seize supports du cinéma à domicile"
+                    description="Cassettes, disques, lecteurs et éditions racontent l’histoire matérielle du visionnage domestique et de la vidéothèque."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+                    {diffusionVideoSymbolSlugs.map((slug) => {
+                        const symbole = getSymbol("diffusion", "video", slug);
+
+                        return (
+                            <article
+                                key={slug}
+                                className="bg-surface p-6 text-center"
+                                style={{
+                                    borderTop: `4px solid ${symbole.accent}`,
+                                }}
+                            >
+                                <PixieSymbol
+                                    registry="diffusion"
+                                    collection="video"
+                                    slug={slug}
+                                    size="xl"
+                                    className="mx-auto"
+                                />
+                                <h4 className="mt-5 text-xl text-ink">
+                                    {symbole.label}
+                                </h4>
+                                <p className="mt-2 font-mono text-xs text-muted">
+                                    {slug}
+                                </p>
+                            </article>
+                        );
+                    })}
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="pixie-symbol-diffusion-numerique"
+                className="mt-16"
+            >
+                <TitreSequence
+                    id="pixie-symbol-diffusion-numerique"
+                    surTitre="Diffusion"
+                    titre="Les seize accès de la diffusion numérique"
+                    description="Plateformes, appareils, catalogues et flux rendent lisibles les nouvelles vies dématérialisées d’une œuvre."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+                    {diffusionNumeriqueSymbolSlugs.map((slug) => {
+                        const symbole = getSymbol(
+                            "diffusion",
+                            "numerique",
+                            slug,
+                        );
+
+                        return (
+                            <article
+                                key={slug}
+                                className="bg-surface p-6 text-center"
+                                style={{
+                                    borderTop: `4px solid ${symbole.accent}`,
+                                }}
+                            >
+                                <PixieSymbol
+                                    registry="diffusion"
+                                    collection="numerique"
+                                    slug={slug}
+                                    size="xl"
+                                    className="mx-auto"
+                                />
+                                <h4 className="mt-5 text-xl text-ink">
+                                    {symbole.label}
+                                </h4>
+                                <p className="mt-2 font-mono text-xs text-muted">
+                                    {slug}
+                                </p>
+                            </article>
+                        );
+                    })}
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="pixie-symbol-diffusion-scene-et-parcs"
+                className="mt-16"
+            >
+                <TitreSequence
+                    id="pixie-symbol-diffusion-scene-et-parcs"
+                    surTitre="Diffusion"
+                    titre="Les seize scènes des spectacles et des parcs"
+                    description="Scènes, attractions, expositions et parcours prolongent les œuvres dans des expériences publiques et des territoires scénographiés."
+                />
+
+                <div className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+                    {diffusionSceneEtParcsSymbolSlugs.map((slug) => {
+                        const symbole = getSymbol(
+                            "diffusion",
+                            "scene-et-parcs",
+                            slug,
+                        );
+
+                        return (
+                            <article
+                                key={slug}
+                                className="bg-surface p-6 text-center"
+                                style={{
+                                    borderTop: `4px solid ${symbole.accent}`,
+                                }}
+                            >
+                                <PixieSymbol
+                                    registry="diffusion"
+                                    collection="scene-et-parcs"
+                                    slug={slug}
+                                    size="xl"
+                                    className="mx-auto"
+                                />
+                                <h4 className="mt-5 text-xl text-ink">
+                                    {symbole.label}
+                                </h4>
+                                <p className="mt-2 font-mono text-xs text-muted">
+                                    {slug}
                                 </p>
                             </article>
                         );

@@ -122,6 +122,74 @@ const generalCommunicationSymbolOptions = getSymbolSlugs(
     definition: getSymbol("general", "communication", slug),
 }));
 
+const diffusionSallesSymbolOptions = getSymbolSlugs("diffusion", "salles").map(
+    (slug) => ({
+        key: `diffusion.salles.${slug}`,
+        group: "Diffusion · Salles" as const,
+        selection: {
+            registry: "diffusion",
+            collection: "salles",
+            slug,
+        } as const,
+        definition: getSymbol("diffusion", "salles", slug),
+    }),
+);
+
+const diffusionTelevisionSymbolOptions = getSymbolSlugs(
+    "diffusion",
+    "television",
+).map((slug) => ({
+    key: `diffusion.television.${slug}`,
+    group: "Diffusion · Télévision" as const,
+    selection: {
+        registry: "diffusion",
+        collection: "television",
+        slug,
+    } as const,
+    definition: getSymbol("diffusion", "television", slug),
+}));
+
+const diffusionVideoSymbolOptions = getSymbolSlugs("diffusion", "video").map(
+    (slug) => ({
+        key: `diffusion.video.${slug}`,
+        group: "Diffusion · Vidéo" as const,
+        selection: {
+            registry: "diffusion",
+            collection: "video",
+            slug,
+        } as const,
+        definition: getSymbol("diffusion", "video", slug),
+    }),
+);
+
+const diffusionNumeriqueSymbolOptions = getSymbolSlugs(
+    "diffusion",
+    "numerique",
+).map((slug) => ({
+    key: `diffusion.numerique.${slug}`,
+    group: "Diffusion · Numérique" as const,
+    selection: {
+        registry: "diffusion",
+        collection: "numerique",
+        slug,
+    } as const,
+    definition: getSymbol("diffusion", "numerique", slug),
+}));
+
+const diffusionSceneEtParcsSymbolOptions = getSymbolSlugs(
+    "diffusion",
+    "scene-et-parcs",
+).map((slug) => ({
+    key: `diffusion.scene-et-parcs.${slug}`,
+    group: "Diffusion · Scène et parcs" as const,
+    selection: {
+        registry: "diffusion",
+        collection: "scene-et-parcs",
+        slug,
+    } as const,
+    definition: getSymbol("diffusion", "scene-et-parcs", slug),
+}));
+
 const animationTechniqueSymbolOptions = getSymbolSlugs(
     "techniques",
     "animation",
@@ -287,6 +355,11 @@ const symbolOptions = [
     ...generalAtelierSymbolOptions,
     ...generalEvenementsSymbolOptions,
     ...generalCommunicationSymbolOptions,
+    ...diffusionSallesSymbolOptions,
+    ...diffusionTelevisionSymbolOptions,
+    ...diffusionVideoSymbolOptions,
+    ...diffusionNumeriqueSymbolOptions,
+    ...diffusionSceneEtParcsSymbolOptions,
     ...personnageIndexSymbolOptions,
     ...oeuvreIndexSymbolOptions,
     ...createurIndexSymbolOptions,
@@ -358,6 +431,11 @@ const symbolGroups = [
     "Général · Atelier",
     "Général · Événements",
     "Général · Communication",
+    "Diffusion · Salles",
+    "Diffusion · Télévision",
+    "Diffusion · Vidéo",
+    "Diffusion · Numérique",
+    "Diffusion · Scène et parcs",
     "Index · Personnages",
     "Index · Œuvres",
     "Index · Créateurs",
