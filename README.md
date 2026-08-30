@@ -508,7 +508,10 @@ les six Dialogues `PixieField`, `PixieInput`, `PixieSelect`, `PixieSwitch`,
 `PixieLoader`, `PixieSkeleton` et `PixieToast`, sont désormais prêts à projeter.
 La nouvelle esquisse `PixieDustDocs` assemble de son côté une arborescence
 autorisée, un document rendu côté serveur et son sommaire sans connaître leurs
-sources.
+sources. Sa v0.2.0 éprouve le même contrat avec la bibliothèque locale et une
+bobine Notion déclarée : manifeste fermé, ascendance réelle, normalisation des
+extensions et neutralisation des pages hors projection précèdent toujours
+l’interface.
 
 Ses huit plateaux de travail sont maintenant actifs :
 
@@ -567,14 +570,14 @@ PixieDust** :
   `PixieLink`, `PixieBadge` et `PixieSeparator` ;
 - **Décors — 6 composants validés :** `PixieCard`, `PixiePanel`, `PixieFrame`,
   `PixieCallout`, `PixieInset` et `PixieBackdrop` ;
-- **Écrans — 2 esquisses :** `PixieDustAscii` et `PixieDustMarkdown` ;
+- **Écrans — 3 esquisses :** `PixieDustAscii`, `PixieDustMarkdown` et
+  `PixieDustDocs` ;
 - **Dialogues — 6 composants validés :** `PixieField`, `PixieInput`,
   `PixieSelect`, `PixieSwitch`, `PixieSearchField` et `PixieTextarea` ;
-- **Montage — 9 composants validés et 3 esquisses :** `PixieContainer`,
+- **Montage — 9 composants validés et 2 esquisses :** `PixieContainer`,
   `PixieStack`, `PixieCluster`, `PixieSection`, `PixieGrid`, `PixieSidebar`,
   `PixieSwitcher`, `PixieRail`, `PixieStickyRegion`, `PixieDustSplit` et
-  `PixieDustBleed`, ainsi que `PixieDustDocs` pour parcourir une bibliothèque
-  documentaire déjà résolue ;
+  `PixieDustBleed` ;
 - **Effets — 3 composants validés :** `PixieLoader`, `PixieSkeleton` et
   `PixieToast`.
 

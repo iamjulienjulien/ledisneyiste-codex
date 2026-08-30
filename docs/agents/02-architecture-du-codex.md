@@ -533,15 +533,21 @@ Le Guidebook possède son propre domaine neutre dans
 matière documentaire avec un composant Pixie, ni un fichier du dépôt avec une
 route publique.
 
-Sa chaîne locale suit une frontière stricte :
+Ses deux adaptateurs suivent la même frontière stricte :
 
 ```text
-manifeste serveur fermé
-→ résolveur de fichier sous docs/agents/
-→ analyse Markdown unique
-→ blocs + ancres + sommaire + liens résolus
-→ document Guidebook sérialisable
-→ future projection Pixie
+Bibliothèque locale                    Bibliothèque Notion
+manifeste serveur fermé                manifeste serveur + racine autorisée
+→ fichier réel sous docs/agents/       → page dans l’arbre déclaré
+→ chaîne Markdown                      → ascendance réelle vérifiée
+                                       → Markdown Notion normalisé
+                    │                  │
+                    └──────┬───────────┘
+                           ↓
+                  analyse Markdown unique
+                  → blocs + ancres + sommaire + liens résolus
+                  → document Guidebook sérialisable
+                  → projection Pixie
 ```
 
 [`analyze-markdown.ts`](../../src/lib/guidebook/analyze-markdown.ts) parcourt
@@ -565,6 +571,23 @@ Les chemins privés, les fichiers de code hors bibliothèque et les protocoles
 inconnus restent lisibles comme texte, mais perdent leur `href`. Aucun chemin
 réel du dépôt ni identifiant Notion ne rejoint le contrat transmis à
 l’interface.
+
+La passerelle Notion emploie l’API officielle directement côté serveur. Son
+manifeste fermé connaît la racine **Le Disneyiste**, les identifiants et la
+version d’API ;
+[`notion-projection.json`](../../src/registry/guidebook/notion-projection.json)
+ne contient que les titres publics, slugs, ordres et relations parent-enfant.
+Une page devient lisible uniquement si son slug figure dans les deux registres
+et si la traversée bornée de ses parents confirme son appartenance réelle à la
+racine autorisée. Le Markdown distant passe ensuite par
+[`normalize-notion-markdown.ts`](../../src/lib/guidebook/server/normalize-notion-markdown.ts)
+avant l’analyse commune : une extension inconnue devient un contrechamp
+explicite et place le document en état `partial` au lieu d’injecter du HTML.
+
+Les fixtures de `scripts/fixtures/guidebook/` permettent de vérifier cette
+chaîne sans réseau ni secret. La lecture d’une page réelle exige
+`NOTION_API_KEY` côté serveur ; son absence produit l’état `deferred` et ne
+bloque ni la bibliothèque locale ni les promotions Pixie.
 
 La présence de ces fondations ne rend pas le Guidebook public. Tant que sa
 route privée n’existe pas, aucune matière n’est projetée ; lorsqu’elle sera
