@@ -487,7 +487,7 @@ réécrivent pas et ne décident pas de sa provenance.
 | `PixieDustMarkdown` | Restituer un document déjà analysé   | [UI](../../src/components/ui/PixieDustMarkdown/) · [Dossier](../../src/app/atelier/_components/PixieDustMarkdownDossier.tsx) |
 | `PixieDustDocs`     | Parcourir une bibliothèque résolue   | [UI](../../src/components/ui/PixieDustDocs/) · [Dossier](../../src/app/atelier/_components/PixieDustDocsDossier.tsx)         |
 
-### `PixieDustAscii` · esquisse `0.1.0`
+### `PixieDustAscii` · esquisse `0.2.0`
 
 Cette primitive reçoit uniquement une chaîne déjà autorisée. Elle préserve ses
 espaces, tabulations et retours à la ligne, maîtrise ses débordements et exige
@@ -499,6 +499,13 @@ La grille ASCII utilise une pile dédiée — Menlo, Monaco, Cascadia Mono,
 DejaVu Sans Mono puis Courier New — distincte d’IBM Plex Mono. Les cartes
 doivent malgré tout employer une largeur de ligne constante et considérer les
 emojis comme des glyphes potentiellement larges.
+
+La v0.2.0 distingue le `label` court de l’`alternative` détaillée, mesure le
+débordement réel avant d’ajouter le viewport au parcours clavier et indique les
+directions qui demeurent hors champ. L’action de copie passe par `PixieButton`,
+conserve la chaîne exacte et peut transmettre son état à la régie. À
+l’impression, les contrôles et textures disparaissent afin que la grille soit
+restituée sans bornes artificielles.
 
 ### `PixieDustMarkdown` · esquisse `0.1.0`
 
@@ -709,7 +716,7 @@ pages publiques.
 
 | Esquisse            | Version | Mission                                              | Fichiers                                                                                                                     |
 | ------------------- | ------- | ---------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `PixieDustAscii`    | `0.1.0` | Préserver une composition monospacée                 | [UI](../../src/components/ui/PixieDustAscii/) · [Dossier](../../src/app/atelier/_components/PixieDustAsciiDossier.tsx)       |
+| `PixieDustAscii`    | `0.2.0` | Préserver une composition monospacée                 | [UI](../../src/components/ui/PixieDustAscii/) · [Dossier](../../src/app/atelier/_components/PixieDustAsciiDossier.tsx)       |
 | `PixieDustMarkdown` | `0.1.0` | Restituer un document déjà analysé                   | [UI](../../src/components/ui/PixieDustMarkdown/) · [Dossier](../../src/app/atelier/_components/PixieDustMarkdownDossier.tsx) |
 | `PixieDustDocs`     | `0.2.0` | Parcourir une bibliothèque documentaire déjà résolue | [UI](../../src/components/ui/PixieDustDocs/) · [Dossier](../../src/app/atelier/_components/PixieDustDocsDossier.tsx)         |
 | `PixieDustSplit`    | `0.1.0` | Répartir deux zones en champ et contrechamp          | [UI](../../src/components/ui/PixieDustSplit/) · [Dossier](../../src/app/atelier/_components/PixieDustSplitDossier.tsx)       |
