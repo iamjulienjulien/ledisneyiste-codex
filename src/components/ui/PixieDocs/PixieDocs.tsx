@@ -17,27 +17,27 @@ import type {
     GuidebookDocumentState,
     GuidebookTableOfContentsItem,
 } from "@/types/guidebook";
-import styles from "./PixieDustDocs.module.css";
+import styles from "./PixieDocs.module.css";
 import type {
-    PixieDustDocsDensity,
-    PixieDustDocsDestination,
-    PixieDustDocsHeadingLevel,
-    PixieDustDocsNavigationItem,
-    PixieDustDocsNavigationWidth,
-    PixieDustDocsProps,
-} from "./PixieDustDocs.types";
+    PixieDocsDensity,
+    PixieDocsDestination,
+    PixieDocsHeadingLevel,
+    PixieDocsNavigationItem,
+    PixieDocsNavigationWidth,
+    PixieDocsProps,
+} from "./PixieDocs.types";
 
 const densityClasses = {
     compact: styles.densityCompact,
     comfortable: styles.densityComfortable,
     airy: styles.densityAiry,
-} as const satisfies Record<PixieDustDocsDensity, string>;
+} as const satisfies Record<PixieDocsDensity, string>;
 
 const navigationWidthClasses = {
     sm: styles.navigationSmall,
     md: styles.navigationMedium,
     lg: styles.navigationLarge,
-} as const satisfies Record<PixieDustDocsNavigationWidth, string>;
+} as const satisfies Record<PixieDocsNavigationWidth, string>;
 
 const stateLabels = {
     ready: "Prêt à lire",
@@ -66,7 +66,7 @@ const stateMessages = {
 } as const satisfies Record<GuidebookDocumentState, string | null>;
 
 function containsActive(
-    item: PixieDustDocsNavigationItem,
+    item: PixieDocsNavigationItem,
     activeSlug: string,
 ): boolean {
     return (
@@ -76,10 +76,10 @@ function containsActive(
 }
 
 function filterNavigation(
-    items: readonly PixieDustDocsNavigationItem[],
+    items: readonly PixieDocsNavigationItem[],
     query: string,
     activeSlug: string,
-): PixieDustDocsNavigationItem[] {
+): PixieDocsNavigationItem[] {
     const normalizedQuery = query.trim().toLocaleLowerCase("fr");
 
     if (!normalizedQuery) {
@@ -114,7 +114,7 @@ function NavigationTree({
     onNavigate,
     level = 0,
 }: Readonly<{
-    items: readonly PixieDustDocsNavigationItem[];
+    items: readonly PixieDocsNavigationItem[];
     activeSlug: string;
     onNavigate?: (slug: string) => void;
     level?: number;
@@ -253,7 +253,7 @@ function LibraryNavigation({
     filterPlaceholder,
 }: Readonly<{
     title: string;
-    navigation: readonly PixieDustDocsNavigationItem[];
+    navigation: readonly PixieDocsNavigationItem[];
     activeSlug: string;
     query: string;
     onQueryChange: (query: string) => void;
@@ -313,7 +313,7 @@ function DocumentDestination({
     direction,
     onNavigate,
 }: Readonly<{
-    destination: PixieDustDocsDestination | null | undefined;
+    destination: PixieDocsDestination | null | undefined;
     direction: "previous" | "next";
     onNavigate?: (slug: string) => void;
 }>) {
@@ -350,7 +350,7 @@ function DocumentDestination({
     );
 }
 
-export function PixieDustDocs({
+export function PixieDocs({
     title,
     navigation,
     activeSlug,
@@ -378,7 +378,7 @@ export function PixieDustDocs({
     onNavigate,
     className = "",
     style,
-}: PixieDustDocsProps) {
+}: PixieDocsProps) {
     const [query, setQuery] = useState("");
     const [observedHeadingId, setObservedHeadingId] = useState("");
     const [floatingLibraryOpen, setFloatingLibraryOpen] = useState(false);
@@ -399,7 +399,7 @@ export function PixieDustDocs({
     )
         ? observedHeadingId
         : (flatTableOfContents[0]?.id ?? "");
-    const Heading = `h${headingLevel}` as `h${PixieDustDocsHeadingLevel}`;
+    const Heading = `h${headingLevel}` as `h${PixieDocsHeadingLevel}`;
     const resolvedStateMessage = stateMessage ?? stateMessages[documentState];
     const displaysDocument =
         documentState === "ready" ||
