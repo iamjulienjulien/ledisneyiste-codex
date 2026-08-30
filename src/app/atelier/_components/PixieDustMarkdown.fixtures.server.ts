@@ -39,7 +39,8 @@ Le **Guidebook** transmet les décisions du studio avec de l’_emphase_, du
 
 \`\`\`tsx
 const document = await loadLocalGuidebookDocument("bienvenue");
-return <PixieDustMarkdown blocks={document.analysis?.blocks ?? []} />;
+const blocks = document.analysis?.blocks ?? [];
+return <PixieDustMarkdown blocks={blocks} headingScale="reading" codeLineNumbers color="violet-ombre-portee" />;
 \`\`\`
 
 \`\`\`text

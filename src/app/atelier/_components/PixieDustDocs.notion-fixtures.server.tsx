@@ -182,6 +182,7 @@ export async function getPixieDustDocsNotionFixtures(
                 <PixieDustMarkdown
                     blocks={withoutDocumentTitle(blocks)}
                     headingOffset={3}
+                    headingScale="reading"
                     anchorPrefix={anchorPrefix}
                     measure="wide"
                 />

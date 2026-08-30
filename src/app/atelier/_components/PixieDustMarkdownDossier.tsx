@@ -36,11 +36,25 @@ const properties = [
             "Mesure du texte courant ; code, tableaux et ASCII conservent le cadre disponible.",
     },
     {
+        name: "color",
+        type: "PixieDustMarkdownColor",
+        defaultValue: "false",
+        description:
+            "Accent éditorial transmis aux citations, listes, tâches, séparateurs et compositions ASCII.",
+    },
+    {
         name: "headingOffset",
         type: "PixieDustMarkdownHeadingOffset",
         defaultValue: "0",
         description:
             "Décale la hiérarchie des titres sans dépasser le niveau h6.",
+    },
+    {
+        name: "headingScale",
+        type: "PixieDustMarkdownHeadingScale",
+        defaultValue: '"display"',
+        description:
+            "Règle la présence visuelle des titres sans modifier leur niveau HTML.",
     },
     {
         name: "headingAnchors",
@@ -54,6 +68,41 @@ const properties = [
         defaultValue: '""',
         description:
             "Préfixe les identifiants et liens locaux lorsque plusieurs extraits partagent une page.",
+    },
+    {
+        name: "wideBlocks",
+        type: "PixieDustMarkdownWideBlocks",
+        defaultValue: '"frame"',
+        description:
+            "Étend code, tableaux et ASCII au cadre ou les maintient dans la mesure éditoriale.",
+    },
+    {
+        name: "codeOverflow",
+        type: "PixieDustMarkdownCodeOverflow",
+        defaultValue: '"scroll"',
+        description:
+            "Conserve les lignes de code ou autorise leur repli dans les cadres étroits.",
+    },
+    {
+        name: "codeLineNumbers",
+        type: "boolean",
+        defaultValue: "false",
+        description:
+            "Ajoute des repères de ligne visuels sans les injecter dans le code copié ou annoncé.",
+    },
+    {
+        name: "tableLayout",
+        type: "PixieDustMarkdownTableLayout",
+        defaultValue: '"auto"',
+        description:
+            "Laisse les colonnes suivre leur matière ou leur impose un partage fixe du cadre.",
+    },
+    {
+        name: "asciiCopyable",
+        type: "boolean",
+        defaultValue: "true",
+        description:
+            "Transmet à PixieAscii l’autorisation d’exposer son action de copie.",
     },
     {
         name: "emptyMessage",
@@ -97,6 +146,36 @@ const specificTypes = [
         values: ["0", "1", "2", "3"],
         description: "Décalage borné de la hiérarchie documentaire.",
     },
+    {
+        name: "PixieDustMarkdownHeadingScale",
+        values: ['"display"', '"reading"', '"compact"'],
+        description:
+            "Trois échelles visuelles indépendantes de la sémantique des titres.",
+    },
+    {
+        name: "PixieDustMarkdownWideBlocks",
+        values: ['"frame"', '"measure"'],
+        description:
+            "Occupation du cadre par les blocs techniques et monospacés.",
+    },
+    {
+        name: "PixieDustMarkdownCodeOverflow",
+        values: ['"scroll"', '"wrap"'],
+        description:
+            "Défilement fidèle ou repli assumé des longues lignes de code.",
+    },
+    {
+        name: "PixieDustMarkdownTableLayout",
+        values: ['"auto"', '"fixed"'],
+        description:
+            "Largeur naturelle des colonnes ou partage fixe de l’espace.",
+    },
+    {
+        name: "PixieDustMarkdownColor",
+        values: ["AtelierAnimationColorSlug", "false"],
+        description:
+            "Accent du registre éditorial ou héritage de la Lumière courante.",
+    },
 ] as const;
 
 function SequenceTitle({
@@ -138,6 +217,19 @@ export async function PixieDustMarkdownDossier() {
     const guidebook = fixtures.find((fixture) => fixture.slug === "guidebook")!;
     const rich = fixtures.find((fixture) => fixture.slug === "rich")!;
     const partial = fixtures.find((fixture) => fixture.slug === "partial")!;
+    const headingBlocks = rich.blocks.filter(
+        (block) => block.kind === "heading" || block.kind === "paragraph",
+    );
+    const technicalBlocks = rich.blocks.filter(
+        (block) => block.kind === "code" || block.kind === "table",
+    );
+    const accentBlocks = rich.blocks.filter(
+        (block) =>
+            block.kind === "blockquote" ||
+            block.kind === "list" ||
+            block.kind === "thematic-break" ||
+            (block.kind === "code" && block.presentation === "ascii"),
+    );
     const playgroundFixtures = fixtures.filter(
         (fixture) => fixture.slug !== "guidebook",
     );
@@ -180,7 +272,7 @@ export async function PixieDustMarkdownDossier() {
                                 Version
                             </dt>
                             <dd className="mt-2 font-mono text-sm text-ink">
-                                0.1.0
+                                0.2.0
                             </dd>
                         </div>
                     </dl>
@@ -202,7 +294,10 @@ export async function PixieDustMarkdownDossier() {
                     <PixieDustMarkdown
                         blocks={guidebook.blocks.slice(0, 20)}
                         headingOffset={1}
+                        headingScale="reading"
                         anchorPrefix="markdown-master"
+                        color="violet-ombre-portee"
+                        codeLineNumbers
                     />
                 </div>
 
@@ -212,6 +307,8 @@ export async function PixieDustMarkdownDossier() {
 <PixieDustMarkdown
     blocks={document.analysis?.blocks ?? []}
     headingOffset={1}
+    headingScale="reading"
+    color="violet-ombre-portee"
 />`}</AtelierCodeBlock>
                 </div>
             </section>
@@ -230,7 +327,138 @@ export async function PixieDustMarkdownDossier() {
                         headingOffset={1}
                         anchorPrefix="markdown-rich"
                         measure="wide"
+                        headingScale="reading"
+                        codeLineNumbers
                     />
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="markdown-heading-scales"
+                className="mt-16"
+            >
+                <SequenceTitle
+                    id="markdown-heading-scales"
+                    eyebrow="Hiérarchie"
+                    title="Le niveau reste vrai, la voix s’adapte au cadre"
+                    description="headingOffset gouverne le document HTML ; headingScale règle seulement sa présence visuelle. Un chapitre enchâssé ne doit choisir entre une structure juste et des titres lisibles."
+                />
+
+                <div className="mt-8 grid gap-5 xl:grid-cols-3">
+                    {[
+                        [
+                            "display",
+                            "Affiche",
+                            "Une ouverture autonome qui peut porter toute la lumière.",
+                        ],
+                        [
+                            "reading",
+                            "Lecture",
+                            "Un chapitre installé dans une bibliothèque ou une fiche.",
+                        ],
+                        [
+                            "compact",
+                            "Compacte",
+                            "Une référence technique dense qui conserve ses niveaux.",
+                        ],
+                    ].map(([scale, title, description]) => (
+                        <Stage key={scale}>
+                            <p className="mb-5 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                                headingScale=&quot;{scale}&quot;
+                            </p>
+                            <PixieDustMarkdown
+                                blocks={headingBlocks.slice(0, 4)}
+                                as="section"
+                                headingOffset={2}
+                                headingScale={
+                                    scale as "display" | "reading" | "compact"
+                                }
+                                headingAnchors={false}
+                                anchorPrefix={`markdown-scale-${scale}`}
+                                density="compact"
+                            />
+                            <p className="mt-5 border-t border-line pt-4 text-sm leading-6 text-muted">
+                                {title} · {description}
+                            </p>
+                        </Stage>
+                    ))}
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="markdown-technical-blocks"
+                className="mt-16"
+            >
+                <SequenceTitle
+                    id="markdown-technical-blocks"
+                    eyebrow="Blocs techniques"
+                    title="Le cadre choisit entre fidélité et continuité"
+                    description="Les tableaux et le code peuvent garder leurs dimensions naturelles, rejoindre la mesure du texte ou se replier lorsque le contexte l’exige."
+                />
+
+                <div className="mt-8 grid gap-5 xl:grid-cols-2">
+                    <Stage>
+                        <p className="mb-5 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            Fidélité · défilement · lignes repérées
+                        </p>
+                        <PixieDustMarkdown
+                            blocks={technicalBlocks}
+                            as="section"
+                            headingScale="compact"
+                            anchorPrefix="markdown-technical-scroll"
+                            codeLineNumbers
+                        />
+                    </Stage>
+                    <Stage>
+                        <p className="mb-5 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                            Continuité · repli · colonnes fixes
+                        </p>
+                        <PixieDustMarkdown
+                            blocks={technicalBlocks}
+                            as="section"
+                            headingScale="compact"
+                            anchorPrefix="markdown-technical-wrap"
+                            wideBlocks="measure"
+                            codeOverflow="wrap"
+                            tableLayout="fixed"
+                        />
+                    </Stage>
+                </div>
+            </section>
+
+            <section aria-labelledby="markdown-accents" className="mt-16">
+                <SequenceTitle
+                    id="markdown-accents"
+                    eyebrow="Accents éditoriaux"
+                    title="La couleur donne un repère, jamais une nouvelle vérité"
+                    description="Le même accent traverse citations, listes, tâches, séparateurs et ASCII. Le texte et la structure conservent seuls le sens."
+                />
+
+                <div className="mt-8 grid gap-5 xl:grid-cols-3">
+                    {[
+                        ["violet-ombre-portee", "Guidebook"],
+                        ["rouge-crayon", "Annotation"],
+                        ["vert-cellulo", "Transmission"],
+                    ].map(([color, label]) => (
+                        <Stage key={color}>
+                            <p className="mb-5 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
+                                {label} · {color}
+                            </p>
+                            <PixieDustMarkdown
+                                blocks={accentBlocks}
+                                as="section"
+                                color={
+                                    color as
+                                        | "violet-ombre-portee"
+                                        | "rouge-crayon"
+                                        | "vert-cellulo"
+                                }
+                                anchorPrefix={`markdown-accent-${color}`}
+                                density="compact"
+                                asciiCopyable={false}
+                            />
+                        </Stage>
+                    ))}
                 </div>
             </section>
 
@@ -299,7 +527,7 @@ export async function PixieDustMarkdownDossier() {
                     {[
                         [
                             "Titres bornés",
-                            "Le décalage conserve l’ordre hiérarchique et s’arrête à h6.",
+                            "Le décalage conserve l’ordre hiérarchique et s’arrête à h6 ; l’échelle visuelle reste indépendante.",
                         ],
                         [
                             "Listes véritables",
@@ -315,7 +543,7 @@ export async function PixieDustMarkdownDossier() {
                         ],
                         [
                             "ASCII alternatif",
-                            "Les cadres visuels délèguent une description nettoyée à PixieAscii.",
+                            "Les cadres visuels délèguent une description nettoyée, la couleur et la copie autorisée à PixieAscii.",
                         ],
                         [
                             "Document sans script",
@@ -340,7 +568,7 @@ export async function PixieDustMarkdownDossier() {
                     id="markdown-technical"
                     eyebrow="Générique technique"
                     title="API de l’esquisse"
-                    description="L’Écran reçoit uniquement des blocs Guidebook déjà autorisés. Il ne connaît ni Markdown brut, ni fichier, ni Notion, ni route."
+                    description="L’Écran reçoit uniquement des blocs Guidebook déjà autorisés. Sa seconde itération sépare la sémantique, la présence visuelle et le comportement des blocs techniques sans connaître leur source."
                 />
 
                 <div className="mt-7">
@@ -359,18 +587,18 @@ export async function PixieDustMarkdownDossier() {
                 <SequenceTitle
                     id="markdown-journal"
                     eyebrow="Journal de production"
-                    title="Décisions avant la seconde itération"
-                    description="La première version doit maintenant être relue comme un document, pas seulement admirée comme une démonstration technique."
+                    title="Décisions avant la promotion"
+                    description="La seconde itération possède désormais les réglages nécessaires pour éprouver une lecture entière avant de stabiliser son contrat."
                 />
 
                 <ul className="mt-7 grid gap-px bg-line md:grid-cols-2">
                     {[
-                        "Éprouver le chapitre le plus long à 200 % de zoom.",
-                        "Confirmer la mesure de lecture dans les deux Lumières.",
-                        "Tester les tableaux très larges sur mobile et au clavier.",
-                        "Relire les alternatives produites pour les dix-neuf cartes ASCII.",
-                        "Décider si le code doit recevoir une action de copie en v0.2.0.",
-                        "Conserver sommaire et navigation de bibliothèque hors de cet Écran.",
+                        "Éprouver le chapitre le plus long dans les trois échelles de titres à 200 % de zoom.",
+                        "Confirmer que les accents restent des repères et ne portent jamais seuls le sens.",
+                        "Tester défilement, repli, numéros de ligne et colonnes fixes sur mobile et au clavier.",
+                        "Relire les alternatives et la copie des compositions réellement confiées à PixieAscii.",
+                        "Réserver la copie du code à une future primitive dédiée afin de garder cet Écran serveur.",
+                        "Conserver sommaire, bibliothèque, source et navigation hors de cet Écran.",
                     ].map((item) => (
                         <li
                             key={item}
@@ -395,7 +623,7 @@ export async function PixieDustMarkdownDossier() {
                 <SequenceTitle
                     id="markdown-last-image"
                     eyebrow="Dernière image"
-                    title="Le document tient debout. La bibliothèque peut bientôt l’entourer."
+                    title="Le document a trouvé sa voix. Il peut maintenant traverser toute la bibliothèque."
                 />
             </section>
         </AtelierFicheAccessoire>
