@@ -315,7 +315,7 @@ export async function PixieDustMarkdownDossier() {
                         ],
                         [
                             "ASCII alternatif",
-                            "Les cadres visuels délèguent une description nettoyée à PixieDustAscii.",
+                            "Les cadres visuels délèguent une description nettoyée à PixieAscii.",
                         ],
                         [
                             "Document sans script",

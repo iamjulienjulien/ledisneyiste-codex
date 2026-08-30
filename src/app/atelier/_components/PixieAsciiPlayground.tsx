@@ -7,25 +7,25 @@ import {
     useAtelierProjection,
 } from "@/components/atelier/AtelierPlaygroundProjection";
 import {
-    PixieDustAscii,
-    type PixieDustAsciiAlign,
-    type PixieDustAsciiCopyState,
-    type PixieDustAsciiDensity,
-    type PixieDustAsciiMaxHeight,
-    type PixieDustAsciiOverflow,
-    type PixieDustAsciiPadding,
-    type PixieDustAsciiSize,
-    type PixieDustAsciiTexture,
-    type PixieDustAsciiVariant,
-    type PixieDustAsciiWidth,
-} from "@/components/ui/PixieDustAscii";
+    PixieAscii,
+    type PixieAsciiAlign,
+    type PixieAsciiCopyState,
+    type PixieAsciiDensity,
+    type PixieAsciiMaxHeight,
+    type PixieAsciiOverflow,
+    type PixieAsciiPadding,
+    type PixieAsciiSize,
+    type PixieAsciiTexture,
+    type PixieAsciiVariant,
+    type PixieAsciiWidth,
+} from "@/components/ui/PixieAscii";
 import { PixieSelect } from "@/components/ui/PixieSelect";
 import { PixieSwitch } from "@/components/ui/PixieSwitch";
 import type { AtelierAnimationColorSlug } from "@/types/colors";
 import {
     asciiFixtures,
-    type PixieDustAsciiFixtureSlug,
-} from "./PixieDustAscii.fixtures";
+    type PixieAsciiFixtureSlug,
+} from "./PixieAscii.fixtures";
 
 const variants = [
     ["plain", "Sans décor"],
@@ -33,54 +33,54 @@ const variants = [
     ["outline", "Contour"],
     ["slate", "Ardoise"],
     ["projector", "Projecteur"],
-] as const satisfies readonly [PixieDustAsciiVariant, string][];
+] as const satisfies readonly [PixieAsciiVariant, string][];
 
 const sizes = [
     ["sm", "Petite"],
     ["md", "Moyenne"],
     ["lg", "Grande"],
-] as const satisfies readonly [PixieDustAsciiSize, string][];
+] as const satisfies readonly [PixieAsciiSize, string][];
 
 const densities = [
     ["compact", "Compacte"],
     ["comfortable", "Confortable"],
     ["airy", "Aérée"],
-] as const satisfies readonly [PixieDustAsciiDensity, string][];
+] as const satisfies readonly [PixieAsciiDensity, string][];
 
 const paddings = [
     ["none", "Aucun"],
     ["sm", "Petit"],
     ["md", "Moyen"],
     ["lg", "Grand"],
-] as const satisfies readonly [PixieDustAsciiPadding, string][];
+] as const satisfies readonly [PixieAsciiPadding, string][];
 
 const widths = [
     ["fit", "Au contenu"],
     ["full", "Pleine largeur"],
-] as const satisfies readonly [PixieDustAsciiWidth, string][];
+] as const satisfies readonly [PixieAsciiWidth, string][];
 
 const aligns = [
     ["start", "Début"],
     ["center", "Centrée"],
-] as const satisfies readonly [PixieDustAsciiAlign, string][];
+] as const satisfies readonly [PixieAsciiAlign, string][];
 
 const overflows = [
     ["auto", "Défilement"],
     ["clip", "Rogné"],
-] as const satisfies readonly [PixieDustAsciiOverflow, string][];
+] as const satisfies readonly [PixieAsciiOverflow, string][];
 
 const maxHeights = [
     ["none", "Sans limite"],
     ["sm", "Petite"],
     ["md", "Moyenne"],
     ["lg", "Grande"],
-] as const satisfies readonly [PixieDustAsciiMaxHeight, string][];
+] as const satisfies readonly [PixieAsciiMaxHeight, string][];
 
 const textures = [
     ["none", "Aucune"],
     ["grain", "Grain"],
     ["scanlines", "Lignes de régie"],
-] as const satisfies readonly [PixieDustAsciiTexture, string][];
+] as const satisfies readonly [PixieAsciiTexture, string][];
 
 const colors = [
     ["theme", "Accent du thème"],
@@ -138,19 +138,18 @@ function ControlSelect({
     );
 }
 
-export function PixieDustAsciiPlayground() {
+export function PixieAsciiPlayground() {
     const [fixtureSlug, setFixtureSlug] =
-        useState<PixieDustAsciiFixtureSlug>("service");
-    const [variant, setVariant] = useState<PixieDustAsciiVariant>("projector");
-    const [size, setSize] = useState<PixieDustAsciiSize>("md");
-    const [density, setDensity] =
-        useState<PixieDustAsciiDensity>("comfortable");
-    const [padding, setPadding] = useState<PixieDustAsciiPadding>("lg");
-    const [width, setWidth] = useState<PixieDustAsciiWidth>("full");
-    const [align, setAlign] = useState<PixieDustAsciiAlign>("center");
-    const [overflow, setOverflow] = useState<PixieDustAsciiOverflow>("auto");
-    const [maxHeight, setMaxHeight] = useState<PixieDustAsciiMaxHeight>("none");
-    const [texture, setTexture] = useState<PixieDustAsciiTexture>("grain");
+        useState<PixieAsciiFixtureSlug>("service");
+    const [variant, setVariant] = useState<PixieAsciiVariant>("projector");
+    const [size, setSize] = useState<PixieAsciiSize>("md");
+    const [density, setDensity] = useState<PixieAsciiDensity>("comfortable");
+    const [padding, setPadding] = useState<PixieAsciiPadding>("lg");
+    const [width, setWidth] = useState<PixieAsciiWidth>("full");
+    const [align, setAlign] = useState<PixieAsciiAlign>("center");
+    const [overflow, setOverflow] = useState<PixieAsciiOverflow>("auto");
+    const [maxHeight, setMaxHeight] = useState<PixieAsciiMaxHeight>("none");
+    const [texture, setTexture] = useState<PixieAsciiTexture>("grain");
     const [color, setColor] = useState<AtelierAnimationColorSlug | "theme">(
         "violet-ombre-portee",
     );
@@ -158,12 +157,12 @@ export function PixieDustAsciiPlayground() {
     const [copyable, setCopyable] = useState(true);
     const [scrollHint, setScrollHint] = useState(true);
     const [decorative, setDecorative] = useState(false);
-    const [copyState, setCopyState] = useState<PixieDustAsciiCopyState>("idle");
+    const [copyState, setCopyState] = useState<PixieAsciiCopyState>("idle");
     const { lumiere, cadre } = useAtelierProjection();
     const fixture = asciiFixtures[fixtureSlug];
     const selectedColor = color === "theme" ? false : color;
     const code = decorative
-        ? `<PixieDustAscii
+        ? `<PixieAscii
     decorative
     variant="${variant}"
     size="${size}"
@@ -178,8 +177,8 @@ export function PixieDustAsciiPlayground() {
     texture="${texture}"${selectedColor ? `\n    color="${selectedColor}"` : ""}
 >
     {composition}
-</PixieDustAscii>`
-        : `<PixieDustAscii
+</PixieAscii>`
+        : `<PixieAscii
     label="${fixture.label}"
     alternative={alternative}
     variant="${variant}"
@@ -195,10 +194,10 @@ export function PixieDustAsciiPlayground() {
     texture="${texture}"${selectedColor ? `\n    color="${selectedColor}"` : ""}${copyable ? "\n    copyable" : ""}
 >
     {composition}
-</PixieDustAscii>`;
+</PixieAscii>`;
 
     const selectFixture = (value: string) => {
-        const nextFixture = value as PixieDustAsciiFixtureSlug;
+        const nextFixture = value as PixieAsciiFixtureSlug;
         setFixtureSlug(nextFixture);
         setCopyState("idle");
 
@@ -240,7 +239,7 @@ export function PixieDustAsciiPlayground() {
                             value={variant}
                             options={variants}
                             onChange={(value) =>
-                                setVariant(value as PixieDustAsciiVariant)
+                                setVariant(value as PixieAsciiVariant)
                             }
                         />
                         <ControlSelect
@@ -261,7 +260,7 @@ export function PixieDustAsciiPlayground() {
                             value={size}
                             options={sizes}
                             onChange={(value) =>
-                                setSize(value as PixieDustAsciiSize)
+                                setSize(value as PixieAsciiSize)
                             }
                         />
                         <ControlSelect
@@ -270,7 +269,7 @@ export function PixieDustAsciiPlayground() {
                             value={density}
                             options={densities}
                             onChange={(value) =>
-                                setDensity(value as PixieDustAsciiDensity)
+                                setDensity(value as PixieAsciiDensity)
                             }
                         />
                         <ControlSelect
@@ -279,7 +278,7 @@ export function PixieDustAsciiPlayground() {
                             value={padding}
                             options={paddings}
                             onChange={(value) =>
-                                setPadding(value as PixieDustAsciiPadding)
+                                setPadding(value as PixieAsciiPadding)
                             }
                         />
                         <ControlSelect
@@ -288,7 +287,7 @@ export function PixieDustAsciiPlayground() {
                             value={width}
                             options={widths}
                             onChange={(value) =>
-                                setWidth(value as PixieDustAsciiWidth)
+                                setWidth(value as PixieAsciiWidth)
                             }
                         />
                         <ControlSelect
@@ -297,7 +296,7 @@ export function PixieDustAsciiPlayground() {
                             value={align}
                             options={aligns}
                             onChange={(value) =>
-                                setAlign(value as PixieDustAsciiAlign)
+                                setAlign(value as PixieAsciiAlign)
                             }
                         />
                         <ControlSelect
@@ -306,7 +305,7 @@ export function PixieDustAsciiPlayground() {
                             value={overflow}
                             options={overflows}
                             onChange={(value) =>
-                                setOverflow(value as PixieDustAsciiOverflow)
+                                setOverflow(value as PixieAsciiOverflow)
                             }
                         />
                         <ControlSelect
@@ -315,7 +314,7 @@ export function PixieDustAsciiPlayground() {
                             value={maxHeight}
                             options={maxHeights}
                             onChange={(value) =>
-                                setMaxHeight(value as PixieDustAsciiMaxHeight)
+                                setMaxHeight(value as PixieAsciiMaxHeight)
                             }
                         />
                         <ControlSelect
@@ -324,7 +323,7 @@ export function PixieDustAsciiPlayground() {
                             value={texture}
                             options={textures}
                             onChange={(value) =>
-                                setTexture(value as PixieDustAsciiTexture)
+                                setTexture(value as PixieAsciiTexture)
                             }
                         />
                         <ControlSelect
@@ -391,7 +390,7 @@ export function PixieDustAsciiPlayground() {
                             className={`w-full min-w-0 transition-[max-width] ${frameWidths[cadre]}`}
                         >
                             {decorative ? (
-                                <PixieDustAscii
+                                <PixieAscii
                                     decorative
                                     variant={variant}
                                     color={selectedColor}
@@ -407,9 +406,9 @@ export function PixieDustAsciiPlayground() {
                                     texture={texture}
                                 >
                                     {fixture.content}
-                                </PixieDustAscii>
+                                </PixieAscii>
                             ) : (
-                                <PixieDustAscii
+                                <PixieAscii
                                     label={fixture.label}
                                     alternative={fixture.alternative}
                                     variant={variant}
@@ -430,7 +429,7 @@ export function PixieDustAsciiPlayground() {
                                     caption={`Fixture de projection · le contenu demeure une simple chaîne autorisée · copie : ${copyState}.`}
                                 >
                                     {fixture.content}
-                                </PixieDustAscii>
+                                </PixieAscii>
                             )}
                         </div>
                     </div>

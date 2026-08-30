@@ -4,11 +4,8 @@ import { AtelierFicheAccessoire } from "@/components/atelier/AtelierFicheAccesso
 import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
 import { AtelierStatut } from "@/components/atelier/AtelierStatut";
 import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
-import {
-    PixieDustAscii,
-    type PixieDustAsciiVariant,
-} from "@/components/ui/PixieDustAscii";
-import { PixieDustAsciiPlayground } from "./PixieDustAsciiPlayground";
+import { PixieAscii, type PixieAsciiVariant } from "@/components/ui/PixieAscii";
+import { PixieAsciiPlayground } from "./PixieAsciiPlayground";
 import {
     decorativeSpark,
     guidebookTree,
@@ -17,7 +14,7 @@ import {
     twoDimensionalRegister,
     unicodeCard,
     wideProjection,
-} from "./PixieDustAscii.fixtures";
+} from "./PixieAscii.fixtures";
 
 const properties = [
     {
@@ -55,49 +52,49 @@ const properties = [
     },
     {
         name: "variant",
-        type: "PixieDustAsciiVariant",
+        type: "PixieAsciiVariant",
         defaultValue: '"surface"',
         description: "Traitement du cadre et de sa lumière.",
     },
     {
         name: "color",
-        type: "PixieDustAsciiColor",
+        type: "PixieAsciiColor",
         defaultValue: "false",
         description: "Accent puisé dans le registre de l’Atelier.",
     },
     {
         name: "size",
-        type: "PixieDustAsciiSize",
+        type: "PixieAsciiSize",
         defaultValue: '"md"',
         description: "Taille monospacée des glyphes.",
     },
     {
         name: "density",
-        type: "PixieDustAsciiDensity",
+        type: "PixieAsciiDensity",
         defaultValue: '"comfortable"',
         description: "Interligne sans altérer la grille horizontale.",
     },
     {
         name: "padding",
-        type: "PixieDustAsciiPadding",
+        type: "PixieAsciiPadding",
         defaultValue: '"md"',
         description: "Respiration intérieure du cadre.",
     },
     {
         name: "width",
-        type: "PixieDustAsciiWidth",
+        type: "PixieAsciiWidth",
         defaultValue: '"full"',
         description: "Largeur au contenu ou disponible.",
     },
     {
         name: "align",
-        type: "PixieDustAsciiAlign",
+        type: "PixieAsciiAlign",
         defaultValue: '"start"',
         description: "Placement du bloc sans réaligner ses lignes internes.",
     },
     {
         name: "overflow",
-        type: "PixieDustAsciiOverflow",
+        type: "PixieAsciiOverflow",
         defaultValue: '"auto"',
         description: "Défilement contenu ou rognage volontaire.",
     },
@@ -110,7 +107,7 @@ const properties = [
     },
     {
         name: "maxHeight",
-        type: "PixieDustAsciiMaxHeight",
+        type: "PixieAsciiMaxHeight",
         defaultValue: '"none"',
         description: "Hauteur maximale avant défilement vertical.",
     },
@@ -122,7 +119,7 @@ const properties = [
     },
     {
         name: "texture",
-        type: "PixieDustAsciiTexture",
+        type: "PixieAsciiTexture",
         defaultValue: '"none"',
         description: "Grain ou lignes de régie derrière les glyphes.",
     },
@@ -158,7 +155,7 @@ const properties = [
     },
     {
         name: "onCopyStateChange",
-        type: "(state: PixieDustAsciiCopyState) => void",
+        type: "(state: PixieAsciiCopyState) => void",
         defaultValue: "—",
         description:
             "Transmet les états idle, copied et error à la régie qui orchestre la copie.",
@@ -171,7 +168,7 @@ const properties = [
     },
     {
         name: "style",
-        type: "PixieDustAsciiStyle",
+        type: "PixieAsciiStyle",
         defaultValue: "—",
         description: "Styles et variables CSS explicitement transmis.",
     },
@@ -179,54 +176,54 @@ const properties = [
 
 const specificTypes = [
     {
-        name: "PixieDustAsciiVariant",
+        name: "PixieAsciiVariant",
         values: ['"plain"', '"surface"', '"outline"', '"slate"', '"projector"'],
         description:
             "Cinq présences de plateau, de la plus nue à la plus lumineuse.",
     },
     {
-        name: "PixieDustAsciiSize",
+        name: "PixieAsciiSize",
         values: ['"sm"', '"md"', '"lg"'],
         description: "Échelle typographique monospacée.",
     },
     {
-        name: "PixieDustAsciiDensity",
+        name: "PixieAsciiDensity",
         values: ['"compact"', '"comfortable"', '"airy"'],
         description: "Rythme vertical des lignes.",
     },
     {
-        name: "PixieDustAsciiPadding",
+        name: "PixieAsciiPadding",
         values: ['"none"', '"sm"', '"md"', '"lg"'],
         description: "Respirations intérieures tokenisées.",
     },
     {
-        name: "PixieDustAsciiWidth",
+        name: "PixieAsciiWidth",
         values: ['"fit"', '"full"'],
         description: "Occupation du cadre parent.",
     },
     {
-        name: "PixieDustAsciiAlign",
+        name: "PixieAsciiAlign",
         values: ['"start"', '"center"'],
         description: "Placement logique de la composition complète.",
     },
     {
-        name: "PixieDustAsciiOverflow",
+        name: "PixieAsciiOverflow",
         values: ['"auto"', '"clip"'],
         description: "Comportement des dimensions hors cadre.",
     },
     {
-        name: "PixieDustAsciiMaxHeight",
+        name: "PixieAsciiMaxHeight",
         values: ['"none"', '"sm"', '"md"', '"lg"'],
         description: "Bornes verticales du viewport.",
     },
     {
-        name: "PixieDustAsciiTexture",
+        name: "PixieAsciiTexture",
         values: ['"none"', '"grain"', '"scanlines"'],
         description:
             "Matières statiques qui demeurent derrière les caractères.",
     },
     {
-        name: "PixieDustAsciiCopyState",
+        name: "PixieAsciiCopyState",
         values: ['"idle"', '"copied"', '"error"'],
         description: "États internes et annoncés de l’action de copie.",
     },
@@ -269,7 +266,7 @@ const variantScenarios = [
         color: "violet-ombre-portee" as const,
     },
 ] as const satisfies readonly Readonly<{
-    variant: PixieDustAsciiVariant;
+    variant: PixieAsciiVariant;
     title: string;
     description: string;
     color:
@@ -314,12 +311,12 @@ function Stage({ children }: Readonly<{ children: ReactNode }>) {
     );
 }
 
-export function PixieDustAsciiDossier() {
+export function PixieAsciiDossier() {
     return (
         <AtelierFicheAccessoire
-            id="pixie-dust-ascii"
-            labelledBy="pixie-dust-ascii-title"
-            nom="PixieDustAscii"
+            id="pixie-ascii"
+            labelledBy="pixie-ascii-title"
+            nom="PixieAscii"
             className="scroll-mt-8"
             header={
                 <div className="grid gap-px bg-line md:grid-cols-[1fr_auto]">
@@ -328,10 +325,10 @@ export function PixieDustAsciiDossier() {
                             Le clap · Écran 001
                         </p>
                         <h2
-                            id="pixie-dust-ascii-title"
+                            id="pixie-ascii-title"
                             className="mt-4 text-4xl text-ink sm:text-5xl"
                         >
-                            PixieDustAscii
+                            PixieAscii
                         </h2>
                         <p className="mt-4 text-lg leading-8 text-ink-soft">
                             Préserver une composition monospacée sans la réduire
@@ -345,7 +342,7 @@ export function PixieDustAsciiDossier() {
                                 État
                             </dt>
                             <dd className="mt-2">
-                                <AtelierStatut statut="Esquisse" />
+                                <AtelierStatut statut="Prêt à projeter" />
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -353,7 +350,7 @@ export function PixieDustAsciiDossier() {
                                 Version
                             </dt>
                             <dd className="mt-2 font-mono text-sm text-ink">
-                                0.2.0
+                                1.0.0
                             </dd>
                         </div>
                     </dl>
@@ -372,7 +369,7 @@ export function PixieDustAsciiDossier() {
                 />
 
                 <div className="mt-8">
-                    <PixieDustAscii
+                    <PixieAscii
                         label="Carte de service de R2-D2"
                         alternative="Carte de service de R2-D2, Lead Developer de l’unité Guidebook chez Guru Éditions. Mission : relier le prompt à la magie."
                         variant="projector"
@@ -384,11 +381,11 @@ export function PixieDustAsciiDossier() {
                         caption="Carte de service existante · la grille typographique fait partie du sens visuel."
                     >
                         {r2d2ServiceCard}
-                    </PixieDustAscii>
+                    </PixieAscii>
                 </div>
 
                 <div className="mt-7">
-                    <AtelierCodeBlock>{`<PixieDustAscii
+                    <AtelierCodeBlock>{`<PixieAscii
     label="Carte de service de R2-D2"
     alternative={alternativeTextuelle}
     variant="projector"
@@ -399,7 +396,7 @@ export function PixieDustAsciiDossier() {
     copyable
 >
     {carteDeService}
-</PixieDustAscii>`}</AtelierCodeBlock>
+</PixieAscii>`}</AtelierCodeBlock>
                 </div>
             </section>
 
@@ -427,7 +424,7 @@ export function PixieDustAsciiDossier() {
                                 {scenario.description}
                             </p>
                             <div className="mt-5">
-                                <PixieDustAscii
+                                <PixieAscii
                                     label={`Arborescence du Guidebook · variante ${scenario.title}`}
                                     alternative="Le dossier docs/agents contient un README et six chapitres numérotés."
                                     variant={scenario.variant}
@@ -442,7 +439,7 @@ export function PixieDustAsciiDossier() {
                                     }
                                 >
                                     {guidebookTree}
-                                </PixieDustAscii>
+                                </PixieAscii>
                             </div>
                         </article>
                     ))}
@@ -471,7 +468,7 @@ export function PixieDustAsciiDossier() {
                                 <p className="mb-4 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                                     {title}
                                 </p>
-                                <PixieDustAscii
+                                <PixieAscii
                                     label={`Composition Unicode en ${title.toLowerCase()}`}
                                     alternative="Poussière prête, lumière allumée. Signal reçu par R2-D2."
                                     variant="surface"
@@ -480,7 +477,7 @@ export function PixieDustAsciiDossier() {
                                     texture="grain"
                                 >
                                     {unicodeCard}
-                                </PixieDustAscii>
+                                </PixieAscii>
                             </div>
                         </Stage>
                     ))}
@@ -500,7 +497,7 @@ export function PixieDustAsciiDossier() {
                         <p className="mb-4 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Très large · défilement horizontal
                         </p>
-                        <PixieDustAscii
+                        <PixieAscii
                             label="Chaîne de projection très large"
                             alternative="La source locale traverse l’analyse Markdown, les blocs normalisés et la projection du Guidebook."
                             variant="outline"
@@ -510,14 +507,14 @@ export function PixieDustAsciiDossier() {
                             copyable
                         >
                             {wideProjection}
-                        </PixieDustAscii>
+                        </PixieAscii>
                     </Stage>
 
                     <Stage>
                         <p className="mb-4 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Très haute · viewport borné
                         </p>
-                        <PixieDustAscii
+                        <PixieAscii
                             label="Registre vertical de vingt-quatre bobines"
                             alternative="Registre de vingt-quatre bobines, alternativement prêtes ou en repérage."
                             variant="slate"
@@ -528,14 +525,14 @@ export function PixieDustAsciiDossier() {
                             texture="scanlines"
                         >
                             {tallRegister}
-                        </PixieDustAscii>
+                        </PixieAscii>
                     </Stage>
 
                     <Stage>
                         <p className="mb-4 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Très large et très haute · quatre hors-champs
                         </p>
-                        <PixieDustAscii
+                        <PixieAscii
                             label="Registre débordant dans les deux directions"
                             alternative="Dix-huit entrées du Guidebook traversent une source autorisée, une analyse unique, une alternative conservée et une projection prête."
                             variant="projector"
@@ -547,14 +544,14 @@ export function PixieDustAsciiDossier() {
                             texture="grain"
                         >
                             {twoDimensionalRegister}
-                        </PixieDustAscii>
+                        </PixieAscii>
                     </Stage>
 
                     <Stage>
                         <p className="mb-4 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Vide · action neutralisée
                         </p>
-                        <PixieDustAscii
+                        <PixieAscii
                             label="Composition vide"
                             alternative="Aucune composition n’est disponible."
                             variant="surface"
@@ -562,14 +559,14 @@ export function PixieDustAsciiDossier() {
                             copyable
                         >
                             {""}
-                        </PixieDustAscii>
+                        </PixieAscii>
                     </Stage>
 
                     <Stage>
                         <p className="mb-4 text-xs font-eyebrow uppercase tracking-[0.16em] text-muted">
                             Décorative · silence assistif
                         </p>
-                        <PixieDustAscii
+                        <PixieAscii
                             decorative
                             variant="plain"
                             align="center"
@@ -577,24 +574,24 @@ export function PixieDustAsciiDossier() {
                             color="violet-ombre-portee"
                         >
                             {decorativeSpark}
-                        </PixieDustAscii>
+                        </PixieAscii>
                     </Stage>
                 </div>
             </section>
 
             <section
-                id="pixie-dust-ascii-playground"
+                id="pixie-ascii-playground"
                 aria-labelledby="ascii-playground-title"
                 className="mt-16 scroll-mt-8 border border-line-strong bg-surface-muted p-6 shadow-soft sm:p-8"
             >
                 <SequenceTitle
                     id="ascii-playground-title"
                     eyebrow="Régie"
-                    title="Composer un PixieDustAscii"
+                    title="Composer un PixieAscii"
                     description="Choisissez une fixture, son cadre et sa densité. Les contrôles généraux de l’Atelier règlent simultanément la Lumière et la largeur de projection."
                 />
                 <div className="mt-8">
-                    <PixieDustAsciiPlayground />
+                    <PixieAsciiPlayground />
                 </div>
             </section>
 
@@ -612,7 +609,7 @@ export function PixieDustAsciiDossier() {
                 <div className="mt-7 grid gap-px bg-line md:grid-cols-2">
                     {[
                         [
-                            "Alternative obligatoire",
+                            "Nom accessible obligatoire",
                             "Le mode informatif sépare un nom court d’une description détaillée facultative.",
                         ],
                         [
@@ -661,7 +658,7 @@ export function PixieDustAsciiDossier() {
                 <SequenceTitle
                     id="ascii-technical"
                     eyebrow="Générique technique"
-                    title="API de l’esquisse"
+                    title="API du composant"
                     description="La primitive accepte uniquement une chaîne déjà autorisée. Elle ne connaît ni Markdown, ni chemin local, ni Notion."
                 />
 
@@ -675,41 +672,6 @@ export function PixieDustAsciiDossier() {
                         <AtelierTypesTable types={specificTypes} />
                     </div>
                 </div>
-            </section>
-
-            <section aria-labelledby="ascii-journal" className="mt-16">
-                <SequenceTitle
-                    id="ascii-journal"
-                    eyebrow="Journal de production"
-                    title="Décisions avant la promotion"
-                    description="La version 0.2.0 fixe le contrat de l’esquisse avant sa future promotion."
-                />
-
-                <ul className="mt-7 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
-                    {[
-                        "La pile typographique ASCII reste distincte de la police de code de l’Atelier.",
-                        "Le viewport ne rejoint le clavier que lorsque ses mesures révèlent un débordement réel.",
-                        "Quatre lueurs discrètes signalent le hors-champ sans modifier la grille.",
-                        "Le label nomme la carte ; l’alternative en transmet le sens détaillé.",
-                        "PixieButton copie la chaîne exacte et transmet son état à la régie.",
-                        "L’impression retire la scène et restitue la composition complète.",
-                    ].map((decision) => (
-                        <li
-                            key={decision}
-                            className="bg-surface p-5 leading-7 text-ink-soft"
-                        >
-                            {decision}
-                        </li>
-                    ))}
-                </ul>
-            </section>
-
-            <section aria-labelledby="ascii-last-frame" className="mt-16">
-                <SequenceTitle
-                    id="ascii-last-frame"
-                    eyebrow="Dernière image"
-                    title="Les traits tiennent. La carte peut entrer dans le Guidebook."
-                />
             </section>
         </AtelierFicheAccessoire>
     );

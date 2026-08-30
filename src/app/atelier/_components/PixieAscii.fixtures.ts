@@ -86,4 +86,4 @@ export const asciiFixtures = {
     },
 } as const;
 
-export type PixieDustAsciiFixtureSlug = keyof typeof asciiFixtures;
+export type PixieAsciiFixtureSlug = keyof typeof asciiFixtures;
