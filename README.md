@@ -37,7 +37,7 @@ familles :
 Ces fiches sont reliées entre elles, rattachées automatiquement à leur Époque
 et développées à partir de sources centralisées. Leurs 176 blocs éditoriaux
 emploient une première collection de symboles illustrés. Le registre central
-réunit désormais 248 symboles dans 21 collections. Quatorze récompenses
+réunit désormais 432 symboles dans 6 registres et 30 collections. Quatorze récompenses
 documentent également les premières distinctions du studio.
 
 Les quatre index proposent une vue Cartes par défaut et une vue Liste
@@ -107,32 +107,24 @@ Interface
 ## Architecture actuelle
 
 ```text
+docs/
+├── agents/                 # Guidebook destiné aux agents IA
+└── studio/                 # onboarding, courriers et registre d'équipe
+
 public/
 └── symbols/
-    ├── blocs/
-    ├── codex/
+    ├── diffusion/
     ├── general/
-    │   ├── archives/
-    │   ├── atelier/
-    │   ├── cinema/
-    │   ├── communication/
-    │   ├── ecriture/
-    │   ├── evenements/
-    │   ├── exploration/
-    │   ├── logos/
-    │   └── temps/
+    ├── index/
     ├── recompenses/
+    ├── sources/
     └── techniques/
-        ├── animation/
-        ├── couleur/
-        ├── effets/
-        ├── images/
-        ├── imagineering/
-        └── son/
 
 scripts/
 ├── verifier-metadonnees.mjs
+├── verifier-matiere-plans.mjs
 ├── verifier-oeuvres.mjs
+├── verifier-plans.mjs
 ├── verifier-personnages.mjs
 ├── verifier-recompenses.mjs
 ├── verifier-relations.mjs
@@ -166,10 +158,16 @@ src/
 │   ├── sources/
 │   └── relations.ts
 │
+├── fixtures/
+│   └── plans/
+│
 ├── lib/
+│   └── plans/
 ├── registry/
 │   ├── colors/
+│   ├── credits/
 │   ├── metadata/
+│   ├── plans/
 │   └── symbols/
 │
 ├── styles/
@@ -457,40 +455,30 @@ Les symboles illustrés sont résolus par un registre global composé de
 sous-registres et de collections :
 
 ```text
-blocs.personnages
-blocs.contributeurs
-blocs.oeuvres
-blocs.epoques
-codex.index
-general.logos
-general.cinema
-general.archives
-general.ecriture
-general.exploration
-general.temps
-general.atelier
-general.evenements
-general.communication
+diffusion.{salles,television,video,numerique,scene-et-parcs}
+general.{logos,cinema,archives,ecriture,exploration,temps,atelier,evenements,communication}
+index.{personnages,oeuvres,createurs,epoques,chansons}
 recompenses.trophees
-techniques.animation
-techniques.images
-techniques.couleur
-techniques.son
-techniques.effets
-techniques.imagineering
+sources.{supports,documents,archives,conservation}
+techniques.{animation,images,couleur,son,effets,imagineering}
 ```
 
-Les collections `general` rassemblent le logo, la salle de cinéma, les
-archives, l’écriture, l’exploration, le temps, l’atelier, les événements et la
-communication. Les collections `techniques` couvrent l’animation, l’image, la
-couleur, le son, les effets et l’Imagineering. Elles complètent les quatre
-index, les blocs éditoriaux et les trophées déjà illustrés.
+Les six registres séparent les usages sans dupliquer les définitions : `index`
+porte l’identité des catalogues et leurs chapitres, `general` le vocabulaire
+transversal, `techniques` les métiers de fabrication, `diffusion` les modes de
+projection, `sources` les supports de preuve et `recompenses` les trophées.
+Les blocs éditoriaux choisissent leurs symboles dans ces mêmes collections.
 
 `PixieSymbol` constitue la porte d’entrée unique vers ce registre. Son appel ne
 dépend pas du chemin d’une image, mais d’une sélection typée :
 
 ```tsx
-<PixieSymbol registry="codex" collection="index" slug="personnages" size="xl" />
+<PixieSymbol
+    registry="index"
+    collection="personnages"
+    slug="principal"
+    size="xl"
+/>
 ```
 
 Les primitives UI suivent un cycle de maturation visible dans leur nom :
@@ -505,20 +493,20 @@ Pixie…     → composant validé et prêt à projeter
 ## L’Atelier
 
 L'Atelier documente les palettes, les composants, leurs variantes, leur
-accessibilité et leur API. Ses cinq premiers accessoires — `PixieSymbol`,
+accessibilité et leur API. **29 composants Pixie** sont désormais prêts à
+projeter. Ses cinq premiers accessoires — `PixieSymbol`,
 `PixieButton`, `PixieLink`, `PixieBadge` et `PixieSeparator` —, ses six Décors
 — `PixieCard`, `PixiePanel`, `PixieFrame`, `PixieCallout`, `PixieInset` et
 `PixieBackdrop` — et les neuf composants validés du Montage,
 `PixieContainer`, `PixieStack`, `PixieCluster`, `PixieSection`, `PixieGrid`,
 `PixieSidebar`, `PixieSwitcher`, `PixieRail` et `PixieStickyRegion`, ainsi que
-les six Dialogues `PixieField`, `PixieInput`, `PixieSelect`,
-`PixieSwitch`, `PixieSearchField` et `PixieTextarea`, ainsi que `PixieLoader`, premier Effet
-validé, sont
-désormais prêts à projeter.
+les six Dialogues `PixieField`, `PixieInput`, `PixieSelect`, `PixieSwitch`,
+`PixieSearchField` et `PixieTextarea`, ainsi que les trois premiers Effets
+`PixieLoader`, `PixieSkeleton` et `PixieToast`, sont désormais prêts à projeter.
 
 Ses sept plateaux de travail sont maintenant actifs :
 
-1. **La Pellicule** réunit les typographies, les palettes et les formes ;
+1. **La Pellicule** réunit les typographies et les palettes ;
 2. **Les Accessoires** éprouvent les primitives avant leur entrée dans le
    Codex ;
 3. **Les Décors** façonnent les surfaces et leurs profondeurs ;
@@ -527,17 +515,42 @@ Ses sept plateaux de travail sont maintenant actifs :
 6. **Les Effets** rendent visibles les attentes et les retours du système ;
 7. **Les Plans** composent de nouvelles lectures métier à partir des Archives.
 
-Le septième plateau prépare cinq explorations documentaires : le
+Le septième plateau projette cinq explorations documentaires en version
+`v0.1.0` : le
 **Travelling documentaire**, le **Plan d’ensemble**, le **Montage du temps**,
 le **Générique vivant** et la **Table lumineuse**. Chaque Plan possède un
 dossier privé distinct des fiches Pixie. Il annonce sa question, son action de
-lecture, son Cadre, sa Matière et son contrechamp textuel avant que le premier
-prototype ne soit projeté.
+lecture, son Cadre, sa Matière et son contrechamp textuel, puis propose une
+régie et un prototype manipulable.
+
+Les cinq prototypes observent actuellement _Blanche-Neige et les Sept Nains_
+comme Sujet réel commun :
+
+- le **Travelling documentaire** suit les sources et laboratoires qui
+  convergent vers le premier long métrage sans fabriquer de causalité ;
+- le **Plan d’ensemble** distribue son voisinage limité en constellations
+  documentaires ;
+- le **Montage du temps** aligne fabrication, diffusion et reconnaissance sur
+  des pistes qui conservent la précision réelle de leurs dates ;
+- le **Générique vivant** regroupe les contributions par domaines et rôles sans
+  transformer une présence en hiérarchie ;
+- la **Table lumineuse** relie les affirmations à leurs sources et conserve
+  explicitement les classifications et positions encore absentes des
+  Archives.
 
 Les Plans partagent une grammaire centrale dans `src/registry/plans` et
 `src/types/codex-plans.ts`. Leur Sujet est toujours une entrée publiée dans les
-catalogues Personnages, Créateurs, Œuvres ou Époques ; les bobines témoins et les
+catalogues Personnages, Créateurs, Œuvres ou Époques ; les Bobines témoins et les
 verdicts expérimentaux restent explicitement séparés des Archives.
+
+La couche pure `src/lib/plans` dérive les nœuds, relations, événements,
+crédits et preuves nécessaires aux cinq lectures. Les modèles propres à chaque
+Plan sont calculés côté serveur puis transmis à leur régie interactive. Huit
+Bobines témoins versionnées sous `src/fixtures/plans` éprouvent les corpus
+vides, réduits ou denses, les cycles et nœuds orphelins, les dates partielles ou
+contradictoires, les grands génériques, les preuves contrastées et les
+contraintes d’accessibilité. Elles ne modifient jamais les Archives et restent
+signalées comme matière de démonstration dans l’Atelier.
 
 L’Atelier documente actuellement **2 esquisses PixieDust**, auxquelles
 s’ajoutent les six Décors, les neuf composants du Montage, les six
@@ -545,9 +558,8 @@ Dialogues et les trois premiers Effets prêts à projeter :
 
 - **Décors — 6 composants validés :** `PixieCard`, `PixiePanel`, `PixieFrame`,
   `PixieCallout`, `PixieInset` et `PixieBackdrop` ;
-- **Dialogues — 6 composants validés :** `PixieField`,
-  `PixieInput`, `PixieSelect`, `PixieSwitch`, `PixieSearchField` et
-  `PixieTextarea` ;
+- **Dialogues — 6 composants validés :** `PixieField`, `PixieInput`,
+  `PixieSelect`, `PixieSwitch`, `PixieSearchField` et `PixieTextarea` ;
 - **Montage — 9 composants validés et 2 esquisses :** `PixieContainer`,
   `PixieStack`, `PixieCluster`, `PixieSection`, `PixieGrid`, `PixieSidebar`,
   `PixieSwitcher`, `PixieRail`, `PixieStickyRegion`, `PixieDustSplit` et
@@ -613,6 +625,8 @@ format
 → lint
 → check:symbols
 → check:metadata
+→ check:plans
+→ check:plan-matter
 → check:oeuvres
 → check:personnages
 → check:relations
@@ -636,6 +650,8 @@ pnpm format:check
 pnpm lint
 pnpm check:symbols
 pnpm check:metadata
+pnpm check:plans
+pnpm check:plan-matter
 pnpm check:oeuvres
 pnpm check:personnages
 pnpm check:relations
@@ -643,11 +659,14 @@ pnpm check:recompenses
 pnpm build
 ```
 
-`check:symbols` parcourt les cinq sous-registres, valide leurs collections,
+`check:symbols` parcourt les six registres, valide leurs collections,
 leurs définitions et leurs chemins, vérifie que chaque image publique est
 enregistrée et que chaque symbole possède bien son fichier. Il conserve
 également le contrôle métier qui impose à chaque bloc éditorial un type présent
-dans la bonne collection. Les contrôles suivants éprouvent les métadonnées des
+dans la bonne collection. `check:plans` valide la grammaire des cinq Plans,
+leurs Angles et leurs Objectifs. `check:plan-matter` éprouve les cinq familles
+de matière dérivée, les huit Bobines témoins et les projections propres aux
+cinq prototypes. Les contrôles suivants vérifient les métadonnées des
 catalogues, le modèle des Œuvres et sa fixture de long métrage, les variantes de
 noms et les formes des Personnages, la cohérence des références et des
 relations, puis les récompenses, leurs bénéficiaires, leurs sources et leurs
@@ -674,6 +693,12 @@ documentées dans :
 
 [`AGENTS.md`](./AGENTS.md)
 
+Le [Guidebook pour agents IA](./docs/agents/README.md) transmet l’esprit du
+projet, son architecture, sa direction artistique, le système Pixie, les
+registres de symboles et la grammaire des Plans. Les documents de
+[`docs/studio`](./docs/studio/) complètent ce clap par l’onboarding et le
+registre d’équipe de Guru Éditions.
+
 La chronologie des Actes, des Entractes, de leurs tags et de leurs génériques
 est consignée dans le [`Journal de projection`](./CHANGELOG.md).
 
@@ -699,6 +724,8 @@ Les véritables changements utilisent toujours leur domaine propre :
 🔌 Passerelle
 🛡️ Garde-fou
 ✍️ Scénario
+📡 Transmission
+🏢 Production
 🧹 Coulisses
 ⚡ Accéléré
 🧪 Répétition
