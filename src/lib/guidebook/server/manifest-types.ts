@@ -17,5 +17,7 @@ export type GuidebookNotionManifestEntry = {
 
 export type GuidebookNotionManifest = {
     authorizedRootPageId: string;
+    apiVersion: "2026-03-11";
+    maxAncestorDepth: number;
     entries: GuidebookNotionManifestEntry[];
 };

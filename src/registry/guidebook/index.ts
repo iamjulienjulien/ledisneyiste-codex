@@ -1,4 +1,5 @@
 import projection from "./guidebook-projection.json";
+import notionProjection from "./notion-projection.json";
 import type {
     GuidebookNavigationNode,
     GuidebookProjectionTree,
@@ -39,7 +40,15 @@ if (!isProjectionTree(projection)) {
     throw new Error("L’arborescence de projection du Guidebook est invalide.");
 }
 
+if (!isProjectionTree(notionProjection)) {
+    throw new Error(
+        "L’arborescence de projection Notion du Guidebook est invalide.",
+    );
+}
+
 export const guidebookProjection: GuidebookProjectionTree = projection;
+export const notionGuidebookProjection: GuidebookProjectionTree =
+    notionProjection;
 
 export function flattenGuidebookNavigation(
     nodes: GuidebookNavigationNode[] = guidebookProjection.nodes,

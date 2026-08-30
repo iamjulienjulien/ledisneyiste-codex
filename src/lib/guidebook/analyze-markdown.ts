@@ -147,9 +147,9 @@ function convertInlineNodes(
                 context.links.push(link);
 
                 if (link.state === "restricted") {
-                    addWarning(context, `Lien restreint : ${node.url}`);
+                    addWarning(context, `Lien restreint : ${label}`);
                 } else if (link.state === "invalid") {
-                    addWarning(context, `Lien invalide : ${node.url}`);
+                    addWarning(context, `Lien invalide : ${label}`);
                 }
 
                 return [{ kind: "link", link, children }];

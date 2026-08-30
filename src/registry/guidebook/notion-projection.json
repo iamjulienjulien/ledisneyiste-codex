@@ -1,0 +1,74 @@
+{
+    "version": 1,
+    "title": "Les dossiers du Disneyiste",
+    "nodes": [
+        {
+            "slug": "le-disneyiste",
+            "title": "Le Disneyiste",
+            "order": 0,
+            "children": [
+                {
+                    "slug": "vision-doctrine",
+                    "title": "01 · Vision & Doctrine",
+                    "order": 0,
+                    "children": [
+                        {
+                            "slug": "manifeste",
+                            "title": "Manifeste",
+                            "order": 0,
+                            "children": []
+                        },
+                        {
+                            "slug": "disneyisme-hypothese-sociologique",
+                            "title": "Le Disneyisme · hypothèse sociologique",
+                            "order": 1,
+                            "children": []
+                        },
+                        {
+                            "slug": "positionnement-editorial",
+                            "title": "Positionnement éditorial",
+                            "order": 2,
+                            "children": []
+                        },
+                        {
+                            "slug": "le-disneyiste-persona-regard",
+                            "title": "Le Disneyiste · persona & regard",
+                            "order": 3,
+                            "children": []
+                        },
+                        {
+                            "slug": "le-je-signe-julien-julien",
+                            "title": "Le Je signé · Julien Julien",
+                            "order": 4,
+                            "children": []
+                        },
+                        {
+                            "slug": "parole-enfant-louise-enfance-transmission",
+                            "title": "La parole de l’enfant · Louise, enfance & transmission",
+                            "order": 5,
+                            "children": []
+                        },
+                        {
+                            "slug": "doctrine-independance",
+                            "title": "Doctrine d’indépendance",
+                            "order": 6,
+                            "children": []
+                        },
+                        {
+                            "slug": "boussole-personnelle",
+                            "title": "Boussole personnelle",
+                            "order": 7,
+                            "children": []
+                        },
+                        {
+                            "slug": "pistes-a-eprouver-apres-fondations",
+                            "title": "Pistes à éprouver · après les fondations",
+                            "order": 8,
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
