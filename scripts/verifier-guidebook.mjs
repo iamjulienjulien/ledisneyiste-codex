@@ -321,6 +321,17 @@ async function verifyMarkdownAnalysis(errors) {
 
     if (
         !fixtureBlocks.some(
+            (block) =>
+                block.kind === "code" &&
+                block.presentation === "ascii" &&
+                block.alternative === "CARTE DE PROJECTION",
+        )
+    ) {
+        errors.push("La carte témoin ne produit pas d’alternative accessible");
+    }
+
+    if (
+        !fixtureBlocks.some(
             (block) => block.kind === "code" && block.presentation === "code",
         )
     ) {
@@ -443,6 +454,19 @@ async function verifyMarkdownAnalysis(errors) {
         if (blocks.some((block) => block.kind === "unsupported")) {
             errors.push(
                 `${entry.slug} contient un bloc réel non pris en charge`,
+            );
+        }
+
+        if (
+            blocks.some(
+                (block) =>
+                    block.kind === "code" &&
+                    block.presentation === "ascii" &&
+                    !block.alternative?.trim(),
+            )
+        ) {
+            errors.push(
+                `${entry.slug} contient une carte ASCII sans alternative accessible`,
             );
         }
 

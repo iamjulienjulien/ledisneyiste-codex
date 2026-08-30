@@ -47,11 +47,17 @@ export async function resolveLocalGuidebookDocument(
         );
     }
 
-    const repositoryRoot = process.cwd();
-    const declaredRoot = path.resolve(
-        repositoryRoot,
-        localGuidebookManifest.rootDirectory,
-    );
+    const declaredRoot = path.join(process.cwd(), "docs", "agents");
+
+    if (
+        path.normalize(localGuidebookManifest.rootDirectory) !==
+        path.join("docs", "agents")
+    ) {
+        throw new GuidebookDocumentResolutionError(
+            "unavailable",
+            "La racine du manifeste Guidebook ne correspond plus à la frontière traçable",
+        );
+    }
 
     let resolvedRoot: string;
     let resolvedFile: string;
@@ -59,7 +65,7 @@ export async function resolveLocalGuidebookDocument(
     try {
         resolvedRoot = await realpath(declaredRoot);
         resolvedFile = await realpath(
-            path.resolve(resolvedRoot, entry.relativePath),
+            path.join(resolvedRoot, entry.relativePath),
         );
     } catch {
         throw new GuidebookDocumentResolutionError(
