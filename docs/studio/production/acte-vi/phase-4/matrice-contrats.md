@@ -20,7 +20,7 @@ des noms TypeScript définitifs que les fixtures devront éprouver.
 | Chanson             | absent                                                                               | fiche documentaire, identité, œuvre d’origine, auteurs, occurrences, versions, interprétations, réception, relations et sources | aucune dépendance à un média ; aucun index public en Phase 4                                            | 4D · installé      |
 | Musique             | rôles et crédits libres                                                              | attribution structurée vers œuvre ou chanson, domaine musical et sources                                                        | les crédits actuels restent la représentation publique de repli                                         | 4D · installé      |
 | Droits média        | politique privée uniquement                                                          | référence privée vers un statut de projection explicite                                                                         | aucune preuve contractuelle ni identifiant confidentiel côté client                                     | 4D · installé      |
-| Donnée économique   | trois natures, valeur unique, unité, devise, territoire, période, certitude, sources | mesure précise, valeur ou fourchette, année monétaire, périmètre, méthode, conflit, comparabilité et finalité                   | adaptateur des quatre déclarations de Blanche-Neige ; aucune moyenne fabriquée                          | 4E                 |
+| Donnée économique   | trois natures, valeur unique, unité, devise, territoire, période, certitude, sources | mesure précise, valeur ou fourchette, année monétaire, périmètre, méthode, conflit, comparabilité et finalité                   | adaptateur des quatre déclarations de Blanche-Neige ; aucune moyenne fabriquée                          | 4E · installé      |
 | Provenance          | listes d’identifiants de sources                                                     | source attachée à chaque déclaration structurée ; réserve visible si nécessaire                                                 | le registre central reste l’unique notice bibliographique                                               | 4B–4E              |
 
 ## Répartition des responsabilités
@@ -96,7 +96,7 @@ Restent sous `docs/studio` ou dans un registre serveur privé :
 | Quelles natures de réception franchissent un contrat fermé utile ?                              | 4B                | première exploitation, ressortie et réception critique |
 | Une Œuvre source partage-t-elle le contrat de fiche d’une Œuvre Disney ?                        | 4C                | _Le avventure di Pinocchio_ et `Schneewittchen`        |
 | Quelle frontière sépare occurrence, version et enregistrement d’une Chanson ?                   | 4D · tranché      | _When You Wish Upon a Star_ et sa version française    |
-| Quels champs financiers doivent être publics, et lesquels restent des verdicts privés ?         | 4E                | cas CNC, AFI et deux coûts de Blanche-Neige            |
+| Quels champs financiers doivent être publics, et lesquels restent des verdicts privés ?         | 4E · tranché      | cas CNC, AFI et deux coûts de Blanche-Neige            |
 
 ## Critère de stabilité
 

@@ -34,7 +34,9 @@ des identifiants de projection stables ou explicitement migrés.
 
 - Rouge aujourd’hui : aucune couche de compatibilité ne protège l’index des
   tableaux utilisé par les Plans.
-- Passe au vert : Trains 4B, 4C et 4E.
+- Verte depuis les Trains 4B, 4C et 4E : les quatre déclarations économiques
+  historiques restent lisibles par la fiche et les Plans pendant que leur
+  adaptateur conserve chaque valeur sans inventer les dimensions absentes.
 
 ## Bobine 03 · Collodi existe sans route publique
 
@@ -76,9 +78,9 @@ sources distinctes,<br>
 **alors** le Codex conserve les deux déclarations, interdit leur moyenne et
 peut les maintenir hors projection publique.
 
-- Rouge aujourd’hui : le contrat ne porte ni méthode, ni conflit, ni verdict
-  privé de publication.
-- Passe au vert : Train 4E.
+- Verte depuis le Train 4E : les deux déclarations possèdent leurs sources et
+  un groupe de conflit commun, restent `investigation-only` et ne deviennent
+  ni moyenne ni fourchette.
 
 ## Bobine 07 · Une fréquentation conserve sa période réelle
 
@@ -88,8 +90,9 @@ entre 1946 et 2010,<br>
 **alors** elle ne peut jamais être présentée comme les entrées de 1946 et
 conserve son caractère cumulatif, son territoire et sa réserve.
 
-- Rouge aujourd’hui : le périmètre cumulatif n’est pas structuré.
-- Passe au vert : Train 4E.
+- Verte depuis le Train 4E : la fréquentation est une mesure d’entrées dont la
+  temporalité `cumul` conserve explicitement la période 1946–2010 et la
+  réserve qui interdit de la résumer à l’année de sortie.
 
 ## Bobine 08 · Les couches privées ne fuient pas
 
@@ -102,7 +105,9 @@ navigateur.
 
 - Verte côté droits média depuis le Train 4D : un statut bloqué et une licence
   incomplète ne transmettent ni matière, ni preuve, ni note interne.
-- Reste à verdir côté enquête financière : Train 4E.
+- Verte côté enquête financière depuis le Train 4E : une dimension critique
+  absente neutralise même un verdict privé trop permissif, et la sérialisation
+  publique ne contient ni lacunes, ni notes, ni identité de vérification.
 
 ## Bobine 09 · Les 79 fiches restent vertes
 
