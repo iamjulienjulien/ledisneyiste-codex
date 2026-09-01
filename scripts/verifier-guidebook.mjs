@@ -708,18 +708,128 @@ async function verifyMarkdownAnalysis(errors) {
     return realStatistics;
 }
 
+async function verifyGuidebookRoutes(errors) {
+    const routeFiles = [
+        "src/app/guidebook/layout.tsx",
+        "src/app/guidebook/page.tsx",
+        "src/app/guidebook/[slug]/page.tsx",
+        "src/app/guidebook/notion/page.tsx",
+        "src/app/guidebook/notion/[slug]/page.tsx",
+        "src/app/guidebook/_components/GuidebookProjection.tsx",
+    ];
+    const routeSources = Object.fromEntries(
+        await Promise.all(
+            routeFiles.map(async (relativePath) => [
+                relativePath,
+                await readFile(path.join(repositoryRoot, relativePath), "utf8"),
+            ]),
+        ),
+    );
+    const layout = routeSources["src/app/guidebook/layout.tsx"];
+    const localPage = routeSources["src/app/guidebook/[slug]/page.tsx"];
+    const notionPage = routeSources["src/app/guidebook/notion/[slug]/page.tsx"];
+    const projection =
+        routeSources["src/app/guidebook/_components/GuidebookProjection.tsx"];
+    const publicLayout = await readFile(
+        path.join(repositoryRoot, "src/app/layout.tsx"),
+        "utf8",
+    );
+    const atelierLayout = await readFile(
+        path.join(repositoryRoot, "src/app/atelier/layout.tsx"),
+        "utf8",
+    );
+
+    for (const [relativePath, source] of Object.entries(routeSources)) {
+        if (
+            relativePath.endsWith("layout.tsx") ||
+            relativePath.endsWith("page.tsx")
+        ) {
+            if (
+                !source.includes('process.env.NODE_ENV === "production"') ||
+                !source.includes("notFound()")
+            ) {
+                errors.push(
+                    `${relativePath} ne ferme pas explicitement la projection en production`,
+                );
+            }
+        }
+    }
+
+    if (!layout.includes("index: false") || !layout.includes("follow: false")) {
+        errors.push("Le layout du Guidebook ne déclare pas ses robots privés");
+    }
+
+    for (const [label, page] of [
+        ["locale", localPage],
+        ["Notion", notionPage],
+    ]) {
+        if (
+            !page.includes("dynamicParams = false") ||
+            !page.includes("generateStaticParams")
+        ) {
+            errors.push(
+                `La route ${label} ne ferme pas ses paramètres dynamiques`,
+            );
+        }
+    }
+
+    if (!localPage.includes("loadLocalGuidebookDocument")) {
+        errors.push("La route locale n’emploie pas son adaptateur serveur");
+    }
+
+    if (!notionPage.includes("loadNotionGuidebookDocument")) {
+        errors.push("La route Notion n’emploie pas son adaptateur serveur");
+    }
+
+    const notionGuardIndex = notionPage.indexOf(
+        'process.env.NODE_ENV === "production"',
+    );
+    const notionLoadIndex = notionPage.indexOf(
+        "const document = await loadNotionGuidebookDocument",
+    );
+    if (
+        notionGuardIndex < 0 ||
+        notionLoadIndex < 0 ||
+        notionGuardIndex > notionLoadIndex
+    ) {
+        errors.push(
+            "La route Notion peut joindre sa source avant la frontière de production",
+        );
+    }
+
+    for (const component of ["PixieDocs", "PixieMarkdown"]) {
+        if (!projection.includes(component)) {
+            errors.push(`La projection partagée n’emploie pas ${component}`);
+        }
+    }
+
+    if (publicLayout.includes('href="/guidebook')) {
+        errors.push(
+            "La navigation publique expose une entrée vers le Guidebook",
+        );
+    }
+
+    if (!atelierLayout.includes('href="/guidebook/bienvenue"')) {
+        errors.push("L’Atelier ne propose aucun raccord vers le Guidebook");
+    }
+
+    return routeFiles.length;
+}
+
 async function verify() {
     const errors = [];
     let localDocumentCount = 0;
     let notionDocumentCount = 0;
     let notionStatistics = null;
     let markdownStatistics = null;
+    let routeFileCount = 0;
 
     try {
         localDocumentCount = await verifyLocalLibrary(errors);
         notionDocumentCount = await verifyNotionAuthorization(errors);
         notionStatistics = await verifyNotionNormalization(errors);
         markdownStatistics = await verifyMarkdownAnalysis(errors);
+        routeFileCount = await verifyGuidebookRoutes(errors);
     } catch (error) {
         errors.push(
             error instanceof Error
@@ -738,7 +848,7 @@ async function verify() {
     }
 
     console.log(
-        `Guidebook vérifié : ${localDocumentCount} documents locaux, ${notionDocumentCount} pages Notion déclarées, ${markdownStatistics.blocks} blocs locaux, ${notionStatistics.blocks} blocs Notion normalisés, ${markdownStatistics.headings} titres, ${markdownStatistics.links} liens et ${markdownStatistics.ascii} compositions ASCII ; frontière studio fermée, extensions propriétaires neutralisées et double autorisation Notion éprouvée.`,
+        `Guidebook vérifié : ${localDocumentCount} documents locaux, ${notionDocumentCount} pages Notion déclarées, ${routeFileCount} points de projection privés, ${markdownStatistics.blocks} blocs locaux, ${notionStatistics.blocks} blocs Notion normalisés, ${markdownStatistics.headings} titres, ${markdownStatistics.links} liens et ${markdownStatistics.ascii} compositions ASCII ; routes de production fermées, frontière studio close, extensions propriétaires neutralisées et double autorisation Notion éprouvée.`,
     );
 }
 
