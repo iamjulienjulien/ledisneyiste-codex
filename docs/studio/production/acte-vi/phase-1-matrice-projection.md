@@ -66,14 +66,14 @@ documentée.
 
 ## Dialogues
 
-| Composant          | Usage actuel et emplacement                                                        | Fonction / cible                         | Nature                       | Risque | Accessibilité et vérifications                                               | Statut / justification                                |
-| ------------------ | ---------------------------------------------------------------------------------- | ---------------------------------------- | ---------------------------- | ------ | ---------------------------------------------------------------------------- | ----------------------------------------------------- |
-| `PixieField`       | Le formulaire de Recherche possède un libellé et une aide assemblés localement     | Contrat de champ, via `PixieSearchField` | Composition                  | Moyen  | Label, description et relations ARIA                                         | **À migrer** indirectement avec la recherche          |
-| `PixieInput`       | `<input type="search">` local dans `src/app/recherche/page.tsx`                    | Saisie, via `PixieSearchField`           | Composition                  | Moyen  | Valeur URL, focus, saisie et soumission native                               | **À migrer** indirectement avec la recherche          |
-| `PixieTextarea`    | Aucune saisie longue dans le Codex public                                          | Réponse développée                       | Aucun remplacement           | Faible | Sans objet                                                                   | **Conservé**                                          |
-| `PixieSelect`      | Aucun choix fermé dans le Codex public                                             | Sélection native ou popover              | Aucun remplacement           | Faible | Sans objet                                                                   | **Conservé**                                          |
-| `PixieSwitch`      | Le changement Liste/Cards est une navigation par URL, pas une préférence booléenne | Préférence activée/désactivée            | Exception sémantique         | Moyen  | Conserver de vrais liens et l’URL partageable                                | **Conservé** — ne remplace pas `CodexIndexViewSwitch` |
-| `PixieSearchField` | Formulaire, champ et aide assemblés dans `src/app/recherche/page.tsx`              | Recherche GET partageable                | Remplacement par composition | Élevé  | Paramètre `q`, Entrée, focus, URL, valeur initiale et fonctionnement sans JS | **À migrer**                                          |
+| Composant          | Usage actuel et emplacement                                                        | Fonction / cible                | Nature               | Risque | Accessibilité et vérifications                                               | Statut / justification                                |
+| ------------------ | ---------------------------------------------------------------------------------- | ------------------------------- | -------------------- | ------ | ---------------------------------------------------------------------------- | ----------------------------------------------------- |
+| `PixieField`       | Recherche, via la composition de `PixieSearchField`                                | Contrat du champ et de son aide | Projection composée  | Faible | Label, description et relations ARIA                                         | **Projeté** via `PixieSearchField`                    |
+| `PixieInput`       | Recherche, via la composition de `PixieSearchField`                                | Saisie native de la requête     | Projection composée  | Faible | Valeur URL, focus, saisie et touche Entrée                                   | **Projeté** via `PixieSearchField`                    |
+| `PixieTextarea`    | Aucune saisie longue dans le Codex public                                          | Réponse développée              | Aucun remplacement   | Faible | Sans objet                                                                   | **Conservé**                                          |
+| `PixieSelect`      | Aucun choix fermé dans le Codex public                                             | Sélection native ou popover     | Aucun remplacement   | Faible | Sans objet                                                                   | **Conservé**                                          |
+| `PixieSwitch`      | Le changement Liste/Cards est une navigation par URL, pas une préférence booléenne | Préférence activée/désactivée   | Exception sémantique | Moyen  | Conserver de vrais liens et l’URL partageable                                | **Conservé** — ne remplace pas `CodexIndexViewSwitch` |
+| `PixieSearchField` | Régie de la page Recherche                                                         | Recherche GET partageable       | Projection directe   | Faible | Paramètre `q`, Entrée, focus, URL, valeur initiale et fonctionnement sans JS | **Projeté** — l’assemblage local a été retiré         |
 
 ## Effets
 
@@ -90,8 +90,9 @@ documentée.
    identique à son parent et sans changement visuel.
 2. Rapatrier les props React depuis `src/types` vers leur composant
    propriétaire, tout en conservant les contrats métier globaux.
-3. Migrer le formulaire public de Recherche vers `PixieSearchField` après le
-   nettoyage structurel.
+3. ~~Migrer le formulaire public de Recherche vers `PixieSearchField` après le
+   nettoyage structurel.~~ Terminé : le formulaire GET, `q` et son aide sont
+   désormais portés par la composition promue.
 4. ~~Auditer les liens natifs de la bibliographie, des citations et du sélecteur
    de vue avant de décider lesquels relèvent réellement de `PixieLink`.~~
    Terminé : les trois usages relèvent bien de la navigation et ont été migrés.
@@ -137,6 +138,21 @@ documentée.
   explicite sur `CodexLayoutFooter` ;
 - aucun cadre de l’Atelier ou du Guidebook n’a été entraîné dans la migration ;
 - statut de `PixieContainer` porté de **À confirmer** à **Projeté** ;
+- `pnpm check:ci` entièrement vert, build Next.js et génération des 114 pages
+  compris.
+
+### 1er septembre 2026 · Régie PixieSearchField
+
+- passage compatible de `PixieSearchField` en version `1.1.0` avec l’ajout de
+  `enterKeyHint`, transmis jusqu’à l’input natif et documenté dans son dossier
+  de l’Atelier ;
+- remplacement du formulaire, du champ et du bouton assemblés localement sur
+  la page Recherche par `PixieSearchField` ;
+- conservation de la méthode GET, du paramètre `q`, de la valeur issue de
+  l’URL, de l’autocomplétion désactivée et de la soumission native ;
+- suppression des styles historiques du champ et de ses commandes ;
+- statuts de `PixieField`, `PixieInput` et `PixieSearchField` portés à
+  **Projeté** ;
 - `pnpm check:ci` entièrement vert, build Next.js et génération des 114 pages
   compris.
 
