@@ -4,6 +4,7 @@ import { CodexFicheSourceCitations } from "@/components/codex/CodexFiche/CodexFi
 import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { formatDateHistorique } from "@/lib/date";
+import { formatPorteeTerritorialeDocumentaire } from "@/lib/documentaire";
 import type { SymbolSelection } from "@/registry/symbols";
 import type { PeriodeHistorique } from "@/types/date";
 import type {
@@ -19,8 +20,22 @@ import styles from "./CodexFicheOeuvreDetails.module.css";
 
 const eventLabels: Record<NatureEvenementSortieOeuvre, string> = {
     "premiere-mondiale": "Première mondiale",
+    "avant-premiere": "Avant-première",
     "sortie-nationale": "Sortie nationale",
+    ressortie: "Ressortie",
+    "presentation-festival": "Présentation en festival",
+    "mise-a-disposition": "Mise à disposition",
 };
+
+function formatEventTerritory(
+    event: NonNullable<
+        CodexFicheOeuvreDetailsProps["fiche"]["sortie"]["evenements"]
+    >[number],
+) {
+    return event.porteeTerritoriale
+        ? formatPorteeTerritorialeDocumentaire(event.porteeTerritoriale)
+        : event.territoire;
+}
 
 const alternativeTitleLabels: Record<TitreAlternatifOeuvre["nature"], string> =
     {
@@ -272,7 +287,10 @@ export function CodexFicheOeuvreDetails({
                     <ol className={styles.events}>
                         {fiche.sortie.evenements.map((event) => (
                             <PixieCard
-                                key={`${event.nature}-${event.territoire}`}
+                                key={
+                                    event.id ??
+                                    `${event.nature}-${formatEventTerritory(event)}`
+                                }
                                 as="li"
                                 variant="accent"
                                 color="gouache"
@@ -287,7 +305,7 @@ export function CodexFicheOeuvreDetails({
                                     {formatDateHistorique(event.date)}
                                 </p>
                                 <p className={styles.detail}>
-                                    {[event.lieu, event.territoire]
+                                    {[event.lieu, formatEventTerritory(event)]
                                         .filter(Boolean)
                                         .join(" · ")}
                                 </p>

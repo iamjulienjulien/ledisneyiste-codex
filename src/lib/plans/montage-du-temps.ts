@@ -226,7 +226,9 @@ function archiveTrack(
             return "production";
         case "work-release":
         case "release-event":
+        case "work-exploitation":
             return "distribution";
+        case "work-reception":
         case "reward":
             return "reception";
         default:
@@ -256,12 +258,18 @@ function deriveArchiveEvents(
     const subjectEvents = eventResult.items.filter(
         (event) =>
             event.subject.slug === subject.slug &&
-            ["production", "work-release", "release-event"].includes(
-                event.kind,
-            ),
+            [
+                "production",
+                "work-release",
+                "release-event",
+                "work-exploitation",
+                "work-reception",
+            ].includes(event.kind),
     );
     const hasDetailedReleaseEvents = subjectEvents.some(
-        (event) => event.kind === "release-event",
+        (event) =>
+            event.kind === "release-event" ||
+            event.kind === "work-exploitation",
     );
     const href = createHref(subject);
     const events: CodexMontageDuTempsEvent[] = subjectEvents

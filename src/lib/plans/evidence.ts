@@ -7,6 +7,7 @@ import type {
     CodexPlanEvidence,
     CodexPlanEvidenceScope,
 } from "@/types/codex-plans";
+import { formatPorteeTerritorialeDocumentaire } from "@/lib/documentaire";
 import {
     createDerivationResult,
     createPublishedReference,
@@ -252,14 +253,64 @@ export function derivePlanEvidence(
         }
 
         work.sortie.evenements?.forEach((release, index) => {
+            const territoire = release.porteeTerritoriale
+                ? formatPorteeTerritorialeDocumentaire(
+                      release.porteeTerritoriale,
+                  )
+                : release.territoire;
             items.push(
                 createEvidence(
                     {
                         id: `evidence:${owner.id}:release-event:${index}`,
                         owner,
                         scope: "release-event",
-                        label: `Sortie · ${release.territoire} · ${release.date.valeur}`,
+                        label: `Sortie · ${territoire} · ${release.date.valeur}`,
                         sourceIds: release.sources,
+                    },
+                    archives,
+                ),
+            );
+        });
+
+        work.versions?.forEach((version) => {
+            items.push(
+                createEvidence(
+                    {
+                        id: `evidence:${owner.id}:work-version:${version.id}`,
+                        owner,
+                        scope: "work-version",
+                        label: `Version · ${version.identite.libelle}`,
+                        sourceIds: version.sources,
+                    },
+                    archives,
+                ),
+            );
+        });
+
+        work.exploitations?.forEach((exploitation) => {
+            items.push(
+                createEvidence(
+                    {
+                        id: `evidence:${owner.id}:work-exploitation:${exploitation.id}`,
+                        owner,
+                        scope: "work-exploitation",
+                        label: `Exploitation · ${formatPorteeTerritorialeDocumentaire(exploitation.porteeTerritoriale)} · ${exploitation.periode.debut.valeur}`,
+                        sourceIds: exploitation.sources,
+                    },
+                    archives,
+                ),
+            );
+        });
+
+        work.receptions?.forEach((reception) => {
+            items.push(
+                createEvidence(
+                    {
+                        id: `evidence:${owner.id}:work-reception:${reception.id}`,
+                        owner,
+                        scope: "work-reception",
+                        label: `Réception · ${reception.temoin.nom} · ${reception.resume}`,
+                        sourceIds: reception.sources,
                     },
                     archives,
                 ),

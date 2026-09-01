@@ -177,6 +177,8 @@ export type CodexPlanEventKind =
     | "activity"
     | "work-release"
     | "release-event"
+    | "work-exploitation"
+    | "work-reception"
     | "production"
     | "era"
     | "reward";
@@ -212,6 +214,9 @@ export type CodexPlanEvidenceScope =
     | "duration"
     | "production"
     | "release-event"
+    | "work-version"
+    | "work-exploitation"
+    | "work-reception"
     | "economic-data"
     | "work-relation"
     | "reward";

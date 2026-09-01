@@ -1,4 +1,5 @@
 import { derivePlanEvidence } from "@/lib/plans/evidence";
+import { formatPorteeTerritorialeDocumentaire } from "@/lib/documentaire";
 import type {
     CodexPlanArchives,
     CodexPlanConfiguration,
@@ -81,6 +82,10 @@ function evidenceIndex(evidence: CodexPlanEvidence) {
     return Number.isInteger(candidate) ? candidate : undefined;
 }
 
+function evidenceIdentifier(evidence: CodexPlanEvidence) {
+    return evidence.id.split(":").at(-1);
+}
+
 function createFacts(
     evidence: CodexPlanEvidence,
     archives: CodexPlanArchives,
@@ -136,9 +141,113 @@ function createFacts(
         return release
             ? [
                   fact("Date", formatDate(release.date)),
-                  fact("Territoire", release.territoire),
+                  fact(
+                      "Territoire",
+                      release.porteeTerritoriale
+                          ? formatPorteeTerritorialeDocumentaire(
+                                release.porteeTerritoriale,
+                            )
+                          : release.territoire,
+                  ),
                   fact("Nature", release.nature),
                   ...(release.lieu ? [fact("Lieu", release.lieu)] : []),
+                  ...(release.noteDeReserve
+                      ? [fact("Réserve", release.noteDeReserve)]
+                      : []),
+              ]
+            : [];
+    }
+
+    if (evidence.scope === "work-version") {
+        const version = work.versions?.find(
+            (item) => item.id === evidenceIdentifier(evidence),
+        );
+        return version
+            ? [
+                  fact("Version", version.identite.libelle),
+                  fact("Nature", version.nature),
+                  ...(version.identite.langue
+                      ? [fact("Langue", version.identite.langue)]
+                      : []),
+                  ...(version.identite.territoire
+                      ? [fact("Territoire", version.identite.territoire)]
+                      : []),
+                  ...(version.date
+                      ? [fact("Date", formatDate(version.date))]
+                      : []),
+                  ...(version.distributeur
+                      ? [fact("Distributeur", version.distributeur)]
+                      : []),
+                  ...(version.noteDeReserve
+                      ? [fact("Réserve", version.noteDeReserve)]
+                      : []),
+              ]
+            : [];
+    }
+
+    if (evidence.scope === "work-exploitation") {
+        const exploitation = work.exploitations?.find(
+            (item) => item.id === evidenceIdentifier(evidence),
+        );
+        return exploitation
+            ? [
+                  fact("Nature", exploitation.nature),
+                  fact("Période", formatPeriod(exploitation.periode)),
+                  fact(
+                      "Territoire",
+                      formatPorteeTerritorialeDocumentaire(
+                          exploitation.porteeTerritoriale,
+                      ),
+                  ),
+                  ...(exploitation.versionIds?.length
+                      ? [fact("Versions", exploitation.versionIds.join(", "))]
+                      : []),
+                  ...(exploitation.support
+                      ? [fact("Support", exploitation.support)]
+                      : []),
+                  ...(exploitation.distributeur
+                      ? [fact("Distributeur", exploitation.distributeur)]
+                      : []),
+                  ...(exploitation.noteDeReserve
+                      ? [fact("Réserve", exploitation.noteDeReserve)]
+                      : []),
+              ]
+            : [];
+    }
+
+    if (evidence.scope === "work-reception") {
+        const reception = work.receptions?.find(
+            (item) => item.id === evidenceIdentifier(evidence),
+        );
+        return reception
+            ? [
+                  fact("Nature", reception.nature),
+                  fact(
+                      "Témoin",
+                      `${reception.temoin.nom} · ${reception.temoin.nature}`,
+                  ),
+                  fact(
+                      reception.date ? "Date" : "Période",
+                      reception.date
+                          ? formatDate(reception.date)
+                          : formatPeriod(reception.periode),
+                  ),
+                  fact(
+                      "Territoire",
+                      formatPorteeTerritorialeDocumentaire(
+                          reception.porteeTerritoriale,
+                      ),
+                  ),
+                  fact("Résumé", reception.resume),
+                  ...(reception.qualification
+                      ? [fact("Qualification", reception.qualification)]
+                      : []),
+                  ...(reception.support
+                      ? [fact("Support", reception.support)]
+                      : []),
+                  ...(reception.noteDeReserve
+                      ? [fact("Réserve", reception.noteDeReserve)]
+                      : []),
               ]
             : [];
     }

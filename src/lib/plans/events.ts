@@ -5,12 +5,45 @@ import type {
     CodexPlanDerivationResult,
     CodexPlanEvent,
 } from "@/types/codex-plans";
+import { formatPorteeTerritorialeDocumentaire } from "@/lib/documentaire";
 import {
     createDerivationResult,
     createPublishedReference,
     createRewardReference,
     sourcedProvenance,
 } from "@/lib/plans/utils";
+
+const releaseLabels = {
+    "premiere-mondiale": "Première mondiale",
+    "avant-premiere": "Avant-première",
+    "sortie-nationale": "Sortie nationale",
+    ressortie: "Ressortie",
+    "presentation-festival": "Présentation en festival",
+    "mise-a-disposition": "Mise à disposition",
+} as const;
+
+const exploitationLabels = {
+    "premiere-exploitation": "Première exploitation",
+    "exploitation-nationale": "Exploitation nationale",
+    ressortie: "Ressortie",
+    festival: "Présentation en festival",
+    restauration: "Exploitation restaurée",
+    "edition-video": "Édition vidéo",
+    "diffusion-televisuelle": "Diffusion télévisuelle",
+    "diffusion-numerique": "Diffusion numérique",
+} as const;
+
+const receptionLabels = {
+    "critique-contemporaine": "Critique contemporaine",
+    professionnelle: "Réception professionnelle",
+    publique: "Réception publique",
+    institutionnelle: "Réception institutionnelle",
+    reevaluation: "Réévaluation",
+} as const;
+
+function provenanceExplanation(base: string, reserve?: string) {
+    return reserve ? `${base} Réserve documentaire : ${reserve}` : base;
+}
 
 function missingSourcesNotice(
     event: CodexPlanEvent,
@@ -160,18 +193,72 @@ export function derivePlanEvents(
             events.push({
                 id: `release-event:${work.slug}:${index}`,
                 kind: "release-event",
-                label:
-                    release.nature === "premiere-mondiale"
-                        ? `Première mondiale de ${subject.label}`
-                        : `Sortie nationale de ${subject.label}`,
+                label: `${releaseLabels[release.nature]} de ${subject.label}`,
                 subject,
                 start: release.date,
-                territory: release.territoire,
+                territory: release.porteeTerritoriale
+                    ? formatPorteeTerritorialeDocumentaire(
+                          release.porteeTerritoriale,
+                      )
+                    : release.territoire,
                 ...(release.lieu ? { place: release.lieu } : {}),
                 provenance: [
                     sourcedProvenance(
                         release.sources,
-                        "Événement de diffusion documenté dans la fiche de l’œuvre.",
+                        provenanceExplanation(
+                            "Événement de diffusion documenté dans la fiche de l’œuvre.",
+                            release.noteDeReserve,
+                        ),
+                    ),
+                ],
+            });
+        });
+
+        work.exploitations?.forEach((exploitation) => {
+            events.push({
+                id: `work-exploitation:${work.slug}:${exploitation.id}`,
+                kind: "work-exploitation",
+                label: `${exploitationLabels[exploitation.nature]} de ${subject.label}`,
+                subject,
+                start: exploitation.periode.debut,
+                ...(exploitation.periode.fin
+                    ? { end: exploitation.periode.fin }
+                    : {}),
+                territory: formatPorteeTerritorialeDocumentaire(
+                    exploitation.porteeTerritoriale,
+                ),
+                provenance: [
+                    sourcedProvenance(
+                        exploitation.sources,
+                        provenanceExplanation(
+                            "Exploitation documentée dans la circulation de l’œuvre.",
+                            exploitation.noteDeReserve,
+                        ),
+                    ),
+                ],
+            });
+        });
+
+        work.receptions?.forEach((reception) => {
+            events.push({
+                id: `work-reception:${work.slug}:${reception.id}`,
+                kind: "work-reception",
+                label: `${receptionLabels[reception.nature]} · ${reception.temoin.nom}`,
+                subject,
+                start: reception.date ?? reception.periode.debut,
+                ...(reception.periode?.fin
+                    ? { end: reception.periode.fin }
+                    : {}),
+                territory: formatPorteeTerritorialeDocumentaire(
+                    reception.porteeTerritoriale,
+                ),
+                provenance: [
+                    sourcedProvenance(
+                        reception.sources,
+                        provenanceExplanation(
+                            `Réception qualifiée dans la fiche de l’œuvre : ${reception.resume}`,
+                            reception.noteDeReserve,
+                        ),
                     ),
                 ],
             });
