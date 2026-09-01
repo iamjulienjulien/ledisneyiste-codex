@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PixieContainer } from "@/components/ui/PixieContainer";
 import { PixieLink } from "@/components/ui/PixieLink";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import {
@@ -42,7 +43,11 @@ export default function RootLayout({
         >
             <body className="grid grid-cols-[minmax(0,1fr)] grid-rows-[auto_1fr]">
                 <header className="border-b border-line">
-                    <div className="mx-auto flex w-full max-w-6xl flex-col gap-5 px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
+                    <PixieContainer
+                        width="72"
+                        gutter="md"
+                        className="flex flex-col gap-5 py-5 sm:flex-row sm:items-center sm:justify-between"
+                    >
                         <Link
                             href="/"
                             className="group flex items-center gap-5"
@@ -106,7 +111,7 @@ export default function RootLayout({
                                 Recherche
                             </PixieLink>
                         </nav>
-                    </div>
+                    </PixieContainer>
                 </header>
 
                 {children}

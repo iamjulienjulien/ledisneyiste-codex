@@ -1,8 +1,10 @@
 .root {
     width: 100%;
-    max-width: 72rem;
-    margin: clamp(2rem, 5vw, 3rem) auto 0;
-    padding: 0 1.5rem 2rem;
+    margin-top: clamp(2rem, 5vw, 3rem);
+}
+
+.container {
+    padding-bottom: 2rem;
 }
 
 .content {
@@ -23,7 +25,7 @@
 }
 
 @media (min-width: 640px) {
-    .root {
+    .container {
         padding-bottom: 2.5rem;
     }
 }

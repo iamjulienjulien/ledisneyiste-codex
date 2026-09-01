@@ -2,6 +2,7 @@ import { PixieBackdrop } from "@/components/ui/PixieBackdrop";
 import { PixieBadge } from "@/components/ui/PixieBadge";
 import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieCluster } from "@/components/ui/PixieCluster";
+import { PixieContainer } from "@/components/ui/PixieContainer";
 import { PixieFrame } from "@/components/ui/PixieFrame";
 import { PixieGrid } from "@/components/ui/PixieGrid";
 import { PixieLink } from "@/components/ui/PixieLink";
@@ -68,7 +69,12 @@ const codexDoors = [
 
 export default function Home() {
     return (
-        <main className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-24">
+        <PixieContainer
+            as="main"
+            width="72"
+            gutter="md"
+            className="py-16 sm:py-24"
+        >
             <PixieCard asChild variant="elevated" padding="none" radius="large">
                 <header className="overflow-hidden">
                     <PixieBackdrop
@@ -344,6 +350,6 @@ export default function Home() {
                     </PixieBackdrop>
                 </PixieCard>
             </footer>
-        </main>
+        </PixieContainer>
     );
 }

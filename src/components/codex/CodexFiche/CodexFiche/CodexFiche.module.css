@@ -11,11 +11,8 @@
         var(--color-surface)
     );
 
-    width: 100%;
-    max-width: 72rem;
     min-height: 100vh;
-    margin-inline: auto;
-    padding: 4rem 1.5rem;
+    padding-block: 4rem;
 }
 
 .root[data-codex-family="personnages"] {
