@@ -19,6 +19,30 @@ async function lireJson(chemin) {
     return JSON.parse(await readFile(path.join(racine, chemin), "utf8"));
 }
 
+async function verifierIntegrationRepetition(erreurs) {
+    const packageJson = await lireJson("package.json");
+    const scripts = packageJson.scripts ?? {};
+    const commande = "pnpm check:identites";
+
+    if (scripts["check:identites"] !== "node scripts/verifier-identites.mjs") {
+        erreurs.push(
+            "Répétition générale : le script check:identites n’appelle plus le vérificateur canonique",
+        );
+    }
+
+    for (const script of ["check", "check:ci"]) {
+        const etapes = (scripts[script] ?? "")
+            .split("&&")
+            .map((etape) => etape.trim());
+
+        if (!etapes.includes(commande)) {
+            erreurs.push(
+                `Répétition générale : ${script} ne contient pas l’étape autonome « ${commande} »`,
+            );
+        }
+    }
+}
+
 async function chargerModuleTypeScript(cheminRelatif) {
     const chemin = path.join(racine, cheminRelatif);
     const source = await readFile(chemin, "utf8");
@@ -953,6 +977,7 @@ async function verifierRoutesEtAliases(
 
 async function verifier() {
     const erreurs = [];
+    await verifierIntegrationRepetition(erreurs);
     const [
         moduleLangues,
         moduleTerritoires,
