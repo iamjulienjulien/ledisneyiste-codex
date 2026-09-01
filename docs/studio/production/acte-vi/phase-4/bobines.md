@@ -53,8 +53,9 @@ occurrence, versions linguistiques, Oscar, réception et sources,<br>
 **quand** aucun audio ni aucune parole ne sont autorisés,<br>
 **alors** la fiche documentaire reste complète, compréhensible et vérifiable.
 
-- Rouge aujourd’hui : aucun domaine Chanson n’existe.
-- Passe au vert : Train 4D.
+- Verte depuis le Train 4D : la fiche pilote conserve identité, auteurs,
+  occurrence, version, interprétation, enregistrement, Oscar, réception et
+  sources sans audio ni paroles.
 
 ## Bobine 05 · Une Chanson rétrospective ne dépend pas de Pinocchio
 
@@ -63,8 +64,9 @@ occurrence, versions linguistiques, Oscar, réception et sources,<br>
 **alors** l’occurrence d’origine, l’identité, les personnes et les sources sont
 portées sans champ réservé au seul film _Pinocchio_.
 
-- Rouge aujourd’hui : le futur contrat n’a pas encore prouvé sa neutralité.
-- Passe au vert : Train 4D.
+- Verte depuis le Train 4D : _Who’s Afraid of the Big Bad Wolf?_ éprouve le
+  même contrat avec _Three Little Pigs_ et une adaptation française datée par
+  son édition propre.
 
 ## Bobine 06 · Deux chiffres ne deviennent pas une moyenne
 
@@ -98,9 +100,9 @@ média,<br>
 serveur ; aucune pièce, note interne ou identité confidentielle n’atteint le
 navigateur.
 
-- Rouge aujourd’hui : les politiques existent, mais aucun contrat n’éprouve
-  encore la séparation.
-- Passe au vert : Trains 4D et 4E.
+- Verte côté droits média depuis le Train 4D : un statut bloqué et une licence
+  incomplète ne transmettent ni matière, ni preuve, ni note interne.
+- Reste à verdir côté enquête financière : Train 4E.
 
 ## Bobine 09 · Les 79 fiches restent vertes
 
