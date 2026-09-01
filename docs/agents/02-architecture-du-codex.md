@@ -587,11 +587,24 @@ explicite et place le document en état `partial` au lieu d’injecter du HTML.
 Les fixtures de `scripts/fixtures/guidebook/` permettent de vérifier cette
 chaîne sans réseau ni secret. La lecture d’une page réelle exige
 `NOTION_API_KEY` côté serveur ; son absence produit l’état `deferred` et ne
-bloque ni la bibliothèque locale ni les promotions Pixie.
+bloque pas la bibliothèque locale.
 
-La présence de ces fondations ne rend pas le Guidebook public. Tant que sa
-route privée n’existe pas, aucune matière n’est projetée ; lorsqu’elle sera
-ouverte, elle reprendra la frontière de production de l’Atelier.
+La route privée [`src/app/guidebook`](../../src/app/guidebook/) assemble ces
+adaptateurs avec `PixieMarkdown` et `PixieDocs`. Next.js demeure propriétaire
+des URLs, des métadonnées, des paramètres autorisés et des pages introuvables :
+
+```text
+/guidebook                 → premier chapitre local
+/guidebook/[slug]          → document déclaré sous docs/agents/
+/guidebook/notion          → racine Notion déclarée
+/guidebook/notion/[slug]   → page doublement autorisée
+```
+
+Le layout et les pages appellent `notFound()` en production, interdisent
+l’indexation et ne sont reliés qu’à l’Atelier. Les paramètres dynamiques sont
+fermés par l’arborescence de projection. La garde de production précède le
+chargement documentaire : une compilation publique ne lit donc aucun fichier
+du Guidebook et ne joint jamais Notion.
 
 ---
 

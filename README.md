@@ -45,9 +45,10 @@ partageable par son URL. Les fiches héritent de l'identité de leur famille,
 leurs métadonnées sont matérialisées par des badges et une première recherche
 globale interroge directement les catalogues.
 
-L’interface possède également son Atelier local : un espace hors production où
-les fondations visuelles et les primitives passent de l’esquisse à leur version
-prête à projeter.
+L’interface possède également deux coulisses locales : l’Atelier, où les
+fondations visuelles et les primitives passent de l’esquisse à leur version
+prête à projeter, et le Guidebook, qui met la documentation transmissible en
+lecture sans l’ouvrir au site de production.
 
 ---
 
@@ -136,6 +137,7 @@ src/
 │   ├── atelier/
 │   ├── contributeurs/
 │   ├── epoques/
+│   ├── guidebook/
 │   ├── oeuvres/
 │   ├── personnages/
 │   ├── recherche/
@@ -590,6 +592,34 @@ http://ledisneyiste-codex.test/atelier
 La route appelle `notFound()` en production et ses métadonnées interdisent son
 indexation. Sa structure, ses huit plateaux et ses parcours d’ajout sont décrits
 dans [`AGENTS.md`](./AGENTS.md#latelier).
+
+---
+
+## Le Guidebook
+
+Le Guidebook met les documents transmissibles du projet en lecture dans une
+interface privée composée avec `PixieDocs`, `PixieMarkdown` et `PixieAscii`.
+Il expose deux bibliothèques uniquement en développement :
+
+- les sept chapitres locaux déclarés sous `docs/agents/` ;
+- la racine Notion **Le Disneyiste**, sa section **01 · Vision & Doctrine** et
+  les pages enfants explicitement inscrites dans son arborescence de
+  projection.
+
+```text
+http://ledisneyiste-codex.test/guidebook
+http://ledisneyiste-codex.test/guidebook/notion
+```
+
+Next.js possède les routes et ne génère que les slugs déclarés. Les adaptateurs
+servent un document déjà autorisé et analysé ; les composants clients ne
+reçoivent ni chemin réel du dépôt, ni identifiant Notion, ni secret. Sans
+`NOTION_API_KEY`, la bibliothèque distante conserve un état différé sans
+empêcher la lecture locale.
+
+Comme l’Atelier, `/guidebook` appelle `notFound()` en production, interdit son
+indexation et ne figure pas dans la navigation publique. Le raccord entre les
+deux coulisses reste disponible depuis leur navigation interne.
 
 ---
 
