@@ -99,6 +99,12 @@ export default function AtelierLayout({
                     >
                         Les Plans
                     </Link>
+                    <Link
+                        href="/guidebook/bienvenue"
+                        className="font-medium text-ink-soft underline-offset-4 hover:text-accent hover:underline"
+                    >
+                        Le Guidebook
+                    </Link>
                 </nav>
             </header>
 
