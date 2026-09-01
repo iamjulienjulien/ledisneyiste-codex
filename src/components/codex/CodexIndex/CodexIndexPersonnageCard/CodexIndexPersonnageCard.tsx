@@ -1,3 +1,4 @@
+import { CodexCommonIdentite } from "@/components/codex/CodexCommon/CodexCommonIdentite";
 import { PixieBadge } from "@/components/ui/PixieBadge";
 import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieLink } from "@/components/ui/PixieLink";
@@ -10,6 +11,7 @@ import type { CodexIndexPersonnageCardProps } from "./CodexIndexPersonnageCard.t
 export function CodexIndexPersonnageCard({
     personnage,
     fiche,
+    identite,
 }: CodexIndexPersonnageCardProps) {
     return (
         <PixieCard
@@ -44,9 +46,13 @@ export function CodexIndexPersonnageCard({
                             ))}
                         </ul>
 
-                        <h2 className="mt-5 text-3xl text-ink transition-colors group-hover:text-famille-personnages group-focus-visible:text-famille-personnages">
-                            {personnage.nom}
-                        </h2>
+                        <CodexCommonIdentite
+                            identite={identite}
+                            niveau="h2"
+                            presence="card"
+                            className="mt-5"
+                            titleClassName="transition-colors group-hover:text-famille-personnages group-focus-visible:text-famille-personnages"
+                        />
                     </div>
 
                     <PixieSymbol

@@ -8,6 +8,7 @@ import { PixieGrid } from "@/components/ui/PixieGrid";
 import { oeuvres } from "@/data/catalogues";
 import { getFicheOeuvreBySlug } from "@/data/oeuvres";
 import { getRecompensesPourOeuvre } from "@/data/recompenses/relations";
+import { resoudreIdentiteCodex } from "@/lib/identites/server";
 import { resolveCodexIndexView } from "@/lib/index-view";
 
 export const metadata: Metadata = {
@@ -47,12 +48,17 @@ export default async function OeuvresPage({
                         const recompenses = getRecompensesPourOeuvre(
                             oeuvre.slug,
                         );
+                        const identite = resoudreIdentiteCodex(
+                            "oeuvres",
+                            oeuvre.slug,
+                        );
 
-                        return fiche ? (
+                        return fiche && identite ? (
                             <li key={oeuvre.slug}>
                                 <CodexIndexOeuvreCard
                                     oeuvre={oeuvre}
                                     fiche={fiche}
+                                    identite={identite}
                                     recompenses={recompenses}
                                 />
                             </li>
@@ -61,40 +67,47 @@ export default async function OeuvresPage({
                 </PixieGrid>
             ) : (
                 <ul className="space-y-3">
-                    {oeuvres.map((oeuvre, index) => (
-                        <CodexIndexListItem
-                            key={oeuvre.slug}
-                            href={`/oeuvres/${oeuvre.slug}`}
-                            index={index}
-                            famille="oeuvres"
-                            titre={oeuvre.nom}
-                            sousTitre={oeuvre.sousTitre}
-                        >
-                            <ul
-                                aria-label="Métadonnées"
-                                className="flex flex-wrap gap-2"
+                    {oeuvres.map((oeuvre, index) => {
+                        const identite = resoudreIdentiteCodex(
+                            "oeuvres",
+                            oeuvre.slug,
+                        );
+
+                        return identite ? (
+                            <CodexIndexListItem
+                                key={oeuvre.slug}
+                                href={`/oeuvres/${oeuvre.slug}`}
+                                index={index}
+                                famille="oeuvres"
+                                identite={identite}
+                                sousTitre={oeuvre.sousTitre}
                             >
-                                <li>
-                                    <PixieBadge
-                                        registry="oeuvres"
-                                        collection="collections"
-                                        slug={oeuvre.metadata.collection}
-                                        size="xs"
-                                        shape="pill"
-                                    />
-                                </li>
-                                <li>
-                                    <PixieBadge
-                                        registry="oeuvres"
-                                        collection="types"
-                                        slug={oeuvre.metadata.type}
-                                        size="xs"
-                                        shape="pill"
-                                    />
-                                </li>
-                            </ul>
-                        </CodexIndexListItem>
-                    ))}
+                                <ul
+                                    aria-label="Métadonnées"
+                                    className="flex flex-wrap gap-2"
+                                >
+                                    <li>
+                                        <PixieBadge
+                                            registry="oeuvres"
+                                            collection="collections"
+                                            slug={oeuvre.metadata.collection}
+                                            size="xs"
+                                            shape="pill"
+                                        />
+                                    </li>
+                                    <li>
+                                        <PixieBadge
+                                            registry="oeuvres"
+                                            collection="types"
+                                            slug={oeuvre.metadata.type}
+                                            size="xs"
+                                            shape="pill"
+                                        />
+                                    </li>
+                                </ul>
+                            </CodexIndexListItem>
+                        ) : null;
+                    })}
                 </ul>
             )}
         </CodexIndexPage>

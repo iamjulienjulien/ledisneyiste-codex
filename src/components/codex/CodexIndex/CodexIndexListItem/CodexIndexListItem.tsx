@@ -1,3 +1,4 @@
+import { CodexCommonIdentite } from "@/components/codex/CodexCommon/CodexCommonIdentite";
 import { PixieLink } from "@/components/ui/PixieLink";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import type { CodexFamily } from "@/types/codex";
@@ -16,7 +17,7 @@ export function CodexIndexListItem({
     href,
     index,
     famille,
-    titre,
+    identite,
     sousTitre,
     children,
 }: CodexIndexListItemProps) {
@@ -37,9 +38,12 @@ export function CodexIndexListItem({
 
                 <div className={styles.content}>
                     <div className={styles.heading}>
-                        <h2 className="text-2xl text-ink transition-colors group-hover:text-[var(--codex-list-color)] group-focus-visible:text-[var(--codex-list-color)] sm:text-3xl">
-                            {titre}
-                        </h2>
+                        <CodexCommonIdentite
+                            identite={identite}
+                            niveau="h2"
+                            presence="list"
+                            titleClassName="transition-colors group-hover:text-[var(--codex-list-color)] group-focus-visible:text-[var(--codex-list-color)]"
+                        />
                         <span aria-hidden="true" className={styles.arrow}>
                             →
                         </span>

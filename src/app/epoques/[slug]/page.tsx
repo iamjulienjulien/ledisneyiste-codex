@@ -15,6 +15,7 @@ import { epoques, getEpoqueBySlug } from "@/data/catalogues";
 import { getFicheEpoqueBySlug } from "@/data/epoques";
 import { getSourcesByIds } from "@/data/sources";
 import { formatDateHistorique } from "@/lib/date";
+import { resoudreIdentiteCodex } from "@/lib/identites/server";
 import { getFicheSourceIds } from "@/lib/source";
 import { getContributeursDeLEpoque } from "@/data/epoques/relations";
 
@@ -55,8 +56,9 @@ export default async function EpoquePage({
 
     const epoque = getEpoqueBySlug(slug);
     const fiche = getFicheEpoqueBySlug(slug);
+    const identite = resoudreIdentiteCodex("epoques", slug);
 
-    if (!epoque || !fiche) {
+    if (!epoque || !fiche || !identite) {
         notFound();
     }
 
@@ -70,7 +72,7 @@ export default async function EpoquePage({
             <CodexFicheHeader
                 family="epoques"
                 eyebrow="Époque"
-                titre={epoque.nom}
+                identite={identite}
                 sousTitre={epoque.sousTitre}
                 introduction={fiche.introduction}
             />

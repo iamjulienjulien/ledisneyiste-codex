@@ -30,6 +30,7 @@ import {
     getRecompensesPourContributeur,
     getRecompensesPourOeuvre,
 } from "@/data/recompenses/relations";
+import { resoudreIdentiteCodex } from "@/lib/identites/server";
 import { rechercherDansCatalogues } from "@/lib/recherche";
 import styles from "./RecherchePage.module.css";
 
@@ -340,14 +341,20 @@ export default async function RecherchePage({
                                                     getFichePersonnageBySlug(
                                                         personnage.slug,
                                                     );
+                                                const identite =
+                                                    resoudreIdentiteCodex(
+                                                        "personnages",
+                                                        personnage.slug,
+                                                    );
 
-                                                return fiche ? (
+                                                return fiche && identite ? (
                                                     <li key={personnage.slug}>
                                                         <CodexIndexPersonnageCard
                                                             personnage={
                                                                 personnage
                                                             }
                                                             fiche={fiche}
+                                                            identite={identite}
                                                         />
                                                     </li>
                                                 ) : null;
@@ -421,14 +428,20 @@ export default async function RecherchePage({
                                                     getFicheContributeurBySlug(
                                                         contributeur.slug,
                                                     );
+                                                const identite =
+                                                    resoudreIdentiteCodex(
+                                                        "createurs",
+                                                        contributeur.slug,
+                                                    );
 
-                                                return fiche ? (
+                                                return fiche && identite ? (
                                                     <li key={contributeur.slug}>
                                                         <CodexIndexCreateurCard
                                                             contributeur={
                                                                 contributeur
                                                             }
                                                             fiche={fiche}
+                                                            identite={identite}
                                                             epoques={getEpoquesPourContributeur(
                                                                 contributeur.slug,
                                                             )}
@@ -505,12 +518,18 @@ export default async function RecherchePage({
                                             const fiche = getFicheOeuvreBySlug(
                                                 oeuvre.slug,
                                             );
+                                            const identite =
+                                                resoudreIdentiteCodex(
+                                                    "oeuvres",
+                                                    oeuvre.slug,
+                                                );
 
-                                            return fiche ? (
+                                            return fiche && identite ? (
                                                 <li key={oeuvre.slug}>
                                                     <CodexIndexOeuvreCard
                                                         oeuvre={oeuvre}
                                                         fiche={fiche}
+                                                        identite={identite}
                                                         recompenses={getRecompensesPourOeuvre(
                                                             oeuvre.slug,
                                                         )}
@@ -583,12 +602,18 @@ export default async function RecherchePage({
                                             const fiche = getFicheEpoqueBySlug(
                                                 epoque.slug,
                                             );
+                                            const identite =
+                                                resoudreIdentiteCodex(
+                                                    "epoques",
+                                                    epoque.slug,
+                                                );
 
-                                            return fiche ? (
+                                            return fiche && identite ? (
                                                 <li key={epoque.slug}>
                                                     <CodexIndexEpoqueCard
                                                         epoque={epoque}
                                                         fiche={fiche}
+                                                        identite={identite}
                                                         nombres={{
                                                             oeuvres:
                                                                 getOeuvresDeLEpoque(

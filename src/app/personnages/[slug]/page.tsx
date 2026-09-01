@@ -14,6 +14,7 @@ import { CodexFicheBlocsEditoriaux } from "@/components/codex/CodexFiche/CodexFi
 import { PixieBadge } from "@/components/ui/PixieBadge";
 import { getEpoquePourDate } from "@/data/epoques/relations";
 import { formatDateHistorique } from "@/lib/date";
+import { resoudreIdentiteCodex } from "@/lib/identites/server";
 import { getFicheSourceIds } from "@/lib/source";
 
 export const dynamicParams = false;
@@ -53,8 +54,9 @@ export default async function PersonnagePage({
 
     const personnage = getPersonnageBySlug(slug);
     const fiche = getFichePersonnageBySlug(slug);
+    const identite = resoudreIdentiteCodex("personnages", slug);
 
-    if (!personnage || !fiche) {
+    if (!personnage || !fiche || !identite) {
         notFound();
     }
 
@@ -67,7 +69,7 @@ export default async function PersonnagePage({
             <CodexFicheHeader
                 family="personnages"
                 eyebrow="Personnage"
-                titre={personnage.nom}
+                identite={identite}
                 sousTitre={personnage.sousTitre}
                 introduction={fiche.introduction}
                 badges={

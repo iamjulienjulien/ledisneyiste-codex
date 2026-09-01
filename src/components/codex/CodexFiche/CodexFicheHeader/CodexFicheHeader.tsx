@@ -1,11 +1,12 @@
+import { CodexCommonIdentite } from "@/components/codex/CodexCommon/CodexCommonIdentite";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import styles from "./CodexFicheHeader.module.css";
 import type { CodexFicheHeaderProps } from "./CodexFicheHeader.types";
 
 export function CodexFicheHeader({
     family,
+    identite,
     eyebrow,
-    titre,
     sousTitre,
     introduction,
     badges,
@@ -25,9 +26,12 @@ export function CodexFicheHeader({
                 <div className={styles.identity}>
                     <p className={styles.eyebrow}>{eyebrow}</p>
 
-                    <h1 className="mt-3 text-5xl text-ink sm:text-6xl">
-                        {titre}
-                    </h1>
+                    <CodexCommonIdentite
+                        identite={identite}
+                        niveau="h1"
+                        presence="hero"
+                        className="mt-3"
+                    />
 
                     {sousTitre && (
                         <p className="mt-3 text-xl leading-8 text-ink-soft">

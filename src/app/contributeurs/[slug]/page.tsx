@@ -19,6 +19,7 @@ import { getEpoquesPourContributeur } from "@/data/epoques/relations";
 import { getRecompensesPourContributeur } from "@/data/recompenses/relations";
 
 import { formatDateHistorique } from "@/lib/date";
+import { resoudreIdentiteCodex } from "@/lib/identites/server";
 import { getFicheSourceIds } from "@/lib/source";
 
 export const dynamicParams = false;
@@ -58,8 +59,9 @@ export default async function ContributeurPage({
 
     const contributeur = getContributeurBySlug(slug);
     const fiche = getFicheContributeurBySlug(slug);
+    const identite = resoudreIdentiteCodex("createurs", slug);
 
-    if (!contributeur || !fiche) {
+    if (!contributeur || !fiche || !identite) {
         notFound();
     }
 
@@ -81,7 +83,7 @@ export default async function ContributeurPage({
             <CodexFicheHeader
                 family="createurs"
                 eyebrow="Créateur"
-                titre={contributeur.nom}
+                identite={identite}
                 sousTitre={contributeur.sousTitre}
                 introduction={fiche.introduction}
                 badges={

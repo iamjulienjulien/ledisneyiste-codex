@@ -1,3 +1,4 @@
+import { CodexCommonIdentite } from "@/components/codex/CodexCommon/CodexCommonIdentite";
 import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieLink } from "@/components/ui/PixieLink";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
@@ -12,6 +13,7 @@ function getLabel(nombre: number, singular: string, plural: string) {
 export function CodexIndexEpoqueCard({
     epoque,
     fiche,
+    identite,
     nombres,
 }: CodexIndexEpoqueCardProps) {
     return (
@@ -38,9 +40,13 @@ export function CodexIndexEpoqueCard({
                                 : "aujourd’hui"}
                         </p>
 
-                        <h2 className="mt-5 text-3xl text-ink transition-colors group-hover:text-famille-epoques group-focus-visible:text-famille-epoques">
-                            {epoque.nom}
-                        </h2>
+                        <CodexCommonIdentite
+                            identite={identite}
+                            niveau="h2"
+                            presence="card"
+                            className="mt-5"
+                            titleClassName="transition-colors group-hover:text-famille-epoques group-focus-visible:text-famille-epoques"
+                        />
                     </div>
 
                     <PixieSymbol

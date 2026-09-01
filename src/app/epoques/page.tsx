@@ -11,6 +11,7 @@ import {
     getPersonnagesDeLEpoque,
 } from "@/data/epoques/relations";
 import { getFicheEpoqueBySlug } from "@/data/epoques";
+import { resoudreIdentiteCodex } from "@/lib/identites/server";
 import { resolveCodexIndexView } from "@/lib/index-view";
 
 export const metadata: Metadata = {
@@ -47,12 +48,17 @@ export default async function EpoquesPage({
                 <PixieGrid as="ul" maxColumns={2} minItemWidth="lg" gap="md">
                     {epoques.map((epoque) => {
                         const fiche = getFicheEpoqueBySlug(epoque.slug);
+                        const identite = resoudreIdentiteCodex(
+                            "epoques",
+                            epoque.slug,
+                        );
 
-                        return fiche ? (
+                        return fiche && identite ? (
                             <li key={epoque.slug}>
                                 <CodexIndexEpoqueCard
                                     epoque={epoque}
                                     fiche={fiche}
+                                    identite={identite}
                                     nombres={{
                                         oeuvres: getOeuvresDeLEpoque(
                                             epoque.slug,
@@ -71,16 +77,23 @@ export default async function EpoquesPage({
                 </PixieGrid>
             ) : (
                 <ul className="space-y-3">
-                    {epoques.map((epoque, index) => (
-                        <CodexIndexListItem
-                            key={epoque.slug}
-                            href={`/epoques/${epoque.slug}`}
-                            index={index}
-                            famille="epoques"
-                            titre={epoque.nom}
-                            sousTitre={epoque.sousTitre}
-                        />
-                    ))}
+                    {epoques.map((epoque, index) => {
+                        const identite = resoudreIdentiteCodex(
+                            "epoques",
+                            epoque.slug,
+                        );
+
+                        return identite ? (
+                            <CodexIndexListItem
+                                key={epoque.slug}
+                                href={`/epoques/${epoque.slug}`}
+                                index={index}
+                                famille="epoques"
+                                identite={identite}
+                                sousTitre={epoque.sousTitre}
+                            />
+                        ) : null;
+                    })}
                 </ul>
             )}
         </CodexIndexPage>

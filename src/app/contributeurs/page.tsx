@@ -9,6 +9,7 @@ import { contributeurs } from "@/data/catalogues";
 import { getFicheContributeurBySlug } from "@/data/contributeurs";
 import { getEpoquesPourContributeur } from "@/data/epoques/relations";
 import { getRecompensesPourContributeur } from "@/data/recompenses/relations";
+import { resoudreIdentiteCodex } from "@/lib/identites/server";
 import { resolveCodexIndexView } from "@/lib/index-view";
 
 export const metadata: Metadata = {
@@ -47,12 +48,17 @@ export default async function ContributeursPage({
                         const fiche = getFicheContributeurBySlug(
                             contributeur.slug,
                         );
+                        const identite = resoudreIdentiteCodex(
+                            "createurs",
+                            contributeur.slug,
+                        );
 
-                        return fiche ? (
+                        return fiche && identite ? (
                             <li key={contributeur.slug}>
                                 <CodexIndexCreateurCard
                                     contributeur={contributeur}
                                     fiche={fiche}
+                                    identite={identite}
                                     epoques={getEpoquesPourContributeur(
                                         contributeur.slug,
                                     )}
@@ -66,35 +72,42 @@ export default async function ContributeursPage({
                 </PixieGrid>
             ) : (
                 <ul className="space-y-3">
-                    {contributeurs.map((contributeur, index) => (
-                        <CodexIndexListItem
-                            key={contributeur.slug}
-                            href={`/contributeurs/${contributeur.slug}`}
-                            index={index}
-                            famille="createurs"
-                            titre={contributeur.nom}
-                            sousTitre={contributeur.sousTitre}
-                        >
-                            <ul
-                                aria-label="Catégories"
-                                className="flex flex-wrap gap-2"
+                    {contributeurs.map((contributeur, index) => {
+                        const identite = resoudreIdentiteCodex(
+                            "createurs",
+                            contributeur.slug,
+                        );
+
+                        return identite ? (
+                            <CodexIndexListItem
+                                key={contributeur.slug}
+                                href={`/contributeurs/${contributeur.slug}`}
+                                index={index}
+                                famille="createurs"
+                                identite={identite}
+                                sousTitre={contributeur.sousTitre}
                             >
-                                {contributeur.metadata.categories.map(
-                                    (category) => (
-                                        <li key={category}>
-                                            <PixieBadge
-                                                registry="contributeurs"
-                                                collection="categories"
-                                                slug={category}
-                                                size="xs"
-                                                shape="pill"
-                                            />
-                                        </li>
-                                    ),
-                                )}
-                            </ul>
-                        </CodexIndexListItem>
-                    ))}
+                                <ul
+                                    aria-label="Catégories"
+                                    className="flex flex-wrap gap-2"
+                                >
+                                    {contributeur.metadata.categories.map(
+                                        (category) => (
+                                            <li key={category}>
+                                                <PixieBadge
+                                                    registry="contributeurs"
+                                                    collection="categories"
+                                                    slug={category}
+                                                    size="xs"
+                                                    shape="pill"
+                                                />
+                                            </li>
+                                        ),
+                                    )}
+                                </ul>
+                            </CodexIndexListItem>
+                        ) : null;
+                    })}
                 </ul>
             )}
         </CodexIndexPage>

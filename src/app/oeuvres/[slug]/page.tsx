@@ -15,6 +15,7 @@ import { getFicheOeuvreBySlug } from "@/data/oeuvres";
 import { getRecompensesPourOeuvre } from "@/data/recompenses/relations";
 import { getSourcesByIds } from "@/data/sources";
 import { formatDateHistorique } from "@/lib/date";
+import { resoudreIdentiteCodex } from "@/lib/identites/server";
 import { getFicheSourceIds } from "@/lib/source";
 
 export const dynamicParams = false;
@@ -54,8 +55,9 @@ export default async function OeuvrePage({
 
     const oeuvre = getOeuvreBySlug(slug);
     const fiche = getFicheOeuvreBySlug(slug);
+    const identite = resoudreIdentiteCodex("oeuvres", slug);
 
-    if (!oeuvre || !fiche) {
+    if (!oeuvre || !fiche || !identite) {
         notFound();
     }
 
@@ -76,7 +78,7 @@ export default async function OeuvrePage({
             <CodexFicheHeader
                 family="oeuvres"
                 eyebrow="Œuvre"
-                titre={oeuvre.nom}
+                identite={identite}
                 sousTitre={oeuvre.sousTitre}
                 introduction={fiche.introduction}
                 badges={
