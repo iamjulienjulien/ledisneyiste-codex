@@ -5,12 +5,12 @@ import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { formatDateHistorique } from "@/lib/date";
 import { formatPorteeTerritorialeDocumentaire } from "@/lib/documentaire";
+import { lireDonneeEconomiqueOeuvre } from "@/lib/donnees-economiques";
 import type { SymbolSelection } from "@/registry/symbols";
 import type { PeriodeHistorique } from "@/types/date";
 import type {
     ContributionOeuvre,
     DomaineCreditOeuvre,
-    DonneeEconomiqueOeuvre,
     NatureEvenementSortieOeuvre,
     NatureRelationOeuvre,
     TitreAlternatifOeuvre,
@@ -44,13 +44,7 @@ const alternativeTitleLabels: Record<TitreAlternatifOeuvre["nature"], string> =
         "sortie-territoriale": "Titre de sortie territoriale",
     };
 
-const economicLabels: Record<DonneeEconomiqueOeuvre["nature"], string> = {
-    "cout-production": "Coût de production",
-    revenus: "Revenus",
-    entrees: "Entrées",
-};
-
-const certaintyLabels: Record<DonneeEconomiqueOeuvre["certitude"], string> = {
+const certaintyLabels = {
     documente: "Donnée documentée",
     estimation: "Estimation sourcée",
     conteste: "Valeur contestée",
@@ -133,18 +127,6 @@ const creditDomainSymbols = {
 
 function formatPeriod(period: PeriodeHistorique) {
     return `${formatDateHistorique(period.debut)}–${period.fin ? formatDateHistorique(period.fin) : "aujourd’hui"}`;
-}
-
-function formatEconomicValue(data: DonneeEconomiqueOeuvre) {
-    if (data.unite === "monetaire") {
-        return new Intl.NumberFormat("fr-FR", {
-            style: "currency",
-            currency: data.devise,
-            maximumFractionDigits: 0,
-        }).format(data.valeur);
-    }
-
-    return `${new Intl.NumberFormat("fr-FR").format(data.valeur)} entrées`;
 }
 
 function groupCredits(contributions: ContributionOeuvre[]) {
@@ -339,37 +321,52 @@ export function CodexFicheOeuvreDetails({
                     }
                 >
                     <dl className={styles.economics}>
-                        {fiche.donneesEconomiques.map((data, index) => (
-                            <PixieCard
-                                key={`${data.nature}-${data.valeur}-${index}`}
-                                as="div"
-                                variant="accent"
-                                color="gouache"
-                                padding="md"
-                                radius="medium"
-                                className={styles.economic}
-                            >
-                                <dt className={styles.label}>
-                                    {economicLabels[data.nature]}
-                                </dt>
-                                <dd className={styles.value}>
-                                    {formatEconomicValue(data)}
-                                </dd>
-                                <dd className={styles.detail}>
-                                    {data.territoire} ·{" "}
-                                    {formatPeriod(data.periode)}
-                                    {" · "}
-                                    {certaintyLabels[data.certitude]}
-                                </dd>
-                                <dd className={styles.citations}>
-                                    <CodexFicheSourceCitations
-                                        sourceIds={data.sources}
-                                        sources={sources}
-                                        label="Sources du chiffre"
-                                    />
-                                </dd>
-                            </PixieCard>
-                        ))}
+                        {fiche.donneesEconomiques.map((data, index) => {
+                            const lecture = lireDonneeEconomiqueOeuvre(data);
+
+                            return (
+                                <PixieCard
+                                    key={
+                                        lecture.id ??
+                                        `donnee-economique-${index}`
+                                    }
+                                    as="div"
+                                    variant="accent"
+                                    color="gouache"
+                                    padding="md"
+                                    radius="medium"
+                                    className={styles.economic}
+                                >
+                                    <dt className={styles.label}>
+                                        {lecture.mesure}
+                                    </dt>
+                                    <dd className={styles.value}>
+                                        {lecture.valeur}
+                                    </dd>
+                                    <dd className={styles.detail}>
+                                        {lecture.territoire} ·{" "}
+                                        {lecture.temporalite}
+                                        {" · "}
+                                        {certaintyLabels[lecture.certitude]}
+                                        {lecture.methode
+                                            ? ` · ${lecture.methode}`
+                                            : ""}
+                                    </dd>
+                                    {lecture.noteDeReserve ? (
+                                        <dd className={styles.detail}>
+                                            {lecture.noteDeReserve}
+                                        </dd>
+                                    ) : null}
+                                    <dd className={styles.citations}>
+                                        <CodexFicheSourceCitations
+                                            sourceIds={[...lecture.sources]}
+                                            sources={sources}
+                                            label="Sources du chiffre"
+                                        />
+                                    </dd>
+                                </PixieCard>
+                            );
+                        })}
                     </dl>
                 </CodexFicheSection>
             ) : null}

@@ -8,6 +8,7 @@ import type {
     CodexPlanEvidenceScope,
 } from "@/types/codex-plans";
 import { formatPorteeTerritorialeDocumentaire } from "@/lib/documentaire";
+import { lireDonneeEconomiqueOeuvre } from "@/lib/donnees-economiques";
 import {
     createDerivationResult,
     createPublishedReference,
@@ -318,13 +319,14 @@ export function derivePlanEvidence(
         });
 
         work.donneesEconomiques?.forEach((data, index) => {
+            const lecture = lireDonneeEconomiqueOeuvre(data);
             items.push(
                 createEvidence(
                     {
                         id: `evidence:${owner.id}:economic-data:${index}`,
                         owner,
                         scope: "economic-data",
-                        label: `Donnée économique · ${data.nature} · ${data.territoire}`,
+                        label: `Donnée économique · ${lecture.mesure} · ${lecture.territoire}`,
                         sourceIds: data.sources,
                     },
                     archives,

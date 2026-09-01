@@ -1,5 +1,6 @@
 import { derivePlanEvidence } from "@/lib/plans/evidence";
 import { formatPorteeTerritorialeDocumentaire } from "@/lib/documentaire";
+import { lireDonneeEconomiqueOeuvre } from "@/lib/donnees-economiques";
 import type {
     CodexPlanArchives,
     CodexPlanConfiguration,
@@ -258,26 +259,22 @@ function createFacts(
             return [];
         }
 
-        const unit = data.unite === "monetaire" ? data.devise : data.unite;
+        const lecture = lireDonneeEconomiqueOeuvre(data);
         return [
-            fact("Nature", data.nature),
+            fact("Nature", lecture.mesure),
             fact(
                 "Valeur",
-                new Intl.NumberFormat("fr-FR", {
-                    ...(data.unite === "monetaire"
-                        ? {
-                              style: "currency" as const,
-                              currency: data.devise,
-                              maximumFractionDigits: 0,
-                          }
-                        : {}),
-                }).format(data.valeur),
-                data.valeur,
-                unit,
+                lecture.valeur,
+                lecture.valeurNumerique,
+                lecture.unite,
             ),
-            fact("Territoire", data.territoire),
-            fact("Période", formatPeriod(data.periode)),
-            fact("Certitude", data.certitude),
+            fact("Territoire", lecture.territoire),
+            fact("Période", lecture.temporalite),
+            fact("Certitude", lecture.certitude),
+            ...(lecture.methode ? [fact("Méthode", lecture.methode)] : []),
+            ...(lecture.noteDeReserve
+                ? [fact("Réserve", lecture.noteDeReserve)]
+                : []),
         ];
     }
 
