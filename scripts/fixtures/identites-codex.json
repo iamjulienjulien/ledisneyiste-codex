@@ -1,0 +1,77 @@
+{
+    "projections": [
+        {
+            "identifiant": "personnage-0001",
+            "famille": "personnages",
+            "slugCanonique": "atchoum",
+            "principale": {
+                "libelle": "Atchoum",
+                "langue": "fr"
+            },
+            "documentees": [
+                {
+                    "libelle": "Sneezy",
+                    "nature": "original",
+                    "langue": "en",
+                    "sources": [
+                        "d23-seven-dwarfs-personality",
+                        "d23-wish-animation-nods"
+                    ]
+                }
+            ],
+            "aliasesNavigation": []
+        },
+        {
+            "identifiant": "personnage-0002",
+            "famille": "personnages",
+            "slugCanonique": "la-reine",
+            "principale": {
+                "libelle": "La Reine",
+                "langue": "fr"
+            },
+            "documentees": [
+                {
+                    "libelle": "The Queen",
+                    "nature": "original",
+                    "langue": "en",
+                    "sources": ["afi-snow-white", "d23-snow-white-film"]
+                },
+                {
+                    "libelle": "The Evil Queen",
+                    "nature": "alias",
+                    "langue": "en",
+                    "sources": ["d23-snow-white-evil-queen"]
+                }
+            ],
+            "aliasesNavigation": [
+                {
+                    "chemin": "/fixture/personnages/reine",
+                    "nature": "route-historique"
+                }
+            ]
+        },
+        {
+            "identifiant": "oeuvre-0001",
+            "famille": "oeuvres",
+            "slugCanonique": "snow-white-and-the-seven-dwarfs",
+            "principale": {
+                "libelle": "Blanche-Neige et les Sept Nains",
+                "langue": "fr"
+            },
+            "documentees": [
+                {
+                    "libelle": "Snow White and the Seven Dwarfs",
+                    "nature": "original",
+                    "langue": "en",
+                    "territoire": "US",
+                    "sources": ["afi-snow-white", "d23-snow-white-film"]
+                }
+            ],
+            "aliasesNavigation": []
+        }
+    ],
+    "collisionNormalisee": {
+        "valeurs": ["La Reine", "La-Reine"],
+        "cleAttendue": "la reine"
+    }
+}
