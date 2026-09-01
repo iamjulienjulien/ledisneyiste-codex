@@ -271,6 +271,12 @@ function verifierProjection(
             if (alias?.nature !== "route-historique") {
                 erreurs.push(`${contexteAlias} : nature d’alias invalide`);
             }
+            if (!chaineNonVide(alias?.cible)) {
+                erreurs.push(`${contexteAlias} : cible canonique absente`);
+            }
+            if (!chaineNonVide(alias?.provenance)) {
+                erreurs.push(`${contexteAlias} : provenance absente`);
+            }
             if (chemins.has(alias?.chemin)) {
                 erreurs.push(`${contexteAlias} : chemin dupliqué`);
             }
@@ -569,6 +575,223 @@ function verifierRechercheIdentitaire(projections, moduleRecherche, erreurs) {
     return scenarios.length;
 }
 
+async function verifierRoutesEtAliases(
+    projections,
+    moduleNavigation,
+    fixtureRoutes,
+    erreurs,
+) {
+    const configurations = [
+        {
+            famille: "personnages",
+            segment: "personnages",
+            catalogue: "src/data/catalogues/personnages.json",
+            page: "src/app/personnages/[slug]/page.tsx",
+        },
+        {
+            famille: "createurs",
+            segment: "contributeurs",
+            catalogue: "src/data/catalogues/contributeurs.json",
+            page: "src/app/contributeurs/[slug]/page.tsx",
+        },
+        {
+            famille: "oeuvres",
+            segment: "oeuvres",
+            catalogue: "src/data/catalogues/oeuvres.json",
+            page: "src/app/oeuvres/[slug]/page.tsx",
+        },
+        {
+            famille: "epoques",
+            segment: "epoques",
+            catalogue: "src/data/catalogues/epoques.json",
+            page: "src/app/epoques/[slug]/page.tsx",
+        },
+    ];
+    const routesActuelles = [];
+    const totauxActuels = {};
+
+    for (const configuration of configurations) {
+        const catalogue = await lireJson(configuration.catalogue);
+        totauxActuels[configuration.famille] = catalogue.length;
+
+        for (const entree of catalogue) {
+            const route = moduleNavigation.construireRouteCanoniqueCodex(
+                configuration.famille,
+                entree.slug,
+            );
+            const routeAttendue = `/${configuration.segment}/${entree.slug}`;
+
+            if (route !== routeAttendue) {
+                erreurs.push(
+                    `${configuration.famille}/${entree.slug} : route canonique incohérente « ${route} »`,
+                );
+            }
+            routesActuelles.push(route);
+        }
+
+        const page = await readFile(
+            path.join(racine, configuration.page),
+            "utf8",
+        );
+        if (!page.includes("export const dynamicParams = false")) {
+            erreurs.push(
+                `${configuration.page} : les paramètres dynamiques ne sont pas fermés`,
+            );
+        }
+        if (!page.includes("generateStaticParams")) {
+            erreurs.push(
+                `${configuration.page} : l’inventaire statique des slugs est absent`,
+            );
+        }
+    }
+
+    const routesFigees = fixtureRoutes.routes ?? [];
+    const routesUniques = new Set(routesActuelles);
+    const routesFigeesUniques = new Set(routesFigees);
+
+    if (routesUniques.size !== routesActuelles.length) {
+        erreurs.push("Routes canoniques : le catalogue produit un doublon");
+    }
+    if (routesFigeesUniques.size !== routesFigees.length) {
+        erreurs.push(
+            "Routes canoniques : l’inventaire figé contient un doublon",
+        );
+    }
+    if (
+        JSON.stringify([...routesUniques].sort()) !==
+        JSON.stringify([...routesFigeesUniques].sort())
+    ) {
+        erreurs.push(
+            "Routes canoniques : les catalogues ne correspondent plus à l’inventaire figé",
+        );
+    }
+
+    const totauxAttendus = fixtureRoutes.expectedTotals ?? {};
+    for (const configuration of configurations) {
+        if (
+            totauxActuels[configuration.famille] !==
+            totauxAttendus[configuration.famille]
+        ) {
+            erreurs.push(
+                `Routes canoniques : total ${configuration.famille} inattendu`,
+            );
+        }
+    }
+    if (
+        routesActuelles.length !== totauxAttendus.total ||
+        routesActuelles.length !== 79
+    ) {
+        erreurs.push(
+            `Routes canoniques : 79 routes attendues, ${routesActuelles.length} obtenues`,
+        );
+    }
+
+    if (routesUniques.has(fixtureRoutes.routeInconnue)) {
+        erreurs.push(
+            "Routes canoniques : la route inconnue témoin ne doit pas être publiée",
+        );
+    }
+
+    let redirections = [];
+    try {
+        redirections = moduleNavigation.preparerRedirectionsNavigationCodex(
+            [fixtureRoutes.aliasTemoin],
+            routesFigees,
+        );
+    } catch (erreur) {
+        erreurs.push(`Alias témoin : ${erreur.message}`);
+    }
+
+    const redirection = redirections[0];
+    if (
+        redirections.length !== 1 ||
+        redirection?.source !== fixtureRoutes.aliasTemoin?.chemin ||
+        redirection?.destination !== fixtureRoutes.aliasTemoin?.cible ||
+        redirection?.permanent !== true
+    ) {
+        erreurs.push(
+            "Alias témoin : la redirection permanente vers la cible canonique est incohérente",
+        );
+    }
+
+    const aliasesInvalides = [
+        {
+            ...fixtureRoutes.aliasTemoin,
+            provenance: "",
+        },
+        {
+            ...fixtureRoutes.aliasTemoin,
+            cible: fixtureRoutes.routeInconnue,
+        },
+        {
+            ...fixtureRoutes.aliasTemoin,
+            chemin: fixtureRoutes.aliasTemoin?.cible,
+        },
+    ];
+
+    for (const [index, alias] of aliasesInvalides.entries()) {
+        let refuse = false;
+        try {
+            moduleNavigation.preparerRedirectionsNavigationCodex(
+                [alias],
+                routesFigees,
+            );
+        } catch {
+            refuse = true;
+        }
+        if (!refuse) {
+            erreurs.push(
+                `Alias invalide ${index + 1} : le contrat doit refuser`,
+            );
+        }
+    }
+
+    let doublonRefuse = false;
+    try {
+        moduleNavigation.preparerRedirectionsNavigationCodex(
+            [fixtureRoutes.aliasTemoin, fixtureRoutes.aliasTemoin],
+            routesFigees,
+        );
+    } catch {
+        doublonRefuse = true;
+    }
+    if (!doublonRefuse) {
+        erreurs.push("Alias témoin : un chemin dupliqué doit être refusé");
+    }
+
+    const aliasesPublies = [...projections.values()].flatMap(
+        (projection) => projection.aliasesNavigation,
+    );
+    if (aliasesPublies.length !== 0) {
+        erreurs.push(
+            "Aliases de navigation : aucune ancienne URL réelle n’est actuellement établie",
+        );
+    }
+
+    const sourceNavigation = await readFile(
+        path.join(racine, "src/lib/navigation/routes-codex.ts"),
+        "utf8",
+    );
+    const dependancesIdentitairesInterdites = [
+        "@/types/identite",
+        "@/lib/identites",
+        "normaliserIdentiteCodex",
+        "identitesDocumentees",
+    ];
+    for (const dependance of dependancesIdentitairesInterdites) {
+        if (sourceNavigation.includes(dependance)) {
+            erreurs.push(
+                `Navigation : le module des routes dépend de la matière identitaire via « ${dependance} »`,
+            );
+        }
+    }
+
+    return {
+        routes: routesActuelles.length,
+        aliases: redirections.length,
+    };
+}
+
 async function verifier() {
     const erreurs = [];
     const [
@@ -576,15 +799,19 @@ async function verifier() {
         moduleTerritoires,
         moduleProjection,
         moduleRecherche,
+        moduleNavigation,
         sources,
         fixture,
+        fixtureRoutes,
     ] = await Promise.all([
         chargerModuleTypeScript("src/registry/identites/langues.ts"),
         chargerModuleTypeScript("src/registry/identites/territoires.ts"),
         chargerModuleTypeScript("src/lib/identites/projeter-identite.ts"),
         chargerModuleTypeScript("src/lib/recherche/filtrer-index.ts"),
+        chargerModuleTypeScript("src/lib/navigation/routes-codex.ts"),
         lireJson("src/data/sources/sources.json"),
         lireJson("scripts/fixtures/identites-codex.json"),
+        lireJson("scripts/fixtures/routes-codex.json"),
     ]);
     normaliserIdentite = moduleProjection.normaliserIdentiteCodex;
     const registreLangues = moduleLangues.languesCodex;
@@ -657,6 +884,12 @@ async function verifier() {
         moduleRecherche,
         erreurs,
     );
+    const navigation = await verifierRoutesEtAliases(
+        projections,
+        moduleNavigation,
+        fixtureRoutes,
+        erreurs,
+    );
     await verifierFrontiereServeur(erreurs);
 
     if (
@@ -721,7 +954,7 @@ async function verifier() {
     }
 
     console.log(
-        `Identités vérifiées : ${langues.size} langues, ${territoires.size} territoires, ${identitesPersonnages + identitesOeuvres} formes documentées, ${projections.size} jointures catalogue–fiche, ${fixture.projections.length} projections témoins et ${scenariosRecherche} requêtes identitaires.`,
+        `Identités vérifiées : ${langues.size} langues, ${territoires.size} territoires, ${identitesPersonnages + identitesOeuvres} formes documentées, ${projections.size} jointures catalogue–fiche, ${fixture.projections.length} projections témoins, ${scenariosRecherche} requêtes identitaires, ${navigation.routes} routes canoniques et ${navigation.aliases} redirection témoin.`,
     );
 }
 
