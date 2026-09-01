@@ -452,6 +452,7 @@ avant tout commit.
 
 | Chantier                      | Contrôles spécialisés    |
 | ----------------------------- | ------------------------ |
+| Projection Pixie et Codex     | `pnpm check:pixie`       |
 | Symboles                      | `pnpm check:symbols`     |
 | Métadonnées                   | `pnpm check:metadata`    |
 | Plans et registre             | `pnpm check:plans`       |
