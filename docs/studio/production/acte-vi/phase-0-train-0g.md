@@ -71,6 +71,10 @@ La projection partagée reçoit ensuite :
 - le sommaire dérivé de la même analyse ;
 - les destinations précédente et suivante dans l’ordre déclaré.
 
+Un contrôle propre à la route choisit entre la bibliothèque intégrée et sa
+présence flottante. La préférence reste mémorisée pendant la traversée des
+chapitres, sans ajouter de responsabilité à `PixieDocs`.
+
 Le premier H1 générique du Markdown est absorbé par l’enveloppe de route.
 `PixieDocs` porte alors le titre principal déclaré dans la bibliothèque ; les
 titres suivants conservent leur niveau et leur ordre documentaire.
@@ -104,6 +108,11 @@ La bibliothèque Notion reste additive :
 - le mode sticky ne recouvre pas le focus ;
 - mobile, zoom à 200 %, contenus longs et états sans document restent lisibles ;
 - aucune information ne dépend uniquement de la couleur.
+
+Les cartes de service Guru Éditions sont distinguées des diagrammes ASCII au
+moment de l’analyse. Leur projection gagne un cadre centré, plus respirant et
+légèrement texturé, tandis que leur chaîne, leur copie et leur alternative
+accessible demeurent strictement inchangées.
 
 ## Garde-fous attendus
 

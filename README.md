@@ -617,6 +617,11 @@ reçoivent ni chemin réel du dépôt, ni identifiant Notion, ni secret. Sans
 `NOTION_API_KEY`, la bibliothèque distante conserve un état différé sans
 empêcher la lecture locale.
 
+Un contrôle de lecture permet de conserver la bibliothèque dans la grille ou
+de la transformer en panneau flottant, et mémorise ce choix pendant la
+navigation. Les cartes de service Guru Éditions reconnues par l’analyseur
+reçoivent une présence ASCII dédiée sans modifier leur dessin monospacé.
+
 Comme l’Atelier, `/guidebook` appelle `notFound()` en production, interdit son
 indexation et ne figure pas dans la navigation publique. Le raccord entre les
 deux coulisses reste disponible depuis leur navigation interne.

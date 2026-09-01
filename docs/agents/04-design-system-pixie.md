@@ -508,6 +508,12 @@ conserve la chaîne exacte et peut transmettre son état à la régie. À
 l’impression, les contrôles et textures disparaissent afin que la grille soit
 restituée sans bornes artificielles.
 
+Dans le Guidebook, l’analyse commune distingue les cartes de service signées
+**Guru Éditions** des autres diagrammes ASCII. Leur chaîne ne change jamais :
+`PixieMarkdown` leur confie seulement une présence `projector`, un cadre centré,
+une respiration plus généreuse et un grain discret. Cette mise en scène locale
+ne crée aucune nouvelle variante dans `PixieAscii`.
+
 ### `PixieMarkdown` · composant `1.0.0`
 
 Cet Écran reçoit uniquement des `GuidebookBlock` déjà analysés, autorisés et
@@ -549,7 +555,10 @@ un `PixiePanel` fixe au pointeur et au clavier, tandis que le document récupèr
 la largeur qu’occupait sa colonne. Au repos, le panneau est entièrement
 escamoté et seule sa languette droite demeure visible. Son déplacement reste
 borné par les bords supérieur et inférieur du composant. `navigationWidth`
-règle réellement les trois largeurs bornées dans les deux modes.
+règle réellement les trois largeurs bornées dans les deux modes. Le Guidebook
+compose au-dessus de cet API un contrôle `aria-pressed` qui mémorise la
+préférence entre ses chapitres ; cette préférence de produit ne rejoint pas le
+contrat générique de `PixieDocs`.
 
 Le contrat stable est éprouvé sur `docs/agents/` et sur onze pages Notion
 déclarées : la home du Disneyiste, le portail Vision & Doctrine et ses neuf
