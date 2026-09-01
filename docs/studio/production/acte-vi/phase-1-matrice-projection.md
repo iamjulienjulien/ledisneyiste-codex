@@ -31,13 +31,13 @@ documentée.
 
 ## Accessoires
 
-| Composant        | Usage actuel et emplacement                                 | Fonction / cible                           | Nature                                          | Risque | Accessibilité et vérifications                                             | Statut / justification                                                                                                                |
-| ---------------- | ----------------------------------------------------------- | ------------------------------------------ | ----------------------------------------------- | ------ | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| `PixieSymbol`    | Header, home, Recherche, index, Cards et sections de fiches | Symboles des familles, sections et actions | Projection directe                              | Faible | Noms accessibles conservés lorsque le symbole informe ; décoratifs masqués | **Projeté**                                                                                                                           |
-| `PixieButton`    | Soumission de la Recherche                                  | Action native de formulaire                | Projection directe                              | Faible | Soumission clavier et libellé visible                                      | **Projeté**                                                                                                                           |
-| `PixieLink`      | Navigation globale, home, Cards, footer, références         | Navigation interne et externe              | Projection directe + audit des ancres restantes | Moyen  | Destination, focus, liens externes et ancres de citations                  | **Partiel** — `CodexFicheSources`, `CodexFicheSourceCitations` et le sélecteur de vue conservent des liens natifs ou Next à qualifier |
-| `PixieBadge`     | Home, Recherche, index, Cards, fiches et récompenses        | Métadonnées et états courts                | Projection directe                              | Faible | L’information ne dépend pas uniquement de la couleur                       | **Projeté**                                                                                                                           |
-| `PixieSeparator` | Home, Recherche, index, footer, Cards et sections           | Changements de séquence                    | Projection directe                              | Faible | Décoratif, sans rupture artificielle dans le document                      | **Projeté**                                                                                                                           |
+| Composant        | Usage actuel et emplacement                                                        | Fonction / cible                            | Nature             | Risque | Accessibilité et vérifications                                                   | Statut / justification                                                                                         |
+| ---------------- | ---------------------------------------------------------------------------------- | ------------------------------------------- | ------------------ | ------ | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `PixieSymbol`    | Header, home, Recherche, index, Cards et sections de fiches                        | Symboles des familles, sections et actions  | Projection directe | Faible | Noms accessibles conservés lorsque le symbole informe ; décoratifs masqués       | **Projeté**                                                                                                    |
+| `PixieButton`    | Soumission de la Recherche                                                         | Action native de formulaire                 | Projection directe | Faible | Soumission clavier et libellé visible                                            | **Projeté**                                                                                                    |
+| `PixieLink`      | Navigation globale, home, Cards, footer, références, citations et sélecteur de vue | Navigation interne, externe et fragmentaire | Projection directe | Faible | Destination, focus, `aria-current`, ouverture externe et ancres bibliographiques | **Projeté** — les derniers liens Codex compatibles ont rejoint le composant sans altérer leur URL ni leur rôle |
+| `PixieBadge`     | Home, Recherche, index, Cards, fiches et récompenses                               | Métadonnées et états courts                 | Projection directe | Faible | L’information ne dépend pas uniquement de la couleur                             | **Projeté**                                                                                                    |
+| `PixieSeparator` | Home, Recherche, index, footer, Cards et sections                                  | Changements de séquence                     | Projection directe | Faible | Décoratif, sans rupture artificielle dans le document                            | **Projeté**                                                                                                    |
 
 ## Décors
 
@@ -92,8 +92,9 @@ documentée.
    propriétaire, tout en conservant les contrats métier globaux.
 3. Migrer le formulaire public de Recherche vers `PixieSearchField` après le
    nettoyage structurel.
-4. Auditer les liens natifs de la bibliographie, des citations et du sélecteur
-   de vue avant de décider lesquels relèvent réellement de `PixieLink`.
+4. ~~Auditer les liens natifs de la bibliographie, des citations et du sélecteur
+   de vue avant de décider lesquels relèvent réellement de `PixieLink`.~~
+   Terminé : les trois usages relèvent bien de la navigation et ont été migrés.
 5. Confirmer ou écarter `PixieContainer` en comparant les contrats de largeur
    des index, fiches et Recherche.
 
@@ -109,6 +110,17 @@ documentée.
 - suppression des anciens fichiers de types devenus vides et du dossier
   `CodexEpoque` sans contenu ;
 - vérification de l’absence d’import entre `CodexIndex` et `CodexFiche` ;
+- `pnpm check:ci` entièrement vert, build Next.js et génération des 114 pages
+  compris.
+
+### 1er septembre 2026 · Raccord PixieLink
+
+- migration du sélecteur Liste/Cards vers `PixieLink`, avec conservation de
+  l’URL partageable et de `aria-current="page"` ;
+- migration des sorties bibliographiques externes, sans modifier leur nouvel
+  onglet ni leur politique `rel` ;
+- migration des renvois de citations vers leurs fragments de source ;
+- statut de `PixieLink` porté de **Partiel** à **Projeté** ;
 - `pnpm check:ci` entièrement vert, build Next.js et génération des 114 pages
   compris.
 
