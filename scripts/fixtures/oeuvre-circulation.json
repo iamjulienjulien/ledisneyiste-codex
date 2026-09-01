@@ -1,0 +1,257 @@
+{
+    "slug": "fixture-circulation-oeuvre",
+    "type": "oeuvre",
+    "introduction": "Fixture privée éprouvant les sorties, exploitations, versions et réceptions sans publier une nouvelle Archive.",
+    "sortie": {
+        "date": {
+            "valeur": "1940-02-07",
+            "precision": "jour"
+        },
+        "evenements": [
+            {
+                "id": "premiere-mondiale-1940",
+                "date": {
+                    "valeur": "1940-02-07",
+                    "precision": "jour"
+                },
+                "porteeTerritoriale": {
+                    "nature": "territoire",
+                    "code": "US"
+                },
+                "nature": "premiere-mondiale",
+                "lieu": "New York",
+                "versionId": "version-originale-1940",
+                "exploitationId": "premiere-exploitation-us",
+                "sources": ["fixture-source-a"]
+            },
+            {
+                "id": "sortie-france-1946",
+                "date": {
+                    "valeur": "1946-05-22",
+                    "precision": "jour"
+                },
+                "porteeTerritoriale": {
+                    "nature": "territoire",
+                    "code": "FR"
+                },
+                "nature": "sortie-nationale",
+                "versionId": "doublage-francais-1946",
+                "exploitationId": "exploitation-france-1946",
+                "sources": ["fixture-source-b"]
+            },
+            {
+                "id": "ressortie-restauree-1985",
+                "date": {
+                    "valeur": "1985",
+                    "precision": "annee"
+                },
+                "porteeTerritoriale": {
+                    "nature": "zone",
+                    "libelle": "Marchés documentés par la restauration"
+                },
+                "nature": "ressortie",
+                "versionId": "restauration-1985",
+                "exploitationId": "ressortie-restauree-1985",
+                "sources": ["fixture-source-c"],
+                "noteDeReserve": "Le périmètre exact dépend des territoires documentés par chaque source."
+            }
+        ]
+    },
+    "format": "long métrage d’animation",
+    "versions": [
+        {
+            "id": "version-originale-1940",
+            "nature": "originale",
+            "identite": {
+                "libelle": "Version originale",
+                "nature": "original",
+                "langue": "en",
+                "territoire": "US",
+                "sources": ["fixture-source-a"]
+            },
+            "date": {
+                "valeur": "1940",
+                "precision": "annee"
+            },
+            "sources": ["fixture-source-a"]
+        },
+        {
+            "id": "doublage-francais-1946",
+            "nature": "doublage",
+            "identite": {
+                "libelle": "Premier doublage français",
+                "nature": "localise",
+                "langue": "fr",
+                "territoire": "FR",
+                "sources": ["fixture-source-b"]
+            },
+            "date": {
+                "valeur": "1946",
+                "precision": "annee"
+            },
+            "distributeur": "Distributeur documenté",
+            "sources": ["fixture-source-b"]
+        },
+        {
+            "id": "restauration-1985",
+            "nature": "restauration",
+            "identite": {
+                "libelle": "Restauration de référence",
+                "nature": "international",
+                "sources": ["fixture-source-c"]
+            },
+            "date": {
+                "valeur": "1985",
+                "precision": "annee"
+            },
+            "sources": ["fixture-source-c"]
+        }
+    ],
+    "exploitations": [
+        {
+            "id": "premiere-exploitation-us",
+            "nature": "premiere-exploitation",
+            "periode": {
+                "debut": {
+                    "valeur": "1940-02-07",
+                    "precision": "jour"
+                }
+            },
+            "porteeTerritoriale": {
+                "nature": "territoire",
+                "code": "US"
+            },
+            "versionIds": ["version-originale-1940"],
+            "support": "salles",
+            "sources": ["fixture-source-a"]
+        },
+        {
+            "id": "exploitation-france-1946",
+            "nature": "exploitation-nationale",
+            "periode": {
+                "debut": {
+                    "valeur": "1946-05-22",
+                    "precision": "jour"
+                }
+            },
+            "porteeTerritoriale": {
+                "nature": "territoire",
+                "code": "FR"
+            },
+            "versionIds": ["doublage-francais-1946"],
+            "support": "salles",
+            "sources": ["fixture-source-b"]
+        },
+        {
+            "id": "ressortie-restauree-1985",
+            "nature": "restauration",
+            "periode": {
+                "debut": {
+                    "valeur": "1985",
+                    "precision": "annee"
+                },
+                "fin": {
+                    "valeur": "1986",
+                    "precision": "annee"
+                }
+            },
+            "porteeTerritoriale": {
+                "nature": "zone",
+                "libelle": "Marchés documentés par la restauration"
+            },
+            "versionIds": ["restauration-1985"],
+            "support": "salles",
+            "sources": ["fixture-source-c"],
+            "noteDeReserve": "La fixture conserve une zone documentaire sans l’inventer comme code pays."
+        }
+    ],
+    "receptions": [
+        {
+            "id": "critique-us-1940",
+            "nature": "critique-contemporaine",
+            "temoin": {
+                "nom": "Publication américaine témoin",
+                "nature": "publication"
+            },
+            "date": {
+                "valeur": "1940-02",
+                "precision": "mois"
+            },
+            "porteeTerritoriale": {
+                "nature": "territoire",
+                "code": "US"
+            },
+            "resume": "La critique contemporaine décrit l’ambition formelle de l’œuvre sans résumer sa réputation future.",
+            "qualification": "favorable",
+            "support": "presse",
+            "evenementId": "premiere-mondiale-1940",
+            "exploitationId": "premiere-exploitation-us",
+            "versionId": "version-originale-1940",
+            "sources": ["fixture-source-a"]
+        },
+        {
+            "id": "critique-france-1946",
+            "nature": "critique-contemporaine",
+            "temoin": {
+                "nom": "Publication française témoin",
+                "nature": "publication"
+            },
+            "periode": {
+                "debut": {
+                    "valeur": "1946-05",
+                    "precision": "mois"
+                },
+                "fin": {
+                    "valeur": "1946-06",
+                    "precision": "mois"
+                }
+            },
+            "porteeTerritoriale": {
+                "nature": "territoire",
+                "code": "FR"
+            },
+            "resume": "La réception française reste attachée à sa sortie tardive et à la version alors distribuée.",
+            "qualification": "partagee",
+            "support": "presse",
+            "evenementId": "sortie-france-1946",
+            "exploitationId": "exploitation-france-1946",
+            "versionId": "doublage-francais-1946",
+            "sources": ["fixture-source-b"]
+        },
+        {
+            "id": "reevaluation-1985",
+            "nature": "reevaluation",
+            "temoin": {
+                "nom": "Institution patrimoniale témoin",
+                "nature": "institution"
+            },
+            "date": {
+                "valeur": "1985",
+                "precision": "annee"
+            },
+            "porteeTerritoriale": {
+                "nature": "monde"
+            },
+            "resume": "La réévaluation accompagne une restauration ultérieure et ne devient jamais une réaction de 1940.",
+            "qualification": "descriptive",
+            "exploitationId": "ressortie-restauree-1985",
+            "versionId": "restauration-1985",
+            "sources": ["fixture-source-c"]
+        }
+    ],
+    "contributions": [
+        {
+            "contributeur": {
+                "nom": "Créatrice ou créateur de la fixture"
+            },
+            "roles": ["réalisation"],
+            "domaine": "production-direction"
+        }
+    ],
+    "personnages": [
+        {
+            "nom": "Personnage de la fixture"
+        }
+    ],
+    "sources": ["fixture-source-a", "fixture-source-b", "fixture-source-c"]
+}

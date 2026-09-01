@@ -109,6 +109,150 @@ function verifierDate(date, contexte) {
     );
 }
 
+function verifierCirculationOeuvre({
+    archives,
+    derivePlanEvents,
+    derivePlanEvidence,
+    deriveMontageDuTemps,
+    deriveTableLumineuse,
+}) {
+    const fiche = JSON.parse(
+        readFileSync(
+            path.join(racine, "scripts/fixtures/oeuvre-circulation.json"),
+            "utf8",
+        ),
+    );
+    const sourcesFixture = ["a", "b", "c"].map((suffixe) => ({
+        id: `fixture-source-${suffixe}`,
+        titre: `Source privée ${suffixe.toUpperCase()}`,
+    }));
+    const archivesFixture = {
+        ...archives,
+        catalogues: {
+            ...archives.catalogues,
+            oeuvres: [
+                ...archives.catalogues.oeuvres,
+                {
+                    slug: fiche.slug,
+                    nom: "Œuvre témoin de circulation",
+                    type: "oeuvre",
+                },
+            ],
+        },
+        fiches: {
+            ...archives.fiches,
+            oeuvres: [...archives.fiches.oeuvres, fiche],
+        },
+        sources: [...archives.sources, ...sourcesFixture],
+    };
+    const configuration = {
+        plan: "table-lumineuse",
+        subject: { family: "oeuvres", slug: fiche.slug },
+        angle: "provenance",
+        objective: "verify",
+        frame: {
+            label: "Circulation privée",
+            description:
+                "Éprouver les sorties, versions, exploitations et réceptions.",
+        },
+        matter: { kind: "archives" },
+    };
+    const events = derivePlanEvents(archivesFixture).items.filter(
+        (event) => event.subject.slug === fiche.slug,
+    );
+    const evidence = derivePlanEvidence(archivesFixture).items.filter(
+        (item) => item.owner.slug === fiche.slug,
+    );
+
+    assert.equal(
+        events.filter((event) => event.kind === "release-event").length,
+        3,
+        "La bobine de circulation doit conserver ses trois sorties",
+    );
+    assert.equal(
+        events.filter((event) => event.kind === "work-exploitation").length,
+        3,
+        "La bobine de circulation doit conserver ses trois exploitations",
+    );
+    assert.equal(
+        events.filter((event) => event.kind === "work-reception").length,
+        3,
+        "La bobine de circulation doit conserver ses trois réceptions",
+    );
+    assert.equal(
+        events.find((event) => event.id.endsWith("reevaluation-1985"))?.start
+            .valeur,
+        "1985",
+        "La réévaluation rétrospective ne doit pas être antidatée en 1940",
+    );
+    assert.equal(
+        events.find((event) => event.id.includes("ressortie-restauree"))
+            ?.subject.id,
+        `oeuvre:${fiche.slug}`,
+        "Une ressortie doit rester attachée à l’œuvre existante",
+    );
+
+    for (const [scope, attendu] of [
+        ["work-version", 3],
+        ["work-exploitation", 3],
+        ["work-reception", 3],
+    ]) {
+        assert.equal(
+            evidence.filter((item) => item.scope === scope).length,
+            attendu,
+            `${scope} : matière incomplète`,
+        );
+    }
+
+    const table = deriveTableLumineuse(configuration, {
+        kind: "archives",
+        archives: archivesFixture,
+    });
+    const receptionRetrospective = table.items.find((item) =>
+        item.id.endsWith("reevaluation-1985"),
+    );
+    assert.ok(receptionRetrospective, "Réception rétrospective absente");
+    assert.ok(
+        receptionRetrospective.facts.some(
+            (fait) =>
+                fait.label === "Qualification" && fait.value === "descriptive",
+        ),
+        "Le contrechamp a perdu la qualification de la réception",
+    );
+    assert.ok(
+        receptionRetrospective.facts.some(
+            (fait) => fait.label === "Territoire" && fait.value === "Monde",
+        ),
+        "Le contrechamp a perdu la portée mondiale documentée",
+    );
+
+    const montage = deriveMontageDuTemps(
+        { ...configuration, plan: "montage-du-temps", objective: "compare" },
+        { kind: "archives", archives: archivesFixture },
+    );
+    assert.ok(
+        montage.events.some(
+            (event) =>
+                event.kind === "work-exploitation" &&
+                event.track === "distribution",
+        ),
+        "Les exploitations ne rejoignent pas la piste de diffusion",
+    );
+    assert.ok(
+        montage.events.some(
+            (event) =>
+                event.kind === "work-reception" && event.track === "reception",
+        ),
+        "Les réceptions ne rejoignent pas la piste de reconnaissance",
+    );
+    assert.ok(
+        !montage.events.some((event) => event.kind === "work-release"),
+        "La date canonique ne doit pas doubler les sorties détaillées",
+    );
+
+    return { events, evidence, table, montage };
+}
+
 function verifierLimite(adapter, archives, nom) {
     const complet = adapter(archives);
     const limite = adapter(archives, { limit: 2 });
@@ -1348,9 +1492,16 @@ function verifier() {
         bobinesTemoins,
         deriveTableLumineuse,
     });
+    const circulationOeuvre = verifierCirculationOeuvre({
+        archives: codexPlanArchives,
+        derivePlanEvents,
+        derivePlanEvidence,
+        deriveMontageDuTemps,
+        deriveTableLumineuse,
+    });
 
     console.log(
-        `Matière des Plans vérifiée : ${nodes.items.length} nœuds, ${links.items.length} liens, ${events.items.length} événements, ${credits.items.length} crédits, ${evidence.items.length} preuves, ${bobines.length} Bobines témoins, ${projections.length} projections du Travelling documentaire, ${projectionsEnsemble.length} projections du Plan d’ensemble, ${projectionsMontage.length} projections du Montage du temps, ${projectionsGenerique.length} projections du Générique vivant et ${projectionsTableLumineuse.length} projections de la Table lumineuse.`,
+        `Matière des Plans vérifiée : ${nodes.items.length} nœuds, ${links.items.length} liens, ${events.items.length} événements, ${credits.items.length} crédits, ${evidence.items.length} preuves, ${bobines.length} Bobines témoins, ${projections.length} projections du Travelling documentaire, ${projectionsEnsemble.length} projections du Plan d’ensemble, ${projectionsMontage.length} projections du Montage du temps, ${projectionsGenerique.length} projections du Générique vivant, ${projectionsTableLumineuse.length} projections de la Table lumineuse et 1 bobine privée de circulation (${circulationOeuvre.events.length} événements, ${circulationOeuvre.evidence.length} preuves).`,
     );
 }
 
