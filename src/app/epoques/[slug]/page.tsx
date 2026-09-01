@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { CodexFiche } from "@/components/codex/CodexFiche";
-import { CodexFicheHeader } from "@/components/codex/CodexFicheHeader";
-import { CodexFicheReperes } from "@/components/codex/CodexFicheReperes";
-import { CodexFicheSection } from "@/components/codex/CodexFicheSection";
-import { CodexSources } from "@/components/codex/CodexSources";
-import { CodexRelations } from "@/components/codex/CodexRelations";
-import { CodexBlocsEditoriaux } from "@/components/codex/CodexBlocsEditoriaux";
+import { CodexFiche } from "@/components/codex/CodexFiche/CodexFiche";
+import { CodexFicheHeader } from "@/components/codex/CodexFiche/CodexFicheHeader";
+import { CodexFicheReperes } from "@/components/codex/CodexFiche/CodexFicheReperes";
+import { CodexFicheSection } from "@/components/codex/CodexFiche/CodexFicheSection";
+import { CodexFicheSources } from "@/components/codex/CodexFiche/CodexFicheSources";
+import { CodexFicheRelations } from "@/components/codex/CodexFiche/CodexFicheRelations";
+import { CodexFicheBlocsEditoriaux } from "@/components/codex/CodexFiche/CodexFicheBlocsEditoriaux";
 import {
     getOeuvresDeLEpoque,
     getPersonnagesDeLEpoque,
@@ -105,13 +105,13 @@ export default async function EpoquePage({
                 </CodexFicheSection>
             )}
 
-            <CodexBlocsEditoriaux
+            <CodexFicheBlocsEditoriaux
                 collection="epoques"
                 blocs={fiche.blocsEditoriaux}
                 sources={sources}
             />
 
-            <CodexRelations
+            <CodexFicheRelations
                 groupes={[
                     {
                         family: "createurs",
@@ -130,7 +130,7 @@ export default async function EpoquePage({
                     },
                 ]}
             />
-            <CodexSources sources={sources} />
+            <CodexFicheSources sources={sources} />
         </CodexFiche>
     );
 }

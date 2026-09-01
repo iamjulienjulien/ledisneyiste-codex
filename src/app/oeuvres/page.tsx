@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { CodexIndexPage } from "@/components/codex/CodexIndexPage";
-import { CodexIndexListItem } from "@/components/codex/CodexIndexListItem";
-import { CodexIndexViewSwitch } from "@/components/codex/CodexIndexViewSwitch";
-import { CodexOeuvreCard } from "@/components/codex/CodexOeuvreCard";
+import { CodexIndexPage } from "@/components/codex/CodexIndex/CodexIndexPage";
+import { CodexIndexListItem } from "@/components/codex/CodexIndex/CodexIndexListItem";
+import { CodexIndexViewSwitch } from "@/components/codex/CodexIndex/CodexIndexViewSwitch";
+import { CodexIndexOeuvreCard } from "@/components/codex/CodexIndex/CodexIndexOeuvreCard";
 import { PixieBadge } from "@/components/ui/PixieBadge";
 import { PixieGrid } from "@/components/ui/PixieGrid";
 import { oeuvres } from "@/data/catalogues";
@@ -50,7 +50,7 @@ export default async function OeuvresPage({
 
                         return fiche ? (
                             <li key={oeuvre.slug}>
-                                <CodexOeuvreCard
+                                <CodexIndexOeuvreCard
                                     oeuvre={oeuvre}
                                     fiche={fiche}
                                     recompenses={recompenses}

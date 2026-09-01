@@ -1,4 +1,4 @@
-import { CodexFooter } from "@/components/codex/CodexFooter";
+import { CodexLayoutFooter } from "@/components/codex/CodexLayout/CodexLayoutFooter";
 import { PixieLink } from "@/components/ui/PixieLink";
 
 export default function NotFound() {
@@ -55,7 +55,7 @@ export default function NotFound() {
                 </section>
             </main>
 
-            <CodexFooter />
+            <CodexLayoutFooter />
         </>
     );
 }

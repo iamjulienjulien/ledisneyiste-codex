@@ -7,13 +7,13 @@ import {
     getOeuvresContribueesParContributeur,
     getPersonnagesCreesParContributeur,
 } from "@/data/relations";
-import { CodexFiche } from "@/components/codex/CodexFiche";
-import { CodexFicheHeader } from "@/components/codex/CodexFicheHeader";
-import { CodexFicheReperes } from "@/components/codex/CodexFicheReperes";
-import { CodexSources } from "@/components/codex/CodexSources";
-import { CodexRelations } from "@/components/codex/CodexRelations";
-import { CodexBlocsEditoriaux } from "@/components/codex/CodexBlocsEditoriaux";
-import { CodexRecompenses } from "@/components/codex/CodexRecompenses";
+import { CodexFiche } from "@/components/codex/CodexFiche/CodexFiche";
+import { CodexFicheHeader } from "@/components/codex/CodexFiche/CodexFicheHeader";
+import { CodexFicheReperes } from "@/components/codex/CodexFiche/CodexFicheReperes";
+import { CodexFicheSources } from "@/components/codex/CodexFiche/CodexFicheSources";
+import { CodexFicheRelations } from "@/components/codex/CodexFiche/CodexFicheRelations";
+import { CodexFicheBlocsEditoriaux } from "@/components/codex/CodexFiche/CodexFicheBlocsEditoriaux";
+import { CodexFicheRecompenses } from "@/components/codex/CodexFiche/CodexFicheRecompenses";
 import { PixieBadge } from "@/components/ui/PixieBadge";
 import { getEpoquesPourContributeur } from "@/data/epoques/relations";
 import { getRecompensesPourContributeur } from "@/data/recompenses/relations";
@@ -126,15 +126,15 @@ export default async function ContributeurPage({
                 ]}
             />
 
-            <CodexBlocsEditoriaux
+            <CodexFicheBlocsEditoriaux
                 collection="createurs"
                 blocs={fiche.blocsEditoriaux}
                 sources={sources}
             />
 
-            <CodexRecompenses recompenses={recompenses} showWork />
+            <CodexFicheRecompenses recompenses={recompenses} showWork />
 
-            <CodexRelations
+            <CodexFicheRelations
                 groupes={[
                     {
                         family: "epoques",
@@ -154,7 +154,7 @@ export default async function ContributeurPage({
                 ]}
             />
 
-            <CodexSources sources={sources} />
+            <CodexFicheSources sources={sources} />
         </CodexFiche>
     );
 }

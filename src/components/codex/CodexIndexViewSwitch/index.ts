@@ -1,1 +1,0 @@
-export { CodexIndexViewSwitch } from "./CodexIndexViewSwitch";

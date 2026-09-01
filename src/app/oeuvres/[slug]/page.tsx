@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { CodexFiche } from "@/components/codex/CodexFiche";
-import { CodexFicheHeader } from "@/components/codex/CodexFicheHeader";
-import { CodexFicheReperes } from "@/components/codex/CodexFicheReperes";
-import { CodexReferenceLink } from "@/components/codex/CodexReferenceLink";
-import { CodexSources } from "@/components/codex/CodexSources";
-import { CodexBlocsEditoriaux } from "@/components/codex/CodexBlocsEditoriaux";
-import { CodexRecompenses } from "@/components/codex/CodexRecompenses";
-import { CodexOeuvreDetails } from "@/components/codex/CodexOeuvreDetails";
+import { CodexFiche } from "@/components/codex/CodexFiche/CodexFiche";
+import { CodexFicheHeader } from "@/components/codex/CodexFiche/CodexFicheHeader";
+import { CodexFicheReperes } from "@/components/codex/CodexFiche/CodexFicheReperes";
+import { CodexCommonReferenceLink } from "@/components/codex/CodexCommon/CodexCommonReferenceLink";
+import { CodexFicheSources } from "@/components/codex/CodexFiche/CodexFicheSources";
+import { CodexFicheBlocsEditoriaux } from "@/components/codex/CodexFiche/CodexFicheBlocsEditoriaux";
+import { CodexFicheRecompenses } from "@/components/codex/CodexFiche/CodexFicheRecompenses";
+import { CodexFicheOeuvreDetails } from "@/components/codex/CodexFiche/CodexFicheOeuvreDetails";
 import { PixieBadge } from "@/components/ui/PixieBadge";
 import { getEpoquePourDate } from "@/data/epoques/relations";
 import { getOeuvreBySlug, oeuvres } from "@/data/catalogues";
@@ -148,7 +148,7 @@ export default async function OeuvrePage({
                                                               .contributeur.nom
                                                       }
                                                   >
-                                                      <CodexReferenceLink
+                                                      <CodexCommonReferenceLink
                                                           reference={
                                                               contribution.contributeur
                                                           }
@@ -173,7 +173,7 @@ export default async function OeuvrePage({
                             <span className="flex flex-wrap gap-x-2">
                                 {fiche.personnages.map((personnage, index) => (
                                     <span key={personnage.nom}>
-                                        <CodexReferenceLink
+                                        <CodexCommonReferenceLink
                                             reference={personnage}
                                         />
                                         {index < fiche.personnages.length - 1 &&
@@ -188,7 +188,9 @@ export default async function OeuvrePage({
                               {
                                   label: "Époque",
                                   value: (
-                                      <CodexReferenceLink reference={epoque} />
+                                      <CodexCommonReferenceLink
+                                          reference={epoque}
+                                      />
                                   ),
                               },
                           ]
@@ -196,17 +198,17 @@ export default async function OeuvrePage({
                 ]}
             />
 
-            <CodexOeuvreDetails fiche={fiche} sources={sources} />
+            <CodexFicheOeuvreDetails fiche={fiche} sources={sources} />
 
-            <CodexRecompenses recompenses={recompenses} />
+            <CodexFicheRecompenses recompenses={recompenses} />
 
-            <CodexBlocsEditoriaux
+            <CodexFicheBlocsEditoriaux
                 collection="oeuvres"
                 blocs={fiche.blocsEditoriaux}
                 sources={sources}
             />
 
-            <CodexSources sources={sources} />
+            <CodexFicheSources sources={sources} />
         </CodexFiche>
     );
 }

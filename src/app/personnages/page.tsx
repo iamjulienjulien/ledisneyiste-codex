@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { CodexIndexPage } from "@/components/codex/CodexIndexPage";
-import { CodexIndexListItem } from "@/components/codex/CodexIndexListItem";
-import { CodexIndexViewSwitch } from "@/components/codex/CodexIndexViewSwitch";
-import { CodexPersonnageCard } from "@/components/codex/CodexPersonnageCard";
+import { CodexIndexPage } from "@/components/codex/CodexIndex/CodexIndexPage";
+import { CodexIndexListItem } from "@/components/codex/CodexIndex/CodexIndexListItem";
+import { CodexIndexViewSwitch } from "@/components/codex/CodexIndex/CodexIndexViewSwitch";
+import { CodexIndexPersonnageCard } from "@/components/codex/CodexIndex/CodexIndexPersonnageCard";
 import { PixieBadge } from "@/components/ui/PixieBadge";
 import { PixieGrid } from "@/components/ui/PixieGrid";
 import { personnages } from "@/data/catalogues";
@@ -46,7 +46,7 @@ export default async function PersonnagesPage({
 
                         return fiche ? (
                             <li key={personnage.slug}>
-                                <CodexPersonnageCard
+                                <CodexIndexPersonnageCard
                                     personnage={personnage}
                                     fiche={fiche}
                                 />

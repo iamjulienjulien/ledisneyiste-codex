@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { CodexEpoqueCard } from "@/components/codex/CodexEpoqueCard";
-import { CodexIndexPage } from "@/components/codex/CodexIndexPage";
-import { CodexIndexListItem } from "@/components/codex/CodexIndexListItem";
-import { CodexIndexViewSwitch } from "@/components/codex/CodexIndexViewSwitch";
+import { CodexIndexEpoqueCard } from "@/components/codex/CodexIndex/CodexIndexEpoqueCard";
+import { CodexIndexPage } from "@/components/codex/CodexIndex/CodexIndexPage";
+import { CodexIndexListItem } from "@/components/codex/CodexIndex/CodexIndexListItem";
+import { CodexIndexViewSwitch } from "@/components/codex/CodexIndex/CodexIndexViewSwitch";
 import { PixieGrid } from "@/components/ui/PixieGrid";
 import { epoques } from "@/data/catalogues";
 import {
@@ -50,7 +50,7 @@ export default async function EpoquesPage({
 
                         return fiche ? (
                             <li key={epoque.slug}>
-                                <CodexEpoqueCard
+                                <CodexIndexEpoqueCard
                                     epoque={epoque}
                                     fiche={fiche}
                                     nombres={{

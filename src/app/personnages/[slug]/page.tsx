@@ -4,13 +4,13 @@ import { getPersonnageBySlug, personnages } from "@/data/catalogues";
 import { getFichePersonnageBySlug } from "@/data/personnages";
 import { getSourcesByIds } from "@/data/sources";
 import { getOeuvresAvecPersonnage } from "@/data/relations";
-import { CodexFiche } from "@/components/codex/CodexFiche";
-import { CodexFicheHeader } from "@/components/codex/CodexFicheHeader";
-import { CodexFicheReperes } from "@/components/codex/CodexFicheReperes";
-import { CodexReferenceLink } from "@/components/codex/CodexReferenceLink";
-import { CodexSources } from "@/components/codex/CodexSources";
-import { CodexRelations } from "@/components/codex/CodexRelations";
-import { CodexBlocsEditoriaux } from "@/components/codex/CodexBlocsEditoriaux";
+import { CodexFiche } from "@/components/codex/CodexFiche/CodexFiche";
+import { CodexFicheHeader } from "@/components/codex/CodexFiche/CodexFicheHeader";
+import { CodexFicheReperes } from "@/components/codex/CodexFiche/CodexFicheReperes";
+import { CodexCommonReferenceLink } from "@/components/codex/CodexCommon/CodexCommonReferenceLink";
+import { CodexFicheSources } from "@/components/codex/CodexFiche/CodexFicheSources";
+import { CodexFicheRelations } from "@/components/codex/CodexFiche/CodexFicheRelations";
+import { CodexFicheBlocsEditoriaux } from "@/components/codex/CodexFiche/CodexFicheBlocsEditoriaux";
 import { PixieBadge } from "@/components/ui/PixieBadge";
 import { getEpoquePourDate } from "@/data/epoques/relations";
 import { formatDateHistorique } from "@/lib/date";
@@ -107,7 +107,7 @@ export default async function PersonnagePage({
                                 {fiche.creation.createurs.map(
                                     (createur, index) => (
                                         <span key={createur.nom}>
-                                            <CodexReferenceLink
+                                            <CodexCommonReferenceLink
                                                 reference={createur}
                                             />
                                             {index <
@@ -124,7 +124,7 @@ export default async function PersonnagePage({
                         label: "Première apparition",
                         value: (
                             <>
-                                <CodexReferenceLink
+                                <CodexCommonReferenceLink
                                     reference={fiche.premiereApparition.oeuvre}
                                 />
                                 {" · "}
@@ -139,7 +139,9 @@ export default async function PersonnagePage({
                               {
                                   label: "Époque",
                                   value: (
-                                      <CodexReferenceLink reference={epoque} />
+                                      <CodexCommonReferenceLink
+                                          reference={epoque}
+                                      />
                                   ),
                               },
                           ]
@@ -147,13 +149,13 @@ export default async function PersonnagePage({
                 ]}
             />
 
-            <CodexBlocsEditoriaux
+            <CodexFicheBlocsEditoriaux
                 collection="personnages"
                 blocs={fiche.blocsEditoriaux}
                 sources={sources}
             />
 
-            <CodexRelations
+            <CodexFicheRelations
                 groupes={[
                     {
                         family: "oeuvres",
@@ -163,7 +165,7 @@ export default async function PersonnagePage({
                 ]}
             />
 
-            <CodexSources sources={sources} />
+            <CodexFicheSources sources={sources} />
         </CodexFiche>
     );
 }

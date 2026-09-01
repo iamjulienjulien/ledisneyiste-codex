@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { CodexCreateurCard } from "@/components/codex/CodexCreateurCard";
-import { CodexIndexPage } from "@/components/codex/CodexIndexPage";
-import { CodexIndexListItem } from "@/components/codex/CodexIndexListItem";
-import { CodexIndexViewSwitch } from "@/components/codex/CodexIndexViewSwitch";
+import { CodexIndexCreateurCard } from "@/components/codex/CodexIndex/CodexIndexCreateurCard";
+import { CodexIndexPage } from "@/components/codex/CodexIndex/CodexIndexPage";
+import { CodexIndexListItem } from "@/components/codex/CodexIndex/CodexIndexListItem";
+import { CodexIndexViewSwitch } from "@/components/codex/CodexIndex/CodexIndexViewSwitch";
 import { PixieBadge } from "@/components/ui/PixieBadge";
 import { PixieGrid } from "@/components/ui/PixieGrid";
 import { contributeurs } from "@/data/catalogues";
@@ -50,7 +50,7 @@ export default async function ContributeursPage({
 
                         return fiche ? (
                             <li key={contributeur.slug}>
-                                <CodexCreateurCard
+                                <CodexIndexCreateurCard
                                     contributeur={contributeur}
                                     fiche={fiche}
                                     epoques={getEpoquesPourContributeur(

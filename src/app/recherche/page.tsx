@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { CodexFooter } from "@/components/codex/CodexFooter";
-import { CodexCreateurCard } from "@/components/codex/CodexCreateurCard";
-import { CodexEpoqueCard } from "@/components/codex/CodexEpoqueCard";
-import { CodexOeuvreCard } from "@/components/codex/CodexOeuvreCard";
-import { CodexPersonnageCard } from "@/components/codex/CodexPersonnageCard";
+import { CodexLayoutFooter } from "@/components/codex/CodexLayout/CodexLayoutFooter";
+import { CodexIndexCreateurCard } from "@/components/codex/CodexIndex/CodexIndexCreateurCard";
+import { CodexIndexEpoqueCard } from "@/components/codex/CodexIndex/CodexIndexEpoqueCard";
+import { CodexIndexOeuvreCard } from "@/components/codex/CodexIndex/CodexIndexOeuvreCard";
+import { CodexIndexPersonnageCard } from "@/components/codex/CodexIndex/CodexIndexPersonnageCard";
 import { PixieBackdrop } from "@/components/ui/PixieBackdrop";
 import { PixieBadge } from "@/components/ui/PixieBadge";
 import { PixieButton } from "@/components/ui/PixieButton";
@@ -361,7 +361,7 @@ export default async function RecherchePage({
 
                                                 return fiche ? (
                                                     <li key={personnage.slug}>
-                                                        <CodexPersonnageCard
+                                                        <CodexIndexPersonnageCard
                                                             personnage={
                                                                 personnage
                                                             }
@@ -442,7 +442,7 @@ export default async function RecherchePage({
 
                                                 return fiche ? (
                                                     <li key={contributeur.slug}>
-                                                        <CodexCreateurCard
+                                                        <CodexIndexCreateurCard
                                                             contributeur={
                                                                 contributeur
                                                             }
@@ -526,7 +526,7 @@ export default async function RecherchePage({
 
                                             return fiche ? (
                                                 <li key={oeuvre.slug}>
-                                                    <CodexOeuvreCard
+                                                    <CodexIndexOeuvreCard
                                                         oeuvre={oeuvre}
                                                         fiche={fiche}
                                                         recompenses={getRecompensesPourOeuvre(
@@ -604,7 +604,7 @@ export default async function RecherchePage({
 
                                             return fiche ? (
                                                 <li key={epoque.slug}>
-                                                    <CodexEpoqueCard
+                                                    <CodexIndexEpoqueCard
                                                         epoque={epoque}
                                                         fiche={fiche}
                                                         nombres={{
@@ -633,7 +633,7 @@ export default async function RecherchePage({
                 )}
             </PixieSection>
 
-            <CodexFooter />
+            <CodexLayoutFooter />
         </main>
     );
 }

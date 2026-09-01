@@ -1,1 +1,0 @@
-export { CodexOeuvreCard } from "./CodexOeuvreCard";
