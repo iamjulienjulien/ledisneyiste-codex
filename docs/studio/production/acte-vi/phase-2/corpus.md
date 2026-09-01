@@ -31,6 +31,8 @@ consignes de production pour les Phases 3 à 7 ; seuls les catalogues de
 - `à constituer` : la matière doit être recherchée au Train 2D puis produite
   dans les Phases 4 ou 6 ;
 - `à confirmer` : la profondeur dépend d’un seuil documentaire explicite.
+- `constitué` : le Train 2D fournit une matrice suffisante pour préparer la
+  production, sans publier encore la fiche.
 
 ## Vue d’ensemble arrêtée
 
@@ -45,15 +47,16 @@ consignes de production pour les Phases 3 à 7 ; seuls les catalogues de
 | Époques               |                          0 |              0 |                 0 |                         1 |
 
 Les nombres décrivent le périmètre validé du Train 2C. Les décisions `DEC-003`
-à `DEC-006` sont arrêtées par Julien ; lorsque signalé, leur profondeur reste
-soumise aux preuves du Train 2D et au repli déjà prévu.
+à `DEC-006` sont arrêtées par Julien. Le Train 2D confirme ce périmètre, corrige
+deux attributions et documente ses preuves dans la
+[`matrice-sources.md`](./matrice-sources.md).
 
 ## Œuvres et œuvre source
 
 | Entrée                            | Domaine futur  | Profondeur          | Preuve actuelle | Action et limite                                                                                                                                   |
 | --------------------------------- | -------------- | ------------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| _Pinocchio_ (1940)                | Œuvres Disney  | `fiche complète`    | `amorce`        | Créer l’Archive centrale de l’Acte VI. Les deux sources du dépôt qui mentionnent directement le film ne suffisent pas encore à sa production.      |
-| _Le avventure di Pinocchio_       | Œuvres sources | `fiche complète`    | `à constituer`  | Créer l’entrée interne de l’œuvre de Collodi et la relation d’adaptation vers le film. Aucun index public général n’est ouvert par cette décision. |
+| _Pinocchio_ (1940)                | Œuvres Disney  | `fiche complète`    | `constitué`     | Créer l’Archive centrale depuis les trois vues documentaires. La matrice privée ne remplace pas le futur registre public des sources.              |
+| _Le avventure di Pinocchio_       | Œuvres sources | `fiche complète`    | `constitué`     | Créer l’entrée interne de l’œuvre de Collodi et la relation d’adaptation vers le film. Aucun index public général n’est ouvert par cette décision. |
 | _Snow White and the Seven Dwarfs_ | Œuvres Disney  | enrichissement `R3` | `préexistant`   | Servir d’échantillon principal pour l’identité localisée, les sorties, versions, chansons, relations et données économiques.                       |
 
 Le registre **Œuvres sources** possède le fait littéraire. La recommandation
@@ -66,40 +69,42 @@ l’Œuvre source sans bloquer le registre.
 
 ## Chansons
 
-| Chanson de référence                                        | Œuvre d’origine                   | Priorité | Profondeur       | Identité française                      | Action                                                                                                               |
-| ----------------------------------------------------------- | --------------------------------- | -------- | ---------------- | --------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| _Quand on prie la bonne étoile / When You Wish Upon a Star_ | _Pinocchio_                       | P0       | `fiche complète` | titre candidat déjà arrêté par le brief | Fiche pilote : composition, occurrence, interprétations, versions linguistiques, récompense, réception et réemplois. |
-| _Little Wooden Head_                                        | _Pinocchio_                       | P0       | `fiche légère`   | à sourcer                               | Identité, auteurs, occurrence, interprète et principales versions.                                                   |
-| _Give a Little Whistle_                                     | _Pinocchio_                       | P0       | `fiche légère`   | à sourcer                               | Même contrat léger ; approfondir seulement si la réception apporte un récit propre.                                  |
-| _Hi-Diddle-Dee-Dee_                                         | _Pinocchio_                       | P0       | `fiche légère`   | à sourcer                               | Même contrat léger ; documenter la version française sans la déduire d’un usage courant.                             |
-| _I’ve Got No Strings_                                       | _Pinocchio_                       | P0       | `fiche légère`   | à sourcer                               | Même contrat léger ; conserver séparément occurrence et réemplois.                                                   |
-| _Whistle While You Work_                                    | _Snow White and the Seven Dwarfs_ | P1       | `fiche légère`   | à sourcer                               | Noyau rétrospectif de Blanche-Neige.                                                                                 |
-| _Heigh-Ho_                                                  | _Snow White and the Seven Dwarfs_ | P1       | `fiche légère`   | à sourcer                               | Noyau rétrospectif de Blanche-Neige.                                                                                 |
-| _Someday My Prince Will Come_                               | _Snow White and the Seven Dwarfs_ | P1       | `fiche légère`   | à sourcer                               | Noyau rétrospectif de Blanche-Neige.                                                                                 |
-| _Who’s Afraid of the Big Bad Wolf?_                         | _Three Little Pigs_               | P1       | `fiche légère`   | à sourcer                               | Noyau rétrospectif antérieur au long métrage.                                                                        |
+| Chanson de référence                                        | Œuvre d’origine                   | Priorité | Profondeur       | Identité française                 | Action                                                                                                               |
+| ----------------------------------------------------------- | --------------------------------- | -------- | ---------------- | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| _Quand on prie la bonne étoile / When You Wish Upon a Star_ | _Pinocchio_                       | P0       | `fiche complète` | Quand on prie la bonne étoile      | Fiche pilote : composition, occurrence, interprétations, versions linguistiques, récompense, réception et réemplois. |
+| _Little Wooden Head_                                        | _Pinocchio_                       | P0       | `fiche légère`   | Les Pantins de bois                | Identité, auteurs, occurrence, interprète et principales versions.                                                   |
+| _Give a Little Whistle_                                     | _Pinocchio_                       | P0       | `fiche légère`   | Sifflez vite vite                  | Même contrat léger ; approfondir seulement si la réception apporte un récit propre.                                  |
+| _Hi-Diddle-Dee-Dee_                                         | _Pinocchio_                       | P0       | `fiche légère`   | Hi-diddle di di                    | Même contrat léger ; conserver la version et l’édition qui attestent chaque identité.                                |
+| _I’ve Got No Strings_                                       | _Pinocchio_                       | P0       | `fiche légère`   | Il faut savoir briser ses liens    | Même contrat léger ; conserver séparément occurrence et réemplois.                                                   |
+| _Whistle While You Work_                                    | _Snow White and the Seven Dwarfs_ | P1       | `fiche légère`   | Siffler en travaillant             | Noyau rétrospectif de Blanche-Neige.                                                                                 |
+| _Heigh-Ho_                                                  | _Snow White and the Seven Dwarfs_ | P1       | `fiche légère`   | Heigh-Ho                           | Noyau rétrospectif de Blanche-Neige.                                                                                 |
+| _Someday My Prince Will Come_                               | _Snow White and the Seven Dwarfs_ | P1       | `fiche légère`   | Un jour mon prince viendra         | Noyau rétrospectif de Blanche-Neige.                                                                                 |
+| _Who’s Afraid of the Big Bad Wolf?_                         | _Three Little Pigs_               | P1       | `fiche légère`   | Qui craint le grand méchant loup ? | Noyau rétrospectif antérieur au long métrage.                                                                        |
 
 Le corpus initial est donc fermé à **neuf chansons** pour l’Acte VI : cinq de
 _Pinocchio_ et quatre rétrospectives. Une fiche légère reste une Archive
 autonome et sourcée ; elle ne dispense ni de l’œuvre d’origine ni de
-l’occurrence structurée. Les titres français autres que celui de la fiche
-pilote ne deviennent pas canoniques avant le Train 2D.
+l’occurrence structurée. Les titres français sont désormais documentés, mais
+chacun reste lié à la version phonographique qui l’atteste. La Phase 3 devra
+empêcher qu’une identité localisée soit antidatée ou transformée sans preuve
+en slug canonique.
 
 ## Personnages
 
-| Personnage candidat | Priorité | Profondeur recommandée | Identité à vérifier                  | Motif et condition                                                                                                                                 |
-| ------------------- | -------- | ---------------------- | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Pinocchio           | P0       | `fiche complète`       | formes FR, EN et IT                  | Sujet du film, adaptation, conception, animation, voix et vie publique.                                                                            |
-| Jiminy Cricket      | P0       | `fiche complète`       | formes FR, EN et IT                  | Co-sujet narratif, voix, chanson, évolution d’adaptation et vie au-delà du film.                                                                   |
-| Geppetto            | P0       | `fiche complète`       | formes FR, EN et IT                  | Personnage central, adaptation, conception et interprétation.                                                                                      |
-| la Fée Bleue        | P0       | `fiche complète`       | graphie et noms localisés            | Personnage central, modèle filmé, voix et transformation de l’œuvre source.                                                                        |
-| Grand Coquin        | P0       | `fiche complète`       | nom original et italien              | Antagoniste majeur, duo avec Gédéon, animation et voix.                                                                                            |
-| Gédéon              | P0       | `fiche légère`         | nom original et italien              | Identité autonome et récurrence en duo ; profondeur limitée si les preuves restent surtout relationnelles.                                         |
-| Stromboli           | P0       | `fiche complète`       | formes localisées                    | Antagoniste majeur, animation de Bill Tytla, voix et lecture d’adaptation.                                                                         |
-| le Cocher           | P0       | `fiche légère`         | formes localisées                    | Fonction narrative forte, mais matière autonome à confirmer.                                                                                       |
-| Monstro             | P0       | `fiche légère`         | formes localisées                    | Présence structurante et travail d’animation ; fiche resserrée suffisante.                                                                         |
-| Lampwick            | P0       | `fiche légère`         | **nom français non arrêté**          | Conserver `Lampwick` comme repère de travail. Aucun nom français ne devient canonique avant preuve territoriale datée.                             |
-| Figaro              | P1       | `fiche légère`         | formes localisées                    | Autonomie soutenue par sa vie au-delà du film ; l’extension exacte reste à documenter.                                                             |
-| Cléo                | P2       | `relation seulement`   | graphie, accent et formes localisées | Conserver dans la distribution de _Pinocchio_. Ouvrir une fiche seulement si le Train 2D établit une matière autonome au-delà de l’identification. |
+| Personnage candidat | Priorité | Profondeur recommandée | Identité à vérifier                  | Motif et condition                                                                                                                                    |
+| ------------------- | -------- | ---------------------- | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Pinocchio           | P0       | `fiche complète`       | formes FR, EN et IT                  | Sujet du film, adaptation, conception, animation, voix et vie publique.                                                                               |
+| Jiminy Cricket      | P0       | `fiche complète`       | formes FR, EN et IT                  | Co-sujet narratif, voix, chanson, évolution d’adaptation et vie au-delà du film.                                                                      |
+| Geppetto            | P0       | `fiche complète`       | formes FR, EN et IT                  | Personnage central, adaptation, conception et interprétation.                                                                                         |
+| la Fée Bleue        | P0       | `fiche complète`       | graphie et noms localisés            | Personnage central, modèle filmé, voix et transformation de l’œuvre source.                                                                           |
+| Grand Coquin        | P0       | `fiche complète`       | nom original et italien              | Antagoniste majeur, duo avec Gédéon, animation et voix.                                                                                               |
+| Gédéon              | P0       | `fiche légère`         | nom original et italien              | Identité autonome et récurrence en duo ; profondeur limitée si les preuves restent surtout relationnelles.                                            |
+| Stromboli           | P0       | `fiche complète`       | formes localisées                    | Antagoniste majeur, animation de Bill Tytla, voix et lecture d’adaptation.                                                                            |
+| le Cocher           | P0       | `fiche légère`         | formes localisées                    | Fonction narrative forte, mais matière autonome à confirmer.                                                                                          |
+| Monstro             | P0       | `fiche légère`         | formes localisées                    | Présence structurante et travail d’animation ; fiche resserrée suffisante.                                                                            |
+| Crapule / Lampwick  | P0       | `fiche légère`         | Crapule (FR), Lampwick (EN)          | La Cinémathèque établit `Crapule` pour les doublages français de 1946 et 1975 ; conserver l’identité originale et la version de chaque nom.           |
+| Figaro              | P1       | `fiche légère`         | formes localisées                    | Autonomie soutenue par sa vie au-delà du film ; l’extension exacte reste à documenter.                                                                |
+| Cléo                | P2       | `relation seulement`   | graphie, accent et formes localisées | Conserver dans la distribution de _Pinocchio_ et sa relation au court _Figaro and Cleo_. Une réapparition seule ne franchit pas le seuil d’autonomie. |
 
 Le seuil d’autonomie retenu exige au moins deux axes documentables parmi :
 adaptation, conception/animation, interprétation, fonction narrative et vie
@@ -110,18 +115,18 @@ ne suffit pas.
 
 ### Nouvelles entrées
 
-| Personne         | Priorité | Recommandation                  | État dépôt                                | Action documentaire                                                                                            |
-| ---------------- | -------- | ------------------------------- | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| Carlo Collodi    | P0       | `fiche complète` conditionnelle | absent                                    | Documenter l’auteur et son rôle dans la vie de l’œuvre source ; la double relation reste portée par `DEC-003`. |
-| Ben Sharpsteen   | P0       | `fiche complète`                | mention non résolue dans _Clock Cleaners_ | Direction de _Pinocchio_ et parcours Disney à documenter.                                                      |
-| Cliff Edwards    | P0       | `fiche complète`                | absent                                    | Jiminy, interprétation et circulation de la chanson pilote.                                                    |
-| Dickie Jones     | P0       | `fiche complète`                | absent                                    | Voix de Pinocchio et contexte d’interprétation.                                                                |
-| Ned Washington   | P0       | `fiche complète`                | mentions dans deux fiches de Créateurs    | Paroles, partition et récompenses ; ne pas limiter la page au crédit.                                          |
-| Jack Kinney      | P1       | `fiche complète`                | mention non résolue dans _Bone Trouble_   | Son parcours dépasse le générique de _Pinocchio_ et résout une relation existante du Codex.                    |
-| T. Hee           | P1       | `fiche légère`                  | absent                                    | Créer si la matrice établit un apport racontable au-delà d’une ligne de crédit.                                |
-| Joshua Meador    | P1       | `fiche légère`                  | absent                                    | Effets d’animation ; profondeur bornée aux faits et sources disponibles.                                       |
-| Kenneth Anderson | P1       | `fiche légère`                  | absent                                    | Direction artistique/conception ; confirmer le périmètre exact du rôle.                                        |
-| Evelyn Venable   | P2       | `crédits seulement`             | absent                                    | Modèle de référence filmée de la Fée Bleue ; promouvoir en fiche si un second axe documentaire apparaît.       |
+| Personne         | Priorité | Recommandation      | État dépôt                                | Action documentaire                                                                                                 |
+| ---------------- | -------- | ------------------- | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Carlo Collodi    | P0       | `fiche complète`    | absent                                    | La biographie, le texte critique et le registre des traductions franchissent le seuil documentaire de `DEC-003`.    |
+| Ben Sharpsteen   | P0       | `fiche complète`    | mention non résolue dans _Clock Cleaners_ | Direction de _Pinocchio_ et parcours Disney à documenter.                                                           |
+| Cliff Edwards    | P0       | `fiche complète`    | absent                                    | Jiminy, interprétation et circulation de la chanson pilote.                                                         |
+| Dickie Jones     | P0       | `fiche complète`    | absent                                    | Voix de Pinocchio et contexte d’interprétation.                                                                     |
+| Ned Washington   | P0       | `fiche complète`    | mentions dans deux fiches de Créateurs    | Paroles, partition et récompenses ; ne pas limiter la page au crédit.                                               |
+| Jack Kinney      | P1       | `fiche complète`    | mention non résolue dans _Bone Trouble_   | Son parcours dépasse le générique de _Pinocchio_ et résout une relation existante du Codex.                         |
+| T. Hee           | P1       | `fiche légère`      | absent                                    | Réalisation de séquences et travail de référence joué pour Stromboli dépassent la seule ligne de crédit.            |
+| Joshua Meador    | P1       | `fiche légère`      | absent                                    | Créditer l’animation sur _Pinocchio_ ; son parcours ultérieur de réalisation et d’effets soutient une fiche bornée. |
+| Kenneth Anderson | P1       | `fiche légère`      | absent                                    | Direction artistique de _Pinocchio_ et parcours autonome en animation et Imagineering.                              |
+| Evelyn Venable   | P2       | `crédits seulement` | absent                                    | **Voix originale** de la Fée Bleue. Le modèle filmé est Marge Champion ; aucune fiche autonome n’est ouverte.       |
 
 ### Entrées existantes à enrichir
 
@@ -167,33 +172,34 @@ la future fiche Œuvre ou Chanson.
 
 ## Écarts et dépendances
 
-1. **Preuve directe insuffisante.** Le registre actuel ne contient que deux
-   notices repérées directement par `Pinocchio`. Le Train 2D doit constituer
-   la matière avant toute production massive.
+1. **Matrice privée constituée.** Le registre public actuel ne contient que
+   deux notices repérées directement par `Pinocchio`, mais le Train 2D livre
+   32 sources qualifiées à intégrer progressivement dans les Phases 4 et 6.
 2. **Domaines absents.** Chansons et Œuvres sources n’existent pas encore ;
    leur contrat relève de la Phase 4, leurs surfaces de la Phase 5.
-3. **Identités localisées.** Les titres et noms français, originaux et
-   italiens attendent le contrat de Phase 3 et leur provenance.
-4. **Carlo Collodi.** La double relation est validée, avec repli vers l’Œuvre
-   source si le Train 2D ne soutient pas une fiche autonome.
-5. **Lampwick, Figaro et Cléo.** Aucun arbitrage de profondeur ne doit masquer
-   la vérification documentaire demandée par le brief.
+3. **Identités localisées.** Le Train 2D établit les principaux titres et noms,
+   mais leur forme structurée, leur version et leur provenance attendent le
+   contrat de Phase 3.
+4. **Carlo Collodi.** La double relation et la fiche complète sont soutenues
+   par une matière autonome ; aucun repli n’est désormais recommandé.
+5. **Crapule, Figaro et Cléo.** Les deux fiches légères sont confirmées ; Cléo
+   reste une relation faute de deuxième axe documentaire autonome.
 6. **Audio et paroles.** La présence d’une chanson dans ce corpus n’autorise
    ni extrait ni paroles ; le Train 2E possède cette décision distincte.
 
 ## Critères d’achèvement du corpus
 
 - [x] Les recommandations `DEC-003` à `DEC-006` sont validées par Julien.
-- [ ] Le Train 2D confirme ou corrige les identités laissées à sourcer.
-- [ ] Chaque fiche future possède au moins une source d’identité et une source
+- [x] Le Train 2D confirme ou corrige les identités laissées à sourcer.
+- [x] Chaque fiche future possède au moins une source d’identité et une source
       adaptée à chacun de ses faits structurants.
-- [ ] Aucune personne limitée au générique ne reçoit une route autonome par
+- [x] Aucune personne limitée au générique ne reçoit une route autonome par
       défaut.
-- [ ] Les neuf chansons sont reliées à une œuvre et à une occurrence.
-- [ ] Les deux récompenses utilisent le registre transversal existant.
-- [ ] _Pinocchio_ rejoint `temps-des-chefs-d-oeuvre` sans créer d’Époque
+- [x] Les neuf chansons sont reliées à une œuvre et à une occurrence.
+- [x] Les deux récompenses utilisent le registre transversal existant.
+- [x] _Pinocchio_ rejoint `temps-des-chefs-d-oeuvre` sans créer d’Époque
       supplémentaire.
-- [ ] Les créations et enrichissements restent séparés de la migration
+- [x] Les créations et enrichissements restent séparés de la migration
       décrite dans [`retroapplication.md`](./retroapplication.md).
 
 ## Dernière image

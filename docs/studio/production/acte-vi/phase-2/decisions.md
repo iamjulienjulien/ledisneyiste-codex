@@ -23,7 +23,7 @@ pour une capacité déjà livrée.
 
 | ID        | Décision                                  | Statut                  | Phase dépendante |
 | --------- | ----------------------------------------- | ----------------------- | ---------------- |
-| `DEC-001` | Italie comme troisième regard             | `à confirmer par audit` | Phases 6 et 7    |
+| `DEC-001` | Italie comme troisième regard             | `validé`                | Phases 6 et 7    |
 | `DEC-002` | Convention des routes localisées          | `validé`                | Phase 3          |
 | `DEC-003` | Statut de Carlo Collodi                   | `validé`                | Phases 4 et 6    |
 | `DEC-004` | Personnages autonomes                     | `validé`                | Phase 6          |
@@ -35,10 +35,52 @@ pour une capacité déjà livrée.
 | `DEC-010` | Responsabilité des identités alternatives | `validé`                | Phase 3          |
 | `DEC-011` | Couverture des identités par la recherche | `validé`                | Phase 3          |
 
-Les trois décisions du Train 2B et les cinq décisions du Train 2C sont validées
-par Julien et documentées ci-dessous. Les réserves confiées au Train 2D sont
-des garde-fous d’exécution : elles peuvent reporter une fiche individuelle,
-mais ne rouvrent pas silencieusement le périmètre arrêté.
+Les trois décisions du Train 2B, les cinq décisions du Train 2C et le regard
+italien du Train 2D sont validés par Julien et documentés ci-dessous. Les
+réserves documentaires sont des garde-fous d’exécution : elles peuvent
+reporter une fiche individuelle, mais ne rouvrent pas silencieusement le
+périmètre arrêté.
+
+## Train 2D · Matrice documentaire
+
+Le registre privé [`sources.json`](./sources.json) qualifie 32 sources et la
+[`matrice-sources.md`](./matrice-sources.md) rend leur couverture lisible par
+territoire, question et future Archive. Cette recherche ne publie encore
+aucune notice dans `src/data/sources`.
+
+## DEC-001 · Italie comme troisième regard
+
+### Décision validée
+
+**Confirmer l’Italie comme troisième regard autonome de l’Acte VI.**
+
+La matrice franchit les six seuils arrêtés pour cette décision :
+
+1. une réaction contemporaine située, grâce aux critiques italiennes de
+   1938–1948 étudiées par Luca Mazzei et à la protestation de Paolo Lorenzini
+   conservée par l’AFI ;
+2. plusieurs sources institutionnelles et patrimoniales, dont Treccani et la
+   Fondazione Nazionale Carlo Collodi ;
+3. une histoire de circulation et de doublage propre, jusqu’à la sortie
+   italienne de 1947 ;
+4. un contraste interprétable avec les vues américaine et française ;
+5. une question territoriale spécifique sur l’américanisation et la
+   réappropriation d’un personnage italien ;
+6. une profondeur autonome de sept sources, dont six de niveau `A`.
+
+### Ce que cette décision impose
+
+- le regard italien possède son propre angle, ses sources et ses citations ;
+- l’œuvre de Collodi ne devient pas un simple prologue au film Disney ;
+- les noms italiens restent liés au texte source ou à une version doublée ;
+- la réception fasciste et d’après-guerre conserve ses dates et ses contextes ;
+- la vue italienne ne se réduit jamais à une traduction du récit américain.
+
+### Statut
+
+`DEC-001` est validée par Julien le 1er septembre 2026. L’Italie devient le
+troisième regard autonome de l’Acte VI aux côtés des États-Unis et de la
+France.
 
 ## Train 2B · Identités, routes et recherche
 
@@ -343,6 +385,12 @@ de la seule mention bibliographique et confirmer les formes d’identité
 italiennes/françaises. À défaut, Collodi reste dans l’Œuvre source et la
 création de sa fiche est reportée sans bloquer le registre.
 
+### Résultat du garde-fou au Train 2D
+
+Le seuil est franchi. Une biographie institutionnelle, le texte critique de
+l’œuvre, sa chronologie éditoriale et un registre de 669 traductions donnent à
+Carlo Collodi une matière autonome. Le repli n’est plus recommandé.
+
 ## DEC-004 · Personnages autonomes
 
 ### Recommandation
@@ -364,12 +412,12 @@ film. Une simple présence à l’écran ou au générique ne suffit pas.
 
 ### Réserves
 
-- `Lampwick` reste le repère de travail tant que son nom français n’est pas
-  confirmé par une source territoriale datée ;
-- Figaro reçoit une fiche légère en raison de sa vie au-delà du film, à
-  confirmer par le Train 2D ;
-- Cléo reste une relation tant que le même audit n’établit pas une matière
-  autonome suffisante.
+- `Crapule` est confirmé pour les doublages français de 1946 et 1975, tandis
+  que `Lampwick` demeure l’identité originale ;
+- Figaro conserve sa fiche légère : sept courts métrages documentent sa vie
+  au-delà du film ;
+- Cléo reste une relation : son court partagé avec Figaro n’établit pas un
+  deuxième axe autonome.
 
 ### Conséquence
 
@@ -412,6 +460,15 @@ Chaque nouvelle fiche doit dépasser le générique par une identité, un rôle
 précis, un contexte et une source narrative. Sinon, la personne reste dans les
 crédits structurés et la décision est reportée individuellement.
 
+### Résultat du garde-fou au Train 2D
+
+Les cinq fiches complètes et les trois fiches légères franchissent le seuil.
+T. Hee possède un travail de mise en scène joué pour Stromboli, Joshua Meador
+un parcours ultérieur de réalisation et d’effets, Kenneth Anderson une
+trajectoire d’art director et d’Imagineer. Evelyn Venable demeure dans les
+crédits : elle est la **voix originale** de la Fée Bleue ; le modèle filmé est
+Marge Champion.
+
 ## DEC-006 · Corpus initial Chansons
 
 ### Recommandation
@@ -433,6 +490,12 @@ Les titres français non établis dans le brief demeurent à sourcer. Ils ne son
 ni traduits par l’agent ni déduits d’un usage moderne. Chaque fiche doit
 distinguer composition, occurrence, interprétation, traduction, reprise et
 réemploi selon la matière réellement disponible.
+
+### Résultat du garde-fou au Train 2D
+
+Les neuf identités françaises sont désormais reliées à des notices BnF. Leur
+forme reste attachée à l’édition phonographique qui l’atteste : la Phase 3 ne
+doit ni antidater ces titres ni les transformer automatiquement en slugs.
 
 ### Justification
 

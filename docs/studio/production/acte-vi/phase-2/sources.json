@@ -1,0 +1,1071 @@
+{
+    "schemaVersion": "1.0.0",
+    "status": "review-ready",
+    "updatedAt": "2026-09-01",
+    "scope": "Acte VI · Phase 2 · Train 2D",
+    "purpose": "Registre privé des preuves préparant Pinocchio, ses territoires et le corpus validé sans publier de données produit.",
+    "qualityScale": {
+        "A": "Source primaire, patrimoniale, institutionnelle ou académique directement exploitable.",
+        "B": "Source éditoriale spécialisée ou officielle utile, à croiser pour les faits sensibles.",
+        "C": "Piste de recherche ou source indirecte, jamais suffisante seule."
+    },
+    "territories": [
+        {
+            "id": "etats-unis",
+            "label": "États-Unis",
+            "role": "Production, sortie originelle, récompenses, fabrication et postérité du film."
+        },
+        {
+            "id": "france",
+            "label": "France",
+            "role": "Sortie différée, doublages, titres localisés, réception critique et fréquentation."
+        },
+        {
+            "id": "italie",
+            "label": "Italie",
+            "role": "Œuvre source, adaptation, réception nationale, circulation et réappropriation."
+        }
+    ],
+    "sources": [
+        {
+            "id": "us-afi-catalog-pinocchio",
+            "title": "Pinocchio (1940)",
+            "author": "American Film Institute",
+            "publisher": "AFI Catalog of Feature Films",
+            "publicationDate": null,
+            "types": [
+                "institutionnelle",
+                "rétrospective",
+                "contemporaine compilée"
+            ],
+            "primaryTerritory": "etats-unis",
+            "territories": ["etats-unis", "italie"],
+            "language": "en",
+            "medium": "catalogue",
+            "access": {
+                "status": "ouvert",
+                "url": "https://catalog.afi.com/Catalog/MovieDetails/5131",
+                "consultedAt": "2026-09-01"
+            },
+            "rights": "Citations courtes avec attribution ; aucune reproduction d’illustration prévue.",
+            "evidenceLevel": "A",
+            "questions": [
+                "production",
+                "crédits",
+                "sortie",
+                "réception",
+                "économie",
+                "adaptation"
+            ],
+            "targets": [
+                "oeuvre:pinocchio",
+                "oeuvre-source:le-avventure-di-pinocchio",
+                "personnages",
+                "createurs"
+            ],
+            "claims": [
+                "Première mondiale new-yorkaise le 7 février 1940 et sortie générale américaine le 23 février 1940.",
+                "Crédits détaillés et faits de production recoupés avec le dossier AMPAS et la presse professionnelle contemporaine.",
+                "Paolo Lorenzini conteste auprès du ministère italien l’américanisation de l’œuvre de Collodi.",
+                "La guerre réduit fortement le marché européen et rend les résultats économiques initiaux difficiles à interpréter."
+            ],
+            "plannedUses": [
+                "chronologie de sortie",
+                "générique structuré",
+                "récit de fabrication",
+                "regard italien",
+                "données économiques sous réserve"
+            ],
+            "limits": "La page compile des sources contemporaines et modernes ; chaque donnée financière doit conserver son attribution et ses divergences."
+        },
+        {
+            "id": "us-academy-awards-1941",
+            "title": "The 13th Academy Awards · 1941",
+            "author": "Academy of Motion Picture Arts and Sciences",
+            "publisher": "Oscars.org",
+            "publicationDate": "1941-02-27",
+            "types": ["institutionnelle", "primaire"],
+            "primaryTerritory": "etats-unis",
+            "territories": ["etats-unis"],
+            "language": "en",
+            "medium": "palmarès",
+            "access": {
+                "status": "ouvert",
+                "url": "https://www.oscars.org/oscars/ceremonies/1941/r",
+                "consultedAt": "2026-09-01"
+            },
+            "rights": "Métadonnées factuelles et citation courte uniquement.",
+            "evidenceLevel": "A",
+            "questions": ["récompenses", "musique"],
+            "targets": [
+                "recompense:score-pinocchio",
+                "recompense:when-you-wish-upon-a-star",
+                "chanson:when-you-wish-upon-a-star"
+            ],
+            "claims": [
+                "Pinocchio remporte l’Oscar de la musique originale pour Leigh Harline, Paul J. Smith et Ned Washington.",
+                "When You Wish Upon a Star remporte l’Oscar de la chanson originale pour Leigh Harline et Ned Washington."
+            ],
+            "plannedUses": [
+                "registre des récompenses",
+                "fiche chanson pilote",
+                "fiches créateurs"
+            ],
+            "limits": "Ne documente ni la réception ultérieure ni l’exploitation de la chanson."
+        },
+        {
+            "id": "us-loc-pinocchio-essay",
+            "title": "Pinocchio",
+            "author": "J. B. Kaufman",
+            "publisher": "Library of Congress · National Film Preservation Board",
+            "publicationDate": null,
+            "types": ["institutionnelle", "rétrospective"],
+            "primaryTerritory": "etats-unis",
+            "territories": ["etats-unis"],
+            "language": "en",
+            "medium": "essai patrimonial",
+            "access": {
+                "status": "ouvert",
+                "url": "https://www.loc.gov/static/programs/national-film-preservation-board/documents/pinocchio.pdf",
+                "consultedAt": "2026-09-01"
+            },
+            "rights": "Document consultable ; citations courtes avec attribution, aucune republication intégrale.",
+            "evidenceLevel": "A",
+            "questions": ["production", "adaptation", "technique", "postérité"],
+            "targets": ["oeuvre:pinocchio", "personnages", "createurs"],
+            "claims": [
+                "Essai patrimonial consacré à la fabrication, à l’adaptation et à la place historique du film."
+            ],
+            "plannedUses": [
+                "récit éditorial",
+                "techniques d’animation",
+                "mise en perspective patrimoniale"
+            ],
+            "limits": "Source de synthèse ; les crédits exacts restent recoupés avec AFI et les institutions filmiques."
+        },
+        {
+            "id": "us-loc-national-film-registry",
+            "title": "National Film Registry Titles by Release Date",
+            "author": "Library of Congress",
+            "publisher": "National Film Preservation Board",
+            "publicationDate": null,
+            "types": ["institutionnelle"],
+            "primaryTerritory": "etats-unis",
+            "territories": ["etats-unis"],
+            "language": "en",
+            "medium": "registre patrimonial",
+            "access": {
+                "status": "ouvert",
+                "url": "https://www.loc.gov/static/programs/national-film-preservation-board/documents/Registry-Titles-by-release-date.pdf",
+                "consultedAt": "2026-09-01"
+            },
+            "rights": "Métadonnée institutionnelle factuelle.",
+            "evidenceLevel": "A",
+            "questions": ["postérité", "patrimoine"],
+            "targets": ["oeuvre:pinocchio"],
+            "claims": [
+                "Pinocchio, sorti en 1940, rejoint le National Film Registry en 1994."
+            ],
+            "plannedUses": ["repère patrimonial", "vie publique de l’œuvre"],
+            "limits": "Le registre établit la sélection, pas son interprétation."
+        },
+        {
+            "id": "us-wdfm-art-of-pinocchio",
+            "title": "Wish Upon a Star: The Art of Pinocchio",
+            "author": "The Walt Disney Family Museum",
+            "publisher": "The Walt Disney Family Museum",
+            "publicationDate": null,
+            "types": ["institutionnelle", "rétrospective"],
+            "primaryTerritory": "etats-unis",
+            "territories": ["etats-unis"],
+            "language": "en",
+            "medium": "exposition",
+            "access": {
+                "status": "ouvert",
+                "url": "https://www.waltdisney.org/exhibitions/wish-upon-star-art-pinocchio",
+                "consultedAt": "2026-09-01"
+            },
+            "rights": "Citer la notice ; négocier séparément toute reproduction d’objet ou d’image.",
+            "evidenceLevel": "A",
+            "questions": ["production", "conception", "patrimoine"],
+            "targets": ["oeuvre:pinocchio", "createurs", "personnages"],
+            "claims": [
+                "L’exposition réunit plus de 300 objets et rend lisibles les étapes de conception du film."
+            ],
+            "plannedUses": [
+                "récit de fabrication",
+                "preuves visuelles futures sous autorisation"
+            ],
+            "limits": "La notice décrit l’exposition mais n’autorise pas la réutilisation de ses images."
+        },
+        {
+            "id": "us-wdfm-reimagining-jiminy",
+            "title": "Reimagining Jiminy Cricket",
+            "author": "The Walt Disney Family Museum",
+            "publisher": "The Walt Disney Family Museum",
+            "publicationDate": null,
+            "types": ["institutionnelle", "rétrospective"],
+            "primaryTerritory": "etats-unis",
+            "territories": ["etats-unis"],
+            "language": "en",
+            "medium": "article de musée",
+            "access": {
+                "status": "ouvert",
+                "url": "https://www.waltdisney.org/blog/reimagining-jiminy-cricket",
+                "consultedAt": "2026-09-01"
+            },
+            "rights": "Citations courtes ; aucune image réutilisée sans autorisation.",
+            "evidenceLevel": "A",
+            "questions": ["adaptation", "conception", "interprétation"],
+            "targets": [
+                "personnage:jiminy-cricket",
+                "createur:ward-kimball",
+                "createur:cliff-edwards"
+            ],
+            "claims": [
+                "Le personnage mineur de Collodi est repensé comme conscience et compagnon central, associé à Ward Kimball et Cliff Edwards."
+            ],
+            "plannedUses": [
+                "fiche Jiminy Cricket",
+                "relation d’adaptation",
+                "fiches créateurs"
+            ],
+            "limits": "Lecture institutionnelle américaine à confronter au texte de Collodi et au regard italien."
+        },
+        {
+            "id": "us-wdfm-milt-kahl-puppeteer",
+            "title": "Milt Kahl: Master Puppeteer",
+            "author": "The Walt Disney Family Museum",
+            "publisher": "The Walt Disney Family Museum",
+            "publicationDate": null,
+            "types": ["institutionnelle", "rétrospective"],
+            "primaryTerritory": "etats-unis",
+            "territories": ["etats-unis"],
+            "language": "en",
+            "medium": "article de musée",
+            "access": {
+                "status": "ouvert",
+                "url": "https://www.waltdisney.org/blog/milt-kahl-master-puppeteer",
+                "consultedAt": "2026-09-01"
+            },
+            "rights": "Citations courtes ; aucune image réutilisée sans autorisation.",
+            "evidenceLevel": "A",
+            "questions": ["conception", "animation"],
+            "targets": ["personnage:pinocchio", "createur:milt-kahl"],
+            "claims": [
+                "Milt Kahl participe à la refonte graphique qui humanise le pantin pour le film."
+            ],
+            "plannedUses": ["fiche Pinocchio", "enrichissement Milt Kahl"],
+            "limits": "À croiser avec AFI pour la chronologie détaillée des refontes."
+        },
+        {
+            "id": "us-wdfm-pool-hall",
+            "title": "In the Pool Hall with Three Disney Masters",
+            "author": "The Walt Disney Family Museum",
+            "publisher": "The Walt Disney Family Museum",
+            "publicationDate": null,
+            "types": ["institutionnelle", "rétrospective"],
+            "primaryTerritory": "etats-unis",
+            "territories": ["etats-unis"],
+            "language": "en",
+            "medium": "article de musée",
+            "access": {
+                "status": "ouvert",
+                "url": "https://www.waltdisney.org/blog/pool-hall-three-disney-masters-closer-look-one-pinocchios-funniest-scenes",
+                "consultedAt": "2026-09-01"
+            },
+            "rights": "Citations courtes ; illustrations non réutilisées.",
+            "evidenceLevel": "A",
+            "questions": ["animation", "personnages", "production"],
+            "targets": [
+                "personnage:lampwick",
+                "personnage:jiminy-cricket",
+                "createur:fred-moore",
+                "createur:ward-kimball",
+                "createur:milt-kahl"
+            ],
+            "claims": [
+                "La séquence du billard permet d’attribuer et de comparer plusieurs contributions d’animation, dont Lampwick à Fred Moore."
+            ],
+            "plannedUses": [
+                "fiche Crapule/Lampwick",
+                "enrichissements des animateurs"
+            ],
+            "limits": "Étude d’une séquence, non vue complète des crédits du film."
+        },
+        {
+            "id": "us-d23-pinocchio-film",
+            "title": "Pinocchio (film)",
+            "author": "Walt Disney Archives",
+            "publisher": "D23 · Disney A to Z",
+            "publicationDate": null,
+            "types": ["institutionnelle", "rétrospective"],
+            "primaryTerritory": "etats-unis",
+            "territories": ["etats-unis"],
+            "language": "en",
+            "medium": "encyclopédie de studio",
+            "access": {
+                "status": "ouvert",
+                "url": "https://d23.com/a-to-z/pinocchio-film/",
+                "consultedAt": "2026-09-01"
+            },
+            "rights": "Métadonnées et citations courtes ; aucun média réutilisé.",
+            "evidenceLevel": "A",
+            "questions": [
+                "identité",
+                "distribution",
+                "chansons",
+                "adaptation",
+                "postérité"
+            ],
+            "targets": ["oeuvre:pinocchio", "personnages", "chansons"],
+            "claims": [
+                "Identité officielle, synopsis, distribution principale et cinq chansons originales.",
+                "Jiminy Cricket poursuit sa vie dans d’autres films et programmes Disney."
+            ],
+            "plannedUses": [
+                "identités originales",
+                "distribution",
+                "occurrences des chansons",
+                "vie publique de Jiminy"
+            ],
+            "limits": "Source du studio producteur ; croiser réception, économie et différences d’adaptation."
+        },
+        {
+            "id": "us-d23-ben-sharpsteen",
+            "title": "Ben Sharpsteen",
+            "author": "Walt Disney Archives",
+            "publisher": "D23 · Disney Legends",
+            "publicationDate": null,
+            "types": ["institutionnelle", "biographique"],
+            "primaryTerritory": "etats-unis",
+            "territories": ["etats-unis"],
+            "language": "en",
+            "medium": "notice biographique",
+            "access": {
+                "status": "ouvert",
+                "url": "https://d23.com/walt-disney-legend/ben-sharpsteen/",
+                "consultedAt": "2026-09-01"
+            },
+            "rights": "Citations courtes et métadonnées factuelles.",
+            "evidenceLevel": "A",
+            "questions": ["créateur", "production", "parcours"],
+            "targets": ["createur:ben-sharpsteen"],
+            "claims": [
+                "Parcours autonome, formation des artistes, supervision de Pinocchio et production ultérieure des True-Life Adventures."
+            ],
+            "plannedUses": ["fiche complète Ben Sharpsteen"],
+            "limits": "Biographie honorifique de studio à croiser pour toute appréciation critique."
+        },
+        {
+            "id": "us-d23-cliff-edwards",
+            "title": "Cliff Edwards",
+            "author": "Walt Disney Archives",
+            "publisher": "D23 · Disney Legends",
+            "publicationDate": null,
+            "types": ["institutionnelle", "biographique"],
+            "primaryTerritory": "etats-unis",
+            "territories": ["etats-unis"],
+            "language": "en",
+            "medium": "notice biographique",
+            "access": {
+                "status": "ouvert",
+                "url": "https://d23.com/walt-disney-legend/cliff-edwards/",
+                "consultedAt": "2026-09-01"
+            },
+            "rights": "Citations courtes et métadonnées factuelles.",
+            "evidenceLevel": "A",
+            "questions": ["créateur", "interprétation", "chanson", "parcours"],
+            "targets": [
+                "createur:cliff-edwards",
+                "personnage:jiminy-cricket",
+                "chanson:when-you-wish-upon-a-star"
+            ],
+            "claims": [
+                "Carrière autonome avant Disney, voix durable de Jiminy Cricket et interprète de When You Wish Upon a Star."
+            ],
+            "plannedUses": [
+                "fiche complète Cliff Edwards",
+                "fiche Jiminy",
+                "fiche chanson pilote"
+            ],
+            "limits": "Biographie de studio ; les discographies détaillées demanderont des catalogues spécialisés."
+        },
+        {
+            "id": "us-d23-dick-jones",
+            "title": "Dick Jones",
+            "author": "Walt Disney Archives",
+            "publisher": "D23 · Disney Legends",
+            "publicationDate": null,
+            "types": ["institutionnelle", "biographique", "témoignage"],
+            "primaryTerritory": "etats-unis",
+            "territories": ["etats-unis"],
+            "language": "en",
+            "medium": "notice biographique",
+            "access": {
+                "status": "ouvert",
+                "url": "https://d23.com/walt-disney-legend/dick-jones/",
+                "consultedAt": "2026-09-01"
+            },
+            "rights": "Citations courtes ; témoignages attribués.",
+            "evidenceLevel": "A",
+            "questions": [
+                "créateur",
+                "interprétation",
+                "production",
+                "parcours"
+            ],
+            "targets": ["createur:dickie-jones", "personnage:pinocchio"],
+            "claims": [
+                "Dickie Jones interprète Pinocchio pendant dix-neuf mois et joue des scènes filmées comme références pour les animateurs."
+            ],
+            "plannedUses": ["fiche complète Dickie Jones", "fiche Pinocchio"],
+            "limits": "Les souvenirs rétrospectifs doivent rester présentés comme témoignages."
+        },
+        {
+            "id": "us-d23-ned-washington",
+            "title": "Ned Washington",
+            "author": "Walt Disney Archives",
+            "publisher": "D23 · Disney Legends",
+            "publicationDate": null,
+            "types": ["institutionnelle", "biographique"],
+            "primaryTerritory": "etats-unis",
+            "territories": ["etats-unis"],
+            "language": "en",
+            "medium": "notice biographique",
+            "access": {
+                "status": "ouvert",
+                "url": "https://d23.com/walt-disney-legend/ned-washington/",
+                "consultedAt": "2026-09-01"
+            },
+            "rights": "Citations courtes et métadonnées factuelles.",
+            "evidenceLevel": "A",
+            "questions": ["créateur", "chanson", "récompenses", "parcours"],
+            "targets": ["createur:ned-washington", "chansons", "recompenses"],
+            "claims": [
+                "Parolier des chansons de Pinocchio, doublement récompensé pour le film et auteur d’un parcours qui dépasse Disney."
+            ],
+            "plannedUses": [
+                "fiche complète Ned Washington",
+                "corpus Chansons",
+                "récompenses"
+            ],
+            "limits": "La notice résume une carrière longue ; chaque œuvre hors Disney doit être sourcée si détaillée."
+        },
+        {
+            "id": "us-d23-jack-kinney",
+            "title": "Kinney, Jack",
+            "author": "Walt Disney Archives",
+            "publisher": "D23 · Disney A to Z",
+            "publicationDate": null,
+            "types": ["institutionnelle", "biographique"],
+            "primaryTerritory": "etats-unis",
+            "territories": ["etats-unis"],
+            "language": "en",
+            "medium": "notice biographique",
+            "access": {
+                "status": "ouvert",
+                "url": "https://d23.com/a-to-z/kinney-jack/",
+                "consultedAt": "2026-09-01"
+            },
+            "rights": "Citations courtes et métadonnées factuelles.",
+            "evidenceLevel": "A",
+            "questions": ["créateur", "réalisation", "parcours"],
+            "targets": ["createur:jack-kinney"],
+            "claims": [
+                "Réalisateur de séquences sur Pinocchio, figure des cartoons de Dingo et auteur d’un parcours autonome."
+            ],
+            "plannedUses": [
+                "fiche complète Jack Kinney",
+                "résolution de relations existantes"
+            ],
+            "limits": "La notice synthétique ne détaille pas toutes les séquences de Pinocchio."
+        },
+        {
+            "id": "us-d23-ken-anderson",
+            "title": "Ken Anderson",
+            "author": "Walt Disney Archives",
+            "publisher": "D23 · Disney Legends",
+            "publicationDate": null,
+            "types": ["institutionnelle", "biographique"],
+            "primaryTerritory": "etats-unis",
+            "territories": ["etats-unis"],
+            "language": "en",
+            "medium": "notice biographique",
+            "access": {
+                "status": "ouvert",
+                "url": "https://d23.com/walt-disney-legend/ken-anderson/",
+                "consultedAt": "2026-09-01"
+            },
+            "rights": "Citations courtes et métadonnées factuelles.",
+            "evidenceLevel": "A",
+            "questions": ["créateur", "direction artistique", "parcours"],
+            "targets": ["createur:kenneth-anderson"],
+            "claims": [
+                "Directeur artistique de Pinocchio et créateur polyvalent dont le parcours couvre animation et Imagineering."
+            ],
+            "plannedUses": ["fiche légère Kenneth Anderson"],
+            "limits": "Le nom canonique futur devra choisir entre Kenneth et Ken sans déduire un alias de route."
+        },
+        {
+            "id": "us-d23-make-mine-music",
+            "title": "Make Mine Music (film)",
+            "author": "Walt Disney Archives",
+            "publisher": "D23 · Disney A to Z",
+            "publicationDate": null,
+            "types": ["institutionnelle", "rétrospective"],
+            "primaryTerritory": "etats-unis",
+            "territories": ["etats-unis"],
+            "language": "en",
+            "medium": "encyclopédie de studio",
+            "access": {
+                "status": "ouvert",
+                "url": "https://d23.com/a-to-z/make-mine-music-film/",
+                "consultedAt": "2026-09-01"
+            },
+            "rights": "Métadonnées factuelles et citation courte.",
+            "evidenceLevel": "A",
+            "questions": ["créateur", "parcours"],
+            "targets": ["createur:joshua-meador"],
+            "claims": [
+                "Joshua Meador possède un crédit de réalisateur sur Make Mine Music au-delà de son crédit d’animation dans Pinocchio."
+            ],
+            "plannedUses": ["seuil d’autonomie de Joshua Meador"],
+            "limits": "Ne suffit pas à qualifier précisément ses effets sur Pinocchio."
+        },
+        {
+            "id": "us-d23-figaro",
+            "title": "Figaro",
+            "author": "Walt Disney Archives",
+            "publisher": "D23 · Disney A to Z",
+            "publicationDate": null,
+            "types": ["institutionnelle", "rétrospective"],
+            "primaryTerritory": "etats-unis",
+            "territories": ["etats-unis"],
+            "language": "en",
+            "medium": "encyclopédie de studio",
+            "access": {
+                "status": "ouvert",
+                "url": "https://d23.com/a-to-z/figaro/",
+                "consultedAt": "2026-09-01"
+            },
+            "rights": "Métadonnées factuelles et citation courte.",
+            "evidenceLevel": "A",
+            "questions": ["personnage", "postérité"],
+            "targets": ["personnage:figaro"],
+            "claims": [
+                "Figaro dépasse Pinocchio et réapparaît dans sept courts métrages, notamment auprès de Minnie Mouse."
+            ],
+            "plannedUses": ["fiche légère Figaro", "vie au-delà de l’œuvre"],
+            "limits": "La notice ne développe pas sa conception initiale."
+        },
+        {
+            "id": "us-d23-figaro-and-cleo",
+            "title": "Figaro and Cleo (film)",
+            "author": "Walt Disney Archives",
+            "publisher": "D23 · Disney A to Z",
+            "publicationDate": null,
+            "types": ["institutionnelle", "rétrospective"],
+            "primaryTerritory": "etats-unis",
+            "territories": ["etats-unis"],
+            "language": "en",
+            "medium": "encyclopédie de studio",
+            "access": {
+                "status": "ouvert",
+                "url": "https://d23.com/a-to-z/figaro-and-cleo-film/",
+                "consultedAt": "2026-09-01"
+            },
+            "rights": "Métadonnées factuelles et citation courte.",
+            "evidenceLevel": "A",
+            "questions": ["personnage", "postérité"],
+            "targets": [
+                "personnage:figaro",
+                "personnage:cleo",
+                "createur:jack-kinney"
+            ],
+            "claims": [
+                "Figaro et Cléo partagent un court métrage sorti le 15 octobre 1943 et réalisé par Jack Kinney."
+            ],
+            "plannedUses": [
+                "relation Figaro–Cléo",
+                "seuil d’autonomie de Cléo",
+                "fiche Jack Kinney"
+            ],
+            "limits": "Cette seule réapparition ne donne pas encore à Cléo deux axes documentaires autonomes."
+        },
+        {
+            "id": "fr-cinematheque-pinocchio",
+            "title": "Pinocchio · Ben Sharpsteen, Hamilton Luske, 1940",
+            "author": "La Cinémathèque française",
+            "publisher": "La Cinémathèque française",
+            "publicationDate": null,
+            "types": ["institutionnelle", "patrimoniale"],
+            "primaryTerritory": "france",
+            "territories": ["france", "etats-unis"],
+            "language": "fr",
+            "medium": "catalogue filmographique",
+            "access": {
+                "status": "ouvert",
+                "url": "https://www.cinematheque.fr/film/57085.html",
+                "consultedAt": "2026-09-01"
+            },
+            "rights": "Métadonnées factuelles et citation courte ; images non réutilisées.",
+            "evidenceLevel": "A",
+            "questions": ["crédits", "doublage", "identités", "chansons"],
+            "targets": [
+                "oeuvre:pinocchio",
+                "personnages",
+                "createurs",
+                "chansons"
+            ],
+            "claims": [
+                "Générique détaillé, auteurs et interprètes des cinq chansons originales.",
+                "Distribution des doublages français de 1946 et 1975.",
+                "Lampwick est nommé Crapule dans les deux doublages français documentés."
+            ],
+            "plannedUses": [
+                "générique structuré",
+                "noms français",
+                "versions doublées",
+                "occurrences musicales"
+            ],
+            "limits": "La page ne donne pas l’historique complet des choix de traduction."
+        },
+        {
+            "id": "fr-cnc-visa-pinocchio",
+            "title": "La Merveilleuse Aventure de Pinocchio · visa 3895",
+            "author": "Centre national du cinéma et de l’image animée",
+            "publisher": "CNC",
+            "publicationDate": "1946-05-17",
+            "types": ["institutionnelle", "primaire"],
+            "primaryTerritory": "france",
+            "territories": ["france"],
+            "language": "fr",
+            "medium": "registre administratif",
+            "access": {
+                "status": "ouvert",
+                "url": "https://www.cnc.fr/professionnels/visas-et-classification/3895",
+                "consultedAt": "2026-09-01"
+            },
+            "rights": "Métadonnées administratives factuelles.",
+            "evidenceLevel": "A",
+            "questions": ["sortie", "titre localisé", "classification"],
+            "targets": ["oeuvre:pinocchio"],
+            "claims": [
+                "Visa délivré le 17 mai 1946, sortie française le 22 mai 1946, tous publics, sous le titre La Merveilleuse Aventure de Pinocchio."
+            ],
+            "plannedUses": [
+                "sortie territoriale française",
+                "titre de distribution historique"
+            ],
+            "limits": "La durée administrative de 96 minutes diverge des catalogues filmiques ; ne pas l’utiliser sans expliquer le support ou la mesure."
+        },
+        {
+            "id": "fr-cnc-palmares-1946",
+            "title": "Palmarès · Box-office France de 1946",
+            "author": "Centre national du cinéma et de l’image animée",
+            "publisher": "CNC",
+            "publicationDate": null,
+            "types": ["institutionnelle", "rétrospective statistique"],
+            "primaryTerritory": "france",
+            "territories": ["france"],
+            "language": "fr",
+            "medium": "statistique",
+            "access": {
+                "status": "ouvert",
+                "url": "https://www.cnc.fr/a-propos-du-cnc/palmares_136958",
+                "consultedAt": "2026-09-01"
+            },
+            "rights": "Donnée statistique factuelle avec attribution.",
+            "evidenceLevel": "A",
+            "questions": ["réception", "fréquentation"],
+            "targets": ["oeuvre:pinocchio"],
+            "claims": [
+                "Pinocchio arrive en tête du box-office français de 1946 avec 7,84 millions de spectateurs cumulés dans le tableau CNC."
+            ],
+            "plannedUses": ["réception publique française", "vie en salles"],
+            "limits": "Le tableau précise un cumul de spectateurs de 1946 à 2010 ; ne pas le présenter comme les seules entrées de l’année 1946."
+        },
+        {
+            "id": "fr-retronews-pinocchio",
+            "title": "« Pinocchio » de Walt Disney : un triomphe du cinéma d’animation",
+            "author": "Pierre Ancery",
+            "publisher": "RetroNews · Bibliothèque nationale de France",
+            "publicationDate": "2019-01-17",
+            "types": ["rétrospective", "presse contemporaine compilée"],
+            "primaryTerritory": "france",
+            "territories": ["france", "italie", "etats-unis"],
+            "language": "fr",
+            "medium": "écho de presse",
+            "access": {
+                "status": "partiel",
+                "url": "https://www.retronews.fr/arts/echo-de-presse/2019/01/17/pinocchio-walt-disney-1940",
+                "consultedAt": "2026-09-01"
+            },
+            "rights": "Courts extraits attribués ; consulter les originaux RetroNews pour toute citation substantielle.",
+            "evidenceLevel": "B",
+            "questions": [
+                "réception",
+                "circulation",
+                "adaptation",
+                "production"
+            ],
+            "targets": ["oeuvre:pinocchio"],
+            "claims": [
+                "La guerre retarde la sortie française jusqu’en 1946.",
+                "La presse française loue la technique tout en critiquant le caractère commercial, moral ou hollywoodien du film.",
+                "L’article signale une interdiction italienne rapportée par la presse française en 1941."
+            ],
+            "plannedUses": [
+                "réception française",
+                "chronologie de circulation",
+                "contrechamp critique"
+            ],
+            "limits": "La mention d’interdiction italienne est un témoignage de presse française à recouper avec l’étude italienne ; elle n’établit pas seule une décision administrative."
+        },
+        {
+            "id": "fr-bnf-bo-pinocchio",
+            "title": "Pinocchio : bande originale française du film",
+            "author": "Leigh Harline, Ned Washington, J. Cis, R. Sauvage et interprètes",
+            "publisher": "Bibliothèque nationale de France · Catalogue général",
+            "publicationDate": "1995",
+            "types": ["institutionnelle", "discographique"],
+            "primaryTerritory": "france",
+            "territories": ["france"],
+            "language": "fr",
+            "medium": "notice sonore",
+            "access": {
+                "status": "notice ouverte · document sur place",
+                "url": "https://catalogue.bnf.fr/ark:/12148/cb390868107",
+                "consultedAt": "2026-09-01"
+            },
+            "rights": "Notice citabile ; contenu sonore sous droits et non projetable sans autorisation.",
+            "evidenceLevel": "A",
+            "questions": [
+                "chansons",
+                "titres localisés",
+                "interprétation",
+                "droits"
+            ],
+            "targets": ["chansons-pinocchio"],
+            "claims": [
+                "La notice établit les titres français Quand on prie la bonne étoile, Les Pantins de bois, Sifflez vite vite, Hi-diddle di di et Il faut savoir briser ses liens."
+            ],
+            "plannedUses": [
+                "identités françaises des cinq chansons",
+                "interprètes et adaptation française"
+            ],
+            "limits": "La notice décrit une édition phonographique de 1995 ; les titres sont attestés pour cette édition et ne doivent pas être antidatés sans source supplémentaire."
+        },
+        {
+            "id": "fr-bnf-snow-white-songs",
+            "title": "Blanche-Neige et les sept nains · chansons du film",
+            "author": "Frank Churchill, Larry Morey et adaptateurs français",
+            "publisher": "Bibliothèque nationale de France · Catalogue général",
+            "publicationDate": null,
+            "types": ["institutionnelle", "discographique"],
+            "primaryTerritory": "france",
+            "territories": ["france"],
+            "language": "fr",
+            "medium": "notice sonore",
+            "access": {
+                "status": "notice ouverte",
+                "url": "https://catalogue.bnf.fr/ark:/12148/cb37974311s",
+                "consultedAt": "2026-09-01"
+            },
+            "rights": "Notice citabile ; aucun son ni parole projeté.",
+            "evidenceLevel": "A",
+            "questions": ["chansons", "titres localisés"],
+            "targets": [
+                "chanson:whistle-while-you-work",
+                "chanson:heigh-ho",
+                "chanson:someday-my-prince-will-come"
+            ],
+            "claims": [
+                "La notice atteste Siffler en travaillant, Heigh-Ho et Un jour mon prince viendra comme identités françaises du corpus rétrospectif."
+            ],
+            "plannedUses": [
+                "identités françaises des trois chansons de Blanche-Neige"
+            ],
+            "limits": "Les éditions et interprétations doivent être distinguées de l’occurrence filmique de 1937."
+        },
+        {
+            "id": "fr-bnf-big-bad-wolf-song",
+            "title": "Qui craint le grand méchant loup ?",
+            "author": "Frank Churchill, Ann Ronell, Robert Valaire et Jean Valmy",
+            "publisher": "Bibliothèque nationale de France · Catalogue général",
+            "publicationDate": "1949",
+            "types": ["institutionnelle", "discographique"],
+            "primaryTerritory": "france",
+            "territories": ["france"],
+            "language": "fr",
+            "medium": "notice sonore",
+            "access": {
+                "status": "notice ouverte",
+                "url": "https://catalogue.bnf.fr/ark:/12148/cb37964901x",
+                "consultedAt": "2026-09-01"
+            },
+            "rights": "Notice citabile ; aucun son ni parole projeté.",
+            "evidenceLevel": "A",
+            "questions": ["chanson", "titre localisé", "adaptation"],
+            "targets": ["chanson:whos-afraid-of-the-big-bad-wolf"],
+            "claims": [
+                "La notice atteste Qui craint le grand méchant loup ? et ses auteurs/adaptateurs français pour une édition phonographique de 1949."
+            ],
+            "plannedUses": ["identité française de la chanson rétrospective"],
+            "limits": "Ne pas confondre la date du disque et celle de l’occurrence originale dans Three Little Pigs."
+        },
+        {
+            "id": "it-treccani-1940-pinocchio",
+            "title": "1940 · Pinocchio",
+            "author": "Fabio Ruggiano",
+            "publisher": "Treccani",
+            "publicationDate": null,
+            "types": ["institutionnelle", "rétrospective"],
+            "primaryTerritory": "italie",
+            "territories": ["italie", "etats-unis"],
+            "language": "it",
+            "medium": "essai encyclopédique",
+            "access": {
+                "status": "ouvert",
+                "url": "https://www.treccani.it/90anni/parole/1940-pinocchio.html",
+                "consultedAt": "2026-09-01"
+            },
+            "rights": "Citations courtes avec attribution ; reproduction réservée.",
+            "evidenceLevel": "A",
+            "questions": [
+                "adaptation",
+                "identités",
+                "circulation",
+                "doublage",
+                "réception",
+                "postérité"
+            ],
+            "targets": [
+                "oeuvre:pinocchio",
+                "oeuvre-source:le-avventure-di-pinocchio",
+                "personnages"
+            ],
+            "claims": [
+                "L’essai compare le pantin, les valeurs, les décors et l’onomastique de Collodi à la version Disney.",
+                "Le film attend 1947 pour être projeté en Italie, notamment en raison du doublage confié à Alberto Liberati avec Roberto de Leonardis.",
+                "Le doublage italien rétablit plusieurs noms collodiens, dont Mangiafuoco pour Stromboli."
+            ],
+            "plannedUses": [
+                "regard italien",
+                "identités italiennes",
+                "sortie et doublage",
+                "contraste d’adaptation"
+            ],
+            "limits": "Synthèse institutionnelle postérieure ; les réactions de 1938–1948 sont documentées séparément par l’étude de Luca Mazzei."
+        },
+        {
+            "id": "it-treccani-pinocchio",
+            "title": "Pinocchio",
+            "author": "Istituto della Enciclopedia Italiana",
+            "publisher": "Treccani · Enciclopedia on line",
+            "publicationDate": null,
+            "types": ["institutionnelle", "encyclopédique"],
+            "primaryTerritory": "italie",
+            "territories": ["italie"],
+            "language": "it",
+            "medium": "encyclopédie",
+            "access": {
+                "status": "ouvert",
+                "url": "https://www.treccani.it/enciclopedia/pinocchio/",
+                "consultedAt": "2026-09-01"
+            },
+            "rights": "Citations courtes ; reproduction réservée.",
+            "evidenceLevel": "A",
+            "questions": ["oeuvre source", "personnage", "chronologie"],
+            "targets": [
+                "oeuvre-source:le-avventure-di-pinocchio",
+                "personnage:pinocchio",
+                "createur:carlo-collodi"
+            ],
+            "claims": [
+                "Publication en feuilleton de 1881 à 1883 puis en volume en 1883, importance culturelle et fortune interprétative du personnage."
+            ],
+            "plannedUses": [
+                "identité de l’œuvre source",
+                "chronologie",
+                "récit de postérité"
+            ],
+            "limits": "Notice synthétique ; le texte et la biographie sont pris dans les ressources de la Fondation Collodi."
+        },
+        {
+            "id": "it-collodi-biography",
+            "title": "Biografia di Carlo Collodi",
+            "author": "Fondazione Nazionale Carlo Collodi",
+            "publisher": "Fondazione Nazionale Carlo Collodi",
+            "publicationDate": null,
+            "types": ["institutionnelle", "biographique"],
+            "primaryTerritory": "italie",
+            "territories": ["italie"],
+            "language": "it",
+            "medium": "notice biographique",
+            "access": {
+                "status": "ouvert",
+                "url": "https://www.fondazionecollodi.it/it/carlo-collodi",
+                "consultedAt": "2026-09-01"
+            },
+            "rights": "Citations courtes avec attribution.",
+            "evidenceLevel": "A",
+            "questions": ["créateur", "oeuvre source", "parcours"],
+            "targets": [
+                "createur:carlo-collodi",
+                "oeuvre-source:le-avventure-di-pinocchio"
+            ],
+            "claims": [
+                "Carlo Collodi est le pseudonyme de Carlo Lorenzini ; la biographie établit sa carrière et la publication de Pinocchio de 1881 à 1883."
+            ],
+            "plannedUses": [
+                "fiche complète Carlo Collodi",
+                "relation de création",
+                "chronologie de l’œuvre source"
+            ],
+            "limits": "Source patrimoniale liée à l’auteur ; croiser l’interprétation critique avec les sources universitaires."
+        },
+        {
+            "id": "it-collodi-critical-text",
+            "title": "Le avventure di Pinocchio · Edizione critica",
+            "author": "Carlo Collodi · édition d’Ornella Castellani Pollidori",
+            "publisher": "Fondazione Nazionale Carlo Collodi",
+            "publicationDate": "1983",
+            "types": ["primaire", "édition critique institutionnelle"],
+            "primaryTerritory": "italie",
+            "territories": ["italie"],
+            "language": "it",
+            "medium": "texte intégral",
+            "access": {
+                "status": "ouvert pour étude",
+                "url": "https://www.fondazionecollodi.it/assets/it/le-avventure_di_pinocchio.pdf",
+                "consultedAt": "2026-09-01"
+            },
+            "rights": "Usage personnel et de recherche ; toute utilisation commerciale ou éditoriale exige une autorisation écrite de la Fondation.",
+            "evidenceLevel": "A",
+            "questions": [
+                "oeuvre source",
+                "adaptation",
+                "personnages",
+                "droits"
+            ],
+            "targets": [
+                "oeuvre-source:le-avventure-di-pinocchio",
+                "personnages"
+            ],
+            "claims": [
+                "Texte italien de référence permettant de vérifier directement personnages, épisodes et écarts d’adaptation."
+            ],
+            "plannedUses": [
+                "faits de l’œuvre source",
+                "relations d’adaptation",
+                "identités collodiennes"
+            ],
+            "limits": "Aucune reproduction longue ni projection du texte n’est autorisée par le présent audit."
+        },
+        {
+            "id": "it-collodi-translations",
+            "title": "Le traduzioni di Pinocchio nel mondo",
+            "author": "Roberto Vezzani",
+            "publisher": "Biblioteca Collodiana · Fondazione Nazionale Carlo Collodi",
+            "publicationDate": "2024-05",
+            "types": ["institutionnelle", "bibliographique"],
+            "primaryTerritory": "italie",
+            "territories": ["italie", "france", "etats-unis"],
+            "language": "it",
+            "medium": "registre des traductions",
+            "access": {
+                "status": "ouvert",
+                "url": "https://www.fondazionecollodi.it/it/elenco-traduzioni-edizioni-pinocchio",
+                "consultedAt": "2026-09-01"
+            },
+            "rights": "Données bibliographiques citables avec attribution ; ne pas recopier le registre entier.",
+            "evidenceLevel": "A",
+            "questions": ["circulation", "traductions", "postérité"],
+            "targets": ["oeuvre-source:le-avventure-di-pinocchio"],
+            "claims": [
+                "La recherche recense 669 traductions en 192 langues et dialectes et documente les premières éditions internationales."
+            ],
+            "plannedUses": [
+                "vie publique de l’œuvre source",
+                "circulation internationale",
+                "perspective territoriale"
+            ],
+            "limits": "Le registre inclut certaines versions partielles ou réduites et exclut les réécritures ; conserver cette définition."
+        },
+        {
+            "id": "it-roma-tre-mazzei-pinocchio",
+            "title": "L’italiano di legno nello specchio di Hollywood. La ricezione del Pinocchio Disney in Italia tra fascismo e dopoguerra",
+            "author": "Luca Mazzei",
+            "publisher": "Roma TrE-Press",
+            "publicationDate": "2019-12-01",
+            "types": ["académique", "réception contemporaine analysée"],
+            "primaryTerritory": "italie",
+            "territories": ["italie", "etats-unis"],
+            "language": "it",
+            "medium": "chapitre scientifique",
+            "access": {
+                "status": "ouvert",
+                "url": "https://art.torvergata.it/handle/2108/232801",
+                "consultedAt": "2026-09-01"
+            },
+            "rights": "Accès ouvert, licence non précisée ; citations courtes avec référence complète, aucune republication.",
+            "evidenceLevel": "A",
+            "questions": [
+                "réception",
+                "adaptation",
+                "circulation",
+                "identité culturelle"
+            ],
+            "targets": [
+                "oeuvre:pinocchio",
+                "oeuvre-source:le-avventure-di-pinocchio"
+            ],
+            "claims": [
+                "Étude dédiée aux attentes italiennes de 1938–1940 et aux critiques de la sortie de 1947–1948.",
+                "Les réactions contemporaines oscillent entre admiration technique, crainte de l’américanisation et réappropriation affective du film."
+            ],
+            "plannedUses": [
+                "validation du troisième regard italien",
+                "réception contemporaine",
+                "contraste Collodi–Disney"
+            ],
+            "limits": "Les citations de presse doivent conserver leur journal, date et auteur lorsqu’ils sont connus."
+        },
+        {
+            "id": "it-cinematografo-pinocchio",
+            "title": "Pinocchio",
+            "author": "Fondazione Ente dello Spettacolo",
+            "publisher": "Cinematografo",
+            "publicationDate": null,
+            "types": ["institutionnelle", "rétrospective critique"],
+            "primaryTerritory": "italie",
+            "territories": ["italie", "etats-unis"],
+            "language": "it",
+            "medium": "catalogue filmographique",
+            "access": {
+                "status": "ouvert",
+                "url": "https://www.cinematografo.it/film/pinocchio-rk5ni88c",
+                "consultedAt": "2026-09-01"
+            },
+            "rights": "Citations courtes ; reproduction réservée.",
+            "evidenceLevel": "B",
+            "questions": ["crédits", "adaptation", "réception", "récompenses"],
+            "targets": [
+                "oeuvre:pinocchio",
+                "oeuvre-source:le-avventure-di-pinocchio",
+                "createurs"
+            ],
+            "claims": [
+                "Crédits italiens de référence et lecture critique des condensations, transformations morales et réussites visuelles du film."
+            ],
+            "plannedUses": [
+                "regard italien",
+                "générique",
+                "contraste d’adaptation"
+            ],
+            "limits": "La critique reproduite date de 1984 ; elle complète mais ne remplace pas la réception de 1947 étudiée par Luca Mazzei."
+        }
+    ]
+}
