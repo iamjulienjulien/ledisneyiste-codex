@@ -34,6 +34,35 @@ async function chargerModuleTypeScript(cheminRelatif) {
     return import(moduleUrl);
 }
 
+async function chargerModuleAffichageIdentite(
+    registreLangues,
+    registreTerritoires,
+) {
+    const chemin = path.join(
+        racine,
+        "src/lib/identites/preparer-affichage-identite.ts",
+    );
+    const source = (await readFile(chemin, "utf8"))
+        .replace(
+            'import { languesCodex } from "@/registry/identites/langues";',
+            `const languesCodex = ${JSON.stringify(registreLangues)};`,
+        )
+        .replace(
+            'import { territoiresCodex } from "@/registry/identites/territoires";',
+            `const territoiresCodex = ${JSON.stringify(registreTerritoires)};`,
+        );
+    const { outputText } = ts.transpileModule(source, {
+        compilerOptions: {
+            module: ts.ModuleKind.ESNext,
+            target: ts.ScriptTarget.ES2022,
+        },
+        fileName: chemin,
+    });
+    const moduleUrl = `data:text/javascript;base64,${Buffer.from(outputText).toString("base64")}`;
+
+    return import(moduleUrl);
+}
+
 function chaineNonVide(valeur) {
     return typeof valeur === "string" && valeur.trim().length > 0;
 }
@@ -322,6 +351,136 @@ function verifierProjectionsTemoins(fixture, projeterIdentiteCodex, erreurs) {
             );
         }
     }
+}
+
+function verifierAffichagesIdentitaires(fixture, moduleAffichage, erreurs) {
+    const scenarios = [
+        {
+            projection: fixture.projections[0],
+            principale: "Atchoum",
+            originale: "Sneezy",
+            qualification: "Nom original · Anglais",
+        },
+        {
+            projection: fixture.projections[2],
+            principale: "Blanche-Neige et les Sept Nains",
+            originale: "Snow White and the Seven Dwarfs",
+            qualification: "Titre original · Anglais · États-Unis",
+        },
+    ];
+
+    for (const [index, scenario] of scenarios.entries()) {
+        const affichage = moduleAffichage.preparerAffichageIdentiteCodex(
+            scenario.projection,
+        );
+
+        if (
+            affichage.principale.libelle !== scenario.principale ||
+            affichage.originale?.libelle !== scenario.originale ||
+            affichage.originale?.qualification !== scenario.qualification
+        ) {
+            erreurs.push(
+                `Affichage identitaire ${index + 1} : la hiérarchie ou sa qualification est incohérente`,
+            );
+        }
+    }
+
+    const sansOriginale = moduleAffichage.preparerAffichageIdentiteCodex({
+        ...fixture.projections[0],
+        originale: null,
+    });
+    if (sansOriginale.originale !== null) {
+        erreurs.push(
+            "Affichage identitaire : une forme originale absente ne doit produire aucun sous-titre",
+        );
+    }
+
+    return scenarios.length + 1;
+}
+
+async function verifierSurfacesIdentitaires(erreurs) {
+    const composant = await readFile(
+        path.join(
+            racine,
+            "src/components/codex/CodexCommon/CodexCommonIdentite/CodexCommonIdentite.tsx",
+        ),
+        "utf8",
+    );
+    const styles = await readFile(
+        path.join(
+            racine,
+            "src/components/codex/CodexCommon/CodexCommonIdentite/CodexCommonIdentite.module.css",
+        ),
+        "utf8",
+    );
+
+    if (
+        composant.includes("@/data/") ||
+        composant.includes("resoudreIdentiteCodex")
+    ) {
+        erreurs.push(
+            "CodexCommonIdentite : le composant ne doit ni lire les Archives ni résoudre ses données",
+        );
+    }
+    if (
+        !composant.includes("preparerAffichageIdentiteCodex") ||
+        !composant.includes("lang={affichage.principale.langue") ||
+        !composant.includes("affichage.originale.qualification")
+    ) {
+        erreurs.push(
+            "CodexCommonIdentite : la projection principale, la langue ou la qualification originale manque",
+        );
+    }
+    if (
+        !styles.includes("overflow-wrap: anywhere") ||
+        !styles.includes("@media (forced-colors: active)")
+    ) {
+        erreurs.push(
+            "CodexCommonIdentite : la continuité des titres longs ou des contrastes forcés manque",
+        );
+    }
+
+    const surfaces = [
+        "src/components/codex/CodexFiche/CodexFicheHeader/CodexFicheHeader.tsx",
+        "src/components/codex/CodexIndex/CodexIndexListItem/CodexIndexListItem.tsx",
+        "src/components/codex/CodexIndex/CodexIndexPersonnageCard/CodexIndexPersonnageCard.tsx",
+        "src/components/codex/CodexIndex/CodexIndexCreateurCard/CodexIndexCreateurCard.tsx",
+        "src/components/codex/CodexIndex/CodexIndexOeuvreCard/CodexIndexOeuvreCard.tsx",
+        "src/components/codex/CodexIndex/CodexIndexEpoqueCard/CodexIndexEpoqueCard.tsx",
+    ];
+    for (const chemin of surfaces) {
+        const source = await readFile(path.join(racine, chemin), "utf8");
+        if (!source.includes("<CodexCommonIdentite")) {
+            erreurs.push(
+                `${chemin} : la surface ne projette pas encore l’identité commune`,
+            );
+        }
+    }
+
+    const montages = [
+        "src/app/personnages/page.tsx",
+        "src/app/contributeurs/page.tsx",
+        "src/app/oeuvres/page.tsx",
+        "src/app/epoques/page.tsx",
+        "src/app/personnages/[slug]/page.tsx",
+        "src/app/contributeurs/[slug]/page.tsx",
+        "src/app/oeuvres/[slug]/page.tsx",
+        "src/app/epoques/[slug]/page.tsx",
+        "src/app/recherche/page.tsx",
+    ];
+    for (const chemin of montages) {
+        const source = await readFile(path.join(racine, chemin), "utf8");
+        if (
+            !source.includes("resoudreIdentiteCodex") ||
+            !source.includes("identite={identite}")
+        ) {
+            erreurs.push(
+                `${chemin} : le montage ne transmet pas encore une identité résolue`,
+            );
+        }
+    }
+
+    return surfaces.length + montages.length;
 }
 
 async function verifierJointuresArchives(projeterIdentiteCodex, erreurs) {
@@ -816,6 +975,10 @@ async function verifier() {
     normaliserIdentite = moduleProjection.normaliserIdentiteCodex;
     const registreLangues = moduleLangues.languesCodex;
     const registreTerritoires = moduleTerritoires.territoiresCodex;
+    const moduleAffichage = await chargerModuleAffichageIdentite(
+        registreLangues,
+        registreTerritoires,
+    );
     const langues = new Set(Object.keys(registreLangues));
     const territoires = new Set(Object.keys(registreTerritoires));
     const idsSources = new Set(sources.map((source) => source.id));
@@ -874,6 +1037,11 @@ async function verifier() {
             erreurs,
         );
     }
+    const affichagesIdentitaires = verifierAffichagesIdentitaires(
+        fixture,
+        moduleAffichage,
+        erreurs,
+    );
 
     const projections = await verifierJointuresArchives(
         moduleProjection.projeterIdentiteCodex,
@@ -891,6 +1059,7 @@ async function verifier() {
         erreurs,
     );
     await verifierFrontiereServeur(erreurs);
+    const surfacesIdentitaires = await verifierSurfacesIdentitaires(erreurs);
 
     if (
         moduleProjection.projeterIdentiteCodex({
@@ -954,7 +1123,7 @@ async function verifier() {
     }
 
     console.log(
-        `Identités vérifiées : ${langues.size} langues, ${territoires.size} territoires, ${identitesPersonnages + identitesOeuvres} formes documentées, ${projections.size} jointures catalogue–fiche, ${fixture.projections.length} projections témoins, ${scenariosRecherche} requêtes identitaires, ${navigation.routes} routes canoniques et ${navigation.aliases} redirection témoin.`,
+        `Identités vérifiées : ${langues.size} langues, ${territoires.size} territoires, ${identitesPersonnages + identitesOeuvres} formes documentées, ${projections.size} jointures catalogue–fiche, ${fixture.projections.length} projections témoins, ${affichagesIdentitaires} affichages identitaires, ${surfacesIdentitaires} surfaces et montages, ${scenariosRecherche} requêtes identitaires, ${navigation.routes} routes canoniques et ${navigation.aliases} redirection témoin.`,
     );
 }
 
