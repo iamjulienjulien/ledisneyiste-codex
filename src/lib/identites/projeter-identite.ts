@@ -1,12 +1,12 @@
 import type { EntreeCatalogueBase, CodexFamily } from "@/types/codex";
 import type {
-    AliasNavigationCodex,
     CodeLangueCodex,
     IdentiteDocumenteeCodex,
     NomAlternatifCodex,
     ProjectionIdentiteCodex,
     TitreAlternatifCodex,
 } from "@/types/identite";
+import type { AliasNavigationCodex } from "@/types/navigation";
 
 export type EntreeIdentitaireCodex = Readonly<
     Pick<EntreeCatalogueBase, "slug" | "nom">

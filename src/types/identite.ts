@@ -1,6 +1,7 @@
 import type { languesCodex } from "@/registry/identites/langues";
 import type { territoiresCodex } from "@/registry/identites/territoires";
 import type { CodexFamily } from "@/types/codex";
+import type { AliasNavigationCodex } from "@/types/navigation";
 
 export type LangueCodexDefinition = Readonly<{
     label: string;
@@ -56,11 +57,6 @@ export type TitreAlternatifCodex = IdentiteDocumenteeCodex<
 export type IdentitePrincipaleCodex = {
     libelle: string;
     langue: CodeLangueCodex | null;
-};
-
-export type AliasNavigationCodex = {
-    chemin: string;
-    nature: "route-historique";
 };
 
 export type ProjectionIdentiteCodex<Famille extends string = CodexFamily> =

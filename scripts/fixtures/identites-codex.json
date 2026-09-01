@@ -61,7 +61,9 @@
             "aliasesNavigation": [
                 {
                     "chemin": "/fixture/personnages/reine",
-                    "nature": "route-historique"
+                    "cible": "/personnages/la-reine",
+                    "nature": "route-historique",
+                    "provenance": "fixture-privee-train-3d"
                 }
             ]
         },
