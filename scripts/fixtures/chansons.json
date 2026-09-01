@@ -1,0 +1,477 @@
+{
+    "sourceIds": [
+        "us-academy-awards-1941",
+        "us-d23-pinocchio-film",
+        "us-d23-cliff-edwards",
+        "us-d23-ned-washington",
+        "fr-cinematheque-pinocchio",
+        "fr-bnf-bo-pinocchio",
+        "fr-bnf-big-bad-wolf-song",
+        "d23-three-little-pigs",
+        "d23-three-little-pigs-released",
+        "d23-frank-churchill",
+        "d23-pinto-colvig"
+    ],
+    "fiches": [
+        {
+            "id": "chanson-when-you-wish-upon-a-star",
+            "slug": "when-you-wish-upon-a-star",
+            "identite": {
+                "libelle": "When You Wish Upon a Star",
+                "nature": "original",
+                "langue": "en",
+                "territoire": "US",
+                "sources": ["us-d23-pinocchio-film"]
+            },
+            "identitesAlternatives": [
+                {
+                    "libelle": "Quand on prie la bonne étoile",
+                    "nature": "localise",
+                    "langue": "fr",
+                    "territoire": "FR",
+                    "sources": ["fr-bnf-bo-pinocchio"]
+                }
+            ],
+            "oeuvreOrigine": {
+                "id": "oeuvre-pinocchio-1940",
+                "nom": "Pinocchio",
+                "slug": "pinocchio",
+                "type": "oeuvre-privee"
+            },
+            "auteurs": [
+                {
+                    "personne": {
+                        "nom": "Leigh Harline",
+                        "type": "contributeur",
+                        "slug": "leigh-harline"
+                    },
+                    "roles": ["composition"],
+                    "sources": ["us-academy-awards-1941"]
+                },
+                {
+                    "personne": { "nom": "Ned Washington" },
+                    "roles": ["paroles"],
+                    "sources": [
+                        "us-academy-awards-1941",
+                        "us-d23-ned-washington"
+                    ]
+                }
+            ],
+            "versions": [
+                {
+                    "id": "when-you-wish-originale-en",
+                    "nature": "originale",
+                    "identite": {
+                        "libelle": "When You Wish Upon a Star",
+                        "nature": "original",
+                        "langue": "en",
+                        "territoire": "US",
+                        "sources": ["us-d23-pinocchio-film"]
+                    },
+                    "date": { "valeur": "1940", "precision": "annee" },
+                    "porteeTerritoriale": {
+                        "nature": "territoire",
+                        "code": "US"
+                    },
+                    "sources": ["us-d23-pinocchio-film"]
+                },
+                {
+                    "id": "when-you-wish-adaptation-fr-1995",
+                    "nature": "adaptation-lyrique",
+                    "identite": {
+                        "libelle": "Quand on prie la bonne étoile",
+                        "nature": "localise",
+                        "langue": "fr",
+                        "territoire": "FR",
+                        "sources": ["fr-bnf-bo-pinocchio"]
+                    },
+                    "date": { "valeur": "1995", "precision": "annee" },
+                    "porteeTerritoriale": {
+                        "nature": "territoire",
+                        "code": "FR"
+                    },
+                    "adaptateurs": [
+                        {
+                            "personne": { "nom": "J. Cis" },
+                            "roles": ["adaptation-lyrique"],
+                            "sources": ["fr-bnf-bo-pinocchio"]
+                        },
+                        {
+                            "personne": { "nom": "R. Sauvage" },
+                            "roles": ["adaptation-lyrique"],
+                            "sources": ["fr-bnf-bo-pinocchio"]
+                        }
+                    ],
+                    "sources": ["fr-bnf-bo-pinocchio"],
+                    "noteDeReserve": "Le titre et les crédits sont attestés pour l’édition phonographique de 1995, sans être antidatés à la sortie française du film."
+                }
+            ],
+            "occurrences": [
+                {
+                    "id": "occurrence-when-you-wish-pinocchio-1940",
+                    "nature": "origine",
+                    "oeuvre": {
+                        "id": "oeuvre-pinocchio-1940",
+                        "nom": "Pinocchio",
+                        "slug": "pinocchio",
+                        "type": "oeuvre-privee"
+                    },
+                    "versionId": "when-you-wish-originale-en",
+                    "date": { "valeur": "1940", "precision": "annee" },
+                    "fonctionNarrative": "Ouvre et referme le récit en portant le souhait qui guide le film.",
+                    "sources": ["us-d23-pinocchio-film"]
+                }
+            ],
+            "interpretations": [
+                {
+                    "id": "interpretation-cliff-edwards-1940",
+                    "nature": "originale",
+                    "versionId": "when-you-wish-originale-en",
+                    "occurrenceId": "occurrence-when-you-wish-pinocchio-1940",
+                    "interpretes": [
+                        {
+                            "personne": { "nom": "Cliff Edwards" },
+                            "roles": ["chant", "voix"],
+                            "sources": [
+                                "us-d23-cliff-edwards",
+                                "fr-cinematheque-pinocchio"
+                            ]
+                        }
+                    ],
+                    "date": { "valeur": "1940", "precision": "annee" },
+                    "sources": [
+                        "us-d23-cliff-edwards",
+                        "fr-cinematheque-pinocchio"
+                    ]
+                }
+            ],
+            "enregistrements": [
+                {
+                    "id": "enregistrement-when-you-wish-film-1940",
+                    "interpretationId": "interpretation-cliff-edwards-1940",
+                    "date": { "valeur": "1940", "precision": "annee" },
+                    "edition": "Fixation sonore de l’occurrence filmique originale",
+                    "sources": ["fr-cinematheque-pinocchio"]
+                }
+            ],
+            "receptions": [
+                {
+                    "id": "reception-oscar-chanson-1941",
+                    "nature": "institutionnelle",
+                    "date": { "valeur": "1941-02-27", "precision": "jour" },
+                    "resume": "L’Academy distingue la chanson originale et ses auteurs Leigh Harline et Ned Washington.",
+                    "porteeTerritoriale": {
+                        "nature": "territoire",
+                        "code": "US"
+                    },
+                    "sources": ["us-academy-awards-1941"]
+                }
+            ],
+            "recompenses": [
+                {
+                    "id": "oscar-chanson-originale-when-you-wish-upon-a-star-1941",
+                    "sources": ["us-academy-awards-1941"]
+                }
+            ],
+            "sources": [
+                "us-academy-awards-1941",
+                "us-d23-pinocchio-film",
+                "us-d23-cliff-edwards",
+                "us-d23-ned-washington",
+                "fr-cinematheque-pinocchio",
+                "fr-bnf-bo-pinocchio"
+            ]
+        },
+        {
+            "id": "chanson-whos-afraid-of-the-big-bad-wolf",
+            "slug": "whos-afraid-of-the-big-bad-wolf",
+            "identite": {
+                "libelle": "Who’s Afraid of the Big Bad Wolf?",
+                "nature": "original",
+                "langue": "en",
+                "territoire": "US",
+                "sources": ["d23-three-little-pigs", "fr-bnf-big-bad-wolf-song"]
+            },
+            "identitesAlternatives": [
+                {
+                    "libelle": "Qui craint le grand méchant loup ?",
+                    "nature": "localise",
+                    "langue": "fr",
+                    "territoire": "FR",
+                    "sources": ["fr-bnf-big-bad-wolf-song"]
+                }
+            ],
+            "oeuvreOrigine": {
+                "nom": "Three Little Pigs",
+                "type": "oeuvre",
+                "slug": "three-little-pigs"
+            },
+            "auteurs": [
+                {
+                    "personne": {
+                        "nom": "Frank Churchill",
+                        "type": "contributeur",
+                        "slug": "frank-churchill"
+                    },
+                    "roles": ["composition"],
+                    "sources": [
+                        "d23-frank-churchill",
+                        "fr-bnf-big-bad-wolf-song"
+                    ]
+                },
+                {
+                    "personne": { "nom": "Ann Ronell" },
+                    "roles": ["paroles"],
+                    "sources": ["fr-bnf-big-bad-wolf-song"]
+                }
+            ],
+            "versions": [
+                {
+                    "id": "big-bad-wolf-originale-en",
+                    "nature": "originale",
+                    "identite": {
+                        "libelle": "Who’s Afraid of the Big Bad Wolf?",
+                        "nature": "original",
+                        "langue": "en",
+                        "territoire": "US",
+                        "sources": ["d23-three-little-pigs"]
+                    },
+                    "date": { "valeur": "1933", "precision": "annee" },
+                    "porteeTerritoriale": {
+                        "nature": "territoire",
+                        "code": "US"
+                    },
+                    "sources": ["d23-three-little-pigs"]
+                },
+                {
+                    "id": "big-bad-wolf-adaptation-fr-1949",
+                    "nature": "adaptation-lyrique",
+                    "identite": {
+                        "libelle": "Qui craint le grand méchant loup ?",
+                        "nature": "localise",
+                        "langue": "fr",
+                        "territoire": "FR",
+                        "sources": ["fr-bnf-big-bad-wolf-song"]
+                    },
+                    "date": { "valeur": "1949", "precision": "annee" },
+                    "porteeTerritoriale": {
+                        "nature": "territoire",
+                        "code": "FR"
+                    },
+                    "adaptateurs": [
+                        {
+                            "personne": { "nom": "Robert Valaire" },
+                            "roles": ["adaptation-lyrique"],
+                            "sources": ["fr-bnf-big-bad-wolf-song"]
+                        },
+                        {
+                            "personne": { "nom": "Jean Valmy" },
+                            "roles": ["adaptation-lyrique"],
+                            "sources": ["fr-bnf-big-bad-wolf-song"]
+                        }
+                    ],
+                    "sources": ["fr-bnf-big-bad-wolf-song"],
+                    "noteDeReserve": "La date appartient à l’édition phonographique française, pas à l’occurrence originale du film."
+                }
+            ],
+            "occurrences": [
+                {
+                    "id": "occurrence-big-bad-wolf-three-little-pigs-1933",
+                    "nature": "origine",
+                    "oeuvre": {
+                        "nom": "Three Little Pigs",
+                        "type": "oeuvre",
+                        "slug": "three-little-pigs"
+                    },
+                    "versionId": "big-bad-wolf-originale-en",
+                    "date": { "valeur": "1933-05-27", "precision": "jour" },
+                    "fonctionNarrative": "Oppose l’insouciance des deux premiers cochons à la préparation du Cochon Pratique.",
+                    "sources": [
+                        "d23-three-little-pigs",
+                        "d23-three-little-pigs-released"
+                    ]
+                }
+            ],
+            "interpretations": [
+                {
+                    "id": "interpretation-pinto-colvig-1933",
+                    "nature": "originale",
+                    "versionId": "big-bad-wolf-originale-en",
+                    "occurrenceId": "occurrence-big-bad-wolf-three-little-pigs-1933",
+                    "interpretes": [
+                        {
+                            "personne": {
+                                "nom": "Pinto Colvig",
+                                "type": "contributeur",
+                                "slug": "pinto-colvig"
+                            },
+                            "roles": ["chant", "voix"],
+                            "sources": ["d23-pinto-colvig"]
+                        }
+                    ],
+                    "date": { "valeur": "1933", "precision": "annee" },
+                    "sources": ["d23-three-little-pigs", "d23-pinto-colvig"]
+                }
+            ],
+            "receptions": [
+                {
+                    "id": "reception-populaire-big-bad-wolf-1933",
+                    "nature": "publique",
+                    "periode": {
+                        "debut": { "valeur": "1933", "precision": "annee" }
+                    },
+                    "resume": "La chanson accompagne le succès public du court métrage et circule au-delà de sa première exploitation.",
+                    "porteeTerritoriale": {
+                        "nature": "territoire",
+                        "code": "US"
+                    },
+                    "sources": [
+                        "d23-three-little-pigs",
+                        "d23-three-little-pigs-released"
+                    ]
+                }
+            ],
+            "sources": [
+                "fr-bnf-big-bad-wolf-song",
+                "d23-three-little-pigs",
+                "d23-three-little-pigs-released",
+                "d23-frank-churchill",
+                "d23-pinto-colvig"
+            ]
+        }
+    ],
+    "musiques": [
+        {
+            "id": "musique-partition-pinocchio-1940",
+            "slug": "partition-pinocchio-1940",
+            "identite": {
+                "libelle": "Partition de Pinocchio",
+                "nature": "original",
+                "langue": "fr",
+                "sources": ["us-academy-awards-1941"]
+            },
+            "oeuvre": {
+                "id": "oeuvre-pinocchio-1940",
+                "nom": "Pinocchio",
+                "slug": "pinocchio",
+                "type": "oeuvre-privee"
+            },
+            "date": { "valeur": "1940", "precision": "annee" },
+            "attributions": [
+                {
+                    "personne": {
+                        "nom": "Leigh Harline",
+                        "type": "contributeur",
+                        "slug": "leigh-harline"
+                    },
+                    "domaines": ["partition"],
+                    "oeuvre": {
+                        "id": "oeuvre-pinocchio-1940",
+                        "nom": "Pinocchio",
+                        "slug": "pinocchio",
+                        "type": "oeuvre-privee"
+                    },
+                    "sources": ["us-academy-awards-1941"]
+                },
+                {
+                    "personne": { "nom": "Paul J. Smith" },
+                    "domaines": ["partition"],
+                    "oeuvre": {
+                        "id": "oeuvre-pinocchio-1940",
+                        "nom": "Pinocchio",
+                        "slug": "pinocchio",
+                        "type": "oeuvre-privee"
+                    },
+                    "sources": ["us-academy-awards-1941"]
+                }
+            ],
+            "sources": ["us-academy-awards-1941"]
+        }
+    ],
+    "dossiersMedia": [
+        {
+            "id": "media-when-you-wish-metadata",
+            "chansonId": "chanson-when-you-wish-upon-a-star",
+            "assetId": "notice-documentaire",
+            "version": "when-you-wish-originale-en",
+            "territoires": ["US", "FR"],
+            "couches": ["composition", "paroles"],
+            "fondement": "Projection limitée aux métadonnées sourcées.",
+            "titulaireOuFournisseur": "Non requis pour les métadonnées factuelles.",
+            "usagesAutorises": ["metadonnees"],
+            "attribution": "Sources documentaires du registre.",
+            "evidenceIds": ["us-d23-pinocchio-film"],
+            "controleViePrivee": "Aucun service tiers chargé.",
+            "statut": "metadata-only",
+            "noteInterne": "Aucun audio ni aucune parole ne doit être joint à cette projection."
+        },
+        {
+            "id": "media-when-you-wish-lien-academy",
+            "chansonId": "chanson-when-you-wish-upon-a-star",
+            "assetId": "lien-palmares-academy",
+            "version": "when-you-wish-originale-en",
+            "territoires": ["US", "FR"],
+            "couches": ["service-tiers", "vie-privee"],
+            "fondement": "Lien simple vers une source institutionnelle.",
+            "titulaireOuFournisseur": "Academy of Motion Picture Arts and Sciences",
+            "usagesAutorises": ["lien-externe"],
+            "attribution": "Oscars.org · The 13th Academy Awards",
+            "evidenceIds": ["us-academy-awards-1941"],
+            "controleViePrivee": "Aucun contenu tiers chargé avant activation du lien.",
+            "verifiePar": "R2-D2",
+            "verifieLe": "2026-09-02",
+            "statut": "external-link",
+            "matiereAutorisee": {
+                "nature": "lien-externe",
+                "href": "https://www.oscars.org/oscars/ceremonies/1941/r",
+                "label": "Consulter le palmarès de la 13e cérémonie",
+                "attribution": "Oscars.org"
+            },
+            "noteInterne": "Le lien ne constitue pas un lecteur musical."
+        },
+        {
+            "id": "media-when-you-wish-audio-bloque",
+            "chansonId": "chanson-when-you-wish-upon-a-star",
+            "assetId": "enregistrement-when-you-wish-film-1940",
+            "version": "when-you-wish-originale-en",
+            "territoires": ["US", "FR"],
+            "couches": [
+                "composition",
+                "paroles",
+                "enregistrement",
+                "interpretation",
+                "production-phonographique"
+            ],
+            "fondement": "Aucune autorisation écrite complète n’est conservée.",
+            "titulaireOuFournisseur": "À établir",
+            "usagesAutorises": [],
+            "attribution": "À établir",
+            "evidenceIds": [],
+            "controleViePrivee": "Sans objet tant que la projection est bloquée.",
+            "statut": "blocked",
+            "noteInterne": "Le fichier sonore ne doit jamais atteindre le navigateur."
+        },
+        {
+            "id": "media-when-you-wish-licence-incomplete",
+            "chansonId": "chanson-when-you-wish-upon-a-star",
+            "assetId": "extrait-hypothetique",
+            "version": "when-you-wish-originale-en",
+            "territoires": ["FR"],
+            "couches": ["composition", "paroles", "enregistrement"],
+            "fondement": "Dossier témoin volontairement incomplet.",
+            "titulaireOuFournisseur": "Identité privée de fixture",
+            "usagesAutorises": ["extrait"],
+            "attribution": "Attribution témoin",
+            "evidenceIds": ["preuve-privee-incomplete"],
+            "controleViePrivee": "Aucun service tiers.",
+            "statut": "licensed",
+            "matiereAutorisee": {
+                "nature": "audio",
+                "href": "https://media.invalid/extrait.mp3",
+                "label": "Écouter un extrait",
+                "attribution": "Attribution témoin"
+            },
+            "noteInterne": "L’absence de relecteur et de date doit forcer le blocage."
+        }
+    ]
+}
