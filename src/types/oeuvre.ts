@@ -15,6 +15,7 @@ import type {
     ReceptionOeuvre,
     VersionOeuvre,
 } from "@/types/circulation-oeuvre";
+import type { DonneeEconomiqueOeuvre } from "@/types/donnee-economique";
 
 export type {
     EvenementSortieOeuvre,
@@ -23,6 +24,18 @@ export type {
     ReceptionOeuvre,
     VersionOeuvre,
 } from "@/types/circulation-oeuvre";
+export type {
+    DegreCertitudeDonneeEconomique,
+    DonneeEconomiqueDeriveeOeuvre,
+    DonneeEconomiqueOeuvre,
+    DonneeEconomiqueOeuvreEnquete,
+    DonneeEconomiqueOeuvreHistorique,
+    DonneeEconomiqueOeuvreStructuree,
+    DossierEnqueteEconomiquePrive,
+    NatureMesureEconomiqueOeuvre,
+    ProjectionDonneeEconomiquePublique,
+    VerdictPublicationDonneeEconomique,
+} from "@/types/donnee-economique";
 
 export type OeuvreDisney = EntreeCatalogueBase & {
     type: "oeuvre";
@@ -59,31 +72,6 @@ export type DureeOeuvre = {
     version: string;
     sources: string[];
 };
-
-export type DegreCertitudeDonneeEconomique =
-    "documente" | "estimation" | "conteste";
-
-type DonneeEconomiqueOeuvreBase = {
-    valeur: number;
-    territoire: string;
-    periode: PeriodeHistorique;
-    certitude: DegreCertitudeDonneeEconomique;
-    sources: string[];
-};
-
-export type DonneeEconomiqueOeuvre = DonneeEconomiqueOeuvreBase &
-    (
-        | {
-              nature: "cout-production" | "revenus";
-              unite: "monetaire";
-              devise: string;
-          }
-        | {
-              nature: "entrees";
-              unite: "entrees";
-              devise?: never;
-          }
-    );
 
 export type ReferenceOeuvreLiee =
     | {
