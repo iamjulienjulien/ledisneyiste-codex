@@ -21,25 +21,30 @@ pour une capacité déjà livrée.
 
 ## Vue d’ensemble
 
-| ID        | Décision                                  | Statut                  | Phase dépendante |
-| --------- | ----------------------------------------- | ----------------------- | ---------------- |
-| `DEC-001` | Italie comme troisième regard             | `validé`                | Phases 6 et 7    |
-| `DEC-002` | Convention des routes localisées          | `validé`                | Phase 3          |
-| `DEC-003` | Statut de Carlo Collodi                   | `validé`                | Phases 4 et 6    |
-| `DEC-004` | Personnages autonomes                     | `validé`                | Phase 6          |
-| `DEC-005` | Créateurs à créer ou enrichir             | `validé`                | Phase 6          |
-| `DEC-006` | Corpus initial Chansons                   | `validé`                | Phases 4 à 7     |
-| `DEC-007` | Audio et paroles                          | `à confirmer par audit` | Phases 7 et 9    |
-| `DEC-008` | Données financières                       | `à confirmer par audit` | Phases 4 et 7    |
-| `DEC-009` | Rétroapplication                          | `validé`                | Phase 5          |
-| `DEC-010` | Responsabilité des identités alternatives | `validé`                | Phase 3          |
-| `DEC-011` | Couverture des identités par la recherche | `validé`                | Phase 3          |
+| ID        | Décision                                  | Statut   | Phase dépendante |
+| --------- | ----------------------------------------- | -------- | ---------------- |
+| `DEC-001` | Italie comme troisième regard             | `validé` | Phases 6 et 7    |
+| `DEC-002` | Convention des routes localisées          | `validé` | Phase 3          |
+| `DEC-003` | Statut de Carlo Collodi                   | `validé` | Phases 4 et 6    |
+| `DEC-004` | Personnages autonomes                     | `validé` | Phase 6          |
+| `DEC-005` | Créateurs à créer ou enrichir             | `validé` | Phase 6          |
+| `DEC-006` | Corpus initial Chansons                   | `validé` | Phases 4 à 7     |
+| `DEC-007` | Audio et paroles                          | `validé` | Phases 7 et 9    |
+| `DEC-008` | Données financières                       | `validé` | Phases 4 et 7    |
+| `DEC-009` | Rétroapplication                          | `validé` | Phase 5          |
+| `DEC-010` | Responsabilité des identités alternatives | `validé` | Phase 3          |
+| `DEC-011` | Couverture des identités par la recherche | `validé` | Phase 3          |
 
 Les trois décisions du Train 2B, les cinq décisions du Train 2C et le regard
 italien du Train 2D sont validés par Julien et documentés ci-dessous. Les
 réserves documentaires sont des garde-fous d’exécution : elles peuvent
 reporter une fiche individuelle, mais ne rouvrent pas silencieusement le
 périmètre arrêté.
+
+Le Train 2E documente désormais les règles relatives à l’audio, aux paroles et
+aux données financières. Julien valide `DEC-007` et `DEC-008` le 1er septembre
+2026 : les Phases 4, 6, 7 et 9 disposent d’une politique explicite sans
+présumer de droits ni publier un chiffre incomplet.
 
 ## Train 2D · Matrice documentaire
 
@@ -514,6 +519,111 @@ doit ni antidater ces titres ni les transformer automatiquement en slugs.
 La Phase 4 doit concevoir le contrat sur ces neuf cas. La Phase 5 crée les
 quatre entrées rétrospectives ; la Phase 6 produit les cinq entrées de
 _Pinocchio_.
+
+## Train 2E · Médias, paroles et données financières
+
+Les deux audits séparent ce que le Codex sait techniquement projeter de ce
+qu’il est autorisé et capable de publier honnêtement :
+
+- [`audio-paroles.md`](./audio-paroles.md) distingue composition, paroles,
+  traduction, enregistrement, interprètes, producteur, service tiers et vie
+  privée ;
+- [`donnees-financieres.md`](./donnees-financieres.md) identifie chaque mesure
+  par sa valeur, son unité, son temps, son territoire, sa méthode et sa source.
+
+Cette étude ne constitue ni une autorisation juridique de publication ni une
+validation silencieuse des deux décisions. Elle prépare des règles testables
+pour les Phases 4, 6, 7 et 9.
+
+## DEC-007 · Audio et paroles
+
+### Décision validée
+
+**Projeter les Chansons selon une politique `metadata-first` : liens officiels
+simples admis ; citations courtes examinées individuellement ; lecteurs
+intégrés reportés par défaut ; audio hébergé, paroles intégrales et traductions
+intégrales exclus sans autorisation écrite.**
+
+Une fiche Chanson reste documentairement complète sans audio ni texte
+intégral. Elle peut publier son identité, ses auteurs, ses interprètes, ses
+occurrences, ses versions, ses récompenses, ses relations et ses sources.
+
+### Ce que la recommandation impose
+
+- aucune date ancienne ne suffit à établir le domaine public ;
+- composition, paroles, traduction, enregistrement, interprétation et
+  production phonographique sont contrôlés séparément par territoire ;
+- une citation courte exige une finalité critique ou d’information, une
+  proportion justifiable, une version et une attribution ;
+- aucun quota automatique de mots, lignes ou caractères ne remplace cette
+  analyse ;
+- un lecteur tiers exige un contrôle des conditions du fournisseur, des
+  traceurs, du consentement et de la solution de repli ;
+- un statut vide ou incomplet bloque le média au lieu de présumer sa
+  permission.
+
+### Repli retenu pour l’Acte VI
+
+La publication initiale utilise les métadonnées et les liens externes
+officiels. L’intégration d’un lecteur, d’un extrait ou de paroles est un
+enrichissement séparé : elle ne conditionne ni le contrat Chanson ni la
+clôture de l’Acte VI.
+
+### Statut
+
+`DEC-007` est validée par Julien le 1er septembre 2026. Le dossier de preuve et
+la règle complète figurent dans [`audio-paroles.md`](./audio-paroles.md).
+
+## DEC-008 · Données financières
+
+### Décision validée
+
+**Publier uniquement une mesure complètement identifiée : valeur originale
+d’abord, contradictions attribuées sans moyenne, conversions comme données
+dérivées reproductibles, et report de toute valeur privée d’une dimension
+critique.**
+
+Une donnée financière doit nommer sa mesure exacte — coût, budget, recette
+brute, location, revenu, résultat ou entrées — puis conserver valeur ou
+fourchette, unité, devise et année monétaire, territoire, période, périmètre,
+méthode, certitude, source, comparabilité et intérêt éditorial.
+
+### Ce que la recommandation impose
+
+- les entrées ne sont ni une devise ni une recette ;
+- box-office brut, location distributeur, revenu du studio et bénéfice ne sont
+  jamais rendus interchangeables ;
+- les valeurs divergentes restent séparées et attribuées ;
+- une moyenne ou une conversion ne répare pas une contradiction ;
+- la valeur nominale originale n’est jamais remplacée par son équivalent
+  contemporain ;
+- toute donnée dérivée conserve taux ou indice, date, base, formule, source et
+  arrondi ;
+- une dimension critique absente classe la valeur en enquête privée.
+
+### Épreuve immédiate du corpus
+
+- les 7,84 millions de spectateurs de _Pinocchio_ peuvent devenir
+  `publishable-with-reserve` uniquement comme cumul CNC de 1946 à 2010 ;
+- les coûts et résultats initiaux divergents rapportés par l’AFI restent à
+  extraire et qualifier avant publication ;
+- les 20 millions d’entrées de _Snow White_ doivent être réexaminés, car leur
+  territoire n’est pas précisé dans le contrat actuel ;
+- les deux estimations de coût de _Snow White_ ne doivent être présentées côte
+  à côte qu’après comparaison de leurs périmètres et méthodes.
+
+### Statut
+
+`DEC-008` est validée par Julien le 1er septembre 2026. La méthode, les niveaux
+de publication et les tests figurent dans
+[`donnees-financieres.md`](./donnees-financieres.md).
+
+## Arbitrage validé par Julien pour le Train 2E
+
+Julien valide `DEC-007` et `DEC-008` le 1er septembre 2026. L’Acte VI publiera
+les Chansons sans dépendre d’un média protégé et ne projettera une donnée
+financière que si sa mesure, son temps, son territoire, sa méthode et sa source
+restent lisibles.
 
 ## DEC-009 · Rétroapplication
 
