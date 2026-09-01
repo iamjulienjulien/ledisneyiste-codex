@@ -49,6 +49,7 @@ const relationLabels: Readonly<Record<string, string>> = {
     preparation: "prépare",
     adaptation: "est adapté par",
     influence: "influence",
+    inspiration: "inspire",
     filiation: "se prolonge dans",
 };
 
@@ -121,6 +122,14 @@ function getReferenceDate(
         )?.sortie.date;
     }
 
+    if (reference.kind === "oeuvre-source") {
+        const sourceId = reference.id.replace(/^oeuvre-source:/, "");
+
+        return archives.oeuvresSources?.fiches.find(
+            (work) => work.id === sourceId,
+        )?.date;
+    }
+
     if (reference.kind === "personnage" && reference.slug) {
         return archives.fiches.personnages.find(
             (character) => character.slug === reference.slug,
@@ -186,7 +195,9 @@ function normalizeRelationLabel(label: string) {
 }
 
 function zoneForRelation(label: string): CodexTravellingDocumentaireZone {
-    return label === "source" ? "origin" : "laboratory";
+    return label === "source" || label === "adaptation"
+        ? "origin"
+        : "laboratory";
 }
 
 function createAdjacency(

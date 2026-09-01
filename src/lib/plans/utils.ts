@@ -7,6 +7,7 @@ import type {
     CodexPlanEntityReference,
     CodexPlanProvenance,
 } from "@/types/codex-plans";
+import { resoudreOeuvreSource } from "@/lib/oeuvres-sources";
 import type { ReferenceOeuvreLiee } from "@/types/oeuvre";
 import type { ReferenceCodex, TypeReferenceCodex } from "@/types/reference";
 
@@ -80,6 +81,21 @@ export function createWorkReference(
 ): CodexPlanEntityReference {
     if (reference.type === "oeuvre") {
         return createReference(reference, archives);
+    }
+
+    if (reference.type === "oeuvre-source") {
+        const resolution = resoudreOeuvreSource(
+            reference,
+            archives.oeuvresSources,
+        );
+
+        return {
+            id: createEntityId("oeuvre-source", reference.id),
+            kind: "oeuvre-source",
+            label: resolution.entree?.titre ?? reference.nom,
+            slug: resolution.entree?.slug ?? reference.slug,
+            resolved: resolution.resolved,
+        };
     }
 
     return {

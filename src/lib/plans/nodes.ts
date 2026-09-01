@@ -153,6 +153,33 @@ export function derivePlanNodes(
                 ),
             ],
         })),
+        ...(archives.oeuvresSources?.fiches.map((fiche) => {
+            const entree = archives.oeuvresSources?.entrees.find(
+                (item) => item.id === fiche.id,
+            );
+
+            return {
+                id: createEntityId("oeuvre-source", fiche.id),
+                kind: "oeuvre-source" as const,
+                label: entree?.titre ?? fiche.identite.libelle,
+                slug: entree?.slug ?? fiche.slug,
+                resolved: entree !== undefined,
+                subtitle: fiche.identitesAlternatives?.[0]?.libelle,
+                publishedSubject: false,
+                metadata: compactMetadata({
+                    nature: fiche.nature,
+                    support: fiche.support,
+                    date: fiche.date.valeur,
+                    auteurs: fiche.auteurs.map((auteur) => auteur.nom),
+                }),
+                provenance: [
+                    sourcedProvenance(
+                        fiche.sources,
+                        "Nœud documentaire dérivé du registre interne des Œuvres sources.",
+                    ),
+                ],
+            };
+        }) ?? []),
     ];
 
     return createDerivationResult(nodes, options, [

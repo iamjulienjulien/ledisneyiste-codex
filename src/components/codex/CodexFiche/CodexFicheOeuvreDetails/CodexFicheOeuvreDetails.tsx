@@ -60,6 +60,8 @@ const relationLabels: Record<NatureRelationOeuvre, string> = {
     source: "Œuvre source",
     preparation: "Œuvre préparatoire",
     adaptation: "Adaptation",
+    inspiration: "Source d’inspiration",
+    influence: "Influence documentée",
     suite: "Suite",
     remake: "Remake",
     derivee: "Œuvre dérivée",

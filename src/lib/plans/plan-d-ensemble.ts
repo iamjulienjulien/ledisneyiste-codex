@@ -73,6 +73,7 @@ const relationLabels: Readonly<Record<string, string>> = {
     source: "Est une source de",
     preparation: "Prépare",
     adaptation: "Adapte",
+    inspiration: "S’inspire de",
     influence: "Influence",
     filiation: "Prolonge",
 };
@@ -151,6 +152,7 @@ function groupForNode(
         case "contributeur":
             return "people";
         case "oeuvre":
+        case "oeuvre-source":
         case "oeuvre-exterieure":
             return "works";
         case "epoque":
