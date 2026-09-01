@@ -1,4 +1,3 @@
-import { PixieDocs } from "@/components/ui/PixieDocs";
 import { PixieMarkdown } from "@/components/ui/PixieMarkdown";
 import type {
     GuidebookBlock,
@@ -11,6 +10,7 @@ import {
     getGuidebookProjection,
     type GuidebookRouteSource,
 } from "../_lib/guidebook-routing";
+import { GuidebookReader } from "./GuidebookReader";
 
 function removeDocumentTitle(blocks: readonly GuidebookBlock[]) {
     const firstBlock = blocks[0];
@@ -64,7 +64,7 @@ export function GuidebookProjection({
     const sourceLabel = source === "notion" ? "Dossier Notion" : "Guide local";
 
     return (
-        <PixieDocs
+        <GuidebookReader
             title={projection.title}
             navigation={navigation}
             activeSlug={document.slug}
@@ -107,7 +107,6 @@ export function GuidebookProjection({
             next={destinations.next}
             density="comfortable"
             navigationWidth="lg"
-            navigationMode="inline"
             toc="visible"
             sticky
             filterable
