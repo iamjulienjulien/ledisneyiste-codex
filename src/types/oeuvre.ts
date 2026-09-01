@@ -9,6 +9,20 @@ import type { DateHistorique, PeriodeHistorique } from "@/types/date";
 import type { FicheCodexBase } from "@/types/fiche";
 import type { TitreAlternatifCodex } from "@/types/identite";
 import type { ReferenceCodex } from "@/types/reference";
+import type {
+    EvenementSortieOeuvre,
+    ExploitationOeuvre,
+    ReceptionOeuvre,
+    VersionOeuvre,
+} from "@/types/circulation-oeuvre";
+
+export type {
+    EvenementSortieOeuvre,
+    ExploitationOeuvre,
+    NatureEvenementSortieOeuvre,
+    ReceptionOeuvre,
+    VersionOeuvre,
+} from "@/types/circulation-oeuvre";
 
 export type OeuvreDisney = EntreeCatalogueBase & {
     type: "oeuvre";
@@ -43,17 +57,6 @@ export type DureeOeuvre = {
     valeur: number;
     unite: "minutes";
     version: string;
-    sources: string[];
-};
-
-export type NatureEvenementSortieOeuvre =
-    "premiere-mondiale" | "sortie-nationale";
-
-export type EvenementSortieOeuvre = {
-    date: DateHistorique;
-    territoire: string;
-    nature: NatureEvenementSortieOeuvre;
-    lieu?: string;
     sources: string[];
 };
 
@@ -117,6 +120,12 @@ export type FicheOeuvreDisney = FicheCodexBase<"oeuvres"> & {
     titresAlternatifs?: TitreAlternatifOeuvre[];
 
     durees?: DureeOeuvre[];
+
+    versions?: VersionOeuvre[];
+
+    exploitations?: ExploitationOeuvre[];
+
+    receptions?: ReceptionOeuvre[];
 
     production?: PeriodeHistorique & {
         sources: string[];
