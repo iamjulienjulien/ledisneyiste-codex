@@ -304,16 +304,52 @@ résolues. Si l’une manque, la page appelle `notFound()`. Les paramètres
 statiques viennent du catalogue et `dynamicParams` est désactivé : le
 catalogue demeure donc la porte d’entrée officielle.
 
-### Le piège de la recherche
+### L’identité voyage sans déplacer la route
 
-[`src/lib/recherche.ts`](../../src/lib/recherche.ts) construit actuellement son
-index à partir des **catalogues** et des libellés du registre de métadonnées.
-Modifier seulement l’introduction ou les chapitres d’une fiche ne rend pas ces
-mots recherchables.
+Le catalogue conserve le nom ou titre principal qui publie l’entrée. La fiche
+possède les formes documentées : originale, localisée, territoriale, ancienne
+ou alternative, avec leur langue, leur territoire éventuel et leurs sources.
 
-Avant d’élargir la recherche au corps documentaire, il faut ouvrir un chantier
-explicite : indexer davantage de matière change les résultats, les attentes de
-performance et la promesse faite au public.
+[`resoudreIdentiteCodex`](../../src/lib/identites/server/resoudre-identites.ts)
+joint ces deux moitiés côté serveur et produit une
+`ProjectionIdentiteCodex`. Cette projection distingue :
+
+- la forme principale actuellement choisie pour l’interface française ;
+- la forme originale lorsqu’elle est documentée ;
+- les autres identités documentées ;
+- le slug canonique, qui ne change pas avec le libellé ;
+- les éventuels aliases de navigation, déclarés séparément et jamais déduits
+  d’un nom.
+
+Les routes restent responsables de la résolution. Cards, listes et en-têtes
+reçoivent une identité déjà préparée ; aucun composant ne relit directement
+les Archives pour recomposer un titre.
+
+```text
+catalogue + fiche
+       │
+       └── résolution serveur ──→ ProjectionIdentiteCodex
+                                      ├── recherche identitaire
+                                      ├── CodexCommonIdentite
+                                      └── route canonique inchangée
+```
+
+Langue et territoire sont deux données différentes. Leurs codes et libellés
+vivent dans `src/registry/identites`. Un drapeau peut devenir un repère
+graphique complémentaire, jamais la valeur métier ni le seul nom accessible.
+
+### La recherche identitaire reste une projection serveur
+
+[`src/lib/recherche.ts`](../../src/lib/recherche.ts) joint désormais les quatre
+catalogues à leurs fiches par le résolveur commun. Son index réunit l’identité
+principale, les formes documentées, le sous-titre et les métadonnées légères
+déjà prévues pour la recherche.
+
+Une forme alternative enrichit l’entrée canonique existante : elle ne crée ni
+nouveau résultat ni nouvelle URL. Les résultats sont dédupliqués par famille
+et slug. Paragraphes éditoriaux, relations et notices de sources restent hors
+de l’index ; les y faire entrer demanderait toujours un chantier explicite de
+recherche plein texte.
 
 ---
 
@@ -648,7 +684,10 @@ du Guidebook et ne joint jamais Notion.
 
 | Je veux modifier…                          | Je commence par…                                   |
 | ------------------------------------------ | -------------------------------------------------- |
-| Nom, sous-titre ou publication             | `src/data/catalogues/<famille>.json`               |
+| Nom principal, sous-titre ou publication   | `src/data/catalogues/<famille>.json`               |
+| Forme originale, localisée ou alternative  | `src/data/<famille>/<slug>.json`                   |
+| Langue ou territoire fermé                 | `src/registry/identites`                           |
+| Projection commune d’une identité          | `src/lib/identites`                                |
 | Introduction ou fait détaillé              | `src/data/<famille>/<slug>.json`                   |
 | Métadonnées bibliographiques d’un document | `src/data/sources/sources.json`                    |
 | Distinction ou bénéficiaire                | `src/data/recompenses/recompenses.json`            |
