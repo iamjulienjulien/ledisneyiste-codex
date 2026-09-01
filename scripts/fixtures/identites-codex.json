@@ -8,6 +8,15 @@
                 "libelle": "Atchoum",
                 "langue": "fr"
             },
+            "originale": {
+                "libelle": "Sneezy",
+                "nature": "original",
+                "langue": "en",
+                "sources": [
+                    "d23-seven-dwarfs-personality",
+                    "d23-wish-animation-nods"
+                ]
+            },
             "documentees": [
                 {
                     "libelle": "Sneezy",
@@ -28,6 +37,12 @@
             "principale": {
                 "libelle": "La Reine",
                 "langue": "fr"
+            },
+            "originale": {
+                "libelle": "The Queen",
+                "nature": "original",
+                "langue": "en",
+                "sources": ["afi-snow-white", "d23-snow-white-film"]
             },
             "documentees": [
                 {
@@ -57,6 +72,13 @@
             "principale": {
                 "libelle": "Blanche-Neige et les Sept Nains",
                 "langue": "fr"
+            },
+            "originale": {
+                "libelle": "Snow White and the Seven Dwarfs",
+                "nature": "original",
+                "langue": "en",
+                "territoire": "US",
+                "sources": ["afi-snow-white", "d23-snow-white-film"]
             },
             "documentees": [
                 {

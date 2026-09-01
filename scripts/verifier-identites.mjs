@@ -38,7 +38,7 @@ function chaineNonVide(valeur) {
     return typeof valeur === "string" && valeur.trim().length > 0;
 }
 
-function normaliserIdentite(valeur) {
+let normaliserIdentite = (valeur) => {
     return valeur
         .toLocaleLowerCase("fr")
         .normalize("NFD")
@@ -47,7 +47,7 @@ function normaliserIdentite(valeur) {
         .replaceAll("æ", "ae")
         .replace(/[^a-z0-9]+/g, " ")
         .trim();
-}
+};
 
 function verifierDefinition(definition, contexte, erreurs) {
     if (!chaineNonVide(definition?.label)) {
@@ -237,6 +237,21 @@ function verifierProjection(
             }
             cles.add(cle);
         });
+
+        const originales = projection.documentees.filter(
+            (identite) => identite.nature === "original",
+        );
+        if (originales.length > 1) {
+            erreurs.push(`${contexte} : plusieurs identités originales`);
+        }
+        if (
+            JSON.stringify(projection.originale ?? null) !==
+            JSON.stringify(originales[0] ?? null)
+        ) {
+            erreurs.push(
+                `${contexte} : projection de l’identité originale incohérente`,
+            );
+        }
     }
 
     if (!Array.isArray(projection?.aliasesNavigation)) {
@@ -264,15 +279,185 @@ function verifierProjection(
     }
 }
 
+function restaurerIdentiteDocumentee(identite, champ) {
+    const { libelle, ...proprietes } = identite;
+
+    return {
+        [champ]: libelle,
+        ...proprietes,
+    };
+}
+
+function verifierProjectionsTemoins(fixture, projeterIdentiteCodex, erreurs) {
+    for (const [index, attendue] of fixture.projections.entries()) {
+        const estOeuvre = attendue.famille === "oeuvres";
+        const champ = estOeuvre ? "titre" : "nom";
+        const champListe = estOeuvre ? "titresAlternatifs" : "nomsAlternatifs";
+        const obtenue = projeterIdentiteCodex({
+            famille: attendue.famille,
+            entree: {
+                slug: attendue.slugCanonique,
+                nom: attendue.principale.libelle,
+            },
+            fiche: {
+                slug: attendue.slugCanonique,
+                [champListe]: attendue.documentees.map((identite) =>
+                    restaurerIdentiteDocumentee(identite, champ),
+                ),
+            },
+            identifiant: attendue.identifiant,
+            languePrincipale: attendue.principale.langue,
+            aliasesNavigation: attendue.aliasesNavigation,
+        });
+
+        if (JSON.stringify(obtenue) !== JSON.stringify(attendue)) {
+            erreurs.push(
+                `Fixture · projection ${index + 1} : le résolveur ne reproduit pas la bobine attendue`,
+            );
+        }
+    }
+}
+
+async function verifierJointuresArchives(projeterIdentiteCodex, erreurs) {
+    const configurations = [
+        {
+            famille: "personnages",
+            catalogue: "src/data/catalogues/personnages.json",
+            dossier: "src/data/personnages",
+        },
+        {
+            famille: "createurs",
+            catalogue: "src/data/catalogues/contributeurs.json",
+            dossier: "src/data/contributeurs",
+        },
+        {
+            famille: "oeuvres",
+            catalogue: "src/data/catalogues/oeuvres.json",
+            dossier: "src/data/oeuvres",
+        },
+        {
+            famille: "epoques",
+            catalogue: "src/data/catalogues/epoques.json",
+            dossier: "src/data/epoques",
+        },
+    ];
+    const projections = new Map();
+
+    for (const configuration of configurations) {
+        const catalogue = await lireJson(configuration.catalogue);
+        const fichiers = (
+            await readdir(path.join(racine, configuration.dossier))
+        )
+            .filter((fichier) => fichier.endsWith(".json"))
+            .sort();
+        const fiches = await Promise.all(
+            fichiers.map((fichier) =>
+                lireJson(`${configuration.dossier}/${fichier}`),
+            ),
+        );
+        const fichesParSlug = new Map(
+            fiches.map((fiche) => [fiche.slug, fiche]),
+        );
+
+        for (const entree of catalogue) {
+            const fiche = fichesParSlug.get(entree.slug);
+            let projection = null;
+
+            try {
+                projection = projeterIdentiteCodex({
+                    famille: configuration.famille,
+                    entree,
+                    fiche,
+                });
+            } catch (erreur) {
+                erreurs.push(
+                    `${configuration.famille}/${entree.slug} : ${erreur.message}`,
+                );
+                continue;
+            }
+
+            if (!projection) {
+                erreurs.push(
+                    `${configuration.famille}/${entree.slug} : jointure catalogue–fiche absente`,
+                );
+                continue;
+            }
+            if (
+                projection.identifiant !== null ||
+                projection.principale.langue !== null
+            ) {
+                erreurs.push(
+                    `${configuration.famille}/${entree.slug} : le résolveur invente une identité permanente ou une langue principale`,
+                );
+            }
+
+            projections.set(
+                `${configuration.famille}/${entree.slug}`,
+                projection,
+            );
+        }
+    }
+
+    const attentes = [
+        ["personnages/atchoum", "Sneezy", "original"],
+        ["personnages/blanche-neige", "Snow White", "original"],
+        ["personnages/la-reine", "The Evil Queen", "alias"],
+        ["personnages/le-chasseur", "Humbert", "alias"],
+        [
+            "oeuvres/snow-white-and-the-seven-dwarfs",
+            "Blanche-Neige et les Sept Nains",
+            "sortie-territoriale",
+        ],
+    ];
+
+    for (const [cle, libelle, nature] of attentes) {
+        const identite = projections
+            .get(cle)
+            ?.documentees.find((candidate) => candidate.libelle === libelle);
+        if (identite?.nature !== nature) {
+            erreurs.push(
+                `${cle} : identité représentative « ${libelle} » non résolue`,
+            );
+        }
+    }
+
+    const humbert = projections
+        .get("personnages/le-chasseur")
+        ?.documentees.find((identite) => identite.libelle === "Humbert");
+    if (humbert && "langue" in humbert) {
+        erreurs.push(
+            "personnages/le-chasseur : le résolveur invente une langue pour Humbert",
+        );
+    }
+
+    return projections.size;
+}
+
+async function verifierFrontiereServeur(erreurs) {
+    const chemin = "src/lib/identites/server/resoudre-identites.ts";
+    const source = await readFile(path.join(racine, chemin), "utf8");
+
+    if (!source.startsWith('import "server-only";')) {
+        erreurs.push(`${chemin} : frontière server-only absente`);
+    }
+}
+
 async function verifier() {
     const erreurs = [];
-    const [moduleLangues, moduleTerritoires, sources, fixture] =
-        await Promise.all([
-            chargerModuleTypeScript("src/registry/identites/langues.ts"),
-            chargerModuleTypeScript("src/registry/identites/territoires.ts"),
-            lireJson("src/data/sources/sources.json"),
-            lireJson("scripts/fixtures/identites-codex.json"),
-        ]);
+    const [
+        moduleLangues,
+        moduleTerritoires,
+        moduleProjection,
+        sources,
+        fixture,
+    ] = await Promise.all([
+        chargerModuleTypeScript("src/registry/identites/langues.ts"),
+        chargerModuleTypeScript("src/registry/identites/territoires.ts"),
+        chargerModuleTypeScript("src/lib/identites/projeter-identite.ts"),
+        lireJson("src/data/sources/sources.json"),
+        lireJson("scripts/fixtures/identites-codex.json"),
+    ]);
+    normaliserIdentite = moduleProjection.normaliserIdentiteCodex;
     const registreLangues = moduleLangues.languesCodex;
     const registreTerritoires = moduleTerritoires.territoiresCodex;
     const langues = new Set(Object.keys(registreLangues));
@@ -327,6 +512,27 @@ async function verifier() {
                 erreurs,
             ),
         );
+        verifierProjectionsTemoins(
+            fixture,
+            moduleProjection.projeterIdentiteCodex,
+            erreurs,
+        );
+    }
+
+    const jointures = await verifierJointuresArchives(
+        moduleProjection.projeterIdentiteCodex,
+        erreurs,
+    );
+    await verifierFrontiereServeur(erreurs);
+
+    if (
+        moduleProjection.projeterIdentiteCodex({
+            famille: "personnages",
+            entree: { slug: "absente", nom: "Absente" },
+            fiche: null,
+        }) !== null
+    ) {
+        erreurs.push("Résolveur : une fiche absente doit produire null");
     }
 
     const valeursCollision = fixture.collisionNormalisee?.valeurs;
@@ -343,6 +549,34 @@ async function verifier() {
         );
     }
 
+    let collisionSignalee = false;
+    try {
+        moduleProjection.projeterIdentiteCodex({
+            famille: "personnages",
+            entree: {
+                slug: "collision",
+                nom: valeursCollision?.[0] ?? "La Reine",
+            },
+            fiche: {
+                slug: "collision",
+                nomsAlternatifs: [
+                    {
+                        nom: valeursCollision?.[1] ?? "La-Reine",
+                        nature: "alias",
+                        sources: ["afi-snow-white"],
+                    },
+                ],
+            },
+        });
+    } catch {
+        collisionSignalee = true;
+    }
+    if (!collisionSignalee) {
+        erreurs.push(
+            "Résolveur : la collision normalisée témoin doit être signalée",
+        );
+    }
+
     if (erreurs.length > 0) {
         console.error("Échec de la vérification des identités :");
         for (const erreur of erreurs) {
@@ -353,7 +587,7 @@ async function verifier() {
     }
 
     console.log(
-        `Identités vérifiées : ${langues.size} langues, ${territoires.size} territoires, ${identitesPersonnages + identitesOeuvres} formes documentées et ${fixture.projections.length} projections témoins.`,
+        `Identités vérifiées : ${langues.size} langues, ${territoires.size} territoires, ${identitesPersonnages + identitesOeuvres} formes documentées, ${jointures} jointures catalogue–fiche et ${fixture.projections.length} projections témoins.`,
     );
 }
 
