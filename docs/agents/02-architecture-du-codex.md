@@ -181,6 +181,42 @@ une période parce que ce raccord serait narrativement séduisant.
 propres au produit : index, en-têtes de fiches, repères, chapitres, relations,
 récompenses, détails d’œuvre, citations et bibliographie.
 
+Le montage est réparti en quatre territoires explicites :
+
+```text
+src/components/codex/
+├── CodexIndex/
+│   ├── CodexIndexPage/
+│   ├── CodexIndexListItem/
+│   ├── CodexIndexViewSwitch/
+│   ├── CodexIndexPersonnageCard/
+│   ├── CodexIndexCreateurCard/
+│   ├── CodexIndexOeuvreCard/
+│   └── CodexIndexEpoqueCard/
+├── CodexFiche/
+│   ├── CodexFiche/
+│   ├── CodexFicheHeader/
+│   ├── CodexFicheReperes/
+│   ├── CodexFicheSection/
+│   └── sections métier spécialisées
+├── CodexLayout/
+│   └── CodexLayoutFooter/
+└── CodexCommon/
+    └── CodexCommonReferenceLink/
+```
+
+Les Cards restent dans `CodexIndex` parce qu’elles représentent une entrée au
+sein d’une collection ; la Recherche peut les réutiliser sans devenir leur
+propriétaire. Chaque composant commence par le nom exact de son territoire.
+Les territoires n’exposent pas de barrel global : un import pointe directement
+vers le dossier canonique du composant.
+
+`CodexIndex` et `CodexFiche` peuvent utiliser `CodexCommon`, `CodexLayout` et
+les primitives Pixie, mais ne se connaissent jamais directement.
+`CodexCommon` ne dépend d’aucun montage de page. Cette direction conserve une
+frontière lisible entre l’affichage des collections et le récit détaillé d’une
+entrée.
+
 Ces composants connaissent la manière de **présenter** une donnée du Codex.
 Ils ne doivent pas contenir une liste cachée de créateurs, une date canonique
 ou une nouvelle relation métier.
@@ -284,7 +320,7 @@ performance et la promesse faite au public.
 ## Le montage commun des index
 
 Les quatre routes d’index partagent
-[`CodexIndexPage`](../../src/components/codex/CodexIndexPage/). Le composant
+[`CodexIndexPage`](../../src/components/codex/CodexIndex/CodexIndexPage/). Le composant
 reçoit une famille, une identité éditoriale, un compteur, les commandes de vue
 et la collection à projeter. Il règle le fond de scène, le symbole, la couleur,
 la largeur, le rythme et le footer.
@@ -322,10 +358,10 @@ CodexFiche
 ├── CodexFicheHeader
 ├── CodexFicheReperes
 ├── sections métier spécialisées éventuelles
-├── CodexBlocsEditoriaux
-├── CodexRecompenses éventuelles
-├── CodexRelations éventuelles
-└── CodexSources
+├── CodexFicheBlocsEditoriaux
+├── CodexFicheRecompenses éventuelles
+├── CodexFicheRelations éventuelles
+└── CodexFicheSources
 ```
 
 - `CodexFiche` porte le thème de famille et le footer ;
@@ -333,9 +369,9 @@ CodexFiche
 - `CodexFicheReperes` projette les faits synthétiques dans une liste de
   description ;
 - `CodexFicheSection` fournit le rythme partagé des chapitres ;
-- `CodexBlocsEditoriaux` transforme les blocs narratifs en chapitres sourcés ;
+- `CodexFicheBlocsEditoriaux` transforme les blocs narratifs en chapitres sourcés ;
 - les composants spécialisés conservent leurs structures métier ;
-- `CodexSources` ferme la fiche avec la bibliographie résolue.
+- `CodexFicheSources` ferme la fiche avec la bibliographie résolue.
 
 La route reste le **chef de montage**. Elle décide de l’ordre des sections et
 réunit les données, tandis que les composants garantissent une présentation
@@ -344,7 +380,7 @@ premier cas particulier.
 
 ### Les Œuvres montrent la règle d’extension
 
-[`CodexOeuvreDetails`](../../src/components/codex/CodexOeuvreDetails/) projette
+[`CodexFicheOeuvreDetails`](../../src/components/codex/CodexFiche/CodexFicheOeuvreDetails/) projette
 seulement les groupes structurés présents dans la fiche : titres alternatifs,
 durées, production, sorties, données économiques, filiations ou générique
 regroupé.
@@ -383,8 +419,8 @@ fiche, parcourt récursivement ses structures, récupère chaque tableau nommé
 ensuite dans le registre central.
 
 Cette collecte permet à une citation locale et à la bibliographie finale de
-partager la même numérotation. `CodexSourceCitations` pointe vers l’ancre créée
-par `CodexSources` au bas de la fiche.
+partager la même numérotation. `CodexFicheSourceCitations` pointe vers l’ancre créée
+par `CodexFicheSources` au bas de la fiche.
 
 Attention : une donnée transversale résolue **en dehors** de la fiche n’entre
 pas automatiquement dans ce parcours. Les pages Œuvres et Créateurs ajoutent
@@ -768,18 +804,18 @@ réellement la phrase écrite. Cette vérification reste éditoriale.
 
 ## Fichiers à ouvrir en premier
 
-| Besoin                          | Point d’entrée recommandé                                                                                                          |
-| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| Comprendre une entrée légère    | [`src/data/catalogues/index.ts`](../../src/data/catalogues/index.ts)                                                               |
-| Comprendre une fiche            | [`src/types/fiche.ts`](../../src/types/fiche.ts) puis le type de sa famille                                                        |
-| Résoudre une référence          | [`src/types/reference.ts`](../../src/types/reference.ts) et [`CodexReferenceLink`](../../src/components/codex/CodexReferenceLink/) |
-| Suivre les sources d’une fiche  | [`src/lib/source.ts`](../../src/lib/source.ts)                                                                                     |
-| Comprendre un index             | [`CodexIndexPage`](../../src/components/codex/CodexIndexPage/) puis sa route                                                       |
-| Comprendre une fiche publique   | la route `[slug]` de sa famille puis [`src/components/codex`](../../src/components/codex/)                                         |
-| Comprendre une relation dérivée | [`src/data/relations.ts`](../../src/data/relations.ts) et les résolveurs spécialisés                                               |
-| Comprendre la matière des Plans | [`src/lib/plans/archives.ts`](../../src/lib/plans/archives.ts) puis [`src/lib/plans`](../../src/lib/plans/)                        |
-| Comprendre le Guidebook         | [`src/types/guidebook.ts`](../../src/types/guidebook.ts) puis [`src/lib/guidebook`](../../src/lib/guidebook/)                      |
-| Comprendre les garde-fous       | [`package.json`](../../package.json) et [`scripts`](../../scripts/)                                                                |
+| Besoin                          | Point d’entrée recommandé                                                                                                                                  |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Comprendre une entrée légère    | [`src/data/catalogues/index.ts`](../../src/data/catalogues/index.ts)                                                                                       |
+| Comprendre une fiche            | [`src/types/fiche.ts`](../../src/types/fiche.ts) puis le type de sa famille                                                                                |
+| Résoudre une référence          | [`src/types/reference.ts`](../../src/types/reference.ts) et [`CodexCommonReferenceLink`](../../src/components/codex/CodexCommon/CodexCommonReferenceLink/) |
+| Suivre les sources d’une fiche  | [`src/lib/source.ts`](../../src/lib/source.ts)                                                                                                             |
+| Comprendre un index             | [`CodexIndexPage`](../../src/components/codex/CodexIndex/CodexIndexPage/) puis sa route                                                                    |
+| Comprendre une fiche publique   | la route `[slug]` de sa famille puis [`src/components/codex`](../../src/components/codex/)                                                                 |
+| Comprendre une relation dérivée | [`src/data/relations.ts`](../../src/data/relations.ts) et les résolveurs spécialisés                                                                       |
+| Comprendre la matière des Plans | [`src/lib/plans/archives.ts`](../../src/lib/plans/archives.ts) puis [`src/lib/plans`](../../src/lib/plans/)                                                |
+| Comprendre le Guidebook         | [`src/types/guidebook.ts`](../../src/types/guidebook.ts) puis [`src/lib/guidebook`](../../src/lib/guidebook/)                                              |
+| Comprendre les garde-fous       | [`package.json`](../../package.json) et [`scripts`](../../scripts/)                                                                                        |
 
 Ce chapitre décrit les responsabilités. Les règles impératives demeurent dans
 [`AGENTS.md`](../../AGENTS.md), et l’état fonctionnel du projet dans

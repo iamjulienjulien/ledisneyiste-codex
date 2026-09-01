@@ -676,7 +676,7 @@ autour d’elle sans besoin supplémentaire.
         <p className="font-eyebrow">Archives</p>
         <h2>Les premières images retrouvent leur contexte</h2>
     </header>
-    <CodexBlocsEditoriaux blocs={blocs} />
+    <CodexFicheBlocsEditoriaux blocs={blocs} />
 </PixieSection>
 ```
 

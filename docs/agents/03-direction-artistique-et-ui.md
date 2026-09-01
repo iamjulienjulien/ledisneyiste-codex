@@ -505,7 +505,7 @@ commun.
 ### Le Footer
 
 Le footer développé de la home prolonge la narration et les chemins
-d’exploration. Les autres pages utilisent `CodexFooter`, plus court, avec une
+d’exploration. Les autres pages utilisent `CodexLayoutFooter`, plus court, avec une
 marge supérieure destinée à séparer clairement le générique du dernier bloc
 documentaire.
 

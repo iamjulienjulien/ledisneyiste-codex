@@ -199,6 +199,29 @@ src/components/<famille>/<NomComposant>/
 - aucun fichier de composant ne doit être posé directement à la racine de
   `components/ui`, `components/atelier` ou `components/codex`.
 
+Les composants métier du Codex ajoutent un territoire de responsabilité avant
+le dossier du composant :
+
+```text
+src/components/codex/
+├── CodexIndex/     pages, listes et Cards des collections publiques
+├── CodexFiche/     montage et sections des fiches publiques
+├── CodexLayout/    éléments de cadre communs aux routes publiques
+└── CodexCommon/    compositions métier partagées entre plusieurs territoires
+```
+
+- un territoire organise les responsabilités ; ce n’est pas un composant et
+  il ne possède pas de barrel global ;
+- chaque composant commence par le nom exact de son territoire :
+  `CodexIndex…`, `CodexFiche…`, `CodexLayout…` ou `CodexCommon…` ;
+- les consommateurs importent directement le dossier canonique du composant ;
+- `CodexIndex` et `CodexFiche` peuvent dépendre de `CodexCommon`,
+  `CodexLayout` et des primitives Pixie, mais ne s’importent jamais
+  mutuellement ;
+- `CodexLayout` peut dépendre de `CodexCommon` et de Pixie ;
+- `CodexCommon` ne dépend ni de `CodexIndex` ni de `CodexFiche` ;
+- la route reste chef de montage et fournit les données aux composants Codex.
+
 Exemple :
 
 ```ts
@@ -210,7 +233,10 @@ import { PixieSymbol } from "@/components/ui/PixieSymbol";
 - `src/components/ui` : `PixieDust…` pour une esquisse, `Pixie…` pour une
   primitive prête à projeter ;
 - `src/components/atelier` : `Atelier…` ;
-- `src/components/codex` : `Codex…`.
+- `src/components/codex/CodexIndex` : `CodexIndex…` ;
+- `src/components/codex/CodexFiche` : `CodexFiche…` ;
+- `src/components/codex/CodexLayout` : `CodexLayout…` ;
+- `src/components/codex/CodexCommon` : `CodexCommon…`.
 
 Une promotion `PixieDust` → `Pixie` met à jour dans le même chantier le nom du
 composant, son dossier, ses fichiers, ses exports, ses imports, sa version, son

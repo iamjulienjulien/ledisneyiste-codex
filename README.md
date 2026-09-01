@@ -149,6 +149,10 @@ src/
 ├── components/
 │   ├── atelier/
 │   ├── codex/
+│   │   ├── CodexCommon/
+│   │   ├── CodexFiche/
+│   │   ├── CodexIndex/
+│   │   └── CodexLayout/
 │   └── ui/
 │
 ├── data/
@@ -182,8 +186,9 @@ src/
 ```
 
 Chaque composant de `src/components` possède son sous-dossier `PascalCase`,
-son fichier TSX, son module CSS et son barrel public. Les conventions complètes
-restent centralisées dans [`AGENTS.md`](./AGENTS.md).
+son fichier TSX, son module CSS, ses types locaux et son barrel public. Les
+composants métier héritent du préfixe de leur territoire Codex. Les conventions
+complètes restent centralisées dans [`AGENTS.md`](./AGENTS.md).
 
 ---
 
@@ -292,7 +297,7 @@ relations avec les œuvres sources ou préparatoires
 contributions regroupées par domaine
 ```
 
-`CodexOeuvreDetails` transforme uniquement les groupes présents en chapitres de
+`CodexFicheOeuvreDetails` transforme uniquement les groupes présents en chapitres de
 fiche. Les champs restent optionnels : les courts métrages plus simples ne sont
 pas contraints de simuler la richesse documentaire d'un long métrage.
 
@@ -308,10 +313,10 @@ Un bloc éditorial ou une donnée structurée peut porter sa propre liste
 les sources générales et les déduplique avant leur résolution dans le registre
 central.
 
-`CodexSourceCitations` projette ensuite les appels numérotés au plus près de ce
+`CodexFicheSourceCitations` projette ensuite les appels numérotés au plus près de ce
 qu'ils documentent : au bas d'un chapitre éditorial, d'un titre alternatif,
 d'une durée, d'une sortie, d'un chiffre ou d'une relation. Chaque numéro mène à
-l'ancre correspondante dans `CodexSources`, qui conserve le titre, l'auteur,
+l'ancre correspondante dans `CodexFicheSources`, qui conserve le titre, l'auteur,
 l'éditeur, la date et le lien de consultation de la source.
 
 Ainsi, la bibliographie reste centralisée sans détacher la preuve du passage ou
@@ -445,7 +450,7 @@ appels à l’action, affichent leur compteur dans un badge et font apparaître 
 halo de projecteur au survol.
 
 Son générique développé rassemble les chemins d’exploration, la mention
-d’indépendance et la signature du projet. Un `CodexFooter` plus court prolonge
+d’indépendance et la signature du projet. Un `CodexLayoutFooter` plus court prolonge
 ce raccord sur les index, les fiches, la recherche et les pages égarées.
 
 La recherche reprend désormais le même cadre de projection : son ouverture et
