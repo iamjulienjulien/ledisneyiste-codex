@@ -78,6 +78,8 @@ const naturesRelations = new Set([
     "source",
     "preparation",
     "adaptation",
+    "inspiration",
+    "influence",
     "suite",
     "remake",
     "derivee",
@@ -693,6 +695,15 @@ function verifierRelations(fiche, contexte, idsSources, erreurs) {
             ) {
                 erreurs.push(`${contexteRelation} : date extérieure invalide`);
             }
+        } else if (relation.oeuvre.type === "oeuvre-source") {
+            if (
+                !chaineNonVide(relation.oeuvre.id) ||
+                !chaineNonVide(relation.oeuvre.slug)
+            ) {
+                erreurs.push(
+                    `${contexteRelation} : identité de l’œuvre source absente`,
+                );
+            }
         } else {
             erreurs.push(
                 `${contexteRelation} : type d’œuvre inconnu « ${relation.oeuvre?.type} »`,
@@ -828,6 +839,16 @@ async function verifier() {
         erreurs,
     );
 
+    const fixtureOeuvresSources = await lireJson(
+        "scripts/fixtures/oeuvres-sources.json",
+    );
+    verifierFiche(
+        fixtureOeuvresSources.oeuvre,
+        "Fixture des Œuvres sources",
+        new Set(fixtureOeuvresSources.sources.map((source) => source.id)),
+        erreurs,
+    );
+
     if (erreurs.length > 0) {
         console.error("Échec de la vérification des Œuvres :");
         for (const erreur of erreurs) {
@@ -838,7 +859,7 @@ async function verifier() {
     }
 
     console.log(
-        `Œuvres vérifiées : ${fichiers.length} fiches et 2 fixtures privées.`,
+        `Œuvres vérifiées : ${fichiers.length} fiches et 3 fixtures privées.`,
     );
 }
 

@@ -1,0 +1,123 @@
+{
+    "sources": [
+        {
+            "id": "fixture-source-collodi-identite",
+            "titre": "Notice privée · identité de l’œuvre de Collodi"
+        },
+        {
+            "id": "fixture-source-collodi-date",
+            "titre": "Notice privée · publication de l’œuvre de Collodi"
+        },
+        {
+            "id": "fixture-source-grimm",
+            "titre": "Notice privée · conte des frères Grimm"
+        },
+        {
+            "id": "fixture-source-pinocchio-relation",
+            "titre": "Notice privée · relation d’adaptation de Pinocchio"
+        }
+    ],
+    "fiches": [
+        {
+            "id": "oeuvre-source-collodi-pinocchio",
+            "slug": "le-avventure-di-pinocchio",
+            "identite": {
+                "libelle": "Le avventure di Pinocchio",
+                "nature": "original",
+                "langue": "it",
+                "territoire": "IT",
+                "sources": ["fixture-source-collodi-identite"]
+            },
+            "identitesAlternatives": [
+                {
+                    "libelle": "Les Aventures de Pinocchio",
+                    "nature": "localise",
+                    "langue": "fr",
+                    "territoire": "FR",
+                    "sources": ["fixture-source-collodi-identite"]
+                }
+            ],
+            "auteurs": [
+                {
+                    "nom": "Carlo Collodi",
+                    "role": "auteur",
+                    "sources": ["fixture-source-collodi-identite"]
+                }
+            ],
+            "date": {
+                "valeur": "1883",
+                "precision": "annee"
+            },
+            "nature": "roman",
+            "support": "livre",
+            "sources": [
+                "fixture-source-collodi-identite",
+                "fixture-source-collodi-date"
+            ]
+        },
+        {
+            "id": "oeuvre-source-grimm-schneewittchen",
+            "slug": "schneewittchen",
+            "identite": {
+                "libelle": "Schneewittchen",
+                "nature": "original",
+                "sources": ["fixture-source-grimm"]
+            },
+            "identitesAlternatives": [
+                {
+                    "libelle": "Blanche-Neige",
+                    "nature": "localise",
+                    "langue": "fr",
+                    "territoire": "FR",
+                    "sources": ["fixture-source-grimm"]
+                }
+            ],
+            "auteurs": [
+                {
+                    "nom": "Jacob Grimm",
+                    "role": "co-auteur",
+                    "sources": ["fixture-source-grimm"]
+                },
+                {
+                    "nom": "Wilhelm Grimm",
+                    "role": "co-auteur",
+                    "sources": ["fixture-source-grimm"]
+                }
+            ],
+            "date": {
+                "valeur": "1812",
+                "precision": "annee"
+            },
+            "nature": "conte",
+            "support": "livre",
+            "sources": ["fixture-source-grimm"]
+        }
+    ],
+    "oeuvre": {
+        "slug": "fixture-pinocchio-oeuvre-source",
+        "type": "oeuvre",
+        "introduction": "Fixture privée éprouvant une relation résolue vers une Œuvre source sans lui ouvrir de route publique.",
+        "sortie": {
+            "date": {
+                "valeur": "1940-02-07",
+                "precision": "jour"
+            }
+        },
+        "format": "long métrage d’animation",
+        "relationsOeuvres": [
+            {
+                "nature": "adaptation",
+                "oeuvre": {
+                    "nom": "Le avventure di Pinocchio",
+                    "type": "oeuvre-source",
+                    "id": "oeuvre-source-collodi-pinocchio",
+                    "slug": "le-avventure-di-pinocchio"
+                },
+                "sources": ["fixture-source-pinocchio-relation"]
+            }
+        ],
+        "contributions": [],
+        "personnages": [],
+        "sources": ["fixture-source-pinocchio-relation"]
+    }
+}
