@@ -7,6 +7,7 @@ import type {
 } from "@/types/metadata";
 import type { DateHistorique, PeriodeHistorique } from "@/types/date";
 import type { FicheCodexBase } from "@/types/fiche";
+import type { TitreAlternatifCodex } from "@/types/identite";
 import type { ReferenceCodex } from "@/types/reference";
 
 export type OeuvreDisney = EntreeCatalogueBase & {
@@ -36,13 +37,7 @@ export type DomaineCreditOeuvre =
     | "innovations-techniques"
     | "reference-filmee";
 
-export type TitreAlternatifOeuvre = {
-    titre: string;
-    nature: "original" | "international" | "sortie-territoriale";
-    langue?: string;
-    territoire?: string;
-    sources: string[];
-};
+export type TitreAlternatifOeuvre = TitreAlternatifCodex;
 
 export type DureeOeuvre = {
     valeur: number;

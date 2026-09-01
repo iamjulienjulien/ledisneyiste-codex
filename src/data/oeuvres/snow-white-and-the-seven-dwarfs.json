@@ -7,7 +7,7 @@
             "titre": "Blanche-Neige et les Sept Nains",
             "nature": "sortie-territoriale",
             "langue": "fr",
-            "territoire": "France",
+            "territoire": "FR",
             "sources": ["cnc-snow-white", "retronews-snow-white"]
         }
     ],

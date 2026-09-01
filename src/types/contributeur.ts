@@ -2,6 +2,7 @@ import type { EntreeCatalogueBase } from "@/types/codex";
 import type { CategorieContributeurDisney } from "@/types/metadata";
 import type { DateHistorique } from "@/types/date";
 import type { FicheCodexBase } from "@/types/fiche";
+import type { NomAlternatifCodex } from "@/types/identite";
 
 export type ContributeurDisney = EntreeCatalogueBase & {
     type: "contributeur";
@@ -17,6 +18,8 @@ export type PeriodeActiviteDisney = {
 
 export type FicheContributeurDisney = FicheCodexBase<"createurs"> & {
     type: "contributeur";
+
+    nomsAlternatifs?: NomAlternatifCodex[];
 
     naissance: {
         date: DateHistorique;

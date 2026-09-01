@@ -2,6 +2,10 @@ import type { EntreeCatalogueBase } from "@/types/codex";
 import type { CategoriePersonnageDisney } from "@/types/metadata";
 import type { DateHistorique } from "@/types/date";
 import type { FicheCodexBase } from "@/types/fiche";
+import type {
+    NatureNomAlternatifCodex,
+    NomAlternatifCodex,
+} from "@/types/identite";
 import type { ReferenceCodex } from "@/types/reference";
 
 export type PersonnageDisney = EntreeCatalogueBase & {
@@ -11,16 +15,9 @@ export type PersonnageDisney = EntreeCatalogueBase & {
     };
 };
 
-export type NatureNomAlternatifPersonnage =
-    "original" | "localise" | "alias" | "ancien";
+export type NatureNomAlternatifPersonnage = NatureNomAlternatifCodex;
 
-export type NomAlternatifPersonnage = {
-    nom: string;
-    nature: NatureNomAlternatifPersonnage;
-    langue?: string;
-    territoire?: string;
-    sources: string[];
-};
+export type NomAlternatifPersonnage = NomAlternatifCodex;
 
 export type FormePersonnage = {
     slug: string;
