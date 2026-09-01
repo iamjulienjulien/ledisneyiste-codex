@@ -6,12 +6,12 @@ import { CodexIndexOeuvreCard } from "@/components/codex/CodexIndex/CodexIndexOe
 import { CodexIndexPersonnageCard } from "@/components/codex/CodexIndex/CodexIndexPersonnageCard";
 import { PixieBackdrop } from "@/components/ui/PixieBackdrop";
 import { PixieBadge } from "@/components/ui/PixieBadge";
-import { PixieButton } from "@/components/ui/PixieButton";
 import { PixieCallout } from "@/components/ui/PixieCallout";
 import { PixieCluster } from "@/components/ui/PixieCluster";
 import { PixieFrame } from "@/components/ui/PixieFrame";
 import { PixieGrid } from "@/components/ui/PixieGrid";
 import { PixiePanel } from "@/components/ui/PixiePanel";
+import { PixieSearchField } from "@/components/ui/PixieSearchField";
 import { PixieSection } from "@/components/ui/PixieSection";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PixieStack } from "@/components/ui/PixieStack";
@@ -128,57 +128,39 @@ export default async function RecherchePage({
                     elevation="soft"
                     className={styles.searchPanel}
                 >
-                    <form action="/recherche" method="get" role="search">
-                        <PixieStack gap="md">
-                            <PixieStack gap="xs">
-                                <p className={styles.formEyebrow}>
-                                    Régie de recherche
-                                </p>
-                                <h2
-                                    id="recherche-form-title"
-                                    className={styles.formTitle}
-                                >
-                                    Quel sujet souhaitez-vous éclairer ?
-                                </h2>
-                            </PixieStack>
-
-                            <label
-                                htmlFor="recherche-q"
-                                className={styles.label}
-                            >
-                                Mots-clés
-                            </label>
-
-                            <div className={styles.searchControls}>
-                                <input
-                                    id="recherche-q"
-                                    name="q"
-                                    type="search"
-                                    defaultValue={requete}
-                                    placeholder="Mickey, animateur, Silly Symphonies…"
-                                    autoComplete="off"
-                                    enterKeyHint="search"
-                                    aria-describedby="recherche-aide"
-                                    className={styles.input}
-                                />
-
-                                <PixieButton
-                                    type="submit"
-                                    size="lg"
-                                    color="ambre-projecteur"
-                                    className={styles.searchButton}
-                                >
-                                    Lancer la recherche
-                                </PixieButton>
-                            </div>
-
-                            <p id="recherche-aide" className={styles.helper}>
-                                Accents et majuscules sont ignorés. Tous les
-                                mots saisis doivent apparaître dans la même
-                                archive.
+                    <PixieStack gap="md">
+                        <PixieStack gap="xs">
+                            <p className={styles.formEyebrow}>
+                                Régie de recherche
                             </p>
+                            <h2
+                                id="recherche-form-title"
+                                className={styles.formTitle}
+                            >
+                                Quel sujet souhaitez-vous éclairer ?
+                            </h2>
                         </PixieStack>
-                    </form>
+
+                        <PixieSearchField
+                            label="Mots-clés"
+                            id="recherche-q"
+                            name="q"
+                            action="/recherche"
+                            method="get"
+                            defaultValue={requete}
+                            placeholder="Mickey, animateur, Silly Symphonies…"
+                            description="Accents et majuscules sont ignorés. Tous les mots saisis doivent apparaître dans la même archive."
+                            variant="outline"
+                            size="lg"
+                            shape="rounded"
+                            color="ambre-projecteur"
+                            composition="separate"
+                            layout="responsive"
+                            submitLabel="Lancer la recherche"
+                            autoComplete="off"
+                            enterKeyHint="search"
+                        />
+                    </PixieStack>
                 </PixiePanel>
 
                 <PixieSeparator
