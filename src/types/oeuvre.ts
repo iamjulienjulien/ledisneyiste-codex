@@ -96,10 +96,23 @@ export type ReferenceOeuvreLiee =
           type: "oeuvre-exterieure";
           auteurs?: string[];
           date?: DateHistorique;
+      }
+    | {
+          nom: string;
+          type: "oeuvre-source";
+          id: string;
+          slug: string;
       };
 
 export type NatureRelationOeuvre =
-    "source" | "preparation" | "adaptation" | "suite" | "remake" | "derivee";
+    | "source"
+    | "preparation"
+    | "adaptation"
+    | "inspiration"
+    | "influence"
+    | "suite"
+    | "remake"
+    | "derivee";
 
 export type RelationOeuvre = {
     nature: NatureRelationOeuvre;

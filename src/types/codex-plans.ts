@@ -12,6 +12,7 @@ import type {
 } from "@/types/personnage";
 import type { RecompenseDisney } from "@/types/recompense";
 import type { SourceCodex } from "@/types/source";
+import type { RegistreOeuvresSources } from "@/types/oeuvre-source";
 
 export const CODEX_PLAN_SLUGS = [
     "travelling-documentaire",
@@ -127,6 +128,7 @@ export type CodexPlanEntityKind =
     | "epoque"
     | "recompense"
     | "source"
+    | "oeuvre-source"
     | "oeuvre-exterieure"
     | "reference-non-resolue";
 
@@ -334,6 +336,7 @@ export type CodexPlanArchives = Readonly<{
     }>;
     recompenses: readonly RecompenseDisney[];
     sources: readonly SourceCodex[];
+    oeuvresSources?: RegistreOeuvresSources;
 }>;
 
 export type CodexPlanConfiguration = Readonly<{
