@@ -55,7 +55,7 @@ export type TitreAlternatifCodex = IdentiteDocumenteeCodex<
 
 export type IdentitePrincipaleCodex = {
     libelle: string;
-    langue: CodeLangueCodex;
+    langue: CodeLangueCodex | null;
 };
 
 export type AliasNavigationCodex = {
@@ -65,10 +65,11 @@ export type AliasNavigationCodex = {
 
 export type ProjectionIdentiteCodex<Famille extends string = CodexFamily> =
     Readonly<{
-        identifiant: string;
+        identifiant: string | null;
         famille: Famille;
         slugCanonique: string;
         principale: IdentitePrincipaleCodex;
-        documentees: IdentiteDocumenteeCodex<"libelle">[];
-        aliasesNavigation: AliasNavigationCodex[];
+        originale: IdentiteDocumenteeCodex<"libelle"> | null;
+        documentees: readonly IdentiteDocumenteeCodex<"libelle">[];
+        aliasesNavigation: readonly AliasNavigationCodex[];
     }>;

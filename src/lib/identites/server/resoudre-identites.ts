@@ -1,0 +1,76 @@
+import "server-only";
+
+import {
+    contributeurs,
+    epoques,
+    oeuvres,
+    personnages,
+} from "@/data/catalogues";
+import { fichesContributeurs } from "@/data/contributeurs";
+import { fichesEpoques } from "@/data/epoques";
+import { fichesOeuvres } from "@/data/oeuvres";
+import { fichesPersonnages } from "@/data/personnages";
+import {
+    projeterIdentiteCodex,
+    type EntreeIdentitaireCodex,
+    type FicheIdentitaireCodex,
+} from "@/lib/identites/projeter-identite";
+import type { CodexFamily } from "@/types/codex";
+import type { ProjectionIdentiteCodex } from "@/types/identite";
+
+type ArchivesIdentitairesCodex = Readonly<{
+    catalogue: readonly EntreeIdentitaireCodex[];
+    fiches: readonly FicheIdentitaireCodex[];
+}>;
+
+const archivesIdentitaires: Record<CodexFamily, ArchivesIdentitairesCodex> = {
+    personnages: {
+        catalogue: personnages,
+        fiches: fichesPersonnages,
+    },
+    createurs: {
+        catalogue: contributeurs,
+        fiches: fichesContributeurs,
+    },
+    oeuvres: {
+        catalogue: oeuvres,
+        fiches: fichesOeuvres,
+    },
+    epoques: {
+        catalogue: epoques,
+        fiches: fichesEpoques,
+    },
+};
+
+export function resoudreIdentiteCodex(
+    famille: CodexFamily,
+    slug: string,
+): ProjectionIdentiteCodex | null {
+    const archives = archivesIdentitaires[famille];
+    const entree = archives.catalogue.find(
+        (candidate) => candidate.slug === slug,
+    );
+    const fiche = archives.fiches.find((candidate) => candidate.slug === slug);
+
+    return projeterIdentiteCodex({
+        famille,
+        entree,
+        fiche,
+    });
+}
+
+export function listerIdentitesCodex(
+    famille: CodexFamily,
+): readonly ProjectionIdentiteCodex[] {
+    return archivesIdentitaires[famille].catalogue.map((entree) => {
+        const projection = resoudreIdentiteCodex(famille, entree.slug);
+
+        if (!projection) {
+            throw new Error(
+                `L’Archive « ${famille}/${entree.slug} » ne possède pas ses deux moitiés catalogue–fiche.`,
+            );
+        }
+
+        return projection;
+    });
+}
