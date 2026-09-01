@@ -1,0 +1,731 @@
+{
+    "schemaVersion": "1.0.0",
+    "title": "Acte VI · Phase 2 · Manifeste de rétroapplication",
+    "status": "approved",
+    "measuredAt": "2026-09-01",
+    "baselineCommit": "68c1fd9",
+    "owner": "R2-D2",
+    "implementationPhase": 5,
+    "constraints": {
+        "writesProductData": false,
+        "changesRoutes": false,
+        "createsCatalogues": false
+    },
+    "depths": {
+        "R1": "Migration structurelle sans enrichissement éditorial imposé.",
+        "R2": "Migration structurelle, identité localisée sourcée et relations ciblées.",
+        "R3": "Échantillon complet couvrant identité, relations, sorties, versions et contenus progressifs pertinents."
+    },
+    "profiles": {
+        "oeuvre-existante": {
+            "migration": [
+                "adopter le contrat d’identité localisable de Phase 3",
+                "conserver la route historique /oeuvres/[slug]",
+                "documenter le titre français principal, le titre original et leur provenance",
+                "résoudre les relations applicables vers chansons, créateurs, personnages, époque, récompenses et sources"
+            ],
+            "completion": [
+                "23 fiches sur 23 valident le futur contrat",
+                "23 routes historiques sur 23 restent résolues",
+                "aucun titre localisé ne fabrique une seconde route canonique"
+            ]
+        },
+        "personnage-existant": {
+            "migration": [
+                "adopter le contrat d’identité localisable de Phase 3",
+                "conserver la route historique /personnages/[slug]",
+                "documenter le nom français principal, le nom original et leur provenance",
+                "résoudre les relations applicables vers œuvres, créateurs, chansons, époque et sources"
+            ],
+            "completion": [
+                "22 fiches sur 22 valident le futur contrat",
+                "22 routes historiques sur 22 restent résolues",
+                "aucun nom localisé ne fabrique une seconde route canonique"
+            ]
+        },
+        "createur-existant": {
+            "migration": [
+                "conserver la route et l’identité canonique existantes",
+                "ajouter uniquement les contributions à Pinocchio ou les comparaisons effectivement sourcées",
+                "relier la personne aux nouvelles œuvres, chansons ou personnages sans recopier les relations inverses"
+            ],
+            "completion": [
+                "19 fiches ciblées sur 19 reçoivent un verdict enrichi, inchangé ou reporté",
+                "chaque contribution ajoutée possède une source adaptée",
+                "aucune relation inverse n’est stockée deux fois"
+            ]
+        },
+        "chanson-retrospective": {
+            "migration": [
+                "créer une entrée du futur catalogue Chansons",
+                "documenter titre français, titre original, occurrence, auteurs et provenance",
+                "relier la chanson à son œuvre d’origine et aux personnes publiées"
+            ],
+            "completion": [
+                "4 chansons rétrospectives sur 4 sont publiées",
+                "chaque chanson possède une occurrence d’origine",
+                "aucune publication audio ou lyrique n’est présumée"
+            ]
+        },
+        "epoque-existante": {
+            "migration": [
+                "conserver l’époque et ses bornes existantes",
+                "enrichir le récit avec Pinocchio sans recopier la fiche Œuvre",
+                "résoudre les relations temporelles par les fonctions existantes"
+            ],
+            "completion": [
+                "Pinocchio se rattache à l’époque existante",
+                "aucune nouvelle époque n’est créée",
+                "les bornes temporelles restent inchangées sauf preuve nouvelle"
+            ]
+        }
+    },
+    "entries": [
+        {
+            "family": "oeuvres",
+            "slug": "alices-wonderland",
+            "profile": "oeuvre-existante",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "identite-localisee-a-rechercher",
+            "exception": null
+        },
+        {
+            "family": "oeuvres",
+            "slug": "trolley-troubles",
+            "profile": "oeuvre-existante",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "identite-localisee-a-rechercher",
+            "exception": null
+        },
+        {
+            "family": "oeuvres",
+            "slug": "steamboat-willie",
+            "profile": "oeuvre-existante",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "identite-localisee-a-rechercher",
+            "exception": null
+        },
+        {
+            "family": "oeuvres",
+            "slug": "the-gallopin-gaucho",
+            "profile": "oeuvre-existante",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "identite-localisee-a-rechercher",
+            "exception": null
+        },
+        {
+            "family": "oeuvres",
+            "slug": "plane-crazy",
+            "profile": "oeuvre-existante",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "identite-localisee-a-rechercher",
+            "exception": null
+        },
+        {
+            "family": "oeuvres",
+            "slug": "the-skeleton-dance",
+            "profile": "oeuvre-existante",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "identite-localisee-a-rechercher",
+            "exception": null
+        },
+        {
+            "family": "oeuvres",
+            "slug": "the-chain-gang",
+            "profile": "oeuvre-existante",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "identite-localisee-a-rechercher",
+            "exception": null
+        },
+        {
+            "family": "oeuvres",
+            "slug": "mickeys-revue",
+            "profile": "oeuvre-existante",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "identite-localisee-a-rechercher",
+            "exception": null
+        },
+        {
+            "family": "oeuvres",
+            "slug": "flowers-and-trees",
+            "profile": "oeuvre-existante",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "identite-localisee-a-rechercher",
+            "exception": null
+        },
+        {
+            "family": "oeuvres",
+            "slug": "three-little-pigs",
+            "profile": "oeuvre-existante",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "chanson-et-identite-a-completer",
+            "exception": "oeuvre-du-noyau-retrospectif-chansons"
+        },
+        {
+            "family": "oeuvres",
+            "slug": "the-wise-little-hen",
+            "profile": "oeuvre-existante",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "identite-localisee-a-rechercher",
+            "exception": null
+        },
+        {
+            "family": "oeuvres",
+            "slug": "orphans-benefit",
+            "profile": "oeuvre-existante",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "identite-localisee-a-rechercher",
+            "exception": null
+        },
+        {
+            "family": "oeuvres",
+            "slug": "the-goddess-of-spring",
+            "profile": "oeuvre-existante",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "identite-localisee-a-rechercher",
+            "exception": null
+        },
+        {
+            "family": "oeuvres",
+            "slug": "the-tortoise-and-the-hare",
+            "profile": "oeuvre-existante",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "identite-localisee-a-rechercher",
+            "exception": null
+        },
+        {
+            "family": "oeuvres",
+            "slug": "the-band-concert",
+            "profile": "oeuvre-existante",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "identite-localisee-a-rechercher",
+            "exception": null
+        },
+        {
+            "family": "oeuvres",
+            "slug": "three-orphan-kittens",
+            "profile": "oeuvre-existante",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "identite-localisee-a-rechercher",
+            "exception": null
+        },
+        {
+            "family": "oeuvres",
+            "slug": "the-country-cousin",
+            "profile": "oeuvre-existante",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "identite-localisee-a-rechercher",
+            "exception": null
+        },
+        {
+            "family": "oeuvres",
+            "slug": "clock-cleaners",
+            "profile": "oeuvre-existante",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "identite-localisee-a-rechercher",
+            "exception": null
+        },
+        {
+            "family": "oeuvres",
+            "slug": "the-old-mill",
+            "profile": "oeuvre-existante",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "identite-localisee-a-rechercher",
+            "exception": null
+        },
+        {
+            "family": "oeuvres",
+            "slug": "snow-white-and-the-seven-dwarfs",
+            "profile": "oeuvre-existante",
+            "depth": "R3",
+            "currentState": "partiel",
+            "sourcesState": "titre-francais-present-autres-axes-a-completer",
+            "exception": "echantillon-principal-de-retroapplication"
+        },
+        {
+            "family": "oeuvres",
+            "slug": "ferdinand-the-bull",
+            "profile": "oeuvre-existante",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "identite-localisee-a-rechercher",
+            "exception": null
+        },
+        {
+            "family": "oeuvres",
+            "slug": "mr-duck-steps-out",
+            "profile": "oeuvre-existante",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "identite-localisee-a-rechercher",
+            "exception": null
+        },
+        {
+            "family": "oeuvres",
+            "slug": "bone-trouble",
+            "profile": "oeuvre-existante",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "identite-localisee-a-rechercher",
+            "exception": null
+        },
+
+        {
+            "family": "personnages",
+            "slug": "oswald-le-lapin-chanceux",
+            "profile": "personnage-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "nom-original-a-rechercher",
+            "exception": null
+        },
+        {
+            "family": "personnages",
+            "slug": "pat-hibulaire",
+            "profile": "personnage-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "nom-original-a-rechercher",
+            "exception": null
+        },
+        {
+            "family": "personnages",
+            "slug": "mickey-mouse",
+            "profile": "personnage-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "nom-original-a-rechercher",
+            "exception": null
+        },
+        {
+            "family": "personnages",
+            "slug": "minnie-mouse",
+            "profile": "personnage-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "nom-original-a-rechercher",
+            "exception": null
+        },
+        {
+            "family": "personnages",
+            "slug": "clarabelle-cow",
+            "profile": "personnage-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "nom-original-a-rechercher",
+            "exception": null
+        },
+        {
+            "family": "personnages",
+            "slug": "horace-horsecollar",
+            "profile": "personnage-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "nom-original-a-rechercher",
+            "exception": null
+        },
+        {
+            "family": "personnages",
+            "slug": "donald-duck",
+            "profile": "personnage-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "nom-original-a-rechercher",
+            "exception": null
+        },
+        {
+            "family": "personnages",
+            "slug": "dingo",
+            "profile": "personnage-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "nom-original-a-rechercher",
+            "exception": null
+        },
+        {
+            "family": "personnages",
+            "slug": "daisy-duck",
+            "profile": "personnage-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "nom-original-a-rechercher",
+            "exception": null
+        },
+        {
+            "family": "personnages",
+            "slug": "pluto",
+            "profile": "personnage-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "nom-original-a-rechercher",
+            "exception": null
+        },
+        {
+            "family": "personnages",
+            "slug": "blanche-neige",
+            "profile": "personnage-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "nom-original-present-a-verifier",
+            "exception": "fixture-identite-localisee"
+        },
+        {
+            "family": "personnages",
+            "slug": "la-reine",
+            "profile": "personnage-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "noms-alternatifs-presents-a-verifier",
+            "exception": "fixture-alias"
+        },
+        {
+            "family": "personnages",
+            "slug": "le-prince",
+            "profile": "personnage-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "nom-original-present-a-verifier",
+            "exception": null
+        },
+        {
+            "family": "personnages",
+            "slug": "le-chasseur",
+            "profile": "personnage-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "noms-alternatifs-presents-a-verifier",
+            "exception": "alias-humbert-sans-langue"
+        },
+        {
+            "family": "personnages",
+            "slug": "le-miroir-magique",
+            "profile": "personnage-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "nom-original-present-a-verifier",
+            "exception": null
+        },
+        {
+            "family": "personnages",
+            "slug": "prof",
+            "profile": "personnage-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "nom-original-present-a-verifier",
+            "exception": null
+        },
+        {
+            "family": "personnages",
+            "slug": "grincheux",
+            "profile": "personnage-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "nom-original-present-a-verifier",
+            "exception": null
+        },
+        {
+            "family": "personnages",
+            "slug": "joyeux",
+            "profile": "personnage-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "nom-original-present-a-verifier",
+            "exception": null
+        },
+        {
+            "family": "personnages",
+            "slug": "dormeur",
+            "profile": "personnage-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "nom-original-present-a-verifier",
+            "exception": null
+        },
+        {
+            "family": "personnages",
+            "slug": "timide",
+            "profile": "personnage-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "nom-original-present-a-verifier",
+            "exception": null
+        },
+        {
+            "family": "personnages",
+            "slug": "atchoum",
+            "profile": "personnage-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "nom-original-present-a-verifier",
+            "exception": null
+        },
+        {
+            "family": "personnages",
+            "slug": "simplet",
+            "profile": "personnage-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "nom-original-present-a-verifier",
+            "exception": null
+        },
+
+        {
+            "family": "createurs",
+            "slug": "walt-disney",
+            "profile": "createur-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "contribution-pinocchio-a-completer",
+            "exception": null
+        },
+        {
+            "family": "createurs",
+            "slug": "david-hand",
+            "profile": "createur-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "role-comparatif-a-confirmer",
+            "exception": "ne-pas-attribuer-de-credit-sans-preuve"
+        },
+        {
+            "family": "createurs",
+            "slug": "hamilton-luske",
+            "profile": "createur-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "matiere-pinocchio-amorcee",
+            "exception": null
+        },
+        {
+            "family": "createurs",
+            "slug": "wilfred-jackson",
+            "profile": "createur-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "contribution-pinocchio-a-completer",
+            "exception": null
+        },
+        {
+            "family": "createurs",
+            "slug": "norman-ferguson",
+            "profile": "createur-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "matiere-pinocchio-amorcee",
+            "exception": null
+        },
+        {
+            "family": "createurs",
+            "slug": "ward-kimball",
+            "profile": "createur-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "matiere-pinocchio-amorcee",
+            "exception": null
+        },
+        {
+            "family": "createurs",
+            "slug": "fred-moore",
+            "profile": "createur-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "matiere-pinocchio-amorcee",
+            "exception": null
+        },
+        {
+            "family": "createurs",
+            "slug": "milt-kahl",
+            "profile": "createur-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "matiere-pinocchio-amorcee",
+            "exception": null
+        },
+        {
+            "family": "createurs",
+            "slug": "frank-thomas",
+            "profile": "createur-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "contribution-pinocchio-a-rechercher",
+            "exception": null
+        },
+        {
+            "family": "createurs",
+            "slug": "eric-larson",
+            "profile": "createur-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "contribution-pinocchio-a-rechercher",
+            "exception": null
+        },
+        {
+            "family": "createurs",
+            "slug": "ollie-johnston",
+            "profile": "createur-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "contribution-pinocchio-a-rechercher",
+            "exception": null
+        },
+        {
+            "family": "createurs",
+            "slug": "john-lounsbery",
+            "profile": "createur-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "matiere-pinocchio-amorcee",
+            "exception": null
+        },
+        {
+            "family": "createurs",
+            "slug": "wolfgang-reitherman",
+            "profile": "createur-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "matiere-pinocchio-amorcee",
+            "exception": null
+        },
+        {
+            "family": "createurs",
+            "slug": "vladimir-bill-tytla",
+            "profile": "createur-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "matiere-pinocchio-amorcee",
+            "exception": "nom-public-different-du-repere-bill-tytla"
+        },
+        {
+            "family": "createurs",
+            "slug": "joe-grant",
+            "profile": "createur-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "matiere-pinocchio-amorcee",
+            "exception": null
+        },
+        {
+            "family": "createurs",
+            "slug": "gustaf-tenggren",
+            "profile": "createur-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "matiere-pinocchio-amorcee",
+            "exception": null
+        },
+        {
+            "family": "createurs",
+            "slug": "leigh-harline",
+            "profile": "createur-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "matiere-pinocchio-amorcee",
+            "exception": "relation-chanson-et-recompense"
+        },
+        {
+            "family": "createurs",
+            "slug": "paul-j-smith",
+            "profile": "createur-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "matiere-pinocchio-amorcee",
+            "exception": "relation-recompense"
+        },
+        {
+            "family": "createurs",
+            "slug": "marge-champion",
+            "profile": "createur-existant",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "matiere-pinocchio-amorcee",
+            "exception": "relation-reference-filmee"
+        },
+
+        {
+            "family": "chansons",
+            "slug": "whistle-while-you-work",
+            "profile": "chanson-retrospective",
+            "depth": "R2",
+            "currentState": "absent",
+            "sourcesState": "a-constituer",
+            "exception": "nouvelle-entree-phase-5"
+        },
+        {
+            "family": "chansons",
+            "slug": "heigh-ho",
+            "profile": "chanson-retrospective",
+            "depth": "R2",
+            "currentState": "absent",
+            "sourcesState": "a-constituer",
+            "exception": "nouvelle-entree-phase-5"
+        },
+        {
+            "family": "chansons",
+            "slug": "someday-my-prince-will-come",
+            "profile": "chanson-retrospective",
+            "depth": "R2",
+            "currentState": "absent",
+            "sourcesState": "a-constituer",
+            "exception": "nouvelle-entree-phase-5"
+        },
+        {
+            "family": "chansons",
+            "slug": "whos-afraid-of-the-big-bad-wolf",
+            "profile": "chanson-retrospective",
+            "depth": "R2",
+            "currentState": "absent",
+            "sourcesState": "a-constituer",
+            "exception": "nouvelle-entree-phase-5"
+        },
+
+        {
+            "family": "epoques",
+            "slug": "temps-des-chefs-d-oeuvre",
+            "profile": "epoque-existante",
+            "depth": "R2",
+            "currentState": "partiel",
+            "sourcesState": "matiere-pinocchio-amorcee",
+            "exception": "aucune-nouvelle-epoque"
+        }
+    ],
+    "expectedTotals": {
+        "entries": 69,
+        "existingWorks": 23,
+        "existingCharacters": 22,
+        "existingCreatorsToEnrich": 19,
+        "retrospectiveSongsToCreate": 4,
+        "existingErasToEnrich": 1,
+        "legacyDetailRoutesToPreserve": 45,
+        "R2": 68,
+        "R3": 1
+    },
+    "completion": {
+        "structuralCoverage": "45/45 œuvres et personnages existants",
+        "localizedIdentityCoverage": "45/45 avec forme française, forme originale et provenance",
+        "creatorVerdicts": "19/19",
+        "retrospectiveSongs": "4/4",
+        "eraEnrichment": "1/1",
+        "legacyRoutes": "45/45 résolues",
+        "unknownReferences": 0,
+        "duplicateCanonicalRoutes": 0
+    }
+}
