@@ -1,6 +1,6 @@
 # Acte VI · Phase 1 · Matrice de projection Pixie
 
-> **Statut :** état de référence · matrice vivante  
+> **Statut :** Phase 1 terminée<br>
 > **Périmètre :** Codex public uniquement — index, fiches, Recherche et layout public  
 > **Hors champ :** Atelier, Guidebook, Plans privés et nouveaux corpus documentaires
 
@@ -31,13 +31,13 @@ documentée.
 
 ## Accessoires
 
-| Composant        | Usage actuel et emplacement                                                        | Fonction / cible                            | Nature             | Risque | Accessibilité et vérifications                                                   | Statut / justification                                                                                         |
-| ---------------- | ---------------------------------------------------------------------------------- | ------------------------------------------- | ------------------ | ------ | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `PixieSymbol`    | Header, home, Recherche, index, Cards et sections de fiches                        | Symboles des familles, sections et actions  | Projection directe | Faible | Noms accessibles conservés lorsque le symbole informe ; décoratifs masqués       | **Projeté**                                                                                                    |
-| `PixieButton`    | Soumission de la Recherche                                                         | Action native de formulaire                 | Projection directe | Faible | Soumission clavier et libellé visible                                            | **Projeté**                                                                                                    |
-| `PixieLink`      | Navigation globale, home, Cards, footer, références, citations et sélecteur de vue | Navigation interne, externe et fragmentaire | Projection directe | Faible | Destination, focus, `aria-current`, ouverture externe et ancres bibliographiques | **Projeté** — les derniers liens Codex compatibles ont rejoint le composant sans altérer leur URL ni leur rôle |
-| `PixieBadge`     | Home, Recherche, index, Cards, fiches et récompenses                               | Métadonnées et états courts                 | Projection directe | Faible | L’information ne dépend pas uniquement de la couleur                             | **Projeté**                                                                                                    |
-| `PixieSeparator` | Home, Recherche, index, footer, Cards et sections                                  | Changements de séquence                     | Projection directe | Faible | Décoratif, sans rupture artificielle dans le document                            | **Projeté**                                                                                                    |
+| Composant        | Usage actuel et emplacement                                                        | Fonction / cible                            | Nature              | Risque | Accessibilité et vérifications                                                   | Statut / justification                                                                                         |
+| ---------------- | ---------------------------------------------------------------------------------- | ------------------------------------------- | ------------------- | ------ | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `PixieSymbol`    | Header, home, Recherche, index, Cards et sections de fiches                        | Symboles des familles, sections et actions  | Projection directe  | Faible | Noms accessibles conservés lorsque le symbole informe ; décoratifs masqués       | **Projeté**                                                                                                    |
+| `PixieButton`    | Soumission de la Recherche, via `PixieSearchField`                                 | Action native de formulaire                 | Projection composée | Faible | Soumission clavier et libellé visible                                            | **Projeté** via `PixieSearchField`                                                                             |
+| `PixieLink`      | Navigation globale, home, Cards, footer, références, citations et sélecteur de vue | Navigation interne, externe et fragmentaire | Projection directe  | Faible | Destination, focus, `aria-current`, ouverture externe et ancres bibliographiques | **Projeté** — les derniers liens Codex compatibles ont rejoint le composant sans altérer leur URL ni leur rôle |
+| `PixieBadge`     | Home, Recherche, index, Cards, fiches et récompenses                               | Métadonnées et états courts                 | Projection directe  | Faible | L’information ne dépend pas uniquement de la couleur                             | **Projeté**                                                                                                    |
+| `PixieSeparator` | Home, Recherche, index, footer, Cards et sections                                  | Changements de séquence                     | Projection directe  | Faible | Décoratif, sans rupture artificielle dans le document                            | **Projeté**                                                                                                    |
 
 ## Décors
 
@@ -156,11 +156,31 @@ documentée.
 - `pnpm check:ci` entièrement vert, build Next.js et génération des 114 pages
   compris.
 
-## Vérification finale attendue
+### 1er septembre 2026 · Audit final et garde-fou
 
-- matrice mise à jour après chaque migration ;
-- aucun import mort ou ancien chemin Codex ;
-- aucune prop React conservée dans `src/types` sans usage transversal ;
-- ordre du document, navigation clavier et URLs inchangés ;
-- responsive et deux Lumières relus visuellement par Julien ;
-- `pnpm check:ci` vert dans un environnement autorisé à écrire `.next`.
+- les 29 composants promus possèdent désormais une décision explicite : 19
+  sont projetés directement ou par composition et 10 sont conservés sans
+  import artificiel dans le Codex public ;
+- les 19 composants métier du Codex respectent les quatre territoires
+  `CodexIndex`, `CodexFiche`, `CodexLayout` et `CodexCommon` ;
+- les 17 fichiers de contrats métier partagés restent indépendants de React ;
+- les 70 fichiers du périmètre public ne consomment aucune esquisse
+  `PixieDust` et ne recréent aucun contrôle interactif déjà disponible dans
+  Pixie ;
+- le lien d’identité du header reste volontairement un `Link` Next.js : son
+  lockup et son survol propres ne correspondent à aucune des trois variantes
+  visuelles de `PixieLink` ;
+- `check:pixie` grave ces invariants et rejoint `check` ainsi que `check:ci`.
+
+## Vérification finale
+
+- [x] matrice mise à jour après chaque migration ;
+- [x] aucun import mort ou ancien chemin Codex ;
+- [x] aucune prop React conservée dans `src/types` ;
+- [x] ordre du document, navigation clavier et URLs inchangés par contrat ;
+- [x] `pnpm check:pixie` intégré aux répétitions générales ;
+- [x] `pnpm check:ci` vert dans un environnement autorisé à écrire `.next` ;
+- [x] responsive et deux Lumières relus visuellement par Julien.
+
+La répétition technique et la relecture visuelle sont validées. La Phase 1 est
+terminée.
