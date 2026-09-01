@@ -411,20 +411,33 @@ function renderBlock(
             return renderList(block, context, isRootBlock);
         case "code":
             if (block.presentation === "ascii") {
+                const isStudioCard = block.asciiKind === "studio-card";
+
                 return (
                     <PixieAscii
-                        label="Composition ASCII du document"
+                        label={
+                            isStudioCard
+                                ? "Carte de service Guru Éditions"
+                                : "Composition ASCII du document"
+                        }
                         alternative={block.alternative}
-                        variant="surface"
-                        color={context.color}
-                        size="sm"
+                        variant={isStudioCard ? "projector" : "surface"}
+                        color={
+                            isStudioCard ? "violet-ombre-portee" : context.color
+                        }
+                        size={isStudioCard ? "md" : "sm"}
                         density="compact"
-                        padding="md"
+                        padding={isStudioCard ? "lg" : "md"}
                         overflow="auto"
                         width="full"
+                        align={isStudioCard ? "center" : "start"}
+                        texture={isStudioCard ? "grain" : "none"}
                         copyable={context.asciiCopyable}
-                        className={getWideBlockClass(context)}
+                        className={`${getWideBlockClass(context)} ${isStudioCard ? styles.studioCard : ""}`.trim()}
                         data-markdown-block
+                        data-guidebook-ascii-kind={
+                            block.asciiKind ?? "composition"
+                        }
                         key={block.id}
                     >
                         {block.code}

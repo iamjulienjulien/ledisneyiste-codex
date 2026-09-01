@@ -59,6 +59,8 @@ const boxDrawingPattern = /[┌┐└┘├┤┬┴┼│─╔╗╚╝╠╣�
 const frameStartPattern = /^\s*[┌└╔╚]/u;
 const treeBranchPattern = /^\s*[│├└](?:──|─)/u;
 const asciiDecorationPattern = /[┌┐└┘├┤┬┴┼│─╔╗╚╝╠╣╦╩╬║═]/gu;
+const studioCardBrandPattern = /\bGURU ÉDITIONS\b/iu;
+const studioCardFramePattern = /^\s*[╔┌].*[╗┐]\s*$/mu;
 
 function nextBlockId(context: AnalysisContext, kind: string): string {
     context.blockIndex += 1;
@@ -276,6 +278,15 @@ export function createGuidebookAsciiAlternative(code: string): string {
         .join(" · ");
 }
 
+export function getGuidebookAsciiKind(
+    code: string,
+): "composition" | "studio-card" {
+    return studioCardBrandPattern.test(code) &&
+        studioCardFramePattern.test(code)
+        ? "studio-card"
+        : "composition";
+}
+
 function convertCode(node: Code, context: AnalysisContext): GuidebookBlock {
     const language = node.lang?.trim() || undefined;
     const presentation = isGuidebookAsciiComposition(node.value, language)
@@ -289,7 +300,10 @@ function convertCode(node: Code, context: AnalysisContext): GuidebookBlock {
         ...(language ? { language } : {}),
         presentation,
         ...(presentation === "ascii"
-            ? { alternative: createGuidebookAsciiAlternative(node.value) }
+            ? {
+                  asciiKind: getGuidebookAsciiKind(node.value),
+                  alternative: createGuidebookAsciiAlternative(node.value),
+              }
             : {}),
     };
 }

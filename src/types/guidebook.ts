@@ -97,6 +97,7 @@ export type GuidebookCodeBlock = GuidebookBlockBase & {
     code: string;
     language?: string;
     presentation: "code" | "ascii";
+    asciiKind?: "composition" | "studio-card";
     alternative?: string;
 };
 

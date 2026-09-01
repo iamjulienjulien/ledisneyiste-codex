@@ -95,6 +95,10 @@
     margin-left: auto;
 }
 
+.studioCard {
+    margin-block: clamp(0.5rem, 2vw, 1rem);
+}
+
 .root > [data-markdown-block] + [data-markdown-block] {
     margin-top: var(--pixie-markdown-flow);
 }
