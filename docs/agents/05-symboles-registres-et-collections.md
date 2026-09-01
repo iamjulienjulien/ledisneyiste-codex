@@ -32,6 +32,11 @@ Il complète :
 - [le chapitre consacré au design system Pixie](./04-design-system-pixie.md),
   qui présente `PixieSymbol` comme la porte publique de ce système.
 
+La production concrète des images — bible de collection, prompts, lots de
+quatre prototypes, corrections ciblées, fond de détourage, transparents et
+planches — est détaillée dans le
+[protocole de fabrication artistique](../studio/design/symboles/00-protocole-general.md).
+
 Ici, nous répondons à une question plus précise :
 
 > **Comment construire, classer, publier et employer un signe qui appartient
@@ -1392,19 +1397,20 @@ Un registre est prêt lorsque :
 
 ## Fichiers à ouvrir en premier
 
-| Besoin                                         | Point d’entrée recommandé                                                                                |
-| ---------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| Comprendre la doctrine et l’état de production | [Iconographie originale · Notion](https://app.notion.com/p/3c0092fa322381eea047ed56700bbff8)             |
-| Lire les définitions projectables              | [`src/registry/symbols`](../../src/registry/symbols/)                                                    |
-| Comprendre le contrat minimal                  | [`src/types/symbols.ts`](../../src/types/symbols.ts)                                                     |
-| Comprendre la résolution typée                 | [`src/registry/symbols/index.ts`](../../src/registry/symbols/index.ts)                                   |
-| Voir les fichiers web                          | [`public/symbols`](../../public/symbols/)                                                                |
-| Lire l’API de projection                       | [`src/components/ui/PixieSymbol`](../../src/components/ui/PixieSymbol/)                                  |
-| Voir les collections dans l’Atelier            | [`PixieSymbolDossier.tsx`](../../src/app/atelier/_components/PixieSymbolDossier.tsx)                     |
-| Essayer tailles et sélections                  | [`PixieSymbolPlayground.tsx`](../../src/app/atelier/_components/PixieSymbolPlayground.tsx)               |
-| Contrôler registres et fichiers                | [`scripts/verifier-symboles.mjs`](../../scripts/verifier-symboles.mjs)                                   |
-| Comprendre les accents                         | [Chapitre 03](./03-direction-artistique-et-ui.md) et [`src/registry/colors`](../../src/registry/colors/) |
-| Comprendre le composant Pixie                  | [Chapitre 04](./04-design-system-pixie.md)                                                               |
+| Besoin                                          | Point d’entrée recommandé                                                                                |
+| ----------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Comprendre la doctrine et l’état de production  | [Iconographie originale · Notion](https://app.notion.com/p/3c0092fa322381eea047ed56700bbff8)             |
+| Fabriquer les masters, transparents et planches | [`docs/studio/design/symboles`](../studio/design/symboles/00-protocole-general.md)                       |
+| Lire les définitions projectables               | [`src/registry/symbols`](../../src/registry/symbols/)                                                    |
+| Comprendre le contrat minimal                   | [`src/types/symbols.ts`](../../src/types/symbols.ts)                                                     |
+| Comprendre la résolution typée                  | [`src/registry/symbols/index.ts`](../../src/registry/symbols/index.ts)                                   |
+| Voir les fichiers web                           | [`public/symbols`](../../public/symbols/)                                                                |
+| Lire l’API de projection                        | [`src/components/ui/PixieSymbol`](../../src/components/ui/PixieSymbol/)                                  |
+| Voir les collections dans l’Atelier             | [`PixieSymbolDossier.tsx`](../../src/app/atelier/_components/PixieSymbolDossier.tsx)                     |
+| Essayer tailles et sélections                   | [`PixieSymbolPlayground.tsx`](../../src/app/atelier/_components/PixieSymbolPlayground.tsx)               |
+| Contrôler registres et fichiers                 | [`scripts/verifier-symboles.mjs`](../../scripts/verifier-symboles.mjs)                                   |
+| Comprendre les accents                          | [Chapitre 03](./03-direction-artistique-et-ui.md) et [`src/registry/colors`](../../src/registry/colors/) |
+| Comprendre le composant Pixie                   | [Chapitre 04](./04-design-system-pixie.md)                                                               |
 
 ---
 

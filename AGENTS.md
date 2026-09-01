@@ -55,6 +55,12 @@ Avant toute intervention :
 Ressource commune :
 [Carte de studio Guru Éditions](./docs/studio/snippets/carte-de-studio-guru-editions.md).
 
+Pour fabriquer ou refaire les assets d’une collection de Symboles, lire après
+le chapitre 05 le
+[protocole de fabrication artistique](./docs/studio/design/symboles/00-protocole-general.md).
+Il formalise les portes de validation entre prototypes, masters, transparents,
+planches et intégration.
+
 ### Hiérarchie des sources
 
 Pour décider de ce qui est vrai dans le projet, suivre cet ordre :

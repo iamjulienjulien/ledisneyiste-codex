@@ -58,7 +58,7 @@ Si tu hésites entre une solution spectaculaire et une solution fidèle :
 | Ajouter ou modifier une donnée, une fiche, un index ou une source | `01` + `02`                           |
 | Modifier couleurs, Lumières, typographies, espacements ou effets  | `01` + `03`                           |
 | Créer, améliorer ou promouvoir un composant Pixie                 | `01` + `03` + `04`                    |
-| Ajouter, migrer ou utiliser un symbole                            | `01` + `03` + `05`                    |
+| Ajouter, migrer ou utiliser un symbole                            | `01` + `03` + `05` + protocole studio |
 | Concevoir ou modifier un Plan                                     | `01` + `02` + `06`                    |
 | Intégrer un composant Pixie dans une page du Codex                | `02` + `03` + `04`                    |
 | Composer un Plan avec des composants Pixie                        | `02` + `04` + `06`                    |
@@ -144,6 +144,9 @@ territoire : ouvre seulement celles dont le chantier a réellement besoin.
 - masters, dérivés, planches et registre typé ;
 - l’API et l’accessibilité de `PixieSymbol` ;
 - les migrations et contrôles de publication.
+
+Pour produire ou refaire les images elles-mêmes, poursuivre avec le
+[protocole de fabrication artistique](../studio/design/symboles/00-protocole-general.md).
 
 ➡️ [Ouvrir le chapitre 05](./05-symboles-registres-et-collections.md)
 
