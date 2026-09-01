@@ -1,0 +1,302 @@
+{
+    "schemaVersion": "1.0.0",
+    "sourceIds": [
+        "fr-cnc-palmares-1946",
+        "afi-snow-white",
+        "d23-snow-white-film"
+    ],
+    "bobinesIntegrees": {
+        "circulationPinocchio": "fixture-circulation-oeuvre",
+        "oeuvreSourcePinocchio": "oeuvre-source-collodi-pinocchio",
+        "chansonPinocchio": "chanson-when-you-wish-upon-a-star",
+        "oeuvrePubliee": "snow-white-and-the-seven-dwarfs"
+    },
+    "dossiers": [
+        {
+            "id": "enquete-pinocchio-entrees-france-cumul-1946-2010",
+            "statutEnquete": "factuel",
+            "oeuvre": {
+                "nom": "Pinocchio",
+                "type": "oeuvre-privee",
+                "slug": "pinocchio",
+                "id": "oeuvre-pinocchio-1940"
+            },
+            "declaration": {
+                "schemaVersion": "1.0.0",
+                "id": "pinocchio-entrees-france-cumul-1946-2010",
+                "mesure": "entrees",
+                "valeurOriginale": {
+                    "nature": "valeur",
+                    "valeur": 7840000
+                },
+                "unite": "entrees",
+                "porteeTerritoriale": {
+                    "nature": "territoire",
+                    "code": "FR"
+                },
+                "temporalite": {
+                    "nature": "cumul",
+                    "periode": {
+                        "debut": {
+                            "valeur": "1946",
+                            "precision": "annee"
+                        },
+                        "fin": {
+                            "valeur": "2010",
+                            "precision": "annee"
+                        }
+                    }
+                },
+                "base": "cumul-exploitations",
+                "methode": {
+                    "description": "Cumul de spectateurs publié dans le palmarès du CNC.",
+                    "sourceIds": ["fr-cnc-palmares-1946"]
+                },
+                "certitude": "documente",
+                "comparabilite": {
+                    "statut": "comparable-sous-reserve",
+                    "avec": [],
+                    "motif": "Comparable uniquement à une autre fréquentation française cumulée sur la même période et selon la même méthode."
+                },
+                "finaliteEditoriale": "Situer la durée de la fréquentation française sans la réduire à la seule année 1946.",
+                "sources": ["fr-cnc-palmares-1946"],
+                "noteDeReserve": "Ce cumul couvre 1946 à 2010 ; il ne représente pas les seules entrées de la sortie française de 1946."
+            },
+            "verdict": "publishable-with-reserve",
+            "dimensionsManquantes": [],
+            "sourceIdsEvalues": ["fr-cnc-palmares-1946"],
+            "noteInterne": "La période cumulative et la réserve doivent rester visibles ensemble.",
+            "verifiePar": "R2-D2",
+            "verifieLe": "2026-09-02"
+        },
+        {
+            "id": "enquete-snow-white-cout-d23",
+            "statutEnquete": "factuel",
+            "oeuvre": {
+                "nom": "Snow White and the Seven Dwarfs",
+                "type": "oeuvre",
+                "slug": "snow-white-and-the-seven-dwarfs"
+            },
+            "declaration": {
+                "schemaVersion": "1.0.0",
+                "id": "snow-white-cout-d23-1400000-usd",
+                "mesure": "cout-production",
+                "valeurOriginale": {
+                    "nature": "valeur",
+                    "valeur": 1400000
+                },
+                "unite": "monetaire",
+                "devise": "USD",
+                "porteeTerritoriale": {
+                    "nature": "territoire",
+                    "code": "US"
+                },
+                "temporalite": {
+                    "nature": "periode",
+                    "periode": {
+                        "debut": {
+                            "valeur": "1934",
+                            "precision": "annee"
+                        },
+                        "fin": {
+                            "valeur": "1937",
+                            "precision": "annee"
+                        }
+                    }
+                },
+                "certitude": "estimation",
+                "sources": ["d23-snow-white-film"],
+                "conflit": {
+                    "groupeId": "snow-white-couts-production-divergents",
+                    "nature": "methodes-divergentes",
+                    "note": "Le périmètre et la méthode ne permettent pas de rapprocher cette déclaration de celle rapportée par l’AFI."
+                },
+                "formulationSource": "Coût de production résumé à 1,4 million de dollars."
+            },
+            "verdict": "investigation-only",
+            "dimensionsManquantes": [
+                "annee-monetaire",
+                "base",
+                "methode",
+                "comparabilite",
+                "finalite-editoriale"
+            ],
+            "sourceIdsEvalues": ["d23-snow-white-film"],
+            "noteInterne": "La précision arrondie ne permet aucune moyenne avec l’autre déclaration."
+        },
+        {
+            "id": "enquete-snow-white-cout-afi",
+            "statutEnquete": "factuel",
+            "oeuvre": {
+                "nom": "Snow White and the Seven Dwarfs",
+                "type": "oeuvre",
+                "slug": "snow-white-and-the-seven-dwarfs"
+            },
+            "declaration": {
+                "schemaVersion": "1.0.0",
+                "id": "snow-white-cout-afi-1488423-usd",
+                "mesure": "cout-production",
+                "valeurOriginale": {
+                    "nature": "valeur",
+                    "valeur": 1488423
+                },
+                "unite": "monetaire",
+                "devise": "USD",
+                "porteeTerritoriale": {
+                    "nature": "territoire",
+                    "code": "US"
+                },
+                "temporalite": {
+                    "nature": "periode",
+                    "periode": {
+                        "debut": {
+                            "valeur": "1934",
+                            "precision": "annee"
+                        },
+                        "fin": {
+                            "valeur": "1937",
+                            "precision": "annee"
+                        }
+                    }
+                },
+                "certitude": "estimation",
+                "sources": ["afi-snow-white"],
+                "conflit": {
+                    "groupeId": "snow-white-couts-production-divergents",
+                    "nature": "methodes-divergentes",
+                    "note": "Le périmètre et la méthode ne permettent pas de rapprocher cette déclaration de celle publiée par D23."
+                },
+                "formulationSource": "Coût négatif estimé à 1 488 423 dollars."
+            },
+            "verdict": "investigation-only",
+            "dimensionsManquantes": [
+                "annee-monetaire",
+                "base",
+                "methode",
+                "comparabilite",
+                "finalite-editoriale"
+            ],
+            "sourceIdsEvalues": ["afi-snow-white"],
+            "noteInterne": "La précision à l’unité ne constitue pas une méthode comptable documentée."
+        },
+        {
+            "id": "enquete-snow-white-entrees-territoire-inconnu",
+            "statutEnquete": "incomplet",
+            "oeuvre": {
+                "nom": "Snow White and the Seven Dwarfs",
+                "type": "oeuvre",
+                "slug": "snow-white-and-the-seven-dwarfs"
+            },
+            "declaration": {
+                "schemaVersion": "1.0.0",
+                "id": "snow-white-entrees-20000000",
+                "mesure": "entrees",
+                "valeurOriginale": {
+                    "nature": "valeur",
+                    "valeur": 20000000
+                },
+                "unite": "entrees",
+                "porteeTerritoriale": {
+                    "nature": "non-precisee",
+                    "libelleSource": "Territoire non précisé par la source"
+                },
+                "temporalite": {
+                    "nature": "periode",
+                    "periode": {
+                        "debut": {
+                            "valeur": "1937-12",
+                            "precision": "mois"
+                        },
+                        "fin": {
+                            "valeur": "1938-03",
+                            "precision": "mois"
+                        }
+                    }
+                },
+                "base": "premiere-exploitation",
+                "certitude": "documente",
+                "sources": ["afi-snow-white"],
+                "formulationSource": "Vingt millions de personnes voient le film pendant ses trois premiers mois."
+            },
+            "verdict": "investigation-only",
+            "dimensionsManquantes": [
+                "territoire",
+                "methode",
+                "comparabilite",
+                "finalite-editoriale"
+            ],
+            "sourceIdsEvalues": ["afi-snow-white"],
+            "noteInterne": "Une fréquentation sans territoire reste dans l’enquête privée."
+        },
+        {
+            "id": "contre-exemple-publication-incomplete",
+            "statutEnquete": "incomplet",
+            "oeuvre": {
+                "nom": "Pinocchio",
+                "type": "oeuvre-privee",
+                "slug": "pinocchio",
+                "id": "oeuvre-pinocchio-1940"
+            },
+            "declaration": {
+                "schemaVersion": "1.0.0",
+                "id": "pinocchio-resultat-sans-methode",
+                "mesure": "perte",
+                "valeurOriginale": {
+                    "nature": "valeur",
+                    "valeur": 1
+                },
+                "unite": "monetaire",
+                "devise": "USD",
+                "porteeTerritoriale": {
+                    "nature": "territoire",
+                    "code": "US"
+                },
+                "certitude": "conteste",
+                "sources": ["fr-cnc-palmares-1946"],
+                "formulationSource": "Contre-exemple volontairement incomplet."
+            },
+            "verdict": "publishable",
+            "dimensionsManquantes": [
+                "annee-monetaire",
+                "temporalite",
+                "base",
+                "methode",
+                "comparabilite",
+                "finalite-editoriale"
+            ],
+            "sourceIdsEvalues": ["fr-cnc-palmares-1946"],
+            "noteInterne": "Le verdict volontairement erroné doit être neutralisé par la projection."
+        }
+    ],
+    "donneesDerivees": [
+        {
+            "schemaVersion": "1.0.0",
+            "id": "hypothese-conversion-cout-pinocchio",
+            "nature": "actualisation-monetaire",
+            "statutEnquete": "hypothetique",
+            "declarationIds": ["pinocchio-resultat-sans-methode"],
+            "valeur": 1,
+            "unite": "monetaire",
+            "devise": "USD",
+            "calcul": {
+                "formule": "valeur nominale × indice cible ÷ indice source",
+                "sourceMethodologiqueIds": [],
+                "dateCalcul": {
+                    "valeur": "2026-09-02",
+                    "precision": "jour"
+                },
+                "dateOuPeriodeIndice": {
+                    "valeur": "2026",
+                    "precision": "annee"
+                },
+                "anneeDeBase": {
+                    "valeur": "1940",
+                    "precision": "annee"
+                },
+                "conventionArrondi": "Hypothèse non calculée : valeur témoin uniquement."
+            },
+            "finaliteEditoriale": "Prouver qu’une conversion hypothétique ne remplace jamais la valeur nominale.",
+            "sources": []
+        }
+    ]
+}
