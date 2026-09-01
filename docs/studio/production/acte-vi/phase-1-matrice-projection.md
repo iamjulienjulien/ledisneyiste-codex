@@ -52,17 +52,17 @@ documentée.
 
 ## Montage
 
-| Composant           | Usage actuel et emplacement                                               | Fonction / cible                    | Nature              | Risque | Accessibilité et vérifications                       | Statut / justification                                                                           |
-| ------------------- | ------------------------------------------------------------------------- | ----------------------------------- | ------------------- | ------ | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| `PixieContainer`    | Largeurs encore portées par les CSS de pages et composants Codex          | Cadre de lecture partagé éventuel   | Adaptation possible | Moyen  | Responsive, zoom et absence de conteneurs redondants | **À confirmer** — ne sera introduit que si plusieurs cadres partagent réellement le même contrat |
-| `PixieStack`        | Home, Recherche, index et sections de fiches                              | Rythme vertical                     | Projection directe  | Faible | Ordre DOM inchangé                                   | **Projeté**                                                                                      |
-| `PixieCluster`      | Home, Recherche, index et footer                                          | Groupes avec retour à la ligne      | Projection directe  | Faible | Ordre de lecture et de tabulation                    | **Projeté**                                                                                      |
-| `PixieSection`      | Recherche, index et chapitres de fiches                                   | Séquence éditoriale                 | Projection directe  | Faible | Hiérarchie de titres préservée                       | **Projeté**                                                                                      |
-| `PixieGrid`         | Home, Recherche et index des quatre familles                              | Collections responsives             | Projection directe  | Faible | Ordre source stable à tous les seuils                | **Projeté**                                                                                      |
-| `PixieSidebar`      | Aucun voisinage contenu/régie correspondant dans le Codex public actuel   | Disposition principale + latérale   | Aucun remplacement  | Faible | Sans objet tant qu’aucun besoin n’existe             | **Conservé** — ne pas importer le patron privé du Guidebook                                      |
-| `PixieSwitcher`     | Aucun groupe public nécessitant un basculement collectif rangée/pile      | Recomposition selon l’espace        | Aucun remplacement  | Faible | Sans objet                                           | **Conservé**                                                                                     |
-| `PixieRail`         | Aucune collection publique en travelling horizontal                       | Défilement horizontal non carrousel | Aucun remplacement  | Faible | Sans objet                                           | **Conservé**                                                                                     |
-| `PixieStickyRegion` | Aucune région publique devant rester visible dans les limites d’un parent | Région persistante bornée           | Aucun remplacement  | Faible | Sans objet                                           | **Conservé**                                                                                     |
+| Composant           | Usage actuel et emplacement                                                          | Fonction / cible                    | Nature                         | Risque | Accessibilité et vérifications                                  | Statut / justification                                                                             |
+| ------------------- | ------------------------------------------------------------------------------------ | ----------------------------------- | ------------------------------ | ------ | --------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `PixieContainer`    | Header global, home, fiches, footer, page 404, index et Recherche via `PixieSection` | Cadre de lecture partagé            | Projection directe et composée | Faible | Largeurs, gouttières, responsive, zoom et imbrication du footer | **Projeté** — les frontières publiques partagent bien les contrats `72/md` ou `42/md` du composant |
+| `PixieStack`        | Home, Recherche, index et sections de fiches                                         | Rythme vertical                     | Projection directe             | Faible | Ordre DOM inchangé                                              | **Projeté**                                                                                        |
+| `PixieCluster`      | Home, Recherche, index et footer                                                     | Groupes avec retour à la ligne      | Projection directe             | Faible | Ordre de lecture et de tabulation                               | **Projeté**                                                                                        |
+| `PixieSection`      | Recherche, index et chapitres de fiches                                              | Séquence éditoriale                 | Projection directe             | Faible | Hiérarchie de titres préservée                                  | **Projeté**                                                                                        |
+| `PixieGrid`         | Home, Recherche et index des quatre familles                                         | Collections responsives             | Projection directe             | Faible | Ordre source stable à tous les seuils                           | **Projeté**                                                                                        |
+| `PixieSidebar`      | Aucun voisinage contenu/régie correspondant dans le Codex public actuel              | Disposition principale + latérale   | Aucun remplacement             | Faible | Sans objet tant qu’aucun besoin n’existe                        | **Conservé** — ne pas importer le patron privé du Guidebook                                        |
+| `PixieSwitcher`     | Aucun groupe public nécessitant un basculement collectif rangée/pile                 | Recomposition selon l’espace        | Aucun remplacement             | Faible | Sans objet                                                      | **Conservé**                                                                                       |
+| `PixieRail`         | Aucune collection publique en travelling horizontal                                  | Défilement horizontal non carrousel | Aucun remplacement             | Faible | Sans objet                                                      | **Conservé**                                                                                       |
+| `PixieStickyRegion` | Aucune région publique devant rester visible dans les limites d’un parent            | Région persistante bornée           | Aucun remplacement             | Faible | Sans objet                                                      | **Conservé**                                                                                       |
 
 ## Dialogues
 
@@ -95,8 +95,9 @@ documentée.
 4. ~~Auditer les liens natifs de la bibliographie, des citations et du sélecteur
    de vue avant de décider lesquels relèvent réellement de `PixieLink`.~~
    Terminé : les trois usages relèvent bien de la navigation et ont été migrés.
-5. Confirmer ou écarter `PixieContainer` en comparant les contrats de largeur
-   des index, fiches et Recherche.
+5. ~~Confirmer ou écarter `PixieContainer` en comparant les contrats de largeur
+   des index, fiches et Recherche.~~ Terminé : les cadres publics convergent
+   sur ses largeurs et gouttières, directement ou via `PixieSection`.
 
 ## Journal de migration
 
@@ -121,6 +122,21 @@ documentée.
   onglet ni leur politique `rel` ;
 - migration des renvois de citations vers leurs fragments de source ;
 - statut de `PixieLink` porté de **Partiel** à **Projeté** ;
+- `pnpm check:ci` entièrement vert, build Next.js et génération des 114 pages
+  compris.
+
+### 1er septembre 2026 · Cadres PixieContainer
+
+- confirmation du contrat commun de 72 rem et de la gouttière médiane pour le
+  header global, la home, les fiches et le footer ;
+- projection directe de `PixieContainer` sur ces frontières et emploi du cadre
+  de 42 rem pour la page 404 ;
+- maintien de la projection composée des index et de Recherche via
+  `PixieSection` ;
+- remplacement du contournement CSS du footer imbriqué par une prop `gutter`
+  explicite sur `CodexLayoutFooter` ;
+- aucun cadre de l’Atelier ou du Guidebook n’a été entraîné dans la migration ;
+- statut de `PixieContainer` porté de **À confirmer** à **Projeté** ;
 - `pnpm check:ci` entièrement vert, build Next.js et génération des 114 pages
   compris.
 
