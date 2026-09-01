@@ -677,6 +677,24 @@ localisés, la matière disponible et la profondeur réaliste de chaque fiche.
 Lorsqu’une preuve reste insuffisante, l’entrée concernée suit le repli déjà
 décrit — fiche légère, relation, crédits ou report — sans étendre le corpus.
 
+## Clôture du registre
+
+La Phase 2 se referme avec **onze décisions validées sur onze**. Aucun statut
+`à confirmer par audit`, `à décider` ou `bloqué` ne demeure dans le registre.
+
+Les réserves encore présentes ne sont pas des décisions ouvertes : elles
+décrivent les conditions de publication d’une entrée, d’un média, d’un chiffre
+ou d’une migration et restent rattachées à leur phase propriétaire.
+
+Une décision ne sera rouverte que si une information nouvelle :
+
+1. contredit une preuve utilisée par l’arbitrage ;
+2. modifie matériellement le périmètre ou le risque d’une phase ;
+3. est consignée avec sa source, son impact et l’autorité appelée à décider.
+
+Le rapport [`cloture.md`](./cloture.md) transmet l’ensemble des arbitrages,
+risques et critères de passage vers la Phase 3.
+
 ---
 
 **🔩 R2-D2 · Lead Developer @ Guru Éditions**<br>
