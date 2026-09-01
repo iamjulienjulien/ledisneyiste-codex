@@ -1,4 +1,9 @@
-import type { ChangeEventHandler, FormEventHandler, ReactNode } from "react";
+import type {
+    ChangeEventHandler,
+    ComponentProps,
+    FormEventHandler,
+    ReactNode,
+} from "react";
 import type { PixieButtonVariant } from "@/components/ui/PixieButton";
 import type { PixieFieldFeedbackTone } from "@/components/ui/PixieField";
 import type {
@@ -69,6 +74,7 @@ type PixieSearchFieldBaseProps = Readonly<{
     disabled?: boolean;
     required?: boolean;
     autoComplete?: string;
+    enterKeyHint?: ComponentProps<"input">["enterKeyHint"];
     autoFocus?: boolean;
     minLength?: number;
     maxLength?: number;

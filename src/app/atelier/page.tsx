@@ -317,7 +317,7 @@ const dialogues = [
         nom: "PixieSearchField",
         role: "Composer une recherche complète",
         statut: "Prêt à projeter",
-        version: "1.0.0",
+        version: "1.1.0",
         href: "#pixie-search-field",
     },
     {

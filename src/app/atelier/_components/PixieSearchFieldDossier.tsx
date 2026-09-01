@@ -325,6 +325,13 @@ const properties = [
         description: "Politique native d’autocomplétion du navigateur.",
     },
     {
+        name: "enterKeyHint",
+        type: "ComponentProps<'input'>['enterKeyHint']",
+        defaultValue: "—",
+        description:
+            "Libellé natif de la touche Entrée sur les claviers virtuels.",
+    },
+    {
         name: "autoFocus",
         type: "boolean",
         defaultValue: "false",
@@ -484,7 +491,7 @@ export function PixieSearchFieldDossier() {
                                 Version
                             </dt>
                             <dd className="mt-1 font-mono text-sm text-ink">
-                                1.0.0
+                                1.1.0
                             </dd>
                         </div>
                         <div className="bg-surface-muted px-6 py-4">
@@ -550,6 +557,7 @@ export function PixieSearchFieldDossier() {
                                     name="q"
                                     action="/recherche"
                                     defaultValue="mickey"
+                                    enterKeyHint="search"
                                     composition="joined"
                                     placeholder="Personnage, créateur, œuvre…"
                                     description="Noms, titres, catégories ou collections."
@@ -560,6 +568,7 @@ export function PixieSearchFieldDossier() {
     name="q"
     action="/recherche"
     defaultValue="mickey"
+    enterKeyHint="search"
     composition="joined"
     placeholder="Personnage, créateur, œuvre…"
     description="Noms, titres, catégories ou collections."

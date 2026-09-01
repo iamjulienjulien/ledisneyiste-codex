@@ -360,7 +360,7 @@ Les deux autres jouent un rôle différent :
   prennent jamais les préfixes `PixieDust` ou `Pixie`.
 
 Au moment de cette édition, l’inventaire de l’Atelier déclare **32 composants
-Pixie en version `1.0.0` prêts à projeter**.
+Pixie en version `1.x` prêts à projeter**.
 
 Ce nombre est un instantané documentaire. Lorsqu’un composant est promu ou
 retiré, mets à jour l’inventaire de l’Atelier avant ce chapitre.
@@ -969,6 +969,7 @@ contenu ou lorsque le viewport est plus bas que la région sticky.
     name="q"
     label="Rechercher dans le Codex"
     placeholder="Une œuvre, un personnage, un créateur…"
+    enterKeyHint="search"
     composition="joined"
     layout="responsive"
     clearable

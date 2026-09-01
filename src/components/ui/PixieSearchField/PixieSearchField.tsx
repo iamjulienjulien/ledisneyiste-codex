@@ -98,6 +98,7 @@ type SearchControlProps = Readonly<{
     disabled: boolean;
     required: boolean;
     autoComplete?: string;
+    enterKeyHint?: PixieSearchFieldProps["enterKeyHint"];
     autoFocus: boolean;
     minLength?: number;
     maxLength?: number;
@@ -137,6 +138,7 @@ function SearchControl({
     disabled,
     required,
     autoComplete,
+    enterKeyHint,
     autoFocus,
     minLength,
     maxLength,
@@ -218,6 +220,7 @@ function SearchControl({
                 disabled={disabled}
                 required={required}
                 autoComplete={autoComplete}
+                enterKeyHint={enterKeyHint}
                 autoFocus={autoFocus}
                 minLength={minLength}
                 maxLength={maxLength}
@@ -278,6 +281,7 @@ export function PixieSearchField({
     disabled = false,
     required = false,
     autoComplete,
+    enterKeyHint,
     autoFocus = false,
     minLength,
     maxLength,
@@ -382,6 +386,7 @@ export function PixieSearchField({
                         disabled={disabled}
                         required={required}
                         autoComplete={autoComplete}
+                        enterKeyHint={enterKeyHint}
                         autoFocus={autoFocus}
                         minLength={minLength}
                         maxLength={maxLength}
