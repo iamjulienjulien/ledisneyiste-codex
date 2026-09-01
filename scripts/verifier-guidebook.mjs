@@ -463,11 +463,13 @@ async function verifyNotionNormalization(errors) {
 }
 
 async function verifyMarkdownAnalysis(errors) {
-    const [{ analyzeGuidebookMarkdown }, { resolveGuidebookLink }] =
-        await Promise.all([
-            loadTypeScriptModule("src/lib/guidebook/analyze-markdown.ts"),
-            loadTypeScriptModule("src/lib/guidebook/resolve-link.ts"),
-        ]);
+    const [
+        { analyzeGuidebookMarkdown, getGuidebookAsciiKind },
+        { resolveGuidebookLink },
+    ] = await Promise.all([
+        loadTypeScriptModule("src/lib/guidebook/analyze-markdown.ts"),
+        loadTypeScriptModule("src/lib/guidebook/resolve-link.ts"),
+    ]);
     const { localGuidebookManifest } = await loadTypeScriptModule(
         "src/lib/guidebook/server/local-manifest.ts",
     );
@@ -524,6 +526,14 @@ async function verifyMarkdownAnalysis(errors) {
         )
     ) {
         errors.push("La carte témoin ne produit pas d’alternative accessible");
+    }
+
+    if (
+        getGuidebookAsciiKind(
+            "╔════════════════╗\n║ GURU ÉDITIONS ║\n╚════════════════╝",
+        ) !== "studio-card"
+    ) {
+        errors.push("Une carte de service Guru Éditions n’est pas reconnue");
     }
 
     if (
@@ -600,6 +610,7 @@ async function verifyMarkdownAnalysis(errors) {
         headings: 0,
         links: 0,
         ascii: 0,
+        studioCards: 0,
         restricted: 0,
     };
 
@@ -690,6 +701,12 @@ async function verifyMarkdownAnalysis(errors) {
         realStatistics.ascii += blocks.filter(
             (block) => block.kind === "code" && block.presentation === "ascii",
         ).length;
+        realStatistics.studioCards += blocks.filter(
+            (block) =>
+                block.kind === "code" &&
+                block.presentation === "ascii" &&
+                block.asciiKind === "studio-card",
+        ).length;
         realStatistics.restricted += analysis.links.filter(
             (link) => link.state === "restricted",
         ).length;
@@ -698,6 +715,12 @@ async function verifyMarkdownAnalysis(errors) {
     if (realStatistics.ascii === 0) {
         errors.push(
             "Aucune carte ASCII réelle n’est reconnue dans le Guidebook",
+        );
+    }
+
+    if (realStatistics.studioCards === 0) {
+        errors.push(
+            "Aucune carte de service réelle n’est distinguée des autres compositions ASCII",
         );
     }
 
@@ -716,6 +739,7 @@ async function verifyGuidebookRoutes(errors) {
         "src/app/guidebook/notion/page.tsx",
         "src/app/guidebook/notion/[slug]/page.tsx",
         "src/app/guidebook/_components/GuidebookProjection.tsx",
+        "src/app/guidebook/_components/GuidebookReader.tsx",
     ];
     const routeSources = Object.fromEntries(
         await Promise.all(
@@ -730,6 +754,8 @@ async function verifyGuidebookRoutes(errors) {
     const notionPage = routeSources["src/app/guidebook/notion/[slug]/page.tsx"];
     const projection =
         routeSources["src/app/guidebook/_components/GuidebookProjection.tsx"];
+    const reader =
+        routeSources["src/app/guidebook/_components/GuidebookReader.tsx"];
     const publicLayout = await readFile(
         path.join(repositoryRoot, "src/app/layout.tsx"),
         "utf8",
@@ -797,10 +823,21 @@ async function verifyGuidebookRoutes(errors) {
         );
     }
 
+    const projectionBundle = `${projection}\n${reader}`;
     for (const component of ["PixieDocs", "PixieMarkdown"]) {
-        if (!projection.includes(component)) {
+        if (!projectionBundle.includes(component)) {
             errors.push(`La projection partagée n’emploie pas ${component}`);
         }
+    }
+
+    if (
+        !reader.includes('"inline"') ||
+        !reader.includes('"floating"') ||
+        !reader.includes("aria-pressed")
+    ) {
+        errors.push(
+            "Le Guidebook ne propose pas un contrôle accessible des deux présences de bibliothèque",
+        );
     }
 
     if (publicLayout.includes('href="/guidebook')) {
@@ -848,7 +885,7 @@ async function verify() {
     }
 
     console.log(
-        `Guidebook vérifié : ${localDocumentCount} documents locaux, ${notionDocumentCount} pages Notion déclarées, ${routeFileCount} points de projection privés, ${markdownStatistics.blocks} blocs locaux, ${notionStatistics.blocks} blocs Notion normalisés, ${markdownStatistics.headings} titres, ${markdownStatistics.links} liens et ${markdownStatistics.ascii} compositions ASCII ; routes de production fermées, frontière studio close, extensions propriétaires neutralisées et double autorisation Notion éprouvée.`,
+        `Guidebook vérifié : ${localDocumentCount} documents locaux, ${notionDocumentCount} pages Notion déclarées, ${routeFileCount} points de projection privés, ${markdownStatistics.blocks} blocs locaux, ${notionStatistics.blocks} blocs Notion normalisés, ${markdownStatistics.headings} titres, ${markdownStatistics.links} liens, ${markdownStatistics.ascii} compositions ASCII et ${markdownStatistics.studioCards} cartes de service ; routes de production fermées, frontière studio close, extensions propriétaires neutralisées et double autorisation Notion éprouvée.`,
     );
 }
 
