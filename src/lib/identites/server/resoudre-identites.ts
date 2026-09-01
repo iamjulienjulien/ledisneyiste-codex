@@ -42,10 +42,10 @@ const archivesIdentitaires: Record<CodexFamily, ArchivesIdentitairesCodex> = {
     },
 };
 
-export function resoudreIdentiteCodex(
-    famille: CodexFamily,
+export function resoudreIdentiteCodex<Famille extends CodexFamily>(
+    famille: Famille,
     slug: string,
-): ProjectionIdentiteCodex | null {
+): ProjectionIdentiteCodex<Famille> | null {
     const archives = archivesIdentitaires[famille];
     const entree = archives.catalogue.find(
         (candidate) => candidate.slug === slug,
@@ -59,9 +59,9 @@ export function resoudreIdentiteCodex(
     });
 }
 
-export function listerIdentitesCodex(
-    famille: CodexFamily,
-): readonly ProjectionIdentiteCodex[] {
+export function listerIdentitesCodex<Famille extends CodexFamily>(
+    famille: Famille,
+): readonly ProjectionIdentiteCodex<Famille>[] {
     return archivesIdentitaires[famille].catalogue.map((entree) => {
         const projection = resoudreIdentiteCodex(famille, entree.slug);
 

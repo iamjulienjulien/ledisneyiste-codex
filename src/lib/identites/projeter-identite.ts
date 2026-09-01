@@ -18,8 +18,10 @@ export type FicheIdentitaireCodex = Readonly<{
     titresAlternatifs?: readonly TitreAlternatifCodex[];
 }>;
 
-export type ParametresProjectionIdentiteCodex = Readonly<{
-    famille: CodexFamily;
+export type ParametresProjectionIdentiteCodex<
+    Famille extends CodexFamily = CodexFamily,
+> = Readonly<{
+    famille: Famille;
     entree: EntreeIdentitaireCodex | null | undefined;
     fiche: FicheIdentitaireCodex | null | undefined;
     identifiant?: string | null;
@@ -89,14 +91,14 @@ function verifierUniciteIdentites(
     }
 }
 
-export function projeterIdentiteCodex({
+export function projeterIdentiteCodex<Famille extends CodexFamily>({
     famille,
     entree,
     fiche,
     identifiant = null,
     languePrincipale = null,
     aliasesNavigation = [],
-}: ParametresProjectionIdentiteCodex): ProjectionIdentiteCodex | null {
+}: ParametresProjectionIdentiteCodex<Famille>): ProjectionIdentiteCodex<Famille> | null {
     if (!entree || !fiche) {
         return null;
     }

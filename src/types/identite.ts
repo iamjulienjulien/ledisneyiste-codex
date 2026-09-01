@@ -59,7 +59,7 @@ export type IdentitePrincipaleCodex = {
     langue: CodeLangueCodex | null;
 };
 
-export type ProjectionIdentiteCodex<Famille extends string = CodexFamily> =
+export type ProjectionIdentiteCodex<Famille extends CodexFamily = CodexFamily> =
     Readonly<{
         identifiant: string | null;
         famille: Famille;
