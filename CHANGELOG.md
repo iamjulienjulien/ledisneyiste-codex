@@ -24,9 +24,82 @@ Avec _Pinocchio_, les œuvres s’apprêtent à quitter le seul cadre de leur fa
 
 Cette section sera complétée au fil de l’Acte.
 
+### Phase 0 · Mettre le Guidebook en projection
+
+Avant que _Pinocchio_ n’entre en scène, la documentation transmissible du
+studio reçoit sa propre salle de lecture privée.
+
+- déplacement du modèle de carte de studio hors de la racine transmissible et
+  fermeture explicite de `docs/studio/` ;
+- création du domaine neutre `Guidebook*`, des manifestes fermés et de
+  l’analyse Markdown unique côté serveur ;
+- ajout d’une passerelle Notion à double autorisation sous la racine déclarée
+  **Le Disneyiste** ;
+- création, amélioration puis promotion de `PixieAscii`, `PixieMarkdown` et
+  `PixieDocs` en version `1.0.0` ;
+- ouverture du huitième plateau **Les Écrans** dans l’Atelier ;
+- mise en projection des sept chapitres locaux et de onze pages Notion ;
+- ouverture des routes privées `/guidebook`, raccordées uniquement à
+  l’Atelier et rendues introuvables en production ;
+- ajout des bibliothèques intégrée, sticky et flottante, puis d’un contrôle de
+  lecture mémorisé dans le Guidebook ;
+- reconnaissance et mise en scène des cartes de service Guru Éditions sans
+  modifier leur composition monospacée ;
+- extension des garde-fous aux chemins résolus, secrets, identifiants, liens,
+  routes, composants et modes de navigation ;
+- validation de la relecture visuelle et de la répétition générale avant le
+  passage à la Phase 1.
+
 ### Générique des commits
 
 1. `f784e96` — 🎞️ Acte > Acte VI · Pinocchio ouvre les œuvres sur leur vie publique > 🐭 Julien
+2. `49ecabc` — ✍️ Scénario > Le Journal raccorde l’Entracte épique à l’Acte VI > 🔩 R2-D2 🏅
+3. `8750c83` — 🩹 Raccord > Le modèle des cartes rejoint les coulisses du studio > 🔩 R2-D2 🏅
+4. `4a6b7f7` — 📡 Transmission > Le Guidebook grave son contrat de projection > 🔩 R2-D2 🏅
+5. `f005e1d` — 🛡️ Garde-fou > Les documents privés restent hors de la projection > 🔩 R2-D2 🏅
+6. `9625672` — 🎬 Scène > PixieDustAscii préserve les cartes du studio caractère par caractère > 🔩 R2-D2 🏅
+7. `5f42d8b` — 🎨 Mise en scène > Les Écrans ouvrent leur premier plateau dans l’Atelier > 🔩 R2-D2 🏅
+8. `b61bbb0` — 📡 Transmission > Les guides accueillent le nouveau plateau des Écrans > 🔩 R2-D2 🏅
+9. `b8d5bd2` — 🎬 Scène > Le Guidebook transforme le Markdown en matière de projection > 🔩 R2-D2 🏅
+10. `9d4fc5f` — 🛡️ Garde-fou > Le Guidebook éprouve chaque chapitre avant la projection > 🔩 R2-D2 🏅
+11. `a183d93` — 📡 Transmission > Le dépôt raconte la chaîne d’analyse du Guidebook > 🔩 R2-D2 🏅
+12. `8a18d4d` — 🎬 Scène > PixieDustMarkdown transforme les blocs du Guidebook en lecture sémantique > 🔩 R2-D2 🏅
+13. `c2c6ef4` — 🛡️ Garde-fou > La projection du Markdown protège ses fichiers et ses alternatives > 🔩 R2-D2 🏅
+14. `6fa0e60` — 🎨 Mise en scène > PixieDustMarkdown ouvre sa régie sur le plateau des Écrans > 🔩 R2-D2 🏅
+15. `b08f2f5` — 📡 Transmission > Le dépôt raconte la première projection Markdown du Guidebook > 🔩 R2-D2 🏅
+16. `f1b1260` — ✨ Étincelle > La Chambre 1997 fonde le style illustré du Disneyiste > 🎨 Huyang
+17. `12187a3` — 🎬 Scène > PixieDustDocs ouvre la bibliothèque du Guidebook > 🔩 R2-D2 🏅
+18. `f9e870b` — 🎨 Mise en scène > L’Atelier éprouve la lecture du Guidebook > 🔩 R2-D2 🏅
+19. `acf8165` — 📡 Transmission > Le dépôt consigne la première esquisse de PixieDustDocs > 🔩 R2-D2 🏅
+20. `e6fe1b1` — 🔌 Passerelle > Le Guidebook ouvre une bobine déclarée sur Notion > 🔩 R2-D2 🏅
+21. `6dbd67f` — 🧪 Répétition > Le Guidebook éprouve sa passerelle Notion hors ligne > 🔩 R2-D2 🏅
+22. `0a4aa97` — 🎬 Scène > PixieDustDocs déploie sa bibliothèque en version 0.2.0 > 🔩 R2-D2 🏅
+23. `87c5db7` — 🎨 Mise en scène > L’Atelier éprouve PixieDustDocs sur deux bibliothèques > 🔩 R2-D2 🏅
+24. `44e7c08` — 📡 Transmission > Le dépôt raconte la double projection du Guidebook > 🔩 R2-D2 🏅
+25. `f1ab24c` — 🎬 Scène > PixieDustAscii révèle ses hors-champs en version 0.2.0 > 🔩 R2-D2 🏅
+26. `0770a60` — 🎨 Mise en scène > L’Atelier éprouve les limites de PixieDustAscii > 🔩 R2-D2 🏅
+27. `c07bcaa` — 📡 Transmission > Le Guidebook consigne la seconde esquisse de PixieDustAscii > 🔩 R2-D2 🏅
+28. `5efe390` — 🎬 Scène > PixieAscii entre en projection en version 1.0.0 > 🔩 R2-D2 🏅
+29. `3dfae72` — 🎨 Mise en scène > L’Atelier accueille PixieAscii parmi les Écrans > 🔩 R2-D2 🏅
+30. `892c928` — 📡 Transmission > Le Guidebook consigne la promotion de PixieAscii > 🔩 R2-D2 🏅
+31. `d10b7f5` — 🎬 Scène > PixieDustMarkdown affine la lecture en version 0.2.0 > 🔩 R2-D2 🏅
+32. `540094a` — 🎨 Mise en scène > L’Atelier éprouve les nouvelles voix de PixieDustMarkdown > 🔩 R2-D2 🏅
+33. `baa8a24` — 📡 Transmission > Le Guidebook consigne la seconde esquisse de PixieDustMarkdown > 🔩 R2-D2 🏅
+34. `db026dc` — 🎬 Scène > PixieMarkdown entre en projection en version 1.0.0 > 🔩 R2-D2 🏅
+35. `145b23d` — 🎨 Mise en scène > L’Atelier accueille PixieMarkdown parmi les Écrans > 🔩 R2-D2 🏅
+36. `bd0bafb` — 📡 Transmission > Le Guidebook consigne la promotion de PixieMarkdown > 🔩 R2-D2 🏅
+37. `459014d` — 🩹 Raccord > La bibliothèque intégrée de PixieDustDocs suit le défilement > 🔩 R2-D2 🏅
+38. `c767a3c` — 🎨 Mise en scène > L’Atelier éprouve la bibliothèque sticky de PixieDustDocs > 🔩 R2-D2 🏅
+39. `f7746fd` — 🎬 Scène > PixieDocs entre en projection en version 1.0.0 > 🔩 R2-D2 🏅
+40. `9b2237c` — 🎨 Mise en scène > L’Atelier accueille PixieDocs parmi les Écrans > 🔩 R2-D2 🏅
+41. `4054b40` — 📡 Transmission > Le Guidebook consigne la promotion de PixieDocs > 🔩 R2-D2 🏅
+42. `63cc436` — 🎬 Scène > Le Guidebook met ses bibliothèques en projection privée > 🔩 R2-D2 🏅
+43. `8a4f489` — 🛡️ Garde-fou > La projection du Guidebook reste derrière le rideau > 🔩 R2-D2 🏅
+44. `6afffa2` — 📡 Transmission > Le dépôt raconte l’ouverture privée du Guidebook > 🔩 R2-D2 🏅
+45. `2f9172e` — 🎨 Mise en scène > Le Guidebook choisit la présence de sa bibliothèque > 🔩 R2-D2 🏅
+46. `93a3833` — 🩹 Raccord > Les cartes de service retrouvent leur lumière de studio > 🔩 R2-D2 🏅
+47. `7c4d6f5` — 🧪 Répétition > Le Guidebook reconnaît ses cartes et ses cadres de lecture > 🔩 R2-D2 🏅
+48. `2babe6b` — 📡 Transmission > Le Guidebook consigne ses derniers raccords de lecture > 🔩 R2-D2 🏅
 
 ---
 

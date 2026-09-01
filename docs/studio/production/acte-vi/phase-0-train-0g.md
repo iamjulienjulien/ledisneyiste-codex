@@ -1,9 +1,18 @@
-# Acte VI · Phase 0 · Brief du Train 0G
+# Acte VI · Phase 0 · Transmission du Train 0G
 
 > **Document interne de production**<br>
 > Préparé par **🔩 R2-D2**, Lead Dev chez **Guru Éditions**.
 
-## Mission
+## Verdict
+
+Le Train 0G est terminé. Le Guidebook assemble désormais les trois Écrans
+promus dans une salle privée, parcourt les bibliothèques locale et Notion et
+reste fermé en production. Sa relecture visuelle finale est validée.
+
+La synthèse et le passage à la Phase 1 sont consignés dans
+[`phase-0-cloture.md`](./phase-0-cloture.md).
+
+## Mission accomplie
 
 Mettre le Guidebook en projection dans les coulisses du Codex en assemblant
 les trois Écrans désormais stables : `PixieAscii`, `PixieMarkdown` et
@@ -142,12 +151,11 @@ Ce train ne crée :
 - aucun nouveau composant Pixie ;
 - aucune copie de document dans une autre source de vérité.
 
-## Définition de fin
+## Définition de fin validée
 
-Le Train 0G est terminé lorsque les deux bibliothèques se parcourent en
-développement, que leurs états négatifs restent lisibles, que la frontière de
-production est vérifiée et que la documentation du dépôt décrit fidèlement la
-nouvelle projection privée.
+Les deux bibliothèques se parcourent en développement, leurs états négatifs
+restent lisibles, la frontière de production est vérifiée et la documentation
+du dépôt décrit fidèlement la nouvelle projection privée.
 
 ---
 
