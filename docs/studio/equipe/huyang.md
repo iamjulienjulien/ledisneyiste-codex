@@ -352,6 +352,10 @@ Aucune distinction administrative enregistrée à ce stade.
 
 ### Productions
 
+- [Fiche de poste · Artistic Director](./postes/artistic-director.md) — guide
+  professionnel de fonction et de succession issu du premier mandat ;
+- [Protocoles de fabrication des Symboles](../design/symboles/00-protocole-general.md)
+  — méthode transmise de la direction au fichier projetable ;
 - briefs et directions artistiques validés dont Huyang reçoit explicitement
   la garde ;
 - planches de référence, critères de série et dossiers de validation produits
@@ -482,6 +486,8 @@ Ce dossier versionné ne reçoit jamais :
 
 - [Onboarding de Guru Éditions](../onboarding.md) — parcours commun de prise de
   poste, de relecture et de validation ;
+- [Fiche de poste · Artistic Director](./postes/artistic-director.md) —
+  responsabilités, livrables, méthodes et guide de succession ;
 - [Modèle de dossier d’employé](./template-employe.md) — schéma canonique dont
   cette fiche est issue.
 
