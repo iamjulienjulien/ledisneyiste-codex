@@ -8,6 +8,7 @@
 }
 
 .link {
+    display: inline-flex;
     border-radius: calc(var(--radius-small) - 0.125rem);
     padding: 0.45rem 0.8rem;
     color: var(--color-muted);
@@ -18,6 +19,10 @@
     transition:
         color 160ms ease,
         background-color 160ms ease;
+}
+
+.link[aria-current="page"] {
+    text-decoration: none;
 }
 
 .link:hover,

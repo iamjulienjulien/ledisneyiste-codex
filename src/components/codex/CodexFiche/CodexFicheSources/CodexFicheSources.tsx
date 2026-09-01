@@ -1,4 +1,5 @@
 import { CodexFicheSection } from "@/components/codex/CodexFiche/CodexFicheSection";
+import { PixieLink } from "@/components/ui/PixieLink";
 import { formatDateISO } from "@/lib/date";
 import { getSourceAnchorId } from "@/lib/source";
 import styles from "./CodexFicheSources.module.css";
@@ -37,14 +38,14 @@ export function CodexFicheSources({ sources }: CodexFicheSourcesProps) {
                             </p>
 
                             {source.url && (
-                                <a
+                                <PixieLink
                                     href={source.url}
                                     target="_blank"
                                     rel="noreferrer"
                                     className="mt-1 inline-block text-sm underline underline-offset-4"
                                 >
                                     Consulter la source
-                                </a>
+                                </PixieLink>
                             )}
                         </div>
                     </li>

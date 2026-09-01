@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { PixieLink } from "@/components/ui/PixieLink";
 import styles from "./CodexIndexViewSwitch.module.css";
 import type { CodexIndexViewSwitchProps } from "./CodexIndexViewSwitch.types";
 
@@ -17,14 +17,15 @@ export function CodexIndexViewSwitch({
                 const isCurrent = currentView === view.value;
 
                 return (
-                    <Link
+                    <PixieLink
                         key={view.value}
                         href={`${pathname}?view=${view.value}`}
                         aria-current={isCurrent ? "page" : undefined}
+                        variant="action"
                         className={`${styles.link} ${isCurrent ? styles.current : ""}`.trim()}
                     >
                         {view.label}
-                    </Link>
+                    </PixieLink>
                 );
             })}
         </nav>

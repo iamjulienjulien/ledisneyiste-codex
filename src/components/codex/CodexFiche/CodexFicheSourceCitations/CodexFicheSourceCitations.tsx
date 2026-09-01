@@ -1,3 +1,4 @@
+import { PixieLink } from "@/components/ui/PixieLink";
 import { getSourceAnchorId } from "@/lib/source";
 import styles from "./CodexFicheSourceCitations.module.css";
 import type { CodexFicheSourceCitationsProps } from "./CodexFicheSourceCitations.types";
@@ -34,14 +35,14 @@ export function CodexFicheSourceCitations({
             <ol className={styles.list}>
                 {citations.map(({ source, number }) => (
                     <li key={source.id}>
-                        <a
+                        <PixieLink
                             href={`#${getSourceAnchorId(source.id)}`}
                             className={styles.link}
                             aria-label={`Source ${number} : ${source.titre}`}
                             title={source.titre}
                         >
                             {number}
-                        </a>
+                        </PixieLink>
                     </li>
                 ))}
             </ol>
