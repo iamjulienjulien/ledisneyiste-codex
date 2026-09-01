@@ -44,7 +44,7 @@ des identifiants de projection stables ou explicitement migrés.
 ajouter cette entrée à `CodexFamily`, aux index publics ou aux routes.
 
 - Rouge aujourd’hui : seule une référence extérieure embarquée est possible.
-- Passe au vert : Train 4C.
+- Verte depuis le Train 4C.
 
 ## Bobine 04 · Une Chanson complète sans lecteur
 
