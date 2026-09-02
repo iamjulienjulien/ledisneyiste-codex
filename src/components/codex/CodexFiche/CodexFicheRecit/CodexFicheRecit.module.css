@@ -1,0 +1,195 @@
+.navigationPanel {
+    --pixie-panel-color: var(
+        --codex-fiche-color,
+        var(--projection-originale-lueur-technicolor)
+    );
+}
+
+.navigationHeader {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem 1.5rem;
+}
+
+.navigationEyebrow,
+.tableCaption,
+.tableHead,
+.cellLabel {
+    font-family: var(--projection-font-eyebrow);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.navigationEyebrow,
+.tableCaption,
+.cellLabel {
+    color: var(--codex-fiche-color, var(--color-accent));
+}
+
+.navigationTitle {
+    margin-top: 0.25rem;
+    font-family: var(--projection-font-display);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    line-height: 1.1;
+    color: var(--color-ink);
+}
+
+.navigationCount {
+    color: var(--color-muted);
+    white-space: nowrap;
+}
+
+.chapterList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    list-style: none;
+}
+
+.chapterLink {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    align-items: start;
+    gap: 0.75rem;
+    min-height: 100%;
+    padding: 1rem;
+    border: 1px solid var(--color-line);
+    border-radius: 0.75rem;
+    background: color-mix(in srgb, var(--color-surface-muted) 72%, transparent);
+    text-decoration: none;
+}
+
+.chapterLink:hover {
+    border-color: var(--codex-fiche-color, var(--color-accent));
+}
+
+.chapterNumber {
+    font-family: var(--projection-font-mono);
+    color: var(--codex-fiche-color, var(--color-accent));
+}
+
+.chapterCopy {
+    min-width: 0;
+}
+
+.chapterTitle {
+    display: block;
+    font-family: var(--projection-font-display);
+    font-size: 1.125rem;
+    line-height: 1.2;
+    color: var(--color-ink);
+}
+
+.chapterQuestion {
+    display: block;
+    margin-top: 0.4rem;
+    line-height: 1.35;
+    color: var(--color-ink-soft);
+}
+
+.tablePanel {
+    overflow: hidden;
+}
+
+.tableViewport {
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    min-width: 58rem;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.tableCaption {
+    padding: 0 0 1rem;
+    text-align: left;
+}
+
+.tableHead {
+    color: var(--color-muted);
+}
+
+.tableHead th,
+.table td {
+    padding: 1rem;
+    vertical-align: top;
+    border-top: 1px solid var(--color-line);
+}
+
+.tableHead th {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+
+.chapterCell {
+    width: 19rem;
+}
+
+.questionCell {
+    width: 18rem;
+    color: var(--color-ink-soft);
+}
+
+.proofCell {
+    width: 19rem;
+}
+
+.chapterCellLink {
+    font-family: var(--projection-font-display);
+    font-size: 1.05rem;
+    line-height: 1.25;
+}
+
+.chapterMeta {
+    display: block;
+    margin-top: 0.45rem;
+    color: var(--color-muted);
+}
+
+.proofList,
+.reserveList {
+    display: grid;
+    gap: 0.5rem;
+    list-style: none;
+}
+
+.proofLink,
+.reserveLink {
+    line-height: 1.35;
+}
+
+.proofNumber {
+    margin-right: 0.4rem;
+    font-family: var(--projection-font-mono);
+    color: var(--codex-fiche-color, var(--color-accent));
+}
+
+.reserveText {
+    display: block;
+    margin-top: 0.25rem;
+    line-height: 1.4;
+    color: var(--color-ink-soft);
+}
+
+.empty {
+    color: var(--color-muted);
+}
+
+@media (max-width: 639px) {
+    .chapterList {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (forced-colors: active) {
+    .chapterLink {
+        background: Canvas;
+    }
+}

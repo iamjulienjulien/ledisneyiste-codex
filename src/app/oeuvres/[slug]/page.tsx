@@ -239,6 +239,7 @@ export default async function OeuvrePage({
                 collection="oeuvres"
                 blocs={fiche.blocsEditoriaux}
                 sources={sources}
+                withEvidenceMap={fiche.slug === "pinocchio"}
             />
 
             <CodexFicheSources sources={sources} />

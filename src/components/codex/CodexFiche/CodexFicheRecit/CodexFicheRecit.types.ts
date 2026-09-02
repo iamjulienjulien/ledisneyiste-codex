@@ -1,12 +1,12 @@
+import type { ReactNode } from "react";
 import type { SymbolCollectionName } from "@/registry/symbols";
 import type { BlocEditorialCodex } from "@/types/fiche";
 import type { SourceCodex } from "@/types/source";
 
-export type CodexFicheBlocsEditoriauxProps<
+export type CodexFicheRecitProps<
     Collection extends SymbolCollectionName<"index">,
 > = Readonly<{
-    collection: Collection;
-    blocs?: readonly BlocEditorialCodex<Collection>[];
+    blocs: readonly BlocEditorialCodex<Collection>[];
     sources: readonly SourceCodex[];
-    withEvidenceMap?: boolean;
+    children: ReactNode;
 }>;

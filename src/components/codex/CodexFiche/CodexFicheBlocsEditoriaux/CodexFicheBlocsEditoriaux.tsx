@@ -1,4 +1,5 @@
 import { CodexFicheSection } from "@/components/codex/CodexFiche/CodexFicheSection";
+import { CodexFicheRecit } from "@/components/codex/CodexFiche/CodexFicheRecit";
 import { CodexFicheSourceCitations } from "@/components/codex/CodexFiche/CodexFicheSourceCitations";
 import { PixieCallout } from "@/components/ui/PixieCallout";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
@@ -12,12 +13,17 @@ import styles from "./CodexFicheBlocsEditoriaux.module.css";
 
 export function CodexFicheBlocsEditoriaux<
     Collection extends SymbolCollectionName<"index">,
->({ collection, blocs, sources }: CodexFicheBlocsEditoriauxProps<Collection>) {
+>({
+    collection,
+    blocs,
+    sources,
+    withEvidenceMap = false,
+}: CodexFicheBlocsEditoriauxProps<Collection>) {
     if (!blocs?.length) {
         return null;
     }
 
-    return blocs.map((bloc) => {
+    const chapitres = blocs.map((bloc) => {
         const symbolSelection = {
             registry: "index",
             collection,
@@ -86,4 +92,12 @@ export function CodexFicheBlocsEditoriaux<
             </CodexFicheSection>
         );
     });
+
+    return withEvidenceMap ? (
+        <CodexFicheRecit blocs={blocs} sources={sources}>
+            {chapitres}
+        </CodexFicheRecit>
+    ) : (
+        chapitres
+    );
 }
