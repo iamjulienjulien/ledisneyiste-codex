@@ -41,8 +41,9 @@ Ces fiches sont reliées entre elles et développées à partir de sources
 centralisées ; les archives concernées sont également rattachées
 automatiquement à leur Époque. Leurs 208 blocs éditoriaux emploient une
 première collection de symboles illustrés. Le registre central réunit désormais
-432 symboles dans 6 registres et 30 collections. Seize récompenses
-documentent également les premières distinctions du studio.
+432 symboles dans 6 registres et 30 collections. Quarante-cinq récompenses
+documentent également les premières distinctions du studio et les vingt-neuf
+Disney Legends déjà présents dans l’index des Créateurs.
 
 Les cinq index proposent une vue Cartes par défaut et une vue Liste
 partageable par son URL. Les fiches héritent de l'identité de leur famille,
@@ -139,6 +140,7 @@ scripts/
 ├── verifier-donnees-economiques.mjs
 ├── verifier-guidebook.mjs
 ├── verifier-identites.mjs
+├── verifier-interlude-disney-legends.mjs
 ├── verifier-metadonnees.mjs
 ├── verifier-matiere-plans.mjs
 ├── verifier-oeuvres.mjs
@@ -748,6 +750,7 @@ format
 → check:phase-4
 → check:phase-5
 → check:phase-6
+→ check:interlude-disney-legends
 → check:personnages
 → check:relations
 → check:recompenses
@@ -782,6 +785,7 @@ pnpm check:donnees-economiques
 pnpm check:phase-4
 pnpm check:phase-5
 pnpm check:phase-6
+pnpm check:interlude-disney-legends
 pnpm check:personnages
 pnpm check:relations
 pnpm check:recompenses
@@ -806,7 +810,10 @@ explicitement transmis à la production de _Pinocchio_. Il protège également
 les 83 routes canoniques et les 45 routes historiques du périmètre migré.
 `check:phase-6` ferme 26 verdicts de production, contrôle 109 Archives et
 routes canoniques, 29 sources promues, les frontières internes et les trois
-regards territoriaux de _Pinocchio_. Les derniers contrôles couvrent les
+regards territoriaux de _Pinocchio_.
+`check:interlude-disney-legends` protège les 29 attributions Disney Legends,
+leurs années, leurs bénéficiaires uniques et leurs notices officielles D23.
+Les derniers contrôles couvrent les
 variantes de noms et les formes des
 Personnages, la cohérence des références et des relations, puis les
 récompenses, leurs bénéficiaires, leurs sources et leurs trophées illustrés.

@@ -647,6 +647,12 @@ transmission vers la Phase 7. Il ne transforme ni le Guidebook ni le manifeste
 en nouvelle source de vérité : tous deux décrivent les invariants que le code
 et les Archives continuent de posséder.
 
+L’Interlude précédant la Phase 7 complète ensuite le registre transversal avec
+les **29 Disney Legends** déjà publiés dans l’index des Créateurs. Chaque
+distinction conserve son année d’intronisation, la statuette Disney Legends,
+un bénéficiaire résolu et sa notice officielle D23. Le registre atteint ainsi
+45 récompenses sans modifier la photographie fermée de la Phase 6.
+
 ### Pinocchio éprouve la vie publique d’une Œuvre
 
 La fiche de _Pinocchio_ emploie maintenant les contrats spécialisés au lieu de
@@ -893,24 +899,25 @@ Il formate, relit, analyse et construit le projet, puis exécute les
 vérificateurs métier. Pour isoler un chantier documentaire, les commandes les
 plus utiles sont :
 
-| Commande                         | Ce qu’elle protège principalement                                   |
-| -------------------------------- | ------------------------------------------------------------------- |
-| `pnpm check:metadata`            | Slugs et définitions des métadonnées                                |
-| `pnpm check:oeuvres`             | Modèle enrichi des œuvres, dates, sources et fixture représentative |
-| `pnpm check:personnages`         | Noms alternatifs, formes et sources                                 |
-| `pnpm check:relations`           | Catalogues, fiches, références, noms, slugs et sources              |
-| `pnpm check:recompenses`         | Distinctions, bénéficiaires, sources et trophées                    |
-| `pnpm check:plans`               | Grammaire commune des cinq Plans                                    |
-| `pnpm check:plan-matter`         | Dérivations, Bobines témoins et projections des Plans               |
-| `pnpm check:guidebook`           | Manifestes, frontières privées et analyse Markdown du Guidebook     |
-| `pnpm check:identites`           | Langues, territoires, jointures et routes canoniques                |
-| `pnpm check:oeuvres-sources`     | Registre privé, relations et absence de routes                      |
-| `pnpm check:chansons`            | Chansons, Musiques, droits média et frontière navigateur            |
-| `pnpm check:donnees-economiques` | Mesures, conflits, enquêtes et projection publique                  |
-| `pnpm check:phase-4`             | Corpus, routes, bobines et manifeste de migration                   |
-| `pnpm check:phase-5`             | 69 verdicts de rétroapplication et 45 routes historiques            |
-| `pnpm check:phase-6`             | Noyau Pinocchio, 109 routes, sources et frontières internes         |
-| `pnpm build`                     | Assemblage statique et contrats TypeScript                          |
+| Commande                              | Ce qu’elle protège principalement                                   |
+| ------------------------------------- | ------------------------------------------------------------------- |
+| `pnpm check:metadata`                 | Slugs et définitions des métadonnées                                |
+| `pnpm check:oeuvres`                  | Modèle enrichi des œuvres, dates, sources et fixture représentative |
+| `pnpm check:personnages`              | Noms alternatifs, formes et sources                                 |
+| `pnpm check:relations`                | Catalogues, fiches, références, noms, slugs et sources              |
+| `pnpm check:recompenses`              | Distinctions, bénéficiaires, sources et trophées                    |
+| `pnpm check:plans`                    | Grammaire commune des cinq Plans                                    |
+| `pnpm check:plan-matter`              | Dérivations, Bobines témoins et projections des Plans               |
+| `pnpm check:guidebook`                | Manifestes, frontières privées et analyse Markdown du Guidebook     |
+| `pnpm check:identites`                | Langues, territoires, jointures et routes canoniques                |
+| `pnpm check:oeuvres-sources`          | Registre privé, relations et absence de routes                      |
+| `pnpm check:chansons`                 | Chansons, Musiques, droits média et frontière navigateur            |
+| `pnpm check:donnees-economiques`      | Mesures, conflits, enquêtes et projection publique                  |
+| `pnpm check:phase-4`                  | Corpus, routes, bobines et manifeste de migration                   |
+| `pnpm check:phase-5`                  | 69 verdicts de rétroapplication et 45 routes historiques            |
+| `pnpm check:phase-6`                  | Noyau Pinocchio, 109 routes, sources et frontières internes         |
+| `pnpm check:interlude-disney-legends` | 29 Disney Legends, années, bénéficiaires et sources officielles     |
+| `pnpm build`                          | Assemblage statique et contrats TypeScript                          |
 
 Un contrôle vert signifie que les invariants connus tiennent. Il ne prouve
 pas qu’une relation est historiquement juste ni qu’une source soutient
