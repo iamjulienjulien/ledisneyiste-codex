@@ -1240,6 +1240,22 @@
         "dateConsultation": "2026-08-24"
     },
     {
+        "id": "us-d23-fantasia-film",
+        "titre": "Fantasia (film)",
+        "editeur": "D23: The Official Disney Fan Club",
+        "url": "https://d23.com/a-to-z/fantasia-film/",
+        "dateConsultation": "2026-09-02"
+    },
+    {
+        "id": "us-d23-fantasia-at-80",
+        "titre": "Fantasia at 80: Exploring the Composers and Their Music",
+        "auteur": "Katie Strobel",
+        "editeur": "Walt Disney Archives · D23",
+        "datePublication": "2020-12-31",
+        "url": "https://d23.com/fantasia-at-80-exploring-the-composers-and-their-music/",
+        "dateConsultation": "2026-09-02"
+    },
+    {
         "id": "d23-joe-grant",
         "titre": "Joe Grant",
         "editeur": "D23: The Official Disney Fan Club",

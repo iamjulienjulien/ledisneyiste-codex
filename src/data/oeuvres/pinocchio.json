@@ -932,6 +932,38 @@
                     "reserve": "Les réemplois restent limités aux usages explicitement établis par leurs sources. Aucun média, aucune parole et aucune occurrence non documentée ne sont projetés."
                 }
             ]
+        },
+        {
+            "id": "le-prochain-vertige-fantasia",
+            "type": "repere",
+            "eyebrow": "Dernière image",
+            "titre": "Le prochain vertige : Fantasia",
+            "question": "Pourquoi le studio ne se stabilise-t-il toujours pas ?",
+            "paragraphes": [
+                {
+                    "id": "le-prochain-vertige-la-musique-change-de-place",
+                    "texte": "Dans Pinocchio, les chansons et la partition accompagnent les personnages, relient leurs épreuves et prolongent certaines images hors du film. Fantasia, présenté à New York le 13 novembre 1940, déplace aussitôt ce rapport : huit séquences sont composées autour d’œuvres symphoniques interprétées sous la direction de Leopold Stokowski. La musique n’est plus seulement l’une des matières du récit ; elle devient le principe qui organise la succession des images.",
+                    "sources": ["us-d23-fantasia-film", "us-d23-fantasia-at-80"]
+                },
+                {
+                    "id": "le-prochain-vertige-voir-la-musique-entendre-les-images",
+                    "texte": "Ce renversement oblige le studio à chercher une autre forme de spectacle. Certaines séquences racontent, d’autres transforment la couleur, la forme et le mouvement en réponse à une composition déjà existante. Fantasound étend parallèlement l’expérience sonore dans la salle. Après avoir éprouvé avec Pinocchio la cohérence d’un monde animé, le studio tente donc de faire tenir un long métrage dans le dialogue même entre l’écoute et le regard.",
+                    "sources": [
+                        "us-d23-fantasia-film",
+                        "us-d23-fantasia-at-80",
+                        "wdfm-fantasia-pastoral"
+                    ]
+                },
+                {
+                    "id": "le-prochain-vertige-un-seuil-pas-une-fiche",
+                    "texte": "Cette dernière image n’ouvre pas encore les archives de Fantasia. Elle désigne seulement le prochain vertige rendu visible par le parcours de Pinocchio : le studio ne se stabilise pas dans une formule de long métrage, il change encore la place de la musique, du son et de l’animation. Le futur index des Musiques devra permettre de suivre ces œuvres, leurs interprétations et leurs usages sans les réduire à une simple liste de morceaux.",
+                    "sources": [
+                        "us-d23-fantasia-film",
+                        "us-d23-fantasia-at-80"
+                    ],
+                    "reserve": "Fantasia reste ici un raccord documentaire : aucune fiche, aucun générique, aucune chronologie d’exploitation et aucune archive musicale complète ne sont anticipés. L’index des Musiques demeure une direction de travail, pas une rubrique publique déjà ouverte."
+                }
+            ]
         }
     ],
     "sources": [
@@ -977,6 +1009,9 @@
         "us-d23-when-you-wish-upon-a-star",
         "us-loc-national-recording-registry-when-you-wish",
         "us-d23-disney100-castle-intro",
-        "d23-wish-animation-nods"
+        "d23-wish-animation-nods",
+        "us-d23-fantasia-film",
+        "us-d23-fantasia-at-80",
+        "wdfm-fantasia-pastoral"
     ]
 }
