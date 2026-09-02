@@ -1,0 +1,106 @@
+{
+    "slug": "pinocchio",
+    "type": "oeuvre",
+    "introduction": "Pinocchio est le deuxième long métrage d’animation de Disney. Présenté à New York le 7 février 1940, il adapte le livre de Carlo Collodi en faisant du chemin vers l’humanité une suite d’épreuves où le pantin apprend à reconnaître la conscience, le mensonge et le sacrifice. Produit entre 1937 et 1940, le film prolonge l’ambition ouverte par Blanche-Neige et les Sept Nains dans un monde plus mobile, plus profond et plus dangereux.",
+    "titresAlternatifs": [
+        {
+            "titre": "La Merveilleuse Aventure de Pinocchio",
+            "nature": "sortie-territoriale",
+            "langue": "fr",
+            "territoire": "FR",
+            "sources": ["fr-cnc-visa-pinocchio"]
+        }
+    ],
+    "sortie": {
+        "date": {
+            "valeur": "1940-02-07",
+            "precision": "jour"
+        }
+    },
+    "format": "long métrage d’animation",
+    "durees": [
+        {
+            "valeur": 87,
+            "unite": "minutes",
+            "version": "version originale de 1940",
+            "sources": ["us-afi-catalog-pinocchio", "us-d23-pinocchio-film"]
+        }
+    ],
+    "production": {
+        "debut": { "valeur": "1937", "precision": "annee" },
+        "fin": { "valeur": "1940", "precision": "annee" },
+        "sources": ["us-afi-catalog-pinocchio", "us-d23-pinocchio-film"]
+    },
+    "relationsOeuvres": [
+        {
+            "nature": "adaptation",
+            "oeuvre": {
+                "nom": "Le avventure di Pinocchio",
+                "type": "oeuvre-source",
+                "id": "oeuvre-source-collodi-pinocchio",
+                "slug": "le-avventure-di-pinocchio"
+            },
+            "sources": [
+                "us-afi-catalog-pinocchio",
+                "it-treccani-1940-pinocchio",
+                "it-collodi-critical-text"
+            ]
+        }
+    ],
+    "contributions": [
+        {
+            "contributeur": {
+                "nom": "Walt Disney",
+                "type": "contributeur",
+                "slug": "walt-disney"
+            },
+            "roles": ["production"],
+            "domaine": "production-direction"
+        },
+        {
+            "contributeur": {
+                "nom": "Hamilton Luske",
+                "type": "contributeur",
+                "slug": "hamilton-luske"
+            },
+            "roles": ["réalisation"],
+            "domaine": "production-direction"
+        },
+        {
+            "contributeur": { "nom": "Ben Sharpsteen" },
+            "roles": ["réalisation"],
+            "domaine": "production-direction"
+        },
+        {
+            "contributeur": {
+                "nom": "Carlo Collodi",
+                "type": "contributeur",
+                "slug": "carlo-collodi"
+            },
+            "roles": ["œuvre littéraire originale"],
+            "domaine": "histoire-adaptation"
+        }
+    ],
+    "personnages": [
+        { "nom": "Pinocchio" },
+        { "nom": "Jiminy Cricket" },
+        { "nom": "Geppetto" },
+        { "nom": "La Fée Bleue" },
+        { "nom": "Grand Coquin" },
+        { "nom": "Gédéon" },
+        { "nom": "Stromboli" },
+        { "nom": "Le Cocher" },
+        { "nom": "Monstro" },
+        { "nom": "Crapule" },
+        { "nom": "Figaro" },
+        { "nom": "Cléo" }
+    ],
+    "sources": [
+        "us-afi-catalog-pinocchio",
+        "us-d23-pinocchio-film",
+        "fr-cinematheque-pinocchio",
+        "fr-cnc-visa-pinocchio",
+        "it-treccani-1940-pinocchio",
+        "it-collodi-critical-text"
+    ]
+}

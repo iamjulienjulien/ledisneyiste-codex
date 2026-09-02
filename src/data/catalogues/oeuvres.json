@@ -252,6 +252,18 @@
         "sousTitre": "Le taureau qui préféra les fleurs aux honneurs de l’arène"
     },
     {
+        "slug": "pinocchio",
+        "nom": "Pinocchio",
+        "type": "oeuvre",
+        "metadata": {
+            "collection": "classiques-animation",
+            "type": "long-metrage-anime",
+            "son": "sonore",
+            "couleur": "couleur"
+        },
+        "sousTitre": "Le pantin qui apprit à devenir vrai"
+    },
+    {
         "slug": "mr-duck-steps-out",
         "nom": "L’Entreprenant Mr Duck",
         "type": "oeuvre",
