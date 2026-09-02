@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CodexFiche } from "@/components/codex/CodexFiche/CodexFiche";
+import { CodexFicheBlocsEditoriaux } from "@/components/codex/CodexFiche/CodexFicheBlocsEditoriaux";
 import { CodexFicheChansonDetails } from "@/components/codex/CodexFiche/CodexFicheChansonDetails";
 import { CodexFicheHeader } from "@/components/codex/CodexFiche/CodexFicheHeader";
 import { CodexFicheRelations } from "@/components/codex/CodexFiche/CodexFicheRelations";
@@ -132,6 +133,12 @@ export default async function ChansonPage({
                         references: auteursPublies,
                     },
                 ]}
+            />
+
+            <CodexFicheBlocsEditoriaux
+                collection="chansons"
+                blocs={fiche.blocsEditoriaux}
+                sources={sources}
             />
 
             <CodexFicheSources sources={sources} />
