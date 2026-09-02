@@ -21,7 +21,9 @@
     "contributions": [
         {
             "contributeur": {
-                "nom": "Jack Kinney"
+                "nom": "Jack Kinney",
+                "type": "contributeur",
+                "slug": "jack-kinney"
             },
             "roles": ["réalisation"]
         }

@@ -21,7 +21,9 @@
     "contributions": [
         {
             "contributeur": {
-                "nom": "Ben Sharpsteen"
+                "nom": "Ben Sharpsteen",
+                "type": "contributeur",
+                "slug": "ben-sharpsteen"
             },
             "roles": ["réalisation"]
         },
