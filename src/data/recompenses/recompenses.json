@@ -54,7 +54,7 @@
             }
         ],
         "oeuvreConcernee": {
-            "nom": "Flowers and Trees",
+            "nom": "Des Arbres et des Fleurs",
             "type": "oeuvre",
             "slug": "flowers-and-trees"
         },
@@ -90,7 +90,7 @@
             }
         ],
         "oeuvreConcernee": {
-            "nom": "Three Little Pigs",
+            "nom": "Les Trois Petits Cochons",
             "type": "oeuvre",
             "slug": "three-little-pigs"
         },
@@ -125,7 +125,7 @@
             }
         ],
         "oeuvreConcernee": {
-            "nom": "The Tortoise and the Hare",
+            "nom": "Le Lièvre et la Tortue",
             "type": "oeuvre",
             "slug": "the-tortoise-and-the-hare"
         },
@@ -156,7 +156,7 @@
             }
         ],
         "oeuvreConcernee": {
-            "nom": "Three Orphan Kittens",
+            "nom": "Trois Petits Orphelins",
             "type": "oeuvre",
             "slug": "three-orphan-kittens"
         },
@@ -187,7 +187,7 @@
             }
         ],
         "oeuvreConcernee": {
-            "nom": "The Country Cousin",
+            "nom": "Cousin de Campagne",
             "type": "oeuvre",
             "slug": "the-country-cousin"
         },
@@ -218,7 +218,7 @@
             }
         ],
         "oeuvreConcernee": {
-            "nom": "The Old Mill",
+            "nom": "Le Vieux Moulin",
             "type": "oeuvre",
             "slug": "the-old-mill"
         },
@@ -282,7 +282,7 @@
             }
         ],
         "oeuvreConcernee": {
-            "nom": "Ferdinand the Bull",
+            "nom": "Ferdinand, le Taureau",
             "type": "oeuvre",
             "slug": "ferdinand-the-bull"
         },
@@ -340,7 +340,7 @@
             }
         ],
         "oeuvreConcernee": {
-            "nom": "The Band Concert",
+            "nom": "La Fanfare",
             "type": "oeuvre",
             "slug": "the-band-concert"
         },
@@ -370,7 +370,7 @@
             }
         ],
         "oeuvreConcernee": {
-            "nom": "Snow White and the Seven Dwarfs",
+            "nom": "Blanche-Neige et les Sept Nains",
             "type": "oeuvre",
             "slug": "snow-white-and-the-seven-dwarfs"
         },
@@ -405,7 +405,7 @@
             }
         ],
         "oeuvreConcernee": {
-            "nom": "Snow White and the Seven Dwarfs",
+            "nom": "Blanche-Neige et les Sept Nains",
             "type": "oeuvre",
             "slug": "snow-white-and-the-seven-dwarfs"
         },
@@ -437,7 +437,7 @@
             }
         ],
         "oeuvreConcernee": {
-            "nom": "Snow White and the Seven Dwarfs",
+            "nom": "Blanche-Neige et les Sept Nains",
             "type": "oeuvre",
             "slug": "snow-white-and-the-seven-dwarfs"
         },

@@ -605,8 +605,8 @@ async function verifierJointuresArchives(projeterIdentiteCodex, erreurs) {
         ["personnages/le-chasseur", "Humbert", "alias"],
         [
             "oeuvres/snow-white-and-the-seven-dwarfs",
-            "Blanche-Neige et les Sept Nains",
-            "sortie-territoriale",
+            "Snow White and the Seven Dwarfs",
+            "original",
         ],
     ];
 

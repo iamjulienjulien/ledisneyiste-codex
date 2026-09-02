@@ -371,6 +371,11 @@ const ensembleBlancheNeige = derivePlanDEnsemble(
             slug: "snow-white-and-the-seven-dwarfs",
         },
         angle: "relations",
+        frame: {
+            ...configuration.frame,
+            label: "Voisinage public de Blanche-Neige",
+            limit: 24,
+        },
     },
     {
         kind: "archives",

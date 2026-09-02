@@ -20,7 +20,7 @@
         }
     ],
     "oeuvreOrigine": {
-        "nom": "Three Little Pigs",
+        "nom": "Les Trois Petits Cochons",
         "type": "oeuvre",
         "slug": "three-little-pigs"
     },
@@ -88,7 +88,7 @@
             "id": "occurrence-big-bad-wolf-three-little-pigs-1933",
             "nature": "origine",
             "oeuvre": {
-                "nom": "Three Little Pigs",
+                "nom": "Les Trois Petits Cochons",
                 "type": "oeuvre",
                 "slug": "three-little-pigs"
             },

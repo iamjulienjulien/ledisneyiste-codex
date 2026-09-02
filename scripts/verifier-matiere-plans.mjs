@@ -494,7 +494,7 @@ function verifierTravellingDocumentaire({
         projection.subject.id,
         "oeuvre:snow-white-and-the-seven-dwarfs",
     );
-    assert.equal(projection.subject.label, "Snow White and the Seven Dwarfs");
+    assert.equal(projection.subject.label, "Blanche-Neige et les Sept Nains");
     assert.equal(projection.subject.resolved, true);
     assert.equal(projection.matter.kind, "archives");
     assert.equal(projection.runtimeState, "ready");
@@ -502,9 +502,9 @@ function verifierTravellingDocumentaire({
         projection.stages.map((stage) => stage.node.label),
         [
             "Schneewittchen",
-            "The Goddess of Spring",
-            "The Old Mill",
-            "Snow White and the Seven Dwarfs",
+            "La Déesse du Printemps",
+            "Le Vieux Moulin",
+            "Blanche-Neige et les Sept Nains",
         ],
     );
     assert.deepEqual(
@@ -688,7 +688,7 @@ function verifierPlanDEnsemble({
         "oeuvre:snow-white-and-the-seven-dwarfs",
     );
     assert.equal(projection.focus.id, projection.subject.id);
-    assert.equal(projection.subject.label, "Snow White and the Seven Dwarfs");
+    assert.equal(projection.subject.label, "Blanche-Neige et les Sept Nains");
     assert.equal(projection.subject.resolved, true);
     assert.equal(projection.matter.kind, "archives");
     assert.deepEqual(
@@ -1025,7 +1025,7 @@ function verifierGeneriqueVivant({
         archives,
     });
 
-    assert.equal(projection.subject.label, "Snow White and the Seven Dwarfs");
+    assert.equal(projection.subject.label, "Blanche-Neige et les Sept Nains");
     assert.equal(projection.matter.kind, "archives");
     assert.equal(projection.runtimeState, "incomplete");
     assert.deepEqual(projection.stats, {

@@ -4,7 +4,7 @@
         "nom": "Whistle While You Work",
         "type": "chanson",
         "oeuvreOrigine": {
-            "nom": "Snow White and the Seven Dwarfs",
+            "nom": "Blanche-Neige et les Sept Nains",
             "type": "oeuvre",
             "slug": "snow-white-and-the-seven-dwarfs"
         },
@@ -15,7 +15,7 @@
         "nom": "Heigh-Ho",
         "type": "chanson",
         "oeuvreOrigine": {
-            "nom": "Snow White and the Seven Dwarfs",
+            "nom": "Blanche-Neige et les Sept Nains",
             "type": "oeuvre",
             "slug": "snow-white-and-the-seven-dwarfs"
         },
@@ -26,7 +26,7 @@
         "nom": "Someday My Prince Will Come",
         "type": "chanson",
         "oeuvreOrigine": {
-            "nom": "Snow White and the Seven Dwarfs",
+            "nom": "Blanche-Neige et les Sept Nains",
             "type": "oeuvre",
             "slug": "snow-white-and-the-seven-dwarfs"
         },
@@ -37,7 +37,7 @@
         "nom": "Who’s Afraid of the Big Bad Wolf?",
         "type": "chanson",
         "oeuvreOrigine": {
-            "nom": "Three Little Pigs",
+            "nom": "Les Trois Petits Cochons",
             "type": "oeuvre",
             "slug": "three-little-pigs"
         },
