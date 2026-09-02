@@ -112,6 +112,7 @@ function verifierDocuments() {
         "train-7d.md",
         "train-7e.md",
         "train-7f.md",
+        "train-7g.md",
     ]) {
         assert.ok(
             existsSync(chemin(dossierPhase, document)),
@@ -684,11 +685,137 @@ function verifierTrain7F(idsSources) {
     assert.match(texteChapitre, /sept apparitions supplémentaires/);
     assert.match(texteChapitre, /autonomie concrète/);
     assert.match(texteChapitre, /aucun média, aucune parole/i);
-    assert.equal(
-        fiche.blocsEditoriaux.length,
-        7,
-        "Train 7F : le chapitre 8 ne doit pas être anticipé",
+    assert.ok(
+        fiche.blocsEditoriaux.length >= 7,
+        "Train 7F : les sept premiers chapitres doivent rester présents",
     );
+}
+
+function verifierTrain7G(idsSources) {
+    const fiche = lireJson("src/data/oeuvres/pinocchio.json");
+    const chapitres = fiche.blocsEditoriaux ?? [];
+    const programme = [
+        [
+            "apres-blanche-neige-ne-pas-simplement-recommencer",
+            "Après Blanche-Neige, ne pas simplement recommencer",
+            "Pourquoi le deuxième long métrage est-il une nouvelle épreuve ?",
+        ],
+        [
+            "de-collodi-a-disney",
+            "De Collodi à Disney",
+            "Pourquoi une histoire change-t-elle lorsqu’elle traverse une époque et un studio ?",
+        ],
+        [
+            "donner-une-conscience-a-une-marionnette",
+            "Donner une conscience à une marionnette",
+            "Comment le film construit-il ses personnages, son ton et son monde ?",
+        ],
+        [
+            "une-premiere-confrontee-au-monde-reel",
+            "Une première confrontée au monde réel",
+            "Que signifie sortir un film dans ce contexte économique et géopolitique ?",
+        ],
+        [
+            "le-film-vu-depuis-plusieurs-territoires",
+            "Le film vu depuis plusieurs territoires",
+            "Que révèlent les regards américain, français et italien ?",
+        ],
+        [
+            "les-ressorties-fabriquent-une-autre-reception",
+            "Les ressorties fabriquent une autre réception",
+            "Comment de nouveaux publics reconstruisent-ils la valeur de l’œuvre ?",
+        ],
+        [
+            "quand-les-images-et-les-chansons-quittent-le-film",
+            "Quand les images et les chansons quittent le film",
+            "Quels éléments acquièrent une vie autonome ?",
+        ],
+        [
+            "le-prochain-vertige-fantasia",
+            "Le prochain vertige : Fantasia",
+            "Pourquoi le studio ne se stabilise-t-il toujours pas ?",
+        ],
+    ];
+
+    assert.equal(
+        chapitres.length,
+        programme.length,
+        "Train 7G : le récit doit compter exactement huit chapitres",
+    );
+    assert.deepEqual(
+        chapitres.map(({ id, titre, question }) => [id, titre, question]),
+        programme,
+        "Train 7G : l’ordre du récit doit rester celui du programme",
+    );
+
+    const chapitre = chapitres.at(-1);
+    assert.equal(chapitre.type, "repere");
+    assert.equal(chapitre.eyebrow, "Dernière image");
+    assert.equal(
+        chapitre.paragraphes.length,
+        3,
+        "Train 7G : le raccord vers Fantasia doit rester une dernière image en trois mouvements",
+    );
+    const preuves = new Set(
+        chapitre.paragraphes.flatMap(({ sources: sourceIds }) => sourceIds),
+    );
+    for (const sourceId of [
+        "us-d23-fantasia-film",
+        "us-d23-fantasia-at-80",
+        "wdfm-fantasia-pastoral",
+    ]) {
+        assert.ok(idsSources.has(sourceId), `source inconnue ${sourceId}`);
+        assert.ok(
+            preuves.has(sourceId),
+            `Train 7G : preuve du raccord absente ${sourceId}`,
+        );
+    }
+
+    const texteChapitre = JSON.stringify(chapitre);
+    assert.match(texteChapitre, /13 novembre 1940/);
+    assert.match(texteChapitre, /huit séquences/);
+    assert.match(texteChapitre, /Fantasound/);
+    assert.match(texteChapitre, /futur index des Musiques/);
+    assert.match(texteChapitre, /aucune fiche/);
+    assert.equal(
+        existsSync(chemin("src/data/oeuvres/fantasia.json")),
+        false,
+        "Train 7G : Fantasia ne doit pas devenir une fiche anticipée",
+    );
+
+    const composantRecit = readFileSync(
+        chemin(
+            "src/components/codex/CodexFiche/CodexFicheRecit/CodexFicheRecit.tsx",
+        ),
+        "utf8",
+    );
+    assert.match(composantRecit, /deriveCartePreuvesEditoriale\(blocs\)/);
+    assert.match(composantRecit, /<nav aria-label=/);
+    assert.match(composantRecit, /<table/);
+    assert.match(composantRecit, /reserve\.texte/);
+    assert.match(composantRecit, /getSourceAnchorId\(source\.id\)/);
+    assert.doesNotMatch(
+        composantRecit,
+        /["']use client["']/,
+        "Train 7G : la lecture complète ne doit dépendre d’aucun état client",
+    );
+
+    const pageOeuvre = readFileSync(
+        chemin("src/app/oeuvres/[slug]/page.tsx"),
+        "utf8",
+    );
+    assert.match(
+        pageOeuvre,
+        /withEvidenceMap=\{fiche\.slug === "pinocchio"\}/,
+        "Train 7G : la carte doit rester explicitement limitée à Pinocchio",
+    );
+
+    const pageChanson = readFileSync(
+        chemin("src/app/chansons/[slug]/page.tsx"),
+        "utf8",
+    );
+    assert.match(pageChanson, /collection="chansons"/);
+    assert.match(pageChanson, /blocs=\{fiche\.blocsEditoriaux\}/);
 }
 
 function verifierFiches(idsSources) {
@@ -761,8 +888,9 @@ verifierTrain7C(idsSources);
 verifierTrain7D(idsSources, sources);
 verifierTrain7E(idsSources);
 verifierTrain7F(idsSources);
+verifierTrain7G(idsSources);
 verifierBranchement();
 
 console.log(
-    `Phase 7F vérifiée : ${resultat.blocs} blocs compatibles, autonomie de Figaro et de la chanson pilote sourcée sans média ni paroles protégées.`,
+    `Phase 7G vérifiée : ${resultat.blocs} blocs compatibles, huit chapitres ordonnés et carte des preuves lisible sans interaction.`,
 );
