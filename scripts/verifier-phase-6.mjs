@@ -173,6 +173,7 @@ function verifierDocuments() {
         "train-6a.md",
         "train-6b.md",
         "train-6c.md",
+        "train-6d.md",
     ]) {
         assert.ok(
             existsSync(
@@ -817,6 +818,142 @@ function verifierTrain6C(production) {
     assert.ok(cleoInterne?.relations.includes("relation:figaro"));
 }
 
+function verifierTrain6D(production) {
+    const catalogue = lireJson("src/data/catalogues/contributeurs.json");
+    const pinocchio = lireJson("src/data/oeuvres/pinocchio.json");
+    const clockCleaners = lireJson("src/data/oeuvres/clock-cleaners.json");
+    const boneTrouble = lireJson("src/data/oeuvres/bone-trouble.json");
+    const slugsComplets = new Set([
+        "ben-sharpsteen",
+        "cliff-edwards",
+        "dickie-jones",
+        "ned-washington",
+        "jack-kinney",
+    ]);
+    const slugsLegers = new Set(["t-hee", "joshua-meador", "kenneth-anderson"]);
+    const slugsDuTrain = [...slugsComplets, ...slugsLegers].sort();
+    const slugsCibles = ["carlo-collodi", ...slugsDuTrain].sort();
+    const entrees = production.entries.filter(
+        (entree) => entree.train === "6D",
+    );
+
+    assert.equal(entrees.length, 8);
+    assert.deepEqual(entrees.map((entree) => entree.slug).sort(), slugsDuTrain);
+    assert.ok(
+        entrees.every((entree) => entree.status === "publiee"),
+        "Train 6D : les huit nouveaux Créateurs ne sont pas tous publiés",
+    );
+    assert.equal(catalogue.length, 41);
+    assert.ok(
+        slugsCibles.every((slug) =>
+            catalogue.some((candidate) => candidate.slug === slug),
+        ),
+        "Train 6D : une des neuf cibles Créateurs manque au catalogue",
+    );
+
+    for (const entree of entrees) {
+        const fiche = lireJson(`src/data/contributeurs/${entree.slug}.json`);
+        const identite = catalogue.find(
+            (candidate) => candidate.slug === entree.slug,
+        );
+
+        assert.ok(identite, `${entree.slug} : identité catalogue absente`);
+        assert.equal(fiche.slug, entree.slug);
+        assert.equal(fiche.type, "contributeur");
+        assert.ok(
+            entree.sources.required.every((source) =>
+                fiche.sources.includes(source),
+            ),
+            `${entree.slug} : une source requise manque à la fiche`,
+        );
+
+        const blocs = fiche.blocsEditoriaux ?? [];
+        if (slugsComplets.has(entree.slug)) {
+            assert.ok(
+                blocs.length >= 2,
+                `${entree.slug} : la fiche complète manque de profondeur`,
+            );
+        } else {
+            assert.ok(
+                blocs.length <= 1,
+                `${entree.slug} : la fiche légère dépasse son profil`,
+            );
+        }
+    }
+
+    const contributions = pinocchio.contributions;
+    const contribution = (slug, domaine) =>
+        contributions.find(
+            (candidate) =>
+                candidate.contributeur.slug === slug &&
+                candidate.domaine === domaine,
+        );
+
+    assert.ok(contribution("ben-sharpsteen", "production-direction"));
+    assert.ok(contribution("cliff-edwards", "interpretation-vocale"));
+    assert.ok(contribution("dickie-jones", "interpretation-vocale"));
+    assert.ok(contribution("dickie-jones", "reference-filmee"));
+    assert.ok(contribution("ned-washington", "musique-chansons"));
+    assert.ok(contribution("jack-kinney", "production-direction"));
+    assert.ok(contribution("t-hee", "production-direction"));
+    assert.ok(contribution("t-hee", "reference-filmee"));
+    assert.ok(contribution("joshua-meador", "decors-effets-photographie"));
+    assert.ok(
+        contribution("kenneth-anderson", "direction-artistique-conception"),
+    );
+
+    assert.ok(
+        clockCleaners.contributions.some(
+            (candidate) =>
+                candidate.contributeur.slug === "ben-sharpsteen" &&
+                candidate.contributeur.type === "contributeur",
+        ),
+        "Ben Sharpsteen : mention historique de Clock Cleaners non résolue",
+    );
+    assert.ok(
+        boneTrouble.contributions.some(
+            (candidate) =>
+                candidate.contributeur.slug === "jack-kinney" &&
+                candidate.contributeur.type === "contributeur",
+        ),
+        "Jack Kinney : mention historique de Bone Trouble non résolue",
+    );
+
+    const evelyn = contributions.find(
+        (candidate) => candidate.contributeur.nom === "Evelyn Venable",
+    );
+    assert.deepEqual(evelyn, {
+        contributeur: { nom: "Evelyn Venable" },
+        roles: ["voix originale de la Fée Bleue"],
+        domaine: "interpretation-vocale",
+    });
+    assert.ok(
+        !catalogue.some((candidate) => candidate.slug === "evelyn-venable"),
+        "Evelyn Venable : identité publiée malgré le verdict crédit seulement",
+    );
+    assert.equal(
+        existsSync(chemin("src/data/contributeurs/evelyn-venable.json")),
+        false,
+        "Evelyn Venable : fiche créée malgré le verdict crédit seulement",
+    );
+
+    const evelynInterne = production.internalUnits.find(
+        (entree) =>
+            entree.domain === "createurs" && entree.slug === "evelyn-venable",
+    );
+    assert.equal(evelynInterne?.status, "credit-seulement");
+    assert.deepEqual(evelynInterne?.sources.promoted, [
+        "us-afi-catalog-pinocchio",
+    ]);
+    assert.ok(evelynInterne?.relations.includes("voix-originale:la-fee-bleue"));
+
+    assert.equal(
+        production.baseline.publicEntries + production.progress.publiee,
+        104,
+    );
+    assert.equal(production.sourceInventory.promoted.length, 23);
+}
+
 function verifierSymboles(production) {
     assert.equal(production.symbolInventory.collections.length, 5);
     assert.deepEqual(production.symbolInventory.missing, []);
@@ -864,9 +1001,10 @@ verifierUnitesInternes(production, sources);
 verifierReprises(production);
 verifierTrain6B(production);
 verifierTrain6C(production);
+verifierTrain6D(production);
 verifierSymboles(production);
 verifierBranchement();
 
 console.log(
-    `Phase 6 · Train 6C vérifié : ${production.baseline.publicEntries + production.progress.publiee} Archives publiques, ${production.progress.publiee} créations publiées, onze Personnages reliés à Pinocchio, Cléo sans route et ${production.sourceInventory.promoted.length} sources promues.`,
+    `Phase 6 · Train 6D vérifié : ${production.baseline.publicEntries + production.progress.publiee} Archives publiques, ${production.progress.publiee} créations publiées, neuf Créateurs cibles, Evelyn Venable au générique sans route et ${production.sourceInventory.promoted.length} sources promues.`,
 );

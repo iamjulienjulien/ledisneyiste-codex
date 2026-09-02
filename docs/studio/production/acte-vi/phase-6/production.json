@@ -61,17 +61,23 @@
             "it-treccani-1940-pinocchio",
             "it-treccani-pinocchio",
             "us-afi-catalog-pinocchio",
+            "us-academy-awards-1941",
+            "us-d23-ben-sharpsteen",
             "us-d23-cliff-edwards",
             "us-d23-dick-jones",
             "us-d23-figaro",
             "us-d23-figaro-and-cleo",
+            "us-d23-jack-kinney",
+            "us-d23-ken-anderson",
+            "us-d23-make-mine-music",
+            "us-d23-ned-washington",
             "us-d23-pinocchio-film",
             "us-loc-pinocchio-essay",
             "us-wdfm-milt-kahl-puppeteer",
             "us-wdfm-pool-hall",
             "us-wdfm-reimagining-jiminy"
         ],
-        "remainingPrivateCurrent": 13,
+        "remainingPrivateCurrent": 7,
         "promotionPolicy": "usage-only"
     },
     "symbolInventory": {
@@ -123,11 +129,11 @@
         "reportee": "Unité conservée avec une condition de reprise explicite."
     },
     "progress": {
-        "a-faire": 13,
+        "a-faire": 5,
         "en-cours": 0,
-        "publiee": 13,
+        "publiee": 21,
         "reportee": 0,
-        "verdicts": 13
+        "verdicts": 21
     },
     "entries": [
         {
@@ -672,16 +678,28 @@
             "profile": "fiche-complete",
             "priority": "P0",
             "train": "6D",
-            "status": "a-faire",
+            "status": "publiee",
             "sources": {
                 "required": [
                     "us-d23-ben-sharpsteen",
                     "us-afi-catalog-pinocchio"
                 ],
-                "promoted": []
+                "promoted": [
+                    "us-d23-ben-sharpsteen",
+                    "us-afi-catalog-pinocchio"
+                ]
             },
-            "files": [],
-            "relations": [],
+            "files": [
+                "src/data/catalogues/contributeurs.json",
+                "src/data/contributeurs/ben-sharpsteen.json",
+                "src/data/contributeurs/index.ts",
+                "src/data/oeuvres/pinocchio.json",
+                "src/data/oeuvres/clock-cleaners.json"
+            ],
+            "relations": [
+                "contribution:pinocchio",
+                "contribution:clock-cleaners"
+            ],
             "checks": ["pnpm check:relations", "pnpm check:phase-6"],
             "reservations": [
                 "La nouvelle fiche doit résoudre la mention existante de Clock Cleaners."
@@ -694,16 +712,27 @@
             "profile": "fiche-complete",
             "priority": "P0",
             "train": "6D",
-            "status": "a-faire",
+            "status": "publiee",
             "sources": {
                 "required": [
                     "us-d23-cliff-edwards",
                     "us-wdfm-reimagining-jiminy"
                 ],
-                "promoted": []
+                "promoted": [
+                    "us-d23-cliff-edwards",
+                    "us-wdfm-reimagining-jiminy"
+                ]
             },
-            "files": [],
-            "relations": [],
+            "files": [
+                "src/data/catalogues/contributeurs.json",
+                "src/data/contributeurs/cliff-edwards.json",
+                "src/data/contributeurs/index.ts",
+                "src/data/oeuvres/pinocchio.json"
+            ],
+            "relations": [
+                "voix-originale:jiminy-cricket",
+                "interpretation:when-you-wish-upon-a-star"
+            ],
             "checks": ["pnpm check:relations", "pnpm check:phase-6"],
             "reservations": [
                 "La voix de Jiminy et l’interprétation de la chanson pilote restent deux relations."
@@ -716,13 +745,21 @@
             "profile": "fiche-complete",
             "priority": "P0",
             "train": "6D",
-            "status": "a-faire",
+            "status": "publiee",
             "sources": {
                 "required": ["us-d23-dick-jones", "us-afi-catalog-pinocchio"],
-                "promoted": []
+                "promoted": ["us-d23-dick-jones", "us-afi-catalog-pinocchio"]
             },
-            "files": [],
-            "relations": [],
+            "files": [
+                "src/data/catalogues/contributeurs.json",
+                "src/data/contributeurs/dickie-jones.json",
+                "src/data/contributeurs/index.ts",
+                "src/data/oeuvres/pinocchio.json"
+            ],
+            "relations": [
+                "voix-originale:pinocchio",
+                "reference-filmee:pinocchio"
+            ],
             "checks": ["pnpm check:relations", "pnpm check:phase-6"],
             "reservations": [
                 "Le contexte d’interprétation doit dépasser la seule ligne de voix."
@@ -735,13 +772,21 @@
             "profile": "fiche-complete",
             "priority": "P0",
             "train": "6D",
-            "status": "a-faire",
+            "status": "publiee",
             "sources": {
                 "required": ["us-d23-ned-washington", "us-academy-awards-1941"],
-                "promoted": []
+                "promoted": ["us-d23-ned-washington", "us-academy-awards-1941"]
             },
-            "files": [],
-            "relations": [],
+            "files": [
+                "src/data/catalogues/contributeurs.json",
+                "src/data/contributeurs/ned-washington.json",
+                "src/data/contributeurs/index.ts",
+                "src/data/oeuvres/pinocchio.json"
+            ],
+            "relations": [
+                "paroles:when-you-wish-upon-a-star",
+                "recompense:academy-awards-1941"
+            ],
             "checks": [
                 "pnpm check:chansons",
                 "pnpm check:recompenses",
@@ -758,13 +803,22 @@
             "profile": "fiche-complete",
             "priority": "P1",
             "train": "6D",
-            "status": "a-faire",
+            "status": "publiee",
             "sources": {
                 "required": ["us-d23-jack-kinney", "us-d23-figaro-and-cleo"],
-                "promoted": []
+                "promoted": ["us-d23-jack-kinney", "us-d23-figaro-and-cleo"]
             },
-            "files": [],
-            "relations": [],
+            "files": [
+                "src/data/catalogues/contributeurs.json",
+                "src/data/contributeurs/jack-kinney.json",
+                "src/data/contributeurs/index.ts",
+                "src/data/oeuvres/pinocchio.json",
+                "src/data/oeuvres/bone-trouble.json"
+            ],
+            "relations": [
+                "direction-sequence:pinocchio",
+                "realisation:bone-trouble"
+            ],
             "checks": ["pnpm check:relations", "pnpm check:phase-6"],
             "reservations": [
                 "La fiche doit résoudre la mention existante de Bone Trouble."
@@ -777,16 +831,27 @@
             "profile": "fiche-legere",
             "priority": "P1",
             "train": "6D",
-            "status": "a-faire",
+            "status": "publiee",
             "sources": {
                 "required": [
                     "us-afi-catalog-pinocchio",
                     "us-loc-pinocchio-essay"
                 ],
-                "promoted": []
+                "promoted": [
+                    "us-afi-catalog-pinocchio",
+                    "us-loc-pinocchio-essay"
+                ]
             },
-            "files": [],
-            "relations": [],
+            "files": [
+                "src/data/catalogues/contributeurs.json",
+                "src/data/contributeurs/t-hee.json",
+                "src/data/contributeurs/index.ts",
+                "src/data/oeuvres/pinocchio.json"
+            ],
+            "relations": [
+                "direction-sequence:pinocchio",
+                "reference-filmee:stromboli"
+            ],
             "checks": ["pnpm check:relations", "pnpm check:phase-6"],
             "reservations": [
                 "Réalisation de séquence et référence jouée pour Stromboli restent qualifiées séparément."
@@ -799,16 +864,24 @@
             "profile": "fiche-legere",
             "priority": "P1",
             "train": "6D",
-            "status": "a-faire",
+            "status": "publiee",
             "sources": {
                 "required": [
                     "us-d23-make-mine-music",
                     "us-afi-catalog-pinocchio"
                 ],
-                "promoted": []
+                "promoted": [
+                    "us-d23-make-mine-music",
+                    "us-afi-catalog-pinocchio"
+                ]
             },
-            "files": [],
-            "relations": [],
+            "files": [
+                "src/data/catalogues/contributeurs.json",
+                "src/data/contributeurs/joshua-meador.json",
+                "src/data/contributeurs/index.ts",
+                "src/data/oeuvres/pinocchio.json"
+            ],
+            "relations": ["animation-effets:pinocchio"],
             "checks": ["pnpm check:relations", "pnpm check:phase-6"],
             "reservations": [
                 "Le parcours ultérieur soutient une fiche bornée, pas une biographie exhaustive."
@@ -821,13 +894,18 @@
             "profile": "fiche-legere",
             "priority": "P1",
             "train": "6D",
-            "status": "a-faire",
+            "status": "publiee",
             "sources": {
                 "required": ["us-d23-ken-anderson", "us-afi-catalog-pinocchio"],
-                "promoted": []
+                "promoted": ["us-d23-ken-anderson", "us-afi-catalog-pinocchio"]
             },
-            "files": [],
-            "relations": [],
+            "files": [
+                "src/data/catalogues/contributeurs.json",
+                "src/data/contributeurs/kenneth-anderson.json",
+                "src/data/contributeurs/index.ts",
+                "src/data/oeuvres/pinocchio.json"
+            ],
+            "relations": ["direction-artistique:pinocchio"],
             "checks": ["pnpm check:relations", "pnpm check:phase-6"],
             "reservations": [
                 "La direction artistique de Pinocchio et le parcours Imagineering restent deux axes."
@@ -1032,8 +1110,11 @@
             "route": null,
             "sources": {
                 "required": ["us-afi-catalog-pinocchio"],
-                "promoted": []
+                "promoted": ["us-afi-catalog-pinocchio"]
             },
+            "files": ["src/data/oeuvres/pinocchio.json"],
+            "relations": ["voix-originale:la-fee-bleue"],
+            "checks": ["pnpm check:relations", "pnpm check:phase-6"],
             "reservations": [
                 "La voix originale de la Fée Bleue reste au générique tant qu’un second axe autonome n’est pas établi."
             ]
