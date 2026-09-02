@@ -576,6 +576,7 @@ qu’il a lui-même produit :
 | 🛡️    | `Garde-fou`     | Sécurité, validation, permission ou protection                   |
 | ✍️    | `Scénario`      | Documentation, conventions, README, JSDoc ou guide               |
 | 📡    | `Transmission`  | Guidebook ou protocole structurant destiné aux futurs agents     |
+| 📼    | `Bobine`         | Changelog, générique des périodes et raccords de leurs repères Git |
 | 🏢    | `Production`    | Équipe, onboarding, dossiers employés ou organisation du studio  |
 | 🧹    | `Coulisses`     | Refactorisation, nettoyage ou maintenance sans capacité nouvelle |
 | ⚡    | `Accéléré`      | Performance, cache, chargement ou optimisation                   |
@@ -610,6 +611,10 @@ domaines, le générique porte la signature de l’auteur réel du travail.
 - `Transmission` est le domaine de service permanent de R2-D2. Il reste rare
   et se limite aux documents qui organisent durablement la mémoire opératoire
   des agents ; une documentation ordinaire demeure du `Scénario`.
+- `Bobine` est réservé aux modifications de `CHANGELOG.md` :
+  préparation d’une entrée avant un clap temporel, ajout du générique d’une
+  période ou raccord de son tag et de son SHA de clôture. Les rapports,
+  missions et autres documents de transmission conservent leur propre domaine.
 - `Production` organise Guru Éditions, ses membres et leurs parcours internes.
   Elle ne désigne pas la mise en production du Codex, qui demeure du
   `Première`.
@@ -720,6 +725,10 @@ Le générique conserve chaque SHA court et chaque message exact :
 ancien, ainsi que les Interludes dans le générique de la période qui les
 accueille. Il reste factuel, narratif et fidèle aux commits. Les œuvres sont en
 italique dans la prose ; les messages de commits ne sont jamais réécrits.
+
+Toute modification consacrée au Journal utilise le domaine fonctionnel
+`📼 Bobine`, y compris le raccord documentaire publié après un
+commit vide de clôture et son tag.
 
 La nouvelle convention place l’entrée du Journal **avant** le commit vide de
 clôture :
