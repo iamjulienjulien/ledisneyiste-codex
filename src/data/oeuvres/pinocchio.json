@@ -169,6 +169,161 @@
             "contributeur": { "nom": "Evelyn Venable" },
             "roles": ["voix originale de la Fée Bleue"],
             "domaine": "interpretation-vocale"
+        },
+        {
+            "contributeur": {
+                "nom": "Wilfred Jackson",
+                "type": "contributeur",
+                "slug": "wilfred-jackson"
+            },
+            "roles": ["réalisation de séquences"],
+            "domaine": "production-direction"
+        },
+        {
+            "contributeur": {
+                "nom": "Norman Ferguson",
+                "type": "contributeur",
+                "slug": "norman-ferguson"
+            },
+            "roles": ["réalisation de séquences"],
+            "domaine": "production-direction"
+        },
+        {
+            "contributeur": {
+                "nom": "Norman Ferguson",
+                "type": "contributeur",
+                "slug": "norman-ferguson"
+            },
+            "roles": ["animation de Grand Coquin et Gédéon"],
+            "domaine": "animation-personnages"
+        },
+        {
+            "contributeur": {
+                "nom": "Ward Kimball",
+                "type": "contributeur",
+                "slug": "ward-kimball"
+            },
+            "roles": ["supervision de l’animation de Jiminy Cricket"],
+            "domaine": "animation-personnages"
+        },
+        {
+            "contributeur": {
+                "nom": "Fred Moore",
+                "type": "contributeur",
+                "slug": "fred-moore"
+            },
+            "roles": ["supervision de l’animation de Crapule"],
+            "domaine": "animation-personnages"
+        },
+        {
+            "contributeur": {
+                "nom": "Milt Kahl",
+                "type": "contributeur",
+                "slug": "milt-kahl"
+            },
+            "roles": ["supervision de l’animation de Pinocchio"],
+            "domaine": "animation-personnages"
+        },
+        {
+            "contributeur": {
+                "nom": "Frank Thomas",
+                "type": "contributeur",
+                "slug": "frank-thomas"
+            },
+            "roles": ["supervision de l’animation de Pinocchio"],
+            "domaine": "animation-personnages"
+        },
+        {
+            "contributeur": {
+                "nom": "Eric Larson",
+                "type": "contributeur",
+                "slug": "eric-larson"
+            },
+            "roles": ["supervision de l’animation de Cléo et Figaro"],
+            "domaine": "animation-personnages"
+        },
+        {
+            "contributeur": {
+                "nom": "Ollie Johnston",
+                "type": "contributeur",
+                "slug": "ollie-johnston"
+            },
+            "roles": ["animation de Pinocchio"],
+            "domaine": "animation-personnages"
+        },
+        {
+            "contributeur": {
+                "nom": "John Lounsbery",
+                "type": "contributeur",
+                "slug": "john-lounsbery"
+            },
+            "roles": ["animation de Grand Coquin et Gédéon"],
+            "domaine": "animation-personnages"
+        },
+        {
+            "contributeur": {
+                "nom": "Wolfgang Reitherman",
+                "type": "contributeur",
+                "slug": "wolfgang-reitherman"
+            },
+            "roles": [
+                "supervision de l’animation de Jiminy Cricket et Monstro"
+            ],
+            "domaine": "animation-personnages"
+        },
+        {
+            "contributeur": {
+                "nom": "Vladimir “Bill” Tytla",
+                "type": "contributeur",
+                "slug": "vladimir-bill-tytla"
+            },
+            "roles": ["supervision de l’animation de Stromboli et Monstro"],
+            "domaine": "animation-personnages"
+        },
+        {
+            "contributeur": {
+                "nom": "Joe Grant",
+                "type": "contributeur",
+                "slug": "joe-grant"
+            },
+            "roles": ["conception de personnages"],
+            "domaine": "direction-artistique-conception"
+        },
+        {
+            "contributeur": {
+                "nom": "Gustaf Tenggren",
+                "type": "contributeur",
+                "slug": "gustaf-tenggren"
+            },
+            "roles": ["développement visuel"],
+            "domaine": "direction-artistique-conception"
+        },
+        {
+            "contributeur": {
+                "nom": "Leigh Harline",
+                "type": "contributeur",
+                "slug": "leigh-harline"
+            },
+            "roles": ["composition de la musique et des chansons"],
+            "domaine": "musique-chansons"
+        },
+        {
+            "contributeur": {
+                "nom": "Paul J. Smith",
+                "type": "contributeur",
+                "slug": "paul-j-smith"
+            },
+            "roles": ["composition de la musique"],
+            "domaine": "musique-chansons"
+        },
+        {
+            "contributeur": {
+                "nom": "Marge Champion",
+                "type": "contributeur",
+                "slug": "marge-champion"
+            },
+            "roles": ["référence filmée de la Fée Bleue"],
+            "domaine": "reference-filmee"
         }
     ],
     "personnages": [
@@ -217,6 +372,22 @@
         "us-academy-awards-1941",
         "us-d23-jack-kinney",
         "us-d23-make-mine-music",
-        "us-d23-ken-anderson"
+        "us-d23-ken-anderson",
+        "d23-wilfred-jackson",
+        "d23-norm-ferguson",
+        "d23-ward-kimball",
+        "d23-fred-moore",
+        "d23-milt-kahl",
+        "d23-frank-thomas",
+        "d23-eric-larson",
+        "d23-ollie-johnston",
+        "d23-john-lounsbery",
+        "d23-wolfgang-reitherman",
+        "d23-bill-tytla",
+        "d23-joe-grant",
+        "nationalmuseum-gustaf-tenggren",
+        "d23-leigh-harline",
+        "d23-paul-smith",
+        "d23-marge-champion"
     ]
 }
