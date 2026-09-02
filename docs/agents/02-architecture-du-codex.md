@@ -20,7 +20,7 @@ ailleurs.
 
 ## Transmission prioritaire
 
-Si tu arrives avec peu de mémoire disponible, retiens ces sept règles :
+Si tu arrives avec peu de mémoire disponible, retiens ces huit règles :
 
 1. **Le catalogue publie l’entrée ; la fiche la documente.** Les deux portent
    le même `slug`, mais ne jouent pas le même rôle.
@@ -38,6 +38,10 @@ Si tu arrives avec peu de mémoire disponible, retiens ces sept règles :
    `src/types` selon sa nature.
 7. **Les Plans dérivent des lectures sans réécrire les Archives.** Une Bobine
    témoin reste une fixture d’essai, jamais une donnée publiée.
+8. **Un contrat interne n’est pas encore une famille publique.** Œuvres
+   sources, Chansons, Musiques et enquêtes économiques peuvent être typées et
+   vérifiées sans posséder de catalogue, de route ni de place dans
+   `CodexFamily`.
 
 ---
 
@@ -564,6 +568,63 @@ explicitement chaque occurrence à la bonne entrée du Codex.
 
 ---
 
+## Les nouveaux contrats documentaires : prêts avant d’être publics
+
+La Phase 4 de l’Acte VI a ouvert plusieurs domaines internes afin de décrire la
+vie publique d’une œuvre sans commencer prématurément la production éditoriale
+de _Pinocchio_. Leurs types vivent dans [`src/types`](../../src/types/), leurs
+fonctions de résolution ou de projection dans [`src/lib`](../../src/lib/) et
+leurs cas d’essai dans [`scripts/fixtures`](../../scripts/fixtures/).
+
+| Domaine                  | Source de vérité actuelle                      | Statut de projection                                               |
+| ------------------------ | ---------------------------------------------- | ------------------------------------------------------------------ |
+| Circulation et réception | `circulation-oeuvre.ts` puis les fiches Œuvres | Contrat utilisable progressivement par les Œuvres publiées.        |
+| Œuvres sources           | `oeuvre-source.ts` et registre interne         | Résoluble dans les Plans, sans catalogue ni route publique.        |
+| Chansons                 | `chanson.ts` et registre interne               | Fiche complète en mode `metadata-first`, sans index ouvert.        |
+| Musiques                 | `musique.ts` et registre interne               | Domaine frère réservé à l’Acte VII.                                |
+| Droits média             | `projection-media.ts` et dossiers privés       | Seuls le statut et la matière autorisée franchissent la frontière. |
+| Données économiques      | `donnee-economique.ts` et dossiers d’enquête   | Publication conditionnée par la complétude de la mesure.           |
+
+Ces contrats réutilisent les dates, identités, territoires, références et
+sources communes, mais ils restent spécialisés. Une sortie, une interprétation
+et un chiffre peuvent partager une provenance sans devenir trois variantes
+d’un même objet universel.
+
+### Les bobines privées ne publient rien
+
+Les fixtures de circulation, Collodi, Chansons et données économiques servent
+à vérifier les contrats et leurs contre-exemples. Elles ne vivent pas sous
+`src/data`, n’alimentent aucune route et ne comptent pas parmi les 79 Archives.
+
+Le contrôle agrégé [`verifier-phase-4.mjs`](../../scripts/verifier-phase-4.mjs)
+surveille ensemble :
+
+- les 79 fiches et leurs 79 routes canoniques ;
+- les quatre familles publiques inchangées ;
+- l’absence de catalogue et de route pour les domaines internes ;
+- le raccord entre les quatre bobines de Phase 4 ;
+- les 69 entrées du manifeste Phase 5 toujours non migrées ;
+- le branchement des vérificateurs spécialisés dans les contrôles locaux et
+  CI.
+
+### Les chiffres possèdent une frontière supplémentaire
+
+Une donnée économique structurée conserve mesure, valeur ou fourchette
+originale, unité, temps, territoire, base, méthode, certitude, comparabilité,
+finalité et sources. Le dossier d’enquête privé peut en plus porter des lacunes,
+un verdict et une note interne ; sa projection publique recopie explicitement
+la seule déclaration complète autorisée.
+
+La forme économique historique demeure lisible pour Blanche-Neige pendant la
+transition. Elle doit être retirée par la Phase 5 seulement lorsque les quatre
+déclarations et tous leurs consommateurs utilisent le contrat structuré.
+
+La recette complète est conservée dans
+[`docs/studio/production/acte-vi/phase-4/migration.md`](../studio/production/acte-vi/phase-4/migration.md),
+hors de la bibliothèque transmissible du Guidebook.
+
+---
+
 ## Les Plans : une couche de lecture dérivée
 
 Les Plans observent les Archives ; ils ne les prolongent pas silencieusement.
@@ -682,23 +743,27 @@ du Guidebook et ne joint jamais Notion.
 
 ## Choisir la source de vérité
 
-| Je veux modifier…                          | Je commence par…                                   |
-| ------------------------------------------ | -------------------------------------------------- |
-| Nom principal, sous-titre ou publication   | `src/data/catalogues/<famille>.json`               |
-| Forme originale, localisée ou alternative  | `src/data/<famille>/<slug>.json`                   |
-| Langue ou territoire fermé                 | `src/registry/identites`                           |
-| Projection commune d’une identité          | `src/lib/identites`                                |
-| Introduction ou fait détaillé              | `src/data/<famille>/<slug>.json`                   |
-| Métadonnées bibliographiques d’un document | `src/data/sources/sources.json`                    |
-| Distinction ou bénéficiaire                | `src/data/recompenses/recompenses.json`            |
-| Catégorie ou libellé de métadonnée         | `src/registry/metadata`                            |
-| Relation inverse                           | `src/data/relations.ts` ou le résolveur spécialisé |
-| Rattachement chronologique calculé         | `src/data/epoques/relations.ts`                    |
-| Forme et contrat d’une donnée partagée     | `src/types`                                        |
-| Grammaire d’un Plan                        | `src/registry/plans` et `src/types/codex-plans.ts` |
-| Dérivation d’une matière de Plan           | `src/lib/plans`                                    |
-| Montage d’une fiche ou d’un index          | `src/components/codex` et sa route                 |
-| Surface, rythme ou interaction générique   | `src/components/ui`                                |
+| Je veux modifier…                          | Je commence par…                                                  |
+| ------------------------------------------ | ----------------------------------------------------------------- |
+| Nom principal, sous-titre ou publication   | `src/data/catalogues/<famille>.json`                              |
+| Forme originale, localisée ou alternative  | `src/data/<famille>/<slug>.json`                                  |
+| Langue ou territoire fermé                 | `src/registry/identites`                                          |
+| Projection commune d’une identité          | `src/lib/identites`                                               |
+| Introduction ou fait détaillé              | `src/data/<famille>/<slug>.json`                                  |
+| Métadonnées bibliographiques d’un document | `src/data/sources/sources.json`                                   |
+| Distinction ou bénéficiaire                | `src/data/recompenses/recompenses.json`                           |
+| Catégorie ou libellé de métadonnée         | `src/registry/metadata`                                           |
+| Relation inverse                           | `src/data/relations.ts` ou le résolveur spécialisé                |
+| Rattachement chronologique calculé         | `src/data/epoques/relations.ts`                                   |
+| Forme et contrat d’une donnée partagée     | `src/types`                                                       |
+| Circulation ou réception d’une Œuvre       | `src/types/circulation-oeuvre.ts`                                 |
+| Œuvre source interne                       | `src/types/oeuvre-source.ts` et `src/lib/oeuvres-sources`         |
+| Chanson, Musique ou droits média           | `src/types/chanson.ts`, `musique.ts`, `projection-media.ts`       |
+| Mesure économique et sa publication        | `src/types/donnee-economique.ts` et `src/lib/donnees-economiques` |
+| Grammaire d’un Plan                        | `src/registry/plans` et `src/types/codex-plans.ts`                |
+| Dérivation d’une matière de Plan           | `src/lib/plans`                                                   |
+| Montage d’une fiche ou d’un index          | `src/components/codex` et sa route                                |
+| Surface, rythme ou interaction générique   | `src/components/ui`                                               |
 
 Si deux lignes semblent possibles, cherche d’abord laquelle **possède le
 fait**, puis laquelle se contente de le présenter ou de le calculer.
@@ -771,17 +836,22 @@ Il formate, relit, analyse et construit le projet, puis exécute les
 vérificateurs métier. Pour isoler un chantier documentaire, les commandes les
 plus utiles sont :
 
-| Commande                 | Ce qu’elle protège principalement                                   |
-| ------------------------ | ------------------------------------------------------------------- |
-| `pnpm check:metadata`    | Slugs et définitions des métadonnées                                |
-| `pnpm check:oeuvres`     | Modèle enrichi des œuvres, dates, sources et fixture représentative |
-| `pnpm check:personnages` | Noms alternatifs, formes et sources                                 |
-| `pnpm check:relations`   | Catalogues, fiches, références, noms, slugs et sources              |
-| `pnpm check:recompenses` | Distinctions, bénéficiaires, sources et trophées                    |
-| `pnpm check:plans`       | Grammaire commune des cinq Plans                                    |
-| `pnpm check:plan-matter` | Dérivations, Bobines témoins et projections des Plans               |
-| `pnpm check:guidebook`   | Manifestes, frontières privées et analyse Markdown du Guidebook     |
-| `pnpm build`             | Assemblage statique et contrats TypeScript                          |
+| Commande                         | Ce qu’elle protège principalement                                   |
+| -------------------------------- | ------------------------------------------------------------------- |
+| `pnpm check:metadata`            | Slugs et définitions des métadonnées                                |
+| `pnpm check:oeuvres`             | Modèle enrichi des œuvres, dates, sources et fixture représentative |
+| `pnpm check:personnages`         | Noms alternatifs, formes et sources                                 |
+| `pnpm check:relations`           | Catalogues, fiches, références, noms, slugs et sources              |
+| `pnpm check:recompenses`         | Distinctions, bénéficiaires, sources et trophées                    |
+| `pnpm check:plans`               | Grammaire commune des cinq Plans                                    |
+| `pnpm check:plan-matter`         | Dérivations, Bobines témoins et projections des Plans               |
+| `pnpm check:guidebook`           | Manifestes, frontières privées et analyse Markdown du Guidebook     |
+| `pnpm check:identites`           | Langues, territoires, jointures et routes canoniques                |
+| `pnpm check:oeuvres-sources`     | Registre privé, relations et absence de routes                      |
+| `pnpm check:chansons`            | Chansons, Musiques, droits média et frontière navigateur            |
+| `pnpm check:donnees-economiques` | Mesures, conflits, enquêtes et projection publique                  |
+| `pnpm check:phase-4`             | Corpus, routes, bobines et manifeste de migration                   |
+| `pnpm build`                     | Assemblage statique et contrats TypeScript                          |
 
 Un contrôle vert signifie que les invariants connus tiennent. Il ne prouve
 pas qu’une relation est historiquement juste ni qu’une source soutient
