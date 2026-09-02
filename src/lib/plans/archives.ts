@@ -10,6 +10,8 @@ import { fichesOeuvres } from "@/data/oeuvres";
 import { fichesPersonnages } from "@/data/personnages";
 import { recompenses } from "@/data/recompenses";
 import { sources } from "@/data/sources";
+import { creerRegistreOeuvresSources } from "@/lib/oeuvres-sources";
+import { fichesOeuvresSources } from "@/registry/oeuvres-sources";
 import type { CodexPlanArchives } from "@/types/codex-plans";
 
 export const codexPlanArchives = {
@@ -27,4 +29,5 @@ export const codexPlanArchives = {
     },
     recompenses,
     sources,
+    oeuvresSources: creerRegistreOeuvresSources(fichesOeuvresSources),
 } satisfies CodexPlanArchives;

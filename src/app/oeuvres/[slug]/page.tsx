@@ -19,8 +19,16 @@ import { formatDateHistorique } from "@/lib/date";
 import { resoudreIdentiteCodex } from "@/lib/identites/server";
 import { getFicheSourceIds } from "@/lib/source";
 import { getChansonsPourOeuvre } from "@/data/relations";
+import {
+    creerRegistreOeuvresSources,
+    resoudreOeuvreSource,
+} from "@/lib/oeuvres-sources";
+import { fichesOeuvresSources } from "@/registry/oeuvres-sources";
 
 export const dynamicParams = false;
+
+const registreOeuvresSources =
+    creerRegistreOeuvresSources(fichesOeuvresSources);
 
 export function generateStaticParams() {
     return oeuvres.map((oeuvre) => ({
@@ -75,6 +83,11 @@ export default async function OeuvrePage({
         (contribution) => contribution.domaine,
     );
     const chansons = getChansonsPourOeuvre(slug);
+    const oeuvresSources = (fiche.relationsOeuvres ?? []).flatMap((relation) =>
+        relation.oeuvre.type === "oeuvre-source"
+            ? [resoudreOeuvreSource(relation.oeuvre, registreOeuvresSources)]
+            : [],
+    );
 
     return (
         <CodexFiche family="oeuvres">
@@ -203,7 +216,11 @@ export default async function OeuvrePage({
                 ]}
             />
 
-            <CodexFicheOeuvreDetails fiche={fiche} sources={sources} />
+            <CodexFicheOeuvreDetails
+                fiche={fiche}
+                sources={sources}
+                oeuvresSources={oeuvresSources}
+            />
 
             <CodexFicheRecompenses recompenses={recompenses} />
 

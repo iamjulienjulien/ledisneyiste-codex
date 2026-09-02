@@ -9,6 +9,12 @@ import { lireDonneeEconomiqueOeuvre } from "@/lib/donnees-economiques";
 import type { SymbolSelection } from "@/registry/symbols";
 import type { PeriodeHistorique } from "@/types/date";
 import type {
+    NatureExploitationOeuvre,
+    NatureReceptionOeuvre,
+    NatureVersionOeuvre,
+    QualificationReceptionOeuvre,
+} from "@/types/circulation-oeuvre";
+import type {
     ContributionOeuvre,
     DomaineCreditOeuvre,
     NatureEvenementSortieOeuvre,
@@ -25,6 +31,43 @@ const eventLabels: Record<NatureEvenementSortieOeuvre, string> = {
     ressortie: "Ressortie",
     "presentation-festival": "Présentation en festival",
     "mise-a-disposition": "Mise à disposition",
+};
+
+const versionLabels: Record<NatureVersionOeuvre, string> = {
+    originale: "Version originale",
+    doublage: "Doublage",
+    restauration: "Restauration",
+    edition: "Édition",
+    "montage-alternatif": "Montage alternatif",
+};
+
+const exploitationLabels: Record<NatureExploitationOeuvre, string> = {
+    "premiere-exploitation": "Première exploitation",
+    "exploitation-nationale": "Exploitation nationale",
+    ressortie: "Ressortie",
+    festival: "Festival",
+    restauration: "Restauration",
+    "edition-video": "Édition vidéo",
+    "diffusion-televisuelle": "Diffusion télévisuelle",
+    "diffusion-numerique": "Diffusion numérique",
+};
+
+const receptionLabels: Record<NatureReceptionOeuvre, string> = {
+    "critique-contemporaine": "Critique contemporaine",
+    professionnelle: "Réception professionnelle",
+    publique: "Réception publique",
+    institutionnelle: "Réception institutionnelle",
+    reevaluation: "Réévaluation",
+};
+
+const receptionQualificationLabels: Record<
+    QualificationReceptionOeuvre,
+    string
+> = {
+    favorable: "Favorable",
+    partagee: "Partagée",
+    defavorable: "Défavorable",
+    descriptive: "Constat documenté",
 };
 
 function formatEventTerritory(
@@ -143,6 +186,7 @@ function groupCredits(contributions: ContributionOeuvre[]) {
 export function CodexFicheOeuvreDetails({
     fiche,
     sources,
+    oeuvresSources = [],
 }: CodexFicheOeuvreDetailsProps) {
     const groupedCredits = groupCredits(fiche.contributions);
     const hasProductionFacts = Boolean(
@@ -306,6 +350,187 @@ export function CodexFicheOeuvreDetails({
                 </CodexFicheSection>
             ) : null}
 
+            {fiche.versions?.length || fiche.exploitations?.length ? (
+                <CodexFicheSection
+                    eyebrow="Circulation"
+                    titre="Les versions et les chemins de diffusion"
+                    description="Une version n’est créée que lorsqu’elle possède une identité propre ; chaque exploitation conserve séparément sa période, sa portée et ses sources."
+                    symbole={
+                        <PixieSymbol
+                            registry="diffusion"
+                            collection="salles"
+                            slug="bobines-programme"
+                            size={96}
+                        />
+                    }
+                >
+                    {fiche.versions?.length ? (
+                        <div className={styles.circulationGroup}>
+                            <h3 className={styles.groupTitle}>
+                                Versions documentées
+                            </h3>
+                            <dl className={styles.circulation}>
+                                {fiche.versions.map((version) => (
+                                    <PixieCard
+                                        key={version.id}
+                                        as="div"
+                                        variant="accent"
+                                        color="gouache"
+                                        padding="md"
+                                        radius="medium"
+                                        className={styles.circulationItem}
+                                    >
+                                        <dt className={styles.label}>
+                                            {versionLabels[version.nature]}
+                                        </dt>
+                                        <dd className={styles.value}>
+                                            {version.identite.libelle}
+                                        </dd>
+                                        <dd className={styles.detail}>
+                                            {[
+                                                version.date
+                                                    ? formatDateHistorique(
+                                                          version.date,
+                                                      )
+                                                    : undefined,
+                                                version.identite.langue,
+                                                version.identite.territoire,
+                                                version.distributeur,
+                                            ]
+                                                .filter(Boolean)
+                                                .join(" · ")}
+                                        </dd>
+                                        <dd className={styles.citations}>
+                                            <CodexFicheSourceCitations
+                                                sourceIds={version.sources}
+                                                sources={sources}
+                                                label="Sources de la version"
+                                            />
+                                        </dd>
+                                    </PixieCard>
+                                ))}
+                            </dl>
+                        </div>
+                    ) : null}
+
+                    {fiche.exploitations?.length ? (
+                        <div className={styles.circulationGroup}>
+                            <h3 className={styles.groupTitle}>
+                                Exploitations documentées
+                            </h3>
+                            <dl className={styles.circulation}>
+                                {fiche.exploitations.map((exploitation) => (
+                                    <PixieCard
+                                        key={exploitation.id}
+                                        as="div"
+                                        variant="accent"
+                                        color="gouache"
+                                        padding="md"
+                                        radius="medium"
+                                        className={styles.circulationItem}
+                                    >
+                                        <dt className={styles.label}>
+                                            {
+                                                exploitationLabels[
+                                                    exploitation.nature
+                                                ]
+                                            }
+                                        </dt>
+                                        <dd className={styles.value}>
+                                            {formatPeriod(exploitation.periode)}
+                                        </dd>
+                                        <dd className={styles.detail}>
+                                            {[
+                                                formatPorteeTerritorialeDocumentaire(
+                                                    exploitation.porteeTerritoriale,
+                                                ),
+                                                exploitation.support,
+                                                exploitation.distributeur,
+                                            ]
+                                                .filter(Boolean)
+                                                .join(" · ")}
+                                        </dd>
+                                        <dd className={styles.citations}>
+                                            <CodexFicheSourceCitations
+                                                sourceIds={exploitation.sources}
+                                                sources={sources}
+                                                label="Sources de l’exploitation"
+                                            />
+                                        </dd>
+                                    </PixieCard>
+                                ))}
+                            </dl>
+                        </div>
+                    ) : null}
+                </CodexFicheSection>
+            ) : null}
+
+            {fiche.receptions?.length ? (
+                <CodexFicheSection
+                    eyebrow="Réception"
+                    titre="Le public et les témoins de chaque époque"
+                    description="Chaque réception reste attribuée à un témoin, une temporalité et une portée ; un constat descriptif ne devient pas artificiellement un jugement."
+                    symbole={
+                        <PixieSymbol
+                            registry="diffusion"
+                            collection="salles"
+                            slug="salle-projection"
+                            size={96}
+                        />
+                    }
+                >
+                    <dl className={styles.receptions}>
+                        {fiche.receptions.map((reception) => (
+                            <PixieCard
+                                key={reception.id}
+                                as="div"
+                                variant="accent"
+                                color="gouache"
+                                padding="md"
+                                radius="medium"
+                                className={styles.reception}
+                            >
+                                <dt className={styles.label}>
+                                    {receptionLabels[reception.nature]}
+                                </dt>
+                                <dd className={styles.value}>
+                                    {reception.temoin.nom}
+                                </dd>
+                                <dd className={styles.detail}>
+                                    {[
+                                        reception.date
+                                            ? formatDateHistorique(
+                                                  reception.date,
+                                              )
+                                            : formatPeriod(reception.periode),
+                                        formatPorteeTerritorialeDocumentaire(
+                                            reception.porteeTerritoriale,
+                                        ),
+                                        reception.qualification
+                                            ? receptionQualificationLabels[
+                                                  reception.qualification
+                                              ]
+                                            : undefined,
+                                    ]
+                                        .filter(Boolean)
+                                        .join(" · ")}
+                                </dd>
+                                <dd className={styles.detail}>
+                                    {reception.resume}
+                                </dd>
+                                <dd className={styles.citations}>
+                                    <CodexFicheSourceCitations
+                                        sourceIds={reception.sources}
+                                        sources={sources}
+                                        label="Sources de la réception"
+                                    />
+                                </dd>
+                            </PixieCard>
+                        ))}
+                    </dl>
+                </CodexFicheSection>
+            ) : null}
+
             {fiche.donneesEconomiques?.length ? (
                 <CodexFicheSection
                     eyebrow="Échelle"
@@ -386,55 +611,84 @@ export function CodexFicheOeuvreDetails({
                     }
                 >
                     <ul className={styles.relations}>
-                        {fiche.relationsOeuvres.map((relation) => (
-                            <PixieCard
-                                key={`${relation.nature}-${relation.oeuvre.nom}`}
-                                as="li"
-                                variant="accent"
-                                color="gouache"
-                                padding="md"
-                                radius="medium"
-                                className={styles.relation}
-                            >
-                                <p className={styles.label}>
-                                    {relationLabels[relation.nature]}
-                                </p>
-                                <p className={styles.value}>
-                                    {relation.oeuvre.type === "oeuvre" ? (
-                                        <CodexCommonReferenceLink
-                                            reference={relation.oeuvre}
-                                        />
-                                    ) : (
-                                        relation.oeuvre.nom
-                                    )}
-                                </p>
-                                {relation.oeuvre.type === "oeuvre-exterieure" &&
-                                    (relation.oeuvre.auteurs?.length ||
-                                        relation.oeuvre.date) && (
+                        {fiche.relationsOeuvres.map((relation) => {
+                            const oeuvre = relation.oeuvre;
+                            const resolution =
+                                oeuvre.type === "oeuvre-source"
+                                    ? oeuvresSources.find(
+                                          (candidate) =>
+                                              candidate.referenceId ===
+                                              oeuvre.id,
+                                      )
+                                    : undefined;
+
+                            return (
+                                <PixieCard
+                                    key={`${relation.nature}-${relation.oeuvre.nom}`}
+                                    as="li"
+                                    variant="accent"
+                                    color="gouache"
+                                    padding="md"
+                                    radius="medium"
+                                    className={styles.relation}
+                                >
+                                    <p className={styles.label}>
+                                        {relationLabels[relation.nature]}
+                                    </p>
+                                    <p className={styles.value}>
+                                        {relation.oeuvre.type === "oeuvre" ? (
+                                            <CodexCommonReferenceLink
+                                                reference={relation.oeuvre}
+                                            />
+                                        ) : (
+                                            relation.oeuvre.nom
+                                        )}
+                                    </p>
+                                    {relation.oeuvre.type ===
+                                        "oeuvre-exterieure" &&
+                                        (relation.oeuvre.auteurs?.length ||
+                                            relation.oeuvre.date) && (
+                                            <p className={styles.detail}>
+                                                {[
+                                                    relation.oeuvre.auteurs?.join(
+                                                        ", ",
+                                                    ),
+                                                    relation.oeuvre.date
+                                                        ? formatDateHistorique(
+                                                              relation.oeuvre
+                                                                  .date,
+                                                          )
+                                                        : undefined,
+                                                ]
+                                                    .filter(Boolean)
+                                                    .join(" · ")}
+                                            </p>
+                                        )}
+                                    {relation.oeuvre.type === "oeuvre-source" &&
+                                    resolution?.resolved &&
+                                    resolution.fiche ? (
                                         <p className={styles.detail}>
                                             {[
-                                                relation.oeuvre.auteurs?.join(
-                                                    ", ",
+                                                resolution.fiche.auteurs
+                                                    .map((auteur) => auteur.nom)
+                                                    .join(", "),
+                                                formatDateHistorique(
+                                                    resolution.fiche.date,
                                                 ),
-                                                relation.oeuvre.date
-                                                    ? formatDateHistorique(
-                                                          relation.oeuvre.date,
-                                                      )
-                                                    : undefined,
-                                            ]
-                                                .filter(Boolean)
-                                                .join(" · ")}
+                                                resolution.fiche.nature,
+                                            ].join(" · ")}
                                         </p>
-                                    )}
-                                <div className={styles.citations}>
-                                    <CodexFicheSourceCitations
-                                        sourceIds={relation.sources}
-                                        sources={sources}
-                                        label="Sources de la relation"
-                                    />
-                                </div>
-                            </PixieCard>
-                        ))}
+                                    ) : null}
+                                    <div className={styles.citations}>
+                                        <CodexFicheSourceCitations
+                                            sourceIds={relation.sources}
+                                            sources={sources}
+                                            label="Sources de la relation"
+                                        />
+                                    </div>
+                                </PixieCard>
+                            );
+                        })}
                     </ul>
                 </CodexFicheSection>
             ) : null}

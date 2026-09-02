@@ -1,5 +1,7 @@
 .facts,
 .events,
+.circulation,
+.receptions,
 .economics,
 .relations,
 .credits {
@@ -9,6 +11,8 @@
 
 .facts,
 .events,
+.circulation,
+.receptions,
 .economics,
 .relations {
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
@@ -16,10 +20,24 @@
 
 .fact,
 .event,
+.circulationItem,
+.reception,
 .economic,
 .relation {
     display: flex;
     flex-direction: column;
+}
+
+.circulationGroup + .circulationGroup {
+    margin-top: 1.5rem;
+}
+
+.groupTitle {
+    margin-bottom: 0.75rem;
+    color: var(--color-ink);
+    font-family: var(--projection-font-display);
+    font-size: 1.125rem;
+    font-weight: 600;
 }
 
 .label {
