@@ -18,10 +18,12 @@ publié, choisit un Angle et un Objectif, limite son Cadre, transforme une
 Matière en modèle inspectable, puis rend la même lecture disponible dans un
 contrechamp textuel.
 
-Les cinq prototypes actuels sont des **esquisses privées en version `v0.1.0`**.
-Ils partagent une grammaire commune, des dérivations pures, des Bobines témoins
-et des garde-fous documentaires. Ils ne constituent pas encore des
-fonctionnalités publiques du Codex.
+Les cinq Plans partagent une grammaire commune, des dérivations pures, des
+Bobines témoins et des garde-fous documentaires. Quatre restent des esquisses
+privées. Le **Générique vivant** a reçu en Acte VI une première application
+publique, réversible et strictement limitée à _Pinocchio_, sous le nom
+`PlanGeneriqueVivant` v1.0.0. Ce précédent ne définit pas encore le cycle de
+maturation des autres Plans.
 
 Ce chapitre complète :
 
@@ -73,6 +75,8 @@ Si le tournage commence dans cinq minutes, retiens ceci :
     possède son propre dossier, son propre vocabulaire et son propre cycle.
 14. Aucun Plan ne quitte l’Atelier sans décision éditoriale, validation de sa
     valeur documentaire et chantier de promotion explicite.
+15. Une application publique conserve un contrechamp de référence et ne
+    généralise jamais sa maturité aux autres Plans par simple analogie.
 
 Et surtout :
 
@@ -170,6 +174,8 @@ règle ou une responsabilité, elle ne doit pas entrer dans le contrat commun.
 | [`src/app/atelier/plans/[slug]`](../../src/app/atelier/plans/[slug]/)            | calcule les projections serveur et ouvre les cinq routes privées          |
 | [`AtelierPlanDossier`](../../src/components/atelier/AtelierPlanDossier/)         | impose la structure documentaire commune des dossiers                     |
 | composants `Atelier…Prototype`                                                   | assurent Régie, rendu interactif et contrechamp de chaque prototype       |
+| [`PlanGeneriqueVivant`](../../src/components/plans/PlanGeneriqueVivant/)         | projette la première application publique bornée d’un Plan                |
+| [`src/components/focale`](../../src/components/focale/)                          | fournit les six primitives neutres de visualisation reconnues au Train 8G |
 | [`scripts/verifier-plans.mjs`](../../scripts/verifier-plans.mjs)                 | valide le registre, les vocabulaires et l’absence de verdict expérimental |
 | [`scripts/verifier-matiere-plans.mjs`](../../scripts/verifier-matiere-plans.mjs) | éprouve dérivations, provenance, Bobines et modèles spécialisés           |
 
@@ -184,6 +190,24 @@ règle ou une responsabilité, elle ne doit pas entrer dans le contrat commun.
 - Le Journal d’essai dit **ce que l’expérience nous apprend**.
 
 Aucune de ces couches ne doit parler à la place d’une autre.
+
+### Le précédent borné du Générique vivant
+
+Le Train 8G de l’Acte VI a autorisé `PlanGeneriqueVivant` v1.0.0 selon un
+contrat volontairement étroit :
+
+- la route Œuvre dérive le modèle côté serveur depuis les Archives ;
+- seule la fiche de _Pinocchio_ reçoit cette projection ;
+- le Plan est la lecture proposée par défaut, sans Régie publique ;
+- le générique simple reste accessible immédiatement comme contrechamp ;
+- aucun fait, crédit ou provenance n’est recopié dans le composant ;
+- ce passage en version `1.0.0` ne crée ni préfixe Pixie, ni règle de promotion
+  applicable aux quatre autres Plans.
+
+Focale est reconnu au même point d’arrêt comme noyau de visualisation
+réutilisable, strictement borné à `Scale`, `Mark`, `Legend`, `Annotation`,
+`Viewport` et `Table`. Une septième primitive ou une nouvelle responsabilité
+exige une preuve d’usage et un arbitrage séparé.
 
 ---
 
@@ -1199,6 +1223,7 @@ composant Atelier spécialisé. Le design system devient dépendant du métier.
 | Parcourir les Bobines                       | [`src/fixtures/plans/bobines-temoins.ts`](../../src/fixtures/plans/bobines-temoins.ts)                                                                     |
 | Comprendre l’orchestration serveur          | [`src/app/atelier/plans/[slug]/page.tsx`](../../src/app/atelier/plans/[slug]/page.tsx)                                                                     |
 | Comprendre le dossier commun                | [`AtelierPlanDossier`](../../src/components/atelier/AtelierPlanDossier/)                                                                                   |
+| Lire le premier Plan appliqué               | [`PlanGeneriqueVivant`](../../src/components/plans/PlanGeneriqueVivant/)                                                                                   |
 | Contrôler la grammaire                      | [`scripts/verifier-plans.mjs`](../../scripts/verifier-plans.mjs)                                                                                           |
 | Contrôler la matière                        | [`scripts/verifier-matiere-plans.mjs`](../../scripts/verifier-matiere-plans.mjs)                                                                           |
 

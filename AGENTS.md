@@ -216,6 +216,14 @@ src/components/codex/
 └── CodexCommon/    compositions métier partagées entre plusieurs territoires
 ```
 
+Les Plans appliqués vivent dans `src/components/plans` et commencent par
+`Plan…`. Ce territoire reste distinct de Pixie et des composants Codex : un
+Plan projette un modèle documentaire dérivé, tandis que la route demeure chef
+de montage. La seule version `1.x` actuellement autorisée est
+`PlanGeneriqueVivant`, appliquée à _Pinocchio_ par décision explicite du Train
+8G de l’Acte VI. Ce précédent ne définit pas encore le cycle de maturation des
+autres Plans.
+
 - un territoire organise les responsabilités ; ce n’est pas un composant et
   il ne possède pas de barrel global ;
 - chaque composant commence par le nom exact de son territoire :
@@ -243,6 +251,8 @@ import { PixieSymbol } from "@/components/ui/PixieSymbol";
 - `src/components/codex/CodexFiche` : `CodexFiche…` ;
 - `src/components/codex/CodexLayout` : `CodexLayout…` ;
 - `src/components/codex/CodexCommon` : `CodexCommon…`.
+- `src/components/plans` : `Plan…` pour une lecture dérivée explicitement
+  autorisée hors de l’Atelier.
 
 Une promotion `PixieDust` → `Pixie` met à jour dans le même chantier le nom du
 composant, son dossier, ses fichiers, ses exports, ses imports, sa version, son
@@ -311,6 +321,11 @@ Sujet · Angle · Objectif · Cadre · Matière
   Journal d’essai ;
 - une esquisse de Plan ne doit jamais être intégrée aux pages publiques du
   Codex.
+
+`PlanGeneriqueVivant` v1.0.0 constitue la première application publique
+bornée : elle concerne uniquement la fiche de _Pinocchio_, reste réversible
+vers le générique simple et n’instaure aucun workflow global de promotion des
+Plans. Toute autre application publique exige son propre arbitrage.
 
 Le parcours complet appartient au
 [chapitre 06](./docs/agents/06-plans-et-lectures-derivees.md).
