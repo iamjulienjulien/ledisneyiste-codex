@@ -38,12 +38,12 @@
         "reportee": "Condition de reprise nommée pour une phase ultérieure."
     },
     "progress": {
-        "a-faire": 20,
+        "a-faire": 0,
         "en-cours": 0,
         "migree": 30,
-        "inchangee": 19,
-        "reportee": 0,
-        "verdicts": 49
+        "inchangee": 20,
+        "reportee": 19,
+        "verdicts": 69
     },
     "entries": [
         {
@@ -1360,12 +1360,14 @@
                 "exception": null
             },
             "train": "5F",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "reportee",
+            "verdict": "Raccord R2 reporté : la production et les arbitrages d’adaptation de Walt Disney appartiennent au récit de Pinocchio et seront reliés depuis la future Archive de l’Œuvre.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": ["us-afi-catalog-pinocchio"],
+            "checks": ["pnpm check:relations", "pnpm check:phase-5"],
+            "reservations": [
+                "La Phase 6 reprendra ce raccord après publication de Pinocchio, avec les rôles exacts et leur provenance."
+            ]
         },
         {
             "family": "createurs",
@@ -1378,12 +1380,14 @@
                 "exception": "ne-pas-attribuer-de-credit-sans-preuve"
             },
             "train": "5F",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "inchangee",
+            "verdict": "Raccord R2 validé sans mutation : le rôle comparatif de David Hand repose sur son expérience de Blanche-Neige et n’autorise aucun crédit sur Pinocchio.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": ["d23-david-hand", "afi-snow-white"],
+            "checks": ["pnpm check:relations", "pnpm check:phase-5"],
+            "reservations": [
+                "Aucune contribution à Pinocchio ne sera ajoutée sans preuve distincte ; la comparaison éditoriale demeure extérieure au générique."
+            ]
         },
         {
             "family": "createurs",
@@ -1396,12 +1400,14 @@
                 "exception": null
             },
             "train": "5F",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "reportee",
+            "verdict": "Raccord R2 reporté : la direction et la mise en scène de Hamilton Luske sur Pinocchio doivent être portées par la future Archive de l’Œuvre.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": ["d23-ham-luske", "us-afi-catalog-pinocchio"],
+            "checks": ["pnpm check:relations", "pnpm check:phase-5"],
+            "reservations": [
+                "La Phase 6 reprendra ce raccord après publication de Pinocchio, avec les rôles exacts et leur provenance."
+            ]
         },
         {
             "family": "createurs",
@@ -1414,12 +1420,14 @@
                 "exception": null
             },
             "train": "5F",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "reportee",
+            "verdict": "Raccord R2 reporté : la direction de séquences attribuée à Wilfred Jackson relève du générique structuré de Pinocchio.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": ["fr-cinematheque-pinocchio"],
+            "checks": ["pnpm check:relations", "pnpm check:phase-5"],
+            "reservations": [
+                "La Phase 6 reprendra ce raccord après publication de Pinocchio, sans transformer une attribution de séquence en rôle général."
+            ]
         },
         {
             "family": "createurs",
@@ -1432,12 +1440,14 @@
                 "exception": null
             },
             "train": "5F",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "reportee",
+            "verdict": "Raccord R2 reporté : l’animation de Grand Coquin et Gédéon par Norman Ferguson doit être reliée depuis Pinocchio et non recopiée comme relation autonome dans sa fiche.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": ["d23-norm-ferguson", "us-afi-catalog-pinocchio"],
+            "checks": ["pnpm check:relations", "pnpm check:phase-5"],
+            "reservations": [
+                "La Phase 6 reprendra ce raccord après publication des Personnages et de l’Œuvre concernés."
+            ]
         },
         {
             "family": "createurs",
@@ -1450,12 +1460,14 @@
                 "exception": null
             },
             "train": "5F",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "reportee",
+            "verdict": "Raccord R2 reporté : la conception et l’animation de Jiminy Cricket par Ward Kimball dépendent des futures Archives de Pinocchio.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": ["us-wdfm-reimagining-jiminy"],
+            "checks": ["pnpm check:relations", "pnpm check:phase-5"],
+            "reservations": [
+                "La Phase 6 reprendra ce raccord après publication de Jiminy Cricket et de Pinocchio, avec une attribution bornée à la matière sourcée."
+            ]
         },
         {
             "family": "createurs",
@@ -1468,12 +1480,14 @@
                 "exception": null
             },
             "train": "5F",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "reportee",
+            "verdict": "Raccord R2 reporté : l’animation de Crapule par Fred Moore doit rejoindre le générique de Pinocchio et la future fiche du Personnage.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": ["us-wdfm-pool-hall"],
+            "checks": ["pnpm check:relations", "pnpm check:phase-5"],
+            "reservations": [
+                "La Phase 6 reprendra ce raccord après publication de Crapule et de Pinocchio."
+            ]
         },
         {
             "family": "createurs",
@@ -1486,12 +1500,14 @@
                 "exception": null
             },
             "train": "5F",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "reportee",
+            "verdict": "Raccord R2 reporté : la refonte graphique de Pinocchio par Milt Kahl est déjà amorcée éditorialement, mais sa relation structurée dépend de la future Œuvre.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": ["wdfm-milt-kahl-master-puppeteer"],
+            "checks": ["pnpm check:relations", "pnpm check:phase-5"],
+            "reservations": [
+                "La Phase 6 reprendra ce raccord après publication de Pinocchio, sans dupliquer le récit éditorial déjà présent."
+            ]
         },
         {
             "family": "createurs",
@@ -1504,12 +1520,14 @@
                 "exception": null
             },
             "train": "5F",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "reportee",
+            "verdict": "Raccord R2 reporté : la contribution exacte de Frank Thomas à Pinocchio n’est pas assez qualifiée pour produire une relation avant la Phase 6.",
             "files": [],
             "sources": [],
-            "checks": [],
-            "reservations": []
+            "checks": ["pnpm check:relations", "pnpm check:phase-5"],
+            "reservations": [
+                "La Phase 6 devra établir le rôle et la séquence exacts depuis une source exploitable avant toute relation."
+            ]
         },
         {
             "family": "createurs",
@@ -1522,12 +1540,14 @@
                 "exception": null
             },
             "train": "5F",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "reportee",
+            "verdict": "Raccord R2 reporté : la contribution exacte d’Eric Larson à Pinocchio n’est pas assez qualifiée pour produire une relation avant la Phase 6.",
             "files": [],
             "sources": [],
-            "checks": [],
-            "reservations": []
+            "checks": ["pnpm check:relations", "pnpm check:phase-5"],
+            "reservations": [
+                "La Phase 6 devra établir le rôle et la séquence exacts depuis une source exploitable avant toute relation."
+            ]
         },
         {
             "family": "createurs",
@@ -1540,12 +1560,14 @@
                 "exception": null
             },
             "train": "5F",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "reportee",
+            "verdict": "Raccord R2 reporté : la contribution exacte d’Ollie Johnston à Pinocchio n’est pas assez qualifiée pour produire une relation avant la Phase 6.",
             "files": [],
             "sources": [],
-            "checks": [],
-            "reservations": []
+            "checks": ["pnpm check:relations", "pnpm check:phase-5"],
+            "reservations": [
+                "La Phase 6 devra établir le rôle et la séquence exacts depuis une source exploitable avant toute relation."
+            ]
         },
         {
             "family": "createurs",
@@ -1558,12 +1580,14 @@
                 "exception": null
             },
             "train": "5F",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "reportee",
+            "verdict": "Raccord R2 reporté : la contribution de John Lounsbery à Grand Coquin doit être reliée depuis les futures Archives de Pinocchio.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": ["d23-john-lounsbery", "us-afi-catalog-pinocchio"],
+            "checks": ["pnpm check:relations", "pnpm check:phase-5"],
+            "reservations": [
+                "La Phase 6 reprendra ce raccord après publication de Grand Coquin et de Pinocchio."
+            ]
         },
         {
             "family": "createurs",
@@ -1576,12 +1600,14 @@
                 "exception": null
             },
             "train": "5F",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "reportee",
+            "verdict": "Raccord R2 reporté : la poursuite de Monstro attribuée à Wolfgang Reitherman doit être reliée depuis les futures Archives de Pinocchio.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": ["d23-wolfgang-reitherman", "us-afi-catalog-pinocchio"],
+            "checks": ["pnpm check:relations", "pnpm check:phase-5"],
+            "reservations": [
+                "La Phase 6 reprendra ce raccord après publication de Monstro et de Pinocchio."
+            ]
         },
         {
             "family": "createurs",
@@ -1594,12 +1620,18 @@
                 "exception": "nom-public-different-du-repere-bill-tytla"
             },
             "train": "5F",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "reportee",
+            "verdict": "Raccord R2 reporté : l’animation de Stromboli par Vladimir « Bill » Tytla doit être reliée depuis les futures Archives de Pinocchio.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": ["d23-bill-tytla", "us-afi-catalog-pinocchio"],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:relations",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "La Phase 6 reprendra ce raccord après publication de Stromboli et de Pinocchio ; le slug vladimir-bill-tytla et le nom public actuel restent canoniques."
+            ]
         },
         {
             "family": "createurs",
@@ -1612,12 +1644,14 @@
                 "exception": null
             },
             "train": "5F",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "reportee",
+            "verdict": "Raccord R2 reporté : le développement narratif et la conception de personnages attribués à Joe Grant doivent être qualifiés dans la future Archive de Pinocchio.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": ["d23-joe-grant", "us-afi-catalog-pinocchio"],
+            "checks": ["pnpm check:relations", "pnpm check:phase-5"],
+            "reservations": [
+                "La Phase 6 reprendra ce raccord après publication de Pinocchio, en séparant développement narratif et conception des personnages."
+            ]
         },
         {
             "family": "createurs",
@@ -1630,12 +1664,14 @@
                 "exception": null
             },
             "train": "5F",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "reportee",
+            "verdict": "Raccord R2 reporté : l’inspiration visuelle apportée par Gustaf Tenggren est déjà amorcée, mais sa relation structurée dépend de la future Archive de Pinocchio.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": ["us-wdfm-art-of-pinocchio"],
+            "checks": ["pnpm check:relations", "pnpm check:phase-5"],
+            "reservations": [
+                "La Phase 6 reprendra ce raccord après publication de Pinocchio, sans confondre inspiration visuelle et direction artistique."
+            ]
         },
         {
             "family": "createurs",
@@ -1648,12 +1684,19 @@
                 "exception": "relation-chanson-et-recompense"
             },
             "train": "5F",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "reportee",
+            "verdict": "Raccord R2 reporté : la composition de Leigh Harline, sa relation à la chanson pilote et sa récompense appartiennent aux futures Archives de Pinocchio.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": ["d23-leigh-harline", "us-academy-awards-1941"],
+            "checks": [
+                "pnpm check:chansons",
+                "pnpm check:recompenses",
+                "pnpm check:relations",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "La Phase 6 reprendra ensemble les relations vers Pinocchio, sa chanson pilote et l’Oscar, sans les enfouir dans la fiche Créateur."
+            ]
         },
         {
             "family": "createurs",
@@ -1666,12 +1709,18 @@
                 "exception": "relation-recompense"
             },
             "train": "5F",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "reportee",
+            "verdict": "Raccord R2 reporté : la partition de Paul J. Smith et sa récompense appartiennent aux futures Archives de Pinocchio.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": ["d23-paul-smith", "us-academy-awards-1941"],
+            "checks": [
+                "pnpm check:recompenses",
+                "pnpm check:relations",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "La Phase 6 reprendra ensemble les relations vers Pinocchio et l’Oscar, sans les enfouir dans la fiche Créateur."
+            ]
         },
         {
             "family": "createurs",
@@ -1684,12 +1733,14 @@
                 "exception": "relation-reference-filmee"
             },
             "train": "5F",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "reportee",
+            "verdict": "Raccord R2 reporté : le travail de référence filmée de Marge Champion pour la Fée Bleue doit être relié depuis les futures Archives de Pinocchio.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": ["d23-marge-champion", "us-loc-pinocchio-essay"],
+            "checks": ["pnpm check:relations", "pnpm check:phase-5"],
+            "reservations": [
+                "La Phase 6 reprendra ce raccord après publication de la Fée Bleue et de Pinocchio, en distinguant le modèle filmé de la voix originale d’Evelyn Venable."
+            ]
         },
         {
             "family": "chansons",
@@ -1831,12 +1882,14 @@
                 "exception": "aucune-nouvelle-epoque"
             },
             "train": "5F",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "reportee",
+            "verdict": "Raccord R2 reporté : Le temps des chefs-d’œuvre contextualise déjà Pinocchio avec une source dédiée, mais son rattachement vérifiable dépend de la future Archive de l’Œuvre.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": ["wdfm-pinocchio-importance"],
+            "checks": ["pnpm check:relations", "pnpm check:phase-5"],
+            "reservations": [
+                "La Phase 6 publiera Pinocchio dans les bornes existantes sans créer de nouvelle Époque ni recopier sorties, montants ou récit complet de l’Œuvre."
+            ]
         }
     ]
 }
