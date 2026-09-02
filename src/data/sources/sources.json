@@ -1733,5 +1733,47 @@
         "datePublication": "1995",
         "url": "https://catalogue.bnf.fr/ark:/12148/cb390868107",
         "dateConsultation": "2026-09-01"
+    },
+    {
+        "id": "us-loc-national-film-registry",
+        "titre": "National Film Registry Titles by Release Date",
+        "auteur": "Library of Congress",
+        "editeur": "National Film Preservation Board",
+        "url": "https://www.loc.gov/static/programs/national-film-preservation-board/documents/Registry-Titles-by-release-date.pdf",
+        "dateConsultation": "2026-09-01"
+    },
+    {
+        "id": "fr-cnc-palmares-1946",
+        "titre": "Palmarès · Box-office France de 1946",
+        "auteur": "Centre national du cinéma et de l’image animée",
+        "editeur": "CNC",
+        "url": "https://www.cnc.fr/a-propos-du-cnc/palmares_136958",
+        "dateConsultation": "2026-09-01"
+    },
+    {
+        "id": "fr-retronews-pinocchio",
+        "titre": "« Pinocchio » de Walt Disney : un triomphe du cinéma d’animation",
+        "auteur": "Pierre Ancery",
+        "editeur": "RetroNews · Bibliothèque nationale de France",
+        "datePublication": "2019-01-17",
+        "url": "https://www.retronews.fr/arts/echo-de-presse/2019/01/17/pinocchio-walt-disney-1940",
+        "dateConsultation": "2026-09-01"
+    },
+    {
+        "id": "it-roma-tre-mazzei-pinocchio",
+        "titre": "L’italiano di legno nello specchio di Hollywood. La ricezione del Pinocchio Disney in Italia tra fascismo e dopoguerra",
+        "auteur": "Luca Mazzei",
+        "editeur": "Roma TrE-Press",
+        "datePublication": "2019-12-01",
+        "url": "https://art.torvergata.it/handle/2108/232801",
+        "dateConsultation": "2026-09-01"
+    },
+    {
+        "id": "it-cinematografo-pinocchio",
+        "titre": "Pinocchio",
+        "auteur": "Fondazione Ente dello Spettacolo",
+        "editeur": "Cinematografo",
+        "url": "https://www.cinematografo.it/film/pinocchio-rk5ni88c",
+        "dateConsultation": "2026-09-01"
     }
 ]

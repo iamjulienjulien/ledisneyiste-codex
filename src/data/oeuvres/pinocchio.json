@@ -15,9 +15,280 @@
         "date": {
             "valeur": "1940-02-07",
             "precision": "jour"
-        }
+        },
+        "evenements": [
+            {
+                "id": "premiere-mondiale-us-1940",
+                "date": { "valeur": "1940-02-07", "precision": "jour" },
+                "porteeTerritoriale": {
+                    "nature": "territoire",
+                    "code": "US"
+                },
+                "nature": "premiere-mondiale",
+                "lieu": "New York",
+                "versionId": "version-originale-1940",
+                "exploitationId": "premiere-exploitation-us-1940",
+                "sources": ["us-afi-catalog-pinocchio"]
+            },
+            {
+                "id": "sortie-nationale-us-1940",
+                "date": { "valeur": "1940-02-23", "precision": "jour" },
+                "porteeTerritoriale": {
+                    "nature": "territoire",
+                    "code": "US"
+                },
+                "nature": "sortie-nationale",
+                "versionId": "version-originale-1940",
+                "exploitationId": "premiere-exploitation-us-1940",
+                "sources": ["us-afi-catalog-pinocchio"]
+            },
+            {
+                "id": "sortie-nationale-fr-1946",
+                "date": { "valeur": "1946-05-22", "precision": "jour" },
+                "porteeTerritoriale": {
+                    "nature": "territoire",
+                    "code": "FR"
+                },
+                "nature": "sortie-nationale",
+                "versionId": "doublage-francais-1946",
+                "exploitationId": "exploitation-france-1946",
+                "sources": ["fr-cnc-visa-pinocchio"]
+            },
+            {
+                "id": "sortie-nationale-it-1947",
+                "date": { "valeur": "1947", "precision": "annee" },
+                "porteeTerritoriale": {
+                    "nature": "territoire",
+                    "code": "IT"
+                },
+                "nature": "sortie-nationale",
+                "versionId": "doublage-italien-1947",
+                "exploitationId": "exploitation-italie-1947",
+                "sources": ["it-treccani-1940-pinocchio"],
+                "noteDeReserve": "La source établit l’année de projection en Italie, sans fournir de date plus précise."
+            }
+        ]
     },
     "format": "long métrage d’animation",
+    "versions": [
+        {
+            "id": "version-originale-1940",
+            "nature": "originale",
+            "identite": {
+                "libelle": "Version originale de 1940",
+                "nature": "original",
+                "langue": "en",
+                "territoire": "US",
+                "sources": ["us-afi-catalog-pinocchio", "us-d23-pinocchio-film"]
+            },
+            "date": { "valeur": "1940", "precision": "annee" },
+            "sources": ["us-afi-catalog-pinocchio", "us-d23-pinocchio-film"]
+        },
+        {
+            "id": "doublage-francais-1946",
+            "nature": "doublage",
+            "identite": {
+                "libelle": "Premier doublage français",
+                "nature": "localise",
+                "langue": "fr",
+                "territoire": "FR",
+                "sources": [
+                    "fr-cinematheque-pinocchio",
+                    "fr-cnc-visa-pinocchio"
+                ]
+            },
+            "date": { "valeur": "1946", "precision": "annee" },
+            "sources": ["fr-cinematheque-pinocchio", "fr-cnc-visa-pinocchio"]
+        },
+        {
+            "id": "doublage-francais-1975",
+            "nature": "doublage",
+            "identite": {
+                "libelle": "Doublage français de 1975",
+                "nature": "localise",
+                "langue": "fr",
+                "territoire": "FR",
+                "sources": ["fr-cinematheque-pinocchio"]
+            },
+            "date": { "valeur": "1975", "precision": "annee" },
+            "sources": ["fr-cinematheque-pinocchio"],
+            "noteDeReserve": "La source documente la distribution vocale de cette version, pas l’historique complet de sa ressortie."
+        },
+        {
+            "id": "doublage-italien-1947",
+            "nature": "doublage",
+            "identite": {
+                "libelle": "Doublage italien de 1947",
+                "nature": "localise",
+                "langue": "it",
+                "territoire": "IT",
+                "sources": ["it-treccani-1940-pinocchio"]
+            },
+            "date": { "valeur": "1947", "precision": "annee" },
+            "sources": ["it-treccani-1940-pinocchio"]
+        }
+    ],
+    "exploitations": [
+        {
+            "id": "premiere-exploitation-us-1940",
+            "nature": "premiere-exploitation",
+            "periode": {
+                "debut": { "valeur": "1940-02-07", "precision": "jour" }
+            },
+            "porteeTerritoriale": {
+                "nature": "territoire",
+                "code": "US"
+            },
+            "versionIds": ["version-originale-1940"],
+            "support": "salles",
+            "sources": ["us-afi-catalog-pinocchio"]
+        },
+        {
+            "id": "exploitation-france-1946",
+            "nature": "exploitation-nationale",
+            "periode": {
+                "debut": { "valeur": "1946-05-22", "precision": "jour" }
+            },
+            "porteeTerritoriale": {
+                "nature": "territoire",
+                "code": "FR"
+            },
+            "versionIds": ["doublage-francais-1946"],
+            "support": "salles",
+            "sources": ["fr-cnc-visa-pinocchio", "fr-retronews-pinocchio"]
+        },
+        {
+            "id": "exploitation-italie-1947",
+            "nature": "exploitation-nationale",
+            "periode": {
+                "debut": { "valeur": "1947", "precision": "annee" }
+            },
+            "porteeTerritoriale": {
+                "nature": "territoire",
+                "code": "IT"
+            },
+            "versionIds": ["doublage-italien-1947"],
+            "support": "salles",
+            "sources": [
+                "it-treccani-1940-pinocchio",
+                "it-roma-tre-mazzei-pinocchio"
+            ]
+        }
+    ],
+    "receptions": [
+        {
+            "id": "reception-institutionnelle-oscars-1941",
+            "nature": "institutionnelle",
+            "temoin": {
+                "nom": "Academy of Motion Picture Arts and Sciences",
+                "nature": "institution"
+            },
+            "date": { "valeur": "1941-02-27", "precision": "jour" },
+            "porteeTerritoriale": {
+                "nature": "territoire",
+                "code": "US"
+            },
+            "resume": "L’Academy distingue la musique originale de Pinocchio et la chanson When You Wish Upon a Star lors de sa treizième cérémonie.",
+            "qualification": "favorable",
+            "sources": ["us-academy-awards-1941"]
+        },
+        {
+            "id": "reception-patrimoniale-registry-1994",
+            "nature": "institutionnelle",
+            "temoin": {
+                "nom": "Library of Congress · National Film Registry",
+                "nature": "institution"
+            },
+            "date": { "valeur": "1994", "precision": "annee" },
+            "porteeTerritoriale": {
+                "nature": "territoire",
+                "code": "US"
+            },
+            "resume": "Le National Film Registry inscrit Pinocchio en 1994 ; ce repère établit sa sélection patrimoniale sans en imposer l’interprétation.",
+            "qualification": "descriptive",
+            "sources": ["us-loc-national-film-registry"]
+        },
+        {
+            "id": "reception-critique-france-1946",
+            "nature": "critique-contemporaine",
+            "temoin": {
+                "nom": "Presse française réunie par RetroNews",
+                "nature": "publication"
+            },
+            "date": { "valeur": "1946", "precision": "annee" },
+            "porteeTerritoriale": {
+                "nature": "territoire",
+                "code": "FR"
+            },
+            "resume": "Après une sortie retardée par la guerre, la presse française admire la maîtrise technique du film tout en discutant son caractère commercial, moral et hollywoodien.",
+            "qualification": "partagee",
+            "support": "presse",
+            "evenementId": "sortie-nationale-fr-1946",
+            "exploitationId": "exploitation-france-1946",
+            "versionId": "doublage-francais-1946",
+            "sources": ["fr-retronews-pinocchio"]
+        },
+        {
+            "id": "reception-publique-france-1946-2010",
+            "nature": "publique",
+            "temoin": {
+                "nom": "Public des exploitations françaises cumulées",
+                "nature": "public"
+            },
+            "periode": {
+                "debut": { "valeur": "1946", "precision": "annee" },
+                "fin": { "valeur": "2010", "precision": "annee" }
+            },
+            "porteeTerritoriale": {
+                "nature": "territoire",
+                "code": "FR"
+            },
+            "resume": "Le palmarès du CNC place Pinocchio en tête de son tableau 1946 avec 7,84 millions de spectateurs cumulés entre 1946 et 2010.",
+            "qualification": "descriptive",
+            "exploitationId": "exploitation-france-1946",
+            "sources": ["fr-cnc-palmares-1946"],
+            "noteDeReserve": "Le chiffre couvre les exploitations de 1946 à 2010 et ne mesure pas les seules entrées de 1946."
+        },
+        {
+            "id": "reception-critique-italie-1938-1948",
+            "nature": "critique-contemporaine",
+            "temoin": {
+                "nom": "Presse italienne étudiée par Luca Mazzei",
+                "nature": "publication"
+            },
+            "periode": {
+                "debut": { "valeur": "1938", "precision": "annee" },
+                "fin": { "valeur": "1948", "precision": "annee" }
+            },
+            "porteeTerritoriale": {
+                "nature": "territoire",
+                "code": "IT"
+            },
+            "resume": "Avant et après la sortie italienne, les réactions oscillent entre admiration technique, crainte d’une américanisation de Collodi et réappropriation affective du film.",
+            "qualification": "partagee",
+            "support": "presse",
+            "exploitationId": "exploitation-italie-1947",
+            "versionId": "doublage-italien-1947",
+            "sources": ["it-roma-tre-mazzei-pinocchio"]
+        },
+        {
+            "id": "reevaluation-italienne-1984",
+            "nature": "reevaluation",
+            "temoin": {
+                "nom": "Cinematografo",
+                "nature": "publication"
+            },
+            "date": { "valeur": "1984", "precision": "annee" },
+            "porteeTerritoriale": {
+                "nature": "territoire",
+                "code": "IT"
+            },
+            "resume": "La critique publiée en 1984 revient sur les condensations, les transformations morales et les réussites visuelles du film ; elle complète sans remplacer les réactions de 1947.",
+            "qualification": "partagee",
+            "support": "critique filmographique",
+            "sources": ["it-cinematografo-pinocchio"]
+        }
+    ],
     "durees": [
         {
             "valeur": 87,
@@ -31,6 +302,43 @@
         "fin": { "valeur": "1940", "precision": "annee" },
         "sources": ["us-afi-catalog-pinocchio", "us-d23-pinocchio-film"]
     },
+    "donneesEconomiques": [
+        {
+            "schemaVersion": "1.0.0",
+            "id": "pinocchio-entrees-france-cumul-1946-2010",
+            "mesure": "entrees",
+            "valeurOriginale": {
+                "nature": "valeur",
+                "valeur": 7840000
+            },
+            "unite": "entrees",
+            "porteeTerritoriale": {
+                "nature": "territoire",
+                "code": "FR"
+            },
+            "temporalite": {
+                "nature": "cumul",
+                "periode": {
+                    "debut": { "valeur": "1946", "precision": "annee" },
+                    "fin": { "valeur": "2010", "precision": "annee" }
+                }
+            },
+            "base": "cumul-exploitations",
+            "methode": {
+                "description": "Cumul de spectateurs publié dans le palmarès du CNC.",
+                "sourceIds": ["fr-cnc-palmares-1946"]
+            },
+            "certitude": "documente",
+            "comparabilite": {
+                "statut": "comparable-sous-reserve",
+                "avec": [],
+                "motif": "Comparable uniquement à une fréquentation française cumulée sur la même période et selon la même méthode."
+            },
+            "finaliteEditoriale": "Situer la durée de la fréquentation française sans la réduire à la seule année 1946.",
+            "sources": ["fr-cnc-palmares-1946"],
+            "noteDeReserve": "Ce cumul couvre 1946 à 2010 ; il ne représente pas les seules entrées de la sortie française de 1946."
+        }
+    ],
     "relationsOeuvres": [
         {
             "nature": "adaptation",
@@ -360,9 +668,14 @@
         "us-afi-catalog-pinocchio",
         "us-d23-pinocchio-film",
         "fr-cinematheque-pinocchio",
+        "fr-cnc-palmares-1946",
         "fr-cnc-visa-pinocchio",
+        "fr-retronews-pinocchio",
+        "it-cinematografo-pinocchio",
+        "it-roma-tre-mazzei-pinocchio",
         "it-treccani-1940-pinocchio",
         "it-collodi-critical-text",
+        "us-loc-national-film-registry",
         "us-loc-pinocchio-essay",
         "us-wdfm-reimagining-jiminy",
         "us-d23-ben-sharpsteen",
