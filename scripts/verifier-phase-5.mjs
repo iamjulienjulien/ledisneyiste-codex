@@ -59,7 +59,121 @@ const documentsPhase5 = [
     "train-5a.md",
     "train-5b.md",
     "train-5c.md",
+    "train-5d.md",
 ];
+
+const identitesOeuvresTrain5D = {
+    "alices-wonderland": {
+        principale: "Alice’s Wonderland",
+        originale: null,
+        sourceFr: "chronique-disney-alices-wonderland",
+    },
+    "trolley-troubles": {
+        principale: "Trolley Troubles",
+        originale: null,
+        sourceFr: "chronique-disney-trolley-troubles",
+    },
+    "steamboat-willie": {
+        principale: "Willie, le Bateau à Vapeur",
+        originale: "Steamboat Willie",
+        sourceFr: "chronique-disney-willie-bateau-vapeur",
+    },
+    "the-gallopin-gaucho": {
+        principale: "Mickey Gaucho",
+        originale: "The Gallopin’ Gaucho",
+        sourceFr: "chronique-disney-mickey-gaucho",
+    },
+    "plane-crazy": {
+        principale: "L’Avion Fou",
+        originale: "Plane Crazy",
+        sourceFr: "chronique-disney-avion-fou",
+    },
+    "the-skeleton-dance": {
+        principale: "La Danse Macabre",
+        originale: "The Skeleton Dance",
+        sourceFr: "chronique-disney-danse-macabre",
+    },
+    "the-chain-gang": {
+        principale: "Symphonie Enchaînée",
+        originale: "The Chain Gang",
+        sourceFr: "chronique-disney-symphonie-enchainee",
+    },
+    "mickeys-revue": {
+        principale: "Mickey au Théâtre",
+        originale: "Mickey’s Revue",
+        sourceFr: "chronique-disney-mickey-au-theatre",
+    },
+    "flowers-and-trees": {
+        principale: "Des Arbres et des Fleurs",
+        originale: "Flowers and Trees",
+        sourceFr: "chronique-disney-arbres-fleurs",
+    },
+    "three-little-pigs": {
+        principale: "Les Trois Petits Cochons",
+        originale: "Three Little Pigs",
+        sourceFr: "chronique-disney-trois-petits-cochons",
+    },
+    "the-wise-little-hen": {
+        principale: "Une Petite Poule Avisée",
+        originale: "The Wise Little Hen",
+        sourceFr: "chronique-disney-petite-poule-avisee",
+    },
+    "orphans-benefit": {
+        principale: "Le Gala des Orphelins",
+        originale: "Orphans’ Benefit",
+        sourceFr: "chronique-disney-gala-orphelins",
+    },
+    "the-goddess-of-spring": {
+        principale: "La Déesse du Printemps",
+        originale: "The Goddess of Spring",
+        sourceFr: "chronique-disney-deesse-printemps",
+    },
+    "the-tortoise-and-the-hare": {
+        principale: "Le Lièvre et la Tortue",
+        originale: "The Tortoise and the Hare",
+        sourceFr: "chronique-disney-lievre-tortue",
+    },
+    "the-band-concert": {
+        principale: "La Fanfare",
+        originale: "The Band Concert",
+        sourceFr: "chronique-disney-fanfare",
+    },
+    "three-orphan-kittens": {
+        principale: "Trois Petits Orphelins",
+        originale: "Three Orphan Kittens",
+        sourceFr: "chronique-disney-trois-petits-orphelins",
+    },
+    "the-country-cousin": {
+        principale: "Cousin de Campagne",
+        originale: "The Country Cousin",
+        sourceFr: "chronique-disney-cousin-campagne",
+    },
+    "clock-cleaners": {
+        principale: "Nettoyeurs de Pendules",
+        originale: "Clock Cleaners",
+        sourceFr: "chronique-disney-nettoyeurs-pendules",
+    },
+    "the-old-mill": {
+        principale: "Le Vieux Moulin",
+        originale: "The Old Mill",
+        sourceFr: "chronique-disney-vieux-moulin",
+    },
+    "ferdinand-the-bull": {
+        principale: "Ferdinand, le Taureau",
+        originale: "Ferdinand the Bull",
+        sourceFr: "chronique-disney-ferdinand-taureau",
+    },
+    "mr-duck-steps-out": {
+        principale: "L’Entreprenant Mr Duck",
+        originale: "Mr. Duck Steps Out",
+        sourceFr: "chronique-disney-entreprenant-mr-duck",
+    },
+    "bone-trouble": {
+        principale: "Pluto a des Envies",
+        originale: "Bone Trouble",
+        sourceFr: "chronique-disney-pluto-envies",
+    },
+};
 
 function chemin(...segments) {
     return path.join(racine, ...segments);
@@ -400,6 +514,89 @@ function verifierEchantillonR3(migration) {
     assert.match(registreSources, /id: "oeuvre-source-grimm-schneewittchen"/);
 }
 
+function verifierTrain5D(migration) {
+    const catalogue = lireJson("src/data/catalogues/oeuvres.json");
+    const catalogueParSlug = new Map(
+        catalogue.map((entree) => [entree.slug, entree]),
+    );
+    const sources = new Set(
+        lireJson("src/data/sources/sources.json").map((source) => source.id),
+    );
+    const entreesTrain5D = migration.entries.filter(
+        (entree) => entree.train === "5D",
+    );
+
+    assert.equal(entreesTrain5D.length, 22);
+
+    for (const [slug, identite] of Object.entries(identitesOeuvresTrain5D)) {
+        const cle = `oeuvres/${slug}`;
+        const entreeJournal = entreesTrain5D.find(
+            (entree) => cleEntree(entree) === cle,
+        );
+        const fiche = lireJson(`src/data/oeuvres/${slug}.json`);
+        const entreeCatalogue = catalogueParSlug.get(slug);
+
+        assert.equal(
+            entreeJournal?.status,
+            "migree",
+            `${cle} : verdict R2 ouvert`,
+        );
+        assert.match(
+            entreeJournal.verdict,
+            /raccord R2/i,
+            `${cle} : verdict R2 incomplet`,
+        );
+        assert.equal(
+            entreeCatalogue?.nom,
+            identite.principale,
+            `${cle} : titre français principal inattendu`,
+        );
+        assert.ok(
+            sources.has(identite.sourceFr) &&
+                fiche.sources?.includes(identite.sourceFr),
+            `${cle} : provenance française absente`,
+        );
+
+        const titresOriginaux = (fiche.titresAlternatifs ?? []).filter(
+            (titre) => titre.nature === "original",
+        );
+
+        if (identite.originale === null) {
+            assert.equal(
+                titresOriginaux.length,
+                0,
+                `${cle} : forme identique dupliquée comme titre original`,
+            );
+        } else {
+            assert.equal(
+                titresOriginaux.length,
+                1,
+                `${cle} : titre original absent`,
+            );
+            assert.equal(titresOriginaux[0].titre, identite.originale);
+            assert.equal(titresOriginaux[0].langue, "en");
+            assert.equal(titresOriginaux[0].territoire, "US");
+            assert.ok(titresOriginaux[0].sources.length > 0);
+        }
+    }
+
+    const blancheNeige = catalogueParSlug.get(
+        "snow-white-and-the-seven-dwarfs",
+    );
+    const ficheBlancheNeige = lireJson(
+        "src/data/oeuvres/snow-white-and-the-seven-dwarfs.json",
+    );
+    const titreOriginalBlancheNeige = ficheBlancheNeige.titresAlternatifs?.find(
+        (titre) => titre.nature === "original",
+    );
+
+    assert.equal(blancheNeige?.nom, "Blanche-Neige et les Sept Nains");
+    assert.equal(
+        titreOriginalBlancheNeige?.titre,
+        "Snow White and the Seven Dwarfs",
+    );
+}
+
 function verifierTransmission() {
     const dossier = chemin("docs/studio/production/acte-vi/phase-5");
 
@@ -417,6 +614,7 @@ const corpus = verifierInventairePublic(migration);
 verifierRoutesProtegees(manifeste);
 const progression = verifierJournal(migration, manifeste);
 verifierEchantillonR3(migration);
+verifierTrain5D(migration);
 verifierBranchement();
 verifierTransmission();
 

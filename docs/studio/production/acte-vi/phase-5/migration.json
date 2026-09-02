@@ -38,12 +38,12 @@
         "reportee": "Condition de reprise nommée pour une phase ultérieure."
     },
     "progress": {
-        "a-faire": 64,
+        "a-faire": 42,
         "en-cours": 0,
-        "migree": 5,
+        "migree": 27,
         "inchangee": 0,
         "reportee": 0,
-        "verdicts": 5
+        "verdicts": 27
     },
     "entries": [
         {
@@ -57,12 +57,21 @@
                 "exception": null
             },
             "train": "5D",
-            "status": "a-faire",
-            "verdict": null,
-            "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "status": "migree",
+            "verdict": "Raccord R2 validé : la forme française documentée demeure identique au titre original ; sa provenance est ajoutée sans dupliquer l’identité.",
+            "files": [
+                "src/data/oeuvres/alices-wonderland.json",
+                "src/data/sources/sources.json"
+            ],
+            "sources": ["chronique-disney-alices-wonderland"],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:oeuvres",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "Aucun champ progressif supplémentaire n’est créé faute de matière sourcée."
+            ]
         },
         {
             "family": "oeuvres",
@@ -75,12 +84,21 @@
                 "exception": null
             },
             "train": "5D",
-            "status": "a-faire",
-            "verdict": null,
-            "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "status": "migree",
+            "verdict": "Raccord R2 validé : la forme française documentée demeure identique au titre original ; sa provenance est ajoutée sans dupliquer l’identité.",
+            "files": [
+                "src/data/oeuvres/trolley-troubles.json",
+                "src/data/sources/sources.json"
+            ],
+            "sources": ["chronique-disney-trolley-troubles"],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:oeuvres",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "Aucun champ progressif supplémentaire n’est créé faute de matière sourcée."
+            ]
         },
         {
             "family": "oeuvres",
@@ -93,12 +111,26 @@
                 "exception": null
             },
             "train": "5D",
-            "status": "a-faire",
-            "verdict": null,
-            "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "status": "migree",
+            "verdict": "Raccord R2 validé : « Willie, le Bateau à Vapeur » devient le titre français principal, « Steamboat Willie » reste documenté comme titre original et la route historique est conservée.",
+            "files": [
+                "src/data/catalogues/oeuvres.json",
+                "src/data/oeuvres/steamboat-willie.json",
+                "src/data/sources/sources.json"
+            ],
+            "sources": [
+                "chronique-disney-willie-bateau-vapeur",
+                "d23-steamboat-willie"
+            ],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:oeuvres",
+                "pnpm check:relations",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "Aucun champ progressif supplémentaire n’est créé faute de matière sourcée."
+            ]
         },
         {
             "family": "oeuvres",
@@ -111,12 +143,25 @@
                 "exception": null
             },
             "train": "5D",
-            "status": "a-faire",
-            "verdict": null,
-            "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "status": "migree",
+            "verdict": "Raccord R2 validé : « Mickey Gaucho » devient le titre français principal, « The Gallopin’ Gaucho » reste documenté comme titre original et la route historique est conservée.",
+            "files": [
+                "src/data/catalogues/oeuvres.json",
+                "src/data/oeuvres/the-gallopin-gaucho.json",
+                "src/data/sources/sources.json"
+            ],
+            "sources": [
+                "chronique-disney-mickey-gaucho",
+                "d23-gallopin-gaucho"
+            ],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:oeuvres",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "Aucun champ progressif supplémentaire n’est créé faute de matière sourcée."
+            ]
         },
         {
             "family": "oeuvres",
@@ -129,12 +174,22 @@
                 "exception": null
             },
             "train": "5D",
-            "status": "a-faire",
-            "verdict": null,
-            "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "status": "migree",
+            "verdict": "Raccord R2 validé : « L’Avion Fou » devient le titre français principal, « Plane Crazy » reste documenté comme titre original et la route historique est conservée.",
+            "files": [
+                "src/data/catalogues/oeuvres.json",
+                "src/data/oeuvres/plane-crazy.json",
+                "src/data/sources/sources.json"
+            ],
+            "sources": ["chronique-disney-avion-fou", "d23-plane-crazy"],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:oeuvres",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "Aucun champ progressif supplémentaire n’est créé faute de matière sourcée."
+            ]
         },
         {
             "family": "oeuvres",
@@ -147,12 +202,22 @@
                 "exception": null
             },
             "train": "5D",
-            "status": "a-faire",
-            "verdict": null,
-            "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "status": "migree",
+            "verdict": "Raccord R2 validé : « La Danse Macabre » devient le titre français principal, « The Skeleton Dance » reste documenté comme titre original et la route historique est conservée.",
+            "files": [
+                "src/data/catalogues/oeuvres.json",
+                "src/data/oeuvres/the-skeleton-dance.json",
+                "src/data/sources/sources.json"
+            ],
+            "sources": ["chronique-disney-danse-macabre", "d23-skeleton-dance"],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:oeuvres",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "Aucun champ progressif supplémentaire n’est créé faute de matière sourcée."
+            ]
         },
         {
             "family": "oeuvres",
@@ -165,12 +230,26 @@
                 "exception": null
             },
             "train": "5D",
-            "status": "a-faire",
-            "verdict": null,
-            "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "status": "migree",
+            "verdict": "Raccord R2 validé : « Symphonie Enchaînée » devient le titre français principal, « The Chain Gang » reste documenté comme titre original et la route historique est conservée.",
+            "files": [
+                "src/data/catalogues/oeuvres.json",
+                "src/data/oeuvres/the-chain-gang.json",
+                "src/data/sources/sources.json"
+            ],
+            "sources": [
+                "chronique-disney-symphonie-enchainee",
+                "d23-chain-gang"
+            ],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:oeuvres",
+                "pnpm check:relations",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "Aucun champ progressif supplémentaire n’est créé faute de matière sourcée."
+            ]
         },
         {
             "family": "oeuvres",
@@ -183,12 +262,26 @@
                 "exception": null
             },
             "train": "5D",
-            "status": "a-faire",
-            "verdict": null,
-            "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "status": "migree",
+            "verdict": "Raccord R2 validé : « Mickey au Théâtre » devient le titre français principal, « Mickey’s Revue » reste documenté comme titre original et la route historique est conservée.",
+            "files": [
+                "src/data/catalogues/oeuvres.json",
+                "src/data/oeuvres/mickeys-revue.json",
+                "src/data/sources/sources.json"
+            ],
+            "sources": [
+                "chronique-disney-mickey-au-theatre",
+                "d23-mickeys-revue"
+            ],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:oeuvres",
+                "pnpm check:relations",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "Aucun champ progressif supplémentaire n’est créé faute de matière sourcée."
+            ]
         },
         {
             "family": "oeuvres",
@@ -201,12 +294,27 @@
                 "exception": null
             },
             "train": "5D",
-            "status": "a-faire",
-            "verdict": null,
-            "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "status": "migree",
+            "verdict": "Raccord R2 validé : « Des Arbres et des Fleurs » devient le titre français principal, « Flowers and Trees » reste documenté comme titre original et la route historique est conservée.",
+            "files": [
+                "src/data/catalogues/oeuvres.json",
+                "src/data/oeuvres/flowers-and-trees.json",
+                "src/data/recompenses/recompenses.json",
+                "src/data/sources/sources.json"
+            ],
+            "sources": [
+                "chronique-disney-arbres-fleurs",
+                "d23-flowers-and-trees"
+            ],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:oeuvres",
+                "pnpm check:recompenses",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "Aucun champ progressif supplémentaire n’est créé faute de matière sourcée."
+            ]
         },
         {
             "family": "oeuvres",
@@ -219,12 +327,28 @@
                 "exception": "oeuvre-du-noyau-retrospectif-chansons"
             },
             "train": "5D",
-            "status": "a-faire",
-            "verdict": null,
-            "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "status": "migree",
+            "verdict": "Raccord R2 validé : « Les Trois Petits Cochons » devient le titre français principal, « Three Little Pigs » reste documenté comme titre original ; la route historique et la relation Chanson sont conservées.",
+            "files": [
+                "src/data/catalogues/oeuvres.json",
+                "src/data/oeuvres/three-little-pigs.json",
+                "src/data/chansons/whos-afraid-of-the-big-bad-wolf.json",
+                "src/data/sources/sources.json"
+            ],
+            "sources": [
+                "chronique-disney-trois-petits-cochons",
+                "d23-three-little-pigs"
+            ],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:oeuvres",
+                "pnpm check:chansons",
+                "pnpm check:relations",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "Aucun champ progressif supplémentaire n’est créé faute de matière sourcée."
+            ]
         },
         {
             "family": "oeuvres",
@@ -237,12 +361,26 @@
                 "exception": null
             },
             "train": "5D",
-            "status": "a-faire",
-            "verdict": null,
-            "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "status": "migree",
+            "verdict": "Raccord R2 validé : « Une Petite Poule Avisée » devient le titre français principal, « The Wise Little Hen » reste documenté comme titre original et la route historique est conservée.",
+            "files": [
+                "src/data/catalogues/oeuvres.json",
+                "src/data/oeuvres/the-wise-little-hen.json",
+                "src/data/sources/sources.json"
+            ],
+            "sources": [
+                "chronique-disney-petite-poule-avisee",
+                "d23-wise-little-hen"
+            ],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:oeuvres",
+                "pnpm check:relations",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "Aucun champ progressif supplémentaire n’est créé faute de matière sourcée."
+            ]
         },
         {
             "family": "oeuvres",
@@ -255,12 +393,25 @@
                 "exception": null
             },
             "train": "5D",
-            "status": "a-faire",
-            "verdict": null,
-            "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "status": "migree",
+            "verdict": "Raccord R2 validé : « Le Gala des Orphelins » devient le titre français principal, « Orphans’ Benefit » reste documenté comme titre original et la route historique est conservée.",
+            "files": [
+                "src/data/catalogues/oeuvres.json",
+                "src/data/oeuvres/orphans-benefit.json",
+                "src/data/sources/sources.json"
+            ],
+            "sources": [
+                "chronique-disney-gala-orphelins",
+                "d23-orphans-benefit"
+            ],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:oeuvres",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "Aucun champ progressif supplémentaire n’est créé faute de matière sourcée."
+            ]
         },
         {
             "family": "oeuvres",
@@ -273,12 +424,26 @@
                 "exception": null
             },
             "train": "5D",
-            "status": "a-faire",
-            "verdict": null,
-            "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "status": "migree",
+            "verdict": "Raccord R2 validé : « La Déesse du Printemps » devient le titre français principal, « The Goddess of Spring » reste documenté comme titre original et la route historique est conservée.",
+            "files": [
+                "src/data/catalogues/oeuvres.json",
+                "src/data/oeuvres/the-goddess-of-spring.json",
+                "src/data/sources/sources.json"
+            ],
+            "sources": [
+                "chronique-disney-deesse-printemps",
+                "d23-goddess-of-spring-film"
+            ],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:oeuvres",
+                "pnpm check:relations",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "Aucun champ progressif supplémentaire n’est créé faute de matière sourcée."
+            ]
         },
         {
             "family": "oeuvres",
@@ -291,12 +456,27 @@
                 "exception": null
             },
             "train": "5D",
-            "status": "a-faire",
-            "verdict": null,
-            "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "status": "migree",
+            "verdict": "Raccord R2 validé : « Le Lièvre et la Tortue » devient le titre français principal, « The Tortoise and the Hare » reste documenté comme titre original et la route historique est conservée.",
+            "files": [
+                "src/data/catalogues/oeuvres.json",
+                "src/data/oeuvres/the-tortoise-and-the-hare.json",
+                "src/data/recompenses/recompenses.json",
+                "src/data/sources/sources.json"
+            ],
+            "sources": [
+                "chronique-disney-lievre-tortue",
+                "d23-tortoise-and-the-hare-film"
+            ],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:oeuvres",
+                "pnpm check:recompenses",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "Aucun champ progressif supplémentaire n’est créé faute de matière sourcée."
+            ]
         },
         {
             "family": "oeuvres",
@@ -309,12 +489,24 @@
                 "exception": null
             },
             "train": "5D",
-            "status": "a-faire",
-            "verdict": null,
-            "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "status": "migree",
+            "verdict": "Raccord R2 validé : « La Fanfare » devient le titre français principal, « The Band Concert » reste documenté comme titre original et la route historique est conservée.",
+            "files": [
+                "src/data/catalogues/oeuvres.json",
+                "src/data/oeuvres/the-band-concert.json",
+                "src/data/recompenses/recompenses.json",
+                "src/data/sources/sources.json"
+            ],
+            "sources": ["chronique-disney-fanfare", "d23-band-concert"],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:oeuvres",
+                "pnpm check:recompenses",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "Aucun champ progressif supplémentaire n’est créé faute de matière sourcée."
+            ]
         },
         {
             "family": "oeuvres",
@@ -327,12 +519,27 @@
                 "exception": null
             },
             "train": "5D",
-            "status": "a-faire",
-            "verdict": null,
-            "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "status": "migree",
+            "verdict": "Raccord R2 validé : « Trois Petits Orphelins » devient le titre français principal, « Three Orphan Kittens » reste documenté comme titre original et la route historique est conservée.",
+            "files": [
+                "src/data/catalogues/oeuvres.json",
+                "src/data/oeuvres/three-orphan-kittens.json",
+                "src/data/recompenses/recompenses.json",
+                "src/data/sources/sources.json"
+            ],
+            "sources": [
+                "chronique-disney-trois-petits-orphelins",
+                "d23-three-orphan-kittens-film"
+            ],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:oeuvres",
+                "pnpm check:recompenses",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "Aucun champ progressif supplémentaire n’est créé faute de matière sourcée."
+            ]
         },
         {
             "family": "oeuvres",
@@ -345,12 +552,27 @@
                 "exception": null
             },
             "train": "5D",
-            "status": "a-faire",
-            "verdict": null,
-            "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "status": "migree",
+            "verdict": "Raccord R2 validé : « Cousin de Campagne » devient le titre français principal, « The Country Cousin » reste documenté comme titre original et la route historique est conservée.",
+            "files": [
+                "src/data/catalogues/oeuvres.json",
+                "src/data/oeuvres/the-country-cousin.json",
+                "src/data/recompenses/recompenses.json",
+                "src/data/sources/sources.json"
+            ],
+            "sources": [
+                "chronique-disney-cousin-campagne",
+                "d23-country-cousin-film"
+            ],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:oeuvres",
+                "pnpm check:recompenses",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "Aucun champ progressif supplémentaire n’est créé faute de matière sourcée."
+            ]
         },
         {
             "family": "oeuvres",
@@ -363,12 +585,25 @@
                 "exception": null
             },
             "train": "5D",
-            "status": "a-faire",
-            "verdict": null,
-            "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "status": "migree",
+            "verdict": "Raccord R2 validé : « Nettoyeurs de Pendules » devient le titre français principal, « Clock Cleaners » reste documenté comme titre original et la route historique est conservée.",
+            "files": [
+                "src/data/catalogues/oeuvres.json",
+                "src/data/oeuvres/clock-cleaners.json",
+                "src/data/sources/sources.json"
+            ],
+            "sources": [
+                "chronique-disney-nettoyeurs-pendules",
+                "d23-clock-cleaners"
+            ],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:oeuvres",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "Aucun champ progressif supplémentaire n’est créé faute de matière sourcée."
+            ]
         },
         {
             "family": "oeuvres",
@@ -381,12 +616,25 @@
                 "exception": null
             },
             "train": "5D",
-            "status": "a-faire",
-            "verdict": null,
-            "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "status": "migree",
+            "verdict": "Raccord R2 validé : « Le Vieux Moulin » devient le titre français principal, « The Old Mill » reste documenté comme titre original et la route historique est conservée.",
+            "files": [
+                "src/data/catalogues/oeuvres.json",
+                "src/data/oeuvres/the-old-mill.json",
+                "src/data/recompenses/recompenses.json",
+                "src/data/sources/sources.json"
+            ],
+            "sources": ["chronique-disney-vieux-moulin", "d23-old-mill-film"],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:oeuvres",
+                "pnpm check:relations",
+                "pnpm check:recompenses",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "Aucun champ progressif supplémentaire n’est créé faute de matière sourcée."
+            ]
         },
         {
             "family": "oeuvres",
@@ -439,12 +687,27 @@
                 "exception": null
             },
             "train": "5D",
-            "status": "a-faire",
-            "verdict": null,
-            "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "status": "migree",
+            "verdict": "Raccord R2 validé : « Ferdinand, le Taureau » devient le titre français principal, « Ferdinand the Bull » reste documenté comme titre original et la route historique est conservée.",
+            "files": [
+                "src/data/catalogues/oeuvres.json",
+                "src/data/oeuvres/ferdinand-the-bull.json",
+                "src/data/recompenses/recompenses.json",
+                "src/data/sources/sources.json"
+            ],
+            "sources": [
+                "chronique-disney-ferdinand-taureau",
+                "d23-ferdinand-the-bull-film"
+            ],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:oeuvres",
+                "pnpm check:recompenses",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "Aucun champ progressif supplémentaire n’est créé faute de matière sourcée."
+            ]
         },
         {
             "family": "oeuvres",
@@ -457,12 +720,26 @@
                 "exception": null
             },
             "train": "5D",
-            "status": "a-faire",
-            "verdict": null,
-            "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "status": "migree",
+            "verdict": "Raccord R2 validé : « L’Entreprenant Mr Duck » devient le titre français principal, « Mr. Duck Steps Out » reste documenté comme titre original et la route historique est conservée.",
+            "files": [
+                "src/data/catalogues/oeuvres.json",
+                "src/data/oeuvres/mr-duck-steps-out.json",
+                "src/data/sources/sources.json"
+            ],
+            "sources": [
+                "chronique-disney-entreprenant-mr-duck",
+                "d23-mr-duck-steps-out"
+            ],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:oeuvres",
+                "pnpm check:relations",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "Aucun champ progressif supplémentaire n’est créé faute de matière sourcée."
+            ]
         },
         {
             "family": "oeuvres",
@@ -475,12 +752,22 @@
                 "exception": null
             },
             "train": "5D",
-            "status": "a-faire",
-            "verdict": null,
-            "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "status": "migree",
+            "verdict": "Raccord R2 validé : « Pluto a des Envies » devient le titre français principal, « Bone Trouble » reste documenté comme titre original et la route historique est conservée.",
+            "files": [
+                "src/data/catalogues/oeuvres.json",
+                "src/data/oeuvres/bone-trouble.json",
+                "src/data/sources/sources.json"
+            ],
+            "sources": ["chronique-disney-pluto-envies", "d23-bone-trouble"],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:oeuvres",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "Aucun champ progressif supplémentaire n’est créé faute de matière sourcée."
+            ]
         },
         {
             "family": "personnages",
