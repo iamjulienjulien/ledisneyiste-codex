@@ -108,6 +108,7 @@ function verifierDocuments() {
         "recit-et-preuves.md",
         "train-7a.md",
         "train-7b.md",
+        "train-7c.md",
     ]) {
         assert.ok(
             existsSync(chemin(dossierPhase, document)),
@@ -211,6 +212,103 @@ function verifierTrain7B(idsSources) {
     );
 }
 
+function verifierTrain7C(idsSources) {
+    const fiche = lireJson("src/data/oeuvres/pinocchio.json");
+    const chapitre = fiche.blocsEditoriaux?.[2];
+    const attendu = {
+        id: "donner-une-conscience-a-une-marionnette",
+        titre: "Donner une conscience à une marionnette",
+        question:
+            "Comment le film construit-il ses personnages, son ton et son monde ?",
+    };
+
+    assert.ok(chapitre, "Train 7C : le troisième chapitre est absent");
+    assert.equal(chapitre.id, attendu.id);
+    assert.equal(chapitre.titre, attendu.titre);
+    assert.equal(chapitre.question, attendu.question);
+    assert.equal(
+        chapitre.paragraphes.length,
+        5,
+        "Train 7C : cinq décisions de fabrication sont attendues",
+    );
+    assert.ok(
+        chapitre.paragraphes.every(
+            (paragraphe) => paragraphe && typeof paragraphe === "object",
+        ),
+        "Train 7C : tous les paragraphes doivent être structurés",
+    );
+
+    const preuves = new Set(
+        chapitre.paragraphes.flatMap(({ sources }) => sources),
+    );
+    for (const sourceId of [
+        "us-afi-catalog-pinocchio",
+        "us-loc-pinocchio-essay",
+        "us-wdfm-pool-hall",
+        "us-d23-ken-anderson",
+        "us-d23-dick-jones",
+        "d23-marge-champion",
+        "d23-leigh-harline",
+        "d23-paul-smith",
+    ]) {
+        assert.ok(idsSources.has(sourceId), `source inconnue ${sourceId}`);
+        assert.ok(
+            preuves.has(sourceId),
+            `Train 7C : preuve attendue absente ${sourceId}`,
+        );
+    }
+
+    const contributeursSelectionnes = [
+        "fred-moore",
+        "ward-kimball",
+        "milt-kahl",
+        "joe-grant",
+        "kenneth-anderson",
+        "dickie-jones",
+        "marge-champion",
+        "joshua-meador",
+        "leigh-harline",
+        "paul-j-smith",
+    ];
+    const slugsGenerique = new Set(
+        fiche.contributions
+            .map(({ contributeur }) => contributeur.slug)
+            .filter(Boolean),
+    );
+    contributeursSelectionnes.forEach((slug) => {
+        assert.ok(
+            slugsGenerique.has(slug),
+            `Train 7C : la personne racontée doit rester créditée dans le générique (${slug})`,
+        );
+    });
+    assert.ok(
+        contributeursSelectionnes.length < slugsGenerique.size,
+        "Train 7C : le récit doit rester une sélection du générique",
+    );
+    assert.equal(
+        fiche.contributions.length,
+        31,
+        "Train 7C : le générique structuré reste l’état de vérité",
+    );
+
+    const chapitreSerialise = JSON.stringify(chapitre);
+    assert.doesNotMatch(
+        chapitreSerialise,
+        /us-wdfm-art-of-pinocchio/,
+        "Train 7C : la source d’exposition privée ne doit pas être projetée",
+    );
+    assert.doesNotMatch(
+        chapitreSerialise,
+        /Générique vivant/,
+        "Train 7C : le chapitre ne doit pas promouvoir le Plan de la Phase 8",
+    );
+    assert.match(
+        chapitre.paragraphes.at(-1).reserve,
+        /trente et une contributions qualifiées/,
+        "Train 7C : la transmission vers le générique complet doit rester visible",
+    );
+}
+
 function verifierFiches(idsSources) {
     let blocs = 0;
     let paragraphesStructures = 0;
@@ -277,8 +375,9 @@ const idsSources = new Set(sources.map((source) => source.id));
 const resultat = verifierFiches(idsSources);
 verifierFixture(idsSources);
 verifierTrain7B(idsSources);
+verifierTrain7C(idsSources);
 verifierBranchement();
 
 console.log(
-    `Phase 7B vérifiée : ${resultat.blocs} blocs compatibles, contrat structuré et deux premiers chapitres de Pinocchio raccordés à leurs preuves.`,
+    `Phase 7C vérifiée : ${resultat.blocs} blocs compatibles, contrat structuré et fabrication de Pinocchio raccordée à ses décisions et à ses preuves.`,
 );
