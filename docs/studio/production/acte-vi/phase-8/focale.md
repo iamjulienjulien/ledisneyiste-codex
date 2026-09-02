@@ -5,11 +5,13 @@
 
 ## Statut
 
-**Focale v0.1.0 · grammaire expérimentale privée**
+**Focale v0.1.0 · noyau de visualisation réutilisable reconnu**
 
 Ce premier contrat naît au Train 8B pour répondre aux besoins démontrés du
-Générique vivant. Il ne déclare ni un design system mature, ni une API stable,
-ni une destination publique. Sa valeur sera jugée séparément de celle du Plan.
+Générique vivant. Au point d’arrêt 8G, Julien reconnaît officiellement sa
+réutilisabilité tout en bornant le noyau aux six primitives existantes. Focale
+ne devient ni Pixie, ni une autorisation d’étendre librement son API : toute
+septième responsabilité devra être démontrée et arbitrée séparément.
 
 ## Problème
 
