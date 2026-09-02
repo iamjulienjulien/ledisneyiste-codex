@@ -1,4 +1,6 @@
 import { PixieBadge } from "@/components/ui/PixieBadge";
+import { AtelierPropertiesTable } from "@/components/atelier/AtelierPropertiesTable";
+import { AtelierTypesTable } from "@/components/atelier/AtelierTypesTable";
 import { PixieBackdrop } from "@/components/ui/PixieBackdrop";
 import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieInset } from "@/components/ui/PixieInset";
@@ -90,6 +92,28 @@ function PlanSection({
     );
 }
 
+function TechnicalTitle({
+    id,
+    title,
+    description,
+}: Readonly<{
+    id: string;
+    title: string;
+    description: string;
+}>) {
+    return (
+        <div>
+            <p className="text-xs font-medium font-eyebrow uppercase tracking-[0.18em] text-muted">
+                Générique technique
+            </p>
+            <h2 id={id} className="mt-3 text-3xl text-ink">
+                {title}
+            </h2>
+            <p className="mt-4 leading-7 text-ink-soft">{description}</p>
+        </div>
+    );
+}
+
 export function AtelierPlanDossier({
     slug,
     plan,
@@ -99,6 +123,7 @@ export function AtelierPlanDossier({
     prototype,
     prototypeTitle = "La première forme entre sur le plateau",
     prototypeDescription = "Le prototype confronte la grammaire du Plan à une matière réelle et aux Bobines témoins prioritaires.",
+    technical,
 }: AtelierPlanDossierProps) {
     const sectionOffset = prototype ? 1 : 0;
     const sectionIndex = (index: number) =>
@@ -448,35 +473,61 @@ export function AtelierPlanDossier({
                 </div>
             </PlanSection>
 
-            <PlanSection
-                index={sectionIndex(10)}
-                eyebrow="Générique technique"
-                title="Contrat commun de configuration"
-                description="Les prototypes pourront enrichir leur rendu, mais tous partiront de cette même grammaire typée."
-            >
-                <div className={styles.tableFrame}>
-                    <table className={styles.technicalTable}>
-                        <thead>
-                            <tr>
-                                <th scope="col">Champ</th>
-                                <th scope="col">Type</th>
-                                <th scope="col">Rôle</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {technicalFields.map(([field, type, role]) => (
-                                <tr key={field}>
-                                    <th scope="row">{field}</th>
-                                    <td className="font-mono text-xs text-ink">
-                                        {type}
-                                    </td>
-                                    <td>{role}</td>
+            {technical ? (
+                <section
+                    aria-labelledby={`plan-section-${sectionIndex(10)}`}
+                    className={`${styles.sequence} border border-line-strong bg-surface-muted p-6 shadow-soft sm:p-8`}
+                >
+                    <TechnicalTitle
+                        id={`plan-section-${sectionIndex(10)}`}
+                        title={technical.title}
+                        description={technical.description}
+                    />
+
+                    <div className="mt-7">
+                        <AtelierPropertiesTable
+                            properties={technical.properties}
+                        />
+                    </div>
+
+                    <div className="mt-10">
+                        <h3 className="text-2xl text-ink">Types spécifiques</h3>
+                        <div className="mt-5">
+                            <AtelierTypesTable types={technical.types} />
+                        </div>
+                    </div>
+                </section>
+            ) : (
+                <PlanSection
+                    index={sectionIndex(10)}
+                    eyebrow="Générique technique"
+                    title="Contrat commun de configuration"
+                    description="Les prototypes pourront enrichir leur rendu, mais tous partiront de cette même grammaire typée."
+                >
+                    <div className={styles.tableFrame}>
+                        <table className={styles.technicalTable}>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Champ</th>
+                                    <th scope="col">Type</th>
+                                    <th scope="col">Rôle</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-            </PlanSection>
+                            </thead>
+                            <tbody>
+                                {technicalFields.map(([field, type, role]) => (
+                                    <tr key={field}>
+                                        <th scope="row">{field}</th>
+                                        <td className="font-mono text-xs text-ink">
+                                            {type}
+                                        </td>
+                                        <td>{role}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </PlanSection>
+            )}
 
             <PlanSection
                 index={sectionIndex(11)}

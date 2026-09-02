@@ -102,6 +102,76 @@ const generiqueMatterOptions = [
     string,
 ])[];
 
+const generiqueVivantTechnical = {
+    title: "API de l’esquisse",
+    description:
+        "Le prototype reçoit ses projections déjà dérivées ; ses contrôles de lecture restent dans l’Atelier et ne modifient jamais les Archives.",
+    properties: [
+        {
+            name: "projections",
+            type: "readonly AtelierGeneriqueVivantProjection[]",
+            defaultValue: "—",
+            description:
+                "Réunit la projection des Archives et les Bobines témoins disponibles dans le banc d’essai.",
+        },
+    ],
+    types: [
+        {
+            name: "AtelierGeneriqueVivantMatterKey",
+            values: [
+                '"archives"',
+                '"corpus-vide"',
+                '"corpus-reduit"',
+                '"grand-generique"',
+            ],
+            description:
+                "Matières documentaires proposées par le banc d’essai privé.",
+        },
+        {
+            name: "AtelierGeneriqueVivantView",
+            values: [
+                '"departments"',
+                '"roles"',
+                '"responsibilities"',
+                '"collaborations"',
+                '"recurrences"',
+            ],
+            description:
+                "Angles de lecture disponibles sans réécrire les contributions.",
+        },
+        {
+            name: "AtelierGeneriqueVivantObjective",
+            values: ['"understand"', '"find"', '"compare"'],
+            description:
+                "Objectif documentaire dérivé de l’angle actuellement projeté.",
+        },
+        {
+            name: "AtelierGeneriqueVivantPresence",
+            values: ['"all"', '"published"', '"unresolved"'],
+            description:
+                "Filtre les personnes selon la disponibilité de leur fiche dans le Codex.",
+        },
+        {
+            name: "AtelierGeneriqueVivantSort",
+            values: ['"documentary"', '"alphabetical"'],
+            description:
+                "Conserve l’ordre documentaire ou classe les groupes et les personnes par nom.",
+        },
+        {
+            name: "AtelierGeneriqueVivantInspectorMode",
+            values: ['"inline"', '"floating"'],
+            description:
+                "Place le Gros plan dans le flux ou dans une région flottante refermable.",
+        },
+        {
+            name: "AtelierGeneriqueVivantLight",
+            values: ['"sombre"', '"claire"'],
+            description:
+                "Lumière locale de la scène, indépendante des données projetées.",
+        },
+    ],
+} as const;
+
 const tableLumineuseMatterOptions = [
     ["archives", "Archives publiées"],
     ["corpus-vide", "Bobine · Corpus vide"],
@@ -441,6 +511,7 @@ export default async function AtelierPlanPage({
                 version="v0.2.0"
                 prototypeTitle="Pinocchio révèle les gestes humains derrière l’écran"
                 prototypeDescription="Le prototype éprouve les 31 contributions documentées de Pinocchio, leurs huit domaines et la mention non publiée d’Evelyn Venable, tout en conservant les Bobines témoins pour les états limites."
+                technical={generiqueVivantTechnical}
                 prototype={
                     <AtelierGeneriqueVivantPrototype
                         projections={createGeneriqueProjections()}
