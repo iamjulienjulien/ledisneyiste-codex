@@ -1,7 +1,7 @@
 [
     {
         "slug": "whistle-while-you-work",
-        "nom": "Whistle While You Work",
+        "nom": "Siffler en travaillant",
         "type": "chanson",
         "oeuvreOrigine": {
             "nom": "Blanche-Neige et les Sept Nains",
@@ -23,7 +23,7 @@
     },
     {
         "slug": "someday-my-prince-will-come",
-        "nom": "Someday My Prince Will Come",
+        "nom": "Un jour mon prince viendra",
         "type": "chanson",
         "oeuvreOrigine": {
             "nom": "Blanche-Neige et les Sept Nains",
@@ -34,7 +34,7 @@
     },
     {
         "slug": "whos-afraid-of-the-big-bad-wolf",
-        "nom": "Who’s Afraid of the Big Bad Wolf?",
+        "nom": "Qui craint le grand méchant loup ?",
         "type": "chanson",
         "oeuvreOrigine": {
             "nom": "Les Trois Petits Cochons",

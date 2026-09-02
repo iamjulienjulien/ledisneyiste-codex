@@ -708,6 +708,21 @@ async function verifierJointuresArchives(projeterIdentiteCodex, erreurs) {
             "Snow White and the Seven Dwarfs",
             "original",
         ],
+        [
+            "chansons/whistle-while-you-work",
+            "Whistle While You Work",
+            "original",
+        ],
+        [
+            "chansons/someday-my-prince-will-come",
+            "Someday My Prince Will Come",
+            "original",
+        ],
+        [
+            "chansons/whos-afraid-of-the-big-bad-wolf",
+            "Who’s Afraid of the Big Bad Wolf?",
+            "original",
+        ],
     ];
 
     for (const [cle, libelle, nature] of attentes) {

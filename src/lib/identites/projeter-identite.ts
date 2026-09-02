@@ -14,6 +14,7 @@ export type EntreeIdentitaireCodex = Readonly<
 
 export type FicheIdentitaireCodex = Readonly<{
     slug: string;
+    identite?: IdentiteDocumenteeCodex<"libelle">;
     nomsAlternatifs?: readonly NomAlternatifCodex[];
     titresAlternatifs?: readonly TitreAlternatifCodex[];
     identitesAlternatives?: readonly IdentiteDocumenteeCodex<"libelle">[];
@@ -57,7 +58,10 @@ function convertirIdentiteDocumentee(
     };
 }
 
-function collecterIdentitesDocumentees(fiche: FicheIdentitaireCodex) {
+function collecterIdentitesDocumentees(
+    fiche: FicheIdentitaireCodex,
+    libellePrincipal: string,
+) {
     const groupes = [
         fiche.nomsAlternatifs,
         fiche.titresAlternatifs,
@@ -71,12 +75,34 @@ function collecterIdentitesDocumentees(fiche: FicheIdentitaireCodex) {
     }
 
     if (fiche.identitesAlternatives) {
-        return [...fiche.identitesAlternatives];
+        const identitesAlternatives = fiche.identite
+            ? fiche.identitesAlternatives.filter(
+                  (identite) =>
+                      normaliserIdentiteCodex(identite.libelle) !==
+                      normaliserIdentiteCodex(libellePrincipal),
+              )
+            : fiche.identitesAlternatives;
+
+        return [
+            ...(fiche.identite &&
+            normaliserIdentiteCodex(fiche.identite.libelle) !==
+                normaliserIdentiteCodex(libellePrincipal)
+                ? [fiche.identite]
+                : []),
+            ...identitesAlternatives,
+        ];
     }
 
     const identites = fiche.nomsAlternatifs ?? fiche.titresAlternatifs ?? [];
 
-    return identites.map(convertirIdentiteDocumentee);
+    return [
+        ...(fiche.identite &&
+        normaliserIdentiteCodex(fiche.identite.libelle) !==
+            normaliserIdentiteCodex(libellePrincipal)
+            ? [fiche.identite]
+            : []),
+        ...identites.map(convertirIdentiteDocumentee),
+    ];
 }
 
 function verifierUniciteIdentites(
@@ -120,7 +146,7 @@ export function projeterIdentiteCodex<Famille extends CodexFamily>({
         );
     }
 
-    const documentees = collecterIdentitesDocumentees(fiche);
+    const documentees = collecterIdentitesDocumentees(fiche, entree.nom);
     verifierUniciteIdentites(fiche.slug, entree.nom, documentees);
 
     const originales = documentees.filter(
