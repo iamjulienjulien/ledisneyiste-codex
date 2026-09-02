@@ -18,37 +18,35 @@ Les entrées sont présentées de la plus récente à la plus ancienne.
 
 ### La projection
 
-Le rideau se lève sur un nouvel Acte du Codex du Disneyiste.
+Avec _Pinocchio_, le Codex cesse de regarder une œuvre comme une simple fiche isolée. Il apprend à préserver son récit, sa fabrication, ses voix, ses preuves et la vie publique qui prolonge sa sortie. Les Archives restent la source de vérité ; leurs projections deviennent plus structurées, plus accessibles et plus honnêtes sur ce qu’elles savent encore mal.
 
-Avec _Pinocchio_, les œuvres s’apprêtent à quitter le seul cadre de leur fabrication pour révéler leur vie publique : leurs projections, leurs circulations, leurs supports, leurs restaurations et les traces laissées auprès du public. Avant cette traversée, le Guidebook doit rejoindre son propre espace de projection dans les coulisses du Codex.
+L’Acte installe d’abord une salle privée pour transmettre le savoir du studio. Il réorganise ensuite le Codex public autour de composants nommés, d’une architecture documentaire extensible et d’une première grammaire internationale. Pinocchio reçoit enfin un noyau complet : trente et une contributions, huit chapitres, vingt-neuf unités de preuve et un Générique vivant capable de révéler l’organisation humaine de l’œuvre sans inventer de hiérarchie.
 
-Cette section sera complétée au fil de l’Acte.
+### À l’écran
 
-### Phase 0 · Mettre le Guidebook en projection
+- le **Guidebook** projette les documents transmissibles du studio derrière la même frontière privée que l’Atelier ;
+- `PixieAscii`, `PixieMarkdown` et `PixieDocs` rejoignent Pixie en version `1.0.0`, tandis que l’Atelier ouvre le plateau **Les Écrans** ;
+- les composants publics du Codex se répartissent entre `CodexFiche`, `CodexIndex`, `CodexLayout` et `CodexCommon` ;
+- l’internationalisation acquiert ses fondations, ses contrats de traduction et ses garde-fous sans dupliquer les faits documentaires ;
+- les modèles d’œuvres accueillent récits chapitrés, contributions qualifiées, éditions, projections, restaurations, réception et preuves ;
+- les index, fiches et surfaces sont recomposés avec Pixie tout en conservant leurs routes et leurs usages ;
+- _Pinocchio_ rassemble **31 contributions**, **8 chapitres** et **29 unités de preuve**, avec Evelyn Venable conservée comme mention honnêtement non publiée ;
+- les Disney Legends retrouvent leur trophée dans un **Interlude** dédié ;
+- **Focale** ouvre une grammaire sœur pour la visualisation de données, distincte de Pixie et des Plans ;
+- le **Générique vivant** atteint la version `1.0.0` et entre sur la fiche de Pinocchio comme premier Plan appliqué, avec un repli textuel exhaustif ;
+- les **109 Archives**, **109 routes canoniques**, **432 symboles**, cinq Plans et six primitives Focale traversent la dernière répétition sans raccord bloquant.
 
-Avant que _Pinocchio_ n’entre en scène, la documentation transmissible du
-studio reçoit sa propre salle de lecture privée.
+### Les neuf phases
 
-- déplacement du modèle de carte de studio hors de la racine transmissible et
-  fermeture explicite de `docs/studio/` ;
-- création du domaine neutre `Guidebook*`, des manifestes fermés et de
-  l’analyse Markdown unique côté serveur ;
-- ajout d’une passerelle Notion à double autorisation sous la racine déclarée
-  **Le Disneyiste** ;
-- création, amélioration puis promotion de `PixieAscii`, `PixieMarkdown` et
-  `PixieDocs` en version `1.0.0` ;
-- ouverture du huitième plateau **Les Écrans** dans l’Atelier ;
-- mise en projection des sept chapitres locaux et de onze pages Notion ;
-- ouverture des routes privées `/guidebook`, raccordées uniquement à
-  l’Atelier et rendues introuvables en production ;
-- ajout des bibliothèques intégrée, sticky et flottante, puis d’un contrôle de
-  lecture mémorisé dans le Guidebook ;
-- reconnaissance et mise en scène des cartes de service Guru Éditions sans
-  modifier leur composition monospacée ;
-- extension des garde-fous aux chemins résolus, secrets, identifiants, liens,
-  routes, composants et modes de navigation ;
-- validation de la relecture visuelle et de la répétition générale avant le
-  passage à la Phase 1.
+1. Mettre le Guidebook en projection.
+2. Projeter les composants promus de l’Atelier.
+3. Consolider les arbitrages et auditer l’existant.
+4. Poser les fondations de l’internationalisation.
+5. Étendre le modèle documentaire.
+6. Refaire les surfaces et rétroappliquer les structures.
+7. Constituer le noyau documentaire de Pinocchio.
+8. Construire le récit et la carte des preuves.
+9. Éprouver le Générique vivant, puis stabiliser et clore l’Acte.
 
 ### Générique des commits
 
@@ -100,6 +98,174 @@ studio reçoit sa propre salle de lecture privée.
 46. `93a3833` — 🩹 Raccord > Les cartes de service retrouvent leur lumière de studio > 🔩 R2-D2 🏅
 47. `7c4d6f5` — 🧪 Répétition > Le Guidebook reconnaît ses cartes et ses cadres de lecture > 🔩 R2-D2 🏅
 48. `2babe6b` — 📡 Transmission > Le Guidebook consigne ses derniers raccords de lecture > 🔩 R2-D2 🏅
+49. `f18fd3d` — 📡 Transmission > Le Guidebook clôt la Phase 0 et passe le relais > 🔩 R2-D2 🏅
+50. `3272032` — 📡 Transmission > La Phase 1 cartographie la projection publique de Pixie > 🔩 R2-D2 🏅
+51. `62736ec` — 🏗️ Décor > Le Codex ordonne ses index, ses fiches et ses territoires communs > 🔩 R2-D2 🏅
+52. `b1e119a` — 🧹 Coulisses > Les contrats React rejoignent leurs composants Codex > 🔩 R2-D2 🏅
+53. `0ac5c3f` — ✍️ Scénario > Le Guidebook grave les nouveaux territoires du Codex > 🔩 R2-D2 🏅
+54. `310431b` — 🎨 Mise en scène > PixieLink conduit les dernières navigations du Codex > 🔩 R2-D2 🏅
+55. `6403be7` — 📡 Transmission > La matrice referme le raccord PixieLink > 🔩 R2-D2 🏅
+56. `e2aa999` — 🏗️ Décor > PixieContainer cadre les frontières publiques du Codex > 🔩 R2-D2 🏅
+57. `8c11491` — 📡 Transmission > La matrice confirme le cadre commun de projection > 🔩 R2-D2 🏅
+58. `f04e57d` — 🎬 Scène > PixieSearchField accorde la recherche native en version 1.1.0 > 🔩 R2-D2 🏅
+59. `be860ba` — 🎨 Mise en scène > La régie de Recherche rejoint PixieSearchField > 🔩 R2-D2 🏅
+60. `26546a7` — 📡 Transmission > La matrice referme le train des Dialogues publics > 🔩 R2-D2 🏅
+61. `55bc702` — 🛡️ Garde-fou > La projection Pixie protège les territoires publics du Codex > 🔩 R2-D2 🏅
+62. `eca3552` — 📡 Transmission > La Phase 1 prépare sa dernière image > 🔩 R2-D2 🏅
+63. `4700c13` — ✍️ Scénario > La Phase 2 établit l’état de référence du Codex > 🔩 R2-D2 🏅
+64. `68c1fd9` — 📡 Transmission > Les identités et les routes reçoivent leurs arbitrages > 🔩 R2-D2 🏅
+65. `074c217` — ✍️ Scénario > Les corpus et la rétroapplication trouvent leurs limites > 🔩 R2-D2 🏅
+66. `3392e0f` — ✍️ Scénario > Trois territoires réunissent les preuves de Pinocchio > 🔩 R2-D2 🏅
+67. `66d541a` — ✍️ Scénario > Les médias et les chiffres reçoivent leurs règles de publication > 🔩 R2-D2 🏅
+68. `768764c` — 📡 Transmission > Huyang transmet la fabrique des Symboles > 🎨 Huyang
+69. `20f7f56` — 📡 Transmission > La Phase 2 remet ses arbitrages aux fondations suivantes > 🔩 R2-D2 🏅
+70. `0c38bc6` — 🏢 Production > Huyang transmet la fonction d’Artistic Director > 🎨 Huyang
+71. `14f79fd` — 📡 Transmission > Les Archives séparent leurs noms de leurs chemins > 🔩 R2-D2 🏅
+72. `8b8fea3` — 🧪 Répétition > Les identités éprouvent leurs langues, territoires et collisions > 🔩 R2-D2 🏅
+73. `32f3189` — ✍️ Scénario > Le Train 3A grave son contrat d’identité > 🔩 R2-D2 🏅
+74. `45113d7` — 📡 Transmission > Les catalogues et les fiches résolvent une identité commune > 🔩 R2-D2 🏅
+75. `a8e2836` — 🧪 Répétition > Les 79 Archives éprouvent leur jointure identitaire > 🔩 R2-D2 🏅
+76. `db54e00` — ✍️ Scénario > Le Train 3B transmet son résolveur au moteur de recherche > 🔩 R2-D2 🏅
+77. `ac4eb91` — 🎬 Scène > La recherche retrouve les Archives par toutes leurs identités > 🔩 R2-D2 🏅
+78. `5d849d8` — 🧪 Répétition > Les identités alternatives gardent un seul résultat canonique > 🔩 R2-D2 🏅
+79. `15f9b42` — ✍️ Scénario > Le Train 3C transmet une recherche identitaire sans doublon > 🔩 R2-D2 🏅
+80. `b59ba57` — 🩹 Raccord > Les alias historiques gardent une seule cible canonique > 🔩 R2-D2 🏅
+81. `060b149` — 🧪 Répétition > Les 79 routes du Codex restent sous surveillance > 🔩 R2-D2 🏅
+82. `8f44e9c` — ✍️ Scénario > Le Train 3D sépare les noms de leurs chemins > 🔩 R2-D2 🏅
+83. `aee212f` — 📡 Transmission > Le Codex compose une identité prête à projeter > 🔩 R2-D2 🏅
+84. `933de15` — 🎬 Scène > Les formes originales rejoignent les Cards, listes et fiches > 🔩 R2-D2 🏅
+85. `4269dec` — 🧪 Répétition > Les identités projetées gardent leur langue et leur territoire > 🔩 R2-D2 🏅
+86. `466531f` — ✍️ Scénario > Le Train 3E prépare les surfaces à faire voyager les noms > 🔩 R2-D2 🏅
+87. `9abd138` — 🧪 Répétition > La Phase 3 garde sa place dans la projection générale > 🔩 R2-D2 🏅
+88. `4f9ed95` — 📡 Transmission > Le contrat d’identité rejoint le Guidebook et les phases suivantes > 🔩 R2-D2 🏅
+89. `33175c1` — ✍️ Scénario > La Phase 3 referme les fondations des identités voyageuses > 🔩 R2-D2 🏅
+90. `4135af1` — 📡 Transmission > La Phase 4 cartographie les coutures de ses modèles documentaires > 🔩 R2-D2 🏅
+91. `68f0131` — 🧪 Répétition > Neuf bobines rouges éprouvent les futures vies des œuvres > 🔩 R2-D2 🏅
+92. `4db815e` — 📡 Transmission > La circulation des œuvres distingue ses quatre temporalités > 🔩 R2-D2 🏅
+93. `528e5eb` — 🎬 Scène > Les Plans projettent la vie publique des œuvres sans la confondre > 🔩 R2-D2 🏅
+94. `99018b5` — 🧪 Répétition > Une bobine privée éprouve la circulation et la réception des œuvres > 🔩 R2-D2 🏅
+95. `a57e630` — ✍️ Scénario > Le Train 4B transmet le temps public des œuvres > 🔩 R2-D2 🏅
+96. `f8ede49` — 🗄️ Archives > Les Œuvres sources entrent dans un registre intérieur > 🔩 R2-D2 🏅
+97. `f8804fb` — 🎬 Scène > Collodi rejoint les Plans sans entrer à l’affiche > 🔩 R2-D2 🏅
+98. `8780311` — 🧪 Répétition > Les bobines éprouvent les Œuvres sources hors champ > 🔩 R2-D2 🏅
+99. `727f35b` — 📡 Transmission > Le Train 4C transmet le contrat des Œuvres sources > 🔩 R2-D2 🏅
+100. `edbdc38` — 🗄️ Archives > Les Chansons distinguent leurs versions, voix et passages > 🔩 R2-D2 🏅
+101. `4362e86` — 🧪 Répétition > Deux chansons traversent la bobine sans livrer leur musique > 🔩 R2-D2 🏅
+102. `2af5400` — 📡 Transmission > Le Train 4D transmet la chanson avant le lecteur > 🔩 R2-D2 🏅
+103. `e3ad382` — 🗄️ Archives > Les chiffres conservent leur mesure, leur temps et leurs désaccords > 🔩 R2-D2 🏅
+104. `a1d76ff` — 🩹 Raccord > Les fiches et les Plans lisent les deux âges du contrat économique > 🔩 R2-D2 🏅
+105. `0531fe7` — 🧪 Répétition > Les bobines financières refusent les moyennes et les fuites > 🔩 R2-D2 🏅
+106. `cc947cb` — 📡 Transmission > Le Train 4E transmet les chiffres avec leurs réserves > 🔩 R2-D2 🏅
+107. `39e2e4d` — 🧪 Répétition > La Phase 4 garde ses contrats, ses routes et ses frontières > 🔩 R2-D2 🏅
+108. `c8f4678` — ✍️ Scénario > La Phase 4 transmet sa migration et rend le clap > 🔩 R2-D2 🏅
+109. `c8dbd26` — 📡 Transmission > Le Guidebook distingue les contrats internes des familles publiques > 🔩 R2-D2 🏅
+110. `c15401c` — 🧪 Répétition > La Phase 5 met ses soixante-neuf raccords sous contrôle > 🔩 R2-D2 🏅
+111. `0c11fdc` — 📡 Transmission > Le Train 5A transmet l’état de référence de la rétroapplication > 🔩 R2-D2 🏅
+112. `c7ae2a7` — 🎬 Scène > Chansons devient la cinquième famille publique du Codex > 🔩 R2-D2 🏅
+113. `6e54484` — 🗄️ Archives > Quatre chansons ouvrent leur vie publique dans le Codex > 🔩 R2-D2 🏅
+114. `3880693` — 🎨 Mise en scène > Les Chansons trouvent leurs cartes, leurs fiches et leurs raccords > 🔩 R2-D2 🏅
+115. `cdc909e` — 🧪 Répétition > Le Train 5B protège ses quatre chansons et ses quatre-vingt-trois routes > 🔩 R2-D2 🏅
+116. `e37f9c5` — 🗄️ Archives > Blanche-Neige éprouve la recette R3 du nouveau contrat > 🔩 R2-D2 🏅
+117. `d3db3d0` — 🩹 Raccord > La fiche et les Plans relient circulation, réception et Œuvre source > 🔩 R2-D2 🏅
+118. `434e4a9` — 🧪 Répétition > Le Train 5C protège son premier verdict complet > 🔩 R2-D2 🏅
+119. `7f50612` — 🗄️ Archives > Les Œuvres retrouvent leurs titres français documentés > 🔩 R2-D2 🏅
+120. `45c0757` — 🩹 Raccord > Les identités localisées traversent relations, Chansons et Plans > 🔩 R2-D2 🏅
+121. `52a3800` — 🧪 Répétition > Le Train 5D protège ses vingt-deux verdicts R2 > 🔩 R2-D2 🏅
+122. `788c810` — 🗄️ Archives > Oswald, Pat et Dingo retrouvent leur nom original > 🔩 R2-D2 🏅
+123. `158ce78` — 🧪 Répétition > Le Train 5E distingue trois migrations de dix-neuf préservations > 🔩 R2-D2 🏅
+124. `eadbb1f` — 🏢 Production > Le poste de Tech Lead rejoint le registre de Guru Éditions > 🤖 Charly-A
+125. `5bb23a3` — 📡 Transmission > Le Glossaire du Disneyiste rejoint le Guidebook > 🤖 Charly-A
+126. `f1a347e` — 🩹 Raccord > Dix-neuf contributions attendent la bobine de Pinocchio > 🔩 R2-D2 🏅
+127. `f739f4a` — 🧪 Répétition > Le Train 5F protège les soixante-neuf verdicts du manifeste > 🔩 R2-D2 🏅
+128. `cad2883` — 🎨 Mise en scène > Les cinq familles partagent leurs routes et leur identité de surface > 🔩 R2-D2 🏅
+129. `1f05c9a` — 🩹 Raccord > Les Plans projettent les Archives sans reconstruire leur identité > 🔩 R2-D2 🏅
+130. `ec80c2a` — 🧪 Répétition > Le Train 5G protège les surfaces et transmet leurs compatibilités > 🔩 R2-D2 🏅
+131. `121b378` — 🩹 Raccord > Les Chansons affichent leur titre français avant leur titre original > 🔩 R2-D2 🏅
+132. `6d57082` — ✍️ Scénario > Le README et le Guidebook consignent la cinquième famille > 🔩 R2-D2 🏅
+133. `19ad197` — 🧪 Répétition > Le Train 5H scelle les soixante-neuf verdicts de la Phase 5 > 🔩 R2-D2 🏅
+134. `32baa98` — 📡 Transmission > La Phase 5 remet ses routes et ses reports aux phases suivantes > 🔩 R2-D2 🏅
+135. `6569842` — 📡 Transmission > Geppetto trace les vingt-six pièces du noyau de Pinocchio > 🔩 R2-D2 🏅
+136. `4c3e4b9` — 🧪 Répétition > Le Train 6A place l’établi de Pinocchio sous contrôle > 🔩 R2-D2 🏅
+137. `2c375f7` — 🗄️ Archives > Collodi donne au pantin sa première vie de papier > 🔩 R2-D2 🏅
+138. `f00bf33` — 🎬 Scène > Pinocchio rejoint le Codex et le Temps des chefs-d’œuvre > 🔩 R2-D2 🏅
+139. `8258d6e` — 🧪 Répétition > Le Train 6B éprouve l’Archive centrale de Pinocchio > 🔩 R2-D2 🏅
+140. `55826a2` — 🏢 Production > Le Lead Developer inscrit sa fonction dans le registre du studio > 🔩 R2-D2 🏅
+141. `631d3c2` — 🗄️ Archives > La troupe de Pinocchio prend vie dans le Codex > 🔩 R2-D2 🏅
+142. `a7ff13e` — 🩹 Raccord > Les Plans distinguent Pinocchio de son œuvre homonyme > 🔩 R2-D2 🏅
+143. `668934e` — 🧪 Répétition > Le Train 6C protège onze routes et la place de Cléo > 🔩 R2-D2 🏅
+144. `67dc729` — 🗄️ Archives > Huit artisans rejoignent le générique de Pinocchio > 🔩 R2-D2 🏅
+145. `d35c46f` — 🩹 Raccord > Ben Sharpsteen et Jack Kinney retrouvent leurs œuvres > 🔩 R2-D2 🏅
+146. `daddcd2` — 🧪 Répétition > Le Train 6D protège les métiers du générique et le crédit d’Evelyn Venable > 🔩 R2-D2 🏅
+147. `0c07675` — 🗄️ Archives > Dix-huit Créateurs retrouvent leur geste dans Pinocchio > 🔩 R2-D2 🏅
+148. `8144695` — 🧪 Répétition > Le Train 6E ferme les reports sans inventer de crédit > 🔩 R2-D2 🏅
+149. `b5b90f7` — 🗄️ Archives > Cinq chansons donnent sa voix musicale à Pinocchio > 🔩 R2-D2 🏅
+150. `0ebf7f4` — 🗄️ Archives > Deux Oscars consacrent la musique de Pinocchio > 🔩 R2-D2 🏅
+151. `d8ad509` — 🧪 Répétition > Le Train 6F protège la voix musicale derrière les métadonnées > 🔩 R2-D2 🏅
+152. `a788aec` — 🗄️ Archives > Pinocchio traverse trois territoires et révèle sa vie publique > 🔩 R2-D2 🏅
+153. `89777d2` — 🧪 Répétition > Chaque étape du voyage de Pinocchio conserve ses réserves > 🔩 R2-D2 🏅
+154. `c7da1f0` — 📡 Transmission > La carte de preuves prépare le récit de Pinocchio > 🔩 R2-D2 🏅
+155. `236d1fd` — ✍️ Scénario > Le README et le Guidebook consignent le noyau de Pinocchio > 🔩 R2-D2 🏅
+156. `52877df` — 📡 Transmission > La Phase 6 remet un Pinocchio prêt à raconter > 🔩 R2-D2 🏅
+157. `119c051` — 🧪 Répétition > Le Train 6H ferme le noyau de Pinocchio sous contrôle > 🔩 R2-D2 🏅
+158. `1c968d3` — ✍️ Scénario > Le Codex inscrit l’Interlude dans son rythme de projection > 🔩 R2-D2 🏅
+159. `ff83b18` — 🎠 Interlude > Le tapis rouge appelle les légendes du studio > 🐭 Julien
+160. `fd72674` — 🗄️ Archives > Les Disney Legends rejoignent les trophées de leurs créateurs > 🔩 R2-D2 🏅
+161. `047d9bc` — 🧪 Répétition > L’Interlude protège les vingt-neuf Disney Legends du Codex > 🔩 R2-D2 🏅
+162. `dcd45b7` — ✍️ Scénario > Le README et le Guidebook consignent l’Interlude Disney Legends > 🔩 R2-D2 🏅
+163. `40d4275` — 🎠 Interlude > Les légendes du studio quittent le tapis rouge, trophée en main > 🐭 Julien
+164. `3c0c222` — 🎬 Scène > Le récit relie chaque paragraphe à ses preuves > 🔩 R2-D2 🏅
+165. `dc5c5b0` — 🧪 Répétition > La Phase 7 protège le contrat du récit et de ses preuves > 🔩 R2-D2 🏅
+166. `823f6da` — ✍️ Scénario > Le Train 7A consigne la chaîne du récit aux preuves > 🔩 R2-D2 🏅
+167. `ac939a4` — 🗄️ Archives > Pinocchio traverse l’épreuve du second long métrage et le récit de Collodi > 🔩 R2-D2 🏅
+168. `6c98638` — 🧪 Répétition > Le Train 7B protège les deux premiers chapitres de Pinocchio > 🔩 R2-D2 🏅
+169. `dedaa1c` — ✍️ Scénario > Le Train 7B consigne le passage de Blanche-Neige à Collodi > 🔩 R2-D2 🏅
+170. `c1bc695` — 🗄️ Archives > La fabrication donne une conscience au monde de Pinocchio > 🔩 R2-D2 🏅
+171. `3422797` — 🧪 Répétition > Le Train 7C préserve le générique derrière le récit > 🔩 R2-D2 🏅
+172. `76140ba` — ✍️ Scénario > Le Train 7C raconte l’atelier sans refaire le générique > 🔩 R2-D2 🏅
+173. `6eb5a52` — 🗄️ Archives > Pinocchio rencontre trois territoires sans perdre leurs voix > 🔩 R2-D2 🏅
+174. `dfdb4bc` — 🧪 Répétition > Le Train 7D sépare sortie exploitation réception et économie > 🔩 R2-D2 🏅
+175. `4fddb4f` — ✍️ Scénario > Le Train 7D consigne la première vie publique de Pinocchio > 🔩 R2-D2 🏅
+176. `e1eb2c0` — 🗄️ Archives > Les vies successives de Pinocchio restent dans les limites de leurs preuves > 🔩 R2-D2 🏅
+177. `b56ba38` — 🧪 Répétition > Le Train 7E refuse les fausses ressorties et les restaurations inventées > 🔩 R2-D2 🏅
+178. `0e6b6d5` — ✍️ Scénario > Le Train 7E consigne ce que les reprises permettent réellement de raconter > 🔩 R2-D2 🏅
+179. `211c1db` — 🗄️ Archives > Trois nouvelles preuves suivent la bonne étoile hors de son film > 🔩 R2-D2 🏅
+180. `8c7926a` — 🗄️ Archives > Figaro et la chanson de Jiminy apprennent à vivre après Pinocchio > 🔩 R2-D2 🏅
+181. `53fef52` — 🩹 Raccord > La clôture de la Phase 6 laisse entrer les sources des bobines suivantes > 🔩 R2-D2 🏅
+182. `d50d2f4` — 🧪 Répétition > Le Train 7F protège la chanson sans exposer ses paroles ni ses médias > 🔩 R2-D2 🏅
+183. `1218ec0` — ✍️ Scénario > Le Train 7F consigne la vie autonome des images et de la bonne étoile > 🔩 R2-D2 🏅
+184. `8531766` — 🗄️ Archives > Fantasia ouvre le dernier vertige du récit de Pinocchio > 🔩 R2-D2 🏅
+185. `5a4da9b` — 🎬 Scène > Les huit chapitres projettent leur navigation et leur carte des preuves > 🔩 R2-D2 🏅
+186. `bea814f` — 🩹 Raccord > La bonne étoile projette enfin son récit dans sa fiche > 🔩 R2-D2 🏅
+187. `e8b84b4` — 🧪 Répétition > Le Train 7G protège l’ordre du récit et sa lecture vérifiable > 🔩 R2-D2 🏅
+188. `719b9d7` — ✍️ Scénario > Le Train 7G consigne la dernière image et la carte des preuves > 🔩 R2-D2 🏅
+189. `bb98056` — 🧪 Répétition > Le Train 7H ferme le contrôle du récit et de ses preuves > 🔩 R2-D2 🏅
+190. `0114912` — 📡 Transmission > La Phase 7 transmet son récit vérifiable au Générique vivant > 🔩 R2-D2 🏅
+191. `6685039` — ✍️ Scénario > Le Générique vivant sépare le Plan, Pixie et Focale > 🔩 R2-D2 🏅
+192. `a89e588` — 🧪 Répétition > Le Train 8A protège les trente et un crédits de Pinocchio > 🔩 R2-D2 🏅
+193. `1c13206` — ✨ Étincelle > Focale donne aux données leur première grammaire du regard > 🔩 R2-D2 🏅
+194. `a730599` — 🧪 Répétition > Le Train 8B éprouve Focale hors des Archives > 🔩 R2-D2 🏅
+195. `e59c14c` — 🩹 Raccord > Pinocchio entre dans le Générique vivant v0.2.0 > 🔩 R2-D2 🏅
+196. `e0c1439` — 🎬 Scène > Les cinq angles donnent un sens distinct au Générique vivant > 🔩 R2-D2 🏅
+197. `2311444` — 🎬 Scène > Le Générique vivant ouvre sa régie et son gros plan > 🔩 R2-D2 🏅
+198. `15e30ab` — 🎨 Mise en scène > L’esquisse accorde son générique technique aux composants Pixie > 🔩 R2-D2 🏅
+199. `52a8519` — 🧪 Répétition > Le Train 8E éprouve la scène et son contrat typé > 🔩 R2-D2 🏅
+200. `f8e7b9c` — 🧪 Répétition > Le Train 8F éprouve séparément le Plan et Focale > 🔩 R2-D2 🏅
+201. `d4aa851` — 🎬 Scène > Le Générique vivant entre en projection sur la fiche de Pinocchio > 🔩 R2-D2 🏅
+202. `a76d009` — 🎨 Mise en scène > L’Atelier présente le Générique vivant en version 1.0.0 > 🔩 R2-D2 🏅
+203. `5b79389` — ✍️ Scénario > Le Train 8G grave les verdicts du Plan et de Focale > 🔩 R2-D2 🏅
+204. `b06054d` — 📡 Transmission > Le Guidebook consigne le premier Plan appliqué > 🔩 R2-D2 🏅
+205. `a2cce86` — 🧪 Répétition > Le Train 8G protège la projection réversible du Générique vivant > 🔩 R2-D2 🏅
+206. `042dbd3` — 🧪 Répétition > Le Train 8H verrouille la clôture du Générique vivant > 🔩 R2-D2 🏅
+207. `5385943` — 📡 Transmission > La Phase 8 remet le Générique vivant à la Phase 9 > 🔩 R2-D2 🏅
+208. `5bde6d2` — 🧪 Répétition > Le Train 9A place l’Acte VI devant sa dernière projection > 🔩 R2-D2 🏅
+209. `e35be76` — ✍️ Scénario > Le Train 9B ferme les raccords sans inventer de défaut > 🔩 R2-D2 🏅
+210. `60499cb` — ✍️ Scénario > La Bobine rejoint les domaines du studio > 🔩 R2-D2 🏅
+211. `886173e` — 📡 Transmission > L’Acte VI remet Pinocchio vivant au seuil de Fantasia > 🔩 R2-D2 🏅
+212. `f804102` — ✍️ Scénario > Le README raconte l’Acte VI dans son dernier état > 🔩 R2-D2 🏅
+
+### Dernière image
+
+Pinocchio tient debout au milieu de ses créateurs, de ses voix et de ses preuves. Derrière lui, le Codex a appris à montrer la vie d’une œuvre sans jamais couper les fils qui la relient à ses sources. Devant lui, Fantasia accorde déjà ses premières mesures.
 
 ---
 
