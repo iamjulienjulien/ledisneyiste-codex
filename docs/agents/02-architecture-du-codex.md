@@ -199,7 +199,8 @@ src/components/codex/
 │   ├── CodexIndexPersonnageCard/
 │   ├── CodexIndexCreateurCard/
 │   ├── CodexIndexOeuvreCard/
-│   └── CodexIndexEpoqueCard/
+│   ├── CodexIndexEpoqueCard/
+│   └── CodexIndexChansonCard/
 ├── CodexFiche/
 │   ├── CodexFiche/
 │   ├── CodexFicheHeader/
@@ -319,6 +320,12 @@ catalogue demeure donc la porte d’entrée officielle.
 Le catalogue conserve le nom ou titre principal qui publie l’entrée. La fiche
 possède les formes documentées : originale, localisée, territoriale, ancienne
 ou alternative, avec leur langue, leur territoire éventuel et leurs sources.
+
+Pour les Chansons, le catalogue porte ainsi le titre français destiné aux
+surfaces publiques, tandis que la fiche conserve le titre original dans son
+identité documentée. Le projecteur commun écarte une répétition lorsque les
+deux formes sont identiques : _Heigh-Ho_ ne s’affiche donc pas deux fois, alors
+que _Siffler en travaillant_ conserve _Whistle While You Work_ en sous-titre.
 
 [`resoudreIdentiteCodex`](../../src/lib/identites/server/resoudre-identites.ts)
 joint ces deux moitiés côté serveur et produit une

@@ -149,6 +149,7 @@ scripts/
 src/
 ├── app/
 │   ├── atelier/
+│   ├── chansons/
 │   ├── contributeurs/
 │   ├── epoques/
 │   ├── guidebook/
@@ -171,6 +172,7 @@ src/
 │
 ├── data/
 │   ├── catalogues/
+│   ├── chansons/
 │   ├── contributeurs/
 │   ├── epoques/
 │   ├── oeuvres/
