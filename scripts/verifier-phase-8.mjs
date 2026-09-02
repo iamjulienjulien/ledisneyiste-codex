@@ -340,6 +340,10 @@ function verifierBranchement() {
     const packageJson = lireJson("package.json");
 
     assert.equal(
+        packageJson.scripts["check:focale"],
+        "node scripts/verifier-focale.mjs",
+    );
+    assert.equal(
         packageJson.scripts["check:phase-8"],
         "node scripts/verifier-phase-8.mjs",
     );
@@ -352,6 +356,26 @@ function verifierBranchement() {
     }
 }
 
+function verifierTrain8B() {
+    for (const cheminRelatif of [
+        "docs/studio/production/acte-vi/phase-8/focale.md",
+        "src/components/focale/index.ts",
+        "src/fixtures/focale/equipe-temoin.ts",
+        "scripts/verifier-focale.mjs",
+    ]) {
+        assert.ok(
+            existsSync(chemin(cheminRelatif)),
+            `Train 8B : livrable absent ${cheminRelatif}`,
+        );
+    }
+
+    assert.equal(
+        existsSync(chemin("src/components/focale/FocaleTooltip")),
+        false,
+        "Train 8B : le tooltip doit rester différé",
+    );
+}
+
 verifierDocuments();
 verifierRoutes();
 const plans = chargerPlansTypeScript();
@@ -359,7 +383,8 @@ const pinocchio = verifierPinocchio(plans);
 verifierBobines(plans);
 verifierSurfaces();
 verifierBranchement();
+verifierTrain8B();
 
 console.log(
-    `Train 8A vérifié : ${pinocchio.stats.contributions} contributions, ${pinocchio.stats.domains} domaines, ${pinocchio.stats.resolved} références résolues et ${pinocchio.stats.unresolved} non résolue pour Pinocchio.`,
+    `Phase 8 vérifiée jusqu’au Train 8B : ${pinocchio.stats.contributions} contributions, ${pinocchio.stats.domains} domaines et une grammaire Focale indépendante.`,
 );
