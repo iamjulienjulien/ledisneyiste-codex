@@ -3,15 +3,21 @@
 import { useMemo, useState } from "react";
 import type { CSSProperties, FormEvent } from "react";
 import { PixieBadge } from "@/components/ui/PixieBadge";
+import { PixieButton } from "@/components/ui/PixieButton";
 import { PixieCallout } from "@/components/ui/PixieCallout";
 import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieLink } from "@/components/ui/PixieLink";
 import { PixiePanel } from "@/components/ui/PixiePanel";
 import { PixieSearchField } from "@/components/ui/PixieSearchField";
 import { PixieSelect } from "@/components/ui/PixieSelect";
+import { PixieStickyRegion } from "@/components/ui/PixieStickyRegion";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
+import { FocaleAnnotation } from "@/components/focale/FocaleAnnotation";
+import { FocaleLegend } from "@/components/focale/FocaleLegend";
+import { FocaleMark } from "@/components/focale/FocaleMark";
 import { FocaleTable } from "@/components/focale/FocaleTable";
 import type { FocaleTableColumn } from "@/components/focale/FocaleTable";
+import { FocaleViewport } from "@/components/focale/FocaleViewport";
 import { getCreditDomainDefinition } from "@/registry/credits";
 import type {
     CodexGeneriqueVivantAngleView,
@@ -19,10 +25,8 @@ import type {
     CodexPlanRuntimeState,
 } from "@/types/codex-plans";
 import type {
-    AtelierGeneriqueVivantCountershot,
-    AtelierGeneriqueVivantDensity,
-    AtelierGeneriqueVivantEvidence,
     AtelierGeneriqueVivantLight,
+    AtelierGeneriqueVivantInspectorMode,
     AtelierGeneriqueVivantMatterKey,
     AtelierGeneriqueVivantObjective,
     AtelierGeneriqueVivantPresence,
@@ -45,6 +49,17 @@ const objectiveLabels = {
     find: "Retrouver",
     compare: "Comparer",
 } as const satisfies Record<AtelierGeneriqueVivantObjective, string>;
+
+const objectiveByAngle = {
+    departments: "understand",
+    roles: "find",
+    responsibilities: "compare",
+    collaborations: "understand",
+    recurrences: "compare",
+} as const satisfies Record<
+    AtelierGeneriqueVivantView,
+    AtelierGeneriqueVivantObjective
+>;
 
 const runtimeLabels = {
     idle: "En attente d’un Sujet",
@@ -185,19 +200,14 @@ export function AtelierGeneriqueVivantPrototype({
         useState<AtelierGeneriqueVivantMatterKey>("archives");
     const [angle, setAngle] =
         useState<AtelierGeneriqueVivantView>("departments");
-    const [objective, setObjective] =
-        useState<AtelierGeneriqueVivantObjective>("understand");
     const [domain, setDomain] = useState("all");
     const [query, setQuery] = useState("");
     const [presence, setPresence] =
         useState<AtelierGeneriqueVivantPresence>("all");
     const [sort, setSort] = useState<AtelierGeneriqueVivantSort>("documentary");
-    const [density, setDensity] =
-        useState<AtelierGeneriqueVivantDensity>("comfortable");
-    const [evidence, setEvidence] =
-        useState<AtelierGeneriqueVivantEvidence>("summary");
-    const [countershot, setCountershot] =
-        useState<AtelierGeneriqueVivantCountershot>("visible");
+    const [inspectorMode, setInspectorMode] =
+        useState<AtelierGeneriqueVivantInspectorMode>("inline");
+    const [inspectorOpen, setInspectorOpen] = useState(true);
     const [light, setLight] = useState<AtelierGeneriqueVivantLight>("sombre");
     const [selectedId, setSelectedId] = useState<string>();
     const [visibleLimit, setVisibleLimit] = useState(48);
@@ -206,6 +216,7 @@ export function AtelierGeneriqueVivantPrototype({
         projections[0];
     const model = projection.model;
     const angleView = model.views[angle];
+    const objective = objectiveByAngle[angle];
     const normalizedQuery = normalizeSearch(query);
     const filtered = useMemo(() => {
         const items = model.contributions.filter((item) => {
@@ -221,37 +232,20 @@ export function AtelierGeneriqueVivantPrototype({
             return matchesDomain && matchesPresence && matchesQuery;
         });
 
-        if (sort === "alphabetical" || objective === "find") {
+        if (sort === "alphabetical") {
             return [...items].sort((a, b) =>
                 a.contributor.label.localeCompare(b.contributor.label, "fr"),
             );
         }
-        if (objective === "compare") {
-            return [...items].sort(
-                (a, b) =>
-                    b.roles.length - a.roles.length ||
-                    b.recurrenceWorkLabels.length -
-                        a.recurrenceWorkLabels.length ||
-                    a.contributor.label.localeCompare(
-                        b.contributor.label,
-                        "fr",
-                    ),
-            );
-        }
-
         return items;
-    }, [
-        domain,
-        model.contributions,
-        normalizedQuery,
-        objective,
-        presence,
-        sort,
-    ]);
-    const viewGroups = useMemo(
-        () => createViewGroups(angleView, filtered),
-        [angleView, filtered],
-    );
+    }, [domain, model.contributions, normalizedQuery, presence, sort]);
+    const viewGroups = useMemo(() => {
+        const groups = createViewGroups(angleView, filtered);
+
+        return sort === "alphabetical"
+            ? [...groups].sort((a, b) => a.label.localeCompare(b.label, "fr"))
+            : groups;
+    }, [angleView, filtered, sort]);
     const viewItems = useMemo(() => uniqueViewItems(viewGroups), [viewGroups]);
     const selected =
         filtered.find((item) => item.id === selectedId) ?? filtered[0];
@@ -275,18 +269,20 @@ export function AtelierGeneriqueVivantPrototype({
             className={styles.projection}
             data-projection="originale"
             data-lumiere={light}
-            data-density={density}
         >
             <header className={styles.prototypeHeader}>
                 <div>
                     <p className={styles.eyebrow}>Prototype privé · v0.2.0</p>
                     <h3 className={styles.prototypeTitle}>
-                        Le générique devient une carte humaine
+                        Pinocchio révèle les gestes derrière l’écran
                     </h3>
                     <p className={styles.prototypeDescription}>
-                        Les 31 contributions de Pinocchio rendent visibles huit
-                        domaines de fabrication sans fabriquer de hiérarchie, de
-                        valeur ni de collaboration.
+                        Le générique devient une carte humaine : chaque rôle
+                        reste relié à sa présence documentée, sans fabriquer de
+                        hiérarchie, de valeur ni de collaboration.
+                    </p>
+                    <p className={styles.masterQuestion}>
+                        {angleView.question}
                     </p>
                 </div>
                 <div className={styles.badges}>
@@ -295,6 +291,13 @@ export function AtelierGeneriqueVivantPrototype({
                     </PixieBadge>
                     <PixieBadge size="sm" variant="outline">
                         {model.stats.contributions} contributions
+                    </PixieBadge>
+                    <PixieBadge size="sm" variant="outline">
+                        {model.stats.domains} domaines
+                    </PixieBadge>
+                    <PixieBadge size="sm" variant="outline">
+                        {model.stats.unresolved} non publiée
+                        {model.stats.unresolved > 1 ? "s" : ""}
                     </PixieBadge>
                 </div>
             </header>
@@ -307,40 +310,32 @@ export function AtelierGeneriqueVivantPrototype({
             >
                 <div className={styles.panelHeader}>
                     <div>
-                        <p className={styles.eyebrow}>Régie</p>
-                        <h4>Régler la distribution</h4>
+                        <p className={styles.eyebrow}>Régie de lecture</p>
+                        <h4>Choisir comment parcourir le générique</h4>
                     </div>
-                    <p aria-live="polite" className={styles.liveCount}>
+                    <p
+                        aria-live="polite"
+                        aria-atomic="true"
+                        className={styles.liveCount}
+                    >
                         {viewItems.length} résultat
                         {viewItems.length > 1 ? "s" : ""}
                     </p>
                 </div>
+                <PixieSearchField
+                    label="Rechercher dans le générique"
+                    value={query}
+                    onChange={(event) => setQuery(event.target.value)}
+                    onClear={() => setQuery("")}
+                    onSubmit={ignoreSubmit}
+                    submitLabel="Chercher"
+                    placeholder="Nom, rôle ou domaine…"
+                    clearable
+                    composition="joined"
+                    size="sm"
+                    color="violet-ombre-portee"
+                />
                 <div className={styles.settings}>
-                    <Setting label="Matière">
-                        <PixieSelect
-                            mode="popover"
-                            portal
-                            size="sm"
-                            value={matterKey}
-                            onChange={(event) => {
-                                setMatterKey(
-                                    event.target
-                                        .value as AtelierGeneriqueVivantMatterKey,
-                                );
-                                setDomain("all");
-                                setVisibleLimit(48);
-                            }}
-                        >
-                            {projections.map((item) => (
-                                <option
-                                    key={item.matterKey}
-                                    value={item.matterKey}
-                                >
-                                    {item.matterLabel}
-                                </option>
-                            ))}
-                        </PixieSelect>
-                    </Setting>
                     <Setting label="Angle">
                         <PixieSelect
                             mode="popover"
@@ -361,25 +356,7 @@ export function AtelierGeneriqueVivantPrototype({
                             ))}
                         </PixieSelect>
                     </Setting>
-                    <Setting label="Objectif">
-                        <PixieSelect
-                            mode="popover"
-                            portal
-                            size="sm"
-                            value={objective}
-                            onChange={(event) =>
-                                setObjective(
-                                    event.target
-                                        .value as AtelierGeneriqueVivantObjective,
-                                )
-                            }
-                        >
-                            <option value="understand">Comprendre</option>
-                            <option value="find">Retrouver</option>
-                            <option value="compare">Comparer</option>
-                        </PixieSelect>
-                    </Setting>
-                    <Setting label="Cadre">
+                    <Setting label="Domaine">
                         <PixieSelect
                             mode="popover"
                             portal
@@ -436,55 +413,66 @@ export function AtelierGeneriqueVivantPrototype({
                             </option>
                         </PixieSelect>
                     </Setting>
-                    <Setting label="Densité">
+                    <Setting label="Gros plan">
                         <PixieSelect
                             mode="popover"
                             portal
                             size="sm"
-                            value={density}
-                            onChange={(event) =>
-                                setDensity(
+                            value={inspectorMode}
+                            onChange={(event) => {
+                                setInspectorMode(
                                     event.target
-                                        .value as AtelierGeneriqueVivantDensity,
-                                )
-                            }
+                                        .value as AtelierGeneriqueVivantInspectorMode,
+                                );
+                                setInspectorOpen(true);
+                            }}
                         >
-                            <option value="comfortable">Confortable</option>
-                            <option value="compact">Compacte</option>
+                            <option value="inline">Intégré</option>
+                            <option value="floating">Flottant</option>
                         </PixieSelect>
                     </Setting>
-                    <Setting label="Preuves">
+                </div>
+            </PixiePanel>
+
+            <PixiePanel
+                variant="outline"
+                padding="lg"
+                radius="large"
+                className={styles.testBench}
+            >
+                <div className={styles.testBenchHeader}>
+                    <div>
+                        <p className={styles.eyebrow}>Banc d’essai privé</p>
+                        <h4>Éprouver la matière et les deux Lumières</h4>
+                    </div>
+                    <PixieBadge size="xs" variant="outline">
+                        Hors régie de lecture
+                    </PixieBadge>
+                </div>
+                <div className={styles.testBenchSettings}>
+                    <Setting label="Matière">
                         <PixieSelect
                             mode="popover"
                             portal
                             size="sm"
-                            value={evidence}
-                            onChange={(event) =>
-                                setEvidence(
+                            value={matterKey}
+                            onChange={(event) => {
+                                setMatterKey(
                                     event.target
-                                        .value as AtelierGeneriqueVivantEvidence,
-                                )
-                            }
+                                        .value as AtelierGeneriqueVivantMatterKey,
+                                );
+                                setDomain("all");
+                                setVisibleLimit(48);
+                            }}
                         >
-                            <option value="summary">Résumé</option>
-                            <option value="developed">Développées</option>
-                        </PixieSelect>
-                    </Setting>
-                    <Setting label="Contrechamp">
-                        <PixieSelect
-                            mode="popover"
-                            portal
-                            size="sm"
-                            value={countershot}
-                            onChange={(event) =>
-                                setCountershot(
-                                    event.target
-                                        .value as AtelierGeneriqueVivantCountershot,
-                                )
-                            }
-                        >
-                            <option value="visible">Visible</option>
-                            <option value="collapsed">Replié</option>
+                            {projections.map((item) => (
+                                <option
+                                    key={item.matterKey}
+                                    value={item.matterKey}
+                                >
+                                    {item.matterLabel}
+                                </option>
+                            ))}
                         </PixieSelect>
                     </Setting>
                     <Setting label="Lumière">
@@ -505,19 +493,6 @@ export function AtelierGeneriqueVivantPrototype({
                         </PixieSelect>
                     </Setting>
                 </div>
-                <PixieSearchField
-                    label="Rechercher dans le générique"
-                    value={query}
-                    onChange={(event) => setQuery(event.target.value)}
-                    onClear={() => setQuery("")}
-                    onSubmit={ignoreSubmit}
-                    submitLabel="Chercher"
-                    placeholder="Nom, rôle ou domaine…"
-                    clearable
-                    composition="joined"
-                    size="sm"
-                    color="violet-ombre-portee"
-                />
             </PixiePanel>
 
             <div className={styles.stage}>
@@ -541,15 +516,25 @@ export function AtelierGeneriqueVivantPrototype({
                         <PixieBadge size="sm" color="violet-ombre-portee">
                             {model.stats.unresolved} non résolues
                         </PixieBadge>
+                        {selected && !inspectorOpen ? (
+                            <PixieButton
+                                type="button"
+                                variant="ghost"
+                                size="xs"
+                                color="violet-ombre-portee"
+                                onClick={() => setInspectorOpen(true)}
+                            >
+                                Afficher le gros plan
+                            </PixieButton>
+                        ) : null}
                     </div>
                 </header>
 
                 {model.notices.length > 0 ? (
-                    <PixieCallout
-                        variant="subtle"
-                        color="violet-ombre-portee"
-                        padding="sm"
-                        heading="Raccords documentaires"
+                    <FocaleAnnotation
+                        title="Raccords documentaires"
+                        tone={matterKey === "archives" ? "uncertainty" : "info"}
+                        provenance={projection.matterLabel}
                     >
                         {model.notices.map((notice) => (
                             <p
@@ -558,8 +543,28 @@ export function AtelierGeneriqueVivantPrototype({
                                 {notice.message}
                             </p>
                         ))}
-                    </PixieCallout>
+                    </FocaleAnnotation>
                 ) : null}
+
+                <FocaleLegend
+                    title="Légende des domaines"
+                    items={model.groups.flatMap((group) => {
+                        const definition = getCreditDomainDefinition(group.id);
+
+                        return definition
+                            ? [
+                                  {
+                                      id: group.id,
+                                      label: group.label,
+                                      description: `${group.contributionIds.length} contribution${group.contributionIds.length > 1 ? "s" : ""}`,
+                                      color: `var(--atelier-animation-${definition.color})`,
+                                      shape: "dot" as const,
+                                  },
+                              ]
+                            : [];
+                    })}
+                    orientation="horizontal"
+                />
 
                 {viewItems.length === 0 ? (
                     <PixieCallout
@@ -572,145 +577,163 @@ export function AtelierGeneriqueVivantPrototype({
                             : angleView.emptyLabel}
                     </PixieCallout>
                 ) : (
-                    <div className={styles.creditLayout}>
-                        <div className={styles.creditStage}>
-                            {displayedGroups.map((group) => {
-                                const definition = getCreditDomainDefinition(
-                                    group.id,
-                                );
-                                const style = definition
-                                    ? ({
-                                          "--group-color": `var(--atelier-animation-${definition.color})`,
-                                      } as CSSProperties)
-                                    : undefined;
+                    <FocaleViewport
+                        label={`Carte humaine de ${model.subject.label}`}
+                        description="La longueur de chaque repère exprime une part du générique visible, jamais l’importance d’un métier ou d’une personne."
+                        overflow="clip"
+                        className={styles.creditViewport}
+                    >
+                        <div
+                            className={styles.creditLayout}
+                            data-inspector-mode={inspectorMode}
+                        >
+                            <div className={styles.creditStage}>
+                                {displayedGroups.map((group) => {
+                                    const definition =
+                                        getCreditDomainDefinition(group.id);
+                                    const style = definition
+                                        ? ({
+                                              "--group-color": `var(--atelier-animation-${definition.color})`,
+                                          } as CSSProperties)
+                                        : undefined;
 
-                                return (
-                                    <section
-                                        key={group.id}
-                                        className={styles.group}
-                                        style={style}
-                                        aria-labelledby={`generique-group-${group.id.replace(/[^a-z0-9-]/gi, "-")}`}
-                                    >
-                                        <header className={styles.groupHeader}>
-                                            <div
-                                                className={styles.groupIdentity}
+                                    return (
+                                        <section
+                                            key={group.id}
+                                            className={styles.group}
+                                            style={style}
+                                            aria-labelledby={`generique-group-${group.id.replace(/[^a-z0-9-]/gi, "-")}`}
+                                        >
+                                            <header
+                                                className={styles.groupHeader}
                                             >
-                                                {definition ? (
-                                                    <PixieSymbol
-                                                        {...definition.symbol}
-                                                        size={48}
-                                                    />
-                                                ) : (
-                                                    <span
-                                                        className={
-                                                            styles.groupCue
-                                                        }
-                                                        aria-hidden="true"
-                                                    />
-                                                )}
-                                                <div>
-                                                    <p>{group.actionLabel}</p>
-                                                    <h5
-                                                        id={`generique-group-${group.id.replace(/[^a-z0-9-]/gi, "-")}`}
-                                                    >
-                                                        {group.label}
-                                                    </h5>
-                                                </div>
-                                            </div>
-                                            <PixieBadge
-                                                size="xs"
-                                                variant="outline"
-                                            >
-                                                {group.items.length}
-                                            </PixieBadge>
-                                        </header>
-                                        <ul className={styles.creditGrid}>
-                                            {group.items.map((item) => (
-                                                <li
-                                                    key={`${group.id}:${item.id}`}
+                                                <div
+                                                    className={
+                                                        styles.groupIdentity
+                                                    }
                                                 >
-                                                    <PixieCard
-                                                        asChild
-                                                        variant={
-                                                            selected?.id ===
-                                                            item.id
-                                                                ? "accent"
-                                                                : "outline"
-                                                        }
-                                                        color={
-                                                            definition?.color ??
-                                                            "violet-ombre-portee"
-                                                        }
-                                                        padding="none"
-                                                        radius="medium"
-                                                    >
-                                                        <button
-                                                            type="button"
+                                                    {definition ? (
+                                                        <PixieSymbol
+                                                            {...definition.symbol}
+                                                            size={48}
+                                                        />
+                                                    ) : (
+                                                        <span
                                                             className={
-                                                                styles.creditButton
+                                                                styles.groupCue
                                                             }
-                                                            onClick={() =>
-                                                                setSelectedId(
-                                                                    item.id,
-                                                                )
-                                                            }
-                                                            aria-pressed={
+                                                            aria-hidden="true"
+                                                        />
+                                                    )}
+                                                    <div>
+                                                        <p>
+                                                            {group.actionLabel}
+                                                        </p>
+                                                        <h5
+                                                            id={`generique-group-${group.id.replace(/[^a-z0-9-]/gi, "-")}`}
+                                                        >
+                                                            {group.label}
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    className={
+                                                        styles.groupMetric
+                                                    }
+                                                >
+                                                    <FocaleMark
+                                                        shape="bar"
+                                                        size="sm"
+                                                        color="var(--group-color)"
+                                                        value={
+                                                            group.items.length /
+                                                            Math.max(
+                                                                1,
+                                                                viewItems.length,
+                                                            )
+                                                        }
+                                                        label={`${group.items.length} contributions sur ${viewItems.length}`}
+                                                    />
+                                                    <span>
+                                                        {group.items.length} sur{" "}
+                                                        {viewItems.length}
+                                                    </span>
+                                                </div>
+                                            </header>
+                                            <ul className={styles.creditGrid}>
+                                                {group.items.map((item) => (
+                                                    <li
+                                                        key={`${group.id}:${item.id}`}
+                                                    >
+                                                        <PixieCard
+                                                            asChild
+                                                            variant={
                                                                 selected?.id ===
                                                                 item.id
+                                                                    ? "accent"
+                                                                    : "outline"
                                                             }
+                                                            color={
+                                                                definition?.color ??
+                                                                "violet-ombre-portee"
+                                                            }
+                                                            padding="none"
+                                                            radius="medium"
                                                         >
-                                                            <span
+                                                            <button
+                                                                type="button"
                                                                 className={
-                                                                    styles.creditStatus
+                                                                    styles.creditButton
+                                                                }
+                                                                onClick={() => {
+                                                                    setSelectedId(
+                                                                        item.id,
+                                                                    );
+                                                                    setInspectorOpen(
+                                                                        true,
+                                                                    );
+                                                                }}
+                                                                aria-pressed={
+                                                                    selected?.id ===
+                                                                    item.id
                                                                 }
                                                             >
-                                                                {item
-                                                                    .contributor
-                                                                    .resolved
-                                                                    ? "Fiche publiée"
-                                                                    : "Non résolu"}
-                                                            </span>
-                                                            <strong>
-                                                                {
-                                                                    item
+                                                                <span
+                                                                    className={
+                                                                        styles.creditStatus
+                                                                    }
+                                                                >
+                                                                    {item
                                                                         .contributor
-                                                                        .label
-                                                                }
-                                                            </strong>
-                                                            <span
-                                                                className={
-                                                                    styles.roleList
-                                                                }
-                                                            >
-                                                                {item.roles.join(
-                                                                    " · ",
-                                                                )}
-                                                            </span>
-                                                            {angle ===
-                                                            "collaborations" ? (
-                                                                <small>
-                                                                    {group.items
-                                                                        .length -
-                                                                        1}{" "}
-                                                                    autre
-                                                                    {group.items
-                                                                        .length >
-                                                                    2
-                                                                        ? "s"
-                                                                        : ""}{" "}
-                                                                    présence
-                                                                    {group.items
-                                                                        .length >
-                                                                    2
-                                                                        ? "s"
-                                                                        : ""}{" "}
-                                                                    dans ce
-                                                                    département
-                                                                </small>
-                                                            ) : null}
-                                                            {angle ===
-                                                            "recurrences" ? (
-                                                                <small>
+                                                                        .resolved
+                                                                        ? "Fiche publiée"
+                                                                        : "Non résolu"}
+                                                                </span>
+                                                                <strong>
+                                                                    {
+                                                                        item
+                                                                            .contributor
+                                                                            .label
+                                                                    }
+                                                                </strong>
+                                                                <span
+                                                                    className={
+                                                                        styles.roleList
+                                                                    }
+                                                                >
+                                                                    {item.roles.join(
+                                                                        " · ",
+                                                                    )}
+                                                                </span>
+                                                                <small
+                                                                    className={
+                                                                        styles.creditTrace
+                                                                    }
+                                                                >
+                                                                    {
+                                                                        item.domainLabel
+                                                                    }
+                                                                    {" · "}
                                                                     {
                                                                         item
                                                                             .recurrenceWorkLabels
@@ -722,131 +745,173 @@ export function AtelierGeneriqueVivantPrototype({
                                                                         .length >
                                                                     1
                                                                         ? "s"
-                                                                        : ""}{" "}
-                                                                    documentée
-                                                                    {item
-                                                                        .recurrenceWorkLabels
-                                                                        .length >
-                                                                    1
+                                                                        : ""}
+                                                                    {" · "}
+                                                                    {sourceCount(
+                                                                        item,
+                                                                    )}{" "}
+                                                                    source
+                                                                    {sourceCount(
+                                                                        item,
+                                                                    ) > 1
                                                                         ? "s"
                                                                         : ""}
                                                                 </small>
-                                                            ) : null}
-                                                        </button>
-                                                    </PixieCard>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </section>
-                                );
-                            })}
-                            {isDense ? (
-                                <button
-                                    type="button"
-                                    className={styles.moreButton}
-                                    onClick={() =>
-                                        setVisibleLimit((value) => value + 48)
+                                                            </button>
+                                                        </PixieCard>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </section>
+                                    );
+                                })}
+                                {isDense ? (
+                                    <PixieButton
+                                        type="button"
+                                        variant="outline"
+                                        size="sm"
+                                        color="violet-ombre-portee"
+                                        className={styles.moreButton}
+                                        onClick={() =>
+                                            setVisibleLimit(
+                                                (value) => value + 48,
+                                            )
+                                        }
+                                    >
+                                        Afficher 48 crédits supplémentaires
+                                    </PixieButton>
+                                ) : null}
+                            </div>
+
+                            {selected && inspectorOpen ? (
+                                <PixieStickyRegion
+                                    as="aside"
+                                    offset="md"
+                                    width="full"
+                                    overflow="auto"
+                                    layer={
+                                        inspectorMode === "floating"
+                                            ? "overlay"
+                                            : "raised"
                                     }
+                                    className={styles.inspectorShell}
+                                    aria-label="Détail de la contribution"
                                 >
-                                    Afficher 48 crédits supplémentaires
-                                </button>
+                                    <PixiePanel
+                                        variant="muted"
+                                        padding="md"
+                                        radius="large"
+                                        className={styles.inspector}
+                                    >
+                                        <header
+                                            className={styles.inspectorHeader}
+                                        >
+                                            <div>
+                                                <p className={styles.eyebrow}>
+                                                    Gros plan
+                                                </p>
+                                                <h5>
+                                                    {selected.contributor.label}
+                                                </h5>
+                                            </div>
+                                            <PixieButton
+                                                type="button"
+                                                variant="ghost"
+                                                size="xs"
+                                                color="violet-ombre-portee"
+                                                aria-label="Fermer le gros plan"
+                                                title="Fermer le gros plan"
+                                                onClick={() =>
+                                                    setInspectorOpen(false)
+                                                }
+                                            >
+                                                <span aria-hidden="true">
+                                                    ×
+                                                </span>
+                                            </PixieButton>
+                                        </header>
+                                        <p className={styles.inspectorDomain}>
+                                            {selected.domainLabel}
+                                        </p>
+                                        <dl>
+                                            <div>
+                                                <dt>Rôles archivés</dt>
+                                                <dd>
+                                                    {selected.roles.join(" · ")}
+                                                </dd>
+                                            </div>
+                                            <div>
+                                                <dt>Présence</dt>
+                                                <dd>
+                                                    {selected.contributor
+                                                        .resolved
+                                                        ? "Fiche publiée"
+                                                        : "Référence non résolue"}
+                                                </dd>
+                                            </div>
+                                            <div>
+                                                <dt>Œuvres documentées</dt>
+                                                <dd>
+                                                    {selected
+                                                        .recurrenceWorkLabels
+                                                        .length > 0
+                                                        ? selected.recurrenceWorkLabels.join(
+                                                              " · ",
+                                                          )
+                                                        : selected.work.label}
+                                                </dd>
+                                            </div>
+                                            <div>
+                                                <dt>Sources rattachées</dt>
+                                                <dd>
+                                                    {sourceCount(selected) ||
+                                                        "Aucune"}{" "}
+                                                    source
+                                                    {sourceCount(selected) > 1
+                                                        ? "s"
+                                                        : ""}
+                                                </dd>
+                                            </div>
+                                            <div>
+                                                <dt>Provenance</dt>
+                                                <dd>
+                                                    {selected.provenance
+                                                        .map(
+                                                            (item) =>
+                                                                item.explanation ??
+                                                                item.kind,
+                                                        )
+                                                        .join(" · ")}
+                                                </dd>
+                                            </div>
+                                        </dl>
+                                        {contributorHref(selected) ? (
+                                            <PixieLink
+                                                href={contributorHref(
+                                                    selected,
+                                                )!}
+                                                variant="action"
+                                                indicator="arrow"
+                                                color="violet-ombre-portee"
+                                            >
+                                                Ouvrir la fiche
+                                            </PixieLink>
+                                        ) : (
+                                            <p className={styles.unresolved}>
+                                                Aucune fiche publiée : le nom
+                                                reste visible sans être complété
+                                                artificiellement.
+                                            </p>
+                                        )}
+                                    </PixiePanel>
+                                </PixieStickyRegion>
                             ) : null}
                         </div>
-
-                        {selected ? (
-                            <aside
-                                className={styles.inspector}
-                                aria-label="Détail de la contribution"
-                            >
-                                <p className={styles.eyebrow}>Gros plan</p>
-                                <h5>{selected.contributor.label}</h5>
-                                <p className={styles.inspectorDomain}>
-                                    {selected.domainLabel}
-                                </p>
-                                <dl>
-                                    <div>
-                                        <dt>Rôles archivés</dt>
-                                        <dd>{selected.roles.join(" · ")}</dd>
-                                    </div>
-                                    <div>
-                                        <dt>Présence</dt>
-                                        <dd>
-                                            {selected.contributor.resolved
-                                                ? "Fiche publiée"
-                                                : "Référence non résolue"}
-                                        </dd>
-                                    </div>
-                                    <div>
-                                        <dt>Récurrences</dt>
-                                        <dd>
-                                            {selected.recurrenceWorkLabels.join(
-                                                " · ",
-                                            )}
-                                        </dd>
-                                    </div>
-                                    {evidence === "developed" ? (
-                                        <div>
-                                            <dt>Provenance</dt>
-                                            <dd>
-                                                {selected.provenance
-                                                    .map(
-                                                        (item) =>
-                                                            item.explanation ??
-                                                            item.kind,
-                                                    )
-                                                    .join(" · ")}
-                                            </dd>
-                                        </div>
-                                    ) : (
-                                        <div>
-                                            <dt>Preuves</dt>
-                                            <dd>
-                                                {sourceCount(selected) ||
-                                                    "Aucune"}{" "}
-                                                source
-                                                {sourceCount(selected) > 1
-                                                    ? "s"
-                                                    : ""}{" "}
-                                                rattachée
-                                                {sourceCount(selected) > 1
-                                                    ? "s"
-                                                    : ""}{" "}
-                                                à l’œuvre
-                                            </dd>
-                                        </div>
-                                    )}
-                                </dl>
-                                {contributorHref(selected) ? (
-                                    <PixieLink
-                                        href={contributorHref(selected)!}
-                                        variant="action"
-                                        indicator="arrow"
-                                        color="violet-ombre-portee"
-                                    >
-                                        Ouvrir la fiche
-                                    </PixieLink>
-                                ) : (
-                                    <p className={styles.unresolved}>
-                                        Aucune fiche publiée : le nom reste
-                                        visible sans être complété
-                                        artificiellement.
-                                    </p>
-                                )}
-                            </aside>
-                        ) : null}
-                    </div>
+                    </FocaleViewport>
                 )}
             </div>
 
-            <details
-                className={styles.countershot}
-                open={countershot === "visible"}
-                onToggle={(event) =>
-                    setCountershot(
-                        event.currentTarget.open ? "visible" : "collapsed",
-                    )
-                }
-            >
+            <details className={styles.countershot} open>
                 <summary>
                     Contrechamp textuel · {viewItems.length} contributions
                 </summary>

@@ -48,9 +48,11 @@
 .creditStatus,
 .groupHeader p,
 .setting > span {
+    margin: 0;
     font-family: var(--font-eyebrow);
     font-size: 0.68rem;
     font-weight: 600;
+    line-height: 1.25;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--color-accent);
@@ -70,38 +72,83 @@
     color: var(--color-ink-soft);
 }
 
+.masterQuestion {
+    max-width: 48rem;
+    margin-top: 1rem;
+    border-inline-start: 3px solid var(--color-accent);
+    padding-inline-start: 0.9rem;
+    font-family: var(--font-serif);
+    font-size: clamp(1.05rem, 2vw, 1.35rem);
+    font-weight: 650;
+    line-height: 1.35;
+}
+
 .badges {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
 }
 
-.controlPanel {
+.controlPanel,
+.testBench {
+    margin-block: 0.25rem;
+}
+
+.controlPanel > [data-pixie-panel-slot="body"],
+.testBench > [data-pixie-panel-slot="body"] {
     display: grid;
+    gap: 1.5rem;
+}
+
+.testBenchHeader {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem 1rem;
+}
+
+.testBenchHeader h4 {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.25;
+}
+
+.testBenchSettings {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 13rem));
     gap: 1.25rem;
 }
 
 .panelHeader h4 {
-    margin-top: 0.35rem;
+    margin: 0;
     font-size: 1.35rem;
+    line-height: 1.2;
+}
+
+.panelHeader > div,
+.testBenchHeader > div {
+    display: grid;
+    gap: 0.625rem;
 }
 
 .liveCount {
     font-family: var(--font-mono);
     font-size: 0.74rem;
+    line-height: 1.4;
     color: var(--color-muted);
 }
 
 .settings {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 10.5rem), 1fr));
-    gap: 1rem;
+    gap: 1.25rem;
 }
 
 .setting {
     display: grid;
     align-content: start;
-    gap: 0.45rem;
+    gap: 0.6rem;
     min-width: 0;
 }
 
@@ -134,9 +181,20 @@
 }
 
 .creditLayout {
+    position: relative;
     display: grid;
     min-width: 0;
     gap: 1.25rem;
+}
+
+.projection .inspectorShell {
+    position: static;
+    max-block-size: none;
+    overflow: visible;
+}
+
+.creditViewport {
+    min-width: 0;
 }
 
 .creditStage {
@@ -171,6 +229,23 @@
     margin-top: 0.2rem;
     font-size: clamp(1.15rem, 2.5vw, 1.55rem);
     line-height: 1.15;
+}
+
+.groupMetric {
+    display: grid;
+    width: min(100%, 10rem);
+    gap: 0.45rem;
+    color: var(--group-color);
+}
+
+.groupMetric [data-focale-mark="bar"] {
+    display: block;
+}
+
+.groupMetric span {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--color-muted);
 }
 
 .groupCue {
@@ -230,30 +305,8 @@
     color: var(--color-muted);
 }
 
-.projection[data-density="compact"] .creditGrid {
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 11rem), 1fr));
-    gap: 0.5rem;
-}
-
-.projection[data-density="compact"] .creditButton {
-    gap: 0.35rem;
-    padding: 0.7rem;
-}
-
 .moreButton {
     justify-self: center;
-    border: 1px solid var(--color-line-strong);
-    border-radius: 999px;
-    padding: 0.75rem 1rem;
-    font: inherit;
-    font-weight: 600;
-    color: var(--color-ink);
-    background: var(--color-surface-muted);
-    cursor: pointer;
-}
-
-.moreButton:hover {
-    border-color: var(--color-accent);
 }
 
 .inspector {
@@ -261,10 +314,18 @@
     align-content: start;
     gap: 1rem;
     min-width: 0;
-    border: 1px solid var(--color-line-strong);
-    border-radius: var(--radius-large);
-    padding: 1.15rem;
-    background: var(--color-surface-muted);
+}
+
+.inspectorHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.inspectorHeader > div {
+    display: grid;
+    gap: 0.45rem;
 }
 
 .inspector h5 {
@@ -346,9 +407,27 @@
         align-items: start;
     }
 
-    .inspector {
+    .projection .inspectorShell {
         position: sticky;
         top: 1.5rem;
+        max-block-size: calc(100dvb - 3rem);
+        overflow: auto;
+    }
+
+    .creditLayout[data-inspector-mode="floating"] {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .creditLayout[data-inspector-mode="floating"] .creditStage,
+    .creditLayout[data-inspector-mode="floating"] .inspectorShell {
+        grid-row: 1;
+        grid-column: 1;
+    }
+
+    .creditLayout[data-inspector-mode="floating"] .inspectorShell {
+        width: min(20rem, calc(100% - 2rem));
+        margin: 1rem;
+        justify-self: end;
     }
 }
 
@@ -360,6 +439,14 @@
 
     .groupIdentity {
         align-items: flex-start;
+    }
+
+    .testBenchSettings {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .groupMetric {
+        width: 100%;
     }
 }
 

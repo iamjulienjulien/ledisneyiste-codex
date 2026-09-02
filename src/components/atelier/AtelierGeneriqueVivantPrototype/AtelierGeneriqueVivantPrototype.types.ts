@@ -19,9 +19,7 @@ export type AtelierGeneriqueVivantObjective = Extract<
 
 export type AtelierGeneriqueVivantPresence = "all" | "published" | "unresolved";
 export type AtelierGeneriqueVivantSort = "documentary" | "alphabetical";
-export type AtelierGeneriqueVivantDensity = "comfortable" | "compact";
-export type AtelierGeneriqueVivantEvidence = "summary" | "developed";
-export type AtelierGeneriqueVivantCountershot = "visible" | "collapsed";
+export type AtelierGeneriqueVivantInspectorMode = "inline" | "floating";
 export type AtelierGeneriqueVivantLight = "sombre" | "claire";
 
 export type AtelierGeneriqueVivantProjection = Readonly<{
