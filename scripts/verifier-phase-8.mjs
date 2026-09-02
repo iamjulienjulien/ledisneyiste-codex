@@ -571,6 +571,52 @@ function verifierTrain8G() {
     );
 }
 
+function verifierTrain8H() {
+    const train = readFileSync(
+        chemin("docs/studio/production/acte-vi/phase-8/train-8h.md"),
+        "utf8",
+    );
+    const cloture = readFileSync(
+        chemin("docs/studio/production/acte-vi/phase-8/cloture.md"),
+        "utf8",
+    );
+
+    for (const attendu of [
+        "109 Archives publiques et 109 routes canoniques",
+        "31 contributions",
+        "PlanGeneriqueVivant` v1.0.0",
+        "6 primitives Focale",
+        "relecture visuelle de Julien",
+        "Phase 9",
+    ]) {
+        assert.match(
+            train,
+            new RegExp(attendu),
+            `Train 8H : transmission absente « ${attendu} »`,
+        );
+    }
+
+    for (const attendu of [
+        "validée et appliquée de manière publique, limitée et réversible",
+        "Noyau réutilisable strictement",
+        "Limites et reports assumés",
+        "Visa humain",
+        "Passage de relais à la Phase 9",
+    ]) {
+        assert.match(
+            cloture,
+            new RegExp(attendu, "i"),
+            `Train 8H : clôture incomplète « ${attendu} »`,
+        );
+    }
+
+    assert.match(cloture, /Plans appliqués publiquement\s*\|\s*0\s*\|\s*1/);
+    assert.match(
+        cloture,
+        /Composants Pixie créés pour le Plan\s*\|\s*0\s*\|\s*0/,
+    );
+}
+
 function verifierBranchement() {
     const packageJson = lireJson("package.json");
 
@@ -624,7 +670,8 @@ verifierTrain8D(pinocchio);
 verifierTrain8E();
 verifierTrain8F();
 verifierTrain8G();
+verifierTrain8H();
 
 console.log(
-    `Phase 8 vérifiée jusqu’au Train 8G : Pinocchio conserve ${pinocchio.stats.contributions} contributions ; PlanGeneriqueVivant v1.0.0 reste réversible et Focale demeure borné à six primitives.`,
+    `Phase 8 clôturée au Train 8H : Pinocchio conserve ${pinocchio.stats.contributions} contributions ; PlanGeneriqueVivant v1.0.0 reste réversible et Focale demeure borné à six primitives.`,
 );
