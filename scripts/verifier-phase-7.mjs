@@ -110,6 +110,7 @@ function verifierDocuments() {
         "train-7b.md",
         "train-7c.md",
         "train-7d.md",
+        "train-7e.md",
     ]) {
         assert.ok(
             existsSync(chemin(dossierPhase, document)),
@@ -466,6 +467,94 @@ function verifierTrain7D(idsSources, sources) {
     );
 }
 
+function verifierTrain7E(idsSources) {
+    const fiche = lireJson("src/data/oeuvres/pinocchio.json");
+    const chapitre = fiche.blocsEditoriaux?.[5];
+
+    assert.ok(chapitre, "Train 7E : le sixième chapitre est absent");
+    assert.deepEqual(
+        {
+            id: chapitre.id,
+            titre: chapitre.titre,
+            question: chapitre.question,
+            type: chapitre.type,
+        },
+        {
+            id: "les-ressorties-fabriquent-une-autre-reception",
+            titre: "Les ressorties fabriquent une autre réception",
+            question:
+                "Comment de nouveaux publics reconstruisent-ils la valeur de l’œuvre ?",
+            type: "heritage",
+        },
+    );
+    assert.equal(
+        chapitre.paragraphes.length,
+        4,
+        "Train 7E : quatre formes de vie successive sont attendues",
+    );
+
+    const preuves = new Set(
+        chapitre.paragraphes.flatMap(({ sources: sourceIds }) => sourceIds),
+    );
+    for (const sourceId of [
+        "fr-cinematheque-pinocchio",
+        "fr-cnc-palmares-1946",
+        "it-cinematografo-pinocchio",
+        "us-academy-awards-1941",
+        "us-loc-national-film-registry",
+    ]) {
+        assert.ok(idsSources.has(sourceId), `source inconnue ${sourceId}`);
+        assert.ok(
+            preuves.has(sourceId),
+            `Train 7E : preuve attendue absente ${sourceId}`,
+        );
+    }
+
+    const version1975 = fiche.versions.find(
+        ({ id }) => id === "doublage-francais-1975",
+    );
+    assert.deepEqual(version1975?.date, {
+        valeur: "1975",
+        precision: "annee",
+    });
+    assert.match(version1975?.noteDeReserve, /pas l’historique complet/);
+    assert.equal(
+        fiche.sortie.evenements.some(({ date }) => date.valeur === "1975"),
+        false,
+        "Train 7E : le doublage de 1975 ne doit pas créer une ressortie",
+    );
+
+    const reevaluation = fiche.receptions.find(
+        ({ id }) => id === "reevaluation-italienne-1984",
+    );
+    assert.equal(reevaluation?.nature, "reevaluation");
+    assert.deepEqual(reevaluation?.date, {
+        valeur: "1984",
+        precision: "annee",
+    });
+    assert.match(reevaluation?.resume, /sans remplacer les réactions de 1947/);
+
+    const texte = JSON.stringify(chapitre);
+    assert.match(texte, /1946 à 2010/);
+    assert.match(texte, /chronologie complète des ressorties/);
+    assert.match(texte, /ne suffit pas, à lui seul, à prouver une ressortie/);
+    assert.match(texte, /réévaluation distincte/);
+    assert.match(texte, /1941/);
+    assert.match(texte, /1994/);
+    assert.match(texte, /plus d’un demi-siècle/);
+    assert.match(texte, /sélection patrimoniale/);
+    assert.doesNotMatch(
+        texte,
+        /restaur(?:ation|é|ée)|DVD|Blu-ray|VHS|streaming/i,
+        "Train 7E : aucun support ou restauration ne doit être inventé",
+    );
+    assert.equal(
+        fiche.blocsEditoriaux.length,
+        6,
+        "Train 7E : le chapitre 7 ne doit pas être anticipé",
+    );
+}
+
 function verifierFiches(idsSources) {
     let blocs = 0;
     let paragraphesStructures = 0;
@@ -534,8 +623,9 @@ verifierFixture(idsSources);
 verifierTrain7B(idsSources);
 verifierTrain7C(idsSources);
 verifierTrain7D(idsSources, sources);
+verifierTrain7E(idsSources);
 verifierBranchement();
 
 console.log(
-    `Phase 7D vérifiée : ${resultat.blocs} blocs compatibles, première exploitation et regards américain, français et italien raccordés sans confondre leurs mesures.`,
+    `Phase 7E vérifiée : ${resultat.blocs} blocs compatibles, vies successives bornées sans inventer de ressortie, de support ni de restauration.`,
 );
