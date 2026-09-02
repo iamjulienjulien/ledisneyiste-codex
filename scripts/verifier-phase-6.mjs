@@ -324,9 +324,10 @@ function verifierSources(production) {
         ...production.sourceInventory.alreadyCentral,
         ...promotions,
     ].sort();
-    assert.equal(
-        sourcesCentrales.length,
-        production.baseline.centralSources + promotions.length,
+    assert.ok(
+        sourcesCentrales.length >=
+            production.baseline.centralSources + promotions.length,
+        "Phase 6 : les promotions historiques doivent rester centrales sans interdire les sources des phases suivantes",
     );
     assert.deepEqual(recouvrement, recouvrementAttendu);
     assert.equal(production.sourceInventory.candidateCount, 32);
