@@ -70,9 +70,9 @@ ces paragraphes par le contrat commun.
 ## Prochaine bobine
 
 Le Train 7C pourra entrer dans **Un atelier entier pour donner du poids au
-bois**, puis suivre **When You Wish Upon a Star, de la chanson au seuil du
-film**. Les difficultés de fabrication et la chanson pilote y recevront leur
-propre profondeur sans être absorbées par cette ouverture.
+bois**. Les décisions de fabrication y recevront leur propre profondeur sans
+transformer le chapitre en générique complet ; la chanson pilote conservera
+sa bobine dédiée plus loin dans la Phase.
 
 ---
 
