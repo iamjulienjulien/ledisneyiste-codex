@@ -857,6 +857,42 @@
                     "reserve": "La date italienne demeure annuelle et les réactions restent plurielles. L’interdiction administrative parfois alléguée n’est pas publiée faute de preuve directe."
                 }
             ]
+        },
+        {
+            "id": "les-ressorties-fabriquent-une-autre-reception",
+            "type": "heritage",
+            "eyebrow": "Vies successives",
+            "titre": "Les ressorties fabriquent une autre réception",
+            "question": "Comment de nouveaux publics reconstruisent-ils la valeur de l’œuvre ?",
+            "paragraphes": [
+                {
+                    "id": "les-ressorties-une-presence-longue-sans-calendrier-complet",
+                    "texte": "La vie française de Pinocchio ne s’arrête pas à sa sortie de 1946. Le CNC cumule 7,84 millions de spectateurs jusqu’en 2010, signe d’une présence prolongée dans les salles. Cette mesure ne livre cependant ni les dates, ni les versions, ni le détail des exploitations qui la composent : elle établit une durée publique, pas une chronologie complète des ressorties.",
+                    "sources": ["fr-cnc-palmares-1946"],
+                    "reserve": "Le cumul français couvre les exploitations de 1946 à 2010. Le dossier ne permet pas d’identifier chaque ressortie ni de répartir sa fréquentation entre des générations de public."
+                },
+                {
+                    "id": "les-ressorties-un-nouveau-doublage-sans-ressortie-inventee",
+                    "texte": "La Cinémathèque française documente un nouveau doublage français en 1975 et en conserve la distribution vocale. Cette version change les voix par lesquelles le film peut être entendu en français, mais la source ne précise ni sa date d’exploitation, ni son support, ni le dispositif qui l’a présentée au public. Un doublage constitue ici une nouvelle version documentée ; il ne suffit pas, à lui seul, à prouver une ressortie.",
+                    "sources": ["fr-cinematheque-pinocchio"],
+                    "reserve": "Aucun événement de sortie n’est créé pour 1975. La version reste distincte d’une exploitation tant qu’une source ne relie pas explicitement les deux."
+                },
+                {
+                    "id": "les-ressorties-litalie-relit-le-film-en-1984",
+                    "texte": "En 1984, Cinematografo revient sur les condensations du livre de Collodi, les transformations morales de l’adaptation et les réussites visuelles du film. Cette lecture tardive montre qu’une œuvre peut être réévaluée lorsque son contexte de réception a changé. Elle complète les réactions italiennes qui entourent la projection de 1947, sans les remplacer ni se faire passer pour leur témoignage contemporain.",
+                    "sources": ["it-cinematografo-pinocchio"],
+                    "reserve": "La critique de 1984 est une réévaluation distincte de la réception italienne documentée entre 1938 et 1948."
+                },
+                {
+                    "id": "les-ressorties-de-la-distinction-au-patrimoine",
+                    "texte": "Les institutions ne désignent pas non plus la même valeur à chaque époque. En 1941, l’Academy récompense la musique originale et When You Wish Upon a Star au lendemain de la première exploitation. En 1994, le National Film Registry sélectionne le film dans un registre de préservation. Ces deux jalons ne racontent ni une progression automatique, ni une réception continue : ils rendent visibles deux manières, séparées par plus d’un demi-siècle, de reconnaître l’œuvre.",
+                    "sources": [
+                        "us-academy-awards-1941",
+                        "us-loc-national-film-registry"
+                    ],
+                    "reserve": "L’inscription au National Film Registry établit une sélection patrimoniale ; elle n’autorise pas le Codex à lui attribuer une interprétation supplémentaire."
+                }
+            ]
         }
     ],
     "sources": [
