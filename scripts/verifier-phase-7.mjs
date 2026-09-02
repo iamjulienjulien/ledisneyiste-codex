@@ -111,6 +111,7 @@ function verifierDocuments() {
         "train-7c.md",
         "train-7d.md",
         "train-7e.md",
+        "train-7f.md",
     ]) {
         assert.ok(
             existsSync(chemin(dossierPhase, document)),
@@ -548,10 +549,145 @@ function verifierTrain7E(idsSources) {
         /restaur(?:ation|é|ée)|DVD|Blu-ray|VHS|streaming/i,
         "Train 7E : aucun support ou restauration ne doit être inventé",
     );
+    assert.ok(
+        fiche.blocsEditoriaux.length >= 6,
+        "Train 7E : les six premiers chapitres doivent rester présents",
+    );
+}
+
+function verifierTrain7F(idsSources) {
+    const fiche = lireJson("src/data/oeuvres/pinocchio.json");
+    const chanson = lireJson(
+        "src/data/chansons/when-you-wish-upon-a-star.json",
+    );
+    const chapitre = fiche.blocsEditoriaux?.[6];
+
+    assert.ok(chapitre, "Train 7F : le septième chapitre est absent");
+    assert.deepEqual(
+        {
+            id: chapitre.id,
+            titre: chapitre.titre,
+            question: chapitre.question,
+            type: chapitre.type,
+        },
+        {
+            id: "quand-les-images-et-les-chansons-quittent-le-film",
+            titre: "Quand les images et les chansons quittent le film",
+            question: "Quels éléments acquièrent une vie autonome ?",
+            type: "heritage",
+        },
+    );
+    assert.equal(
+        chapitre.paragraphes.length,
+        4,
+        "Train 7F : quatre formes d’autonomie sont attendues",
+    );
+
+    const preuvesAttendues = [
+        "us-d23-figaro",
+        "us-d23-figaro-and-cleo",
+        "us-d23-when-you-wish-upon-a-star",
+        "us-d23-ned-washington",
+        "us-loc-national-recording-registry-when-you-wish",
+        "us-loc-national-film-registry",
+        "us-d23-disney100-castle-intro",
+        "d23-wish-animation-nods",
+    ];
+    const preuvesChapitre = new Set(
+        chapitre.paragraphes.flatMap(({ sources: sourceIds }) => sourceIds),
+    );
+    for (const sourceId of preuvesAttendues) {
+        assert.ok(idsSources.has(sourceId), `source inconnue ${sourceId}`);
+        assert.ok(
+            preuvesChapitre.has(sourceId),
+            `Train 7F : preuve du chapitre absente ${sourceId}`,
+        );
+    }
+
+    assert.equal(
+        chanson.blocsEditoriaux.length,
+        3,
+        "Train 7F : la chanson pilote doit porter trois chapitres",
+    );
+    assert.ok(
+        chanson.blocsEditoriaux.every(
+            (bloc) =>
+                chaineNonVide(bloc.id) &&
+                chaineNonVide(bloc.question) &&
+                bloc.paragraphes.every(
+                    (paragraphe) =>
+                        paragraphe && typeof paragraphe === "object",
+                ),
+        ),
+        "Train 7F : le récit pilote doit être entièrement structuré",
+    );
+    assert.equal(
+        chanson.blocsEditoriaux.reduce(
+            (total, bloc) => total + bloc.paragraphes.length,
+            0,
+        ),
+        7,
+        "Train 7F : sept unités de preuve sont attendues dans la chanson",
+    );
+
+    assert.equal(chanson.identite.libelle, "When You Wish Upon a Star");
+    assert.equal(
+        chanson.identitesAlternatives[0].libelle,
+        "Quand on prie la bonne étoile",
+    );
+    const versionFrancaise = chanson.versions.find(
+        ({ id }) => id === "when-you-wish-adaptation-fr-1995",
+    );
+    assert.deepEqual(versionFrancaise?.date, {
+        valeur: "1995",
+        precision: "annee",
+    });
+    assert.match(versionFrancaise?.noteDeReserve, /sans être antidatés/);
+
+    const enregistrement = chanson.enregistrements.find(
+        ({ id }) => id === "enregistrement-when-you-wish-film-1940",
+    );
+    assert.deepEqual(enregistrement?.date, {
+        valeur: "1938",
+        precision: "annee",
+    });
+    assert.match(enregistrement?.edition, /publié avec le film en 1940/);
+    assert.equal(
+        chanson.occurrences.length,
+        1,
+        "Train 7F : les usages culturels ne doivent pas devenir de fausses occurrences filmiques",
+    );
+
+    const receptionPatrimoniale = chanson.receptions.find(
+        ({ id }) => id === "reception-national-recording-registry-2009",
+    );
+    assert.equal(receptionPatrimoniale?.nature, "patrimoniale");
+    assert.deepEqual(receptionPatrimoniale?.date, {
+        valeur: "2009",
+        precision: "annee",
+    });
+
+    const texteChanson = JSON.stringify(chanson);
+    assert.match(texteChanson, /émission télévisée Disneyland/);
+    assert.match(texteChanson, /National Recording Registry/);
+    assert.match(texteChanson, /Christophe Beck/);
+    assert.match(texteChanson, /Wish/);
+    assert.match(texteChanson, /1995/);
+    assert.match(texteChanson, /pas par le seul qualificatif d’icône/);
+    assert.doesNotMatch(
+        texteChanson,
+        /"(?:audio|audioUrl|lyrics|lyricsUrl|paroles|texteIntegral)"\s*:/,
+        "Train 7F : aucune matière protégée ne doit entrer dans la chanson",
+    );
+
+    const texteChapitre = JSON.stringify(chapitre);
+    assert.match(texteChapitre, /sept apparitions supplémentaires/);
+    assert.match(texteChapitre, /autonomie concrète/);
+    assert.match(texteChapitre, /aucun média, aucune parole/i);
     assert.equal(
         fiche.blocsEditoriaux.length,
-        6,
-        "Train 7E : le chapitre 7 ne doit pas être anticipé",
+        7,
+        "Train 7F : le chapitre 8 ne doit pas être anticipé",
     );
 }
 
@@ -624,8 +760,9 @@ verifierTrain7B(idsSources);
 verifierTrain7C(idsSources);
 verifierTrain7D(idsSources, sources);
 verifierTrain7E(idsSources);
+verifierTrain7F(idsSources);
 verifierBranchement();
 
 console.log(
-    `Phase 7E vérifiée : ${resultat.blocs} blocs compatibles, vies successives bornées sans inventer de ressortie, de support ni de restauration.`,
+    `Phase 7F vérifiée : ${resultat.blocs} blocs compatibles, autonomie de Figaro et de la chanson pilote sourcée sans média ni paroles protégées.`,
 );
