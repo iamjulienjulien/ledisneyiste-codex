@@ -38,12 +38,12 @@
         "reportee": "Condition de reprise nommée pour une phase ultérieure."
     },
     "progress": {
-        "a-faire": 42,
+        "a-faire": 20,
         "en-cours": 0,
-        "migree": 27,
-        "inchangee": 0,
+        "migree": 30,
+        "inchangee": 19,
         "reportee": 0,
-        "verdicts": 27
+        "verdicts": 49
     },
     "entries": [
         {
@@ -780,12 +780,22 @@
                 "exception": null
             },
             "train": "5E",
-            "status": "a-faire",
-            "verdict": null,
-            "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "status": "migree",
+            "verdict": "Raccord R2 migré : « Oswald the Lucky Rabbit » devient la forme originale sourcée d’« Oswald le lapin chanceux », sans nouvelle route.",
+            "files": [
+                "src/data/personnages/oswald-le-lapin-chanceux.json",
+                "src/data/sources/sources.json"
+            ],
+            "sources": ["chronique-disney-oswald-lapin-chanceux"],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:personnages",
+                "pnpm check:relations",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "Le slug historique « oswald-le-lapin-chanceux » reste inchangé."
+            ]
         },
         {
             "family": "personnages",
@@ -798,12 +808,22 @@
                 "exception": null
             },
             "train": "5E",
-            "status": "a-faire",
-            "verdict": null,
-            "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "status": "migree",
+            "verdict": "Raccord R2 migré : « Peg-Leg Pete » devient la forme originale sourcée de « Pat Hibulaire » et « Pete » demeure un alias anglais, sans nouvelle route.",
+            "files": [
+                "src/data/personnages/pat-hibulaire.json",
+                "src/data/sources/sources.json"
+            ],
+            "sources": ["chronique-disney-pat-hibulaire"],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:personnages",
+                "pnpm check:relations",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "L’alias « Pete » ne remplace ni la forme originale historique ni le slug « pat-hibulaire »."
+            ]
         },
         {
             "family": "personnages",
@@ -816,12 +836,19 @@
                 "exception": null
             },
             "train": "5E",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "inchangee",
+            "verdict": "Raccord R2 vérifié : l’identité de « Mickey Mouse » satisfait déjà le contrat documenté sans mutation d’Archive.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": ["d23-mickey-mouse"],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:personnages",
+                "pnpm check:relations",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "La forme française et la forme originale « Mickey Mouse » sont identiques ; aucun doublon n’est créé."
+            ]
         },
         {
             "family": "personnages",
@@ -834,12 +861,19 @@
                 "exception": null
             },
             "train": "5E",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "inchangee",
+            "verdict": "Raccord R2 vérifié : l’identité de « Minnie Mouse » satisfait déjà le contrat documenté sans mutation d’Archive.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": ["d23-minnie-mouse"],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:personnages",
+                "pnpm check:relations",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "La forme française et la forme originale « Minnie Mouse » sont identiques ; aucun doublon n’est créé."
+            ]
         },
         {
             "family": "personnages",
@@ -852,12 +886,19 @@
                 "exception": null
             },
             "train": "5E",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "inchangee",
+            "verdict": "Raccord R2 vérifié : l’identité de « Clarabelle Cow » satisfait déjà le contrat documenté sans mutation d’Archive.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": ["d23-clarabelle-cow"],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:personnages",
+                "pnpm check:relations",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "La forme française et la forme originale « Clarabelle Cow » sont identiques ; aucun doublon n’est créé."
+            ]
         },
         {
             "family": "personnages",
@@ -870,12 +911,19 @@
                 "exception": null
             },
             "train": "5E",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "inchangee",
+            "verdict": "Raccord R2 vérifié : l’identité de « Horace Horsecollar » satisfait déjà le contrat documenté sans mutation d’Archive.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": ["d23-horace-horsecollar"],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:personnages",
+                "pnpm check:relations",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "La forme française et la forme originale « Horace Horsecollar » sont identiques ; aucun doublon n’est créé."
+            ]
         },
         {
             "family": "personnages",
@@ -888,12 +936,19 @@
                 "exception": null
             },
             "train": "5E",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "inchangee",
+            "verdict": "Raccord R2 vérifié : l’identité de « Donald Duck » satisfait déjà le contrat documenté sans mutation d’Archive.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": ["d23-donald-duck"],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:personnages",
+                "pnpm check:relations",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "La forme française et la forme originale « Donald Duck » sont identiques ; aucun doublon n’est créé."
+            ]
         },
         {
             "family": "personnages",
@@ -906,12 +961,22 @@
                 "exception": null
             },
             "train": "5E",
-            "status": "a-faire",
-            "verdict": null,
-            "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "status": "migree",
+            "verdict": "Raccord R2 migré : « Goofy » devient la forme originale sourcée de « Dingo », sans nouvelle route.",
+            "files": [
+                "src/data/personnages/dingo.json",
+                "src/data/sources/sources.json"
+            ],
+            "sources": ["chronique-disney-dingo"],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:personnages",
+                "pnpm check:relations",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "Les appellations historiques intermédiaires restent hors projection faute de besoin éditorial démontré."
+            ]
         },
         {
             "family": "personnages",
@@ -924,12 +989,19 @@
                 "exception": null
             },
             "train": "5E",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "inchangee",
+            "verdict": "Raccord R2 vérifié : l’identité de « Daisy Duck » satisfait déjà le contrat documenté sans mutation d’Archive.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": ["d23-daisy-duck"],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:personnages",
+                "pnpm check:relations",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "La forme française et la forme originale « Daisy Duck » sont identiques ; aucun doublon n’est créé."
+            ]
         },
         {
             "family": "personnages",
@@ -942,12 +1014,19 @@
                 "exception": null
             },
             "train": "5E",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "inchangee",
+            "verdict": "Raccord R2 vérifié : l’identité de « Pluto » satisfait déjà le contrat documenté sans mutation d’Archive.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": ["d23-pluto"],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:personnages",
+                "pnpm check:relations",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "La forme française et la forme originale « Pluto » sont identiques ; aucun doublon n’est créé."
+            ]
         },
         {
             "family": "personnages",
@@ -960,12 +1039,19 @@
                 "exception": "fixture-identite-localisee"
             },
             "train": "5E",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "inchangee",
+            "verdict": "Raccord R2 vérifié : l’identité de « Blanche-Neige » satisfait déjà le contrat documenté sans mutation d’Archive.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": ["d23-snow-white-character", "afi-snow-white"],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:personnages",
+                "pnpm check:relations",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "La forme originale « Snow White » était déjà documentée ; aucune mutation supplémentaire n’est nécessaire."
+            ]
         },
         {
             "family": "personnages",
@@ -978,12 +1064,19 @@
                 "exception": "fixture-alias"
             },
             "train": "5E",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "inchangee",
+            "verdict": "Raccord R2 vérifié : l’identité de « La Reine » satisfait déjà le contrat documenté sans mutation d’Archive.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": ["afi-snow-white", "d23-snow-white-evil-queen"],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:personnages",
+                "pnpm check:relations",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "« The Queen » reste la forme originale et « The Evil Queen » un alias distinct."
+            ]
         },
         {
             "family": "personnages",
@@ -996,12 +1089,19 @@
                 "exception": null
             },
             "train": "5E",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "inchangee",
+            "verdict": "Raccord R2 vérifié : l’identité de « Le Prince » satisfait déjà le contrat documenté sans mutation d’Archive.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": ["afi-snow-white", "d23-snow-white-film"],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:personnages",
+                "pnpm check:relations",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "La forme originale « The Prince » était déjà documentée ; aucune mutation supplémentaire n’est nécessaire."
+            ]
         },
         {
             "family": "personnages",
@@ -1014,12 +1114,19 @@
                 "exception": "alias-humbert-sans-langue"
             },
             "train": "5E",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "inchangee",
+            "verdict": "Raccord R2 vérifié : l’identité de « Le Chasseur » satisfait déjà le contrat documenté sans mutation d’Archive.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": ["afi-snow-white"],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:personnages",
+                "pnpm check:relations",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "L’alias « Humbert » conserve volontairement l’absence de langue héritée de la fixture validée."
+            ]
         },
         {
             "family": "personnages",
@@ -1032,12 +1139,19 @@
                 "exception": null
             },
             "train": "5E",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "inchangee",
+            "verdict": "Raccord R2 vérifié : l’identité de « Le Miroir magique » satisfait déjà le contrat documenté sans mutation d’Archive.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": ["afi-snow-white", "d23-snow-white-film"],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:personnages",
+                "pnpm check:relations",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "La forme originale « Magic Mirror » était déjà documentée ; aucune mutation supplémentaire n’est nécessaire."
+            ]
         },
         {
             "family": "personnages",
@@ -1050,12 +1164,22 @@
                 "exception": null
             },
             "train": "5E",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "inchangee",
+            "verdict": "Raccord R2 vérifié : l’identité de « Prof » satisfait déjà le contrat documenté sans mutation d’Archive.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": [
+                "d23-seven-dwarfs-personality",
+                "disney-fr-seven-dwarfs-names"
+            ],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:personnages",
+                "pnpm check:relations",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "La forme originale « Doc » était déjà documentée ; aucune mutation supplémentaire n’est nécessaire."
+            ]
         },
         {
             "family": "personnages",
@@ -1068,12 +1192,22 @@
                 "exception": null
             },
             "train": "5E",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "inchangee",
+            "verdict": "Raccord R2 vérifié : l’identité de « Grincheux » satisfait déjà le contrat documenté sans mutation d’Archive.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": [
+                "d23-seven-dwarfs-personality",
+                "disney-fr-seven-dwarfs-names"
+            ],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:personnages",
+                "pnpm check:relations",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "La forme originale « Grumpy » était déjà documentée ; aucune mutation supplémentaire n’est nécessaire."
+            ]
         },
         {
             "family": "personnages",
@@ -1086,12 +1220,22 @@
                 "exception": null
             },
             "train": "5E",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "inchangee",
+            "verdict": "Raccord R2 vérifié : l’identité de « Joyeux » satisfait déjà le contrat documenté sans mutation d’Archive.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": [
+                "d23-seven-dwarfs-personality",
+                "disney-fr-seven-dwarfs-names"
+            ],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:personnages",
+                "pnpm check:relations",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "La forme originale « Happy » était déjà documentée ; aucune mutation supplémentaire n’est nécessaire."
+            ]
         },
         {
             "family": "personnages",
@@ -1104,12 +1248,22 @@
                 "exception": null
             },
             "train": "5E",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "inchangee",
+            "verdict": "Raccord R2 vérifié : l’identité de « Dormeur » satisfait déjà le contrat documenté sans mutation d’Archive.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": [
+                "d23-seven-dwarfs-personality",
+                "disney-fr-seven-dwarfs-names"
+            ],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:personnages",
+                "pnpm check:relations",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "La forme originale « Sleepy » était déjà documentée ; aucune mutation supplémentaire n’est nécessaire."
+            ]
         },
         {
             "family": "personnages",
@@ -1122,12 +1276,22 @@
                 "exception": null
             },
             "train": "5E",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "inchangee",
+            "verdict": "Raccord R2 vérifié : l’identité de « Timide » satisfait déjà le contrat documenté sans mutation d’Archive.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": [
+                "d23-seven-dwarfs-personality",
+                "disney-fr-seven-dwarfs-names"
+            ],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:personnages",
+                "pnpm check:relations",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "La forme originale « Bashful » était déjà documentée ; aucune mutation supplémentaire n’est nécessaire."
+            ]
         },
         {
             "family": "personnages",
@@ -1140,12 +1304,22 @@
                 "exception": null
             },
             "train": "5E",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "inchangee",
+            "verdict": "Raccord R2 vérifié : l’identité de « Atchoum » satisfait déjà le contrat documenté sans mutation d’Archive.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": [
+                "d23-seven-dwarfs-personality",
+                "disney-fr-seven-dwarfs-names"
+            ],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:personnages",
+                "pnpm check:relations",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "La forme originale « Sneezy » était déjà documentée ; aucune mutation supplémentaire n’est nécessaire."
+            ]
         },
         {
             "family": "personnages",
@@ -1158,12 +1332,22 @@
                 "exception": null
             },
             "train": "5E",
-            "status": "a-faire",
-            "verdict": null,
+            "status": "inchangee",
+            "verdict": "Raccord R2 vérifié : l’identité de « Simplet » satisfait déjà le contrat documenté sans mutation d’Archive.",
             "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "sources": [
+                "d23-seven-dwarfs-personality",
+                "disney-fr-seven-dwarfs-names"
+            ],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:personnages",
+                "pnpm check:relations",
+                "pnpm check:phase-5"
+            ],
+            "reservations": [
+                "La forme originale « Dopey » était déjà documentée ; aucune mutation supplémentaire n’est nécessaire."
+            ]
         },
         {
             "family": "createurs",

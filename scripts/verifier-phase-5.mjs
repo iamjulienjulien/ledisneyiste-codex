@@ -60,6 +60,7 @@ const documentsPhase5 = [
     "train-5b.md",
     "train-5c.md",
     "train-5d.md",
+    "train-5e.md",
 ];
 
 const identitesOeuvresTrain5D = {
@@ -172,6 +173,144 @@ const identitesOeuvresTrain5D = {
         principale: "Pluto a des Envies",
         originale: "Bone Trouble",
         sourceFr: "chronique-disney-pluto-envies",
+    },
+};
+
+const identitesPersonnagesTrain5E = {
+    "oswald-le-lapin-chanceux": {
+        principale: "Oswald le lapin chanceux",
+        originale: "Oswald the Lucky Rabbit",
+        sourcePreuve: "chronique-disney-oswald-lapin-chanceux",
+        statut: "migree",
+    },
+    "pat-hibulaire": {
+        principale: "Pat Hibulaire",
+        originale: "Peg-Leg Pete",
+        alias: "Pete",
+        sourcePreuve: "chronique-disney-pat-hibulaire",
+        statut: "migree",
+    },
+    "mickey-mouse": {
+        principale: "Mickey Mouse",
+        originale: null,
+        sourcePreuve: "d23-mickey-mouse",
+        statut: "inchangee",
+    },
+    "minnie-mouse": {
+        principale: "Minnie Mouse",
+        originale: null,
+        sourcePreuve: "d23-minnie-mouse",
+        statut: "inchangee",
+    },
+    "clarabelle-cow": {
+        principale: "Clarabelle Cow",
+        originale: null,
+        sourcePreuve: "d23-clarabelle-cow",
+        statut: "inchangee",
+    },
+    "horace-horsecollar": {
+        principale: "Horace Horsecollar",
+        originale: null,
+        sourcePreuve: "d23-horace-horsecollar",
+        statut: "inchangee",
+    },
+    "donald-duck": {
+        principale: "Donald Duck",
+        originale: null,
+        sourcePreuve: "d23-donald-duck",
+        statut: "inchangee",
+    },
+    dingo: {
+        principale: "Dingo",
+        originale: "Goofy",
+        sourcePreuve: "chronique-disney-dingo",
+        statut: "migree",
+    },
+    "daisy-duck": {
+        principale: "Daisy Duck",
+        originale: null,
+        sourcePreuve: "d23-daisy-duck",
+        statut: "inchangee",
+    },
+    pluto: {
+        principale: "Pluto",
+        originale: null,
+        sourcePreuve: "d23-pluto",
+        statut: "inchangee",
+    },
+    "blanche-neige": {
+        principale: "Blanche-Neige",
+        originale: "Snow White",
+        sourcePreuve: "d23-snow-white-character",
+        statut: "inchangee",
+    },
+    "la-reine": {
+        principale: "La Reine",
+        originale: "The Queen",
+        alias: "The Evil Queen",
+        sourcePreuve: "afi-snow-white",
+        statut: "inchangee",
+    },
+    "le-prince": {
+        principale: "Le Prince",
+        originale: "The Prince",
+        sourcePreuve: "afi-snow-white",
+        statut: "inchangee",
+    },
+    "le-chasseur": {
+        principale: "Le Chasseur",
+        originale: "The Huntsman",
+        alias: "Humbert",
+        sourcePreuve: "afi-snow-white",
+        statut: "inchangee",
+    },
+    "le-miroir-magique": {
+        principale: "Le Miroir magique",
+        originale: "Magic Mirror",
+        sourcePreuve: "afi-snow-white",
+        statut: "inchangee",
+    },
+    prof: {
+        principale: "Prof",
+        originale: "Doc",
+        sourcePreuve: "d23-seven-dwarfs-personality",
+        statut: "inchangee",
+    },
+    grincheux: {
+        principale: "Grincheux",
+        originale: "Grumpy",
+        sourcePreuve: "d23-seven-dwarfs-personality",
+        statut: "inchangee",
+    },
+    joyeux: {
+        principale: "Joyeux",
+        originale: "Happy",
+        sourcePreuve: "d23-seven-dwarfs-personality",
+        statut: "inchangee",
+    },
+    dormeur: {
+        principale: "Dormeur",
+        originale: "Sleepy",
+        sourcePreuve: "d23-seven-dwarfs-personality",
+        statut: "inchangee",
+    },
+    timide: {
+        principale: "Timide",
+        originale: "Bashful",
+        sourcePreuve: "d23-seven-dwarfs-personality",
+        statut: "inchangee",
+    },
+    atchoum: {
+        principale: "Atchoum",
+        originale: "Sneezy",
+        sourcePreuve: "d23-seven-dwarfs-personality",
+        statut: "inchangee",
+    },
+    simplet: {
+        principale: "Simplet",
+        originale: "Dopey",
+        sourcePreuve: "d23-seven-dwarfs-personality",
+        statut: "inchangee",
     },
 };
 
@@ -597,6 +736,116 @@ function verifierTrain5D(migration) {
     );
 }
 
+function verifierTrain5E(migration) {
+    const catalogue = lireJson("src/data/catalogues/personnages.json");
+    const catalogueParSlug = new Map(
+        catalogue.map((entree) => [entree.slug, entree]),
+    );
+    const sources = new Set(
+        lireJson("src/data/sources/sources.json").map((source) => source.id),
+    );
+    const entreesTrain5E = migration.entries.filter(
+        (entree) => entree.train === "5E",
+    );
+
+    assert.equal(entreesTrain5E.length, 22);
+
+    for (const [slug, identite] of Object.entries(
+        identitesPersonnagesTrain5E,
+    )) {
+        const cle = `personnages/${slug}`;
+        const entreeJournal = entreesTrain5E.find(
+            (entree) => cleEntree(entree) === cle,
+        );
+        const fiche = lireJson(`src/data/personnages/${slug}.json`);
+        const entreeCatalogue = catalogueParSlug.get(slug);
+        const nomsAlternatifs = fiche.nomsAlternatifs ?? [];
+
+        assert.equal(
+            entreeJournal?.status,
+            identite.statut,
+            `${cle} : verdict R2 inattendu`,
+        );
+        assert.match(
+            entreeJournal.verdict,
+            /raccord R2/i,
+            `${cle} : verdict R2 incomplet`,
+        );
+        assert.equal(
+            entreeCatalogue?.nom,
+            identite.principale,
+            `${cle} : identité principale inattendue`,
+        );
+        assert.ok(
+            sources.has(identite.sourcePreuve) &&
+                entreeJournal.sources.includes(identite.sourcePreuve),
+            `${cle} : preuve du verdict absente`,
+        );
+        assert.ok(
+            fiche.sources?.includes(identite.sourcePreuve) ||
+                nomsAlternatifs.some((nom) =>
+                    nom.sources.includes(identite.sourcePreuve),
+                ),
+            `${cle} : preuve non rattachée à l’Archive`,
+        );
+
+        const formesOriginales = nomsAlternatifs.filter(
+            (nom) => nom.nature === "original",
+        );
+
+        if (identite.originale === null) {
+            assert.equal(
+                formesOriginales.length,
+                0,
+                `${cle} : forme identique dupliquée comme nom original`,
+            );
+        } else {
+            assert.equal(
+                formesOriginales.length,
+                1,
+                `${cle} : forme originale absente ou dupliquée`,
+            );
+            assert.equal(formesOriginales[0].nom, identite.originale);
+            assert.equal(formesOriginales[0].langue, "en");
+            assert.ok(formesOriginales[0].sources.length > 0);
+        }
+
+        if (identite.alias) {
+            const alias = nomsAlternatifs.find(
+                (nom) => nom.nature === "alias" && nom.nom === identite.alias,
+            );
+            assert.ok(alias, `${cle} : alias protégé absent`);
+        }
+
+        if (identite.statut === "migree") {
+            assert.ok(
+                entreeJournal.files.includes(
+                    `src/data/personnages/${slug}.json`,
+                ) &&
+                    entreeJournal.files.includes(
+                        "src/data/sources/sources.json",
+                    ),
+                `${cle} : fichiers de migration incomplets`,
+            );
+        } else {
+            assert.deepEqual(
+                entreeJournal.files,
+                [],
+                `${cle} : Archive déclarée inchangée mais fichier modifié`,
+            );
+        }
+    }
+
+    const humbert = lireJson(
+        "src/data/personnages/le-chasseur.json",
+    ).nomsAlternatifs.find((nom) => nom.nom === "Humbert");
+    assert.equal(
+        humbert.langue,
+        undefined,
+        "personnages/le-chasseur : une langue a été inventée pour Humbert",
+    );
+}
+
 function verifierTransmission() {
     const dossier = chemin("docs/studio/production/acte-vi/phase-5");
 
@@ -615,6 +864,7 @@ verifierRoutesProtegees(manifeste);
 const progression = verifierJournal(migration, manifeste);
 verifierEchantillonR3(migration);
 verifierTrain5D(migration);
+verifierTrain5E(migration);
 verifierBranchement();
 verifierTransmission();
 

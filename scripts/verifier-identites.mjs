@@ -599,6 +599,14 @@ async function verifierJointuresArchives(projeterIdentiteCodex, erreurs) {
     }
 
     const attentes = [
+        [
+            "personnages/oswald-le-lapin-chanceux",
+            "Oswald the Lucky Rabbit",
+            "original",
+        ],
+        ["personnages/pat-hibulaire", "Peg-Leg Pete", "original"],
+        ["personnages/pat-hibulaire", "Pete", "alias"],
+        ["personnages/dingo", "Goofy", "original"],
         ["personnages/atchoum", "Sneezy", "original"],
         ["personnages/blanche-neige", "Snow White", "original"],
         ["personnages/la-reine", "The Evil Queen", "alias"],
@@ -695,6 +703,9 @@ function verifierRechercheIdentitaire(projections, moduleRecherche, erreurs) {
     }
 
     const scenarios = [
+        ["Oswald the Lucky Rabbit", "personnages", "oswald-le-lapin-chanceux"],
+        ["Peg-Leg Pete", "personnages", "pat-hibulaire"],
+        ["Goofy", "personnages", "dingo"],
         ["Sneezy", "personnages", "atchoum"],
         ["Snow White", "personnages", "blanche-neige"],
         ["The Evil Queen", "personnages", "la-reine"],
