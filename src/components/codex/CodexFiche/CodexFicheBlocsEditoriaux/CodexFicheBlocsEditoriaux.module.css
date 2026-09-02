@@ -6,3 +6,11 @@
 .body > * + * {
     margin-top: 1.25rem;
 }
+
+.paragraphe {
+    scroll-margin-top: 2rem;
+}
+
+.paragraphe > * + * {
+    margin-top: 1rem;
+}

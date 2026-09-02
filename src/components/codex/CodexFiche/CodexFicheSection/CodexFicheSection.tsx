@@ -5,6 +5,7 @@ import styles from "./CodexFicheSection.module.css";
 import type { CodexFicheSectionProps } from "./CodexFicheSection.types";
 
 export function CodexFicheSection({
+    id,
     eyebrow,
     titre,
     description,
@@ -15,6 +16,7 @@ export function CodexFicheSection({
 
     return (
         <PixieSection
+            id={id}
             width="full"
             gutter="none"
             spacingStart="lg"

@@ -16,6 +16,8 @@ import {
     createSourceReference,
     sourcedProvenance,
 } from "@/lib/plans/utils";
+import { getBlocEditorialSourceIds } from "@/lib/fiche-editoriale";
+import type { ParagrapheEditorialCodex } from "@/types/fiche";
 
 type EvidenceInput = Readonly<{
     id: string;
@@ -99,6 +101,7 @@ function addBaseEvidence(
         blocsEditoriaux?: readonly Readonly<{
             titre: string;
             sources?: readonly string[];
+            paragraphes: readonly ParagrapheEditorialCodex[];
         }>[];
     }>,
 ) {
@@ -123,7 +126,7 @@ function addBaseEvidence(
                     owner,
                     scope: "editorial-block",
                     label: block.titre,
-                    sourceIds: block.sources,
+                    sourceIds: getBlocEditorialSourceIds(block),
                 },
                 archives,
             ),
