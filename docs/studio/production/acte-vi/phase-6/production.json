@@ -52,6 +52,18 @@
             "fr-bnf-big-bad-wolf-song"
         ],
         "remainingPrivateAtOpening": 30,
+        "promoted": [
+            "fr-cinematheque-pinocchio",
+            "fr-cnc-visa-pinocchio",
+            "it-collodi-biography",
+            "it-collodi-critical-text",
+            "it-collodi-translations",
+            "it-treccani-1940-pinocchio",
+            "it-treccani-pinocchio",
+            "us-afi-catalog-pinocchio",
+            "us-d23-pinocchio-film"
+        ],
+        "remainingPrivateCurrent": 21,
         "promotionPolicy": "usage-only"
     },
     "symbolInventory": {
@@ -103,11 +115,11 @@
         "reportee": "Unité conservée avec une condition de reprise explicite."
     },
     "progress": {
-        "a-faire": 26,
+        "a-faire": 24,
         "en-cours": 0,
-        "publiee": 0,
+        "publiee": 2,
         "reportee": 0,
-        "verdicts": 0
+        "verdicts": 2
     },
     "entries": [
         {
@@ -117,18 +129,35 @@
             "profile": "fiche-complete",
             "priority": "P0",
             "train": "6B",
-            "status": "a-faire",
+            "status": "publiee",
             "sources": {
                 "required": [
                     "us-afi-catalog-pinocchio",
                     "us-d23-pinocchio-film",
                     "fr-cinematheque-pinocchio",
-                    "it-treccani-1940-pinocchio"
+                    "fr-cnc-visa-pinocchio",
+                    "it-treccani-1940-pinocchio",
+                    "it-collodi-critical-text"
                 ],
-                "promoted": []
+                "promoted": [
+                    "us-afi-catalog-pinocchio",
+                    "us-d23-pinocchio-film",
+                    "fr-cinematheque-pinocchio",
+                    "fr-cnc-visa-pinocchio",
+                    "it-treccani-1940-pinocchio",
+                    "it-collodi-critical-text"
+                ]
             },
-            "files": [],
-            "relations": [],
+            "files": [
+                "src/data/catalogues/oeuvres.json",
+                "src/data/oeuvres/index.ts",
+                "src/data/oeuvres/pinocchio.json"
+            ],
+            "relations": [
+                "adaptation:oeuvre-source-collodi-pinocchio",
+                "contribution:carlo-collodi",
+                "epoque:temps-des-chefs-d-oeuvre"
+            ],
             "checks": [
                 "pnpm check:oeuvres",
                 "pnpm check:relations",
@@ -434,17 +463,31 @@
             "profile": "fiche-complete",
             "priority": "P0",
             "train": "6B",
-            "status": "a-faire",
+            "status": "publiee",
             "sources": {
                 "required": [
                     "it-collodi-biography",
                     "it-collodi-critical-text",
-                    "it-collodi-translations"
+                    "it-collodi-translations",
+                    "it-treccani-pinocchio"
                 ],
-                "promoted": []
+                "promoted": [
+                    "it-collodi-biography",
+                    "it-collodi-critical-text",
+                    "it-collodi-translations",
+                    "it-treccani-pinocchio"
+                ]
             },
-            "files": [],
-            "relations": [],
+            "files": [
+                "src/data/catalogues/contributeurs.json",
+                "src/data/contributeurs/carlo-collodi.json",
+                "src/data/contributeurs/index.ts",
+                "src/registry/metadata/metadata-contributeurs.ts"
+            ],
+            "relations": [
+                "auteur:oeuvre-source-collodi-pinocchio",
+                "contribution:pinocchio"
+            ],
             "checks": [
                 "pnpm check:oeuvres-sources",
                 "pnpm check:relations",
@@ -750,16 +793,33 @@
             "label": "Le avventure di Pinocchio",
             "profile": "fiche-complete-interne",
             "train": "6B",
-            "status": "a-faire",
+            "status": "publiee",
             "route": null,
             "sources": {
                 "required": [
                     "it-collodi-biography",
                     "it-collodi-critical-text",
-                    "it-collodi-translations"
+                    "it-collodi-translations",
+                    "it-treccani-pinocchio"
                 ],
-                "promoted": []
+                "promoted": [
+                    "it-collodi-biography",
+                    "it-collodi-critical-text",
+                    "it-collodi-translations",
+                    "it-treccani-pinocchio"
+                ]
             },
+            "files": [
+                "src/lib/oeuvres-sources/index.ts",
+                "src/registry/oeuvres-sources/oeuvres-sources.ts",
+                "src/types/oeuvre-source.ts"
+            ],
+            "relations": ["auteur:carlo-collodi", "adaptation:pinocchio"],
+            "checks": [
+                "pnpm check:oeuvres-sources",
+                "pnpm check:relations",
+                "pnpm check:phase-6"
+            ],
             "reservations": [
                 "Le slug résout l’unité interne mais ne doit jamais générer une route publique."
             ]
@@ -942,7 +1002,15 @@
             "family": "epoques",
             "slug": "temps-des-chefs-d-oeuvre",
             "train": "6B",
-            "sourceStatus": "reportee"
+            "sourceStatus": "reportee",
+            "status": "raccordee",
+            "verdict": "Pinocchio rejoint automatiquement l’Époque par sa date de sortie de 1940, comprise dans la période 1937–1942.",
+            "files": [
+                "src/data/epoques/relations.ts",
+                "src/data/oeuvres/pinocchio.json"
+            ],
+            "sources": ["us-afi-catalog-pinocchio", "us-d23-pinocchio-film"],
+            "checks": ["pnpm check:relations", "pnpm check:phase-6"]
         }
     ]
 }

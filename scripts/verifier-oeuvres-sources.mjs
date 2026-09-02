@@ -185,12 +185,24 @@ function verifierFiches(fiches, sourcesConnues) {
             `${contexte} : auteur absent`,
         );
         for (const auteur of fiche.auteurs) {
-            assert.ok(chaineNonVide(auteur.nom), `${contexte} : nom absent`);
+            const nom = auteur.personne?.nom ?? auteur.nom;
+            assert.ok(chaineNonVide(nom), `${contexte} : nom absent`);
+            if (auteur.personne) {
+                assert.equal(
+                    auteur.personne.type,
+                    "contributeur",
+                    `${contexte} : référence d’auteur invalide`,
+                );
+                assert.ok(
+                    chaineNonVide(auteur.personne.slug),
+                    `${contexte} : slug d’auteur absent`,
+                );
+            }
             assert.ok(roles.has(auteur.role), `${contexte} : rôle inconnu`);
             verifierSources(
                 auteur.sources,
                 sourcesConnues,
-                `${contexte} · ${auteur.nom}`,
+                `${contexte} · ${nom}`,
             );
         }
     }
@@ -212,6 +224,7 @@ const {
     derivePlanLinks,
     derivePlanNodes,
     deriveTravellingDocumentaire,
+    getNomAuteurOeuvreSource,
     resoudreOeuvreSource,
 } = chargerModulesTypeScript();
 const registre = creerRegistreOeuvresSources(fixture.fiches);
@@ -360,7 +373,39 @@ assert.equal(
     "oeuvre-source:oeuvre-source-grimm-schneewittchen",
     "L’identité interne de Schneewittchen n’est pas stable",
 );
-assert.equal(codexPlanArchives.oeuvresSources.fiches.length, 1);
+const sourcesCentrales = new Set(
+    JSON.parse(
+        readFileSync(
+            path.join(racine, "src/data/sources/sources.json"),
+            "utf8",
+        ),
+    ).map((source) => source.id),
+);
+verifierFiches(codexPlanArchives.oeuvresSources.fiches, sourcesCentrales);
+assert.equal(codexPlanArchives.oeuvresSources.fiches.length, 2);
+const collodiProduction = codexPlanArchives.oeuvresSources.fiches.find(
+    (fiche) => fiche.slug === "le-avventure-di-pinocchio",
+);
+assert.ok(
+    collodiProduction,
+    "Le livre de Collodi est absent du registre interne",
+);
+assert.equal(
+    getNomAuteurOeuvreSource(collodiProduction.auteurs[0]),
+    "Carlo Collodi",
+);
+assert.equal(collodiProduction.auteurs[0].personne?.slug, "carlo-collodi");
+assert.equal(
+    resoudreOeuvreSource(
+        {
+            id: collodiProduction.id,
+            slug: collodiProduction.slug,
+        },
+        codexPlanArchives.oeuvresSources,
+    ).resolved,
+    true,
+    "Le livre de Collodi n’est pas résoluble dans le registre de production",
+);
 
 const ensembleBlancheNeige = derivePlanDEnsemble(
     {
@@ -400,5 +445,5 @@ assert.equal(
 );
 
 console.log(
-    `Œuvres sources vérifiées : ${registre.fiches.length} fiches témoins, ${codexPlanArchives.oeuvresSources.fiches.length} fiche interne, 2 relations résolues et aucune route publique.`,
+    `Œuvres sources vérifiées : ${registre.fiches.length} fiches témoins, ${codexPlanArchives.oeuvresSources.fiches.length} fiches internes, l’auteur Collodi résolu et aucune route publique.`,
 );

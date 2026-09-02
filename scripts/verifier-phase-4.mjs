@@ -59,6 +59,16 @@ function verifierCorpusPublic() {
     const routes = new Set();
     let nombreEntrees = 0;
     let nombreFiches = 0;
+    const productionPhase6 = lireJson(
+        "docs/studio/production/acte-vi/phase-6/production.json",
+    );
+    const routesPhase6 = productionPhase6.entries
+        .filter((entree) => entree.status === "publiee")
+        .map((entree) => {
+            const famille =
+                entree.family === "createurs" ? "contributeurs" : entree.family;
+            return `/${famille}/${entree.slug}`;
+        });
 
     for (const [famille, type] of famillesPubliques) {
         const catalogue = lireJson(`src/data/catalogues/${famille}.json`);
@@ -96,13 +106,24 @@ function verifierCorpusPublic() {
         nombreFiches += fichiersFiches.length;
     }
 
-    assert.equal(nombreEntrees, 83, "Le Codex ne publie plus 83 entrées");
-    assert.equal(nombreFiches, 83, "Le Codex ne possède plus 83 fiches");
+    const totalAttendu = 83 + routesPhase6.length;
+    assert.equal(
+        nombreEntrees,
+        totalAttendu,
+        "Le corpus doit contenir les 83 Archives de Phase 4 et les seules publications autorisées en Phase 6",
+    );
+    assert.equal(nombreFiches, totalAttendu, "Une fiche publique est absente");
     assert.equal(
         routes.size,
-        83,
-        "Le Codex ne possède plus 83 routes canoniques",
+        totalAttendu,
+        "Le nombre de routes ne correspond pas au corpus autorisé",
     );
+    for (const route of routesPhase6) {
+        assert.ok(
+            routes.has(route),
+            `Publication de Phase 6 absente : ${route}`,
+        );
+    }
 
     return { nombreEntrees, nombreFiches, nombreRoutes: routes.size };
 }

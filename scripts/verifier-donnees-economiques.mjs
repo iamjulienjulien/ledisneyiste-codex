@@ -405,7 +405,14 @@ const nombreFiches = [
             ).length,
     )
     .reduce((total, nombre) => total + nombre, 0);
-assert.equal(nombreFiches, 83, "Le corpus public ne compte plus 83 fiches");
+const publicationsPhase6 = lireJson(
+    "docs/studio/production/acte-vi/phase-6/production.json",
+).entries.filter((entree) => entree.status === "publiee");
+assert.equal(
+    nombreFiches,
+    83 + publicationsPhase6.length,
+    "Le corpus public doit conserver le socle de 83 fiches et les seules publications autorisées en Phase 6",
+);
 assert.equal(
     existsSync(
         path.join(racine, "src/data/catalogues/donnees-economiques.json"),

@@ -19,27 +19,27 @@ const famillesPubliques = {
     personnages: {
         catalogue: "personnages",
         dossier: "personnages",
-        attendu: 22,
+        baseline: "characters",
     },
     createurs: {
         catalogue: "contributeurs",
         dossier: "contributeurs",
-        attendu: 32,
+        baseline: "creators",
     },
     oeuvres: {
         catalogue: "oeuvres",
         dossier: "oeuvres",
-        attendu: 23,
+        baseline: "works",
     },
     epoques: {
         catalogue: "epoques",
         dossier: "epoques",
-        attendu: 2,
+        baseline: "eras",
     },
     chansons: {
         catalogue: "chansons",
         dossier: "chansons",
-        attendu: 4,
+        baseline: "songs",
     },
 };
 
@@ -171,6 +171,7 @@ function verifierDocuments() {
         "etat-reference.md",
         "production.json",
         "train-6a.md",
+        "train-6b.md",
     ]) {
         assert.ok(
             existsSync(
@@ -183,6 +184,9 @@ function verifierDocuments() {
 
 function verifierPhotographie(production) {
     let nombreEntrees = 0;
+    const publications = production.entries.filter(
+        (entree) => entree.status === "publiee",
+    );
 
     for (const [famille, configuration] of Object.entries(famillesPubliques)) {
         const catalogue = lireJson(
@@ -190,10 +194,15 @@ function verifierPhotographie(production) {
         );
         const slugs = new Set(catalogue.map((entree) => entree.slug));
 
+        const ajouts = publications.filter(
+            (entree) => entree.family === famille,
+        );
+        const totalAttendu =
+            production.baseline[configuration.baseline] + ajouts.length;
         assert.equal(
             catalogue.length,
-            configuration.attendu,
-            `${famille} : la référence du Train 6A a dérivé`,
+            totalAttendu,
+            `${famille} : le socle et les publications autorisées ne correspondent plus au catalogue`,
         );
         assert.equal(
             slugs.size,
@@ -215,22 +224,36 @@ function verifierPhotographie(production) {
         }
 
         for (const slug of ciblesPubliques[famille] ?? []) {
-            assert.ok(
-                !slugs.has(slug),
-                `${famille}/${slug} : Archive créée avant son Train`,
+            const entree = production.entries.find(
+                (candidate) =>
+                    candidate.family === famille && candidate.slug === slug,
             );
-            assert.ok(
-                !existsSync(
+            const doitEtrePubliee = entree?.status === "publiee";
+            assert.equal(
+                slugs.has(slug),
+                doitEtrePubliee,
+                doitEtrePubliee
+                    ? `${famille}/${slug} : Archive publiée absente du catalogue`
+                    : `${famille}/${slug} : Archive créée avant son Train`,
+            );
+            assert.equal(
+                existsSync(
                     chemin("src/data", configuration.dossier, `${slug}.json`),
                 ),
-                `${famille}/${slug} : fichier produit prématuré`,
+                doitEtrePubliee,
+                doitEtrePubliee
+                    ? `${famille}/${slug} : fiche publiée absente`
+                    : `${famille}/${slug} : fichier produit prématuré`,
             );
         }
 
         nombreEntrees += catalogue.length;
     }
 
-    assert.equal(nombreEntrees, 83);
+    assert.equal(
+        nombreEntrees,
+        production.baseline.publicEntries + publications.length,
+    );
     assert.deepEqual(production.baseline, {
         publicFamilies: 5,
         publicEntries: 83,
@@ -281,17 +304,26 @@ function verifierSources(production) {
 
     assert.equal(sourcesPhase2.length, 32);
     assert.equal(idsPhase2.size, 32);
-    assert.equal(sourcesCentrales.length, 208);
-    assert.deepEqual(recouvrement, [
-        "fr-bnf-big-bad-wolf-song",
-        "fr-bnf-snow-white-songs",
-    ]);
-    assert.deepEqual(production.sourceInventory, {
-        candidateCount: 32,
-        alreadyCentral: ["fr-bnf-snow-white-songs", "fr-bnf-big-bad-wolf-song"],
-        remainingPrivateAtOpening: 30,
-        promotionPolicy: "usage-only",
-    });
+    const promotions = production.sourceInventory.promoted;
+    const recouvrementAttendu = [
+        ...production.sourceInventory.alreadyCentral,
+        ...promotions,
+    ].sort();
+    assert.equal(
+        sourcesCentrales.length,
+        production.baseline.centralSources + promotions.length,
+    );
+    assert.deepEqual(recouvrement, recouvrementAttendu);
+    assert.equal(production.sourceInventory.candidateCount, 32);
+    assert.equal(production.sourceInventory.remainingPrivateAtOpening, 30);
+    assert.equal(
+        production.sourceInventory.remainingPrivateCurrent,
+        production.sourceInventory.remainingPrivateAtOpening -
+            promotions.length,
+    );
+    assert.equal(production.sourceInventory.promotionPolicy, "usage-only");
+    assert.equal(new Set(promotions).size, promotions.length);
+    assert.ok(promotions.every((source) => idsPhase2.has(source)));
 
     for (const sourceManifeste of production.sourceManifests) {
         assert.equal(
@@ -406,7 +438,23 @@ function verifierManifeste(production, sources) {
                 [],
                 `${id} : source promue avant son Train`,
             );
-        } else if (!new Set(["en-cours"]).has(entree.status)) {
+        } else if (entree.status === "publiee") {
+            assert.deepEqual(
+                [...entree.sources.promoted].sort(),
+                [...entree.sources.required].sort(),
+                `${id} : une source requise n’est pas promue`,
+            );
+            assert.ok(entree.files.length > 0, `${id} : fichier livré absent`);
+            assert.ok(
+                entree.files.every((fichier) => existsSync(chemin(fichier))),
+                `${id} : un fichier déclaré n’existe pas`,
+            );
+            assert.ok(
+                entree.relations.length > 0,
+                `${id} : relation livrée absente`,
+            );
+            progression.verdicts += 1;
+        } else if (entree.status !== "en-cours") {
             progression.verdicts += 1;
         }
 
@@ -443,12 +491,46 @@ function verifierUnitesInternes(production, sources) {
             ),
             `${id} : source interne inconnue`,
         );
-        assert.deepEqual(entree.sources.promoted, []);
+        assert.ok(
+            entree.sources.promoted.every(
+                (source) =>
+                    entree.sources.required.includes(source) &&
+                    sources.idsCentraux.has(source),
+            ),
+            `${id} : source interne déclarée promue sans preuve centrale`,
+        );
         assert.ok(
             Array.isArray(entree.reservations) &&
                 entree.reservations.every(chaineNonVide),
             `${id} : frontière interne absente`,
         );
+
+        if (entree.status === "a-faire") {
+            assert.deepEqual(entree.sources.promoted, []);
+        }
+
+        if (entree.status === "publiee") {
+            assert.deepEqual(
+                [...entree.sources.promoted].sort(),
+                [...entree.sources.required].sort(),
+                `${id} : une source interne requise n’est pas promue`,
+            );
+            assert.ok(
+                entree.files?.length > 0 &&
+                    entree.files.every((fichier) =>
+                        existsSync(chemin(fichier)),
+                    ),
+                `${id} : fichiers internes livrés invalides`,
+            );
+            assert.ok(
+                entree.relations?.length > 0,
+                `${id} : relations absentes`,
+            );
+            assert.ok(
+                entree.checks?.includes("pnpm check:phase-6"),
+                `${id} : contrôle Phase 6 absent`,
+            );
+        }
     }
 
     const recompenses = lireJson("src/data/recompenses/recompenses.json");
@@ -490,7 +572,118 @@ function verifierReprises(production) {
             reportsParCle.has(id),
             `${id} : report de Phase 5 introuvable`,
         );
+
+        if (entree.status === "raccordee") {
+            assert.ok(chaineNonVide(entree.verdict), `${id} : verdict absent`);
+            assert.ok(
+                entree.files?.length > 0 &&
+                    entree.files.every((fichier) =>
+                        existsSync(chemin(fichier)),
+                    ),
+                `${id} : raccord sans fichier`,
+            );
+            assert.ok(
+                entree.sources?.every((source) =>
+                    lireJson("src/data/sources/sources.json").some(
+                        (candidate) => candidate.id === source,
+                    ),
+                ),
+                `${id} : source du raccord absente`,
+            );
+            assert.ok(
+                entree.checks?.includes("pnpm check:phase-6"),
+                `${id} : contrôle Phase 6 absent`,
+            );
+        }
     }
+}
+
+function verifierTrain6B(production) {
+    const pinocchio = lireJson("src/data/oeuvres/pinocchio.json");
+    const collodi = lireJson("src/data/contributeurs/carlo-collodi.json");
+    const epoque = lireJson("src/data/epoques/temps-des-chefs-d-oeuvre.json");
+    const registreOeuvresSources = lireTexte(
+        "src/registry/oeuvres-sources/oeuvres-sources.ts",
+    );
+
+    assert.equal(pinocchio.slug, "pinocchio");
+    assert.equal(pinocchio.sortie.date.valeur, "1940-02-07");
+    assert.equal(pinocchio.sortie.date.precision, "jour");
+    assert.equal(pinocchio.format, "long métrage d’animation");
+    assert.equal(pinocchio.durees[0].valeur, 87);
+    assert.equal(pinocchio.production.debut.valeur, "1937");
+    assert.equal(pinocchio.production.fin.valeur, "1940");
+    assert.ok(
+        pinocchio.titresAlternatifs.some(
+            (identite) =>
+                identite.titre === "La Merveilleuse Aventure de Pinocchio" &&
+                identite.nature === "sortie-territoriale" &&
+                identite.territoire === "FR",
+        ),
+        "Pinocchio : titre de sortie français absent",
+    );
+
+    const adaptation = pinocchio.relationsOeuvres.find(
+        (relation) => relation.nature === "adaptation",
+    );
+    assert.deepEqual(adaptation?.oeuvre, {
+        nom: "Le avventure di Pinocchio",
+        type: "oeuvre-source",
+        id: "oeuvre-source-collodi-pinocchio",
+        slug: "le-avventure-di-pinocchio",
+    });
+    assert.ok(
+        pinocchio.contributions.some(
+            (contribution) =>
+                contribution.contributeur.slug === "carlo-collodi" &&
+                contribution.domaine === "histoire-adaptation",
+        ),
+        "Pinocchio : contribution de Carlo Collodi absente",
+    );
+    assert.ok(
+        pinocchio.personnages.every(
+            (personnage) => personnage.type === undefined,
+        ),
+        "Train 6B : la distribution ne doit pas publier les Personnages du Train 6C",
+    );
+
+    assert.equal(collodi.slug, "carlo-collodi");
+    assert.ok(
+        collodi.nomsAlternatifs.some(
+            (identite) => identite.nom === "Carlo Lorenzini",
+        ),
+        "Carlo Collodi : identité civile absente",
+    );
+    assert.ok(collodi.roles.includes("écrivain"));
+    assert.ok(collodi.sources.includes("it-collodi-biography"));
+    assert.match(
+        registreOeuvresSources,
+        /id:\s*"oeuvre-source-collodi-pinocchio"/,
+    );
+    assert.match(registreOeuvresSources, /slug:\s*"carlo-collodi"/);
+
+    const anneePinocchio = Number(pinocchio.sortie.date.valeur.slice(0, 4));
+    const debutEpoque = Number(epoque.periode.debut.valeur.slice(0, 4));
+    const finEpoque = Number(epoque.periode.fin.valeur.slice(0, 4));
+    assert.ok(
+        anneePinocchio >= debutEpoque && anneePinocchio < finEpoque,
+        "Pinocchio ne rejoint plus le Temps des chefs-d’œuvre",
+    );
+
+    const uniteSource = production.internalUnits.find(
+        (entree) => entree.slug === "le-avventure-di-pinocchio",
+    );
+    assert.equal(uniteSource?.status, "publiee");
+    assert.equal(
+        existsSync(chemin("src/data/catalogues/oeuvres-sources.json")),
+        false,
+        "L’Œuvre source interne possède un catalogue public",
+    );
+    assert.equal(
+        existsSync(chemin("src/app/oeuvres-sources")),
+        false,
+        "L’Œuvre source interne possède une route publique",
+    );
 }
 
 function verifierSymboles(production) {
@@ -538,9 +731,10 @@ const sources = verifierSources(production);
 verifierManifeste(production, sources);
 verifierUnitesInternes(production, sources);
 verifierReprises(production);
+verifierTrain6B(production);
 verifierSymboles(production);
 verifierBranchement();
 
 console.log(
-    `Phase 6 ouverte : ${production.baseline.publicEntries} Archives protégées, ${production.entries.length} créations fermées, ${production.relays.length} reprises et ${production.sourceInventory.candidateCount} sources sous contrôle.`,
+    `Phase 6 · Train 6B vérifié : ${production.baseline.publicEntries + production.progress.publiee} Archives publiques, ${production.progress.publiee} créations publiées, une Œuvre source interne et ${production.sourceInventory.promoted.length} sources promues.`,
 );

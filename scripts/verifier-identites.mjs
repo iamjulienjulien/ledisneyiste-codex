@@ -975,8 +975,22 @@ async function verifierRoutesEtAliases(
     }
 
     const routesFigees = fixtureRoutes.routes ?? [];
+    const productionPhase6 = await lireJson(
+        "docs/studio/production/acte-vi/phase-6/production.json",
+    );
+    const publicationsPhase6 = productionPhase6.entries.filter(
+        (entree) => entree.status === "publiee",
+    );
+    const routesPhase6 = publicationsPhase6.map((entree) => {
+        const configuration = configurations.find(
+            (candidate) => candidate.famille === entree.family,
+        );
+        return `/${configuration.segment}/${entree.slug}`;
+    });
+    const routesAttendues = [...routesFigees, ...routesPhase6];
     const routesUniques = new Set(routesActuelles);
     const routesFigeesUniques = new Set(routesFigees);
+    const routesAttenduesUniques = new Set(routesAttendues);
 
     if (routesUniques.size !== routesActuelles.length) {
         erreurs.push("Routes canoniques : le catalogue produit un doublon");
@@ -988,18 +1002,21 @@ async function verifierRoutesEtAliases(
     }
     if (
         JSON.stringify([...routesUniques].sort()) !==
-        JSON.stringify([...routesFigeesUniques].sort())
+        JSON.stringify([...routesAttenduesUniques].sort())
     ) {
         erreurs.push(
-            "Routes canoniques : les catalogues ne correspondent plus à l’inventaire figé",
+            "Routes canoniques : les catalogues ne correspondent pas au socle figé augmenté des publications autorisées en Phase 6",
         );
     }
 
     const totauxAttendus = fixtureRoutes.expectedTotals ?? {};
     for (const configuration of configurations) {
+        const ajoutsPhase6 = publicationsPhase6.filter(
+            (entree) => entree.family === configuration.famille,
+        ).length;
         if (
             totauxActuels[configuration.famille] !==
-            totauxAttendus[configuration.famille]
+            totauxAttendus[configuration.famille] + ajoutsPhase6
         ) {
             erreurs.push(
                 `Routes canoniques : total ${configuration.famille} inattendu`,
@@ -1007,11 +1024,11 @@ async function verifierRoutesEtAliases(
         }
     }
     if (
-        routesActuelles.length !== totauxAttendus.total ||
-        routesActuelles.length !== 83
+        routesActuelles.length !==
+        totauxAttendus.total + publicationsPhase6.length
     ) {
         erreurs.push(
-            `Routes canoniques : 83 routes attendues, ${routesActuelles.length} obtenues`,
+            `Routes canoniques : ${totauxAttendus.total + publicationsPhase6.length} routes autorisées, ${routesActuelles.length} obtenues`,
         );
     }
 

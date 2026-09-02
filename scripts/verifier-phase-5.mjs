@@ -399,6 +399,15 @@ function verifierInventairePublic(migration) {
     const routes = new Set();
     let nombreFamilles = 0;
     let nombreEntrees = 0;
+    const productionPhase6 = lireJson(
+        "docs/studio/production/acte-vi/phase-6/production.json",
+    );
+    const routesPhase6 = productionPhase6.entries
+        .filter((entree) => entree.status === "publiee")
+        .map((entree) => {
+            const contrat = famillesPubliques[entree.family];
+            return `/${contrat.route}/${entree.slug}`;
+        });
 
     for (const [famille, contrat] of Object.entries(famillesPubliques)) {
         const cheminCatalogue = chemin(
@@ -457,22 +466,24 @@ function verifierInventairePublic(migration) {
     assert.deepEqual(
         {
             publicFamilies: nombreFamilles,
-            publicEntries: nombreEntrees,
-            publicRoutes: routes.size,
+            publicEntries: nombreEntrees - routesPhase6.length,
+            publicRoutes: routes.size - routesPhase6.length,
         },
         migration.projection,
-        "La projection publique réelle ne correspond pas au journal Phase 5",
+        "Le socle public livré en Phase 5 ne correspond plus à son journal",
     );
+
+    for (const route of routesPhase6) {
+        assert.ok(
+            routes.has(route),
+            `Publication de Phase 6 absente : ${route}`,
+        );
+    }
 
     assert.ok(
         nombreEntrees >= migration.baseline.publicEntries,
         "La Phase 5 a perdu une Archive publique historique",
     );
-    assert.ok(
-        nombreEntrees <= migration.target.publicEntries,
-        "La Phase 5 publie plus d’Archives que son Cadre validé",
-    );
-
     return { nombreFamilles, nombreEntrees, nombreRoutes: routes.size };
 }
 
