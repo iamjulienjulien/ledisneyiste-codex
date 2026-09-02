@@ -142,7 +142,7 @@ export function derivePlanLinks(
             links.push(
                 createLink(
                     "belongs-to-era",
-                    `${character.slug}:${epoch.id}`,
+                    `${characterReference.id}:${epoch.id}`,
                     "Apparaît durant",
                     characterReference,
                     epoch,
@@ -228,7 +228,7 @@ export function derivePlanLinks(
             links.push(
                 createLink(
                     "belongs-to-era",
-                    `${work.slug}:${epoch.id}`,
+                    `${workReference.id}:${epoch.id}`,
                     "Sort durant",
                     workReference,
                     epoch,
@@ -261,7 +261,7 @@ export function derivePlanLinks(
             links.push(
                 createLink(
                     "belongs-to-era",
-                    `${contributor.slug}:${epoch.slug}`,
+                    `${contributorReference.id}:epoque:${epoch.slug}`,
                     "Actif durant",
                     contributorReference,
                     createPublishedReference("epoque", epoch.slug, archives),
