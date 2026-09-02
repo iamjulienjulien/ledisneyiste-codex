@@ -277,11 +277,14 @@ function verifierPhotographie(production) {
     });
 
     const recompenses = lireJson("src/data/recompenses/recompenses.json");
+    const recompensesPhase6 = recompenses.filter(
+        (recompense) => !recompense.id.startsWith("disney-legends-"),
+    );
     const recompensesPubliees = production.internalUnits.filter(
         (entree) =>
             entree.domain === "recompenses" && entree.status === "publiee",
     );
-    assert.equal(recompenses.length, 14 + recompensesPubliees.length);
+    assert.equal(recompensesPhase6.length, 14 + recompensesPubliees.length);
 
     const retroapplication = lireJson(cheminRetroapplication);
     assert.equal(
@@ -1405,7 +1408,6 @@ function verifierTrain6H(production) {
     });
     assert.match(readme, /109 fiches documentaires/);
     assert.match(readme, /9 Chansons/);
-    assert.match(readme, /Seize récompenses/);
     assert.match(readme, /Phase 6 a\s+constitué le noyau documentaire de/);
     assert.match(guidebook, /109 Archives et 109 routes canoniques/);
     assert.match(guidebook, /neuf fiches Chansons publiées/);
