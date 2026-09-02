@@ -176,6 +176,8 @@ function verifierDocuments() {
         "train-6d.md",
         "train-6e.md",
         "train-6f.md",
+        "train-6g.md",
+        "carte-preuves.md",
     ]) {
         assert.ok(
             existsSync(
@@ -1228,10 +1230,139 @@ function verifierTrain6F(production) {
         109,
     );
     assert.equal(production.progress.publiee, 26);
-    assert.equal(production.sourceInventory.promoted.length, 24);
-    assert.equal(production.sourceInventory.remainingPrivateCurrent, 6);
+    assert.ok(production.sourceInventory.promoted.length >= 24);
+    assert.ok(production.sourceInventory.remainingPrivateCurrent <= 6);
     assert.ok(
         production.sourceInventory.promoted.includes("fr-bnf-bo-pinocchio"),
+    );
+}
+
+function verifierTrain6G(production) {
+    const pinocchio = lireJson("src/data/oeuvres/pinocchio.json");
+    const sourcesCentrales = lireJson("src/data/sources/sources.json");
+    const idsSourcesCentrales = new Set(
+        sourcesCentrales.map((source) => source.id),
+    );
+    const promotionsAttendues = [
+        "us-loc-national-film-registry",
+        "fr-cnc-palmares-1946",
+        "fr-retronews-pinocchio",
+        "it-roma-tre-mazzei-pinocchio",
+        "it-cinematografo-pinocchio",
+    ];
+
+    assert.equal(pinocchio.sortie.evenements.length, 4);
+    assert.equal(pinocchio.versions.length, 4);
+    assert.equal(pinocchio.exploitations.length, 3);
+    assert.equal(pinocchio.receptions.length, 6);
+
+    const territoiresSortie = new Set(
+        pinocchio.sortie.evenements.map(
+            (evenement) => evenement.porteeTerritoriale.code,
+        ),
+    );
+    assert.deepEqual([...territoiresSortie].sort(), ["FR", "IT", "US"]);
+    assert.ok(
+        pinocchio.versions.some(
+            (version) =>
+                version.id === "doublage-francais-1975" &&
+                version.noteDeReserve,
+        ),
+        "Train 6G : le doublage français de 1975 perd sa réserve d’exploitation",
+    );
+    assert.ok(
+        pinocchio.sortie.evenements.some(
+            (evenement) =>
+                evenement.id === "sortie-nationale-it-1947" &&
+                evenement.date.precision === "annee" &&
+                evenement.noteDeReserve,
+        ),
+        "Train 6G : la précision de la sortie italienne a été artificiellement augmentée",
+    );
+
+    const receptionsParTerritoire = new Map();
+    for (const reception of pinocchio.receptions) {
+        const territoire = reception.porteeTerritoriale.code;
+        receptionsParTerritoire.set(
+            territoire,
+            (receptionsParTerritoire.get(territoire) ?? 0) + 1,
+        );
+    }
+    assert.ok(receptionsParTerritoire.get("US") >= 2);
+    assert.ok(receptionsParTerritoire.get("FR") >= 2);
+    assert.ok(receptionsParTerritoire.get("IT") >= 2);
+    assert.ok(
+        pinocchio.receptions.some(
+            (reception) =>
+                reception.id === "reception-patrimoniale-registry-1994" &&
+                reception.date.valeur === "1994",
+        ),
+        "Train 6G : le repère du National Film Registry est absent",
+    );
+    assert.ok(
+        pinocchio.receptions.some(
+            (reception) =>
+                reception.id === "reevaluation-italienne-1984" &&
+                reception.nature === "reevaluation",
+        ),
+        "Train 6G : la critique italienne tardive est confondue avec la réception de sortie",
+    );
+
+    assert.equal(pinocchio.donneesEconomiques.length, 1);
+    const cumulFrance = pinocchio.donneesEconomiques[0];
+    assert.equal(cumulFrance.schemaVersion, "1.0.0");
+    assert.equal(cumulFrance.mesure, "entrees");
+    assert.equal(cumulFrance.valeurOriginale.valeur, 7_840_000);
+    assert.equal(cumulFrance.temporalite.nature, "cumul");
+    assert.deepEqual(cumulFrance.temporalite.periode, {
+        debut: { valeur: "1946", precision: "annee" },
+        fin: { valeur: "2010", precision: "annee" },
+    });
+    assert.equal(cumulFrance.base, "cumul-exploitations");
+    assert.equal(cumulFrance.comparabilite.statut, "comparable-sous-reserve");
+    assert.match(cumulFrance.noteDeReserve, /1946 à 2010/);
+    assert.equal(
+        pinocchio.donneesEconomiques.some((donnee) =>
+            [
+                "budget-annonce",
+                "cout-production",
+                "recette-brute-guichet",
+                "location-distributeur",
+                "revenu-studio",
+                "benefice",
+                "perte",
+            ].includes(donnee.mesure ?? donnee.nature),
+        ),
+        false,
+        "Train 6G : un résultat financier initial non comparable a été publié",
+    );
+
+    for (const source of promotionsAttendues) {
+        assert.ok(
+            production.sourceInventory.promoted.includes(source),
+            `Train 6G : source non promue ${source}`,
+        );
+        assert.ok(
+            idsSourcesCentrales.has(source),
+            `Train 6G : source centrale absente ${source}`,
+        );
+        assert.ok(
+            pinocchio.sources.includes(source),
+            `Train 6G : source non reliée à Pinocchio ${source}`,
+        );
+    }
+    assert.equal(production.sourceInventory.promoted.length, 29);
+    assert.equal(production.sourceInventory.remainingPrivateCurrent, 1);
+    assert.equal(
+        production.sourceInventory.promoted.includes(
+            "us-wdfm-art-of-pinocchio",
+        ),
+        false,
+        "Train 6G : la notice d’exposition a été promue avant son usage produit",
+    );
+    assert.equal(
+        production.baseline.publicEntries + production.progress.publiee,
+        109,
     );
 }
 
@@ -1285,9 +1416,10 @@ verifierTrain6C(production);
 verifierTrain6D(production);
 verifierTrain6E(production);
 verifierTrain6F(production);
+verifierTrain6G(production);
 verifierSymboles(production);
 verifierBranchement();
 
 console.log(
-    `Phase 6 · Train 6F vérifié : ${production.baseline.publicEntries + production.progress.publiee} Archives publiques, cinq Chansons, deux Oscars, 31 contributions dans le générique de Pinocchio et ${production.sourceInventory.promoted.length} sources promues.`,
+    `Phase 6 · Train 6G vérifié : ${production.baseline.publicEntries + production.progress.publiee} Archives publiques, trois regards territoriaux, un cumul économique publié avec réserve et ${production.sourceInventory.promoted.length} sources promues.`,
 );

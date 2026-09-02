@@ -69,11 +69,35 @@ const naturesPorteesTerritoriales = new Set([
 const codesLangues = new Set(["fr", "en", "it"]);
 const codesTerritoires = new Set(["FR", "US", "IT"]);
 const naturesDonneesEconomiques = new Set([
+    "budget-annonce",
     "cout-production",
+    "recette-brute-guichet",
+    "location-distributeur",
+    "revenu-studio",
+    "benefice",
+    "perte",
     "revenus",
     "entrees",
+    "classement",
 ]);
 const certitudes = new Set(["documente", "estimation", "conteste"]);
+const basesDonneesEconomiques = new Set([
+    "budget-annonce",
+    "cout-final",
+    "brut-taxes-incluses",
+    "brut-taxes-non-precisees",
+    "location-distributeur",
+    "encaissement-studio",
+    "resultat-net",
+    "premiere-exploitation",
+    "cumul-exploitations",
+    "classement-echantillon",
+]);
+const statutsComparabilite = new Set([
+    "comparable",
+    "comparable-sous-reserve",
+    "non-comparable",
+]);
 const naturesRelations = new Set([
     "source",
     "preparation",
@@ -608,6 +632,106 @@ function verifierDonneesEconomiques(fiche, contexte, idsSources, erreurs) {
 
     fiche.donneesEconomiques.forEach((donnee, index) => {
         const contexteDonnee = `${contexte} · donnée économique ${index + 1}`;
+        if (donnee.schemaVersion === "1.0.0") {
+            if (!chaineNonVide(donnee.id)) {
+                erreurs.push(`${contexteDonnee} : identifiant absent`);
+            }
+            if (!naturesDonneesEconomiques.has(donnee.mesure)) {
+                erreurs.push(
+                    `${contexteDonnee} : mesure inconnue « ${donnee.mesure} »`,
+                );
+            }
+            if (
+                donnee.valeurOriginale?.nature !== "valeur" ||
+                !nombrePositif(donnee.valeurOriginale.valeur)
+            ) {
+                erreurs.push(`${contexteDonnee} : valeur originale invalide`);
+            }
+            if (donnee.mesure === "entrees" && donnee.unite !== "entrees") {
+                erreurs.push(
+                    `${contexteDonnee} : les entrées doivent utiliser l’unité « entrees »`,
+                );
+            }
+            if (donnee.mesure === "classement" && donnee.unite !== "rang") {
+                erreurs.push(
+                    `${contexteDonnee} : un classement doit utiliser l’unité « rang »`,
+                );
+            }
+            if (
+                !["entrees", "classement"].includes(donnee.mesure) &&
+                (donnee.unite !== "monetaire" ||
+                    !chaineNonVide(donnee.devise) ||
+                    !dateEstValide(donnee.anneeMonetaire))
+            ) {
+                erreurs.push(`${contexteDonnee} : mesure monétaire incomplète`);
+            }
+            verifierPorteeTerritoriale(
+                donnee.porteeTerritoriale,
+                contexteDonnee,
+                erreurs,
+            );
+            if (donnee.temporalite?.nature === "instantanee") {
+                if (!dateEstValide(donnee.temporalite.date)) {
+                    erreurs.push(
+                        `${contexteDonnee} : date économique invalide`,
+                    );
+                }
+            } else if (
+                ["periode", "cumul"].includes(donnee.temporalite?.nature)
+            ) {
+                verifierPeriode(
+                    donnee.temporalite.periode,
+                    contexteDonnee,
+                    erreurs,
+                );
+            } else {
+                erreurs.push(`${contexteDonnee} : temporalité invalide`);
+            }
+            if (!basesDonneesEconomiques.has(donnee.base)) {
+                erreurs.push(`${contexteDonnee} : base économique invalide`);
+            }
+            if (
+                !chaineNonVide(donnee.methode?.description) ||
+                !Array.isArray(donnee.methode?.sourceIds) ||
+                donnee.methode.sourceIds.length === 0
+            ) {
+                erreurs.push(`${contexteDonnee} : méthode absente`);
+            } else {
+                verifierSources(
+                    donnee.methode.sourceIds,
+                    `${contexteDonnee} · méthode`,
+                    idsSources,
+                    erreurs,
+                );
+            }
+            if (!certitudes.has(donnee.certitude)) {
+                erreurs.push(`${contexteDonnee} : certitude invalide`);
+            }
+            if (
+                !statutsComparabilite.has(donnee.comparabilite?.statut) ||
+                !Array.isArray(donnee.comparabilite?.avec) ||
+                !chaineNonVide(donnee.comparabilite?.motif)
+            ) {
+                erreurs.push(`${contexteDonnee} : comparabilité invalide`);
+            }
+            if (!chaineNonVide(donnee.finaliteEditoriale)) {
+                erreurs.push(`${contexteDonnee} : finalité éditoriale absente`);
+            }
+            if (
+                donnee.noteDeReserve !== undefined &&
+                !chaineNonVide(donnee.noteDeReserve)
+            ) {
+                erreurs.push(`${contexteDonnee} : réserve invalide`);
+            }
+            verifierSources(
+                donnee.sources,
+                contexteDonnee,
+                idsSources,
+                erreurs,
+            );
+            return;
+        }
+
         if (!naturesDonneesEconomiques.has(donnee.nature)) {
             erreurs.push(
                 `${contexteDonnee} : nature inconnue « ${donnee.nature} »`,

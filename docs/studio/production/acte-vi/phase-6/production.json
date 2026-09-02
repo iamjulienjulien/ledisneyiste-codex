@@ -55,10 +55,14 @@
         "promoted": [
             "fr-bnf-bo-pinocchio",
             "fr-cinematheque-pinocchio",
+            "fr-cnc-palmares-1946",
             "fr-cnc-visa-pinocchio",
+            "fr-retronews-pinocchio",
+            "it-cinematografo-pinocchio",
             "it-collodi-biography",
             "it-collodi-critical-text",
             "it-collodi-translations",
+            "it-roma-tre-mazzei-pinocchio",
             "it-treccani-1940-pinocchio",
             "it-treccani-pinocchio",
             "us-afi-catalog-pinocchio",
@@ -73,12 +77,13 @@
             "us-d23-make-mine-music",
             "us-d23-ned-washington",
             "us-d23-pinocchio-film",
+            "us-loc-national-film-registry",
             "us-loc-pinocchio-essay",
             "us-wdfm-milt-kahl-puppeteer",
             "us-wdfm-pool-hall",
             "us-wdfm-reimagining-jiminy"
         ],
-        "remainingPrivateCurrent": 6,
+        "remainingPrivateCurrent": 1,
         "promotionPolicy": "usage-only"
     },
     "symbolInventory": {
@@ -150,17 +155,27 @@
                     "us-afi-catalog-pinocchio",
                     "us-d23-pinocchio-film",
                     "fr-cinematheque-pinocchio",
+                    "fr-cnc-palmares-1946",
                     "fr-cnc-visa-pinocchio",
+                    "fr-retronews-pinocchio",
+                    "it-cinematografo-pinocchio",
+                    "it-roma-tre-mazzei-pinocchio",
                     "it-treccani-1940-pinocchio",
-                    "it-collodi-critical-text"
+                    "it-collodi-critical-text",
+                    "us-loc-national-film-registry"
                 ],
                 "promoted": [
                     "us-afi-catalog-pinocchio",
                     "us-d23-pinocchio-film",
                     "fr-cinematheque-pinocchio",
+                    "fr-cnc-palmares-1946",
                     "fr-cnc-visa-pinocchio",
+                    "fr-retronews-pinocchio",
+                    "it-cinematografo-pinocchio",
+                    "it-roma-tre-mazzei-pinocchio",
                     "it-treccani-1940-pinocchio",
-                    "it-collodi-critical-text"
+                    "it-collodi-critical-text",
+                    "us-loc-national-film-registry"
                 ]
             },
             "files": [
@@ -171,7 +186,10 @@
             "relations": [
                 "adaptation:oeuvre-source-collodi-pinocchio",
                 "contribution:carlo-collodi",
-                "epoque:temps-des-chefs-d-oeuvre"
+                "epoque:temps-des-chefs-d-oeuvre",
+                "circulation:etats-unis-france-italie",
+                "reception:trois-regards-territoriaux",
+                "economie:entrees-france-cumul-1946-2010"
             ],
             "checks": [
                 "pnpm check:oeuvres",
@@ -179,7 +197,9 @@
                 "pnpm check:phase-6"
             ],
             "reservations": [
-                "Le film ne recopie ni la notice bibliographique de Collodi ni le récit final de la Phase 7."
+                "Le film ne recopie ni la notice bibliographique de Collodi ni le récit final de la Phase 7.",
+                "Les 7,84 millions d’entrées sont un cumul CNC de 1946 à 2010, jamais les seules entrées de 1946.",
+                "Les résultats financiers initiaux rapportés sans méthode comparable restent dans l’enquête privée."
             ]
         },
         {
