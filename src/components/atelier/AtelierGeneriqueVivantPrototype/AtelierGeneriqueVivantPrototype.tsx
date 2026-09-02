@@ -14,8 +14,8 @@ import { FocaleTable } from "@/components/focale/FocaleTable";
 import type { FocaleTableColumn } from "@/components/focale/FocaleTable";
 import { getCreditDomainDefinition } from "@/registry/credits";
 import type {
+    CodexGeneriqueVivantAngleView,
     CodexGeneriqueVivantContribution,
-    CodexGeneriqueVivantGroup,
     CodexPlanRuntimeState,
 } from "@/types/codex-plans";
 import type {
@@ -91,78 +91,34 @@ function Setting({
     );
 }
 
-function groupByRoles(items: readonly CodexGeneriqueVivantContribution[]) {
-    const roles = [...new Set(items.flatMap((item) => item.roles))].sort(
-        (a, b) => a.localeCompare(b, "fr"),
-    );
-
-    return roles.map((role) => ({
-        id: `role:${role}`,
-        label: role,
-        actionLabel: "Rôle archivé",
-        items: items.filter((item) => item.roles.includes(role)),
-    }));
-}
-
 function createViewGroups(
-    angle: AtelierGeneriqueVivantView,
+    view: CodexGeneriqueVivantAngleView,
     items: readonly CodexGeneriqueVivantContribution[],
-    groups: readonly CodexGeneriqueVivantGroup[],
 ): readonly ViewGroup[] {
-    if (angle === "roles") {
-        return groupByRoles(items);
-    }
-    if (angle === "responsibilities") {
-        return [
-            {
-                id: "multi-role",
-                label: "Responsabilités multiples",
-                actionLabel: "Plusieurs rôles documentés",
-                items: items.filter((item) => item.roles.length > 1),
-            },
-            {
-                id: "single-role",
-                label: "Responsabilité principale",
-                actionLabel: "Un rôle documenté",
-                items: items.filter((item) => item.roles.length === 1),
-            },
-        ].filter((group) => group.items.length > 0);
-    }
-    if (angle === "recurrences") {
-        return [
-            {
-                id: "recurring",
-                label: "Présences récurrentes",
-                actionLabel: "Retrouvé dans plusieurs œuvres",
-                items: items.filter(
-                    (item) => item.recurrenceWorkLabels.length > 1,
-                ),
-            },
-            {
-                id: "subject-only",
-                label: "Présence dans le Sujet",
-                actionLabel: "Une œuvre actuellement documentée",
-                items: items.filter(
-                    (item) => item.recurrenceWorkLabels.length <= 1,
-                ),
-            },
-        ].filter((group) => group.items.length > 0);
-    }
-
-    return groups
+    return view.groups
         .map((group) => ({
             id: group.id,
-            label:
-                angle === "collaborations"
-                    ? `Co-présences · ${group.label}`
-                    : group.label,
-            actionLabel:
-                angle === "collaborations"
-                    ? "Même générique, sans lien direct déduit"
-                    : group.actionLabel,
-            items: items.filter((item) => item.domain === group.id),
+            label: group.label,
+            actionLabel: group.actionLabel,
+            items: items.filter((item) =>
+                group.contributionIds.includes(item.id),
+            ),
         }))
         .filter((group) => group.items.length > 0);
+}
+
+function uniqueViewItems(groups: readonly ViewGroup[]) {
+    const seen = new Set<string>();
+
+    return groups.flatMap((group) =>
+        group.items.filter((item) => {
+            if (seen.has(item.id)) {
+                return false;
+            }
+            seen.add(item.id);
+            return true;
+        }),
+    );
 }
 
 function contributorHref(item: CodexGeneriqueVivantContribution) {
@@ -249,6 +205,7 @@ export function AtelierGeneriqueVivantPrototype({
         projections.find((item) => item.matterKey === matterKey) ??
         projections[0];
     const model = projection.model;
+    const angleView = model.views[angle];
     const normalizedQuery = normalizeSearch(query);
     const filtered = useMemo(() => {
         const items = model.contributions.filter((item) => {
@@ -292,9 +249,10 @@ export function AtelierGeneriqueVivantPrototype({
         sort,
     ]);
     const viewGroups = useMemo(
-        () => createViewGroups(angle, filtered, model.groups),
-        [angle, filtered, model.groups],
+        () => createViewGroups(angleView, filtered),
+        [angleView, filtered],
     );
+    const viewItems = useMemo(() => uniqueViewItems(viewGroups), [viewGroups]);
     const selected =
         filtered.find((item) => item.id === selectedId) ?? filtered[0];
     const visibleIds = new Set(
@@ -353,8 +311,8 @@ export function AtelierGeneriqueVivantPrototype({
                         <h4>Régler la distribution</h4>
                     </div>
                     <p aria-live="polite" className={styles.liveCount}>
-                        {filtered.length} résultat
-                        {filtered.length > 1 ? "s" : ""}
+                        {viewItems.length} résultat
+                        {viewItems.length > 1 ? "s" : ""}
                     </p>
                 </div>
                 <div className={styles.settings}>
@@ -603,14 +561,15 @@ export function AtelierGeneriqueVivantPrototype({
                     </PixieCallout>
                 ) : null}
 
-                {filtered.length === 0 ? (
+                {viewItems.length === 0 ? (
                     <PixieCallout
                         variant="outline"
                         color="violet-ombre-portee"
-                        heading="Aucun crédit dans ce Cadre"
+                        heading={angleView.label}
                     >
-                        Le Sujet et la Régie restent visibles. Modifiez la
-                        recherche ou les filtres pour retrouver la distribution.
+                        {filtered.length === 0
+                            ? "Aucune contribution ne répond à la recherche et aux filtres actuels."
+                            : angleView.emptyLabel}
                     </PixieCallout>
                 ) : (
                     <div className={styles.creditLayout}>
@@ -889,14 +848,14 @@ export function AtelierGeneriqueVivantPrototype({
                 }
             >
                 <summary>
-                    Contrechamp textuel · {filtered.length} contributions
+                    Contrechamp textuel · {viewItems.length} contributions
                 </summary>
                 <div>
                     <FocaleTable
-                        caption={`Crédits groupés par métiers · ${filtered.length} contributions`}
+                        caption={`${angleView.question} · ${viewItems.length} contributions`}
                         captionHidden
                         columns={countershotColumns}
-                        rows={filtered}
+                        rows={viewItems}
                         getRowId={(item) => item.id}
                         density="compact"
                         emptyLabel="Aucune contribution ne répond au Cadre actuel."

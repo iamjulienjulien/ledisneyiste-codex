@@ -5,6 +5,8 @@ import {
     getCreditDomainDefinition,
 } from "@/registry/credits";
 import type {
+    CodexGeneriqueVivantAngle,
+    CodexGeneriqueVivantAngleView,
     CodexGeneriqueVivantContribution,
     CodexGeneriqueVivantGroup,
     CodexGeneriqueVivantMatterSource,
@@ -14,6 +16,39 @@ import type {
     CodexPlanDerivationNotice,
     CodexPlanRuntimeState,
 } from "@/types/codex-plans";
+
+const angleDefinitions = {
+    departments: {
+        label: "Domaines",
+        question: "Quels grands gestes composent la production ?",
+        emptyLabel: "Aucun domaine ne répond au Cadre actuel.",
+    },
+    roles: {
+        label: "Rôles exacts",
+        question: "Qui accomplit quel geste documenté ?",
+        emptyLabel: "Aucun rôle documenté ne répond au Cadre actuel.",
+    },
+    responsibilities: {
+        label: "Responsabilités multiples",
+        question: "Quelles contributions réunissent plusieurs rôles ?",
+        emptyLabel:
+            "Aucune contribution de ce Sujet ne réunit plusieurs rôles documentés.",
+    },
+    collaborations: {
+        label: "Co-présences",
+        question: "Quelles personnes figurent dans un même domaine ?",
+        emptyLabel: "Aucune co-présence ne répond au Cadre actuel.",
+    },
+    recurrences: {
+        label: "Récurrences",
+        question: "Qui réapparaît dans plusieurs œuvres documentées ?",
+        emptyLabel:
+            "Aucune présence récurrente n’est documentée pour ce Sujet.",
+    },
+} as const satisfies Record<
+    CodexGeneriqueVivantAngle,
+    Readonly<{ label: string; question: string; emptyLabel: string }>
+>;
 
 const domainOrder = new Map<string, number>(
     creditDomainOrder.map((domain, index) => [domain, index]),
@@ -82,6 +117,7 @@ function createContribution(
                 domain,
                 definition?.label,
                 ...credit.roles,
+                ...recurrenceWorkLabels,
             ]
                 .filter(Boolean)
                 .join(" "),
@@ -110,6 +146,91 @@ function createGroups(
             contributionIds: items.map((item) => item.id),
         };
     });
+}
+
+function createRoleGroups(
+    contributions: readonly CodexGeneriqueVivantContribution[],
+) {
+    const roles = [
+        ...new Set(contributions.flatMap((item) => item.roles)),
+    ].sort((a, b) => a.localeCompare(b, "fr"));
+
+    return roles.map((role) => ({
+        id: `role:${role}`,
+        label: role,
+        actionLabel: "Rôle documenté",
+        contributionIds: contributions
+            .filter((item) => item.roles.includes(role))
+            .map((item) => item.id),
+    }));
+}
+
+function createAngleViews(
+    contributions: readonly CodexGeneriqueVivantContribution[],
+    domainGroups: readonly CodexGeneriqueVivantGroup[],
+): Readonly<Record<CodexGeneriqueVivantAngle, CodexGeneriqueVivantAngleView>> {
+    const groupsByAngle = {
+        departments: domainGroups,
+        roles: createRoleGroups(contributions),
+        responsibilities: [
+            {
+                id: "multi-role",
+                label: "Responsabilités multiples",
+                actionLabel: "Plusieurs rôles documentés",
+                contributionIds: contributions
+                    .filter((item) => item.roles.length > 1)
+                    .map((item) => item.id),
+            },
+        ].filter((group) => group.contributionIds.length > 0),
+        collaborations: domainGroups
+            .filter((group) => group.contributionIds.length > 1)
+            .map((group) => ({
+                ...group,
+                label: `Co-présences · ${group.label}`,
+                actionLabel: "Même domaine, sans collaboration directe déduite",
+            })),
+        recurrences: [
+            {
+                id: "recurring",
+                label: "Présences récurrentes",
+                actionLabel: "Retrouvé dans plusieurs œuvres documentées",
+                contributionIds: contributions
+                    .filter((item) => item.recurrenceWorkLabels.length > 1)
+                    .map((item) => item.id),
+            },
+        ].filter((group) => group.contributionIds.length > 0),
+    } as const satisfies Record<
+        CodexGeneriqueVivantAngle,
+        readonly CodexGeneriqueVivantGroup[]
+    >;
+
+    return {
+        departments: {
+            angle: "departments",
+            ...angleDefinitions.departments,
+            groups: groupsByAngle.departments,
+        },
+        roles: {
+            angle: "roles",
+            ...angleDefinitions.roles,
+            groups: groupsByAngle.roles,
+        },
+        responsibilities: {
+            angle: "responsibilities",
+            ...angleDefinitions.responsibilities,
+            groups: groupsByAngle.responsibilities,
+        },
+        collaborations: {
+            angle: "collaborations",
+            ...angleDefinitions.collaborations,
+            groups: groupsByAngle.collaborations,
+        },
+        recurrences: {
+            angle: "recurrences",
+            ...angleDefinitions.recurrences,
+            groups: groupsByAngle.recurrences,
+        },
+    };
 }
 
 function runtimeState(
@@ -180,6 +301,7 @@ export function deriveGeneriqueVivant(
                       })),
               ];
     const groups = createGroups(contributions);
+    const views = createAngleViews(contributions, groups);
 
     return {
         configuration,
@@ -188,6 +310,7 @@ export function deriveGeneriqueVivant(
         runtimeState: runtimeState(source, contributions),
         contributions,
         groups,
+        views,
         selection: {
             total: contributions.length,
             returned: contributions.length,

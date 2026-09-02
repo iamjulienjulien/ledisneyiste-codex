@@ -589,6 +589,14 @@ export type CodexGeneriqueVivantGroup = Readonly<{
     contributionIds: readonly string[];
 }>;
 
+export type CodexGeneriqueVivantAngleView = Readonly<{
+    angle: CodexGeneriqueVivantAngle;
+    label: string;
+    question: string;
+    emptyLabel: string;
+    groups: readonly CodexGeneriqueVivantGroup[];
+}>;
+
 export type CodexGeneriqueVivantModel = Readonly<{
     configuration: CodexPlanConfiguration;
     subject: CodexPlanEntityReference;
@@ -596,6 +604,9 @@ export type CodexGeneriqueVivantModel = Readonly<{
     runtimeState: CodexPlanRuntimeState;
     contributions: readonly CodexGeneriqueVivantContribution[];
     groups: readonly CodexGeneriqueVivantGroup[];
+    views: Readonly<
+        Record<CodexGeneriqueVivantAngle, CodexGeneriqueVivantAngleView>
+    >;
     selection: CodexPlanDerivationSelection;
     notices: readonly CodexPlanDerivationNotice[];
     stats: Readonly<{

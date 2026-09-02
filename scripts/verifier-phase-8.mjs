@@ -370,6 +370,34 @@ function verifierTrain8C(pinocchio) {
     );
 }
 
+function verifierTrain8D(pinocchio) {
+    const prototype = readFileSync(
+        chemin(
+            "src/components/atelier/AtelierGeneriqueVivantPrototype/AtelierGeneriqueVivantPrototype.tsx",
+        ),
+        "utf8",
+    );
+    const derivation = readFileSync(
+        chemin("src/lib/plans/generique-vivant.ts"),
+        "utf8",
+    );
+
+    assert.equal(pinocchio.views.responsibilities.groups.length, 0);
+    assert.equal(pinocchio.views.departments.groups.length, 8);
+    assert.ok(pinocchio.views.roles.groups.length > 0);
+    assert.ok(pinocchio.views.recurrences.groups.length > 0);
+    assert.ok(
+        pinocchio.views.collaborations.groups.every(
+            (group) => group.contributionIds.length > 1,
+        ),
+    );
+    assert.match(derivation, /function createAngleViews/);
+    assert.match(derivation, /sans collaboration directe déduite/);
+    assert.match(prototype, /model\.views\[angle\]/);
+    assert.match(prototype, /angleView\.emptyLabel/);
+    assert.doesNotMatch(prototype, /function groupByRoles/);
+}
+
 function verifierBranchement() {
     const packageJson = lireJson("package.json");
 
@@ -419,7 +447,8 @@ verifierSurfaces();
 verifierBranchement();
 verifierTrain8B();
 verifierTrain8C(pinocchio);
+verifierTrain8D(pinocchio);
 
 console.log(
-    `Phase 8 vérifiée jusqu’au Train 8C : Pinocchio projette ${pinocchio.stats.contributions} contributions dans ${pinocchio.stats.domains} domaines avec un contrechamp Focale exhaustif.`,
+    `Phase 8 vérifiée jusqu’au Train 8D : Pinocchio projette ${pinocchio.stats.contributions} contributions selon cinq angles dérivés, dont un état vide explicite pour les responsabilités multiples.`,
 );

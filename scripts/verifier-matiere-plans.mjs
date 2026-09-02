@@ -1053,12 +1053,58 @@ function verifierGeneriqueVivant({
             "reference-filmee": 3,
         },
     );
+    assert.deepEqual(Object.keys(projection.views), [
+        "departments",
+        "roles",
+        "responsibilities",
+        "collaborations",
+        "recurrences",
+    ]);
+    assert.equal(projection.views.departments.groups.length, 8);
+    assert.equal(projection.views.responsibilities.groups.length, 0);
+    assert.ok(
+        projection.views.roles.groups.length > 0 &&
+            new Set(
+                projection.views.roles.groups.flatMap(
+                    (group) => group.contributionIds,
+                ),
+            ).size === projection.contributions.length,
+        "L’angle Rôles doit restituer chaque contribution du Sujet",
+    );
+    assert.ok(
+        projection.views.collaborations.groups.every(
+            (group) =>
+                group.contributionIds.length > 1 &&
+                group.label.startsWith("Co-présences · ") &&
+                group.actionLabel.includes("sans collaboration directe"),
+        ),
+        "Les co-présences doivent rester des agrégations prudentes",
+    );
+    assert.ok(
+        projection.views.recurrences.groups
+            .flatMap((group) => group.contributionIds)
+            .every((id) => {
+                const contribution = projection.contributions.find(
+                    (item) => item.id === id,
+                );
+                return (contribution?.recurrenceWorkLabels.length ?? 0) > 1;
+            }),
+        "Les récurrences doivent être démontrées par plusieurs œuvres",
+    );
     assert.ok(
         projection.contributions.every(
             (item) =>
                 item.roles.length > 0 &&
                 item.provenance.length > 0 &&
-                item.searchKey.length > 0,
+                item.searchKey.length > 0 &&
+                item.recurrenceWorkLabels.every((label) =>
+                    item.searchKey.includes(
+                        label
+                            .normalize("NFD")
+                            .replace(/[\u0300-\u036f]/g, "")
+                            .toLocaleLowerCase("fr"),
+                    ),
+                ),
         ),
         "Chaque contribution doit conserver rôle, provenance et clé de recherche",
     );
