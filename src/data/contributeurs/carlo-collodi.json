@@ -1,0 +1,61 @@
+{
+    "slug": "carlo-collodi",
+    "type": "contributeur",
+    "introduction": "Carlo Collodi est le nom de plume de Carlo Lorenzini, écrivain, journaliste et traducteur florentin. Publiée en feuilleton à partir de 1881 puis en volume en 1883, son histoire de Pinocchio transforme un pantin indocile en personnage littéraire durable. Le film Disney de 1940 adapte ce livre sans confondre la vie de son auteur, l’œuvre originale et leur postérité.",
+    "nomsAlternatifs": [
+        {
+            "nom": "Carlo Lorenzini",
+            "nature": "original",
+            "langue": "it",
+            "territoire": "IT",
+            "sources": ["it-collodi-biography"]
+        }
+    ],
+    "blocsEditoriaux": [
+        {
+            "type": "trajectoire",
+            "eyebrow": "Écriture",
+            "titre": "Passer du journal au récit pour l’enfance",
+            "paragraphes": [
+                "Carlo Lorenzini publie à partir de 1847 et construit une carrière où le journalisme, la satire, la traduction et la littérature se répondent. Le pseudonyme Collodi, emprunté au village toscan lié à sa famille maternelle, devient progressivement sa signature publique.",
+                "L’auteur se tourne vers les récits destinés à la jeunesse après avoir traduit et adapté des contes français. Cette pratique l’amène à traiter l’apprentissage sans le réduire à une leçon abstraite : ses personnages avancent par l’expérience, l’erreur et les conséquences de leurs actes."
+            ],
+            "sources": ["it-collodi-biography"]
+        },
+        {
+            "type": "signature",
+            "eyebrow": "Pinocchio",
+            "titre": "Donner au pantin une vie qui dépasse son livre",
+            "paragraphes": [
+                "La Storia di un burattino paraît en feuilleton à partir de 1881. Le récit devient Le avventure di Pinocchio et rejoint le livre en 1883, sous une forme qui conserve la succession vive des rencontres, des fautes et des métamorphoses du pantin.",
+                "Les traductions et adaptations ont ensuite multiplié les vies publiques de l’œuvre. Le registre interne du Codex conserve le livre comme unité documentaire propre ; la fiche de Collodi en établit l’auteur et celle du film Disney qualifie son adaptation."
+            ],
+            "sources": [
+                "it-collodi-critical-text",
+                "it-collodi-translations",
+                "it-treccani-pinocchio"
+            ]
+        }
+    ],
+    "naissance": {
+        "date": { "valeur": "1826", "precision": "annee" },
+        "lieu": "Florence, Toscane, Italie"
+    },
+    "deces": {
+        "date": { "valeur": "1890", "precision": "annee" },
+        "lieu": "Florence, Toscane, Italie"
+    },
+    "roles": ["écrivain", "journaliste", "traducteur"],
+    "periodesActivite": [
+        {
+            "debut": { "valeur": "1847", "precision": "annee" },
+            "fin": { "valeur": "1890", "precision": "annee" }
+        }
+    ],
+    "sources": [
+        "it-collodi-biography",
+        "it-collodi-critical-text",
+        "it-collodi-translations",
+        "it-treccani-pinocchio"
+    ]
+}

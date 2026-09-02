@@ -19,6 +19,12 @@ export const metadataContributeurs = {
                 "Créateur qui façonne les personnages, les décors ou l’identité graphique d’une œuvre.",
             color: "violet-ombre-portee",
         },
+        auteur: {
+            label: "Auteur",
+            description:
+                "Écrivain ou scénariste à l’origine d’un texte, d’un récit ou d’une adaptation.",
+            color: "sepia-storyboard",
+        },
         realisateur: {
             label: "Réalisateur",
             description:

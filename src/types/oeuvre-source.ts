@@ -1,6 +1,7 @@
 import type { DateHistorique } from "@/types/date";
 import type { ProvenanceDocumentaireCodex } from "@/types/documentaire";
 import type { IdentiteDocumenteeCodex } from "@/types/identite";
+import type { ReferenceCodex } from "@/types/reference";
 
 export type NatureOeuvreSource =
     "roman" | "conte" | "nouvelle" | "piece-theatre" | "film" | "autre";
@@ -12,9 +13,17 @@ export type RoleAuteurOeuvreSource =
     "auteur" | "co-auteur" | "adaptateur" | "illustrateur";
 
 export type AuteurOeuvreSource = ProvenanceDocumentaireCodex & {
-    nom: string;
     role: RoleAuteurOeuvreSource;
-};
+} & (
+        | {
+              nom: string;
+              personne?: never;
+          }
+        | {
+              personne: ReferenceCodex;
+              nom?: never;
+          }
+    );
 
 export type EntreeOeuvreSource = Readonly<{
     id: string;

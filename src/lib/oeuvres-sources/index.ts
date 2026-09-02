@@ -1,4 +1,5 @@
 import type {
+    AuteurOeuvreSource,
     EntreeOeuvreSource,
     FicheOeuvreSource,
     RegistreOeuvresSources,
@@ -9,6 +10,12 @@ type ReferenceOeuvreSource = Readonly<{
     id: string;
     slug: string;
 }>;
+
+export function getNomAuteurOeuvreSource(auteur: AuteurOeuvreSource): string {
+    return "personne" in auteur && auteur.personne
+        ? auteur.personne.nom
+        : auteur.nom;
+}
 
 function creerEntreeOeuvreSource(fiche: FicheOeuvreSource): EntreeOeuvreSource {
     return {

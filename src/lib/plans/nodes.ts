@@ -12,6 +12,7 @@ import {
     derivedProvenance,
     sourcedProvenance,
 } from "@/lib/plans/utils";
+import { getNomAuteurOeuvreSource } from "@/lib/oeuvres-sources";
 
 function getFicheSources(
     slug: string,
@@ -193,7 +194,7 @@ export function derivePlanNodes(
                     nature: fiche.nature,
                     support: fiche.support,
                     date: fiche.date.valeur,
-                    auteurs: fiche.auteurs.map((auteur) => auteur.nom),
+                    auteurs: fiche.auteurs.map(getNomAuteurOeuvreSource),
                 }),
                 provenance: [
                     sourcedProvenance(

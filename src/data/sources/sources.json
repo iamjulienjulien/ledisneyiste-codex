@@ -1533,5 +1533,80 @@
         "editeur": "Chronique Disney",
         "url": "https://www.chroniquedisney.fr/perso/1932-dingo.htm",
         "dateConsultation": "2026-09-02"
+    },
+    {
+        "id": "us-afi-catalog-pinocchio",
+        "titre": "Pinocchio (1940)",
+        "auteur": "American Film Institute",
+        "editeur": "AFI Catalog of Feature Films",
+        "url": "https://catalog.afi.com/Catalog/MovieDetails/5131",
+        "dateConsultation": "2026-09-01"
+    },
+    {
+        "id": "us-d23-pinocchio-film",
+        "titre": "Pinocchio (film)",
+        "auteur": "Walt Disney Archives",
+        "editeur": "D23 · Disney A to Z",
+        "url": "https://d23.com/a-to-z/pinocchio-film/",
+        "dateConsultation": "2026-09-01"
+    },
+    {
+        "id": "fr-cinematheque-pinocchio",
+        "titre": "Pinocchio · Ben Sharpsteen, Hamilton Luske, 1940",
+        "auteur": "La Cinémathèque française",
+        "editeur": "La Cinémathèque française",
+        "url": "https://www.cinematheque.fr/film/57085.html",
+        "dateConsultation": "2026-09-01"
+    },
+    {
+        "id": "fr-cnc-visa-pinocchio",
+        "titre": "La Merveilleuse Aventure de Pinocchio · visa 3895",
+        "auteur": "Centre national du cinéma et de l’image animée",
+        "editeur": "CNC",
+        "datePublication": "1946-05-17",
+        "url": "https://www.cnc.fr/professionnels/visas-et-classification/3895",
+        "dateConsultation": "2026-09-01"
+    },
+    {
+        "id": "it-treccani-1940-pinocchio",
+        "titre": "1940 · Pinocchio",
+        "auteur": "Fabio Ruggiano",
+        "editeur": "Treccani",
+        "url": "https://www.treccani.it/90anni/parole/1940-pinocchio.html",
+        "dateConsultation": "2026-09-01"
+    },
+    {
+        "id": "it-treccani-pinocchio",
+        "titre": "Pinocchio",
+        "auteur": "Istituto della Enciclopedia Italiana",
+        "editeur": "Treccani · Enciclopedia on line",
+        "url": "https://www.treccani.it/enciclopedia/pinocchio/",
+        "dateConsultation": "2026-09-01"
+    },
+    {
+        "id": "it-collodi-biography",
+        "titre": "Biografia di Carlo Collodi",
+        "auteur": "Fondazione Nazionale Carlo Collodi",
+        "editeur": "Fondazione Nazionale Carlo Collodi",
+        "url": "https://www.fondazionecollodi.it/it/carlo-collodi",
+        "dateConsultation": "2026-09-01"
+    },
+    {
+        "id": "it-collodi-critical-text",
+        "titre": "Le avventure di Pinocchio · Edizione critica",
+        "auteur": "Carlo Collodi · édition d’Ornella Castellani Pollidori",
+        "editeur": "Fondazione Nazionale Carlo Collodi",
+        "datePublication": "1983",
+        "url": "https://www.fondazionecollodi.it/assets/it/le-avventure_di_pinocchio.pdf",
+        "dateConsultation": "2026-09-01"
+    },
+    {
+        "id": "it-collodi-translations",
+        "titre": "Le traduzioni di Pinocchio nel mondo",
+        "auteur": "Roberto Vezzani",
+        "editeur": "Biblioteca Collodiana · Fondazione Nazionale Carlo Collodi",
+        "datePublication": "2024-05",
+        "url": "https://www.fondazionecollodi.it/it/elenco-traduzioni-edizioni-pinocchio",
+        "dateConsultation": "2026-09-01"
     }
 ]

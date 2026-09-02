@@ -6,6 +6,7 @@ import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { formatDateHistorique } from "@/lib/date";
 import { formatPorteeTerritorialeDocumentaire } from "@/lib/documentaire";
 import { lireDonneeEconomiqueOeuvre } from "@/lib/donnees-economiques";
+import { getNomAuteurOeuvreSource } from "@/lib/oeuvres-sources";
 import type { SymbolSelection } from "@/registry/symbols";
 import type { PeriodeHistorique } from "@/types/date";
 import type {
@@ -670,7 +671,9 @@ export function CodexFicheOeuvreDetails({
                                         <p className={styles.detail}>
                                             {[
                                                 resolution.fiche.auteurs
-                                                    .map((auteur) => auteur.nom)
+                                                    .map(
+                                                        getNomAuteurOeuvreSource,
+                                                    )
                                                     .join(", "),
                                                 formatDateHistorique(
                                                     resolution.fiche.date,

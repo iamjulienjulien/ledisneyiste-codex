@@ -41,6 +41,13 @@
         "sousTitre": "Le compositeur qui fit de la musique une architecture animée"
     },
     {
+        "slug": "carlo-collodi",
+        "nom": "Carlo Collodi",
+        "type": "contributeur",
+        "metadata": { "categories": ["auteur"] },
+        "sousTitre": "L’écrivain qui donna au pantin de bois sa première vie"
+    },
+    {
         "slug": "wilfred-jackson",
         "nom": "Wilfred Jackson",
         "type": "contributeur",
