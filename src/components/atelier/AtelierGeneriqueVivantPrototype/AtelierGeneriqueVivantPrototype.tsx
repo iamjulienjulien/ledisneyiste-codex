@@ -272,7 +272,9 @@ export function AtelierGeneriqueVivantPrototype({
         >
             <header className={styles.prototypeHeader}>
                 <div>
-                    <p className={styles.eyebrow}>Prototype privé · v0.2.0</p>
+                    <p className={styles.eyebrow}>
+                        Banc d’essai privé · Plan v1.0.0
+                    </p>
                     <h3 className={styles.prototypeTitle}>
                         Pinocchio révèle les gestes derrière l’écran
                     </h3>
