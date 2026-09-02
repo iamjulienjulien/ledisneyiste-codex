@@ -1775,5 +1775,30 @@
         "editeur": "Cinematografo",
         "url": "https://www.cinematografo.it/film/pinocchio-rk5ni88c",
         "dateConsultation": "2026-09-01"
+    },
+    {
+        "id": "us-d23-when-you-wish-upon-a-star",
+        "titre": "When You Wish Upon a Star",
+        "auteur": "Walt Disney Archives",
+        "editeur": "D23 · Disney A to Z",
+        "url": "https://d23.com/a-to-z/when-you-wish-upon-a-star/",
+        "dateConsultation": "2026-09-02"
+    },
+    {
+        "id": "us-loc-national-recording-registry-when-you-wish",
+        "titre": "When You Wish Upon a Star · 2009 National Recording Registry",
+        "auteur": "Library of Congress",
+        "editeur": "National Recording Preservation Board",
+        "url": "https://www.loc.gov/programs/national-recording-preservation-board/recording-registry/registry-by-induction-years/2009/",
+        "dateConsultation": "2026-09-02"
+    },
+    {
+        "id": "us-d23-disney100-castle-intro",
+        "titre": "Every Major Announcement from Disney and Pixar at D23 Expo 2022",
+        "auteur": "Andie Hagemann",
+        "editeur": "D23 · The Official Disney Fan Club",
+        "datePublication": "2022-09-09",
+        "url": "https://d23.com/first-looks-at-elemental-strange-worlds-and-more-at-d23-expos-disney-studios-showcase-day-1/",
+        "dateConsultation": "2026-09-02"
     }
 ]
