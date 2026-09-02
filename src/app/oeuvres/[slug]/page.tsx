@@ -16,6 +16,7 @@ import { getFicheOeuvreBySlug } from "@/data/oeuvres";
 import { getRecompensesPourOeuvre } from "@/data/recompenses/relations";
 import { getSourcesByIds } from "@/data/sources";
 import { formatDateHistorique } from "@/lib/date";
+import { codexPlanArchives, deriveGeneriqueVivant } from "@/lib/plans";
 import { resoudreIdentiteCodex } from "@/lib/identites/server";
 import { getFicheSourceIds } from "@/lib/source";
 import { getChansonsPourOeuvre } from "@/data/relations";
@@ -24,11 +25,27 @@ import {
     resoudreOeuvreSource,
 } from "@/lib/oeuvres-sources";
 import { fichesOeuvresSources } from "@/registry/oeuvres-sources";
+import type { CodexPlanConfiguration } from "@/types/codex-plans";
 
 export const dynamicParams = false;
 
 const registreOeuvresSources =
     creerRegistreOeuvresSources(fichesOeuvresSources);
+const generiqueVivantConfiguration = {
+    plan: "generique-vivant",
+    subject: {
+        family: "oeuvres",
+        slug: "pinocchio",
+    },
+    angle: "departments",
+    objective: "understand",
+    frame: {
+        label: "Le générique humain de Pinocchio",
+        description:
+            "Lire les contributions documentées par domaines sans leur attribuer de hiérarchie ni de valeur.",
+    },
+    matter: { kind: "archives" },
+} as const satisfies CodexPlanConfiguration;
 
 export function generateStaticParams() {
     return oeuvres.map((oeuvre) => ({
@@ -89,6 +106,13 @@ export default async function OeuvrePage({
             ? [resoudreOeuvreSource(relation.oeuvre, registreOeuvresSources)]
             : [],
     );
+    const generiqueVivant =
+        slug === "pinocchio"
+            ? deriveGeneriqueVivant(generiqueVivantConfiguration, {
+                  kind: "archives",
+                  archives: codexPlanArchives,
+              })
+            : undefined;
 
     return (
         <CodexFiche family="oeuvres">
@@ -221,6 +245,7 @@ export default async function OeuvrePage({
                 fiche={fiche}
                 sources={sources}
                 oeuvresSources={oeuvresSources}
+                generiqueVivant={generiqueVivant}
             />
 
             <CodexFicheRecompenses recompenses={recompenses} />

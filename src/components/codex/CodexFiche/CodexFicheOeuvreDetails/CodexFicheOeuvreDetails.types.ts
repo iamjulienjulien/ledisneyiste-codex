@@ -1,9 +1,11 @@
 import type { FicheOeuvreDisney } from "@/types/oeuvre";
 import type { ResolutionOeuvreSource } from "@/types/oeuvre-source";
 import type { SourceCodex } from "@/types/source";
+import type { CodexGeneriqueVivantModel } from "@/types/codex-plans";
 
 export type CodexFicheOeuvreDetailsProps = Readonly<{
     fiche: FicheOeuvreDisney;
     sources: readonly SourceCodex[];
     oeuvresSources?: readonly ResolutionOeuvreSource[];
+    generiqueVivant?: CodexGeneriqueVivantModel;
 }>;

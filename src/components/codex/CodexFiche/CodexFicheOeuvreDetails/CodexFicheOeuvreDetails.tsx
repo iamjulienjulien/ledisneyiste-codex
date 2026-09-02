@@ -1,6 +1,7 @@
 import { CodexFicheSection } from "@/components/codex/CodexFiche/CodexFicheSection";
 import { CodexCommonReferenceLink } from "@/components/codex/CodexCommon/CodexCommonReferenceLink";
 import { CodexFicheSourceCitations } from "@/components/codex/CodexFiche/CodexFicheSourceCitations";
+import { PlanGeneriqueVivant } from "@/components/plans/PlanGeneriqueVivant";
 import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { formatDateHistorique } from "@/lib/date";
@@ -188,12 +189,53 @@ export function CodexFicheOeuvreDetails({
     fiche,
     sources,
     oeuvresSources = [],
+    generiqueVivant,
 }: CodexFicheOeuvreDetailsProps) {
     const groupedCredits = groupCredits(fiche.contributions);
     const hasProductionFacts = Boolean(
         fiche.titresAlternatifs?.length ||
         fiche.durees?.length ||
         fiche.production,
+    );
+    const simpleCredits = (
+        <div className={styles.credits}>
+            {groupedCredits.map((group) => (
+                <PixieCard
+                    key={group.domain}
+                    as="section"
+                    variant="accent"
+                    color="gouache"
+                    padding="md"
+                    radius="medium"
+                    className={styles.creditGroup}
+                >
+                    <div className={styles.creditHeading}>
+                        <PixieSymbol
+                            {...creditDomainSymbols[group.domain]}
+                            size="lg"
+                        />
+
+                        <h3 className={styles.label}>
+                            {creditDomainLabels[group.domain]}
+                        </h3>
+                    </div>
+                    <ul className={styles.creditList}>
+                        {group.contributions.map((contribution) => (
+                            <li key={contribution.contributeur.nom}>
+                                <p className={styles.creditName}>
+                                    <CodexCommonReferenceLink
+                                        reference={contribution.contributeur}
+                                    />
+                                </p>
+                                <p className={styles.creditRoles}>
+                                    {contribution.roles.join(", ")}
+                                </p>
+                            </li>
+                        ))}
+                    </ul>
+                </PixieCard>
+            ))}
+        </div>
     );
 
     return (
@@ -710,46 +752,14 @@ export function CodexFicheOeuvreDetails({
                         />
                     }
                 >
-                    <div className={styles.credits}>
-                        {groupedCredits.map((group) => (
-                            <PixieCard
-                                key={group.domain}
-                                as="section"
-                                variant="accent"
-                                color="gouache"
-                                padding="md"
-                                radius="medium"
-                                className={styles.creditGroup}
-                            >
-                                <div className={styles.creditHeading}>
-                                    <PixieSymbol
-                                        {...creditDomainSymbols[group.domain]}
-                                        size="lg"
-                                    />
-
-                                    <h3 className={styles.label}>
-                                        {creditDomainLabels[group.domain]}
-                                    </h3>
-                                </div>
-                                <ul className={styles.creditList}>
-                                    {group.contributions.map((contribution) => (
-                                        <li key={contribution.contributeur.nom}>
-                                            <p className={styles.creditName}>
-                                                <CodexCommonReferenceLink
-                                                    reference={
-                                                        contribution.contributeur
-                                                    }
-                                                />
-                                            </p>
-                                            <p className={styles.creditRoles}>
-                                                {contribution.roles.join(", ")}
-                                            </p>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </PixieCard>
-                        ))}
-                    </div>
+                    {generiqueVivant ? (
+                        <PlanGeneriqueVivant
+                            model={generiqueVivant}
+                            simpleCredits={simpleCredits}
+                        />
+                    ) : (
+                        simpleCredits
+                    )}
                 </CodexFicheSection>
             )}
         </>

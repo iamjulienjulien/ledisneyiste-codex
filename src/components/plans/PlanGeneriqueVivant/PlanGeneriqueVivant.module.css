@@ -1,0 +1,217 @@
+.plan,
+.simpleView {
+    display: grid;
+    min-width: 0;
+    gap: clamp(1.25rem, 3vw, 2rem);
+}
+
+.planHeader,
+.viewHeader,
+.groupHeader {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.planHeader > div:first-child,
+.viewHeader > div:first-child {
+    max-width: 58rem;
+}
+
+.eyebrow,
+.creditStatus,
+.groupIdentity p {
+    margin: 0;
+    font-family: var(--font-eyebrow);
+    font-size: 0.68rem;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+}
+
+.planHeader h3,
+.viewHeader h3 {
+    margin-top: 0.55rem;
+    font-size: clamp(1.45rem, 3vw, 2rem);
+    line-height: 1.1;
+}
+
+.planHeader p:last-child,
+.viewHeader p:last-child {
+    margin-top: 0.65rem;
+    line-height: 1.6;
+    color: var(--color-ink-soft);
+}
+
+.headerActions {
+    display: grid;
+    justify-items: end;
+    gap: 0.75rem;
+}
+
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+.groups {
+    display: grid;
+    min-width: 0;
+    gap: 1.5rem;
+}
+
+.group {
+    --group-color: var(--color-accent);
+
+    display: grid;
+    min-width: 0;
+    gap: 1rem;
+    border-top: 2px solid
+        color-mix(in srgb, var(--group-color) 72%, var(--color-line));
+    padding-top: 1rem;
+}
+
+.groupIdentity {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    min-width: 0;
+}
+
+.groupIdentity p {
+    color: var(--group-color);
+}
+
+.groupIdentity h4 {
+    margin-top: 0.2rem;
+    font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+    line-height: 1.15;
+}
+
+.groupMetric {
+    display: grid;
+    width: min(100%, 10rem);
+    gap: 0.45rem;
+    color: var(--group-color);
+}
+
+.groupMetric [data-focale-mark="bar"] {
+    display: block;
+}
+
+.groupMetric span {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--color-muted);
+}
+
+.groupCue {
+    width: 2.5rem;
+    height: 0.25rem;
+    border-radius: 999px;
+    background: var(--group-color);
+}
+
+.creditGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 13.5rem), 1fr));
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.creditGrid > li {
+    min-width: 0;
+}
+
+.creditLink,
+.creditItem {
+    display: grid;
+    width: 100%;
+    min-height: 100%;
+    gap: 0.55rem;
+    padding: 1rem;
+    text-align: start;
+    color: inherit;
+    text-decoration: none;
+}
+
+.creditLink:focus-visible {
+    border-radius: var(--radius-medium);
+    outline: 2px solid var(--color-focus);
+    outline-offset: 3px;
+}
+
+.creditLink strong,
+.creditItem strong {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    line-height: 1.12;
+    color: var(--color-ink);
+}
+
+.roleList {
+    line-height: 1.45;
+    color: var(--color-ink-soft);
+}
+
+.creditLink small,
+.creditItem small {
+    padding-top: 0.45rem;
+    border-top: 1px solid var(--color-line);
+    line-height: 1.4;
+    color: var(--color-muted);
+}
+
+.countershot {
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-large);
+    background: var(--color-surface);
+}
+
+.countershot summary {
+    padding: 1rem 1.2rem;
+    font-family: var(--font-eyebrow);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.countershot > div {
+    border-top: 1px solid var(--color-line);
+    padding: 1.2rem;
+}
+
+@media (max-width: 40rem) {
+    .headerActions {
+        width: 100%;
+        justify-items: stretch;
+    }
+
+    .badges {
+        justify-content: flex-start;
+    }
+
+    .groupIdentity {
+        align-items: flex-start;
+    }
+
+    .groupMetric {
+        width: 100%;
+    }
+}
+
+@media (forced-colors: active) {
+    .group {
+        border-color: CanvasText;
+    }
+}
