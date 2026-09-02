@@ -11,6 +11,7 @@ const colorSlugs = {
     createurs: "jaune-lampe",
     oeuvres: "gouache",
     epoques: "vert-cellulo",
+    chansons: "rose-aerographe",
 } as const satisfies Record<CodexFamily, AtelierAnimationColorSlug>;
 
 export function CodexIndexListItem({

@@ -16,6 +16,7 @@ export type FicheIdentitaireCodex = Readonly<{
     slug: string;
     nomsAlternatifs?: readonly NomAlternatifCodex[];
     titresAlternatifs?: readonly TitreAlternatifCodex[];
+    identitesAlternatives?: readonly IdentiteDocumenteeCodex<"libelle">[];
 }>;
 
 export type ParametresProjectionIdentiteCodex<
@@ -57,10 +58,20 @@ function convertirIdentiteDocumentee(
 }
 
 function collecterIdentitesDocumentees(fiche: FicheIdentitaireCodex) {
-    if (fiche.nomsAlternatifs && fiche.titresAlternatifs) {
+    const groupes = [
+        fiche.nomsAlternatifs,
+        fiche.titresAlternatifs,
+        fiche.identitesAlternatives,
+    ].filter(Boolean);
+
+    if (groupes.length > 1) {
         throw new Error(
-            `La fiche « ${fiche.slug} » mélange noms et titres alternatifs.`,
+            `La fiche « ${fiche.slug} » mélange plusieurs contrats d’identités alternatives.`,
         );
+    }
+
+    if (fiche.identitesAlternatives) {
+        return [...fiche.identitesAlternatives];
     }
 
     const identites = fiche.nomsAlternatifs ?? fiche.titresAlternatifs ?? [];

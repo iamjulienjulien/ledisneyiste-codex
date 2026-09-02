@@ -27,6 +27,10 @@
     --codex-list-color: var(--color-famille-epoques);
 }
 
+.root[data-famille="chansons"] {
+    --codex-list-color: var(--color-famille-chansons);
+}
+
 .root::before {
     position: absolute;
     inset: 0 auto 0 0;

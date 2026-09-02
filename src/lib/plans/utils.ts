@@ -32,7 +32,7 @@ export function createEntityId(kind: CodexPlanEntityKind, value: string) {
 }
 
 export function createPublishedReference(
-    kind: TypeReferenceCodex,
+    kind: Exclude<TypeReferenceCodex, "chanson">,
     slug: string,
     label: string,
 ): CodexPlanEntityReference {
@@ -57,6 +57,16 @@ export function createReference(
             ),
             kind: "reference-non-resolue",
             label: reference.nom,
+            resolved: false,
+        };
+    }
+
+    if (reference.type === "chanson") {
+        return {
+            id: createEntityId("reference-non-resolue", reference.slug),
+            kind: "reference-non-resolue",
+            label: reference.nom,
+            slug: reference.slug,
             resolved: false,
         };
     }

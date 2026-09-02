@@ -87,6 +87,8 @@ export type CodexPlanRuntimeState =
 
 export type CodexPlanVerdict = "pursue" | "transform" | "defer" | "abandon";
 
+export type CodexPlanSubjectFamily = Exclude<CodexFamily, "chansons">;
+
 export type CodexPlanProvenanceKind =
     | "sourced-fact"
     | "editorial-relation"
@@ -95,7 +97,7 @@ export type CodexPlanProvenanceKind =
     | "bobine-temoin";
 
 export type CodexPlanSubject = Readonly<{
-    family: CodexFamily;
+    family: CodexPlanSubjectFamily;
     slug: string;
 }>;
 

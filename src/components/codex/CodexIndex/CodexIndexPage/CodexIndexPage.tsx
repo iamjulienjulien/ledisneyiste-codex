@@ -30,6 +30,10 @@ const familyThemes = {
         color: "vert-cellulo",
         symbol: "epoques",
     },
+    chansons: {
+        color: "rose-aerographe",
+        symbol: "chansons",
+    },
 } as const satisfies Record<
     CodexFamily,
     Readonly<{

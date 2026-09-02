@@ -50,6 +50,10 @@
     --codex-relation-color: var(--color-famille-epoques);
 }
 
+.reference[data-reference-type="chanson"] {
+    --codex-relation-color: var(--color-famille-chansons);
+}
+
 .referenceLabel {
     min-width: 0;
     font-size: 1.0625rem;

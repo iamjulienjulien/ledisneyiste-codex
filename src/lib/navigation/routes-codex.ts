@@ -10,6 +10,7 @@ const segmentsRoutesCodex: Readonly<Record<CodexFamily, string>> = {
     createurs: "contributeurs",
     oeuvres: "oeuvres",
     epoques: "epoques",
+    chansons: "chansons",
 };
 
 const motifCheminCodex =

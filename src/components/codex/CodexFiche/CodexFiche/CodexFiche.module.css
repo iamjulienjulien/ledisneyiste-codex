@@ -31,6 +31,10 @@
     --codex-fiche-color: var(--color-famille-epoques);
 }
 
+.root[data-codex-family="chansons"] {
+    --codex-fiche-color: var(--color-famille-chansons);
+}
+
 @media (min-width: 640px) {
     .root {
         padding-block: 5rem;

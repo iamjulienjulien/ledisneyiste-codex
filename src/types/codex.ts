@@ -1,4 +1,5 @@
-export type CodexFamily = "personnages" | "createurs" | "oeuvres" | "epoques";
+export type CodexFamily =
+    "personnages" | "createurs" | "oeuvres" | "epoques" | "chansons";
 
 export type EntreeCatalogueBase = {
     slug: string;

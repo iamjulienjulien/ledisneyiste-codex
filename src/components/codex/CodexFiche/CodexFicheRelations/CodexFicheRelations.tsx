@@ -11,6 +11,7 @@ const referenceFamilies = {
     contributeur: "createurs",
     oeuvre: "oeuvres",
     epoque: "epoques",
+    chanson: "chansons",
 } as const satisfies Record<TypeReferenceCodex, CodexFamily>;
 
 const familyOrder = {
@@ -18,6 +19,7 @@ const familyOrder = {
     createurs: 1,
     oeuvres: 2,
     epoques: 3,
+    chansons: 4,
 } as const satisfies Record<CodexFamily, number>;
 
 export function CodexFicheRelations({ groupes }: CodexFicheRelationsProps) {

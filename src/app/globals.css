@@ -119,6 +119,7 @@
     --color-famille-createurs: var(--atelier-famille-createurs);
     --color-famille-oeuvres: var(--atelier-famille-oeuvres);
     --color-famille-epoques: var(--atelier-famille-epoques);
+    --color-famille-chansons: var(--atelier-famille-chansons);
 
     /* Typographie */
     --font-brand: var(--projection-font-brand);

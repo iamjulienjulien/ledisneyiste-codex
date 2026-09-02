@@ -17,6 +17,9 @@ function getReferenceHref(reference: ReferenceCodex) {
         case "epoque":
             return `/epoques/${reference.slug}`;
 
+        case "chanson":
+            return `/chansons/${reference.slug}`;
+
         default:
             return null;
     }

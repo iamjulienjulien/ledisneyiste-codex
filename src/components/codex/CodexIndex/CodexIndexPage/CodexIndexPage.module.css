@@ -67,6 +67,10 @@
     --codex-index-color: var(--atelier-animation-vert-cellulo);
 }
 
+.root[data-family="chansons"] {
+    --codex-index-color: var(--atelier-animation-rose-aerographe);
+}
+
 @media (max-width: 39.999rem) {
     .hero {
         align-items: flex-start;
