@@ -53,6 +53,7 @@ function verifierTransmissions() {
     for (const document of [
         "docs/studio/production/acte-vi/phase-9/etat-reference.md",
         "docs/studio/production/acte-vi/phase-9/train-9a.md",
+        "docs/studio/production/acte-vi/phase-9/train-9b.md",
     ]) {
         assert.ok(
             existsSync(chemin(document)),
@@ -74,6 +75,26 @@ function verifierTransmissions() {
             reference,
             new RegExp(invariant, "i"),
             `État de référence incomplet : ${invariant}`,
+        );
+    }
+}
+
+function verifierTrain9B() {
+    const train = lire("docs/studio/production/acte-vi/phase-9/train-9b.md");
+
+    for (const attendu of [
+        "validé sans raccord produit",
+        "Aucun défaut bloquant connu",
+        "Reports non bloquants",
+        "Workflow commun de maturation des Plans",
+        "Corpus de _Fantasia_ et futur index Musiques",
+        "Absence volontaire de diff produit",
+        "Train 9C",
+    ]) {
+        assert.match(
+            train,
+            new RegExp(attendu, "i"),
+            `Train 9B : décision absente « ${attendu} »`,
         );
     }
 }
@@ -165,6 +186,7 @@ function verifierBranchement() {
 }
 
 verifierTransmissions();
+verifierTrain9B();
 verifierArchives();
 verifierPinocchio();
 verifierPlanPublic();
@@ -172,5 +194,5 @@ verifierFocale();
 verifierBranchement();
 
 console.log(
-    "Phase 9 · Train 9A validé : 9 transmissions raccordées, 109 Archives, 31 crédits et 6 primitives Focale sous contrôle.",
+    "Phase 9 · Train 9B validé : 9 transmissions raccordées, aucun défaut bloquant, 7 reports orientés.",
 );
