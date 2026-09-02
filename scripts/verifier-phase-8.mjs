@@ -465,6 +465,51 @@ function verifierTrain8E() {
     assert.match(dossier, /Types spécifiques/);
 }
 
+function verifierTrain8F() {
+    const rapport = readFileSync(
+        chemin("docs/studio/production/acte-vi/phase-8/train-8f.md"),
+        "utf8",
+    );
+    const prototype = readFileSync(
+        chemin(
+            "src/components/atelier/AtelierGeneriqueVivantPrototype/AtelierGeneriqueVivantPrototype.tsx",
+        ),
+        "utf8",
+    );
+    const focaleTable = readFileSync(
+        chemin("src/components/focale/FocaleTable/FocaleTable.tsx"),
+        "utf8",
+    );
+    const contrechampPublic = readFileSync(
+        chemin(
+            "src/components/codex/CodexFiche/CodexFicheOeuvreDetails/CodexFicheOeuvreDetails.tsx",
+        ),
+        "utf8",
+    );
+
+    for (const attendu of [
+        "Matrice avant / après",
+        "Utilité du Plan",
+        "Valeur et coût de Focale",
+        "Audit d’accessibilité et de continuité",
+        "expérimentation publique réversible",
+        "grammaire expérimentale locale",
+    ]) {
+        assert.match(
+            rapport,
+            new RegExp(attendu),
+            `Train 8F : le rapport doit contenir « ${attendu} »`,
+        );
+    }
+
+    assert.match(prototype, /aria-live="polite"/);
+    assert.match(prototype, /<details className=\{styles\.countershot\} open>/);
+    assert.match(focaleTable, /<caption/);
+    assert.match(focaleTable, /role="region"/);
+    assert.match(contrechampPublic, /groupCredits\(fiche\.contributions\)/);
+    assert.match(contrechampPublic, /groupedCredits\.map/);
+}
+
 function verifierBranchement() {
     const packageJson = lireJson("package.json");
 
@@ -516,7 +561,8 @@ verifierTrain8B();
 verifierTrain8C(pinocchio);
 verifierTrain8D(pinocchio);
 verifierTrain8E();
+verifierTrain8F();
 
 console.log(
-    `Phase 8 vérifiée jusqu’au Train 8E : Pinocchio projette ${pinocchio.stats.contributions} contributions dans une scène responsive, lisible et accompagnée de son contrechamp textuel.`,
+    `Phase 8 vérifiée jusqu’au Train 8F : Pinocchio conserve ${pinocchio.stats.contributions} contributions ; le Plan et Focale reçoivent deux recommandations séparées avant le point d’arrêt 8G.`,
 );
