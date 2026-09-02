@@ -1157,109 +1157,208 @@
             "family": "createurs",
             "slug": "walt-disney",
             "train": "6E",
-            "sourceStatus": "reportee"
+            "sourceStatus": "reportee",
+            "status": "raccordee",
+            "verdict": "La production de Walt Disney est reliée depuis le générique structuré de Pinocchio sans lui attribuer un crédit d’animation ou d’adaptation supplémentaire.",
+            "files": ["src/data/oeuvres/pinocchio.json"],
+            "sources": ["us-afi-catalog-pinocchio"],
+            "checks": ["pnpm check:relations", "pnpm check:phase-6"]
         },
         {
             "family": "createurs",
             "slug": "hamilton-luske",
             "train": "6E",
-            "sourceStatus": "reportee"
+            "sourceStatus": "reportee",
+            "status": "raccordee",
+            "verdict": "Hamilton Luske est relié à Pinocchio comme réalisateur superviseur ; la relation reste distincte des directions de séquences.",
+            "files": ["src/data/oeuvres/pinocchio.json"],
+            "sources": ["us-afi-catalog-pinocchio", "d23-ham-luske"],
+            "checks": ["pnpm check:relations", "pnpm check:phase-6"]
         },
         {
             "family": "createurs",
             "slug": "wilfred-jackson",
             "train": "6E",
-            "sourceStatus": "reportee"
+            "sourceStatus": "reportee",
+            "status": "raccordee",
+            "verdict": "Wilfred Jackson est relié à la réalisation de séquences sans extension vers la réalisation générale du film.",
+            "files": ["src/data/oeuvres/pinocchio.json"],
+            "sources": [
+                "us-afi-catalog-pinocchio",
+                "fr-cinematheque-pinocchio"
+            ],
+            "checks": ["pnpm check:relations", "pnpm check:phase-6"]
         },
         {
             "family": "createurs",
             "slug": "norman-ferguson",
             "train": "6E",
-            "sourceStatus": "reportee"
+            "sourceStatus": "reportee",
+            "status": "raccordee",
+            "verdict": "Norman Ferguson conserve deux gestes distincts : la réalisation de séquences et l’animation de Grand Coquin et Gédéon.",
+            "files": ["src/data/oeuvres/pinocchio.json"],
+            "sources": ["us-afi-catalog-pinocchio", "d23-norm-ferguson"],
+            "checks": ["pnpm check:relations", "pnpm check:phase-6"]
         },
         {
             "family": "createurs",
             "slug": "ward-kimball",
             "train": "6E",
-            "sourceStatus": "reportee"
+            "sourceStatus": "reportee",
+            "status": "raccordee",
+            "verdict": "Ward Kimball est relié à la supervision de l’animation de Jiminy Cricket, sans généraliser ce crédit à tous les personnages de sa séquence.",
+            "files": ["src/data/oeuvres/pinocchio.json"],
+            "sources": [
+                "us-afi-catalog-pinocchio",
+                "us-wdfm-reimagining-jiminy"
+            ],
+            "checks": ["pnpm check:relations", "pnpm check:phase-6"]
         },
         {
             "family": "createurs",
             "slug": "fred-moore",
             "train": "6E",
-            "sourceStatus": "reportee"
+            "sourceStatus": "reportee",
+            "status": "raccordee",
+            "verdict": "Fred Moore est relié à la supervision de l’animation de Crapule, identité française de Lampwick.",
+            "files": ["src/data/oeuvres/pinocchio.json"],
+            "sources": ["us-afi-catalog-pinocchio", "us-wdfm-pool-hall"],
+            "checks": ["pnpm check:relations", "pnpm check:phase-6"]
         },
         {
             "family": "createurs",
             "slug": "milt-kahl",
             "train": "6E",
-            "sourceStatus": "reportee"
+            "sourceStatus": "reportee",
+            "status": "raccordee",
+            "verdict": "Milt Kahl est relié à la supervision de l’animation de Pinocchio ; la relation structurée complète sa refonte graphique déjà racontée sans la recopier.",
+            "files": ["src/data/oeuvres/pinocchio.json"],
+            "sources": [
+                "us-afi-catalog-pinocchio",
+                "us-wdfm-milt-kahl-puppeteer"
+            ],
+            "checks": ["pnpm check:relations", "pnpm check:phase-6"]
         },
         {
             "family": "createurs",
             "slug": "frank-thomas",
             "train": "6E",
-            "sourceStatus": "reportee"
+            "sourceStatus": "reportee",
+            "status": "raccordee",
+            "verdict": "Le générique AFI qualifie Frank Thomas comme superviseur de l’animation de Pinocchio ; le report peut être fermé sans inférence d’équipe.",
+            "files": ["src/data/oeuvres/pinocchio.json"],
+            "sources": ["us-afi-catalog-pinocchio"],
+            "checks": ["pnpm check:relations", "pnpm check:phase-6"]
         },
         {
             "family": "createurs",
             "slug": "eric-larson",
             "train": "6E",
-            "sourceStatus": "reportee"
+            "sourceStatus": "reportee",
+            "status": "raccordee",
+            "verdict": "Le générique AFI qualifie Eric Larson comme superviseur de l’animation de Cléo et Figaro ; le report peut être fermé sans créer de route pour Cléo.",
+            "files": ["src/data/oeuvres/pinocchio.json"],
+            "sources": ["us-afi-catalog-pinocchio"],
+            "checks": ["pnpm check:relations", "pnpm check:phase-6"]
         },
         {
             "family": "createurs",
             "slug": "ollie-johnston",
             "train": "6E",
-            "sourceStatus": "reportee"
+            "sourceStatus": "reportee",
+            "status": "raccordee",
+            "verdict": "Le générique AFI attribue à Ollie Johnston l’animation de Pinocchio ; le report peut être fermé sans élargir ce rôle à une supervision.",
+            "files": ["src/data/oeuvres/pinocchio.json"],
+            "sources": ["us-afi-catalog-pinocchio"],
+            "checks": ["pnpm check:relations", "pnpm check:phase-6"]
         },
         {
             "family": "createurs",
             "slug": "john-lounsbery",
             "train": "6E",
-            "sourceStatus": "reportee"
+            "sourceStatus": "reportee",
+            "status": "raccordee",
+            "verdict": "John Lounsbery est relié à l’animation de Grand Coquin et Gédéon depuis l’Œuvre et les Personnages désormais publiés.",
+            "files": ["src/data/oeuvres/pinocchio.json"],
+            "sources": ["us-afi-catalog-pinocchio", "d23-john-lounsbery"],
+            "checks": ["pnpm check:relations", "pnpm check:phase-6"]
         },
         {
             "family": "createurs",
             "slug": "wolfgang-reitherman",
             "train": "6E",
-            "sourceStatus": "reportee"
+            "sourceStatus": "reportee",
+            "status": "raccordee",
+            "verdict": "Wolfgang Reitherman est relié à la supervision de l’animation de Jiminy Cricket et Monstro, dont la poursuite finale reste son geste le mieux documenté.",
+            "files": ["src/data/oeuvres/pinocchio.json"],
+            "sources": ["us-afi-catalog-pinocchio", "d23-wolfgang-reitherman"],
+            "checks": ["pnpm check:relations", "pnpm check:phase-6"]
         },
         {
             "family": "createurs",
             "slug": "vladimir-bill-tytla",
             "train": "6E",
-            "sourceStatus": "reportee"
+            "sourceStatus": "reportee",
+            "status": "raccordee",
+            "verdict": "Vladimir “Bill” Tytla est relié à la supervision de l’animation de Stromboli et Monstro sans modifier son identité canonique.",
+            "files": ["src/data/oeuvres/pinocchio.json"],
+            "sources": ["us-afi-catalog-pinocchio", "d23-bill-tytla"],
+            "checks": ["pnpm check:relations", "pnpm check:phase-6"]
         },
         {
             "family": "createurs",
             "slug": "joe-grant",
             "train": "6E",
-            "sourceStatus": "reportee"
+            "sourceStatus": "reportee",
+            "status": "raccordee",
+            "verdict": "Joe Grant est relié à la conception des personnages ; aucun crédit narratif distinct n’est ajouté sans source plus précise.",
+            "files": ["src/data/oeuvres/pinocchio.json"],
+            "sources": ["us-afi-catalog-pinocchio", "d23-joe-grant"],
+            "checks": ["pnpm check:relations", "pnpm check:phase-6"]
         },
         {
             "family": "createurs",
             "slug": "gustaf-tenggren",
             "train": "6E",
-            "sourceStatus": "reportee"
+            "sourceStatus": "reportee",
+            "status": "raccordee",
+            "verdict": "Gustaf Tenggren est relié au développement visuel de Pinocchio sans le confondre avec la direction artistique créditée du film.",
+            "files": ["src/data/oeuvres/pinocchio.json"],
+            "sources": ["nationalmuseum-gustaf-tenggren"],
+            "checks": ["pnpm check:relations", "pnpm check:phase-6"]
         },
         {
             "family": "createurs",
             "slug": "leigh-harline",
             "train": "6E",
-            "sourceStatus": "reportee"
+            "sourceStatus": "reportee",
+            "status": "raccordee",
+            "verdict": "Leigh Harline est relié à la composition de la musique et des chansons ; les relations vers la chanson pilote et l’Oscar restent réservées au Train 6F.",
+            "files": ["src/data/oeuvres/pinocchio.json"],
+            "sources": ["d23-leigh-harline", "us-academy-awards-1941"],
+            "checks": ["pnpm check:relations", "pnpm check:phase-6"]
         },
         {
             "family": "createurs",
             "slug": "paul-j-smith",
             "train": "6E",
-            "sourceStatus": "reportee"
+            "sourceStatus": "reportee",
+            "status": "raccordee",
+            "verdict": "Paul J. Smith est relié à la composition de la musique ; la relation vers l’Oscar reste réservée au Train 6F.",
+            "files": ["src/data/oeuvres/pinocchio.json"],
+            "sources": ["d23-paul-smith", "us-academy-awards-1941"],
+            "checks": ["pnpm check:relations", "pnpm check:phase-6"]
         },
         {
             "family": "createurs",
             "slug": "marge-champion",
             "train": "6E",
-            "sourceStatus": "reportee"
+            "sourceStatus": "reportee",
+            "status": "raccordee",
+            "verdict": "Marge Champion est reliée comme référence filmée de la Fée Bleue, séparément de la voix originale d’Evelyn Venable.",
+            "files": ["src/data/oeuvres/pinocchio.json"],
+            "sources": ["us-afi-catalog-pinocchio", "d23-marge-champion"],
+            "checks": ["pnpm check:relations", "pnpm check:phase-6"]
         },
         {
             "family": "epoques",

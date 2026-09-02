@@ -174,6 +174,7 @@ function verifierDocuments() {
         "train-6b.md",
         "train-6c.md",
         "train-6d.md",
+        "train-6e.md",
     ]) {
         assert.ok(
             existsSync(
@@ -954,6 +955,156 @@ function verifierTrain6D(production) {
     assert.equal(production.sourceInventory.promoted.length, 23);
 }
 
+function verifierTrain6E(production) {
+    const pinocchio = lireJson("src/data/oeuvres/pinocchio.json");
+    const relays = production.relays.filter((entree) => entree.train === "6E");
+    const slugsAttendus = [
+        "walt-disney",
+        "hamilton-luske",
+        "wilfred-jackson",
+        "norman-ferguson",
+        "ward-kimball",
+        "fred-moore",
+        "milt-kahl",
+        "frank-thomas",
+        "eric-larson",
+        "ollie-johnston",
+        "john-lounsbery",
+        "wolfgang-reitherman",
+        "vladimir-bill-tytla",
+        "joe-grant",
+        "gustaf-tenggren",
+        "leigh-harline",
+        "paul-j-smith",
+        "marge-champion",
+    ].sort();
+    const contributionsAttendues = [
+        ["walt-disney", "production-direction", ["production"]],
+        ["hamilton-luske", "production-direction", ["réalisation"]],
+        [
+            "wilfred-jackson",
+            "production-direction",
+            ["réalisation de séquences"],
+        ],
+        [
+            "norman-ferguson",
+            "production-direction",
+            ["réalisation de séquences"],
+        ],
+        [
+            "norman-ferguson",
+            "animation-personnages",
+            ["animation de Grand Coquin et Gédéon"],
+        ],
+        [
+            "ward-kimball",
+            "animation-personnages",
+            ["supervision de l’animation de Jiminy Cricket"],
+        ],
+        [
+            "fred-moore",
+            "animation-personnages",
+            ["supervision de l’animation de Crapule"],
+        ],
+        [
+            "milt-kahl",
+            "animation-personnages",
+            ["supervision de l’animation de Pinocchio"],
+        ],
+        [
+            "frank-thomas",
+            "animation-personnages",
+            ["supervision de l’animation de Pinocchio"],
+        ],
+        [
+            "eric-larson",
+            "animation-personnages",
+            ["supervision de l’animation de Cléo et Figaro"],
+        ],
+        ["ollie-johnston", "animation-personnages", ["animation de Pinocchio"]],
+        [
+            "john-lounsbery",
+            "animation-personnages",
+            ["animation de Grand Coquin et Gédéon"],
+        ],
+        [
+            "wolfgang-reitherman",
+            "animation-personnages",
+            ["supervision de l’animation de Jiminy Cricket et Monstro"],
+        ],
+        [
+            "vladimir-bill-tytla",
+            "animation-personnages",
+            ["supervision de l’animation de Stromboli et Monstro"],
+        ],
+        [
+            "joe-grant",
+            "direction-artistique-conception",
+            ["conception de personnages"],
+        ],
+        [
+            "gustaf-tenggren",
+            "direction-artistique-conception",
+            ["développement visuel"],
+        ],
+        [
+            "leigh-harline",
+            "musique-chansons",
+            ["composition de la musique et des chansons"],
+        ],
+        ["paul-j-smith", "musique-chansons", ["composition de la musique"]],
+        [
+            "marge-champion",
+            "reference-filmee",
+            ["référence filmée de la Fée Bleue"],
+        ],
+    ];
+
+    assert.equal(relays.length, 18);
+    assert.deepEqual(relays.map((entree) => entree.slug).sort(), slugsAttendus);
+    assert.ok(
+        relays.every((entree) => entree.status === "raccordee"),
+        "Train 6E : les dix-huit reports Créateurs ne sont pas tous fermés",
+    );
+    assert.equal(
+        pinocchio.contributions.length,
+        31,
+        "Train 6E : le générique de Pinocchio ne possède plus ses 31 contributions",
+    );
+
+    for (const [slug, domaine, roles] of contributionsAttendues) {
+        const contribution = pinocchio.contributions.find(
+            (candidate) =>
+                candidate.contributeur.slug === slug &&
+                candidate.domaine === domaine,
+        );
+
+        assert.ok(
+            contribution,
+            `Train 6E : contribution absente pour ${slug}/${domaine}`,
+        );
+        assert.deepEqual(
+            contribution.roles,
+            roles,
+            `Train 6E : rôle altéré pour ${slug}/${domaine}`,
+        );
+    }
+
+    assert.equal(
+        pinocchio.contributions.some(
+            (contribution) => contribution.contributeur.slug === "david-hand",
+        ),
+        false,
+        "David Hand : crédit ajouté malgré l’arbitrage de Phase 6",
+    );
+    assert.equal(
+        production.baseline.publicEntries + production.progress.publiee,
+        104,
+    );
+    assert.equal(production.sourceInventory.promoted.length, 23);
+    assert.equal(production.sourceInventory.remainingPrivateCurrent, 7);
+}
+
 function verifierSymboles(production) {
     assert.equal(production.symbolInventory.collections.length, 5);
     assert.deepEqual(production.symbolInventory.missing, []);
@@ -1002,9 +1153,10 @@ verifierReprises(production);
 verifierTrain6B(production);
 verifierTrain6C(production);
 verifierTrain6D(production);
+verifierTrain6E(production);
 verifierSymboles(production);
 verifierBranchement();
 
 console.log(
-    `Phase 6 · Train 6D vérifié : ${production.baseline.publicEntries + production.progress.publiee} Archives publiques, ${production.progress.publiee} créations publiées, neuf Créateurs cibles, Evelyn Venable au générique sans route et ${production.sourceInventory.promoted.length} sources promues.`,
+    `Phase 6 · Train 6E vérifié : ${production.baseline.publicEntries + production.progress.publiee} Archives publiques, 18 raccords Créateurs fermés, 31 contributions dans le générique de Pinocchio, David Hand sans crédit et ${production.sourceInventory.promoted.length} sources promues.`,
 );
