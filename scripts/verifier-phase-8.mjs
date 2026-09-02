@@ -398,6 +398,73 @@ function verifierTrain8D(pinocchio) {
     assert.doesNotMatch(prototype, /function groupByRoles/);
 }
 
+function verifierTrain8E() {
+    const page = readFileSync(
+        chemin("src/app/atelier/plans/[slug]/page.tsx"),
+        "utf8",
+    );
+    const dossier = readFileSync(
+        chemin(
+            "src/components/atelier/AtelierPlanDossier/AtelierPlanDossier.tsx",
+        ),
+        "utf8",
+    );
+    const prototype = readFileSync(
+        chemin(
+            "src/components/atelier/AtelierGeneriqueVivantPrototype/AtelierGeneriqueVivantPrototype.tsx",
+        ),
+        "utf8",
+    );
+    const styles = readFileSync(
+        chemin(
+            "src/components/atelier/AtelierGeneriqueVivantPrototype/AtelierGeneriqueVivantPrototype.module.css",
+        ),
+        "utf8",
+    );
+
+    for (const composant of [
+        "FocaleAnnotation",
+        "FocaleLegend",
+        "FocaleMark",
+        "FocaleTable",
+        "FocaleViewport",
+    ]) {
+        assert.match(
+            prototype,
+            new RegExp(`<${composant}\\b`),
+            `Train 8E : ${composant} doit porter sa responsabilité de lecture`,
+        );
+    }
+
+    assert.match(prototype, /const objectiveByAngle/);
+    assert.match(prototype, /Banc d’essai privé/);
+    assert.match(prototype, /Régie de lecture/);
+    assert.match(prototype, /aria-live="polite"/);
+    assert.match(prototype, /<details className=\{styles\.countershot\} open>/);
+    assert.match(prototype, /sort === "alphabetical"/);
+    assert.match(prototype, /a\.label\.localeCompare\(b\.label, "fr"\)/);
+    assert.match(prototype, /data-inspector-mode=\{inspectorMode\}/);
+    assert.match(prototype, /Fermer le gros plan/);
+    assert.match(prototype, /<PixieStickyRegion/);
+    assert.doesNotMatch(prototype, /setObjective/);
+    assert.doesNotMatch(prototype, /setDensity/);
+    assert.doesNotMatch(prototype, /setEvidence/);
+    assert.doesNotMatch(prototype, /setCountershot/);
+    assert.match(styles, /@media \(min-width: 70rem\)/);
+    assert.match(styles, /@media \(max-width: 30rem\)/);
+    assert.match(styles, /position: sticky/);
+    assert.equal(
+        page.match(/technical=\{generiqueVivantTechnical\}/g)?.length,
+        1,
+        "Train 8E : le générique technique enrichi doit rester propre à cette esquisse",
+    );
+    assert.match(page, /title: "API de l’esquisse"/);
+    assert.match(page, /AtelierGeneriqueVivantInspectorMode/);
+    assert.match(dossier, /<AtelierPropertiesTable/);
+    assert.match(dossier, /<AtelierTypesTable/);
+    assert.match(dossier, /Types spécifiques/);
+}
+
 function verifierBranchement() {
     const packageJson = lireJson("package.json");
 
@@ -448,7 +515,8 @@ verifierBranchement();
 verifierTrain8B();
 verifierTrain8C(pinocchio);
 verifierTrain8D(pinocchio);
+verifierTrain8E();
 
 console.log(
-    `Phase 8 vérifiée jusqu’au Train 8D : Pinocchio projette ${pinocchio.stats.contributions} contributions selon cinq angles dérivés, dont un état vide explicite pour les responsabilités multiples.`,
+    `Phase 8 vérifiée jusqu’au Train 8E : Pinocchio projette ${pinocchio.stats.contributions} contributions dans une scène responsive, lisible et accompagnée de son contrechamp textuel.`,
 );
