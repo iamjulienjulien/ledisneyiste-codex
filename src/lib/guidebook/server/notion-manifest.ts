@@ -50,6 +50,10 @@ export const notionGuidebookManifest = {
             slug: "pistes-a-eprouver-apres-fondations",
             pageId: "3bd092fa3223819aab56f985bd3cb891",
         },
+        {
+            slug: "glossaire-du-disneyiste",
+            pageId: "3ce092fa322381b6bc9afdffbadfc33a",
+        },
     ],
 } satisfies GuidebookNotionManifest;
 

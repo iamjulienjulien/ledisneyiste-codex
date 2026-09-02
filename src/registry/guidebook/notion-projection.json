@@ -65,6 +65,12 @@
                             "title": "Pistes à éprouver · après les fondations",
                             "order": 8,
                             "children": []
+                        },
+                        {
+                            "slug": "glossaire-du-disneyiste",
+                            "title": "Glossaire du Disneyiste · Les mots du studio",
+                            "order": 9,
+                            "children": []
                         }
                     ]
                 }
