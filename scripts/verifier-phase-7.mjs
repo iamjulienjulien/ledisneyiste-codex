@@ -878,6 +878,91 @@ function verifierBranchement() {
     }
 }
 
+function verifierCloturePhase7(idsSources) {
+    const fiche = lireJson("src/data/oeuvres/pinocchio.json");
+    const chanson = lireJson(
+        "src/data/chansons/when-you-wish-upon-a-star.json",
+    );
+    const catalogues = {
+        oeuvres: 24,
+        personnages: 33,
+        contributeurs: 41,
+        chansons: 9,
+        epoques: 2,
+    };
+
+    function mesurerRecit(blocs) {
+        const paragraphes = blocs.flatMap((bloc) => bloc.paragraphes);
+        const structures = paragraphes.filter(
+            (paragraphe) => paragraphe && typeof paragraphe === "object",
+        );
+
+        return {
+            chapitres: blocs.length,
+            paragraphes: paragraphes.length,
+            structures: structures.length,
+            questions: blocs.filter(({ question }) => chaineNonVide(question))
+                .length,
+            sources: new Set(
+                structures.flatMap(({ sources: sourceIds }) => sourceIds),
+            ).size,
+            reserves: structures.filter(({ reserve }) => chaineNonVide(reserve))
+                .length,
+        };
+    }
+
+    assert.deepEqual(mesurerRecit(fiche.blocsEditoriaux ?? []), {
+        chapitres: 8,
+        paragraphes: 29,
+        structures: 29,
+        questions: 8,
+        sources: 31,
+        reserves: 14,
+    });
+    assert.deepEqual(mesurerRecit(chanson.blocsEditoriaux ?? []), {
+        chapitres: 3,
+        paragraphes: 7,
+        structures: 7,
+        questions: 3,
+        sources: 11,
+        reserves: 2,
+    });
+
+    const matierePublique = JSON.stringify({ fiche, chanson });
+    assert.doesNotMatch(
+        matierePublique,
+        /us-wdfm-art-of-pinocchio/,
+        "Train 7H : la notice d’exposition privée ne doit pas traverser la projection",
+    );
+    assert.doesNotMatch(
+        JSON.stringify(chanson),
+        /"(?:audio|audioUrl|lyrics|lyricsUrl|paroles|texteIntegral)"\s*:/,
+        "Train 7H : aucun média ni paroles protégées ne doivent entrer dans la chanson",
+    );
+
+    let totalArchives = 0;
+    for (const [catalogue, totalAttendu] of Object.entries(catalogues)) {
+        const entrees = lireJson(`src/data/catalogues/${catalogue}.json`);
+        assert.equal(
+            entrees.length,
+            totalAttendu,
+            `Train 7H : dérive du catalogue ${catalogue}`,
+        );
+        totalArchives += entrees.length;
+    }
+    assert.equal(totalArchives, 109, "Train 7H : 109 Archives attendues");
+    assert.equal(
+        fiche.contributions.length,
+        31,
+        "Train 7H : la Phase 8 doit recevoir les 31 contributions qualifiées",
+    );
+
+    assert.ok(
+        idsSources.size >= 242,
+        "Train 7H : le registre de preuves a reculé",
+    );
+}
+
 verifierDocuments();
 const sources = lireJson("src/data/sources/sources.json");
 const idsSources = new Set(sources.map((source) => source.id));
@@ -890,7 +975,8 @@ verifierTrain7E(idsSources);
 verifierTrain7F(idsSources);
 verifierTrain7G(idsSources);
 verifierBranchement();
+verifierCloturePhase7(idsSources);
 
 console.log(
-    `Phase 7G vérifiée : ${resultat.blocs} blocs compatibles, huit chapitres ordonnés et carte des preuves lisible sans interaction.`,
+    `Phase 7 clôturée : ${resultat.blocs} blocs compatibles, huit chapitres ordonnés, 29 unités de preuve et 109 Archives préservées.`,
 );
