@@ -667,6 +667,29 @@ période cumulée 1946–2010, sa méthode CNC et le statut
 dans l’enquête privée. La présentation peut donc afficher un chiffre sans
 faire disparaître les conditions qui lui donnent son sens.
 
+### Le récit conserve la preuve au niveau du paragraphe
+
+Un bloc éditorial peut encore porter ses paragraphes historiques sous forme de
+chaînes. Lorsqu’une affirmation demande une traçabilité plus fine, le même
+contrat accepte une unité structurée `{ id, texte, sources, reserve }` et une
+question documentaire au niveau du chapitre. Cette union rétrocompatible
+évite de réécrire les récits existants tout en rapprochant chaque preuve de la
+phrase qu’elle soutient.
+
+[`src/lib/fiche-editoriale.ts`](../../src/lib/fiche-editoriale.ts) constitue le
+point de dérivation unique : il normalise les paragraphes, agrège leurs sources
+et produit `deriveCartePreuvesEditoriale`. `CodexFicheBlocsEditoriaux` projette
+la lecture continue ; `CodexFicheRecit` peut lui ajouter un sommaire et une
+table textuelle des preuves. La carte ne possède donc aucune donnée autonome
+et ne devient ni une Archive ni un Plan.
+
+_Pinocchio_ est le premier récit à activer explicitement cette lecture complète
+: huit chapitres, vingt-neuf unités sourcées, trente et une sources distinctes
+et quatorze réserves. La chanson _When You Wish Upon a Star_ éprouve le même
+contrat sur trois chapitres sans recevoir la carte propre à l’Œuvre. Toute
+future généralisation doit commencer dans les données, conserver une question
+par chapitre et dériver l’interface depuis ces mêmes unités.
+
 ### Les chiffres possèdent une frontière supplémentaire
 
 Une donnée économique structurée conserve mesure, valeur ou fourchette
@@ -916,6 +939,7 @@ plus utiles sont :
 | `pnpm check:phase-4`                  | Corpus, routes, bobines et manifeste de migration                   |
 | `pnpm check:phase-5`                  | 69 verdicts de rétroapplication et 45 routes historiques            |
 | `pnpm check:phase-6`                  | Noyau Pinocchio, 109 routes, sources et frontières internes         |
+| `pnpm check:phase-7`                  | Récit structuré, preuves proches, réserves et carte dérivée         |
 | `pnpm check:interlude-disney-legends` | 29 Disney Legends, années, bénéficiaires et sources officielles     |
 | `pnpm build`                          | Assemblage statique et contrats TypeScript                          |
 
