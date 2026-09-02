@@ -116,9 +116,10 @@ navigateur.
 **alors** routes, recherche, Plans, accessibilité, build et vérificateurs
 restent conformes sans migration anticipée du manifeste de 69 entrées.
 
-- Rouge aujourd’hui : la future compatibilité n’a pas encore de contrôle
-  dédié.
-- Passe au vert : progressivement en 4B–4E, verrou final en 4F.
+- Verte depuis le Train 4F : la répétition agrégée compte 79 fiches et 79
+  routes, confirme les quatre familles publiques, garde les 69 entrées du
+  manifeste Phase 5 non migrées et vérifie que les domaines internes ne
+  possèdent ni catalogue ni route.
 
 ## Règle de transformation
 

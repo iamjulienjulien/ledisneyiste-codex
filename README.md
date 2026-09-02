@@ -50,6 +50,12 @@ fondations visuelles et les primitives passent de l’esquisse à leur version
 prête à projeter, et le Guidebook, qui met la documentation transmissible en
 lecture sans l’ouvrir au site de production.
 
+L’Acte VI prépare désormais la vie publique des œuvres avec des contrats
+internes pour leur circulation, leurs versions, leurs réceptions, leurs œuvres
+sources, leurs chansons et leurs mesures économiques. Ces modèles sont
+éprouvés sur des fixtures privées : ils n’ajoutent encore ni famille, ni route,
+ni Archive au catalogue public.
+
 ---
 
 ## Principes
@@ -122,10 +128,15 @@ public/
     └── techniques/
 
 scripts/
+├── verifier-chansons.mjs
+├── verifier-donnees-economiques.mjs
 ├── verifier-guidebook.mjs
+├── verifier-identites.mjs
 ├── verifier-metadonnees.mjs
 ├── verifier-matiere-plans.mjs
 ├── verifier-oeuvres.mjs
+├── verifier-oeuvres-sources.mjs
+├── verifier-phase-4.mjs
 ├── verifier-plans.mjs
 ├── verifier-personnages.mjs
 ├── verifier-recompenses.mjs
@@ -305,6 +316,28 @@ Chaque groupe est projeté dans une `PixieCard` et reçoit un symbole choisi dan
 les registres généraux ou techniques. Les catégories du générique disposent
 elles aussi de leur propre outil illustré, sans faire descendre la connaissance
 des métiers dans les primitives Pixie.
+
+### Contrats documentaires internes
+
+Les prochains enrichissements sont préparés dans des contrats spécialisés :
+
+```text
+src/types/circulation-oeuvre.ts
+src/types/oeuvre-source.ts
+src/types/chanson.ts
+src/types/musique.ts
+src/types/projection-media.ts
+src/types/donnee-economique.ts
+```
+
+Ils distinguent notamment sortie, version, exploitation et réception ; œuvre
+Disney et œuvre source ; composition, occurrence, interprétation et
+enregistrement ; donnée économique originale et dérivation calculée.
+
+Leurs cas d’essai restent sous `scripts/fixtures`. Les domaines Œuvres sources,
+Chansons et Musiques ne possèdent encore ni catalogue ni route publique. Les
+dossiers de droits et d’enquête restent privés ; leurs projections recopient
+uniquement la matière explicitement autorisée.
 
 ### Citations dans les chapitres et les repères
 
@@ -677,11 +710,18 @@ Cette commande exécute :
 format
 → format:check
 → lint
+→ check:pixie
 → check:symbols
 → check:metadata
 → check:plans
 → check:plan-matter
+→ check:guidebook
+→ check:identites
 → check:oeuvres
+→ check:oeuvres-sources
+→ check:chansons
+→ check:donnees-economiques
+→ check:phase-4
 → check:personnages
 → check:relations
 → check:recompenses
@@ -702,11 +742,18 @@ Les commandes individuelles restent disponibles :
 pnpm format
 pnpm format:check
 pnpm lint
+pnpm check:pixie
 pnpm check:symbols
 pnpm check:metadata
 pnpm check:plans
 pnpm check:plan-matter
+pnpm check:guidebook
+pnpm check:identites
 pnpm check:oeuvres
+pnpm check:oeuvres-sources
+pnpm check:chansons
+pnpm check:donnees-economiques
+pnpm check:phase-4
 pnpm check:personnages
 pnpm check:relations
 pnpm check:recompenses
@@ -721,10 +768,14 @@ dans la bonne collection. `check:plans` valide la grammaire des cinq Plans,
 leurs Angles et leurs Objectifs. `check:plan-matter` éprouve les cinq familles
 de matière dérivée, les huit Bobines témoins et les projections propres aux
 cinq prototypes. Les contrôles suivants vérifient les métadonnées des
-catalogues, le modèle des Œuvres et sa fixture de long métrage, les variantes de
-noms et les formes des Personnages, la cohérence des références et des
-relations, puis les récompenses, leurs bénéficiaires, leurs sources et leurs
-trophées illustrés.
+catalogues, le modèle des Œuvres et sa fixture de long métrage, les Œuvres
+sources privées, les Chansons et les droits média, les mesures économiques et
+leur frontière de publication. `check:phase-4` confirme enfin que les 79
+Archives et routes restent stables, que les domaines internes ne sont pas
+publiés et que les 69 entrées de la Phase 5 ne sont pas déclarées migrées. Les
+derniers contrôles couvrent les variantes de noms et les formes des
+Personnages, la cohérence des références et des relations, puis les
+récompenses, leurs bénéficiaires, leurs sources et leurs trophées illustrés.
 
 ---
 
