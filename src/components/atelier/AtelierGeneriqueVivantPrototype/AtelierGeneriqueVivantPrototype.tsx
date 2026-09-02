@@ -10,6 +10,8 @@ import { PixiePanel } from "@/components/ui/PixiePanel";
 import { PixieSearchField } from "@/components/ui/PixieSearchField";
 import { PixieSelect } from "@/components/ui/PixieSelect";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
+import { FocaleTable } from "@/components/focale/FocaleTable";
+import type { FocaleTableColumn } from "@/components/focale/FocaleTable";
 import { getCreditDomainDefinition } from "@/registry/credits";
 import type {
     CodexGeneriqueVivantContribution,
@@ -31,7 +33,7 @@ import type {
 import styles from "./AtelierGeneriqueVivantPrototype.module.css";
 
 const angleOptions = [
-    ["departments", "Départements"],
+    ["departments", "Domaines"],
     ["roles", "Rôles exacts"],
     ["responsibilities", "Responsabilités"],
     ["collaborations", "Co-présences"],
@@ -175,6 +177,51 @@ function sourceCount(item: CodexGeneriqueVivantContribution) {
     ).size;
 }
 
+const countershotColumns = [
+    {
+        id: "contributor",
+        header: "Personne",
+        render: (item) => {
+            const href = contributorHref(item);
+
+            return href ? (
+                <PixieLink href={href}>{item.contributor.label}</PixieLink>
+            ) : (
+                <strong>{item.contributor.label}</strong>
+            );
+        },
+    },
+    {
+        id: "roles",
+        header: "Rôle documenté",
+        render: (item) => item.roles.join(" · "),
+    },
+    {
+        id: "domain",
+        header: "Domaine",
+        render: (item) => item.domainLabel,
+    },
+    {
+        id: "presence",
+        header: "Présence",
+        render: (item) =>
+            item.contributor.resolved ? "Fiche publiée" : "Mention non publiée",
+    },
+    {
+        id: "works",
+        header: "Œuvres documentées",
+        render: (item) => item.recurrenceWorkLabels.join(" · "),
+    },
+    {
+        id: "provenance",
+        header: "Provenance",
+        render: (item) =>
+            item.provenance
+                .map((provenance) => provenance.explanation ?? provenance.kind)
+                .join(" · "),
+    },
+] as const satisfies readonly FocaleTableColumn<CodexGeneriqueVivantContribution>[];
+
 export function AtelierGeneriqueVivantPrototype({
     projections,
 }: AtelierGeneriqueVivantPrototypeProps) {
@@ -274,13 +321,14 @@ export function AtelierGeneriqueVivantPrototype({
         >
             <header className={styles.prototypeHeader}>
                 <div>
-                    <p className={styles.eyebrow}>Prototype privé · v0.1.0</p>
+                    <p className={styles.eyebrow}>Prototype privé · v0.2.0</p>
                     <h3 className={styles.prototypeTitle}>
                         Le générique devient une carte humaine
                     </h3>
                     <p className={styles.prototypeDescription}>
-                        Les contributions de Blanche-Neige se regroupent sans
-                        fabriquer de hiérarchie, de valeur ni de collaboration.
+                        Les 31 contributions de Pinocchio rendent visibles huit
+                        domaines de fabrication sans fabriquer de hiérarchie, de
+                        valeur ni de collaboration.
                     </p>
                 </div>
                 <div className={styles.badges}>
@@ -381,7 +429,7 @@ export function AtelierGeneriqueVivantPrototype({
                             value={domain}
                             onChange={(event) => setDomain(event.target.value)}
                         >
-                            <option value="all">Tous les départements</option>
+                            <option value="all">Tous les domaines</option>
                             {model.groups.map((group) => (
                                 <option key={group.id} value={group.id}>
                                     {group.label}
@@ -506,7 +554,7 @@ export function AtelierGeneriqueVivantPrototype({
                     onClear={() => setQuery("")}
                     onSubmit={ignoreSubmit}
                     submitLabel="Chercher"
-                    placeholder="Nom, rôle ou département…"
+                    placeholder="Nom, rôle ou domaine…"
                     clearable
                     composition="joined"
                     size="sm"
@@ -844,22 +892,15 @@ export function AtelierGeneriqueVivantPrototype({
                     Contrechamp textuel · {filtered.length} contributions
                 </summary>
                 <div>
-                    {viewGroups.map((group) => (
-                        <section key={`text:${group.id}`}>
-                            <h5>{group.label}</h5>
-                            <ul>
-                                {group.items.map((item) => (
-                                    <li key={`text:${group.id}:${item.id}`}>
-                                        <strong>
-                                            {item.contributor.label}
-                                        </strong>{" "}
-                                        — {item.roles.join(" · ")} —{" "}
-                                        {item.domainLabel}.
-                                    </li>
-                                ))}
-                            </ul>
-                        </section>
-                    ))}
+                    <FocaleTable
+                        caption={`Crédits groupés par métiers · ${filtered.length} contributions`}
+                        captionHidden
+                        columns={countershotColumns}
+                        rows={filtered}
+                        getRowId={(item) => item.id}
+                        density="compact"
+                        emptyLabel="Aucune contribution ne répond au Cadre actuel."
+                    />
                 </div>
             </details>
         </section>

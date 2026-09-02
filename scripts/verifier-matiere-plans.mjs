@@ -1008,12 +1008,12 @@ function verifierGeneriqueVivant({
         plan: "generique-vivant",
         subject: {
             family: "oeuvres",
-            slug: "snow-white-and-the-seven-dwarfs",
+            slug: "pinocchio",
         },
         angle: "departments",
         objective: "understand",
         frame: {
-            label: "Le générique humain de Blanche-Neige",
+            label: "Le générique humain de Pinocchio",
             description:
                 "Explorer les contributions sans leur attribuer de hiérarchie ni de valeur.",
         },
@@ -1025,15 +1025,15 @@ function verifierGeneriqueVivant({
         archives,
     });
 
-    assert.equal(projection.subject.label, "Blanche-Neige et les Sept Nains");
+    assert.equal(projection.subject.label, "Pinocchio");
     assert.equal(projection.matter.kind, "archives");
     assert.equal(projection.runtimeState, "incomplete");
     assert.deepEqual(projection.stats, {
-        contributions: 33,
-        domains: 6,
-        multiRole: 10,
-        resolved: 25,
-        unresolved: 8,
+        contributions: 31,
+        domains: 8,
+        multiRole: 0,
+        resolved: 30,
+        unresolved: 1,
     });
     assert.deepEqual(
         Object.fromEntries(
@@ -1043,12 +1043,14 @@ function verifierGeneriqueVivant({
             ]),
         ),
         {
-            "production-direction": 3,
-            "direction-artistique-conception": 5,
-            "animation-personnages": 11,
-            "musique-chansons": 4,
-            "interpretation-vocale": 9,
-            "reference-filmee": 1,
+            "production-direction": 7,
+            "histoire-adaptation": 1,
+            "direction-artistique-conception": 3,
+            "animation-personnages": 10,
+            "decors-effets-photographie": 1,
+            "musique-chansons": 3,
+            "interpretation-vocale": 3,
+            "reference-filmee": 3,
         },
     );
     assert.ok(
@@ -1064,7 +1066,7 @@ function verifierGeneriqueVivant({
         projection.notices.filter(
             (notice) => notice.code === "unresolved-reference",
         ).length,
-        8,
+        1,
     );
     assert.deepEqual(
         deriveGeneriqueVivant(configuration, {

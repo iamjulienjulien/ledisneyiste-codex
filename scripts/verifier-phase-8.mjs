@@ -307,10 +307,10 @@ function verifierSurfaces() {
         /if \(slug === "generique-vivant"\)([\s\S]*?)if \(slug === "table-lumineuse"\)/,
     )?.[1];
     assert.ok(brancheGenerique, "Train 8A : branche Générique vivant absente");
-    assert.match(brancheGenerique, /version="v0\.1\.0"/);
+    assert.match(brancheGenerique, /version="v0\.2\.0"/);
     assert.match(
         brancheGenerique,
-        /Blanche-Neige déroule un générique à hauteur humaine/,
+        /Pinocchio révèle les gestes humains derrière l’écran/,
     );
     assert.match(brancheGenerique, /createGeneriqueProjections/);
 
@@ -334,6 +334,40 @@ function verifierSurfaces() {
             `Train 8A : le Plan ne doit pas devenir ${path.basename(fichier)}`,
         );
     }
+}
+
+function verifierTrain8C(pinocchio) {
+    const page = readFileSync(
+        chemin("src/app/atelier/plans/[slug]/page.tsx"),
+        "utf8",
+    );
+    const prototype = readFileSync(
+        chemin(
+            "src/components/atelier/AtelierGeneriqueVivantPrototype/AtelierGeneriqueVivantPrototype.tsx",
+        ),
+        "utf8",
+    );
+    const projectionsGenerique = page.match(
+        /function createGeneriqueProjections\(\)([\s\S]*?)function createTableLumineuseProjections/,
+    )?.[1];
+
+    assert.ok(
+        projectionsGenerique,
+        "Train 8C : fabrique des projections du Générique vivant absente",
+    );
+    assert.match(projectionsGenerique, /slug: "pinocchio"/);
+    assert.match(projectionsGenerique, /Le générique humain de Pinocchio/);
+    assert.match(prototype, /Prototype privé · v0\.2\.0/);
+    assert.match(prototype, /FocaleTable/);
+    assert.match(prototype, /Mention non publiée/);
+    assert.equal(pinocchio.contributions.length, 31);
+    assert.equal(pinocchio.groups.length, 8);
+    assert.deepEqual(
+        pinocchio.contributions
+            .filter(({ contributor }) => !contributor.resolved)
+            .map(({ contributor }) => contributor.label),
+        ["Evelyn Venable"],
+    );
 }
 
 function verifierBranchement() {
@@ -384,7 +418,8 @@ verifierBobines(plans);
 verifierSurfaces();
 verifierBranchement();
 verifierTrain8B();
+verifierTrain8C(pinocchio);
 
 console.log(
-    `Phase 8 vérifiée jusqu’au Train 8B : ${pinocchio.stats.contributions} contributions, ${pinocchio.stats.domains} domaines et une grammaire Focale indépendante.`,
+    `Phase 8 vérifiée jusqu’au Train 8C : Pinocchio projette ${pinocchio.stats.contributions} contributions dans ${pinocchio.stats.domains} domaines avec un contrechamp Focale exhaustif.`,
 );

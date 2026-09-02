@@ -264,14 +264,14 @@ function createGeneriqueProjections() {
             plan: "generique-vivant",
             subject: {
                 family: "oeuvres",
-                slug: "snow-white-and-the-seven-dwarfs",
+                slug: "pinocchio",
             },
             angle: "departments",
             objective: "understand",
             frame: {
-                label: "Le générique humain de Blanche-Neige",
+                label: "Le générique humain de Pinocchio",
                 description:
-                    "Explorer les contributions sans leur attribuer de hiérarchie ni de valeur.",
+                    "Explorer les 31 contributions documentées sans leur attribuer de hiérarchie ni de valeur.",
             },
             matter:
                 matterKey === "archives"
@@ -438,9 +438,9 @@ export default async function AtelierPlanPage({
                 plan={plan}
                 status="Esquisse"
                 program="P0 · Quatrième prototype"
-                version="v0.1.0"
-                prototypeTitle="Blanche-Neige déroule un générique à hauteur humaine"
-                prototypeDescription="Le prototype regroupe les contributions par domaines et rôles, permet de retrouver une personne et éprouve les références non résolues comme le grand générique de 240 crédits."
+                version="v0.2.0"
+                prototypeTitle="Pinocchio révèle les gestes humains derrière l’écran"
+                prototypeDescription="Le prototype éprouve les 31 contributions documentées de Pinocchio, leurs huit domaines et la mention non publiée d’Evelyn Venable, tout en conservant les Bobines témoins pour les états limites."
                 prototype={
                     <AtelierGeneriqueVivantPrototype
                         projections={createGeneriqueProjections()}
