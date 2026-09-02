@@ -18,36 +18,133 @@
         },
         "evenements": [
             {
+                "id": "premiere-mondiale-us-1937",
                 "date": {
                     "valeur": "1937-12-21",
                     "precision": "jour"
                 },
-                "territoire": "États-Unis",
+                "porteeTerritoriale": {
+                    "nature": "territoire",
+                    "code": "US"
+                },
                 "nature": "premiere-mondiale",
                 "lieu": "Carthay Circle Theatre, Hollywood",
+                "versionId": "version-originale-1937",
+                "exploitationId": "premiere-exploitation-us-1937",
                 "sources": ["afi-snow-white", "d23-snow-white-film"]
             },
             {
+                "id": "sortie-nationale-us-1938",
                 "date": {
                     "valeur": "1938-02-04",
                     "precision": "jour"
                 },
-                "territoire": "États-Unis",
+                "porteeTerritoriale": {
+                    "nature": "territoire",
+                    "code": "US"
+                },
                 "nature": "sortie-nationale",
+                "versionId": "version-originale-1937",
+                "exploitationId": "premiere-exploitation-us-1937",
                 "sources": ["afi-snow-white", "disney-memory-lane-1938"]
             },
             {
+                "id": "sortie-nationale-fr-1938",
                 "date": {
                     "valeur": "1938-05-06",
                     "precision": "jour"
                 },
-                "territoire": "France",
+                "porteeTerritoriale": {
+                    "nature": "territoire",
+                    "code": "FR"
+                },
                 "nature": "sortie-nationale",
+                "exploitationId": "exploitation-france-1938",
                 "sources": ["cnc-snow-white", "retronews-snow-white"]
             }
         ]
     },
     "format": "long métrage d’animation",
+    "versions": [
+        {
+            "id": "version-originale-1937",
+            "nature": "originale",
+            "identite": {
+                "libelle": "Version originale de 1937",
+                "nature": "original",
+                "langue": "en",
+                "territoire": "US",
+                "sources": ["afi-snow-white", "d23-snow-white-film"]
+            },
+            "date": {
+                "valeur": "1937",
+                "precision": "annee"
+            },
+            "sources": ["afi-snow-white", "d23-snow-white-film"]
+        }
+    ],
+    "exploitations": [
+        {
+            "id": "premiere-exploitation-us-1937",
+            "nature": "premiere-exploitation",
+            "periode": {
+                "debut": {
+                    "valeur": "1937-12-21",
+                    "precision": "jour"
+                }
+            },
+            "porteeTerritoriale": {
+                "nature": "territoire",
+                "code": "US"
+            },
+            "versionIds": ["version-originale-1937"],
+            "support": "salles",
+            "sources": ["afi-snow-white", "d23-snow-white-film"]
+        },
+        {
+            "id": "exploitation-france-1938",
+            "nature": "exploitation-nationale",
+            "periode": {
+                "debut": {
+                    "valeur": "1938-05-06",
+                    "precision": "jour"
+                }
+            },
+            "porteeTerritoriale": {
+                "nature": "territoire",
+                "code": "FR"
+            },
+            "support": "salles",
+            "sources": ["cnc-snow-white", "retronews-snow-white"]
+        }
+    ],
+    "receptions": [
+        {
+            "id": "reception-publique-initiale-1937-1938",
+            "nature": "publique",
+            "temoin": {
+                "nom": "Public des premières exploitations",
+                "nature": "public"
+            },
+            "periode": {
+                "debut": {
+                    "valeur": "1937-12",
+                    "precision": "mois"
+                },
+                "fin": {
+                    "valeur": "1938-03",
+                    "precision": "mois"
+                }
+            },
+            "porteeTerritoriale": {
+                "nature": "non-precisee",
+                "libelleSource": "Territoire non précisé par la source"
+            },
+            "resume": "L’AFI rapporte que vingt millions de personnes voient le film pendant ses trois premiers mois, sans préciser le territoire couvert par ce chiffre.",
+            "qualification": "descriptive",
+            "sources": ["afi-snow-white"]
+        }
+    ],
     "durees": [
         {
             "valeur": 83,
@@ -149,12 +246,9 @@
             "nature": "source",
             "oeuvre": {
                 "nom": "Schneewittchen",
-                "type": "oeuvre-exterieure",
-                "auteurs": ["Jacob Grimm", "Wilhelm Grimm"],
-                "date": {
-                    "valeur": "1812",
-                    "precision": "annee"
-                }
+                "type": "oeuvre-source",
+                "id": "oeuvre-source-grimm-schneewittchen",
+                "slug": "schneewittchen"
             },
             "sources": ["afi-snow-white"]
         },
