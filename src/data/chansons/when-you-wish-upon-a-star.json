@@ -1,0 +1,191 @@
+{
+    "id": "chanson-when-you-wish-upon-a-star",
+    "slug": "when-you-wish-upon-a-star",
+    "type": "chanson",
+    "introduction": "When You Wish Upon a Star ouvre et referme Pinocchio en confiant à Jiminy Cricket le souhait qui guide le récit. Devenue Quand on prie la bonne étoile dans l’édition française documentée, la chanson relie le film, ses auteurs, son interprète et l’Oscar qui consacra sa portée.",
+    "identite": {
+        "libelle": "When You Wish Upon a Star",
+        "nature": "original",
+        "langue": "en",
+        "territoire": "US",
+        "sources": ["us-d23-pinocchio-film"]
+    },
+    "identitesAlternatives": [
+        {
+            "libelle": "Quand on prie la bonne étoile",
+            "nature": "localise",
+            "langue": "fr",
+            "territoire": "FR",
+            "sources": ["fr-bnf-bo-pinocchio"]
+        }
+    ],
+    "oeuvreOrigine": {
+        "nom": "Pinocchio",
+        "slug": "pinocchio",
+        "type": "oeuvre"
+    },
+    "auteurs": [
+        {
+            "personne": {
+                "nom": "Leigh Harline",
+                "type": "contributeur",
+                "slug": "leigh-harline"
+            },
+            "roles": ["composition"],
+            "sources": ["us-academy-awards-1941"]
+        },
+        {
+            "personne": {
+                "nom": "Ned Washington",
+                "type": "contributeur",
+                "slug": "ned-washington"
+            },
+            "roles": ["paroles"],
+            "sources": ["us-academy-awards-1941", "us-d23-ned-washington"]
+        }
+    ],
+    "versions": [
+        {
+            "id": "when-you-wish-originale-en",
+            "nature": "originale",
+            "identite": {
+                "libelle": "When You Wish Upon a Star",
+                "nature": "original",
+                "langue": "en",
+                "territoire": "US",
+                "sources": ["us-d23-pinocchio-film"]
+            },
+            "date": { "valeur": "1940", "precision": "annee" },
+            "porteeTerritoriale": {
+                "nature": "territoire",
+                "code": "US"
+            },
+            "sources": ["us-d23-pinocchio-film"]
+        },
+        {
+            "id": "when-you-wish-adaptation-fr-1995",
+            "nature": "adaptation-lyrique",
+            "identite": {
+                "libelle": "Quand on prie la bonne étoile",
+                "nature": "localise",
+                "langue": "fr",
+                "territoire": "FR",
+                "sources": ["fr-bnf-bo-pinocchio"]
+            },
+            "date": { "valeur": "1995", "precision": "annee" },
+            "porteeTerritoriale": {
+                "nature": "territoire",
+                "code": "FR"
+            },
+            "adaptateurs": [
+                {
+                    "personne": { "nom": "J. Cis" },
+                    "roles": ["adaptation-lyrique"],
+                    "sources": ["fr-bnf-bo-pinocchio"]
+                },
+                {
+                    "personne": { "nom": "R. Sauvage" },
+                    "roles": ["adaptation-lyrique"],
+                    "sources": ["fr-bnf-bo-pinocchio"]
+                }
+            ],
+            "sources": ["fr-bnf-bo-pinocchio"],
+            "noteDeReserve": "Le titre et les crédits sont attestés pour l’édition phonographique de 1995, sans être antidatés à la sortie française du film."
+        }
+    ],
+    "occurrences": [
+        {
+            "id": "occurrence-when-you-wish-pinocchio-1940",
+            "nature": "origine",
+            "oeuvre": {
+                "nom": "Pinocchio",
+                "slug": "pinocchio",
+                "type": "oeuvre"
+            },
+            "versionId": "when-you-wish-originale-en",
+            "date": { "valeur": "1940-02-07", "precision": "jour" },
+            "fonctionNarrative": "Ouvre et referme le récit en portant le souhait qui guide le film.",
+            "sources": ["us-d23-pinocchio-film"]
+        }
+    ],
+    "interpretations": [
+        {
+            "id": "interpretation-cliff-edwards-1940",
+            "nature": "originale",
+            "versionId": "when-you-wish-originale-en",
+            "occurrenceId": "occurrence-when-you-wish-pinocchio-1940",
+            "interpretes": [
+                {
+                    "personne": {
+                        "nom": "Cliff Edwards",
+                        "type": "contributeur",
+                        "slug": "cliff-edwards"
+                    },
+                    "roles": ["chant", "voix"],
+                    "sources": [
+                        "us-d23-cliff-edwards",
+                        "fr-cinematheque-pinocchio"
+                    ]
+                }
+            ],
+            "date": { "valeur": "1940", "precision": "annee" },
+            "sources": ["us-d23-cliff-edwards", "fr-cinematheque-pinocchio"]
+        }
+    ],
+    "enregistrements": [
+        {
+            "id": "enregistrement-when-you-wish-film-1940",
+            "interpretationId": "interpretation-cliff-edwards-1940",
+            "date": { "valeur": "1940", "precision": "annee" },
+            "edition": "Fixation sonore de l’occurrence filmique originale",
+            "sources": ["fr-cinematheque-pinocchio"]
+        }
+    ],
+    "receptions": [
+        {
+            "id": "reception-oscar-chanson-1941",
+            "nature": "institutionnelle",
+            "date": { "valeur": "1941-02-27", "precision": "jour" },
+            "resume": "L’Academy distingue la chanson originale et ses auteurs Leigh Harline et Ned Washington.",
+            "porteeTerritoriale": {
+                "nature": "territoire",
+                "code": "US"
+            },
+            "sources": ["us-academy-awards-1941"]
+        }
+    ],
+    "recompenses": [
+        {
+            "id": "academy-awards-1941-when-you-wish-upon-a-star",
+            "sources": ["us-academy-awards-1941"]
+        }
+    ],
+    "blocsEditoriaux": [
+        {
+            "type": "heritage",
+            "eyebrow": "Récompense",
+            "titre": "Un souhait consacré par l’Academy",
+            "paragraphes": [
+                "Le 27 février 1941, l’Academy récompense When You Wish Upon a Star comme meilleure chanson originale. La distinction nomme Leigh Harline pour la musique et Ned Washington pour les paroles, sans séparer la chanson du film qui lui donne sa première occurrence."
+            ],
+            "sources": ["us-academy-awards-1941"]
+        },
+        {
+            "type": "interpretation",
+            "eyebrow": "Voix",
+            "titre": "Jiminy porte la chanson au seuil du récit",
+            "paragraphes": [
+                "Cliff Edwards interprète la chanson dans la continuité de son rôle de Jiminy Cricket. Le générique musical et le générique vocal se rejoignent ainsi dans une même présence, sans confondre composition, paroles et interprétation."
+            ],
+            "sources": ["us-d23-cliff-edwards", "fr-cinematheque-pinocchio"]
+        }
+    ],
+    "sources": [
+        "us-academy-awards-1941",
+        "us-d23-pinocchio-film",
+        "us-d23-cliff-edwards",
+        "us-d23-ned-washington",
+        "fr-cinematheque-pinocchio",
+        "fr-bnf-bo-pinocchio"
+    ]
+}

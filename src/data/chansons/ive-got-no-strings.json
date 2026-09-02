@@ -1,0 +1,85 @@
+{
+    "id": "chanson-ive-got-no-strings",
+    "slug": "ive-got-no-strings",
+    "type": "chanson",
+    "introduction": "I’ve Got No Strings fait de l’absence de ficelles le premier numéro public de Pinocchio. Sur la scène de Stromboli, son autonomie devient à la fois spectacle et piège.",
+    "identite": {
+        "libelle": "I’ve Got No Strings",
+        "nature": "original",
+        "langue": "en",
+        "territoire": "US",
+        "sources": ["us-d23-pinocchio-film"]
+    },
+    "identitesAlternatives": [
+        {
+            "libelle": "Il faut savoir briser ses liens",
+            "nature": "localise",
+            "langue": "fr",
+            "territoire": "FR",
+            "sources": ["fr-bnf-bo-pinocchio"]
+        }
+    ],
+    "oeuvreOrigine": {
+        "nom": "Pinocchio",
+        "type": "oeuvre",
+        "slug": "pinocchio"
+    },
+    "auteurs": [
+        {
+            "personne": {
+                "nom": "Leigh Harline",
+                "type": "contributeur",
+                "slug": "leigh-harline"
+            },
+            "roles": ["composition"],
+            "sources": ["us-afi-catalog-pinocchio"]
+        },
+        {
+            "personne": {
+                "nom": "Ned Washington",
+                "type": "contributeur",
+                "slug": "ned-washington"
+            },
+            "roles": ["paroles"],
+            "sources": ["us-d23-ned-washington"]
+        }
+    ],
+    "versions": [
+        {
+            "id": "ive-got-no-strings-originale-en",
+            "nature": "originale",
+            "identite": {
+                "libelle": "I’ve Got No Strings",
+                "nature": "original",
+                "langue": "en",
+                "territoire": "US",
+                "sources": ["us-d23-pinocchio-film"]
+            },
+            "date": { "valeur": "1940", "precision": "annee" },
+            "porteeTerritoriale": { "nature": "territoire", "code": "US" },
+            "sources": ["us-d23-pinocchio-film"]
+        }
+    ],
+    "occurrences": [
+        {
+            "id": "occurrence-ive-got-no-strings-pinocchio-1940",
+            "nature": "origine",
+            "oeuvre": {
+                "nom": "Pinocchio",
+                "type": "oeuvre",
+                "slug": "pinocchio"
+            },
+            "versionId": "ive-got-no-strings-originale-en",
+            "date": { "valeur": "1940-02-07", "precision": "jour" },
+            "fonctionNarrative": "Transforme l’autonomie physique de Pinocchio en numéro de scène sous le contrôle de Stromboli.",
+            "sources": ["us-d23-pinocchio-film"]
+        }
+    ],
+    "interpretations": [],
+    "sources": [
+        "us-afi-catalog-pinocchio",
+        "us-d23-pinocchio-film",
+        "us-d23-ned-washington",
+        "fr-bnf-bo-pinocchio"
+    ]
+}

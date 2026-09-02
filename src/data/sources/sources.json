@@ -1724,5 +1724,14 @@
         "editeur": "D23 · Disney Legends",
         "url": "https://d23.com/walt-disney-legend/ken-anderson/",
         "dateConsultation": "2026-09-01"
+    },
+    {
+        "id": "fr-bnf-bo-pinocchio",
+        "titre": "Pinocchio : bande originale française du film",
+        "auteur": "Leigh Harline, Ned Washington, J. Cis, R. Sauvage et interprètes",
+        "editeur": "Bibliothèque nationale de France · Catalogue général",
+        "datePublication": "1995",
+        "url": "https://catalogue.bnf.fr/ark:/12148/cb390868107",
+        "dateConsultation": "2026-09-01"
     }
 ]

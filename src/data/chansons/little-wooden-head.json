@@ -1,0 +1,85 @@
+{
+    "id": "chanson-little-wooden-head",
+    "slug": "little-wooden-head",
+    "type": "chanson",
+    "introduction": "Little Wooden Head accompagne Geppetto lorsqu’il anime son atelier autour du pantin qu’il vient de fabriquer. La chanson installe Pinocchio dans le mouvement avant même que la Fée Bleue lui donne vie.",
+    "identite": {
+        "libelle": "Little Wooden Head",
+        "nature": "original",
+        "langue": "en",
+        "territoire": "US",
+        "sources": ["us-d23-pinocchio-film"]
+    },
+    "identitesAlternatives": [
+        {
+            "libelle": "Les Pantins de bois",
+            "nature": "localise",
+            "langue": "fr",
+            "territoire": "FR",
+            "sources": ["fr-bnf-bo-pinocchio"]
+        }
+    ],
+    "oeuvreOrigine": {
+        "nom": "Pinocchio",
+        "type": "oeuvre",
+        "slug": "pinocchio"
+    },
+    "auteurs": [
+        {
+            "personne": {
+                "nom": "Leigh Harline",
+                "type": "contributeur",
+                "slug": "leigh-harline"
+            },
+            "roles": ["composition"],
+            "sources": ["us-afi-catalog-pinocchio"]
+        },
+        {
+            "personne": {
+                "nom": "Ned Washington",
+                "type": "contributeur",
+                "slug": "ned-washington"
+            },
+            "roles": ["paroles"],
+            "sources": ["us-d23-ned-washington"]
+        }
+    ],
+    "versions": [
+        {
+            "id": "little-wooden-head-originale-en",
+            "nature": "originale",
+            "identite": {
+                "libelle": "Little Wooden Head",
+                "nature": "original",
+                "langue": "en",
+                "territoire": "US",
+                "sources": ["us-d23-pinocchio-film"]
+            },
+            "date": { "valeur": "1940", "precision": "annee" },
+            "porteeTerritoriale": { "nature": "territoire", "code": "US" },
+            "sources": ["us-d23-pinocchio-film"]
+        }
+    ],
+    "occurrences": [
+        {
+            "id": "occurrence-little-wooden-head-pinocchio-1940",
+            "nature": "origine",
+            "oeuvre": {
+                "nom": "Pinocchio",
+                "type": "oeuvre",
+                "slug": "pinocchio"
+            },
+            "versionId": "little-wooden-head-originale-en",
+            "date": { "valeur": "1940-02-07", "precision": "jour" },
+            "fonctionNarrative": "Accompagne Geppetto lorsqu’il met en scène le pantin dans son atelier.",
+            "sources": ["us-d23-pinocchio-film"]
+        }
+    ],
+    "interpretations": [],
+    "sources": [
+        "us-afi-catalog-pinocchio",
+        "us-d23-pinocchio-film",
+        "us-d23-ned-washington",
+        "fr-bnf-bo-pinocchio"
+    ]
+}

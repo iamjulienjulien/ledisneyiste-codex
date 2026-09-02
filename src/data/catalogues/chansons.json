@@ -42,5 +42,60 @@
             "slug": "three-little-pigs"
         },
         "sousTitre": "Le refrain qui prolongea le succès des Trois Petits Cochons"
+    },
+    {
+        "slug": "when-you-wish-upon-a-star",
+        "nom": "Quand on prie la bonne étoile",
+        "type": "chanson",
+        "oeuvreOrigine": {
+            "nom": "Pinocchio",
+            "type": "oeuvre",
+            "slug": "pinocchio"
+        },
+        "sousTitre": "Le souhait de Jiminy Cricket consacré par l’Academy"
+    },
+    {
+        "slug": "little-wooden-head",
+        "nom": "Les Pantins de bois",
+        "type": "chanson",
+        "oeuvreOrigine": {
+            "nom": "Pinocchio",
+            "type": "oeuvre",
+            "slug": "pinocchio"
+        },
+        "sousTitre": "Le premier mouvement du pantin dans l’atelier de Geppetto"
+    },
+    {
+        "slug": "give-a-little-whistle",
+        "nom": "Sifflez vite vite",
+        "type": "chanson",
+        "oeuvreOrigine": {
+            "nom": "Pinocchio",
+            "type": "oeuvre",
+            "slug": "pinocchio"
+        },
+        "sousTitre": "La conscience transformée en consigne musicale"
+    },
+    {
+        "slug": "hi-diddle-dee-dee",
+        "nom": "Hi-diddle di di",
+        "type": "chanson",
+        "oeuvreOrigine": {
+            "nom": "Pinocchio",
+            "type": "oeuvre",
+            "slug": "pinocchio"
+        },
+        "sousTitre": "La promesse de liberté qui détourne Pinocchio de l’école"
+    },
+    {
+        "slug": "ive-got-no-strings",
+        "nom": "Il faut savoir briser ses liens",
+        "type": "chanson",
+        "oeuvreOrigine": {
+            "nom": "Pinocchio",
+            "type": "oeuvre",
+            "slug": "pinocchio"
+        },
+        "sousTitre": "L’absence de ficelles devenue spectacle et piège"
     }
 ]

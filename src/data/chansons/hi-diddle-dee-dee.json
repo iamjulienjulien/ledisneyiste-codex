@@ -1,0 +1,85 @@
+{
+    "id": "chanson-hi-diddle-dee-dee",
+    "slug": "hi-diddle-dee-dee",
+    "type": "chanson",
+    "introduction": "Hi-Diddle-Dee-Dee donne au théâtre l’apparence d’une liberté sans devoirs. Grand Coquin s’en sert pour détourner Pinocchio de l’école et l’attirer vers la scène de Stromboli.",
+    "identite": {
+        "libelle": "Hi-Diddle-Dee-Dee",
+        "nature": "original",
+        "langue": "en",
+        "territoire": "US",
+        "sources": ["us-d23-pinocchio-film"]
+    },
+    "identitesAlternatives": [
+        {
+            "libelle": "Hi-diddle di di",
+            "nature": "localise",
+            "langue": "fr",
+            "territoire": "FR",
+            "sources": ["fr-bnf-bo-pinocchio"]
+        }
+    ],
+    "oeuvreOrigine": {
+        "nom": "Pinocchio",
+        "type": "oeuvre",
+        "slug": "pinocchio"
+    },
+    "auteurs": [
+        {
+            "personne": {
+                "nom": "Leigh Harline",
+                "type": "contributeur",
+                "slug": "leigh-harline"
+            },
+            "roles": ["composition"],
+            "sources": ["us-afi-catalog-pinocchio"]
+        },
+        {
+            "personne": {
+                "nom": "Ned Washington",
+                "type": "contributeur",
+                "slug": "ned-washington"
+            },
+            "roles": ["paroles"],
+            "sources": ["us-d23-ned-washington"]
+        }
+    ],
+    "versions": [
+        {
+            "id": "hi-diddle-dee-dee-originale-en",
+            "nature": "originale",
+            "identite": {
+                "libelle": "Hi-Diddle-Dee-Dee",
+                "nature": "original",
+                "langue": "en",
+                "territoire": "US",
+                "sources": ["us-d23-pinocchio-film"]
+            },
+            "date": { "valeur": "1940", "precision": "annee" },
+            "porteeTerritoriale": { "nature": "territoire", "code": "US" },
+            "sources": ["us-d23-pinocchio-film"]
+        }
+    ],
+    "occurrences": [
+        {
+            "id": "occurrence-hi-diddle-dee-dee-pinocchio-1940",
+            "nature": "origine",
+            "oeuvre": {
+                "nom": "Pinocchio",
+                "type": "oeuvre",
+                "slug": "pinocchio"
+            },
+            "versionId": "hi-diddle-dee-dee-originale-en",
+            "date": { "valeur": "1940-02-07", "precision": "jour" },
+            "fonctionNarrative": "Grand Coquin présente la vie d’acteur comme un chemin facile afin de détourner Pinocchio de l’école.",
+            "sources": ["us-d23-pinocchio-film"]
+        }
+    ],
+    "interpretations": [],
+    "sources": [
+        "us-afi-catalog-pinocchio",
+        "us-d23-pinocchio-film",
+        "us-d23-ned-washington",
+        "fr-bnf-bo-pinocchio"
+    ]
+}

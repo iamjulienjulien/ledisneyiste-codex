@@ -1,0 +1,85 @@
+{
+    "id": "chanson-give-a-little-whistle",
+    "slug": "give-a-little-whistle",
+    "type": "chanson",
+    "introduction": "Give a Little Whistle transforme la conscience en consigne musicale. Jiminy apprend à Pinocchio qu’un simple sifflement peut appeler son guide lorsque le choix devient difficile.",
+    "identite": {
+        "libelle": "Give a Little Whistle",
+        "nature": "original",
+        "langue": "en",
+        "territoire": "US",
+        "sources": ["us-d23-pinocchio-film"]
+    },
+    "identitesAlternatives": [
+        {
+            "libelle": "Sifflez vite vite",
+            "nature": "localise",
+            "langue": "fr",
+            "territoire": "FR",
+            "sources": ["fr-bnf-bo-pinocchio"]
+        }
+    ],
+    "oeuvreOrigine": {
+        "nom": "Pinocchio",
+        "type": "oeuvre",
+        "slug": "pinocchio"
+    },
+    "auteurs": [
+        {
+            "personne": {
+                "nom": "Leigh Harline",
+                "type": "contributeur",
+                "slug": "leigh-harline"
+            },
+            "roles": ["composition"],
+            "sources": ["us-afi-catalog-pinocchio"]
+        },
+        {
+            "personne": {
+                "nom": "Ned Washington",
+                "type": "contributeur",
+                "slug": "ned-washington"
+            },
+            "roles": ["paroles"],
+            "sources": ["us-d23-ned-washington"]
+        }
+    ],
+    "versions": [
+        {
+            "id": "give-a-little-whistle-originale-en",
+            "nature": "originale",
+            "identite": {
+                "libelle": "Give a Little Whistle",
+                "nature": "original",
+                "langue": "en",
+                "territoire": "US",
+                "sources": ["us-d23-pinocchio-film"]
+            },
+            "date": { "valeur": "1940", "precision": "annee" },
+            "porteeTerritoriale": { "nature": "territoire", "code": "US" },
+            "sources": ["us-d23-pinocchio-film"]
+        }
+    ],
+    "occurrences": [
+        {
+            "id": "occurrence-give-a-little-whistle-pinocchio-1940",
+            "nature": "origine",
+            "oeuvre": {
+                "nom": "Pinocchio",
+                "type": "oeuvre",
+                "slug": "pinocchio"
+            },
+            "versionId": "give-a-little-whistle-originale-en",
+            "date": { "valeur": "1940-02-07", "precision": "jour" },
+            "fonctionNarrative": "Donne à Pinocchio une règle musicale pour appeler sa conscience.",
+            "sources": ["us-d23-pinocchio-film"]
+        }
+    ],
+    "interpretations": [],
+    "sources": [
+        "us-afi-catalog-pinocchio",
+        "us-d23-pinocchio-film",
+        "us-d23-ned-washington",
+        "fr-bnf-bo-pinocchio"
+    ]
+}

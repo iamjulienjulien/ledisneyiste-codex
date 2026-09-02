@@ -225,7 +225,11 @@ function verifierAbsenceMatiereProtegee(valeur, contexte, chemin = []) {
     }
 }
 
-function verifierFicheChanson(fiche, sourcesConnues) {
+function verifierFicheChanson(
+    fiche,
+    sourcesConnues,
+    { interpretationRequise = true } = {},
+) {
     const contexte = `Chanson ${fiche.id}`;
     assert.ok(chaineNonVide(fiche.id), `${contexte} : id absent`);
     assert.ok(chaineNonVide(fiche.slug), `${contexte} : slug absent`);
@@ -335,10 +339,12 @@ function verifierFicheChanson(fiche, sourcesConnues) {
     }
 
     const interpretations = new Set();
-    assert.ok(
-        fiche.interpretations.length > 0,
-        `${contexte} : interprétation absente`,
-    );
+    if (interpretationRequise) {
+        assert.ok(
+            fiche.interpretations.length > 0,
+            `${contexte} : interprétation absente`,
+        );
+    }
     for (const interpretation of fiche.interpretations) {
         assert.ok(
             naturesInterpretations.has(interpretation.nature),
@@ -613,7 +619,7 @@ assert.ok(
 );
 
 const cataloguePublic = lireJson("src/data/catalogues/chansons.json");
-assert.equal(cataloguePublic.length, 4);
+assert.equal(cataloguePublic.length, 9);
 assert.deepEqual(
     cataloguePublic.map((chanson) => chanson.slug),
     [
@@ -621,8 +627,28 @@ assert.deepEqual(
         "heigh-ho",
         "someday-my-prince-will-come",
         "whos-afraid-of-the-big-bad-wolf",
+        "when-you-wish-upon-a-star",
+        "little-wooden-head",
+        "give-a-little-whistle",
+        "hi-diddle-dee-dee",
+        "ive-got-no-strings",
     ],
 );
+const idsSourcesPubliques = new Set(
+    sourcesPubliques.map((source) => source.id),
+);
+for (const chanson of cataloguePublic) {
+    const fichier = `src/data/chansons/${chanson.slug}.json`;
+    assert.ok(existsSync(path.join(racine, fichier)), `${fichier} absent`);
+    const fiche = lireJson(fichier);
+    verifierFicheChanson(fiche, idsSourcesPubliques, {
+        interpretationRequise: false,
+    });
+    assert.equal(fiche.type, "chanson");
+    assert.ok(chaineNonVide(fiche.introduction));
+    assert.equal(fiche.slug, chanson.slug);
+    assert.equal(fiche.oeuvreOrigine.slug, chanson.oeuvreOrigine.slug);
+}
 assert.ok(existsSync(path.join(racine, "src/app/chansons/page.tsx")));
 assert.ok(existsSync(path.join(racine, "src/app/chansons/[slug]/page.tsx")));
 const contratFamilles = readFileSync(
