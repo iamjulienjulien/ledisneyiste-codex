@@ -23,12 +23,13 @@
         "check:phase-4": "node scripts/verifier-phase-4.mjs",
         "check:phase-5": "node scripts/verifier-phase-5.mjs",
         "check:phase-6": "node scripts/verifier-phase-6.mjs",
+        "check:phase-7": "node scripts/verifier-phase-7.mjs",
         "check:interlude-disney-legends": "node scripts/verifier-interlude-disney-legends.mjs",
         "check:personnages": "node scripts/verifier-personnages.mjs",
         "check:relations": "node scripts/verifier-relations.mjs",
         "check:recompenses": "node scripts/verifier-recompenses.mjs",
-        "check": "pnpm format && pnpm format:check && pnpm lint && pnpm check:pixie && pnpm check:symbols && pnpm check:metadata && pnpm check:plans && pnpm check:plan-matter && pnpm check:guidebook && pnpm check:identites && pnpm check:oeuvres && pnpm check:oeuvres-sources && pnpm check:chansons && pnpm check:donnees-economiques && pnpm check:phase-4 && pnpm check:phase-5 && pnpm check:phase-6 && pnpm check:interlude-disney-legends && pnpm check:personnages && pnpm check:relations && pnpm check:recompenses && pnpm build",
-        "check:ci": "pnpm format:check && pnpm lint && pnpm check:pixie && pnpm check:symbols && pnpm check:metadata && pnpm check:plans && pnpm check:plan-matter && pnpm check:guidebook && pnpm check:identites && pnpm check:oeuvres && pnpm check:oeuvres-sources && pnpm check:chansons && pnpm check:donnees-economiques && pnpm check:phase-4 && pnpm check:phase-5 && pnpm check:phase-6 && pnpm check:interlude-disney-legends && pnpm check:personnages && pnpm check:relations && pnpm check:recompenses && pnpm build"
+        "check": "pnpm format && pnpm format:check && pnpm lint && pnpm check:pixie && pnpm check:symbols && pnpm check:metadata && pnpm check:plans && pnpm check:plan-matter && pnpm check:guidebook && pnpm check:identites && pnpm check:oeuvres && pnpm check:oeuvres-sources && pnpm check:chansons && pnpm check:donnees-economiques && pnpm check:phase-4 && pnpm check:phase-5 && pnpm check:phase-6 && pnpm check:phase-7 && pnpm check:interlude-disney-legends && pnpm check:personnages && pnpm check:relations && pnpm check:recompenses && pnpm build",
+        "check:ci": "pnpm format:check && pnpm lint && pnpm check:pixie && pnpm check:symbols && pnpm check:metadata && pnpm check:plans && pnpm check:plan-matter && pnpm check:guidebook && pnpm check:identites && pnpm check:oeuvres && pnpm check:oeuvres-sources && pnpm check:chansons && pnpm check:donnees-economiques && pnpm check:phase-4 && pnpm check:phase-5 && pnpm check:phase-6 && pnpm check:phase-7 && pnpm check:interlude-disney-legends && pnpm check:personnages && pnpm check:relations && pnpm check:recompenses && pnpm build"
     },
     "dependencies": {
         "next": "16.3.1",

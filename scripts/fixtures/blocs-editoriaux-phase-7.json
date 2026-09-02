@@ -1,0 +1,30 @@
+{
+    "legacy": {
+        "type": "repere",
+        "titre": "Le récit historique demeure projetable",
+        "paragraphes": [
+            "Un paragraphe historique reste une chaîne simple et conserve les sources du chapitre."
+        ],
+        "sources": ["afi-snow-white"]
+    },
+    "structure": {
+        "id": "chapitre-exemple",
+        "type": "relations",
+        "eyebrow": "Question",
+        "titre": "Le récit retrouve ses preuves",
+        "question": "Comment une affirmation conserve-t-elle sa provenance ?",
+        "paragraphes": [
+            {
+                "id": "chapitre-exemple-affirmation",
+                "texte": "Le paragraphe structuré rassemble une idée documentaire cohérente et les sources qui permettent de la vérifier.",
+                "sources": ["afi-snow-white"]
+            },
+            {
+                "id": "chapitre-exemple-reserve",
+                "texte": "Une divergence connue reste lisible dans le récit au lieu d’être résolue artificiellement.",
+                "sources": ["cnc-snow-white"],
+                "reserve": "Les sources consultées ne décrivent pas toutes le même périmètre ; la comparaison demeure bornée."
+            }
+        ]
+    }
+}

@@ -858,13 +858,32 @@ function verifierCreditsEtChapitres(fiche, contexte, idsSources, erreurs) {
 
     if (Array.isArray(fiche.blocsEditoriaux)) {
         fiche.blocsEditoriaux.forEach((bloc, index) => {
+            const contexteBloc = `${contexte} · bloc éditorial ${index + 1}`;
+
             if (bloc.sources !== undefined) {
                 verifierSources(
                     bloc.sources,
-                    `${contexte} · bloc éditorial ${index + 1}`,
+                    contexteBloc,
                     idsSources,
                     erreurs,
                 );
+            }
+
+            if (Array.isArray(bloc.paragraphes)) {
+                bloc.paragraphes.forEach((paragraphe, paragrapheIndex) => {
+                    if (
+                        paragraphe &&
+                        typeof paragraphe === "object" &&
+                        paragraphe.sources !== undefined
+                    ) {
+                        verifierSources(
+                            paragraphe.sources,
+                            `${contexteBloc} · paragraphe ${paragrapheIndex + 1}`,
+                            idsSources,
+                            erreurs,
+                        );
+                    }
+                });
             }
         });
     }
