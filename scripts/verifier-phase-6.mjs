@@ -175,6 +175,7 @@ function verifierDocuments() {
         "train-6c.md",
         "train-6d.md",
         "train-6e.md",
+        "train-6f.md",
     ]) {
         assert.ok(
             existsSync(
@@ -272,7 +273,11 @@ function verifierPhotographie(production) {
     });
 
     const recompenses = lireJson("src/data/recompenses/recompenses.json");
-    assert.equal(recompenses.length, 14);
+    const recompensesPubliees = production.internalUnits.filter(
+        (entree) =>
+            entree.domain === "recompenses" && entree.status === "publiee",
+    );
+    assert.equal(recompenses.length, 14 + recompensesPubliees.length);
 
     const retroapplication = lireJson(cheminRetroapplication);
     assert.equal(
@@ -540,9 +545,12 @@ function verifierUnitesInternes(production, sources) {
     for (const entree of production.internalUnits.filter(
         (candidate) => candidate.domain === "recompenses",
     )) {
-        assert.ok(
-            !recompenses.some((recompense) => recompense.id === entree.slug),
-            `${entree.slug} : Récompense créée avant le Train 6F`,
+        assert.equal(
+            recompenses.some((recompense) => recompense.id === entree.slug),
+            entree.status === "publiee",
+            entree.status === "publiee"
+                ? `${entree.slug} : Récompense publiée absente du registre`
+                : `${entree.slug} : Récompense créée avant son Train`,
         );
     }
 }
@@ -948,11 +956,10 @@ function verifierTrain6D(production) {
     ]);
     assert.ok(evelynInterne?.relations.includes("voix-originale:la-fee-bleue"));
 
-    assert.equal(
-        production.baseline.publicEntries + production.progress.publiee,
-        104,
+    assert.ok(
+        production.baseline.publicEntries + production.progress.publiee >= 104,
     );
-    assert.equal(production.sourceInventory.promoted.length, 23);
+    assert.ok(production.sourceInventory.promoted.length >= 23);
 }
 
 function verifierTrain6E(production) {
@@ -1097,12 +1104,135 @@ function verifierTrain6E(production) {
         false,
         "David Hand : crédit ajouté malgré l’arbitrage de Phase 6",
     );
+    assert.ok(
+        production.baseline.publicEntries + production.progress.publiee >= 104,
+    );
+    assert.ok(production.sourceInventory.promoted.length >= 23);
+    assert.ok(production.sourceInventory.remainingPrivateCurrent <= 7);
+}
+
+function verifierTrain6F(production) {
+    const catalogue = lireJson("src/data/catalogues/chansons.json");
+    const recompenses = lireJson("src/data/recompenses/recompenses.json");
+    const slugsAttendus = [
+        "when-you-wish-upon-a-star",
+        "little-wooden-head",
+        "give-a-little-whistle",
+        "hi-diddle-dee-dee",
+        "ive-got-no-strings",
+    ].sort();
+    const entrees = production.entries.filter(
+        (entree) => entree.train === "6F",
+    );
+    const titresFrancais = new Map([
+        ["when-you-wish-upon-a-star", "Quand on prie la bonne étoile"],
+        ["little-wooden-head", "Les Pantins de bois"],
+        ["give-a-little-whistle", "Sifflez vite vite"],
+        ["hi-diddle-dee-dee", "Hi-diddle di di"],
+        ["ive-got-no-strings", "Il faut savoir briser ses liens"],
+    ]);
+    const idsRecompenses = [
+        "academy-awards-1941-pinocchio-original-score",
+        "academy-awards-1941-when-you-wish-upon-a-star",
+    ];
+
+    assert.equal(entrees.length, 5);
+    assert.deepEqual(
+        entrees.map((entree) => entree.slug).sort(),
+        slugsAttendus,
+    );
+    assert.ok(
+        entrees.every((entree) => entree.status === "publiee"),
+        "Train 6F : les cinq Chansons ne sont pas toutes publiées",
+    );
+    assert.equal(catalogue.length, 9);
+
+    for (const slug of slugsAttendus) {
+        const fiche = lireJson(`src/data/chansons/${slug}.json`);
+        const identite = catalogue.find((candidate) => candidate.slug === slug);
+
+        assert.ok(identite, `${slug} : identité catalogue absente`);
+        assert.equal(identite.nom, titresFrancais.get(slug));
+        assert.equal(fiche.type, "chanson");
+        assert.equal(fiche.oeuvreOrigine.slug, "pinocchio");
+        assert.ok(
+            fiche.identitesAlternatives.some(
+                (candidate) =>
+                    candidate.libelle === titresFrancais.get(slug) &&
+                    candidate.langue === "fr" &&
+                    candidate.territoire === "FR" &&
+                    candidate.sources.includes("fr-bnf-bo-pinocchio"),
+            ),
+            `${slug} : titre français sourcé absent`,
+        );
+        assert.ok(
+            fiche.auteurs.some(
+                (auteur) =>
+                    auteur.personne.slug === "leigh-harline" &&
+                    auteur.roles.includes("composition"),
+            ),
+            `${slug} : composition de Leigh Harline absente`,
+        );
+        assert.ok(
+            fiche.auteurs.some(
+                (auteur) =>
+                    auteur.personne.slug === "ned-washington" &&
+                    auteur.roles.includes("paroles"),
+            ),
+            `${slug} : paroles de Ned Washington absentes`,
+        );
+        assert.equal(
+            JSON.stringify(fiche).includes("audio"),
+            false,
+            `${slug} : matière audio exposée dans l’Archive`,
+        );
+        assert.equal(
+            JSON.stringify(fiche).includes("parolesIntegrales"),
+            false,
+            `${slug} : paroles intégrales exposées dans l’Archive`,
+        );
+    }
+
+    const chansonPilote = lireJson(
+        "src/data/chansons/when-you-wish-upon-a-star.json",
+    );
+    assert.ok((chansonPilote.blocsEditoriaux ?? []).length >= 2);
+    assert.ok(
+        chansonPilote.interpretations.some((interpretation) =>
+            interpretation.interpretes.some(
+                (interprete) => interprete.personne.slug === "cliff-edwards",
+            ),
+        ),
+        "When You Wish Upon a Star : interprétation de Cliff Edwards absente",
+    );
+    assert.ok(
+        chansonPilote.recompenses.some(
+            (recompense) =>
+                recompense.id ===
+                "academy-awards-1941-when-you-wish-upon-a-star",
+        ),
+        "When You Wish Upon a Star : Oscar absent de la fiche",
+    );
+
+    for (const id of idsRecompenses) {
+        const recompense = recompenses.find((candidate) => candidate.id === id);
+        assert.ok(recompense, `${id} : Récompense absente`);
+        assert.equal(recompense.edition.numero, 13);
+        assert.equal(recompense.dateAttribution.valeur, "1941-02-27");
+        assert.equal(recompense.oeuvreConcernee.slug, "pinocchio");
+        assert.deepEqual(recompense.sources, ["us-academy-awards-1941"]);
+    }
+
     assert.equal(
         production.baseline.publicEntries + production.progress.publiee,
-        104,
+        109,
     );
-    assert.equal(production.sourceInventory.promoted.length, 23);
-    assert.equal(production.sourceInventory.remainingPrivateCurrent, 7);
+    assert.equal(production.progress.publiee, 26);
+    assert.equal(production.sourceInventory.promoted.length, 24);
+    assert.equal(production.sourceInventory.remainingPrivateCurrent, 6);
+    assert.ok(
+        production.sourceInventory.promoted.includes("fr-bnf-bo-pinocchio"),
+    );
 }
 
 function verifierSymboles(production) {
@@ -1154,9 +1284,10 @@ verifierTrain6B(production);
 verifierTrain6C(production);
 verifierTrain6D(production);
 verifierTrain6E(production);
+verifierTrain6F(production);
 verifierSymboles(production);
 verifierBranchement();
 
 console.log(
-    `Phase 6 · Train 6E vérifié : ${production.baseline.publicEntries + production.progress.publiee} Archives publiques, 18 raccords Créateurs fermés, 31 contributions dans le générique de Pinocchio, David Hand sans crédit et ${production.sourceInventory.promoted.length} sources promues.`,
+    `Phase 6 · Train 6F vérifié : ${production.baseline.publicEntries + production.progress.publiee} Archives publiques, cinq Chansons, deux Oscars, 31 contributions dans le générique de Pinocchio et ${production.sourceInventory.promoted.length} sources promues.`,
 );

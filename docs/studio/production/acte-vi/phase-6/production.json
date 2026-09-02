@@ -53,6 +53,7 @@
         ],
         "remainingPrivateAtOpening": 30,
         "promoted": [
+            "fr-bnf-bo-pinocchio",
             "fr-cinematheque-pinocchio",
             "fr-cnc-visa-pinocchio",
             "it-collodi-biography",
@@ -77,7 +78,7 @@
             "us-wdfm-pool-hall",
             "us-wdfm-reimagining-jiminy"
         ],
-        "remainingPrivateCurrent": 7,
+        "remainingPrivateCurrent": 6,
         "promotionPolicy": "usage-only"
     },
     "symbolInventory": {
@@ -129,11 +130,11 @@
         "reportee": "Unité conservée avec une condition de reprise explicite."
     },
     "progress": {
-        "a-faire": 5,
+        "a-faire": 0,
         "en-cours": 0,
-        "publiee": 21,
+        "publiee": 26,
         "reportee": 0,
-        "verdicts": 21
+        "verdicts": 26
     },
     "entries": [
         {
@@ -918,7 +919,7 @@
             "profile": "fiche-complete",
             "priority": "P0",
             "train": "6F",
-            "status": "a-faire",
+            "status": "publiee",
             "sources": {
                 "required": [
                     "us-academy-awards-1941",
@@ -926,10 +927,26 @@
                     "us-d23-ned-washington",
                     "fr-bnf-bo-pinocchio"
                 ],
-                "promoted": []
+                "promoted": [
+                    "us-academy-awards-1941",
+                    "us-d23-cliff-edwards",
+                    "us-d23-ned-washington",
+                    "fr-bnf-bo-pinocchio"
+                ]
             },
-            "files": [],
-            "relations": [],
+            "files": [
+                "src/data/catalogues/chansons.json",
+                "src/data/chansons/index.ts",
+                "src/data/chansons/when-you-wish-upon-a-star.json",
+                "src/data/recompenses/recompenses.json"
+            ],
+            "relations": [
+                "oeuvre:pinocchio",
+                "composition:leigh-harline",
+                "paroles:ned-washington",
+                "interpretation:cliff-edwards",
+                "recompense:academy-awards-1941-when-you-wish-upon-a-star"
+            ],
             "checks": [
                 "pnpm check:chansons",
                 "pnpm check:recompenses",
@@ -946,17 +963,29 @@
             "profile": "fiche-legere",
             "priority": "P0",
             "train": "6F",
-            "status": "a-faire",
+            "status": "publiee",
             "sources": {
                 "required": [
                     "us-d23-pinocchio-film",
                     "us-d23-ned-washington",
                     "fr-bnf-bo-pinocchio"
                 ],
-                "promoted": []
+                "promoted": [
+                    "us-d23-pinocchio-film",
+                    "us-d23-ned-washington",
+                    "fr-bnf-bo-pinocchio"
+                ]
             },
-            "files": [],
-            "relations": [],
+            "files": [
+                "src/data/catalogues/chansons.json",
+                "src/data/chansons/index.ts",
+                "src/data/chansons/little-wooden-head.json"
+            ],
+            "relations": [
+                "oeuvre:pinocchio",
+                "composition:leigh-harline",
+                "paroles:ned-washington"
+            ],
             "checks": ["pnpm check:chansons", "pnpm check:phase-6"],
             "reservations": [
                 "Titre français et titre original conservent leur version et leur source."
@@ -969,17 +998,29 @@
             "profile": "fiche-legere",
             "priority": "P0",
             "train": "6F",
-            "status": "a-faire",
+            "status": "publiee",
             "sources": {
                 "required": [
                     "us-d23-pinocchio-film",
                     "us-d23-ned-washington",
                     "fr-bnf-bo-pinocchio"
                 ],
-                "promoted": []
+                "promoted": [
+                    "us-d23-pinocchio-film",
+                    "us-d23-ned-washington",
+                    "fr-bnf-bo-pinocchio"
+                ]
             },
-            "files": [],
-            "relations": [],
+            "files": [
+                "src/data/catalogues/chansons.json",
+                "src/data/chansons/index.ts",
+                "src/data/chansons/give-a-little-whistle.json"
+            ],
+            "relations": [
+                "oeuvre:pinocchio",
+                "composition:leigh-harline",
+                "paroles:ned-washington"
+            ],
             "checks": ["pnpm check:chansons", "pnpm check:phase-6"],
             "reservations": [
                 "La profondeur reste légère si la réception ne fournit pas un récit autonome."
@@ -992,17 +1033,29 @@
             "profile": "fiche-legere",
             "priority": "P0",
             "train": "6F",
-            "status": "a-faire",
+            "status": "publiee",
             "sources": {
                 "required": [
                     "us-d23-pinocchio-film",
                     "us-d23-ned-washington",
                     "fr-bnf-bo-pinocchio"
                 ],
-                "promoted": []
+                "promoted": [
+                    "us-d23-pinocchio-film",
+                    "us-d23-ned-washington",
+                    "fr-bnf-bo-pinocchio"
+                ]
             },
-            "files": [],
-            "relations": [],
+            "files": [
+                "src/data/catalogues/chansons.json",
+                "src/data/chansons/index.ts",
+                "src/data/chansons/hi-diddle-dee-dee.json"
+            ],
+            "relations": [
+                "oeuvre:pinocchio",
+                "composition:leigh-harline",
+                "paroles:ned-washington"
+            ],
             "checks": ["pnpm check:chansons", "pnpm check:phase-6"],
             "reservations": [
                 "Chaque identité est rattachée à l’édition qui l’atteste."
@@ -1015,17 +1068,29 @@
             "profile": "fiche-legere",
             "priority": "P0",
             "train": "6F",
-            "status": "a-faire",
+            "status": "publiee",
             "sources": {
                 "required": [
                     "us-d23-pinocchio-film",
                     "us-d23-ned-washington",
                     "fr-bnf-bo-pinocchio"
                 ],
-                "promoted": []
+                "promoted": [
+                    "us-d23-pinocchio-film",
+                    "us-d23-ned-washington",
+                    "fr-bnf-bo-pinocchio"
+                ]
             },
-            "files": [],
-            "relations": [],
+            "files": [
+                "src/data/catalogues/chansons.json",
+                "src/data/chansons/index.ts",
+                "src/data/chansons/ive-got-no-strings.json"
+            ],
+            "relations": [
+                "oeuvre:pinocchio",
+                "composition:leigh-harline",
+                "paroles:ned-washington"
+            ],
             "checks": ["pnpm check:chansons", "pnpm check:phase-6"],
             "reservations": [
                 "Occurrence dans Pinocchio et réemplois ultérieurs restent deux faits distincts."
@@ -1125,12 +1190,20 @@
             "label": "Oscar de la meilleure musique originale pour Pinocchio",
             "profile": "registre-transversal",
             "train": "6F",
-            "status": "a-faire",
+            "status": "publiee",
             "route": null,
             "sources": {
                 "required": ["us-academy-awards-1941"],
-                "promoted": []
+                "promoted": ["us-academy-awards-1941"]
             },
+            "files": ["src/data/recompenses/recompenses.json"],
+            "relations": [
+                "oeuvre:pinocchio",
+                "beneficiaire:leigh-harline",
+                "beneficiaire:paul-j-smith",
+                "beneficiaire:ned-washington"
+            ],
+            "checks": ["pnpm check:recompenses", "pnpm check:phase-6"],
             "reservations": [
                 "La Récompense relie l’Œuvre et ses bénéficiaires sans ouvrir une famille publique."
             ]
@@ -1141,12 +1214,27 @@
             "label": "Oscar de la meilleure chanson originale pour When You Wish Upon a Star",
             "profile": "registre-transversal",
             "train": "6F",
-            "status": "a-faire",
+            "status": "publiee",
             "route": null,
             "sources": {
                 "required": ["us-academy-awards-1941"],
-                "promoted": []
+                "promoted": ["us-academy-awards-1941"]
             },
+            "files": [
+                "src/data/chansons/when-you-wish-upon-a-star.json",
+                "src/data/recompenses/recompenses.json"
+            ],
+            "relations": [
+                "oeuvre:pinocchio",
+                "chanson:when-you-wish-upon-a-star",
+                "beneficiaire:leigh-harline",
+                "beneficiaire:ned-washington"
+            ],
+            "checks": [
+                "pnpm check:chansons",
+                "pnpm check:recompenses",
+                "pnpm check:phase-6"
+            ],
             "reservations": [
                 "La Récompense relie la Chanson, ses auteurs et l’Œuvre sans route autonome."
             ]
