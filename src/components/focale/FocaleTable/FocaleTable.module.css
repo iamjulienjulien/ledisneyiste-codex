@@ -1,0 +1,97 @@
+.viewport {
+    min-inline-size: 0;
+    overflow: auto;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-medium);
+    background: var(--color-surface);
+    scrollbar-gutter: stable;
+}
+
+.viewport:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 0.2rem;
+}
+
+.table {
+    inline-size: 100%;
+    min-inline-size: 36rem;
+    border-collapse: collapse;
+    color: var(--color-ink);
+    font-variant-numeric: tabular-nums;
+}
+
+.caption {
+    padding: 1rem;
+    color: var(--color-ink);
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: start;
+}
+
+.captionHidden {
+    position: absolute;
+    overflow: hidden;
+    inline-size: 1px;
+    block-size: 1px;
+    padding: 0;
+    border: 0;
+    margin: -1px;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.table th {
+    border-block-end: 1px solid var(--color-line-strong);
+    background: var(--color-surface-muted);
+    color: var(--color-muted);
+    font-family: var(--font-eyebrow);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+
+.table td {
+    border-block-start: 1px solid var(--color-line);
+    color: var(--color-ink-soft);
+    vertical-align: top;
+}
+
+.table tbody tr:first-child td {
+    border-block-start: 0;
+}
+
+.compact :is(th, td) {
+    padding: 0.6rem 0.75rem;
+}
+
+.comfortable :is(th, td) {
+    padding: 0.9rem 1rem;
+}
+
+.alignStart {
+    text-align: start;
+}
+
+.alignCenter {
+    text-align: center;
+}
+
+.alignEnd {
+    text-align: end;
+}
+
+.empty {
+    padding-block: 2rem !important;
+    color: var(--color-muted) !important;
+    text-align: center;
+}
+
+@media (forced-colors: active) {
+    .viewport,
+    .table th,
+    .table td {
+        border-color: CanvasText;
+    }
+}

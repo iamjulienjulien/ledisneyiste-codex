@@ -1,0 +1,60 @@
+.root {
+    display: grid;
+    gap: 0.65rem;
+    min-inline-size: 0;
+    margin: 0;
+}
+
+.viewport {
+    min-inline-size: 0;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-medium);
+    background: var(--color-surface);
+    scrollbar-gutter: stable;
+}
+
+.viewport:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 0.2rem;
+}
+
+.content {
+    min-inline-size: var(--focale-viewport-min-width, 100%);
+}
+
+.overflowAuto {
+    overflow: auto;
+    overscroll-behavior: contain;
+}
+
+.overflowClip {
+    overflow: clip;
+}
+
+.heightNone {
+    max-block-size: none;
+}
+
+.heightSmall {
+    max-block-size: 16rem;
+}
+
+.heightMedium {
+    max-block-size: 28rem;
+}
+
+.heightLarge {
+    max-block-size: 42rem;
+}
+
+.caption {
+    color: var(--color-muted);
+    font-size: 0.85rem;
+    line-height: 1.45;
+}
+
+@media (forced-colors: active) {
+    .viewport {
+        border-color: CanvasText;
+    }
+}

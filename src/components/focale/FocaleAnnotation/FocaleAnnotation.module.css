@@ -1,0 +1,65 @@
+.root {
+    --annotation-color: var(--color-accent);
+
+    display: grid;
+    gap: 0.35rem;
+    padding: 1rem;
+    border: 1px solid
+        color-mix(in srgb, var(--annotation-color) 45%, var(--color-line));
+    border-inline-start-width: 0.25rem;
+    border-radius: var(--radius-small);
+    background: color-mix(
+        in srgb,
+        var(--annotation-color) 7%,
+        var(--color-surface)
+    );
+    color: var(--color-ink);
+}
+
+.uncertainty {
+    --annotation-color: var(--color-muted);
+}
+
+.warning {
+    --annotation-color: var(--color-accent-strong, var(--color-accent));
+}
+
+.tone {
+    color: var(--annotation-color);
+    font-family: var(--font-eyebrow);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.title {
+    font-family: var(--font-display);
+    font-size: 1rem;
+}
+
+.body {
+    color: var(--color-ink-soft);
+    line-height: 1.5;
+}
+
+.body > :first-child {
+    margin-block-start: 0;
+}
+
+.body > :last-child {
+    margin-block-end: 0;
+}
+
+.provenance {
+    padding-block-start: 0.5rem;
+    border-block-start: 1px solid var(--color-line);
+    color: var(--color-muted);
+    font-size: 0.8rem;
+}
+
+@media (forced-colors: active) {
+    .root {
+        border-color: CanvasText;
+    }
+}
