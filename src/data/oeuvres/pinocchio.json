@@ -782,6 +782,81 @@
                     "reserve": "Cette sélection explique quelques décisions de fabrication ; elle ne constitue pas le générique complet. Les trente et une contributions qualifiées du générique structuré restent l’état de vérité transmis à la Phase 8."
                 }
             ]
+        },
+        {
+            "id": "une-premiere-confrontee-au-monde-reel",
+            "type": "diffusion",
+            "eyebrow": "Première exploitation",
+            "titre": "Une première confrontée au monde réel",
+            "question": "Que signifie sortir un film dans ce contexte économique et géopolitique ?",
+            "paragraphes": [
+                {
+                    "id": "une-premiere-confrontee-deux-dates-pour-entrer-en-salles",
+                    "texte": "Pinocchio est présenté à New York le 7 février 1940, puis connaît sa sortie nationale américaine le 23 février. Ces deux dates appartiennent à une même première exploitation en salles, mais elles ne désignent pas le même événement : la première ouvre la rencontre avec le public, la seconde étend la circulation du film sur le territoire des États-Unis.",
+                    "sources": ["us-afi-catalog-pinocchio"]
+                },
+                {
+                    "id": "une-premiere-confrontee-un-marche-qui-se-referme",
+                    "texte": "Cette exploitation commence dans un monde que la guerre rend moins accessible. Une large part du marché européen qui avait accompagné Blanche-Neige ne peut plus recevoir le film dans les mêmes conditions. La sortie américaine n’est donc ni une sortie simultanée à l’échelle du monde, ni la mesure complète de la vie future de l’œuvre : la France et l’Italie ne la découvrent officiellement que plusieurs années plus tard.",
+                    "sources": [
+                        "us-afi-catalog-pinocchio",
+                        "fr-cnc-visa-pinocchio",
+                        "it-treccani-1940-pinocchio"
+                    ]
+                },
+                {
+                    "id": "une-premiere-confrontee-ne-pas-confondre-les-mesures",
+                    "texte": "Sortir, être exploité, être reçu et produire un résultat économique décrivent ainsi quatre réalités différentes. Les comptes initiaux disponibles ne permettent pas d’établir ici une comparaison fiable entre coût, recettes et résultat. Le seul indicateur économique publiable dans le dossier concerne une fréquentation française cumulée bien plus tardive ; il ne peut servir de verdict sur la première américaine.",
+                    "sources": [
+                        "us-afi-catalog-pinocchio",
+                        "fr-cnc-palmares-1946"
+                    ],
+                    "reserve": "Les estimations financières initiales restent hors publication : leurs périmètres et leurs méthodes divergent. Le cumul français de 1946 à 2010 n’est ni une recette, ni un résultat de la première exploitation américaine."
+                }
+            ]
+        },
+        {
+            "id": "le-film-vu-depuis-plusieurs-territoires",
+            "type": "reception",
+            "eyebrow": "Réceptions territoriales",
+            "titre": "Le film vu depuis plusieurs territoires",
+            "question": "Que révèlent les regards américain, français et italien ?",
+            "paragraphes": [
+                {
+                    "id": "le-film-vu-depuis-les-etats-unis",
+                    "texte": "Aux États-Unis, la première new-yorkaise et la campagne nationale installent Pinocchio comme un nouvel événement du studio. Les témoignages réunis par l’AFI rendent compte d’un accueil enthousiaste lors de cette ouverture, sans suffire à résumer une réception américaine entière. Ils documentent un moment et un dispositif de lancement, pas une opinion nationale uniforme.",
+                    "sources": ["us-afi-catalog-pinocchio"],
+                    "reserve": "Le récit restitue le contexte de la première sans transformer un témoignage d’ouverture en jugement de l’ensemble du public américain."
+                },
+                {
+                    "id": "le-film-vu-depuis-la-france-arrivee-et-version",
+                    "texte": "En France, le visa accordé le 17 mai 1946 précède la sortie nationale du 22 mai sous le titre La Merveilleuse Aventure de Pinocchio et avec un premier doublage français. Ce jalon administratif ne constitue pas une séance. Les sources conservent aussi deux durées différentes, 87 minutes dans les notices américaines et 96 minutes dans le registre administratif français : le Codex les maintient comme des mesures documentaires divergentes plutôt que de les harmoniser artificiellement.",
+                    "sources": [
+                        "us-afi-catalog-pinocchio",
+                        "fr-cinematheque-pinocchio",
+                        "fr-cnc-visa-pinocchio"
+                    ],
+                    "reserve": "Le visa du 17 mai 1946 n’est pas un événement de projection. La durée française de 96 minutes reste une donnée administrative divergente de la durée américaine de 87 minutes."
+                },
+                {
+                    "id": "le-film-vu-depuis-la-france-critiques-et-publics",
+                    "texte": "La presse française de 1946 ne répond pas d’une seule voix : la maîtrise technique est admirée, tandis que le caractère commercial, moral ou hollywoodien du film est discuté. Sa fréquentation se prolonge ensuite au fil des exploitations. Le CNC recense 7,84 millions de spectateurs cumulés entre 1946 et 2010 ; cette portée mesure une longue présence dans les salles françaises, et non les seules entrées de l’année de sortie.",
+                    "sources": [
+                        "fr-retronews-pinocchio",
+                        "fr-cnc-palmares-1946"
+                    ],
+                    "reserve": "Les réactions de presse sont synthétisées sans citation longue faute d’originaux réunis dans le dossier. Les 7,84 millions d’entrées couvrent toutes les exploitations françaises de 1946 à 2010."
+                },
+                {
+                    "id": "le-film-vu-depuis-litalie",
+                    "texte": "En Italie, le film et son doublage sont projetés en 1947, sans date plus précise établie par les sources retenues. L’étude des réactions publiées entre 1938 et 1948 fait coexister l’admiration pour la réalisation, la crainte d’une américanisation du récit de Collodi et une réappropriation affective du film. Ces positions composent un débat traversé par l’histoire du pays ; aucune ne peut être élevée au rang de réception italienne unique.",
+                    "sources": [
+                        "it-treccani-1940-pinocchio",
+                        "it-roma-tre-mazzei-pinocchio"
+                    ],
+                    "reserve": "La date italienne demeure annuelle et les réactions restent plurielles. L’interdiction administrative parfois alléguée n’est pas publiée faute de preuve directe."
+                }
+            ]
         }
     ],
     "sources": [
