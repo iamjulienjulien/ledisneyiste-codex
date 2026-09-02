@@ -177,7 +177,9 @@ function verifierDocuments() {
         "train-6e.md",
         "train-6f.md",
         "train-6g.md",
+        "train-6h.md",
         "carte-preuves.md",
+        "cloture.md",
     ]) {
         assert.ok(
             existsSync(
@@ -348,7 +350,9 @@ function verifierSources(production) {
 
 function verifierManifeste(production, sources) {
     assert.equal(production.schemaVersion, "1.0.0");
-    assert.equal(production.status, "in-progress");
+    assert.equal(production.status, "complete");
+    assert.equal(production.openedAt, "2026-09-02");
+    assert.equal(production.closedAt, "2026-09-02");
     assert.equal(production.owner, "R2-D2");
     assert.equal(production.productionPersona, "Geppetto");
     assert.equal(production.entries.length, 26);
@@ -1388,6 +1392,40 @@ function verifierSymboles(production) {
     }
 }
 
+function verifierTrain6H(production) {
+    const readme = lireTexte("README.md");
+    const guidebook = lireTexte("docs/agents/02-architecture-du-codex.md");
+
+    assert.deepEqual(production.progress, {
+        "a-faire": 0,
+        "en-cours": 0,
+        publiee: 26,
+        reportee: 0,
+        verdicts: 26,
+    });
+    assert.match(readme, /109 fiches documentaires/);
+    assert.match(readme, /9 Chansons/);
+    assert.match(readme, /Seize récompenses/);
+    assert.match(readme, /Phase 6 a\s+constitué le noyau documentaire de/);
+    assert.match(guidebook, /109 Archives et 109 routes canoniques/);
+    assert.match(guidebook, /neuf fiches Chansons publiées/);
+    assert.match(guidebook, /Vingt-neuf des trente sources candidates/);
+    assert.match(guidebook, /Train 6H/);
+
+    for (const routeInterne of [
+        "src/app/oeuvres-sources",
+        "src/app/personnages/cleo",
+        "src/app/contributeurs/evelyn-venable",
+        "src/app/recompenses",
+    ]) {
+        assert.equal(
+            existsSync(chemin(routeInterne)),
+            false,
+            `${routeInterne} : route interne publiée`,
+        );
+    }
+}
+
 function verifierBranchement() {
     const packageJson = lireJson("package.json");
 
@@ -1417,9 +1455,10 @@ verifierTrain6D(production);
 verifierTrain6E(production);
 verifierTrain6F(production);
 verifierTrain6G(production);
+verifierTrain6H(production);
 verifierSymboles(production);
 verifierBranchement();
 
 console.log(
-    `Phase 6 · Train 6G vérifié : ${production.baseline.publicEntries + production.progress.publiee} Archives publiques, trois regards territoriaux, un cumul économique publié avec réserve et ${production.sourceInventory.promoted.length} sources promues.`,
+    `Phase 6 clôturée : ${production.baseline.publicEntries + production.progress.publiee} Archives publiques sur autant de routes canoniques, ${production.progress.verdicts} verdicts, trois regards territoriaux et ${production.sourceInventory.promoted.length} sources promues.`,
 );

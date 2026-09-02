@@ -1,8 +1,9 @@
 {
     "schemaVersion": "1.0.0",
     "title": "Acte VI · Phase 6 · Manifeste de production du noyau Pinocchio",
-    "status": "in-progress",
+    "status": "complete",
     "openedAt": "2026-09-02",
+    "closedAt": "2026-09-02",
     "owner": "R2-D2",
     "productionPersona": "Geppetto",
     "sourceManifests": [
