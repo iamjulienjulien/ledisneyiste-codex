@@ -5,6 +5,7 @@ import {
     epoques,
     oeuvres,
     personnages,
+    chansons,
 } from "@/data/catalogues";
 import { normaliserIdentiteCodex } from "@/lib/identites/projeter-identite";
 import { listerIdentitesCodex } from "@/lib/identites/server";
@@ -31,6 +32,7 @@ const identitesRecherche = {
     contributeurs: indexerIdentites("createurs"),
     oeuvres: indexerIdentites("oeuvres"),
     epoques: indexerIdentites("epoques"),
+    chansons: indexerIdentites("chansons"),
 } as const;
 
 function listerLibellesDocumentes(
@@ -121,6 +123,21 @@ const indexRecherche = {
             normaliserIdentiteCodex,
         ),
     })),
+    chansons: chansons.map((chanson) => ({
+        entree: chanson,
+        texte: creerTexteRecherche(
+            [
+                chanson.nom,
+                chanson.sousTitre,
+                chanson.oeuvreOrigine.nom,
+                ...listerLibellesDocumentes(
+                    identitesRecherche.chansons,
+                    chanson.slug,
+                ),
+            ],
+            normaliserIdentiteCodex,
+        ),
+    })),
 } as const;
 
 export function rechercherDansCatalogues(
@@ -132,6 +149,7 @@ export function rechercherDansCatalogues(
             contributeurs: [],
             oeuvres: [],
             epoques: [],
+            chansons: [],
             total: 0,
         };
     }
@@ -157,6 +175,11 @@ export function rechercherDansCatalogues(
             requeteBrute,
             normaliserIdentiteCodex,
         ),
+        chansons: rechercherDansIndex(
+            indexRecherche.chansons,
+            requeteBrute,
+            normaliserIdentiteCodex,
+        ),
     };
 
     return {
@@ -165,6 +188,7 @@ export function rechercherDansCatalogues(
             resultats.personnages.length +
             resultats.contributeurs.length +
             resultats.oeuvres.length +
-            resultats.epoques.length,
+            resultats.epoques.length +
+            resultats.chansons.length,
     };
 }

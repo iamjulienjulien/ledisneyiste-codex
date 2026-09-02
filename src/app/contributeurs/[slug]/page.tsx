@@ -6,6 +6,7 @@ import { getSourcesByIds } from "@/data/sources";
 import {
     getOeuvresContribueesParContributeur,
     getPersonnagesCreesParContributeur,
+    getChansonsPourContributeur,
 } from "@/data/relations";
 import { CodexFiche } from "@/components/codex/CodexFiche/CodexFiche";
 import { CodexFicheHeader } from "@/components/codex/CodexFiche/CodexFicheHeader";
@@ -77,6 +78,7 @@ export default async function ContributeurPage({
     const personnagesCrees = getPersonnagesCreesParContributeur(slug);
 
     const oeuvresContribuees = getOeuvresContribueesParContributeur(slug);
+    const chansons = getChansonsPourContributeur(slug);
 
     return (
         <CodexFiche family="createurs">
@@ -152,6 +154,11 @@ export default async function ContributeurPage({
                         family: "oeuvres",
                         titre: "Œuvres",
                         references: oeuvresContribuees,
+                    },
+                    {
+                        family: "chansons",
+                        titre: "Chansons",
+                        references: chansons,
                     },
                 ]}
             />

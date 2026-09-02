@@ -2,11 +2,13 @@ import type { ContributeurDisney } from "@/types/contributeur";
 import type { EpoqueDisney } from "@/types/epoque";
 import type { OeuvreDisney } from "@/types/oeuvre";
 import type { PersonnageDisney } from "@/types/personnage";
+import type { ChansonDisney } from "@/types/chanson";
 
 export type ResultatsRechercheCodex = Readonly<{
     personnages: PersonnageDisney[];
     contributeurs: ContributeurDisney[];
     oeuvres: OeuvreDisney[];
     epoques: EpoqueDisney[];
+    chansons: ChansonDisney[];
     total: number;
 }>;

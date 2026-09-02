@@ -107,6 +107,14 @@ export default function RootLayout({
                                 Époques
                             </PixieLink>
 
+                            <PixieLink
+                                href="/chansons"
+                                variant="action"
+                                color="rose-aerographe"
+                            >
+                                Chansons
+                            </PixieLink>
+
                             <PixieLink href="/recherche" variant="action">
                                 Recherche
                             </PixieLink>

@@ -8,6 +8,7 @@ import { CodexFicheSources } from "@/components/codex/CodexFiche/CodexFicheSourc
 import { CodexFicheBlocsEditoriaux } from "@/components/codex/CodexFiche/CodexFicheBlocsEditoriaux";
 import { CodexFicheRecompenses } from "@/components/codex/CodexFiche/CodexFicheRecompenses";
 import { CodexFicheOeuvreDetails } from "@/components/codex/CodexFiche/CodexFicheOeuvreDetails";
+import { CodexFicheRelations } from "@/components/codex/CodexFiche/CodexFicheRelations";
 import { PixieBadge } from "@/components/ui/PixieBadge";
 import { getEpoquePourDate } from "@/data/epoques/relations";
 import { getOeuvreBySlug, oeuvres } from "@/data/catalogues";
@@ -17,6 +18,7 @@ import { getSourcesByIds } from "@/data/sources";
 import { formatDateHistorique } from "@/lib/date";
 import { resoudreIdentiteCodex } from "@/lib/identites/server";
 import { getFicheSourceIds } from "@/lib/source";
+import { getChansonsPourOeuvre } from "@/data/relations";
 
 export const dynamicParams = false;
 
@@ -72,6 +74,7 @@ export default async function OeuvrePage({
     const hasGroupedCredits = fiche.contributions.some(
         (contribution) => contribution.domaine,
     );
+    const chansons = getChansonsPourOeuvre(slug);
 
     return (
         <CodexFiche family="oeuvres">
@@ -203,6 +206,16 @@ export default async function OeuvrePage({
             <CodexFicheOeuvreDetails fiche={fiche} sources={sources} />
 
             <CodexFicheRecompenses recompenses={recompenses} />
+
+            <CodexFicheRelations
+                groupes={[
+                    {
+                        family: "chansons",
+                        titre: "Chansons",
+                        references: chansons,
+                    },
+                ]}
+            />
 
             <CodexFicheBlocsEditoriaux
                 collection="oeuvres"

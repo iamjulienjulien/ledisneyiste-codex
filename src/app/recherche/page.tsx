@@ -4,6 +4,7 @@ import { CodexIndexCreateurCard } from "@/components/codex/CodexIndex/CodexIndex
 import { CodexIndexEpoqueCard } from "@/components/codex/CodexIndex/CodexIndexEpoqueCard";
 import { CodexIndexOeuvreCard } from "@/components/codex/CodexIndex/CodexIndexOeuvreCard";
 import { CodexIndexPersonnageCard } from "@/components/codex/CodexIndex/CodexIndexPersonnageCard";
+import { CodexIndexChansonCard } from "@/components/codex/CodexIndex/CodexIndexChansonCard";
 import { PixieBackdrop } from "@/components/ui/PixieBackdrop";
 import { PixieBadge } from "@/components/ui/PixieBadge";
 import { PixieCallout } from "@/components/ui/PixieCallout";
@@ -17,6 +18,7 @@ import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PixieStack } from "@/components/ui/PixieStack";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { getFicheContributeurBySlug } from "@/data/contributeurs";
+import { getFicheChansonBySlug } from "@/data/chansons";
 import { getFicheEpoqueBySlug } from "@/data/epoques";
 import {
     getContributeursDeLEpoque,
@@ -37,7 +39,7 @@ import styles from "./RecherchePage.module.css";
 export const metadata: Metadata = {
     title: "Recherche",
     description:
-        "Rechercher une œuvre, un personnage, un créateur ou une époque dans le Codex du Disneyiste.",
+        "Rechercher une œuvre, un personnage, un créateur, une époque ou une chanson dans le Codex du Disneyiste.",
 };
 
 export default async function RecherchePage({
@@ -103,7 +105,7 @@ export default async function RecherchePage({
                             <h1 className={styles.title}>Recherche</h1>
                             <p className={styles.introduction}>
                                 Retrouvez un nom, un titre, une catégorie, un
-                                rôle ou une collection parmi les quatre familles
+                                rôle ou une collection parmi les cinq familles
                                 du Codex.
                             </p>
                         </PixieStack>
@@ -201,8 +203,8 @@ export default async function RecherchePage({
                     >
                         <p>
                             Saisissez quelques mots pour faire apparaître les
-                            personnages, créateurs, œuvres et époques qui leur
-                            correspondent.
+                            personnages, créateurs, œuvres, époques et chansons
+                            qui leur correspondent.
                         </p>
                     </PixieCallout>
                 ) : resultats.total === 0 ? (
@@ -628,6 +630,87 @@ export default async function RecherchePage({
                                                                     epoque.slug,
                                                                 ).length,
                                                         }}
+                                                    />
+                                                </li>
+                                            ) : null;
+                                        })}
+                                    </PixieGrid>
+                                </section>
+                            ) : null}
+
+                            {resultats.chansons.length > 0 ? (
+                                <section
+                                    aria-labelledby="resultats-chansons"
+                                    className={styles.resultSection}
+                                    data-family="chansons"
+                                >
+                                    <PixieCluster
+                                        gap="md"
+                                        align="center"
+                                        className={styles.resultHeader}
+                                    >
+                                        <PixieFrame
+                                            as="div"
+                                            variant="cel"
+                                            aspect="square"
+                                            padding="xs"
+                                            radius="medium"
+                                            color="rose-aerographe"
+                                            className={styles.resultSymbol}
+                                        >
+                                            <PixieSymbol
+                                                registry="index"
+                                                collection="chansons"
+                                                slug="principal"
+                                                size="md"
+                                            />
+                                        </PixieFrame>
+
+                                        <PixieStack gap="xs">
+                                            <PixieBadge
+                                                variant="soft"
+                                                size="xs"
+                                                shape="pill"
+                                                color="rose-aerographe"
+                                            >
+                                                {resultats.chansons.length}{" "}
+                                                résultat
+                                                {resultats.chansons.length > 1
+                                                    ? "s"
+                                                    : ""}
+                                            </PixieBadge>
+                                            <h2
+                                                id="resultats-chansons"
+                                                className={styles.resultTitle}
+                                            >
+                                                Chansons
+                                            </h2>
+                                        </PixieStack>
+                                    </PixieCluster>
+
+                                    <PixieGrid
+                                        as="ul"
+                                        maxColumns={2}
+                                        minItemWidth="lg"
+                                        gap="lg"
+                                        className={styles.resultCards}
+                                    >
+                                        {resultats.chansons.map((chanson) => {
+                                            const fiche = getFicheChansonBySlug(
+                                                chanson.slug,
+                                            );
+                                            const identite =
+                                                resoudreIdentiteCodex(
+                                                    "chansons",
+                                                    chanson.slug,
+                                                );
+
+                                            return fiche && identite ? (
+                                                <li key={chanson.slug}>
+                                                    <CodexIndexChansonCard
+                                                        chanson={chanson}
+                                                        fiche={fiche}
+                                                        identite={identite}
                                                     />
                                                 </li>
                                             ) : null;

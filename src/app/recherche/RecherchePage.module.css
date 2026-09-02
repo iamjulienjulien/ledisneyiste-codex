@@ -106,6 +106,10 @@
     --result-color: var(--color-famille-epoques);
 }
 
+.resultSection[data-family="chansons"] {
+    --result-color: var(--atelier-animation-rose-aerographe);
+}
+
 .resultHeader {
     margin-bottom: 1.75rem;
 }

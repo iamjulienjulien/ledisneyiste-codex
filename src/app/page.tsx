@@ -14,6 +14,7 @@ import {
     oeuvres,
     personnages,
     epoques,
+    chansons,
 } from "@/data/catalogues";
 
 const codexDoors = [
@@ -64,6 +65,18 @@ const codexDoors = [
         description:
             "Les grandes périodes qui permettent de suivre les transformations de Disney dans le temps.",
         action: "Explorer les époques",
+    },
+    {
+        href: "/chansons",
+        color: "rose-aerographe",
+        symbol: "chansons",
+        count: chansons.length,
+        singular: "chanson",
+        plural: "chansons",
+        title: "Chansons",
+        description:
+            "Les mélodies et les paroles qui donnent une voix et une mémoire aux œuvres Disney.",
+        action: "Explorer les chansons",
     },
 ] as const;
 
@@ -133,7 +146,7 @@ export default function Home() {
                         </p>
 
                         <h2 id="explorer-title" className="text-3xl text-ink">
-                            Quatre portes vers le Codex
+                            Cinq portes vers le Codex
                         </h2>
 
                         <p className="text-lg leading-8 text-ink-soft">
@@ -146,7 +159,7 @@ export default function Home() {
 
                     <PixieGrid
                         as="ul"
-                        maxColumns={4}
+                        maxColumns={5}
                         minItemWidth="sm"
                         gap="md"
                     >
@@ -261,9 +274,9 @@ export default function Home() {
 
                                     <p className="text-base leading-7 text-ink-soft">
                                         La projection se poursuit d’une archive
-                                        à l’autre. Explorez les quatre familles
-                                        du Codex ou retrouvez directement un
-                                        nom, un titre ou une époque.
+                                        à l’autre. Explorez les cinq familles du
+                                        Codex ou retrouvez directement un nom,
+                                        un titre ou une époque.
                                     </p>
                                 </PixieStack>
 
