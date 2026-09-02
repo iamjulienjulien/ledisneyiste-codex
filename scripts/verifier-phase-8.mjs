@@ -307,7 +307,8 @@ function verifierSurfaces() {
         /if \(slug === "generique-vivant"\)([\s\S]*?)if \(slug === "table-lumineuse"\)/,
     )?.[1];
     assert.ok(brancheGenerique, "Train 8A : branche Générique vivant absente");
-    assert.match(brancheGenerique, /version="v0\.2\.0"/);
+    assert.match(brancheGenerique, /version="v1\.0\.0"/);
+    assert.match(brancheGenerique, /status="Prêt à projeter"/);
     assert.match(
         brancheGenerique,
         /Pinocchio révèle les gestes humains derrière l’écran/,
@@ -357,7 +358,7 @@ function verifierTrain8C(pinocchio) {
     );
     assert.match(projectionsGenerique, /slug: "pinocchio"/);
     assert.match(projectionsGenerique, /Le générique humain de Pinocchio/);
-    assert.match(prototype, /Prototype privé · v0\.2\.0/);
+    assert.match(prototype, /Banc d’essai privé · Plan v1\.0\.0/);
     assert.match(prototype, /FocaleTable/);
     assert.match(prototype, /Mention non publiée/);
     assert.equal(pinocchio.contributions.length, 31);
@@ -458,8 +459,8 @@ function verifierTrain8E() {
         1,
         "Train 8E : le générique technique enrichi doit rester propre à cette esquisse",
     );
-    assert.match(page, /title: "API de l’esquisse"/);
-    assert.match(page, /AtelierGeneriqueVivantInspectorMode/);
+    assert.match(page, /title: "API du composant"/);
+    assert.match(page, /PlanGeneriqueVivantVersion/);
     assert.match(dossier, /<AtelierPropertiesTable/);
     assert.match(dossier, /<AtelierTypesTable/);
     assert.match(dossier, /Types spécifiques/);
@@ -508,6 +509,66 @@ function verifierTrain8F() {
     assert.match(focaleTable, /role="region"/);
     assert.match(contrechampPublic, /groupCredits\(fiche\.contributions\)/);
     assert.match(contrechampPublic, /groupedCredits\.map/);
+}
+
+function verifierTrain8G() {
+    const rapport = readFileSync(
+        chemin("docs/studio/production/acte-vi/phase-8/train-8g.md"),
+        "utf8",
+    );
+    const routeOeuvre = readFileSync(
+        chemin("src/app/oeuvres/[slug]/page.tsx"),
+        "utf8",
+    );
+    const details = readFileSync(
+        chemin(
+            "src/components/codex/CodexFiche/CodexFicheOeuvreDetails/CodexFicheOeuvreDetails.tsx",
+        ),
+        "utf8",
+    );
+    const composant = readFileSync(
+        chemin(
+            "src/components/plans/PlanGeneriqueVivant/PlanGeneriqueVivant.tsx",
+        ),
+        "utf8",
+    );
+    const types = readFileSync(
+        chemin(
+            "src/components/plans/PlanGeneriqueVivant/PlanGeneriqueVivant.types.ts",
+        ),
+        "utf8",
+    );
+
+    for (const attendu of [
+        "Expérimentation publique réversible limitée",
+        "Aucune Régie",
+        "Noyau réutilisable reconnu",
+        "Workflow des Plans",
+        "Application comprise",
+    ]) {
+        assert.match(
+            rapport,
+            new RegExp(attendu),
+            `Train 8G : verdict absent « ${attendu} »`,
+        );
+    }
+
+    assert.match(routeOeuvre, /slug === "pinocchio"/);
+    assert.match(routeOeuvre, /deriveGeneriqueVivant/);
+    assert.match(routeOeuvre, /archives: codexPlanArchives/);
+    assert.match(details, /<PlanGeneriqueVivant/);
+    assert.match(details, /simpleCredits=\{simpleCredits\}/);
+    assert.match(types, /PlanGeneriqueVivantVersion = "1\.0\.0"/);
+    assert.match(composant, /Afficher le générique simple/);
+    assert.match(composant, /Revenir au Plan/);
+    assert.match(composant, /model\.views\.departments/);
+    assert.match(composant, /<FocaleTable/);
+    assert.doesNotMatch(composant, /PixieSearchField|PixieSelect|Régie/);
+    assert.equal(
+        existsSync(chemin("src/components/ui/PixieGeneriqueVivant")),
+        false,
+        "Train 8G : le Plan appliqué ne doit pas entrer dans Pixie",
+    );
 }
 
 function verifierBranchement() {
@@ -562,7 +623,8 @@ verifierTrain8C(pinocchio);
 verifierTrain8D(pinocchio);
 verifierTrain8E();
 verifierTrain8F();
+verifierTrain8G();
 
 console.log(
-    `Phase 8 vérifiée jusqu’au Train 8F : Pinocchio conserve ${pinocchio.stats.contributions} contributions ; le Plan et Focale reçoivent deux recommandations séparées avant le point d’arrêt 8G.`,
+    `Phase 8 vérifiée jusqu’au Train 8G : Pinocchio conserve ${pinocchio.stats.contributions} contributions ; PlanGeneriqueVivant v1.0.0 reste réversible et Focale demeure borné à six primitives.`,
 );
