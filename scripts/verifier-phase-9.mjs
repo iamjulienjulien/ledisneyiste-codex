@@ -54,6 +54,8 @@ function verifierTransmissions() {
         "docs/studio/production/acte-vi/phase-9/etat-reference.md",
         "docs/studio/production/acte-vi/phase-9/train-9a.md",
         "docs/studio/production/acte-vi/phase-9/train-9b.md",
+        "docs/studio/production/acte-vi/phase-9/train-9c.md",
+        "docs/studio/production/acte-vi/phase-9/cloture.md",
     ]) {
         assert.ok(
             existsSync(chemin(document)),
@@ -77,6 +79,48 @@ function verifierTransmissions() {
             `État de référence incomplet : ${invariant}`,
         );
     }
+}
+
+function verifierTrain9C() {
+    const train = lire("docs/studio/production/acte-vi/phase-9/train-9c.md");
+    const cloture = lire("docs/studio/production/acte-vi/phase-9/cloture.md");
+
+    for (const attendu of [
+        "techniquement prêt à être clos",
+        "146 pages",
+        "Visa humain",
+        "acte-vi \\(à venir\\)",
+        "commit temporel vide",
+        "Relais vers Fantasia",
+    ]) {
+        assert.match(
+            train,
+            new RegExp(attendu, "i"),
+            `Train 9C : transmission absente « ${attendu} »`,
+        );
+    }
+
+    for (const attendu of [
+        "validé et prêt à être clos",
+        "Une documentation qui se projette",
+        "La vie publique entre dans le modèle",
+        "Pinocchio prend vie",
+        "Le Générique vivant trouve sa scène",
+        "Réserves et reports transmis",
+        "Passage de relais",
+        "Dernière image",
+        "Le numérique au service du réel",
+    ]) {
+        assert.match(
+            cloture,
+            new RegExp(attendu, "i"),
+            `Clôture de l’Acte VI incomplète « ${attendu} »`,
+        );
+    }
+
+    assert.match(cloture, /Archives et routes canoniques\s*\|\s*79\s*\|\s*109/);
+    assert.match(cloture, /Chansons\s*\|\s*0\s*\|\s*9/);
+    assert.match(cloture, /Plans appliqués publiquement\s*\|\s*0\s*\|\s*1/);
 }
 
 function verifierTrain9B() {
@@ -187,6 +231,7 @@ function verifierBranchement() {
 
 verifierTransmissions();
 verifierTrain9B();
+verifierTrain9C();
 verifierArchives();
 verifierPinocchio();
 verifierPlanPublic();
@@ -194,5 +239,5 @@ verifierFocale();
 verifierBranchement();
 
 console.log(
-    "Phase 9 · Train 9B validé : 9 transmissions raccordées, aucun défaut bloquant, 7 reports orientés.",
+    "Phase 9 clôturée au Train 9C : 109 Archives, aucun défaut bloquant, rapport final et relais vers Fantasia vérifiés.",
 );
