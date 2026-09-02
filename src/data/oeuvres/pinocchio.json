@@ -732,6 +732,56 @@
                     ]
                 }
             ]
+        },
+        {
+            "id": "donner-une-conscience-a-une-marionnette",
+            "type": "fabrication",
+            "eyebrow": "Fabrication",
+            "titre": "Donner une conscience à une marionnette",
+            "question": "Comment le film construit-il ses personnages, son ton et son monde ?",
+            "paragraphes": [
+                {
+                    "id": "donner-une-conscience-des-corps-qui-ne-bougent-pas-pareil",
+                    "texte": "Le film ne donne pas une même animation à tous ses corps. Pinocchio passe du poids d’un objet suspendu au mouvement d’un être conscient, tandis que Jiminy bondit, Geppetto avance d’un pas plus raide et la Fée Bleue glisse dans l’espace. Dans la salle de billard, Fred Moore anime l’assurance de Crapule, Ward Kimball la colère de Jiminy et Milt Kahl les réactions maladroites de Pinocchio : le contraste entre leurs gestes fait exister les caractères autant que le dialogue.",
+                    "sources": ["us-loc-pinocchio-essay", "us-wdfm-pool-hall"]
+                },
+                {
+                    "id": "donner-une-conscience-construire-le-monde-avant-de-le-faire-bouger",
+                    "texte": "Le monde du film se prépare comme un espace que les personnages devront réellement habiter. Le studio crée un département chargé de fabriquer des modèles de personnages, mais aussi les meubles, outils, jouets et horloges de l’atelier de Geppetto ; Joe Grant en dirige le travail. Ken Anderson, crédité à la direction artistique, organise ensuite ces formes en décors et en parcours. Les objets ne remplissent donc pas seulement le cadre : leur cohérence donne au bois, au métal et aux mécanismes une présence commune.",
+                    "sources": [
+                        "us-afi-catalog-pinocchio",
+                        "us-d23-ken-anderson"
+                    ]
+                },
+                {
+                    "id": "donner-une-conscience-observer-sans-reproduire",
+                    "texte": "Pour trouver un mouvement crédible, le studio filme aussi des interprètes avant de revenir au dessin. Dickie Jones prête à Pinocchio sa voix, ses expressions et certains gestes joués devant la caméra ; Marge Champion sert de référence à la Fée Bleue. Ces images ne sont pas copiées mécaniquement : elles fournissent une matière d’observation que les animateurs sélectionnent, exagèrent ou simplifient selon la nature de chaque personnage.",
+                    "sources": [
+                        "us-afi-catalog-pinocchio",
+                        "us-d23-dick-jones",
+                        "d23-marge-champion"
+                    ]
+                },
+                {
+                    "id": "donner-une-conscience-faire-reagir-la-matiere-et-lespace",
+                    "texte": "La vie du film ne s’arrête pas aux personnages. L’eau, le feu, la pluie, les éclairs, les ombres et les objets en mouvement reçoivent leur propre animation, dont Joshua Meador porte le crédit spécialisé. Le procédé du blend modèle la lumière sur les corps, tandis qu’un mouvement à travers le village pousse l’équipe au-delà des capacités ordinaires de la caméra multiplane. La technique devient ici une décision de mise en scène : elle fait réagir la matière et donne une profondeur continue au voyage.",
+                    "sources": [
+                        "us-afi-catalog-pinocchio",
+                        "us-loc-pinocchio-essay"
+                    ]
+                },
+                {
+                    "id": "donner-une-conscience-accorder-le-monde",
+                    "texte": "La musique relie enfin ces mouvements sans les uniformiser. Leigh Harline compose les chansons et une part essentielle des atmosphères musicales, tandis que Paul J. Smith porte la composition de la partition ; leurs fonctions restent distinctes dans les données. La musique accompagne ainsi le passage de l’émerveillement au danger et donne au monde une continuité sensible que ni le décor, ni l’animation, ni la technique ne pourraient produire seuls.",
+                    "sources": [
+                        "us-afi-catalog-pinocchio",
+                        "us-loc-pinocchio-essay",
+                        "d23-leigh-harline",
+                        "d23-paul-smith"
+                    ],
+                    "reserve": "Cette sélection explique quelques décisions de fabrication ; elle ne constitue pas le générique complet. Les trente et une contributions qualifiées du générique structuré restent l’état de vérité transmis à la Phase 8."
+                }
+            ]
         }
     ],
     "sources": [
