@@ -61,9 +61,17 @@
             "it-treccani-1940-pinocchio",
             "it-treccani-pinocchio",
             "us-afi-catalog-pinocchio",
-            "us-d23-pinocchio-film"
+            "us-d23-cliff-edwards",
+            "us-d23-dick-jones",
+            "us-d23-figaro",
+            "us-d23-figaro-and-cleo",
+            "us-d23-pinocchio-film",
+            "us-loc-pinocchio-essay",
+            "us-wdfm-milt-kahl-puppeteer",
+            "us-wdfm-pool-hall",
+            "us-wdfm-reimagining-jiminy"
         ],
-        "remainingPrivateCurrent": 21,
+        "remainingPrivateCurrent": 13,
         "promotionPolicy": "usage-only"
     },
     "symbolInventory": {
@@ -115,11 +123,11 @@
         "reportee": "Unité conservée avec une condition de reprise explicite."
     },
     "progress": {
-        "a-faire": 24,
+        "a-faire": 13,
         "en-cours": 0,
-        "publiee": 2,
+        "publiee": 13,
         "reportee": 0,
-        "verdicts": 2
+        "verdicts": 13
     },
     "entries": [
         {
@@ -174,17 +182,30 @@
             "profile": "fiche-complete",
             "priority": "P0",
             "train": "6C",
-            "status": "a-faire",
+            "status": "publiee",
             "sources": {
                 "required": [
                     "us-wdfm-milt-kahl-puppeteer",
                     "us-d23-dick-jones",
                     "it-treccani-pinocchio"
                 ],
-                "promoted": []
+                "promoted": [
+                    "us-wdfm-milt-kahl-puppeteer",
+                    "us-d23-dick-jones",
+                    "it-treccani-pinocchio"
+                ]
             },
-            "files": [],
-            "relations": [],
+            "files": [
+                "src/data/catalogues/personnages.json",
+                "src/data/personnages/index.ts",
+                "src/data/personnages/pinocchio.json",
+                "src/data/oeuvres/pinocchio.json"
+            ],
+            "relations": [
+                "origine:carlo-collodi",
+                "conception:milt-kahl",
+                "premiere-apparition:pinocchio"
+            ],
             "checks": [
                 "pnpm check:personnages",
                 "pnpm check:relations",
@@ -201,17 +222,31 @@
             "profile": "fiche-complete",
             "priority": "P0",
             "train": "6C",
-            "status": "a-faire",
+            "status": "publiee",
             "sources": {
                 "required": [
                     "us-wdfm-reimagining-jiminy",
                     "us-wdfm-pool-hall",
                     "us-d23-cliff-edwards"
                 ],
-                "promoted": []
+                "promoted": [
+                    "us-wdfm-reimagining-jiminy",
+                    "us-wdfm-pool-hall",
+                    "us-d23-cliff-edwards"
+                ]
             },
-            "files": [],
-            "relations": [],
+            "files": [
+                "src/data/catalogues/personnages.json",
+                "src/data/personnages/index.ts",
+                "src/data/personnages/jiminy-cricket.json",
+                "src/data/oeuvres/pinocchio.json"
+            ],
+            "relations": [
+                "origine:carlo-collodi",
+                "conception:ward-kimball",
+                "voix:cliff-edwards",
+                "premiere-apparition:pinocchio"
+            ],
             "checks": [
                 "pnpm check:personnages",
                 "pnpm check:relations",
@@ -228,17 +263,30 @@
             "profile": "fiche-complete",
             "priority": "P0",
             "train": "6C",
-            "status": "a-faire",
+            "status": "publiee",
             "sources": {
                 "required": [
                     "us-afi-catalog-pinocchio",
                     "us-loc-pinocchio-essay",
                     "it-collodi-critical-text"
                 ],
-                "promoted": []
+                "promoted": [
+                    "us-afi-catalog-pinocchio",
+                    "us-loc-pinocchio-essay",
+                    "it-collodi-critical-text"
+                ]
             },
-            "files": [],
-            "relations": [],
+            "files": [
+                "src/data/catalogues/personnages.json",
+                "src/data/personnages/index.ts",
+                "src/data/personnages/geppetto.json",
+                "src/data/oeuvres/pinocchio.json"
+            ],
+            "relations": [
+                "origine:carlo-collodi",
+                "filiation:pinocchio",
+                "premiere-apparition:pinocchio"
+            ],
             "checks": [
                 "pnpm check:personnages",
                 "pnpm check:relations",
@@ -255,17 +303,33 @@
             "profile": "fiche-complete",
             "priority": "P0",
             "train": "6C",
-            "status": "a-faire",
+            "status": "publiee",
             "sources": {
                 "required": [
                     "us-loc-pinocchio-essay",
                     "fr-cinematheque-pinocchio",
-                    "it-collodi-critical-text"
+                    "it-collodi-critical-text",
+                    "us-afi-catalog-pinocchio"
                 ],
-                "promoted": []
+                "promoted": [
+                    "us-loc-pinocchio-essay",
+                    "fr-cinematheque-pinocchio",
+                    "it-collodi-critical-text",
+                    "us-afi-catalog-pinocchio"
+                ]
             },
-            "files": [],
-            "relations": [],
+            "files": [
+                "src/data/catalogues/personnages.json",
+                "src/data/personnages/index.ts",
+                "src/data/personnages/la-fee-bleue.json",
+                "src/data/oeuvres/pinocchio.json"
+            ],
+            "relations": [
+                "origine:carlo-collodi",
+                "modele-filme:marge-champion",
+                "voix:evelyn-venable",
+                "premiere-apparition:pinocchio"
+            ],
             "checks": [
                 "pnpm check:personnages",
                 "pnpm check:relations",
@@ -282,17 +346,34 @@
             "profile": "fiche-complete",
             "priority": "P0",
             "train": "6C",
-            "status": "a-faire",
+            "status": "publiee",
             "sources": {
                 "required": [
                     "us-afi-catalog-pinocchio",
                     "us-loc-pinocchio-essay",
-                    "fr-cinematheque-pinocchio"
+                    "fr-cinematheque-pinocchio",
+                    "it-collodi-critical-text"
                 ],
-                "promoted": []
+                "promoted": [
+                    "us-afi-catalog-pinocchio",
+                    "us-loc-pinocchio-essay",
+                    "fr-cinematheque-pinocchio",
+                    "it-collodi-critical-text"
+                ]
             },
-            "files": [],
-            "relations": [],
+            "files": [
+                "src/data/catalogues/personnages.json",
+                "src/data/personnages/index.ts",
+                "src/data/personnages/grand-coquin.json",
+                "src/data/oeuvres/pinocchio.json"
+            ],
+            "relations": [
+                "origine:carlo-collodi",
+                "animation:norman-ferguson",
+                "animation:john-lounsbery",
+                "duo:gedeon",
+                "premiere-apparition:pinocchio"
+            ],
             "checks": [
                 "pnpm check:personnages",
                 "pnpm check:relations",
@@ -309,17 +390,33 @@
             "profile": "fiche-legere",
             "priority": "P0",
             "train": "6C",
-            "status": "a-faire",
+            "status": "publiee",
             "sources": {
                 "required": [
                     "us-afi-catalog-pinocchio",
                     "us-loc-pinocchio-essay",
-                    "fr-cinematheque-pinocchio"
+                    "fr-cinematheque-pinocchio",
+                    "it-collodi-critical-text"
                 ],
-                "promoted": []
+                "promoted": [
+                    "us-afi-catalog-pinocchio",
+                    "us-loc-pinocchio-essay",
+                    "fr-cinematheque-pinocchio",
+                    "it-collodi-critical-text"
+                ]
             },
-            "files": [],
-            "relations": [],
+            "files": [
+                "src/data/catalogues/personnages.json",
+                "src/data/personnages/index.ts",
+                "src/data/personnages/gedeon.json",
+                "src/data/oeuvres/pinocchio.json"
+            ],
+            "relations": [
+                "origine:carlo-collodi",
+                "animation:norman-ferguson",
+                "duo:grand-coquin",
+                "premiere-apparition:pinocchio"
+            ],
             "checks": [
                 "pnpm check:personnages",
                 "pnpm check:relations",
@@ -336,17 +433,35 @@
             "profile": "fiche-complete",
             "priority": "P0",
             "train": "6C",
-            "status": "a-faire",
+            "status": "publiee",
             "sources": {
                 "required": [
                     "us-afi-catalog-pinocchio",
                     "us-loc-pinocchio-essay",
-                    "fr-cinematheque-pinocchio"
+                    "fr-cinematheque-pinocchio",
+                    "it-treccani-1940-pinocchio",
+                    "it-collodi-critical-text"
                 ],
-                "promoted": []
+                "promoted": [
+                    "us-afi-catalog-pinocchio",
+                    "us-loc-pinocchio-essay",
+                    "fr-cinematheque-pinocchio",
+                    "it-treccani-1940-pinocchio",
+                    "it-collodi-critical-text"
+                ]
             },
-            "files": [],
-            "relations": [],
+            "files": [
+                "src/data/catalogues/personnages.json",
+                "src/data/personnages/index.ts",
+                "src/data/personnages/stromboli.json",
+                "src/data/oeuvres/pinocchio.json"
+            ],
+            "relations": [
+                "origine:carlo-collodi",
+                "animation:vladimir-bill-tytla",
+                "identite-italienne:mangiafuoco",
+                "premiere-apparition:pinocchio"
+            ],
             "checks": [
                 "pnpm check:personnages",
                 "pnpm check:relations",
@@ -363,17 +478,31 @@
             "profile": "fiche-legere",
             "priority": "P0",
             "train": "6C",
-            "status": "a-faire",
+            "status": "publiee",
             "sources": {
                 "required": [
                     "us-afi-catalog-pinocchio",
                     "us-loc-pinocchio-essay",
-                    "fr-cinematheque-pinocchio"
+                    "fr-cinematheque-pinocchio",
+                    "it-collodi-critical-text"
                 ],
-                "promoted": []
+                "promoted": [
+                    "us-afi-catalog-pinocchio",
+                    "us-loc-pinocchio-essay",
+                    "fr-cinematheque-pinocchio",
+                    "it-collodi-critical-text"
+                ]
             },
-            "files": [],
-            "relations": [],
+            "files": [
+                "src/data/catalogues/personnages.json",
+                "src/data/personnages/index.ts",
+                "src/data/personnages/le-cocher.json",
+                "src/data/oeuvres/pinocchio.json"
+            ],
+            "relations": [
+                "origine:carlo-collodi",
+                "premiere-apparition:pinocchio"
+            ],
             "checks": [
                 "pnpm check:personnages",
                 "pnpm check:relations",
@@ -390,17 +519,29 @@
             "profile": "fiche-legere",
             "priority": "P0",
             "train": "6C",
-            "status": "a-faire",
+            "status": "publiee",
             "sources": {
                 "required": [
                     "us-afi-catalog-pinocchio",
                     "us-loc-pinocchio-essay",
                     "fr-cinematheque-pinocchio"
                 ],
-                "promoted": []
+                "promoted": [
+                    "us-afi-catalog-pinocchio",
+                    "us-loc-pinocchio-essay",
+                    "fr-cinematheque-pinocchio"
+                ]
             },
-            "files": [],
-            "relations": [],
+            "files": [
+                "src/data/catalogues/personnages.json",
+                "src/data/personnages/index.ts",
+                "src/data/personnages/monstro.json",
+                "src/data/oeuvres/pinocchio.json"
+            ],
+            "relations": [
+                "origine:carlo-collodi",
+                "premiere-apparition:pinocchio"
+            ],
             "checks": [
                 "pnpm check:personnages",
                 "pnpm check:relations",
@@ -417,13 +558,31 @@
             "profile": "fiche-legere",
             "priority": "P0",
             "train": "6C",
-            "status": "a-faire",
+            "status": "publiee",
             "sources": {
-                "required": ["us-wdfm-pool-hall", "fr-cinematheque-pinocchio"],
-                "promoted": []
+                "required": [
+                    "us-wdfm-pool-hall",
+                    "fr-cinematheque-pinocchio",
+                    "it-collodi-critical-text"
+                ],
+                "promoted": [
+                    "us-wdfm-pool-hall",
+                    "fr-cinematheque-pinocchio",
+                    "it-collodi-critical-text"
+                ]
             },
-            "files": [],
-            "relations": [],
+            "files": [
+                "src/data/catalogues/personnages.json",
+                "src/data/personnages/index.ts",
+                "src/data/personnages/crapule.json",
+                "src/data/oeuvres/pinocchio.json"
+            ],
+            "relations": [
+                "origine:carlo-collodi",
+                "animation:fred-moore",
+                "identite-originale:lampwick",
+                "premiere-apparition:pinocchio"
+            ],
             "checks": [
                 "pnpm check:identites",
                 "pnpm check:personnages",
@@ -440,13 +599,22 @@
             "profile": "fiche-legere",
             "priority": "P1",
             "train": "6C",
-            "status": "a-faire",
+            "status": "publiee",
             "sources": {
                 "required": ["us-d23-figaro", "us-d23-figaro-and-cleo"],
-                "promoted": []
+                "promoted": ["us-d23-figaro", "us-d23-figaro-and-cleo"]
             },
-            "files": [],
-            "relations": [],
+            "files": [
+                "src/data/catalogues/personnages.json",
+                "src/data/personnages/index.ts",
+                "src/data/personnages/figaro.json",
+                "src/data/oeuvres/pinocchio.json"
+            ],
+            "relations": [
+                "premiere-apparition:pinocchio",
+                "posterieure:figaro-and-cleo",
+                "relation:cleo"
+            ],
             "checks": [
                 "pnpm check:personnages",
                 "pnpm check:relations",
@@ -834,8 +1002,22 @@
             "route": null,
             "sources": {
                 "required": ["us-d23-figaro-and-cleo"],
-                "promoted": []
+                "promoted": ["us-d23-figaro-and-cleo"]
             },
+            "files": [
+                "src/data/oeuvres/pinocchio.json",
+                "src/data/personnages/figaro.json"
+            ],
+            "relations": [
+                "distribution:pinocchio",
+                "posterieure:figaro-and-cleo",
+                "relation:figaro"
+            ],
+            "checks": [
+                "pnpm check:personnages",
+                "pnpm check:relations",
+                "pnpm check:phase-6"
+            ],
             "reservations": [
                 "La distribution et la relation vers Figaro and Cleo ne franchissent pas le seuil d’autonomie."
             ]

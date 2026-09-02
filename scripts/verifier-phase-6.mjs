@@ -172,6 +172,7 @@ function verifierDocuments() {
         "production.json",
         "train-6a.md",
         "train-6b.md",
+        "train-6c.md",
     ]) {
         assert.ok(
             existsSync(
@@ -640,11 +641,10 @@ function verifierTrain6B(production) {
         ),
         "Pinocchio : contribution de Carlo Collodi absente",
     );
-    assert.ok(
-        pinocchio.personnages.every(
-            (personnage) => personnage.type === undefined,
-        ),
-        "Train 6B : la distribution ne doit pas publier les Personnages du Train 6C",
+    assert.equal(
+        pinocchio.personnages.length,
+        12,
+        "Pinocchio : la distribution préparée au Train 6B est incomplète",
     );
 
     assert.equal(collodi.slug, "carlo-collodi");
@@ -684,6 +684,137 @@ function verifierTrain6B(production) {
         false,
         "L’Œuvre source interne possède une route publique",
     );
+}
+
+function verifierTrain6C(production) {
+    const catalogue = lireJson("src/data/catalogues/personnages.json");
+    const pinocchio = lireJson("src/data/oeuvres/pinocchio.json");
+    const slugsComplets = new Set([
+        "pinocchio",
+        "jiminy-cricket",
+        "geppetto",
+        "la-fee-bleue",
+        "grand-coquin",
+        "stromboli",
+    ]);
+    const slugsLegers = new Set([
+        "gedeon",
+        "le-cocher",
+        "monstro",
+        "crapule",
+        "figaro",
+    ]);
+    const slugsAttendus = [...slugsComplets, ...slugsLegers].sort();
+    const entrees = production.entries.filter(
+        (entree) => entree.train === "6C",
+    );
+
+    assert.equal(entrees.length, 11);
+    assert.deepEqual(
+        entrees.map((entree) => entree.slug).sort(),
+        slugsAttendus,
+    );
+    assert.ok(
+        entrees.every((entree) => entree.status === "publiee"),
+        "Train 6C : les onze Personnages ne sont pas tous publiés",
+    );
+    assert.equal(catalogue.length, 33);
+
+    for (const entree of entrees) {
+        const fiche = lireJson(`src/data/personnages/${entree.slug}.json`);
+        const identite = catalogue.find(
+            (candidate) => candidate.slug === entree.slug,
+        );
+
+        assert.ok(identite, `${entree.slug} : identité catalogue absente`);
+        assert.equal(fiche.slug, entree.slug);
+        assert.equal(fiche.type, "personnage");
+        assert.deepEqual(fiche.premiereApparition, {
+            oeuvre: {
+                nom: "Pinocchio",
+                type: "oeuvre",
+                slug: "pinocchio",
+            },
+            date: { valeur: "1940-02-07", precision: "jour" },
+        });
+        assert.ok(
+            entree.sources.required.every((source) =>
+                fiche.sources.includes(source),
+            ),
+            `${entree.slug} : une source requise manque à la fiche`,
+        );
+
+        const blocs = fiche.blocsEditoriaux ?? [];
+        if (slugsComplets.has(entree.slug)) {
+            assert.ok(
+                blocs.length >= 2,
+                `${entree.slug} : la fiche complète manque de profondeur`,
+            );
+        } else {
+            assert.ok(
+                blocs.length <= 1,
+                `${entree.slug} : la fiche légère dépasse son profil`,
+            );
+        }
+    }
+
+    const distributionResolue = pinocchio.personnages.filter(
+        (personnage) => personnage.type === "personnage",
+    );
+    const cleo = pinocchio.personnages.find(
+        (personnage) => personnage.nom === "Cléo",
+    );
+
+    assert.equal(pinocchio.personnages.length, 12);
+    assert.deepEqual(
+        distributionResolue.map((personnage) => personnage.slug).sort(),
+        slugsAttendus,
+    );
+    assert.deepEqual(cleo, { nom: "Cléo" });
+    assert.ok(
+        !catalogue.some((personnage) => personnage.slug === "cleo"),
+        "Cléo : identité publiée malgré le verdict relation seulement",
+    );
+    assert.equal(
+        existsSync(chemin("src/data/personnages/cleo.json")),
+        false,
+        "Cléo : fiche créée malgré le verdict relation seulement",
+    );
+
+    const crapule = lireJson("src/data/personnages/crapule.json");
+    assert.ok(
+        crapule.nomsAlternatifs.some(
+            (identite) =>
+                identite.nom === "Lampwick" &&
+                identite.nature === "original" &&
+                identite.langue === "en",
+        ),
+        "Crapule : identité originale Lampwick absente",
+    );
+
+    const stromboli = lireJson("src/data/personnages/stromboli.json");
+    assert.ok(
+        stromboli.nomsAlternatifs.some(
+            (identite) =>
+                identite.nom === "Mangiafuoco" &&
+                identite.langue === "it" &&
+                identite.territoire === "IT",
+        ),
+        "Stromboli : identité italienne Mangiafuoco absente",
+    );
+
+    const figaro = lireJson("src/data/personnages/figaro.json");
+    assert.ok(
+        figaro.sources.includes("us-d23-figaro-and-cleo"),
+        "Figaro : relation documentée avec Cléo absente",
+    );
+
+    const cleoInterne = production.internalUnits.find(
+        (entree) => entree.domain === "personnages" && entree.slug === "cleo",
+    );
+    assert.equal(cleoInterne?.status, "relation-seulement");
+    assert.deepEqual(cleoInterne?.sources.promoted, ["us-d23-figaro-and-cleo"]);
+    assert.ok(cleoInterne?.relations.includes("relation:figaro"));
 }
 
 function verifierSymboles(production) {
@@ -732,9 +863,10 @@ verifierManifeste(production, sources);
 verifierUnitesInternes(production, sources);
 verifierReprises(production);
 verifierTrain6B(production);
+verifierTrain6C(production);
 verifierSymboles(production);
 verifierBranchement();
 
 console.log(
-    `Phase 6 · Train 6B vérifié : ${production.baseline.publicEntries + production.progress.publiee} Archives publiques, ${production.progress.publiee} créations publiées, une Œuvre source interne et ${production.sourceInventory.promoted.length} sources promues.`,
+    `Phase 6 · Train 6C vérifié : ${production.baseline.publicEntries + production.progress.publiee} Archives publiques, ${production.progress.publiee} créations publiées, onze Personnages reliés à Pinocchio, Cléo sans route et ${production.sourceInventory.promoted.length} sources promues.`,
 );
