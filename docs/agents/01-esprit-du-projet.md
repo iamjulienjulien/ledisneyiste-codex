@@ -165,6 +165,7 @@ Il ne constitue pas un déguisement posé sur des concepts techniques vagues.
 | **Bobine témoin**         | Une matière d’essai explicitement séparée des Archives                         |
 | **Acte**                  | Un grand cycle de développement et de narration du projet                      |
 | **Entracte**              | Une période de raccord, de relecture et d’expérimentation entre deux Actes     |
+| **Interlude**             | Un petit divertissement de transition borné dans la période qui l’accueille    |
 | **Journal de projection** | La chronologie factuelle et narrative conservée dans `CHANGELOG.md`            |
 
 Le ton peut être chaleureux, cinématographique et malicieux. Il doit rester
@@ -219,9 +220,16 @@ L’agent ne doit pas :
 ## Continuité plutôt que perfection rétroactive
 
 Le Codex raconte aussi sa propre fabrication. Ses Actes, ses Entractes, ses
-tags, ses Releases et son Journal forment une chronologie volontaire. Cette
-histoire peut recevoir des raccords documentaires ; elle ne doit pas être
-réécrite silencieusement pour correspondre aux conventions apparues plus tard.
+Interludes, ses tags, ses Releases et son Journal forment une chronologie
+volontaire. Cette histoire peut recevoir des raccords documentaires ; elle ne
+doit pas être réécrite silencieusement pour correspondre aux conventions
+apparues plus tard.
+
+Un Interlude ouvre une courte parenthèse pour offrir au projet un ajout
+autonome, ludique ou simplement bienvenu entre deux parties principales. Ses
+deux limites sont des commits temporels vides ; le travail réel conserve ses
+domaines fonctionnels. Il ne change ni le programme ni les règles de l’Acte ou
+de l’Entracte en cours et ne reçoit ni tag ni Release propre.
 
 Les dettes connues sont traitées dans des chantiers dédiés. Une intervention ne
 doit pas profiter d’une modification locale pour réorganiser tout le plateau,
@@ -279,8 +287,8 @@ références opérationnelles :
 - [`AGENTS.md`](../../AGENTS.md) pour les règles impératives du dépôt ;
 - [`README.md`](../../README.md) pour son état, son architecture générale et
   ses fonctionnalités publiées ;
-- [`CHANGELOG.md`](../../CHANGELOG.md) pour la chronologie des Actes et des
-  Entractes.
+- [`CHANGELOG.md`](../../CHANGELOG.md) pour la chronologie des Actes, des
+  Entractes et de leurs Interludes.
 
 Les prochains chapitres du guidebook détailleront l’architecture, la direction
 artistique, le design system Pixie et les registres de symboles. Lorsqu’un fait

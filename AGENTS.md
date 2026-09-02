@@ -538,7 +538,8 @@ qu’il a lui-même produit :
 - lorsqu’un chantier mêle plusieurs auteurs, séparer les commits par
   responsabilité ou demander un arbitrage avant publication ;
 - Julien signe uniquement ses propres contributions ainsi que tous les commits
-  temporels vides d’ouverture et de clôture des Actes et des Entractes ;
+  temporels vides d’ouverture et de clôture des Actes, des Entractes et des
+  Interludes ;
 - les signatures historiques restent inchangées et ne doivent pas être
   réécrites.
 
@@ -567,6 +568,7 @@ qu’il a lui-même produit :
 | 🚀    | `Première`      | Déploiement, CI/CD, livraison ou mise en production              |
 | 🎞️    | `Acte`          | Commit vide d’ouverture ou clôture d’un grand cycle              |
 | 🍿    | `Entracte`      | Commit vide d’ouverture ou clôture entre deux Actes              |
+| 🎠    | `Interlude`     | Commit vide bornant un court divertissement de transition        |
 
 #### Domaine signé
 
@@ -598,15 +600,18 @@ domaines, le générique porte la signature de l’auteur réel du travail.
   `Première`.
 - pendant un Entracte, le domaine `Scène` est interdit : une capacité nouvelle
   attend l’Acte suivant.
+- un Interlude ne suspend pas les règles de la période qui l’accueille : les
+  changements qu’il encadre conservent leur domaine fonctionnel et les
+  interdictions de l’Acte ou de l’Entracte courant.
 
-## 10. Actes, Entractes, tags et Releases
+## 10. Actes, Entractes, Interludes, tags et Releases
 
 ### Commits temporels
 
-`Acte` et `Entracte` sont exclusivement des commits vides d’ouverture ou de
-clôture. Ils sont réservés à Julien et doivent être exécutés par lui-même. Un
-agent peut rédiger le titre et fournir la commande lorsqu’il le demande, mais
-ne doit jamais créer le commit temporel.
+`Acte`, `Entracte` et `Interlude` sont exclusivement des commits vides
+d’ouverture ou de clôture. Ils sont réservés à Julien et doivent être exécutés
+par lui-même. Un agent peut rédiger le titre et fournir la commande lorsqu’il
+le demande, mais ne doit jamais créer le commit temporel.
 
 ```bash
 git commit --allow-empty \
@@ -618,8 +623,15 @@ git commit --allow-empty \
   -m "🍿 Entracte > <dernière image> > 🐭 Julien"
 ```
 
+```bash
+git commit --allow-empty \
+  -m "🎠 Interlude > <ouverture ou dernière image> > 🐭 Julien"
+```
+
 Un commit temporel ne contient aucun changement de fichier. Tous les travaux
-réels utilisent leur domaine fonctionnel.
+réels utilisent leur domaine fonctionnel. Un Interlude forme une courte
+parenthèse à l’intérieur de la période courante : il encadre un ajout autonome,
+ludique ou bienvenu sans devenir un nouveau cycle de développement.
 
 ### Tags de clôture
 
@@ -629,6 +641,10 @@ commit vide de clôture :
 - `acte-i`, `acte-ii`, … pour les Actes ;
 - `entracte-i`, `entracte-ii`, … pour les Entractes ;
 - le numéro d’un Entracte correspond à l’Acte qu’il suit.
+
+Les Interludes ne reçoivent ni tag ni Release propres. Leurs commits vides et
+les changements qu’ils encadrent restent visibles dans le générique
+chronologique de l’Acte ou de l’Entracte qui les accueille.
 
 Le message commence par l’emoji temporel et porte un titre descriptif :
 
@@ -686,7 +702,8 @@ Le générique conserve chaque SHA court et chaque message exact :
 ### Journal de projection
 
 `CHANGELOG.md` raconte les Actes et les Entractes du plus récent au plus
-ancien. Il reste factuel, narratif et fidèle aux commits. Les œuvres sont en
+ancien, ainsi que les Interludes dans le générique de la période qui les
+accueille. Il reste factuel, narratif et fidèle aux commits. Les œuvres sont en
 italique dans la prose ; les messages de commits ne sont jamais réécrits.
 
 La nouvelle convention place l’entrée du Journal **avant** le commit vide de
@@ -711,6 +728,10 @@ Une entrée d’Acte contient : titre, repères temporels, `La projection`,
 Une entrée d’Entracte contient : titre descriptif, repères temporels, Actes
 reliés, `Le raccord`, `Pendant l’Entracte`, générique chronologique et
 `Dernière image`.
+
+Un Interlude ne crée pas d’entrée autonome : ses deux commits temporels et ses
+commits fonctionnels apparaissent dans le générique chronologique de la période
+qui le contient.
 
 ## 11. Le dernier clap
 

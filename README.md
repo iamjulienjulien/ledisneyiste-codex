@@ -838,10 +838,11 @@ registres de symboles et la grammaire des Plans. Les documents de
 [`docs/studio`](./docs/studio/) complètent ce clap par l’onboarding et le
 registre d’équipe de Guru Éditions.
 
-La chronologie des Actes, des Entractes, de leurs tags et de leurs génériques
+La chronologie des Actes, des Entractes, des Interludes et de leurs génériques
 est consignée dans le [`Journal de projection`](./CHANGELOG.md).
 
-Le développement est notamment rythmé par des **Actes** et des **Entractes**.
+Le développement est notamment rythmé par des **Actes**, des **Entractes** et
+de courts **Interludes**.
 
 ```text
 🎞️ Acte
@@ -849,6 +850,9 @@ Le développement est notamment rythmé par des **Actes** et des **Entractes**.
 
 🍿 Entracte
 → période de relecture, correction et finition
+
+🎠 Interlude
+→ petit divertissement de transition à l’intérieur de la période courante
 ```
 
 Les véritables changements utilisent toujours leur domaine propre :

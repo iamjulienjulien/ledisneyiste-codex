@@ -82,7 +82,7 @@ territoire : ouvre seulement celles dont le chantier a réellement besoin.
 - la priorité des Archives sur le spectacle ;
 - la voix narrative du projet ;
 - le rôle de Julien et celui de l’agent ;
-- les Actes, les Entractes et le Journal de projection ;
+- les Actes, les Entractes, les Interludes et le Journal de projection ;
 - la culture de travail de Guru Éditions.
 
 ➡️ [Ouvrir le chapitre 01](./01-esprit-du-projet.md)
@@ -246,7 +246,7 @@ Le Guidebook explique. Il ne possède pas toutes les vérités du projet.
 | `src/registry`                       | définitions fermées disponibles au code                               |
 | composants et routes                 | comportement réellement implémenté                                    |
 | [`README.md`](../../README.md)       | état fonctionnel et présentation technique du dépôt                   |
-| [`CHANGELOG.md`](../../CHANGELOG.md) | chronologie des Actes et Entractes                                    |
+| [`CHANGELOG.md`](../../CHANGELOG.md) | chronologie des Actes, Entractes et Interludes                        |
 | Notion                               | intentions, briefs, dossiers de production et décisions de conception |
 | Guidebook                            | modèles mentaux, frontières, procédures et conseils de navigation     |
 
@@ -268,17 +268,17 @@ cette différence, pas de la transformer en ambiguïté.
 
 ## Traduire le vocabulaire du Codex
 
-| Formule narrative             | Responsabilité concrète                                            |
-| ----------------------------- | ------------------------------------------------------------------ |
-| Ouvrir une Archive            | ajouter une donnée documentée dans sa source de vérité             |
-| Allumer la Projection         | rendre une matière visible sans la modifier                        |
-| Préparer une esquisse         | produire une hypothèse privée, versionnée et révisable             |
-| Promouvoir un composant       | stabiliser nom, API, documentation, usages et garanties            |
-| Ranger un symbole au registre | publier fichier, définition typée, label, accent et vérification   |
-| Choisir un Plan               | appliquer une grammaire documentaire à un Sujet publié             |
-| Charger une Bobine témoin     | remplacer temporairement la matière par une fixture signalée       |
-| Faire un raccord              | corriger une incohérence limitée sans changer la promesse générale |
-| Fermer un Acte ou un Entracte | créer un repère temporel selon les conventions impératives         |
+| Formule narrative                     | Responsabilité concrète                                            |
+| ------------------------------------- | ------------------------------------------------------------------ |
+| Ouvrir une Archive                    | ajouter une donnée documentée dans sa source de vérité             |
+| Allumer la Projection                 | rendre une matière visible sans la modifier                        |
+| Préparer une esquisse                 | produire une hypothèse privée, versionnée et révisable             |
+| Promouvoir un composant               | stabiliser nom, API, documentation, usages et garanties            |
+| Ranger un symbole au registre         | publier fichier, définition typée, label, accent et vérification   |
+| Choisir un Plan                       | appliquer une grammaire documentaire à un Sujet publié             |
+| Charger une Bobine témoin             | remplacer temporairement la matière par une fixture signalée       |
+| Faire un raccord                      | corriger une incohérence limitée sans changer la promesse générale |
+| Fermer un Acte, Entracte ou Interlude | créer un repère temporel selon les conventions impératives         |
 
 La poésie est bienvenue lorsqu’elle accélère la compréhension. Si elle masque
 la responsabilité réelle, traduis-la avant d’agir.
