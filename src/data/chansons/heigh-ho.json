@@ -1,0 +1,72 @@
+{
+    "id": "chanson-heigh-ho",
+    "slug": "heigh-ho",
+    "type": "chanson",
+    "introduction": "Heigh-Ho fait entendre les nains comme un groupe avant de les ramener vers leur maison. Son rythme relie le travail, la marche et l’identité collective des personnages.",
+    "identite": {
+        "libelle": "Heigh-Ho",
+        "nature": "original",
+        "langue": "en",
+        "territoire": "US",
+        "sources": ["d23-frank-churchill", "fr-bnf-snow-white-songs"]
+    },
+    "oeuvreOrigine": {
+        "nom": "Snow White and the Seven Dwarfs",
+        "type": "oeuvre",
+        "slug": "snow-white-and-the-seven-dwarfs"
+    },
+    "auteurs": [
+        {
+            "personne": {
+                "nom": "Frank Churchill",
+                "type": "contributeur",
+                "slug": "frank-churchill"
+            },
+            "roles": ["composition"],
+            "sources": ["d23-frank-churchill"]
+        },
+        {
+            "personne": { "nom": "Larry Morey" },
+            "roles": ["paroles"],
+            "sources": ["d23-frank-churchill", "nypl-snow-white-score"]
+        }
+    ],
+    "versions": [
+        {
+            "id": "heigh-ho-originale-en",
+            "nature": "originale",
+            "identite": {
+                "libelle": "Heigh-Ho",
+                "nature": "original",
+                "langue": "en",
+                "territoire": "US",
+                "sources": ["d23-frank-churchill"]
+            },
+            "date": { "valeur": "1937", "precision": "annee" },
+            "porteeTerritoriale": { "nature": "territoire", "code": "US" },
+            "sources": ["d23-frank-churchill", "nypl-snow-white-score"]
+        }
+    ],
+    "occurrences": [
+        {
+            "id": "occurrence-heigh-ho-snow-white-1937",
+            "nature": "origine",
+            "oeuvre": {
+                "nom": "Snow White and the Seven Dwarfs",
+                "type": "oeuvre",
+                "slug": "snow-white-and-the-seven-dwarfs"
+            },
+            "versionId": "heigh-ho-originale-en",
+            "date": { "valeur": "1937-12-21", "precision": "jour" },
+            "fonctionNarrative": "Rythme le retour des nains de la mine vers leur maison.",
+            "sources": ["d23-frank-churchill", "afi-snow-white"]
+        }
+    ],
+    "interpretations": [],
+    "sources": [
+        "d23-frank-churchill",
+        "nypl-snow-white-score",
+        "afi-snow-white",
+        "fr-bnf-snow-white-songs"
+    ]
+}

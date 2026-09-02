@@ -5,7 +5,9 @@ import {
     epoques,
     oeuvres,
     personnages,
+    chansons,
 } from "@/data/catalogues";
+import { fichesChansons } from "@/data/chansons";
 import { fichesContributeurs } from "@/data/contributeurs";
 import { fichesEpoques } from "@/data/epoques";
 import { fichesOeuvres } from "@/data/oeuvres";
@@ -39,6 +41,10 @@ const archivesIdentitaires: Record<CodexFamily, ArchivesIdentitairesCodex> = {
     epoques: {
         catalogue: epoques,
         fiches: fichesEpoques,
+    },
+    chansons: {
+        catalogue: chansons,
+        fiches: fichesChansons,
     },
 };
 

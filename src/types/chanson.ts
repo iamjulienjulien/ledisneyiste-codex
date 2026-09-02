@@ -1,10 +1,12 @@
 import type { DateHistorique, PeriodeHistorique } from "@/types/date";
+import type { EntreeCatalogueBase } from "@/types/codex";
 import type {
     PorteeTerritorialeDocumentaireCodex,
     ProvenanceDocumentaireCodex,
 } from "@/types/documentaire";
 import type { IdentiteDocumenteeCodex } from "@/types/identite";
 import type { ReferenceCodex } from "@/types/reference";
+import type { FicheCodexBase } from "@/types/fiche";
 
 export type ReferenceOeuvreChanson =
     | Readonly<{
@@ -33,6 +35,11 @@ export type EntreeChanson = Readonly<{
     titre: string;
     oeuvreOrigine: ReferenceOeuvreChanson;
 }>;
+
+export type ChansonDisney = EntreeCatalogueBase & {
+    type: "chanson";
+    oeuvreOrigine: ReferenceOeuvreChanson;
+};
 
 type VersionChansonBase = ProvenanceDocumentaireCodex & {
     id: string;
@@ -135,6 +142,11 @@ export type FicheChanson = ProvenanceDocumentaireCodex & {
     relations?: RelationChanson[];
     recompenses?: ReferenceRecompenseChanson[];
 };
+
+export type FicheChansonDisney = FicheChanson &
+    FicheCodexBase<"chansons"> & {
+        type: "chanson";
+    };
 
 export type RegistreChansons = Readonly<{
     entrees: readonly EntreeChanson[];

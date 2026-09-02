@@ -1,0 +1,46 @@
+[
+    {
+        "slug": "whistle-while-you-work",
+        "nom": "Whistle While You Work",
+        "type": "chanson",
+        "oeuvreOrigine": {
+            "nom": "Snow White and the Seven Dwarfs",
+            "type": "oeuvre",
+            "slug": "snow-white-and-the-seven-dwarfs"
+        },
+        "sousTitre": "La chanson qui transforme le travail en mouvement collectif"
+    },
+    {
+        "slug": "heigh-ho",
+        "nom": "Heigh-Ho",
+        "type": "chanson",
+        "oeuvreOrigine": {
+            "nom": "Snow White and the Seven Dwarfs",
+            "type": "oeuvre",
+            "slug": "snow-white-and-the-seven-dwarfs"
+        },
+        "sousTitre": "Le refrain qui donne aux nains une marche commune"
+    },
+    {
+        "slug": "someday-my-prince-will-come",
+        "nom": "Someday My Prince Will Come",
+        "type": "chanson",
+        "oeuvreOrigine": {
+            "nom": "Snow White and the Seven Dwarfs",
+            "type": "oeuvre",
+            "slug": "snow-white-and-the-seven-dwarfs"
+        },
+        "sousTitre": "Le souhait de Blanche-Neige devenu motif du récit"
+    },
+    {
+        "slug": "whos-afraid-of-the-big-bad-wolf",
+        "nom": "Who’s Afraid of the Big Bad Wolf?",
+        "type": "chanson",
+        "oeuvreOrigine": {
+            "nom": "Three Little Pigs",
+            "type": "oeuvre",
+            "slug": "three-little-pigs"
+        },
+        "sousTitre": "Le refrain qui prolongea le succès des Trois Petits Cochons"
+    }
+]

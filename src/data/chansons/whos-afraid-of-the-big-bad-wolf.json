@@ -1,0 +1,145 @@
+{
+    "id": "chanson-whos-afraid-of-the-big-bad-wolf",
+    "slug": "whos-afraid-of-the-big-bad-wolf",
+    "type": "chanson",
+    "introduction": "Who’s Afraid of the Big Bad Wolf? oppose l’insouciance des deux premiers cochons à la prévoyance du Cochon Pratique. Le refrain quitte rapidement le seul cadre du court métrage et accompagne son succès public.",
+    "identite": {
+        "libelle": "Who’s Afraid of the Big Bad Wolf?",
+        "nature": "original",
+        "langue": "en",
+        "territoire": "US",
+        "sources": ["d23-three-little-pigs"]
+    },
+    "identitesAlternatives": [
+        {
+            "libelle": "Qui craint le grand méchant loup ?",
+            "nature": "localise",
+            "langue": "fr",
+            "territoire": "FR",
+            "sources": ["fr-bnf-big-bad-wolf-song"]
+        }
+    ],
+    "oeuvreOrigine": {
+        "nom": "Three Little Pigs",
+        "type": "oeuvre",
+        "slug": "three-little-pigs"
+    },
+    "auteurs": [
+        {
+            "personne": {
+                "nom": "Frank Churchill",
+                "type": "contributeur",
+                "slug": "frank-churchill"
+            },
+            "roles": ["composition"],
+            "sources": ["d23-frank-churchill", "fr-bnf-big-bad-wolf-song"]
+        },
+        {
+            "personne": { "nom": "Ann Ronell" },
+            "roles": ["paroles"],
+            "sources": ["fr-bnf-big-bad-wolf-song"]
+        }
+    ],
+    "versions": [
+        {
+            "id": "big-bad-wolf-originale-en",
+            "nature": "originale",
+            "identite": {
+                "libelle": "Who’s Afraid of the Big Bad Wolf?",
+                "nature": "original",
+                "langue": "en",
+                "territoire": "US",
+                "sources": ["d23-three-little-pigs"]
+            },
+            "date": { "valeur": "1933", "precision": "annee" },
+            "porteeTerritoriale": { "nature": "territoire", "code": "US" },
+            "sources": ["d23-three-little-pigs"]
+        },
+        {
+            "id": "big-bad-wolf-adaptation-fr-1949",
+            "nature": "adaptation-lyrique",
+            "identite": {
+                "libelle": "Qui craint le grand méchant loup ?",
+                "nature": "localise",
+                "langue": "fr",
+                "territoire": "FR",
+                "sources": ["fr-bnf-big-bad-wolf-song"]
+            },
+            "date": { "valeur": "1949", "precision": "annee" },
+            "porteeTerritoriale": { "nature": "territoire", "code": "FR" },
+            "adaptateurs": [
+                {
+                    "personne": { "nom": "Robert Valaire" },
+                    "roles": ["adaptation-lyrique"],
+                    "sources": ["fr-bnf-big-bad-wolf-song"]
+                },
+                {
+                    "personne": { "nom": "Jean Valmy" },
+                    "roles": ["adaptation-lyrique"],
+                    "sources": ["fr-bnf-big-bad-wolf-song"]
+                }
+            ],
+            "sources": ["fr-bnf-big-bad-wolf-song"],
+            "noteDeReserve": "La date appartient à l’édition phonographique française, pas à l’occurrence originale du film."
+        }
+    ],
+    "occurrences": [
+        {
+            "id": "occurrence-big-bad-wolf-three-little-pigs-1933",
+            "nature": "origine",
+            "oeuvre": {
+                "nom": "Three Little Pigs",
+                "type": "oeuvre",
+                "slug": "three-little-pigs"
+            },
+            "versionId": "big-bad-wolf-originale-en",
+            "date": { "valeur": "1933-05-27", "precision": "jour" },
+            "fonctionNarrative": "Oppose l’insouciance des deux premiers cochons à la préparation du Cochon Pratique.",
+            "sources": [
+                "d23-three-little-pigs",
+                "d23-three-little-pigs-released"
+            ]
+        }
+    ],
+    "interpretations": [
+        {
+            "id": "interpretation-pinto-colvig-1933",
+            "nature": "originale",
+            "versionId": "big-bad-wolf-originale-en",
+            "occurrenceId": "occurrence-big-bad-wolf-three-little-pigs-1933",
+            "interpretes": [
+                {
+                    "personne": {
+                        "nom": "Pinto Colvig",
+                        "type": "contributeur",
+                        "slug": "pinto-colvig"
+                    },
+                    "roles": ["chant", "voix"],
+                    "sources": ["d23-pinto-colvig"]
+                }
+            ],
+            "date": { "valeur": "1933", "precision": "annee" },
+            "sources": ["d23-three-little-pigs", "d23-pinto-colvig"]
+        }
+    ],
+    "receptions": [
+        {
+            "id": "reception-populaire-big-bad-wolf-1933",
+            "nature": "publique",
+            "periode": { "debut": { "valeur": "1933", "precision": "annee" } },
+            "resume": "La chanson accompagne le succès public du court métrage et circule au-delà de sa première exploitation.",
+            "porteeTerritoriale": { "nature": "territoire", "code": "US" },
+            "sources": [
+                "d23-three-little-pigs",
+                "d23-three-little-pigs-released"
+            ]
+        }
+    ],
+    "sources": [
+        "fr-bnf-big-bad-wolf-song",
+        "d23-three-little-pigs",
+        "d23-three-little-pigs-released",
+        "d23-frank-churchill",
+        "d23-pinto-colvig"
+    ]
+}

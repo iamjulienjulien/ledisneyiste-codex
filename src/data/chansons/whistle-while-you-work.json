@@ -1,0 +1,81 @@
+{
+    "id": "chanson-whistle-while-you-work",
+    "slug": "whistle-while-you-work",
+    "type": "chanson",
+    "introduction": "Whistle While You Work accompagne Blanche-Neige lorsqu’elle rend habitable la maison des nains. La chanson accorde le geste, les animaux et le décor dans une même action, sans séparer le récit de sa musique.",
+    "identite": {
+        "libelle": "Whistle While You Work",
+        "nature": "original",
+        "langue": "en",
+        "territoire": "US",
+        "sources": ["d23-frank-churchill"]
+    },
+    "identitesAlternatives": [
+        {
+            "libelle": "Siffler en travaillant",
+            "nature": "localise",
+            "langue": "fr",
+            "territoire": "FR",
+            "sources": ["fr-bnf-snow-white-songs"]
+        }
+    ],
+    "oeuvreOrigine": {
+        "nom": "Snow White and the Seven Dwarfs",
+        "type": "oeuvre",
+        "slug": "snow-white-and-the-seven-dwarfs"
+    },
+    "auteurs": [
+        {
+            "personne": {
+                "nom": "Frank Churchill",
+                "type": "contributeur",
+                "slug": "frank-churchill"
+            },
+            "roles": ["composition"],
+            "sources": ["d23-frank-churchill"]
+        },
+        {
+            "personne": { "nom": "Larry Morey" },
+            "roles": ["paroles"],
+            "sources": ["d23-frank-churchill", "nypl-snow-white-score"]
+        }
+    ],
+    "versions": [
+        {
+            "id": "whistle-originale-en",
+            "nature": "originale",
+            "identite": {
+                "libelle": "Whistle While You Work",
+                "nature": "original",
+                "langue": "en",
+                "territoire": "US",
+                "sources": ["d23-frank-churchill"]
+            },
+            "date": { "valeur": "1937", "precision": "annee" },
+            "porteeTerritoriale": { "nature": "territoire", "code": "US" },
+            "sources": ["d23-frank-churchill", "nypl-snow-white-score"]
+        }
+    ],
+    "occurrences": [
+        {
+            "id": "occurrence-whistle-snow-white-1937",
+            "nature": "origine",
+            "oeuvre": {
+                "nom": "Snow White and the Seven Dwarfs",
+                "type": "oeuvre",
+                "slug": "snow-white-and-the-seven-dwarfs"
+            },
+            "versionId": "whistle-originale-en",
+            "date": { "valeur": "1937-12-21", "precision": "jour" },
+            "fonctionNarrative": "Accompagne Blanche-Neige lorsqu’elle organise le nettoyage de la maison des nains.",
+            "sources": ["d23-frank-churchill", "afi-snow-white"]
+        }
+    ],
+    "interpretations": [],
+    "sources": [
+        "d23-frank-churchill",
+        "nypl-snow-white-score",
+        "afi-snow-white",
+        "fr-bnf-snow-white-songs"
+    ]
+}

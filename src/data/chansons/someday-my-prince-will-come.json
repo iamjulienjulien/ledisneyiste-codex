@@ -1,0 +1,81 @@
+{
+    "id": "chanson-someday-my-prince-will-come",
+    "slug": "someday-my-prince-will-come",
+    "type": "chanson",
+    "introduction": "Someday My Prince Will Come donne une forme musicale au souhait de Blanche-Neige. La chanson installe cette attente dans le récit et la fait circuler au-delà de sa première scène.",
+    "identite": {
+        "libelle": "Someday My Prince Will Come",
+        "nature": "original",
+        "langue": "en",
+        "territoire": "US",
+        "sources": ["d23-frank-churchill"]
+    },
+    "identitesAlternatives": [
+        {
+            "libelle": "Un jour mon prince viendra",
+            "nature": "localise",
+            "langue": "fr",
+            "territoire": "FR",
+            "sources": ["fr-bnf-snow-white-songs"]
+        }
+    ],
+    "oeuvreOrigine": {
+        "nom": "Snow White and the Seven Dwarfs",
+        "type": "oeuvre",
+        "slug": "snow-white-and-the-seven-dwarfs"
+    },
+    "auteurs": [
+        {
+            "personne": {
+                "nom": "Frank Churchill",
+                "type": "contributeur",
+                "slug": "frank-churchill"
+            },
+            "roles": ["composition"],
+            "sources": ["d23-frank-churchill"]
+        },
+        {
+            "personne": { "nom": "Larry Morey" },
+            "roles": ["paroles"],
+            "sources": ["d23-frank-churchill", "nypl-snow-white-score"]
+        }
+    ],
+    "versions": [
+        {
+            "id": "someday-originale-en",
+            "nature": "originale",
+            "identite": {
+                "libelle": "Someday My Prince Will Come",
+                "nature": "original",
+                "langue": "en",
+                "territoire": "US",
+                "sources": ["d23-frank-churchill"]
+            },
+            "date": { "valeur": "1937", "precision": "annee" },
+            "porteeTerritoriale": { "nature": "territoire", "code": "US" },
+            "sources": ["d23-frank-churchill", "nypl-snow-white-score"]
+        }
+    ],
+    "occurrences": [
+        {
+            "id": "occurrence-someday-snow-white-1937",
+            "nature": "origine",
+            "oeuvre": {
+                "nom": "Snow White and the Seven Dwarfs",
+                "type": "oeuvre",
+                "slug": "snow-white-and-the-seven-dwarfs"
+            },
+            "versionId": "someday-originale-en",
+            "date": { "valeur": "1937-12-21", "precision": "jour" },
+            "fonctionNarrative": "Exprime l’espoir amoureux de Blanche-Neige et prépare son dénouement.",
+            "sources": ["d23-frank-churchill", "afi-snow-white"]
+        }
+    ],
+    "interpretations": [],
+    "sources": [
+        "d23-frank-churchill",
+        "nypl-snow-white-score",
+        "afi-snow-white",
+        "fr-bnf-snow-white-songs"
+    ]
+}

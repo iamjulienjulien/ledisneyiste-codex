@@ -1341,5 +1341,22 @@
         "datePublication": "1939-01-04",
         "url": "https://the.hitchcock.zone/wiki/The_Times_(04/Jan/1939)_-_American_prizes_for_British_films",
         "dateConsultation": "2026-08-24"
+    },
+    {
+        "id": "fr-bnf-snow-white-songs",
+        "titre": "Blanche-Neige et les sept nains · chansons du film",
+        "auteur": "Frank Churchill, Larry Morey et adaptateurs français",
+        "editeur": "Bibliothèque nationale de France · Catalogue général",
+        "url": "https://catalogue.bnf.fr/ark:/12148/cb37974311s",
+        "dateConsultation": "2026-09-01"
+    },
+    {
+        "id": "fr-bnf-big-bad-wolf-song",
+        "titre": "Qui craint le grand méchant loup ?",
+        "auteur": "Frank Churchill, Ann Ronell, Robert Valaire et Jean Valmy",
+        "editeur": "Bibliothèque nationale de France · Catalogue général",
+        "datePublication": "1949",
+        "url": "https://catalogue.bnf.fr/ark:/12148/cb37964901x",
+        "dateConsultation": "2026-09-01"
     }
 ]
