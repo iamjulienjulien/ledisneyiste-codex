@@ -25,6 +25,25 @@ async function lireJson(chemin) {
     return JSON.parse(await readFile(path.join(racine, chemin), "utf8"));
 }
 
+async function listerFichiersSource(dossier) {
+    const entrees = await readdir(path.join(racine, dossier), {
+        withFileTypes: true,
+    });
+    const fichiers = [];
+
+    for (const entree of entrees) {
+        const chemin = path.join(dossier, entree.name);
+
+        if (entree.isDirectory()) {
+            fichiers.push(...(await listerFichiersSource(chemin)));
+        } else if (/\.(?:ts|tsx)$/.test(entree.name)) {
+            fichiers.push(chemin);
+        }
+    }
+
+    return fichiers;
+}
+
 async function verifierIntegrationRepetition(erreurs) {
     const packageJson = await lireJson("package.json");
     const scripts = packageJson.scripts ?? {};
@@ -477,6 +496,7 @@ async function verifierSurfacesIdentitaires(erreurs) {
         "src/components/codex/CodexIndex/CodexIndexCreateurCard/CodexIndexCreateurCard.tsx",
         "src/components/codex/CodexIndex/CodexIndexOeuvreCard/CodexIndexOeuvreCard.tsx",
         "src/components/codex/CodexIndex/CodexIndexEpoqueCard/CodexIndexEpoqueCard.tsx",
+        "src/components/codex/CodexIndex/CodexIndexChansonCard/CodexIndexChansonCard.tsx",
     ];
     for (const chemin of surfaces) {
         const source = await readFile(path.join(racine, chemin), "utf8");
@@ -492,10 +512,12 @@ async function verifierSurfacesIdentitaires(erreurs) {
         "src/app/contributeurs/page.tsx",
         "src/app/oeuvres/page.tsx",
         "src/app/epoques/page.tsx",
+        "src/app/chansons/page.tsx",
         "src/app/personnages/[slug]/page.tsx",
         "src/app/contributeurs/[slug]/page.tsx",
         "src/app/oeuvres/[slug]/page.tsx",
         "src/app/epoques/[slug]/page.tsx",
+        "src/app/chansons/[slug]/page.tsx",
         "src/app/recherche/page.tsx",
     ];
     for (const chemin of montages) {
@@ -510,7 +532,77 @@ async function verifierSurfacesIdentitaires(erreurs) {
         }
     }
 
-    return surfaces.length + montages.length;
+    const pagesFiches = montages.filter((chemin) =>
+        chemin.includes("/[slug]/"),
+    );
+    for (const chemin of pagesFiches) {
+        const source = await readFile(path.join(racine, chemin), "utf8");
+
+        if (
+            !source.includes("generateMetadata") ||
+            !source.includes("title: identite.principale.libelle")
+        ) {
+            erreurs.push(
+                `${chemin} : les métadonnées ne consomment pas encore l’identité résolue`,
+            );
+        }
+    }
+
+    const referenceLinkPath =
+        "src/components/codex/CodexCommon/CodexCommonReferenceLink/CodexCommonReferenceLink.tsx";
+    const referenceLink = await readFile(
+        path.join(racine, referenceLinkPath),
+        "utf8",
+    );
+    if (
+        !referenceLink.includes("construireRouteReferenceCodex") ||
+        referenceLink.includes("switch (reference.type)")
+    ) {
+        erreurs.push(
+            `${referenceLinkPath} : les routes de références ne passent pas par le contrat canonique`,
+        );
+    }
+
+    const plansUtils = await readFile(
+        path.join(racine, "src/lib/plans/utils.ts"),
+        "utf8",
+    );
+    const plansNodes = await readFile(
+        path.join(racine, "src/lib/plans/nodes.ts"),
+        "utf8",
+    );
+    if (
+        !plansUtils.includes("projeterIdentiteCodex") ||
+        !plansUtils.includes("createPlanSubjectReference") ||
+        !plansUtils.includes("construireRouteCanoniqueCodex") ||
+        plansNodes.includes("label: entry.nom")
+    ) {
+        erreurs.push(
+            "Plans : une surface documentaire reconstruit encore l’identité ou la route d’un Sujet publié",
+        );
+    }
+
+    const fichiersPublics = await listerFichiersSource("src/components/codex");
+    for (const dossier of [
+        "src/app/personnages",
+        "src/app/contributeurs",
+        "src/app/oeuvres",
+        "src/app/epoques",
+        "src/app/chansons",
+        "src/app/recherche",
+    ]) {
+        fichiersPublics.push(...(await listerFichiersSource(dossier)));
+    }
+    for (const chemin of fichiersPublics) {
+        const source = await readFile(path.join(racine, chemin), "utf8");
+        if (source.includes("PixieDust")) {
+            erreurs.push(
+                `${chemin} : une esquisse PixieDust contourne encore la projection publique`,
+            );
+        }
+    }
+
+    return surfaces.length + montages.length + pagesFiches.length + 2;
 }
 
 async function verifierJointuresArchives(projeterIdentiteCodex, erreurs) {

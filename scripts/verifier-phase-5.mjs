@@ -62,6 +62,7 @@ const documentsPhase5 = [
     "train-5d.md",
     "train-5e.md",
     "train-5f.md",
+    "train-5g.md",
 ];
 
 const identitesOeuvresTrain5D = {
