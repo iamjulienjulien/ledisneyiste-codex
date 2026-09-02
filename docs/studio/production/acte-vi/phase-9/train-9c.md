@@ -56,7 +56,8 @@ routes canoniques des cinq familles publiques.
 - le Train 9B conserve sept reports non bloquants et explique l’absence de
   raccord produit ;
 - le présent Train et [`cloture.md`](./cloture.md) portent le verdict final ;
-- le README est demeuré inchangé parce qu’il décrit déjà l’état réel ;
+- la relecture finale du README raccorde le bilan de l’Acte, Focale, le
+  Générique vivant et les contrôles des Phases 7 à 9 ;
 - la mission Notion et la page de l’Acte reçoivent le verdict et le relais ;
 - le changelog sera monté après le commit de transmission afin d’inclure son
   SHA exact, avant tout clap vide.

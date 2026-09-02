@@ -55,14 +55,14 @@ fondations visuelles et les primitives passent de l’esquisse à leur version
 prête à projeter, et le Guidebook, qui met la documentation transmissible en
 lecture sans l’ouvrir au site de production.
 
-L’Acte VI prépare désormais la vie publique des œuvres avec des contrats
-spécialisés pour leur circulation, leurs versions, leurs réceptions, leurs
-œuvres sources, leurs chansons et leurs mesures économiques. Sa Phase 6 a
-constitué le noyau documentaire de _Pinocchio_ : 26 nouvelles Archives,
-31 contributions qualifiées, cinq Chansons, deux Oscars et trois regards
-territoriaux portent le Codex à 109 routes canoniques. Les Œuvres sources,
-les Musiques, les droits média et les enquêtes économiques non publiables
-restent internes.
+L’Acte VI a donné aux œuvres une vie publique documentée : identités, œuvres
+sources, versions, circulations, réceptions, chansons, récompenses et mesures
+économiques possèdent désormais des contrats distincts. Son noyau consacré à
+_Pinocchio_ ajoute 26 Archives, 31 contributions qualifiées, cinq Chansons,
+deux Oscars, huit chapitres et 29 unités de preuve. Le
+`PlanGeneriqueVivant` v1.0.0 révèle cette fabrication sur la fiche de l’œuvre
+sans remplacer son générique textuel. Les Œuvres sources, les Musiques, les
+droits média et les enquêtes économiques non publiables restent internes.
 
 ---
 
@@ -138,6 +138,7 @@ public/
 scripts/
 ├── verifier-chansons.mjs
 ├── verifier-donnees-economiques.mjs
+├── verifier-focale.mjs
 ├── verifier-guidebook.mjs
 ├── verifier-identites.mjs
 ├── verifier-interlude-disney-legends.mjs
@@ -148,6 +149,9 @@ scripts/
 ├── verifier-phase-4.mjs
 ├── verifier-phase-5.mjs
 ├── verifier-phase-6.mjs
+├── verifier-phase-7.mjs
+├── verifier-phase-8.mjs
+├── verifier-phase-9.mjs
 ├── verifier-plans.mjs
 ├── verifier-personnages.mjs
 ├── verifier-recompenses.mjs
@@ -176,6 +180,8 @@ src/
 │   │   ├── CodexFiche/
 │   │   ├── CodexIndex/
 │   │   └── CodexLayout/
+│   ├── focale/
+│   ├── plans/
 │   └── ui/
 │
 ├── data/
@@ -190,6 +196,7 @@ src/
 │   └── relations.ts
 │
 ├── fixtures/
+│   ├── focale/
 │   └── plans/
 │
 ├── lib/
@@ -590,16 +597,17 @@ Ses huit plateaux de travail sont maintenant actifs :
 7. **Les Effets** rendent visibles les attentes et les retours du système ;
 8. **Les Plans** composent de nouvelles lectures métier à partir des Archives.
 
-Le huitième plateau projette cinq explorations documentaires en version
-`v0.1.0` : le
+Le huitième plateau rassemble cinq explorations documentaires : le
 **Travelling documentaire**, le **Plan d’ensemble**, le **Montage du temps**,
 le **Générique vivant** et la **Table lumineuse**. Chaque Plan possède un
 dossier privé distinct des fiches Pixie. Il annonce sa question, son action de
 lecture, son Cadre, sa Matière et son contrechamp textuel, puis propose une
 régie et un prototype manipulable.
 
-Les cinq prototypes observent actuellement _Blanche-Neige et les Sept Nains_
-comme Sujet réel commun :
+Quatre prototypes demeurent en version `v0.1.0` et observent
+_Blanche-Neige et les Sept Nains_. Le Générique vivant a été éprouvé sur les
+31 contributions de _Pinocchio_, puis appliqué à sa fiche en version `v1.0.0`
+comme premier Plan public et réversible :
 
 - le **Travelling documentaire** suit les sources et laboratoires qui
   convergent vers le premier long métrage sans fabriquer de causalité ;
@@ -608,7 +616,8 @@ comme Sujet réel commun :
 - le **Montage du temps** aligne fabrication, diffusion et reconnaissance sur
   des pistes qui conservent la précision réelle de leurs dates ;
 - le **Générique vivant** regroupe les contributions par domaines et rôles sans
-  transformer une présence en hiérarchie ;
+  transformer une présence en hiérarchie ; sa projection publique conserve un
+  repli vers le générique simple ;
 - la **Table lumineuse** relie les affirmations à leurs sources et conserve
   explicitement les classifications et positions encore absentes des
   Archives.
@@ -628,6 +637,28 @@ vides, réduits ou denses, les cycles et nœuds orphelins, les dates partielles 
 contradictoires, les grands génériques, les preuves contrastées et les
 contraintes d’accessibilité. Elles ne modifient jamais les Archives et restent
 signalées comme matière de démonstration dans l’Atelier.
+
+### Focale · la grammaire du regard
+
+Focale est un noyau de visualisation parallèle à Pixie et distinct des Plans.
+Pixie règle les surfaces et les contrôles ; Focale traduit un modèle déjà
+dérivé en échelles, marques, légendes, annotations, viewport et contrechamp
+tabulaire ; le Plan choisit la question documentaire.
+
+Ses six primitives éprouvées vivent dans `src/components/focale` :
+
+```text
+FocaleScale
+FocaleMark
+FocaleLegend
+FocaleAnnotation
+FocaleViewport
+FocaleTable
+```
+
+Elles ne connaissent aucun type métier du Disneyiste et n’inventent aucun
+fait. Le noyau reste volontairement borné à ce premier usage ;
+`FocaleTooltip` et toute extension attendent un second cas réel.
 
 L’Atelier documente actuellement **32 composants validés** et **2 esquisses
 PixieDust** :
@@ -739,6 +770,7 @@ format
 → check:pixie
 → check:symbols
 → check:metadata
+→ check:focale
 → check:plans
 → check:plan-matter
 → check:guidebook
@@ -750,6 +782,9 @@ format
 → check:phase-4
 → check:phase-5
 → check:phase-6
+→ check:phase-7
+→ check:phase-8
+→ check:phase-9
 → check:interlude-disney-legends
 → check:personnages
 → check:relations
@@ -774,6 +809,7 @@ pnpm lint
 pnpm check:pixie
 pnpm check:symbols
 pnpm check:metadata
+pnpm check:focale
 pnpm check:plans
 pnpm check:plan-matter
 pnpm check:guidebook
@@ -785,6 +821,9 @@ pnpm check:donnees-economiques
 pnpm check:phase-4
 pnpm check:phase-5
 pnpm check:phase-6
+pnpm check:phase-7
+pnpm check:phase-8
+pnpm check:phase-9
 pnpm check:interlude-disney-legends
 pnpm check:personnages
 pnpm check:relations
@@ -797,7 +836,9 @@ leurs définitions et leurs chemins, vérifie que chaque image publique est
 enregistrée et que chaque symbole possède bien son fichier. Il conserve
 également le contrôle métier qui impose à chaque bloc éditorial un type présent
 dans la bonne collection. `check:plans` valide la grammaire des cinq Plans,
-leurs Angles et leurs Objectifs. `check:plan-matter` éprouve les cinq familles
+leurs Angles et leurs Objectifs. `check:focale` ferme le noyau aux six
+primitives éprouvées et vérifie leur indépendance vis-à-vis des types métier.
+`check:plan-matter` éprouve les cinq familles
 de matière dérivée, les huit Bobines témoins et les projections propres aux
 cinq prototypes. Les contrôles suivants vérifient les métadonnées des
 catalogues, le modèle des Œuvres et sa fixture de long métrage, les Œuvres
@@ -811,6 +852,11 @@ les 83 routes canoniques et les 45 routes historiques du périmètre migré.
 `check:phase-6` ferme 26 verdicts de production, contrôle 109 Archives et
 routes canoniques, 29 sources promues, les frontières internes et les trois
 regards territoriaux de _Pinocchio_.
+`check:phase-7` protège ses huit chapitres, ses 29 unités de preuve et leur
+ordre documentaire. `check:phase-8` conserve les 31 contributions, les cinq
+angles du Générique vivant, son contrechamp et la frontière entre Plan, Pixie
+et Focale. `check:phase-9` rejoue enfin la photographie complète de l’Acte VI
+et ses reports non bloquants.
 `check:interlude-disney-legends` protège les 29 attributions Disney Legends,
 leurs années, leurs bénéficiaires uniques et leurs notices officielles D23.
 Les derniers contrôles couvrent les
@@ -841,9 +887,9 @@ documentées dans :
 
 Le [Guidebook pour agents IA](./docs/agents/README.md) transmet l’esprit du
 projet, son architecture, sa direction artistique, le système Pixie, les
-registres de symboles et la grammaire des Plans. Les documents de
-[`docs/studio`](./docs/studio/) complètent ce clap par l’onboarding et le
-registre d’équipe de Guru Éditions.
+registres de symboles, la grammaire des Plans et le premier noyau Focale. Les
+documents de [`docs/studio`](./docs/studio/) complètent ce clap par
+l’onboarding et le registre d’équipe de Guru Éditions.
 
 La chronologie des Actes, des Entractes, des Interludes et de leurs génériques
 est consignée dans le [`Journal de projection`](./CHANGELOG.md).
@@ -875,6 +921,7 @@ Les véritables changements utilisent toujours leur domaine propre :
 🛡️ Garde-fou
 ✍️ Scénario
 📡 Transmission
+📼 Bobine
 🏢 Production
 🧹 Coulisses
 ⚡ Accéléré
