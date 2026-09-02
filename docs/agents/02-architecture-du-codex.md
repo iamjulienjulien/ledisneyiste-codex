@@ -357,7 +357,7 @@ graphique complémentaire, jamais la valeur métier ni le seul nom accessible.
 
 ### La recherche identitaire reste une projection serveur
 
-[`src/lib/recherche.ts`](../../src/lib/recherche.ts) joint désormais les quatre
+[`src/lib/recherche.ts`](../../src/lib/recherche.ts) joint désormais les cinq
 catalogues à leurs fiches par le résolveur commun. Son index réunit l’identité
 principale, les formes documentées, le sous-titre et les métadonnées légères
 déjà prévues pour la recherche.
@@ -372,7 +372,7 @@ recherche plein texte.
 
 ## Le montage commun des index
 
-Les quatre routes d’index partagent
+Les cinq routes d’index partagent
 [`CodexIndexPage`](../../src/components/codex/CodexIndex/CodexIndexPage/). Le composant
 reçoit une famille, une identité éditoriale, un compteur, les commandes de vue
 et la collection à projeter. Il règle le fond de scène, le symbole, la couleur,
@@ -607,7 +607,7 @@ d’un même objet universel.
 
 Les fixtures de circulation, Collodi, Chansons et données économiques servent
 à vérifier les contrats et leurs contre-exemples. Elles restent privées et ne
-se confondent jamais avec les quatre fiches Chansons publiées sous `src/data`.
+se confondent jamais avec les neuf fiches Chansons publiées sous `src/data`.
 
 Le contrôle agrégé [`verifier-phase-4.mjs`](../../scripts/verifier-phase-4.mjs)
 surveille ensemble :
@@ -628,6 +628,38 @@ raccords reportés avec leur condition de reprise — ainsi que les 83 routes
 canoniques et les 45 routes historiques du périmètre migré. Un report n’est
 donc ni une Archive partielle ni une dette silencieuse : il nomme la Phase qui
 possède la prochaine écriture.
+
+Le contrôle [`verifier-phase-6.mjs`](../../scripts/verifier-phase-6.mjs)
+ferme la photographie suivante : **109 Archives et 109 routes canoniques**,
+dont 24 Œuvres, 33 Personnages, 41 Créateurs, 9 Chansons et 2 Époques. Il
+conserve les 45 routes historiques, 16 Récompenses, 351 relations, 26 verdicts
+de production et l’absence de route pour l’Œuvre source de Collodi, Cléo,
+Evelyn Venable ou les deux Oscars.
+
+Vingt-neuf des trente sources candidates encore privées à l’ouverture ont
+rejoint le registre central uniquement parce qu’une Archive les cite. La
+notice d’exposition `us-wdfm-art-of-pinocchio` reste privée jusqu’à ce qu’un
+usage produit et ses droits de reproduction soient établis.
+
+Le Train 6H ferme cette photographie avec les contrôles spécialisés, la
+répétition générale, la revue des surfaces publiques, le rapport local et la
+transmission vers la Phase 7. Il ne transforme ni le Guidebook ni le manifeste
+en nouvelle source de vérité : tous deux décrivent les invariants que le code
+et les Archives continuent de posséder.
+
+### Pinocchio éprouve la vie publique d’une Œuvre
+
+La fiche de _Pinocchio_ emploie maintenant les contrats spécialisés au lieu de
+les laisser dans les seules Bobines : quatre événements de sortie, quatre
+versions, trois exploitations et six réceptions conservent séparément temps,
+territoire, provenance et réserve. Les regards américain, français et italien
+ne sont jamais fusionnés en une réception moyenne.
+
+Sa mesure économique publique garde son unité, son territoire français, sa
+période cumulée 1946–2010, sa méthode CNC et le statut
+`comparable-sous-reserve`. Les résultats financiers initiaux divergents restent
+dans l’enquête privée. La présentation peut donc afficher un chiffre sans
+faire disparaître les conditions qui lui donnent son sens.
 
 ### Les chiffres possèdent une frontière supplémentaire
 
@@ -876,6 +908,8 @@ plus utiles sont :
 | `pnpm check:chansons`            | Chansons, Musiques, droits média et frontière navigateur            |
 | `pnpm check:donnees-economiques` | Mesures, conflits, enquêtes et projection publique                  |
 | `pnpm check:phase-4`             | Corpus, routes, bobines et manifeste de migration                   |
+| `pnpm check:phase-5`             | 69 verdicts de rétroapplication et 45 routes historiques            |
+| `pnpm check:phase-6`             | Noyau Pinocchio, 109 routes, sources et frontières internes         |
 | `pnpm build`                     | Assemblage statique et contrats TypeScript                          |
 
 Un contrôle vert signifie que les invariants connus tiennent. Il ne prouve

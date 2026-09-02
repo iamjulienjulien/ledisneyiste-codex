@@ -23,24 +23,25 @@ dans le [`Journal de projection`](./CHANGELOG.md).
 Le Codex est développé progressivement à partir d’objets réels plutôt qu’à
 partir d’une architecture encyclopédique définie à l’avance.
 
-Le catalogue actuel réunit **83 fiches documentaires** réparties dans cinq
+Le catalogue actuel réunit **109 fiches documentaires** réparties dans cinq
 familles :
 
-- 22 Personnages, des précurseurs au cercle de Mickey et aux figures de
-  _Blanche-Neige et les Sept Nains_ ;
-- 32 Créateurs, des fondateurs aux artistes et techniciens du premier long
-  métrage ;
-- 23 Œuvres qui racontent les origines du studio, la fabrication de
-  _Blanche-Neige et les Sept Nains_ et ses premiers prolongements ;
+- 33 Personnages, des précurseurs au cercle de Mickey, aux figures de
+  _Blanche-Neige et les Sept Nains_ et à la troupe de _Pinocchio_ ;
+- 41 Créateurs, des fondateurs aux artistes, techniciens, voix et auteurs des
+  deux premiers longs métrages ;
+- 24 Œuvres qui racontent les origines du studio, la fabrication de
+  _Blanche-Neige et les Sept Nains_, puis l’entrée de _Pinocchio_ dans le
+  monde ;
 - 2 Époques qui couvrent les années 1923 à 1942.
-- 4 Chansons qui ouvrent leur vie publique, de la création aux interprétations
+- 9 Chansons qui ouvrent leur vie publique, de la création aux interprétations
   documentées.
 
 Ces fiches sont reliées entre elles et développées à partir de sources
 centralisées ; les archives concernées sont également rattachées
-automatiquement à leur Époque. Leurs 176 blocs éditoriaux emploient une
+automatiquement à leur Époque. Leurs 208 blocs éditoriaux emploient une
 première collection de symboles illustrés. Le registre central réunit désormais
-432 symboles dans 6 registres et 30 collections. Quatorze récompenses
+432 symboles dans 6 registres et 30 collections. Seize récompenses
 documentent également les premières distinctions du studio.
 
 Les cinq index proposent une vue Cartes par défaut et une vue Liste
@@ -55,9 +56,12 @@ lecture sans l’ouvrir au site de production.
 
 L’Acte VI prépare désormais la vie publique des œuvres avec des contrats
 spécialisés pour leur circulation, leurs versions, leurs réceptions, leurs
-œuvres sources, leurs chansons et leurs mesures économiques. Le Train 5B a
-promu quatre Chansons en cinquième famille publique ; les autres domaines
-encore internes continuent d’être éprouvés sur des fixtures privées.
+œuvres sources, leurs chansons et leurs mesures économiques. Sa Phase 6 a
+constitué le noyau documentaire de _Pinocchio_ : 26 nouvelles Archives,
+31 contributions qualifiées, cinq Chansons, deux Oscars et trois regards
+territoriaux portent le Codex à 109 routes canoniques. Les Œuvres sources,
+les Musiques, les droits média et les enquêtes économiques non publiables
+restent internes.
 
 ---
 
@@ -140,6 +144,8 @@ scripts/
 ├── verifier-oeuvres.mjs
 ├── verifier-oeuvres-sources.mjs
 ├── verifier-phase-4.mjs
+├── verifier-phase-5.mjs
+├── verifier-phase-6.mjs
 ├── verifier-plans.mjs
 ├── verifier-personnages.mjs
 ├── verifier-recompenses.mjs
@@ -324,6 +330,12 @@ les registres généraux ou techniques. Les catégories du générique disposent
 elles aussi de leur propre outil illustré, sans faire descendre la connaissance
 des métiers dans les primitives Pixie.
 
+La fiche de _Pinocchio_ prolonge ce contrat avec quatre événements de sortie,
+quatre versions, trois exploitations, six réceptions territoriales et une
+mesure économique structurée. Le cumul français de 7,84 millions de
+spectateurs conserve ainsi sa période 1946–2010, sa méthode CNC et sa réserve ;
+il n’est jamais présenté comme le seul résultat de la sortie de 1946.
+
 ### Contrats documentaires internes
 
 Les enrichissements documentaires sont préparés dans des contrats spécialisés :
@@ -342,7 +354,7 @@ Disney et œuvre source ; composition, occurrence, interprétation et
 enregistrement ; donnée économique originale et dérivation calculée.
 
 Leurs cas d’essai restent sous `scripts/fixtures`. Les Chansons possèdent
-désormais leur catalogue, leurs quatre fiches et leurs routes publiques ; les
+désormais leur catalogue, leurs neuf fiches et leurs routes publiques ; les
 Œuvres sources et les Musiques restent internes. Les dossiers de droits et
 d’enquête demeurent privés ; leurs projections recopient uniquement la matière
 explicitement autorisée.
@@ -390,6 +402,7 @@ personnage
 contributeur
 oeuvre
 epoque
+chanson
 ```
 
 Certaines relations plus riches possèdent leur propre structure métier.
@@ -733,6 +746,8 @@ format
 → check:chansons
 → check:donnees-economiques
 → check:phase-4
+→ check:phase-5
+→ check:phase-6
 → check:personnages
 → check:relations
 → check:recompenses
@@ -766,6 +781,7 @@ pnpm check:chansons
 pnpm check:donnees-economiques
 pnpm check:phase-4
 pnpm check:phase-5
+pnpm check:phase-6
 pnpm check:personnages
 pnpm check:relations
 pnpm check:recompenses
@@ -787,8 +803,11 @@ Archives et routes des cinq familles, protège les domaines encore internes et
 conserve le manifeste de rétroapplication. `check:phase-5` vérifie désormais
 ses 69 verdicts finaux : 30 migrations, 20 préservations et 19 raccords
 explicitement transmis à la production de _Pinocchio_. Il protège également
-les 83 routes canoniques et les 45 routes historiques du périmètre migré. Les
-derniers contrôles couvrent les variantes de noms et les formes des
+les 83 routes canoniques et les 45 routes historiques du périmètre migré.
+`check:phase-6` ferme 26 verdicts de production, contrôle 109 Archives et
+routes canoniques, 29 sources promues, les frontières internes et les trois
+regards territoriaux de _Pinocchio_. Les derniers contrôles couvrent les
+variantes de noms et les formes des
 Personnages, la cohérence des références et des relations, puis les
 récompenses, leurs bénéficiaires, leurs sources et leurs trophées illustrés.
 
