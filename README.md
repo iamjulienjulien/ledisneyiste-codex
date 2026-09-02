@@ -763,6 +763,7 @@ pnpm check:oeuvres-sources
 pnpm check:chansons
 pnpm check:donnees-economiques
 pnpm check:phase-4
+pnpm check:phase-5
 pnpm check:personnages
 pnpm check:relations
 pnpm check:recompenses
@@ -781,8 +782,10 @@ catalogues, le modèle des Œuvres et sa fixture de long métrage, les Œuvres
 sources privées, les Chansons et les droits média, les mesures économiques et
 leur frontière de publication. `check:phase-4` confirme désormais les 83
 Archives et routes des cinq familles, protège les domaines encore internes et
-conserve les 69 entrées de la Phase 5, dont quatre Chansons portent un verdict
-de migration. Les
+conserve le manifeste de rétroapplication. `check:phase-5` vérifie désormais
+ses 69 verdicts finaux : 30 migrations, 20 préservations et 19 raccords
+explicitement transmis à la production de _Pinocchio_. Il protège également
+les 83 routes canoniques et les 45 routes historiques du périmètre migré. Les
 derniers contrôles couvrent les variantes de noms et les formes des
 Personnages, la cohérence des références et des relations, puis les
 récompenses, leurs bénéficiaires, leurs sources et leurs trophées illustrés.

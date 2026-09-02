@@ -61,6 +61,7 @@ const documentsPhase5 = [
     "train-5c.md",
     "train-5d.md",
     "train-5e.md",
+    "train-5f.md",
 ];
 
 const identitesOeuvresTrain5D = {
@@ -312,6 +313,28 @@ const identitesPersonnagesTrain5E = {
         sourcePreuve: "d23-seven-dwarfs-personality",
         statut: "inchangee",
     },
+};
+
+const verdictsTrain5F = {
+    "walt-disney": "reportee",
+    "david-hand": "inchangee",
+    "hamilton-luske": "reportee",
+    "wilfred-jackson": "reportee",
+    "norman-ferguson": "reportee",
+    "ward-kimball": "reportee",
+    "fred-moore": "reportee",
+    "milt-kahl": "reportee",
+    "frank-thomas": "reportee",
+    "eric-larson": "reportee",
+    "ollie-johnston": "reportee",
+    "john-lounsbery": "reportee",
+    "wolfgang-reitherman": "reportee",
+    "vladimir-bill-tytla": "reportee",
+    "joe-grant": "reportee",
+    "gustaf-tenggren": "reportee",
+    "leigh-harline": "reportee",
+    "paul-j-smith": "reportee",
+    "marge-champion": "reportee",
 };
 
 function chemin(...segments) {
@@ -846,6 +869,117 @@ function verifierTrain5E(migration) {
     );
 }
 
+function verifierTrain5F(migration) {
+    const catalogue = lireJson("src/data/catalogues/contributeurs.json");
+    const catalogueParSlug = new Map(
+        catalogue.map((entree) => [entree.slug, entree]),
+    );
+    const sourcesPubliques = lireJson("src/data/sources/sources.json");
+    const sourcesPhase2 = lireJson(
+        "docs/studio/production/acte-vi/phase-2/sources.json",
+    ).sources;
+    const sourcesConnues = new Set([
+        ...sourcesPubliques.map((source) => source.id),
+        ...sourcesPhase2.map((source) => source.id),
+    ]);
+    const entreesTrain5F = migration.entries.filter(
+        (entree) => entree.train === "5F",
+    );
+    const createurs = entreesTrain5F.filter(
+        (entree) => entree.family === "createurs",
+    );
+    const epoques = entreesTrain5F.filter(
+        (entree) => entree.family === "epoques",
+    );
+
+    assert.equal(entreesTrain5F.length, 20);
+    assert.equal(createurs.length, 19);
+    assert.equal(epoques.length, 1);
+    assert.equal(
+        createurs.filter((entree) => entree.status === "reportee").length,
+        18,
+    );
+    assert.equal(
+        createurs.filter((entree) => entree.status === "inchangee").length,
+        1,
+    );
+
+    for (const [slug, statut] of Object.entries(verdictsTrain5F)) {
+        const cle = `createurs/${slug}`;
+        const entree = createurs.find(
+            (candidate) => cleEntree(candidate) === cle,
+        );
+
+        assert.equal(entree?.status, statut, `${cle} : verdict inattendu`);
+        assert.match(
+            entree.verdict,
+            /raccord R2/i,
+            `${cle} : verdict R2 incomplet`,
+        );
+        assert.deepEqual(
+            entree.files,
+            [],
+            `${cle} : la fiche Créateur ne doit pas porter la future relation`,
+        );
+        assert.ok(
+            entree.checks.includes("pnpm check:relations") &&
+                entree.checks.includes("pnpm check:phase-5"),
+            `${cle} : contrôles de raccord incomplets`,
+        );
+        assert.ok(
+            catalogueParSlug.has(slug) &&
+                existsSync(chemin("src/data/contributeurs", `${slug}.json`)),
+            `${cle} : Archive publique absente`,
+        );
+        assert.ok(
+            entree.sources.every((source) => sourcesConnues.has(source)),
+            `${cle} : source de verdict inconnue`,
+        );
+
+        if (statut === "reportee") {
+            assert.ok(
+                entree.reservations.some((reserve) =>
+                    reserve.includes("Phase 6"),
+                ),
+                `${cle} : condition de reprise Phase 6 absente`,
+            );
+        }
+    }
+
+    const davidHand = lireJson("src/data/contributeurs/david-hand.json");
+    assert.doesNotMatch(
+        JSON.stringify(davidHand),
+        /pinocchio/i,
+        "createurs/david-hand : crédit Pinocchio fabriqué malgré l’exception",
+    );
+
+    const billTytla = catalogueParSlug.get("vladimir-bill-tytla");
+    assert.equal(billTytla?.nom, "Vladimir “Bill” Tytla");
+
+    const entreeEpoque = epoques[0];
+    const ficheEpoque = lireJson(
+        "src/data/epoques/temps-des-chefs-d-oeuvre.json",
+    );
+
+    assert.equal(entreeEpoque.slug, "temps-des-chefs-d-oeuvre");
+    assert.equal(entreeEpoque.status, "reportee");
+    assert.match(entreeEpoque.verdict, /raccord R2/i);
+    assert.deepEqual(entreeEpoque.files, []);
+    assert.ok(entreeEpoque.sources.includes("wdfm-pinocchio-importance"));
+    assert.ok(
+        entreeEpoque.reservations.some(
+            (reserve) =>
+                reserve.includes("Phase 6") &&
+                reserve.includes("sans créer de nouvelle Époque"),
+        ),
+        "epoques/temps-des-chefs-d-oeuvre : frontière de reprise absente",
+    );
+    assert.match(JSON.stringify(ficheEpoque), /pinocchio/i);
+    assert.ok(ficheEpoque.sources.includes("wdfm-pinocchio-importance"));
+    assert.equal(ficheEpoque.periode.debut.valeur, "1937");
+    assert.equal(ficheEpoque.periode.fin.valeur, "1942");
+}
+
 function verifierTransmission() {
     const dossier = chemin("docs/studio/production/acte-vi/phase-5");
 
@@ -865,6 +999,7 @@ const progression = verifierJournal(migration, manifeste);
 verifierEchantillonR3(migration);
 verifierTrain5D(migration);
 verifierTrain5E(migration);
+verifierTrain5F(migration);
 verifierBranchement();
 verifierTransmission();
 

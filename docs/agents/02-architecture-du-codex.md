@@ -614,6 +614,14 @@ surveille ensemble :
 - le branchement des vérificateurs spécialisés dans les contrôles locaux et
   CI.
 
+Le contrôle [`verifier-phase-5.mjs`](../../scripts/verifier-phase-5.mjs)
+prolonge cette photographie par le journal d’exécution complet. Il protège les
+69 verdicts de rétroapplication — 30 migrations, 20 préservations et 19
+raccords reportés avec leur condition de reprise — ainsi que les 83 routes
+canoniques et les 45 routes historiques du périmètre migré. Un report n’est
+donc ni une Archive partielle ni une dette silencieuse : il nomme la Phase qui
+possède la prochaine écriture.
+
 ### Les chiffres possèdent une frontière supplémentaire
 
 Une donnée économique structurée conserve mesure, valeur ou fourchette
@@ -622,9 +630,12 @@ finalité et sources. Le dossier d’enquête privé peut en plus porter des lac
 un verdict et une note interne ; sa projection publique recopie explicitement
 la seule déclaration complète autorisée.
 
-La forme économique historique demeure lisible pour Blanche-Neige pendant la
-transition. Elle doit être retirée par la Phase 5 seulement lorsque les quatre
-déclarations et tous leurs consommateurs utilisent le contrat structuré.
+La forme économique historique demeure lisible pour Blanche-Neige. Le verdict
+R3 de la Phase 5 la conserve volontairement parce que les quatre déclarations
+ne franchissent pas encore toutes le contrat structuré. Elle ne pourra être
+retirée qu’après qualification de ces mesures et migration de tous leurs
+consommateurs ; fermer un manifeste ne transforme pas une donnée incomplète en
+preuve publiable.
 
 La recette complète est conservée dans
 [`docs/studio/production/acte-vi/phase-4/migration.md`](../studio/production/acte-vi/phase-4/migration.md),
