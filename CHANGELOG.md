@@ -10,11 +10,37 @@ Les entrées sont présentées de la plus récente à la plus ancienne.
 
 ---
 
+## 🍿 Entracte VI · Le Studio ouvre ses coulisses
+
+**Tag :** `entracte-vi` (à venir)\
+**Ouverture :** `0f042f1`\
+**Clôture :**\
+**Entre :** Acte VI et Acte VII
+
+### Le raccord
+
+Après avoir rendu aux œuvres leurs voix, leurs preuves et leurs vies publiques,
+le Codex pousse la porte de service. Le Studio peut maintenant montrer comment
+la projection se fabrique, équiper ses Coulisses et accorder les instruments
+qui prépareront _Fantasia_ sans encore écrire ses Archives.
+
+### Pendant l’Entracte
+
+La porte de service est ouverte. L’Entracte commence comme un laboratoire de
+consolidation, de refonte, de documentation et de prototypage : aucune nouvelle
+matière documentaire n’entre dans les Archives avant l’Acte VII.
+
+### Générique des commits
+
+1. `0f042f1` — 🍿 Entracte > La porte de service s’ouvre derrière l’écran > 🐭 Julien
+
+---
+
 ## 🎞️ Acte VI · Pinocchio révèle la vie publique des œuvres
 
-**Tag :** `acte-vi` (à venir)\
+**Tag :** `acte-vi`\
 **Ouverture :** `f784e96`\
-**Clôture :**
+**Clôture :** `6d4be7a`
 
 ### La projection
 
@@ -36,17 +62,18 @@ L’Acte installe d’abord une salle privée pour transmettre le savoir du stud
 - le **Générique vivant** atteint la version `1.0.0` et entre sur la fiche de Pinocchio comme premier Plan appliqué, avec un repli textuel exhaustif ;
 - les **109 Archives**, **109 routes canoniques**, **432 symboles**, cinq Plans et six primitives Focale traversent la dernière répétition sans raccord bloquant.
 
-### Les neuf phases
+### Les dix phases
 
-1. Mettre le Guidebook en projection.
-2. Projeter les composants promus de l’Atelier.
-3. Consolider les arbitrages et auditer l’existant.
-4. Poser les fondations de l’internationalisation.
-5. Étendre le modèle documentaire.
-6. Refaire les surfaces et rétroappliquer les structures.
-7. Constituer le noyau documentaire de Pinocchio.
-8. Construire le récit et la carte des preuves.
-9. Éprouver le Générique vivant, puis stabiliser et clore l’Acte.
+0. Mettre le Guidebook en projection.
+1. Projeter les composants promus de l’Atelier.
+2. Consolider les arbitrages et auditer l’existant.
+3. Poser les fondations de l’internationalisation.
+4. Étendre le modèle documentaire.
+5. Refaire les surfaces et rétroappliquer les structures.
+6. Constituer le noyau documentaire de Pinocchio.
+7. Construire le récit et la carte des preuves.
+8. Éprouver le Générique vivant.
+9. Stabiliser et clore l’Acte.
 
 ### Générique des commits
 
@@ -262,6 +289,8 @@ L’Acte installe d’abord une salle privée pour transmettre le savoir du stud
 210. `60499cb` — ✍️ Scénario > La Bobine rejoint les domaines du studio > 🔩 R2-D2 🏅
 211. `886173e` — 📡 Transmission > L’Acte VI remet Pinocchio vivant au seuil de Fantasia > 🔩 R2-D2 🏅
 212. `f804102` — ✍️ Scénario > Le README raconte l’Acte VI dans son dernier état > 🔩 R2-D2 🏅
+213. `41570fb` — 📼 Bobine > L’Acte VI déroule son générique avant le dernier clap > 🔩 R2-D2 🏅
+214. `6d4be7a` — 🎞️ Acte > Fin de l’Acte VI · Le dernier fil tombe, Pinocchio laisse les œuvres vivre au grand jour > 🐭 Julien
 
 ### Dernière image
 
