@@ -1,0 +1,948 @@
+{
+    "schemaVersion": "1.0.0",
+    "title": "Acte VI · Phase 6 · Manifeste de production du noyau Pinocchio",
+    "status": "in-progress",
+    "openedAt": "2026-09-02",
+    "owner": "R2-D2",
+    "productionPersona": "Geppetto",
+    "sourceManifests": [
+        {
+            "path": "docs/studio/production/acte-vi/phase-2/sources.json",
+            "sha256": "b03c280e2837c2757b32179c763fcc013a28cb6204f3428f30f6759bd8e4c1d0",
+            "role": "Registre privé des sources candidates"
+        },
+        {
+            "path": "docs/studio/production/acte-vi/phase-5/migration.json",
+            "sha256": "30537a04c2a3357f3157baf278862f85bdd7030fd12baaba582133c6c27885b6",
+            "role": "Verdicts et conditions de reprise de la rétroapplication"
+        }
+    ],
+    "baseline": {
+        "publicFamilies": 5,
+        "publicEntries": 83,
+        "publicRoutes": 83,
+        "works": 23,
+        "characters": 22,
+        "creators": 32,
+        "songs": 4,
+        "eras": 2,
+        "rewards": 14,
+        "centralSources": 208,
+        "protectedLegacyRoutes": 45
+    },
+    "target": {
+        "publicFamilies": 5,
+        "publicEntries": 109,
+        "publicRoutes": 109,
+        "newPublicEntries": 26,
+        "works": 24,
+        "characters": 33,
+        "creators": 41,
+        "songs": 9,
+        "eras": 2,
+        "rewards": 16,
+        "internalSourceWorks": 1,
+        "relationOnlyCharacters": 1,
+        "creditOnlyCreators": 1
+    },
+    "sourceInventory": {
+        "candidateCount": 32,
+        "alreadyCentral": [
+            "fr-bnf-snow-white-songs",
+            "fr-bnf-big-bad-wolf-song"
+        ],
+        "remainingPrivateAtOpening": 30,
+        "promotionPolicy": "usage-only"
+    },
+    "symbolInventory": {
+        "policy": "Les Symboles décrivent des fonctions documentaires, jamais une effigie propre à une seule Archive.",
+        "collections": [
+            {
+                "registry": "index",
+                "collection": "oeuvres",
+                "path": "public/symbols/index/oeuvres",
+                "pngCount": 9,
+                "status": "ready"
+            },
+            {
+                "registry": "index",
+                "collection": "personnages",
+                "path": "public/symbols/index/personnages",
+                "pngCount": 9,
+                "status": "ready"
+            },
+            {
+                "registry": "index",
+                "collection": "createurs",
+                "path": "public/symbols/index/createurs",
+                "pngCount": 9,
+                "status": "ready"
+            },
+            {
+                "registry": "index",
+                "collection": "chansons",
+                "path": "public/symbols/index/chansons",
+                "pngCount": 9,
+                "status": "ready"
+            },
+            {
+                "registry": "index",
+                "collection": "epoques",
+                "path": "public/symbols/index/epoques",
+                "pngCount": 9,
+                "status": "ready"
+            }
+        ],
+        "missing": [],
+        "huyangHandoffRequired": false
+    },
+    "statusContract": {
+        "a-faire": "Unité fermée dans le manifeste ; aucune écriture produit commencée.",
+        "en-cours": "Unité appartenant au Train actif ; le verdict reste ouvert.",
+        "publiee": "Archive, relations, sources et contrôles livrés.",
+        "reportee": "Unité conservée avec une condition de reprise explicite."
+    },
+    "progress": {
+        "a-faire": 26,
+        "en-cours": 0,
+        "publiee": 0,
+        "reportee": 0,
+        "verdicts": 0
+    },
+    "entries": [
+        {
+            "family": "oeuvres",
+            "slug": "pinocchio",
+            "label": "Pinocchio",
+            "profile": "fiche-complete",
+            "priority": "P0",
+            "train": "6B",
+            "status": "a-faire",
+            "sources": {
+                "required": [
+                    "us-afi-catalog-pinocchio",
+                    "us-d23-pinocchio-film",
+                    "fr-cinematheque-pinocchio",
+                    "it-treccani-1940-pinocchio"
+                ],
+                "promoted": []
+            },
+            "files": [],
+            "relations": [],
+            "checks": [
+                "pnpm check:oeuvres",
+                "pnpm check:relations",
+                "pnpm check:phase-6"
+            ],
+            "reservations": [
+                "Le film ne recopie ni la notice bibliographique de Collodi ni le récit final de la Phase 7."
+            ]
+        },
+        {
+            "family": "personnages",
+            "slug": "pinocchio",
+            "label": "Pinocchio",
+            "profile": "fiche-complete",
+            "priority": "P0",
+            "train": "6C",
+            "status": "a-faire",
+            "sources": {
+                "required": [
+                    "us-wdfm-milt-kahl-puppeteer",
+                    "us-d23-dick-jones",
+                    "it-treccani-pinocchio"
+                ],
+                "promoted": []
+            },
+            "files": [],
+            "relations": [],
+            "checks": [
+                "pnpm check:personnages",
+                "pnpm check:relations",
+                "pnpm check:phase-6"
+            ],
+            "reservations": [
+                "Les formes française, originale et italienne restent datées et sourcées."
+            ]
+        },
+        {
+            "family": "personnages",
+            "slug": "jiminy-cricket",
+            "label": "Jiminy Cricket",
+            "profile": "fiche-complete",
+            "priority": "P0",
+            "train": "6C",
+            "status": "a-faire",
+            "sources": {
+                "required": [
+                    "us-wdfm-reimagining-jiminy",
+                    "us-wdfm-pool-hall",
+                    "us-d23-cliff-edwards"
+                ],
+                "promoted": []
+            },
+            "files": [],
+            "relations": [],
+            "checks": [
+                "pnpm check:personnages",
+                "pnpm check:relations",
+                "pnpm check:phase-6"
+            ],
+            "reservations": [
+                "L’adaptation, la voix et la vie au-delà du film restent des axes distincts."
+            ]
+        },
+        {
+            "family": "personnages",
+            "slug": "geppetto",
+            "label": "Geppetto",
+            "profile": "fiche-complete",
+            "priority": "P0",
+            "train": "6C",
+            "status": "a-faire",
+            "sources": {
+                "required": [
+                    "us-afi-catalog-pinocchio",
+                    "us-loc-pinocchio-essay",
+                    "it-collodi-critical-text"
+                ],
+                "promoted": []
+            },
+            "files": [],
+            "relations": [],
+            "checks": [
+                "pnpm check:personnages",
+                "pnpm check:relations",
+                "pnpm check:phase-6"
+            ],
+            "reservations": [
+                "La fonction du personnage dans le film ne remplace pas son évolution depuis Collodi."
+            ]
+        },
+        {
+            "family": "personnages",
+            "slug": "la-fee-bleue",
+            "label": "La Fée Bleue",
+            "profile": "fiche-complete",
+            "priority": "P0",
+            "train": "6C",
+            "status": "a-faire",
+            "sources": {
+                "required": [
+                    "us-loc-pinocchio-essay",
+                    "fr-cinematheque-pinocchio",
+                    "it-collodi-critical-text"
+                ],
+                "promoted": []
+            },
+            "files": [],
+            "relations": [],
+            "checks": [
+                "pnpm check:personnages",
+                "pnpm check:relations",
+                "pnpm check:phase-6"
+            ],
+            "reservations": [
+                "Marge Champion est le modèle filmé ; Evelyn Venable reste la voix originale au générique."
+            ]
+        },
+        {
+            "family": "personnages",
+            "slug": "grand-coquin",
+            "label": "Grand Coquin",
+            "profile": "fiche-complete",
+            "priority": "P0",
+            "train": "6C",
+            "status": "a-faire",
+            "sources": {
+                "required": [
+                    "us-afi-catalog-pinocchio",
+                    "us-loc-pinocchio-essay",
+                    "fr-cinematheque-pinocchio"
+                ],
+                "promoted": []
+            },
+            "files": [],
+            "relations": [],
+            "checks": [
+                "pnpm check:personnages",
+                "pnpm check:relations",
+                "pnpm check:phase-6"
+            ],
+            "reservations": [
+                "Le duo avec Gédéon ne fusionne pas leurs identités."
+            ]
+        },
+        {
+            "family": "personnages",
+            "slug": "gedeon",
+            "label": "Gédéon",
+            "profile": "fiche-legere",
+            "priority": "P0",
+            "train": "6C",
+            "status": "a-faire",
+            "sources": {
+                "required": [
+                    "us-afi-catalog-pinocchio",
+                    "us-loc-pinocchio-essay",
+                    "fr-cinematheque-pinocchio"
+                ],
+                "promoted": []
+            },
+            "files": [],
+            "relations": [],
+            "checks": [
+                "pnpm check:personnages",
+                "pnpm check:relations",
+                "pnpm check:phase-6"
+            ],
+            "reservations": [
+                "La fiche reste légère si sa matière demeure principalement relationnelle."
+            ]
+        },
+        {
+            "family": "personnages",
+            "slug": "stromboli",
+            "label": "Stromboli",
+            "profile": "fiche-complete",
+            "priority": "P0",
+            "train": "6C",
+            "status": "a-faire",
+            "sources": {
+                "required": [
+                    "us-afi-catalog-pinocchio",
+                    "us-loc-pinocchio-essay",
+                    "fr-cinematheque-pinocchio"
+                ],
+                "promoted": []
+            },
+            "files": [],
+            "relations": [],
+            "checks": [
+                "pnpm check:personnages",
+                "pnpm check:relations",
+                "pnpm check:phase-6"
+            ],
+            "reservations": [
+                "Le rôle de Bill Tytla reste qualifié et sourcé, jamais déduit de sa filmographie."
+            ]
+        },
+        {
+            "family": "personnages",
+            "slug": "le-cocher",
+            "label": "Le Cocher",
+            "profile": "fiche-legere",
+            "priority": "P0",
+            "train": "6C",
+            "status": "a-faire",
+            "sources": {
+                "required": [
+                    "us-afi-catalog-pinocchio",
+                    "us-loc-pinocchio-essay",
+                    "fr-cinematheque-pinocchio"
+                ],
+                "promoted": []
+            },
+            "files": [],
+            "relations": [],
+            "checks": [
+                "pnpm check:personnages",
+                "pnpm check:relations",
+                "pnpm check:phase-6"
+            ],
+            "reservations": [
+                "La fonction narrative forte ne justifie pas une profondeur artificielle."
+            ]
+        },
+        {
+            "family": "personnages",
+            "slug": "monstro",
+            "label": "Monstro",
+            "profile": "fiche-legere",
+            "priority": "P0",
+            "train": "6C",
+            "status": "a-faire",
+            "sources": {
+                "required": [
+                    "us-afi-catalog-pinocchio",
+                    "us-loc-pinocchio-essay",
+                    "fr-cinematheque-pinocchio"
+                ],
+                "promoted": []
+            },
+            "files": [],
+            "relations": [],
+            "checks": [
+                "pnpm check:personnages",
+                "pnpm check:relations",
+                "pnpm check:phase-6"
+            ],
+            "reservations": [
+                "La poursuite animée ne devient une attribution qu’avec sa source précise."
+            ]
+        },
+        {
+            "family": "personnages",
+            "slug": "crapule",
+            "label": "Crapule",
+            "profile": "fiche-legere",
+            "priority": "P0",
+            "train": "6C",
+            "status": "a-faire",
+            "sources": {
+                "required": ["us-wdfm-pool-hall", "fr-cinematheque-pinocchio"],
+                "promoted": []
+            },
+            "files": [],
+            "relations": [],
+            "checks": [
+                "pnpm check:identites",
+                "pnpm check:personnages",
+                "pnpm check:phase-6"
+            ],
+            "reservations": [
+                "Crapule est l’identité française versionnée ; Lampwick demeure la forme originale de la même Archive."
+            ]
+        },
+        {
+            "family": "personnages",
+            "slug": "figaro",
+            "label": "Figaro",
+            "profile": "fiche-legere",
+            "priority": "P1",
+            "train": "6C",
+            "status": "a-faire",
+            "sources": {
+                "required": ["us-d23-figaro", "us-d23-figaro-and-cleo"],
+                "promoted": []
+            },
+            "files": [],
+            "relations": [],
+            "checks": [
+                "pnpm check:personnages",
+                "pnpm check:relations",
+                "pnpm check:phase-6"
+            ],
+            "reservations": [
+                "Cléo reste une relation même lorsque leur court métrage commun est mentionné."
+            ]
+        },
+        {
+            "family": "createurs",
+            "slug": "carlo-collodi",
+            "label": "Carlo Collodi",
+            "profile": "fiche-complete",
+            "priority": "P0",
+            "train": "6B",
+            "status": "a-faire",
+            "sources": {
+                "required": [
+                    "it-collodi-biography",
+                    "it-collodi-critical-text",
+                    "it-collodi-translations"
+                ],
+                "promoted": []
+            },
+            "files": [],
+            "relations": [],
+            "checks": [
+                "pnpm check:oeuvres-sources",
+                "pnpm check:relations",
+                "pnpm check:phase-6"
+            ],
+            "reservations": [
+                "La personne et son livre restent deux unités documentaires distinctes."
+            ]
+        },
+        {
+            "family": "createurs",
+            "slug": "ben-sharpsteen",
+            "label": "Ben Sharpsteen",
+            "profile": "fiche-complete",
+            "priority": "P0",
+            "train": "6D",
+            "status": "a-faire",
+            "sources": {
+                "required": [
+                    "us-d23-ben-sharpsteen",
+                    "us-afi-catalog-pinocchio"
+                ],
+                "promoted": []
+            },
+            "files": [],
+            "relations": [],
+            "checks": ["pnpm check:relations", "pnpm check:phase-6"],
+            "reservations": [
+                "La nouvelle fiche doit résoudre la mention existante de Clock Cleaners."
+            ]
+        },
+        {
+            "family": "createurs",
+            "slug": "cliff-edwards",
+            "label": "Cliff Edwards",
+            "profile": "fiche-complete",
+            "priority": "P0",
+            "train": "6D",
+            "status": "a-faire",
+            "sources": {
+                "required": [
+                    "us-d23-cliff-edwards",
+                    "us-wdfm-reimagining-jiminy"
+                ],
+                "promoted": []
+            },
+            "files": [],
+            "relations": [],
+            "checks": ["pnpm check:relations", "pnpm check:phase-6"],
+            "reservations": [
+                "La voix de Jiminy et l’interprétation de la chanson pilote restent deux relations."
+            ]
+        },
+        {
+            "family": "createurs",
+            "slug": "dickie-jones",
+            "label": "Dickie Jones",
+            "profile": "fiche-complete",
+            "priority": "P0",
+            "train": "6D",
+            "status": "a-faire",
+            "sources": {
+                "required": ["us-d23-dick-jones", "us-afi-catalog-pinocchio"],
+                "promoted": []
+            },
+            "files": [],
+            "relations": [],
+            "checks": ["pnpm check:relations", "pnpm check:phase-6"],
+            "reservations": [
+                "Le contexte d’interprétation doit dépasser la seule ligne de voix."
+            ]
+        },
+        {
+            "family": "createurs",
+            "slug": "ned-washington",
+            "label": "Ned Washington",
+            "profile": "fiche-complete",
+            "priority": "P0",
+            "train": "6D",
+            "status": "a-faire",
+            "sources": {
+                "required": ["us-d23-ned-washington", "us-academy-awards-1941"],
+                "promoted": []
+            },
+            "files": [],
+            "relations": [],
+            "checks": [
+                "pnpm check:chansons",
+                "pnpm check:recompenses",
+                "pnpm check:phase-6"
+            ],
+            "reservations": [
+                "Paroles, partition et récompense ne sont pas fusionnées en un crédit générique."
+            ]
+        },
+        {
+            "family": "createurs",
+            "slug": "jack-kinney",
+            "label": "Jack Kinney",
+            "profile": "fiche-complete",
+            "priority": "P1",
+            "train": "6D",
+            "status": "a-faire",
+            "sources": {
+                "required": ["us-d23-jack-kinney", "us-d23-figaro-and-cleo"],
+                "promoted": []
+            },
+            "files": [],
+            "relations": [],
+            "checks": ["pnpm check:relations", "pnpm check:phase-6"],
+            "reservations": [
+                "La fiche doit résoudre la mention existante de Bone Trouble."
+            ]
+        },
+        {
+            "family": "createurs",
+            "slug": "t-hee",
+            "label": "T. Hee",
+            "profile": "fiche-legere",
+            "priority": "P1",
+            "train": "6D",
+            "status": "a-faire",
+            "sources": {
+                "required": [
+                    "us-afi-catalog-pinocchio",
+                    "us-loc-pinocchio-essay"
+                ],
+                "promoted": []
+            },
+            "files": [],
+            "relations": [],
+            "checks": ["pnpm check:relations", "pnpm check:phase-6"],
+            "reservations": [
+                "Réalisation de séquence et référence jouée pour Stromboli restent qualifiées séparément."
+            ]
+        },
+        {
+            "family": "createurs",
+            "slug": "joshua-meador",
+            "label": "Joshua Meador",
+            "profile": "fiche-legere",
+            "priority": "P1",
+            "train": "6D",
+            "status": "a-faire",
+            "sources": {
+                "required": [
+                    "us-d23-make-mine-music",
+                    "us-afi-catalog-pinocchio"
+                ],
+                "promoted": []
+            },
+            "files": [],
+            "relations": [],
+            "checks": ["pnpm check:relations", "pnpm check:phase-6"],
+            "reservations": [
+                "Le parcours ultérieur soutient une fiche bornée, pas une biographie exhaustive."
+            ]
+        },
+        {
+            "family": "createurs",
+            "slug": "kenneth-anderson",
+            "label": "Kenneth Anderson",
+            "profile": "fiche-legere",
+            "priority": "P1",
+            "train": "6D",
+            "status": "a-faire",
+            "sources": {
+                "required": ["us-d23-ken-anderson", "us-afi-catalog-pinocchio"],
+                "promoted": []
+            },
+            "files": [],
+            "relations": [],
+            "checks": ["pnpm check:relations", "pnpm check:phase-6"],
+            "reservations": [
+                "La direction artistique de Pinocchio et le parcours Imagineering restent deux axes."
+            ]
+        },
+        {
+            "family": "chansons",
+            "slug": "when-you-wish-upon-a-star",
+            "label": "Quand on prie la bonne étoile",
+            "profile": "fiche-complete",
+            "priority": "P0",
+            "train": "6F",
+            "status": "a-faire",
+            "sources": {
+                "required": [
+                    "us-academy-awards-1941",
+                    "us-d23-cliff-edwards",
+                    "us-d23-ned-washington",
+                    "fr-bnf-bo-pinocchio"
+                ],
+                "promoted": []
+            },
+            "files": [],
+            "relations": [],
+            "checks": [
+                "pnpm check:chansons",
+                "pnpm check:recompenses",
+                "pnpm check:phase-6"
+            ],
+            "reservations": [
+                "La fiche reste metadata-first : aucun audio ni paroles intégrales ne conditionne sa route."
+            ]
+        },
+        {
+            "family": "chansons",
+            "slug": "little-wooden-head",
+            "label": "Les Pantins de bois",
+            "profile": "fiche-legere",
+            "priority": "P0",
+            "train": "6F",
+            "status": "a-faire",
+            "sources": {
+                "required": [
+                    "us-d23-pinocchio-film",
+                    "us-d23-ned-washington",
+                    "fr-bnf-bo-pinocchio"
+                ],
+                "promoted": []
+            },
+            "files": [],
+            "relations": [],
+            "checks": ["pnpm check:chansons", "pnpm check:phase-6"],
+            "reservations": [
+                "Titre français et titre original conservent leur version et leur source."
+            ]
+        },
+        {
+            "family": "chansons",
+            "slug": "give-a-little-whistle",
+            "label": "Sifflez vite vite",
+            "profile": "fiche-legere",
+            "priority": "P0",
+            "train": "6F",
+            "status": "a-faire",
+            "sources": {
+                "required": [
+                    "us-d23-pinocchio-film",
+                    "us-d23-ned-washington",
+                    "fr-bnf-bo-pinocchio"
+                ],
+                "promoted": []
+            },
+            "files": [],
+            "relations": [],
+            "checks": ["pnpm check:chansons", "pnpm check:phase-6"],
+            "reservations": [
+                "La profondeur reste légère si la réception ne fournit pas un récit autonome."
+            ]
+        },
+        {
+            "family": "chansons",
+            "slug": "hi-diddle-dee-dee",
+            "label": "Hi-diddle di di",
+            "profile": "fiche-legere",
+            "priority": "P0",
+            "train": "6F",
+            "status": "a-faire",
+            "sources": {
+                "required": [
+                    "us-d23-pinocchio-film",
+                    "us-d23-ned-washington",
+                    "fr-bnf-bo-pinocchio"
+                ],
+                "promoted": []
+            },
+            "files": [],
+            "relations": [],
+            "checks": ["pnpm check:chansons", "pnpm check:phase-6"],
+            "reservations": [
+                "Chaque identité est rattachée à l’édition qui l’atteste."
+            ]
+        },
+        {
+            "family": "chansons",
+            "slug": "ive-got-no-strings",
+            "label": "Il faut savoir briser ses liens",
+            "profile": "fiche-legere",
+            "priority": "P0",
+            "train": "6F",
+            "status": "a-faire",
+            "sources": {
+                "required": [
+                    "us-d23-pinocchio-film",
+                    "us-d23-ned-washington",
+                    "fr-bnf-bo-pinocchio"
+                ],
+                "promoted": []
+            },
+            "files": [],
+            "relations": [],
+            "checks": ["pnpm check:chansons", "pnpm check:phase-6"],
+            "reservations": [
+                "Occurrence dans Pinocchio et réemplois ultérieurs restent deux faits distincts."
+            ]
+        }
+    ],
+    "internalUnits": [
+        {
+            "domain": "oeuvres-sources",
+            "slug": "le-avventure-di-pinocchio",
+            "label": "Le avventure di Pinocchio",
+            "profile": "fiche-complete-interne",
+            "train": "6B",
+            "status": "a-faire",
+            "route": null,
+            "sources": {
+                "required": [
+                    "it-collodi-biography",
+                    "it-collodi-critical-text",
+                    "it-collodi-translations"
+                ],
+                "promoted": []
+            },
+            "reservations": [
+                "Le slug résout l’unité interne mais ne doit jamais générer une route publique."
+            ]
+        },
+        {
+            "domain": "personnages",
+            "slug": "cleo",
+            "label": "Cléo",
+            "profile": "relation-seulement",
+            "train": "6C",
+            "status": "relation-seulement",
+            "route": null,
+            "sources": {
+                "required": ["us-d23-figaro-and-cleo"],
+                "promoted": []
+            },
+            "reservations": [
+                "La distribution et la relation vers Figaro and Cleo ne franchissent pas le seuil d’autonomie."
+            ]
+        },
+        {
+            "domain": "createurs",
+            "slug": "evelyn-venable",
+            "label": "Evelyn Venable",
+            "profile": "credit-seulement",
+            "train": "6D",
+            "status": "credit-seulement",
+            "route": null,
+            "sources": {
+                "required": ["us-afi-catalog-pinocchio"],
+                "promoted": []
+            },
+            "reservations": [
+                "La voix originale de la Fée Bleue reste au générique tant qu’un second axe autonome n’est pas établi."
+            ]
+        },
+        {
+            "domain": "recompenses",
+            "slug": "academy-awards-1941-pinocchio-original-score",
+            "label": "Oscar de la meilleure musique originale pour Pinocchio",
+            "profile": "registre-transversal",
+            "train": "6F",
+            "status": "a-faire",
+            "route": null,
+            "sources": {
+                "required": ["us-academy-awards-1941"],
+                "promoted": []
+            },
+            "reservations": [
+                "La Récompense relie l’Œuvre et ses bénéficiaires sans ouvrir une famille publique."
+            ]
+        },
+        {
+            "domain": "recompenses",
+            "slug": "academy-awards-1941-when-you-wish-upon-a-star",
+            "label": "Oscar de la meilleure chanson originale pour When You Wish Upon a Star",
+            "profile": "registre-transversal",
+            "train": "6F",
+            "status": "a-faire",
+            "route": null,
+            "sources": {
+                "required": ["us-academy-awards-1941"],
+                "promoted": []
+            },
+            "reservations": [
+                "La Récompense relie la Chanson, ses auteurs et l’Œuvre sans route autonome."
+            ]
+        }
+    ],
+    "relays": [
+        {
+            "family": "createurs",
+            "slug": "walt-disney",
+            "train": "6E",
+            "sourceStatus": "reportee"
+        },
+        {
+            "family": "createurs",
+            "slug": "hamilton-luske",
+            "train": "6E",
+            "sourceStatus": "reportee"
+        },
+        {
+            "family": "createurs",
+            "slug": "wilfred-jackson",
+            "train": "6E",
+            "sourceStatus": "reportee"
+        },
+        {
+            "family": "createurs",
+            "slug": "norman-ferguson",
+            "train": "6E",
+            "sourceStatus": "reportee"
+        },
+        {
+            "family": "createurs",
+            "slug": "ward-kimball",
+            "train": "6E",
+            "sourceStatus": "reportee"
+        },
+        {
+            "family": "createurs",
+            "slug": "fred-moore",
+            "train": "6E",
+            "sourceStatus": "reportee"
+        },
+        {
+            "family": "createurs",
+            "slug": "milt-kahl",
+            "train": "6E",
+            "sourceStatus": "reportee"
+        },
+        {
+            "family": "createurs",
+            "slug": "frank-thomas",
+            "train": "6E",
+            "sourceStatus": "reportee"
+        },
+        {
+            "family": "createurs",
+            "slug": "eric-larson",
+            "train": "6E",
+            "sourceStatus": "reportee"
+        },
+        {
+            "family": "createurs",
+            "slug": "ollie-johnston",
+            "train": "6E",
+            "sourceStatus": "reportee"
+        },
+        {
+            "family": "createurs",
+            "slug": "john-lounsbery",
+            "train": "6E",
+            "sourceStatus": "reportee"
+        },
+        {
+            "family": "createurs",
+            "slug": "wolfgang-reitherman",
+            "train": "6E",
+            "sourceStatus": "reportee"
+        },
+        {
+            "family": "createurs",
+            "slug": "vladimir-bill-tytla",
+            "train": "6E",
+            "sourceStatus": "reportee"
+        },
+        {
+            "family": "createurs",
+            "slug": "joe-grant",
+            "train": "6E",
+            "sourceStatus": "reportee"
+        },
+        {
+            "family": "createurs",
+            "slug": "gustaf-tenggren",
+            "train": "6E",
+            "sourceStatus": "reportee"
+        },
+        {
+            "family": "createurs",
+            "slug": "leigh-harline",
+            "train": "6E",
+            "sourceStatus": "reportee"
+        },
+        {
+            "family": "createurs",
+            "slug": "paul-j-smith",
+            "train": "6E",
+            "sourceStatus": "reportee"
+        },
+        {
+            "family": "createurs",
+            "slug": "marge-champion",
+            "train": "6E",
+            "sourceStatus": "reportee"
+        },
+        {
+            "family": "epoques",
+            "slug": "temps-des-chefs-d-oeuvre",
+            "train": "6B",
+            "sourceStatus": "reportee"
+        }
+    ]
+}
