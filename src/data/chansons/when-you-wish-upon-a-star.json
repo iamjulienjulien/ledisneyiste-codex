@@ -136,9 +136,12 @@
         {
             "id": "enregistrement-when-you-wish-film-1940",
             "interpretationId": "interpretation-cliff-edwards-1940",
-            "date": { "valeur": "1940", "precision": "annee" },
-            "edition": "Fixation sonore de l’occurrence filmique originale",
-            "sources": ["fr-cinematheque-pinocchio"]
+            "date": { "valeur": "1938", "precision": "annee" },
+            "edition": "Enregistrement original publié avec le film en 1940",
+            "sources": [
+                "fr-cinematheque-pinocchio",
+                "us-loc-national-recording-registry-when-you-wish"
+            ]
         }
     ],
     "receptions": [
@@ -152,6 +155,17 @@
                 "code": "US"
             },
             "sources": ["us-academy-awards-1941"]
+        },
+        {
+            "id": "reception-national-recording-registry-2009",
+            "nature": "patrimoniale",
+            "date": { "valeur": "2009", "precision": "annee" },
+            "resume": "La Library of Congress sélectionne l’enregistrement original de Cliff Edwards pour le National Recording Registry au titre de l’année 2009.",
+            "porteeTerritoriale": {
+                "nature": "territoire",
+                "code": "US"
+            },
+            "sources": ["us-loc-national-recording-registry-when-you-wish"]
         }
     ],
     "recompenses": [
@@ -162,22 +176,84 @@
     ],
     "blocsEditoriaux": [
         {
-            "type": "heritage",
-            "eyebrow": "Récompense",
-            "titre": "Un souhait consacré par l’Academy",
+            "id": "une-chanson-au-seuil-du-recit",
+            "type": "genese",
+            "eyebrow": "Création et interprétation",
+            "titre": "Une chanson naît au seuil du récit",
+            "question": "Comment une chanson devient-elle la voix d’un récit ?",
             "paragraphes": [
-                "Le 27 février 1941, l’Academy récompense When You Wish Upon a Star comme meilleure chanson originale. La distinction nomme Leigh Harline pour la musique et Ned Washington pour les paroles, sans séparer la chanson du film qui lui donne sa première occurrence."
-            ],
-            "sources": ["us-academy-awards-1941"]
+                {
+                    "id": "une-chanson-harline-washington-et-pinocchio",
+                    "texte": "Leigh Harline compose When You Wish Upon a Star et Ned Washington en écrit les paroles pour Pinocchio. La chanson ouvre et referme le film : elle donne une forme musicale au souhait qui conduit le pantin, sans cesser d’appartenir d’abord à cette œuvre et à cette occurrence précise.",
+                    "sources": [
+                        "us-d23-pinocchio-film",
+                        "us-academy-awards-1941"
+                    ]
+                },
+                {
+                    "id": "une-chanson-cliff-edwards-donne-la-voix",
+                    "texte": "Cliff Edwards l’interprète dans la continuité de son rôle de Jiminy Cricket. La Library of Congress date l’enregistrement de 1938 et sa publication de 1940 : la voix est fixée avant que le public ne la rencontre avec le film. Composition, paroles, personnage et interprétation se rejoignent dans la scène sans devenir une seule attribution.",
+                    "sources": [
+                        "us-d23-cliff-edwards",
+                        "fr-cinematheque-pinocchio",
+                        "us-loc-national-recording-registry-when-you-wish"
+                    ]
+                }
+            ]
         },
         {
-            "type": "interpretation",
-            "eyebrow": "Voix",
-            "titre": "Jiminy porte la chanson au seuil du récit",
+            "id": "quand-on-prie-la-bonne-etoile-garde-sa-propre-date",
+            "type": "adaptation",
+            "eyebrow": "Identité française",
+            "titre": "Quand on prie la bonne étoile garde sa propre date",
+            "question": "Quand le titre français entre-t-il dans le dossier ?",
             "paragraphes": [
-                "Cliff Edwards interprète la chanson dans la continuité de son rôle de Jiminy Cricket. Le générique musical et le générique vocal se rejoignent ainsi dans une même présence, sans confondre composition, paroles et interprétation."
-            ],
-            "sources": ["us-d23-cliff-edwards", "fr-cinematheque-pinocchio"]
+                {
+                    "id": "quand-on-prie-une-edition-francaise-de-1995",
+                    "texte": "La Bibliothèque nationale de France atteste Quand on prie la bonne étoile dans une édition phonographique française publiée en 1995, avec J. Cis et R. Sauvage crédités pour l’adaptation lyrique. Cette identité localisée accompagne la chanson originale ; elle n’est jamais antidatée à la sortie française de Pinocchio en 1946.",
+                    "sources": ["fr-bnf-bo-pinocchio"],
+                    "reserve": "Le dossier établit le titre et les crédits de l’édition de 1995, pas la première date historique à laquelle une adaptation française de la chanson aurait pu être entendue."
+                }
+            ]
+        },
+        {
+            "id": "le-souhait-devient-un-signe-partage-du-studio",
+            "type": "heritage",
+            "eyebrow": "Vie autonome",
+            "titre": "Le souhait devient un signe partagé du studio",
+            "question": "Comment la chanson continue-t-elle d’exister hors de Pinocchio ?",
+            "paragraphes": [
+                {
+                    "id": "le-souhait-consacre-par-lacademy",
+                    "texte": "Le 27 février 1941, l’Academy récompense When You Wish Upon a Star comme meilleure chanson originale et distingue Leigh Harline et Ned Washington. Ce premier jalon institutionnel reconnaît une chanson née dans Pinocchio ; il ne suffit pas encore à raconter toute sa circulation future.",
+                    "sources": ["us-academy-awards-1941"]
+                },
+                {
+                    "id": "le-souhait-devient-un-repere-disney",
+                    "texte": "Les Walt Disney Archives décrivent ensuite la chanson comme un thème de la compagnie. Elles documentent deux usages précis : pendant des années, elle ouvre l’émission télévisée Disneyland et accompagne l’entrée des visiteurs dans le château du parc. Sa vie autonome se mesure ici par des fonctions identifiables, pas par le seul qualificatif d’icône.",
+                    "sources": [
+                        "us-d23-when-you-wish-upon-a-star",
+                        "us-d23-ned-washington"
+                    ]
+                },
+                {
+                    "id": "le-souhait-entre-au-registre-sonore",
+                    "texte": "Au titre de l’année 2009, la Library of Congress sélectionne l’enregistrement original de Cliff Edwards pour le National Recording Registry. Le patrimoine porte alors sur une interprétation enregistrée et nommée, distincte de l’inscription du film lui-même au National Film Registry en 1994.",
+                    "sources": [
+                        "us-loc-national-recording-registry-when-you-wish",
+                        "us-loc-national-film-registry"
+                    ]
+                },
+                {
+                    "id": "le-souhait-revient-sans-rejouer-la-meme-scene",
+                    "texte": "La chanson continue enfin d’être réemployée sous des formes explicitement documentées. En 2022, un nouvel arrangement de Christophe Beck accompagne l’introduction au château destinée aux sorties Disney en salles et en streaming. En 2023, Wish lui réserve un hommage après le générique. Ces retours citent ou réarrangent le motif ; ils ne deviennent ni de nouvelles occurrences dans Pinocchio, ni une histoire exhaustive de ses usages.",
+                    "sources": [
+                        "us-d23-disney100-castle-intro",
+                        "d23-wish-animation-nods"
+                    ],
+                    "reserve": "Le récit retient uniquement ces réemplois institutionnellement documentés. Il ne déduit aucune occurrence supplémentaire et n’intègre ni enregistrement, ni extrait, ni paroles."
+                }
+            ]
         }
     ],
     "sources": [
@@ -186,6 +262,11 @@
         "us-d23-cliff-edwards",
         "us-d23-ned-washington",
         "fr-cinematheque-pinocchio",
-        "fr-bnf-bo-pinocchio"
+        "fr-bnf-bo-pinocchio",
+        "us-d23-when-you-wish-upon-a-star",
+        "us-loc-national-recording-registry-when-you-wish",
+        "us-loc-national-film-registry",
+        "us-d23-disney100-castle-intro",
+        "d23-wish-animation-nods"
     ]
 }

@@ -893,6 +893,45 @@
                     "reserve": "L’inscription au National Film Registry établit une sélection patrimoniale ; elle n’autorise pas le Codex à lui attribuer une interprétation supplémentaire."
                 }
             ]
+        },
+        {
+            "id": "quand-les-images-et-les-chansons-quittent-le-film",
+            "type": "heritage",
+            "eyebrow": "Empreinte culturelle",
+            "titre": "Quand les images et les chansons quittent le film",
+            "question": "Quels éléments acquièrent une vie autonome ?",
+            "paragraphes": [
+                {
+                    "id": "quand-les-images-figaro-gagne-ses-propres-histoires",
+                    "texte": "Figaro ne reste pas seulement le chaton de Geppetto. Les Walt Disney Archives recensent sept apparitions supplémentaires après Pinocchio et documentent notamment Figaro and Cleo, sorti en 1943. Le personnage acquiert ainsi une continuité propre sans que Cléo, présente à ses côtés, reçoive artificiellement la même autonomie documentaire.",
+                    "sources": ["us-d23-figaro", "us-d23-figaro-and-cleo"]
+                },
+                {
+                    "id": "quand-les-chansons-le-souhait-devient-un-repere",
+                    "texte": "When You Wish Upon a Star quitte elle aussi sa seule fonction narrative. Les Walt Disney Archives la décrivent comme un thème de la compagnie et précisent qu’elle a ouvert pendant des années l’émission Disneyland, tout en accompagnant l’entrée des visiteurs dans le château du parc. Ces usages établissent une autonomie concrète : la chanson sert désormais de seuil à d’autres expériences Disney.",
+                    "sources": [
+                        "us-d23-when-you-wish-upon-a-star",
+                        "us-d23-ned-washington"
+                    ]
+                },
+                {
+                    "id": "quand-les-chansons-une-interpretation-devient-patrimoine",
+                    "texte": "Cette autonomie ne dissout pas l’interprétation d’origine. Au titre de l’année 2009, la Library of Congress sélectionne l’enregistrement de Cliff Edwards pour le National Recording Registry. Le repère patrimonial porte sur une fixation sonore déterminée, là où le National Film Registry avait sélectionné Pinocchio comme film en 1994.",
+                    "sources": [
+                        "us-loc-national-recording-registry-when-you-wish",
+                        "us-loc-national-film-registry"
+                    ]
+                },
+                {
+                    "id": "quand-les-chansons-un-motif-rearrange-et-cite",
+                    "texte": "Le motif continue enfin de revenir sans reproduire la scène de 1940. En 2022, un nouvel arrangement de Christophe Beck accompagne l’introduction au château destinée aux sorties Disney en salles et en streaming. En 2023, Wish lui consacre un hommage après le générique. Le Codex nomme ces deux réemplois documentés sans les transformer en inventaire total ni publier le moindre extrait.",
+                    "sources": [
+                        "us-d23-disney100-castle-intro",
+                        "d23-wish-animation-nods"
+                    ],
+                    "reserve": "Les réemplois restent limités aux usages explicitement établis par leurs sources. Aucun média, aucune parole et aucune occurrence non documentée ne sont projetés."
+                }
+            ]
         }
     ],
     "sources": [
@@ -932,6 +971,12 @@
         "nationalmuseum-gustaf-tenggren",
         "d23-leigh-harline",
         "d23-paul-smith",
-        "d23-marge-champion"
+        "d23-marge-champion",
+        "us-d23-figaro",
+        "us-d23-figaro-and-cleo",
+        "us-d23-when-you-wish-upon-a-star",
+        "us-loc-national-recording-registry-when-you-wish",
+        "us-d23-disney100-castle-intro",
+        "d23-wish-animation-nods"
     ]
 }
