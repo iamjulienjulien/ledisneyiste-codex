@@ -109,6 +109,7 @@ function verifierDocuments() {
         "train-7a.md",
         "train-7b.md",
         "train-7c.md",
+        "train-7d.md",
     ]) {
         assert.ok(
             existsSync(chemin(dossierPhase, document)),
@@ -309,6 +310,162 @@ function verifierTrain7C(idsSources) {
     );
 }
 
+function verifierTrain7D(idsSources, sources) {
+    const fiche = lireJson("src/data/oeuvres/pinocchio.json");
+    const chapitreExploitation = fiche.blocsEditoriaux?.[3];
+    const chapitreTerritoires = fiche.blocsEditoriaux?.[4];
+
+    assert.ok(
+        chapitreExploitation && chapitreTerritoires,
+        "Train 7D : les chapitres 4 et 5 sont absents",
+    );
+    assert.deepEqual(
+        {
+            id: chapitreExploitation.id,
+            titre: chapitreExploitation.titre,
+            question: chapitreExploitation.question,
+            type: chapitreExploitation.type,
+        },
+        {
+            id: "une-premiere-confrontee-au-monde-reel",
+            titre: "Une première confrontée au monde réel",
+            question:
+                "Que signifie sortir un film dans ce contexte économique et géopolitique ?",
+            type: "diffusion",
+        },
+    );
+    assert.deepEqual(
+        {
+            id: chapitreTerritoires.id,
+            titre: chapitreTerritoires.titre,
+            question: chapitreTerritoires.question,
+            type: chapitreTerritoires.type,
+        },
+        {
+            id: "le-film-vu-depuis-plusieurs-territoires",
+            titre: "Le film vu depuis plusieurs territoires",
+            question:
+                "Que révèlent les regards américain, français et italien ?",
+            type: "reception",
+        },
+    );
+    assert.equal(
+        chapitreExploitation.paragraphes.length,
+        3,
+        "Train 7D : le chapitre 4 doit distinguer trois temps de lecture",
+    );
+    assert.equal(
+        chapitreTerritoires.paragraphes.length,
+        4,
+        "Train 7D : le chapitre 5 doit préserver quatre regards territoriaux",
+    );
+
+    const preuves = new Set(
+        [
+            ...chapitreExploitation.paragraphes,
+            ...chapitreTerritoires.paragraphes,
+        ].flatMap(({ sources: sourceIds }) => sourceIds),
+    );
+    for (const sourceId of [
+        "us-afi-catalog-pinocchio",
+        "fr-cinematheque-pinocchio",
+        "fr-cnc-visa-pinocchio",
+        "fr-cnc-palmares-1946",
+        "fr-retronews-pinocchio",
+        "it-treccani-1940-pinocchio",
+        "it-roma-tre-mazzei-pinocchio",
+    ]) {
+        assert.ok(idsSources.has(sourceId), `source inconnue ${sourceId}`);
+        assert.ok(
+            preuves.has(sourceId),
+            `Train 7D : preuve attendue absente ${sourceId}`,
+        );
+    }
+
+    const evenements = new Map(
+        fiche.sortie.evenements.map((evenement) => [evenement.id, evenement]),
+    );
+    assert.deepEqual(
+        [
+            "premiere-mondiale-us-1940",
+            "sortie-nationale-us-1940",
+            "sortie-nationale-fr-1946",
+            "sortie-nationale-it-1947",
+        ].map((id) => ({
+            id,
+            date: evenements.get(id)?.date,
+            territoire: evenements.get(id)?.porteeTerritoriale?.code,
+        })),
+        [
+            {
+                id: "premiere-mondiale-us-1940",
+                date: { valeur: "1940-02-07", precision: "jour" },
+                territoire: "US",
+            },
+            {
+                id: "sortie-nationale-us-1940",
+                date: { valeur: "1940-02-23", precision: "jour" },
+                territoire: "US",
+            },
+            {
+                id: "sortie-nationale-fr-1946",
+                date: { valeur: "1946-05-22", precision: "jour" },
+                territoire: "FR",
+            },
+            {
+                id: "sortie-nationale-it-1947",
+                date: { valeur: "1947", precision: "annee" },
+                territoire: "IT",
+            },
+        ],
+        "Train 7D : les dates et territoires validés doivent rester stables",
+    );
+
+    const sourceVisa = sources.find(({ id }) => id === "fr-cnc-visa-pinocchio");
+    assert.equal(sourceVisa?.datePublication, "1946-05-17");
+    assert.equal(
+        fiche.sortie.evenements.some(
+            ({ date }) => date.valeur === sourceVisa.datePublication,
+        ),
+        false,
+        "Train 7D : le visa administratif ne doit pas devenir une séance",
+    );
+
+    const texteExploitation = JSON.stringify(chapitreExploitation);
+    assert.match(texteExploitation, /Sortir, être exploité, être reçu/);
+    assert.match(texteExploitation, /périmètres et leurs méthodes divergent/);
+    assert.doesNotMatch(
+        texteExploitation,
+        /(?:\$|€|dollars?|bénéfice de|perte de)\s*\d/i,
+        "Train 7D : les résultats financiers initiaux restent hors publication",
+    );
+
+    const texteTerritoires = JSON.stringify(chapitreTerritoires);
+    assert.match(
+        texteTerritoires,
+        /17 mai 1946 n’est pas un événement de projection/,
+    );
+    assert.match(texteTerritoires, /96 minutes/);
+    assert.match(texteTerritoires, /87 minutes/);
+    assert.match(texteTerritoires, /7,84 millions/);
+    assert.match(texteTerritoires, /1946 à 2010/);
+    assert.match(texteTerritoires, /et non les seules entrées/);
+    assert.match(texteTerritoires, /admiration/);
+    assert.match(texteTerritoires, /américanisation/);
+    assert.match(texteTerritoires, /réappropriation affective/);
+    assert.match(texteTerritoires, /réception italienne unique/);
+    assert.doesNotMatch(
+        texteTerritoires,
+        /1984|it-cinematografo-pinocchio/,
+        "Train 7D : la réévaluation tardive appartient au Train 7E",
+    );
+    assert.doesNotMatch(
+        texteTerritoires,
+        /[«»]/,
+        "Train 7D : aucune citation longue ne doit être reconstruite sans original",
+    );
+}
+
 function verifierFiches(idsSources) {
     let blocs = 0;
     let paragraphesStructures = 0;
@@ -376,8 +533,9 @@ const resultat = verifierFiches(idsSources);
 verifierFixture(idsSources);
 verifierTrain7B(idsSources);
 verifierTrain7C(idsSources);
+verifierTrain7D(idsSources, sources);
 verifierBranchement();
 
 console.log(
-    `Phase 7C vérifiée : ${resultat.blocs} blocs compatibles, contrat structuré et fabrication de Pinocchio raccordée à ses décisions et à ses preuves.`,
+    `Phase 7D vérifiée : ${resultat.blocs} blocs compatibles, première exploitation et regards américain, français et italien raccordés sans confondre leurs mesures.`,
 );
