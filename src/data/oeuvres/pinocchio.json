@@ -664,6 +664,76 @@
         { "nom": "Figaro", "type": "personnage", "slug": "figaro" },
         { "nom": "Cléo" }
     ],
+    "blocsEditoriaux": [
+        {
+            "id": "apres-blanche-neige-ne-pas-simplement-recommencer",
+            "type": "repere",
+            "eyebrow": "Deuxième long métrage",
+            "titre": "Après Blanche-Neige, ne pas simplement recommencer",
+            "question": "Pourquoi le deuxième long métrage est-il une nouvelle épreuve ?",
+            "paragraphes": [
+                {
+                    "id": "apres-blanche-neige-un-encore-deja-en-chantier",
+                    "texte": "Le développement de Pinocchio commence en 1937, alors que Blanche-Neige et les Sept Nains n’est pas encore achevé. Le studio prépare donc son deuxième long métrage avant de connaître toute la portée publique du premier : il ne répond pas à un succès par une recette déjà disponible, il avance pendant que cette forme nouvelle est encore en train de faire ses preuves.",
+                    "sources": [
+                        "us-afi-catalog-pinocchio",
+                        "us-loc-pinocchio-essay"
+                    ]
+                },
+                {
+                    "id": "apres-blanche-neige-reprendre-le-recit",
+                    "texte": "La continuité du format ne garantit pas celle de la méthode. Des difficultés de récit retardent le projet et une part importante du travail déjà produit est abandonnée lorsque le personnage et le ton ne trouvent pas encore leur juste forme. Après avoir démontré qu’un dessin animé pouvait soutenir un long métrage, le studio doit maintenant prouver qu’il peut recommencer sans répéter Blanche-Neige.",
+                    "sources": [
+                        "us-afi-catalog-pinocchio",
+                        "us-wdfm-milt-kahl-puppeteer"
+                    ]
+                },
+                {
+                    "id": "apres-blanche-neige-ambition-et-fragilite",
+                    "texte": "La réussite de Blanche-Neige donne au studio la confiance nécessaire pour engager davantage de talents, de décors, d’effets et de recherches dans cette nouvelle production. Cette ambition rencontre pourtant un monde moins disponible : en 1940, la guerre ferme une large part du marché européen qui avait accompagné le premier film. La prouesse artistique et la sécurité économique ne progressent pas au même rythme.",
+                    "sources": [
+                        "us-afi-catalog-pinocchio",
+                        "us-loc-pinocchio-essay"
+                    ],
+                    "reserve": "Les sources rapportent des comptes initiaux fondés sur des périmètres divergents. Aucun coût, bénéfice ou perte n’est comparé ni publié dans ce chapitre."
+                }
+            ]
+        },
+        {
+            "id": "de-collodi-a-disney",
+            "type": "genese",
+            "eyebrow": "Adaptation",
+            "titre": "De Collodi à Disney",
+            "question": "Pourquoi une histoire change-t-elle lorsqu’elle traverse une époque et un studio ?",
+            "paragraphes": [
+                {
+                    "id": "de-collodi-a-disney-une-oeuvre-avant-le-film",
+                    "texte": "Avant le film existe Le avventure di Pinocchio : le récit de Carlo Collodi paraît en feuilleton de 1881 à 1883, puis en volume en 1883. Son pantin indocile traverse des métamorphoses, des avertissements et des épreuves qui possèdent leur propre contexte et leur propre histoire. Le Codex conserve cette œuvre comme une source interne distincte de son adaptation, et non comme un simple brouillon du film.",
+                    "sources": [
+                        "it-treccani-pinocchio",
+                        "it-collodi-critical-text"
+                    ],
+                    "reserve": "L’œuvre de Collodi est nommée et reliée au film, mais son registre reste interne : aucune route publique ne lui est ouverte."
+                },
+                {
+                    "id": "de-collodi-a-disney-humaniser-le-pantin",
+                    "texte": "Les premiers développements conservent davantage l’insolence et la raideur du pantin de Collodi. Lorsque le récit est repris, Disney déplace le personnage vers une innocence plus vulnérable. Milt Kahl donne une forme visible à ce choix : il dessine d’abord un petit garçon attachant, puis lui rend ses articulations et les signes du jouet. Le bois demeure, mais il ne décide plus à lui seul de la manière dont le public rencontre le héros.",
+                    "sources": [
+                        "us-afi-catalog-pinocchio",
+                        "us-wdfm-milt-kahl-puppeteer"
+                    ]
+                },
+                {
+                    "id": "de-collodi-a-disney-donner-une-duree-a-la-conscience",
+                    "texte": "Le Grillon parlant du livre avertit Pinocchio très tôt avant d’être violemment écarté. Le film étend cette intervention à toute l’aventure : nommé Jiminy Cricket, le personnage devient compagnon, narrateur et conscience. Son dessin perd progressivement ses traits d’insecte, tandis que la voix de Cliff Edwards assouplit sa fonction morale. L’adaptation ne se contente donc pas de retirer des épisodes ; elle redistribue les présences et la durée pour construire une autre relation avec le pantin.",
+                    "sources": [
+                        "it-collodi-critical-text",
+                        "us-wdfm-reimagining-jiminy"
+                    ]
+                }
+            ]
+        }
+    ],
     "sources": [
         "us-afi-catalog-pinocchio",
         "us-d23-pinocchio-film",
