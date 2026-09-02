@@ -523,5 +523,701 @@
             "slug": "pinocchio"
         },
         "sources": ["us-academy-awards-1941"]
+    },
+    {
+        "id": "disney-legends-1989-ub-iwerks",
+        "institution": {
+            "nom": "The Walt Disney Company"
+        },
+        "edition": {
+            "nom": "Disney Legends 1989"
+        },
+        "dateAttribution": {
+            "valeur": "1989",
+            "precision": "annee"
+        },
+        "nature": "honorary",
+        "trophee": "statuette-disney-legends",
+        "categorie": "Disney Legend",
+        "beneficiaires": [
+            {
+                "nom": "Ub Iwerks",
+                "type": "contributeur",
+                "slug": "ub-iwerks"
+            }
+        ],
+        "sources": ["d23-ub-iwerks"]
+    },
+    {
+        "id": "disney-legends-1989-les-clark",
+        "institution": {
+            "nom": "The Walt Disney Company"
+        },
+        "edition": {
+            "nom": "Disney Legends 1989"
+        },
+        "dateAttribution": {
+            "valeur": "1989",
+            "precision": "annee"
+        },
+        "nature": "honorary",
+        "trophee": "statuette-disney-legends",
+        "categorie": "Disney Legend",
+        "beneficiaires": [
+            {
+                "nom": "Les Clark",
+                "type": "contributeur",
+                "slug": "les-clark"
+            }
+        ],
+        "sources": ["d23-les-clark"]
+    },
+    {
+        "id": "disney-legends-1989-marc-davis",
+        "institution": {
+            "nom": "The Walt Disney Company"
+        },
+        "edition": {
+            "nom": "Disney Legends 1989"
+        },
+        "dateAttribution": {
+            "valeur": "1989",
+            "precision": "annee"
+        },
+        "nature": "honorary",
+        "trophee": "statuette-disney-legends",
+        "categorie": "Disney Legend",
+        "beneficiaires": [
+            {
+                "nom": "Marc Davis",
+                "type": "contributeur",
+                "slug": "marc-davis"
+            }
+        ],
+        "sources": ["d23-marc-davis"]
+    },
+    {
+        "id": "disney-legends-1989-ollie-johnston",
+        "institution": {
+            "nom": "The Walt Disney Company"
+        },
+        "edition": {
+            "nom": "Disney Legends 1989"
+        },
+        "dateAttribution": {
+            "valeur": "1989",
+            "precision": "annee"
+        },
+        "nature": "honorary",
+        "trophee": "statuette-disney-legends",
+        "categorie": "Disney Legend",
+        "beneficiaires": [
+            {
+                "nom": "Ollie Johnston",
+                "type": "contributeur",
+                "slug": "ollie-johnston"
+            }
+        ],
+        "sources": ["d23-ollie-johnston"]
+    },
+    {
+        "id": "disney-legends-1989-milt-kahl",
+        "institution": {
+            "nom": "The Walt Disney Company"
+        },
+        "edition": {
+            "nom": "Disney Legends 1989"
+        },
+        "dateAttribution": {
+            "valeur": "1989",
+            "precision": "annee"
+        },
+        "nature": "honorary",
+        "trophee": "statuette-disney-legends",
+        "categorie": "Disney Legend",
+        "beneficiaires": [
+            {
+                "nom": "Milt Kahl",
+                "type": "contributeur",
+                "slug": "milt-kahl"
+            }
+        ],
+        "sources": ["d23-milt-kahl"]
+    },
+    {
+        "id": "disney-legends-1989-ward-kimball",
+        "institution": {
+            "nom": "The Walt Disney Company"
+        },
+        "edition": {
+            "nom": "Disney Legends 1989"
+        },
+        "dateAttribution": {
+            "valeur": "1989",
+            "precision": "annee"
+        },
+        "nature": "honorary",
+        "trophee": "statuette-disney-legends",
+        "categorie": "Disney Legend",
+        "beneficiaires": [
+            {
+                "nom": "Ward Kimball",
+                "type": "contributeur",
+                "slug": "ward-kimball"
+            }
+        ],
+        "sources": ["d23-ward-kimball"]
+    },
+    {
+        "id": "disney-legends-1989-eric-larson",
+        "institution": {
+            "nom": "The Walt Disney Company"
+        },
+        "edition": {
+            "nom": "Disney Legends 1989"
+        },
+        "dateAttribution": {
+            "valeur": "1989",
+            "precision": "annee"
+        },
+        "nature": "honorary",
+        "trophee": "statuette-disney-legends",
+        "categorie": "Disney Legend",
+        "beneficiaires": [
+            {
+                "nom": "Eric Larson",
+                "type": "contributeur",
+                "slug": "eric-larson"
+            }
+        ],
+        "sources": ["d23-eric-larson"]
+    },
+    {
+        "id": "disney-legends-1989-john-lounsbery",
+        "institution": {
+            "nom": "The Walt Disney Company"
+        },
+        "edition": {
+            "nom": "Disney Legends 1989"
+        },
+        "dateAttribution": {
+            "valeur": "1989",
+            "precision": "annee"
+        },
+        "nature": "honorary",
+        "trophee": "statuette-disney-legends",
+        "categorie": "Disney Legend",
+        "beneficiaires": [
+            {
+                "nom": "John Lounsbery",
+                "type": "contributeur",
+                "slug": "john-lounsbery"
+            }
+        ],
+        "sources": ["d23-john-lounsbery"]
+    },
+    {
+        "id": "disney-legends-1989-wolfgang-reitherman",
+        "institution": {
+            "nom": "The Walt Disney Company"
+        },
+        "edition": {
+            "nom": "Disney Legends 1989"
+        },
+        "dateAttribution": {
+            "valeur": "1989",
+            "precision": "annee"
+        },
+        "nature": "honorary",
+        "trophee": "statuette-disney-legends",
+        "categorie": "Disney Legend",
+        "beneficiaires": [
+            {
+                "nom": "Wolfgang Reitherman",
+                "type": "contributeur",
+                "slug": "wolfgang-reitherman"
+            }
+        ],
+        "sources": ["d23-wolfgang-reitherman"]
+    },
+    {
+        "id": "disney-legends-1989-frank-thomas",
+        "institution": {
+            "nom": "The Walt Disney Company"
+        },
+        "edition": {
+            "nom": "Disney Legends 1989"
+        },
+        "dateAttribution": {
+            "valeur": "1989",
+            "precision": "annee"
+        },
+        "nature": "honorary",
+        "trophee": "statuette-disney-legends",
+        "categorie": "Disney Legend",
+        "beneficiaires": [
+            {
+                "nom": "Frank Thomas",
+                "type": "contributeur",
+                "slug": "frank-thomas"
+            }
+        ],
+        "sources": ["d23-frank-thomas"]
+    },
+    {
+        "id": "disney-legends-1991-kenneth-anderson",
+        "institution": {
+            "nom": "The Walt Disney Company"
+        },
+        "edition": {
+            "nom": "Disney Legends 1991"
+        },
+        "dateAttribution": {
+            "valeur": "1991",
+            "precision": "annee"
+        },
+        "nature": "honorary",
+        "trophee": "statuette-disney-legends",
+        "categorie": "Disney Legend",
+        "beneficiaires": [
+            {
+                "nom": "Kenneth Anderson",
+                "type": "contributeur",
+                "slug": "kenneth-anderson"
+            }
+        ],
+        "sources": ["us-d23-ken-anderson"]
+    },
+    {
+        "id": "disney-legends-1992-joe-grant",
+        "institution": {
+            "nom": "The Walt Disney Company"
+        },
+        "edition": {
+            "nom": "Disney Legends 1992"
+        },
+        "dateAttribution": {
+            "valeur": "1992",
+            "precision": "annee"
+        },
+        "nature": "honorary",
+        "trophee": "statuette-disney-legends",
+        "categorie": "Disney Legend",
+        "beneficiaires": [
+            {
+                "nom": "Joe Grant",
+                "type": "contributeur",
+                "slug": "joe-grant"
+            }
+        ],
+        "sources": ["d23-joe-grant"]
+    },
+    {
+        "id": "disney-legends-1993-pinto-colvig",
+        "institution": {
+            "nom": "The Walt Disney Company"
+        },
+        "edition": {
+            "nom": "Disney Legends 1993"
+        },
+        "dateAttribution": {
+            "valeur": "1993",
+            "precision": "annee"
+        },
+        "nature": "honorary",
+        "trophee": "statuette-disney-legends",
+        "categorie": "Disney Legend",
+        "beneficiaires": [
+            {
+                "nom": "Pinto Colvig",
+                "type": "contributeur",
+                "slug": "pinto-colvig"
+            }
+        ],
+        "sources": ["d23-pinto-colvig"]
+    },
+    {
+        "id": "disney-legends-1993-clarence-nash",
+        "institution": {
+            "nom": "The Walt Disney Company"
+        },
+        "edition": {
+            "nom": "Disney Legends 1993"
+        },
+        "dateAttribution": {
+            "valeur": "1993",
+            "precision": "annee"
+        },
+        "nature": "honorary",
+        "trophee": "statuette-disney-legends",
+        "categorie": "Disney Legend",
+        "beneficiaires": [
+            {
+                "nom": "Clarence Nash",
+                "type": "contributeur",
+                "slug": "clarence-nash"
+            }
+        ],
+        "sources": ["d23-clarence-nash"]
+    },
+    {
+        "id": "disney-legends-1994-adriana-caselotti",
+        "institution": {
+            "nom": "The Walt Disney Company"
+        },
+        "edition": {
+            "nom": "Disney Legends 1994"
+        },
+        "dateAttribution": {
+            "valeur": "1994",
+            "precision": "annee"
+        },
+        "nature": "honorary",
+        "trophee": "statuette-disney-legends",
+        "categorie": "Disney Legend",
+        "beneficiaires": [
+            {
+                "nom": "Adriana Caselotti",
+                "type": "contributeur",
+                "slug": "adriana-caselotti"
+            }
+        ],
+        "sources": ["d23-adriana-caselotti"]
+    },
+    {
+        "id": "disney-legends-1994-david-hand",
+        "institution": {
+            "nom": "The Walt Disney Company"
+        },
+        "edition": {
+            "nom": "Disney Legends 1994"
+        },
+        "dateAttribution": {
+            "valeur": "1994",
+            "precision": "annee"
+        },
+        "nature": "honorary",
+        "trophee": "statuette-disney-legends",
+        "categorie": "Disney Legend",
+        "beneficiaires": [
+            {
+                "nom": "David Hand",
+                "type": "contributeur",
+                "slug": "david-hand"
+            }
+        ],
+        "sources": ["d23-david-hand"]
+    },
+    {
+        "id": "disney-legends-1994-paul-j-smith",
+        "institution": {
+            "nom": "The Walt Disney Company"
+        },
+        "edition": {
+            "nom": "Disney Legends 1994"
+        },
+        "dateAttribution": {
+            "valeur": "1994",
+            "precision": "annee"
+        },
+        "nature": "honorary",
+        "trophee": "statuette-disney-legends",
+        "categorie": "Disney Legend",
+        "beneficiaires": [
+            {
+                "nom": "Paul J. Smith",
+                "type": "contributeur",
+                "slug": "paul-j-smith"
+            }
+        ],
+        "sources": ["d23-paul-smith"]
+    },
+    {
+        "id": "disney-legends-1995-fred-moore",
+        "institution": {
+            "nom": "The Walt Disney Company"
+        },
+        "edition": {
+            "nom": "Disney Legends 1995"
+        },
+        "dateAttribution": {
+            "valeur": "1995",
+            "precision": "annee"
+        },
+        "nature": "honorary",
+        "trophee": "statuette-disney-legends",
+        "categorie": "Disney Legend",
+        "beneficiaires": [
+            {
+                "nom": "Fred Moore",
+                "type": "contributeur",
+                "slug": "fred-moore"
+            }
+        ],
+        "sources": ["d23-fred-moore"]
+    },
+    {
+        "id": "disney-legends-1998-wilfred-jackson",
+        "institution": {
+            "nom": "The Walt Disney Company"
+        },
+        "edition": {
+            "nom": "Disney Legends 1998"
+        },
+        "dateAttribution": {
+            "valeur": "1998",
+            "precision": "annee"
+        },
+        "nature": "honorary",
+        "trophee": "statuette-disney-legends",
+        "categorie": "Disney Legend",
+        "beneficiaires": [
+            {
+                "nom": "Wilfred Jackson",
+                "type": "contributeur",
+                "slug": "wilfred-jackson"
+            }
+        ],
+        "sources": ["d23-wilfred-jackson"]
+    },
+    {
+        "id": "disney-legends-1998-ben-sharpsteen",
+        "institution": {
+            "nom": "The Walt Disney Company"
+        },
+        "edition": {
+            "nom": "Disney Legends 1998"
+        },
+        "dateAttribution": {
+            "valeur": "1998",
+            "precision": "annee"
+        },
+        "nature": "honorary",
+        "trophee": "statuette-disney-legends",
+        "categorie": "Disney Legend",
+        "beneficiaires": [
+            {
+                "nom": "Ben Sharpsteen",
+                "type": "contributeur",
+                "slug": "ben-sharpsteen"
+            }
+        ],
+        "sources": ["us-d23-ben-sharpsteen"]
+    },
+    {
+        "id": "disney-legends-1998-vladimir-bill-tytla",
+        "institution": {
+            "nom": "The Walt Disney Company"
+        },
+        "edition": {
+            "nom": "Disney Legends 1998"
+        },
+        "dateAttribution": {
+            "valeur": "1998",
+            "precision": "annee"
+        },
+        "nature": "honorary",
+        "trophee": "statuette-disney-legends",
+        "categorie": "Disney Legend",
+        "beneficiaires": [
+            {
+                "nom": "Vladimir “Bill” Tytla",
+                "type": "contributeur",
+                "slug": "vladimir-bill-tytla"
+            }
+        ],
+        "sources": ["d23-bill-tytla"]
+    },
+    {
+        "id": "disney-legends-1999-norman-ferguson",
+        "institution": {
+            "nom": "The Walt Disney Company"
+        },
+        "edition": {
+            "nom": "Disney Legends 1999"
+        },
+        "dateAttribution": {
+            "valeur": "1999",
+            "precision": "annee"
+        },
+        "nature": "honorary",
+        "trophee": "statuette-disney-legends",
+        "categorie": "Disney Legend",
+        "beneficiaires": [
+            {
+                "nom": "Norman Ferguson",
+                "type": "contributeur",
+                "slug": "norman-ferguson"
+            }
+        ],
+        "sources": ["d23-norm-ferguson"]
+    },
+    {
+        "id": "disney-legends-1999-hamilton-luske",
+        "institution": {
+            "nom": "The Walt Disney Company"
+        },
+        "edition": {
+            "nom": "Disney Legends 1999"
+        },
+        "dateAttribution": {
+            "valeur": "1999",
+            "precision": "annee"
+        },
+        "nature": "honorary",
+        "trophee": "statuette-disney-legends",
+        "categorie": "Disney Legend",
+        "beneficiaires": [
+            {
+                "nom": "Hamilton Luske",
+                "type": "contributeur",
+                "slug": "hamilton-luske"
+            }
+        ],
+        "sources": ["d23-ham-luske"]
+    },
+    {
+        "id": "disney-legends-2000-cliff-edwards",
+        "institution": {
+            "nom": "The Walt Disney Company"
+        },
+        "edition": {
+            "nom": "Disney Legends 2000"
+        },
+        "dateAttribution": {
+            "valeur": "2000",
+            "precision": "annee"
+        },
+        "nature": "honorary",
+        "trophee": "statuette-disney-legends",
+        "categorie": "Disney Legend",
+        "beneficiaires": [
+            {
+                "nom": "Cliff Edwards",
+                "type": "contributeur",
+                "slug": "cliff-edwards"
+            }
+        ],
+        "sources": ["us-d23-cliff-edwards"]
+    },
+    {
+        "id": "disney-legends-2000-dickie-jones",
+        "institution": {
+            "nom": "The Walt Disney Company"
+        },
+        "edition": {
+            "nom": "Disney Legends 2000"
+        },
+        "dateAttribution": {
+            "valeur": "2000",
+            "precision": "annee"
+        },
+        "nature": "honorary",
+        "trophee": "statuette-disney-legends",
+        "categorie": "Disney Legend",
+        "beneficiaires": [
+            {
+                "nom": "Dickie Jones",
+                "type": "contributeur",
+                "slug": "dickie-jones"
+            }
+        ],
+        "sources": ["us-d23-dick-jones"]
+    },
+    {
+        "id": "disney-legends-2001-frank-churchill",
+        "institution": {
+            "nom": "The Walt Disney Company"
+        },
+        "edition": {
+            "nom": "Disney Legends 2001"
+        },
+        "dateAttribution": {
+            "valeur": "2001",
+            "precision": "annee"
+        },
+        "nature": "honorary",
+        "trophee": "statuette-disney-legends",
+        "categorie": "Disney Legend",
+        "beneficiaires": [
+            {
+                "nom": "Frank Churchill",
+                "type": "contributeur",
+                "slug": "frank-churchill"
+            }
+        ],
+        "sources": ["d23-frank-churchill"]
+    },
+    {
+        "id": "disney-legends-2001-leigh-harline",
+        "institution": {
+            "nom": "The Walt Disney Company"
+        },
+        "edition": {
+            "nom": "Disney Legends 2001"
+        },
+        "dateAttribution": {
+            "valeur": "2001",
+            "precision": "annee"
+        },
+        "nature": "honorary",
+        "trophee": "statuette-disney-legends",
+        "categorie": "Disney Legend",
+        "beneficiaires": [
+            {
+                "nom": "Leigh Harline",
+                "type": "contributeur",
+                "slug": "leigh-harline"
+            }
+        ],
+        "sources": ["d23-leigh-harline"]
+    },
+    {
+        "id": "disney-legends-2001-ned-washington",
+        "institution": {
+            "nom": "The Walt Disney Company"
+        },
+        "edition": {
+            "nom": "Disney Legends 2001"
+        },
+        "dateAttribution": {
+            "valeur": "2001",
+            "precision": "annee"
+        },
+        "nature": "honorary",
+        "trophee": "statuette-disney-legends",
+        "categorie": "Disney Legend",
+        "beneficiaires": [
+            {
+                "nom": "Ned Washington",
+                "type": "contributeur",
+                "slug": "ned-washington"
+            }
+        ],
+        "sources": ["us-d23-ned-washington"]
+    },
+    {
+        "id": "disney-legends-2007-marge-champion",
+        "institution": {
+            "nom": "The Walt Disney Company"
+        },
+        "edition": {
+            "nom": "Disney Legends 2007"
+        },
+        "dateAttribution": {
+            "valeur": "2007",
+            "precision": "annee"
+        },
+        "nature": "honorary",
+        "trophee": "statuette-disney-legends",
+        "categorie": "Disney Legend",
+        "beneficiaires": [
+            {
+                "nom": "Marge Champion",
+                "type": "contributeur",
+                "slug": "marge-champion"
+            }
+        ],
+        "sources": ["d23-marge-champion"]
     }
 ]
