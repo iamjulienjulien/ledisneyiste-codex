@@ -38,12 +38,12 @@
         "reportee": "Condition de reprise nommée pour une phase ultérieure."
     },
     "progress": {
-        "a-faire": 65,
+        "a-faire": 64,
         "en-cours": 0,
-        "migree": 4,
+        "migree": 5,
         "inchangee": 0,
         "reportee": 0,
-        "verdicts": 4
+        "verdicts": 5
     },
     "entries": [
         {
@@ -399,12 +399,34 @@
                 "exception": "echantillon-principal-de-retroapplication"
             },
             "train": "5C",
-            "status": "a-faire",
-            "verdict": null,
-            "files": [],
-            "sources": [],
-            "checks": [],
-            "reservations": []
+            "status": "migree",
+            "verdict": "Le raccord R3 structure les sorties, la version originale, les exploitations, la réception publique initiale et l’Œuvre source de Blanche-Neige ; les quatre déclarations économiques historiques restent compatibles sans franchir prématurément le contrat qualifié.",
+            "files": [
+                "src/data/oeuvres/snow-white-and-the-seven-dwarfs.json",
+                "src/registry/oeuvres-sources/oeuvres-sources.ts",
+                "src/app/oeuvres/[slug]/page.tsx",
+                "src/components/codex/CodexFiche/CodexFicheOeuvreDetails/CodexFicheOeuvreDetails.tsx",
+                "src/lib/plans/archives.ts"
+            ],
+            "sources": [
+                "afi-snow-white",
+                "d23-snow-white-film",
+                "cnc-snow-white",
+                "retronews-snow-white"
+            ],
+            "checks": [
+                "pnpm check:oeuvres",
+                "pnpm check:oeuvres-sources",
+                "pnpm check:donnees-economiques",
+                "pnpm check:plan-matter",
+                "pnpm check:phase-5",
+                "pnpm build"
+            ],
+            "reservations": [
+                "Les quatre déclarations économiques conservent leur forme historique : les preuves disponibles ne documentent pas toutes les dimensions de mesure, de méthode, de base monétaire et de comparabilité exigées par le contrat qualifié.",
+                "La sortie française de 1938 ne crée aucune version française ou doublée sans preuve explicite de cette version.",
+                "Schneewittchen est résolue comme Œuvre source interne sans route publique ; aucune langue ni forme éditoriale supplémentaire n’est déduite."
+            ]
         },
         {
             "family": "oeuvres",

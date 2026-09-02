@@ -353,14 +353,47 @@ const schneewittchen = liensBlancheNeige.find(
     (lien) => lien.to.label === "Schneewittchen",
 );
 assert.ok(schneewittchen, "La relation historique de Blanche-Neige a disparu");
-assert.equal(schneewittchen.to.kind, "oeuvre-exterieure");
-assert.equal(schneewittchen.to.resolved, false);
+assert.equal(schneewittchen.to.kind, "oeuvre-source");
+assert.equal(schneewittchen.to.resolved, true);
 assert.equal(
     schneewittchen.to.id,
-    "oeuvre-exterieure:schneewittchen-1812",
-    "L’identité de projection historique de Blanche-Neige a changé",
+    "oeuvre-source:oeuvre-source-grimm-schneewittchen",
+    "L’identité interne de Schneewittchen n’est pas stable",
+);
+assert.equal(codexPlanArchives.oeuvresSources.fiches.length, 1);
+
+const ensembleBlancheNeige = derivePlanDEnsemble(
+    {
+        ...configuration,
+        plan: "plan-d-ensemble",
+        subject: {
+            family: "oeuvres",
+            slug: "snow-white-and-the-seven-dwarfs",
+        },
+        angle: "relations",
+    },
+    {
+        kind: "archives",
+        archives: codexPlanArchives,
+    },
+);
+const sourceBlancheNeige = ensembleBlancheNeige.groups
+    .find((groupe) => groupe.id === "works")
+    ?.items.find(
+        (item) =>
+            item.node.id === "oeuvre-source:oeuvre-source-grimm-schneewittchen",
+    );
+assert.ok(
+    sourceBlancheNeige,
+    "Schneewittchen ne rejoint pas le voisinage de Blanche-Neige",
+);
+assert.equal(sourceBlancheNeige.resolved, true);
+assert.equal(
+    sourceBlancheNeige.href,
+    undefined,
+    "L’Œuvre source interne a reçu une route publique",
 );
 
 console.log(
-    `Œuvres sources vérifiées : ${registre.fiches.length} fiches privées, 1 relation résolue et aucune route publique.`,
+    `Œuvres sources vérifiées : ${registre.fiches.length} fiches témoins, ${codexPlanArchives.oeuvresSources.fiches.length} fiche interne, 2 relations résolues et aucune route publique.`,
 );

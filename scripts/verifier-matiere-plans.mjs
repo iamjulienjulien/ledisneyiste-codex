@@ -885,13 +885,13 @@ function verifierMontageDuTemps({
     assert.equal(projection.focus.id, projection.subject.id);
     assert.equal(projection.matter.kind, "archives");
     assert.equal(projection.runtimeState, "ready");
-    assert.equal(projection.events.length, 7);
+    assert.equal(projection.events.length, 10);
     assert.deepEqual(
         projection.tracks.map((track) => [track.id, track.events.length]),
         [
             ["production", 1],
-            ["distribution", 3],
-            ["reception", 3],
+            ["distribution", 5],
+            ["reception", 4],
             ["legacy", 0],
             ["transformation", 0],
         ],
@@ -927,13 +927,13 @@ function verifierMontageDuTemps({
         projection.tracks
             .find((track) => track.id === "distribution")
             ?.events.map((event) => event.start.valeur),
-        ["1937-12-21", "1938-02-04", "1938-05-06"],
+        ["1937-12-21", "1937-12-21", "1938-02-04", "1938-05-06", "1938-05-06"],
     );
     assert.deepEqual(
         projection.tracks
             .find((track) => track.id === "reception")
             ?.events.map((event) => event.start.valeur),
-        ["1938", "1939-01-08", "1939-02-23"],
+        ["1937-12", "1938", "1939-01-08", "1939-02-23"],
     );
     assert.deepEqual(
         deriveMontageDuTemps(configuration, {
@@ -1162,15 +1162,26 @@ function verifierTableLumineuse({
     assert.equal(projection.matter.kind, "archives");
     assert.equal(projection.runtimeState, "ready");
     assert.deepEqual(projection.stats, {
-        items: 17,
+        items: 21,
         sources: 8,
-        attachments: 36,
-        documented: 17,
+        attachments: 43,
+        documented: 21,
         partiallyResolved: 0,
         undocumented: 0,
-        unclassifiedPositions: 17,
-        unclassifiedSources: 17,
+        unclassifiedPositions: 21,
+        unclassifiedSources: 21,
     });
+    assert.deepEqual(
+        ["work-version", "work-exploitation", "work-reception"].map((scope) => [
+            scope,
+            projection.items.filter((item) => item.scope === scope).length,
+        ]),
+        [
+            ["work-version", 1],
+            ["work-exploitation", 2],
+            ["work-reception", 1],
+        ],
+    );
     assert.ok(
         projection.items.every(
             (item) =>
@@ -1315,7 +1326,8 @@ function verifier() {
     const expectedNodeCount =
         publishedSubjectCount +
         codexPlanArchives.recompenses.length +
-        codexPlanArchives.sources.length;
+        codexPlanArchives.sources.length +
+        (codexPlanArchives.oeuvresSources?.fiches.length ?? 0);
     const nodeIds = new Set(nodes.items.map((node) => node.id));
     const sourceIds = new Set(
         codexPlanArchives.sources.map((source) => source.id),
@@ -1329,7 +1341,10 @@ function verifier() {
     assert.ok(
         nodes.items
             .filter(
-                (node) => node.kind === "recompense" || node.kind === "source",
+                (node) =>
+                    node.kind === "recompense" ||
+                    node.kind === "source" ||
+                    node.kind === "oeuvre-source",
             )
             .every((node) => !node.publishedSubject),
         "Récompenses et sources ne doivent pas devenir des Sujets publiés",

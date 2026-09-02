@@ -58,6 +58,7 @@ const documentsPhase5 = [
     "migration.json",
     "train-5a.md",
     "train-5b.md",
+    "train-5c.md",
 ];
 
 function chemin(...segments) {
@@ -345,6 +346,60 @@ function verifierBranchement() {
     }
 }
 
+function verifierEchantillonR3(migration) {
+    const cle = "oeuvres/snow-white-and-the-seven-dwarfs";
+    const entree = migration.entries.find(
+        (candidate) => cleEntree(candidate) === cle,
+    );
+    const fiche = lireJson(
+        "src/data/oeuvres/snow-white-and-the-seven-dwarfs.json",
+    );
+    const registreSources = lireTexte(
+        "src/registry/oeuvres-sources/oeuvres-sources.ts",
+    );
+
+    assert.equal(entree?.train, "5C");
+    assert.equal(entree?.depth, "R3");
+    assert.equal(entree?.status, "migree");
+    assert.ok(
+        entree.verdict.includes("raccord R3"),
+        `${cle} : verdict R3 incomplet`,
+    );
+    assert.ok(
+        entree.reservations.some((reserve) =>
+            reserve.includes("déclarations économiques"),
+        ),
+        `${cle} : maintien économique historique non justifié`,
+    );
+
+    assert.equal(fiche.sortie.evenements.length, 3);
+    assert.ok(
+        fiche.sortie.evenements.every(
+            (evenement) =>
+                chaineNonVide(evenement.id) &&
+                evenement.porteeTerritoriale &&
+                evenement.territoire === undefined,
+        ),
+        `${cle} : événement de sortie non migré`,
+    );
+    assert.equal(fiche.versions?.length, 1);
+    assert.equal(fiche.exploitations?.length, 2);
+    assert.equal(fiche.receptions?.length, 1);
+    assert.ok(
+        fiche.donneesEconomiques.every(
+            (donnee) => donnee.schemaVersion === undefined,
+        ),
+        `${cle} : donnée économique incomplète promue artificiellement`,
+    );
+
+    const source = fiche.relationsOeuvres.find(
+        (relation) =>
+            relation.oeuvre.id === "oeuvre-source-grimm-schneewittchen",
+    );
+    assert.equal(source?.oeuvre.type, "oeuvre-source");
+    assert.match(registreSources, /id: "oeuvre-source-grimm-schneewittchen"/);
+}
+
 function verifierTransmission() {
     const dossier = chemin("docs/studio/production/acte-vi/phase-5");
 
@@ -361,6 +416,7 @@ const manifeste = verifierManifeste(migration);
 const corpus = verifierInventairePublic(migration);
 verifierRoutesProtegees(manifeste);
 const progression = verifierJournal(migration, manifeste);
+verifierEchantillonR3(migration);
 verifierBranchement();
 verifierTransmission();
 

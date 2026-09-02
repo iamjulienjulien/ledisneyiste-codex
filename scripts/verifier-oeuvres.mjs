@@ -791,6 +791,58 @@ async function verifier() {
         verifierFiche(await lireJson(chemin), chemin, idsSources, erreurs);
     }
 
+    const snowWhite = await lireJson(
+        "src/data/oeuvres/snow-white-and-the-seven-dwarfs.json",
+    );
+    if (
+        snowWhite.sortie.evenements.length !== 3 ||
+        snowWhite.sortie.evenements.some(
+            (evenement) =>
+                !chaineNonVide(evenement.id) ||
+                evenement.porteeTerritoriale === undefined ||
+                evenement.territoire !== undefined,
+        )
+    ) {
+        erreurs.push(
+            "Échantillon R3 : les trois sorties structurées de Blanche-Neige sont incomplètes",
+        );
+    }
+    if (snowWhite.versions?.length !== 1) {
+        erreurs.push(
+            "Échantillon R3 : seule la version originale documentée est attendue",
+        );
+    }
+    if (snowWhite.exploitations?.length !== 2) {
+        erreurs.push(
+            "Échantillon R3 : les exploitations américaine et française sont attendues",
+        );
+    }
+    if (snowWhite.receptions?.length !== 1) {
+        erreurs.push(
+            "Échantillon R3 : la réception publique initiale est absente",
+        );
+    }
+    const relationSource = snowWhite.relationsOeuvres?.find(
+        (relation) => relation.nature === "source",
+    );
+    if (
+        relationSource?.oeuvre.type !== "oeuvre-source" ||
+        relationSource.oeuvre.id !== "oeuvre-source-grimm-schneewittchen"
+    ) {
+        erreurs.push(
+            "Échantillon R3 : Schneewittchen ne rejoint pas le registre interne",
+        );
+    }
+    if (
+        snowWhite.donneesEconomiques.some(
+            (donnee) => donnee.schemaVersion !== undefined,
+        )
+    ) {
+        erreurs.push(
+            "Échantillon R3 : une donnée économique incomplète a franchi le contrat structuré",
+        );
+    }
+
     const fixture = await lireJson("scripts/fixtures/oeuvre-long-metrage.json");
     const champsFixture = [
         "titresAlternatifs",
