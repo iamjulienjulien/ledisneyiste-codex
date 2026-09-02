@@ -67,7 +67,11 @@
             "domaine": "production-direction"
         },
         {
-            "contributeur": { "nom": "Ben Sharpsteen" },
+            "contributeur": {
+                "nom": "Ben Sharpsteen",
+                "type": "contributeur",
+                "slug": "ben-sharpsteen"
+            },
             "roles": ["réalisation"],
             "domaine": "production-direction"
         },
@@ -79,6 +83,92 @@
             },
             "roles": ["œuvre littéraire originale"],
             "domaine": "histoire-adaptation"
+        },
+        {
+            "contributeur": {
+                "nom": "Cliff Edwards",
+                "type": "contributeur",
+                "slug": "cliff-edwards"
+            },
+            "roles": ["voix originale de Jiminy Cricket"],
+            "domaine": "interpretation-vocale"
+        },
+        {
+            "contributeur": {
+                "nom": "Dickie Jones",
+                "type": "contributeur",
+                "slug": "dickie-jones"
+            },
+            "roles": ["voix originale de Pinocchio"],
+            "domaine": "interpretation-vocale"
+        },
+        {
+            "contributeur": {
+                "nom": "Dickie Jones",
+                "type": "contributeur",
+                "slug": "dickie-jones"
+            },
+            "roles": ["référence filmée de Pinocchio"],
+            "domaine": "reference-filmee"
+        },
+        {
+            "contributeur": {
+                "nom": "Ned Washington",
+                "type": "contributeur",
+                "slug": "ned-washington"
+            },
+            "roles": ["paroles des chansons"],
+            "domaine": "musique-chansons"
+        },
+        {
+            "contributeur": {
+                "nom": "Jack Kinney",
+                "type": "contributeur",
+                "slug": "jack-kinney"
+            },
+            "roles": ["réalisation de séquences"],
+            "domaine": "production-direction"
+        },
+        {
+            "contributeur": {
+                "nom": "T. Hee",
+                "type": "contributeur",
+                "slug": "t-hee"
+            },
+            "roles": ["réalisation de la séquence de Grand Coquin et Gédéon"],
+            "domaine": "production-direction"
+        },
+        {
+            "contributeur": {
+                "nom": "T. Hee",
+                "type": "contributeur",
+                "slug": "t-hee"
+            },
+            "roles": ["référence filmée de Stromboli"],
+            "domaine": "reference-filmee"
+        },
+        {
+            "contributeur": {
+                "nom": "Joshua Meador",
+                "type": "contributeur",
+                "slug": "joshua-meador"
+            },
+            "roles": ["animation des effets spéciaux"],
+            "domaine": "decors-effets-photographie"
+        },
+        {
+            "contributeur": {
+                "nom": "Kenneth Anderson",
+                "type": "contributeur",
+                "slug": "kenneth-anderson"
+            },
+            "roles": ["direction artistique"],
+            "domaine": "direction-artistique-conception"
+        },
+        {
+            "contributeur": { "nom": "Evelyn Venable" },
+            "roles": ["voix originale de la Fée Bleue"],
+            "domaine": "interpretation-vocale"
         }
     ],
     "personnages": [
@@ -117,6 +207,16 @@
         "fr-cinematheque-pinocchio",
         "fr-cnc-visa-pinocchio",
         "it-treccani-1940-pinocchio",
-        "it-collodi-critical-text"
+        "it-collodi-critical-text",
+        "us-loc-pinocchio-essay",
+        "us-wdfm-reimagining-jiminy",
+        "us-d23-ben-sharpsteen",
+        "us-d23-cliff-edwards",
+        "us-d23-dick-jones",
+        "us-d23-ned-washington",
+        "us-academy-awards-1941",
+        "us-d23-jack-kinney",
+        "us-d23-make-mine-music",
+        "us-d23-ken-anderson"
     ]
 }

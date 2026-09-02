@@ -1,0 +1,43 @@
+{
+    "slug": "ben-sharpsteen",
+    "type": "contributeur",
+    "introduction": "Ben Sharpsteen accompagne le passage du studio Disney des courts métrages aux productions de grande ampleur. Animateur, formateur puis réalisateur et superviseur, il organise des équipes sans effacer le travail des artistes. Sur Pinocchio, il partage la supervision de la réalisation avec Hamilton Luske ; son parcours se prolonge ensuite dans le documentaire animalier et la télévision.",
+    "blocsEditoriaux": [
+        {
+            "type": "transmission",
+            "eyebrow": "Formation",
+            "titre": "Faire grandir le studio en faisant grandir ses artistes",
+            "paragraphes": [
+                "Entré chez Disney en 1929 après plusieurs expériences dans les studios new-yorkais, Sharpsteen anime de nombreux courts métrages de Mickey et des Silly Symphonies. En 1933, Walt lui confie la mise en place d’un programme interne de formation et le recrutement de nouveaux talents.",
+                "Cette responsabilité relie directement le dessin à l’organisation de la production. Sharpsteen ne se contente pas de corriger une scène : il construit un cadre dans lequel les artistes peuvent apprendre, se spécialiser et soutenir l’ambition croissante des longs métrages."
+            ],
+            "sources": ["us-d23-ben-sharpsteen"]
+        },
+        {
+            "type": "trajectoire",
+            "eyebrow": "Produire",
+            "titre": "Passer de Pinocchio aux aventures du monde réel",
+            "paragraphes": [
+                "Après avoir dirigé des courts métrages et des séquences de Blanche-Neige, Sharpsteen devient coréalisateur superviseur de Pinocchio. Sa place dans le générique décrit une conduite d’ensemble, distincte de la réalisation des séquences confiées à d’autres artistes.",
+                "Il poursuit ensuite cette fonction de coordination sur plusieurs longs métrages, puis produit les True-Life Adventures. Ce passage de l’animation au documentaire confirme une carrière autonome, fondée sur la capacité à faire tenir ensemble des techniques, des équipes et des formes de cinéma différentes."
+            ],
+            "sources": ["us-d23-ben-sharpsteen", "us-afi-catalog-pinocchio"]
+        }
+    ],
+    "naissance": {
+        "date": { "valeur": "1895-11-04", "precision": "jour" },
+        "lieu": "Tacoma, Washington, États-Unis"
+    },
+    "deces": {
+        "date": { "valeur": "1980-12-20", "precision": "jour" },
+        "lieu": "Calistoga, Californie, États-Unis"
+    },
+    "roles": ["animateur", "réalisateur", "producteur", "formateur"],
+    "periodesActivite": [
+        {
+            "debut": { "valeur": "1920", "precision": "annee" },
+            "fin": { "valeur": "1962", "precision": "annee" }
+        }
+    ],
+    "sources": ["us-d23-ben-sharpsteen", "us-afi-catalog-pinocchio"]
+}

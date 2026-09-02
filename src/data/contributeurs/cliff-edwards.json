@@ -1,0 +1,52 @@
+{
+    "slug": "cliff-edwards",
+    "type": "contributeur",
+    "introduction": "Cliff Edwards apporte à Jiminy Cricket une voix dont l’élan transforme la conscience de Pinocchio en compagnon de scène. Chanteur, acteur et joueur de ukulélé connu sous le nom de Ukulele Ike, il possède déjà une longue carrière lorsque Disney lui confie le personnage. Son interprétation de When You Wish Upon a Star relie sans les confondre le jeu vocal, la narration et la chanson.",
+    "nomsAlternatifs": [
+        {
+            "nom": "Ukulele Ike",
+            "nature": "usage",
+            "langue": "en",
+            "territoire": "US",
+            "sources": ["us-d23-cliff-edwards"]
+        }
+    ],
+    "blocsEditoriaux": [
+        {
+            "type": "trajectoire",
+            "eyebrow": "Scène et disque",
+            "titre": "Faire du ukulélé et de la voix une signature",
+            "paragraphes": [
+                "Edwards se forme dans les salles de spectacle et développe un jeu vocal capable d’imiter la vibration d’un instrument. Son ukulélé, son registre étendu et son sens du rythme l’installent sur scène, au disque puis au cinéma bien avant son arrivée chez Disney.",
+                "Cette carrière préalable explique que Jiminy ne sonne pas comme une simple fonction morale. Edwards lui apporte une présence de music-hall, une diction familière et un mouvement intérieur que l’animation peut suivre."
+            ],
+            "sources": ["us-d23-cliff-edwards"]
+        },
+        {
+            "type": "signature",
+            "eyebrow": "Jiminy Cricket",
+            "titre": "Réunir la conscience, le narrateur et le chanteur",
+            "paragraphes": [
+                "Dans Pinocchio, Edwards prête sa voix à Jiminy Cricket et interprète When You Wish Upon a Star. Le Codex conserve ces gestes comme deux relations : l’une appartient au personnage et au jeu vocal, l’autre à l’histoire publique de la chanson.",
+                "Edwards reprend ensuite Jiminy au cinéma et à la télévision. Cette continuité contribue à faire du personnage un guide durable, mais elle ne transforme pas l’ensemble de sa carrière en prolongement du seul film de 1940."
+            ],
+            "sources": ["us-d23-cliff-edwards", "us-wdfm-reimagining-jiminy"]
+        }
+    ],
+    "naissance": {
+        "date": { "valeur": "1895-06-14", "precision": "jour" },
+        "lieu": "Hannibal, Missouri, États-Unis"
+    },
+    "deces": {
+        "date": { "valeur": "1971-07-17", "precision": "jour" },
+        "lieu": "Hollywood, Californie, États-Unis"
+    },
+    "roles": ["acteur", "chanteur", "musicien", "interprète vocal"],
+    "periodesActivite": [
+        {
+            "debut": { "valeur": "1914", "precision": "annee" },
+            "fin": { "valeur": "1956", "precision": "annee" }
+        }
+    ],
+    "sources": ["us-d23-cliff-edwards", "us-wdfm-reimagining-jiminy"]
+}

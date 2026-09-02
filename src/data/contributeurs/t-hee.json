@@ -1,0 +1,41 @@
+{
+    "slug": "t-hee",
+    "type": "contributeur",
+    "introduction": "T. Hee réunit réalisation de séquence, histoire et caricature. Sur Pinocchio, il dirige la partie consacrée à Grand Coquin et Gédéon, tout en servant séparément de référence filmée pour Stromboli. Sa fiche reste légère : elle qualifie ces deux gestes et les replace dans un parcours de réalisateur et de story artist sans prétendre épuiser trois décennies de travail.",
+    "nomsAlternatifs": [
+        {
+            "nom": "Thornton Hee",
+            "nature": "original",
+            "langue": "en",
+            "territoire": "US",
+            "sources": ["us-loc-pinocchio-essay"]
+        }
+    ],
+    "blocsEditoriaux": [
+        {
+            "type": "signature",
+            "eyebrow": "Deux fonctions",
+            "titre": "Diriger une séquence sans confondre le jeu de référence",
+            "paragraphes": [
+                "La réalisation de la séquence de Grand Coquin et Gédéon organise un passage du film. Le jeu filmé pour Stromboli fournit, lui, une matière d’observation aux animateurs. Parce que ces contributions n’ont ni le même objet ni le même domaine, le générique les conserve séparément."
+            ],
+            "sources": ["us-afi-catalog-pinocchio", "us-loc-pinocchio-essay"]
+        }
+    ],
+    "naissance": {
+        "date": { "valeur": "1911", "precision": "annee" },
+        "lieu": ""
+    },
+    "deces": {
+        "date": { "valeur": "1988", "precision": "annee" },
+        "lieu": ""
+    },
+    "roles": ["réalisateur", "story artist", "caricaturiste", "formateur"],
+    "periodesActivite": [
+        {
+            "debut": { "valeur": "1938", "precision": "annee" },
+            "fin": { "valeur": "1964", "precision": "annee" }
+        }
+    ],
+    "sources": ["us-afi-catalog-pinocchio", "us-loc-pinocchio-essay"]
+}

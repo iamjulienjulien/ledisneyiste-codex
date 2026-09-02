@@ -255,5 +255,63 @@
         "type": "contributeur",
         "metadata": { "categories": ["interprete"] },
         "sousTitre": "La danseuse dont les gestes apprirent à Blanche-Neige à habiter l’écran"
+    },
+    {
+        "slug": "ben-sharpsteen",
+        "nom": "Ben Sharpsteen",
+        "type": "contributeur",
+        "metadata": {
+            "categories": ["animateur", "realisateur", "producteur"]
+        },
+        "sousTitre": "Le superviseur qui fit grandir les artistes avec les productions"
+    },
+    {
+        "slug": "cliff-edwards",
+        "nom": "Cliff Edwards",
+        "type": "contributeur",
+        "metadata": { "categories": ["interprete", "musicien"] },
+        "sousTitre": "La voix de Jiminy qui fit chanter la conscience de Pinocchio"
+    },
+    {
+        "slug": "dickie-jones",
+        "nom": "Dickie Jones",
+        "type": "contributeur",
+        "metadata": { "categories": ["interprete"] },
+        "sousTitre": "L’enfant acteur qui prêta sa voix et ses gestes au pantin"
+    },
+    {
+        "slug": "ned-washington",
+        "nom": "Ned Washington",
+        "type": "contributeur",
+        "metadata": { "categories": ["auteur", "musicien"] },
+        "sousTitre": "Le parolier qui apprit aux souhaits à trouver leurs mots"
+    },
+    {
+        "slug": "jack-kinney",
+        "nom": "Jack Kinney",
+        "type": "contributeur",
+        "metadata": { "categories": ["animateur", "realisateur"] },
+        "sousTitre": "Le réalisateur qui donna au mouvement son rythme comique"
+    },
+    {
+        "slug": "t-hee",
+        "nom": "T. Hee",
+        "type": "contributeur",
+        "metadata": { "categories": ["artiste", "realisateur"] },
+        "sousTitre": "Le caricaturiste qui dirigea Grand Coquin et Gédéon"
+    },
+    {
+        "slug": "joshua-meador",
+        "nom": "Joshua Meador",
+        "type": "contributeur",
+        "metadata": { "categories": ["animateur", "artiste", "technicien"] },
+        "sousTitre": "Le peintre d’effets qui donna du mouvement aux matières"
+    },
+    {
+        "slug": "kenneth-anderson",
+        "nom": "Kenneth Anderson",
+        "type": "contributeur",
+        "metadata": { "categories": ["animateur", "artiste", "technicien"] },
+        "sousTitre": "L’architecte qui fit voyager les mondes de l’écran aux parcs"
     }
 ]

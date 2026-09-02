@@ -1,0 +1,48 @@
+{
+    "slug": "dickie-jones",
+    "type": "contributeur",
+    "introduction": "Dickie Jones prête à Pinocchio une voix d’enfant et un jeu physique observé par les animateurs. Déjà acteur de cinéma lorsque Walt Disney le choisit en 1939, il travaille dix-neuf mois sur le film, enregistre le personnage et joue certaines scènes devant une caméra de référence. Le son et le mouvement partent ainsi du même interprète sans devenir un seul crédit indistinct.",
+    "nomsAlternatifs": [
+        {
+            "nom": "Dick Jones",
+            "nature": "original",
+            "langue": "en",
+            "territoire": "US",
+            "sources": ["us-d23-dick-jones"]
+        }
+    ],
+    "blocsEditoriaux": [
+        {
+            "type": "trajectoire",
+            "eyebrow": "Enfant acteur",
+            "titre": "Arriver au studio avec une expérience déjà visible",
+            "paragraphes": [
+                "Jones commence à tourner très jeune et apparaît dans près de quarante films avant d’être choisi pour Pinocchio. Le studio ne lui demande donc pas seulement une voix enfantine : il engage un acteur habitué au rythme d’un plateau et à la construction d’une scène.",
+                "Pendant les dix-neuf mois de production, il poursuit parallèlement son travail au cinéma. Cette continuité replace Pinocchio dans une carrière d’interprète plus large, au lieu d’en faire une apparition isolée."
+            ],
+            "sources": ["us-d23-dick-jones"]
+        },
+        {
+            "type": "signature",
+            "eyebrow": "Deux prises",
+            "titre": "Donner une voix et un corps de référence au pantin",
+            "paragraphes": [
+                "Jones enregistre les dialogues de Pinocchio et revêt aussi un costume de pantin pour jouer certaines actions devant une caméra. Ces films ne sont pas des images destinées au public : ils offrent aux animateurs une matière d’observation.",
+                "La fiche Œuvre qualifie séparément l’interprétation vocale et la référence filmée. Cette distinction permet de reconnaître le même artiste sans laisser croire que l’animation copie mécaniquement son jeu."
+            ],
+            "sources": ["us-d23-dick-jones", "us-afi-catalog-pinocchio"]
+        }
+    ],
+    "naissance": {
+        "date": { "valeur": "1927-02-25", "precision": "jour" },
+        "lieu": "McKinney, Texas, États-Unis"
+    },
+    "roles": ["acteur", "interprète vocal", "cascadeur"],
+    "periodesActivite": [
+        {
+            "debut": { "valeur": "1930", "precision": "annee" },
+            "fin": { "valeur": "1959", "precision": "annee" }
+        }
+    ],
+    "sources": ["us-d23-dick-jones", "us-afi-catalog-pinocchio"]
+}

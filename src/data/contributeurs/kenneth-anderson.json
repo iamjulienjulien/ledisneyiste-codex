@@ -1,0 +1,41 @@
+{
+    "slug": "kenneth-anderson",
+    "type": "contributeur",
+    "introduction": "Kenneth « Ken » Anderson apporte son regard d’architecte à la direction artistique de Pinocchio. Il pense les décors comme des espaces à parcourir et poursuit ensuite cette recherche dans l’animation, la conception de personnages et Disneyland. Sa fiche reste légère, mais conserve les deux axes qui justifient son autonomie : construire le monde du film et transposer ce savoir vers l’Imagineering.",
+    "nomsAlternatifs": [
+        {
+            "nom": "Ken Anderson",
+            "nature": "usage",
+            "langue": "en",
+            "territoire": "US",
+            "sources": ["us-d23-ken-anderson"]
+        }
+    ],
+    "blocsEditoriaux": [
+        {
+            "type": "transmission",
+            "eyebrow": "Architecture",
+            "titre": "Faire passer la profondeur de l’écran au parc",
+            "paragraphes": [
+                "Formé à l’architecture, Anderson devient directeur artistique sur les premiers longs métrages Disney, dont Pinocchio. Dans les années 1950, cette expérience de la perspective, du décor et de la circulation nourrit aussi la conception de plusieurs espaces de Disneyland."
+            ],
+            "sources": ["us-d23-ken-anderson", "us-afi-catalog-pinocchio"]
+        }
+    ],
+    "naissance": {
+        "date": { "valeur": "1909-03-17", "precision": "jour" },
+        "lieu": "Seattle, Washington, États-Unis"
+    },
+    "deces": {
+        "date": { "valeur": "1993-12-13", "precision": "jour" },
+        "lieu": "La Cañada Flintridge, Californie, États-Unis"
+    },
+    "roles": ["directeur artistique", "architecte", "animateur", "concepteur"],
+    "periodesActivite": [
+        {
+            "debut": { "valeur": "1934", "precision": "annee" },
+            "fin": { "valeur": "1978", "precision": "annee" }
+        }
+    ],
+    "sources": ["us-d23-ken-anderson", "us-afi-catalog-pinocchio"]
+}

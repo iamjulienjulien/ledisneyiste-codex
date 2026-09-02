@@ -201,10 +201,10 @@ async function verifier() {
                         );
                         referencesVerifiees += 1;
 
-                        const cle = cleReference(contribution.contributeur);
+                        const cle = `${cleReference(contribution.contributeur)}:${contribution.domaine ?? "sans-domaine"}`;
                         if (contributeurs.has(cle)) {
                             erreurs.push(
-                                `${contexte} : contributeur dupliqué « ${cle} »`,
+                                `${contexte} : contribution dupliquée « ${cle} »`,
                             );
                         }
                         contributeurs.add(cle);

@@ -1,0 +1,43 @@
+{
+    "slug": "jack-kinney",
+    "type": "contributeur",
+    "introduction": "Jack Kinney fait de la réalisation de séquence un art du rythme comique. Entré chez Disney comme animateur, il dirige des passages de Pinocchio avant de devenir l’un des principaux réalisateurs de Dingo. Son parcours relie le long métrage, le court métrage et une mise en scène où le caractère naît du tempo autant que du dessin.",
+    "blocsEditoriaux": [
+        {
+            "type": "trajectoire",
+            "eyebrow": "Réalisation",
+            "titre": "Passer de la séquence au personnage récurrent",
+            "paragraphes": [
+                "Kinney rejoint Disney en 1931 et passe de l’animation à la réalisation. Il dirige des séquences de Pinocchio et de Dumbo, puis trouve avec les cartoons de Dingo un terrain où la mise en scène peut étirer une situation ordinaire jusqu’à l’absurde.",
+                "Cette continuité explique la résolution de plusieurs mentions du Codex : sa participation à Pinocchio appartient au long métrage, tandis que Bone Trouble et les courts de Dingo documentent un parcours de réalisateur autonome."
+            ],
+            "sources": ["us-d23-jack-kinney"]
+        },
+        {
+            "type": "transmission",
+            "eyebrow": "Après Pinocchio",
+            "titre": "Faire revenir Figaro et Cléo dans un nouveau cadre",
+            "paragraphes": [
+                "En 1943, Kinney réalise Figaro and Cleo. Le court métrage prolonge deux personnages du long métrage sans transformer cette réapparition en simple appendice de Pinocchio.",
+                "Cette relation donne à sa fiche un second axe concret et permet au Codex de relier le réalisateur, Figaro et Cléo tout en maintenant Cléo hors du catalogue public."
+            ],
+            "sources": ["us-d23-figaro-and-cleo", "us-d23-jack-kinney"]
+        }
+    ],
+    "naissance": {
+        "date": { "valeur": "1909", "precision": "annee" },
+        "lieu": ""
+    },
+    "deces": {
+        "date": { "valeur": "1992", "precision": "annee" },
+        "lieu": ""
+    },
+    "roles": ["animateur", "réalisateur", "auteur"],
+    "periodesActivite": [
+        {
+            "debut": { "valeur": "1931", "precision": "annee" },
+            "fin": { "valeur": "1959", "precision": "annee" }
+        }
+    ],
+    "sources": ["us-d23-jack-kinney", "us-d23-figaro-and-cleo"]
+}

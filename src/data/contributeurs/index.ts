@@ -1,5 +1,8 @@
 import carlStallingJson from "@/data/contributeurs/carl-stalling.json";
 import carloCollodiJson from "@/data/contributeurs/carlo-collodi.json";
+import benSharpsteenJson from "@/data/contributeurs/ben-sharpsteen.json";
+import cliffEdwardsJson from "@/data/contributeurs/cliff-edwards.json";
+import dickieJonesJson from "@/data/contributeurs/dickie-jones.json";
 import clarenceNashJson from "@/data/contributeurs/clarence-nash.json";
 import adrianaCaselottiJson from "@/data/contributeurs/adriana-caselotti.json";
 import albertHurterJson from "@/data/contributeurs/albert-hurter.json";
@@ -14,17 +17,22 @@ import hamiltonLuskeJson from "@/data/contributeurs/hamilton-luske.json";
 import hazelSewellJson from "@/data/contributeurs/hazel-sewell.json";
 import johnLounsberyJson from "@/data/contributeurs/john-lounsbery.json";
 import joeGrantJson from "@/data/contributeurs/joe-grant.json";
+import jackKinneyJson from "@/data/contributeurs/jack-kinney.json";
+import joshuaMeadorJson from "@/data/contributeurs/joshua-meador.json";
+import kennethAndersonJson from "@/data/contributeurs/kenneth-anderson.json";
 import lesClarkJson from "@/data/contributeurs/les-clark.json";
 import leighHarlineJson from "@/data/contributeurs/leigh-harline.json";
 import lucilleLaVerneJson from "@/data/contributeurs/lucille-la-verne.json";
 import marcDavisJson from "@/data/contributeurs/marc-davis.json";
 import margeChampionJson from "@/data/contributeurs/marge-champion.json";
 import miltKahlJson from "@/data/contributeurs/milt-kahl.json";
+import nedWashingtonJson from "@/data/contributeurs/ned-washington.json";
 import normanFergusonJson from "@/data/contributeurs/norman-ferguson.json";
 import ollieJohnstonJson from "@/data/contributeurs/ollie-johnston.json";
 import pintoColvigJson from "@/data/contributeurs/pinto-colvig.json";
 import paulJSmithJson from "@/data/contributeurs/paul-j-smith.json";
 import royODisneyJson from "@/data/contributeurs/roy-o-disney.json";
+import tHeeJson from "@/data/contributeurs/t-hee.json";
 import ubIwerksJson from "@/data/contributeurs/ub-iwerks.json";
 import wardKimballJson from "@/data/contributeurs/ward-kimball.json";
 import waltDisneyJson from "@/data/contributeurs/walt-disney.json";
@@ -39,6 +47,14 @@ export const fichesContributeurs = [
     ubIwerksJson as FicheContributeurDisney,
     carlStallingJson as FicheContributeurDisney,
     carloCollodiJson as FicheContributeurDisney,
+    benSharpsteenJson as FicheContributeurDisney,
+    cliffEdwardsJson as FicheContributeurDisney,
+    dickieJonesJson as FicheContributeurDisney,
+    nedWashingtonJson as FicheContributeurDisney,
+    jackKinneyJson as FicheContributeurDisney,
+    tHeeJson as FicheContributeurDisney,
+    joshuaMeadorJson as FicheContributeurDisney,
+    kennethAndersonJson as FicheContributeurDisney,
     wilfredJacksonJson as FicheContributeurDisney,
     clarenceNashJson as FicheContributeurDisney,
     pintoColvigJson as FicheContributeurDisney,

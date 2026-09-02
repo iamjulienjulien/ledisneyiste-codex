@@ -1,0 +1,43 @@
+{
+    "slug": "ned-washington",
+    "type": "contributeur",
+    "introduction": "Ned Washington donne des mots aux chansons de Pinocchio. Parolier pour le cinéma, la scène et la radio, il travaille avec Leigh Harline sur When You Wish Upon a Star et participe aussi à la partition récompensée du film. Ses deux Oscars de 1941 distinguent des objets différents : la chanson originale d’un côté, la musique du film de l’autre.",
+    "blocsEditoriaux": [
+        {
+            "type": "trajectoire",
+            "eyebrow": "Paroles",
+            "titre": "Écrire pour qu’une chanson trouve sa scène",
+            "paragraphes": [
+                "Washington commence par écrire des poèmes puis rejoint le spectacle et le cinéma parlant à la fin des années 1920. Il développe un métier de parolier où les mots doivent à la fois épouser une mélodie, caractériser une situation et survivre hors du film.",
+                "Son parcours traverse plusieurs studios et de nombreuses collaborations. Pinocchio occupe une place majeure dans cette carrière, sans la résumer : la fiche conserve le film comme un ensemble de contributions précises plutôt qu’un crédit musical indifférencié."
+            ],
+            "sources": ["us-d23-ned-washington"]
+        },
+        {
+            "type": "signature",
+            "eyebrow": "Deux Oscars",
+            "titre": "Distinguer la chanson de la partition",
+            "paragraphes": [
+                "When You Wish Upon a Star reçoit l’Oscar de la chanson originale pour Leigh Harline et Ned Washington. La partition de Pinocchio est récompensée séparément et associe Harline, Paul J. Smith et Washington.",
+                "Le Codex conserve ces deux distinctions dans le registre transversal des Récompenses. La fiche de Washington documente le parolier ; les fiches Chanson et les Oscars porteront leurs propres relations lors du Train 6F."
+            ],
+            "sources": ["us-d23-ned-washington", "us-academy-awards-1941"]
+        }
+    ],
+    "naissance": {
+        "date": { "valeur": "1901-08-15", "precision": "jour" },
+        "lieu": "Scranton, Pennsylvanie, États-Unis"
+    },
+    "deces": {
+        "date": { "valeur": "1976-12-20", "precision": "jour" },
+        "lieu": "Beverly Hills, Californie, États-Unis"
+    },
+    "roles": ["parolier", "auteur-compositeur", "scénariste"],
+    "periodesActivite": [
+        {
+            "debut": { "valeur": "1928", "precision": "annee" },
+            "fin": { "valeur": "1976", "precision": "annee" }
+        }
+    ],
+    "sources": ["us-d23-ned-washington", "us-academy-awards-1941"]
+}

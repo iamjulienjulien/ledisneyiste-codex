@@ -1,0 +1,41 @@
+{
+    "slug": "joshua-meador",
+    "type": "contributeur",
+    "introduction": "Joshua Meador construit des phénomènes que l’animation de personnages ne peut porter seule : eau, feu, fumée et transformations de matière. Crédité aux effets d’animation de Pinocchio, il poursuit chez Disney une carrière qui relie cinéma, peinture et effets spéciaux. Sa fiche légère conserve ce double axe sans transformer chaque intervention technique en récit autonome.",
+    "nomsAlternatifs": [
+        {
+            "nom": "Josh Meador",
+            "nature": "usage",
+            "langue": "en",
+            "territoire": "US",
+            "sources": ["us-d23-make-mine-music"]
+        }
+    ],
+    "blocsEditoriaux": [
+        {
+            "type": "trajectoire",
+            "eyebrow": "Effets",
+            "titre": "Faire de la matière un personnage du mouvement",
+            "paragraphes": [
+                "Meador travaille chez Disney à partir de 1936 comme animateur d’effets spéciaux et peintre. Pinocchio l’inscrit dans une équipe où les phénomènes visuels possèdent leur propre logique ; son parcours s’étend ensuite à la réalisation de séquence et aux effets de productions animées ou hybrides."
+            ],
+            "sources": ["us-afi-catalog-pinocchio", "us-d23-make-mine-music"]
+        }
+    ],
+    "naissance": {
+        "date": { "valeur": "1911", "precision": "annee" },
+        "lieu": ""
+    },
+    "deces": {
+        "date": { "valeur": "1965", "precision": "annee" },
+        "lieu": ""
+    },
+    "roles": ["animateur d’effets spéciaux", "peintre", "réalisateur"],
+    "periodesActivite": [
+        {
+            "debut": { "valeur": "1936", "precision": "annee" },
+            "fin": { "valeur": "1965", "precision": "annee" }
+        }
+    ],
+    "sources": ["us-d23-make-mine-music", "us-afi-catalog-pinocchio"]
+}

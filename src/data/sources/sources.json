@@ -1675,5 +1675,54 @@
         "editeur": "D23 · Disney A to Z",
         "url": "https://d23.com/a-to-z/figaro-and-cleo-film/",
         "dateConsultation": "2026-09-01"
+    },
+    {
+        "id": "us-d23-ben-sharpsteen",
+        "titre": "Ben Sharpsteen",
+        "auteur": "Walt Disney Archives",
+        "editeur": "D23 · Disney Legends",
+        "url": "https://d23.com/walt-disney-legend/ben-sharpsteen/",
+        "dateConsultation": "2026-09-01"
+    },
+    {
+        "id": "us-d23-ned-washington",
+        "titre": "Ned Washington",
+        "auteur": "Walt Disney Archives",
+        "editeur": "D23 · Disney Legends",
+        "url": "https://d23.com/walt-disney-legend/ned-washington/",
+        "dateConsultation": "2026-09-01"
+    },
+    {
+        "id": "us-academy-awards-1941",
+        "titre": "The 13th Academy Awards · 1941",
+        "auteur": "Academy of Motion Picture Arts and Sciences",
+        "editeur": "Oscars.org",
+        "datePublication": "1941-02-27",
+        "url": "https://www.oscars.org/oscars/ceremonies/1941/r",
+        "dateConsultation": "2026-09-01"
+    },
+    {
+        "id": "us-d23-jack-kinney",
+        "titre": "Kinney, Jack",
+        "auteur": "Walt Disney Archives",
+        "editeur": "D23 · Disney A to Z",
+        "url": "https://d23.com/a-to-z/kinney-jack/",
+        "dateConsultation": "2026-09-01"
+    },
+    {
+        "id": "us-d23-make-mine-music",
+        "titre": "Make Mine Music (film)",
+        "auteur": "Walt Disney Archives",
+        "editeur": "D23 · Disney A to Z",
+        "url": "https://d23.com/a-to-z/make-mine-music-film/",
+        "dateConsultation": "2026-09-01"
+    },
+    {
+        "id": "us-d23-ken-anderson",
+        "titre": "Ken Anderson",
+        "auteur": "Walt Disney Archives",
+        "editeur": "D23 · Disney Legends",
+        "url": "https://d23.com/walt-disney-legend/ken-anderson/",
+        "dateConsultation": "2026-09-01"
     }
 ]
