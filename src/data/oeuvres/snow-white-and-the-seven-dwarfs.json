@@ -4,11 +4,11 @@
     "introduction": "Snow White and the Seven Dwarfs fait passer Disney du laboratoire du court métrage à la durée, au risque et à la continuité d’un grand récit. Pendant trois années, les recherches menées sur la couleur, le jeu des personnages, les figures humaines, les décors et la profondeur doivent désormais soutenir une émotion pendant plus d’une heure. Le conte des frères Grimm devient une œuvre où chaque nain possède son caractère, où la Reine traverse le miroir pour prendre une autre forme et où une chanson peut guider tout un monde. Son succès mondial ne valide pas seulement un pari industriel : il ouvre au studio un nouvel horizon de création.",
     "titresAlternatifs": [
         {
-            "titre": "Blanche-Neige et les Sept Nains",
-            "nature": "sortie-territoriale",
-            "langue": "fr",
-            "territoire": "FR",
-            "sources": ["cnc-snow-white", "retronews-snow-white"]
+            "titre": "Snow White and the Seven Dwarfs",
+            "nature": "original",
+            "langue": "en",
+            "territoire": "US",
+            "sources": ["afi-snow-white", "d23-snow-white-film"]
         }
     ],
     "sortie": {
@@ -255,7 +255,7 @@
         {
             "nature": "preparation",
             "oeuvre": {
-                "nom": "The Goddess of Spring",
+                "nom": "La Déesse du Printemps",
                 "type": "oeuvre",
                 "slug": "the-goddess-of-spring"
             },
@@ -264,7 +264,7 @@
         {
             "nature": "preparation",
             "oeuvre": {
-                "nom": "The Old Mill",
+                "nom": "Le Vieux Moulin",
                 "type": "oeuvre",
                 "slug": "the-old-mill"
             },

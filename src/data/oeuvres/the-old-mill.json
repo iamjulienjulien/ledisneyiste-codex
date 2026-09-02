@@ -2,6 +2,15 @@
     "slug": "the-old-mill",
     "type": "oeuvre",
     "introduction": "The Old Mill fait d’un moulin abandonné le centre immobile d’un monde traversé par la nuit et l’orage. Oiseaux, souris, chauves-souris et hibou occupent ses mécanismes fragiles tandis que le vent réveille une roue depuis longtemps arrêtée. Sous la direction de Wilfred Jackson, la Silly Symphony remplace la fable et le dialogue par une progression de lumière, de musique et de mouvement. La caméra multiplane donne une profondeur nouvelle à cette traversée du paysage ; le film devient à la fois l’épreuve artistique d’une invention destinée aux longs métrages et l’une des œuvres les plus reconnues du laboratoire Disney.",
+    "titresAlternatifs": [
+        {
+            "titre": "The Old Mill",
+            "nature": "original",
+            "langue": "en",
+            "territoire": "US",
+            "sources": ["d23-old-mill-film"]
+        }
+    ],
     "sortie": {
         "date": {
             "valeur": "1937-11-05",
@@ -85,6 +94,7 @@
         "d23-the-old-mill-wins-academy-award",
         "ampas-10th-academy-awards",
         "loc-old-mill-national-film-registry",
-        "d23-wilfred-jackson"
+        "d23-wilfred-jackson",
+        "chronique-disney-vieux-moulin"
     ]
 }

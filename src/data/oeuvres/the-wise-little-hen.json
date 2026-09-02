@@ -2,6 +2,15 @@
     "slug": "the-wise-little-hen",
     "type": "oeuvre",
     "introduction": "The Wise Little Hen accueille Donald Duck avant même qu’il ne possède sa propre série. Dans cette fable de la Silly Symphony, le canard et Peter Pig feignent la maladie pour échapper au travail des champs, puis découvrent que leur paresse les prive du festin. Ce rôle encore secondaire contient déjà l’essentiel : une voix singulière, une mauvaise foi comique et un tempérament assez fort pour faire sortir Donald du récit qui l’a vu naître.",
+    "titresAlternatifs": [
+        {
+            "titre": "The Wise Little Hen",
+            "nature": "original",
+            "langue": "en",
+            "territoire": "US",
+            "sources": ["d23-wise-little-hen"]
+        }
+    ],
     "sortie": {
         "date": {
             "valeur": "1934-06-09",
@@ -34,7 +43,7 @@
             "slug": "donald-duck"
         },
         {
-            "nom": "The Wise Little Hen"
+            "nom": "Une Petite Poule Avisée"
         },
         {
             "nom": "Peter Pig"
@@ -60,5 +69,9 @@
             ]
         }
     ],
-    "sources": ["d23-wise-little-hen", "d23-donald-duck"]
+    "sources": [
+        "d23-wise-little-hen",
+        "d23-donald-duck",
+        "chronique-disney-petite-poule-avisee"
+    ]
 }

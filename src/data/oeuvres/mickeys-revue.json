@@ -2,6 +2,15 @@
     "slug": "mickeys-revue",
     "type": "oeuvre",
     "introduction": "Mickey’s Revue installe un spectacle sur scène, mais sa découverte essentielle se trouve dans la salle. Parmi les spectateurs, un chien anthropomorphe âgé, barbu et muni de lunettes ponctue la représentation d’un rire assez étrange pour irriter ses voisins et retenir l’attention du studio. Il n’est pas encore Dingo, n’a aucun rôle dans la troupe et ne porte même pas de nom. La voix de Pinto Colvig suffit pourtant à le détacher de la foule : un personnage commence à exister parce qu’on l’entend avant de savoir exactement qui il est.",
+    "titresAlternatifs": [
+        {
+            "titre": "Mickey’s Revue",
+            "nature": "original",
+            "langue": "en",
+            "territoire": "US",
+            "sources": ["d23-mickeys-revue"]
+        }
+    ],
     "sortie": {
         "date": {
             "valeur": "1932-05-25",
@@ -88,6 +97,7 @@
         "d23-goofy",
         "d23-pinto-colvig",
         "d23-wilfred-jackson",
-        "afi-mickeys-revue"
+        "afi-mickeys-revue",
+        "chronique-disney-mickey-au-theatre"
     ]
 }

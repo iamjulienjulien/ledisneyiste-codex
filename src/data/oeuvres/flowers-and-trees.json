@@ -2,6 +2,15 @@
     "slug": "flowers-and-trees",
     "type": "oeuvre",
     "introduction": "Flowers and Trees ne se contente pas d’ajouter des teintes à une Silly Symphony : il oblige le studio à repenser la manière dont une forêt peut vivre, aimer, brûler et renaître. Commencé en noir et blanc, le film est repris à grands frais lorsque Walt Disney choisit le nouveau procédé Technicolor à trois bandes. La couleur devient alors une force du récit, opposant la fraîcheur du matin à la jalousie d’une souche desséchée puis à l’incendie qu’elle déclenche. Le pari ouvre une avance technique décisive et vaut à Disney le premier Oscar attribué à un court métrage d’animation.",
+    "titresAlternatifs": [
+        {
+            "titre": "Flowers and Trees",
+            "nature": "original",
+            "langue": "en",
+            "territoire": "US",
+            "sources": ["d23-flowers-and-trees"]
+        }
+    ],
     "sortie": {
         "date": {
             "valeur": "1932-07-30",
@@ -102,6 +111,7 @@
         "wdfm-flowers-and-trees-first-color",
         "d23-flowers-and-trees-member-gift",
         "ampas-animation-activities-guide",
-        "d23-david-hand"
+        "d23-david-hand",
+        "chronique-disney-arbres-fleurs"
     ]
 }

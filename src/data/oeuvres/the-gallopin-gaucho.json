@@ -2,6 +2,15 @@
     "slug": "the-gallopin-gaucho",
     "type": "oeuvre",
     "introduction": "The Gallopin’ Gaucho transforme Mickey en acteur avant que le public ait encore appris à reconnaître sa personnalité. Dans une Argentine de cinéma inspirée des aventures de Douglas Fairbanks, la souris fume, boit, danse le tango, chevauche une autruche et affronte Pat Hibulaire à l’épée pour délivrer Minnie. Deuxième film de Mickey produit silencieusement, le court métrage reste sans distributeur jusqu’au succès de Steamboat Willie. Une bande sonore lui permet alors de rejoindre les salles le 30 décembre 1928, porteur à la fois du premier dessin de la souris et des transformations déjà provoquées par sa célébrité naissante.",
+    "titresAlternatifs": [
+        {
+            "titre": "The Gallopin’ Gaucho",
+            "nature": "original",
+            "langue": "en",
+            "territoire": "US",
+            "sources": ["d23-gallopin-gaucho"]
+        }
+    ],
     "sortie": {
         "date": {
             "valeur": "1928-12-30",
@@ -89,6 +98,7 @@
         "d23-gallopin-gaucho-released",
         "afi-gallopin-gaucho",
         "wdfm-birth-of-a-mouse",
-        "wdfm-evolution-of-mickey-mouse"
+        "wdfm-evolution-of-mickey-mouse",
+        "chronique-disney-mickey-gaucho"
     ]
 }

@@ -2,6 +2,15 @@
     "slug": "ferdinand-the-bull",
     "type": "oeuvre",
     "introduction": "Ferdinand the Bull oppose la douceur d’un taureau qui préfère sentir les fleurs au spectacle de violence que son apparence semble lui imposer. Adapté du livre de Munro Leaf illustré par Robert Lawson, ce cartoon spécial conduit Ferdinand de son pâturage paisible jusqu’à une arène où chacun attend de lui un rôle qu’il refuse simplement de jouer. Dick Rickard réalise une fable sur la fidélité à soi-même, peuplée de caricatures des artistes du studio et portée jusque dans ses voix par Walt Disney et Milt Kahl. Son calme traverse le tumulte de la corrida et mène l’œuvre au dernier Oscar du court métrage d’animation remporté par Disney avant la récompense honorifique de Blanche-Neige.",
+    "titresAlternatifs": [
+        {
+            "titre": "Ferdinand the Bull",
+            "nature": "original",
+            "langue": "en",
+            "territoire": "US",
+            "sources": ["d23-ferdinand-the-bull-film"]
+        }
+    ],
     "sortie": {
         "date": {
             "valeur": "1938-11-25",
@@ -101,6 +110,7 @@
         "d23-milt-kahl",
         "d23-ferdinand-the-bull-wins-oscar",
         "ampas-11th-academy-awards",
-        "d23-academy-awards"
+        "d23-academy-awards",
+        "chronique-disney-ferdinand-taureau"
     ]
 }

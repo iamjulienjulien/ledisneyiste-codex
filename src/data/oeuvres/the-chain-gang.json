@@ -2,6 +2,15 @@
     "slug": "the-chain-gang",
     "type": "oeuvre",
     "introduction": "The Chain Gang place Mickey du mauvais côté de la loi et Pluto aux frontières de sa propre identité. Prisonnier d’un bagne musical, Mickey s’évade, traverse une poursuite à cheval et finit rejeté dans la cellule qu’il voulait fuir. Deux limiers anonymes lancés sur sa piste introduisent entre-temps la silhouette canine qui deviendra Pluto. Le film ne présente donc pas encore un compagnon fidèle, mais conserve l’instant où un rôle secondaire et dédoublé commence à se détacher du décor pour entrer dans l’histoire des personnages Disney.",
+    "titresAlternatifs": [
+        {
+            "titre": "The Chain Gang",
+            "nature": "original",
+            "langue": "en",
+            "territoire": "US",
+            "sources": ["d23-chain-gang"]
+        }
+    ],
     "sortie": {
         "date": {
             "valeur": "1930-09-05",
@@ -71,6 +80,7 @@
         "d23-chain-gang",
         "d23-pluto",
         "d23-pluto-90-years",
-        "afi-chain-gang"
+        "afi-chain-gang",
+        "chronique-disney-symphonie-enchainee"
     ]
 }

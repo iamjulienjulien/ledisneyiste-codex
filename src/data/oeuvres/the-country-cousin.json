@@ -2,6 +2,15 @@
     "slug": "the-country-cousin",
     "type": "oeuvre",
     "introduction": "The Country Cousin invite une souris de Podunk à découvrir l’abondance trompeuse de la grande ville. Accueilli par son élégant cousin Monty, Abner traverse une table dressée comme un paysage de plaisirs, mais son enthousiasme, l’alcool et la présence d’un chat transforment rapidement le festin en parcours de survie. Wilfred Jackson construit la Silly Symphony sur cette opposition entre raffinement et danger, calme rural et agitation urbaine. En ramenant finalement Abner chez lui, le film fait d’une vieille fable un spectacle de contrastes et poursuit la série d’Oscars remportés par le studio.",
+    "titresAlternatifs": [
+        {
+            "titre": "The Country Cousin",
+            "nature": "original",
+            "langue": "en",
+            "territoire": "US",
+            "sources": ["d23-country-cousin-film"]
+        }
+    ],
     "sortie": {
         "date": {
             "valeur": "1936-10-31",
@@ -74,6 +83,7 @@
         "d23-country-cousin-film",
         "d23-wilfred-jackson",
         "ampas-9th-academy-awards",
-        "d23-academy-awards"
+        "d23-academy-awards",
+        "chronique-disney-cousin-campagne"
     ]
 }

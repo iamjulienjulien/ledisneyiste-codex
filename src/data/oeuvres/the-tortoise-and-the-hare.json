@@ -2,6 +2,15 @@
     "slug": "the-tortoise-and-the-hare",
     "type": "oeuvre",
     "introduction": "The Tortoise and the Hare transforme la fable d’Ésope en duel de personnalités. Max Hare possède la vitesse, l’assurance et le goût du spectacle ; Toby Tortoise n’a pour lui qu’une progression obstinée que rien ne détourne de la ligne d’arrivée. Sous la direction de Wilfred Jackson, l’animation ne se contente pas d’illustrer une morale connue : elle oppose deux rythmes, deux manières d’occuper l’écran et deux rapports au public. Le film prolonge ainsi la recherche ouverte par Three Little Pigs et offre aux Silly Symphonies un troisième Oscar consécutif.",
+    "titresAlternatifs": [
+        {
+            "titre": "The Tortoise and the Hare",
+            "nature": "original",
+            "langue": "en",
+            "territoire": "US",
+            "sources": ["d23-tortoise-and-the-hare-film"]
+        }
+    ],
     "sortie": {
         "date": {
             "valeur": "1935-01-05",
@@ -79,6 +88,7 @@
         "d23-ham-luske",
         "d23-wilfred-jackson",
         "ampas-7th-academy-awards",
-        "d23-academy-awards"
+        "d23-academy-awards",
+        "chronique-disney-lievre-tortue"
     ]
 }

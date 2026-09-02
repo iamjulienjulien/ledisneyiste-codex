@@ -2,6 +2,15 @@
     "slug": "plane-crazy",
     "type": "oeuvre",
     "introduction": "Plane Crazy est le premier film de Mickey achevé, mais pas celui qui le présente officiellement au monde. Inspiré par l’enthousiasme entourant les exploits de Charles Lindbergh, le court métrage transforme la construction d’un avion de fortune en aventure aussi téméraire que son jeune héros. Sa projection d’essai silencieuse de mai 1928 ne convainc aucun distributeur. Le film doit attendre le succès de Steamboat Willie, recevoir à son tour une bande sonore et revenir en 1929 dans les salles où Mickey est désormais attendu.",
+    "titresAlternatifs": [
+        {
+            "titre": "Plane Crazy",
+            "nature": "original",
+            "langue": "en",
+            "territoire": "US",
+            "sources": ["d23-plane-crazy"]
+        }
+    ],
     "sortie": {
         "date": {
             "valeur": "1929",
@@ -89,6 +98,7 @@
         "d23-plane-crazy",
         "wdfm-birth-of-a-mouse",
         "wdfm-evolution-of-mickey-mouse",
-        "afi-plane-crazy"
+        "afi-plane-crazy",
+        "chronique-disney-avion-fou"
     ]
 }

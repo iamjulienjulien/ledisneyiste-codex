@@ -2,6 +2,15 @@
     "slug": "orphans-benefit",
     "type": "oeuvre",
     "introduction": "Orphans’ Benefit fait entrer Donald dans le spectacle de Mickey quelques semaines seulement après ses débuts dans une Silly Symphony. Devant un public d’orphelins turbulents, le canard tente de réciter une comptine, reçoit œufs et projectiles, recommence malgré tout puis explose dans une colère dont Dick Lundy organise les gestes. Le rôle révèle enfin ce que sa voix promettait : une personnalité capable de résister au cadre, de dérégler toute une représentation et de devenir d’autant plus drôle qu’elle refuse obstinément de perdre.",
+    "titresAlternatifs": [
+        {
+            "titre": "Orphans’ Benefit",
+            "nature": "original",
+            "langue": "en",
+            "territoire": "US",
+            "sources": ["d23-orphans-benefit"]
+        }
+    ],
     "sortie": {
         "date": {
             "valeur": "1934-08-11",
@@ -106,6 +115,7 @@
         "wdfm-evolution-of-a-duck",
         "d23-donald-duck",
         "d23-goofy",
-        "d23-gillett-burton"
+        "d23-gillett-burton",
+        "chronique-disney-gala-orphelins"
     ]
 }

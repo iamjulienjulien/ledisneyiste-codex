@@ -2,6 +2,15 @@
     "slug": "three-little-pigs",
     "type": "oeuvre",
     "introduction": "Three Little Pigs transforme une fable familière en démonstration de jeu animé. Les trois héros partagent une silhouette presque identique, mais leurs gestes, leurs voix, leurs maisons et leur rapport au travail suffisent à les rendre immédiatement distincts. Lorsque le Grand Méchant Loup souffle sur leurs certitudes, la chanson de Frank Churchill donne au public de la Grande Dépression un refrain contre la peur. Le succès dépasse celui de nombreux longs métrages, confirme que la personnalité peut porter tout un récit et apporte au studio un deuxième Oscar consécutif pour ses Silly Symphonies.",
+    "titresAlternatifs": [
+        {
+            "titre": "Three Little Pigs",
+            "nature": "original",
+            "langue": "en",
+            "territoire": "US",
+            "sources": ["d23-three-little-pigs"]
+        }
+    ],
     "sortie": {
         "date": {
             "valeur": "1933-05-27",
@@ -98,6 +107,7 @@
         "d23-three-little-pigs-released",
         "d23-academy-awards",
         "d23-fred-moore",
-        "d23-pinto-colvig"
+        "d23-pinto-colvig",
+        "chronique-disney-trois-petits-cochons"
     ]
 }

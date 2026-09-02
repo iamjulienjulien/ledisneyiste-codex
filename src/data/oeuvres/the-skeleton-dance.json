@@ -2,6 +2,15 @@
     "slug": "the-skeleton-dance",
     "type": "oeuvre",
     "introduction": "The Skeleton Dance ouvre les Silly Symphonies en faisant de la musique non plus l’accompagnement d’un héros, mais l’architecture entière du film. À minuit, quatre squelettes quittent leurs tombes pour danser, se démonter et jouer de leurs propres os jusqu’au chant du coq. Sans vedette récurrente ni intrigue à prolonger, le studio peut construire une atmosphère, faire naître chaque gag du rythme et traiter le corps dessiné comme un instrument. Cette courte nuit de 1929 devient ainsi le premier laboratoire d’une série où Disney apprendra à éprouver les techniques nécessaires à ses futurs longs métrages.",
+    "titresAlternatifs": [
+        {
+            "titre": "The Skeleton Dance",
+            "nature": "original",
+            "langue": "en",
+            "territoire": "US",
+            "sources": ["d23-skeleton-dance"]
+        }
+    ],
     "sortie": {
         "date": {
             "valeur": "1929-08-22",
@@ -86,6 +95,7 @@
         "wdfm-skeleton-of-an-idea",
         "wdfm-stalling-after-mickey",
         "afi-skeleton-dance",
-        "wdfm-first-nine-les-clark"
+        "wdfm-first-nine-les-clark",
+        "chronique-disney-danse-macabre"
     ]
 }

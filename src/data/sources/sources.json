@@ -1358,5 +1358,159 @@
         "datePublication": "1949",
         "url": "https://catalogue.bnf.fr/ark:/12148/cb37964901x",
         "dateConsultation": "2026-09-01"
+    },
+    {
+        "id": "chronique-disney-alices-wonderland",
+        "titre": "Alice's Wonderland",
+        "editeur": "Chronique Disney",
+        "url": "https://www.chroniquedisney.fr/cartoon-02-alice/1923-wonderland.htm",
+        "dateConsultation": "2026-09-02"
+    },
+    {
+        "id": "chronique-disney-trolley-troubles",
+        "titre": "Trolley Troubles",
+        "editeur": "Chronique Disney",
+        "url": "https://www.chroniquedisney.fr/cartoon-03-oswald/1927-trolley.htm",
+        "dateConsultation": "2026-09-02"
+    },
+    {
+        "id": "chronique-disney-willie-bateau-vapeur",
+        "titre": "Willie, le Bateau à Vapeur",
+        "editeur": "Chronique Disney",
+        "url": "https://www.chroniquedisney.fr/cartoon-04-mickey/1928-steamboat.htm",
+        "dateConsultation": "2026-09-02"
+    },
+    {
+        "id": "chronique-disney-mickey-gaucho",
+        "titre": "Mickey Gaucho",
+        "editeur": "Chronique Disney",
+        "url": "https://www.chroniquedisney.fr/cartoon-04-mickey/1928-gaucho.htm",
+        "dateConsultation": "2026-09-02"
+    },
+    {
+        "id": "chronique-disney-avion-fou",
+        "titre": "L'Avion Fou",
+        "editeur": "Chronique Disney",
+        "url": "https://www.chroniquedisney.fr/cartoon-04-mickey/1929-plane.htm",
+        "dateConsultation": "2026-09-02"
+    },
+    {
+        "id": "chronique-disney-danse-macabre",
+        "titre": "La Danse Macabre",
+        "editeur": "Chronique Disney",
+        "url": "https://www.chroniquedisney.fr/cartoon-05-silly/1929-danse.htm",
+        "dateConsultation": "2026-09-02"
+    },
+    {
+        "id": "chronique-disney-symphonie-enchainee",
+        "titre": "Symphonie Enchaînée",
+        "editeur": "Chronique Disney",
+        "url": "https://www.chroniquedisney.fr/cartoon-04-mickey/1930-chain.htm",
+        "dateConsultation": "2026-09-02"
+    },
+    {
+        "id": "chronique-disney-mickey-au-theatre",
+        "titre": "Mickey au Théâtre",
+        "editeur": "Chronique Disney",
+        "url": "https://www.chroniquedisney.fr/cartoon-04-mickey/1932-theatre.htm",
+        "dateConsultation": "2026-09-02"
+    },
+    {
+        "id": "chronique-disney-arbres-fleurs",
+        "titre": "Des Arbres et des Fleurs",
+        "editeur": "Chronique Disney",
+        "url": "https://www.chroniquedisney.fr/cartoon-05-silly/1932-fleurs.htm",
+        "dateConsultation": "2026-09-02"
+    },
+    {
+        "id": "chronique-disney-trois-petits-cochons",
+        "titre": "Les Trois Petits Cochons",
+        "editeur": "Chronique Disney",
+        "url": "https://www.chroniquedisney.fr/cartoon-05-silly/1933-cochons.htm",
+        "dateConsultation": "2026-09-02"
+    },
+    {
+        "id": "chronique-disney-petite-poule-avisee",
+        "titre": "Une Petite Poule Avisée",
+        "editeur": "Chronique Disney",
+        "url": "https://www.chroniquedisney.fr/cartoon-05-silly/1934-petite-poule-avisee.htm",
+        "dateConsultation": "2026-09-02"
+    },
+    {
+        "id": "chronique-disney-gala-orphelins",
+        "titre": "Le Gala des Orphelins",
+        "editeur": "Chronique Disney",
+        "url": "https://www.chroniquedisney.fr/cartoon-04-mickey/1934-gala-orphelins.htm",
+        "dateConsultation": "2026-09-02"
+    },
+    {
+        "id": "chronique-disney-deesse-printemps",
+        "titre": "La Déesse du Printemps",
+        "editeur": "Chronique Disney",
+        "url": "https://www.chroniquedisney.fr/cartoon-05-silly/1934-deesse.htm",
+        "dateConsultation": "2026-09-02"
+    },
+    {
+        "id": "chronique-disney-lievre-tortue",
+        "titre": "Le Lièvre et la Tortue",
+        "editeur": "Chronique Disney",
+        "url": "https://www.chroniquedisney.fr/cartoon-05-silly/1935-lievre-tortue.htm",
+        "dateConsultation": "2026-09-02"
+    },
+    {
+        "id": "chronique-disney-fanfare",
+        "titre": "La Fanfare",
+        "editeur": "Chronique Disney",
+        "url": "https://www.chroniquedisney.fr/cartoon-04-mickey/1935-fanfare.htm",
+        "dateConsultation": "2026-09-02"
+    },
+    {
+        "id": "chronique-disney-trois-petits-orphelins",
+        "titre": "Trois Petits Orphelins",
+        "editeur": "Chronique Disney",
+        "url": "https://www.chroniquedisney.fr/cartoon-05-silly/1935-trois-petits-orphelins.htm",
+        "dateConsultation": "2026-09-02"
+    },
+    {
+        "id": "chronique-disney-cousin-campagne",
+        "titre": "Cousin de Campagne",
+        "editeur": "Chronique Disney",
+        "url": "https://www.chroniquedisney.fr/cartoon-05-silly/1936-cousin.htm",
+        "dateConsultation": "2026-09-02"
+    },
+    {
+        "id": "chronique-disney-nettoyeurs-pendules",
+        "titre": "Nettoyeurs de Pendules",
+        "editeur": "Chronique Disney",
+        "url": "https://www.chroniquedisney.fr/cartoon-04-mickey/1937-nettoyeurs-pendules.htm",
+        "dateConsultation": "2026-09-02"
+    },
+    {
+        "id": "chronique-disney-vieux-moulin",
+        "titre": "Le Vieux Moulin",
+        "editeur": "Chronique Disney",
+        "url": "https://www.chroniquedisney.fr/cartoon-05-silly/1937-moulin.htm",
+        "dateConsultation": "2026-09-02"
+    },
+    {
+        "id": "chronique-disney-ferdinand-taureau",
+        "titre": "Ferdinand, le Taureau",
+        "editeur": "Chronique Disney",
+        "url": "https://www.chroniquedisney.fr/cartoon-09-special/1938-ferdinand.htm",
+        "dateConsultation": "2026-09-02"
+    },
+    {
+        "id": "chronique-disney-entreprenant-mr-duck",
+        "titre": "L'Entreprenant Mr Duck",
+        "editeur": "Chronique Disney",
+        "url": "https://www.chroniquedisney.fr/cartoon-07-donald/1940-steps.htm",
+        "dateConsultation": "2026-09-02"
+    },
+    {
+        "id": "chronique-disney-pluto-envies",
+        "titre": "Pluto a des Envies",
+        "editeur": "Chronique Disney",
+        "url": "https://www.chroniquedisney.fr/cartoon-08-pluto/1940-envies.htm",
+        "dateConsultation": "2026-09-02"
     }
 ]

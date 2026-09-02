@@ -2,6 +2,15 @@
     "slug": "mr-duck-steps-out",
     "type": "oeuvre",
     "introduction": "Mr. Duck Steps Out donne à Donald et Daisy leur première véritable scène de couple, aussitôt envahie par Riri, Fifi et Loulou. Donald voudrait transformer sa visite en rendez-vous parfait, mais chaque tentative pour tenir ses neveux à distance ne fait qu’accélérer le désordre. Au milieu des danses, des glaces et des interruptions, Daisy s’impose pourtant comme une partenaire de jeu capable de répondre à l’énergie de Donald sans se laisser emporter par elle.",
+    "titresAlternatifs": [
+        {
+            "titre": "Mr. Duck Steps Out",
+            "nature": "original",
+            "langue": "en",
+            "territoire": "US",
+            "sources": ["d23-mr-duck-steps-out"]
+        }
+    ],
     "sortie": {
         "date": {
             "valeur": "1940-06-07",
@@ -66,5 +75,9 @@
             ]
         }
     ],
-    "sources": ["d23-mr-duck-steps-out", "d23-mr-duck-steps-out-premieres"]
+    "sources": [
+        "d23-mr-duck-steps-out",
+        "d23-mr-duck-steps-out-premieres",
+        "chronique-disney-entreprenant-mr-duck"
+    ]
 }

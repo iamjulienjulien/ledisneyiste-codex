@@ -2,6 +2,15 @@
     "slug": "clock-cleaners",
     "type": "oeuvre",
     "introduction": "Clock Cleaners enferme Mickey, Donald et Dingo dans les rouages d’une même machine pour mieux révéler leurs différences. Mickey tente de maintenir l’équilibre, Donald s’épuise contre un ressort récalcitrant et Dingo traverse le danger avec une inconscience presque aérienne. Au sommet de la tour, le travail collectif devient ainsi une mécanique comique où chaque caractère entraîne les deux autres un peu plus près de la chute.",
+    "titresAlternatifs": [
+        {
+            "titre": "Clock Cleaners",
+            "nature": "original",
+            "langue": "en",
+            "territoire": "US",
+            "sources": ["d23-clock-cleaners"]
+        }
+    ],
     "sortie": {
         "date": {
             "valeur": "1937-10-15",
@@ -70,5 +79,5 @@
             ]
         }
     ],
-    "sources": ["d23-clock-cleaners"]
+    "sources": ["d23-clock-cleaners", "chronique-disney-nettoyeurs-pendules"]
 }

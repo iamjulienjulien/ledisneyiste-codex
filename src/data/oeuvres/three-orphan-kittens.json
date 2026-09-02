@@ -2,6 +2,15 @@
     "slug": "three-orphan-kittens",
     "type": "oeuvre",
     "introduction": "Three Orphan Kittens fait d’une maison ordinaire un territoire immense, imprévisible et merveilleux. Chassés du froid, trois chatons trouvent refuge parmi les meubles, les jouets et un piano dont chaque mécanisme devient une aventure. Sous la direction de David Hand, le dessin animé adopte leur échelle et transforme la perspective conçue par Ken Anderson en moteur de découverte. La Silly Symphony délaisse la grande fable pour observer le désordre minuscule de ses héros et offre à Walt Disney un quatrième Oscar consécutif dans la catégorie du court métrage d’animation.",
+    "titresAlternatifs": [
+        {
+            "titre": "Three Orphan Kittens",
+            "nature": "original",
+            "langue": "en",
+            "territoire": "US",
+            "sources": ["d23-three-orphan-kittens-film"]
+        }
+    ],
     "sortie": {
         "date": {
             "valeur": "1935-10-26",
@@ -73,6 +82,7 @@
         "d23-david-hand",
         "d23-ken-anderson",
         "ampas-8th-academy-awards",
-        "d23-academy-awards"
+        "d23-academy-awards",
+        "chronique-disney-trois-petits-orphelins"
     ]
 }

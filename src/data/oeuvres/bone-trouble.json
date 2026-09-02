@@ -2,6 +2,15 @@
     "slug": "bone-trouble",
     "type": "oeuvre",
     "introduction": "Bone Trouble place Pluto face aux conséquences très concrètes de sa gourmandise. Après avoir dérobé l’os de Butch, il trouve refuge dans un palais des glaces où chaque reflet déforme les corps, multiplie la peur et finit par devenir une arme. Sans dialogue, le film fait reposer tout son récit sur les réactions de Pluto et inaugure avec le bulldog une rivalité appelée à traverser durablement sa série.",
+    "titresAlternatifs": [
+        {
+            "titre": "Bone Trouble",
+            "nature": "original",
+            "langue": "en",
+            "territoire": "US",
+            "sources": ["d23-bone-trouble"]
+        }
+    ],
     "sortie": {
         "date": {
             "valeur": "1940-06-28",
@@ -47,5 +56,9 @@
             ]
         }
     ],
-    "sources": ["d23-bone-trouble", "d23-butch"]
+    "sources": [
+        "d23-bone-trouble",
+        "d23-butch",
+        "chronique-disney-pluto-envies"
+    ]
 }

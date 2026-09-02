@@ -2,6 +2,15 @@
     "slug": "the-goddess-of-spring",
     "type": "oeuvre",
     "introduction": "The Goddess of Spring transpose le mythe de Perséphone dans le laboratoire des Silly Symphonies. Son enlèvement par Pluto plonge la surface dans l’hiver, puis un accord partage l’année entre le monde souterrain et le retour du printemps. Derrière cette fable musicale, le studio affronte une difficulté nouvelle : faire jouer une jeune femme aux proportions humaines. Le résultat demeure imparfait, mais l’expérience donne aux artistes un premier terrain d’apprentissage avant que Blanche-Neige n’impose cette recherche au cœur d’un long métrage.",
+    "titresAlternatifs": [
+        {
+            "titre": "The Goddess of Spring",
+            "nature": "original",
+            "langue": "en",
+            "territoire": "US",
+            "sources": ["d23-goddess-of-spring-film"]
+        }
+    ],
     "sortie": {
         "date": {
             "valeur": "1934-11-03",
@@ -94,6 +103,7 @@
         "d23-persephone",
         "d23-pluto-devil",
         "d23-snow-white-oscars-look-back",
-        "disney-plus-goddess-of-spring"
+        "disney-plus-goddess-of-spring",
+        "chronique-disney-deesse-printemps"
     ]
 }
