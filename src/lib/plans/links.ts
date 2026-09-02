@@ -64,15 +64,11 @@ function getEpochReferenceForDate(
     const fiche = archives.fiches.epoques.find((epoch) =>
         dateBelongsToPeriod(date, epoch.periode),
     );
-    const catalogue = fiche
-        ? archives.catalogues.epoques.find((epoch) => epoch.slug === fiche.slug)
-        : undefined;
-
-    if (!fiche || !catalogue) {
+    if (!fiche) {
         return undefined;
     }
 
-    return createPublishedReference("epoque", fiche.slug, catalogue.nom);
+    return createPublishedReference("epoque", fiche.slug, archives);
 }
 
 function collectReferenceNotices(
@@ -93,13 +89,10 @@ export function derivePlanLinks(
     const links: CodexPlanLink[] = [];
 
     for (const character of archives.fiches.personnages) {
-        const characterEntry = archives.catalogues.personnages.find(
-            (entry) => entry.slug === character.slug,
-        );
         const characterReference = createPublishedReference(
             "personnage",
             character.slug,
-            characterEntry?.nom ?? character.slug,
+            archives,
         );
 
         character.creation.createurs.forEach((creator, index) => {
@@ -164,13 +157,10 @@ export function derivePlanLinks(
     }
 
     for (const work of archives.fiches.oeuvres) {
-        const workEntry = archives.catalogues.oeuvres.find(
-            (entry) => entry.slug === work.slug,
-        );
         const workReference = createPublishedReference(
             "oeuvre",
             work.slug,
-            workEntry?.nom ?? work.slug,
+            archives,
         );
 
         work.contributions.forEach((contribution, index) => {
@@ -253,13 +243,10 @@ export function derivePlanLinks(
     }
 
     for (const contributor of archives.fiches.contributeurs) {
-        const contributorEntry = archives.catalogues.contributeurs.find(
-            (entry) => entry.slug === contributor.slug,
-        );
         const contributorReference = createPublishedReference(
             "contributeur",
             contributor.slug,
-            contributorEntry?.nom ?? contributor.slug,
+            archives,
         );
 
         for (const epoch of archives.fiches.epoques) {
@@ -271,24 +258,13 @@ export function derivePlanLinks(
                 continue;
             }
 
-            const epochEntry = archives.catalogues.epoques.find(
-                (entry) => entry.slug === epoch.slug,
-            );
-            if (!epochEntry) {
-                continue;
-            }
-
             links.push(
                 createLink(
                     "belongs-to-era",
                     `${contributor.slug}:${epoch.slug}`,
                     "Actif durant",
                     contributorReference,
-                    createPublishedReference(
-                        "epoque",
-                        epoch.slug,
-                        epochEntry.nom,
-                    ),
+                    createPublishedReference("epoque", epoch.slug, archives),
                     [
                         derivedProvenance(
                             "Époque calculée par chevauchement entre les périodes d’activité et les bornes chronologiques exclusives.",

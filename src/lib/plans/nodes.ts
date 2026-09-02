@@ -8,6 +8,7 @@ import type {
 import {
     createDerivationResult,
     createEntityId,
+    createPublishedReference,
     derivedProvenance,
     sourcedProvenance,
 } from "@/lib/plans/utils";
@@ -32,79 +33,101 @@ export function derivePlanNodes(
     options: CodexPlanDerivationOptions = {},
 ): CodexPlanDerivationResult<CodexPlanNode> {
     const nodes: CodexPlanNode[] = [
-        ...archives.catalogues.personnages.map((entry) => ({
-            id: createEntityId("personnage", entry.slug),
-            kind: "personnage" as const,
-            label: entry.nom,
-            slug: entry.slug,
-            resolved: true,
-            subtitle: entry.sousTitre,
-            publishedSubject: true,
-            metadata: {
-                categories: entry.metadata.categories,
-            },
-            provenance: [
-                sourcedProvenance(
-                    getFicheSources(entry.slug, archives.fiches.personnages),
-                    "Nœud publié dérivé du catalogue Personnages et de sa fiche.",
-                ),
-            ],
-        })),
-        ...archives.catalogues.contributeurs.map((entry) => ({
-            id: createEntityId("contributeur", entry.slug),
-            kind: "contributeur" as const,
-            label: entry.nom,
-            slug: entry.slug,
-            resolved: true,
-            subtitle: entry.sousTitre,
-            publishedSubject: true,
-            metadata: {
-                categories: entry.metadata.categories,
-            },
-            provenance: [
-                sourcedProvenance(
-                    getFicheSources(entry.slug, archives.fiches.contributeurs),
-                    "Nœud publié dérivé du catalogue Créateurs et de sa fiche.",
-                ),
-            ],
-        })),
-        ...archives.catalogues.oeuvres.map((entry) => ({
-            id: createEntityId("oeuvre", entry.slug),
-            kind: "oeuvre" as const,
-            label: entry.nom,
-            slug: entry.slug,
-            resolved: true,
-            subtitle: entry.sousTitre,
-            publishedSubject: true,
-            metadata: {
-                collection: entry.metadata.collection,
-                type: entry.metadata.type,
-                son: entry.metadata.son,
-                couleur: entry.metadata.couleur,
-            },
-            provenance: [
-                sourcedProvenance(
-                    getFicheSources(entry.slug, archives.fiches.oeuvres),
-                    "Nœud publié dérivé du catalogue Œuvres et de sa fiche.",
-                ),
-            ],
-        })),
-        ...archives.catalogues.epoques.map((entry) => ({
-            id: createEntityId("epoque", entry.slug),
-            kind: "epoque" as const,
-            label: entry.nom,
-            slug: entry.slug,
-            resolved: true,
-            subtitle: entry.sousTitre,
-            publishedSubject: true,
-            metadata: {},
-            provenance: [
-                sourcedProvenance(
-                    getFicheSources(entry.slug, archives.fiches.epoques),
-                    "Nœud publié dérivé du catalogue Époques et de sa fiche.",
-                ),
-            ],
-        })),
+        ...archives.catalogues.personnages.map((entry) => {
+            const reference = createPublishedReference(
+                "personnage",
+                entry.slug,
+                archives,
+            );
+
+            return {
+                ...reference,
+                subtitle: entry.sousTitre,
+                publishedSubject: true,
+                metadata: {
+                    categories: entry.metadata.categories,
+                },
+                provenance: [
+                    sourcedProvenance(
+                        getFicheSources(
+                            entry.slug,
+                            archives.fiches.personnages,
+                        ),
+                        "Nœud publié dérivé du catalogue Personnages et de sa fiche.",
+                    ),
+                ],
+            };
+        }),
+        ...archives.catalogues.contributeurs.map((entry) => {
+            const reference = createPublishedReference(
+                "contributeur",
+                entry.slug,
+                archives,
+            );
+
+            return {
+                ...reference,
+                subtitle: entry.sousTitre,
+                publishedSubject: true,
+                metadata: {
+                    categories: entry.metadata.categories,
+                },
+                provenance: [
+                    sourcedProvenance(
+                        getFicheSources(
+                            entry.slug,
+                            archives.fiches.contributeurs,
+                        ),
+                        "Nœud publié dérivé du catalogue Créateurs et de sa fiche.",
+                    ),
+                ],
+            };
+        }),
+        ...archives.catalogues.oeuvres.map((entry) => {
+            const reference = createPublishedReference(
+                "oeuvre",
+                entry.slug,
+                archives,
+            );
+
+            return {
+                ...reference,
+                subtitle: entry.sousTitre,
+                publishedSubject: true,
+                metadata: {
+                    collection: entry.metadata.collection,
+                    type: entry.metadata.type,
+                    son: entry.metadata.son,
+                    couleur: entry.metadata.couleur,
+                },
+                provenance: [
+                    sourcedProvenance(
+                        getFicheSources(entry.slug, archives.fiches.oeuvres),
+                        "Nœud publié dérivé du catalogue Œuvres et de sa fiche.",
+                    ),
+                ],
+            };
+        }),
+        ...archives.catalogues.epoques.map((entry) => {
+            const reference = createPublishedReference(
+                "epoque",
+                entry.slug,
+                archives,
+            );
+
+            return {
+                ...reference,
+                subtitle: entry.sousTitre,
+                publishedSubject: true,
+                metadata: {},
+                provenance: [
+                    sourcedProvenance(
+                        getFicheSources(entry.slug, archives.fiches.epoques),
+                        "Nœud publié dérivé du catalogue Époques et de sa fiche.",
+                    ),
+                ],
+            };
+        }),
         ...archives.recompenses.map((reward) => {
             const qualification = reward.categorie ?? reward.motif;
 

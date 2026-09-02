@@ -1,4 +1,8 @@
 import { derivePlanLinks } from "@/lib/plans/links";
+import {
+    createPlanReferenceHref,
+    createPlanSubjectReference,
+} from "@/lib/plans/utils";
 import type { DateHistorique } from "@/types/date";
 import type {
     CodexPlanArchives,
@@ -6,7 +10,6 @@ import type {
     CodexPlanConfiguration,
     CodexPlanDerivationNotice,
     CodexPlanDerivationSelection,
-    CodexPlanEntityKind,
     CodexPlanEntityReference,
     CodexPlanLink,
     CodexPlanMatter,
@@ -25,25 +28,6 @@ type Neighbourhood = Readonly<{
     links: readonly CodexPlanLink[];
 }>;
 
-const familyDefinitions = {
-    personnages: {
-        kind: "personnage",
-        route: "personnages",
-    },
-    createurs: {
-        kind: "contributeur",
-        route: "contributeurs",
-    },
-    oeuvres: {
-        kind: "oeuvre",
-        route: "oeuvres",
-    },
-    epoques: {
-        kind: "epoque",
-        route: "epoques",
-    },
-} as const;
-
 const relationLabels: Readonly<Record<string, string>> = {
     source: "est une source de",
     preparation: "prépare",
@@ -52,64 +36,6 @@ const relationLabels: Readonly<Record<string, string>> = {
     inspiration: "inspire",
     filiation: "se prolonge dans",
 };
-
-function getCatalogueEntry(
-    configuration: CodexPlanConfiguration,
-    archives: CodexPlanArchives,
-) {
-    const { family, slug } = configuration.subject;
-
-    switch (family) {
-        case "personnages":
-            return archives.catalogues.personnages.find(
-                (entry) => entry.slug === slug,
-            );
-        case "createurs":
-            return archives.catalogues.contributeurs.find(
-                (entry) => entry.slug === slug,
-            );
-        case "oeuvres":
-            return archives.catalogues.oeuvres.find(
-                (entry) => entry.slug === slug,
-            );
-        case "epoques":
-            return archives.catalogues.epoques.find(
-                (entry) => entry.slug === slug,
-            );
-    }
-}
-
-function createSubjectReference(
-    configuration: CodexPlanConfiguration,
-    archives: CodexPlanArchives,
-): CodexPlanEntityReference {
-    const definition = familyDefinitions[configuration.subject.family];
-    const entry = getCatalogueEntry(configuration, archives);
-
-    return {
-        id: `${definition.kind}:${configuration.subject.slug}`,
-        kind: definition.kind,
-        label: entry?.nom ?? configuration.subject.slug,
-        slug: configuration.subject.slug,
-        resolved: entry !== undefined,
-    };
-}
-
-function createHref(reference: CodexPlanEntityReference) {
-    if (!reference.resolved || !reference.slug) {
-        return undefined;
-    }
-
-    const routes: Partial<Record<CodexPlanEntityKind, string>> = {
-        personnage: "personnages",
-        contributeur: "contributeurs",
-        oeuvre: "oeuvres",
-        epoque: "epoques",
-    };
-    const route = routes[reference.kind];
-
-    return route ? `/${route}/${reference.slug}` : undefined;
-}
 
 function getReferenceDate(
     reference: CodexPlanEntityReference,
@@ -389,7 +315,7 @@ function deriveFromArchives(
         }
 
         const date = getReferenceDate(node, subject, archives);
-        const href = createHref(node);
+        const href = createPlanReferenceHref(node);
         relatedStages.push({
             id: `stage:${node.id}`,
             order: 0,
@@ -408,7 +334,7 @@ function deriveFromArchives(
     });
 
     const subjectDate = getReferenceDate(subject, subject, archives);
-    const subjectHref = createHref(subject);
+    const subjectHref = createPlanReferenceHref(subject);
     const subjectStage: CodexTravellingDocumentaireStage = {
         id: `stage:${subject.id}`,
         order: relatedStages.length,
@@ -591,7 +517,7 @@ export function deriveTravellingDocumentaire(
         ...configuration,
         matter,
     };
-    const subject = createSubjectReference(
+    const subject = createPlanSubjectReference(
         normalizedConfiguration,
         source.archives,
     );

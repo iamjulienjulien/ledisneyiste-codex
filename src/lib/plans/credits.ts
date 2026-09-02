@@ -21,13 +21,10 @@ export function derivePlanCredits(
     const notices: CodexPlanDerivationNotice[] = [];
 
     for (const work of archives.fiches.oeuvres) {
-        const catalogue = archives.catalogues.oeuvres.find(
-            (entry) => entry.slug === work.slug,
-        );
         const workReference = createPublishedReference(
             "oeuvre",
             work.slug,
-            catalogue?.nom ?? work.slug,
+            archives,
         );
 
         work.contributions.forEach((contribution, index) => {

@@ -1,5 +1,6 @@
 import type {
     CodexPlanArchives,
+    CodexPlanConfiguration,
     CodexPlanDerivationNotice,
     CodexPlanDerivationOptions,
     CodexPlanDerivationResult,
@@ -8,15 +9,10 @@ import type {
     CodexPlanProvenance,
 } from "@/types/codex-plans";
 import { resoudreOeuvreSource } from "@/lib/oeuvres-sources";
+import { construireRouteCanoniqueCodex } from "@/lib/navigation/routes-codex";
 import type { ReferenceOeuvreLiee } from "@/types/oeuvre";
 import type { ReferenceCodex, TypeReferenceCodex } from "@/types/reference";
-
-const REFERENCE_COLLECTIONS = {
-    personnage: "personnages",
-    contributeur: "contributeurs",
-    oeuvre: "oeuvres",
-    epoque: "epoques",
-} as const;
+import { projeterIdentiteCodex } from "@/lib/identites/projeter-identite";
 
 function normaliserIdentifiant(value: string) {
     return value
@@ -34,14 +30,46 @@ export function createEntityId(kind: CodexPlanEntityKind, value: string) {
 export function createPublishedReference(
     kind: Exclude<TypeReferenceCodex, "chanson">,
     slug: string,
-    label: string,
+    archives: CodexPlanArchives,
+    fallbackLabel = slug,
 ): CodexPlanEntityReference {
+    const definitions = {
+        personnage: {
+            family: "personnages",
+            entries: archives.catalogues.personnages,
+            fiches: archives.fiches.personnages,
+        },
+        contributeur: {
+            family: "createurs",
+            entries: archives.catalogues.contributeurs,
+            fiches: archives.fiches.contributeurs,
+        },
+        oeuvre: {
+            family: "oeuvres",
+            entries: archives.catalogues.oeuvres,
+            fiches: archives.fiches.oeuvres,
+        },
+        epoque: {
+            family: "epoques",
+            entries: archives.catalogues.epoques,
+            fiches: archives.fiches.epoques,
+        },
+    } as const;
+    const definition = definitions[kind];
+    const entree = definition.entries.find((entry) => entry.slug === slug);
+    const fiche = definition.fiches.find((entry) => entry.slug === slug);
+    const identity = projeterIdentiteCodex({
+        famille: definition.family,
+        entree,
+        fiche,
+    });
+
     return {
         id: createEntityId(kind, slug),
         kind,
-        label,
+        label: identity?.principale.libelle ?? fallbackLabel,
         slug,
-        resolved: true,
+        resolved: identity !== null,
     };
 }
 
@@ -71,18 +99,48 @@ export function createReference(
         };
     }
 
-    const collection = REFERENCE_COLLECTIONS[reference.type];
-    const resolved = archives.catalogues[collection].some(
-        (entry) => entry.slug === reference.slug,
+    return createPublishedReference(
+        reference.type,
+        reference.slug,
+        archives,
+        reference.nom,
     );
+}
 
-    return {
-        id: createEntityId(reference.type, reference.slug),
-        kind: reference.type,
-        label: reference.nom,
-        slug: reference.slug,
-        resolved,
-    };
+export function createPlanSubjectReference(
+    configuration: CodexPlanConfiguration,
+    archives: CodexPlanArchives,
+) {
+    const definitions = {
+        personnages: "personnage",
+        createurs: "contributeur",
+        oeuvres: "oeuvre",
+        epoques: "epoque",
+    } as const;
+
+    return createPublishedReference(
+        definitions[configuration.subject.family],
+        configuration.subject.slug,
+        archives,
+    );
+}
+
+export function createPlanReferenceHref(reference: CodexPlanEntityReference) {
+    if (!reference.resolved || !reference.slug) {
+        return undefined;
+    }
+
+    const families = {
+        personnage: "personnages",
+        contributeur: "createurs",
+        oeuvre: "oeuvres",
+        epoque: "epoques",
+    } as const;
+    const family = families[reference.kind as keyof typeof families];
+
+    return family
+        ? construireRouteCanoniqueCodex(family, reference.slug)
+        : undefined;
 }
 
 export function createWorkReference(

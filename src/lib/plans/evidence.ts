@@ -138,13 +138,10 @@ export function derivePlanEvidence(
     const items: CodexPlanEvidence[] = [];
 
     for (const character of archives.fiches.personnages) {
-        const catalogue = archives.catalogues.personnages.find(
-            (entry) => entry.slug === character.slug,
-        );
         const owner = createPublishedReference(
             "personnage",
             character.slug,
-            catalogue?.nom ?? character.slug,
+            archives,
         );
 
         addBaseEvidence(items, archives, owner, character);
@@ -181,30 +178,20 @@ export function derivePlanEvidence(
     }
 
     for (const contributor of archives.fiches.contributeurs) {
-        const catalogue = archives.catalogues.contributeurs.find(
-            (entry) => entry.slug === contributor.slug,
-        );
         addBaseEvidence(
             items,
             archives,
             createPublishedReference(
                 "contributeur",
                 contributor.slug,
-                catalogue?.nom ?? contributor.slug,
+                archives,
             ),
             contributor,
         );
     }
 
     for (const work of archives.fiches.oeuvres) {
-        const catalogue = archives.catalogues.oeuvres.find(
-            (entry) => entry.slug === work.slug,
-        );
-        const owner = createPublishedReference(
-            "oeuvre",
-            work.slug,
-            catalogue?.nom ?? work.slug,
-        );
+        const owner = createPublishedReference("oeuvre", work.slug, archives);
 
         addBaseEvidence(items, archives, owner, work);
 
@@ -351,17 +338,10 @@ export function derivePlanEvidence(
     }
 
     for (const epoch of archives.fiches.epoques) {
-        const catalogue = archives.catalogues.epoques.find(
-            (entry) => entry.slug === epoch.slug,
-        );
         addBaseEvidence(
             items,
             archives,
-            createPublishedReference(
-                "epoque",
-                epoch.slug,
-                catalogue?.nom ?? epoch.slug,
-            ),
+            createPublishedReference("epoque", epoch.slug, archives),
             epoch,
         );
     }

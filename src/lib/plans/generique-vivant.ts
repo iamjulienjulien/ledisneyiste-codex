@@ -1,4 +1,5 @@
 import { derivePlanCredits } from "@/lib/plans/credits";
+import { createPlanSubjectReference } from "@/lib/plans/utils";
 import {
     creditDomainOrder,
     getCreditDomainDefinition,
@@ -8,11 +9,9 @@ import type {
     CodexGeneriqueVivantGroup,
     CodexGeneriqueVivantMatterSource,
     CodexGeneriqueVivantModel,
-    CodexPlanArchives,
     CodexPlanConfiguration,
     CodexPlanCredit,
     CodexPlanDerivationNotice,
-    CodexPlanEntityReference,
     CodexPlanRuntimeState,
 } from "@/types/codex-plans";
 
@@ -35,35 +34,6 @@ function humanizeDomain(domain: string) {
         .filter(Boolean)
         .map((word) => word.charAt(0).toLocaleUpperCase("fr") + word.slice(1))
         .join(" ");
-}
-
-function getSubject(
-    configuration: CodexPlanConfiguration,
-    archives: CodexPlanArchives,
-): CodexPlanEntityReference {
-    const { family, slug } = configuration.subject;
-    const definitions = {
-        personnages: {
-            kind: "personnage",
-            entries: archives.catalogues.personnages,
-        },
-        createurs: {
-            kind: "contributeur",
-            entries: archives.catalogues.contributeurs,
-        },
-        oeuvres: { kind: "oeuvre", entries: archives.catalogues.oeuvres },
-        epoques: { kind: "epoque", entries: archives.catalogues.epoques },
-    } as const;
-    const definition = definitions[family];
-    const entry = definition.entries.find((item) => item.slug === slug);
-
-    return {
-        id: `${definition.kind}:${slug}`,
-        kind: definition.kind,
-        label: entry?.nom ?? slug,
-        slug,
-        resolved: entry !== undefined,
-    };
 }
 
 function sortCredits(credits: readonly CodexPlanCredit[]) {
@@ -172,7 +142,7 @@ export function deriveGeneriqueVivant(
         );
     }
 
-    const subject = getSubject(configuration, source.archives);
+    const subject = createPlanSubjectReference(configuration, source.archives);
     const archiveResult = derivePlanCredits(source.archives);
     const sourceCredits =
         source.kind === "archives"

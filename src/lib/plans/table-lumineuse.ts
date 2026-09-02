@@ -1,11 +1,11 @@
 import { derivePlanEvidence } from "@/lib/plans/evidence";
 import { formatPorteeTerritorialeDocumentaire } from "@/lib/documentaire";
 import { lireDonneeEconomiqueOeuvre } from "@/lib/donnees-economiques";
+import { createPlanSubjectReference } from "@/lib/plans/utils";
 import type {
     CodexPlanArchives,
     CodexPlanConfiguration,
     CodexPlanDerivationNotice,
-    CodexPlanEntityReference,
     CodexPlanEvidence,
     CodexPlanRuntimeState,
     CodexTableLumineuseFact,
@@ -33,35 +33,6 @@ function formatPeriod(period: PeriodeHistorique) {
     return period.fin
         ? `${formatDate(period.debut)} — ${formatDate(period.fin)}`
         : formatDate(period.debut);
-}
-
-function getSubject(
-    configuration: CodexPlanConfiguration,
-    archives: CodexPlanArchives,
-): CodexPlanEntityReference {
-    const { family, slug } = configuration.subject;
-    const definitions = {
-        personnages: {
-            kind: "personnage",
-            entries: archives.catalogues.personnages,
-        },
-        createurs: {
-            kind: "contributeur",
-            entries: archives.catalogues.contributeurs,
-        },
-        oeuvres: { kind: "oeuvre", entries: archives.catalogues.oeuvres },
-        epoques: { kind: "epoque", entries: archives.catalogues.epoques },
-    } as const;
-    const definition = definitions[family];
-    const entry = definition.entries.find((item) => item.slug === slug);
-
-    return {
-        id: `${definition.kind}:${slug}`,
-        kind: definition.kind,
-        label: entry?.nom ?? slug,
-        slug,
-        resolved: entry !== undefined,
-    };
 }
 
 function fact(
@@ -392,7 +363,7 @@ export function deriveTableLumineuse(
         );
     }
 
-    const subject = getSubject(configuration, source.archives);
+    const subject = createPlanSubjectReference(configuration, source.archives);
     const archiveResult = derivePlanEvidence(source.archives);
     const sourceEvidence =
         source.kind === "archives"

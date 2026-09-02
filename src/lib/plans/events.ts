@@ -66,13 +66,10 @@ export function derivePlanEvents(
     const events: CodexPlanEvent[] = [];
 
     for (const character of archives.fiches.personnages) {
-        const catalogue = archives.catalogues.personnages.find(
-            (entry) => entry.slug === character.slug,
-        );
         const subject = createPublishedReference(
             "personnage",
             character.slug,
-            catalogue?.nom ?? character.slug,
+            archives,
         );
 
         events.push(
@@ -106,13 +103,10 @@ export function derivePlanEvents(
     }
 
     for (const contributor of archives.fiches.contributeurs) {
-        const catalogue = archives.catalogues.contributeurs.find(
-            (entry) => entry.slug === contributor.slug,
-        );
         const subject = createPublishedReference(
             "contributeur",
             contributor.slug,
-            catalogue?.nom ?? contributor.slug,
+            archives,
         );
 
         events.push({
@@ -166,14 +160,7 @@ export function derivePlanEvents(
     }
 
     for (const work of archives.fiches.oeuvres) {
-        const catalogue = archives.catalogues.oeuvres.find(
-            (entry) => entry.slug === work.slug,
-        );
-        const subject = createPublishedReference(
-            "oeuvre",
-            work.slug,
-            catalogue?.nom ?? work.slug,
-        );
+        const subject = createPublishedReference("oeuvre", work.slug, archives);
 
         events.push({
             id: `work-release:${work.slug}`,
@@ -283,13 +270,10 @@ export function derivePlanEvents(
     }
 
     for (const epoch of archives.fiches.epoques) {
-        const catalogue = archives.catalogues.epoques.find(
-            (entry) => entry.slug === epoch.slug,
-        );
         const subject = createPublishedReference(
             "epoque",
             epoch.slug,
-            catalogue?.nom ?? epoch.slug,
+            archives,
         );
 
         events.push({

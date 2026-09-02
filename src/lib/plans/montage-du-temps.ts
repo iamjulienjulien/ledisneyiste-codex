@@ -1,5 +1,9 @@
 import { derivePlanEvents } from "@/lib/plans/events";
-import { createRewardReference } from "@/lib/plans/utils";
+import {
+    createPlanReferenceHref,
+    createPlanSubjectReference,
+    createRewardReference,
+} from "@/lib/plans/utils";
 import type { DateHistorique } from "@/types/date";
 import type {
     CodexMontageDuTempsBounds,
@@ -57,57 +61,6 @@ const trackDefinitions = [
 const trackOrder = new Map(
     trackDefinitions.map((track, index) => [track.id, index]),
 );
-
-function getSubject(
-    configuration: CodexPlanConfiguration,
-    archives: CodexPlanArchives,
-): CodexPlanEntityReference {
-    const { family, slug } = configuration.subject;
-    const definitions = {
-        personnages: {
-            kind: "personnage",
-            collection: archives.catalogues.personnages,
-        },
-        createurs: {
-            kind: "contributeur",
-            collection: archives.catalogues.contributeurs,
-        },
-        oeuvres: {
-            kind: "oeuvre",
-            collection: archives.catalogues.oeuvres,
-        },
-        epoques: {
-            kind: "epoque",
-            collection: archives.catalogues.epoques,
-        },
-    } as const;
-    const definition = definitions[family];
-    const entry = definition.collection.find((item) => item.slug === slug);
-
-    return {
-        id: `${definition.kind}:${slug}`,
-        kind: definition.kind,
-        label: entry?.nom ?? slug,
-        slug,
-        resolved: entry !== undefined,
-    };
-}
-
-function createHref(reference: CodexPlanEntityReference) {
-    if (!reference.resolved || !reference.slug) {
-        return undefined;
-    }
-
-    const routes = {
-        personnage: "personnages",
-        contributeur: "contributeurs",
-        oeuvre: "oeuvres",
-        epoque: "epoques",
-    } as const;
-    const route = routes[reference.kind as keyof typeof routes];
-
-    return route ? `/${route}/${reference.slug}` : undefined;
-}
 
 function sourceIdsFromProvenance(provenance: readonly CodexPlanProvenance[]) {
     return [
@@ -271,7 +224,7 @@ function deriveArchiveEvents(
             event.kind === "release-event" ||
             event.kind === "work-exploitation",
     );
-    const href = createHref(subject);
+    const href = createPlanReferenceHref(subject);
     const events: CodexMontageDuTempsEvent[] = subjectEvents
         .filter(
             (event) =>
@@ -413,7 +366,7 @@ export function deriveMontageDuTemps(
     configuration: CodexPlanConfiguration,
     source: CodexMontageDuTempsMatterSource,
 ): CodexMontageDuTempsModel {
-    const subject = getSubject(configuration, source.archives);
+    const subject = createPlanSubjectReference(configuration, source.archives);
     const archiveResult =
         source.kind === "archives"
             ? deriveArchiveEvents(source.archives, subject)
