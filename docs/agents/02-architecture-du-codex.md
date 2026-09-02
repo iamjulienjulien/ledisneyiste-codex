@@ -39,9 +39,10 @@ Si tu arrives avec peu de mémoire disponible, retiens ces huit règles :
 7. **Les Plans dérivent des lectures sans réécrire les Archives.** Une Bobine
    témoin reste une fixture d’essai, jamais une donnée publiée.
 8. **Un contrat interne n’est pas encore une famille publique.** Œuvres
-   sources, Chansons, Musiques et enquêtes économiques peuvent être typées et
-   vérifiées sans posséder de catalogue, de route ni de place dans
-   `CodexFamily`.
+   sources, Musiques et enquêtes économiques peuvent être typées et vérifiées
+   sans posséder de catalogue, de route ni de place dans `CodexFamily`. Les
+   Chansons ont franchi cette frontière au Train 5B : leur contrat spécialisé
+   alimente désormais une cinquième famille publique.
 
 ---
 
@@ -50,7 +51,7 @@ Si tu arrives avec peu de mémoire disponible, retiens ces huit règles :
 | Repère                 | Réponse actuelle                                                |
 | ---------------------- | --------------------------------------------------------------- |
 | Modèle de contenu      | Fichiers JSON versionnés                                        |
-| Familles publiées      | Personnages, Créateurs, Œuvres et Époques                       |
+| Familles publiées      | Personnages, Créateurs, Œuvres, Époques et Chansons             |
 | Routage                | Next.js App Router, pages statiques par `slug`                  |
 | Contrats métier        | Types partagés dans [`src/types`](../../src/types/)             |
 | Archives               | [`src/data`](../../src/data/)                                   |
@@ -109,13 +110,14 @@ projection.
 
 ### `src/app` — les portes publiques et privées
 
-Les routes publiques des quatre familles se trouvent dans :
+Les routes publiques des cinq familles se trouvent dans :
 
 ```text
 src/app/personnages/
 src/app/contributeurs/
 src/app/oeuvres/
 src/app/epoques/
+src/app/chansons/
 ```
 
 Chaque dossier possède une page d’index et une route `[slug]` pour les fiches.
@@ -136,6 +138,7 @@ personnages/     fiches détaillées des personnages
 contributeurs/   fiches détaillées des créateurs
 oeuvres/         fiches détaillées des œuvres
 epoques/         fiches détaillées des périodes
+chansons/        fiches détaillées des chansons
 sources/         registre bibliographique central
 recompenses/     registre transversal des distinctions
 relations.ts     relations inverses calculées depuis les fiches
@@ -234,7 +237,7 @@ chronologie du studio.
 
 ---
 
-## Les quatre familles et leurs trois dialectes
+## Les cinq familles et leurs trois dialectes
 
 Une même famille n’utilise pas toujours le même mot dans les routes, les
 références et le thème UI. Cette différence est historique et intentionnelle ;
@@ -246,6 +249,7 @@ ne la « corrige » pas localement.
 | Créateurs        | `contributeurs`             | `contributeur`        | `createurs`   |
 | Œuvres           | `oeuvres`                   | `oeuvre`              | `oeuvres`     |
 | Époques          | `epoques`                   | `epoque`              | `epoques`     |
+| Chansons         | `chansons`                  | `chanson`             | `chansons`    |
 
 `CodexFamily` pilote notamment la couleur et le symbole d’une famille dans les
 composants communs. Le type singulier d’une référence permet de construire sa
@@ -258,7 +262,7 @@ dialectes produit des liens, des thèmes ou des résolutions incorrects.
 
 ### Le catalogue annonce
 
-Les quatre JSON de [`src/data/catalogues`](../../src/data/catalogues/)
+Les cinq JSON de [`src/data/catalogues`](../../src/data/catalogues/)
 contiennent les informations nécessaires pour identifier, lister, rechercher
 et présenter rapidement une entrée :
 
@@ -276,7 +280,8 @@ Le catalogue alimente :
 - la génération des routes statiques ;
 - les résultats de recherche ;
 - la résolution des noms et des liens ;
-- les sujets publiés disponibles pour les Plans.
+- les sujets publiés disponibles pour les Plans lorsque leur famille appartient
+  au périmètre volontairement limité de cette projection.
 
 Une entrée absente du catalogue n’est pas publiée, même si un fichier de fiche
 existe quelque part dans `src/data`.
@@ -286,7 +291,8 @@ existe quelque part dans `src/data`.
 Les dossiers de familles contiennent un JSON détaillé par entrée. Une fiche
 porte au minimum son `slug`, son `type`, son introduction, ses sources et sa
 matière propre : création et première apparition d’un personnage, activité
-d’un créateur, production d’une œuvre ou bornes d’une époque.
+d’un créateur, production d’une œuvre, bornes d’une époque ou vie publique
+d’une chanson.
 
 Les fichiers d’index de chaque famille importent explicitement ces JSON dans
 une collection `fiches…` et exposent un résolveur par `slug`.
@@ -568,7 +574,7 @@ explicitement chaque occurrence à la bonne entrée du Codex.
 
 ---
 
-## Les nouveaux contrats documentaires : prêts avant d’être publics
+## Les contrats documentaires spécialisés et leur frontière de publication
 
 La Phase 4 de l’Acte VI a ouvert plusieurs domaines internes afin de décrire la
 vie publique d’une œuvre sans commencer prématurément la production éditoriale
@@ -580,7 +586,7 @@ leurs cas d’essai dans [`scripts/fixtures`](../../scripts/fixtures/).
 | ------------------------ | ---------------------------------------------- | ------------------------------------------------------------------ |
 | Circulation et réception | `circulation-oeuvre.ts` puis les fiches Œuvres | Contrat utilisable progressivement par les Œuvres publiées.        |
 | Œuvres sources           | `oeuvre-source.ts` et registre interne         | Résoluble dans les Plans, sans catalogue ni route publique.        |
-| Chansons                 | `chanson.ts` et registre interne               | Fiche complète en mode `metadata-first`, sans index ouvert.        |
+| Chansons                 | `chanson.ts`, catalogue et fiches publiques    | Cinquième famille publique en mode `metadata-first`.               |
 | Musiques                 | `musique.ts` et registre interne               | Domaine frère réservé à l’Acte VII.                                |
 | Droits média             | `projection-media.ts` et dossiers privés       | Seuls le statut et la matière autorisée franchissent la frontière. |
 | Données économiques      | `donnee-economique.ts` et dossiers d’enquête   | Publication conditionnée par la complétude de la mesure.           |
@@ -593,17 +599,18 @@ d’un même objet universel.
 ### Les bobines privées ne publient rien
 
 Les fixtures de circulation, Collodi, Chansons et données économiques servent
-à vérifier les contrats et leurs contre-exemples. Elles ne vivent pas sous
-`src/data`, n’alimentent aucune route et ne comptent pas parmi les 79 Archives.
+à vérifier les contrats et leurs contre-exemples. Elles restent privées et ne
+se confondent jamais avec les quatre fiches Chansons publiées sous `src/data`.
 
 Le contrôle agrégé [`verifier-phase-4.mjs`](../../scripts/verifier-phase-4.mjs)
 surveille ensemble :
 
-- les 79 fiches et leurs 79 routes canoniques ;
-- les quatre familles publiques inchangées ;
-- l’absence de catalogue et de route pour les domaines internes ;
+- les 83 fiches et leurs 83 routes canoniques ;
+- les cinq familles publiques, dont les quatre Chansons du Train 5B ;
+- l’absence de catalogue et de route pour les domaines encore internes ;
 - le raccord entre les quatre bobines de Phase 4 ;
-- les 69 entrées du manifeste Phase 5 toujours non migrées ;
+- les 69 entrées du manifeste Phase 5, dont quatre portent un verdict de
+  migration ;
 - le branchement des vérificateurs spécialisés dans les contrôles locaux et
   CI.
 
@@ -819,7 +826,7 @@ sont optionnels et n’apparaissent que lorsque la matière existe.
 3. réutiliser uniquement des composants `Pixie…` validés sur les pages
    publiques ;
 4. laisser les `PixieDust…` dans l’Atelier ;
-5. vérifier les quatre familles avant de généraliser un raccord ;
+5. vérifier les cinq familles avant de généraliser un raccord ;
 6. contrôler les deux Lumières, le responsive, le clavier et le zoom.
 
 ---

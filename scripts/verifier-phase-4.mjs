@@ -10,6 +10,7 @@ const famillesPubliques = [
     ["contributeurs", "contributeur"],
     ["oeuvres", "oeuvre"],
     ["epoques", "epoque"],
+    ["chansons", "chanson"],
 ];
 
 const verificateursPhase4 = [
@@ -19,12 +20,7 @@ const verificateursPhase4 = [
     "pnpm check:donnees-economiques",
 ];
 
-const domainesInternes = [
-    "chansons",
-    "musiques",
-    "oeuvres-sources",
-    "donnees-economiques",
-];
+const domainesInternes = ["musiques", "oeuvres-sources", "donnees-economiques"];
 
 const documentsPhase4 = [
     "etat-reference.md",
@@ -100,12 +96,12 @@ function verifierCorpusPublic() {
         nombreFiches += fichiersFiches.length;
     }
 
-    assert.equal(nombreEntrees, 79, "Le Codex ne publie plus 79 entrées");
-    assert.equal(nombreFiches, 79, "Le Codex ne possède plus 79 fiches");
+    assert.equal(nombreEntrees, 83, "Le Codex ne publie plus 83 entrées");
+    assert.equal(nombreFiches, 83, "Le Codex ne possède plus 83 fiches");
     assert.equal(
         routes.size,
-        79,
-        "Le Codex ne possède plus 79 routes canoniques",
+        83,
+        "Le Codex ne possède plus 83 routes canoniques",
     );
 
     return { nombreEntrees, nombreFiches, nombreRoutes: routes.size };
@@ -265,5 +261,5 @@ verifierBranchement();
 verifierTransmission();
 
 console.log(
-    `Phase 4 vérifiée : ${corpus.nombreFiches} Archives, ${corpus.nombreRoutes} routes, ${manifeste} entrées Phase 5 non migrées, ${bobines.oeuvresSources} Œuvres sources, ${bobines.chansons} Chansons, ${bobines.musiques} Musique, ${bobines.dossiersMedia} dossiers média et ${bobines.dossiersEconomiques} dossiers économiques privés.`,
+    `Phase 4 vérifiée : ${corpus.nombreFiches} Archives, ${corpus.nombreRoutes} routes, ${manifeste} entrées suivies en Phase 5, ${bobines.oeuvresSources} Œuvres sources privées, ${bobines.chansons} Chansons témoins privées, ${bobines.musiques} Musique, ${bobines.dossiersMedia} dossiers média et ${bobines.dossiersEconomiques} dossiers économiques privés.`,
 );

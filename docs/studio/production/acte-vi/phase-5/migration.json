@@ -26,9 +26,9 @@
         "retrospectiveSongs": 4
     },
     "projection": {
-        "publicFamilies": 4,
-        "publicEntries": 79,
-        "publicRoutes": 79
+        "publicFamilies": 5,
+        "publicEntries": 83,
+        "publicRoutes": 83
     },
     "statusContract": {
         "a-faire": "Entrée mesurée, aucun verdict de Phase 5 encore rendu.",
@@ -38,12 +38,12 @@
         "reportee": "Condition de reprise nommée pour une phase ultérieure."
     },
     "progress": {
-        "a-faire": 69,
+        "a-faire": 65,
         "en-cours": 0,
-        "migree": 0,
+        "migree": 4,
         "inchangee": 0,
         "reportee": 0,
-        "verdicts": 0
+        "verdicts": 4
     },
     "entries": [
         {
@@ -1209,11 +1209,25 @@
                 "exception": "nouvelle-entree-phase-5"
             },
             "train": "5B",
-            "status": "a-faire",
-            "verdict": null,
-            "files": [],
-            "sources": [],
-            "checks": [],
+            "status": "migree",
+            "verdict": "La chanson rétrospective rejoint le cinquième catalogue public avec son identité originale, sa forme française, ses auteurs, son occurrence et ses sources, sans parole ni média.",
+            "files": [
+                "src/data/catalogues/chansons.json",
+                "src/data/chansons/whistle-while-you-work.json",
+                "src/app/chansons/[slug]/page.tsx"
+            ],
+            "sources": [
+                "d23-frank-churchill",
+                "nypl-snow-white-score",
+                "afi-snow-white",
+                "fr-bnf-snow-white-songs"
+            ],
+            "checks": [
+                "pnpm check:chansons",
+                "pnpm check:identites",
+                "pnpm check:phase-5",
+                "pnpm build"
+            ],
             "reservations": []
         },
         {
@@ -1227,11 +1241,25 @@
                 "exception": "nouvelle-entree-phase-5"
             },
             "train": "5B",
-            "status": "a-faire",
-            "verdict": null,
-            "files": [],
-            "sources": [],
-            "checks": [],
+            "status": "migree",
+            "verdict": "La chanson rétrospective rejoint le cinquième catalogue public ; la graphie française identique est portée par la provenance plutôt que dupliquée comme alias.",
+            "files": [
+                "src/data/catalogues/chansons.json",
+                "src/data/chansons/heigh-ho.json",
+                "src/app/chansons/[slug]/page.tsx"
+            ],
+            "sources": [
+                "d23-frank-churchill",
+                "nypl-snow-white-score",
+                "afi-snow-white",
+                "fr-bnf-snow-white-songs"
+            ],
+            "checks": [
+                "pnpm check:chansons",
+                "pnpm check:identites",
+                "pnpm check:phase-5",
+                "pnpm build"
+            ],
             "reservations": []
         },
         {
@@ -1245,11 +1273,25 @@
                 "exception": "nouvelle-entree-phase-5"
             },
             "train": "5B",
-            "status": "a-faire",
-            "verdict": null,
-            "files": [],
-            "sources": [],
-            "checks": [],
+            "status": "migree",
+            "verdict": "La chanson rétrospective rejoint le cinquième catalogue public avec une identité française documentée et une occurrence bornée à l’œuvre de 1937.",
+            "files": [
+                "src/data/catalogues/chansons.json",
+                "src/data/chansons/someday-my-prince-will-come.json",
+                "src/app/chansons/[slug]/page.tsx"
+            ],
+            "sources": [
+                "d23-frank-churchill",
+                "nypl-snow-white-score",
+                "afi-snow-white",
+                "fr-bnf-snow-white-songs"
+            ],
+            "checks": [
+                "pnpm check:chansons",
+                "pnpm check:identites",
+                "pnpm check:phase-5",
+                "pnpm build"
+            ],
             "reservations": []
         },
         {
@@ -1263,11 +1305,26 @@
                 "exception": "nouvelle-entree-phase-5"
             },
             "train": "5B",
-            "status": "a-faire",
-            "verdict": null,
-            "files": [],
-            "sources": [],
-            "checks": [],
+            "status": "migree",
+            "verdict": "La chanson rétrospective rejoint le cinquième catalogue public ; l’adaptation française de 1949 reste explicitement distincte de l’occurrence filmique de 1933.",
+            "files": [
+                "src/data/catalogues/chansons.json",
+                "src/data/chansons/whos-afraid-of-the-big-bad-wolf.json",
+                "src/app/chansons/[slug]/page.tsx"
+            ],
+            "sources": [
+                "fr-bnf-big-bad-wolf-song",
+                "d23-three-little-pigs",
+                "d23-three-little-pigs-released",
+                "d23-frank-churchill",
+                "d23-pinto-colvig"
+            ],
+            "checks": [
+                "pnpm check:chansons",
+                "pnpm check:identites",
+                "pnpm check:phase-5",
+                "pnpm build"
+            ],
             "reservations": []
         },
         {

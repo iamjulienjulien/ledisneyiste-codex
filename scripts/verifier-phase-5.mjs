@@ -53,7 +53,12 @@ const statuts = new Set([
 
 const trains = new Set(["5B", "5C", "5D", "5E", "5F"]);
 
-const documentsTrain5A = ["etat-reference.md", "migration.json", "train-5a.md"];
+const documentsPhase5 = [
+    "etat-reference.md",
+    "migration.json",
+    "train-5a.md",
+    "train-5b.md",
+];
 
 function chemin(...segments) {
     return path.join(racine, ...segments);
@@ -343,10 +348,10 @@ function verifierBranchement() {
 function verifierTransmission() {
     const dossier = chemin("docs/studio/production/acte-vi/phase-5");
 
-    for (const document of documentsTrain5A) {
+    for (const document of documentsPhase5) {
         assert.ok(
             existsSync(path.join(dossier, document)),
-            `Transmission du Train 5A absente : ${document}`,
+            `Transmission de la Phase 5 absente : ${document}`,
         );
     }
 }

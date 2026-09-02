@@ -6,7 +6,8 @@
         "createurs": 32,
         "oeuvres": 23,
         "epoques": 2,
-        "total": 79
+        "chansons": 4,
+        "total": 83
     },
     "routes": [
         "/personnages/oswald-le-lapin-chanceux",
@@ -87,7 +88,11 @@
         "/oeuvres/mr-duck-steps-out",
         "/oeuvres/bone-trouble",
         "/epoques/temps-des-pionniers",
-        "/epoques/temps-des-chefs-d-oeuvre"
+        "/epoques/temps-des-chefs-d-oeuvre",
+        "/chansons/whistle-while-you-work",
+        "/chansons/heigh-ho",
+        "/chansons/someday-my-prince-will-come",
+        "/chansons/whos-afraid-of-the-big-bad-wolf"
     ],
     "aliasTemoin": {
         "chemin": "/fixture/personnages/reine",

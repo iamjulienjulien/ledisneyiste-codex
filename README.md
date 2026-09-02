@@ -5,9 +5,9 @@
 **Le Codex du Disneyiste** est l’espace numérique du projet éditorial
 **Le Disneyiste**.
 
-Il documente Disney à travers ses personnages, ses créateurs, ses œuvres et les
-relations qui les relient, avec l’ambition de construire progressivement un
-atlas éditorial de cet imaginaire culturel.
+Il documente Disney à travers ses personnages, ses créateurs, ses œuvres, ses
+époques, ses chansons et les relations qui les relient, avec l’ambition de
+construire progressivement un atlas éditorial de cet imaginaire culturel.
 
 Le projet est personnel, indépendant et non officiel.
 
@@ -23,7 +23,7 @@ dans le [`Journal de projection`](./CHANGELOG.md).
 Le Codex est développé progressivement à partir d’objets réels plutôt qu’à
 partir d’une architecture encyclopédique définie à l’avance.
 
-Le catalogue actuel réunit **79 fiches documentaires** réparties dans quatre
+Le catalogue actuel réunit **83 fiches documentaires** réparties dans cinq
 familles :
 
 - 22 Personnages, des précurseurs au cercle de Mickey et aux figures de
@@ -33,14 +33,17 @@ familles :
 - 23 Œuvres qui racontent les origines du studio, la fabrication de
   _Blanche-Neige et les Sept Nains_ et ses premiers prolongements ;
 - 2 Époques qui couvrent les années 1923 à 1942.
+- 4 Chansons qui ouvrent leur vie publique, de la création aux interprétations
+  documentées.
 
-Ces fiches sont reliées entre elles, rattachées automatiquement à leur Époque
-et développées à partir de sources centralisées. Leurs 176 blocs éditoriaux
-emploient une première collection de symboles illustrés. Le registre central
-réunit désormais 432 symboles dans 6 registres et 30 collections. Quatorze récompenses
+Ces fiches sont reliées entre elles et développées à partir de sources
+centralisées ; les archives concernées sont également rattachées
+automatiquement à leur Époque. Leurs 176 blocs éditoriaux emploient une
+première collection de symboles illustrés. Le registre central réunit désormais
+432 symboles dans 6 registres et 30 collections. Quatorze récompenses
 documentent également les premières distinctions du studio.
 
-Les quatre index proposent une vue Cartes par défaut et une vue Liste
+Les cinq index proposent une vue Cartes par défaut et une vue Liste
 partageable par son URL. Les fiches héritent de l'identité de leur famille,
 leurs métadonnées sont matérialisées par des badges et une première recherche
 globale interroge directement les catalogues.
@@ -51,10 +54,10 @@ prête à projeter, et le Guidebook, qui met la documentation transmissible en
 lecture sans l’ouvrir au site de production.
 
 L’Acte VI prépare désormais la vie publique des œuvres avec des contrats
-internes pour leur circulation, leurs versions, leurs réceptions, leurs œuvres
-sources, leurs chansons et leurs mesures économiques. Ces modèles sont
-éprouvés sur des fixtures privées : ils n’ajoutent encore ni famille, ni route,
-ni Archive au catalogue public.
+spécialisés pour leur circulation, leurs versions, leurs réceptions, leurs
+œuvres sources, leurs chansons et leurs mesures économiques. Le Train 5B a
+promu quatre Chansons en cinquième famille publique ; les autres domaines
+encore internes continuent d’être éprouvés sur des fixtures privées.
 
 ---
 
@@ -205,11 +208,11 @@ complètes restent centralisées dans [`AGENTS.md`](./AGENTS.md).
 
 ## Montage partagé des index et des fiches
 
-### Une même ossature pour les quatre index
+### Une même ossature pour les cinq index
 
 `CodexIndexPage` compose le cadre commun des index Personnages, Créateurs,
-Œuvres et Époques. À partir d'une famille issue du type global `CodexFamily`,
-il règle :
+Œuvres, Époques et Chansons. À partir d'une famille issue du type global
+`CodexFamily`, il règle :
 
 - le fond de scène et le symbole de l'en-tête ;
 - la couleur d'identité de la famille ;
@@ -256,7 +259,7 @@ relations, les récompenses et les sources l'utilisent tous.
 
 Leur contenu intérieur reste spécialisé — paragraphes, listes, définitions,
 cartes de trophées ou références — tandis que la hiérarchie documentaire et le
-rythme visuel demeurent communs aux quatre familles.
+rythme visuel demeurent communs aux cinq familles.
 
 ---
 
@@ -271,6 +274,7 @@ Les catalogues décrivent les entrées disponibles :
 
 ```text
 src/data/catalogues/
+├── chansons.json
 ├── contributeurs.json
 ├── epoques.json
 ├── oeuvres.json
@@ -289,6 +293,7 @@ src/data/contributeurs/
 src/data/epoques/
 src/data/oeuvres/
 src/data/personnages/
+src/data/chansons/
 ```
 
 Chaque famille possède son propre modèle métier.
@@ -319,7 +324,7 @@ des métiers dans les primitives Pixie.
 
 ### Contrats documentaires internes
 
-Les prochains enrichissements sont préparés dans des contrats spécialisés :
+Les enrichissements documentaires sont préparés dans des contrats spécialisés :
 
 ```text
 src/types/circulation-oeuvre.ts
@@ -334,10 +339,11 @@ Ils distinguent notamment sortie, version, exploitation et réception ; œuvre
 Disney et œuvre source ; composition, occurrence, interprétation et
 enregistrement ; donnée économique originale et dérivation calculée.
 
-Leurs cas d’essai restent sous `scripts/fixtures`. Les domaines Œuvres sources,
-Chansons et Musiques ne possèdent encore ni catalogue ni route publique. Les
-dossiers de droits et d’enquête restent privés ; leurs projections recopient
-uniquement la matière explicitement autorisée.
+Leurs cas d’essai restent sous `scripts/fixtures`. Les Chansons possèdent
+désormais leur catalogue, leurs quatre fiches et leurs routes publiques ; les
+Œuvres sources et les Musiques restent internes. Les dossiers de droits et
+d’enquête demeurent privés ; leurs projections recopient uniquement la matière
+explicitement autorisée.
 
 ### Citations dans les chapitres et les repères
 
@@ -445,13 +451,14 @@ Une seconde palette complète la Projection Originale. Elle ne colore pas les
 surfaces générales : elle qualifie les familles éditoriales, les métadonnées,
 les badges et les symboles.
 
-Les quatre familles possèdent ainsi leur propre repère :
+Les cinq familles possèdent ainsi leur propre repère :
 
 ```text
 Personnages → rouge crayon
 Créateurs   → jaune lampe
 Œuvres      → gouache
 Époques     → vert cellulo
+Chansons    → rose aérographe
 ```
 
 Les tokens de référence sont séparés par palette dans :
@@ -477,7 +484,7 @@ IBM Plex Mono → code, types et tokens de l’Atelier
 ```
 
 La page d’accueil ouvre la projection dans un grand carton composé par
-`PixieCard` et `PixieBackdrop`. Son récit se concentre ensuite sur les quatre
+`PixieCard` et `PixieBackdrop`. Son récit se concentre ensuite sur les cinq
 portes du Codex : leurs cartes Pixie partagent une même hauteur, alignent leurs
 appels à l’action, affichent leur compteur dans un badge et font apparaître un
 halo de projecteur au survol.
@@ -590,9 +597,11 @@ comme Sujet réel commun :
   Archives.
 
 Les Plans partagent une grammaire centrale dans `src/registry/plans` et
-`src/types/codex-plans.ts`. Leur Sujet est toujours une entrée publiée dans les
-catalogues Personnages, Créateurs, Œuvres ou Époques ; les Bobines témoins et les
-verdicts expérimentaux restent explicitement séparés des Archives.
+`src/types/codex-plans.ts`. Leur Sujet demeure volontairement limité à une
+entrée publiée dans les catalogues Personnages, Créateurs, Œuvres ou Époques :
+la nouvelle famille Chansons n’élargit pas implicitement ce contrat. Les
+Bobines témoins et les verdicts expérimentaux restent explicitement séparés
+des Archives.
 
 La couche pure `src/lib/plans` dérive les nœuds, relations, événements,
 crédits et preuves nécessaires aux cinq lectures. Les modèles propres à chaque
@@ -770,9 +779,10 @@ de matière dérivée, les huit Bobines témoins et les projections propres aux
 cinq prototypes. Les contrôles suivants vérifient les métadonnées des
 catalogues, le modèle des Œuvres et sa fixture de long métrage, les Œuvres
 sources privées, les Chansons et les droits média, les mesures économiques et
-leur frontière de publication. `check:phase-4` confirme enfin que les 79
-Archives et routes restent stables, que les domaines internes ne sont pas
-publiés et que les 69 entrées de la Phase 5 ne sont pas déclarées migrées. Les
+leur frontière de publication. `check:phase-4` confirme désormais les 83
+Archives et routes des cinq familles, protège les domaines encore internes et
+conserve les 69 entrées de la Phase 5, dont quatre Chansons portent un verdict
+de migration. Les
 derniers contrôles couvrent les variantes de noms et les formes des
 Personnages, la cohérence des références et des relations, puis les
 récompenses, leurs bénéficiaires, leurs sources et leurs trophées illustrés.

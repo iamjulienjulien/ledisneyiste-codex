@@ -612,23 +612,26 @@ assert.ok(
     "La matière d’un dossier incomplet atteint le navigateur",
 );
 
-assert.equal(
-    existsSync(path.join(racine, "src/data/catalogues/chansons.json")),
-    false,
-    "Un catalogue Chansons public a été créé pendant la Phase 4",
+const cataloguePublic = lireJson("src/data/catalogues/chansons.json");
+assert.equal(cataloguePublic.length, 4);
+assert.deepEqual(
+    cataloguePublic.map((chanson) => chanson.slug),
+    [
+        "whistle-while-you-work",
+        "heigh-ho",
+        "someday-my-prince-will-come",
+        "whos-afraid-of-the-big-bad-wolf",
+    ],
 );
-assert.equal(
-    existsSync(path.join(racine, "src/app/chansons")),
-    false,
-    "Une route Chansons publique a été créée pendant la Phase 4",
-);
+assert.ok(existsSync(path.join(racine, "src/app/chansons/page.tsx")));
+assert.ok(existsSync(path.join(racine, "src/app/chansons/[slug]/page.tsx")));
 const contratFamilles = readFileSync(
     path.join(racine, "src/types/codex.ts"),
     "utf8",
 );
 assert.ok(
-    !contratFamilles.includes('"chansons"'),
-    "CodexFamily a été étendu prématurément",
+    contratFamilles.includes('"chansons"'),
+    "CodexFamily n’expose pas encore la cinquième famille",
 );
 
 const packageJson = lireJson("package.json");
@@ -647,5 +650,5 @@ for (const script of ["check", "check:ci"]) {
 }
 
 console.log(
-    `Chansons vérifiées : ${fixture.fiches.length} fiches privées, ${fixture.musiques.length} contrat Musique, ${fixture.dossiersMedia.length} dossiers média.`,
+    `Chansons vérifiées : ${cataloguePublic.length} fiches publiques, ${fixture.fiches.length} fiches témoins privées, ${fixture.musiques.length} contrat Musique et ${fixture.dossiersMedia.length} dossiers média privés.`,
 );

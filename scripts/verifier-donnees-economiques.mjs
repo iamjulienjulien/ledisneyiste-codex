@@ -391,7 +391,13 @@ assert.ok(
     "Une conversion hypothétique remplace la valeur nominale",
 );
 
-const nombreFiches = ["personnages", "contributeurs", "oeuvres", "epoques"]
+const nombreFiches = [
+    "personnages",
+    "contributeurs",
+    "oeuvres",
+    "epoques",
+    "chansons",
+]
     .map(
         (famille) =>
             readdirSync(path.join(racine, "src/data", famille)).filter(
@@ -399,7 +405,7 @@ const nombreFiches = ["personnages", "contributeurs", "oeuvres", "epoques"]
             ).length,
     )
     .reduce((total, nombre) => total + nombre, 0);
-assert.equal(nombreFiches, 79, "Le corpus public ne compte plus 79 fiches");
+assert.equal(nombreFiches, 83, "Le corpus public ne compte plus 83 fiches");
 assert.equal(
     existsSync(
         path.join(racine, "src/data/catalogues/donnees-economiques.json"),

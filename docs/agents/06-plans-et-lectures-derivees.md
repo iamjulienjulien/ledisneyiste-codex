@@ -221,12 +221,13 @@ Le Sujet est une entrée publiée :
 
 ```ts
 type CodexPlanSubject = Readonly<{
-    family: CodexFamily;
+    family: CodexPlanSubjectFamily;
     slug: string;
 }>;
 ```
 
-Les quatre familles actuellement admises sont :
+`CodexPlanSubjectFamily` exclut volontairement `chansons` du type global
+`CodexFamily`. Les quatre familles actuellement admises comme Sujets sont :
 
 - `personnages` ;
 - `createurs` ;
@@ -336,7 +337,7 @@ précise.
 
 [`codexPlanArchives`](../../src/lib/plans/archives.ts) rassemble :
 
-- les quatre catalogues ;
+- les quatre catalogues admis comme Sujets de Plans ;
 - les fiches détaillées correspondantes ;
 - le registre des récompenses ;
 - le registre des sources.

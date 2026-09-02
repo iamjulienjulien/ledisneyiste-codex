@@ -5,7 +5,13 @@ import ts from "typescript";
 
 const racine = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
-const familles = new Set(["personnages", "createurs", "oeuvres", "epoques"]);
+const familles = new Set([
+    "personnages",
+    "createurs",
+    "oeuvres",
+    "epoques",
+    "chansons",
+]);
 const natures = new Set([
     "original",
     "localise",
@@ -529,6 +535,11 @@ async function verifierJointuresArchives(projeterIdentiteCodex, erreurs) {
             catalogue: "src/data/catalogues/epoques.json",
             dossier: "src/data/epoques",
         },
+        {
+            famille: "chansons",
+            catalogue: "src/data/catalogues/chansons.json",
+            dossier: "src/data/chansons",
+        },
     ];
     const projections = new Map();
 
@@ -699,6 +710,17 @@ function verifierRechercheIdentitaire(projections, moduleRecherche, erreurs) {
             "oeuvres",
             "snow-white-and-the-seven-dwarfs",
         ],
+        ["Siffler en travaillant", "chansons", "whistle-while-you-work"],
+        [
+            "Un jour mon prince viendra",
+            "chansons",
+            "someday-my-prince-will-come",
+        ],
+        [
+            "Qui craint le grand méchant loup",
+            "chansons",
+            "whos-afraid-of-the-big-bad-wolf",
+        ],
     ];
 
     for (const [requete, famille, slugAttendu] of scenarios) {
@@ -789,6 +811,12 @@ async function verifierRoutesEtAliases(
             catalogue: "src/data/catalogues/epoques.json",
             page: "src/app/epoques/[slug]/page.tsx",
         },
+        {
+            famille: "chansons",
+            segment: "chansons",
+            catalogue: "src/data/catalogues/chansons.json",
+            page: "src/app/chansons/[slug]/page.tsx",
+        },
     ];
     const routesActuelles = [];
     const totauxActuels = {};
@@ -862,10 +890,10 @@ async function verifierRoutesEtAliases(
     }
     if (
         routesActuelles.length !== totauxAttendus.total ||
-        routesActuelles.length !== 79
+        routesActuelles.length !== 83
     ) {
         erreurs.push(
-            `Routes canoniques : 79 routes attendues, ${routesActuelles.length} obtenues`,
+            `Routes canoniques : 83 routes attendues, ${routesActuelles.length} obtenues`,
         );
     }
 
@@ -1018,7 +1046,7 @@ async function verifier() {
         verifierDefinition(definition, `Territoire ${code}`, erreurs);
     }
 
-    const identitesPersonnages = await verifierFiches(
+    await verifierFiches(
         "src/data/personnages",
         "src/data/catalogues/personnages.json",
         "nomsAlternatifs",
@@ -1028,7 +1056,7 @@ async function verifier() {
         idsSources,
         erreurs,
     );
-    const identitesOeuvres = await verifierFiches(
+    await verifierFiches(
         "src/data/oeuvres",
         "src/data/catalogues/oeuvres.json",
         "titresAlternatifs",
@@ -1147,8 +1175,13 @@ async function verifier() {
         return;
     }
 
+    const formesDocumentees = [...projections.values()].reduce(
+        (total, projection) => total + projection.documentees.length,
+        0,
+    );
+
     console.log(
-        `Identités vérifiées : ${langues.size} langues, ${territoires.size} territoires, ${identitesPersonnages + identitesOeuvres} formes documentées, ${projections.size} jointures catalogue–fiche, ${fixture.projections.length} projections témoins, ${affichagesIdentitaires} affichages identitaires, ${surfacesIdentitaires} surfaces et montages, ${scenariosRecherche} requêtes identitaires, ${navigation.routes} routes canoniques et ${navigation.aliases} redirection témoin.`,
+        `Identités vérifiées : ${langues.size} langues, ${territoires.size} territoires, ${formesDocumentees} formes documentées, ${projections.size} jointures catalogue–fiche, ${fixture.projections.length} projections témoins, ${affichagesIdentitaires} affichages identitaires, ${surfacesIdentitaires} surfaces et montages, ${scenariosRecherche} requêtes identitaires, ${navigation.routes} routes canoniques et ${navigation.aliases} redirection témoin.`,
     );
 }
 

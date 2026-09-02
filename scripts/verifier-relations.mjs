@@ -25,6 +25,11 @@ const familles = [
         catalogue: "src/data/catalogues/epoques.json",
         dossier: "src/data/epoques",
     },
+    {
+        type: "chanson",
+        catalogue: "src/data/catalogues/chansons.json",
+        dossier: "src/data/chansons",
+    },
 ];
 
 async function lireJson(chemin) {
@@ -255,6 +260,48 @@ async function verifier() {
                             }
                             relations.add(cle);
                         });
+                    }
+                }
+            }
+
+            if (famille.type === "chanson") {
+                verifierReference(
+                    fiche.oeuvreOrigine,
+                    `${contexte} · œuvre d’origine`,
+                    catalogues,
+                    erreurs,
+                );
+                referencesVerifiees += 1;
+
+                for (const [index, auteur] of fiche.auteurs.entries()) {
+                    verifierReference(
+                        auteur.personne,
+                        `${contexte} · auteur ${index + 1}`,
+                        catalogues,
+                        erreurs,
+                    );
+                    referencesVerifiees += 1;
+                }
+
+                for (const [index, occurrence] of fiche.occurrences.entries()) {
+                    verifierReference(
+                        occurrence.oeuvre,
+                        `${contexte} · occurrence ${index + 1}`,
+                        catalogues,
+                        erreurs,
+                    );
+                    referencesVerifiees += 1;
+                }
+
+                for (const interpretation of fiche.interpretations) {
+                    for (const attribution of interpretation.interpretes) {
+                        verifierReference(
+                            attribution.personne,
+                            `${contexte} · interprétation ${interpretation.id}`,
+                            catalogues,
+                            erreurs,
+                        );
+                        referencesVerifiees += 1;
                     }
                 }
             }
