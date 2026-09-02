@@ -1,0 +1,66 @@
+{
+    "slug": "gedeon",
+    "type": "personnage",
+    "introduction": "Gédéon accompagne Grand Coquin dans les marchés qui détournent Pinocchio de son chemin. Là où le renard construit la combine par la parole, le chat répond par le geste, l’hésitation et l’accident. Son silence ne l’efface pas : il donne au duo un second rythme et laisse voir, derrière la mécanique de l’escroquerie, une personnalité moins assurée que celle de son partenaire.",
+    "nomsAlternatifs": [
+        {
+            "nom": "Gideon",
+            "nature": "original",
+            "langue": "en",
+            "sources": ["us-afi-catalog-pinocchio"]
+        },
+        {
+            "nom": "Il Gatto",
+            "nature": "localise",
+            "langue": "it",
+            "territoire": "IT",
+            "sources": ["it-collodi-critical-text"]
+        }
+    ],
+    "creation": {
+        "date": { "valeur": "1940", "precision": "annee" },
+        "createurs": [
+            {
+                "nom": "Carlo Collodi",
+                "type": "contributeur",
+                "slug": "carlo-collodi"
+            },
+            {
+                "nom": "Norman Ferguson",
+                "type": "contributeur",
+                "slug": "norman-ferguson"
+            }
+        ]
+    },
+    "premiereApparition": {
+        "oeuvre": {
+            "nom": "Pinocchio",
+            "type": "oeuvre",
+            "slug": "pinocchio"
+        },
+        "date": { "valeur": "1940-02-07", "precision": "jour" }
+    },
+    "espece": "chat anthropomorphe",
+    "blocsEditoriaux": [
+        {
+            "type": "relations",
+            "eyebrow": "Duo",
+            "titre": "Répondre au discours par tout le corps",
+            "paragraphes": [
+                "Grand Coquin mène la conversation, mais Gédéon fait exister les silences, les ratés et les réactions qui donnent au duo sa cadence. Le film les associe sans rendre leurs identités interchangeables.",
+                "Cette matière demeure principalement relationnelle : la fiche conserve donc un cadre léger, suffisant pour publier Gédéon sans lui inventer une trajectoire autonome."
+            ],
+            "sources": [
+                "us-afi-catalog-pinocchio",
+                "us-loc-pinocchio-essay",
+                "fr-cinematheque-pinocchio"
+            ]
+        }
+    ],
+    "sources": [
+        "us-afi-catalog-pinocchio",
+        "us-loc-pinocchio-essay",
+        "fr-cinematheque-pinocchio",
+        "it-collodi-critical-text"
+    ]
+}

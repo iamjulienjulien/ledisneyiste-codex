@@ -1,0 +1,82 @@
+{
+    "slug": "grand-coquin",
+    "type": "personnage",
+    "introduction": "Grand Coquin transforme chaque aspiration de Pinocchio en marchandise. Avec Gédéon, il détourne le pantin de l’école, le vend à Stromboli puis le livre au Cocher en présentant toujours le piège comme une occasion. Son éloquence et son allure théâtrale donnent une forme comique à la manipulation, mais la répétition de ses marchés révèle une menace précise : il ne voit dans la liberté de Pinocchio qu’une valeur dont quelqu’un d’autre peut tirer profit.",
+    "nomsAlternatifs": [
+        {
+            "nom": "Honest John",
+            "nature": "original",
+            "langue": "en",
+            "sources": ["us-afi-catalog-pinocchio"]
+        },
+        {
+            "nom": "La Volpe",
+            "nature": "localise",
+            "langue": "it",
+            "territoire": "IT",
+            "sources": ["it-collodi-critical-text"]
+        }
+    ],
+    "creation": {
+        "date": { "valeur": "1940", "precision": "annee" },
+        "createurs": [
+            {
+                "nom": "Carlo Collodi",
+                "type": "contributeur",
+                "slug": "carlo-collodi"
+            },
+            {
+                "nom": "Norman Ferguson",
+                "type": "contributeur",
+                "slug": "norman-ferguson"
+            },
+            {
+                "nom": "John Lounsbery",
+                "type": "contributeur",
+                "slug": "john-lounsbery"
+            }
+        ]
+    },
+    "premiereApparition": {
+        "oeuvre": {
+            "nom": "Pinocchio",
+            "type": "oeuvre",
+            "slug": "pinocchio"
+        },
+        "date": { "valeur": "1940-02-07", "precision": "jour" }
+    },
+    "espece": "renard anthropomorphe",
+    "blocsEditoriaux": [
+        {
+            "type": "genese",
+            "eyebrow": "Adaptation",
+            "titre": "Donner au Renard de Collodi la voix d’un bonimenteur",
+            "paragraphes": [
+                "Le film reprend le Renard et le Chat du livre, mais leur confie une place continue dans les détours de Pinocchio. Grand Coquin devient l’orateur du duo : il interprète les désirs du pantin et leur donne aussitôt la forme d’un contrat avantageux pour lui-même.",
+                "Norman Ferguson et John Lounsbery participent à faire tenir ensemble la souplesse du renard, son assurance de comédien et les changements brusques qui trahissent la combine sous le discours.",
+                "Son nom original, Honest John, installe l’ironie dès l’identité. Plus il affirme sa respectabilité, plus le récit montre qu’il transforme les autres en objets d’échange."
+            ],
+            "sources": [
+                "us-afi-catalog-pinocchio",
+                "us-loc-pinocchio-essay",
+                "it-collodi-critical-text"
+            ]
+        },
+        {
+            "type": "relations",
+            "eyebrow": "Duo",
+            "titre": "Parler pour deux sans effacer Gédéon",
+            "paragraphes": [
+                "Grand Coquin conduit les opérations et Gédéon répond par le corps, le regard ou l’accident. Cette asymétrie donne au duo son rythme, mais elle ne transforme pas le chat en simple accessoire du renard.",
+                "Le Codex conserve donc deux Archives. Elles partagent des scènes et une fonction d’antagonistes, tout en gardant des identités, des silhouettes et des modes d’expression distincts."
+            ],
+            "sources": ["us-afi-catalog-pinocchio", "fr-cinematheque-pinocchio"]
+        }
+    ],
+    "sources": [
+        "us-afi-catalog-pinocchio",
+        "us-loc-pinocchio-essay",
+        "fr-cinematheque-pinocchio",
+        "it-collodi-critical-text"
+    ]
+}

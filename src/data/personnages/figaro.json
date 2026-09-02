@@ -1,0 +1,31 @@
+{
+    "slug": "figaro",
+    "type": "personnage",
+    "introduction": "Figaro commence comme le chaton de Geppetto, dont les réactions donnent à l’atelier une vie domestique avant l’arrivée de Pinocchio. Son autonomie se mesure surtout après le film : il rejoint une série de sept courts métrages et partage notamment Figaro and Cleo avec le poisson rouge de la maison. Cette continuité justifie une fiche légère pour Figaro sans entraîner artificiellement la création d’une route pour Cléo.",
+    "creation": {
+        "date": { "valeur": "1940", "precision": "annee" },
+        "createurs": [{ "nom": "Walt Disney Studios" }]
+    },
+    "premiereApparition": {
+        "oeuvre": {
+            "nom": "Pinocchio",
+            "type": "oeuvre",
+            "slug": "pinocchio"
+        },
+        "date": { "valeur": "1940-02-07", "precision": "jour" }
+    },
+    "espece": "chat domestique",
+    "blocsEditoriaux": [
+        {
+            "type": "heritage",
+            "eyebrow": "Après Pinocchio",
+            "titre": "Gagner une série sans emporter Cléo dans une fausse autonomie",
+            "paragraphes": [
+                "Les Walt Disney Archives recensent sept apparitions supplémentaires de Figaro après Pinocchio. Le chaton quitte ainsi le seul foyer de Geppetto et devient le centre de ses propres situations comiques.",
+                "Figaro and Cleo, sorti le 15 octobre 1943, documente une relation durable entre le chat et le poisson rouge. Cléo reste pourtant une relation sans route : cette apparition n’établit pas à elle seule un deuxième axe documentaire autonome."
+            ],
+            "sources": ["us-d23-figaro", "us-d23-figaro-and-cleo"]
+        }
+    ],
+    "sources": ["us-d23-figaro", "us-d23-figaro-and-cleo"]
+}

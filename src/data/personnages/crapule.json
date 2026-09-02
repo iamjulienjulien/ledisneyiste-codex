@@ -1,0 +1,61 @@
+{
+    "slug": "crapule",
+    "type": "personnage",
+    "introduction": "Crapule accueille Pinocchio sur l’Île enchantée avec l’assurance d’un garçon qui croit déjà connaître toutes les règles qu’il transgresse. Nommé Lampwick dans la version originale, il fume, joue au billard et se moque de Jiminy avant que sa métamorphose en âne ne transforme cette désinvolture en peur. Fred Moore anime cette confiance physique jusque dans le moment où le personnage ne peut plus maintenir son rôle de mauvais camarade invulnérable.",
+    "nomsAlternatifs": [
+        {
+            "nom": "Lampwick",
+            "nature": "original",
+            "langue": "en",
+            "sources": ["us-wdfm-pool-hall", "fr-cinematheque-pinocchio"]
+        },
+        {
+            "nom": "Lucignolo",
+            "nature": "localise",
+            "langue": "it",
+            "territoire": "IT",
+            "sources": ["it-collodi-critical-text"]
+        }
+    ],
+    "creation": {
+        "date": { "valeur": "1940", "precision": "annee" },
+        "createurs": [
+            {
+                "nom": "Carlo Collodi",
+                "type": "contributeur",
+                "slug": "carlo-collodi"
+            },
+            {
+                "nom": "Fred Moore",
+                "type": "contributeur",
+                "slug": "fred-moore"
+            }
+        ]
+    },
+    "premiereApparition": {
+        "oeuvre": {
+            "nom": "Pinocchio",
+            "type": "oeuvre",
+            "slug": "pinocchio"
+        },
+        "date": { "valeur": "1940-02-07", "precision": "jour" }
+    },
+    "espece": "humain transformé en âne",
+    "blocsEditoriaux": [
+        {
+            "type": "gestuelle",
+            "eyebrow": "Billard",
+            "titre": "Laisser l’assurance se briser dans le mouvement",
+            "paragraphes": [
+                "Fred Moore donne à Lampwick des poses fluides et une confiance presque élégante dans la séquence du billard. Ce calme contraste avec la colère de Jiminy et l’hésitation de Pinocchio.",
+                "Lorsque la métamorphose commence, le personnage perd successivement cette maîtrise, sa voix et sa forme humaine. Le nom français Crapule reste attaché aux doublages de 1946 et 1975 ; Lampwick demeure l’identité originale de la même Archive."
+            ],
+            "sources": ["us-wdfm-pool-hall", "fr-cinematheque-pinocchio"]
+        }
+    ],
+    "sources": [
+        "us-wdfm-pool-hall",
+        "fr-cinematheque-pinocchio",
+        "it-collodi-critical-text"
+    ]
+}

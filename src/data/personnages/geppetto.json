@@ -1,0 +1,57 @@
+{
+    "slug": "geppetto",
+    "type": "personnage",
+    "introduction": "Geppetto fabrique un pantin et découvre un fils qu’aucun mécanisme ne peut régler à sa place. L’adaptation conserve l’artisan de Collodi, mais place son vœu, son foyer et sa recherche au centre du parcours affectif du film. Son atelier donne d’abord vie aux objets par le geste ; la Fée Bleue répond ensuite à ce désir en donnant à Pinocchio la possibilité de choisir. Lorsque le pantin disparaît, Geppetto quitte enfin la sécurité de ses horloges pour le chercher jusque dans le ventre de Monstro.",
+    "creation": {
+        "date": { "valeur": "1940", "precision": "annee" },
+        "createurs": [
+            {
+                "nom": "Carlo Collodi",
+                "type": "contributeur",
+                "slug": "carlo-collodi"
+            }
+        ]
+    },
+    "premiereApparition": {
+        "oeuvre": {
+            "nom": "Pinocchio",
+            "type": "oeuvre",
+            "slug": "pinocchio"
+        },
+        "date": { "valeur": "1940-02-07", "precision": "jour" }
+    },
+    "espece": "humain",
+    "blocsEditoriaux": [
+        {
+            "type": "genese",
+            "eyebrow": "De Collodi à Disney",
+            "titre": "Faire du menuisier le foyer émotionnel du récit",
+            "paragraphes": [
+                "Le Geppetto de Collodi appartient déjà à l’origine du pantin et à son apprentissage. Le film resserre cette filiation autour d’un atelier chaleureux où la fabrication, le vœu et la naissance se succèdent dans une même nuit.",
+                "Les horloges, les jouets, Figaro et Cléo composent un foyer avant même que Pinocchio sache l’habiter. Cette abondance donne au personnage une vie quotidienne précise et transforme la disparition du pantin en rupture d’un monde déjà construit.",
+                "L’adaptation ne réduit pourtant pas Geppetto à l’attente. Sa recherche le conduit hors de l’atelier, puis en mer, jusqu’à ce que le père et le fils doivent agir ensemble pour sortir de Monstro."
+            ],
+            "sources": [
+                "it-collodi-critical-text",
+                "us-loc-pinocchio-essay",
+                "us-afi-catalog-pinocchio"
+            ]
+        },
+        {
+            "type": "caractere",
+            "eyebrow": "Paternité",
+            "titre": "Accepter qu’une création possède sa propre volonté",
+            "paragraphes": [
+                "Geppetto sait construire un corps articulé, mais il ne peut fabriquer d’avance la conscience qui permettra à Pinocchio de devenir un enfant. Son rôle de père commence précisément là où son savoir d’artisan s’arrête.",
+                "La joie de la naissance s’accompagne donc d’une vulnérabilité nouvelle. Chaque absence de Pinocchio met en crise l’ordre minutieux de l’atelier et oblige Geppetto à préférer la relation au contrôle.",
+                "Le sauvetage final inverse enfin le geste de fabrication : ce n’est plus Geppetto qui donne une forme au pantin, mais Pinocchio qui met sa propre vie en jeu pour préserver celle de son père."
+            ],
+            "sources": ["us-loc-pinocchio-essay", "it-collodi-critical-text"]
+        }
+    ],
+    "sources": [
+        "us-afi-catalog-pinocchio",
+        "us-loc-pinocchio-essay",
+        "it-collodi-critical-text"
+    ]
+}

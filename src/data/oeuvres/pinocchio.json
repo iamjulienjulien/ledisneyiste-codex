@@ -82,17 +82,33 @@
         }
     ],
     "personnages": [
-        { "nom": "Pinocchio" },
-        { "nom": "Jiminy Cricket" },
-        { "nom": "Geppetto" },
-        { "nom": "La Fée Bleue" },
-        { "nom": "Grand Coquin" },
-        { "nom": "Gédéon" },
-        { "nom": "Stromboli" },
-        { "nom": "Le Cocher" },
-        { "nom": "Monstro" },
-        { "nom": "Crapule" },
-        { "nom": "Figaro" },
+        { "nom": "Pinocchio", "type": "personnage", "slug": "pinocchio" },
+        {
+            "nom": "Jiminy Cricket",
+            "type": "personnage",
+            "slug": "jiminy-cricket"
+        },
+        { "nom": "Geppetto", "type": "personnage", "slug": "geppetto" },
+        {
+            "nom": "La Fée Bleue",
+            "type": "personnage",
+            "slug": "la-fee-bleue"
+        },
+        {
+            "nom": "Grand Coquin",
+            "type": "personnage",
+            "slug": "grand-coquin"
+        },
+        { "nom": "Gédéon", "type": "personnage", "slug": "gedeon" },
+        { "nom": "Stromboli", "type": "personnage", "slug": "stromboli" },
+        {
+            "nom": "Le Cocher",
+            "type": "personnage",
+            "slug": "le-cocher"
+        },
+        { "nom": "Monstro", "type": "personnage", "slug": "monstro" },
+        { "nom": "Crapule", "type": "personnage", "slug": "crapule" },
+        { "nom": "Figaro", "type": "personnage", "slug": "figaro" },
         { "nom": "Cléo" }
     ],
     "sources": [

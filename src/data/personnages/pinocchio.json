@@ -1,0 +1,58 @@
+{
+    "slug": "pinocchio",
+    "type": "personnage",
+    "introduction": "Pinocchio naît pantin dans l’atelier de Geppetto et doit apprendre à devenir responsable avant de pouvoir devenir un véritable enfant. L’adaptation Disney adoucit le héros turbulent de Collodi : Milt Kahl repense son dessin comme celui d’un petit garçon auquel les articulations de bois sont ajoutées ensuite, tandis que Dickie Jones lui prête une voix et un jeu filmé de référence. Cette apparence plus vulnérable ne supprime pas ses erreurs ; elle déplace le récit vers l’apprentissage du choix, de la vérité et du sacrifice.",
+    "creation": {
+        "date": { "valeur": "1940", "precision": "annee" },
+        "createurs": [
+            {
+                "nom": "Carlo Collodi",
+                "type": "contributeur",
+                "slug": "carlo-collodi"
+            },
+            {
+                "nom": "Milt Kahl",
+                "type": "contributeur",
+                "slug": "milt-kahl"
+            }
+        ]
+    },
+    "premiereApparition": {
+        "oeuvre": {
+            "nom": "Pinocchio",
+            "type": "oeuvre",
+            "slug": "pinocchio"
+        },
+        "date": { "valeur": "1940-02-07", "precision": "jour" }
+    },
+    "espece": "pantin de bois",
+    "blocsEditoriaux": [
+        {
+            "type": "genese",
+            "eyebrow": "Adaptation",
+            "titre": "Retrouver l’enfant sous les articulations du pantin",
+            "paragraphes": [
+                "Les premiers développements conservent un Pinocchio plus raide et plus proche du caractère provocateur du livre. Lorsque le film est repris en profondeur, son innocence devient le point d’entrée du récit et réclame une silhouette capable de susciter immédiatement l’attachement.",
+                "Milt Kahl inverse alors la méthode : il dessine d’abord un petit garçon vivant, puis réintroduit les signes du jouet — jointures, matière et proportions. Le bois reste visible, mais il ne commande plus seul le mouvement ni l’émotion.",
+                "Dickie Jones accompagne cette transformation par la voix et par des scènes jouées devant les artistes. Son interprétation donne au personnage une spontanéité enfantine que l’animation peut observer sans la recopier mécaniquement."
+            ],
+            "sources": ["us-wdfm-milt-kahl-puppeteer", "us-d23-dick-jones"]
+        },
+        {
+            "type": "trajectoire",
+            "eyebrow": "Apprentissage",
+            "titre": "Choisir entre les raccourcis et la responsabilité",
+            "paragraphes": [
+                "Chaque détour promet à Pinocchio une humanité immédiate : la scène, l’île des plaisirs ou la liberté sans règle. Grand Coquin, Stromboli, le Cocher et Crapule donnent successivement une forme séduisante à ces faux raccourcis.",
+                "Jiminy ne peut pas décider à sa place. Sa présence transforme la conscience en dialogue, mais le pantin doit encore reconnaître le mensonge, revenir vers Geppetto et agir lorsque Monstro enferme sa famille.",
+                "Le passage à l’état d’enfant ne récompense donc pas une simple obéissance. Il vient après une suite de choix où Pinocchio apprend à mettre la vie des autres avant sa propre sécurité."
+            ],
+            "sources": ["it-treccani-pinocchio", "us-d23-dick-jones"]
+        }
+    ],
+    "sources": [
+        "us-wdfm-milt-kahl-puppeteer",
+        "us-d23-dick-jones",
+        "it-treccani-pinocchio"
+    ]
+}

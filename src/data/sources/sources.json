@@ -1608,5 +1608,72 @@
         "datePublication": "2024-05",
         "url": "https://www.fondazionecollodi.it/it/elenco-traduzioni-edizioni-pinocchio",
         "dateConsultation": "2026-09-01"
+    },
+    {
+        "id": "us-loc-pinocchio-essay",
+        "titre": "Pinocchio",
+        "auteur": "J. B. Kaufman",
+        "editeur": "Library of Congress · National Film Preservation Board",
+        "url": "https://www.loc.gov/static/programs/national-film-preservation-board/documents/pinocchio.pdf",
+        "dateConsultation": "2026-09-01"
+    },
+    {
+        "id": "us-wdfm-reimagining-jiminy",
+        "titre": "Reimagining Jiminy Cricket",
+        "auteur": "The Walt Disney Family Museum",
+        "editeur": "The Walt Disney Family Museum",
+        "datePublication": "2016-09-28",
+        "url": "https://www.waltdisney.org/blog/reimagining-jiminy-cricket",
+        "dateConsultation": "2026-09-01"
+    },
+    {
+        "id": "us-wdfm-milt-kahl-puppeteer",
+        "titre": "Milt Kahl: Master Puppeteer",
+        "auteur": "The Walt Disney Family Museum",
+        "editeur": "The Walt Disney Family Museum",
+        "datePublication": "2016-11-06",
+        "url": "https://www.waltdisney.org/blog/milt-kahl-master-puppeteer",
+        "dateConsultation": "2026-09-01"
+    },
+    {
+        "id": "us-wdfm-pool-hall",
+        "titre": "In the Pool Hall with Three Disney Masters",
+        "auteur": "The Walt Disney Family Museum",
+        "editeur": "The Walt Disney Family Museum",
+        "datePublication": "2016-07-02",
+        "url": "https://www.waltdisney.org/blog/pool-hall-three-disney-masters-closer-look-one-pinocchios-funniest-scenes",
+        "dateConsultation": "2026-09-01"
+    },
+    {
+        "id": "us-d23-cliff-edwards",
+        "titre": "Cliff Edwards",
+        "auteur": "Walt Disney Archives",
+        "editeur": "D23 · Disney Legends",
+        "url": "https://d23.com/walt-disney-legend/cliff-edwards/",
+        "dateConsultation": "2026-09-01"
+    },
+    {
+        "id": "us-d23-dick-jones",
+        "titre": "Dick Jones",
+        "auteur": "Walt Disney Archives",
+        "editeur": "D23 · Disney Legends",
+        "url": "https://d23.com/walt-disney-legend/dick-jones/",
+        "dateConsultation": "2026-09-01"
+    },
+    {
+        "id": "us-d23-figaro",
+        "titre": "Figaro",
+        "auteur": "Walt Disney Archives",
+        "editeur": "D23 · Disney A to Z",
+        "url": "https://d23.com/a-to-z/figaro/",
+        "dateConsultation": "2026-09-01"
+    },
+    {
+        "id": "us-d23-figaro-and-cleo",
+        "titre": "Figaro and Cleo (film)",
+        "auteur": "Walt Disney Archives",
+        "editeur": "D23 · Disney A to Z",
+        "url": "https://d23.com/a-to-z/figaro-and-cleo-film/",
+        "dateConsultation": "2026-09-01"
     }
 ]

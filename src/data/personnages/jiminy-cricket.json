@@ -1,0 +1,61 @@
+{
+    "slug": "jiminy-cricket",
+    "type": "personnage",
+    "introduction": "Jiminy Cricket transforme une brève figure moralisatrice de Collodi en compagnon, narrateur et conscience de Pinocchio. Ward Kimball éloigne progressivement son dessin de l’anatomie d’un véritable grillon, tandis que Cliff Edwards apporte une voix, un rythme et une familiarité qui assouplissent sa fonction de guide. Jiminy n’est ni infaillible ni tout-puissant : il conseille, s’emporte, se décourage et revient, laissant toujours au pantin la responsabilité du choix.",
+    "creation": {
+        "date": { "valeur": "1940", "precision": "annee" },
+        "createurs": [
+            {
+                "nom": "Carlo Collodi",
+                "type": "contributeur",
+                "slug": "carlo-collodi"
+            },
+            {
+                "nom": "Ward Kimball",
+                "type": "contributeur",
+                "slug": "ward-kimball"
+            }
+        ]
+    },
+    "premiereApparition": {
+        "oeuvre": {
+            "nom": "Pinocchio",
+            "type": "oeuvre",
+            "slug": "pinocchio"
+        },
+        "date": { "valeur": "1940-02-07", "precision": "jour" }
+    },
+    "espece": "grillon anthropomorphe",
+    "blocsEditoriaux": [
+        {
+            "type": "genese",
+            "eyebrow": "Réinvention",
+            "titre": "Faire d’un avertissement une présence continue",
+            "paragraphes": [
+                "Dans le livre de Collodi, le Grillon parlant intervient tôt pour avertir Pinocchio et reçoit aussitôt une réponse violente. Le film développe cette fonction jusqu’à faire de Jiminy un compagnon chargé d’accompagner le pantin dans la durée.",
+                "Ward Kimball cherche d’abord une apparence d’insecte, puis retire peu à peu les signes anatomiques qui empêchent l’identification. Le costume, la petite taille et le mouvement suffisent finalement à faire accepter le personnage comme un grillon.",
+                "La voix de Cliff Edwards déplace encore le projet. Son énergie et ses expressions familières éloignent Jiminy du donneur de leçons compassé et font de la conscience un personnage capable d’humour, d’agacement et de tendresse."
+            ],
+            "sources": ["us-wdfm-reimagining-jiminy", "us-d23-cliff-edwards"]
+        },
+        {
+            "type": "heritage",
+            "eyebrow": "Au-delà du film",
+            "titre": "Continuer à parler lorsque l’histoire est terminée",
+            "paragraphes": [
+                "Jiminy ouvre et commente Pinocchio, mais il ne reste pas enfermé dans cette narration. Sa fonction de guide lui permet de rejoindre ensuite d’autres films et programmes Disney sans perdre son identité.",
+                "Cette continuité tient aussi à Cliff Edwards, dont la voix demeure associée au personnage et à When You Wish Upon a Star. Le narrateur, la conscience et l’interprète de la chanson forment trois relations distinctes qui se prolongent ensemble sans se confondre."
+            ],
+            "sources": [
+                "us-d23-cliff-edwards",
+                "us-wdfm-reimagining-jiminy",
+                "us-wdfm-pool-hall"
+            ]
+        }
+    ],
+    "sources": [
+        "us-wdfm-reimagining-jiminy",
+        "us-wdfm-pool-hall",
+        "us-d23-cliff-edwards"
+    ]
+}

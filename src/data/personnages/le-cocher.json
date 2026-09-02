@@ -1,0 +1,61 @@
+{
+    "slug": "le-cocher",
+    "type": "personnage",
+    "introduction": "Le Cocher recrute les enfants que Grand Coquin lui désigne et les conduit vers l’Île enchantée sous la promesse d’une liberté sans conséquence. Son calme rend le piège plus inquiétant : il connaît d’avance la métamorphose des garçons en ânes et organise leur disparition comme une exploitation. Le personnage reste volontairement peu expliqué ; sa fonction suffit à faire du plaisir sans limite une industrie réglée.",
+    "nomsAlternatifs": [
+        {
+            "nom": "The Coachman",
+            "nature": "original",
+            "langue": "en",
+            "sources": ["us-afi-catalog-pinocchio"]
+        },
+        {
+            "nom": "L’Omino di burro",
+            "nature": "localise",
+            "langue": "it",
+            "territoire": "IT",
+            "sources": ["it-collodi-critical-text"]
+        }
+    ],
+    "creation": {
+        "date": { "valeur": "1940", "precision": "annee" },
+        "createurs": [
+            {
+                "nom": "Carlo Collodi",
+                "type": "contributeur",
+                "slug": "carlo-collodi"
+            }
+        ]
+    },
+    "premiereApparition": {
+        "oeuvre": {
+            "nom": "Pinocchio",
+            "type": "oeuvre",
+            "slug": "pinocchio"
+        },
+        "date": { "valeur": "1940-02-07", "precision": "jour" }
+    },
+    "espece": "humain",
+    "blocsEditoriaux": [
+        {
+            "type": "caractere",
+            "eyebrow": "Piège",
+            "titre": "Vendre l’absence de règle comme une destination",
+            "paragraphes": [
+                "Le Cocher ne force pas Pinocchio à monter : il fait présenter l’Île enchantée comme le lieu où toutes les limites disparaissent. La contrainte n’apparaît qu’une fois le retour devenu impossible.",
+                "Sa fiche reste resserrée autour de cette fonction narrative. Les Archives établissent le rôle du personnage et son origine adaptée, sans lui prêter une biographie que le film ne donne pas."
+            ],
+            "sources": [
+                "us-afi-catalog-pinocchio",
+                "us-loc-pinocchio-essay",
+                "it-collodi-critical-text"
+            ]
+        }
+    ],
+    "sources": [
+        "us-afi-catalog-pinocchio",
+        "us-loc-pinocchio-essay",
+        "fr-cinematheque-pinocchio",
+        "it-collodi-critical-text"
+    ]
+}

@@ -1,0 +1,75 @@
+{
+    "slug": "stromboli",
+    "type": "personnage",
+    "introduction": "Stromboli offre à Pinocchio les applaudissements d’une scène avant de révéler qu’il entend posséder le pantin, ses mouvements et les profits qu’ils produisent. Sa masse, ses gestes expansifs et ses brusques changements d’humeur font de la représentation un espace où la joie du public masque l’enfermement de l’artiste. Vladimir “Bill” Tytla donne à cette contradiction une présence physique qui peut passer de l’exubérance à la menace sans changer de personnage.",
+    "nomsAlternatifs": [
+        {
+            "nom": "Mangiafuoco",
+            "nature": "localise",
+            "langue": "it",
+            "territoire": "IT",
+            "sources": ["it-treccani-1940-pinocchio"]
+        }
+    ],
+    "creation": {
+        "date": { "valeur": "1940", "precision": "annee" },
+        "createurs": [
+            {
+                "nom": "Carlo Collodi",
+                "type": "contributeur",
+                "slug": "carlo-collodi"
+            },
+            {
+                "nom": "Vladimir “Bill” Tytla",
+                "type": "contributeur",
+                "slug": "vladimir-bill-tytla"
+            }
+        ]
+    },
+    "premiereApparition": {
+        "oeuvre": {
+            "nom": "Pinocchio",
+            "type": "oeuvre",
+            "slug": "pinocchio"
+        },
+        "date": { "valeur": "1940-02-07", "precision": "jour" }
+    },
+    "espece": "humain",
+    "blocsEditoriaux": [
+        {
+            "type": "caractere",
+            "eyebrow": "Spectacle",
+            "titre": "Faire des applaudissements une nouvelle forme de cage",
+            "paragraphes": [
+                "Stromboli reconnaît immédiatement la valeur scénique d’un pantin capable de danser sans fils. Il transforme cette singularité en numéro, puis refuse à Pinocchio le droit de quitter la troupe qui vient de l’acclamer.",
+                "L’animation de Vladimir “Bill” Tytla donne au marionnettiste une énergie débordante. Le rire, les bras et le poids du corps occupent d’abord tout le cadre comme une fête avant que la même puissance ne se referme sur la cage.",
+                "La menace ne vient donc pas d’un ennemi extérieur au spectacle. Elle naît d’un propriétaire qui confond la réussite d’une représentation avec la possession de celui qui la rend possible."
+            ],
+            "sources": [
+                "us-afi-catalog-pinocchio",
+                "us-loc-pinocchio-essay",
+                "fr-cinematheque-pinocchio"
+            ]
+        },
+        {
+            "type": "genese",
+            "eyebrow": "Nom retrouvé",
+            "titre": "Laisser Mangiafuoco réapparaître dans le regard italien",
+            "paragraphes": [
+                "Stromboli transforme la figure du marionnettiste Mangiafuoco issue de Collodi. Le doublage italien de 1947 rétablit ce nom collodien, rendant visible la circulation du personnage entre le texte d’origine, le film américain et sa réception en Italie.",
+                "Le Codex conserve Mangiafuoco comme identité italienne versionnée. Cette forme ne remplace ni le nom canonique de la route française ni l’histoire particulière de l’adaptation Disney."
+            ],
+            "sources": [
+                "it-treccani-1940-pinocchio",
+                "it-collodi-critical-text"
+            ]
+        }
+    ],
+    "sources": [
+        "us-afi-catalog-pinocchio",
+        "us-loc-pinocchio-essay",
+        "fr-cinematheque-pinocchio",
+        "it-treccani-1940-pinocchio",
+        "it-collodi-critical-text"
+    ]
+}

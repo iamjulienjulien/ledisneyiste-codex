@@ -152,5 +152,82 @@
         "type": "personnage",
         "metadata": { "categories": ["allie"] },
         "sousTitre": "Le silencieux qui fait de tout son corps un langage"
+    },
+    {
+        "slug": "pinocchio",
+        "nom": "Pinocchio",
+        "type": "personnage",
+        "metadata": { "categories": ["protagoniste"] },
+        "sousTitre": "Le pantin qui apprend à devenir responsable de ses choix"
+    },
+    {
+        "slug": "jiminy-cricket",
+        "nom": "Jiminy Cricket",
+        "type": "personnage",
+        "metadata": { "categories": ["allie"] },
+        "sousTitre": "La petite conscience qui transforme un conseil en compagnonnage"
+    },
+    {
+        "slug": "geppetto",
+        "nom": "Geppetto",
+        "type": "personnage",
+        "metadata": { "categories": ["allie"] },
+        "sousTitre": "Le sculpteur dont le vœu donne un fils à son atelier"
+    },
+    {
+        "slug": "la-fee-bleue",
+        "nom": "La Fée Bleue",
+        "type": "personnage",
+        "metadata": { "categories": ["allie", "figure-magique"] },
+        "sousTitre": "La promesse magique qui lie liberté, vérité et responsabilité"
+    },
+    {
+        "slug": "grand-coquin",
+        "nom": "Grand Coquin",
+        "type": "personnage",
+        "metadata": { "categories": ["antagoniste"] },
+        "sousTitre": "Le renard qui transforme chaque raccourci en piège"
+    },
+    {
+        "slug": "gedeon",
+        "nom": "Gédéon",
+        "type": "personnage",
+        "metadata": { "categories": ["antagoniste"] },
+        "sousTitre": "Le complice silencieux qui suit Grand Coquin dans ses combines"
+    },
+    {
+        "slug": "stromboli",
+        "nom": "Stromboli",
+        "type": "personnage",
+        "metadata": { "categories": ["antagoniste"] },
+        "sousTitre": "Le marionnettiste qui veut posséder jusqu’au mouvement de Pinocchio"
+    },
+    {
+        "slug": "le-cocher",
+        "nom": "Le Cocher",
+        "type": "personnage",
+        "metadata": { "categories": ["antagoniste"] },
+        "sousTitre": "Le recruteur souriant qui conduit les enfants vers leur métamorphose"
+    },
+    {
+        "slug": "monstro",
+        "nom": "Monstro",
+        "type": "personnage",
+        "metadata": { "categories": ["antagoniste"] },
+        "sousTitre": "La baleine qui enferme la dernière épreuve dans son ventre"
+    },
+    {
+        "slug": "crapule",
+        "nom": "Crapule",
+        "type": "personnage",
+        "metadata": { "categories": ["antagoniste"] },
+        "sousTitre": "Le mauvais camarade dont l’assurance cède à la peur"
+    },
+    {
+        "slug": "figaro",
+        "nom": "Figaro",
+        "type": "personnage",
+        "metadata": { "categories": ["allie"] },
+        "sousTitre": "Le chaton de Geppetto qui gagne sa propre vie hors du film"
     }
 ]

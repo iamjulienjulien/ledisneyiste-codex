@@ -1,0 +1,72 @@
+{
+    "slug": "la-fee-bleue",
+    "type": "personnage",
+    "introduction": "La Fée Bleue répond au vœu de Geppetto sans supprimer le chemin que Pinocchio doit parcourir. Elle anime le pantin, lui promet qu’il pourra devenir un véritable enfant et confie à Jiminy la fonction de conscience. Le film transforme ainsi la figure féerique de Collodi en présence qui ouvre le récit, rend le mensonge visible et revient juger non une perfection impossible, mais la capacité du héros à choisir avec courage et générosité.",
+    "nomsAlternatifs": [
+        {
+            "nom": "The Blue Fairy",
+            "nature": "original",
+            "langue": "en",
+            "sources": ["us-afi-catalog-pinocchio"]
+        },
+        {
+            "nom": "La Fata dai capelli turchini",
+            "nature": "localise",
+            "langue": "it",
+            "territoire": "IT",
+            "sources": ["it-collodi-critical-text"]
+        }
+    ],
+    "creation": {
+        "date": { "valeur": "1940", "precision": "annee" },
+        "createurs": [
+            {
+                "nom": "Carlo Collodi",
+                "type": "contributeur",
+                "slug": "carlo-collodi"
+            }
+        ]
+    },
+    "premiereApparition": {
+        "oeuvre": {
+            "nom": "Pinocchio",
+            "type": "oeuvre",
+            "slug": "pinocchio"
+        },
+        "date": { "valeur": "1940-02-07", "precision": "jour" }
+    },
+    "espece": "fée",
+    "blocsEditoriaux": [
+        {
+            "type": "genese",
+            "eyebrow": "Adaptation",
+            "titre": "Rassembler plusieurs apparitions en une promesse claire",
+            "paragraphes": [
+                "Le texte de Collodi donne à la Fée aux cheveux turquoise plusieurs âges et plusieurs modes d’apparition. Le film concentre cette présence en une figure reconnaissable qui relie le vœu de Geppetto, la conscience de Jiminy et la transformation finale.",
+                "La magie n’achève pas le travail à la place du héros. Elle donne mouvement et parole au pantin, puis fixe une condition morale : Pinocchio devra prouver par ses choix qu’il peut devenir un enfant.",
+                "Le nez qui s’allonge matérialise le mensonge sans réduire la Fée à une punition. La scène rend visible l’écart entre ce que Pinocchio raconte et ce qu’il sait déjà devoir reconnaître."
+            ],
+            "sources": [
+                "it-collodi-critical-text",
+                "us-loc-pinocchio-essay",
+                "fr-cinematheque-pinocchio"
+            ]
+        },
+        {
+            "type": "apparence",
+            "eyebrow": "Présence filmée",
+            "titre": "Distinguer le modèle, la voix et le personnage animé",
+            "paragraphes": [
+                "Marge Champion sert de modèle filmé pour le mouvement de la Fée Bleue. Cette référence appartient au travail d’observation des animateurs ; elle ne fait pas d’elle la voix originale du personnage.",
+                "Evelyn Venable assure cette voix dans la version originale. Le Codex conserve ces deux contributions séparément afin que le geste observé, l’interprétation sonore et la figure dessinée ne deviennent pas un même crédit imprécis."
+            ],
+            "sources": ["us-loc-pinocchio-essay", "fr-cinematheque-pinocchio"]
+        }
+    ],
+    "sources": [
+        "us-loc-pinocchio-essay",
+        "fr-cinematheque-pinocchio",
+        "it-collodi-critical-text",
+        "us-afi-catalog-pinocchio"
+    ]
+}

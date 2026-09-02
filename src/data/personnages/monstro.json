@@ -1,0 +1,45 @@
+{
+    "slug": "monstro",
+    "type": "personnage",
+    "introduction": "Monstro fait de la dernière partie de Pinocchio une épreuve d’échelle. La baleine engloutit Geppetto, enferme le foyer dans son ventre puis transforme la fuite en poursuite à travers la mer. Le personnage ne demande ni discours ni motivation développée : sa masse, son souffle et son mouvement suffisent à obliger Pinocchio à agir enfin pour quelqu’un d’autre que lui-même.",
+    "creation": {
+        "date": { "valeur": "1940", "precision": "annee" },
+        "createurs": [
+            {
+                "nom": "Carlo Collodi",
+                "type": "contributeur",
+                "slug": "carlo-collodi"
+            }
+        ]
+    },
+    "premiereApparition": {
+        "oeuvre": {
+            "nom": "Pinocchio",
+            "type": "oeuvre",
+            "slug": "pinocchio"
+        },
+        "date": { "valeur": "1940-02-07", "precision": "jour" }
+    },
+    "espece": "baleine",
+    "blocsEditoriaux": [
+        {
+            "type": "trajectoire",
+            "eyebrow": "Dernière épreuve",
+            "titre": "Transformer l’enfermement en décision",
+            "paragraphes": [
+                "Le ventre de Monstro réunit Pinocchio et Geppetto, mais il ne restaure pas encore leur liberté. Le pantin doit imaginer la fumée qui fera éternuer la baleine, puis affronter la poursuite déclenchée par leur fuite.",
+                "La fiche demeure légère : la puissance documentaire du personnage tient à cette fonction et à sa mise en mouvement, sans qu’une psychologie supplémentaire soit inventée."
+            ],
+            "sources": [
+                "us-afi-catalog-pinocchio",
+                "us-loc-pinocchio-essay",
+                "fr-cinematheque-pinocchio"
+            ]
+        }
+    ],
+    "sources": [
+        "us-afi-catalog-pinocchio",
+        "us-loc-pinocchio-essay",
+        "fr-cinematheque-pinocchio"
+    ]
+}
