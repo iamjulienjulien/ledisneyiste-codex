@@ -63,6 +63,8 @@ const documentsPhase5 = [
     "train-5e.md",
     "train-5f.md",
     "train-5g.md",
+    "train-5h.md",
+    "cloture.md",
 ];
 
 const identitesOeuvresTrain5D = {
@@ -988,6 +990,21 @@ function verifierTransmission() {
         assert.ok(
             existsSync(path.join(dossier, document)),
             `Transmission de la Phase 5 absente : ${document}`,
+        );
+    }
+
+    const cloture = readFileSync(path.join(dossier, "cloture.md"), "utf8");
+    for (const preuve of [
+        "69 verdicts",
+        "83 Archives",
+        "83 routes canoniques",
+        "45 routes historiques",
+        "Phase 6",
+        "Phase 9",
+    ]) {
+        assert.ok(
+            cloture.includes(preuve),
+            `Clôture de la Phase 5 incomplète : ${preuve}`,
         );
     }
 }
