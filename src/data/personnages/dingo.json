@@ -1,6 +1,14 @@
 {
     "slug": "dingo",
     "type": "personnage",
+    "nomsAlternatifs": [
+        {
+            "nom": "Goofy",
+            "nature": "original",
+            "langue": "en",
+            "sources": ["chronique-disney-dingo"]
+        }
+    ],
     "introduction": "Dingo apparaît d’abord comme un rire perdu dans le public de Mickey’s Revue. Cette voix éclatante, portée par Pinto Colvig, suffit pourtant à distinguer le personnage de la foule et à lui ouvrir une place durable auprès de Mickey et Donald. Sa maladresse ne le réduit jamais à l’échec : elle devient une manière obstinée et généreuse d’avancer, jusqu’à faire de chaque geste ordinaire une aventure comique.",
     "creation": {
         "date": {
@@ -52,5 +60,10 @@
             ]
         }
     ],
-    "sources": ["d23-goofy", "d23-pinto-colvig", "d23-mickeys-revue"]
+    "sources": [
+        "chronique-disney-dingo",
+        "d23-goofy",
+        "d23-pinto-colvig",
+        "d23-mickeys-revue"
+    ]
 }

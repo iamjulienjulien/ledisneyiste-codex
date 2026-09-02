@@ -1512,5 +1512,26 @@
         "editeur": "Chronique Disney",
         "url": "https://www.chroniquedisney.fr/cartoon-08-pluto/1940-envies.htm",
         "dateConsultation": "2026-09-02"
+    },
+    {
+        "id": "chronique-disney-oswald-lapin-chanceux",
+        "titre": "Oswald, le Lapin Chanceux",
+        "editeur": "Chronique Disney",
+        "url": "https://www.chroniquedisney.fr/perso/1927-oswald.htm",
+        "dateConsultation": "2026-09-02"
+    },
+    {
+        "id": "chronique-disney-pat-hibulaire",
+        "titre": "Pat Hibulaire",
+        "editeur": "Chronique Disney",
+        "url": "https://www.chroniquedisney.fr/perso/1925-pat-hibulaire.htm",
+        "dateConsultation": "2026-09-02"
+    },
+    {
+        "id": "chronique-disney-dingo",
+        "titre": "Dingo",
+        "editeur": "Chronique Disney",
+        "url": "https://www.chroniquedisney.fr/perso/1932-dingo.htm",
+        "dateConsultation": "2026-09-02"
     }
 ]

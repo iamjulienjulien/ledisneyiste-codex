@@ -1,6 +1,14 @@
 {
     "slug": "oswald-le-lapin-chanceux",
     "type": "personnage",
+    "nomsAlternatifs": [
+        {
+            "nom": "Oswald the Lucky Rabbit",
+            "nature": "original",
+            "langue": "en",
+            "sources": ["chronique-disney-oswald-lapin-chanceux"]
+        }
+    ],
     "introduction": "Oswald le lapin chanceux est la première véritable vedette animée du studio Disney et le personnage autour duquel celui-ci apprend autant à réussir qu’à perdre. Vif, élastique et volontiers frondeur, le lapin donne aux films une personnalité capable de dépasser le simple enchaînement de gags. Mais Oswald appartient juridiquement à Universal : lorsque Walt Disney perd le contrat de production en 1928, le héros quitte ceux qui l’ont façonné et pousse indirectement le studio vers Mickey. Son retour chez Disney en 2006 transforme enfin cette absence en héritage retrouvé.",
     "creation": {
         "date": {
@@ -65,6 +73,7 @@
         }
     ],
     "sources": [
+        "chronique-disney-oswald-lapin-chanceux",
         "d23-oswald-the-lucky-rabbit",
         "d23-poor-papa-restoration",
         "wdfm-mickeys-follies",

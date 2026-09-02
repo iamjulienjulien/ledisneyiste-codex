@@ -1,6 +1,20 @@
 {
     "slug": "pat-hibulaire",
     "type": "personnage",
+    "nomsAlternatifs": [
+        {
+            "nom": "Peg-Leg Pete",
+            "nature": "original",
+            "langue": "en",
+            "sources": ["chronique-disney-pat-hibulaire"]
+        },
+        {
+            "nom": "Pete",
+            "nature": "alias",
+            "langue": "en",
+            "sources": ["chronique-disney-pat-hibulaire"]
+        }
+    ],
     "introduction": "Pat Hibulaire est plus ancien que Mickey et presque aussi persistant que lui. Né en 1925 dans une Alice Comedy sous le nom de Bootleg Pete, il traverse les films d’Oswald puis accueille la nouvelle souris en capitaine autoritaire dans Steamboat Willie et en ravisseur dans The Gallopin’ Gaucho. Sa masse, sa brutalité et son goût du pouvoir donnent aux héros souples de Disney un obstacle immédiatement lisible. Même lorsque sa jambe de bois disparaît et que ses métiers changent, Pat conserve cette fonction : être la force que l’aventure doit contourner, ridiculiser ou renverser.",
     "creation": {
         "date": {
@@ -58,6 +72,7 @@
         }
     ],
     "sources": [
+        "chronique-disney-pat-hibulaire",
         "d23-pete",
         "d23-alice-solves-the-puzzle-released",
         "d23-hungry-hoboes",
