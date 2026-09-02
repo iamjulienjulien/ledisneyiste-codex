@@ -34,16 +34,17 @@ export async function generateMetadata({
 }): Promise<Metadata> {
     const { slug } = await params;
     const epoque = getEpoqueBySlug(slug);
+    const identite = resoudreIdentiteCodex("epoques", slug);
 
-    if (!epoque) {
+    if (!epoque || !identite) {
         return {};
     }
 
     return {
-        title: epoque.nom,
+        title: identite.principale.libelle,
         description:
             epoque.sousTitre ||
-            `Découvrir ${epoque.nom} dans Le Codex du Disneyiste.`,
+            `Découvrir ${identite.principale.libelle} dans Le Codex du Disneyiste.`,
     };
 }
 

@@ -32,16 +32,17 @@ export async function generateMetadata({
 }): Promise<Metadata> {
     const { slug } = await params;
     const contributeur = getContributeurBySlug(slug);
+    const identite = resoudreIdentiteCodex("createurs", slug);
 
-    if (!contributeur) {
+    if (!contributeur || !identite) {
         return {};
     }
 
     return {
-        title: contributeur.nom,
+        title: identite.principale.libelle,
         description:
             contributeur.sousTitre ||
-            `Découvrir ${contributeur.nom} dans Le Codex du Disneyiste.`,
+            `Découvrir ${identite.principale.libelle} dans Le Codex du Disneyiste.`,
     };
 }
 

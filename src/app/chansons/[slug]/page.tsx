@@ -27,9 +27,13 @@ export async function generateMetadata({
 }: PageProps<"/chansons/[slug]">): Promise<Metadata> {
     const { slug } = await params;
     const chanson = getChansonBySlug(slug);
+    const identite = resoudreIdentiteCodex("chansons", slug);
 
-    return chanson
-        ? { title: chanson.nom, description: chanson.sousTitre }
+    return chanson && identite
+        ? {
+              title: identite.principale.libelle,
+              description: chanson.sousTitre,
+          }
         : {};
 }
 

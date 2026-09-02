@@ -5,6 +5,7 @@ import { PixieLink } from "@/components/ui/PixieLink";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { formatDateHistorique } from "@/lib/date";
+import { construireRouteCanoniqueCodex } from "@/lib/navigation/routes-codex";
 import styles from "./CodexIndexOeuvreCard.module.css";
 import type { CodexIndexOeuvreCardProps } from "./CodexIndexOeuvreCard.types";
 
@@ -23,7 +24,7 @@ export function CodexIndexOeuvreCard({
             effect="projector"
         >
             <PixieLink
-                href={`/oeuvres/${oeuvre.slug}`}
+                href={construireRouteCanoniqueCodex("oeuvres", oeuvre.slug)}
                 variant="surface"
                 color="gouache"
                 className={`${styles.root} group`}

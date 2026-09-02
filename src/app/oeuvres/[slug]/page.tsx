@@ -43,16 +43,17 @@ export async function generateMetadata({
 }): Promise<Metadata> {
     const { slug } = await params;
     const oeuvre = getOeuvreBySlug(slug);
+    const identite = resoudreIdentiteCodex("oeuvres", slug);
 
-    if (!oeuvre) {
+    if (!oeuvre || !identite) {
         return {};
     }
 
     return {
-        title: oeuvre.nom,
+        title: identite.principale.libelle,
         description:
             oeuvre.sousTitre ||
-            `Découvrir ${oeuvre.nom} dans Le Codex du Disneyiste.`,
+            `Découvrir ${identite.principale.libelle} dans Le Codex du Disneyiste.`,
     };
 }
 

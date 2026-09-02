@@ -12,6 +12,7 @@ import {
 } from "@/data/epoques/relations";
 import { getFicheEpoqueBySlug } from "@/data/epoques";
 import { resoudreIdentiteCodex } from "@/lib/identites/server";
+import { construireRouteCanoniqueCodex } from "@/lib/navigation/routes-codex";
 import { resolveCodexIndexView } from "@/lib/index-view";
 
 export const metadata: Metadata = {
@@ -86,7 +87,10 @@ export default async function EpoquesPage({
                         return identite ? (
                             <CodexIndexListItem
                                 key={epoque.slug}
-                                href={`/epoques/${epoque.slug}`}
+                                href={construireRouteCanoniqueCodex(
+                                    "epoques",
+                                    epoque.slug,
+                                )}
                                 index={index}
                                 famille="epoques"
                                 identite={identite}

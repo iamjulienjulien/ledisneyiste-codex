@@ -9,6 +9,7 @@ import { oeuvres } from "@/data/catalogues";
 import { getFicheOeuvreBySlug } from "@/data/oeuvres";
 import { getRecompensesPourOeuvre } from "@/data/recompenses/relations";
 import { resoudreIdentiteCodex } from "@/lib/identites/server";
+import { construireRouteCanoniqueCodex } from "@/lib/navigation/routes-codex";
 import { resolveCodexIndexView } from "@/lib/index-view";
 
 export const metadata: Metadata = {
@@ -76,7 +77,10 @@ export default async function OeuvresPage({
                         return identite ? (
                             <CodexIndexListItem
                                 key={oeuvre.slug}
-                                href={`/oeuvres/${oeuvre.slug}`}
+                                href={construireRouteCanoniqueCodex(
+                                    "oeuvres",
+                                    oeuvre.slug,
+                                )}
                                 index={index}
                                 famille="oeuvres"
                                 identite={identite}

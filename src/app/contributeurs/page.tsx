@@ -10,6 +10,7 @@ import { getFicheContributeurBySlug } from "@/data/contributeurs";
 import { getEpoquesPourContributeur } from "@/data/epoques/relations";
 import { getRecompensesPourContributeur } from "@/data/recompenses/relations";
 import { resoudreIdentiteCodex } from "@/lib/identites/server";
+import { construireRouteCanoniqueCodex } from "@/lib/navigation/routes-codex";
 import { resolveCodexIndexView } from "@/lib/index-view";
 
 export const metadata: Metadata = {
@@ -81,7 +82,10 @@ export default async function ContributeursPage({
                         return identite ? (
                             <CodexIndexListItem
                                 key={contributeur.slug}
-                                href={`/contributeurs/${contributeur.slug}`}
+                                href={construireRouteCanoniqueCodex(
+                                    "createurs",
+                                    contributeur.slug,
+                                )}
                                 index={index}
                                 famille="createurs"
                                 identite={identite}

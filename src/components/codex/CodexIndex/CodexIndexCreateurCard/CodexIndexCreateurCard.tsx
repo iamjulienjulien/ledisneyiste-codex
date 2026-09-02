@@ -5,6 +5,7 @@ import { PixieLink } from "@/components/ui/PixieLink";
 import { PixieSeparator } from "@/components/ui/PixieSeparator";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { formatDateHistorique } from "@/lib/date";
+import { construireRouteCanoniqueCodex } from "@/lib/navigation/routes-codex";
 import styles from "./CodexIndexCreateurCard.module.css";
 import type { CodexIndexCreateurCardProps } from "./CodexIndexCreateurCard.types";
 
@@ -24,7 +25,10 @@ export function CodexIndexCreateurCard({
             effect="projector"
         >
             <PixieLink
-                href={`/contributeurs/${contributeur.slug}`}
+                href={construireRouteCanoniqueCodex(
+                    "createurs",
+                    contributeur.slug,
+                )}
                 variant="surface"
                 color="jaune-lampe"
                 className={`${styles.root} group`}

@@ -3,6 +3,7 @@ import { PixieBadge } from "@/components/ui/PixieBadge";
 import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieLink } from "@/components/ui/PixieLink";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
+import { construireRouteCanoniqueCodex } from "@/lib/navigation/routes-codex";
 import styles from "./CodexIndexChansonCard.module.css";
 import type { CodexIndexChansonCardProps } from "./CodexIndexChansonCard.types";
 
@@ -27,7 +28,7 @@ export function CodexIndexChansonCard({
             effect="projector"
         >
             <PixieLink
-                href={`/chansons/${chanson.slug}`}
+                href={construireRouteCanoniqueCodex("chansons", chanson.slug)}
                 variant="surface"
                 color="rose-aerographe"
                 className={`${styles.root} group`}

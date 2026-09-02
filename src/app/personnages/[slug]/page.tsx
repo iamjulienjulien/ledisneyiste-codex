@@ -26,16 +26,17 @@ export async function generateMetadata({
 }): Promise<Metadata> {
     const { slug } = await params;
     const personnage = getPersonnageBySlug(slug);
+    const identite = resoudreIdentiteCodex("personnages", slug);
 
-    if (!personnage) {
+    if (!personnage || !identite) {
         return {};
     }
 
     return {
-        title: personnage.nom,
+        title: identite.principale.libelle,
         description:
             personnage.sousTitre ||
-            `Découvrir ${personnage.nom} dans Le Codex du Disneyiste.`,
+            `Découvrir ${identite.principale.libelle} dans Le Codex du Disneyiste.`,
     };
 }
 

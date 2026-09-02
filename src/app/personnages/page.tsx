@@ -8,6 +8,7 @@ import { PixieGrid } from "@/components/ui/PixieGrid";
 import { personnages } from "@/data/catalogues";
 import { getFichePersonnageBySlug } from "@/data/personnages";
 import { resoudreIdentiteCodex } from "@/lib/identites/server";
+import { construireRouteCanoniqueCodex } from "@/lib/navigation/routes-codex";
 import { resolveCodexIndexView } from "@/lib/index-view";
 
 export const metadata: Metadata = {
@@ -71,7 +72,10 @@ export default async function PersonnagesPage({
                         return identite ? (
                             <CodexIndexListItem
                                 key={personnage.slug}
-                                href={`/personnages/${personnage.slug}`}
+                                href={construireRouteCanoniqueCodex(
+                                    "personnages",
+                                    personnage.slug,
+                                )}
                                 index={index}
                                 famille="personnages"
                                 identite={identite}

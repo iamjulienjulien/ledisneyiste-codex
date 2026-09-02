@@ -4,6 +4,7 @@ import type {
     CheminCodex,
     RedirectionNavigationCodex,
 } from "@/types/navigation";
+import type { ReferenceCodex, TypeReferenceCodex } from "@/types/reference";
 
 const segmentsRoutesCodex: Readonly<Record<CodexFamily, string>> = {
     personnages: "personnages",
@@ -11,6 +12,16 @@ const segmentsRoutesCodex: Readonly<Record<CodexFamily, string>> = {
     oeuvres: "oeuvres",
     epoques: "epoques",
     chansons: "chansons",
+};
+
+const famillesReferencesCodex: Readonly<
+    Record<TypeReferenceCodex, CodexFamily>
+> = {
+    personnage: "personnages",
+    contributeur: "createurs",
+    oeuvre: "oeuvres",
+    epoque: "epoques",
+    chanson: "chansons",
 };
 
 const motifCheminCodex =
@@ -35,6 +46,19 @@ export function construireRouteCanoniqueCodex(
     }
 
     return `/${segmentsRoutesCodex[famille]}/${slug}`;
+}
+
+export function construireRouteReferenceCodex(
+    reference: ReferenceCodex,
+): CheminCodex | null {
+    if (!reference.type || !reference.slug) {
+        return null;
+    }
+
+    return construireRouteCanoniqueCodex(
+        famillesReferencesCodex[reference.type],
+        reference.slug,
+    );
 }
 
 export function preparerRedirectionsNavigationCodex(

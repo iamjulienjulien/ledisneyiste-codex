@@ -3,6 +3,7 @@ import { PixieCard } from "@/components/ui/PixieCard";
 import { PixieLink } from "@/components/ui/PixieLink";
 import { PixieSymbol } from "@/components/ui/PixieSymbol";
 import { formatDateHistorique } from "@/lib/date";
+import { construireRouteCanoniqueCodex } from "@/lib/navigation/routes-codex";
 import styles from "./CodexIndexEpoqueCard.module.css";
 import type { CodexIndexEpoqueCardProps } from "./CodexIndexEpoqueCard.types";
 
@@ -25,7 +26,7 @@ export function CodexIndexEpoqueCard({
             effect="projector"
         >
             <PixieLink
-                href={`/epoques/${epoque.slug}`}
+                href={construireRouteCanoniqueCodex("epoques", epoque.slug)}
                 variant="surface"
                 color="vert-cellulo"
                 className={`${styles.root} group`}
