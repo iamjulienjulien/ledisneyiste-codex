@@ -446,5 +446,82 @@
             "d23-snow-white-oscars-look-back",
             "d23-snow-white-film"
         ]
+    },
+    {
+        "id": "academy-awards-1941-pinocchio-original-score",
+        "institution": {
+            "nom": "Academy of Motion Picture Arts and Sciences",
+            "abreviation": "AMPAS"
+        },
+        "edition": {
+            "nom": "13e cérémonie des Oscars",
+            "numero": 13
+        },
+        "dateAttribution": {
+            "valeur": "1941-02-27",
+            "precision": "jour"
+        },
+        "nature": "competitive",
+        "trophee": "statuette-oscar",
+        "categorie": "Meilleure musique originale",
+        "beneficiaires": [
+            {
+                "nom": "Leigh Harline",
+                "type": "contributeur",
+                "slug": "leigh-harline"
+            },
+            {
+                "nom": "Paul J. Smith",
+                "type": "contributeur",
+                "slug": "paul-j-smith"
+            },
+            {
+                "nom": "Ned Washington",
+                "type": "contributeur",
+                "slug": "ned-washington"
+            }
+        ],
+        "oeuvreConcernee": {
+            "nom": "Pinocchio",
+            "type": "oeuvre",
+            "slug": "pinocchio"
+        },
+        "sources": ["us-academy-awards-1941"]
+    },
+    {
+        "id": "academy-awards-1941-when-you-wish-upon-a-star",
+        "institution": {
+            "nom": "Academy of Motion Picture Arts and Sciences",
+            "abreviation": "AMPAS"
+        },
+        "edition": {
+            "nom": "13e cérémonie des Oscars",
+            "numero": 13
+        },
+        "dateAttribution": {
+            "valeur": "1941-02-27",
+            "precision": "jour"
+        },
+        "nature": "competitive",
+        "trophee": "statuette-oscar",
+        "categorie": "Meilleure chanson originale",
+        "beneficiaires": [
+            {
+                "nom": "Leigh Harline",
+                "type": "contributeur",
+                "slug": "leigh-harline"
+            },
+            {
+                "nom": "Ned Washington",
+                "type": "contributeur",
+                "slug": "ned-washington"
+            }
+        ],
+        "oeuvreConcernee": {
+            "nom": "Pinocchio",
+            "type": "oeuvre",
+            "slug": "pinocchio"
+        },
+        "sources": ["us-academy-awards-1941"]
     }
 ]
